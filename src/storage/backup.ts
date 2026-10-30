@@ -4,6 +4,7 @@ import { parseQuestion } from '../domain/schema';
 import type { Question } from '../domain/types';
 import type { Repo } from './repo';
 import { examResultSchema } from '../exam/result';
+import { srsRecordSchema } from '../study/srs';
 
 export const BACKUP_FORMAT = 'cert-exam-trainer-backup';
 
@@ -26,8 +27,6 @@ export class ImportError extends Error {
   name = 'ImportError';
 }
 
-const recordSchema = z.object({ id: z.string().min(1) }).passthrough();
-
 const fileSchema = z.object({
   format: z.literal(BACKUP_FORMAT),
   version: z.literal(1),
@@ -35,7 +34,7 @@ const fileSchema = z.object({
   userQuestions: z.array(z.unknown()),
   settings: z.record(z.unknown()),
   results: z.array(examResultSchema),
-  srs: z.array(recordSchema),
+  srs: z.array(srsRecordSchema),
 });
 
 export async function exportBackup(repo: Repo, now: () => Date = () => new Date()): Promise<BackupFile> {
