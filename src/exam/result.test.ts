@@ -29,7 +29,8 @@ describe('result', () => {
   });
 
   it('rejects a record without a seed', () => {
-    const { seed: _seed, ...rest } = sample();
+    const rest: Partial<ExamResult> = sample();
+    delete rest.seed;
     expect(examResultSchema.safeParse(rest).success).toBe(false);
   });
 
