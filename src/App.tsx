@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { openRepo, type Repo } from './storage';
 import { Disclaimer } from './ui/Disclaimer';
 import { Home } from './ui/Home';
+import { MyQuestions } from './ui/author/MyQuestions';
+import { QuestionEditor } from './ui/author/QuestionEditor';
 import { MockExamFlow } from './ui/exam/MockExamFlow';
 import type { Screen } from './ui/screens';
 import { CramFlow } from './ui/study/CramFlow';
@@ -70,6 +72,10 @@ export default function App() {
             onDrill={(ids) => go({ name: 'practice', exam: screen.exam, preset: ids })}
           />
         );
+      case 'questions':
+        return <MyQuestions key={key} repo={repo} examCode={screen.exam} onExit={home} onEdit={(id) => go({ name: 'edit', exam: screen.exam, id })} />;
+      case 'edit':
+        return <QuestionEditor key={key} repo={repo} examCode={screen.exam} id={screen.id} onDone={() => go({ name: 'questions', exam: screen.exam })} />;
     }
   }
 

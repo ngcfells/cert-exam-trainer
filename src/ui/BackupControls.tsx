@@ -1,11 +1,11 @@
 import { useId, useState, type ChangeEvent } from 'react';
 import type { Repo } from '../storage';
 import { exportBackup, importBackup, ImportError } from '../storage/backup';
+import { dateStamp, downloadJson } from './download';
 import { questions } from './plural';
 
 export function backupFileName(d: Date): string {
-  const pad = (n: number) => String(n).padStart(2, '0');
-  return `cert-exam-trainer-backup-${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}.json`;
+  return `cert-exam-trainer-backup-${dateStamp(d)}.json`;
 }
 
 export function BackupControls({ repo, onImported }: { repo: Repo; onImported: () => void }) {
@@ -16,13 +16,7 @@ export function BackupControls({ repo, onImported }: { repo: Repo; onImported: (
   async function onExport() {
     try {
       const file = await exportBackup(repo);
-      const url = URL.createObjectURL(new Blob([JSON.stringify(file, null, 2)], { type: 'application/json' }));
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = backupFileName(new Date());
-      a.click();
-      // Revoking synchronously can cancel the download in Firefox and Safari.
-      setTimeout(() => URL.revokeObjectURL(url), 0);
+      downloadJson(backupFileName(new Date()), file);
       setMessage(`Exported ${questions(file.userQuestions.length)}.`);
     } catch {
       setMessage('Export failed. Please try again.');
