@@ -5,12 +5,16 @@
 
 ## Current state
 
-- **Chunk 1 is done** (branch `chunk1-scaffold-core`):
+- **Chunk 1 is done and merged to `main`** (2026-10-30; 48 unit tests and 5 e2e tests pass):
   - Vite 6, React 18 and strict TypeScript scaffold.
   - Zod question and exam schemas (`src/domain/`).
   - Bank registry with Data+ DA0-002 metadata (marked `VERIFY chunk 9`) and 3 seed questions: 2 approved, 1 draft.
   - IndexedDB repo with an in-memory fallback (`src/storage/`).
-  - JSON backup export and import (validates everything first; `ours` questions are skipped).
+  - JSON backup export and import:
+    - Validates the whole file first.
+    - Rejects unknown exams and objectives.
+    - Skips bundled questions and ids that collide with bundled ones.
+    - Restores the previous data if a write fails partway through.
   - Home screen with exam counts, a storage banner and backup controls.
 - **Commands:**
   - `npm run check` runs lint, typecheck, unit tests, the single-file build and e2e with axe.
@@ -21,6 +25,13 @@
   - `Repo` gained `listSettings()`, which the backup export needs.
   - Counts pluralize ("1 question (mine)").
   - Data+ objectives are placeholders until chunk 9.
+  - Deferred review items, to fold into chunk 2 if cheap:
+    - (a) `openRepo` has no timeout, so the app can hang on "Loading…" if IndexedDB never answers.
+    - (b) The export revokes the Blob URL synchronously, which can produce an empty download in Firefox and Safari.
+    - (c) Export errors aren't caught, and unexpected import errors show a raw `String(err)`.
+    - (d) "Replace my data" has no confirmation or warning hint.
+    - (e) The `StorageBanner` live region is present on first render, so some screen readers won't announce it.
+    - (f) Imported `results` and `srs` records are only checked for `id`. Add strict schemas when those stores get types.
 - **Priority:** Data+ (DA0-002) first, working end to end, before any other exam.
 - **Bank targets per exam:** at least 500 MCQs and at least 80 PBQs (10 of each of the 8 types).
 - **Randomness:** each mock exam draws a different random set of questions, recently seen items are deprioritized, and options are shuffled. See spec §7 item 4a; this lands in chunk 2.
