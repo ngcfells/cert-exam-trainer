@@ -34,7 +34,8 @@ export function TopBar({
         <span aria-label="Time remaining" role="timer">{formatTime(remainingMs)}</span>
       </span>
       <button type="button" aria-pressed={flagged} onClick={onToggleFlag}>
-        {flagged ? '⚑ Flagged for review' : '⚐ Flag for review'}
+        <span aria-hidden="true">{flagged ? '⚑ ' : '⚐ '}</span>
+        Flag for review
       </button>
       <span className="visually-hidden" aria-live="polite" data-testid="timer-announcer">
         {announcement}
