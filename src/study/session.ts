@@ -1,3 +1,4 @@
+import type { AcronymEntry } from '../acronyms/list';
 import type { ExamMeta, Question, QuestionType } from '../domain/types';
 import { freshFirst, itemFor, type AssembledExam } from '../exam/assemble';
 import { mulberry32, shuffle, type Rng } from '../exam/rng';
@@ -74,6 +75,7 @@ const CRAM_WEAK_OBJECTIVES = 3;
  */
 export function assembleCram({
   meta,
+  acronyms: list,
   pool,
   seed,
   srs,
@@ -81,6 +83,8 @@ export function assembleCram({
   now,
 }: {
   meta: ExamMeta;
+  /** The merged list from `loadAcronyms`. */
+  acronyms: AcronymEntry[];
   pool: Question[];
   seed: number;
   srs: unknown[];
@@ -95,7 +99,7 @@ export function assembleCram({
   const dueTerms = dueFirst.filter((r) => r.kind === 'acronym').map((r) => r.itemId);
   // First entry per term wins, so a duplicated term never yields two cards.
   const byTerm = new Map<string, AcronymCard>();
-  for (const { term, expansion } of meta.acronyms) if (!byTerm.has(term)) byTerm.set(term, { term, expansion });
+  for (const { term, expansion } of list) if (!byTerm.has(term)) byTerm.set(term, { term, expansion });
   const acronyms = [
     ...dueTerms.flatMap((t) => byTerm.get(t) ?? []),
     ...shuffle([...byTerm.values()].filter((a) => !reviewed.has(a.term)), rng),

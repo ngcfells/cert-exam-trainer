@@ -1,3 +1,4 @@
+import { loadAcronyms } from '../../acronyms/userList';
 import { useEffect, useRef, useState } from 'react';
 import { listExams } from '../../banks';
 import type { ExamMeta } from '../../domain/types';
@@ -70,13 +71,13 @@ export function ProgressScreen({
 
   useEffect(() => {
     let live = true;
-    void loadStudy(repo, examCode).then(
-      ({ pool, results, srs }) => {
+    void Promise.all([loadStudy(repo, examCode), loadAcronyms(repo, examCode)]).then(
+      ([{ pool, results, srs }, acronyms]) => {
         if (!live) return;
         const now = new Date();
         // Count only items that still exist, so the number matches what cram can offer.
         const questionIds = new Set(pool.map((q) => q.id));
-        const terms = new Set(meta.acronyms.map((a) => a.term));
+        const terms = new Set(acronyms.map((a) => a.term));
         const due = parseSrsRecords(srs).filter(
           (r) => r.exam === examCode && isDue(r, now) && (r.kind === 'question' ? questionIds : terms).has(r.itemId),
         );

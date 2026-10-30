@@ -67,7 +67,7 @@ const result = (responses: ExamResult['responses']): ExamResult => ({
   passed: false,
 });
 const cram = (srs: unknown[], results: unknown[] = [], meta = meta3) =>
-  assembleCram({ meta, pool: big, seed: 1, srs, mastery: computeMastery(meta, results, big), now });
+  assembleCram({ meta, acronyms: meta.acronyms, pool: big, seed: 1, srs, mastery: computeMastery(meta, results, big), now });
 
 describe('cram', () => {
   it('puts due questions first, most overdue first, and skips ones not yet due', () => {
@@ -113,7 +113,7 @@ describe('cram', () => {
     expect(s.acronyms).toEqual([]);
     expect(s.exam.items).toHaveLength(CRAM_SIZE);
     expect(s.exam.pbqWeightSum).toBe(0);
-    const small = assembleCram({ meta: meta3, pool: [mcq('A0', 'A'), pbq('P1', 1)], seed: 1, srs: [], mastery: computeMastery(meta3, [], []), now });
+    const small = assembleCram({ meta: meta3, acronyms: [], pool: [mcq('A0', 'A'), pbq('P1', 1)], seed: 1, srs: [], mastery: computeMastery(meta3, [], []), now });
     expect(ids(small.exam.items)).toEqual(['A0']);
   });
 });
