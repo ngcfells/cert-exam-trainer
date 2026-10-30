@@ -222,6 +222,8 @@ Expansions for non-official acronyms are written or verified by us.
 
 ## 13. Work chunks (one session each, `/clear` + handoff between)
 
+**Owner priority:** Data+ (DA0-002) comes first. Get the whole app working end to end on Data+, which means pulling chunk 11 forward right after chunk 10, before any other exam is added. SecAI+ and AutoOps+ follow after that.
+
 Each chunk ends with a `HANDOFF.md` update that records what's done, what's next and any open issues.
 
 1. **Scaffold and engine core:**
