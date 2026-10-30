@@ -38,7 +38,9 @@ export function ResultsScreen({
   return (
     <section className="exam results" aria-labelledby="results-h">
       <h2 id="results-h" ref={headingRef} tabIndex={-1}>
-        {mock ? `Your score: ${report.score} / 900` : `Practice complete: ${Math.round((report.score / MAX_SCORE) * 100)}% correct`}
+        {mock
+          ? `Your score: ${report.score} / 900`
+          : `${mode === 'cram' ? 'Cram' : 'Practice'} complete${exam.items.length ? `: ${Math.round((report.score / MAX_SCORE) * 100)}% correct` : ''}`}
       </h2>
       {mock && (
         <>
