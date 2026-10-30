@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { questionSchema } from './schema';
 import { correctParts, elementIds, HOTSPOT_ON, matchesPattern, partCorrect, partIds, partLabel, PBQ_TEMPLATES, valueText } from './pbq';
 import type { Question } from './types';
+import { dataPlusQuestions } from '../banks/dataplus/questions';
 import { fixtures, items } from './pbqFixtures';
 
 const ok = (x: unknown) => questionSchema.safeParse(x).success;
@@ -88,5 +89,16 @@ describe('templates 5-8', () => {
     expect(elementIds(q('buckets'))).toEqual(['i1', 'i2', 'i3']);
     expect(elementIds(q('terminal'))).toEqual([]);
     expect(PBQ_TEMPLATES).toHaveLength(8);
+  });
+
+  it('rejects duplicate hotspot answers', () => {
+    expect(ok({ ...fixtures.hotspot, answer: { selected: ['s1', 's1'] } })).toBe(false);
+  });
+
+  it('accepts common equivalent forms in the bundled terminal question', () => {
+    const t = dataPlusQuestions.find((x) => x.id === 'da2-pbq-terminal-001')!;
+    for (const cmd of ["grep 'ERROR' load_orders.log", 'grep ERROR ./load_orders.log', 'grep -n ERROR load_orders.log', 'cat load_orders.log | grep ERROR']) {
+      expect(partCorrect(t, 'find', { find: cmd }), cmd).toBe(true);
+    }
   });
 });

@@ -214,7 +214,16 @@ export const dataPlusQuestions: Question[] = [
     },
     answer: {
       accept: {
-        find: ['grep ERROR load_orders.log', 'grep "ERROR" load_orders.log', 'grep -i error load_orders.log', 'grep -w ERROR load_orders.log'],
+        find: [
+          'grep ERROR load_orders.log',
+          'grep "ERROR" load_orders.log',
+          "grep 'ERROR' load_orders.log",
+          'grep ERROR ./load_orders.log',
+          'grep -i error load_orders.log',
+          'grep -w ERROR load_orders.log',
+          'grep -n ERROR load_orders.log',
+          'cat load_orders.log | grep ERROR',
+        ],
         fix: ['quarantine'],
       },
     },

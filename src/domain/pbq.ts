@@ -272,6 +272,7 @@ export function pbqIssues(type: PbqTemplate, payload: unknown, answer: unknown):
   }
   if (type === 'pbq-hotspot') {
     const ids = parts.map((p) => p.id);
+    dupes(['answer', 'selected'], (answer as { selected: string[] }).selected, out);
     (answer as { selected: string[] }).selected.forEach((id, i) => {
       if (!ids.includes(id)) out.push({ path: ['answer', 'selected', i], message: `unknown spot "${id}"` });
     });
