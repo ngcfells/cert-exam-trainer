@@ -79,6 +79,9 @@ export const dataPlusMeta: ExamMeta = {
     { term: 'VPN', expansion: 'Virtual Private Network', source: 'official' },
     { term: 'VS', expansion: 'Visual Studio', source: 'official' },
     { term: 'XML', expansion: 'Extensible Markup Language', source: 'official' },
+    { term: 'BI', expansion: 'Business Intelligence', source: 'community' },
     { term: 'CSV', expansion: 'Comma-Separated Values', source: 'community' },
+    { term: 'ID', expansion: 'Identifier', source: 'community' },
+    { term: 'SAS', expansion: 'Statistical Analysis System', source: 'community' },
   ],
 };
