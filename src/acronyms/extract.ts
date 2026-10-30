@@ -7,7 +7,7 @@ export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
   'INSERT', 'INTO', 'VALUES', 'UPDATE', 'SET', 'DELETE', 'CREATE', 'TABLE', 'VIEW', 'INDEX', 'CASE', 'WHEN', 'THEN', 'ELSE', 'END',
   'COUNT', 'SUM', 'AVG', 'MIN', 'MAX',
   'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL',
-  'TWO', 'NO', 'YES',
+  'TWO', 'THREE', 'FOUR', 'NO', 'YES',
 ]);
 
 // 2–8 letters or digits, starting with a letter, with an optional plural "s".
