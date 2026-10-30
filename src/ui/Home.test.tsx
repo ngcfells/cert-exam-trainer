@@ -18,6 +18,15 @@ describe('Home', () => {
     expect(await within(row).findByText('0 questions (mine)')).toBeInTheDocument();
   });
 
+  it('toggle persists', async () => {
+    const user = userEvent.setup();
+    const repo = createMemoryRepo();
+    render(<Home repo={repo} persistent />);
+    expect(await screen.findByRole('radio', { name: 'Both' })).toBeChecked();
+    await user.click(screen.getByRole('radio', { name: 'Mine' }));
+    expect(await repo.getSetting('sourceFilter')).toBe('mine');
+  });
+
   it('offers mock exam, practice, cram and progress for each exam', async () => {
     const user = userEvent.setup();
     const onNavigate = vi.fn();

@@ -44,6 +44,14 @@ describe('PracticeFlow', () => {
     expect(screen.getByRole('button', { name: 'Start practice' })).toBeDisabled();
   });
 
+  it('mine with no questions shows empty message', async () => {
+    const repo = createMemoryRepo();
+    await repo.setSetting('sourceFilter', 'mine');
+    render(<PracticeFlow repo={repo} examCode="T-001" seed={1} onExit={() => {}} />);
+    expect(await screen.findByRole('status')).toHaveTextContent('No questions match these choices.');
+    expect(screen.getByRole('button', { name: 'Start practice' })).toBeDisabled();
+  });
+
   it('notes when the count is above the pool', async () => {
     const user = userEvent.setup();
     render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} onExit={() => {}} />);

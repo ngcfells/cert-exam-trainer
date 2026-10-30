@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { getBundledQuestions, listExams } from '../banks';
 import type { Repo } from '../storage';
 import { BackupControls } from './BackupControls';
+import { SourceToggle } from './SourceToggle';
 import { StorageBanner } from './StorageBanner';
 import { questions } from './plural';
 import type { ExamScreen } from './screens';
@@ -24,6 +25,7 @@ export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent:
     <>
       <StorageBanner persistent={persistent} />
       <h2>Exams</h2>
+      <SourceToggle repo={repo} />
       <ul>
         {listExams().map((e) => (
           <li key={e.code}>
