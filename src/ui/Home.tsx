@@ -5,7 +5,7 @@ import { BackupControls } from './BackupControls';
 import { StorageBanner } from './StorageBanner';
 import { questions } from './plural';
 
-export function Home({ repo, persistent }: { repo: Repo; persistent: boolean }) {
+export function Home({ repo, persistent, onStartExam }: { repo: Repo; persistent: boolean; onStartExam?: (code: string) => void }) {
   const [mine, setMine] = useState<Record<string, number>>({});
 
   const refresh = useCallback(async () => {
@@ -31,6 +31,11 @@ export function Home({ repo, persistent }: { repo: Repo; persistent: boolean }) 
               <li>{`${questions(getBundledQuestions(e.code).length)} (ours)`}</li>
               <li>{`${questions(mine[e.code] ?? 0)} (mine)`}</li>
             </ul>
+            {onStartExam && (
+              <button type="button" onClick={() => onStartExam(e.code)}>
+                {`Start mock exam: ${e.code}`}
+              </button>
+            )}
           </li>
         ))}
       </ul>
