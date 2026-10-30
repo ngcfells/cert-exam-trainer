@@ -1,0 +1,23 @@
+.exam { font-family: Arial, Helvetica, sans-serif; color: #000; background: #fff; max-width: 60rem; margin: 0 auto; }
+.exam-topbar { position: sticky; top: 0; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; background: #1f2d3d; color: #fff; }
+.exam-topbar button { background: #fff; color: #1f2d3d; border: 2px solid #fff; padding: 0.25rem 0.75rem; }
+.exam-topbar button[aria-pressed='true'] { background: #ffd54f; border-color: #ffd54f; }
+.exam-topbar .timer { font-variant-numeric: tabular-nums; font-weight: bold; }
+.exam-body { padding: 1rem; min-height: 50vh; }
+.exam-body h2:focus { outline: none; }
+.exam-body h2:focus-visible { outline: 3px solid #0b57d0; }
+.mcq { border: 0; padding: 0; margin: 0; }
+.mcq .stem { font-size: 1.125rem; font-weight: bold; margin-bottom: 0.75rem; }
+.mcq .hint { font-style: italic; margin: 0 0 0.5rem; }
+.mcq .option { display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.5rem; border: 1px solid #767676; margin-bottom: 0.5rem; cursor: pointer; }
+.exam-nav { position: sticky; bottom: 0; display: flex; gap: 0.5rem; justify-content: space-between; padding: 0.5rem 1rem; background: #e8ecf0; border-top: 1px solid #767676; }
+.exam-nav button, .exam button.primary { padding: 0.5rem 1rem; }
+.review-grid { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr)); gap: 0.5rem; }
+.review-cell { width: 100%; padding: 0.5rem; border: 2px solid #767676; background: #fff; color: #000; }
+.review-cell small { display: block; }
+.review-cell.answered { background: #e3f2e5; }
+.review-cell.flagged { border-color: #8a5a00; border-style: dashed; }
+dialog { max-width: 30rem; }
+.result-pass { color: #1b5e20; }
+.result-fail { color: #b71c1c; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
