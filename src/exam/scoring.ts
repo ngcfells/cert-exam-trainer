@@ -78,5 +78,6 @@ export function scoreExam(exam: AssembledExam, responses: Responses, meta: ExamM
     .sort((a, b) => a.fraction - b.fraction)
     .slice(0, 5);
 
-  return { score, passed: score >= meta.passingScore, items, byDomain, weakestObjectives };
+  // Pass on the raw total so rounding can never turn a fail into a pass.
+  return { score, passed: total >= meta.passingScore, items, byDomain, weakestObjectives };
 }

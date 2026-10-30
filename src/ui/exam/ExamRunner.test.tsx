@@ -86,6 +86,30 @@ describe('ExamRunner', () => {
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 
+  it('ignores answers after the deadline and submits instead', async () => {
+    const { user, onSubmit } = setup(60_000);
+    vi.setSystemTime(T0.getTime() + 60_500); // past the deadline, before the next tick
+    await user.click(screen.getByLabelText('A0-a'));
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit.mock.calls[0][0]).toMatchObject({ responses: {}, autoSubmitted: true });
+  });
+
+  it('keeps ticking when the parent passes a new onSubmit', () => {
+    const { rerender } = render(<ExamRunner exam={exam} timeLimitMs={600_000} startedAt={T0} onSubmit={() => {}} />);
+    act(() => vi.advanceTimersByTime(600));
+    rerender(<ExamRunner exam={exam} timeLimitMs={600_000} startedAt={T0} onSubmit={() => {}} />);
+    act(() => vi.advanceTimersByTime(600));
+    expect(screen.getByRole('timer')).toHaveTextContent('9:59'); // ticked at 1.0 s
+  });
+
+  it('focuses Cancel when the submit dialog opens', async () => {
+    const { user } = setup();
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await user.click(screen.getByRole('button', { name: 'Submit exam' }));
+    expect(within(screen.getByRole('dialog')).getByRole('button', { name: 'Cancel' })).toHaveFocus();
+  });
+
   it('computes remaining time from the deadline', () => {
     setup(60_000);
     act(() => {

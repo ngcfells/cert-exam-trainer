@@ -96,6 +96,15 @@ describe('MockExamFlow', () => {
     expect(screen.getByRole('alert')).toHaveTextContent('Your result could not be saved to history.');
   });
 
+  it('keeps the alert region mounted so a save error is announced', async () => {
+    const { user } = await start();
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await submit(user);
+    await screen.findByRole('heading', { name: /your score/i });
+    expect(screen.getByRole('alert')).toBeEmptyDOMElement();
+  });
+
   it('moves focus to the results heading after submitting', async () => {
     const { user } = await start();
     await user.click(screen.getByRole('button', { name: 'Next' }));

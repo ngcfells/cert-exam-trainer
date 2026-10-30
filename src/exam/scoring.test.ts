@@ -50,6 +50,14 @@ describe('scoreExam', () => {
     expect(both.passed).toBe(true);
   });
 
+  it('decides pass on the raw score, not the rounded one', () => {
+    const qs = Array.from({ length: 7 }, (_, i) => mcq(`A${i}`, 'A'));
+    const responses = Object.fromEntries(qs.slice(0, 5).map((q) => [q.id, ['a']]));
+    const r = scoreExam(examOf(qs), responses, { ...meta3, passingScore: 643 });
+    expect(r.score).toBe(643); // raw 642.857…
+    expect(r.passed).toBe(false);
+  });
+
   it('marks unanswered items', () => {
     const r = scoreExam(examOf([mcq('A0', 'A'), mcq('B0', 'B')]), { A0: ['a'] }, meta3);
     expect(r.items[1]).toMatchObject({ questionId: 'B0', answered: false, earned: 0 });

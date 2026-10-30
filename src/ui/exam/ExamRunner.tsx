@@ -38,6 +38,10 @@ export function ExamRunner({
   state.current = { responses, flagged };
   const headingRef = useRef<HTMLHeadingElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const cancelRef = useRef<HTMLButtonElement>(null);
+  // Kept in a ref so a new callback from the parent doesn't restart the timer.
+  const onSubmitRef = useRef(onSubmit);
+  onSubmitRef.current = onSubmit;
 
   const submit = useCallback(
     (autoSubmitted: boolean) => {
@@ -45,10 +49,17 @@ export function ExamRunner({
       submitted.current = true;
       dialogRef.current?.close();
       const { responses: r, flagged: f } = state.current;
-      onSubmit({ responses: r, flagged: [...f], autoSubmitted, finishedAt: new Date(now()) });
+      onSubmitRef.current({ responses: r, flagged: [...f], autoSubmitted, finishedAt: new Date(now()) });
     },
-    [now, onSubmit],
+    [now],
   );
+
+  /** True (and submits) once the deadline has passed, even between timer ticks. */
+  function expired(): boolean {
+    if (deadline - now() > 0) return false;
+    submit(true);
+    return true;
+  }
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -66,7 +77,10 @@ export function ExamRunner({
   useEffect(() => {
     const d = dialogRef.current;
     if (!d) return;
-    if (confirming && !d.open) d.showModal();
+    if (confirming && !d.open) {
+      d.showModal();
+      cancelRef.current?.focus();
+    }
     if (!confirming && d.open) d.close();
   }, [confirming]);
 
@@ -102,7 +116,9 @@ export function ExamRunner({
                 key={item.question.id}
                 item={item}
                 selected={responses[item.question.id] ?? []}
-                onChange={(ids) => setResponses((r) => ({ ...r, [item.question.id]: ids }))}
+                onChange={(ids) => {
+                  if (!expired()) setResponses((r) => ({ ...r, [item.question.id]: ids }));
+                }}
               />
             ) : (
               <p>This question type is not supported yet.</p>
@@ -157,7 +173,7 @@ export function ExamRunner({
             <button type="button" onClick={() => submit(false)}>
               Submit
             </button>
-            <button type="button" onClick={() => setConfirming(false)}>
+            <button type="button" ref={cancelRef} onClick={() => setConfirming(false)}>
               Cancel
             </button>
           </>

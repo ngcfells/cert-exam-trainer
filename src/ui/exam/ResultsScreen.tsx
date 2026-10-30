@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ExamMeta, McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { AssembledExam } from '../../exam/assemble';
 import type { ExamResult } from '../../exam/result';
@@ -27,6 +27,9 @@ export function ResultsScreen({
   const missed = exam.items.filter((_, i) => report.items[i].fraction < 1);
   const headingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => headingRef.current?.focus(), []);
+  // The alert region is mounted empty and filled after mount, so screen readers announce it.
+  const [alertText, setAlertText] = useState('');
+  useEffect(() => setAlertText(saveError ?? ''), [saveError]);
 
   return (
     <section className="exam results" aria-labelledby="results-h">
@@ -36,7 +39,7 @@ export function ResultsScreen({
       </p>
       <p>{`Passing score: ${meta.passingScore}.${result.autoSubmitted ? ' Time ran out, so the exam was submitted automatically.' : ''}`}</p>
       <p>CompTIA reports a scaled score; this is an approximation.</p>
-      {saveError && <p role="alert">{saveError}</p>}
+      <p role="alert">{alertText}</p>
 
       <table>
         <caption>Score by domain</caption>
