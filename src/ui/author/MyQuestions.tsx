@@ -7,7 +7,7 @@ import { dateStamp, downloadJson } from '../download';
 import { LoadError } from '../study/LoadError';
 import { questions as plural } from '../plural';
 import { ContentNotice, NOTICE_SETTING } from './ContentNotice';
-import { TYPE_LABELS } from './typeLabels';
+import { ellipsize, STATUS_LABELS, TYPE_LABELS } from './typeLabels';
 import './author.css';
 
 export function packFileName(exam: string, d: Date): string {
@@ -56,7 +56,7 @@ export function MyQuestions({
   }
 
   async function remove(q: Question) {
-    if (!window.confirm(`Delete this question?\n\n${q.stem.slice(0, 120)}`)) return;
+    if (!window.confirm(`Delete this question?\n\n${ellipsize(q.stem, 120)}`)) return;
     try {
       await repo.deleteUserQuestion(q.id);
       setMessage('Question deleted.');
@@ -81,7 +81,7 @@ export function MyQuestions({
     const file = input.files?.[0];
     if (!file) return;
     try {
-      const res = await importPack(repo, await file.text());
+      const res = await importPack(repo, await file.text(), examCode);
       const skipped = res.skipped.length
         ? ` Skipped ${res.skipped.length}: ${res.skipped.map((s) => `${s.id} (${s.reason})`).join(', ')}.`
         : '';
@@ -133,14 +133,14 @@ export function MyQuestions({
           <tbody>
             {list.map((q) => (
               <tr key={q.id}>
-                <td>{q.stem.length > 100 ? `${q.stem.slice(0, 100)}…` : q.stem}</td>
+                <td>{ellipsize(q.stem, 100)}</td>
                 <td>{TYPE_LABELS[q.type]}</td>
-                <td>{q.status}</td>
+                <td>{STATUS_LABELS[q.status]}</td>
                 <td className="row-actions">
-                  <button type="button" onClick={() => onEdit(q.id)} aria-label={`Edit: ${q.stem.slice(0, 60)}`}>
+                  <button type="button" onClick={() => onEdit(q.id)} aria-label={`Edit: ${ellipsize(q.stem, 60)}`}>
                     Edit
                   </button>
-                  <button type="button" onClick={() => void remove(q)} aria-label={`Delete: ${q.stem.slice(0, 60)}`}>
+                  <button type="button" onClick={() => void remove(q)} aria-label={`Delete: ${ellipsize(q.stem, 60)}`}>
                     Delete
                   </button>
                 </td>

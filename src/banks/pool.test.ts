@@ -25,6 +25,14 @@ describe('loadPool', () => {
     expect(await loadPool(repo, 'DA0-002')).toEqual(getBundledQuestions('DA0-002'));
   });
 
+  it('leaves out user drafts and reviewed questions', async () => {
+    const repo = await repoWithMine();
+    await repo.upsertUserQuestion({ ...userQ('u2'), status: 'draft' });
+    await repo.upsertUserQuestion({ ...userQ('u3'), status: 'reviewed' });
+    await repo.setSetting(SOURCE_SETTING, 'mine');
+    expect(await loadPool(repo, 'DA0-002')).toEqual([userQ('u1')]);
+  });
+
   it('mine excludes bundled', async () => {
     const repo = await repoWithMine();
     await repo.setSetting(SOURCE_SETTING, 'mine');

@@ -3,6 +3,14 @@ import { createMemoryRepo } from './memoryRepo';
 import { exportBackup, ImportError } from './backup';
 import { exportPack, importPack, PACK_FORMAT } from './pack';
 import { userQ } from './testFixtures';
+import { registerExam } from '../banks';
+import { dataPlusMeta } from '../banks/dataplus/meta';
+
+let registered = false;
+function registerOther() {
+  if (!registered) registerExam({ ...dataPlusMeta, code: 'T-PACK' }, []);
+  registered = true;
+}
 
 const pack = (questions: unknown[]) => JSON.stringify({ format: PACK_FORMAT, version: 1, exportedAt: '', questions });
 
@@ -56,6 +64,13 @@ describe('question pack', () => {
     const err = await importPack(repo, pack([bad])).catch((e: unknown) => e);
     expect(err).toBeInstanceOf(ImportError);
     expect((err as Error).message).toMatch(/Question 1 \(u1\).*answer\.correct/);
+  });
+
+  it('skips questions for another exam when an exam is given', async () => {
+    registerOther();
+    const repo = createMemoryRepo();
+    const res = await importPack(repo, pack([userQ('u1'), userQ('u2', 'T-PACK')]), 'DA0-002');
+    expect(res).toEqual({ imported: 1, skipped: [{ id: 'u2', reason: 'it is for T-PACK, not DA0-002' }] });
   });
 
   it('rejects invalid JSON', async () => {

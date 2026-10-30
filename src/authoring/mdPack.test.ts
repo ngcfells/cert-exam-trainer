@@ -123,6 +123,23 @@ describe('parseMarkdown', () => {
     expect(() => parseMarkdown('Q?\nA - x\nB - y\nCorrect Answer: F', opts)).toThrow(/Question 1: correct answer F/);
   });
 
+  it('answer text after the letter is not read as more letters', () => {
+    const q = (answer: string) => parseMarkdown(`Q?\nA - w\nB - x\nC - y\n\nCorrect Answer: ${answer}`, opts).questions[0];
+    expect(q('C, a firewall blocks it')).toMatchObject({ type: 'mcq-single', answer: { correct: ['c'] } });
+    expect(q('B. A switch forwards frames')).toMatchObject({ answer: { correct: ['b'] } });
+    expect(q('A and C')).toMatchObject({ answer: { correct: ['a', 'c'] } });
+  });
+
+  it('a wrapped option line joins its option', () => {
+    const q = parseMarkdown('Q?\nA - first part\nof the option\nB - other\n\nCorrect Answer: A', opts).questions[0];
+    expect(q).toMatchObject({ payload: { options: [{ id: 'a', text: 'first part of the option' }, { id: 'b', text: 'other' }] } });
+  });
+
+  it('metadata is read only from the top of a block', () => {
+    const q = parseMarkdown('Objective: 2.1\nWhy?\nObjective: cut cost\nA - x\nB - y\nCorrect Answer: A', opts).questions[0];
+    expect(q).toMatchObject({ objectiveIds: ['2.1'], stem: 'Why?\nObjective: cut cost' });
+  });
+
   it('no correct answer is an error', () => {
     expect(() => parseMarkdown('Q?\nA - x\nB - y', opts)).toThrow(/Question 1: no correct answer/);
   });

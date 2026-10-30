@@ -12,10 +12,10 @@ export async function getSourceFilter(repo: Repo): Promise<SourceFilter> {
   return SOURCE_FILTERS.includes(v as SourceFilter) ? (v as SourceFilter) : 'both';
 }
 
-/** The exam's question pool after the source filter. */
+/** The exam's question pool after the source filter. Like bundled drafts, user drafts stay out of every mode. */
 export async function loadPool(repo: Repo, exam: string): Promise<Question[]> {
   const filter = await getSourceFilter(repo);
   const ours = filter === 'mine' ? [] : getBundledQuestions(exam);
   const mine = filter === 'ours' ? [] : await repo.getUserQuestions(exam);
-  return [...ours, ...mine];
+  return [...ours, ...mine.filter((q) => q.status === 'approved')];
 }

@@ -58,7 +58,7 @@
   - Backup import now rejects malformed `srs` records (strict schema, ISO datetimes). If an SRS field is ever added, bump the backup `version` and accept both shapes, or older builds and this one will reject each other's files.
   - Practice and cram save and score only the questions the user reached ("Finish now" or a timeout leaves the rest out), so unseen questions never count as wrong in mastery.
   - Study load failures show "Could not load your data." with a way back; after Check answer or Show answer, focus moves to the verdict or to "I knew it"; a checked PBQ ignores later drag-and-drop.
-- **Chunk 6 is done** (2026-10-30; plan: `docs/superpowers/plans/2026-10-30-chunk6-question-adder.md`):
+- **Chunk 6 is done and merged to `main`** (2026-10-30; 251 unit tests and 17 e2e tests pass; plan: `docs/superpowers/plans/2026-10-30-chunk6-question-adder.md`):
   - `src/storage/pack.ts`: the question pack (`cert-exam-trainer-questions` v1, `{ format, version, exportedAt, questions }`) is the one interchange format for user questions. Entries may leave out `source`, `acronyms`, `status` and `explanation`. Import always merges. Packs and backups share `validateUserQuestions` (`backup.ts`), which now also rejects an id repeated within a file.
   - `src/banks/pool.ts`: `loadPool` applies the Ours / Mine / Both setting (`sourceFilter`, default `both`) for mock, practice, cram and progress. `SourceToggle` sits on Home.
   - `src/ui/author/`: `MyQuestions` (list, edit, delete with confirm, pack import and export) and `ContentNotice` (setting `userContentNoticeAccepted`; add and import stay hidden until it is accepted). `QuestionEditor` has a structured form for MCQs and, for PBQs, the shared fields plus JSON editors for payload, answer and part explanations, seeded from `src/authoring/starters.ts`. It validates live with `questionSchema` and previews live with `McqView`/`PbqView`.
@@ -67,6 +67,10 @@
   - PBQ authoring uses JSON editors seeded with a valid starter, rather than a separate structured form per template; the live preview and the error list (with paths) make this workable.
   - Generated ids: the editor uses `user-<uuid>`; md-to-pack uses `<prefix>-<FNV hash of stem>` unless an `Id:` line is given.
   - Image-only Markdown blocks are skipped with one warning.
+  - Only approved user questions enter the mock, practice and cram pools, the same rule as bundled questions; the editor says so under Status.
+  - Importing on a My questions screen skips questions for other exams and reports them as skipped.
+  - Editor errors appear after the first save attempt: focus moves to a summary of links, and each field gets `aria-invalid` and `aria-describedby`. Each PBQ template keeps its own JSON while the author switches types, and Cancel asks before discarding changes.
+  - The final review's 3 important and 8 minor findings are all fixed. One minor finding (Home shows only the "ours" count) did not apply: Home already shows a "(mine)" count.
 - **Owner's working data:** `_WorkingData/` (gitignored) holds the owner's third-party practice questions and screenshots. They are for building and testing only: **never ship, bundle, commit or copy them into fixtures.** `_WorkingData/DataPlus/addQuestions.pack.json` (18 MCQs and 1 PBQ, built with `pbq1.md`) imports cleanly (19 imported, 0 skipped).
 - **Commands:**
   - `npm run check` runs lint, typecheck, unit tests, the single-file build and e2e with axe.

@@ -13,7 +13,7 @@ Packs are your own content. Keep them out of the repository: `_WorkingData/` is 
 ## Layout
 
 - Separate questions with a line holding only `---`.
-- Optional metadata lines can go anywhere in a question:
+- Optional metadata lines go at the top of a question, before the stem (later lines that look like metadata stay part of the text):
   - `Id: my-sql-01` gives the question a fixed id. Without one, the id comes from a hash of the stem, so editing the stem gives the question a new id. That orphans its progress history.
   - `Objective: 1.1` (comma-separated for several)
   - `Difficulty: 1`, `2` or `3` (default 2)
@@ -52,9 +52,9 @@ Explanation
 Variance and range describe spread. Mean and mode describe the center.
 ```
 
-- Options can be written `A - text`, `A. text`, `A) text`, or as a letter alone on its own line with the text on the next line.
+- Options can be written `A - text`, `A. text`, `A) text`, or as a letter alone on its own line with the text on the next line. A line directly under an option, with no blank line between, continues that option.
 - The answer is either:
-  - a `Correct Answer: B` line (or `Correct Answer(s): A, C`; anything after ` - ` is ignored), or
+  - a `Correct Answer: B` line (or `Correct Answer(s): A, C`). Only the capital letters at the start count, so `Correct Answer: C, a firewall` means C, or
   - a bare `Correct Answer:` line placed directly under an option, which marks that option as correct. This is the shape you get when copying from many quiz pages.
 - Two or more correct answers make the question select-all (`mcq-multi`), scored as (right − wrong) / correct, never below 0.
 - The explanation is everything after the answer. A leading `Explanation` heading is removed. Blank lines separate paragraphs.

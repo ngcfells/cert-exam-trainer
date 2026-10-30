@@ -30,8 +30,11 @@ export async function exportPack(repo: Repo, exam?: string, now: () => Date = ()
   return { format: PACK_FORMAT, version: 1, exportedAt: now().toISOString(), questions: await repo.getUserQuestions(exam) };
 }
 
-/** Validates every question before writing any; always merges (same id replaces). */
-export async function importPack(repo: Repo, json: string): Promise<ImportResult> {
+/**
+ * Validates every question before writing any; always merges (same id replaces).
+ * With `exam`, questions for other exams are skipped so the import matches the screen it came from.
+ */
+export async function importPack(repo: Repo, json: string, exam?: string): Promise<ImportResult> {
   let raw: unknown;
   try {
     raw = JSON.parse(json);
@@ -51,6 +54,11 @@ export async function importPack(repo: Repo, json: string): Promise<ImportResult
     );
   }
   const { toWrite, skipped } = validateUserQuestions(parsed.data.questions.map(withDefaults));
-  for (const q of toWrite) await repo.upsertUserQuestion(q);
-  return { imported: toWrite.length, skipped };
+  const kept = toWrite.filter((q) => {
+    if (!exam || q.exam === exam) return true;
+    skipped.push({ id: q.id, reason: `it is for ${q.exam}, not ${exam}` });
+    return false;
+  });
+  for (const q of kept) await repo.upsertUserQuestion(q);
+  return { imported: kept.length, skipped };
 }

@@ -56,9 +56,12 @@ function takeMeta(lines: string[]): { meta: Meta; rest: string[]; images: number
   const meta: Meta = {};
   const rest: string[] = [];
   let images = 0;
+  // Metadata is read only from the top of a block, so a stem line like "Objective: cut cost" stays text.
+  let leading = true;
   for (const line of lines) {
     const t = line.trim();
-    const m = META.exec(t);
+    const m = leading ? META.exec(t) : null;
+    if (t && !m && !t.startsWith('![')) leading = false;
     if (m) {
       const key = m[1].toLowerCase();
       if (key === 'id') meta.id = m[2].trim();
@@ -70,9 +73,16 @@ function takeMeta(lines: string[]): { meta: Meta; rest: string[]; images: number
   return { meta, rest, images };
 }
 
+/** Leading uppercase letters only: "C, a firewall" is C, and "B. A switch" is B. */
 function letters(text: string): string[] {
-  const head = text.split(/\s+-\s+/)[0];
-  return head.split(/[,&\s]+/).map((s) => s.trim().replace(/[.)]$/, '')).filter((s) => /^[A-H]$/i.test(s)).map((s) => s.toUpperCase());
+  const out: string[] = [];
+  for (const tok of text.split(/\s*(?:,|&|\band\b)\s*|\s+/)) {
+    const m = /^([A-H])[.)]?$/.exec(tok);
+    if (!m) break;
+    out.push(m[1]);
+    if (tok.length > 1) break;
+  }
+  return out;
 }
 
 function parseMcq(lines: string[], n: number): { stem: string; options: { id: string; text: string }[]; correct: string[]; explanation: string } {
@@ -86,12 +96,18 @@ function parseMcq(lines: string[], n: number): { stem: string; options: { id: st
   }
   const options: { letter: string; text: string }[] = [];
   const correct = new Set<string>();
+  // True right after an option's text line, so a wrapped line joins that option.
+  let afterText = false;
   for (; i < t.length; i++) {
     const line = t[i];
-    if (!line || NOISE.test(line)) continue;
+    if (!line || NOISE.test(line)) {
+      afterText = false;
+      continue;
+    }
     const inline = INLINE_OPTION.exec(line);
     if (inline) {
       options.push({ letter: inline[1], text: inline[2].trim() });
+      afterText = true;
       continue;
     }
     if (BARE_LETTER.test(line)) {
@@ -100,10 +116,16 @@ function parseMcq(lines: string[], n: number): { stem: string; options: { id: st
       if (j >= t.length) throw new Error(`Question ${n}: option ${line} has no text`);
       options.push({ letter: line, text: t[j] });
       i = j;
+      afterText = true;
       continue;
     }
     if (MARKER.test(line) && options.length) {
       correct.add(options[options.length - 1].letter);
+      afterText = false;
+      continue;
+    }
+    if (afterText && !ANSWER_LINE.test(line) && !/^(explanation:?|why\b.*)$/i.test(line)) {
+      options[options.length - 1].text += ` ${line}`;
       continue;
     }
     break;
