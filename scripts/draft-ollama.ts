@@ -55,8 +55,11 @@ const res = await fetch('http://localhost:11434/api/chat', {
 if (!res.ok || !res.body) throw new Error(`Ollama ${res.status}: ${await res.text()}`);
 let content = '';
 let pending = '';
-for await (const chunk of res.body.pipeThrough(new TextDecoderStream())) {
-  const lines = (pending + chunk).split('\n');
+const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
+for (;;) {
+  const { done, value } = await reader.read();
+  if (done) break;
+  const lines = (pending + value).split('\n');
   pending = lines.pop() ?? '';
   for (const line of lines) if (line.trim()) content += (JSON.parse(line) as { message?: { content?: string } }).message?.content ?? '';
 }
