@@ -67,6 +67,11 @@ describe('parseQuestion', () => {
 });
 
 describe('parseExamMeta', () => {
+  it('rejects a repeated acronym term', () => {
+    const entry = { term: 'SQL', expansion: 'Structured Query Language', source: 'community' };
+    expect(() => parseExamMeta({ ...meta, acronyms: [entry, { ...entry, source: 'official' }] })).toThrow(/repeated acronym \\"SQL\\"/);
+  });
+
   it('parses valid meta', () => {
     expect(parseExamMeta(meta).code).toBe('DA0-002');
   });

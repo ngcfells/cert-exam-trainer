@@ -89,6 +89,11 @@ export const examMetaSchema = z.object({
   if (total !== 100) {
     ctx.addIssue({ code: 'custom', path: ['domains'], message: `domain weights sum to ${total}, expected 100` });
   }
+  const terms = new Set<string>();
+  m.acronyms.forEach((a, i) => {
+    if (terms.has(a.term)) ctx.addIssue({ code: 'custom', path: ['acronyms', i, 'term'], message: `repeated acronym "${a.term}"` });
+    terms.add(a.term);
+  });
   const domainIds = new Set(m.domains.map((d) => d.id));
   m.objectives.forEach((o, i) => {
     if (!domainIds.has(o.domainId)) {
