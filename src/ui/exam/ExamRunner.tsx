@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { AssembledExam } from '../../exam/assemble';
 import { isAnswered, type ItemResponse, type Responses } from '../../exam/scoring';
+import type { PartMap } from '../../domain/pbq';
 import { McqView } from './McqView';
+import { PbqView } from './pbq/PbqView';
 import { ReviewGrid } from './ReviewGrid';
 import { TopBar } from './TopBar';
 import './exam.css';
 
 const asArray = (r: ItemResponse | undefined): string[] => (Array.isArray(r) ? r : []);
+const asMap = (r: ItemResponse | undefined): PartMap => (r && !Array.isArray(r) ? r : {});
 
 export interface SubmitPayload {
   responses: Responses;
@@ -123,7 +126,14 @@ export function ExamRunner({
                 }}
               />
             ) : (
-              <p>This question type is not supported yet.</p>
+              <PbqView
+                key={item.question.id}
+                item={item}
+                value={asMap(responses[item.question.id])}
+                onChange={(v) => {
+                  if (!expired()) setResponses((r) => ({ ...r, [item.question.id]: v }));
+                }}
+              />
             )}
           </section>
           <nav className="exam-nav" aria-label="Exam navigation">
