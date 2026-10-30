@@ -6,7 +6,7 @@
 ## Current state
 
 - **Chunk 1 is done and merged to `main`:** scaffold, Zod schemas, bank registry (Data+ metadata marked `VERIFY chunk 9`, 2 approved and 1 draft seed question), IndexedDB repo with memory fallback, JSON backup export/import, home screen.
-- **Chunk 2 is done on branch `chunk2-exam-ui`** (2026-10-30; 93 unit tests and 8 e2e tests pass; plan: `docs/superpowers/plans/2026-10-30-chunk2-exam-ui.md`):
+- **Chunk 2 is done and merged to `main`** (2026-10-30; 100 unit tests and 8 e2e tests pass; plan: `docs/superpowers/plans/2026-10-30-chunk2-exam-ui.md`):
   - `src/exam/`: seeded RNG (`mulberry32`), assembly (`assembleExam`), scoring (`scoreExam`), result record (`examResultSchema`, `recentQuestionIds`).
   - `src/ui/exam/`: setup, runner (top bar, timer, flag, Previous/Next, review grid, confirm dialog, auto-submit), results screen (score, PASS/FAIL, domain table, what to study, review of missed items with explanations).
   - Results are saved to the `results` store with their seed. Backup import validates them strictly.
@@ -33,7 +33,7 @@
 
 ## Next session
 
-Merge `chunk2-exam-ui` if not done. Then chunk 3: PBQ templates 1–4 (match, order, config, diagram) with per-part scoring, plugged into `ExamRunner` and `scoreExam`. Write its plan with superpowers:writing-plans, then execute it.
+Chunk 3: PBQ templates 1–4 (match, order, config, diagram) with per-part scoring, plugged into `ExamRunner` and `scoreExam`. Write its plan with superpowers:writing-plans, then execute it.
 
 **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 
