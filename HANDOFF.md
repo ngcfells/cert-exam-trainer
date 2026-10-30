@@ -105,7 +105,17 @@
 
 ## Next session
 
-Chunk 8: legal, branding and deploy (spec chunk list item 8). Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
+**Chunk order changed by the owner (2026-10-30).** The chunk numbers now differ from the spec's §13 list:
+
+- **Chunk 8 (next): generate and load the question bank we ship, Data+ (DA0-002) first.**
+  - Generate original MCQs and PBQs from the public exam objectives, and load them into the bundled bank in `src/banks/dataplus/`.
+  - Targets: at least 500 MCQs and at least 80 PBQs (10 of each of the 8 types), spread across the objectives in proportion to the domain weightings.
+  - Every item must be original, pass `questionSchema` and pass the acronym content check, which means adding a `community` expansion for each new acronym.
+  - This chunk pulls forward what it needs from spec chunks 9–11: verifying the objectives (resolving every `VERIFY chunk 9` value, the real objectives and the official acronym list), drafting, review and validation checks.
+  - Never use `_WorkingData/` as a source.
+- **Chunk 9: legal, branding and deploy** (spec §13 item 8): licenses, disclaimers, the About page, look-and-feel polish, phone and tablet checks, the PWA service worker, and a local deploy script for GitHub Pages.
+
+Start with chunk 8. Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 
 **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 
