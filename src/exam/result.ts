@@ -18,9 +18,16 @@ export const examResultSchema = z.object({
   flagged: z.array(z.string()),
   score: z.number(),
   passed: z.boolean(),
+  /** Absent on mock exams (and on every result saved before chunk 5). */
+  mode: z.enum(['mock', 'practice', 'cram']).optional(),
 }).strict();
 
 export type ExamResult = z.infer<typeof examResultSchema>;
+export type ResultMode = NonNullable<ExamResult['mode']>;
+
+export function resultMode(r: ExamResult): ResultMode {
+  return r.mode ?? 'mock';
+}
 
 export function buildResult(args: {
   exam: AssembledExam;
@@ -30,6 +37,7 @@ export function buildResult(args: {
   startedAt: Date;
   finishedAt: Date;
   autoSubmitted: boolean;
+  mode?: ResultMode;
 }): ExamResult {
   const { exam, report } = args;
   return {
@@ -46,15 +54,21 @@ export function buildResult(args: {
     flagged: args.flagged,
     score: report.score,
     passed: report.passed,
+    ...(args.mode && args.mode !== 'mock' ? { mode: args.mode } : {}),
   };
 }
 
-/** Question ids from the newest `n` valid results for `exam`. */
-export function recentQuestionIds(results: unknown[], exam: string, n = RECENT_ATTEMPTS): Set<string> {
-  const valid = results.flatMap((r) => {
+/** Valid results for `exam`, in storage order. */
+export function parseResults(results: unknown[], exam: string): ExamResult[] {
+  return results.flatMap((r) => {
     const p = examResultSchema.safeParse(r);
     return p.success && p.data.exam === exam ? [p.data] : [];
   });
+}
+
+/** Question ids from the newest `n` valid mock results for `exam`. */
+export function recentQuestionIds(results: unknown[], exam: string, n = RECENT_ATTEMPTS): Set<string> {
+  const valid = parseResults(results, exam).filter((r) => resultMode(r) === 'mock');
   valid.sort((a, b) => b.finishedAt.localeCompare(a.finishedAt));
   return new Set(valid.slice(0, n).flatMap((r) => r.questionIds));
 }
