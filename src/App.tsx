@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { openRepo, type Repo } from './storage';
+import { AcronymFlow } from './ui/acronyms/AcronymFlow';
 import { Disclaimer } from './ui/Disclaimer';
 import { Home } from './ui/Home';
 import { MyQuestions } from './ui/author/MyQuestions';
@@ -72,6 +73,8 @@ export default function App() {
             onDrill={(ids) => go({ name: 'practice', exam: screen.exam, preset: ids })}
           />
         );
+      case 'acronyms':
+        return <AcronymFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} onExit={home} />;
       case 'questions':
         return <MyQuestions key={key} repo={repo} examCode={screen.exam} onExit={home} onEdit={(id) => go({ name: 'edit', exam: screen.exam, id })} />;
       case 'edit':
