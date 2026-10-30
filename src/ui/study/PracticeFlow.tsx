@@ -7,15 +7,17 @@ import { buildResult, recentQuestionIds, type ExamResult } from '../../exam/resu
 import { newSeed } from '../../exam/rng';
 import { scoreExam, type ScoreReport } from '../../exam/scoring';
 import type { Repo } from '../../storage';
-import { assemblePractice } from '../../study/session';
+import { assemblePractice, onlySeen } from '../../study/session';
 import { ResultsScreen } from '../exam/ResultsScreen';
 import { saveAttempt } from '../exam/saveAttempt';
+import { LoadError } from './LoadError';
 import { loadStudy } from './loadStudy';
 import { MCQ_TYPES, PracticeSetup, type PracticeChoices } from './PracticeSetup';
 import { StudyRunner, type StudyOutcome } from './StudyRunner';
 
 type Stage =
   | { stage: 'loading' }
+  | { stage: 'error' }
   | { stage: 'setup' }
   | { stage: 'running'; exam: AssembledExam; startedAt: Date }
   | { stage: 'results'; exam: AssembledExam; result: ExamResult; report: ScoreReport; saveError: string | null };
@@ -49,11 +51,14 @@ export function PracticeFlow({
 
   useEffect(() => {
     let live = true;
-    void loadStudy(repo, examCode).then(({ pool, results }) => {
-      if (!live) return;
-      setData({ pool, recent: recentQuestionIds(results, examCode) });
-      setS({ stage: 'setup' });
-    });
+    void loadStudy(repo, examCode).then(
+      ({ pool, results }) => {
+        if (!live) return;
+        setData({ pool, recent: recentQuestionIds(results, examCode) });
+        setS({ stage: 'setup' });
+      },
+      () => live && setS({ stage: 'error' }),
+    );
     return () => {
       live = false;
     };
@@ -64,7 +69,8 @@ export function PracticeFlow({
     setS({ stage: 'running', exam, startedAt: new Date() });
   }
 
-  async function finish(exam: AssembledExam, startedAt: Date, o: StudyOutcome) {
+  async function finish(planned: AssembledExam, startedAt: Date, o: StudyOutcome) {
+    const exam = onlySeen(planned, o.seen);
     const report = scoreExam(exam, o.responses, meta);
     const result = buildResult({ exam, report, startedAt, responses: o.responses, flagged: [], finishedAt: o.finishedAt, autoSubmitted: false, mode: 'practice' });
     const saveError = await saveAttempt(repo, result, report, o.checked, o.finishedAt);
@@ -74,6 +80,8 @@ export function PracticeFlow({
   switch (s.stage) {
     case 'loading':
       return <p>Loading…</p>;
+    case 'error':
+      return <LoadError onExit={onExit} />;
     case 'setup':
       return <PracticeSetup meta={meta} pool={data.pool} value={choices} onChange={setChoices} onStart={start} onCancel={onExit} />;
     case 'running':

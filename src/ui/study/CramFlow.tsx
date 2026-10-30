@@ -6,15 +6,17 @@ import { newSeed } from '../../exam/rng';
 import { scoreExam, type ScoreReport } from '../../exam/scoring';
 import type { Repo } from '../../storage';
 import { computeMastery } from '../../study/mastery';
-import { assembleCram, type CramSession } from '../../study/session';
+import { assembleCram, onlySeen, type CramSession } from '../../study/session';
 import { ResultsScreen } from '../exam/ResultsScreen';
 import { saveAttempt } from '../exam/saveAttempt';
+import { LoadError } from './LoadError';
 import { loadStudy } from './loadStudy';
 import { StudyRunner, type StudyOutcome } from './StudyRunner';
 import './study.css';
 
 type Stage =
   | { stage: 'loading' }
+  | { stage: 'error' }
   | { stage: 'setup'; session: CramSession }
   | { stage: 'running'; session: CramSession; startedAt: Date }
   | {
@@ -38,18 +40,21 @@ export function CramFlow({ repo, examCode, seed, onExit }: { repo: Repo; examCod
 
   useEffect(() => {
     let live = true;
-    void loadStudy(repo, examCode).then(({ pool, results, srs }) => {
-      if (!live) return;
-      const session = assembleCram({ meta, pool, seed: seed ?? newSeed(), srs, mastery: computeMastery(meta, results, pool), now: new Date() });
-      setS({ stage: 'setup', session });
-    });
+    void loadStudy(repo, examCode).then(
+      ({ pool, results, srs }) => {
+        if (!live) return;
+        const session = assembleCram({ meta, pool, seed: seed ?? newSeed(), srs, mastery: computeMastery(meta, results, pool), now: new Date() });
+        setS({ stage: 'setup', session });
+      },
+      () => live && setS({ stage: 'error' }),
+    );
     return () => {
       live = false;
     };
   }, [repo, examCode, meta, seed]);
 
   async function finish(session: CramSession, startedAt: Date, o: StudyOutcome) {
-    const { exam } = session;
+    const exam = onlySeen(session.exam, o.seen);
     const report = scoreExam(exam, o.responses, meta);
     const result = buildResult({ exam, report, startedAt, responses: o.responses, flagged: [], finishedAt: o.finishedAt, autoSubmitted: o.timedOut, mode: 'cram' });
     const acronymReviews = o.acronymGrades.map((g) => ({ kind: 'acronym' as const, itemId: g.term, quality: g.knew ? KNEW : DID_NOT_KNOW }));
@@ -61,6 +66,8 @@ export function CramFlow({ repo, examCode, seed, onExit }: { repo: Repo; examCod
   switch (s.stage) {
     case 'loading':
       return <p>Loading…</p>;
+    case 'error':
+      return <LoadError onExit={onExit} />;
     case 'setup': {
       const empty = s.session.exam.items.length + s.session.acronyms.length === 0;
       return (

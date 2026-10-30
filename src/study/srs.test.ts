@@ -55,7 +55,7 @@ describe('srs', () => {
     const good = review(undefined, { ...item, quality: 5 }, now);
     const bad: Record<string, unknown> = { ...good };
     delete bad.ease;
-    expect(parseSrsRecords([good, bad, null])).toEqual([good]);
+    expect(parseSrsRecords([good, bad, null, { ...good, due: 'tomorrow' }])).toEqual([good]);
     expect(isDue(good, new Date(good.due))).toBe(true);
     expect(isDue(good, now)).toBe(false);
   });

@@ -5,6 +5,7 @@ import { MAX_SCORE } from '../../exam/scoring';
 import type { Repo } from '../../storage';
 import { computeMastery, history, trendPoints, weakestObjectives, type HistoryEntry, type Mastery } from '../../study/mastery';
 import { isDue, parseSrsRecords } from '../../study/srs';
+import { LoadError } from './LoadError';
 import { loadStudy } from './loadStudy';
 import './study.css';
 
@@ -64,26 +65,37 @@ export function ProgressScreen({
 }) {
   const meta: ExamMeta = listExams().find((m) => m.code === examCode)!;
   const [data, setData] = useState<Loaded | null>(null);
+  const [failed, setFailed] = useState(false);
   const headingRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
     let live = true;
-    void loadStudy(repo, examCode).then(({ pool, results, srs }) => {
-      if (!live) return;
-      const now = new Date();
-      const due = parseSrsRecords(srs).filter((r) => r.exam === examCode && isDue(r, now));
-      setData({
-        mastery: computeMastery(meta, results, pool),
-        entries: history(results, examCode),
-        due: { questions: due.filter((r) => r.kind === 'question').length, acronyms: due.filter((r) => r.kind === 'acronym').length },
-      });
-    });
+    void loadStudy(repo, examCode).then(
+      ({ pool, results, srs }) => {
+        if (!live) return;
+        const now = new Date();
+        // Count only items that still exist, so the number matches what cram can offer.
+        const questionIds = new Set(pool.map((q) => q.id));
+        const terms = new Set(meta.acronyms.map((a) => a.term));
+        const due = parseSrsRecords(srs).filter(
+          (r) => r.exam === examCode && isDue(r, now) && (r.kind === 'question' ? questionIds : terms).has(r.itemId),
+        );
+        setData({
+          mastery: computeMastery(meta, results, pool),
+          entries: history(results, examCode),
+          due: { questions: due.filter((r) => r.kind === 'question').length, acronyms: due.filter((r) => r.kind === 'acronym').length },
+        });
+      },
+      () => live && setFailed(true),
+    );
     return () => {
       live = false;
     };
   }, [repo, examCode, meta]);
 
   useEffect(() => headingRef.current?.focus(), []);
+
+  if (failed) return <LoadError onExit={onExit} />;
 
   const attempted = !!data && data.mastery.objectives.some((o) => o.fraction !== null);
   const points = data ? trendPoints(data.entries) : [];

@@ -73,6 +73,27 @@ describe('PracticeFlow', () => {
     expect(parseSrsRecords(await repo.listRecords('srs'))).toHaveLength(1);
   });
 
+  it('Finish now saves and scores only the questions the user reached', async () => {
+    const user = userEvent.setup();
+    const repo = createMemoryRepo();
+    render(<PracticeFlow repo={repo} examCode="T-001" seed={1} onExit={() => {}} />);
+    await user.click(await screen.findByRole('button', { name: 'Start practice' }));
+    await answerRightAndCheck(user);
+    await user.click(screen.getByRole('button', { name: 'Finish now' }));
+    expect(await screen.findByRole('heading', { name: 'Practice complete: 100% correct' })).toBeInTheDocument();
+    expect(examResultSchema.parse((await repo.listRecords('results'))[0]).questionIds).toHaveLength(1);
+  });
+
+  it('shows an error with a way back when loading fails', async () => {
+    const repo = createMemoryRepo();
+    repo.listRecords = () => Promise.reject(new Error('idb'));
+    const onExit = vi.fn();
+    render(<PracticeFlow repo={repo} examCode="T-001" onExit={onExit} />);
+    expect(await screen.findByRole('alert')).toHaveTextContent('Could not load your data.');
+    await userEvent.setup().click(screen.getByRole('button', { name: 'Back to home' }));
+    expect(onExit).toHaveBeenCalled();
+  });
+
   it('a drill preset checks only the given objectives', async () => {
     render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} presetObjectiveIds={['B.1']} onExit={() => {}} />);
     expect(await screen.findByRole('checkbox', { name: 'B.1 Objective B1' })).toBeChecked();
@@ -90,6 +111,13 @@ describe('PracticeFlow', () => {
 });
 
 describe('CramFlow', () => {
+  it('shows an error when loading fails', async () => {
+    const repo = createMemoryRepo();
+    repo.listRecords = () => Promise.reject(new Error('idb'));
+    render(<CramFlow repo={repo} examCode="T-001" onExit={() => {}} />);
+    expect(await screen.findByRole('alert')).toHaveTextContent('Could not load your data.');
+  });
+
   it('a timed-out session saves only checked items and ends on the summary', async () => {
     vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });

@@ -41,6 +41,13 @@ describe('ProgressScreen', () => {
     expect(screen.queryByTestId('trend')).not.toBeInTheDocument();
   });
 
+  it('shows an error when loading fails', async () => {
+    const repo = createMemoryRepo();
+    repo.listRecords = () => Promise.reject(new Error('idb'));
+    render(<ProgressScreen repo={repo} examCode="T-001" onExit={() => {}} />);
+    expect(await screen.findByRole('alert')).toHaveTextContent('Could not load your data.');
+  });
+
   it('shows mastery, history newest first, a trend line, due counts and drills', async () => {
     const repo = createMemoryRepo();
     await repo.putRecord('results', result('r1', '2026-01-01T00:00:00.000Z', { A0: ['a'], A1: ['b'] }));
@@ -49,6 +56,9 @@ describe('ProgressScreen', () => {
     const past = new Date('2026-01-01T00:00:00Z');
     await repo.putRecord('srs', review(undefined, { exam: 'T-001', kind: 'question', itemId: 'A1', quality: 1 }, past));
     await repo.putRecord('srs', review(undefined, { exam: 'T-001', kind: 'acronym', itemId: 'ETL', quality: 1 }, past));
+    // Orphans: a deleted question and an acronym no longer listed are not counted.
+    await repo.putRecord('srs', review(undefined, { exam: 'T-001', kind: 'question', itemId: 'gone', quality: 1 }, past));
+    await repo.putRecord('srs', review(undefined, { exam: 'T-001', kind: 'acronym', itemId: 'OLD', quality: 1 }, past));
     const onDrill = vi.fn();
     render(<ProgressScreen repo={repo} examCode="T-001" onExit={() => {}} onDrill={onDrill} />);
 

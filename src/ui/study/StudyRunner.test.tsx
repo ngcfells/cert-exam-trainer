@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { act, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { StudyRunner, type StudyItem } from './StudyRunner';
-import { mcq } from '../../exam/testFixtures';
+import { mcq, pbq } from '../../exam/testFixtures';
 
 const T0 = new Date('2026-01-01T00:00:00Z');
 const order = ['a', 'b', 'c', 'd'];
@@ -66,6 +66,49 @@ describe('StudyRunner', () => {
     expect(screen.getByRole('status')).toHaveTextContent('Marked as known');
     await user.click(screen.getByRole('button', { name: 'Finish' }));
     expect(onFinish.mock.calls[0][0].acronymGrades).toEqual([{ term: 'SQL', knew: true }]);
+  });
+
+  it('reports only the items the user reached as seen', async () => {
+    const { user, onFinish } = setup();
+    await user.click(screen.getByRole('button', { name: 'Finish now' }));
+    expect(onFinish.mock.calls[0][0].seen).toEqual(['A0']);
+  });
+
+  it('moves focus to the verdict after Check answer and to I knew it after Show answer', async () => {
+    const { user } = setup({ items: [items[0], items[2]] });
+    await user.click(screen.getByLabelText('A0-a'));
+    await user.click(screen.getByRole('button', { name: 'Check answer' }));
+    expect(screen.getByRole('status')).toHaveFocus();
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    await user.click(screen.getByRole('button', { name: 'Show answer' }));
+    expect(screen.getByRole('button', { name: 'I knew it' })).toHaveFocus();
+  });
+
+  it('ignores a drag-and-drop change after a PBQ was checked', async () => {
+    const p = pbq('P1', 2);
+    const { user, onFinish } = setup({ items: [{ kind: 'question', item: { question: p, elementOrder: ['c1', 'c2', 'c3'] } }] });
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Prompt 1' }), 'Choice c1');
+    await user.click(screen.getByRole('button', { name: 'Check answer' }));
+    const target = screen.getAllByText('Prompt 2')[0].closest('li')!.querySelector('.drop-target') ?? screen.getAllByText('Prompt 2')[0];
+    fireEvent.drop(target, { dataTransfer: { getData: () => 'c2' } });
+    await user.click(screen.getByRole('button', { name: 'Finish' }));
+    expect(onFinish.mock.calls[0][0].responses).toEqual({ P1: { p1: 'c1' } });
+  });
+
+  it('shows Saving after finishing and blocks further navigation', async () => {
+    const { user } = setup();
+    await user.click(screen.getByRole('button', { name: 'Finish now' }));
+    expect(screen.getByText('Saving…')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Next' })).not.toBeInTheDocument();
+  });
+
+  it('announces one minute once at 60 seconds and time is up at zero', async () => {
+    setup({ timeLimitMs: 61_000 });
+    const live = screen.getByTestId('study-announcer');
+    act(() => vi.advanceTimersByTime(1_000));
+    expect(live).toHaveTextContent('1 minute remaining');
+    act(() => vi.advanceTimersByTime(60_000));
+    expect(live).toHaveTextContent('Time is up');
   });
 
   it('countdown at zero finishes once with timedOut and only checked items', async () => {

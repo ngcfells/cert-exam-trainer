@@ -55,7 +55,9 @@
   - SM-2: start ease 2.5, floor 1.3; intervals 1, 6, then interval × previous ease. Quality from score: < 50% → 1 (miss), < 100% → 3, 100% → 5; acronyms: knew 4, didn't 1. A miss is due again in 10 minutes.
   - Mock exams schedule answered questions only; practice and cram schedule only questions the user checked (instant) or answered (end feedback). Unseen items are never marked missed.
   - Cram is MCQ-only, 15 items: due questions (most overdue first), then the 3 weakest objectives in order, then anything; up to 5 acronyms (due, then new). Data+ has no acronyms yet, so cram shows none until chunk 7/9.
-  - Backup import now rejects malformed `srs` records.
+  - Backup import now rejects malformed `srs` records (strict schema, ISO datetimes). If an SRS field is ever added, bump the backup `version` and accept both shapes, or older builds and this one will reject each other's files.
+  - Practice and cram save and score only the questions the user reached ("Finish now" or a timeout leaves the rest out), so unseen questions never count as wrong in mastery.
+  - Study load failures show "Could not load your data." with a way back; after Check answer or Show answer, focus moves to the verdict or to "I knew it"; a checked PBQ ignores later drag-and-drop.
 - **Commands:**
   - `npm run check` runs lint, typecheck, unit tests, the single-file build and e2e with axe.
   - `npm run build` writes `dist/`; `npm run build:single` writes `dist-single/index.html`.

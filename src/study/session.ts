@@ -46,6 +46,13 @@ export function assemblePractice({
   return toExam(meta, seed, [...picked.filter((q) => !isMcq(q)), ...picked.filter(isMcq)], rng);
 }
 
+/** The session cut down to the questions the user reached, so unreached ones are neither scored nor recorded. */
+export function onlySeen(exam: AssembledExam, seen: readonly string[]): AssembledExam {
+  const items = exam.items.filter((i) => seen.includes(i.question.id));
+  const pbqs = items.filter((i) => !isMcq(i.question));
+  return { ...exam, items, mcqCount: items.length - pbqs.length, pbqWeightSum: pbqs.reduce((s, i) => s + (i.question.pbqWeight ?? 1), 0) };
+}
+
 export interface AcronymCard {
   term: string;
   expansion: string;
@@ -86,12 +93,13 @@ export function assembleCram({
 
   const reviewed = new Set(records.filter((r) => r.kind === 'acronym').map((r) => r.itemId));
   const dueTerms = dueFirst.filter((r) => r.kind === 'acronym').map((r) => r.itemId);
+  // First entry per term wins, so a duplicated term never yields two cards.
+  const byTerm = new Map<string, AcronymCard>();
+  for (const { term, expansion } of meta.acronyms) if (!byTerm.has(term)) byTerm.set(term, { term, expansion });
   const acronyms = [
-    ...dueTerms.flatMap((t) => meta.acronyms.filter((a) => a.term === t)),
-    ...shuffle(meta.acronyms.filter((a) => !reviewed.has(a.term)), rng),
-  ]
-    .slice(0, CRAM_ACRONYMS)
-    .map(({ term, expansion }) => ({ term, expansion }));
+    ...dueTerms.flatMap((t) => byTerm.get(t) ?? []),
+    ...shuffle([...byTerm.values()].filter((a) => !reviewed.has(a.term)), rng),
+  ].slice(0, CRAM_ACRONYMS);
 
   const mcqs = pool.filter(isMcq);
   const byId = new Map(mcqs.map((q) => [q.id, q]));

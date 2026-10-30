@@ -10,8 +10,8 @@ export const srsRecordSchema = z.object({
   intervalDays: z.number().nonnegative(),
   reps: z.number().int().nonnegative(),
   lapses: z.number().int().nonnegative(),
-  due: z.string(),
-  lastReviewed: z.string(),
+  due: z.string().datetime(),
+  lastReviewed: z.string().datetime(),
 }).strict();
 
 export type SrsRecord = z.infer<typeof srsRecordSchema>;

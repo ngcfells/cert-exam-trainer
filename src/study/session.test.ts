@@ -97,6 +97,12 @@ describe('cram', () => {
     expect(s.exam.items).toHaveLength(CRAM_SIZE - CRAM_ACRONYMS);
   });
 
+  it('never repeats an acronym listed twice', () => {
+    const dup: ExamMeta = { ...metaAc, acronyms: [...metaAc.acronyms.slice(0, 2), metaAc.acronyms[0]] };
+    const due = { ...review(undefined, { exam: 'T-001', kind: 'acronym', itemId: 'AAA', quality: 1 }, now), due: new Date(0).toISOString() };
+    expect(cram([due], [], dup).acronyms.map((a) => a.term)).toEqual(['AAA', 'BBB']);
+  });
+
   it('skips acronyms reviewed but not yet due', () => {
     const ok = review(undefined, { exam: 'T-001', kind: 'acronym', itemId: 'AAA', quality: 5 }, now);
     expect(cram([ok], [], metaAc).acronyms.map((a) => a.term)).not.toContain('AAA');
