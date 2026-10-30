@@ -1,0 +1,123 @@
+[
+  {
+    "id": "da2-pbq-order-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 2,
+    "stem": "Put the steps of a basic ETL load into the order they run.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s1",
+          "text": "Extract records from the source system"
+        },
+        {
+          "id": "s2",
+          "text": "Clean and standardize the extracted values"
+        },
+        {
+          "id": "s3",
+          "text": "Load the transformed rows into the warehouse"
+        },
+        {
+          "id": "s4",
+          "text": "Validate row counts against the source"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "explanation": "ETL extracts, transforms, then loads; reconciliation checks the load against the source afterwards.",
+    "acronyms": [
+      "ETL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-pbq-terminal-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 2,
+    "stem": "The nightly load of orders.csv failed. Review the pipeline log, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 5 load_orders.log",
+        "02:00:01 INFO  start load orders.csv -> staging.orders",
+        "02:00:04 INFO  read 18,402 rows",
+        "02:00:05 WARN  row 7311: order_date \"31/02/2026\" is not a valid date",
+        "02:00:05 ERROR row 7311: rejected; batch aborted (strict mode)",
+        "02:00:05 INFO  0 rows committed"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that shows every ERROR line in load_orders.log"
+        },
+        {
+          "id": "fix",
+          "label": "Choose the best next action",
+          "options": [
+            {
+              "id": "rerun",
+              "text": "Rerun the load unchanged"
+            },
+            {
+              "id": "quarantine",
+              "text": "Route invalid rows to a reject table, then reload the valid rows"
+            },
+            {
+              "id": "disable",
+              "text": "Turn off date validation for the orders table"
+            },
+            {
+              "id": "truncate",
+              "text": "Truncate staging.orders and stop the schedule"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep ERROR load_orders.log",
+          "grep \"ERROR\" load_orders.log",
+          "grep 'ERROR' load_orders.log",
+          "grep ERROR ./load_orders.log",
+          "grep -i error load_orders.log",
+          "grep -w ERROR load_orders.log",
+          "grep -n ERROR load_orders.log",
+          "cat load_orders.log | grep ERROR"
+        ],
+        "fix": [
+          "quarantine"
+        ]
+      }
+    },
+    "explanation": "grep filters a log to matching lines. One bad date aborted the batch, so the reliable fix is to quarantine invalid rows for review and load the rest; rerunning fails again, and disabling validation lets bad data in.",
+    "partExplanations": {
+      "find": "grep ERROR load_orders.log prints only the lines that contain ERROR.",
+      "fix": "A reject (quarantine) table keeps the bad rows for correction without blocking valid data."
+    },
+    "acronyms": [
+      "CSV"
+    ],
+    "status": "approved"
+  }
+]

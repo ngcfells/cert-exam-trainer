@@ -7,11 +7,12 @@
     "dev": "vite",
     "build": "vite build",
     "build:single": "cross-env SINGLE=1 vite build",
+    "build:e2e": "cross-env SINGLE=1 VITE_BANK=fixture vite build",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run build:single && npm run test:e2e",
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build:single && npm run build:e2e && npm run test:e2e",
     "md-to-pack": "vite-node scripts/md-to-pack.ts --"
   },
   "dependencies": {
