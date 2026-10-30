@@ -6,7 +6,7 @@ import { singleUrl } from './util';
 test('home screen lists Data+ and passes axe', async ({ page }) => {
   await page.goto(singleUrl);
   await expect(page.getByText('CompTIA Data+ (DA0-002)')).toBeVisible();
-  await expect(page.getByText('6 questions (ours)')).toBeVisible();
+  await expect(page.getByText('10 questions (ours)')).toBeVisible();
   const results = await new AxeBuilder({ page }).analyze();
   const bad = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
   expect(bad).toEqual([]);

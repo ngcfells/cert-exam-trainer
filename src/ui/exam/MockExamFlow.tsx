@@ -31,7 +31,7 @@ export function MockExamFlow({ repo, examCode, onExit, seed }: { repo: Repo; exa
         pool,
         seed: seed ?? newSeed(),
         recentIds: recentQuestionIds(history, examCode),
-        pbqTypes: PBQ_TEMPLATES.slice(0, 4),
+        pbqTypes: PBQ_TEMPLATES,
       });
       if (live) setS({ stage: 'setup', exam });
     })();
