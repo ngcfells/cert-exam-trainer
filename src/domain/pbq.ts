@@ -132,7 +132,21 @@ export function pbqIssues(type: Template14, payload: unknown, answer: unknown): 
   const parts = partsOf(q);
   dupes(['payload'], parts.map((p) => p.id), out);
   parts.forEach((p) => dupes(['payload', p.id], p.values.map((v) => v.id), out));
-  if (type === 'pbq-diagram') dupes(['payload', 'nodes'], (payload as DiagramPayload).nodes.map((n) => n.id), out);
+  if (type === 'pbq-diagram') {
+    const d = payload as DiagramPayload;
+    const nodeIds = d.nodes.map((n) => n.id);
+    dupes(['payload', 'nodes'], nodeIds, out);
+    d.edges.forEach((e, i) => {
+      if (!nodeIds.includes(e.from) || !nodeIds.includes(e.to)) out.push({ path: ['payload', 'edges', i], message: 'edge references an unknown node' });
+    });
+    const inside = (x: number, y: number) => x >= 0 && y >= 0 && x <= d.width && y <= d.height;
+    d.nodes.forEach((n, i) => {
+      if (!inside(n.x, n.y) || !inside(n.x + n.w, n.y + n.h)) out.push({ path: ['payload', 'nodes', i], message: 'node lies outside the diagram' });
+    });
+    d.zones.forEach((z, i) => {
+      if (!inside(z.x, z.y)) out.push({ path: ['payload', 'zones', i], message: 'zone lies outside the diagram' });
+    });
+  }
 
   if (type === 'pbq-order') {
     const order = (answer as { order: string[] }).order;

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { AssembledExam } from '../../exam/assemble';
-import { isAnswered, type ItemResponse, type Responses } from '../../exam/scoring';
+import { isComplete, type ItemResponse, type Responses } from '../../exam/scoring';
 import type { PartMap } from '../../domain/pbq';
 import { McqView } from './McqView';
 import { PbqView } from './pbq/PbqView';
@@ -91,7 +91,9 @@ export function ExamRunner({
 
   const item = exam.items[index];
   const total = exam.items.length;
-  const answered = (id: string) => isAnswered(responses[id]);
+  const byId = new Map(exam.items.map((i) => [i.question.id, i.question]));
+  // A PBQ counts as answered only once every part is filled.
+  const answered = (id: string) => isComplete(byId.get(id)!, responses[id]);
   const unanswered = exam.items.filter((i) => !answered(i.question.id)).length;
 
   function toggleFlag() {

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isAnswered, mcqFraction, pbqFraction, scoreExam, type Responses } from './scoring';
+import { isAnswered, isComplete, mcqFraction, pbqFraction, scoreExam, type Responses } from './scoring';
 import type { AssembledExam } from './assemble';
 import { mcq, meta3, pbq } from './testFixtures';
 import type { Question } from '../domain/types';
@@ -34,6 +34,12 @@ describe('PBQ part scoring', () => {
   it('treats mismatched response shapes as no answer', () => {
     const r = scoreExam(ex(), { P1: ['c1'], A0: { x: 'a' } }, meta3);
     expect(r.items.map((i) => i.fraction)).toEqual([0, 0]);
+  });
+
+  it('counts a PBQ complete only when every part is filled', () => {
+    expect(isComplete(p, { p1: 'c1' })).toBe(false);
+    expect(isComplete(p, { p1: 'c1', p2: 'c3' })).toBe(true);
+    expect(isComplete(mcq('A0', 'A'), ['a'])).toBe(true);
   });
 
   it('knows when a response is answered', () => {

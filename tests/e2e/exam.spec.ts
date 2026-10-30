@@ -63,16 +63,21 @@ test('a mock exam with PBQs can be completed with the keyboard only', async ({ p
       return { tag: el?.tagName ?? '', type: el?.type ?? '', label: el?.getAttribute('aria-label') ?? '', text: el?.textContent ?? '' };
     });
 
-  /** Tab to the first answer control on the screen and use it. */
-  const answer = async () => {
-    for (let i = 0; i < 30; i++) {
+  /** Tab through the screen, filling every part, and stop on the nav button `name`. */
+  const answerThen = async (name: string) => {
+    let picked = false;
+    for (let i = 0; i < 40; i++) {
       await page.keyboard.press('Tab');
       const a = await active();
-      if (a.tag === 'SELECT') return page.keyboard.press('ArrowDown');
-      if (a.type === 'radio' || a.type === 'checkbox') return page.keyboard.press('Space');
-      if (a.label.startsWith('Move ') && a.label.endsWith(' down')) return page.keyboard.press('Enter');
+      if (a.text === name) return page.keyboard.press('Enter');
+      if (a.tag === 'SELECT') await page.keyboard.press('ArrowDown');
+      if (a.text === 'Keep this order') await page.keyboard.press('Enter');
+      if (!picked && (a.type === 'radio' || a.type === 'checkbox')) {
+        await page.keyboard.press('Space');
+        picked = true;
+      }
     }
-    throw new Error('no answer control reachable by Tab');
+    throw new Error(`could not tab to ${name}`);
   };
   const press = async (name: string) => {
     for (let i = 0; i < 40; i++) {
@@ -83,8 +88,7 @@ test('a mock exam with PBQs can be completed with the keyboard only', async ({ p
   };
 
   for (let i = 1; i <= TOTAL; i++) {
-    await answer();
-    await press(i < TOTAL ? 'Next' : 'Review');
+    await answerThen(i < TOTAL ? 'Next' : 'Review');
   }
   await expect(page.getByRole('button', { name: /^Question \d+, answered/ })).toHaveCount(TOTAL);
   await press('Submit exam');

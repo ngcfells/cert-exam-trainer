@@ -22,6 +22,10 @@ describe('PBQ schemas', () => {
     expect(ok({ ...fixtures.diagram, answer: { placements: { z1: 'l9' } } })).toBe(false);
     expect(ok({ ...m, payload: { ...m.payload, choices: items('c1', 'c1') } })).toBe(false);
     expect(ok({ ...m, payload: {} })).toBe(false);
+    const d = fixtures.diagram;
+    expect(ok({ ...d, payload: { ...d.payload, edges: [{ from: 'n1', to: 'nx' }] } })).toBe(false);
+    expect(ok({ ...d, payload: { ...d.payload, zones: [{ id: 'z1', x: 900, y: 10, name: 'Off' }] } })).toBe(false);
+    expect(ok({ ...d, payload: { ...d.payload, nodes: [...d.payload.nodes, { id: 'n3', x: 390, y: 0, w: 80, h: 40 }] } })).toBe(false);
   });
 
   it('flattens answers into parts', () => {

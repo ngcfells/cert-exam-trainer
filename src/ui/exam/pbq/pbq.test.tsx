@@ -29,9 +29,18 @@ describe('PBQ templates', () => {
       expect.stringContaining('T-s1'),
       expect.stringContaining('T-s2'),
     ]);
-    expect(screen.getByRole('button', { name: 'Move T-s3 up' })).toBeDisabled();
+    const up = screen.getByRole('button', { name: 'Move T-s3 up' });
+    expect(up).toHaveAttribute('aria-disabled', 'true');
+    await user.click(up);
+    expect(onChange).not.toHaveBeenCalled();
     await user.click(screen.getByRole('button', { name: 'Move T-s3 down' }));
     expect(onChange).toHaveBeenLastCalledWith({ '0': 's1', '1': 's3', '2': 's2' });
+  });
+
+  it('order: Keep this order saves the order shown', async () => {
+    const { onChange, user } = setup({ question: pbqFixture('order'), elementOrder: ['s3', 's1', 's2'] });
+    await user.click(screen.getByRole('button', { name: 'Keep this order' }));
+    expect(onChange).toHaveBeenLastCalledWith({ '0': 's3', '1': 's1', '2': 's2' });
   });
 
   it('order: shows a saved response order', () => {

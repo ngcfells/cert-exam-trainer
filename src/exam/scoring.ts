@@ -11,6 +11,12 @@ export function isAnswered(r: ItemResponse | undefined): boolean {
   return Array.isArray(r) ? r.length > 0 : Object.values(r).some((v) => v !== '');
 }
 
+/** Fully answered: an MCQ with a pick, or a PBQ with every part filled. Drives the review grid. */
+export function isComplete(q: Question, r: ItemResponse | undefined): boolean {
+  if (!r || Array.isArray(r)) return isAnswered(r);
+  return partIds(q).every((id) => !!r[id]);
+}
+
 /** Matching parts / total parts. */
 export function pbqFraction(q: Question, given: PartMap): number {
   const ids = partIds(q);
