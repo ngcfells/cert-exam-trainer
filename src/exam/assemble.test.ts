@@ -80,6 +80,14 @@ describe('assembleExam', () => {
     expect(ex.mcqCount).toBe(10 - ex.pbqWeightSum);
   });
 
+  it('shuffles PBQ elements per attempt, reproducibly', () => {
+    const run = (seed: number) => assembleExam(input({ seed, pool: [...bank({ A: 9 }), pbq('P1', 2)], pbqTypes: ['pbq-match'] })).items[0];
+    expect([...run(1).elementOrder!].sort()).toEqual(['c1', 'c2', 'c3']);
+    expect(run(1).elementOrder).toEqual(run(1).elementOrder);
+    const seen = new Set(Array.from({ length: 20 }, (_, i) => run(i + 1).elementOrder!.join()));
+    expect(seen.size).toBeGreaterThan(1);
+  });
+
   it('never lets PBQ weight fill the whole exam', () => {
     const ex = assembleExam(input({ meta: { ...meta3, maxQuestions: 6 }, pool: [...bank({ A: 9 }), pbq('P1', 6)], pbqTypes: ['pbq-match'] }));
     expect(ex.pbqWeightSum).toBe(0);
