@@ -42,8 +42,8 @@ export function DataView({ item, value, onChange }: PbqProps) {
           <caption>{p.caption}</caption>
           <thead>
             <tr>
-              {p.columns.map((c) => (
-                <th key={c} scope="col">
+              {p.columns.map((c, j) => (
+                <th key={j} scope="col">
                   {c}
                 </th>
               ))}

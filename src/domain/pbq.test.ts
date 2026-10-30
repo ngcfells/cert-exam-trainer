@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { questionSchema } from './schema';
-import { correctParts, elementIds, HOTSPOT_ON, matchesPattern, partCorrect, partIds, partLabel, PBQ_TEMPLATES, valueText } from './pbq';
+import { acceptedText, correctParts, elementIds, HOTSPOT_ON, matchesPattern, partCorrect, partIds, partLabel, PBQ_TEMPLATES, valueText } from './pbq';
 import type { Question } from './types';
 import { dataPlusQuestions } from '../banks/dataplus/questions';
 import { fixtures, items } from './pbqFixtures';
@@ -89,6 +89,20 @@ describe('templates 5-8', () => {
     expect(elementIds(q('buckets'))).toEqual(['i1', 'i2', 'i3']);
     expect(elementIds(q('terminal'))).toEqual([]);
     expect(PBQ_TEMPLATES).toHaveLength(8);
+  });
+
+  it('treats a run of wildcards as one', () => {
+    expect(matchesPattern('cat a', 'cat **')).toBe(true);
+  });
+
+  it('shows accepted command patterns readably', () => {
+    expect(acceptedText(q('terminal'), 't1')).toBe('grep ERROR <any word>, or grep -i error <any word>');
+    expect(acceptedText(q('terminal'), 't2')).toBe('T-a2');
+  });
+
+  it('rejects duplicate data column names', () => {
+    const d = fixtures.data;
+    expect(ok({ ...d, payload: { ...d.payload, columns: ['Sales', 'Sales'], chart: undefined } })).toBe(false);
   });
 
   it('rejects duplicate hotspot answers', () => {

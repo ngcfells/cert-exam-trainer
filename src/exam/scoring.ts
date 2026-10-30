@@ -8,7 +8,7 @@ export type Responses = Record<string, ItemResponse>;
 
 export function isAnswered(r: ItemResponse | undefined): boolean {
   if (!r) return false;
-  return Array.isArray(r) ? r.length > 0 : Object.values(r).some((v) => v !== '');
+  return Array.isArray(r) ? r.length > 0 : Object.values(r).some((v) => v.trim() !== '');
 }
 
 /**

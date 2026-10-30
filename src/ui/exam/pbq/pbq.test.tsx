@@ -93,6 +93,8 @@ describe('PBQ templates 5-8', () => {
     const { onChange, user } = setup({ question: pbqFixture('buckets'), elementOrder: ['i3', 'i1', 'i2'] }, { i1: 'b2' });
     expect(screen.getAllByRole('combobox').map((c) => c.getAttribute('aria-label') ?? c.id)).toHaveLength(3);
     expect(screen.getByRole('group', { name: 'T-b2' })).toHaveTextContent('T-i1');
+    // A placed item can be dragged on to another bucket.
+    expect(within(screen.getByRole('group', { name: 'T-b2' })).getByText('T-i1')).toHaveAttribute('draggable', 'true');
     await user.selectOptions(screen.getByRole('combobox', { name: 'T-i1' }), 'T-b1');
     expect(onChange).toHaveBeenLastCalledWith({ i1: 'b1' });
   });

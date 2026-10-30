@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import type { BucketsPayload } from '../../../domain/pbq';
 import type { PbqProps } from './PbqView';
-import { ChipPool, DropTarget, PartSelect, inOrder, type Item } from './parts';
+import { ChipPool, DropTarget, MIME, PartSelect, inOrder, type Item } from './parts';
 
 function Bucket({ bucket, placed, onDrop }: { bucket: Item; placed: Item[]; onDrop: (id: string) => void }) {
   const id = useId();
@@ -12,7 +12,9 @@ function Bucket({ bucket, placed, onDrop }: { bucket: Item; placed: Item[]; onDr
         {placed.length ? (
           <ul>
             {placed.map((i) => (
-              <li key={i.id}>{i.text}</li>
+              <li key={i.id} className="chip" draggable onDragStart={(e) => e.dataTransfer.setData(MIME, i.id)}>
+                {i.text}
+              </li>
             ))}
           </ul>
         ) : (

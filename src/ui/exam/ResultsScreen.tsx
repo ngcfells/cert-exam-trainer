@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { correctParts, partCorrect, partIds, partLabel, valueText, type PartMap } from '../../domain/pbq';
+import { acceptedText, partCorrect, partIds, partLabel, valueText, type PartMap } from '../../domain/pbq';
 import type { ExamMeta, McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { AssembledExam } from '../../exam/assemble';
 import type { ExamResult } from '../../exam/result';
@@ -11,7 +11,6 @@ function optionTexts(q: Question, ids: string[]): string {
 }
 
 function PartsReview({ q, given }: { q: Question; given: PartMap }) {
-  const key = correctParts(q);
   const notes = partIds(q).filter((id) => q.partExplanations?.[id]);
   return (
     <>
@@ -30,7 +29,7 @@ function PartsReview({ q, given }: { q: Question; given: PartMap }) {
             <tr key={id}>
               <th scope="row">{partLabel(q, id)}</th>
               <td>{given[id] ? valueText(q, id, given[id]) : q.type === 'pbq-hotspot' ? 'Not selected' : 'Not answered'}</td>
-              <td>{valueText(q, id, key[id])}</td>
+              <td>{acceptedText(q, id)}</td>
               <td>{partCorrect(q, id, given) ? 'Correct' : 'Incorrect'}</td>
             </tr>
           ))}

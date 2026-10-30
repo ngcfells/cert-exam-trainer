@@ -47,6 +47,7 @@ describe('PBQ part scoring', () => {
     expect(isAnswered(undefined)).toBe(false);
     expect(isAnswered([])).toBe(false);
     expect(isAnswered({ a: '' })).toBe(false);
+    expect(isAnswered({ a: '   ' })).toBe(false);
     expect(isAnswered({ a: 'x' })).toBe(true);
     expect(isAnswered(['a'])).toBe(true);
   });

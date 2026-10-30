@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen, within } from '@testing-library/react';
+import { cleanup, render, screen, within } from '@testing-library/react';
+import { dataPlusQuestions } from '../../banks/dataplus/questions';
 import { ResultsScreen } from './ResultsScreen';
 import type { AssembledExam } from '../../exam/assemble';
 import { buildResult } from '../../exam/result';
@@ -36,8 +37,14 @@ describe('ResultsScreen', () => {
 
   it('reviews terminal and hotspot parts by their own rules', () => {
     const rows = partRows(pbqFixture('terminal'), { t1: 'grep ERROR app.log' });
-    expect(rows[0]).toHaveTextContent('Find errorsgrep ERROR app.loggrep ERROR *Correct');
-    expect(rows[1]).toHaveTextContent('Next actionNot answeredT-a2Incorrect');
+    expect(rows[0]).toHaveTextContent('Find errorsgrep ERROR app.loggrep ERROR <any word>, or grep -i error <any word>Correct');
+    // The bundled question checks real option text, not fixture placeholders.
+    cleanup();
+    const real = dataPlusQuestions.find((x) => x.id === 'da2-pbq-terminal-001')!;
+    const realRows = partRows(real, { fix: 'rerun' });
+    expect(realRows[1]).toHaveTextContent(
+      'Choose the best next actionRerun the load unchangedRoute invalid rows to a reject table, then reload the valid rowsIncorrect',
+    );
   });
 
   it('shows untouched hotspot spots as not selected', () => {

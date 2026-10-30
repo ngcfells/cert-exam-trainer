@@ -149,13 +149,25 @@ export function normalizeCommand(s: string): string {
   return s.trim().replace(/\s+/g, ' ');
 }
 
-/** `*` matches one or more non-space characters; everything else is literal. */
+/**
+ * `*` matches one word: one or more non-space characters (a run of `*` counts as one).
+ * Everything else is literal.
+ */
 export function matchesPattern(typed: string, pattern: string): boolean {
   const re = normalizeCommand(pattern)
+    .replace(/\*+/g, '*')
     .split('*')
     .map((s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
     .join('\\S+');
   return new RegExp(`^${re}$`).test(normalizeCommand(typed));
+}
+
+/** The correct answer as review text; typed terminal steps list every accepted pattern. */
+export function acceptedText(q: Question, partId: string): string {
+  const step = q.type === 'pbq-terminal' ? (q.payload as TerminalPayload).steps.find((s) => s.id === partId) : undefined;
+  if (!step || step.options) return valueText(q, partId, correctParts(q)[partId]);
+  const accept = (q.answer as { accept: Record<string, string[]> }).accept[partId] ?? [];
+  return accept.map((p) => normalizeCommand(p).replace(/\*+/g, '<any word>')).join(', or ');
 }
 
 export function partCorrect(q: Question, partId: string, given: PartMap): boolean {
@@ -233,6 +245,7 @@ function extraIssues(type: PbqTemplate, payload: unknown, out: Issue[]) {
   }
   if (type === 'pbq-data') {
     const d = payload as DataPayload;
+    dupes(['payload', 'columns'], d.columns, out);
     d.rows.forEach((r, i) => {
       if (r.length !== d.columns.length) out.push({ path: ['payload', 'rows', i], message: 'row length must match the columns' });
     });
