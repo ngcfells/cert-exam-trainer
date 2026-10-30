@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import { getBundledQuestions, listExams } from '../../banks';
+import { listExams } from '../../banks';
+import { loadPool } from '../../banks/pool';
 import { PBQ_TEMPLATES } from '../../domain/pbq';
-import type { Question } from '../../domain/types';
 import { assembleExam, type AssembledExam } from '../../exam/assemble';
 import { buildResult, recentQuestionIds, type ExamResult } from '../../exam/result';
 import { newSeed } from '../../exam/rng';
@@ -37,8 +37,7 @@ export function MockExamFlow({
   useEffect(() => {
     let live = true;
     void (async () => {
-      const [mine, history] = await Promise.all([repo.getUserQuestions(examCode), repo.listRecords('results')]);
-      const pool: Question[] = [...getBundledQuestions(examCode), ...mine];
+      const [pool, history] = await Promise.all([loadPool(repo, examCode), repo.listRecords('results')]);
       const exam = assembleExam({
         meta,
         pool,
