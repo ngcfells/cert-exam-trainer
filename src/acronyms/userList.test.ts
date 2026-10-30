@@ -10,7 +10,7 @@ const EXAM = 'DA0-002';
 describe('user acronyms', () => {
   it('refuses bank terms and normalizes', async () => {
     const repo = createMemoryRepo();
-    expect(await saveUserAcronym(repo, EXAM, ' etl ', 'Extract, Transform, Load')).toEqual({ error: 'ETL is already in the list.' });
+    expect(await saveUserAcronym(repo, EXAM, ' etl ', 'Extract, Transform, Load')).toEqual({ error: 'ETL is already in the built-in list (shown when questions come from Ours or Both).' });
     expect(await saveUserAcronym(repo, EXAM, ' kpi ', '  Key Performance Indicator ')).toEqual({});
     expect(await saveUserAcronym(repo, EXAM, '', 'x')).toEqual({ error: 'Enter the acronym.' });
     expect(await saveUserAcronym(repo, EXAM, 'ROI', ' ')).toEqual({ error: 'Enter what it stands for.' });
@@ -36,6 +36,11 @@ describe('user acronyms', () => {
       { term: 'AAA', expansion: 'x', source: 'official' },
     ]);
     expect((await loadUserAcronyms(repo, EXAM)).map((a) => a.term)).toEqual(['KPI']);
+    await repo.setSetting(userAcronymSetting(EXAM), [
+      { term: ' kpi ', expansion: 'first', source: 'mine' },
+      { term: 'KPI', expansion: ' Key Performance Indicator ', source: 'mine' },
+    ]);
+    expect(await loadUserAcronyms(repo, EXAM)).toEqual([{ term: 'KPI', expansion: 'Key Performance Indicator', source: 'mine' }]);
     await repo.setSetting(userAcronymSetting(EXAM), 'not an array');
     expect(await loadUserAcronyms(repo, EXAM)).toEqual([]);
   });

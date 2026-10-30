@@ -14,10 +14,16 @@ const entrySchema = z.object({ term: z.string().min(1), expansion: z.string().mi
 export async function loadUserAcronyms(repo: Repo, exam: string): Promise<AcronymEntry[]> {
   const raw = await repo.getSetting<unknown>(userAcronymSetting(exam));
   if (!Array.isArray(raw)) return [];
-  return raw.flatMap((r) => {
+  // Normalized and de-duplicated (last wins), as a hand-edited backup may hold either.
+  const byTerm = new Map<string, AcronymEntry>();
+  for (const r of raw) {
     const p = entrySchema.safeParse(r);
-    return p.success ? [p.data] : [];
-  });
+    if (!p.success) continue;
+    const term = p.data.term.trim().toUpperCase();
+    const expansion = p.data.expansion.trim();
+    if (term && expansion) byTerm.set(term, { term, expansion, source: 'mine' });
+  }
+  return [...byTerm.values()].sort((a, b) => a.term.localeCompare(b.term));
 }
 
 const bankTerms = (exam: string) => new Set(listExams().find((m) => m.code === exam)?.acronyms.map((a) => a.term) ?? []);
@@ -28,7 +34,7 @@ export async function saveUserAcronym(repo: Repo, exam: string, term: string, ex
   const x = expansion.trim();
   if (!t) return { error: 'Enter the acronym.' };
   if (!x) return { error: 'Enter what it stands for.' };
-  if (bankTerms(exam).has(t)) return { error: `${t} is already in the list.` };
+  if (bankTerms(exam).has(t)) return { error: `${t} is already in the built-in list (shown when questions come from Ours or Both).` };
   const rest = (await loadUserAcronyms(repo, exam)).filter((a) => a.term !== t);
   await repo.setSetting(userAcronymSetting(exam), [...rest, { term: t, expansion: x, source: 'mine' }].sort((a, b) => a.term.localeCompare(b.term)));
   return {};

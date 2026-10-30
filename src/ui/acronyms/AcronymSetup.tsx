@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { AcronymEntry, AcronymSource } from '../../acronyms/list';
 import { assembleDeck, MIN_CHOICE_ENTRIES, type DeckScope, type Direction } from '../../acronyms/quiz';
 import type { ExamMeta } from '../../domain/types';
@@ -38,6 +39,9 @@ export function AcronymSetup({
   onStart: () => void;
   onCancel: () => void;
 }) {
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  // Mounted once per visit to the setup, including after "Study again".
+  useEffect(() => headingRef.current?.focus(), []);
   const now = new Date();
   const terms = new Set(entries.map((a) => a.term));
   const due = parseSrsRecords(srs).filter((r) => r.exam === meta.code && r.kind === 'acronym' && terms.has(r.itemId) && isDue(r, now)).length;
@@ -59,7 +63,7 @@ export function AcronymSetup({
 
   return (
     <section className="study-setup" aria-labelledby="acr-h">
-      <h2 id="acr-h">{`Acronyms: ${meta.name} (${meta.code})`}</h2>
+      <h2 id="acr-h" ref={headingRef} tabIndex={-1}>{`Acronyms: ${meta.name} (${meta.code})`}</h2>
       {entries.length === 0 ? (
         <p>No acronyms for this exam with the current source setting.</p>
       ) : (

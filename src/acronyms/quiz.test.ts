@@ -49,6 +49,7 @@ describe('answer matching', () => {
 
   it('term direction ignores case and spaces', () => {
     expect(isCorrect(entries[4], 'expansion', ' s q l ')).toBe(true);
+    expect(isCorrect(entries[4], 'expansion', 'S.Q.L.')).toBe(true);
     expect(isCorrect(entries[4], 'expansion', 'sq')).toBe(false);
   });
 

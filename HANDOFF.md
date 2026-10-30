@@ -71,6 +71,25 @@
   - Importing on a My questions screen skips questions for other exams and reports them as skipped.
   - Editor errors appear after the first save attempt: focus moves to a summary of links, and each field gets `aria-invalid` and `aria-describedby`. Each PBQ template keeps its own JSON while the author switches types, and Cancel asks before discarding changes.
   - The final review's 3 important and 8 minor findings are all fixed. One minor finding (Home shows only the "ours" count) did not apply: Home already shows a "(mine)" count.
+- **Chunk 7 is done and merged to `main`** (2026-10-30; 288 unit tests and 20 e2e tests pass; all review findings fixed, minors included; plan: `docs/superpowers/plans/2026-10-30-chunk7-acronym-tester.md`):
+  - `src/acronyms/`:
+    - `extract.ts`: `extractAcronyms`, `questionText`, `NOT_ACRONYMS`.
+    - `list.ts`: `AcronymEntry` with source `official`, `community` or `mine`; `mergeAcronyms`.
+    - `quiz.ts`: `assembleDeck`, `isCorrect`, `normalizeAnswer`, `buildChoices`.
+    - `userList.ts`: the user's list in the setting `userAcronyms:<exam>`; `loadAcronyms`; `unexpandedUserTerms`.
+  - `content.test.ts` is the build-time check: every acronym token in a bundled question must have an expansion. The rules are in `docs/acronyms.md`.
+  - `src/ui/acronyms/`:
+    - The `AcronymFlow` screen, reached from the `Acronyms: <code>` button on Home.
+    - The setup lists the full table, the choice of mode (flashcards or quiz), which side to show, due-and-new or all cards, the number of cards, and for quizzes typed or chosen answers with an optional time limit of 2, 5 or 10 minutes.
+    - `FlashcardRunner`, `QuizRunner` (with "Count as correct" for typos), `AcronymResults` and `MyAcronyms` (add, edit, delete, plus terms found in the user's questions).
+  - Cram and Progress now use the merged list and respect the source filter.
+  - Data+ has 6 `community` acronyms that we wrote (API, CSV, ETL, JSON, PII, SQL). The official list comes in chunk 9.
+- **Decisions made in chunk 7:**
+  - The source filter applies to acronyms: `ours` gives official and community entries, `mine` gives the user's only, `both` gives all. On a repeated term, official wins over community, and community over mine. A user cannot add a term that is already in the built-in list.
+  - SRS: knew or correct counts as quality 4, didn't know or wrong as 1. Unanswered cards are never graded, including after a timeout.
+  - Typed answers ignore case, punctuation, `&`/`and` and parentheticals. Acronym answers ignore everything except letters and digits.
+  - Quiz results are not saved to the `results` store; only SRS is updated.
+  - `NOT_ACRONYMS` was seeded with SQL keywords and log levels.
 - **Owner's working data:** `_WorkingData/` (gitignored) holds the owner's third-party practice questions and screenshots. They are for building and testing only: **never ship, bundle, commit or copy them into fixtures.** `_WorkingData/DataPlus/addQuestions.pack.json` (18 MCQs and 1 PBQ, built with `pbq1.md`) imports cleanly (19 imported, 0 skipped).
 - **Commands:**
   - `npm run check` runs lint, typecheck, unit tests, the single-file build and e2e with axe.
@@ -78,7 +97,7 @@
   - On a new machine, run `npx playwright install chromium` first.
 - **Open issues and notes:**
   - Data+ objectives are placeholders until chunk 9.
-  - Data+ has only 2 approved MCQs and no acronyms, so cram sessions on Data+ are tiny until content lands.
+  - Data+ has only 2 approved MCQs and 6 acronyms, so cram and acronym sessions on Data+ are small until content lands.
   - Tooling: a local hook blocks Bash heredocs that contain an apostrophe; write files with Write/Edit instead.
   - Manual keyboard-only pass: covered by the automated keyboard e2e; a human pass in a real screen reader is still to do.
 - **Priority:** Data+ (DA0-002) first, working end to end, before any other exam.
@@ -86,7 +105,7 @@
 
 ## Next session
 
-Chunk 7: acronym tester (spec chunk list item 7). Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
+Chunk 8: legal, branding and deploy (spec chunk list item 8). Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 
 **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 

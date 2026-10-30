@@ -21,6 +21,8 @@ export function MyAcronyms({
   const [expansion, setExpansion] = useState('');
   const [error, setError] = useState('');
   const [message, setMessage] = useState('');
+  /** The term being edited, if any. */
+  const [editing, setEditing] = useState<string | null>(null);
   const errorOn = error.startsWith('Enter what') ? 'meaning' : error ? 'term' : null;
 
   async function save(e: FormEvent) {
@@ -32,6 +34,9 @@ export function MyAcronyms({
         setError(r.error);
         return;
       }
+      // Renaming while editing replaces the old entry rather than adding a second one.
+      if (editing && editing !== term.trim().toUpperCase()) await deleteUserAcronym(repo, examCode, editing);
+      setEditing(null);
       setError('');
       setMessage(`Saved ${term.trim().toUpperCase()}.`);
       setTerm('');
@@ -68,6 +73,7 @@ export function MyAcronyms({
                   aria-label={`Add ${t}`}
                   onClick={() => {
                     setTerm(t);
+                    setEditing(null);
                     setError('');
                     document.getElementById('my-acr-meaning')?.focus();
                   }}
@@ -125,6 +131,7 @@ export function MyAcronyms({
                   <button type="button" aria-label={`Edit ${a.term}`} onClick={() => {
                       setTerm(a.term);
                       setExpansion(a.expansion);
+                      setEditing(a.term);
                       setError('');
                       document.getElementById('my-acr-meaning')?.focus();
                     }}

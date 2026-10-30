@@ -53,7 +53,7 @@ export function normalizeAnswer(s: string): string {
 /** Whether `input` answers the card shown on `direction`. */
 export function isCorrect(entry: AcronymEntry, direction: Direction, input: string): boolean {
   if (direction === 'expansion') {
-    const t = input.replace(/\s+/g, '').toUpperCase();
+    const t = input.replace(/[^a-z0-9]+/gi, '').toUpperCase();
     return t !== '' && t === entry.term.toUpperCase();
   }
   const a = normalizeAnswer(input);

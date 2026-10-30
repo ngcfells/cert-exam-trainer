@@ -43,6 +43,9 @@ describe('FlashcardRunner via AcronymFlow', () => {
     expect(recs.every((r) => r.id.startsWith(`${EXAM}:a:`))).toBe(true);
     expect(dueIn(first)).toBe(day);
     expect(dueIn(second)).toBe(10 * 60_000);
+
+    await user.click(screen.getByRole('button', { name: 'Study again' }));
+    expect(await screen.findByRole('heading', { name: /^Acronyms:/ })).toHaveFocus();
   });
 });
 
@@ -51,6 +54,7 @@ describe('QuizRunner', () => {
     const user = userEvent.setup();
     const onFinish = vi.fn();
     render(<QuizRunner deck={deck.slice(0, 1)} entries={deck} show="term" answer="type" minutes={0} seed={1} onFinish={onFinish} />);
+    expect(screen.getByRole('textbox', { name: 'Your answer' })).toHaveAccessibleDescription('What does ETL stand for?');
     await user.type(screen.getByRole('textbox', { name: 'Your answer' }), '  extract transform LOAD{Enter}');
     expect(screen.getByRole('status')).toHaveTextContent('Correct');
     expect(screen.getByRole('status')).toHaveFocus();
@@ -67,6 +71,7 @@ describe('QuizRunner', () => {
     expect(screen.getByRole('status')).toHaveTextContent('Not quite: Extract, Transform, Load');
     await user.click(screen.getByRole('button', { name: 'Count as correct' }));
     expect(screen.getByRole('status')).toHaveTextContent('Correct');
+    expect(screen.getByRole('status')).toHaveFocus();
     await user.click(screen.getByRole('button', { name: 'Finish' }));
     expect(onFinish.mock.calls[0][0][0].correct).toBe(true);
   });

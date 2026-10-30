@@ -122,6 +122,7 @@ export function QuizRunner({
                   readOnly={!!result}
                   autoComplete="off"
                   spellCheck={false}
+                  aria-describedby="quiz-prompt"
                   onChange={(e) => setInput(e.target.value)}
                 />
               </label>
@@ -136,7 +137,7 @@ export function QuizRunner({
                 ))}
               </fieldset>
             )}
-            {answer === 'type' && <p className="visually-hidden">{prompt}</p>}
+            {answer === 'type' && <p id="quiz-prompt" className="visually-hidden">{prompt}</p>}
             {!result && (
               <button type="submit" className="primary" disabled={!input.trim()}>
                 Check
@@ -148,7 +149,13 @@ export function QuizRunner({
           {result ? (result.correct ? 'Correct' : `Not quite: ${correctText}`) : ''}
         </p>
         {result && !result.correct && answer === 'type' && (
-          <button type="button" onClick={() => setGraded((g) => ({ ...g, [card.term]: { ...result, correct: true } }))}>
+          <button
+            type="button"
+            onClick={() => {
+              setGraded((g) => ({ ...g, [card.term]: { ...result, correct: true } }));
+              setFocusStatus(true);
+            }}
+          >
             Count as correct
           </button>
         )}

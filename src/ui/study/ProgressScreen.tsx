@@ -1,5 +1,5 @@
-import { loadAcronyms } from '../../acronyms/userList';
 import { useEffect, useRef, useState } from 'react';
+import { loadAcronyms } from '../../acronyms/userList';
 import { listExams } from '../../banks';
 import type { ExamMeta } from '../../domain/types';
 import { MAX_SCORE } from '../../exam/scoring';

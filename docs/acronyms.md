@@ -7,7 +7,7 @@ Each exam's acronym list lives in its metadata (`src/banks/<exam>/meta.ts`, fiel
 
 A term may appear only once per exam; the schema rejects repeats.
 
-The user's own list (`mine`) is stored locally in the setting `userAcronyms:<exam>`. It is never bundled. The acronym screen suggests terms found in the user's questions that the list does not cover yet.
+The user's own list (`mine`) is stored locally in the setting `userAcronyms:<exam>`. It is never bundled. Terms are stored trimmed and upper-cased, one entry per term. A term the built-in list already has is refused. Deleting a term keeps its review history, so adding it again picks up its old schedule. The acronym screen suggests terms found in the user's questions that the list does not cover yet.
 
 ## Content check
 
