@@ -227,7 +227,7 @@ Expansions for non-official acronyms are written or verified by us.
 
 ## 13. Work chunks (one session each, `/clear` + handoff between)
 
-**Owner priority:** Data+ (DA0-002) comes first. Get the whole app working end to end on Data+, which means pulling chunk 11 forward right after chunk 10, before any other exam is added. SecAI+ and AutoOps+ follow after that.
+**Owner priority:** Data+ (DA0-002) comes first. Get the whole app working end to end on Data+, which is why its content is chunk 8, before any other exam is added. SecAI+ and AutoOps+ follow after that.
 
 Each chunk ends with a `HANDOFF.md` update that records what's done, what's next and any open issues.
 
@@ -243,26 +243,28 @@ Each chunk ends with a `HANDOFF.md` update that records what's done, what's next
 5. **Study modes:** untimed practice, cram mode, spaced repetition, the mastery dashboard and history.
 6. **Question adder:** an authoring form for every question type, including all 8 PBQ templates with a live preview. It also covers editing and deleting questions, the Ours / Mine / Both source toggle, JSON import and export, and the user-content notice.
 7. **Acronym tester.**
-8. **Legal, branding and deploy:**
+*Reordered by the owner on 2026-10-30: the shipped Data+ bank comes straight after the acronym tester, ahead of legal, branding and deploy.*
+
+8. **Data+ shipped question bank:** generate the original MCQs and PBQs we ship for DA0-002 and load them into the bundled bank, meeting the §12 targets. This chunk includes the content tooling it needs:
+   - an objectives extractor, which resolves every placeholder value, the real objectives and the official acronym list
+   - drafting and review (§12 steps 2–4)
+   - the validation checks (§12 step 5)
+9. **Legal, branding and deploy:**
    - licenses, disclaimers and the About page
    - look-and-feel polish
    - responsive and touch checks on phone and tablet sizes
    - the PWA service worker
    - a local `deploy` script that pushes the build to GitHub Pages without using Actions
-9. **Content tooling:**
-   - objectives extractor
-   - Ollama drafting script and trial
-   - validation checks
-   - acronym harvester, with the dump-site source off by default
-10. **Review tool:** a dev-only approval page that reuses the question adder's preview.
-11. **Data+ content.**
-12. **SecAI+ content.**
-13. **AutoOps+ content.**
-14. Each remaining exam gets its own content chunk.
+10. **Remaining tooling:**
+    - the acronym harvester, with the dump-site source off by default
+    - the dev-only review tool, which reuses the question adder's preview, unless chunk 8 already needed it
+11. **SecAI+ content.**
+12. **AutoOps+ content.**
+13. Each remaining exam gets its own content chunk.
 
 **Builder's calls (owner can override):**
 
-- "Current" means active exams only, excluding beta and retiring versions. If a pilot exam's objectives aren't published yet, chunk 9 flags it and a substitute exam is chosen.
+- "Current" means active exams only, excluding beta and retiring versions. If a pilot exam's objectives aren't published yet, that exam's content chunk flags it and a substitute exam is chosen.
 - Claude's drafting and review happen inside Claude Code sessions using subagents. No Anthropic API tooling is built.
 
 ## 14. Left to the builder
