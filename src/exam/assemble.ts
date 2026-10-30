@@ -5,6 +5,8 @@ export interface ExamItem {
   question: Question;
   /** Shuffled MCQ option ids. */
   optionOrder?: string[];
+  /** Shuffled PBQ element ids (choices, steps, labels). */
+  elementOrder?: string[];
 }
 
 export interface AssembledExam {

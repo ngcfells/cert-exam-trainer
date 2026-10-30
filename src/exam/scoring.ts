@@ -1,8 +1,23 @@
-import type { ExamMeta, McqAnswer } from '../domain/types';
+import { correctParts, partIds, type PartMap } from '../domain/pbq';
+import type { ExamMeta, McqAnswer, Question } from '../domain/types';
 import { domainOf, type AssembledExam } from './assemble';
 
-/** questionId -> selected option ids */
-export type Responses = Record<string, string[]>;
+/** MCQ: selected option ids. PBQ: partId -> value id. */
+export type ItemResponse = string[] | PartMap;
+export type Responses = Record<string, ItemResponse>;
+
+export function isAnswered(r: ItemResponse | undefined): boolean {
+  if (!r) return false;
+  return Array.isArray(r) ? r.length > 0 : Object.values(r).some((v) => v !== '');
+}
+
+/** Matching parts / total parts. */
+export function pbqFraction(q: Question, given: PartMap): number {
+  const ids = partIds(q);
+  if (ids.length === 0) return 0;
+  const key = correctParts(q);
+  return ids.filter((id) => given[id] === key[id]).length / ids.length;
+}
 
 export interface ItemScore {
   questionId: string;
@@ -10,6 +25,8 @@ export interface ItemScore {
   possible: number;
   fraction: number;
   answered: boolean;
+  /** PBQs only. */
+  parts?: { partId: string; correct: boolean }[];
 }
 
 export interface ScoreReport {
@@ -41,14 +58,18 @@ export function scoreExam(exam: AssembledExam, responses: Responses, meta: ExamM
   const unit = units > 0 ? MAX_SCORE / units : 0;
 
   const items: ItemScore[] = exam.items.map(({ question: q }) => {
-    const picked = responses[q.id] ?? [];
-    const answered = picked.length > 0;
+    const r = responses[q.id];
     if (q.type === 'mcq-single' || q.type === 'mcq-multi') {
+      const picked = Array.isArray(r) ? r : [];
       const fraction = mcqFraction((q.answer as McqAnswer).correct, picked, q.type);
-      return { questionId: q.id, earned: unit * fraction, possible: unit, fraction, answered };
+      return { questionId: q.id, earned: unit * fraction, possible: unit, fraction, answered: picked.length > 0 };
     }
-    // PBQ part scoring lands in chunk 3.
-    return { questionId: q.id, earned: 0, possible: unit * (q.pbqWeight ?? 1), fraction: 0, answered };
+    const given: PartMap = r && !Array.isArray(r) ? r : {};
+    const key = correctParts(q);
+    const parts = partIds(q).map((partId) => ({ partId, correct: given[partId] === key[partId] }));
+    const fraction = pbqFraction(q, given);
+    const possible = unit * (q.pbqWeight ?? 1);
+    return { questionId: q.id, earned: possible * fraction, possible, fraction, answered: isAnswered(given), parts };
   });
 
   const total = items.reduce((s, i) => s + i.earned, 0);

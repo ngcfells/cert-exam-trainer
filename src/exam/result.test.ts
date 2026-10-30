@@ -28,6 +28,11 @@ describe('result', () => {
     expect(examResultSchema.parse(r)).toEqual(r);
   });
 
+  it('accepts MCQ arrays and PBQ part maps', () => {
+    expect(examResultSchema.safeParse({ ...sample(), responses: { q1: ['a'], p1: { x: 'y' } } }).success).toBe(true);
+    expect(examResultSchema.safeParse({ ...sample(), elementOrders: { p1: ['b', 'a'] } }).success).toBe(true);
+  });
+
   it('rejects a record without a seed', () => {
     const rest: Partial<ExamResult> = sample();
     delete rest.seed;

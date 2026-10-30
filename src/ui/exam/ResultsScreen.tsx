@@ -80,7 +80,8 @@ export function ResultsScreen({
           <h3>Review</h3>
           <ol>
             {missed.map(({ question: q }) => {
-              const picked = result.responses[q.id] ?? [];
+              const r = result.responses[q.id];
+              const picked = Array.isArray(r) ? r : [];
               const mcqType = q.type === 'mcq-single' || q.type === 'mcq-multi';
               return (
                 <li key={q.id}>

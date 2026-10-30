@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { mcqFraction, scoreExam, type Responses } from './scoring';
+import { isAnswered, mcqFraction, pbqFraction, scoreExam, type Responses } from './scoring';
 import type { AssembledExam } from './assemble';
 import { mcq, meta3, pbq } from './testFixtures';
 import type { Question } from '../domain/types';
@@ -14,6 +14,36 @@ function examOf(qs: Question[]): AssembledExam {
     pbqWeightSum: pbqs.reduce((s, q) => s + (q.pbqWeight ?? 0), 0),
   };
 }
+
+describe('PBQ part scoring', () => {
+  const p = pbq('P1', 3); // pairs p1->c1, p2->c2
+  const ex = () => examOf([p, mcq('A0', 'A')]);
+
+  it('awards each PBQ part in proportion', () => {
+    expect(pbqFraction(p, { p1: 'c1', p2: 'c3' })).toBe(0.5);
+    const r = scoreExam(ex(), { P1: { p1: 'c1', p2: 'c3' } }, meta3);
+    expect(r.items[0]).toMatchObject({ fraction: 0.5, answered: true, possible: (900 * 3) / 4, earned: (900 * 1.5) / 4 });
+    expect(r.items[0].parts).toEqual([{ partId: 'p1', correct: true }, { partId: 'p2', correct: false }]);
+  });
+
+  it('scores an untouched PBQ as unanswered 0', () => {
+    const r = scoreExam(ex(), { P1: { p1: '' } }, meta3);
+    expect(r.items[0]).toMatchObject({ fraction: 0, answered: false });
+  });
+
+  it('treats mismatched response shapes as no answer', () => {
+    const r = scoreExam(ex(), { P1: ['c1'], A0: { x: 'a' } }, meta3);
+    expect(r.items.map((i) => i.fraction)).toEqual([0, 0]);
+  });
+
+  it('knows when a response is answered', () => {
+    expect(isAnswered(undefined)).toBe(false);
+    expect(isAnswered([])).toBe(false);
+    expect(isAnswered({ a: '' })).toBe(false);
+    expect(isAnswered({ a: 'x' })).toBe(true);
+    expect(isAnswered(['a'])).toBe(true);
+  });
+});
 
 describe('mcqFraction', () => {
   it('scores single answers', () => {

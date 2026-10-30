@@ -1,10 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { AssembledExam } from '../../exam/assemble';
-import type { Responses } from '../../exam/scoring';
+import { isAnswered, type ItemResponse, type Responses } from '../../exam/scoring';
 import { McqView } from './McqView';
 import { ReviewGrid } from './ReviewGrid';
 import { TopBar } from './TopBar';
 import './exam.css';
+
+const asArray = (r: ItemResponse | undefined): string[] => (Array.isArray(r) ? r : []);
 
 export interface SubmitPayload {
   responses: Responses;
@@ -86,8 +88,8 @@ export function ExamRunner({
 
   const item = exam.items[index];
   const total = exam.items.length;
-  const isAnswered = (id: string) => (responses[id] ?? []).length > 0;
-  const unanswered = exam.items.filter((i) => !isAnswered(i.question.id)).length;
+  const answered = (id: string) => isAnswered(responses[id]);
+  const unanswered = exam.items.filter((i) => !answered(i.question.id)).length;
 
   function toggleFlag() {
     setFlagged((f) => {
@@ -115,7 +117,7 @@ export function ExamRunner({
               <McqView
                 key={item.question.id}
                 item={item}
-                selected={responses[item.question.id] ?? []}
+                selected={asArray(responses[item.question.id])}
                 onChange={(ids) => {
                   if (!expired()) setResponses((r) => ({ ...r, [item.question.id]: ids }));
                 }}
@@ -145,7 +147,7 @@ export function ExamRunner({
             Review your answers
           </h2>
           <ReviewGrid
-            items={exam.items.map((it, i) => ({ index: i, answered: isAnswered(it.question.id), flagged: flagged.has(it.question.id) }))}
+            items={exam.items.map((it, i) => ({ index: i, answered: answered(it.question.id), flagged: flagged.has(it.question.id) }))}
             onJump={(i) => {
               setIndex(i);
               setView('question');
