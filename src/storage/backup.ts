@@ -3,6 +3,7 @@ import { getBundledQuestions, listExams } from '../banks';
 import { parseQuestion } from '../domain/schema';
 import type { Question } from '../domain/types';
 import type { Repo } from './repo';
+import { examResultSchema } from '../exam/result';
 
 export const BACKUP_FORMAT = 'cert-exam-trainer-backup';
 
@@ -33,7 +34,7 @@ const fileSchema = z.object({
   exportedAt: z.string(),
   userQuestions: z.array(z.unknown()),
   settings: z.record(z.unknown()),
-  results: z.array(recordSchema),
+  results: z.array(examResultSchema),
   srs: z.array(recordSchema),
 });
 

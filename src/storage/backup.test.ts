@@ -2,13 +2,13 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { createMemoryRepo } from './memoryRepo';
 import { exportBackup, importBackup, ImportError } from './backup';
 import type { Repo } from './repo';
-import { userQ } from './testFixtures';
+import { resultRec, userQ } from './testFixtures';
 
 async function seeded(): Promise<Repo> {
   const repo = createMemoryRepo();
   await repo.upsertUserQuestion(userQ('u1'));
   await repo.setSetting('theme', 'dark');
-  await repo.putRecord('results', { id: 'r1', score: 700 });
+  await repo.putRecord('results', { ...resultRec('r1') });
   await repo.putRecord('srs', { id: 's1', box: 1 });
   return repo;
 }
@@ -97,6 +97,12 @@ describe('backup', () => {
     const json = JSON.stringify({ ...file, userQuestions: [userQ('u2')] });
     await expect(importBackup(flaky, json, 'replace')).rejects.toThrow(/previous data was restored/);
     expect(await snapshot(repo)).toEqual(before);
+  });
+
+  it('rejects a results record that is not a valid exam result', async () => {
+    const file = await exportBackup(createMemoryRepo());
+    const json = JSON.stringify({ ...file, results: [{ id: 'x' }] });
+    await expect(importBackup(repo, json, 'merge')).rejects.toThrow(/results/);
   });
 
   it('merge upserts, replace clears first', async () => {
