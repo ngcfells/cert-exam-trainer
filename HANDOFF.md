@@ -21,6 +21,21 @@
   - PBQs: assembly supports them, but `MockExamFlow` passes `pbqTypes: []`, and `scoreExam` scores PBQs 0. Chunk 3 must enable the types and plug in per-part scoring.
   - "Drill these" is a disabled button until practice mode (chunk 5).
   - The question pool is bundled + user questions (the Ours/Mine/Both toggle is chunk 6).
+- **Chunk 3 is done and merged to `main`** (2026-10-30; 119 unit tests and 8 e2e tests pass; plan: `docs/superpowers/plans/2026-10-30-chunk3-pbq-templates-1-4.md`):
+  - `src/domain/pbq.ts`: payload/answer schemas for `pbq-match`, `pbq-order`, `pbq-config`, `pbq-diagram`, with cross-reference checks in `questionSchema`. Helpers: `correctParts`, `partIds`, `partLabel`, `valueText`, `elementIds`, `TEMPLATE_1_4`.
+  - Every template 1–4 PBQ is a set of parts (`PartMap`: partId → value id). Order parts are positions `'0'..'n-1'`.
+  - Scoring: `pbqFraction` = matching parts / parts; `ItemScore.parts` carries per-part right/wrong. `Responses` values are `string[]` (MCQ) or `PartMap` (PBQ).
+  - Assembly shuffles PBQ elements into `ExamItem.elementOrder`; results store `elementOrders`.
+  - `src/ui/exam/pbq/`: one view per template plus `PbqView`. Each part has a labelled native `<select>` as its keyboard and tap path. HTML5 drag is a mouse-only enhancement, and the chip pool is `aria-hidden`.
+  - Results show a per-part table and any `partExplanations`.
+  - `?seed=N` in the URL replays an attempt. In the e2e tests, seed 1 draws all four PBQ types.
+  - The Data+ bank has one original approved PBQ per template.
+- **Decisions made in chunk 3:**
+  - An order PBQ is unanswered until the user moves a step or chooses "Keep this order".
+  - The review grid and the submit dialog count a PBQ as answered only when every part is filled (`isComplete`). Scoring still gives credit for whatever parts are filled.
+  - Diagrams are structured data (nodes, edges, zones) drawn as SVG, never raw markup, plus a visually hidden text description. Below 40rem, the zone selects stack under the image.
+  - Shuffling PBQ elements uses the shared RNG, so a given seed now assembles a different exam than it did in chunk 2. Old results still validate.
+  - Backups from this build that contain PBQ responses won't import into older builds.
 - **Commands:**
   - `npm run check` runs lint, typecheck, unit tests, the single-file build and e2e with axe.
   - `npm run build` writes `dist/`; `npm run build:single` writes `dist-single/index.html`.
@@ -33,7 +48,7 @@
 
 ## Next session
 
-Chunk 3: PBQ templates 1–4 (match, order, config, diagram) with per-part scoring, plugged into `ExamRunner` and `scoreExam`. Write its plan with superpowers:writing-plans, then execute it.
+Chunk 4: PBQ templates 5–8 (terminal, data, hotspot, buckets) with per-part scoring. Where a template fits, reuse the `PartMap` model in `src/domain/pbq.ts`. Terminal answers are matched against accepted patterns. Add each new type to the e2e seed walk with axe. Write the plan with superpowers:writing-plans, then execute it.
 
 **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 
