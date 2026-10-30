@@ -44,7 +44,7 @@
   - `pbq-buckets`: one select per item, with drag onto buckets as an enhancement. Items are shuffled per attempt.
   - The Data+ bank has one original approved PBQ per template (8 in all). The e2e tests use seeds 4 and 67, which together cover all 8 types.
 - All chunk-4 review findings are fixed, minors included. Rules for writing PBQs (terminal `*` wildcard, quoting, data and hotspot rules) are in `docs/pbq-authoring.md`.
-- **Chunk 5 is done** (2026-10-30, branch `chunk5-study-modes`; plan: `docs/superpowers/plans/2026-10-30-chunk5-study-modes.md`):
+- **Chunk 5 is done and merged to `main`** (2026-10-30; 196 unit tests and 16 e2e tests pass; all review findings fixed, minors included; plan: `docs/superpowers/plans/2026-10-30-chunk5-study-modes.md`):
   - `src/study/`: `srs.ts` (SM-2, strict `srsRecordSchema`, `applyReviews`), `mastery.ts` (`computeMastery`, `weakestObjectives`, `history`, `trendPoints`), `session.ts` (`assemblePractice`, `assembleCram`).
   - `src/ui/study/`: `PracticeSetup`/`PracticeFlow`, `CramFlow`, `StudyRunner` (shared by both), `ProgressScreen` (mastery tables, due counts, history table, SVG trend line).
   - Home has Mock exam / Practice / Cram / Progress buttons per exam; `App` routes on a `Screen` union (`src/ui/screens.ts`).
@@ -64,6 +64,8 @@
   - On a new machine, run `npx playwright install chromium` first.
 - **Open issues and notes:**
   - Data+ objectives are placeholders until chunk 9.
+  - Data+ has only 2 approved MCQs and no acronyms, so cram sessions on Data+ are tiny until content lands.
+  - Tooling: a local hook blocks Bash heredocs that contain an apostrophe; write files with Write/Edit instead.
   - Manual keyboard-only pass: covered by the automated keyboard e2e; a human pass in a real screen reader is still to do.
 - **Priority:** Data+ (DA0-002) first, working end to end, before any other exam.
 - **Bank targets per exam:** at least 500 MCQs and at least 80 PBQs (10 of each of the 8 types).
