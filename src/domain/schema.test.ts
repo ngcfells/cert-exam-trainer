@@ -49,7 +49,7 @@ describe('parseQuestion', () => {
   });
 
   it('accepts pbq-order with pbqWeight', () => {
-    expect(parseQuestion({ ...mcq, type: 'pbq-order', pbqWeight: 3, payload: {}, answer: {} }).pbqWeight).toBe(3);
+    expect(parseQuestion({ ...mcq, type: 'pbq-terminal', pbqWeight: 3, payload: {}, answer: {} }).pbqWeight).toBe(3);
   });
 
   it('rejects pbqWeight 7', () => {

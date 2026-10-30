@@ -47,8 +47,11 @@ export function pbq(id: string, w: number, type: QuestionType = 'pbq-match'): Qu
     difficulty: 2,
     pbqWeight: w,
     stem: `PBQ ${id}`,
-    payload: {},
-    answer: {},
+    payload: {
+      prompts: [{ id: 'p1', text: 'Prompt 1' }, { id: 'p2', text: 'Prompt 2' }],
+      choices: ['c1', 'c2', 'c3'].map((c) => ({ id: c, text: `Choice ${c}` })),
+    },
+    answer: { pairs: { p1: 'c1', p2: 'c2' } },
     explanation: '',
     acronyms: [],
     status: 'approved',
