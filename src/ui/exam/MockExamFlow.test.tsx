@@ -90,10 +90,10 @@ async function submit(user: ReturnType<typeof userEvent.setup>) {
 describe('MockExamFlow', () => {
   it('starts from Home and shows the short-bank notice', async () => {
     const user = userEvent.setup();
-    const onStartExam = vi.fn();
-    render(<Home repo={createMemoryRepo()} persistent onStartExam={onStartExam} />);
+    const onNavigate = vi.fn();
+    render(<Home repo={createMemoryRepo()} persistent onNavigate={onNavigate} />);
     await user.click(await screen.findByRole('button', { name: /start mock exam/i }));
-    expect(onStartExam).toHaveBeenCalledWith('DA0-002');
+    expect(onNavigate).toHaveBeenCalledWith({ name: 'mock', exam: 'DA0-002' });
 
     render(<MockExamFlow repo={createMemoryRepo()} examCode="DA0-002" seed={5} onExit={() => {}} />);
     expect(await screen.findByText(/^\d+ questions$/)).toBeInTheDocument();

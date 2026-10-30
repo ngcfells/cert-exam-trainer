@@ -4,8 +4,9 @@ import type { Repo } from '../storage';
 import { BackupControls } from './BackupControls';
 import { StorageBanner } from './StorageBanner';
 import { questions } from './plural';
+import type { ExamScreen } from './screens';
 
-export function Home({ repo, persistent, onStartExam }: { repo: Repo; persistent: boolean; onStartExam?: (code: string) => void }) {
+export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent: boolean; onNavigate?: (s: ExamScreen) => void }) {
   const [mine, setMine] = useState<Record<string, number>>({});
 
   const refresh = useCallback(async () => {
@@ -31,10 +32,21 @@ export function Home({ repo, persistent, onStartExam }: { repo: Repo; persistent
               <li>{`${questions(getBundledQuestions(e.code).length)} (ours)`}</li>
               <li>{`${questions(mine[e.code] ?? 0)} (mine)`}</li>
             </ul>
-            {onStartExam && (
-              <button type="button" onClick={() => onStartExam(e.code)}>
-                {`Start mock exam: ${e.code}`}
-              </button>
+            {onNavigate && (
+              <div className="home-actions">
+                <button type="button" className="primary" onClick={() => onNavigate({ name: 'mock', exam: e.code })}>
+                  {`Start mock exam: ${e.code}`}
+                </button>
+                <button type="button" onClick={() => onNavigate({ name: 'practice', exam: e.code })}>
+                  {`Practice: ${e.code}`}
+                </button>
+                <button type="button" onClick={() => onNavigate({ name: 'cram', exam: e.code })}>
+                  {`Cram: ${e.code}`}
+                </button>
+                <button type="button" onClick={() => onNavigate({ name: 'progress', exam: e.code })}>
+                  {`Progress: ${e.code}`}
+                </button>
+              </div>
             )}
           </li>
         ))}

@@ -44,6 +44,18 @@
   - `pbq-buckets`: one select per item, with drag onto buckets as an enhancement. Items are shuffled per attempt.
   - The Data+ bank has one original approved PBQ per template (8 in all). The e2e tests use seeds 4 and 67, which together cover all 8 types.
 - All chunk-4 review findings are fixed, minors included. Rules for writing PBQs (terminal `*` wildcard, quoting, data and hotspot rules) are in `docs/pbq-authoring.md`.
+- **Chunk 5 is done** (2026-10-30, branch `chunk5-study-modes`; plan: `docs/superpowers/plans/2026-10-30-chunk5-study-modes.md`):
+  - `src/study/`: `srs.ts` (SM-2, strict `srsRecordSchema`, `applyReviews`), `mastery.ts` (`computeMastery`, `weakestObjectives`, `history`, `trendPoints`), `session.ts` (`assemblePractice`, `assembleCram`).
+  - `src/ui/study/`: `PracticeSetup`/`PracticeFlow`, `CramFlow`, `StudyRunner` (shared by both), `ProgressScreen` (mastery tables, due counts, history table, SVG trend line).
+  - Home has Mock exam / Practice / Cram / Progress buttons per exam; `App` routes on a `Screen` union (`src/ui/screens.ts`).
+  - "Drill these" (mock and practice results) and "Drill weakest objectives" (progress) open practice preset to those objectives.
+  - `saveAttempt` saves a result and schedules SRS reviews for mock, practice and cram.
+- **Decisions made in chunk 5:**
+  - Results gain an optional `mode` (`practice` | `cram`; absent = mock). Old results still validate. Recency (`recentQuestionIds`) counts mock attempts only; mastery counts every mode.
+  - SM-2: start ease 2.5, floor 1.3; intervals 1, 6, then interval × previous ease. Quality from score: < 50% → 1 (miss), < 100% → 3, 100% → 5; acronyms: knew 4, didn't 1. A miss is due again in 10 minutes.
+  - Mock exams schedule answered questions only; practice and cram schedule only questions the user checked (instant) or answered (end feedback). Unseen items are never marked missed.
+  - Cram is MCQ-only, 15 items: due questions (most overdue first), then the 3 weakest objectives in order, then anything; up to 5 acronyms (due, then new). Data+ has no acronyms yet, so cram shows none until chunk 7/9.
+  - Backup import now rejects malformed `srs` records.
 - **Commands:**
   - `npm run check` runs lint, typecheck, unit tests, the single-file build and e2e with axe.
   - `npm run build` writes `dist/`; `npm run build:single` writes `dist-single/index.html`.
@@ -56,7 +68,7 @@
 
 ## Next session
 
-Chunk 5: study modes (spec §"Untimed practice" and chunk list item 5): untimed practice, cram mode, spaced repetition (the `srs` store; tighten its backup validation, which still checks only `id`), the mastery dashboard and history. Practice mode also enables the results screen's "Drill these" button. Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
+Chunk 6: question adder (spec chunk list item 6): an authoring form for every question type, including all 8 PBQ templates with a live preview; edit and delete; the Ours / Mine / Both source toggle (it should also filter the mock, practice and cram pools); JSON import and export; the user-content notice. Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 
 **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 
