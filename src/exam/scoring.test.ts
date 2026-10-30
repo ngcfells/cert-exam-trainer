@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { isAnswered, isComplete, mcqFraction, pbqFraction, scoreExam, type Responses } from './scoring';
+import { isAnswered, isComplete, itemFraction, mcqFraction, pbqFraction, scoreExam, type Responses } from './scoring';
 import type { AssembledExam } from './assemble';
 import { mcq, meta3, pbq } from './testFixtures';
 import type { Question } from '../domain/types';
@@ -144,5 +144,18 @@ describe('templates 5-8 scoring', () => {
     expect(pbqFraction(buckets, { i1: 'b2', i2: 'b1', i3: 'b2' })).toBeCloseTo(2 / 3, 9);
     expect(isComplete(terminal, { t1: '   ', t2: 'a2' })).toBe(false);
     expect(isComplete(terminal, { t1: 'ls', t2: 'a2' })).toBe(true);
+  });
+});
+
+describe('itemFraction', () => {
+  it('scores MCQs and PBQs the same way scoreExam does', () => {
+    const m = mcq('M', 'A', 'mcq-multi');
+    const p = pbq('P', 2);
+    expect(itemFraction(m, ['a', 'b'])).toBe(0);
+    expect(itemFraction(m, ['a'])).toBe(0.5);
+    expect(itemFraction(m, undefined)).toBe(0);
+    expect(itemFraction(p, { p1: 'c1' })).toBe(0.5);
+    const r = scoreExam(examOf([p, m]), { P: { p1: 'c1' }, M: ['a'] }, meta3);
+    expect(r.items.map((i) => i.fraction)).toEqual([0.5, 0.5]);
   });
 });

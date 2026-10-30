@@ -32,6 +32,12 @@ export function pbqFraction(q: Question, given: PartMap): number {
   return ids.filter((id) => partCorrect(q, id, given)).length / ids.length;
 }
 
+/** Fraction earned on one question, 0..1. */
+export function itemFraction(q: Question, r: ItemResponse | undefined): number {
+  if (q.type === 'mcq-single' || q.type === 'mcq-multi') return mcqFraction((q.answer as McqAnswer).correct, Array.isArray(r) ? r : [], q.type);
+  return pbqFraction(q, r && !Array.isArray(r) ? r : {});
+}
+
 export interface ItemScore {
   questionId: string;
   earned: number;
@@ -74,12 +80,12 @@ export function scoreExam(exam: AssembledExam, responses: Responses, meta: ExamM
     const r = responses[q.id];
     if (q.type === 'mcq-single' || q.type === 'mcq-multi') {
       const picked = Array.isArray(r) ? r : [];
-      const fraction = mcqFraction((q.answer as McqAnswer).correct, picked, q.type);
+      const fraction = itemFraction(q, picked);
       return { questionId: q.id, earned: unit * fraction, possible: unit, fraction, answered: picked.length > 0 };
     }
     const given: PartMap = r && !Array.isArray(r) ? r : {};
     const parts = partIds(q).map((partId) => ({ partId, correct: partCorrect(q, partId, given) }));
-    const fraction = pbqFraction(q, given);
+    const fraction = itemFraction(q, given);
     const possible = unit * (q.pbqWeight ?? 1);
     return { questionId: q.id, earned: possible * fraction, possible, fraction, answered: isAnswered(given), parts };
   });

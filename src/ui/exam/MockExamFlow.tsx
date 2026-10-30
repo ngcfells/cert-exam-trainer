@@ -10,6 +10,7 @@ import type { Repo } from '../../storage';
 import { ExamRunner, type SubmitPayload } from './ExamRunner';
 import { ExamSetup } from './ExamSetup';
 import { ResultsScreen } from './ResultsScreen';
+import { saveAttempt } from './saveAttempt';
 
 type Stage =
   | { stage: 'loading' }
@@ -17,7 +18,19 @@ type Stage =
   | { stage: 'running'; exam: AssembledExam; startedAt: Date }
   | { stage: 'results'; exam: AssembledExam; result: ExamResult; report: ScoreReport; saveError: string | null };
 
-export function MockExamFlow({ repo, examCode, onExit, seed }: { repo: Repo; examCode: string; onExit: () => void; seed?: number }) {
+export function MockExamFlow({
+  repo,
+  examCode,
+  onExit,
+  onDrill,
+  seed,
+}: {
+  repo: Repo;
+  examCode: string;
+  onExit: () => void;
+  onDrill?: (objectiveIds: string[]) => void;
+  seed?: number;
+}) {
   const meta = listExams().find((m) => m.code === examCode)!;
   const [s, setS] = useState<Stage>({ stage: 'loading' });
 
@@ -43,12 +56,8 @@ export function MockExamFlow({ repo, examCode, onExit, seed }: { repo: Repo; exa
   async function finish(exam: AssembledExam, startedAt: Date, p: SubmitPayload) {
     const report = scoreExam(exam, p.responses, meta);
     const result = buildResult({ exam, report, startedAt, ...p });
-    let saveError: string | null = null;
-    try {
-      await repo.putRecord('results', result);
-    } catch {
-      saveError = 'Your result could not be saved to history.';
-    }
+    const answered = report.items.filter((i) => i.answered).map((i) => i.questionId);
+    const saveError = await saveAttempt(repo, result, report, answered, p.finishedAt);
     setS({ stage: 'results', exam, result, report, saveError });
   }
 
@@ -74,6 +83,6 @@ export function MockExamFlow({ repo, examCode, onExit, seed }: { repo: Repo; exa
         />
       );
     case 'results':
-      return <ResultsScreen meta={meta} exam={s.exam} result={s.result} report={s.report} saveError={s.saveError} onHome={onExit} />;
+      return <ResultsScreen meta={meta} exam={s.exam} result={s.result} report={s.report} saveError={s.saveError} onHome={onExit} onDrill={onDrill} />;
   }
 }

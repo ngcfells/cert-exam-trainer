@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildResult, examResultSchema, recentQuestionIds, type ExamResult } from './result';
+import { buildResult, examResultSchema, recentQuestionIds, resultMode, type ExamResult } from './result';
 import { assembleExam } from './assemble';
 import { scoreExam } from './scoring';
 import { bank, meta3 } from './testFixtures';
@@ -49,5 +49,36 @@ describe('result', () => {
       { id: 'garbage' },
     ];
     expect(recentQuestionIds(results, 'T-001')).toEqual(new Set(['q2', 'q3', 'q4']));
+  });
+
+  it('an old result without mode parses and reads as mock', () => {
+    const r = sample();
+    expect(r.mode).toBeUndefined();
+    expect(resultMode(examResultSchema.parse(r))).toBe('mock');
+  });
+
+  it('buildResult stores a practice mode', () => {
+    const exam = assembleExam({ meta: meta3, pool: bank({ A: 2 }), seed: 1, recentIds: new Set(), pbqTypes: [] });
+    const r = buildResult({
+      exam,
+      responses: {},
+      flagged: [],
+      report: scoreExam(exam, {}, meta3),
+      startedAt: new Date(0),
+      finishedAt: new Date(1),
+      autoSubmitted: false,
+      mode: 'practice',
+    });
+    expect(r.mode).toBe('practice');
+    expect(resultMode(r)).toBe('practice');
+  });
+
+  it('recentQuestionIds ignores practice and cram results', () => {
+    const results = [
+      fake('r1', 'T-001', 1, ['mock']),
+      { ...fake('r2', 'T-001', 2, ['practice']), mode: 'practice' },
+      { ...fake('r3', 'T-001', 3, ['cram']), mode: 'cram' },
+    ];
+    expect(recentQuestionIds(results, 'T-001')).toEqual(new Set(['mock']));
   });
 });

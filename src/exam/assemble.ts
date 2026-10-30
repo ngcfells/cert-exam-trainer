@@ -49,8 +49,17 @@ export function domainOf(meta: ExamMeta, q: Question): string | undefined {
   return meta.objectives.find((o) => o.id === q.objectiveIds[0])?.domainId;
 }
 
+/** Wraps a question with its per-attempt shuffle of options or PBQ elements. */
+export function itemFor(question: Question, rng: Rng): ExamItem {
+  if (question.type === 'mcq-single' || question.type === 'mcq-multi') {
+    return { question, optionOrder: shuffle((question.payload as McqPayload).options.map((o) => o.id), rng) };
+  }
+  const ids = elementIds(question);
+  return ids.length ? { question, elementOrder: shuffle(ids, rng) } : { question };
+}
+
 /** Shuffled fresh questions, then shuffled recent ones. */
-function freshFirst(qs: Question[], recent: ReadonlySet<string>, rng: Rng): Question[] {
+export function freshFirst(qs: Question[], recent: ReadonlySet<string>, rng: Rng): Question[] {
   return [...shuffle(qs.filter((q) => !recent.has(q.id)), rng), ...shuffle(qs.filter((q) => recent.has(q.id)), rng)];
 }
 
@@ -65,10 +74,7 @@ export function assembleExam({ meta, pool, seed, recentIds, pbqTypes }: Assemble
     while (pbqs.length && pbqs.reduce((s, q) => s + (q.pbqWeight ?? 1), 0) > meta.maxQuestions - 1) pbqs.pop();
   }
   const pbqWeightSum = pbqs.reduce((s, q) => s + (q.pbqWeight ?? 1), 0);
-  const pbqItems: ExamItem[] = pbqs.map((question) => {
-    const ids = elementIds(question);
-    return ids.length ? { question, elementOrder: shuffle(ids, rng) } : { question };
-  });
+  const pbqItems = pbqs.map((q) => itemFor(q, rng));
 
   const byDomain = meta.domains.map((d) =>
     freshFirst(pool.filter((q) => (q.type === 'mcq-single' || q.type === 'mcq-multi') && domainOf(meta, q) === d.id), recentIds, rng),
@@ -85,12 +91,6 @@ export function assembleExam({ meta, pool, seed, recentIds, pbqTypes }: Assemble
   }
   const mcqs = shuffle(byDomain.flatMap((qs, i) => qs.slice(0, quota[i])), rng);
 
-  const items: ExamItem[] = [
-    ...pbqItems,
-    ...mcqs.map((question) => ({
-      question,
-      optionOrder: shuffle((question.payload as McqPayload).options.map((o) => o.id), rng),
-    })),
-  ];
+  const items: ExamItem[] = [...pbqItems, ...mcqs.map((q) => itemFor(q, rng))];
   return { exam: meta.code, seed, items, mcqCount: mcqs.length, pbqWeightSum };
 }

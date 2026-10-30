@@ -18,6 +18,21 @@ describe('Home', () => {
     expect(await within(row).findByText('0 questions (mine)')).toBeInTheDocument();
   });
 
+  it('offers mock exam, practice, cram and progress for each exam', async () => {
+    const user = userEvent.setup();
+    const onNavigate = vi.fn();
+    render(<Home repo={createMemoryRepo()} persistent onNavigate={onNavigate} />);
+    for (const [name, screenName] of [
+      ['Start mock exam: DA0-002', 'mock'],
+      ['Practice: DA0-002', 'practice'],
+      ['Cram: DA0-002', 'cram'],
+      ['Progress: DA0-002', 'progress'],
+    ] as const) {
+      await user.click(screen.getByRole('button', { name }));
+      expect(onNavigate).toHaveBeenLastCalledWith({ name: screenName, exam: 'DA0-002' });
+    }
+  });
+
   it('shows the storage banner only when not persistent', async () => {
     const { rerender } = render(<StorageBanner persistent />);
     expect(screen.getByRole('status')).toBeEmptyDOMElement();

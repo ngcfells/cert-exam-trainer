@@ -2,14 +2,14 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { createMemoryRepo } from './memoryRepo';
 import { exportBackup, importBackup, ImportError } from './backup';
 import type { Repo } from './repo';
-import { resultRec, userQ } from './testFixtures';
+import { resultRec, srsRec, userQ } from './testFixtures';
 
 async function seeded(): Promise<Repo> {
   const repo = createMemoryRepo();
   await repo.upsertUserQuestion(userQ('u1'));
   await repo.setSetting('theme', 'dark');
   await repo.putRecord('results', { ...resultRec('r1') });
-  await repo.putRecord('srs', { id: 's1', box: 1 });
+  await repo.putRecord('srs', srsRec('s1'));
   return repo;
 }
 
@@ -103,6 +103,20 @@ describe('backup', () => {
     const file = await exportBackup(createMemoryRepo());
     const json = JSON.stringify({ ...file, results: [{ id: 'x' }] });
     await expect(importBackup(repo, json, 'merge')).rejects.toThrow(/results/);
+  });
+
+  it('rejects a malformed srs record, names srs.0 and leaves the repo unchanged', async () => {
+    const before = await snapshot(repo);
+    const file = await exportBackup(createMemoryRepo());
+    const json = JSON.stringify({ ...file, srs: [{ id: 'x', box: 1 }] });
+    await expect(importBackup(repo, json, 'replace')).rejects.toThrow(/srs\.0/);
+    expect(await snapshot(repo)).toEqual(before);
+  });
+
+  it('round-trips a valid srs record', async () => {
+    const target = createMemoryRepo();
+    await importBackup(target, JSON.stringify(await exportBackup(repo)), 'merge');
+    expect(await target.listRecords('srs')).toEqual([srsRec('s1')]);
   });
 
   it('merge upserts, replace clears first', async () => {
