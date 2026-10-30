@@ -8,6 +8,7 @@ import { Home } from '../Home';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { dataPlusQuestions } from '../../banks/dataplus/questions';
 import { examResultSchema } from '../../exam/result';
+import { parseSrsRecords } from '../../study/srs';
 import { correctParts, partLabel, valueText } from '../../domain/pbq';
 import type { McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { Repo } from '../../storage';
@@ -110,6 +111,25 @@ describe('MockExamFlow', () => {
     expect(examResultSchema.parse(recs[0]).seed).toBe(5);
   });
 
+  it('schedules reviews for every answered question', async () => {
+    const { user, repo } = await start();
+    await answerAll(user, 'right');
+    await submit(user);
+    await screen.findByRole('heading', { name: /your score/i });
+    const result = examResultSchema.parse((await repo.listRecords('results'))[0]);
+    const srs = parseSrsRecords(await repo.listRecords('srs'));
+    expect(srs.map((r) => r.itemId).sort()).toEqual([...result.questionIds].sort());
+    expect(srs.every((r) => r.reps === 1)).toBe(true);
+  });
+
+  it('does not schedule unanswered questions', async () => {
+    const { user, repo } = await start();
+    await answerAll(user, 'skip');
+    await submit(user);
+    await screen.findByRole('heading', { name: /your score/i });
+    expect(await repo.listRecords('srs')).toEqual([]);
+  });
+
   it('reviews wrong and unanswered items with explanations', async () => {
     const { user } = await start();
     await answerAll(user, 'wrong');
@@ -129,6 +149,18 @@ describe('MockExamFlow', () => {
     await submit(user);
     expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
     expect(screen.getByRole('alert')).toHaveTextContent('Your result could not be saved to history.');
+  });
+
+  it('reports a failed review-scheduling save but keeps the result', async () => {
+    const repo = createMemoryRepo();
+    const put = repo.putRecord.bind(repo);
+    repo.putRecord = (store, rec) => (store === 'srs' ? Promise.reject(new Error('quota')) : put(store, rec));
+    const { user } = await start(repo);
+    await answerAll(user, 'right');
+    await submit(user);
+    expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
+    expect(screen.getByRole('alert')).toHaveTextContent(/^Review scheduling could not be saved\.$/);
+    expect(await repo.listRecords('results')).toHaveLength(1);
   });
 
   it('keeps the alert region mounted so a save error is announced', async () => {
