@@ -24,5 +24,13 @@ export const dataPlusMeta: ExamMeta = {
     { id: '4.1', domainId: '4', title: 'Visualization and Reporting (placeholder)' },
     { id: '5.1', domainId: '5', title: 'Data Governance (placeholder)' },
   ],
-  acronyms: [],
+  // community: written by us; the official list lands in chunk 9.
+  acronyms: [
+    { term: 'API', expansion: 'Application Programming Interface', source: 'community' },
+    { term: 'CSV', expansion: 'Comma-Separated Values', source: 'community' },
+    { term: 'ETL', expansion: 'Extract, Transform, Load', source: 'community' },
+    { term: 'JSON', expansion: 'JavaScript Object Notation', source: 'community' },
+    { term: 'PII', expansion: 'Personally Identifiable Information', source: 'community' },
+    { term: 'SQL', expansion: 'Structured Query Language', source: 'community' },
+  ],
 };

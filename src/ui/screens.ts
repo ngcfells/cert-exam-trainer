@@ -4,6 +4,7 @@ export type Screen =
   | { name: 'practice'; exam: string; preset?: string[] }
   | { name: 'cram'; exam: string }
   | { name: 'progress'; exam: string }
+  | { name: 'acronyms'; exam: string }
   | { name: 'questions'; exam: string }
   | { name: 'edit'; exam: string; id?: string };
 

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { loadAcronyms } from '../../acronyms/userList';
 import { listExams } from '../../banks';
 import type { AssembledExam } from '../../exam/assemble';
 import { buildResult, type ExamResult } from '../../exam/result';
@@ -40,10 +41,10 @@ export function CramFlow({ repo, examCode, seed, onExit }: { repo: Repo; examCod
 
   useEffect(() => {
     let live = true;
-    void loadStudy(repo, examCode).then(
-      ({ pool, results, srs }) => {
+    void Promise.all([loadStudy(repo, examCode), loadAcronyms(repo, examCode)]).then(
+      ([{ pool, results, srs }, acronyms]) => {
         if (!live) return;
-        const session = assembleCram({ meta, pool, seed: seed ?? newSeed(), srs, mastery: computeMastery(meta, results, pool), now: new Date() });
+        const session = assembleCram({ meta, acronyms, pool, seed: seed ?? newSeed(), srs, mastery: computeMastery(meta, results, pool), now: new Date() });
         setS({ stage: 'setup', session });
       },
       () => live && setS({ stage: 'error' }),

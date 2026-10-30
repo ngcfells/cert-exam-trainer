@@ -48,6 +48,9 @@ export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent:
                 <button type="button" onClick={() => onNavigate({ name: 'progress', exam: e.code })}>
                   {`Progress: ${e.code}`}
                 </button>
+                <button type="button" onClick={() => onNavigate({ name: 'acronyms', exam: e.code })}>
+                  {`Acronyms: ${e.code}`}
+                </button>
                 <button type="button" onClick={() => onNavigate({ name: 'questions', exam: e.code })}>
                   {`My questions: ${e.code}`}
                 </button>
