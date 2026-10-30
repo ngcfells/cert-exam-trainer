@@ -13,11 +13,11 @@ describe('bundled registry', () => {
 
   it('returns only approved questions in production', () => {
     vi.stubEnv('DEV', false);
-    expect(getBundledQuestions('DA0-002')).toHaveLength(6);
+    expect(getBundledQuestions('DA0-002')).toHaveLength(10);
   });
 
   it('returns drafts when includeDrafts is true', () => {
-    expect(getBundledQuestions('DA0-002', { includeDrafts: true })).toHaveLength(7);
+    expect(getBundledQuestions('DA0-002', { includeDrafts: true })).toHaveLength(11);
   });
 
   it('returns empty for an unknown exam', () => {

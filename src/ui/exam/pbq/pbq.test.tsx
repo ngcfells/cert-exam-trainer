@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { PbqView } from './PbqView';
 import { pbqFixture } from '../../../domain/pbqFixtures';
@@ -59,6 +59,44 @@ describe('PBQ templates', () => {
     expect(screen.getByRole('img', { name: 'Stem' })).toBeInTheDocument();
     await user.selectOptions(screen.getByRole('combobox', { name: 'Destination box' }), 'T-l2');
     expect(onChange).toHaveBeenLastCalledWith({ z1: 'l2' });
+  });
+});
+
+describe('PBQ templates 5-8', () => {
+  it('terminal: typing a command sets that step, and an action is chosen from a list', async () => {
+    const { onChange, user } = setup({ question: pbqFixture('terminal') });
+    expect(screen.getByRole('region', { name: 'Terminal output' })).toHaveTextContent('app.log db.log');
+    await user.type(screen.getByRole('textbox', { name: 'Find errors' }), 'g');
+    expect(onChange).toHaveBeenLastCalledWith({ t1: 'g' });
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Next action' }), 'T-a2');
+    expect(onChange).toHaveBeenLastCalledWith({ t2: 'a2' });
+  });
+
+  it('data: renders a captioned table and question fields', async () => {
+    const { onChange, user } = setup({ question: pbqFixture('data') });
+    const table = screen.getByRole('table', { name: 'Sales by region' });
+    expect(within(table).getAllByRole('columnheader').map((h) => h.textContent)).toEqual(['Region', 'Sales']);
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Top region' }), 'T-north');
+    expect(onChange).toHaveBeenLastCalledWith({ f1: 'north' });
+  });
+
+  it('hotspot: a checkbox per spot toggles it', async () => {
+    const { onChange, user } = setup({ question: pbqFixture('hotspot') }, { s3: 'on' });
+    expect(screen.getByRole('checkbox', { name: 'Database' })).toBeChecked();
+    await user.click(screen.getByRole('checkbox', { name: 'Web server' }));
+    expect(onChange).toHaveBeenLastCalledWith({ s1: 'on', s3: 'on' });
+    await user.click(screen.getByRole('checkbox', { name: 'Database' }));
+    expect(onChange).toHaveBeenLastCalledWith({});
+  });
+
+  it('buckets: choosing a bucket places the item, and a later choice replaces it', async () => {
+    const { onChange, user } = setup({ question: pbqFixture('buckets'), elementOrder: ['i3', 'i1', 'i2'] }, { i1: 'b2' });
+    expect(screen.getAllByRole('combobox').map((c) => c.getAttribute('aria-label') ?? c.id)).toHaveLength(3);
+    expect(screen.getByRole('group', { name: 'T-b2' })).toHaveTextContent('T-i1');
+    // A placed item can be dragged on to another bucket.
+    expect(within(screen.getByRole('group', { name: 'T-b2' })).getByText('T-i1')).toHaveAttribute('draggable', 'true');
+    await user.selectOptions(screen.getByRole('combobox', { name: 'T-i1' }), 'T-b1');
+    expect(onChange).toHaveBeenLastCalledWith({ i1: 'b1' });
   });
 });
 

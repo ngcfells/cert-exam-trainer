@@ -3,6 +3,7 @@ import { isAnswered, isComplete, mcqFraction, pbqFraction, scoreExam, type Respo
 import type { AssembledExam } from './assemble';
 import { mcq, meta3, pbq } from './testFixtures';
 import type { Question } from '../domain/types';
+import { pbqFixture } from '../domain/pbqFixtures';
 
 function examOf(qs: Question[]): AssembledExam {
   const pbqs = qs.filter((q) => q.type.startsWith('pbq'));
@@ -46,6 +47,7 @@ describe('PBQ part scoring', () => {
     expect(isAnswered(undefined)).toBe(false);
     expect(isAnswered([])).toBe(false);
     expect(isAnswered({ a: '' })).toBe(false);
+    expect(isAnswered({ a: '   ' })).toBe(false);
     expect(isAnswered({ a: 'x' })).toBe(true);
     expect(isAnswered(['a'])).toBe(true);
   });
@@ -104,5 +106,43 @@ describe('scoreExam', () => {
     expect(r.byDomain.reduce((s, d) => s + d.possible, 0)).toBeCloseTo(900, 9);
     expect(r.weakestObjectives.map((o) => o.objectiveId)).toEqual(['C.1', 'A.1']);
     expect(r.weakestObjectives[0]).toMatchObject({ title: 'Objective C1', fraction: 0 });
+  });
+});
+
+describe('templates 5-8 scoring', () => {
+  const terminal = pbqFixture('terminal');
+  const hotspot = pbqFixture('hotspot');
+  const buckets = pbqFixture('buckets');
+
+  it('scores terminal steps by pattern and choice', () => {
+    expect(pbqFraction(terminal, { t1: 'grep  ERROR app.log', t2: 'wrong' })).toBe(0.5);
+    expect(pbqFraction(terminal, { t1: 'grep ERROR app.log', t2: 'a2' })).toBe(1);
+  });
+
+  it('scores hotspots with the select-all rule', () => {
+    expect(pbqFraction(hotspot, {})).toBe(0);
+    expect(pbqFraction(hotspot, { s1: 'on' })).toBe(0.5);
+    expect(pbqFraction(hotspot, { s1: 'on', s3: 'on', s2: 'on' })).toBe(0.5);
+    expect(pbqFraction(hotspot, { s1: 'on', s2: 'on', s3: 'on', s4: 'on' })).toBe(0);
+    expect(isComplete(hotspot, {})).toBe(false);
+    expect(isComplete(hotspot, { s1: 'on' })).toBe(true);
+  });
+
+  it('reports hotspot parts but earns nothing when untouched', () => {
+    const r = scoreExam({ exam: 'T-001', seed: 1, items: [{ question: hotspot }], mcqCount: 0, pbqWeightSum: 3 }, {}, meta3);
+    expect(r.items[0].fraction).toBe(0);
+    expect(r.items[0].answered).toBe(false);
+    expect(r.items[0].parts).toEqual([
+      { partId: 's1', correct: false },
+      { partId: 's2', correct: true },
+      { partId: 's3', correct: false },
+      { partId: 's4', correct: true },
+    ]);
+  });
+
+  it('scores buckets per item and requires blank-free terminal text', () => {
+    expect(pbqFraction(buckets, { i1: 'b2', i2: 'b1', i3: 'b2' })).toBeCloseTo(2 / 3, 9);
+    expect(isComplete(terminal, { t1: '   ', t2: 'a2' })).toBe(false);
+    expect(isComplete(terminal, { t1: 'ls', t2: 'a2' })).toBe(true);
   });
 });

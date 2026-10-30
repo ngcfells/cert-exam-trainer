@@ -1,9 +1,11 @@
 import { test, expect, type Page } from '@playwright/test';
 import { expectNoSeriousAxe, singleUrl } from './util';
 
-// Seed 1 draws all four PBQ templates (diagram, config, order, match), then the 2 approved MCQs.
-const seeded = `${singleUrl}?seed=1`;
-const TOTAL = 6;
+// Each seed draws 6 PBQs, then the 2 approved MCQs. Together they cover all 8 templates:
+// seed 4: diagram, terminal, data, buckets, hotspot, match; seed 67 adds order and config.
+const SEEDS = [4, 67];
+const seeded = `${singleUrl}?seed=${SEEDS[0]}`;
+const TOTAL = 8;
 
 async function startExam(page: Page) {
   await page.goto(seeded);
@@ -23,8 +25,8 @@ async function submit(page: Page) {
   await expect(page.getByRole('heading', { name: /your score/i })).toBeVisible();
 }
 
-test('mock exam screens, including every PBQ template, pass axe', async ({ page }) => {
-  await page.goto(seeded);
+for (const seed of SEEDS) test(`mock exam screens (seed ${seed}) pass axe`, async ({ page }) => {
+  await page.goto(`${singleUrl}?seed=${seed}`);
   await page.getByRole('button', { name: /start mock exam/i }).click();
   await expect(page.getByRole('button', { name: 'Start exam' })).toBeVisible();
   await expectNoSeriousAxe(page);
@@ -49,8 +51,8 @@ test('mock exam screens, including every PBQ template, pass axe', async ({ page 
   await expectNoSeriousAxe(page);
 });
 
-test('a mock exam with PBQs can be completed with the keyboard only', async ({ page }) => {
-  await page.goto(seeded);
+for (const seed of SEEDS) test(`a mock exam with PBQs (seed ${seed}) can be completed with the keyboard only`, async ({ page }) => {
+  await page.goto(`${singleUrl}?seed=${seed}`);
   await page.getByRole('button', { name: /start mock exam/i }).focus();
   await page.keyboard.press('Enter');
   await page.getByRole('button', { name: 'Start exam' }).focus();
@@ -71,6 +73,7 @@ test('a mock exam with PBQs can be completed with the keyboard only', async ({ p
       const a = await active();
       if (a.text === name) return page.keyboard.press('Enter');
       if (a.tag === 'SELECT') await page.keyboard.press('ArrowDown');
+      if (a.tag === 'INPUT' && a.type === 'text') await page.keyboard.type('grep ERROR load_orders.log');
       if (a.text === 'Keep this order') await page.keyboard.press('Enter');
       if (!picked && (a.type === 'radio' || a.type === 'checkbox')) {
         await page.keyboard.press('Space');

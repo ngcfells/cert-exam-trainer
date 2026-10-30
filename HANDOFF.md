@@ -36,6 +36,14 @@
   - Diagrams are structured data (nodes, edges, zones) drawn as SVG, never raw markup, plus a visually hidden text description. Below 40rem, the zone selects stack under the image.
   - Shuffling PBQ elements uses the shared RNG, so a given seed now assembles a different exam than it did in chunk 2. Old results still validate.
   - Backups from this build that contain PBQ responses won't import into older builds.
+- **Chunk 4 is done on branch `chunk4-pbq-5-8`, not yet merged** (2026-10-30; 137 unit tests and 10 e2e tests pass; plan: `docs/superpowers/plans/2026-10-30-chunk4-pbq-templates-5-8.md`):
+  - `src/domain/pbq.ts` covers all 8 templates (`PBQ_TEMPLATES`, `isPbqTemplate`). Templates 5–8 use the same `PartMap` model. One function, `partCorrect`, decides every part for scoring, results and the answer key.
+  - `pbq-terminal`: steps are typed commands, or "choose an action" when the step has `options`. `matchesPattern` trims and collapses whitespace but keeps case. `*` matches one or more non-space characters; everything else is literal.
+  - `pbq-data`: a real captioned table, plus an optional bar chart that is `aria-hidden` because the table is its text equivalent. The schema rejects rows of the wrong length and non-numeric charted cells.
+  - `pbq-hotspot`: one checkbox per spot is the keyboard and tap path, and the SVG is a click enhancement. It is scored with the select-all rule, so an untouched hotspot scores 0 and shows as unanswered.
+  - `pbq-buckets`: one select per item, with drag onto buckets as an enhancement. Items are shuffled per attempt.
+  - The Data+ bank has one original approved PBQ per template (8 in all). The e2e tests use seeds 4 and 67, which together cover all 8 types.
+- All chunk-4 review findings are fixed, minors included. Rules for writing PBQs (terminal `*` wildcard, quoting, data and hotspot rules) are in `docs/pbq-authoring.md`.
 - **Commands:**
   - `npm run check` runs lint, typecheck, unit tests, the single-file build and e2e with axe.
   - `npm run build` writes `dist/`; `npm run build:single` writes `dist-single/index.html`.
@@ -48,7 +56,7 @@
 
 ## Next session
 
-Chunk 4: PBQ templates 5–8 (terminal, data, hotspot, buckets) with per-part scoring. Where a template fits, reuse the `PartMap` model in `src/domain/pbq.ts`. Terminal answers are matched against accepted patterns. Add each new type to the e2e seed walk with axe. Write the plan with superpowers:writing-plans, then execute it.
+First, merge `chunk4-pbq-5-8` into `main` once the owner approves. Then chunk 5 (practice mode; see the spec's chunk list), which also enables the "Drill these" button. Write the plan with superpowers:writing-plans, then execute it.
 
 **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 
@@ -58,3 +66,4 @@ Chunk 4: PBQ templates 5–8 (terminal, data, hotspot, buckets) with per-part sc
 - Bundled content must be original. Never ingest dump questions. The acronym harvester keeps only acronym tokens.
 - Accessibility is enforced: axe must show no serious or critical violations, and every drag interaction needs a keyboard and tap alternative.
 - Update this file at the end of every chunk.
+- Finish each chunk in full before moving on. Fix review minors too; never defer them.

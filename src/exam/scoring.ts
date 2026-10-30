@@ -1,4 +1,4 @@
-import { correctParts, partIds, type PartMap } from '../domain/pbq';
+import { HOTSPOT_ON, normalizeCommand, partCorrect, partIds, type PartMap } from '../domain/pbq';
 import type { ExamMeta, McqAnswer, Question } from '../domain/types';
 import { domainOf, type AssembledExam } from './assemble';
 
@@ -8,21 +8,28 @@ export type Responses = Record<string, ItemResponse>;
 
 export function isAnswered(r: ItemResponse | undefined): boolean {
   if (!r) return false;
-  return Array.isArray(r) ? r.length > 0 : Object.values(r).some((v) => v !== '');
+  return Array.isArray(r) ? r.length > 0 : Object.values(r).some((v) => v.trim() !== '');
 }
 
-/** Fully answered: an MCQ with a pick, or a PBQ with every part filled. Drives the review grid. */
+/**
+ * Fully answered: an MCQ with a pick, a hotspot with any spot selected, or
+ * another PBQ with every part filled. Drives the review grid.
+ */
 export function isComplete(q: Question, r: ItemResponse | undefined): boolean {
   if (!r || Array.isArray(r)) return isAnswered(r);
-  return partIds(q).every((id) => !!r[id]);
+  if (q.type === 'pbq-hotspot') return Object.values(r).includes(HOTSPOT_ON);
+  return partIds(q).every((id) => !!r[id] && normalizeCommand(r[id]) !== '');
 }
 
-/** Matching parts / total parts. */
+/** Matching parts / total parts; hotspots use the select-all rule. */
 export function pbqFraction(q: Question, given: PartMap): number {
   const ids = partIds(q);
   if (ids.length === 0) return 0;
-  const key = correctParts(q);
-  return ids.filter((id) => given[id] === key[id]).length / ids.length;
+  if (q.type === 'pbq-hotspot') {
+    const on = ids.filter((id) => given[id] === HOTSPOT_ON);
+    return mcqFraction((q.answer as { selected: string[] }).selected, on, 'mcq-multi');
+  }
+  return ids.filter((id) => partCorrect(q, id, given)).length / ids.length;
 }
 
 export interface ItemScore {
@@ -71,8 +78,7 @@ export function scoreExam(exam: AssembledExam, responses: Responses, meta: ExamM
       return { questionId: q.id, earned: unit * fraction, possible: unit, fraction, answered: picked.length > 0 };
     }
     const given: PartMap = r && !Array.isArray(r) ? r : {};
-    const key = correctParts(q);
-    const parts = partIds(q).map((partId) => ({ partId, correct: given[partId] === key[partId] }));
+    const parts = partIds(q).map((partId) => ({ partId, correct: partCorrect(q, partId, given) }));
     const fraction = pbqFraction(q, given);
     const possible = unit * (q.pbqWeight ?? 1);
     return { questionId: q.id, earned: possible * fraction, possible, fraction, answered: isAnswered(given), parts };

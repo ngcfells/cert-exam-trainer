@@ -14,7 +14,7 @@ describe('Home', () => {
     vi.stubEnv('DEV', false);
     render(<Home repo={createMemoryRepo()} persistent />);
     const row = (await screen.findByText('CompTIA Data+ (DA0-002)')).closest('li')!;
-    expect(within(row).getByText('6 questions (ours)')).toBeInTheDocument();
+    expect(within(row).getByText('10 questions (ours)')).toBeInTheDocument();
     expect(await within(row).findByText('0 questions (mine)')).toBeInTheDocument();
   });
 

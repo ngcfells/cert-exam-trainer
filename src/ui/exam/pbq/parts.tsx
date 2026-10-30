@@ -5,7 +5,7 @@ export interface Item {
   text: string;
 }
 
-const MIME = 'text/plain';
+export const MIME = 'text/plain';
 
 /** Items in the attempt's shuffled order, falling back to authored order. */
 export function inOrder<T extends Item>(items: T[], order?: string[]): T[] {

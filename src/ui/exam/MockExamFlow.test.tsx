@@ -34,7 +34,16 @@ async function answerPbq(user: User, q: Question) {
     }
     return;
   }
+  if (q.type === 'pbq-hotspot') {
+    for (const [part, v] of Object.entries(key)) if (v === 'on') await user.click(screen.getByRole('checkbox', { name: partLabel(q, part) }));
+    return;
+  }
   for (const [part, id] of Object.entries(key)) {
+    const box = screen.queryByRole('textbox', { name: partLabel(q, part) });
+    if (box) {
+      await user.type(box, id);
+      continue;
+    }
     await user.selectOptions(screen.getByRole('combobox', { name: partLabel(q, part) }), valueText(q, part, id));
   }
 }
