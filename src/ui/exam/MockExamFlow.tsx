@@ -12,7 +12,7 @@ import { ResultsScreen } from './ResultsScreen';
 
 type Stage =
   | { stage: 'loading' }
-  | { stage: 'setup'; exam: AssembledExam; available: number }
+  | { stage: 'setup'; exam: AssembledExam }
   | { stage: 'running'; exam: AssembledExam; startedAt: Date }
   | { stage: 'results'; exam: AssembledExam; result: ExamResult; report: ScoreReport; saveError: string | null };
 
@@ -32,8 +32,7 @@ export function MockExamFlow({ repo, examCode, onExit, seed }: { repo: Repo; exa
         recentIds: recentQuestionIds(history, examCode),
         pbqTypes: [], // PBQ templates arrive in chunks 3–4.
       });
-      const available = pool.filter((q) => q.type === 'mcq-single' || q.type === 'mcq-multi').length;
-      if (live) setS({ stage: 'setup', exam, available });
+      if (live) setS({ stage: 'setup', exam });
     })();
     return () => {
       live = false;
@@ -59,7 +58,6 @@ export function MockExamFlow({ repo, examCode, onExit, seed }: { repo: Repo; exa
       return (
         <ExamSetup
           meta={meta}
-          availableCount={s.available}
           plannedCount={s.exam.items.length}
           onStart={() => setS({ stage: 'running', exam: s.exam, startedAt: new Date() })}
           onCancel={onExit}

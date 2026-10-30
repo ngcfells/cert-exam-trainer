@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react';
 import type { ExamMeta, McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { AssembledExam } from '../../exam/assemble';
 import type { ExamResult } from '../../exam/result';
@@ -24,10 +25,12 @@ export function ResultsScreen({
   onHome: () => void;
 }) {
   const missed = exam.items.filter((_, i) => report.items[i].fraction < 1);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  useEffect(() => headingRef.current?.focus(), []);
 
   return (
     <section className="exam results" aria-labelledby="results-h">
-      <h2 id="results-h">{`Your score: ${report.score} / 900`}</h2>
+      <h2 id="results-h" ref={headingRef} tabIndex={-1}>{`Your score: ${report.score} / 900`}</h2>
       <p className={report.passed ? 'result-pass' : 'result-fail'}>
         <strong>{report.passed ? 'PASS' : 'FAIL'}</strong>
       </p>

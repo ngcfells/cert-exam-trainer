@@ -2,6 +2,8 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MockExamFlow } from './MockExamFlow';
+import { ExamSetup } from './ExamSetup';
+import { listExams } from '../../banks';
 import { Home } from '../Home';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { dataPlusQuestions } from '../../banks/dataplus/questions';
@@ -92,6 +94,21 @@ describe('MockExamFlow', () => {
     await submit(user);
     expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
     expect(screen.getByRole('alert')).toHaveTextContent('Your result could not be saved to history.');
+  });
+
+  it('moves focus to the results heading after submitting', async () => {
+    const { user } = await start();
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await submit(user);
+    expect(await screen.findByRole('heading', { name: /your score/i })).toHaveFocus();
+  });
+
+  it('disables Start when assembly yields no questions', () => {
+    const meta = listExams()[0];
+    render(<ExamSetup meta={meta} plannedCount={0} onStart={() => {}} onCancel={() => {}} />);
+    expect(screen.getByRole('button', { name: 'Start exam' })).toBeDisabled();
+    expect(screen.getByText('No questions available for this exam yet.')).toBeInTheDocument();
   });
 
   it('reads history to deprioritize recent questions', async () => {
