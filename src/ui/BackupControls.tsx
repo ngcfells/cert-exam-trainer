@@ -1,0 +1,67 @@
+import { useId, useState, type ChangeEvent } from 'react';
+import type { Repo } from '../storage';
+import { exportBackup, importBackup, ImportError } from '../storage/backup';
+import { questions } from './plural';
+
+export function backupFileName(d: Date): string {
+  const pad = (n: number) => String(n).padStart(2, '0');
+  return `cert-exam-trainer-backup-${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}.json`;
+}
+
+export function BackupControls({ repo, onImported }: { repo: Repo; onImported: () => void }) {
+  const [mode, setMode] = useState<'merge' | 'replace'>('merge');
+  const [message, setMessage] = useState('');
+  const inputId = useId();
+
+  async function onExport() {
+    const file = await exportBackup(repo);
+    const url = URL.createObjectURL(new Blob([JSON.stringify(file, null, 2)], { type: 'application/json' }));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = backupFileName(new Date());
+    a.click();
+    URL.revokeObjectURL(url);
+    setMessage(`Exported ${questions(file.userQuestions.length)}.`);
+  }
+
+  async function onFile(e: ChangeEvent<HTMLInputElement>) {
+    const input = e.currentTarget;
+    const file = input.files?.[0];
+    if (!file) return;
+    try {
+      const res = await importBackup(repo, await file.text(), mode);
+      const skipped = res.skipped.length
+        ? ` Skipped ${res.skipped.length}: ${res.skipped.map((s) => `${s.id} (${s.reason})`).join(', ')}.`
+        : '';
+      setMessage(`Imported ${questions(res.imported)}.${skipped}`);
+      onImported();
+    } catch (err) {
+      setMessage(`Import failed: ${err instanceof ImportError ? err.message : String(err)}`);
+    } finally {
+      input.value = '';
+    }
+  }
+
+  return (
+    <section aria-labelledby={`${inputId}-h`}>
+      <h2 id={`${inputId}-h`}>Backup</h2>
+      <button type="button" onClick={onExport}>
+        Export backup
+      </button>
+      <fieldset>
+        <legend>When importing</legend>
+        <label>
+          <input type="radio" name={`${inputId}-mode`} checked={mode === 'merge'} onChange={() => setMode('merge')} />
+          Merge with my data
+        </label>
+        <label>
+          <input type="radio" name={`${inputId}-mode`} checked={mode === 'replace'} onChange={() => setMode('replace')} />
+          Replace my data
+        </label>
+      </fieldset>
+      <label htmlFor={inputId}>Import backup (.json)</label>
+      <input id={inputId} type="file" accept=".json" onChange={onFile} />
+      <p aria-live="polite">{message}</p>
+    </section>
+  );
+}
