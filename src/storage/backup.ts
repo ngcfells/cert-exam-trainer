@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { getBundledQuestions, listExams } from '../banks';
 import { parseQuestion } from '../domain/schema';
 import type { Question } from '../domain/types';
 import type { Repo } from './repo';
@@ -74,22 +75,49 @@ export async function importBackup(repo: Repo, json: string, mode: 'merge' | 're
       skipped.push({ id: String(r.id ?? `#${i + 1}`), reason: 'bundled questions cannot be imported' });
       return;
     }
+    const label = `Question ${i + 1}${r && typeof r === 'object' && typeof r.id === 'string' ? ` (${r.id})` : ''}`;
+    let q: Question;
     try {
-      toWrite.push(parseQuestion(rawQ));
+      q = parseQuestion(rawQ);
     } catch (e) {
-      const id = r && typeof r === 'object' && typeof r.id === 'string' ? ` (${r.id})` : '';
       const detail = e instanceof z.ZodError ? describe(e.issues[0]) : String(e);
-      throw new ImportError(`Question ${i + 1}${id} is invalid: ${detail}`);
+      throw new ImportError(`${label} is invalid: ${detail}`);
     }
+    const meta = listExams().find((m) => m.code === q.exam);
+    if (!meta) throw new ImportError(`${label} is for unknown exam "${q.exam}".`);
+    const objectives = new Set(meta.objectives.map((o) => o.id));
+    const unknown = q.objectiveIds.find((o) => !objectives.has(o));
+    if (unknown) throw new ImportError(`${label} references unknown objective "${unknown}" for ${q.exam}.`);
+    if (getBundledQuestions(q.exam, { includeDrafts: true }).some((b) => b.id === q.id)) {
+      skipped.push({ id: q.id, reason: 'id is already used by a bundled question' });
+      return;
+    }
+    toWrite.push(q);
   });
 
-  if (mode === 'replace') await repo.clearAll();
-  for (const q of toWrite) await repo.upsertUserQuestion(q);
-  for (const [k, v] of Object.entries(file.settings)) await repo.setSetting(k, v);
-  for (const rec of file.results) await repo.putRecord('results', rec);
-  for (const rec of file.srs) await repo.putRecord('srs', rec);
+  const previous = await exportBackup(repo);
+  try {
+    await write(repo, mode, toWrite, file);
+  } catch (e) {
+    await repo.clearAll();
+    await write(repo, 'merge', previous.userQuestions, previous);
+    throw new ImportError(`Import failed while saving; your previous data was restored. (${String(e)})`);
+  }
 
   return { imported: toWrite.length, skipped };
+}
+
+async function write(
+  repo: Repo,
+  mode: 'merge' | 'replace',
+  questions: Question[],
+  data: Pick<BackupFile, 'settings' | 'results' | 'srs'>,
+): Promise<void> {
+  if (mode === 'replace') await repo.clearAll();
+  for (const q of questions) await repo.upsertUserQuestion(q);
+  for (const [k, v] of Object.entries(data.settings)) await repo.setSetting(k, v);
+  for (const rec of data.results) await repo.putRecord('results', rec as { id: string });
+  for (const rec of data.srs) await repo.putRecord('srs', rec as { id: string });
 }
 
 function describe(issue: z.ZodIssue | undefined): string {

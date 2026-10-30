@@ -58,6 +58,47 @@ describe('backup', () => {
     expect(res.skipped).toEqual([{ id: 'o1', reason: 'bundled questions cannot be imported' }]);
   });
 
+  it('rejects a question for an unknown exam and leaves repo unchanged', async () => {
+    const before = await snapshot(repo);
+    const file = await exportBackup(createMemoryRepo());
+    const json = JSON.stringify({ ...file, userQuestions: [userQ('u2', 'XYZ-999')] });
+    await expect(importBackup(repo, json, 'replace')).rejects.toThrow(/unknown exam "XYZ-999"/);
+    expect(await snapshot(repo)).toEqual(before);
+  });
+
+  it('rejects a question with an unknown objective', async () => {
+    const file = await exportBackup(createMemoryRepo());
+    const json = JSON.stringify({ ...file, userQuestions: [{ ...userQ('u2'), objectiveIds: ['9.9'] }] });
+    await expect(importBackup(repo, json, 'merge')).rejects.toThrow(/unknown objective "9.9"/);
+  });
+
+  it('skips a user question whose id collides with a bundled question', async () => {
+    const file = await exportBackup(createMemoryRepo());
+    const json = JSON.stringify({ ...file, userQuestions: [userQ('da2-seed-003')] });
+    const res = await importBackup(repo, json, 'merge');
+    expect(res.imported).toBe(0);
+    expect(res.skipped).toEqual([{ id: 'da2-seed-003', reason: 'id is already used by a bundled question' }]);
+  });
+
+  it('restores the previous data when a write fails midway through replace', async () => {
+    const before = await snapshot(repo);
+    let failNext = true;
+    const flaky: Repo = {
+      ...repo,
+      async upsertUserQuestion(q) {
+        if (failNext && q.id === 'u2') {
+          failNext = false;
+          throw new Error('QuotaExceededError');
+        }
+        return repo.upsertUserQuestion(q);
+      },
+    };
+    const file = await exportBackup(createMemoryRepo());
+    const json = JSON.stringify({ ...file, userQuestions: [userQ('u2')] });
+    await expect(importBackup(flaky, json, 'replace')).rejects.toThrow(/previous data was restored/);
+    expect(await snapshot(repo)).toEqual(before);
+  });
+
   it('merge upserts, replace clears first', async () => {
     const file = await exportBackup(createMemoryRepo());
     const json = JSON.stringify({ ...file, userQuestions: [userQ('u2')] });
