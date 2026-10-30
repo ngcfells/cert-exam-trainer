@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { openRepo, type Repo } from './storage';
 import { AcronymFlow } from './ui/acronyms/AcronymFlow';
 import { Disclaimer } from './ui/Disclaimer';
@@ -10,6 +10,11 @@ import type { Screen } from './ui/screens';
 import { CramFlow } from './ui/study/CramFlow';
 import { PracticeFlow } from './ui/study/PracticeFlow';
 import { ProgressScreen } from './ui/study/ProgressScreen';
+
+// Dev only: production builds drop this branch, so the review tool never ships.
+const ReviewScreen = import.meta.env.DEV
+  ? lazy(() => import('./ui/review/ReviewScreen').then((m) => ({ default: m.ReviewScreen })))
+  : null;
 
 /** `?seed=N` replays a specific attempt (spec §7); used by e2e. */
 function seedFromUrl(): number | undefined {
@@ -79,6 +84,12 @@ export default function App() {
         return <MyQuestions key={key} repo={repo} examCode={screen.exam} onExit={home} onEdit={(id) => go({ name: 'edit', exam: screen.exam, id })} />;
       case 'edit':
         return <QuestionEditor key={key} repo={repo} examCode={screen.exam} id={screen.id} onDone={() => go({ name: 'questions', exam: screen.exam })} />;
+      case 'review':
+        return ReviewScreen ? (
+          <Suspense fallback={<p>Loading…</p>}>
+            <ReviewScreen key={key} examCode={screen.exam} onExit={home} />
+          </Suspense>
+        ) : null;
     }
   }
 
