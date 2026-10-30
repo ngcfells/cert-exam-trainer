@@ -106,6 +106,11 @@ Every part is scored independently to give **partial credit**. The same template
 2. Each PBQ has an **MCQ-equivalent weight `w` from 1 to 6**, based on its difficulty and the number of responses it needs (1 for extremely simple, 6 for extremely hard with many parts). The weight is stored on the question; for our questions it's set at authoring time and confirmed in review.
 3. **MCQ count = the exam's maximum question count − Σw.** For example, with a maximum of 90 and three PBQs weighted 6, 6 and 6, the exam has 72 MCQs. MCQs are sampled across domains by weighting.
 4. **PBQs come first, then MCQs.**
+4a. **Randomness (owner requirement):**
+   - Each mock exam draws a *different random set* of questions from the bank, not just a reshuffled order, while still honouring the domain weighting.
+   - Questions seen in the user's recent exams are deprioritized, so repeat attempts see fresh items until the bank is exhausted.
+   - The order of MCQ answer options and of PBQ elements (draggable items, steps, buckets) is shuffled per attempt.
+   - The random generator is seedable, so tests are deterministic. The seed is stored with each result so the attempt can be reproduced.
 5. The user can **flag for review**, use a review screen to jump back, and submit at any time. The exam submits automatically when the timer hits zero.
 
 ### Scoring (owner's model)
@@ -218,7 +223,7 @@ Expansions for non-official acronyms are written or verified by us.
    - objective coverage meets the targets
    - no near-duplicate questions
    - there are at least 5 PBQs of each type
-6. **Pilot volume targets for each exam:** at least 40 PBQs (8 types × 5) and enough MCQs for **at least 3 non-overlapping mock exams**, about 250. Each objective gets a minimum number of questions in proportion to its domain weighting.
+6. **Pilot volume targets for each exam (doubled by the owner):** at least **80 PBQs (8 types × 10)** and at least **500 MCQs**. Each objective gets a minimum number of questions in proportion to its domain weighting.
 
 ## 13. Work chunks (one session each, `/clear` + handoff between)
 
