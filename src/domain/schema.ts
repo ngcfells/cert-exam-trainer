@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { isTemplate14, pbqIssues } from './pbq';
+import { isPbqTemplate, pbqIssues } from './pbq';
 import type { ExamMeta, Question } from './types';
 
 const PBQ_TYPES = [
@@ -47,7 +47,7 @@ const questionUnion = z.discriminatedUnion('type', [
 ]);
 
 export const questionSchema = questionUnion.superRefine((q, ctx) => {
-  if (isTemplate14(q.type)) {
+  if (isPbqTemplate(q.type)) {
     for (const i of pbqIssues(q.type, q.payload, q.answer)) ctx.addIssue({ code: 'custom', ...i });
     return;
   }

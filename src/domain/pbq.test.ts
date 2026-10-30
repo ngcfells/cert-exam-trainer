@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { questionSchema } from './schema';
-import { correctParts, elementIds, partLabel, valueText } from './pbq';
+import { correctParts, elementIds, HOTSPOT_ON, matchesPattern, partCorrect, partIds, partLabel, PBQ_TEMPLATES, valueText } from './pbq';
 import type { Question } from './types';
 import { fixtures, items } from './pbqFixtures';
 
@@ -42,5 +42,51 @@ describe('PBQ schemas', () => {
     expect(elementIds(fixtures.config as unknown as Question)).toEqual([]);
     expect(elementIds(fixtures.diagram as unknown as Question)).toEqual(['l1', 'l2']);
     expect(partLabel(fixtures.diagram as unknown as Question, 'z1')).toBe('Destination box');
+  });
+});
+
+describe('templates 5-8', () => {
+  const q = (k: keyof typeof fixtures) => fixtures[k] as unknown as Question;
+
+  it('rejects bad terminal, data, hotspot and buckets questions', () => {
+    const t = fixtures.terminal;
+    expect(ok({ ...t, answer: { accept: { t1: ['ls'] } } })).toBe(false);
+    expect(ok({ ...t, answer: { accept: { t1: ['ls'], t2: ['zz'] } } })).toBe(false);
+    expect(ok({ ...t, answer: { accept: { t1: ['  '], t2: ['a2'] } } })).toBe(false);
+    const d = fixtures.data;
+    expect(ok({ ...d, payload: { ...d.payload, rows: [['North']] } })).toBe(false);
+    expect(ok({ ...d, payload: { ...d.payload, chart: { kind: 'bar', labelColumn: 0, valueColumn: 5 } } })).toBe(false);
+    expect(ok({ ...d, payload: { ...d.payload, rows: [['North', 'lots']] } })).toBe(false);
+    const h = fixtures.hotspot;
+    expect(ok({ ...h, answer: { selected: ['s9'] } })).toBe(false);
+    expect(ok({ ...h, payload: { ...h.payload, spots: [...h.payload.spots, { id: 's5', x: 390, y: 0, w: 80, h: 40, name: 'Off' }] } })).toBe(false);
+    const b = fixtures.buckets;
+    expect(ok({ ...b, answer: { placements: { i1: 'b9', i2: 'b1', i3: 'b1' } } })).toBe(false);
+    expect(ok({ ...b, answer: { placements: { i1: 'b2', i2: 'b1' } } })).toBe(false);
+  });
+
+  it('matches commands against accepted patterns', () => {
+    expect(matchesPattern('  ls   -l /var/log ', 'ls -l /var/log')).toBe(true);
+    expect(matchesPattern('LS -l', 'ls -l')).toBe(false);
+    expect(matchesPattern('grep ERROR app.log', 'grep ERROR *')).toBe(true);
+    expect(matchesPattern('grep ERROR', 'grep ERROR *')).toBe(false);
+    expect(matchesPattern('a.b', 'a+b')).toBe(false);
+    expect(matchesPattern('a+b', 'a+b')).toBe(true);
+  });
+
+  it('decides each part', () => {
+    expect(partCorrect(q('hotspot'), 's2', {})).toBe(true);
+    expect(partCorrect(q('hotspot'), 's1', {})).toBe(false);
+    expect(partCorrect(q('hotspot'), 's1', { s1: HOTSPOT_ON })).toBe(true);
+    expect(partCorrect(q('terminal'), 't1', { t1: 'grep -i error  db.log' })).toBe(true);
+    expect(partCorrect(q('terminal'), 't2', { t2: 'a1' })).toBe(false);
+    expect(partCorrect(q('buckets'), 'i1', { i1: 'b2' })).toBe(true);
+    expect(partCorrect(q('buckets'), 'i2', {})).toBe(false);
+    expect(correctParts(q('hotspot'))).toEqual({ s1: 'on', s2: 'off', s3: 'on', s4: 'off' });
+    expect(correctParts(q('terminal'))).toEqual({ t1: 'grep ERROR *', t2: 'a2' });
+    expect(partIds(q('data'))).toEqual(['f1']);
+    expect(elementIds(q('buckets'))).toEqual(['i1', 'i2', 'i3']);
+    expect(elementIds(q('terminal'))).toEqual([]);
+    expect(PBQ_TEMPLATES).toHaveLength(8);
   });
 });

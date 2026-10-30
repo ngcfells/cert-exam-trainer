@@ -1,3 +1,4 @@
+import { fixtures } from './pbqFixtures';
 import { describe, it, expect } from 'vitest';
 import { parseQuestion, parseExamMeta } from './schema';
 
@@ -48,8 +49,8 @@ describe('parseQuestion', () => {
     expect(() => parseQuestion({ ...mcq, type: 'pbq-order', payload: {}, answer: {} })).toThrow();
   });
 
-  it('accepts pbq-order with pbqWeight', () => {
-    expect(parseQuestion({ ...mcq, type: 'pbq-terminal', pbqWeight: 3, payload: {}, answer: {} }).pbqWeight).toBe(3);
+  it('accepts a PBQ with pbqWeight', () => {
+    expect(parseQuestion({ ...fixtures.terminal, pbqWeight: 3 }).pbqWeight).toBe(3);
   });
 
   it('rejects pbqWeight 7', () => {

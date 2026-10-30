@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getBundledQuestions, listExams } from '../../banks';
-import { TEMPLATE_1_4 } from '../../domain/pbq';
+import { PBQ_TEMPLATES } from '../../domain/pbq';
 import type { Question } from '../../domain/types';
 import { assembleExam, type AssembledExam } from '../../exam/assemble';
 import { buildResult, recentQuestionIds, type ExamResult } from '../../exam/result';
@@ -31,7 +31,7 @@ export function MockExamFlow({ repo, examCode, onExit, seed }: { repo: Repo; exa
         pool,
         seed: seed ?? newSeed(),
         recentIds: recentQuestionIds(history, examCode),
-        pbqTypes: TEMPLATE_1_4,
+        pbqTypes: PBQ_TEMPLATES.slice(0, 4),
       });
       if (live) setS({ stage: 'setup', exam });
     })();
