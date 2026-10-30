@@ -45,3 +45,20 @@ dialog { max-width: 30rem; }
 .result-pass { color: #1b5e20; }
 .result-fail { color: #b71c1c; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+
+/* Templates 5-8 */
+.terminal { background: #f4f6f8; color: #111; border: 1px solid #1f2d3d; padding: 0.75rem; overflow: auto; max-height: 20rem; font-family: ui-monospace, Consolas, monospace; white-space: pre; }
+.command input { font-family: ui-monospace, Consolas, monospace; min-width: 16rem; max-width: 100%; }
+.prompt-line { display: inline-flex; gap: 0.25rem; align-items: center; font-family: ui-monospace, Consolas, monospace; }
+.data-table { overflow-x: auto; }
+.data-table table { border-collapse: collapse; }
+.data-table th, .data-table td { border: 1px solid #1f2d3d; padding: 0.25rem 0.5rem; text-align: left; }
+.chart { display: block; width: 100%; max-width: 30rem; margin: 0.75rem 0; }
+.hotspot .spot { cursor: pointer; }
+.check { display: inline-flex; gap: 0.5rem; align-items: center; }
+.buckets { display: flex; flex-wrap: wrap; gap: 1rem; margin: 0.75rem 0; }
+.bucket { flex: 1 1 12rem; border: 1px solid #1f2d3d; padding: 0.5rem; }
+.bucket h3 { margin: 0 0 0.25rem; font-size: 1rem; }
+@media (max-width: 40rem) {
+  .command input { min-width: 0; width: 100%; }
+}

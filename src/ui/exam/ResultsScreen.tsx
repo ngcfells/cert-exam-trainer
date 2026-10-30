@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { correctParts, partIds, partLabel, valueText, type PartMap } from '../../domain/pbq';
+import { correctParts, partCorrect, partIds, partLabel, valueText, type PartMap } from '../../domain/pbq';
 import type { ExamMeta, McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { AssembledExam } from '../../exam/assemble';
 import type { ExamResult } from '../../exam/result';
@@ -29,9 +29,9 @@ function PartsReview({ q, given }: { q: Question; given: PartMap }) {
           {partIds(q).map((id) => (
             <tr key={id}>
               <th scope="row">{partLabel(q, id)}</th>
-              <td>{given[id] ? valueText(q, id, given[id]) : 'Not answered'}</td>
+              <td>{given[id] ? valueText(q, id, given[id]) : q.type === 'pbq-hotspot' ? 'Not selected' : 'Not answered'}</td>
               <td>{valueText(q, id, key[id])}</td>
-              <td>{given[id] === key[id] ? 'Correct' : 'Incorrect'}</td>
+              <td>{partCorrect(q, id, given) ? 'Correct' : 'Incorrect'}</td>
             </tr>
           ))}
         </tbody>
