@@ -82,4 +82,10 @@ describe('openRepo', () => {
     await repo.setSetting('x', 1);
     expect(await repo.getSetting('x')).toBe(1);
   });
+
+  it('falls back to memory when IndexedDB never answers', async () => {
+    vi.stubGlobal('indexedDB', { open: () => new EventTarget() });
+    const { persistent } = await openRepo({ timeoutMs: 50 });
+    expect(persistent).toBe(false);
+  });
 });

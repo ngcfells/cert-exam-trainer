@@ -14,20 +14,29 @@ export function BackupControls({ repo, onImported }: { repo: Repo; onImported: (
   const inputId = useId();
 
   async function onExport() {
-    const file = await exportBackup(repo);
-    const url = URL.createObjectURL(new Blob([JSON.stringify(file, null, 2)], { type: 'application/json' }));
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = backupFileName(new Date());
-    a.click();
-    URL.revokeObjectURL(url);
-    setMessage(`Exported ${questions(file.userQuestions.length)}.`);
+    try {
+      const file = await exportBackup(repo);
+      const url = URL.createObjectURL(new Blob([JSON.stringify(file, null, 2)], { type: 'application/json' }));
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = backupFileName(new Date());
+      a.click();
+      // Revoking synchronously can cancel the download in Firefox and Safari.
+      setTimeout(() => URL.revokeObjectURL(url), 0);
+      setMessage(`Exported ${questions(file.userQuestions.length)}.`);
+    } catch {
+      setMessage('Export failed. Please try again.');
+    }
   }
 
   async function onFile(e: ChangeEvent<HTMLInputElement>) {
     const input = e.currentTarget;
     const file = input.files?.[0];
     if (!file) return;
+    if (mode === 'replace' && !window.confirm('Replace all your questions, settings and history with this backup?')) {
+      input.value = '';
+      return;
+    }
     try {
       const res = await importBackup(repo, await file.text(), mode);
       const skipped = res.skipped.length
@@ -36,7 +45,7 @@ export function BackupControls({ repo, onImported }: { repo: Repo; onImported: (
       setMessage(`Imported ${questions(res.imported)}.${skipped}`);
       onImported();
     } catch (err) {
-      setMessage(`Import failed: ${err instanceof ImportError ? err.message : String(err)}`);
+      setMessage(`Import failed: ${err instanceof ImportError ? err.message : 'something went wrong reading the file.'}`);
     } finally {
       input.value = '';
     }
@@ -58,6 +67,7 @@ export function BackupControls({ repo, onImported }: { repo: Repo; onImported: (
           <input type="radio" name={`${inputId}-mode`} checked={mode === 'replace'} onChange={() => setMode('replace')} />
           Replace my data
         </label>
+        {mode === 'replace' && <p className="hint">Replace deletes all your questions, settings and history first.</p>}
       </fieldset>
       <label htmlFor={inputId}>Import backup (.json)</label>
       <input id={inputId} type="file" accept=".json" onChange={onFile} />

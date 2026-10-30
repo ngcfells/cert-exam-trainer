@@ -18,11 +18,11 @@ describe('Home', () => {
     expect(await within(row).findByText('0 questions (mine)')).toBeInTheDocument();
   });
 
-  it('shows the storage banner only when not persistent', () => {
+  it('shows the storage banner only when not persistent', async () => {
     const { rerender } = render(<StorageBanner persistent />);
-    expect(screen.queryByRole('status')).toBeNull();
+    expect(screen.getByRole('status')).toBeEmptyDOMElement();
     rerender(<StorageBanner persistent={false} />);
-    expect(screen.getByRole('status')).toHaveTextContent("Progress won't be saved in this browser session.");
+    expect(await screen.findByRole('status')).toHaveTextContent("Progress won't be saved in this browser session.");
   });
 
   it('announces an import error in the live region', async () => {
