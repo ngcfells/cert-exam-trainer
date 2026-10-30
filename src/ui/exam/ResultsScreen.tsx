@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { correctParts, partIds, partLabel, valueText, type PartMap } from '../../domain/pbq';
 import type { ExamMeta, McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { AssembledExam } from '../../exam/assemble';
 import type { ExamResult } from '../../exam/result';
@@ -7,6 +8,43 @@ import type { ScoreReport } from '../../exam/scoring';
 function optionTexts(q: Question, ids: string[]): string {
   const opts = (q.payload as McqPayload).options;
   return ids.map((id) => opts.find((o) => o.id === id)?.text ?? id).join('; ');
+}
+
+function PartsReview({ q, given }: { q: Question; given: PartMap }) {
+  const key = correctParts(q);
+  const notes = partIds(q).filter((id) => q.partExplanations?.[id]);
+  return (
+    <>
+      <table>
+        <caption>Parts</caption>
+        <thead>
+          <tr>
+            <th scope="col">Part</th>
+            <th scope="col">Your answer</th>
+            <th scope="col">Correct answer</th>
+            <th scope="col">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {partIds(q).map((id) => (
+            <tr key={id}>
+              <th scope="row">{partLabel(q, id)}</th>
+              <td>{given[id] ? valueText(q, id, given[id]) : 'Not answered'}</td>
+              <td>{valueText(q, id, key[id])}</td>
+              <td>{given[id] === key[id] ? 'Correct' : 'Incorrect'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {notes.length > 0 && (
+        <ul>
+          {notes.map((id) => (
+            <li key={id}>{q.partExplanations![id]}</li>
+          ))}
+        </ul>
+      )}
+    </>
+  );
 }
 
 export function ResultsScreen({
@@ -96,6 +134,7 @@ export function ResultsScreen({
                       <dd>{optionTexts(q, (q.answer as McqAnswer).correct)}</dd>
                     </dl>
                   )}
+                  {!mcqType && <PartsReview q={q} given={r && !Array.isArray(r) ? r : {}} />}
                   <p>{q.explanation}</p>
                 </li>
               );
