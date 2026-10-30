@@ -1,17 +1,40 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import { expectNoSeriousAxe, singleUrl } from './util';
 
-test('mock exam screens pass axe', async ({ page }) => {
-  await page.goto(singleUrl);
+// Seed 1 draws all four PBQ templates (diagram, config, order, match), then the 2 approved MCQs.
+const seeded = `${singleUrl}?seed=1`;
+const TOTAL = 6;
+
+async function startExam(page: Page) {
+  await page.goto(seeded);
+  await page.getByRole('button', { name: /start mock exam/i }).click();
+  await page.getByRole('button', { name: 'Start exam' }).click();
+  await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
+}
+
+async function toReview(page: Page) {
+  for (let i = 1; i < TOTAL; i++) await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByRole('button', { name: 'Review', exact: true }).click();
+}
+
+async function submit(page: Page) {
+  await page.getByRole('button', { name: 'Submit exam' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Submit', exact: true }).click();
+  await expect(page.getByRole('heading', { name: /your score/i })).toBeVisible();
+}
+
+test('mock exam screens, including every PBQ template, pass axe', async ({ page }) => {
+  await page.goto(seeded);
   await page.getByRole('button', { name: /start mock exam/i }).click();
   await expect(page.getByRole('button', { name: 'Start exam' })).toBeVisible();
   await expectNoSeriousAxe(page);
 
   await page.getByRole('button', { name: 'Start exam' }).click();
-  await expect(page.getByText('Question 1 of 2')).toBeVisible();
-  await expectNoSeriousAxe(page);
-
-  await page.getByRole('button', { name: 'Next' }).click();
+  for (let i = 1; i <= TOTAL; i++) {
+    await expect(page.getByText(`Question ${i} of ${TOTAL}`)).toBeVisible();
+    await expectNoSeriousAxe(page);
+    if (i < TOTAL) await page.getByRole('button', { name: 'Next' }).click();
+  }
   await page.getByRole('button', { name: 'Review', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Review your answers' })).toBeVisible();
   await expectNoSeriousAxe(page);
@@ -22,50 +45,57 @@ test('mock exam screens pass axe', async ({ page }) => {
 
   await page.getByRole('dialog').getByRole('button', { name: 'Submit', exact: true }).click();
   await expect(page.getByRole('heading', { name: /your score/i })).toBeVisible();
+  await expect(page.getByRole('table', { name: 'Parts' }).first()).toBeVisible();
   await expectNoSeriousAxe(page);
 });
 
-test('a mock exam can be completed with the keyboard only', async ({ page }) => {
-  await page.goto(singleUrl);
-  const start = page.getByRole('button', { name: /start mock exam/i });
-  await start.focus();
+test('a mock exam with PBQs can be completed with the keyboard only', async ({ page }) => {
+  await page.goto(seeded);
+  await page.getByRole('button', { name: /start mock exam/i }).focus();
   await page.keyboard.press('Enter');
   await page.getByRole('button', { name: 'Start exam' }).focus();
   await page.keyboard.press('Enter');
-  await expect(page.getByText('Question 1 of 2')).toBeVisible();
+  await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
 
-  // Tab into the first option and select it.
-  for (let i = 0; i < 2; i++) {
-    await page.keyboard.press('Tab');
-    const role = await page.evaluate(() => (document.activeElement as HTMLInputElement | null)?.type);
-    if (role === 'radio' || role === 'checkbox') break;
-  }
-  await page.keyboard.press('Space');
+  const active = () =>
+    page.evaluate(() => {
+      const el = document.activeElement as HTMLInputElement | null;
+      return { tag: el?.tagName ?? '', type: el?.type ?? '', label: el?.getAttribute('aria-label') ?? '', text: el?.textContent ?? '' };
+    });
 
-  const next = async (name: string) => {
-    for (let i = 0; i < 20; i++) {
+  /** Tab to the first answer control on the screen and use it. */
+  const answer = async () => {
+    for (let i = 0; i < 30; i++) {
       await page.keyboard.press('Tab');
-      const label = await page.evaluate(() => document.activeElement?.textContent ?? '');
-      if (label === name) return page.keyboard.press('Enter');
+      const a = await active();
+      if (a.tag === 'SELECT') return page.keyboard.press('ArrowDown');
+      if (a.type === 'radio' || a.type === 'checkbox') return page.keyboard.press('Space');
+      if (a.label.startsWith('Move ') && a.label.endsWith(' down')) return page.keyboard.press('Enter');
+    }
+    throw new Error('no answer control reachable by Tab');
+  };
+  const press = async (name: string) => {
+    for (let i = 0; i < 40; i++) {
+      await page.keyboard.press('Tab');
+      if ((await active()).text === name) return page.keyboard.press('Enter');
     }
     throw new Error(`could not tab to ${name}`);
   };
-  await next('Next');
-  await next('Review');
-  await next('Submit exam');
-  await next('Submit');
+
+  for (let i = 1; i <= TOTAL; i++) {
+    await answer();
+    await press(i < TOTAL ? 'Next' : 'Review');
+  }
+  await expect(page.getByRole('button', { name: /^Question \d+, answered/ })).toHaveCount(TOTAL);
+  await press('Submit exam');
+  await press('Submit');
   await expect(page.getByRole('heading', { name: /your score/i })).toBeVisible();
 });
 
 test('home still loads after finishing an exam and reloading', async ({ page }) => {
-  await page.goto(singleUrl);
-  await page.getByRole('button', { name: /start mock exam/i }).click();
-  await page.getByRole('button', { name: 'Start exam' }).click();
-  await page.getByRole('button', { name: 'Next' }).click();
-  await page.getByRole('button', { name: 'Review', exact: true }).click();
-  await page.getByRole('button', { name: 'Submit exam' }).click();
-  await page.getByRole('dialog').getByRole('button', { name: 'Submit', exact: true }).click();
-  await expect(page.getByRole('heading', { name: /your score/i })).toBeVisible();
+  await startExam(page);
+  await toReview(page);
+  await submit(page);
   await page.reload();
   await expect(page.getByText('CompTIA Data+ (DA0-002)')).toBeVisible();
 });

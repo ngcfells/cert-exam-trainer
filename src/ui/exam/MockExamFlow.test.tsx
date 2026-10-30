@@ -8,7 +8,8 @@ import { Home } from '../Home';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { dataPlusQuestions } from '../../banks/dataplus/questions';
 import { examResultSchema } from '../../exam/result';
-import type { McqAnswer, McqPayload } from '../../domain/types';
+import { correctParts, partLabel, valueText } from '../../domain/pbq';
+import type { McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { Repo } from '../../storage';
 
 beforeEach(() => vi.stubEnv('DEV', false));
@@ -21,9 +22,30 @@ const optionText = (id: string, which: 'right' | 'wrong') => {
   return opts.find((o) => (which === 'right' ? correct.includes(o.id) : !correct.includes(o.id)))!.text;
 };
 
-async function answerCurrent(user: ReturnType<typeof userEvent.setup>, which: 'right' | 'wrong') {
-  const stem = screen.getByRole('group').querySelector('legend')!.textContent!;
+type User = ReturnType<typeof userEvent.setup>;
+
+async function answerPbq(user: User, q: Question) {
+  const key = correctParts(q);
+  if (q.type === 'pbq-order') {
+    for (const [pos, id] of Object.entries(key)) {
+      const text = valueText(q, pos, id);
+      const at = () => screen.getAllByRole('listitem').findIndex((li) => li.textContent!.includes(text));
+      while (at() > Number(pos)) await user.click(screen.getByRole('button', { name: `Move ${text} up` }));
+    }
+    return;
+  }
+  for (const [part, id] of Object.entries(key)) {
+    await user.selectOptions(screen.getByRole('combobox', { name: partLabel(q, part) }), valueText(q, part, id));
+  }
+}
+
+async function answerCurrent(user: User, which: 'right' | 'wrong') {
+  const stem = screen.getAllByRole('group')[0].querySelector('legend')!.textContent!;
   const q = dataPlusQuestions.find((x) => x.stem === stem)!;
+  if (q.type.startsWith('pbq')) {
+    if (which === 'right') await answerPbq(user, q);
+    return;
+  }
   if (which === 'right') {
     for (const c of (q.answer as McqAnswer).correct) {
       await user.click(screen.getByLabelText((q.payload as McqPayload).options.find((o) => o.id === c)!.text));
@@ -40,6 +62,16 @@ async function start(repo: Repo = createMemoryRepo()) {
   return { user, repo };
 }
 
+/** Answers every item, then opens the review screen. */
+async function answerAll(user: User, which: 'right' | 'wrong' | 'skip') {
+  for (;;) {
+    if (which !== 'skip') await answerCurrent(user, which);
+    const review = screen.queryByRole('button', { name: 'Review' });
+    if (review) return user.click(review);
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+  }
+}
+
 async function submit(user: ReturnType<typeof userEvent.setup>) {
   await user.click(screen.getByRole('button', { name: 'Submit exam' }));
   await user.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Submit' }));
@@ -54,16 +86,13 @@ describe('MockExamFlow', () => {
     expect(onStartExam).toHaveBeenCalledWith('DA0-002');
 
     render(<MockExamFlow repo={createMemoryRepo()} examCode="DA0-002" seed={5} onExit={() => {}} />);
-    expect(await screen.findByText(/2 questions/)).toBeInTheDocument();
+    expect(await screen.findByText(/^\d+ questions$/)).toBeInTheDocument();
     expect(screen.getByText(/shorter than the real one \(90\)/)).toBeInTheDocument();
   });
 
   it('scores a perfect run and saves the result', async () => {
     const { user, repo } = await start();
-    await answerCurrent(user, 'right');
-    await user.click(screen.getByRole('button', { name: 'Next' }));
-    await answerCurrent(user, 'right');
-    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await answerAll(user, 'right');
     await submit(user);
     expect(await screen.findByRole('heading', { name: 'Your score: 900 / 900' })).toBeInTheDocument();
     expect(screen.getByText('PASS')).toBeInTheDocument();
@@ -74,12 +103,10 @@ describe('MockExamFlow', () => {
 
   it('reviews wrong and unanswered items with explanations', async () => {
     const { user } = await start();
-    await answerCurrent(user, 'wrong');
-    await user.click(screen.getByRole('button', { name: 'Next' }));
-    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await answerAll(user, 'wrong');
     await submit(user);
     expect(await screen.findByText('FAIL')).toBeInTheDocument();
-    expect(screen.getByText('Not answered')).toBeInTheDocument();
+    expect(screen.getAllByText('Not answered').length).toBeGreaterThan(0);
     for (const id of ['da2-seed-001', 'da2-seed-002']) {
       expect(screen.getByText(dataPlusQuestions.find((q) => q.id === id)!.explanation)).toBeInTheDocument();
     }
@@ -89,8 +116,7 @@ describe('MockExamFlow', () => {
     const repo = createMemoryRepo();
     repo.putRecord = () => Promise.reject(new Error('quota'));
     const { user } = await start(repo);
-    await user.click(screen.getByRole('button', { name: 'Next' }));
-    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await answerAll(user, 'skip');
     await submit(user);
     expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
     expect(screen.getByRole('alert')).toHaveTextContent('Your result could not be saved to history.');
@@ -98,8 +124,7 @@ describe('MockExamFlow', () => {
 
   it('keeps the alert region mounted so a save error is announced', async () => {
     const { user } = await start();
-    await user.click(screen.getByRole('button', { name: 'Next' }));
-    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await answerAll(user, 'skip');
     await submit(user);
     await screen.findByRole('heading', { name: /your score/i });
     expect(screen.getByRole('alert')).toBeEmptyDOMElement();
@@ -107,8 +132,7 @@ describe('MockExamFlow', () => {
 
   it('moves focus to the results heading after submitting', async () => {
     const { user } = await start();
-    await user.click(screen.getByRole('button', { name: 'Next' }));
-    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await answerAll(user, 'skip');
     await submit(user);
     expect(await screen.findByRole('heading', { name: /your score/i })).toHaveFocus();
   });
