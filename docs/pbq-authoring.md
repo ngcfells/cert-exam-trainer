@@ -35,3 +35,5 @@ Each PBQ is a template plus data. `questionSchema` (`src/domain/schema.ts`) chec
 ## Buckets (`pbq-buckets`)
 
 - `answer.placements` maps **every** item to exactly one bucket. Items are shuffled for each attempt.
+
+To write questions in plain text and convert them to an importable pack, see [question-template.md](question-template.md).

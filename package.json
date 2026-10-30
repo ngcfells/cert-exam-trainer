@@ -11,7 +11,8 @@
     "test:e2e": "playwright test",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run build:single && npm run test:e2e"
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build:single && npm run test:e2e",
+    "md-to-pack": "vite-node scripts/md-to-pack.ts --"
   },
   "dependencies": {
     "idb": "^8.0.4",

@@ -25,7 +25,8 @@ describe('question pack', () => {
 
   it('fills defaults', async () => {
     const repo = createMemoryRepo();
-    const { source: _s, acronyms: _a, status: _st, explanation: _e, ...bare } = userQ('u1');
+    const bare: Partial<ReturnType<typeof userQ>> = userQ('u1');
+    for (const k of ['source', 'acronyms', 'status', 'explanation'] as const) delete bare[k];
     await importPack(repo, pack([bare]));
     expect(await repo.getUserQuestions()).toEqual([userQ('u1')]);
   });
