@@ -58,6 +58,16 @@
   - Backup import now rejects malformed `srs` records (strict schema, ISO datetimes). If an SRS field is ever added, bump the backup `version` and accept both shapes, or older builds and this one will reject each other's files.
   - Practice and cram save and score only the questions the user reached ("Finish now" or a timeout leaves the rest out), so unseen questions never count as wrong in mastery.
   - Study load failures show "Could not load your data." with a way back; after Check answer or Show answer, focus moves to the verdict or to "I knew it"; a checked PBQ ignores later drag-and-drop.
+- **Chunk 6 is done** (2026-10-30; plan: `docs/superpowers/plans/2026-10-30-chunk6-question-adder.md`):
+  - `src/storage/pack.ts`: the question pack (`cert-exam-trainer-questions` v1, `{ format, version, exportedAt, questions }`) is the one interchange format for user questions. Entries may leave out `source`, `acronyms`, `status` and `explanation`. Import always merges. Packs and backups share `validateUserQuestions` (`backup.ts`), which now also rejects an id repeated within a file.
+  - `src/banks/pool.ts`: `loadPool` applies the Ours / Mine / Both setting (`sourceFilter`, default `both`) for mock, practice, cram and progress. `SourceToggle` sits on Home.
+  - `src/ui/author/`: `MyQuestions` (list, edit, delete with confirm, pack import and export) and `ContentNotice` (setting `userContentNoticeAccepted`; add and import stay hidden until it is accepted). `QuestionEditor` has a structured form for MCQs and, for PBQs, the shared fields plus JSON editors for payload, answer and part explanations, seeded from `src/authoring/starters.ts`. It validates live with `questionSchema` and previews live with `McqView`/`PbqView`.
+  - `npm run md-to-pack -- <in.md...> --exam DA0-002 --out <file.json>` converts the plain-text format in `docs/question-template.md` into a pack (parser: `src/authoring/mdPack.ts`). PBQs are written as a ```` ```pbq ```` JSON fence. The script can't read screenshots: a person, or Claude, turns them into a fence, and the script validates it.
+- **Decisions made in chunk 6:**
+  - PBQ authoring uses JSON editors seeded with a valid starter, rather than a separate structured form per template; the live preview and the error list (with paths) make this workable.
+  - Generated ids: the editor uses `user-<uuid>`; md-to-pack uses `<prefix>-<FNV hash of stem>` unless an `Id:` line is given.
+  - Image-only Markdown blocks are skipped with one warning.
+- **Owner's working data:** `_WorkingData/` (gitignored) holds the owner's third-party practice questions and screenshots. They are for building and testing only: **never ship, bundle, commit or copy them into fixtures.** `_WorkingData/DataPlus/addQuestions.pack.json` (18 MCQs and 1 PBQ, built with `pbq1.md`) imports cleanly (19 imported, 0 skipped).
 - **Commands:**
   - `npm run check` runs lint, typecheck, unit tests, the single-file build and e2e with axe.
   - `npm run build` writes `dist/`; `npm run build:single` writes `dist-single/index.html`.
@@ -72,7 +82,7 @@
 
 ## Next session
 
-Chunk 6: question adder (spec chunk list item 6): an authoring form for every question type, including all 8 PBQ templates with a live preview; edit and delete; the Ours / Mine / Both source toggle (it should also filter the mock, practice and cram pools); JSON import and export; the user-content notice. Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
+Chunk 7: acronym tester (spec chunk list item 7). Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 
 **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 
