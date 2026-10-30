@@ -5,7 +5,7 @@
     "source": "ours",
     "type": "mcq-multi",
     "objectiveIds": [
-      "3.1"
+      "3.2"
     ],
     "difficulty": 2,
     "stem": "Which TWO of the following are measures of central tendency?",
@@ -40,94 +40,12 @@
     "status": "approved"
   },
   {
-    "id": "da2-pbq-config-001",
-    "exam": "DA0-002",
-    "source": "ours",
-    "type": "pbq-config",
-    "objectiveIds": [
-      "3.1"
-    ],
-    "difficulty": 2,
-    "pbqWeight": 2,
-    "stem": "An analyst needs every customer, with their order total where one exists, for customers who joined in 2025. Configure the query.",
-    "payload": {
-      "fields": [
-        {
-          "id": "join",
-          "label": "Join type from customers to orders",
-          "options": [
-            {
-              "id": "inner",
-              "text": "INNER JOIN"
-            },
-            {
-              "id": "left",
-              "text": "LEFT JOIN"
-            },
-            {
-              "id": "cross",
-              "text": "CROSS JOIN"
-            }
-          ]
-        },
-        {
-          "id": "agg",
-          "label": "Aggregate for the order total",
-          "options": [
-            {
-              "id": "sum",
-              "text": "SUM(amount)"
-            },
-            {
-              "id": "count",
-              "text": "COUNT(amount)"
-            },
-            {
-              "id": "max",
-              "text": "MAX(amount)"
-            }
-          ]
-        },
-        {
-          "id": "filter",
-          "label": "Clause that limits customers to 2025 joiners",
-          "options": [
-            {
-              "id": "where",
-              "text": "WHERE"
-            },
-            {
-              "id": "having",
-              "text": "HAVING"
-            },
-            {
-              "id": "order",
-              "text": "ORDER BY"
-            }
-          ]
-        }
-      ]
-    },
-    "answer": {
-      "values": {
-        "join": "left",
-        "agg": "sum",
-        "filter": "where"
-      }
-    },
-    "explanation": "A LEFT JOIN keeps customers without orders, SUM totals the amounts, and WHERE filters rows before grouping.",
-    "acronyms": [
-      "SQL"
-    ],
-    "status": "approved"
-  },
-  {
     "id": "da2-pbq-data-001",
     "exam": "DA0-002",
     "source": "ours",
     "type": "pbq-data",
     "objectiveIds": [
-      "3.1"
+      "3.2"
     ],
     "difficulty": 2,
     "pbqWeight": 2,
