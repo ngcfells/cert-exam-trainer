@@ -153,9 +153,9 @@
   - **Owner decision (2026-10-31): do not merge `math-engine` until the whole math module is complete** (after section 6). Keep committing every section to `math-engine`; merge to `main` and redeploy only at the end.
   - **Section 2 (content A+B) is done on `math-engine`** (2026-10-31; 473 unit and 50 e2e tests pass; plan: `docs/superpowers/plans/2026-10-31-math-section2-content-ab.md`; Opus review found no math errors; its 3 important and 12 minor findings are all fixed).
     - 10 lessons in all: area A has 6 (percent change, percentage points, growth ratios, CAGR, Rule of 72, weighted average) and area B has 4 in `B-descriptive-stats.json` (mean/median/mode, range/variance/SD, outliers/IQR/z, distribution shape).
-    - New items in `3.2.json`: `da2-3-2-num-003..022` (21 numeric, 23 in the bank) and `da2-3-2-math-mcq-001..011`. Community acronyms CAGR and IQR were added (23 community).
+    - New items in `3.2.json`: `da2-3-2-num-003..022` (20 numeric, 22 in the bank) and `da2-3-2-math-mcq-001..011`. Community acronyms CAGR and IQR were added (23 community).
     - Symbol names in lessons render as plain text. `bank.test.ts` now rejects `^{}`/`_{}` there; use Unicode (², "to the power 1/n").
-    - Tally toward §7: 10 of 30 lessons and 23 of 60 numeric items.
+    - Tally toward §7: 10 of 30 lessons and 22 of 60 numeric items.
   - **Next session: section 3 (content C+D), on branch `math-engine`.** Write the plan with superpowers:writing-plans, then execute it (Native). Every new numeric item needs a `NUMERIC_CHECKS` entry, and every numeric stem must state its answer form and rounding.
   - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.
 - **After the math module: chunk 11, SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
