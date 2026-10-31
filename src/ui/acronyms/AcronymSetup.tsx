@@ -1,8 +1,8 @@
-import { useEffect, useRef } from 'react';
 import type { AcronymEntry, AcronymSource } from '../../acronyms/list';
 import { assembleDeck, MIN_CHOICE_ENTRIES, type DeckScope, type Direction } from '../../acronyms/quiz';
 import type { ExamMeta } from '../../domain/types';
 import { isDue, parseSrsRecords } from '../../study/srs';
+import { plural, Table, toCount, useFocusHeading } from '../kit';
 import './acronyms.css';
 
 export interface DeckChoices {
@@ -19,8 +19,6 @@ export const DEFAULT_DECK: DeckChoices = { mode: 'flashcards', show: 'term', sco
 export const MAX_CARDS = 200;
 const TIME_OPTIONS = [0, 2, 5, 10];
 export const SOURCE_LABELS: Record<AcronymSource, string> = { official: 'Official', community: 'Community', mine: 'Mine' };
-
-const plural = (n: number, word: string) => `${n} ${n === 1 ? word : `${word}s`}`;
 
 export function AcronymSetup({
   meta,
@@ -39,9 +37,8 @@ export function AcronymSetup({
   onStart: () => void;
   onCancel: () => void;
 }) {
-  const headingRef = useRef<HTMLHeadingElement>(null);
   // Mounted once per visit to the setup, including after "Study again".
-  useEffect(() => headingRef.current?.focus(), []);
+  const headingRef = useFocusHeading();
   const now = new Date();
   const terms = new Set(entries.map((a) => a.term));
   const due = parseSrsRecords(srs).filter((r) => r.exam === meta.code && r.kind === 'acronym' && terms.has(r.itemId) && isDue(r, now)).length;
@@ -85,13 +82,7 @@ export function AcronymSetup({
             {radio('scope', 'all', 'All')}
             <label>
               Number of cards
-              <input
-                type="number"
-                min={1}
-                max={MAX_CARDS}
-                value={value.count || ''}
-                onChange={(e) => set({ count: Math.min(MAX_CARDS, Math.max(0, Math.floor(Number(e.target.value) || 0))) })}
-              />
+              <input type="number" min={1} max={MAX_CARDS} value={value.count || ''} onChange={(e) => set({ count: toCount(e.target.value, MAX_CARDS) })} />
             </label>
           </fieldset>
           {value.mode === 'quiz' && (
@@ -122,25 +113,7 @@ export function AcronymSetup({
       {entries.length > 0 && (
         <details className="acronym-list">
           <summary>Full list</summary>
-          <table>
-            <caption>Full list of acronyms</caption>
-            <thead>
-              <tr>
-                <th scope="col">Acronym</th>
-                <th scope="col">Meaning</th>
-                <th scope="col">Source</th>
-              </tr>
-            </thead>
-            <tbody>
-              {entries.map((a) => (
-                <tr key={a.term}>
-                  <th scope="row">{a.term}</th>
-                  <td>{a.expansion}</td>
-                  <td>{SOURCE_LABELS[a.source]}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <Table caption="Full list of acronyms" head={['Acronym', 'Meaning', 'Source']} rows={entries.map((a) => [a.term, a.term, a.expansion, SOURCE_LABELS[a.source]])} />
         </details>
       )}
     </section>

@@ -1,15 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { AssembledExam } from '../../exam/assemble';
-import { isComplete, type ItemResponse, type Responses } from '../../exam/scoring';
-import type { PartMap } from '../../domain/pbq';
-import { McqView } from './McqView';
-import { PbqView } from './pbq/PbqView';
+import { isComplete, type Responses } from '../../exam/scoring';
+import { QuestionView, useCountdown, useFocusHeading } from '../kit';
 import { ReviewGrid } from './ReviewGrid';
 import { TopBar } from './TopBar';
 import './exam.css';
-
-const asArray = (r: ItemResponse | undefined): string[] => (Array.isArray(r) ? r : []);
-const asMap = (r: ItemResponse | undefined): PartMap => (r && !Array.isArray(r) ? r : {});
 
 export interface SubmitPayload {
   responses: Responses;
@@ -36,12 +31,10 @@ export function ExamRunner({
   const [view, setView] = useState<'question' | 'review'>('question');
   const [responses, setResponses] = useState<Responses>({});
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
-  const [remaining, setRemaining] = useState(() => deadline - now());
   const [confirming, setConfirming] = useState(false);
   const submitted = useRef(false);
   const state = useRef({ responses, flagged });
   state.current = { responses, flagged };
-  const headingRef = useRef<HTMLHeadingElement>(null);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const cancelRef = useRef<HTMLButtonElement>(null);
   // Kept in a ref so a new callback from the parent doesn't restart the timer.
@@ -66,18 +59,8 @@ export function ExamRunner({
     return true;
   }
 
-  useEffect(() => {
-    const id = setInterval(() => {
-      const left = deadline - now();
-      setRemaining(left);
-      if (left <= 0) submit(true);
-    }, 1000);
-    return () => clearInterval(id);
-  }, [deadline, now, submit]);
-
-  useEffect(() => {
-    headingRef.current?.focus();
-  }, [index, view]);
+  const { remaining } = useCountdown(deadline, now, () => submit(true));
+  const headingRef = useFocusHeading([index, view]);
 
   useEffect(() => {
     const d = dialogRef.current;
@@ -118,25 +101,8 @@ export function ExamRunner({
         <>
           <section className="exam-body" aria-labelledby="exam-q-heading">
             <h2 id="exam-q-heading" ref={headingRef} tabIndex={-1}>{`Question ${index + 1}`}</h2>
-            {item.question.type === 'mcq-single' || item.question.type === 'mcq-multi' ? (
-              <McqView
-                key={item.question.id}
-                item={item}
-                selected={asArray(responses[item.question.id])}
-                onChange={(ids) => {
-                  if (!expired()) setResponses((r) => ({ ...r, [item.question.id]: ids }));
-                }}
-              />
-            ) : (
-              <PbqView
-                key={item.question.id}
-                item={item}
-                value={asMap(responses[item.question.id])}
-                onChange={(v) => {
-                  if (!expired()) setResponses((r) => ({ ...r, [item.question.id]: v }));
-                }}
-              />
-            )}
+            <QuestionView item={item} response={responses[item.question.id]} onChange={(v) => !expired() && setResponses((r) => ({ ...r, [item.question.id]: v }))} />
+
           </section>
           <nav className="exam-nav" aria-label="Exam navigation">
             <button type="button" disabled={index === 0} onClick={() => setIndex(index - 1)}>

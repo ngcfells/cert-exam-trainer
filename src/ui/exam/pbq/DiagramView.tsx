@@ -1,6 +1,6 @@
 import type { DiagramPayload } from '../../../domain/pbq';
 import type { PbqProps } from './PbqView';
-import { ChipPool, DropTarget, PartSelect, inOrder } from './parts';
+import { Boxes, ChipPool, DropTarget, PartSelect, inOrder } from './parts';
 
 const pct = (n: number, of: number) => `${(n / of) * 100}%`;
 
@@ -44,16 +44,7 @@ export function DiagramView({ item, value, onChange }: PbqProps) {
             const b = center(e.to);
             return a && b ? <line key={i} x1={a.x} y1={a.y} x2={b.x} y2={b.y} strokeWidth={2} /> : null;
           })}
-          {p.nodes.map((n) => (
-            <g key={n.id}>
-              <rect x={n.x} y={n.y} width={n.w} height={n.h} strokeWidth={2} />
-              {n.text && (
-                <text x={n.x + n.w / 2} y={n.y + n.h / 2} textAnchor="middle" dominantBaseline="middle" fontSize={14}>
-                  {n.text}
-                </text>
-              )}
-            </g>
-          ))}
+          <Boxes nodes={p.nodes} />
         </svg>
         {p.zones.map((z) => (
           <DropTarget key={z.id} className="zone" style={{ left: pct(z.x, p.width), top: pct(z.y, p.height) }} onDrop={(id) => set(z.id, id)}>

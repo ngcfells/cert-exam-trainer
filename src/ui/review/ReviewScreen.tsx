@@ -1,5 +1,5 @@
 import { useId, useMemo, useState } from 'react';
-import { getBundledQuestions, listExams } from '../../banks';
+import { getBundledQuestions } from '../../banks';
 import {
   CONTENT_TARGETS,
   answerBalance,
@@ -9,15 +9,14 @@ import {
   objectiveQuotas,
   pbqTypeCounts,
 } from '../../content';
-import { PBQ_TEMPLATES, isPbqTemplate, type PartMap } from '../../domain/pbq';
+import { PBQ_TEMPLATES, isPbqTemplate } from '../../domain/pbq';
 import { questionSchema } from '../../domain/schema';
 import type { Question } from '../../domain/types';
+import type { ItemResponse } from '../../exam/scoring';
 import { ItemReview } from '../exam/ItemReview';
-import { McqView } from '../exam/McqView';
-import { PbqView } from '../exam/pbq/PbqView';
+import { metaFor, pct, QuestionView, Table } from '../kit';
 
 const STATUSES = ['approved', 'reviewed', 'draft', 'all'] as const;
-const pct = (n: number) => `${Math.round(n * 100)}%`;
 
 /** Saves one bank item through the dev server's review plugin; returns an error message or ''. */
 async function postItem(question: Question, note?: string): Promise<string> {
@@ -34,7 +33,7 @@ async function postItem(question: Question, note?: string): Promise<string> {
 }
 
 function BankChecks({ examCode, questions }: { examCode: string; questions: Question[] }) {
-  const meta = listExams().find((m) => m.code === examCode)!;
+  const meta = metaFor(examCode);
   const approved = questions.filter((q) => q.status === 'approved');
   const quotas = objectiveQuotas(meta, { mcq: CONTENT_TARGETS.mcq, pbq: CONTENT_TARGETS.pbq });
   const cov = coverage(meta, approved);
@@ -55,25 +54,11 @@ function BankChecks({ examCode, questions }: { examCode: string; questions: Ques
           Key position: {Object.values(balance).map(pct).join(' / ')}; key is longest option: {pct(longestOptionTell(approved))}
         </li>
       </ul>
-      <table>
-        <caption>Objective coverage</caption>
-        <thead>
-          <tr>
-            <th scope="col">Objective</th>
-            <th scope="col">MCQs</th>
-            <th scope="col">PBQs</th>
-          </tr>
-        </thead>
-        <tbody>
-          {meta.objectives.map((o) => (
-            <tr key={o.id}>
-              <th scope="row">{o.id}</th>
-              <td>{cov[o.id].mcq} / {quotas[o.id].mcq}</td>
-              <td>{cov[o.id].pbq} / {quotas[o.id].pbq}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Table
+        caption="Objective coverage"
+        head={['Objective', 'MCQs', 'PBQs']}
+        rows={meta.objectives.map((o) => [o.id, o.id, `${cov[o.id].mcq} / ${quotas[o.id].mcq}`, `${cov[o.id].pbq} / ${quotas[o.id].pbq}`])}
+      />
     </section>
   );
 }
@@ -89,7 +74,7 @@ export function ReviewScreen({
   questions?: Question[];
   onExit: () => void;
 }) {
-  const meta = listExams().find((m) => m.code === examCode)!;
+  const meta = metaFor(examCode);
   const [questions, setQuestions] = useState<Question[]>(() => initial ?? getBundledQuestions(examCode, { includeDrafts: true }));
   const [status, setStatus] = useState<(typeof STATUSES)[number]>('approved');
   const [objective, setObjective] = useState('all');
@@ -99,7 +84,7 @@ export function ReviewScreen({
   const [editing, setEditing] = useState<string | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
-  const [preview, setPreview] = useState<{ mcq: string[]; pbq: PartMap }>({ mcq: [], pbq: {} });
+  const [preview, setPreview] = useState<ItemResponse>();
   const uid = useId();
 
   const shown = useMemo(
@@ -120,7 +105,7 @@ export function ReviewScreen({
     setNote('');
     setEditing(null);
     setError('');
-    setPreview({ mcq: [], pbq: {} });
+    setPreview(undefined);
   }
 
   async function save(next: Question, opts: { note?: string; advance: boolean }) {
@@ -214,11 +199,7 @@ export function ReviewScreen({
             </>
           ) : (
             <>
-              {isPbqTemplate(q.type) ? (
-                <PbqView item={{ question: q }} value={preview.pbq} onChange={(v) => setPreview({ ...preview, pbq: v })} />
-              ) : (
-                <McqView item={{ question: q }} selected={preview.mcq} onChange={(v) => setPreview({ ...preview, mcq: v })} />
-              )}
+              <QuestionView item={{ question: q }} response={preview} onChange={setPreview} />
               <section aria-label="Answer key">
                 <h3>Answer key</h3>
                 <ItemReview q={q} response={undefined} showStem={false} />

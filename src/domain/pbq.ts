@@ -87,61 +87,54 @@ export function isPbqTemplate(type: string): type is PbqTemplate {
   return type in pbqSchemas;
 }
 
-/** Each part with the values it may take. Typed terminal steps have none. */
-function partsOf(q: Question): { id: string; label: string; values: Item[] }[] {
-  const p = q.payload as never;
-  switch (q.type) {
-    case 'pbq-match': {
-      const m = p as MatchPayload;
-      return m.prompts.map((x) => ({ id: x.id, label: x.text, values: m.choices }));
-    }
-    case 'pbq-order': {
-      const o = p as OrderPayload;
-      return o.steps.map((_, i) => ({ id: String(i), label: `Position ${i + 1}`, values: o.steps }));
-    }
-    case 'pbq-config':
-    case 'pbq-data':
-      return (p as ConfigPayload).fields.map((f) => ({ id: f.id, label: f.label, values: f.options }));
-    case 'pbq-diagram': {
-      const d = p as DiagramPayload;
-      return d.zones.map((z) => ({ id: z.id, label: z.name, values: d.labels }));
-    }
-    case 'pbq-terminal':
-      return (p as TerminalPayload).steps.map((s) => ({ id: s.id, label: s.label, values: s.options ?? [] }));
-    case 'pbq-hotspot':
-      return (p as HotspotPayload).spots.map((s) => ({ id: s.id, label: s.name, values: HOTSPOT_VALUES }));
-    case 'pbq-buckets': {
-      const b = p as BucketsPayload;
-      return b.items.map((x) => ({ id: x.id, label: x.text, values: b.buckets }));
-    }
-    default:
-      return [];
-  }
+type Part = { id: string; label: string; values: Item[] };
+const part = (id: string, label: string, values: Item[]): Part => ({ id, label, values });
+const fieldParts = (p: ConfigPayload) => p.fields.map((f) => part(f.id, f.label, f.options));
+const ids = (xs: Item[]) => xs.map((x) => x.id);
+
+/**
+ * Per template: each part with the values it may take (typed terminal steps have none),
+ * the answer key as parts (terminal: the first accepted entry), and the pool shuffled per attempt (spec §7 4a).
+ */
+const TEMPLATES: Record<PbqTemplate, { parts: (p: never) => Part[]; key: (a: never, parts: Part[]) => PartMap; pool?: (p: never) => string[] }> = {
+  'pbq-match': {
+    parts: (p: MatchPayload) => p.prompts.map((x) => part(x.id, x.text, p.choices)),
+    key: (a: { pairs: PartMap }) => a.pairs,
+    pool: (p: MatchPayload) => ids(p.choices),
+  },
+  'pbq-order': {
+    parts: (p: OrderPayload) => p.steps.map((_, i) => part(String(i), `Position ${i + 1}`, p.steps)),
+    key: (a: { order: string[] }) => Object.fromEntries(a.order.map((id, i) => [String(i), id])),
+    pool: (p: OrderPayload) => ids(p.steps),
+  },
+  'pbq-config': { parts: fieldParts, key: (a: { values: PartMap }) => a.values },
+  'pbq-data': { parts: fieldParts, key: (a: { values: PartMap }) => a.values },
+  'pbq-diagram': {
+    parts: (p: DiagramPayload) => p.zones.map((z) => part(z.id, z.name, p.labels)),
+    key: (a: { placements: PartMap }) => a.placements,
+    pool: (p: DiagramPayload) => ids(p.labels),
+  },
+  'pbq-terminal': {
+    parts: (p: TerminalPayload) => p.steps.map((s) => part(s.id, s.label, s.options ?? [])),
+    key: (a: { accept: Record<string, string[]> }) => Object.fromEntries(Object.entries(a.accept).map(([k, v]) => [k, v[0]])),
+  },
+  'pbq-hotspot': {
+    parts: (p: HotspotPayload) => p.spots.map((s) => part(s.id, s.name, HOTSPOT_VALUES)),
+    key: (a: { selected: string[] }, parts) => Object.fromEntries(parts.map(({ id }) => [id, a.selected.includes(id) ? HOTSPOT_ON : 'off'])),
+  },
+  'pbq-buckets': {
+    parts: (p: BucketsPayload) => p.items.map((x) => part(x.id, x.text, p.buckets)),
+    key: (a: { placements: PartMap }) => a.placements,
+    pool: (p: BucketsPayload) => ids(p.items),
+  },
+};
+
+function partsOf(q: Question): Part[] {
+  return isPbqTemplate(q.type) ? TEMPLATES[q.type].parts(q.payload as never) : [];
 }
 
-/** The answer key as parts; for terminal steps, the first accepted entry. */
 export function correctParts(q: Question): PartMap {
-  const a = q.answer as Record<string, unknown>;
-  switch (q.type) {
-    case 'pbq-match':
-      return a.pairs as PartMap;
-    case 'pbq-order':
-      return Object.fromEntries((a.order as string[]).map((id, i) => [String(i), id]));
-    case 'pbq-config':
-    case 'pbq-data':
-      return a.values as PartMap;
-    case 'pbq-diagram':
-    case 'pbq-buckets':
-      return a.placements as PartMap;
-    case 'pbq-terminal':
-      return Object.fromEntries(Object.entries(a.accept as Record<string, string[]>).map(([k, v]) => [k, v[0]]));
-    case 'pbq-hotspot': {
-      const sel = a.selected as string[];
-      return Object.fromEntries(partIds(q).map((id) => [id, sel.includes(id) ? HOTSPOT_ON : 'off']));
-    }
-    default:
-      return {};
-  }
+  return isPbqTemplate(q.type) ? TEMPLATES[q.type].key(q.answer as never, partsOf(q)) : {};
 }
 
 /** Trim and collapse whitespace. Case is kept: shell commands are case-sensitive. */
@@ -196,19 +189,7 @@ export function valueText(q: Question, partId: string, valueId: string): string 
 
 /** The pool shuffled per attempt (spec §7 4a). */
 export function elementIds(q: Question): string[] {
-  const p = q.payload as never;
-  switch (q.type) {
-    case 'pbq-match':
-      return (p as MatchPayload).choices.map((c) => c.id);
-    case 'pbq-order':
-      return (p as OrderPayload).steps.map((s) => s.id);
-    case 'pbq-diagram':
-      return (p as DiagramPayload).labels.map((l) => l.id);
-    case 'pbq-buckets':
-      return (p as BucketsPayload).items.map((i) => i.id);
-    default:
-      return [];
-  }
+  return (isPbqTemplate(q.type) && TEMPLATES[q.type].pool?.(q.payload as never)) || [];
 }
 
 type Issue = { path: (string | number)[]; message: string };

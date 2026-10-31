@@ -1,5 +1,6 @@
 import { HOTSPOT_ON, type HotspotPayload } from '../../../domain/pbq';
 import type { PbqProps } from './PbqView';
+import { Boxes } from './parts';
 
 export function HotspotView({ item, value, onChange }: PbqProps) {
   const p = item.question.payload as HotspotPayload;
@@ -17,26 +18,10 @@ export function HotspotView({ item, value, onChange }: PbqProps) {
       <div className="diagram hotspot" style={{ aspectRatio: `${p.width} / ${p.height}` }}>
         {/* Pointer enhancement only; the checkboxes below are the accessible path. */}
         <svg viewBox={`0 0 ${p.width} ${p.height}`} aria-hidden="true">
-          {p.nodes.map((n) => (
-            <g key={n.id}>
-              <rect x={n.x} y={n.y} width={n.w} height={n.h} strokeWidth={2} />
-              {n.text && (
-                <text x={n.x + n.w / 2} y={n.y + n.h / 2} textAnchor="middle" dominantBaseline="middle" fontSize={14}>
-                  {n.text}
-                </text>
-              )}
-            </g>
-          ))}
+          <Boxes nodes={p.nodes} />
           {p.spots.map((s) => (
             <g key={s.id} className={on(s.id) ? 'spot on' : 'spot'} onClick={() => toggle(s.id)}>
-              <rect
-                x={s.x}
-                y={s.y}
-                width={s.w}
-                height={s.h}
-                strokeWidth={on(s.id) ? 5 : 1.5}
-                strokeDasharray={on(s.id) ? undefined : '6 4'}
-              />
+              <rect x={s.x} y={s.y} width={s.w} height={s.h} strokeWidth={on(s.id) ? 5 : 1.5} strokeDasharray={on(s.id) ? undefined : '6 4'} />
               {on(s.id) && (
                 <text x={s.x + s.w - 6} y={s.y + 16} textAnchor="end" fontSize={16} fontWeight="bold">
                   ✓

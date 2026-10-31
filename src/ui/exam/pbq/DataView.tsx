@@ -1,6 +1,8 @@
 import type { DataPayload } from '../../../domain/pbq';
 import type { PbqProps } from './PbqView';
-import { PartSelect } from './parts';
+import { Table } from '../../Table';
+import { fieldParts } from './ConfigView';
+import { PartSelects } from './parts';
 
 const BAR_H = 28;
 const LABEL_W = 120;
@@ -38,36 +40,10 @@ export function DataView({ item, value, onChange }: PbqProps) {
   return (
     <>
       <div className="data-table">
-        <table>
-          <caption>{p.caption}</caption>
-          <thead>
-            <tr>
-              {p.columns.map((c, j) => (
-                <th key={j} scope="col">
-                  {c}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {p.rows.map((r, i) => (
-              <tr key={i}>
-                {r.map((cell, j) => (
-                  <td key={j}>{cell}</td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table caption={p.caption} head={p.columns} rowHeader={false} rows={p.rows.map((r, i) => [String(i), ...r] as [string, ...string[]])} />
       </div>
       {p.chart && <BarChart p={p} />}
-      <ul className="parts">
-        {p.fields.map((f) => (
-          <li key={f.id}>
-            <PartSelect label={f.label} values={f.options} value={value[f.id] ?? ''} onChange={(id) => onChange({ ...value, [f.id]: id })} />
-          </li>
-        ))}
-      </ul>
+      <PartSelects parts={fieldParts(p)} value={value} onChange={onChange} />
     </>
   );
 }
