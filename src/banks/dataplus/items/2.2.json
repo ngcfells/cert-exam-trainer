@@ -2410,15 +2410,15 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "Region North had 300 orders with an average value of $10. Region South had 100 orders with an average value of $30. What is the true average order value across both regions? Answer in whole dollars.",
+    "stem": "Region East had 200 orders with an average value of $12. Region West had 50 orders with an average value of $42. What is the true average order value across both regions? Answer in whole dollars.",
     "payload": {
       "prefix": "$"
     },
     "answer": {
-      "value": 15,
+      "value": 18,
       "tolerance": 0.5
     },
-    "explanation": "Use totals, not the two averages. North total = 300 × 10 = $3,000; South total = 100 × 30 = $3,000. Overall = 6,000 ÷ 400 orders = $15. The simple average of $10 and $30 ($20) is wrong because the regions have different order counts."
+    "explanation": "Use totals, not the two averages. East total = 200 × 12 = $2,400; West total = 50 × 42 = $2,100. Overall = 4,500 ÷ 250 orders = $18. The simple average of $12 and $42 ($27) is wrong because the regions have different order counts."
   },
   {
     "id": "da2-2-2-num-002",
@@ -2450,15 +2450,15 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 3,
-    "stem": "Order 1 is worth $200 and order 2 is worth $100. The orders table is joined to a shipments table: order 1 has 3 shipment rows and order 2 has 1. If the analyst sums the order value column after the join, what total do they get? Answer in whole dollars.",
+    "stem": "Order A is worth $150 and order B is worth $250. The orders table is joined to a shipments table: order A has 4 shipment rows and order B has 2. If the analyst sums the order value column after the join, what total do they get? Answer in whole dollars.",
     "payload": {
       "prefix": "$"
     },
     "answer": {
-      "value": 700,
+      "value": 1100,
       "tolerance": 0.5
     },
-    "explanation": "The join repeats each order once per matching shipment: order 1 appears 3 times (3 × 200 = 600) and order 2 once (100). The sum is 700, but the true order total is only $300. This is double counting."
+    "explanation": "The join repeats each order once per matching shipment: order A appears 4 times (4 × 150 = 600) and order B twice (2 × 250 = 500). The sum is 1,100, but the true order total is only $400. This is double counting."
   },
   {
     "id": "da2-2-2-math-mcq-001",
@@ -2476,11 +2476,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Average the store averages"
+          "text": "Average the store averages, giving each store equal weight"
         },
         {
           "id": "b",
-          "text": "Use the median store average"
+          "text": "Use the median of the store averages to resist outliers"
         },
         {
           "id": "c",
@@ -2488,7 +2488,7 @@
         },
         {
           "id": "d",
-          "text": "Use the largest store's average"
+          "text": "Use the largest store's average as the company figure"
         }
       ]
     },
@@ -2515,19 +2515,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Change the join to a cross join"
+          "text": "Switch to a full outer join so every customer appears"
         },
         {
           "id": "b",
-          "text": "Sum the credit limits before joining, or count each customer once"
+          "text": "Aggregate credit limits per customer before the join"
         },
         {
           "id": "c",
-          "text": "Round the credit limits to thousands"
+          "text": "Round the credit limits to the nearest thousand dollars"
         },
         {
           "id": "d",
-          "text": "Sort the joined table by customer ID"
+          "text": "Sort the joined table by customer ID before summing"
         }
       ]
     },
@@ -2536,6 +2536,6 @@
         "b"
       ]
     },
-    "explanation": "A one-to-many join repeats each customer's row once per order, so the credit limit is counted many times. Aggregate at the customer level before the join, or de-duplicate on the customer ID before summing. A cross join would make it worse."
+    "explanation": "A one-to-many join repeats each customer's row once per order, so the credit limit is counted many times. Aggregate at the customer level before the join (or de-duplicate on customer ID before summing). A full outer join still repeats the rows."
   }
 ]

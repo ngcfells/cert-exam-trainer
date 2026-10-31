@@ -2260,15 +2260,15 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 1,
-    "stem": "A discount rate column stores 0.075. What is that rate as a percent? Answer as a percent to one decimal place, e.g. 12.5.",
+    "stem": "A discount rate column stores 0.035. What is that rate as a percent? Answer as a percent to one decimal place, e.g. 12.5.",
     "payload": {
       "suffix": "%"
     },
     "answer": {
-      "value": 7.5,
+      "value": 3.5,
       "tolerance": 0.05
     },
-    "explanation": "A rate stored as a decimal becomes a percent when you multiply by 100: 0.075 × 100 = 7.5%."
+    "explanation": "A rate stored as a decimal becomes a percent when you multiply by 100: 0.035 × 100 = 3.5%."
   },
   {
     "id": "da2-2-3-num-002",
@@ -2281,13 +2281,13 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 1,
-    "stem": "A report shows revenue of 2.4 million dollars. A dashboard tile shows revenue in thousands. What number should the tile show? Answer as a whole number of thousands.",
+    "stem": "A report shows revenue of 3.7 million dollars. A dashboard tile shows revenue in thousands. What number should the tile show? Answer as a whole number of thousands.",
     "payload": {},
     "answer": {
-      "value": 2400,
+      "value": 3700,
       "tolerance": 0.5
     },
-    "explanation": "One million is 1,000 thousands, so 2.4 million = 2.4 × 1,000 = 2,400 thousand."
+    "explanation": "One million is 1,000 thousands, so 3.7 million = 3.7 × 1,000 = 3,700 thousand."
   },
   {
     "id": "da2-2-3-num-003",
@@ -2300,15 +2300,15 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 1,
-    "stem": "A $100 bonus pool is split equally among 3 staff. What is each share? Answer in dollars, rounded to two decimal places.",
+    "stem": "A $200 bonus pool is split equally among 3 staff. What is each share? Answer in dollars, rounded to two decimal places.",
     "payload": {
       "prefix": "$"
     },
     "answer": {
-      "value": 33.33,
-      "tolerance": 0.01
+      "value": 66.67,
+      "tolerance": 0.005
     },
-    "explanation": "100 ÷ 3 = 33.333…, which rounds to 33.33. Round once, at the end: three rounded shares add to 99.99, so the report should note the rounding."
+    "explanation": "200 ÷ 3 = 66.666…, which rounds to 66.67. Round once, at the end: three rounded shares add to 200.01, so the report should note the rounding."
   },
   {
     "id": "da2-2-3-num-004",
@@ -2340,13 +2340,13 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "Test scores have a mean of 60 and a standard deviation of 8. What is the z-score of a score of 76? Answer to one decimal place.",
+    "stem": "Test scores have a mean of 40 and a standard deviation of 5. What is the z-score of a score of 32? Answer to one decimal place, including a minus sign if it is negative.",
     "payload": {},
     "answer": {
-      "value": 2,
+      "value": -1.6,
       "tolerance": 0.05
     },
-    "explanation": "z = (x − mean) ÷ standard deviation = (76 − 60) ÷ 8 = 16 ÷ 8 = 2.0. The score is 2 standard deviations above the mean."
+    "explanation": "z = (x − mean) ÷ standard deviation = (32 − 40) ÷ 5 = −8 ÷ 5 = −1.6. The score is 1.6 standard deviations below the mean, so z is negative."
   },
   {
     "id": "da2-2-3-num-006",
@@ -2378,13 +2378,13 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 1,
-    "stem": "Ages in a data set run from 0 to 60. An analyst makes 4 equal-width bins. How wide is each bin, in years? Answer as a whole number.",
+    "stem": "Values in a column run from 20 to 95. An analyst makes 5 equal-width bins. How wide is each bin? Answer as a whole number.",
     "payload": {},
     "answer": {
       "value": 15,
       "tolerance": 0.5
     },
-    "explanation": "Bin width = (max − min) ÷ number of bins = (60 − 0) ÷ 4 = 15 years."
+    "explanation": "Bin width = (max − min) ÷ number of bins = (95 − 20) ÷ 5 = 75 ÷ 5 = 15."
   },
   {
     "id": "da2-2-3-num-008",
@@ -2397,13 +2397,13 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "Bins are 15 units wide and start at 0: bin 1 holds 0 up to (but not including) 15, bin 2 holds 15 up to 30, and so on. Which bin number holds the value 38? Answer as a whole number.",
+    "stem": "Bins are 20 units wide and start at 0: bin 1 holds 0 up to (but not including) 20, bin 2 holds 20 up to 40, and so on. Which bin number holds the value 52? Answer as a whole number.",
     "payload": {},
     "answer": {
       "value": 3,
       "tolerance": 0.5
     },
-    "explanation": "Bin 1 is 0–under 15, bin 2 is 15–under 30, bin 3 is 30–under 45. 38 falls in bin 3. As arithmetic: 38 ÷ 15 = 2.53, drop the decimals to get 2, then add 1."
+    "explanation": "Bin 1 is 0–under 20, bin 2 is 20–under 40, bin 3 is 40–under 60. 52 falls in bin 3. As arithmetic: 52 ÷ 20 = 2.6, drop the decimals to get 2, then add 1."
   },
   {
     "id": "da2-2-3-num-009",
@@ -2416,13 +2416,13 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "An order was placed on 10 March 2026 and delivered on 2 April 2026. How many days is that, computed as delivery date minus order date (do not count the order date itself)? Answer as a whole number.",
+    "stem": "An order was placed on 20 February 2026 and delivered on 5 March 2026. How many days is that, computed as delivery date minus order date (do not count the order date itself)? Answer as a whole number.",
     "payload": {},
     "answer": {
-      "value": 23,
+      "value": 13,
       "tolerance": 0.5
     },
-    "explanation": "March has 31 days, so 10 March to 31 March is 21 days, and 31 March to 2 April is 2 more: 21 + 2 = 23 days."
+    "explanation": "February 2026 has 28 days, so 20 February to 28 February is 8 days, and 28 February to 5 March is 5 more: 8 + 5 = 13 days."
   },
   {
     "id": "da2-2-3-num-010",
@@ -2435,13 +2435,13 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 1,
-    "stem": "A shift starts at 08:30 and ends at 17:00 on the same day. How long is the shift in hours? Answer as a decimal to one place, e.g. 7.5.",
+    "stem": "A shift starts at 07:45 and ends at 16:15 on the same day. How long is the shift in hours? Answer as a decimal to one place, e.g. 7.5.",
     "payload": {},
     "answer": {
       "value": 8.5,
       "tolerance": 0.05
     },
-    "explanation": "From 08:30 to 16:30 is 8 hours, and 16:30 to 17:00 is 30 minutes = 0.5 hours. 8 + 0.5 = 8.5 hours. Convert minutes to hours by dividing by 60, not by 100."
+    "explanation": "From 07:45 to 15:45 is 8 hours, and 15:45 to 16:15 is 30 minutes = 0.5 hours. 8 + 0.5 = 8.5 hours. Convert minutes to hours by dividing by 60, not by 100."
   },
   {
     "id": "da2-2-3-num-011",
@@ -2454,15 +2454,15 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 1,
-    "stem": "A store had 600 orders and 45 returns in a month. What is the return rate? Answer as a percent to one decimal place.",
+    "stem": "A store had 450 orders and 27 returns in a month. What is the return rate? Answer as a percent to one decimal place.",
     "payload": {
       "suffix": "%"
     },
     "answer": {
-      "value": 7.5,
+      "value": 6,
       "tolerance": 0.05
     },
-    "explanation": "Return rate = returns ÷ orders = 45 ÷ 600 = 0.075, and 0.075 × 100 = 7.5%."
+    "explanation": "Return rate = returns ÷ orders = 27 ÷ 450 = 0.06, and 0.06 × 100 = 6.0%."
   },
   {
     "id": "da2-2-3-num-012",
@@ -2475,15 +2475,15 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 1,
-    "stem": "Daily sales were $120, $80, $150 and $60. A running total column adds each day to the days before it. What is the running total on day 3? Answer in whole dollars.",
+    "stem": "Daily sales were $90, $140, $70 and $110. A running total column adds each day to the days before it. What is the running total on day 3? Answer in whole dollars.",
     "payload": {
       "prefix": "$"
     },
     "answer": {
-      "value": 350,
+      "value": 300,
       "tolerance": 0.5
     },
-    "explanation": "Day 1: 120. Day 2: 120 + 80 = 200. Day 3: 200 + 150 = 350. The running total stops at the current row, so day 4 is not included."
+    "explanation": "Day 1: 90. Day 2: 90 + 140 = 230. Day 3: 230 + 70 = 300. The running total stops at the current row, so day 4 is not included."
   },
   {
     "id": "da2-2-3-math-mcq-001",
@@ -2513,7 +2513,7 @@
         },
         {
           "id": "d",
-          "text": "The sum should have used an average"
+          "text": "Floating-point error in the multiplication"
         }
       ]
     },
@@ -2522,7 +2522,7 @@
         "b"
       ]
     },
-    "explanation": "Rounding each value first lets small errors add up across thousands of rows. Keep full precision in the calculation and round only the final figure for display."
+    "explanation": "Rounding each value first lets small errors add up across thousands of rows. Keep full precision in the calculation and round only the final figure for display. Floating-point error is far too small to explain a noticeable gap."
   },
   {
     "id": "da2-2-3-math-mcq-002",
@@ -2535,33 +2535,33 @@
     "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "Which statement is true of z-score standardization but not of min-max scaling?",
+    "stem": "A model needs every input bounded between 0 and 1, with the smallest value at 0 and the largest at 1. Which scaling method fits?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Its results always lie between 0 and 1"
+          "text": "z-score standardization"
         },
         {
           "id": "b",
-          "text": "It needs the column's minimum and maximum"
+          "text": "Min-max scaling"
         },
         {
           "id": "c",
-          "text": "Its results can be negative numbers"
+          "text": "Log transformation"
         },
         {
           "id": "d",
-          "text": "It changes the order of the values"
+          "text": "Equal-width binning"
         }
       ]
     },
     "answer": {
       "correct": [
-        "c"
+        "b"
       ]
     },
-    "explanation": "A z-score is (x − mean) ÷ standard deviation, so any value below the mean is negative. Min-max scaling to 0–1 uses the minimum and maximum and never goes below 0. Neither method changes the order of the values."
+    "explanation": "Min-max scaling, (x − min) ÷ (max − min), maps the minimum to 0 and the maximum to 1. A z-score is centred on 0 and can be negative or above 1; a log transformation has no fixed bounds; binning turns numbers into ranges."
   },
   {
     "id": "da2-2-3-math-mcq-003",
@@ -2583,15 +2583,15 @@
         },
         {
           "id": "b",
-          "text": "0–5, 5–10, 10–15, 15–20, 20–25"
+          "text": "0–45, 45–60, 60–70, 70–80, 80–100"
         },
         {
           "id": "c",
-          "text": "0–25, 25–50, 50–75, 75–100, 100–125"
+          "text": "0–25, 25–50, 50–75, 75–100"
         },
         {
           "id": "d",
-          "text": "Each bin holds 20% of the scores"
+          "text": "0–10, 10–30, 30–50, 50–70, 70–100"
         }
       ]
     },
@@ -2600,7 +2600,7 @@
         "a"
       ]
     },
-    "explanation": "Width = (100 − 0) ÷ 5 = 20, so each bin covers 20 points from 0 up to 100. Holding 20% of the rows in each bin describes equal-count (equal-frequency) bins, not equal-width ones."
+    "explanation": "Width = (100 − 0) ÷ 5 = 20, so each of the 5 bins covers 20 points from 0 up to 100. Bins of different widths, such as 0–45 then 45–60, are what equal-count (equal-frequency) binning produces. Four 25-point bins are the wrong number of bins."
   },
   {
     "id": "da2-2-3-math-mcq-004",

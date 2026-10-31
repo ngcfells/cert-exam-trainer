@@ -161,7 +161,13 @@
     - New items: `da2-3-2-num-023..033`, `da2-3-2-math-mcq-012..032` and `da2-1-5-math-mcq-001..002`. ANOVA was added as a community acronym (24 community). `II` and `III` are in `NOT_ACRONYMS`.
     - Numeric items always carry `payload` (use `{}` when it has no unit). Dollar amounts use `prefix: "$"`.
     - Tally toward §7: 20 of 30 lessons and 33 of 60 numeric items.
-  - **Next session: section 4 (content E, data math), on branch `math-engine`.** Write the plan with superpowers:writing-plans, then execute it (Native). Every new numeric item needs a `NUMERIC_CHECKS` entry, and every numeric stem must state its answer form and rounding. E is numeric-heavy: aim for about 15 numeric items so that F plus E reaches 60.
+  - **Section 4 (content E) is done on `math-engine`** (2026-10-31; all of `npm run check` passes; plan: `docs/superpowers/plans/2026-10-31-math-section4-content-e.md`; the Opus review found no math errors, and its 3 important and 5 minor findings are all fixed).
+    - 5 lessons in `E-data-math.json`: units and precision, normalization (min-max, z-score), binning, derived fields, aggregation pitfalls.
+    - New items: `da2-2-3-num-001..012`, `da2-2-3-math-mcq-001..004` (2.3), `da2-2-2-num-001..003`, `da2-2-2-math-mcq-001..002` (2.2). Links to existing `da2-2-3-mcq-008`, `-009`, `-040`.
+    - Rule learned: check items must not reuse the lesson example's numbers (the review caught this); use different numbers so the check tests skill, not recall.
+    - Tally toward §7: 25 of 30 lessons and 48 of 60 numeric items.
+  - **Next session: section 5 (content F, joins and keys), on branch `math-engine`.** Write the plan with superpowers:writing-plans, then execute it (Native). Needs at least 5 lessons (to reach 30), at least 10 new join PBQs (key choice, join type, row-count outcomes), and at least 12 numeric items (row counts after joins work well) to reach 60. Every new numeric item needs a `NUMERIC_CHECKS` entry.
+  - **Open bug [#2](https://github.com/ngcfells/cert-exam-trainer/issues/2):** hotspot PBQ spots are always in the same place (all correct ones in one column), so the layout gives the answer away. Shuffle spot placement per display (seeded, saved in results like `elementOrders`) and audit other types for the same tell. Fix before the section 6 redeploy, or in a separate session.
   - **Open bug [#1](https://github.com/ngcfells/cert-exam-trainer/issues/1):** hotspot PBQ spot labels overflow their boxes (SVG text does not wrap). Fix it before the redeploy in section 6, or in a separate session.
   - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.
 - **After the math module: chunk 11, SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
