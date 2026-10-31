@@ -200,8 +200,8 @@ Expansions for non-official acronyms are written or verified by us.
 
 ## 11. Legal and licensing
 
-- **Code:** MIT license.
-- **Bundled original question content:** CC BY-NC 4.0.
+- **Code:** MIT with the Commons Clause: free to use and share, including by businesses, but not to sell (owner, 2026-10-30; was MIT).
+- **Bundled original question content:** CC BY-NC 4.0, plus an additional permission for organisations, businesses included, to use it for teaching and internal training at no charge to learners (owner, 2026-10-30).
 - **DISCLAIMER**, shown in the app and in the README:
   - The app is not affiliated with or endorsed by CompTIA.
   - CompTIA and its exam names are trademarks of CompTIA, Inc.

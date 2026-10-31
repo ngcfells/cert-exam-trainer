@@ -19,7 +19,7 @@ export function HotspotView({ item, value, onChange }: PbqProps) {
         <svg viewBox={`0 0 ${p.width} ${p.height}`} aria-hidden="true">
           {p.nodes.map((n) => (
             <g key={n.id}>
-              <rect x={n.x} y={n.y} width={n.w} height={n.h} fill="#fff" stroke="#333" strokeWidth={2} />
+              <rect x={n.x} y={n.y} width={n.w} height={n.h} strokeWidth={2} />
               {n.text && (
                 <text x={n.x + n.w / 2} y={n.y + n.h / 2} textAnchor="middle" dominantBaseline="middle" fontSize={14}>
                   {n.text}
@@ -28,19 +28,17 @@ export function HotspotView({ item, value, onChange }: PbqProps) {
             </g>
           ))}
           {p.spots.map((s) => (
-            <g key={s.id} className="spot" onClick={() => toggle(s.id)}>
+            <g key={s.id} className={on(s.id) ? 'spot on' : 'spot'} onClick={() => toggle(s.id)}>
               <rect
                 x={s.x}
                 y={s.y}
                 width={s.w}
                 height={s.h}
-                fill={on(s.id) ? 'rgba(31,78,121,0.15)' : 'transparent'}
-                stroke="#1f4e79"
                 strokeWidth={on(s.id) ? 5 : 1.5}
                 strokeDasharray={on(s.id) ? undefined : '6 4'}
               />
               {on(s.id) && (
-                <text x={s.x + s.w - 6} y={s.y + 16} textAnchor="end" fontSize={16} fontWeight="bold" fill="#1f4e79">
+                <text x={s.x + s.w - 6} y={s.y + 16} textAnchor="end" fontSize={16} fontWeight="bold">
                   ✓
                 </text>
               )}

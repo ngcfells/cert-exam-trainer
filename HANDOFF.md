@@ -113,10 +113,19 @@
   - ESLint ignores `content-drafts/`, `dist-e2e/` and `_WorkingData/`.
   - Azure Data Studio (retired 2026-02-28) stays as an exam-named tool but is never keyed as the current recommendation.
 
+- **Chunk 9 is done and merged to `main`** (2026-10-30; plan: `docs/superpowers/plans/2026-10-30-chunk9-legal-branding-deploy.md`; all final-review minors fixed):
+  - **License (owner):** code is MIT + Commons Clause (`LICENSE`); bundled questions are CC BY-NC 4.0 plus an additional permission for teaching and internal training, businesses included, at no charge to learners (`CONTENT_LICENSE.md`). Summary: free to use and share, nobody may sell it or charge for access. Up to `8f4be2d` was plain MIT. The owner should check their employment IP clause, and a legal review is still recommended before a public launch.
+  - `src/ui/legal.ts` holds `APP_NAME`, `DISCLAIMER_POINTS` (README must match, `legal-files.test.ts`), `LICENSE_SUMMARY`, `KOFI_URL`. The About screen (footer "About" button) shows version (`__APP_VERSION__`), disclaimer, licenses, privacy, and the owner's Ko-fi tip box (text copied from battletech-tools gh-pages; a plain link, no widget script, dark text on `#72a4f2` for contrast).
+  - Theme: colour tokens in `src/index.css` (light, dark via `prefers-color-scheme`, and `data-theme`); area CSS files use tokens only (`theme.test.ts` forbids hex/rgb in `src/ui`). SVG colours come from CSS. Home has Theme (system/light/dark) and Reduce motion (`src/ui/display.ts`, settings `theme`, `reducedMotion`).
+  - Playwright projects: `fixture`, `bank`, `phone` (360×780 touch), `tablet` (820×1180 touch), `pwa` (serves `dist/` at `/cert-exam-trainer/` via `vite preview`). `responsive.spec.ts` checks no horizontal overflow and axe in light and dark on every PBQ type.
+  - PWA: vite-plugin-pwa 1.2.0 (`generateSW`, autoUpdate) in the `dist/` build only; `__PWA__` compiles registration out of the single file, which also skips `public/`. `npm run check` now builds `dist/` and `dist-single/` before unit tests (`pwa-build.test.ts`).
+  - `npm run deploy [-- --dry-run] [-- --force]` (`scripts/deploy-lib.ts`): refuses uncommitted changes, refuses non-main without `--force`, builds `dist/`, commits it plus `.nojekyll` to `gh-pages` through a temporary worktree, pushes to origin.
+- **Decisions made in chunk 9:** app name stays Cert Exam Trainer; deploy target is the `gh-pages` branch.
+
 ## Next session
 
-**Start chunk 9: legal, branding and deploy** (spec §13 item 9): licenses, disclaimers, the About page, look-and-feel polish, phone and tablet checks, the PWA service worker, and a local deploy script for GitHub Pages.
-
+- **First:** if not done yet, the owner approves the first real `npm run deploy`, then sets Settings → Pages → Source "Deploy from a branch", `gh-pages`, `/ (root)`. Check <https://ngcfells.github.io/cert-exam-trainer/> loads and works offline.
+- **Then start chunk 10: remaining tooling** (spec §13 item 10): the acronym harvester (dump-site source off by default). The dev-only review tool already exists from chunk 8.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 - **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 - **Owner rules for sessions:**

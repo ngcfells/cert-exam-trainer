@@ -22,7 +22,7 @@ function BarChart({ p }: { p: DataPayload }) {
             <text x={LABEL_W - 6} y={y + BAR_H / 2} textAnchor="end" dominantBaseline="middle" fontSize={13}>
               {r[labelColumn]}
             </text>
-            <rect x={LABEL_W} y={y + 4} width={w} height={BAR_H - 8} fill="#1f4e79" />
+            <rect x={LABEL_W} y={y + 4} width={w} height={BAR_H - 8} />
             <text x={LABEL_W + w + 6} y={y + BAR_H / 2} dominantBaseline="middle" fontSize={13}>
               {r[valueColumn]}
             </text>

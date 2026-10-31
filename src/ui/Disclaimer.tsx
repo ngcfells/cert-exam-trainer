@@ -1,12 +1,14 @@
-export const DISCLAIMER =
-  'Not affiliated with or endorsed by CompTIA. CompTIA and its exam names are trademarks of CompTIA, Inc. ' +
-  'All content is original, written from publicly available exam objectives; no exam content is included. ' +
-  'Not a guarantee of passing.';
+import { DISCLAIMER } from './legal';
 
-export function Disclaimer() {
+export { DISCLAIMER } from './legal';
+
+export function Disclaimer({ onAbout }: { onAbout?: () => void }) {
   return (
     <footer>
       <p>{DISCLAIMER}</p>
+      {onAbout && (
+        <button type="button" className="link-button" onClick={onAbout}>About</button>
+      )}
     </footer>
   );
 }

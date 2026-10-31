@@ -37,11 +37,11 @@ function Trend({ points, passingScore }: { points: { score: number }[]; passingS
   const y = (s: number) => H - pad - (s / MAX_SCORE) * (H - 2 * pad);
   return (
     <svg className="trend" viewBox={`0 0 ${W} ${H}`} aria-hidden="true" data-testid="trend">
-      <rect x={0} y={0} width={W} height={H} fill="none" stroke="#767676" />
-      <line x1={pad} x2={W - pad} y1={y(passingScore)} y2={y(passingScore)} stroke="#767676" strokeDasharray="6 4" />
-      <polyline fill="none" stroke="#0b57d0" strokeWidth={2} points={points.map((p, i) => `${x(i)},${y(p.score)}`).join(' ')} />
+      <rect x={0} y={0} width={W} height={H} fill="none" />
+      <line x1={pad} x2={W - pad} y1={y(passingScore)} y2={y(passingScore)} strokeDasharray="6 4" />
+      <polyline fill="none" strokeWidth={2} points={points.map((p, i) => `${x(i)},${y(p.score)}`).join(' ')} />
       {points.map((p, i) => (
-        <circle key={i} cx={x(i)} cy={y(p.score)} r={3} fill="#0b57d0" />
+        <circle key={i} cx={x(i)} cy={y(p.score)} r={3} />
       ))}
     </svg>
   );

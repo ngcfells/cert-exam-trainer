@@ -1,6 +1,9 @@
 import { lazy, Suspense, useEffect, useState } from 'react';
 import { openRepo, type Repo } from './storage';
+import { About } from './ui/About';
 import { AcronymFlow } from './ui/acronyms/AcronymFlow';
+import { applyDisplay, loadDisplay } from './ui/display';
+import { APP_NAME } from './ui/legal';
 import { Disclaimer } from './ui/Disclaimer';
 import { Home } from './ui/Home';
 import { MyQuestions } from './ui/author/MyQuestions';
@@ -29,7 +32,16 @@ export default function App() {
   const [visit, setVisit] = useState(0);
 
   useEffect(() => {
-    void openRepo().then(setStorage);
+    void openRepo().then(async (s) => {
+      // Apply the saved theme before the first screen paints; a read failure keeps the defaults.
+      try {
+        const d = await loadDisplay(s.repo);
+        applyDisplay(d.theme, d.reducedMotion);
+      } catch {
+        /* defaults stay */
+      }
+      setStorage(s);
+    });
   }, []);
 
   function go(s: Screen) {
@@ -43,6 +55,8 @@ export default function App() {
     switch (screen.name) {
       case 'home':
         return <Home repo={repo} persistent={persistent} onNavigate={go} />;
+      case 'about':
+        return <About key={key} onExit={home} />;
       case 'mock':
         return (
           <MockExamFlow
@@ -96,10 +110,10 @@ export default function App() {
   return (
     <>
       <main>
-        <h1>Cert Exam Trainer</h1>
+        <h1>{APP_NAME}</h1>
         {!storage ? <p>Loading…</p> : body(storage.repo, storage.persistent)}
       </main>
-      <Disclaimer />
+      <Disclaimer onAbout={() => go({ name: 'about' })} />
     </>
   );
 }

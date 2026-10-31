@@ -42,11 +42,11 @@ export function DiagramView({ item, value, onChange }: PbqProps) {
           {p.edges.map((e, i) => {
             const a = center(e.from);
             const b = center(e.to);
-            return a && b ? <line key={i} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#333" strokeWidth={2} /> : null;
+            return a && b ? <line key={i} x1={a.x} y1={a.y} x2={b.x} y2={b.y} strokeWidth={2} /> : null;
           })}
           {p.nodes.map((n) => (
             <g key={n.id}>
-              <rect x={n.x} y={n.y} width={n.w} height={n.h} fill="#fff" stroke="#333" strokeWidth={2} />
+              <rect x={n.x} y={n.y} width={n.w} height={n.h} strokeWidth={2} />
               {n.text && (
                 <text x={n.x + n.w / 2} y={n.y + n.h / 2} textAnchor="middle" dominantBaseline="middle" fontSize={14}>
                   {n.text}
