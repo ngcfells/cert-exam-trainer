@@ -3,7 +3,7 @@ import { expectNoSeriousAxe, singleUrl } from './util';
 
 // Runs in the phone and tablet projects. Seeds 4 and 67 together draw all 8 PBQ templates (see exam.spec.ts).
 const SEEDS = [4, 67];
-const TOTAL = 8;
+const TOTAL = 9;
 const SCHEMES = ['light', 'dark'] as const;
 
 async function expectNoOverflow(page: Page, where: string) {
@@ -49,6 +49,17 @@ test('about page fits and is axe clean in light and dark', async ({ page }) => {
   await page.goto(singleUrl);
   await page.getByRole('contentinfo').getByRole('button', { name: 'About' }).click();
   await checkBothSchemes(page, 'about');
+});
+
+test('a lesson and its numeric check item fit and are axe clean in light and dark', async ({ page }) => {
+  await page.goto(singleUrl);
+  await page.getByRole('button', { name: 'Learn: DA0-002' }).click();
+  await checkBothSchemes(page, 'lesson list');
+  await page.getByRole('button', { name: 'Fixture: percent change' }).click();
+  await checkBothSchemes(page, 'lesson');
+  await page.getByRole('button', { name: /Start the check/ }).click();
+  await page.getByLabel(/Visits rose/).fill('abc');
+  await checkBothSchemes(page, 'numeric item');
 });
 
 for (const seed of SEEDS) test(`every exam item fits and is axe clean (seed ${seed})`, async ({ page }) => {

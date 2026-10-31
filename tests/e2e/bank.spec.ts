@@ -34,11 +34,34 @@ test('a mock exam is filled from the bank', async ({ page }) => {
   expect(total).toBeLessThanOrEqual(90);
 });
 
+test('a one-question typed-number practice renders and passes axe', async ({ page }) => {
+  await page.goto(bankUrl);
+  await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
+  await page.getByRole('checkbox', { name: 'Multiple choice' }).uncheck();
+  for (const other of PBQ_NAMES) await page.getByRole('checkbox', { name: other }).uncheck();
+  await page.getByRole('spinbutton', { name: 'Number of questions' }).fill('1');
+  await page.getByRole('button', { name: 'Start practice' }).click();
+  await expect(page.getByRole('textbox')).toHaveAttribute('inputmode', 'decimal');
+  await expectNoSeriousAxe(page);
+});
+
+test('the percent-change lesson renders from the shipped bank and passes axe', async ({ page }) => {
+  await page.goto(bankUrl);
+  await page.getByRole('button', { name: 'Learn: DA0-002' }).click();
+  await page.getByRole('button', { name: 'Percent change' }).click();
+  await expect(page.getByRole('table', { name: /Percent change from May to June/ })).toBeVisible();
+  await expectNoSeriousAxe(page);
+  await page.getByRole('button', { name: 'Start the check (3 questions)' }).click();
+  await expect(page.getByRole('heading', { name: 'Item 1 of 3' })).toBeVisible();
+  await expectNoSeriousAxe(page);
+});
+
 for (const name of PBQ_NAMES) {
   test(`a one-question ${name} practice renders and passes axe`, async ({ page }) => {
     await page.goto(bankUrl);
     await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
     await page.getByRole('checkbox', { name: 'Multiple choice' }).uncheck();
+    await page.getByRole('checkbox', { name: 'Type a number' }).uncheck();
     for (const other of PBQ_NAMES) if (other !== name) await page.getByRole('checkbox', { name: other }).uncheck();
     await page.getByRole('spinbutton', { name: 'Number of questions' }).fill('1');
     await page.getByRole('button', { name: 'Start practice' }).click();
