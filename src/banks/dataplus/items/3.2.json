@@ -4257,5 +4257,355 @@
       ]
     },
     "explanation": "Both variables are categories and the data are counts, so a chi-squared test of independence fits. t-tests and ANOVA compare means of a number."
+  },
+  {
+    "id": "da2-3-2-math-mcq-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The correlation coefficient r between monthly ad spend and monthly sales is +0.9. What does this tell the analyst?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "There is a weak relationship between the two"
+        },
+        {
+          "id": "b",
+          "text": "Ad spend causes 90% of sales"
+        },
+        {
+          "id": "c",
+          "text": "There is a strong positive linear relationship"
+        },
+        {
+          "id": "d",
+          "text": "There is a strong negative linear relationship"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The sign of r gives the direction (+ means both rise together) and its size gives the strength (0.9 is close to 1, so strong). r says nothing about cause, and it is not a percentage of sales."
+  },
+  {
+    "id": "da2-3-2-math-mcq-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Across a year of daily data, ice cream sales and sunburn cases have a correlation of r = 0.8. What is the best explanation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Eating ice cream causes sunburn"
+        },
+        {
+          "id": "b",
+          "text": "Sunburn makes people buy more ice cream"
+        },
+        {
+          "id": "c",
+          "text": "The correlation must come from a data error"
+        },
+        {
+          "id": "d",
+          "text": "A third factor, hot sunny weather, drives both"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Correlation is not causation. Here a confounding variable, sunny weather, raises both ice cream sales and sunburn, so they move together without one causing the other."
+  },
+  {
+    "id": "da2-3-2-math-mcq-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which correlation coefficient shows the strongest linear relationship?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "r = −0.85"
+        },
+        {
+          "id": "b",
+          "text": "r = 0.10"
+        },
+        {
+          "id": "c",
+          "text": "r = 0.60"
+        },
+        {
+          "id": "d",
+          "text": "r = −0.30"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Strength is how close r is to −1 or +1, ignoring the sign. |−0.85| = 0.85 is the largest, so it is the strongest, even though the relationship is negative."
+  },
+  {
+    "id": "da2-3-2-num-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A regression model gives y = 3x + 20, where x is the number of sales calls and y is weekly orders. Predict y when x = 10. Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 50,
+      "tolerance": 0.5
+    },
+    "explanation": "Put x = 10 into the equation: y = 3 × 10 + 20 = 30 + 20 = 50 orders."
+  },
+  {
+    "id": "da2-3-2-num-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A straight line passes through the points (x = 2, y = 10) and (x = 6, y = 30). What is its slope? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 5,
+      "tolerance": 0.5
+    },
+    "explanation": "Slope = change in y ÷ change in x = (30 − 10) ÷ (6 − 2) = 20 ÷ 4 = 5. Each 1-unit rise in x adds 5 to y."
+  },
+  {
+    "id": "da2-3-2-num-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A simple linear regression with one predictor has a correlation coefficient r = 0.8. What is R²? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 64,
+      "tolerance": 0.5
+    },
+    "explanation": "With one predictor, R² = r² = 0.8 × 0.8 = 0.64, which is 64%. The model explains 64% of the variation in y."
+  },
+  {
+    "id": "da2-3-2-math-mcq-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A model predicting sales from ad spend has R² = 0.64. What does this mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Ad spend causes 64% of all sales"
+        },
+        {
+          "id": "b",
+          "text": "The model explains 64% of the variation in sales"
+        },
+        {
+          "id": "c",
+          "text": "The predictions are correct 64% of the time"
+        },
+        {
+          "id": "d",
+          "text": "The slope of the line is 0.64"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "R² (R-squared) is the share of the variation in the outcome that the model accounts for. It is not an accuracy rate, it is not the slope, and it does not show cause."
+  },
+  {
+    "id": "da2-3-2-num-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A logistic regression model gives these predicted probabilities that six customers will cancel: 0.82, 0.45, 0.67, 0.30, 0.51 and 0.49. With a threshold of 0.5, how many customers are classed as \"will cancel\"? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 3,
+      "tolerance": 0.5
+    },
+    "explanation": "A probability of 0.5 or more is classed as \"yes\". 0.82, 0.67 and 0.51 qualify; 0.45, 0.30 and 0.49 do not. That is 3 customers."
+  },
+  {
+    "id": "da2-3-2-num-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Monthly sign-ups were 40, 50, 60, 70 and 80. What is the 3-month moving average for the latest month? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 70,
+      "tolerance": 0.5
+    },
+    "explanation": "Take the last 3 months: (60 + 70 + 80) ÷ 3 = 210 ÷ 3 = 70."
+  },
+  {
+    "id": "da2-3-2-num-033",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Quarterly sales were 100, 110, 120 and 130 (thousand dollars). Using the average change per quarter, forecast next quarter's sales in thousand dollars. Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 140,
+      "tolerance": 0.5
+    },
+    "explanation": "Average change = (130 − 100) ÷ 3 changes = 30 ÷ 3 = 10 per quarter. Forecast = last value + average change = 130 + 10 = 140."
+  },
+  {
+    "id": "da2-3-2-math-mcq-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Retail sales rise every December and fall every January, year after year. What is this pattern called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Trend"
+        },
+        {
+          "id": "b",
+          "text": "Seasonality"
+        },
+        {
+          "id": "c",
+          "text": "An outlier"
+        },
+        {
+          "id": "d",
+          "text": "Random noise"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A pattern that repeats at the same point in each period (here, every year) is seasonality. A trend is the long-run direction, up or down."
+  },
+  {
+    "id": "da2-3-2-math-mcq-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Over five years, monthly sales slowly climb, despite ups and downs from month to month. What is that long-run climb called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Seasonality"
+        },
+        {
+          "id": "b",
+          "text": "A moving average"
+        },
+        {
+          "id": "c",
+          "text": "A residual"
+        },
+        {
+          "id": "d",
+          "text": "The trend"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The trend is the overall direction over a long period. The month-to-month ups and downs are seasonality or noise. A moving average is a tool that smooths them out to show the trend."
   }
 ]

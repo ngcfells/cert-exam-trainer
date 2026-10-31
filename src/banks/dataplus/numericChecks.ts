@@ -18,6 +18,12 @@ const sampleVar = (xs: number[]) => sumSq(xs) / (xs.length - 1);
 /** Sample (n − 1) standard deviation, for the descriptive-statistics items. */
 export const sampleSd = (xs: number[]) => Math.sqrt(sampleVar(xs));
 const popSd = (xs: number[]) => Math.sqrt(sumSq(xs) / xs.length);
+const predict = (m: number, b: number, x: number) => m * x + b;
+const slope = (x1: number, y1: number, x2: number, y2: number) => (y2 - y1) / (x2 - x1);
+/** Mean of the last k values. */
+const movingAvg = (xs: number[], k: number) => mean(xs.slice(-k));
+/** Naive trend forecast: the last value plus the average change per period. */
+const trendForecast = (xs: number[]) => xs[xs.length - 1] + (xs[xs.length - 1] - xs[0]) / (xs.length - 1);
 
 export const NUMERIC_CHECKS: Record<string, () => number> = {
   'da2-3-2-num-001': () => percentChange(40, 50),
@@ -49,4 +55,10 @@ export const NUMERIC_CHECKS: Record<string, () => number> = {
   'da2-3-2-num-025': () => 30 - 4,
   'da2-3-2-num-026': () => (50 - 42) / 2,
   'da2-3-2-num-027': () => 120 + 6.5,
+  'da2-3-2-num-028': () => predict(3, 20, 10),
+  'da2-3-2-num-029': () => slope(2, 10, 6, 30),
+  'da2-3-2-num-030': () => 0.8 ** 2 * 100,
+  'da2-3-2-num-031': () => [0.82, 0.45, 0.67, 0.3, 0.51, 0.49].filter((p) => p >= 0.5).length,
+  'da2-3-2-num-032': () => movingAvg([40, 50, 60, 70, 80], 3),
+  'da2-3-2-num-033': () => trendForecast([100, 110, 120, 130]),
 };

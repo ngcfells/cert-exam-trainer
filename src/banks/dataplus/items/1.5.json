@@ -1283,5 +1283,85 @@
       "s6": "A lookup formula is a standard data tool, not a learned model."
     },
     "acronyms": []
+  },
+  {
+    "id": "da2-1-5-math-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "acronyms": [
+      "ANOVA"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst needs to predict whether each customer will cancel a subscription next month (yes or no). Which model fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Linear regression"
+        },
+        {
+          "id": "b",
+          "text": "A moving average"
+        },
+        {
+          "id": "c",
+          "text": "Logistic regression"
+        },
+        {
+          "id": "d",
+          "text": "ANOVA (Analysis of Variance)"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Logistic regression predicts the probability of a yes/no outcome. Linear regression predicts a number on a continuous scale, and could give values below 0 or above 1."
+  },
+  {
+    "id": "da2-1-5-math-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A logistic regression model returns 0.73 for one customer. What is that value?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The predicted probability that the outcome is yes"
+        },
+        {
+          "id": "b",
+          "text": "The customer's predicted spend in thousands"
+        },
+        {
+          "id": "c",
+          "text": "The correlation coefficient for the customer"
+        },
+        {
+          "id": "d",
+          "text": "The share of variation that the model explains"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Logistic regression outputs a probability between 0 and 1. With the usual 0.5 threshold, 0.73 would be classed as \"yes\"."
   }
 ]
