@@ -1,4 +1,4 @@
-import { lazy, Suspense, useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { openRepo, type Repo } from './storage';
 import { About } from './ui/About';
 import { AcronymFlow } from './ui/acronyms/AcronymFlow';
@@ -12,6 +12,7 @@ import { SettingsScreen } from './ui/SettingsScreen';
 import { MyQuestions } from './ui/author/MyQuestions';
 import { QuestionEditor } from './ui/author/QuestionEditor';
 import { MockExamFlow } from './ui/exam/MockExamFlow';
+import { LeaveGuardProvider, useLeaveGuards } from './ui/nav';
 import { parentOf, type Screen } from './ui/screens';
 import { CramFlow } from './ui/study/CramFlow';
 import { PracticeFlow } from './ui/study/PracticeFlow';
@@ -33,6 +34,9 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'home' });
   // Bumped on every navigation so revisiting a screen starts it fresh.
   const [visit, setVisit] = useState(0);
+  const screenRef = useRef(screen);
+  screenRef.current = screen;
+  const guards = useLeaveGuards();
 
   useEffect(() => {
     void openRepo().then(async (s) => {
@@ -51,18 +55,28 @@ export default function App() {
   useEffect(() => {
     window.history.replaceState({ screen: { name: 'home' } }, '');
     const onPop = (e: PopStateEvent) => {
+      // A run in progress may refuse: put back the entry the browser just left.
+      if (!guards.confirmLeave()) {
+        window.history.pushState({ screen: screenRef.current }, '');
+        return;
+      }
       const s = (e.state as { screen?: Screen } | null)?.screen;
       setScreen(s ?? { name: 'home' });
       setVisit((v) => v + 1);
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
-  }, []);
+  }, [guards]);
 
   function go(s: Screen) {
     window.history.pushState({ screen: s }, '');
     setScreen(s);
     setVisit((v) => v + 1);
+  }
+
+  /** Leaving by the nav bar or footer asks first while a run is in progress. */
+  function leave(s: Screen) {
+    if (guards.confirmLeave()) go(s);
   }
 
   function body(repo: Repo, persistent: boolean) {
@@ -135,17 +149,17 @@ export default function App() {
         <h1>{APP_NAME}</h1>
         {screen.name !== 'home' && (
           <nav className="top-nav" aria-label="Navigation">
-            <button type="button" onClick={() => go(parentOf(screen))}>
+            <button type="button" onClick={() => leave(parentOf(screen))}>
               ← Back
             </button>
-            <button type="button" onClick={() => go({ name: 'home' })}>
+            <button type="button" onClick={() => leave({ name: 'home' })}>
               ⌂ All exams
             </button>
           </nav>
         )}
-        {!storage ? <p>Loading…</p> : body(storage.repo, storage.persistent)}
+        <LeaveGuardProvider guards={guards}>{!storage ? <p>Loading…</p> : body(storage.repo, storage.persistent)}</LeaveGuardProvider>
       </main>
-      <Disclaimer onAbout={() => go({ name: 'about' })} />
+      <Disclaimer onAbout={() => leave({ name: 'about' })} />
     </>
   );
 }

@@ -7,7 +7,10 @@ import type { McqAnswer, McqPayload, Question, QuestionType } from '../../domain
 import { JSON_STARTERS, usesJsonEditor, type JsonType } from '../../authoring/starters';
 import type { Repo } from '../../storage';
 import { Loading, metaFor, QuestionView } from '../kit';
+import { useLeaveGuard } from '../nav';
 import { LoadError } from '../study/LoadError';
+
+const DISCARD = 'Discard your changes to this question?';
 import { plural } from '../plural';
 import { TYPE_LABELS } from './typeLabels';
 import '../exam/exam.css';
@@ -161,6 +164,9 @@ export function QuestionEditor({
   const q = built?.question;
   const previewKey = q ? JSON.stringify([q.type, q.payload]) : '';
   useEffect(() => setPreview(undefined), [previewKey]);
+  const comparable = (d: Draft) => JSON.stringify({ ...d, parked: undefined });
+  const dirty = !!draft && !!initial && comparable(draft) !== comparable(initial);
+  useLeaveGuard(dirty, DISCARD);
 
   if (failed) return <LoadError onExit={onDone} />;
   if (!draft || !built) return <Loading />;
@@ -235,8 +241,7 @@ export function QuestionEditor({
   }
 
   function cancel() {
-    const comparable = (d: Draft) => JSON.stringify({ ...d, parked: undefined });
-    if (comparable(draft!) !== comparable(initial ?? draft!) &&!window.confirm('Discard your changes to this question?')) return;
+    if (dirty && !window.confirm(DISCARD)) return;
     onDone();
   }
 

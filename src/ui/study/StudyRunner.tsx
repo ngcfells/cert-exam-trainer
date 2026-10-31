@@ -4,6 +4,7 @@ import { hasAnswer, itemFraction, type ItemResponse, type Responses } from '../.
 import type { AcronymCard } from '../../study/session';
 import { ItemReview } from '../exam/ItemReview';
 import { AcronymFlip, knownStatus, QuestionView, RunnerFrame, useCountdown, useFocusLater } from '../kit';
+import { useLeaveGuard } from '../nav';
 import '../exam/exam.css';
 import './study.css';
 
@@ -45,6 +46,7 @@ export function StudyRunner({
   const [grades, setGrades] = useState<Record<string, boolean>>({});
   const [done, setDone] = useState(false);
   const finished = useRef(false);
+  useLeaveGuard(!done && (Object.keys(responses).length > 0 || Object.keys(grades).length > 0));
   const furthest = useRef(0);
   furthest.current = Math.max(furthest.current, index);
   const state = useRef({ responses, checked, grades });

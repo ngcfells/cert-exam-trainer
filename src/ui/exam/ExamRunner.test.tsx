@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ExamRunner } from './ExamRunner';
+import { LEAVE_RUN, LeaveGuardProvider, LeaveGuards } from '../nav';
 import type { AssembledExam } from '../../exam/assemble';
 import { mcq } from '../../exam/testFixtures';
 
@@ -32,6 +33,23 @@ function setup(timeLimitMs = 600_000) {
 }
 
 describe('ExamRunner', () => {
+  it('asks before leaving only after the first answer', async () => {
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(false);
+    const guards = new LeaveGuards();
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    render(
+      <LeaveGuardProvider guards={guards}>
+        <ExamRunner exam={exam} timeLimitMs={600_000} startedAt={T0} onSubmit={vi.fn()} />
+      </LeaveGuardProvider>,
+    );
+    expect(guards.confirmLeave()).toBe(true);
+    expect(confirm).not.toHaveBeenCalled();
+    await user.click(screen.getByLabelText('A0-a'));
+    expect(guards.confirmLeave()).toBe(false);
+    expect(confirm).toHaveBeenCalledWith(LEAVE_RUN);
+    confirm.mockRestore();
+  });
+
   it('navigates with Previous and Next', async () => {
     const { user } = setup();
     expect(screen.getByText('Question 1 of 2')).toBeInTheDocument();

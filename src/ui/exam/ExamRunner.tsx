@@ -3,6 +3,7 @@ import type { AssembledExam } from '../../exam/assemble';
 import { isComplete, type Responses } from '../../exam/scoring';
 import { QuestionView, useCountdown, useFocusHeading } from '../kit';
 import { ReviewGrid } from './ReviewGrid';
+import { useLeaveGuard } from '../nav';
 import { TopBar } from './TopBar';
 import './exam.css';
 
@@ -33,6 +34,7 @@ export function ExamRunner({
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
   const [confirming, setConfirming] = useState(false);
   const submitted = useRef(false);
+  useLeaveGuard(Object.keys(responses).length > 0);
   const state = useRef({ responses, flagged });
   state.current = { responses, flagged };
   const dialogRef = useRef<HTMLDialogElement>(null);

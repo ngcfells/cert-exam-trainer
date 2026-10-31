@@ -4,6 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { userQ } from '../../storage/testFixtures';
 import { JSON_STARTERS } from '../../authoring/starters';
+import { LeaveGuardProvider, LeaveGuards } from '../nav';
 import { QuestionEditor } from './QuestionEditor';
 
 afterEach(() => vi.restoreAllMocks());
@@ -162,6 +163,21 @@ describe('QuestionEditor', () => {
     expect(onDone).toHaveBeenCalledTimes(1);
     await user.click(screen.getByRole('button', { name: 'Cancel' }));
     expect(onDone).toHaveBeenCalledTimes(2);
+  });
+
+  it('guards leaving the app screen only while there are unsaved changes', async () => {
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(false);
+    const guards = new LeaveGuards();
+    const user = userEvent.setup();
+    render(
+      <LeaveGuardProvider guards={guards}>
+        <QuestionEditor repo={createMemoryRepo()} examCode="DA0-002" onDone={vi.fn()} />
+      </LeaveGuardProvider>,
+    );
+    expect(guards.confirmLeave()).toBe(true);
+    await user.type(screen.getByLabelText('Question text'), 'x');
+    expect(guards.confirmLeave()).toBe(false);
+    expect(confirm).toHaveBeenCalledWith('Discard your changes to this question?');
   });
 
   it('missing id shows a load error', async () => {

@@ -3,6 +3,7 @@ import type { AcronymEntry } from '../../acronyms/list';
 import { buildChoices, isCorrect, type Direction } from '../../acronyms/quiz';
 import { mulberry32 } from '../../exam/rng';
 import { RunnerFrame, useCountdown, useFocusLater } from '../kit';
+import { useLeaveGuard } from '../nav';
 import { back, front, type AcronymGrade } from './FlashcardRunner';
 
 export function QuizRunner({
@@ -29,6 +30,7 @@ export function QuizRunner({
   const [index, setIndex] = useState(0);
   const [input, setInput] = useState('');
   const [graded, setGraded] = useState<Record<string, AcronymGrade>>({});
+  useLeaveGuard(Object.keys(graded).length > 0);
   const [deadline] = useState(() => (minutes > 0 ? now() + minutes * 60_000 : undefined));
   const choices = useMemo(() => {
     const rng = mulberry32(seed);
