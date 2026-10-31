@@ -1,0 +1,1166 @@
+[
+  {
+    "id": "da2-5-2-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 1,
+    "stem": "What does a data retention policy define?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Who may edit or share a dashboard"
+        },
+        {
+          "id": "b",
+          "text": "How long data is kept before disposal"
+        },
+        {
+          "id": "c",
+          "text": "Which database engine stores the data"
+        },
+        {
+          "id": "d",
+          "text": "How often a report is refreshed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A retention policy sets keep and disposal periods for data. Dashboard editing, database engine choice and refresh frequency are unrelated to how long data is held.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "A United States company sells online to customers living in the European Union. Which regulation applies to those customers' personal data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "None, since the company is based elsewhere"
+        },
+        {
+          "id": "b",
+          "text": "Only the law of the state where the company operates"
+        },
+        {
+          "id": "c",
+          "text": "GDPR, based on where the data subjects live"
+        },
+        {
+          "id": "d",
+          "text": "Only the payment processor's terms"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "GDPR protects the personal data of people in the European Union regardless of where the company is based. Location of the company, state law or processor terms do not remove that duty.",
+    "acronyms": [
+      "GDPR"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "A customer asks a retailer to delete all of their personal data. With no legal reason to keep it, what should the retailer do under GDPR?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mask the name but keep the rest"
+        },
+        {
+          "id": "b",
+          "text": "Move it to an archive indefinitely"
+        },
+        {
+          "id": "c",
+          "text": "Ignore the request until a breach occurs"
+        },
+        {
+          "id": "d",
+          "text": "Erase the data and confirm the deletion"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "GDPR gives individuals a right to erasure when no legal basis for keeping the data exists. Partial masking, indefinite archiving and ignoring the request all fail to honor it.",
+    "acronyms": [
+      "GDPR"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE actions belong in the response to a confirmed data breach?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Contain the incident to stop further exposure"
+        },
+        {
+          "id": "b",
+          "text": "Delete the logs to save storage costs"
+        },
+        {
+          "id": "c",
+          "text": "Notify affected parties and regulators as required"
+        },
+        {
+          "id": "d",
+          "text": "Wait for the annual audit before disclosing"
+        },
+        {
+          "id": "e",
+          "text": "Preserve the logs as evidence for the investigation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Containment, timely notification and preserving evidence are core incident steps. Deleting logs destroys evidence and waiting delays duties.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "A national law requires health records of its citizens to stay inside the country. What does the company need in order to comply?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Storage in a data center within that jurisdiction"
+        },
+        {
+          "id": "b",
+          "text": "A longer retention period"
+        },
+        {
+          "id": "c",
+          "text": "A stronger password policy for all dashboard users"
+        },
+        {
+          "id": "d",
+          "text": "A faster network link"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Jurisdictional rules on data residency dictate where data is physically stored. Retention length, passwords and bandwidth do not satisfy a location requirement.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "A team replicates its database to another region for resilience, but local law restricts where personal data may reside. What should they do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replicate to whichever region has the lowest monthly cost"
+        },
+        {
+          "id": "b",
+          "text": "Replicate only to regions the law permits"
+        },
+        {
+          "id": "c",
+          "text": "Skip the replication entirely"
+        },
+        {
+          "id": "d",
+          "text": "Replicate and disable the audit log"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Replication copies must also satisfy jurisdictional rules, so targets must be limited to allowed regions. Choosing by cost or disabling logs ignores the rule, and skipping replication gives up resilience unnecessarily.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which standard governs the security of cardholder data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The Health Insurance Portability and Accountability Act"
+        },
+        {
+          "id": "b",
+          "text": "The General Data Protection Regulation"
+        },
+        {
+          "id": "c",
+          "text": "The Payment Card Industry Data Security Standard"
+        },
+        {
+          "id": "d",
+          "text": "The Sarbanes-Oxley Act"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The Payment Card Industry Data Security Standard sets requirements for handling cardholder data. The other laws cover health privacy, personal data in Europe and financial reporting.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO purposes does data classification serve?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increasing the speed of queries"
+        },
+        {
+          "id": "b",
+          "text": "Determining the handling rules for each data type"
+        },
+        {
+          "id": "c",
+          "text": "Removing the need for an audit"
+        },
+        {
+          "id": "d",
+          "text": "Guiding which controls such as encryption apply"
+        },
+        {
+          "id": "e",
+          "text": "Choosing a chart type for each report"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Classification sets how data is handled and which safeguards are used. It does not speed queries, replace audits or pick chart types.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "A merchant keeps card security codes in an order database after payment authorization. What does the Payment Card Industry Data Security Standard require?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypt the codes and store them for a year"
+        },
+        {
+          "id": "b",
+          "text": "Move the codes to a shared spreadsheet"
+        },
+        {
+          "id": "c",
+          "text": "Share the codes with the marketing team"
+        },
+        {
+          "id": "d",
+          "text": "Delete the codes after approval"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The standard forbids retaining the card security code after authorization, even if encrypted. Keeping it for a year, copying it to a spreadsheet or sharing it all break that rule.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 1,
+    "stem": "What does an audit trail record?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Who accessed or changed data, and when"
+        },
+        {
+          "id": "b",
+          "text": "The color scheme used in each report"
+        },
+        {
+          "id": "c",
+          "text": "The size of each backup file"
+        },
+        {
+          "id": "d",
+          "text": "The expected growth of the dataset"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An audit trail logs actions on data by user and time, which supports accountability. Color schemes, backup sizes and growth forecasts are not access records.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "A company labels its employee salary file as confidential rather than public. Which practice is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replicating data across regions"
+        },
+        {
+          "id": "b",
+          "text": "Data classification"
+        },
+        {
+          "id": "c",
+          "text": "Data profiling"
+        },
+        {
+          "id": "d",
+          "text": "Data masking"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Classification assigns sensitivity labels that drive handling rules. Replication copies data, profiling measures quality, and masking hides values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 3,
+    "stem": "Which THREE rights does GDPR give individuals over their personal data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Access to the data held about them"
+        },
+        {
+          "id": "b",
+          "text": "Unlimited retention by the company"
+        },
+        {
+          "id": "c",
+          "text": "Correction of inaccurate data"
+        },
+        {
+          "id": "d",
+          "text": "Free access to the company's reports"
+        },
+        {
+          "id": "e",
+          "text": "Erasure when no legal basis remains"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "GDPR provides rights of access, rectification and erasure. It gives no right to unlimited retention or to free access to company reports.",
+    "acronyms": [
+      "GDPR"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "A staff member finds that a spreadsheet of customer records was emailed to the wrong recipient. What is the best next step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the sent email and hope the recipient ignores it"
+        },
+        {
+          "id": "b",
+          "text": "Wait for the next scheduled audit"
+        },
+        {
+          "id": "c",
+          "text": "Report it through the incident process"
+        },
+        {
+          "id": "d",
+          "text": "Rename the file and resend it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A possible breach should go to the incident process promptly so the impact and notification duties can be judged. Hiding it, waiting for an audit or renaming and resending the file lets the risk grow.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 1,
+    "stem": "What is data ethics concerned with?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The server location and the hosting cost"
+        },
+        {
+          "id": "b",
+          "text": "The speed of query execution"
+        },
+        {
+          "id": "c",
+          "text": "The format of exported files"
+        },
+        {
+          "id": "d",
+          "text": "The fair and responsible use of data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Data ethics covers how data is collected and used with fairness, transparency and respect for people. Server location, speed and file formats are technical matters.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 3,
+    "stem": "A model that approves discounts uses postal codes that closely track a protected group, and results favor some neighborhoods. What should the analyst do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Review the model for proxy-variable bias"
+        },
+        {
+          "id": "b",
+          "text": "Hide the postal codes from the report only"
+        },
+        {
+          "id": "c",
+          "text": "Increase the retention period"
+        },
+        {
+          "id": "d",
+          "text": "Add the model to the data dictionary only"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Variables that stand in for protected traits can produce unfair outcomes, so the model should be reviewed for that bias. Hiding the field in a report, longer retention or documenting alone leave the unfairness in place.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO organizations must follow the Payment Card Industry Data Security Standard?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A merchant that accepts card payments"
+        },
+        {
+          "id": "b",
+          "text": "A company that only has a public website"
+        },
+        {
+          "id": "c",
+          "text": "A firm that stores only employee payroll files"
+        },
+        {
+          "id": "d",
+          "text": "A service provider that processes card data for others"
+        },
+        {
+          "id": "e",
+          "text": "A library that lends books"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "The standard applies to those who accept, store, process or transmit cardholder data. A public website, a firm that stores only employee payroll files and a lending library are outside its scope.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "Old invoices must be kept for seven years but are rarely read. Which storage choice fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The fastest and most expensive tier available"
+        },
+        {
+          "id": "b",
+          "text": "A low-cost archive tier with access controls"
+        },
+        {
+          "id": "c",
+          "text": "A personal laptop with a local folder"
+        },
+        {
+          "id": "d",
+          "text": "A shared drive open to all staff"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Rarely used records that must be retained suit cheap archival storage that is still protected. Premium tiers waste money, and laptops or open shared drives expose the data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 3,
+    "stem": "A customer file has passed its retention period, with no legal hold and no business need. What should the data steward do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep it in case it is needed someday"
+        },
+        {
+          "id": "b",
+          "text": "Copy it to a second region"
+        },
+        {
+          "id": "c",
+          "text": "Securely dispose of the data per the policy"
+        },
+        {
+          "id": "d",
+          "text": "Reclassify it as public"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Once the period has ended and no hold applies, policy calls for secure disposal. Keeping it extends risk, replicating it adds copies, and making it public exposes personal data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 3,
+    "stem": "An external auditor asks for evidence of who changed a financial table last quarter. What should the team provide?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The data dictionary"
+        },
+        {
+          "id": "b",
+          "text": "The dashboard mockups and style guide"
+        },
+        {
+          "id": "c",
+          "text": "The latest snapshot"
+        },
+        {
+          "id": "d",
+          "text": "The access records kept for that table"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Access records show who changed data and when. A dictionary, mockups or a snapshot show structure, design or content but not the people behind the changes.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO factors matter when assessing jurisdictional requirements for a dataset?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The brand and version of the reporting tool in use"
+        },
+        {
+          "id": "b",
+          "text": "The file format of the export"
+        },
+        {
+          "id": "c",
+          "text": "The location where the data is stored"
+        },
+        {
+          "id": "d",
+          "text": "The color scheme of the dashboards"
+        },
+        {
+          "id": "e",
+          "text": "The residency of the people the data describes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Storage location and the residence of data subjects determine which laws apply. Tool brand, file format and color scheme do not.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Sort each item into the classification level it should carry.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "pub",
+          "text": "Public"
+        },
+        {
+          "id": "int",
+          "text": "Internal"
+        },
+        {
+          "id": "conf",
+          "text": "Confidential"
+        }
+      ],
+      "items": [
+        {
+          "id": "press",
+          "text": "Published press release"
+        },
+        {
+          "id": "org",
+          "text": "Staff directory with desk phone numbers"
+        },
+        {
+          "id": "cards",
+          "text": "Customer payment card numbers"
+        },
+        {
+          "id": "pay",
+          "text": "Employee salary file"
+        },
+        {
+          "id": "report",
+          "text": "Annual report posted on the website"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "press": "pub",
+        "org": "int",
+        "cards": "conf",
+        "pay": "conf",
+        "report": "pub"
+      }
+    },
+    "explanation": "Information already released is public, material for staff use only is internal, and data whose exposure would harm individuals or the company is confidential.",
+    "partExplanations": {
+      "press": "Already released, so public.",
+      "org": "Meant for staff only, but low harm if seen.",
+      "cards": "Payment card data is highly sensitive.",
+      "pay": "Salaries are private to individuals.",
+      "report": "Posted on the website, so public."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-buckets-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each requirement into the compliance concept it illustrates.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "ret",
+          "text": "Retention"
+        },
+        {
+          "id": "jur",
+          "text": "Jurisdictional requirement"
+        },
+        {
+          "id": "aud",
+          "text": "Audit"
+        },
+        {
+          "id": "inc",
+          "text": "Incident reporting"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Delete invoices seven years after the account closes"
+        },
+        {
+          "id": "i2",
+          "text": "Keep residents' data on servers inside their home country"
+        },
+        {
+          "id": "i3",
+          "text": "Review who opened payroll files last quarter"
+        },
+        {
+          "id": "i4",
+          "text": "Tell regulators within a set time after a data breach"
+        },
+        {
+          "id": "i5",
+          "text": "Archive emails for exactly three years"
+        },
+        {
+          "id": "i6",
+          "text": "Sample access logs to prove controls were followed"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "ret",
+        "i2": "jur",
+        "i3": "aud",
+        "i4": "inc",
+        "i5": "ret",
+        "i6": "aud"
+      }
+    },
+    "explanation": "Retention fixes how long data is kept, jurisdictional rules tie data to a place, audits verify what happened, and incident reporting sets notification duties.",
+    "partExplanations": {
+      "i1": "A fixed keep-then-delete period is retention.",
+      "i2": "Where data may live is a jurisdictional rule.",
+      "i3": "Reviewing past access is an audit activity.",
+      "i4": "Notifying regulators after a breach is incident reporting.",
+      "i5": "A set storage period is retention.",
+      "i6": "Examining logs to prove compliance is an audit."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Match each scenario to the data governance concept it describes.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A hospital keeps a second copy of its records in another region so a flood cannot destroy them."
+        },
+        {
+          "id": "p2",
+          "text": "A team debates whether an algorithm that scores loan applicants treats groups fairly."
+        },
+        {
+          "id": "p3",
+          "text": "A company must follow European rules on how it handles data about people in Europe."
+        },
+        {
+          "id": "p4",
+          "text": "An analyst labels a dataset as restricted so only approved staff can open it."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Replication"
+        },
+        {
+          "id": "c2",
+          "text": "Data ethics"
+        },
+        {
+          "id": "c3",
+          "text": "GDPR"
+        },
+        {
+          "id": "c4",
+          "text": "Classification"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "Replication copies data for resilience, ethics asks whether use is fair, GDPR governs the data of people in Europe, and classification labels sensitivity.",
+    "partExplanations": {
+      "p1": "A second copy in another region is replication.",
+      "p2": "Fairness of data use is a data ethics question.",
+      "p3": "GDPR covers the personal data of people in Europe.",
+      "p4": "Labeling by sensitivity is classification."
+    },
+    "acronyms": [
+      "GDPR"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-2-hotspot-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "5.2"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "This access log extract was prepared for an audit. Select every entry that should be flagged for investigation.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 60,
+          "text": "Analyst runs scheduled sales report"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 60,
+          "text": "Contractor with no approved request exports 40,000 customer rows"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 80,
+          "w": 220,
+          "h": 60,
+          "text": "Backup job completes"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 80,
+          "w": 220,
+          "h": 60,
+          "text": "Disabled account signs in"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 150,
+          "w": 220,
+          "h": 60,
+          "text": "Staff member edits own display name"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 150,
+          "w": 220,
+          "h": 60,
+          "text": "Sales user opens payroll folder"
+        }
+      ],
+      "spots": [
+        {
+          "id": "report",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 60,
+          "name": "Analyst runs scheduled sales report"
+        },
+        {
+          "id": "export",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 60,
+          "name": "Contractor with no approved request exports 40,000 customer rows"
+        },
+        {
+          "id": "backup",
+          "x": 10,
+          "y": 80,
+          "w": 220,
+          "h": 60,
+          "name": "Backup job completes"
+        },
+        {
+          "id": "disabled",
+          "x": 250,
+          "y": 80,
+          "w": 220,
+          "h": 60,
+          "name": "Disabled account signs in"
+        },
+        {
+          "id": "display",
+          "x": 10,
+          "y": 150,
+          "w": 220,
+          "h": 60,
+          "name": "Staff member edits own display name"
+        },
+        {
+          "id": "payroll",
+          "x": 250,
+          "y": 150,
+          "w": 220,
+          "h": 60,
+          "name": "Sales user opens payroll folder"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "export",
+        "disabled",
+        "payroll"
+      ]
+    },
+    "explanation": "A bulk export by a contractor, a sign-in from a disabled account, and a sales user in payroll data are all outside expected access. The scheduled report, backup and a display name edit are routine.",
+    "partExplanations": {
+      "report": "Routine scheduled activity.",
+      "export": "A bulk export of personal data by a contractor with no approved request needs investigation.",
+      "backup": "Routine operations.",
+      "disabled": "A disabled account should never sign in.",
+      "display": "Users may edit their own profile.",
+      "payroll": "Sales staff have no need for payroll data."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]

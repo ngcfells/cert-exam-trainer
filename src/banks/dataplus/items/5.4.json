@@ -1,0 +1,1206 @@
+[
+  {
+    "id": "da2-5-4-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which activity checks that a planned data solution matches what stakeholders asked for before it is built?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Requirement testing"
+        },
+        {
+          "id": "b",
+          "text": "Stress testing"
+        },
+        {
+          "id": "c",
+          "text": "Source control"
+        },
+        {
+          "id": "d",
+          "text": "Data profiling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Requirement testing confirms the design covers the stated needs. Stress testing measures behavior under load, source control tracks changes and profiling summarizes data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "Before a release, finance staff run a new report on real scenarios and sign off. Which practice is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Unit testing by developers"
+        },
+        {
+          "id": "b",
+          "text": "User acceptance testing"
+        },
+        {
+          "id": "c",
+          "text": "Stress testing"
+        },
+        {
+          "id": "d",
+          "text": "Automated monitoring"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "UAT has business users confirm the solution meets their needs. Unit tests check small pieces by developers, stress tests push load and monitoring runs continuously after release.",
+    "acronyms": [
+      "UAT"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "A column of customer ages contains the value -4. Which quality dimension is violated?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Completeness"
+        },
+        {
+          "id": "b",
+          "text": "Uniqueness"
+        },
+        {
+          "id": "c",
+          "text": "Validity"
+        },
+        {
+          "id": "d",
+          "text": "Timeliness"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Validity means values fall within allowed formats or ranges, and a negative age does not. Completeness concerns missing values, uniqueness duplicates and timeliness how current the data is.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which practice tracks changes to SQL scripts, lets a team roll back, and shows who changed what?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data profiling"
+        },
+        {
+          "id": "b",
+          "text": "Data masking"
+        },
+        {
+          "id": "c",
+          "text": "Requirement testing"
+        },
+        {
+          "id": "d",
+          "text": "Source control"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Source control keeps a history of changes with authors and supports rollback. Profiling summarizes data, masking hides values and requirement testing checks design against needs.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "A developer checks that one date-conversion function works correctly, separate from the rest of the pipeline. Which test is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Unit test"
+        },
+        {
+          "id": "b",
+          "text": "Stress test"
+        },
+        {
+          "id": "c",
+          "text": "User acceptance test"
+        },
+        {
+          "id": "d",
+          "text": "End-to-end test"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A unit test exercises a single small component in isolation. Stress and end-to-end tests cover the whole system, and acceptance testing is done by business users.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "Over months, the average value in a feed shifts and new categories appear, though no code changed. What is this called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Schema versioning"
+        },
+        {
+          "id": "b",
+          "text": "Data drift"
+        },
+        {
+          "id": "c",
+          "text": "Data lineage"
+        },
+        {
+          "id": "d",
+          "text": "Stress testing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Data drift is a change in the statistical makeup of incoming data over time. Schema versioning and lineage document structure and origin, and stress testing measures load capacity.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "A team periodically reviews tables for completeness, duplicates and shifts from expected patterns. Which practice is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Requirement testing"
+        },
+        {
+          "id": "b",
+          "text": "Source control review"
+        },
+        {
+          "id": "c",
+          "text": "Data health check"
+        },
+        {
+          "id": "d",
+          "text": "User acceptance testing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A data health check regularly assesses how sound the data is, including drift. The other options verify design, code history or business sign-off instead.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "Alerts fire when the null rate in a table passes a threshold overnight, with no one running a query. Which practice is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Manual spot checking"
+        },
+        {
+          "id": "b",
+          "text": "User acceptance testing"
+        },
+        {
+          "id": "c",
+          "text": "Stress testing"
+        },
+        {
+          "id": "d",
+          "text": "Automated quality monitoring"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Automated monitoring evaluates rules continuously and raises alerts. Manual checks need a person, acceptance testing happens before release, and stress testing examines load.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "Before building a model, an analyst reviews each column's minimum, maximum, distinct count and null percentage. What is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data profiling"
+        },
+        {
+          "id": "b",
+          "text": "Data masking"
+        },
+        {
+          "id": "c",
+          "text": "Unit testing"
+        },
+        {
+          "id": "d",
+          "text": "Data versioning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Profiling summarizes column characteristics to reveal quality issues. Masking hides values, unit testing checks code, and versioning keeps copies of data over time.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which metric measures the share of required fields that actually contain values?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Timeliness"
+        },
+        {
+          "id": "b",
+          "text": "Completeness"
+        },
+        {
+          "id": "c",
+          "text": "Uniqueness"
+        },
+        {
+          "id": "d",
+          "text": "Referential integrity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Completeness is the proportion of required values that are present. Timeliness is currency, uniqueness is absence of duplicates and referential integrity is valid links between related tables.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "A profile shows 1,200 customer ID values but only 1,150 distinct ones. Which dimension is affected?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Completeness"
+        },
+        {
+          "id": "b",
+          "text": "Timeliness"
+        },
+        {
+          "id": "c",
+          "text": "Uniqueness"
+        },
+        {
+          "id": "d",
+          "text": "Validity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Repeated identifiers mean records are not unique. Completeness would show blanks, timeliness would show stale data and validity would show out-of-range values.",
+    "acronyms": [
+      "ID"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "A daily sales table was last refreshed nine days ago. Which quality dimension is failing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Uniqueness"
+        },
+        {
+          "id": "b",
+          "text": "Validity"
+        },
+        {
+          "id": "c",
+          "text": "Accuracy"
+        },
+        {
+          "id": "d",
+          "text": "Timeliness"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Timeliness measures how current data is relative to need. Uniqueness, validity and accuracy are not affected simply by the age of a refresh.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "An organization wants to benchmark its data checks against an international body of rules. What should it reference?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "ISO data quality standards"
+        },
+        {
+          "id": "b",
+          "text": "Vendor release notes"
+        },
+        {
+          "id": "c",
+          "text": "Internal naming conventions"
+        },
+        {
+          "id": "d",
+          "text": "Open-source license terms"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "ISO publishes international standards, including ones for data quality. Release notes, naming conventions and license terms do not define a quality standard.",
+    "acronyms": [
+      "ISO"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 3,
+    "stem": "A fix passed all of its unit tests, but finance rejects the report because totals exclude refunds. Which stage should have caught this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Source control review"
+        },
+        {
+          "id": "b",
+          "text": "User acceptance testing"
+        },
+        {
+          "id": "c",
+          "text": "Stress testing at scale"
+        },
+        {
+          "id": "d",
+          "text": "Data profiling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Business users know refunds belong in totals, so acceptance testing is where the gap shows. Source control review checks code history, stress testing checks load and profiling summarizes columns without business rules.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 3,
+    "stem": "A model's accuracy declines though every pipeline unit test passes, and a comparison shows input distributions have changed. What would have caught this earlier?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "More frequent UAT cycles"
+        },
+        {
+          "id": "b",
+          "text": "Stricter source control branching"
+        },
+        {
+          "id": "c",
+          "text": "Automated monitoring for drift"
+        },
+        {
+          "id": "d",
+          "text": "A larger stress test"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Monitoring that compares incoming data with a baseline flags drift as it happens. UAT, branching rules and heavier load tests do not watch the distribution of live data.",
+    "acronyms": [
+      "UAT"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are outputs of data profiling?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Null percentage per column"
+        },
+        {
+          "id": "b",
+          "text": "Distinct value counts"
+        },
+        {
+          "id": "c",
+          "text": "List of merge conflicts"
+        },
+        {
+          "id": "d",
+          "text": "Peak concurrent user count"
+        },
+        {
+          "id": "e",
+          "text": "Business owner sign-off record"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Profiling reports column statistics such as null rates and distinct counts. Merge conflicts belong to source control, concurrency to stress testing and sign-off to acceptance testing.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are benefits of source control?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Automatic detection of data drift"
+        },
+        {
+          "id": "b",
+          "text": "History of who changed what"
+        },
+        {
+          "id": "c",
+          "text": "Faster dashboard rendering under load"
+        },
+        {
+          "id": "d",
+          "text": "Ability to roll back a change"
+        },
+        {
+          "id": "e",
+          "text": "Proof that requirements are met"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Source control provides a change history and rollback. It does not detect drift, speed up rendering or prove that requirements were satisfied.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE are data quality dimensions?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Completeness"
+        },
+        {
+          "id": "b",
+          "text": "Concurrency"
+        },
+        {
+          "id": "c",
+          "text": "Timeliness"
+        },
+        {
+          "id": "d",
+          "text": "Branching"
+        },
+        {
+          "id": "e",
+          "text": "Uniqueness"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Completeness, timeliness and uniqueness describe the condition of data. Concurrency relates to load and branching to source control.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO belong in a data health check?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Checking for duplicate records"
+        },
+        {
+          "id": "b",
+          "text": "Collecting executive sign-off for release"
+        },
+        {
+          "id": "c",
+          "text": "Comparing current distributions to a baseline"
+        },
+        {
+          "id": "d",
+          "text": "Measuring response time under heavy load"
+        },
+        {
+          "id": "e",
+          "text": "Reviewing merge requests"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A health check looks for duplicates and shifts from the baseline. Sign-off is acceptance testing, load measurement is stress testing and merge requests are source control.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are goals of stress testing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tracking script revisions over time"
+        },
+        {
+          "id": "b",
+          "text": "Finding where the system breaks"
+        },
+        {
+          "id": "c",
+          "text": "Confirming users accept the layout"
+        },
+        {
+          "id": "d",
+          "text": "Seeing how refresh time degrades under load"
+        },
+        {
+          "id": "e",
+          "text": "Checking each function in isolation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Stress tests reveal the breaking point and how performance degrades. Revisions, layout acceptance and isolated function checks belong to source control, UAT and unit testing.",
+    "acronyms": [
+      "UAT"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-order-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "Put these quality assurance stages for a changed dashboard calculation in the order they should run.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s1",
+          "text": "Commit the change to a branch in source control"
+        },
+        {
+          "id": "s2",
+          "text": "Run unit tests on the changed calculation"
+        },
+        {
+          "id": "s3",
+          "text": "Verify the output of the calculation against the written requirements on test data"
+        },
+        {
+          "id": "s4",
+          "text": "Stress test with full production data volume after functional checks pass"
+        },
+        {
+          "id": "s5",
+          "text": "Business users complete user acceptance testing"
+        },
+        {
+          "id": "s6",
+          "text": "Release to production"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "Changes are tracked first, tested in small units, checked against requirements, tested under load, accepted by users, and only then released.",
+    "partExplanations": {
+      "s1": "Source control records and isolates the change.",
+      "s2": "Unit tests catch calculation errors early.",
+      "s3": "Requirement testing confirms the change does what was asked.",
+      "s4": "Load testing checks it holds up at full volume.",
+      "s5": "User acceptance testing is the business sign-off.",
+      "s6": "Release comes only after all checks pass."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-terminal-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Profile a customer export before it is loaded. Review the sample, then complete each step.",
+    "payload": {
+      "output": [
+        "$ head -n 5 customers.csv",
+        "customer_no,name,email,region",
+        "1001,Dana Wirth,dana@example.com,West",
+        "1002,Omar Reyes,,East",
+        "1003,Priya Nair,priya@example.com,West",
+        "1001,Dana Wirth,dana@example.com,West"
+      ],
+      "steps": [
+        {
+          "id": "rows",
+          "label": "Type a command that counts the lines in customers.csv"
+        },
+        {
+          "id": "dups",
+          "label": "The file customer_nos.txt holds one customer number per line and is not sorted. Type a command that prints each number that appears more than once"
+        },
+        {
+          "id": "act",
+          "label": "Choose the best action for the repeated customer and the blank email",
+          "options": [
+            {
+              "id": "load",
+              "text": "Load the file as is and fix issues in the dashboard"
+            },
+            {
+              "id": "drop",
+              "text": "Delete the email column"
+            },
+            {
+              "id": "rules",
+              "text": "Add profiling rules that reject repeated numbers and flag blank emails"
+            },
+            {
+              "id": "skip",
+              "text": "Skip profiling because the file is small"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "rows": [
+          "wc -l customers.csv",
+          "wc -l < customers.csv",
+          "cat customers.csv | wc -l",
+          "wc -l ./customers.csv"
+        ],
+        "dups": [
+          "sort customer_nos.txt | uniq -d",
+          "sort ./customer_nos.txt | uniq -d",
+          "cat customer_nos.txt | sort | uniq -d",
+          "sort < customer_nos.txt | uniq -d",
+          "sort -n customer_nos.txt | uniq -d"
+        ],
+        "act": [
+          "rules"
+        ]
+      }
+    },
+    "explanation": "wc -l counts lines, and sorting then uniq -d prints repeated values. Profiling rules that reject repeated keys and report blanks catch the problems on every load; loading as is, deleting a column or skipping profiling hides them.",
+    "partExplanations": {
+      "rows": "wc -l counts the lines in a file.",
+      "dups": "uniq only compares neighbors, so sort first, then uniq -d prints the repeats.",
+      "act": "Profiling rules make the checks repeatable on each load."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Choose the data quality metric that each automated monitor checks.",
+    "payload": {
+      "fields": [
+        {
+          "id": "blank",
+          "label": "Share of customer rows that have an email address",
+          "options": [
+            {
+              "id": "uniq",
+              "text": "Uniqueness"
+            },
+            {
+              "id": "comp",
+              "text": "Completeness"
+            },
+            {
+              "id": "time",
+              "text": "Timeliness"
+            }
+          ]
+        },
+        {
+          "id": "dupe",
+          "label": "No customer number appears on two rows",
+          "options": [
+            {
+              "id": "valid",
+              "text": "Validity"
+            },
+            {
+              "id": "cons",
+              "text": "Consistency"
+            },
+            {
+              "id": "uniq",
+              "text": "Uniqueness"
+            }
+          ]
+        },
+        {
+          "id": "dates",
+          "label": "Ship date is never earlier than order date",
+          "options": [
+            {
+              "id": "valid",
+              "text": "Validity"
+            },
+            {
+              "id": "comp",
+              "text": "Completeness"
+            },
+            {
+              "id": "time",
+              "text": "Timeliness"
+            }
+          ]
+        },
+        {
+          "id": "late",
+          "label": "The nightly load finishes before the 6 a.m. report runs",
+          "options": [
+            {
+              "id": "uniq",
+              "text": "Uniqueness"
+            },
+            {
+              "id": "cons",
+              "text": "Consistency"
+            },
+            {
+              "id": "time",
+              "text": "Timeliness"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "blank": "comp",
+        "dupe": "uniq",
+        "dates": "valid",
+        "late": "time"
+      }
+    },
+    "explanation": "Completeness counts present values, uniqueness counts repeats, validity checks rules on values, and timeliness checks that data is available when needed. Consistency compares values across sources, which none of these checks measure.",
+    "partExplanations": {
+      "blank": "Missing values reduce completeness.",
+      "dupe": "Repeated keys break uniqueness.",
+      "dates": "A date order rule is a validity check.",
+      "late": "Data arriving on time is timeliness."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-4-data-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "5.4"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "Use this profile of a 2,000-row customer table to answer each question.",
+    "payload": {
+      "caption": "Column profile, 2,000 rows",
+      "columns": [
+        "Column",
+        "Blank values",
+        "Distinct values"
+      ],
+      "rows": [
+        [
+          "customer_no",
+          "0",
+          "1960"
+        ],
+        [
+          "email",
+          "150",
+          "1850"
+        ],
+        [
+          "phone",
+          "500",
+          "1500"
+        ],
+        [
+          "region",
+          "0",
+          "6"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "email",
+          "label": "Completeness of email",
+          "options": [
+            {
+              "id": "85",
+              "text": "85%"
+            },
+            {
+              "id": "925",
+              "text": "92.5%"
+            },
+            {
+              "id": "75",
+              "text": "7.5%"
+            }
+          ]
+        },
+        {
+          "id": "phone",
+          "label": "Completeness of phone",
+          "options": [
+            {
+              "id": "25",
+              "text": "25%"
+            },
+            {
+              "id": "50",
+              "text": "50%"
+            },
+            {
+              "id": "75",
+              "text": "75%"
+            }
+          ]
+        },
+        {
+          "id": "dups",
+          "label": "Customer numbers repeated (rows beyond the first of each)",
+          "options": [
+            {
+              "id": "40",
+              "text": "40"
+            },
+            {
+              "id": "1960",
+              "text": "1,960"
+            },
+            {
+              "id": "0",
+              "text": "0"
+            }
+          ]
+        },
+        {
+          "id": "worst",
+          "label": "Column with the lowest completeness",
+          "options": [
+            {
+              "id": "region",
+              "text": "region"
+            },
+            {
+              "id": "email",
+              "text": "email"
+            },
+            {
+              "id": "phone",
+              "text": "phone"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "email": "925",
+        "phone": "75",
+        "dups": "40",
+        "worst": "phone"
+      }
+    },
+    "explanation": "Email: (2,000 - 150) / 2,000 = 92.5%. Phone: (2,000 - 500) / 2,000 = 75%. Customer numbers: 2,000 rows - 1,960 distinct = 40 repeats.",
+    "partExplanations": {
+      "email": "1,850 of 2,000 present is 92.5%.",
+      "phone": "1,500 of 2,000 present is 75%.",
+      "dups": "2,000 - 1,960 = 40 rows repeat an earlier number.",
+      "worst": "Phone has the most blanks (500), so it has the lowest completeness."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]

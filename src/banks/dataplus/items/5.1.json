@@ -1,0 +1,1121 @@
+[
+  {
+    "id": "da2-5-1-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which document lists each field in a dataset along with its data type, allowed values and business meaning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A data dictionary"
+        },
+        {
+          "id": "b",
+          "text": "A data flow diagram"
+        },
+        {
+          "id": "c",
+          "text": "A lineage graph"
+        },
+        {
+          "id": "d",
+          "text": "A hierarchy chart"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A data dictionary defines fields, types, allowed values and meaning. A data flow diagram shows movement between systems, a lineage graph traces origin and transformations, and a hierarchy chart shows parent-child levels.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst must show how customer records travel from a web form, through a staging area, into a warehouse. Which artifact best communicates this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A data dictionary"
+        },
+        {
+          "id": "b",
+          "text": "A data flow diagram"
+        },
+        {
+          "id": "c",
+          "text": "A snapshot schedule"
+        },
+        {
+          "id": "d",
+          "text": "A refresh log of load times"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A data flow diagram depicts sources, processes and stores along with the paths between them. A dictionary describes fields, a snapshot schedule governs copies, and a refresh log records load times.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 1,
+    "stem": "What does data lineage describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "How many rows each table currently holds"
+        },
+        {
+          "id": "b",
+          "text": "Which users may read a given dataset"
+        },
+        {
+          "id": "c",
+          "text": "Where data originated and the transformations applied to it"
+        },
+        {
+          "id": "d",
+          "text": "Which file format and compression are used for the nightly backups"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Lineage traces data from its origin through each transformation to its destination. Row counts, permissions and backup formats are separate properties and do not show where the data came from.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO items are typically recorded in a data dictionary?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The data type of each field"
+        },
+        {
+          "id": "b",
+          "text": "The hardware hosting the database"
+        },
+        {
+          "id": "c",
+          "text": "The business meaning of each field"
+        },
+        {
+          "id": "d",
+          "text": "The list of users who viewed a report"
+        },
+        {
+          "id": "e",
+          "text": "The time of the last dashboard refresh"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A dictionary records each field's type and meaning. Hosting hardware, report viewers and refresh times are operational details kept elsewhere.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "A dashboard KPI no longer matches the finance report, and the team must find which step in the pipeline changed the value. What should they consult?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The data dictionary"
+        },
+        {
+          "id": "b",
+          "text": "The hierarchy structure"
+        },
+        {
+          "id": "c",
+          "text": "The refresh interval setting"
+        },
+        {
+          "id": "d",
+          "text": "The data lineage record"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Lineage shows each step between source and report, so the changed transformation can be located. The dictionary defines fields, the hierarchy structure organizes levels, and the refresh interval only controls timing.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 1,
+    "stem": "What is data integration?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Combining data from multiple sources into a unified view"
+        },
+        {
+          "id": "b",
+          "text": "Removing duplicate rows from a single table"
+        },
+        {
+          "id": "c",
+          "text": "Encrypting data before it is stored"
+        },
+        {
+          "id": "d",
+          "text": "Archiving older data to cheaper long-term storage tiers each year"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Integration brings data from different sources together so it can be used as one set. Deduplication, encryption and archiving are different data management tasks.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "Two departments report different customer counts from their own systems. What best resolves the conflict?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Average the two counts in a new report"
+        },
+        {
+          "id": "b",
+          "text": "Name one system as the source of truth"
+        },
+        {
+          "id": "c",
+          "text": "Let each team keep its own definition"
+        },
+        {
+          "id": "d",
+          "text": "Ask staff to pick one of the two counts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A single designated source of truth gives everyone the same figure. Averaging, separate definitions and merged spreadsheets leave the disagreement in place or hide it.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are benefits of maintaining data lineage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increasing the speed of disk storage"
+        },
+        {
+          "id": "b",
+          "text": "Assessing which reports a source change will affect"
+        },
+        {
+          "id": "c",
+          "text": "Removing duplicate records from every source"
+        },
+        {
+          "id": "d",
+          "text": "Tracing an incorrect value back to its origin"
+        },
+        {
+          "id": "e",
+          "text": "Encrypting data at rest"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Lineage supports impact analysis and error tracing. It does not speed up disks, deduplicate records or encrypt data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "A manager wants to compare inventory levels at the end of last quarter with today's levels. Which technique supports this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Shortening the refresh interval to one minute"
+        },
+        {
+          "id": "b",
+          "text": "Overwriting the table on each new load"
+        },
+        {
+          "id": "c",
+          "text": "Keeping a quarter-end snapshot of the data"
+        },
+        {
+          "id": "d",
+          "text": "Adding a legend to the inventory chart"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A snapshot preserves the data as it was at a moment in time, so past states can be compared. Faster refreshes and overwrites discard history, and a legend only changes chart labels.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "Sales figures on a dashboard must reflect new orders within one hour. Which setting should the analyst configure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A quarterly snapshot taken after each month-end close process"
+        },
+        {
+          "id": "b",
+          "text": "A wider hierarchy structure"
+        },
+        {
+          "id": "c",
+          "text": "A longer retention label"
+        },
+        {
+          "id": "d",
+          "text": "A refresh interval of 60 minutes or less"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The refresh interval controls how often data is reloaded, so it must be at most the freshness the business needs. Snapshots, hierarchies and labels do not control how current the data is.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which description best fits metadata?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Details about data, such as its author"
+        },
+        {
+          "id": "b",
+          "text": "Raw transaction records from a sales system"
+        },
+        {
+          "id": "c",
+          "text": "A chart that summarizes monthly totals"
+        },
+        {
+          "id": "d",
+          "text": "A backup copy of a database kept at a second site"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Metadata describes the characteristics of data, for example who created it and when. Transactions are the data itself, charts present it, and backups copy it.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE elements commonly appear in a data flow diagram?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data sources"
+        },
+        {
+          "id": "b",
+          "text": "Dashboard layout templates"
+        },
+        {
+          "id": "c",
+          "text": "Processes that transform data"
+        },
+        {
+          "id": "d",
+          "text": "User access roles"
+        },
+        {
+          "id": "e",
+          "text": "Data stores"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Flow diagrams show sources, processes and stores plus the flows between them. Palettes, layout templates and access roles are not part of the notation.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "Report users need to drill down from country to region to city. Which design supports this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A flat list with one row for every sale"
+        },
+        {
+          "id": "b",
+          "text": "A hierarchy of parent and child levels"
+        },
+        {
+          "id": "c",
+          "text": "A snapshot of the sales table"
+        },
+        {
+          "id": "d",
+          "text": "A data explainability report"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A hierarchy structure arranges levels so users can expand or collapse them. A flat list has no levels, a snapshot is a copy in time, and an explainability report describes how outputs were produced.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 3,
+    "stem": "A compliance team asks why a scoring model produced certain outputs for loan applicants. Which document answers this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A data dictionary"
+        },
+        {
+          "id": "b",
+          "text": "A data flow diagram"
+        },
+        {
+          "id": "c",
+          "text": "A data explainability report"
+        },
+        {
+          "id": "d",
+          "text": "A schedule of load times for each dataset"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An explainability report documents the inputs, logic and reasoning behind a result. A dictionary defines fields, a flow diagram shows movement, and a schedule only lists load times.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst wants to find every dataset in a catalog that was last modified before 2023. Where should the search be run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "On the raw row values of each dataset"
+        },
+        {
+          "id": "b",
+          "text": "On the dashboard color scheme"
+        },
+        {
+          "id": "c",
+          "text": "On the lineage of each report"
+        },
+        {
+          "id": "d",
+          "text": "On metadata, filtered by change date"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A change date is a metadata attribute, so a catalog search on metadata finds it directly. Row contents, color schemes and lineage do not record modification dates of whole datasets.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO practices support a single source of truth?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Naming a system of record for each key entity"
+        },
+        {
+          "id": "b",
+          "text": "Copying data into separate departmental spreadsheets"
+        },
+        {
+          "id": "c",
+          "text": "Letting each team define metrics independently"
+        },
+        {
+          "id": "d",
+          "text": "Applying master data management to shared entities"
+        },
+        {
+          "id": "e",
+          "text": "Refreshing every report from a different extract"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "A named system of record and master data management keep one agreed version. Departmental copies, independent definitions and mixed extracts create conflicting versions.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 3,
+    "stem": "Two systems store the same customer under different ID formats, so joined reports double count people. Which approach best fixes the integration?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply master data management to keys"
+        },
+        {
+          "id": "b",
+          "text": "Delete the older system's records"
+        },
+        {
+          "id": "c",
+          "text": "Add a chart comparing both systems' counts"
+        },
+        {
+          "id": "d",
+          "text": "Increase the dashboard refresh rate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Master data management creates one consistent key for each entity so records match across systems. Deleting data loses history, extra charts display the problem, and refresh speed does not change key mismatches.",
+    "acronyms": [
+      "ID"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "After a faulty load overwrote a table, the team needs the data as it stood yesterday. What should they use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rebuild the data dictionary from the production schema"
+        },
+        {
+          "id": "b",
+          "text": "Restore from the most recent snapshot"
+        },
+        {
+          "id": "c",
+          "text": "Reduce the refresh interval"
+        },
+        {
+          "id": "d",
+          "text": "Redraw the data flow diagram"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A snapshot holds the prior state, so the table can be restored. Rebuilding documentation or changing the refresh timing does not bring back lost data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 3,
+    "stem": "A nightly job saves the full state of a table and keeps each copy for 30 days. Which concept does this illustrate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Source-of-truth designation for customers"
+        },
+        {
+          "id": "b",
+          "text": "Data lineage tracing"
+        },
+        {
+          "id": "c",
+          "text": "Data versioning through snapshots"
+        },
+        {
+          "id": "d",
+          "text": "Hierarchy structure design"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Saving dated copies of a table is versioning by snapshot. Source of truth names an authority, lineage traces origin, and hierarchy structure organizes levels.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO situations justify a shorter refresh interval?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The dataset is a closed historical archive"
+        },
+        {
+          "id": "b",
+          "text": "The source updates only once a month"
+        },
+        {
+          "id": "c",
+          "text": "Users make decisions based on near-current data"
+        },
+        {
+          "id": "d",
+          "text": "A yearly archive that auditors review"
+        },
+        {
+          "id": "e",
+          "text": "The source system changes many times each day"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Frequent source changes and a need for current data call for frequent refreshes. Archives and monthly sources gain nothing from short intervals.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 1,
+    "pbqWeight": 4,
+    "stem": "Match each documentation artifact to the question it answers.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "What does each field in the customer table mean and what type is it?"
+        },
+        {
+          "id": "p2",
+          "text": "Where did this revenue figure come from and what changed it along the way?"
+        },
+        {
+          "id": "p3",
+          "text": "How do records move between the systems in our reporting stack?"
+        },
+        {
+          "id": "p4",
+          "text": "Which regions roll up into which sales territories?"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Data dictionary"
+        },
+        {
+          "id": "c2",
+          "text": "Data lineage"
+        },
+        {
+          "id": "c3",
+          "text": "Data flow diagram"
+        },
+        {
+          "id": "c4",
+          "text": "Hierarchy structure"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "A dictionary defines fields, lineage traces a value back through its transformations, a flow diagram shows movement between systems, and a hierarchy shows parent-child levels.",
+    "partExplanations": {
+      "p1": "Field names, meanings and types are recorded in a data dictionary.",
+      "p2": "Lineage follows a value from its origin through each transformation.",
+      "p3": "A data flow diagram shows how data travels between systems.",
+      "p4": "Roll-ups of regions into territories are a hierarchy structure."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-match-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Match each situation to the data management concept it describes.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Finance and sales each report different customer counts, so leaders agree that one system holds the official figure."
+        },
+        {
+          "id": "p2",
+          "text": "A saved copy of a table as it stood at month end, kept so last month's report can be reproduced."
+        },
+        {
+          "id": "p3",
+          "text": "A rule that a dataset is reloaded every four hours."
+        },
+        {
+          "id": "p4",
+          "text": "Information describing a file, such as its author, creation date and column names."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Source of truth"
+        },
+        {
+          "id": "c2",
+          "text": "Snapshot"
+        },
+        {
+          "id": "c3",
+          "text": "Refresh interval"
+        },
+        {
+          "id": "c4",
+          "text": "Metadata"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "A source of truth settles conflicting figures, a snapshot freezes a point in time, a refresh interval sets update frequency, and metadata describes the data itself.",
+    "partExplanations": {
+      "p1": "One authoritative system removes conflicting versions of the same figure.",
+      "p2": "A snapshot preserves the data exactly as it was at a point in time.",
+      "p3": "The refresh interval is how often a dataset is reloaded.",
+      "p4": "Data about the data is metadata."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-diagram-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Label the stages in this data flow diagram, from the point-of-sale database to the sales dashboard.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 50,
+          "w": 130,
+          "h": 50
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 50,
+          "w": 130,
+          "h": 50
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 50,
+          "w": 130,
+          "h": 50
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 50,
+          "w": 130,
+          "h": 50,
+          "text": "Sales dashboard"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 130,
+          "name": "First stage"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 130,
+          "name": "Second stage"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 130,
+          "name": "Third stage"
+        }
+      ],
+      "labels": [
+        {
+          "id": "pos",
+          "text": "Point-of-sale database"
+        },
+        {
+          "id": "etl",
+          "text": "ETL job"
+        },
+        {
+          "id": "wh",
+          "text": "Data warehouse"
+        },
+        {
+          "id": "dict",
+          "text": "Data dictionary"
+        },
+        {
+          "id": "arch",
+          "text": "Backup archive"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "pos",
+        "z2": "etl",
+        "z3": "wh"
+      }
+    },
+    "explanation": "Data starts in the operational system, an integration job extracts and transforms it, and the warehouse stores it for the dashboard. A dictionary and an archive are not stages in the flow.",
+    "partExplanations": {
+      "z1": "Store sales originate in the point-of-sale database.",
+      "z2": "The ETL job integrates and reshapes the data between source and warehouse.",
+      "z3": "The warehouse holds the prepared data the dashboard reads."
+    },
+    "acronyms": [
+      "ETL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-1-order-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "5.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Put the steps of establishing a single source of truth for customer data in the order they should happen.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s1",
+          "text": "Identify every system that stores customer data"
+        },
+        {
+          "id": "s2",
+          "text": "Agree on shared field definitions in a data dictionary"
+        },
+        {
+          "id": "s3",
+          "text": "Designate one authoritative system for each defined field"
+        },
+        {
+          "id": "s4",
+          "text": "Integrate the other systems so they read from it"
+        },
+        {
+          "id": "s5",
+          "text": "Retire the duplicate copies"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "explanation": "Inventory the systems first, define terms, choose the authority, connect the consumers, and only then remove duplicates.",
+    "partExplanations": {
+      "s1": "You cannot consolidate what you have not inventoried.",
+      "s2": "Shared definitions must exist before one system can be named authoritative.",
+      "s3": "The authority is chosen once definitions are agreed.",
+      "s4": "Other systems are pointed at the authority.",
+      "s5": "Duplicates are removed last, once nothing depends on them."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]
