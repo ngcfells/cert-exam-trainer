@@ -100,6 +100,29 @@ describe('assembleExam', () => {
     expect(itemFor(pbqFixture('match'), mulberry32(1)).partOrders).toBeUndefined();
   });
 
+  it('rarely shows the keyed chips in answer order, but does not rule it out', () => {
+    const labels = ['x', 'y', 'z', 'd1', 'd2'].map((id) => ({ id, text: id }));
+    const zones = ['z1', 'z2', 'z3'].map((id, i) => ({ id, name: id, x: i * 100, y: 0 }));
+    const diagram = (keys: string[]) =>
+      ({ ...pbqFixture('diagram'), payload: { ...(pbqFixture('diagram').payload as object), labels, zones: zones.slice(0, keys.length) }, answer: { placements: Object.fromEntries(keys.map((k, i) => [`z${i + 1}`, k])) } }) as Question;
+    const rate = (q: Question, n: number) => {
+      const keys = Object.values((q.answer as { placements: Record<string, string> }).placements);
+      let hit = 0;
+      for (let s = 1; s <= n; s++) {
+        const pos = keys.map((k) => itemFor(q, mulberry32(s)).elementOrder!.indexOf(k));
+        if (pos.every((p, j) => j === 0 || p > pos[j - 1])) hit++;
+      }
+      return hit / n;
+    };
+    // A fair shuffle shows 3 keys in answer order 1 time in 6, and 2 keys half the time.
+    expect(rate(diagram(['x', 'y', 'z']), 1200)).toBeLessThan(0.02);
+    const two = rate(diagram(['x', 'y']), 2000);
+    expect(two).toBeLessThan(0.15);
+    expect(two).toBeGreaterThan(0);
+    const q = diagram(['x', 'y', 'z']);
+    expect(itemFor(q, mulberry32(9))).toEqual(itemFor(q, mulberry32(9)));
+  });
+
   it('never lets PBQ weight fill the whole exam', () => {
     const ex = assembleExam(input({ meta: { ...meta3, maxQuestions: 6 }, pool: [...bank({ A: 9 }), pbq('P1', 6)], pbqTypes: ['pbq-match'] }));
     expect(ex.pbqWeightSum).toBe(0);

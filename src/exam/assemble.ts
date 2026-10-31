@@ -1,5 +1,5 @@
 import { isUnitItem } from '../domain/numeric';
-import { elementIds, optionLists } from '../domain/pbq';
+import { correctParts, elementIds, optionLists, partIds } from '../domain/pbq';
 import type { ExamMeta, McqPayload, Question, QuestionType } from '../domain/types';
 import { mulberry32, shuffle, weightedPick, type Rng } from './rng';
 
@@ -52,13 +52,31 @@ export function domainOf(meta: ExamMeta, q: Question): string | undefined {
   return meta.objectives.find((o) => o.id === q.objectiveIds[0])?.domainId;
 }
 
+/** Templates where each keyed chip answers one part, so the chips can show up in answer order. */
+const ONE_CHIP_PER_PART = new Set(['pbq-match', 'pbq-order', 'pbq-diagram']);
+const RESHUFFLES = 3;
+
+/**
+ * A fair shuffle often shows few keyed chips in answer order (3 keys: 1 time in 6), which gives the answer away.
+ * Reshuffle up to RESHUFFLES times when that happens: it becomes rare, but never impossible, so it is no tell either.
+ */
+function chipOrder(question: Question, ids: string[], rng: Rng): string[] {
+  let order = shuffle(ids, rng);
+  if (!ONE_CHIP_PER_PART.has(question.type)) return order;
+  const key = correctParts(question);
+  const keys = partIds(question).map((p) => key[p]);
+  const inAnswerOrder = (o: string[]) => keys.map((k) => o.indexOf(k)).every((p, i, pos) => i === 0 || p > pos[i - 1]);
+  for (let t = 0; t < RESHUFFLES && inAnswerOrder(order); t++) order = shuffle(ids, rng);
+  return order;
+}
+
 /** Wraps a question with its per-attempt shuffle of options or PBQ elements. */
 export function itemFor(question: Question, rng: Rng): ExamItem {
   if (question.type === 'mcq-single' || question.type === 'mcq-multi') {
     return { question, optionOrder: shuffle((question.payload as McqPayload).options.map((o) => o.id), rng) };
   }
   const ids = elementIds(question);
-  const item: ExamItem = ids.length ? { question, elementOrder: shuffle(ids, rng) } : { question };
+  const item: ExamItem = ids.length ? { question, elementOrder: chipOrder(question, ids, rng) } : { question };
   const lists = Object.entries(optionLists(question));
   if (lists.length) item.partOrders = Object.fromEntries(lists.map(([part, opts]) => [part, shuffle(opts, rng)]));
   return item;
