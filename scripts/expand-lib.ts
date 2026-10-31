@@ -65,7 +65,9 @@ function prompt(terms: string[], exam: string, examTitle: string): string {
     `You are checking acronyms for the ${examTitle} (${exam}) certification exam.`,
     'For each term, give its standard expansion as used in data, IT and analytics, in Title Case.',
     'Use verdict "flag" with a short reason when the term is not really an acronym (a word in capitals, a product or site name, a code),',
-    'when it has several common meanings in this field, or when you are not sure. Otherwise use verdict "ok" with reason "".',
+    'when it is a certification, exam or course code, a vendor, product or website name, or a country, currency or company,',
+    'when it is not used in data analytics or IT data work, when it has several common meanings in this field, or when you are not sure.',
+    'Otherwise use verdict "ok" with reason "".',
     'Return JSON only: {"items": [{"term": "SQL", "expansion": "Structured Query Language", "verdict": "ok", "reason": ""}, ...]}, one item per term, same terms.',
     `Terms: ${terms.join(', ')}`,
   ].join('\n');
