@@ -180,7 +180,10 @@
     - `parseNumeric` now treats inner spaces as thousands separators only ("1 250" works; "5 3" is unanswered).
   - **Merged to `main` (201bcd0) and deployed 2026-10-31; issues #1 and #2 closed. The math module is complete.** Next: chunk 11 (SecAI+).
   - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.
-- **After the math module: chunk 11, SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
+- **Fix deployed 2026-10-31 (`5ad42c7`, deploy `86890e9`):** drag-and-drop chips (match, order, diagram) showed the keys in answer order by plain chance (3 keys: 1 time in 6). `itemFor` now reshuffles up to 3 times when that happens, so it is rare but never impossible.
+- **Next: chunk 11, SecAI+ (CY0-001).** Plan (owner approved): `docs/superpowers/plans/2026-10-31-chunk11-secai.md`. Objectives are published (v4.0, launched 2026-02-17). Start with Session 1 (Tasks 1–6, including 4a) on branch `chunk11-secai`; content follows one slice per session; do not merge or deploy until Task 9.
+  - **Owner decision (2026-10-31):** the CompTIA instructor slide decks in `_WorkingData/SecAIPlus/` may be used as reference and supporting documentation only (topics, depth, fact checks). Never copy or paraphrase their wording, examples, questions or diagrams; every draft passes the 8-word overlap check. Other `_WorkingData/` material stays off limits.
+  - Session 1 needs Ollama running locally for the acronym expansion step.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 - **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 - **Owner rules for sessions:**
