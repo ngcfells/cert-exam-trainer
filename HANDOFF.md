@@ -172,9 +172,13 @@
     - `numericChecks.ts` has a `joinRows(left, right, kind)` helper; join counts are recomputed from key lists. `USING` was added to `NOT_ACRONYMS`.
     - Terminology: lessons and items say "null" for a missing key (a null never matches, even another null).
     - Tally toward §7: 30 of 30 lessons, 61 of 60 numeric items, 11 of 10 join PBQs.
-  - **Next session: section 6 (final), on branch `math-engine`.** Audit the bank against spec §7, fix bugs #1 and #2 below, run one Opus whole-branch review and fix every finding, then merge to `main` and `npm run deploy`.
-  - **Open bug [#2](https://github.com/ngcfells/cert-exam-trainer/issues/2):** hotspot PBQ spots are always in the same place (all correct ones in one column), so the layout gives the answer away. Shuffle spot placement per display (seeded, saved in results like `elementOrders`) and audit other types for the same tell. Fix before the section 6 redeploy, or in a separate session.
-  - **Open bug [#1](https://github.com/ngcfells/cert-exam-trainer/issues/1):** hotspot PBQ spot labels overflow their boxes (SVG text does not wrap). Fix it before the redeploy in section 6, or in a separate session.
+  - **Section 6 (final) is done on `math-engine`** (2026-10-31; 487 unit and 52 e2e tests pass; plan: `docs/superpowers/plans/2026-10-31-math-section6-final.md`; the Opus whole-branch review found no wrong answers, and its 2 important and 7 minor findings are all fixed).
+    - `bank.test.ts` locks the §7 targets (30 lessons with 3 to 5 checks, at least 60 numeric items, at least 10 join PBQs), checks that select keys do not cluster at one option index, and fails if a numeric check reuses its lesson example's numbers. That last test found 10 such items, now rewritten (`da2-3-2-num-003/004/010/023/026/028/030/032`, `da2-2-3-num-004`), plus 6 MCQ near-repeats.
+    - Bug #2 fixed: hotspot spots shuffle into the authored boxes per attempt (`hotspotLayout`, via `elementOrder`). Select options in config, data and terminal PBQs also shuffle per attempt (`ExamItem.partOrders`, saved as the optional `partOrders` in results). Lesson checks use a new seed on every attempt.
+    - Bug #1 fixed: hotspot labels are wrapping HTML in a `<foreignObject>`, scaled with the image width. The bank e2e checks that every shipped label fits at 360 and 1280 px.
+    - Hotspot authoring rules (enforced by the validator, documented in `docs/pbq-authoring.md`): all spots are the same size; a node matches a spot box exactly or overlaps none.
+    - `parseNumeric` now treats inner spaces as thousands separators only ("1 250" works; "5 3" is unanswered).
+  - **Left to do: merge `math-engine` to `main`, `npm run deploy`, and close issues #1 and #2** (waiting on the owner's go-ahead).
   - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.
 - **After the math module: chunk 11, SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
