@@ -2792,7 +2792,9 @@
     "type": "numeric",
     "difficulty": 1,
     "stem": "A sign-up page converted 4% of visitors last month and 6% this month. By how many percentage points did the conversion rate change? Answer as a whole number.",
-    "payload": {},
+    "payload": {
+      "suffix": " points"
+    },
     "answer": {
       "value": 2,
       "tolerance": 0.5
@@ -2996,19 +2998,19 @@
       "options": [
         {
           "id": "a",
-          "text": "The manager should have added the two rates, giving 100%"
+          "text": "The rates should be added, so sales grew by 100% overall"
         },
         {
           "id": "b",
-          "text": "Each year's rate applies to a different starting value, so sales actually ended 25% lower"
+          "text": "Each rate applies to a different base, so sales fell"
         },
         {
           "id": "c",
-          "text": "Growth rates can never be averaged in any way"
+          "text": "The rates cancel, so sales ended at the start value"
         },
         {
           "id": "d",
-          "text": "A 50% fall is impossible after a 50% rise"
+          "text": "A 50% fall cannot follow a 50% rise in the same data"
         }
       ]
     },
@@ -3079,7 +3081,7 @@
         },
         {
           "id": "b",
-          "text": "It applies only to values that are shrinking"
+          "text": "It gives the years to triple a value"
         },
         {
           "id": "c",
@@ -3152,19 +3154,19 @@
       "options": [
         {
           "id": "a",
-          "text": "The analyst should have used the median"
+          "text": "The analyst should have reported the median spend instead"
         },
         {
           "id": "b",
-          "text": "Nothing; $35 is the correct overall average"
+          "text": "Nothing; $35 is the correct average spend across both regions"
         },
         {
           "id": "c",
-          "text": "The analyst should have added the two averages"
+          "text": "The analyst weighted by region count instead of by customers"
         },
         {
           "id": "d",
-          "text": "The analyst averaged the two averages without weighting by customer count"
+          "text": "The analyst averaged the two averages without weighting them"
         }
       ]
     },
@@ -3186,7 +3188,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 1,
-    "stem": "Find the mean of these daily ticket counts: 4, 8, 6, 2.",
+    "stem": "Find the mean of these daily ticket counts: 4, 8, 6, 2. Answer as a whole number.",
     "payload": {},
     "answer": {
       "value": 5,
@@ -3205,7 +3207,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "Find the median of these delivery times in days: 3, 9, 5, 7, 1, 11.",
+    "stem": "Find the median of these delivery times in days: 3, 9, 5, 7, 1, 11. Answer as a whole number.",
     "payload": {},
     "answer": {
       "value": 6,
@@ -3241,7 +3243,7 @@
         },
         {
           "id": "d",
-          "text": "Sum"
+          "text": "Mode"
         }
       ]
     },
@@ -3321,7 +3323,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "A sample has the values 1, 3 and 5. What is the sample variance?",
+    "stem": "A sample has the values 1, 3 and 5. What is the sample variance? Answer as a whole number.",
     "payload": {},
     "answer": {
       "value": 4,
@@ -3376,7 +3378,7 @@
         },
         {
           "id": "d",
-          "text": "Divide the range by n"
+          "text": "Divide the sum of squared deviations by n + 1"
         }
       ]
     },
@@ -3398,7 +3400,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "For a set of response times, Q1 = 20 seconds and Q3 = 30 seconds. Using the 1.5 × IQR rule, what is the upper fence, in seconds? Values above it are outliers.",
+    "stem": "For a set of response times, Q1 = 20 seconds and Q3 = 30 seconds. Using the 1.5 × IQR rule, what is the upper fence, in seconds, as a whole number? Values above it are outliers.",
     "payload": {},
     "answer": {
       "value": 45,
@@ -3417,7 +3419,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "Test scores have a mean of 60 and a standard deviation of 5. What is the z-score of a score of 70?",
+    "stem": "Test scores have a mean of 60 and a standard deviation of 5. What is the z-score of a score of 70? Answer as a whole number.",
     "payload": {},
     "answer": {
       "value": 2,
@@ -3436,7 +3438,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 3,
-    "stem": "For a set of order sizes, Q1 = 10 and Q3 = 18. Using the 1.5 × IQR rule, what is the lower fence?",
+    "stem": "For a set of order sizes, Q1 = 10 and Q3 = 18. Using the 1.5 × IQR rule, what is the lower fence? Answer as a whole number; it may be negative.",
     "payload": {},
     "answer": {
       "value": -2,
@@ -3494,7 +3496,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "Package weights follow a normal distribution with a mean of 100 g and a standard deviation of 10 g. About what percent of packages weigh between 80 g and 120 g? Answer as a percent.",
+    "stem": "Package weights follow a normal distribution with a mean of 100 g and a standard deviation of 10 g. About what percent of packages weigh between 80 g and 120 g? Answer as a whole-number percent.",
     "payload": {
       "suffix": "%"
     },
@@ -3532,7 +3534,7 @@
         },
         {
           "id": "d",
-          "text": "The median is always zero"
+          "text": "It depends on the mode, not the tail"
         }
       ]
     },
@@ -3559,7 +3561,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Lopsided, with a long tail to the left"
+          "text": "Lopsided, with a long left tail"
         },
         {
           "id": "b",
@@ -3571,7 +3573,7 @@
         },
         {
           "id": "d",
-          "text": "Bell-shaped and symmetric, with mean, median and mode about equal"
+          "text": "Bell-shaped and symmetric"
         }
       ]
     },
@@ -3581,5 +3583,26 @@
       ]
     },
     "explanation": "A normal distribution is a symmetric bell curve centered on its mean. Because it is symmetric, the mean, median and mode sit at the same point."
+  },
+  {
+    "id": "da2-3-2-num-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "Call lengths follow a normal distribution with a mean of 6 minutes and a standard deviation of 2 minutes. About what percent of calls last between 4 and 8 minutes? Answer as a whole-number percent.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 68,
+      "tolerance": 0.5
+    },
+    "explanation": "4 and 8 are each 1 standard deviation from the mean (6 ± 2). The 68-95-99.7 rule says about 68% of values fall within 1 standard deviation."
   }
 ]

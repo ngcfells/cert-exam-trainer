@@ -57,10 +57,10 @@
       "spoken": "s, the sample standard deviation, equals the square root of: the sum of each value minus the mean, squared, divided by n minus 1",
       "symbols": [
         { "symbol": "x − x̄", "meaning": "each value's deviation: how far it is from the mean" },
-        { "symbol": "(x − x̄)^{2}", "meaning": "the deviation squared, so negatives do not cancel positives" },
+        { "symbol": "(x − x̄)²", "meaning": "the deviation squared, so negatives do not cancel positives" },
         { "symbol": "Σ", "meaning": "add up all the squared deviations" },
         { "symbol": "n − 1", "meaning": "for a sample, divide by one less than the count; for a whole population divide by n" },
-        { "symbol": "÷ before √", "meaning": "the result before the square root is the variance" },
+        { "symbol": "Σ(x − x̄)² ÷ (n − 1)", "meaning": "the variance: the value before the square root, measured in squared units (minutes², dollars²)" },
         { "symbol": "√", "meaning": "the square root, which brings the units back to the data's units; this is the standard deviation" }
       ]
     },
@@ -90,7 +90,7 @@
       "wrong": "Dividing by n when the data is a sample, or stopping at the variance when the question asks for the standard deviation.",
       "why": "A sample uses n − 1; the exam signals it with words like \"a sample of customers\". The population formula (÷ n) is only for every member of the group. And the standard deviation is the square root of the variance, so check which one the question asks for."
     },
-    "checkIds": ["da2-3-2-num-015", "da2-3-2-num-016", "da2-3-2-num-017", "da2-3-2-math-mcq-008"]
+    "checkIds": ["da2-3-2-num-015", "da2-3-2-num-016", "da2-3-2-num-017", "da2-3-2-math-mcq-008", "da2-3-2-mcq-009"]
   },
   {
     "id": "b-outliers-iqr",
@@ -110,7 +110,7 @@
         { "symbol": "Q3", "meaning": "the third quartile: three quarters of the data is below it" },
         { "symbol": "IQR", "meaning": "the spread of the middle half of the data" },
         { "symbol": "fences", "meaning": "values below the lower fence or above the upper fence are outliers" },
-        { "symbol": "z", "meaning": "how many standard deviations a value is from the mean; beyond about ±3 is often called an outlier" },
+        { "symbol": "z", "meaning": "how many standard deviations a value is from the mean; a value 3 or more standard deviations away (z of 3 or more, or −3 or less) is often called an outlier" },
         { "symbol": "s", "meaning": "the standard deviation" }
       ]
     },
@@ -145,7 +145,7 @@
     "title": "Distribution shape and the 68-95-99.7 rule",
     "objectiveIds": ["3.2"],
     "meaning": [
-      "A distribution's shape is what a histogram of the data looks like. A normal distribution is a symmetric bell; a skewed one has a long tail on one side.",
+      "A distribution's shape is what a histogram of the data looks like (a bar chart of how often each range of values occurs). A normal distribution is a symmetric bell; a skewed one has a long tail on one side.",
       "Shape tells an analyst which summary to trust (mean for symmetric data, median for skewed) and, for normal data, how much of it falls near the mean."
     ],
     "rule": [
@@ -175,6 +175,6 @@
       "wrong": "Calling data with a long tail to the right \"left-skewed\" because the peak is on the left.",
       "why": "Skew is named for the tail. A long right tail is right-skewed (positive skew), and there the mean is greater than the median."
     },
-    "checkIds": ["da2-3-2-num-021", "da2-3-2-math-mcq-010", "da2-3-2-math-mcq-011"]
+    "checkIds": ["da2-3-2-num-021", "da2-3-2-num-022", "da2-3-2-math-mcq-010", "da2-3-2-math-mcq-011"]
   }
 ]

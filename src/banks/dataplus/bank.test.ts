@@ -42,6 +42,11 @@ describe('shipped Data+ bank', () => {
       expect(none.map((l) => l.id)).toEqual([]);
     });
 
+    it('keep formula markup out of symbol names, which render as plain text', () => {
+      const bad = shippedLessons.flatMap((l) => (l.formula?.symbols ?? []).filter((s) => /[\^_]\{/.test(s.symbol)).map((s) => `${l.id}: ${s.symbol}`));
+      expect(bad).toEqual([]);
+    });
+
     it('have unique ids', () => {
       const ids = shippedLessons.map((l) => l.id);
       expect(ids.filter((id, i) => ids.indexOf(id) !== i)).toEqual([]);
