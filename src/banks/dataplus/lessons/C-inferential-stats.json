@@ -72,7 +72,7 @@
       "Analysts care because the exam often gives a scenario and asks which pair of hypotheses fits it."
     ],
     "rule": [
-      "H₀, the null hypothesis: no change or no difference. It always uses the equals sign, for example mean = $8,000.",
+      "H₀, the null hypothesis: no change or no difference. On this exam it is written with the equals sign, for example mean = $8,000.",
       "H₁, the alternative hypothesis: the claim being tested. It uses > (greater), < (less) or ≠ (not equal), copied from the scenario.",
       "One-tailed test: H₁ uses > or <, one direction only. Two-tailed test: H₁ uses ≠, either direction.",
       "The test then asks whether the data give enough evidence to reject H₀ in favour of H₁."
@@ -109,9 +109,9 @@
       "Analysts care because the two mistakes have different costs, and the exam asks which one a scenario describes."
     ],
     "rule": [
-      "Type I error (false positive): rejecting H₀ when it is true. Its chance is α, the significance level.",
-      "Type II error (false negative): failing to reject H₀ when it is false.",
-      "α, the Greek letter alpha, is the Type I risk the analyst chooses before testing, usually 0.05 (5%)."
+      "H₀ is the null hypothesis, the \"no change\" statement. α (the Greek letter alpha, the significance level) is the Type I risk the analyst chooses before testing, usually 0.05 (5%).",
+      "Type I error (false positive): rejecting H₀ when it is true. Its chance, when H₀ is true, is α.",
+      "Type II error (false negative): failing to reject H₀ when it is false."
     ],
     "example": {
       "intro": "A spam filter tests each email. H₀: \"this email is genuine.\" H₁: \"this email is spam.\"",
@@ -138,17 +138,19 @@
       "steps": [
         "A genuine email sent to the spam folder is a Type I error.",
         "A spam email that reaches the inbox is a Type II error.",
-        "Lowering α (say from 0.05 to 0.01) makes Type I errors rarer but Type II errors more likely."
+        "Lowering α (say from 0.05 to 0.01) makes Type I errors rarer but Type II errors more likely.",
+        "Which error is worse depends on the cost: missing a disease (Type II) is usually worse than a false alarm that leads to a retest (Type I)."
       ]
     },
     "trap": {
       "wrong": "Swapping the two: calling a missed effect a Type I error.",
-      "why": "Type I comes first, like a false alarm: it rejects a true H₀. Type II is a miss: it keeps a false H₀. Find what H₀ says in the scenario, then ask whether the decision rejected it wrongly or kept it wrongly."
+      "why": "Type I is a false alarm: it rejects a true H₀. Type II is a miss: it fails to reject a false H₀. Find what H₀ says in the scenario, then ask whether the decision rejected it wrongly or kept it wrongly."
     },
     "checkIds": [
       "da2-3-2-math-mcq-017",
       "da2-3-2-math-mcq-018",
-      "da2-3-2-math-mcq-019"
+      "da2-3-2-math-mcq-019",
+      "da2-3-2-math-mcq-032"
     ]
   },
   {
@@ -222,7 +224,7 @@
       "3.2"
     ],
     "meaning": [
-      "A confidence interval is a range around a sample result that is likely to contain the true population value, such as \"average spend is $46, give or take $4\".",
+      "A confidence interval is a range built around a sample result, using a method that captures the true population value in most samples, such as \"average spend is $46, give or take $4\".",
       "Analysts care because a single number from a sample hides its uncertainty; the interval shows how precise the estimate is."
     ],
     "formula": {
@@ -249,7 +251,7 @@
         "Lower bound = 46 − 4 = $42.",
         "Upper bound = 46 + 4 = $50.",
         "The interval is $42 to $50, and its width is 50 − 42 = $8, twice the margin of error.",
-        "Read it as: \"the method we used catches the true mean in about 95% of samples.\"",
+        "Saying \"we are 95% confident\" means: the method we used catches the true mean in about 95% of samples. It does not mean a 95% chance for this one interval.",
         "A larger sample gives a smaller margin of error, so a narrower interval."
       ]
     },

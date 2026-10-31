@@ -156,7 +156,13 @@
     - New items in `3.2.json`: `da2-3-2-num-003..022` (20 numeric, 22 in the bank) and `da2-3-2-math-mcq-001..011`. Community acronyms CAGR and IQR were added (23 community).
     - Symbol names in lessons render as plain text. `bank.test.ts` now rejects `^{}`/`_{}` there; use Unicode (², "to the power 1/n").
     - Tally toward §7: 10 of 30 lessons and 22 of 60 numeric items.
-  - **Next session: section 3 (content C+D), on branch `math-engine`.** Write the plan with superpowers:writing-plans, then execute it (Native). Every new numeric item needs a `NUMERIC_CHECKS` entry, and every numeric stem must state its answer form and rounding.
+  - **Section 3 (content C+D) is done on `math-engine`** (2026-10-31; 473 unit and 50 e2e tests pass; plan: `docs/superpowers/plans/2026-10-31-math-section3-content-cd.md`; the Opus review's 1 critical, 3 important and 16 minor findings are all fixed).
+    - 10 lessons: `C-inferential-stats.json` has 6 (population vs. sample, hypotheses, Type I/II, p-values, confidence intervals, choosing a test) and `D-correlation-regression.json` has 4 (correlation, linear regression, logistic regression, time series).
+    - New items: `da2-3-2-num-023..033`, `da2-3-2-math-mcq-012..032` and `da2-1-5-math-mcq-001..002`. ANOVA was added as a community acronym (24 community). `II` and `III` are in `NOT_ACRONYMS`.
+    - Numeric items always carry `payload` (use `{}` when it has no unit). Dollar amounts use `prefix: "$"`.
+    - Tally toward §7: 20 of 30 lessons and 33 of 60 numeric items.
+  - **Next session: section 4 (content E, data math), on branch `math-engine`.** Write the plan with superpowers:writing-plans, then execute it (Native). Every new numeric item needs a `NUMERIC_CHECKS` entry, and every numeric stem must state its answer form and rounding. E is numeric-heavy: aim for about 15 numeric items so that F plus E reaches 60.
+  - **Open bug [#1](https://github.com/ngcfells/cert-exam-trainer/issues/1):** hotspot PBQ spot labels overflow their boxes (SVG text does not wrap). Fix it before the redeploy in section 6, or in a separate session.
   - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.
 - **After the math module: chunk 11, SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.

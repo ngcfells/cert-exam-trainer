@@ -52,13 +52,13 @@
       },
       "steps": [
         "The sign gives the direction: + means both rise together, − means one rises as the other falls.",
-        "The size, ignoring the sign, gives the strength: −0.8 is stronger than +0.4.",
+        "The size, ignoring the sign, gives the strength: −0.8 is stronger than −0.4.",
         "None of these values shows cause: a third factor, or chance, can link two measures."
       ]
     },
     "trap": {
       "wrong": "Concluding that one variable causes the other because r is large.",
-      "why": "Correlation is not causation. A confounding variable (a third factor) can drive both, as hot weather drives both ice cream sales and sunburn. Only a controlled experiment, such as an A/B test, can show cause."
+      "why": "Correlation is not causation. A confounding variable (a third factor) can drive both, as hot weather drives both ice cream sales and sunburn. A controlled experiment, such as an A/B test, is the usual way to show cause."
     },
     "checkIds": [
       "da2-3-2-math-mcq-026",
@@ -136,7 +136,7 @@
         "The intercept b = 20: with no calls, the model predicts 20 orders.",
         "The slope m = 3: each extra call adds 3 orders.",
         "Slope from two points: (50 − 35) ÷ (10 − 5) = 15 ÷ 5 = 3, which matches m.",
-        "R² = r² = 0.8 × 0.8 = 0.64: calls explain 64% of the variation in orders."
+        "R² = r² = 0.8 × 0.8 = 0.64: the line accounts for 64% of the variation in orders."
       ]
     },
     "trap": {

@@ -1291,7 +1291,7 @@
       "3.2"
     ],
     "difficulty": 3,
-    "stem": "The correlation coefficient between product price and units sold is -0.85. Which interpretation is correct?",
+    "stem": "The correlation coefficient between product price and units sold is −0.85. Which interpretation is correct?",
     "payload": {
       "options": [
         {
@@ -1317,7 +1317,7 @@
         "c"
       ]
     },
-    "explanation": "A coefficient near -1 indicates a strong negative linear relationship: as price rises, units sold tend to fall. It is not weak, the sign is negative rather than positive, and correlation alone does not prove causation.",
+    "explanation": "A coefficient near −1 indicates a strong negative linear relationship: as price rises, units sold tend to fall. It is not weak, the sign is negative rather than positive, and correlation alone does not prove causation.",
     "acronyms": [],
     "status": "approved"
   },
@@ -3771,7 +3771,7 @@
         },
         {
           "id": "d",
-          "text": "The new layout makes no difference to the conversion rate"
+          "text": "The new layout has no effect on the conversion rate"
         }
       ]
     },
@@ -3810,7 +3810,7 @@
         },
         {
           "id": "d",
-          "text": "No test, because a change in either direction cannot be tested"
+          "text": "Two-tailed, because H₁ says the mean is greater than the old value"
         }
       ]
     },
@@ -3849,7 +3849,7 @@
         },
         {
           "id": "d",
-          "text": "No error, since the model acted"
+          "text": "A correct decision, since fraud checks should be strict"
         }
       ]
     },
@@ -3871,7 +3871,7 @@
     "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A study concludes that a new training course has no effect on test scores, but in fact it does raise them. What is this?",
+    "stem": "A study finds no significant effect of a new training course on test scores, so it fails to reject H₀ (the null hypothesis, \"no effect\"). In fact the course does raise scores. What is this?",
     "payload": {
       "options": [
         {
@@ -3910,7 +3910,7 @@
     "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "An analyst sets the significance level α to 0.05. What does that mean?",
+    "stem": "An analyst sets the significance level α (alpha) to 0.05. H₀ is the null hypothesis. What does that mean?",
     "payload": {
       "options": [
         {
@@ -3923,11 +3923,11 @@
         },
         {
           "id": "c",
-          "text": "There is a 95% chance the result matters"
+          "text": "There is a 95% chance the result matters in practice"
         },
         {
           "id": "d",
-          "text": "They accept a 5% chance of rejecting H₀ when it is true"
+          "text": "A 5% risk of rejecting a true H₀"
         }
       ]
     },
@@ -3937,6 +3937,45 @@
       ]
     },
     "explanation": "α is the risk of a Type I error the analyst is willing to take: rejecting H₀ when H₀ is actually true. It is not the chance that H₀ is true, and it says nothing direct about Type II errors."
+  },
+  {
+    "id": "da2-3-2-math-mcq-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A screening test for a serious but treatable disease uses H₀ (the null hypothesis): \"the patient is healthy.\" Which error is usually more costly here, and why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A Type II error, because a sick patient is sent home untreated"
+        },
+        {
+          "id": "b",
+          "text": "A Type I error, because a healthy patient gets a follow-up test"
+        },
+        {
+          "id": "c",
+          "text": "Both cost the same, so α should be set to 0.50"
+        },
+        {
+          "id": "d",
+          "text": "Neither, because screening tests cannot make errors"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A Type II error fails to reject H₀ when it is false: a sick patient is told they are healthy and goes untreated. A Type I error (a false alarm) only leads to a retest. Which error is worse depends on the cost of each mistake."
   },
   {
     "id": "da2-3-2-num-024",
@@ -3970,7 +4009,7 @@
     "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A test returns a p-value of 0.12, and the analyst set α to 0.05 beforehand. What should the analyst conclude?",
+    "stem": "A test returns a p-value of 0.12, and the analyst set the significance level α to 0.05 beforehand. H₀ is the null hypothesis and H₁ the alternative. What should the analyst conclude?",
     "payload": {
       "options": [
         {
@@ -4009,24 +4048,24 @@
     "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "What does a p-value of 0.02 mean?",
+    "stem": "What does a p-value of 0.02 mean? (H₀ is the null hypothesis, H₁ the alternative.)",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "There is a 2% chance that H₀ is true"
+          "text": "There is a 2% chance that H₀ is true, given the data observed"
         },
         {
           "id": "b",
-          "text": "If H₀ were true, results this extreme would happen about 2% of the time"
+          "text": "If H₀ were true, results this extreme would occur about 2% of the time"
         },
         {
           "id": "c",
-          "text": "The effect is 2% in size"
+          "text": "The effect is 2% in size compared with the old value"
         },
         {
           "id": "d",
-          "text": "There is a 98% chance that H₁ is true"
+          "text": "There is a 98% chance that H₁ is true for this data"
         }
       ]
     },
@@ -4088,7 +4127,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "A sample of 40 stores has a mean daily footfall of 120 visitors, with a margin of error of 6.5 visitors at 95% confidence. What is the upper bound of the interval? Answer to one decimal place.",
+    "stem": "A sample of 40 stores has a mean daily footfall of 120 visitors, with a margin of error of 6.5 visitors at 95% confidence. What is the upper bound of the 95% confidence interval, in visitors? Answer to one decimal place.",
     "payload": {},
     "answer": {
       "value": 126.5,
@@ -4112,11 +4151,11 @@
       "options": [
         {
           "id": "a",
-          "text": "95% of all orders are between $40 and $50"
+          "text": "95% of all individual orders in the population are between $40 and $50"
         },
         {
           "id": "b",
-          "text": "The sample mean is certain to be exactly $45"
+          "text": "The true mean is certain to be exactly $45"
         },
         {
           "id": "c",
@@ -4124,7 +4163,7 @@
         },
         {
           "id": "d",
-          "text": "There is a 95% chance that the true mean is between $40 and $50"
+          "text": "There is a 95% probability that the true mean lies between $40 and $50, for this interval"
         }
       ]
     },
@@ -4133,7 +4172,7 @@
         "c"
       ]
     },
-    "explanation": "The 95% describes the method: across many samples, about 95% of the intervals it builds catch the true mean. Any one interval either contains it or not. The interval is about the mean, not about individual orders."
+    "explanation": "The 95% describes the method: across many samples, about 95% of the intervals it builds catch the true mean. Any one interval either contains it or not. The interval is centred on the sample mean ($45), but the true mean is unknown. The interval is about the mean, not about individual orders."
   },
   {
     "id": "da2-3-2-math-mcq-023",
@@ -4313,15 +4352,15 @@
       "options": [
         {
           "id": "a",
-          "text": "Eating ice cream causes sunburn"
+          "text": "Eating ice cream makes people more likely to get sunburn"
         },
         {
           "id": "b",
-          "text": "Sunburn makes people buy more ice cream"
+          "text": "Sunburn makes people go out and buy more ice cream"
         },
         {
           "id": "c",
-          "text": "The correlation must come from a data error"
+          "text": "The correlation must come from an error in the data"
         },
         {
           "id": "d",
@@ -4373,7 +4412,7 @@
         "a"
       ]
     },
-    "explanation": "Strength is how close r is to −1 or +1, ignoring the sign. |−0.85| = 0.85 is the largest, so it is the strongest, even though the relationship is negative."
+    "explanation": "Strength is how close r is to −1 or +1. The size of r ignoring its sign, written |r|, is largest for −0.85 (|−0.85| = 0.85), so it is the strongest, even though the relationship is negative."
   },
   {
     "id": "da2-3-2-num-028",
@@ -4424,7 +4463,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "A simple linear regression with one predictor has a correlation coefficient r = 0.8. What is R²? Answer as a percent, rounded to a whole number.",
+    "stem": "A simple linear regression with one predictor has a correlation coefficient r = 0.8. What is R² (R-squared)? Answer as a percent, rounded to a whole number.",
     "payload": {
       "suffix": "%"
     },
@@ -4432,7 +4471,7 @@
       "value": 64,
       "tolerance": 0.5
     },
-    "explanation": "With one predictor, R² = r² = 0.8 × 0.8 = 0.64, which is 64%. The model explains 64% of the variation in y."
+    "explanation": "With one predictor, R² = r² = 0.8 × 0.8 = 0.64, which is 64%. The model accounts for 64% of the variation in y."
   },
   {
     "id": "da2-3-2-math-mcq-029",
@@ -4445,7 +4484,7 @@
     "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A model predicting sales from ad spend has R² = 0.64. What does this mean?",
+    "stem": "A model predicting sales from ad spend has R² (R-squared) = 0.64. What does this mean?",
     "payload": {
       "options": [
         {
@@ -4585,25 +4624,25 @@
       "options": [
         {
           "id": "a",
-          "text": "Seasonality"
+          "text": "The trend"
         },
         {
           "id": "b",
-          "text": "A moving average"
+          "text": "Seasonality"
         },
         {
           "id": "c",
-          "text": "A residual"
+          "text": "A moving average"
         },
         {
           "id": "d",
-          "text": "The trend"
+          "text": "A residual"
         }
       ]
     },
     "answer": {
       "correct": [
-        "d"
+        "a"
       ]
     },
     "explanation": "The trend is the overall direction over a long period. The month-to-month ups and downs are seasonality or noise. A moving average is a tool that smooths them out to show the trend."
