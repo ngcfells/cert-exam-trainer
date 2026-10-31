@@ -7,6 +7,7 @@ import { itemIdPrefix } from '../src/banks/paths';
 import { answerBalance, longestOptionTell, nearDuplicates, sharedRuns } from '../src/content';
 import { questionSchema } from '../src/domain/schema';
 import type { Question } from '../src/domain/types';
+import { bankWithoutDrafts } from './check-drafts-lib';
 import { examFromArgs, parseArgs } from './exam-args';
 
 const args = parseArgs(process.argv.slice(2));
@@ -55,14 +56,15 @@ for (const file of files) {
   }
 }
 
+const bank = bankWithoutDrafts(bankItems, all);
 const ids = new Map<string, number>();
-for (const q of [...bankItems, ...all]) ids.set(q.id, (ids.get(q.id) ?? 0) + 1);
+for (const q of [...bank, ...all]) ids.set(q.id, (ids.get(q.id) ?? 0) + 1);
 const repeats = [...ids].filter(([, n]) => n > 1).map(([id]) => id);
 if (repeats.length) {
   problems += repeats.length;
   console.log(`repeated ids (in drafts or already in the bank): ${repeats.join(', ')}`);
 }
-const dups = nearDuplicates([...bankItems, ...all]).filter(([a, b]) => all.some((q) => q.id === a || q.id === b));
+const dups = nearDuplicates([...bank, ...all]).filter(([a, b]) => all.some((q) => q.id === a || q.id === b));
 for (const [a, b, s] of dups) console.log(`near duplicate ${a} ~ ${b} (${s.toFixed(2)})`);
 problems += dups.length;
 
