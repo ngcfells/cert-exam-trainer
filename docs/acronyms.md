@@ -48,4 +48,8 @@ Two scripts find acronyms that the exam list is missing. Neither ships in the ap
    - A local check flags any expansion whose initials cannot spell the term.
 3. A person (or Claude) reviews the `ok` rows and adds the sensible, on-topic ones to the exam `meta.ts` as `community`. Doubtful terms are listed in HANDOFF.
 
+Results:
+
+- CY0-001 (2026-10-31): 17 sources (11 study, 6 dump; ISO skipped by robots.txt), 396 unlisted terms. Ollama marked 45 `ok` and 351 `flag`. Kept 6 as `community`: BC, CBA, CIS, CUI, DMCA, SSL. Most of the rest were cert or exam codes, vendor and product names, plain words and page text.
+
 Keep real source lists and reports in `_WorkingData/` (gitignored). Never commit them.

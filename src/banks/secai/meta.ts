@@ -98,5 +98,11 @@ export const secAiMeta: ExamMeta = {
     { term: 'TLS', expansion: 'Transport Layer Security', source: 'official' },
     { term: 'VPC', expansion: 'Virtual Private Cloud', source: 'official' },
     { term: 'WAF', expansion: 'Web Application Firewall', source: 'official' },
+    { term: 'BC', expansion: 'Business Continuity', source: 'community' },
+    { term: 'CBA', expansion: 'Cost-Benefit Analysis', source: 'community' },
+    { term: 'CIS', expansion: 'Center for Internet Security', source: 'community' },
+    { term: 'CUI', expansion: 'Controlled Unclassified Information', source: 'community' },
+    { term: 'DMCA', expansion: 'Digital Millennium Copyright Act', source: 'community' },
+    { term: 'SSL', expansion: 'Secure Sockets Layer', source: 'community' },
   ],
 };
