@@ -28,7 +28,7 @@ export function HotspotView({ item, value, onChange }: PbqProps) {
             </g>
           ))}
           {p.spots.map((s) => (
-            <g key={s.id} className="spot" onClick={() => toggle(s.id)}>
+            <g key={s.id} className={on(s.id) ? 'spot on' : 'spot'} onClick={() => toggle(s.id)}>
               <rect
                 x={s.x}
                 y={s.y}

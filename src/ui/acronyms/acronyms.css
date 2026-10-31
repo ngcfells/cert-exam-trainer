@@ -3,7 +3,7 @@
 .acronym-list summary { min-height: 2.75rem; display: flex; align-items: center; cursor: pointer; }
 .acronym-list table, .my-acronyms table, .acronym-results table { border-collapse: collapse; margin: 0.5rem 0 1rem; }
 .acronym-list th, .acronym-list td, .my-acronyms th, .my-acronyms td, .acronym-results th, .acronym-results td {
-  border: 1px solid #767676; padding: 0.25rem 0.5rem; text-align: left;
+  border: 1px solid var(--border); padding: 0.25rem 0.5rem; text-align: left;
 }
 .my-acronyms { margin-top: 2rem; }
 .my-acronyms form label { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 0.75rem; max-width: 30rem; }
@@ -13,7 +13,4 @@
 .quiz-answer input { min-height: 2.75rem; font-size: 1.1rem; }
 .quiz-choices { border: 0; padding: 0; margin: 0 0 0.75rem; min-width: 0; }
 .quiz-choices label { display: flex; gap: 0.5rem; align-items: center; min-height: 2.75rem; }
-.field-error { color: #a00000; min-height: 1.5em; }
-@media (prefers-color-scheme: dark) {
-  .field-error { color: #ff8a8a; }
-}
+.field-error { color: var(--bad); min-height: 1.5em; }
