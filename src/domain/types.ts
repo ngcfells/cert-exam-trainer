@@ -28,4 +28,15 @@ export interface McqAnswer {
   correct: string[];
 }
 
+export interface NumericPayload {
+  prefix?: string;
+  suffix?: string;
+}
+
+export interface NumericAnswer {
+  value: number;
+  /** Absolute, inclusive. */
+  tolerance: number;
+}
+
 export type ExamMeta = z.infer<typeof examMetaSchema>;

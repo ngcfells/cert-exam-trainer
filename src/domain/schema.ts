@@ -7,7 +7,7 @@ const PBQ_TYPES = [
   'pbq-terminal', 'pbq-data', 'pbq-hotspot', 'pbq-buckets',
 ] as const;
 
-export const QUESTION_TYPES = ['mcq-single', 'mcq-multi', ...PBQ_TYPES] as const;
+export const QUESTION_TYPES = ['mcq-single', 'mcq-multi', 'numeric', ...PBQ_TYPES] as const;
 
 const base = {
   id: z.string().min(1),
@@ -37,6 +37,13 @@ const mcqFields = {
 const questionUnion = z.discriminatedUnion('type', [
   z.object({ ...mcqFields, type: z.literal('mcq-single') }).strict(),
   z.object({ ...mcqFields, type: z.literal('mcq-multi') }).strict(),
+  z.object({
+    ...base,
+    type: z.literal('numeric'),
+    pbqWeight: z.undefined({ invalid_type_error: 'pbqWeight is only allowed on pbq-* types' }),
+    payload: z.object({ prefix: z.string().min(1).max(4).optional(), suffix: z.string().min(1).max(8).optional() }).strict(),
+    answer: z.object({ value: z.number().finite(), tolerance: z.number().finite().min(0) }).strict(),
+  }).strict(),
   z.object({
     ...base,
     type: z.enum(PBQ_TYPES),
