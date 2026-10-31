@@ -54,6 +54,18 @@ describe('PBQ templates', () => {
     expect(onChange).toHaveBeenLastCalledWith({ f1: 'left' });
   });
 
+  it('config, data and terminal: select options follow the attempt order', () => {
+    const opts = (name: string) => within(screen.getByRole('combobox', { name })).getAllByRole('option').map((o) => o.textContent);
+    const { unmount } = render(<PbqView item={{ question: pbqFixture('config'), partOrders: { f1: ['left', 'inner'] } }} value={{}} onChange={vi.fn()} />);
+    expect(opts('Join')).toEqual(['Choose…', 'T-left', 'T-inner']);
+    unmount();
+    const r2 = render(<PbqView item={{ question: pbqFixture('data'), partOrders: { f1: ['south', 'north'] } }} value={{}} onChange={vi.fn()} />);
+    expect(opts('Top region')).toEqual(['Choose…', 'T-south', 'T-north']);
+    r2.unmount();
+    render(<PbqView item={{ question: pbqFixture('terminal'), partOrders: { t2: ['a2', 'a1'] } }} value={{}} onChange={vi.fn()} />);
+    expect(opts('Next action')).toEqual(['Choose…', 'T-a2', 'T-a1']);
+  });
+
   it('diagram: draws an image and labels each zone', async () => {
     const { onChange, user } = setup({ question: pbqFixture('diagram'), elementOrder: ['l2', 'l1'] });
     expect(screen.getByRole('img', { name: 'Stem' })).toBeInTheDocument();

@@ -43,7 +43,7 @@ export function DataView({ item, value, onChange }: PbqProps) {
         <Table caption={p.caption} head={p.columns} rowHeader={false} rows={p.rows.map((r, i) => [String(i), ...r] as [string, ...string[]])} />
       </div>
       {p.chart && <BarChart p={p} />}
-      <PartSelects parts={fieldParts(p)} value={value} onChange={onChange} />
+      <PartSelects parts={fieldParts(p, item.partOrders)} value={value} onChange={onChange} />
     </>
   );
 }

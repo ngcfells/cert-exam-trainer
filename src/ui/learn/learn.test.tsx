@@ -5,7 +5,7 @@ import { createMemoryRepo } from '../../storage/memoryRepo';
 import { examResultSchema } from '../../exam/result';
 import { parseSrsRecords } from '../../study/srs';
 import { recordCheck } from '../../study/lessonStatus';
-import { LearnFlow } from './LearnFlow';
+import { checkExam, LearnFlow } from './LearnFlow';
 
 type User = ReturnType<typeof userEvent.setup>;
 const LESSON = 'Fixture: percent change';
@@ -30,6 +30,15 @@ async function answerAllRight(user: User) {
   await user.click(screen.getByRole('button', { name: 'Check answer' }));
   await user.click(screen.getByRole('button', { name: 'Finish' }));
 }
+
+describe('checkExam', () => {
+  it('shuffles MCQ options by seed, so a retake is not a fixed layout', () => {
+    const ids = ['da2-fx-num-001', 'da2-seed-001', 'da2-seed-002'];
+    const layouts = new Set(Array.from({ length: 12 }, (_, s) => JSON.stringify(checkExam('DA0-002', ids, s + 1).items.map((i) => i.optionOrder))));
+    expect(layouts.size).toBeGreaterThan(1);
+    expect(checkExam('DA0-002', ids, 5)).toEqual(checkExam('DA0-002', ids, 5));
+  });
+});
 
 describe('LearnFlow', () => {
   it('lists lessons under area headings with a status', async () => {

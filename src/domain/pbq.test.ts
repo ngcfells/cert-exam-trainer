@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { questionSchema } from './schema';
-import { acceptedText, correctParts, elementIds, HOTSPOT_ON, hotspotLayout, type HotspotPayload, matchesPattern, partCorrect, partIds, partLabel, PBQ_TEMPLATES, valueText } from './pbq';
+import { acceptedText, correctParts, elementIds, HOTSPOT_ON, hotspotLayout, optionLists, type HotspotPayload, matchesPattern, partCorrect, partIds, partLabel, PBQ_TEMPLATES, valueText } from './pbq';
 import type { Question } from './types';
 import { dataPlusQuestions } from '../banks/dataplus/questions';
 import { fixtures, items } from './pbqFixtures';
@@ -46,6 +46,13 @@ describe('PBQ schemas', () => {
     expect(elementIds(fixtures.hotspot as unknown as Question)).toEqual(['s1', 's2', 's3', 's4']);
   });
 
+  it('lists the select options shuffled per part (config, data, terminal choice steps)', () => {
+    expect(optionLists(fixtures.config as unknown as Question)).toEqual({ f1: ['inner', 'left'] });
+    expect(optionLists(fixtures.data as unknown as Question)).toEqual({ f1: ['north', 'south'] });
+    expect(optionLists(fixtures.terminal as unknown as Question)).toEqual({ t2: ['a1', 'a2'] });
+    expect(optionLists(fixtures.match as unknown as Question)).toEqual({});
+  });
+
   it('places hotspot spots in the authored slots, in attempt order', () => {
     const p = fixtures.hotspot.payload as HotspotPayload;
     const auth = hotspotLayout(p);
@@ -75,6 +82,10 @@ describe('templates 5-8', () => {
     const h = fixtures.hotspot;
     expect(ok({ ...h, answer: { selected: ['s9'] } })).toBe(false);
     expect(ok({ ...h, payload: { ...h.payload, spots: [...h.payload.spots, { id: 's5', x: 390, y: 0, w: 80, h: 40, name: 'Off' }] } })).toBe(false);
+    // Spots swap slots per attempt, so they must share one size, and a node may only sit exactly under a spot or clear of all spots.
+    expect(ok({ ...h, payload: { ...h.payload, spots: h.payload.spots.map((s, i) => (i ? s : { ...s, w: 60 })) } })).toBe(false);
+    expect(ok({ ...h, payload: { ...h.payload, nodes: [{ id: 'n1', x: 20, y: 20, w: 80, h: 40, text: 'Web' }] } })).toBe(false);
+    expect(ok({ ...h, payload: { ...h.payload, nodes: [...h.payload.nodes, { id: 'n2', x: 10, y: 100, w: 80, h: 40, text: 'Legend' }] } })).toBe(true);
     const b = fixtures.buckets;
     expect(ok({ ...b, answer: { placements: { i1: 'b9', i2: 'b1', i3: 'b1' } } })).toBe(false);
     expect(ok({ ...b, answer: { placements: { i1: 'b2', i2: 'b1' } } })).toBe(false);

@@ -1,7 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { allocateByWeight, assembleExam, type AssembleInput } from './assemble';
+import { allocateByWeight, assembleExam, itemFor, type AssembleInput } from './assemble';
 import { bank, mcq, meta3, numeric, pbq } from './testFixtures';
 import type { McqPayload } from '../domain/types';
+import type { Question } from '../domain/types';
+import { pbqFixture } from '../domain/pbqFixtures';
+import { mulberry32 } from './rng';
 
 const input = (over: Partial<AssembleInput> = {}): AssembleInput => ({
   meta: meta3,
@@ -86,6 +89,15 @@ describe('assembleExam', () => {
     expect(run(1).elementOrder).toEqual(run(1).elementOrder);
     const seen = new Set(Array.from({ length: 20 }, (_, i) => run(i + 1).elementOrder!.join()));
     expect(seen.size).toBeGreaterThan(1);
+  });
+
+  it('shuffles select options per part for config, data and terminal PBQs', () => {
+    const q = { ...pbqFixture('config'), payload: { fields: [{ id: 'f1', label: 'Join', options: ['a', 'b', 'c', 'd'].map((id) => ({ id, text: id })) }] } } as Question;
+    const orders = Array.from({ length: 20 }, (_, i) => itemFor(q, mulberry32(i + 1)).partOrders!.f1);
+    for (const o of orders) expect([...o].sort()).toEqual(['a', 'b', 'c', 'd']);
+    expect(new Set(orders.map((o) => o.join())).size).toBeGreaterThan(1);
+    expect(itemFor(q, mulberry32(7))).toEqual(itemFor(q, mulberry32(7)));
+    expect(itemFor(pbqFixture('match'), mulberry32(1)).partOrders).toBeUndefined();
   });
 
   it('never lets PBQ weight fill the whole exam', () => {

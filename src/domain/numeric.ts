@@ -2,10 +2,14 @@ import type { NumericAnswer, NumericPayload, Question } from './types';
 
 const NUMBER = /^-?(\d{1,3}(,\d{3})+|\d+)(\.\d*)?$|^-?\.\d+$/;
 
-/** Digits, one `.`, a leading minus (typed or typographic); commas only in thousands groups; `$`, `%` and spaces are ignored. Anything else is null (unanswered). */
+/**
+ * Digits, one `.`, a leading minus (typed or typographic); commas or single spaces only between thousands groups;
+ * `$`, `%` and outer spaces are ignored. Anything else ("5 3", "1 25") is null (unanswered).
+ */
 export function parseNumeric(text: string): number | null {
-  const s = text.replace(/[−‒–]/g, '-').replace(/[$%\s]/g, '');
-  return NUMBER.test(s) ? Number(s.replace(/,/g, '')) : null;
+  const s = text.replace(/[−‒–]/g, '-').replace(/[$%]/g, '').trim();
+  const t = /^-?\d{1,3}( \d{3})+(\.\d*)?$/.test(s) ? s.replace(/ /g, '') : s;
+  return NUMBER.test(t) ? Number(t.replace(/,/g, '')) : null;
 }
 
 /** Within tolerance, inclusive; the slack, relative to the value, absorbs float error at the edge. */

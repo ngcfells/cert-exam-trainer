@@ -31,6 +31,8 @@ describe('result', () => {
   it('accepts MCQ arrays and PBQ part maps', () => {
     expect(examResultSchema.safeParse({ ...sample(), responses: { q1: ['a'], p1: { x: 'y' } } }).success).toBe(true);
     expect(examResultSchema.safeParse({ ...sample(), elementOrders: { p1: ['b', 'a'] } }).success).toBe(true);
+    expect(examResultSchema.safeParse({ ...sample(), partOrders: { p1: { f1: ['b', 'a'] } } }).success).toBe(true);
+    expect(examResultSchema.safeParse({ ...sample(), partOrders: { p1: ['b'] } }).success).toBe(false);
   });
 
   it('rejects a record without a seed', () => {

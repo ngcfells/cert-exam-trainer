@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { getBundledQuestions } from '../../banks';
 import { getLessons } from '../../banks/lessons';
 import { itemFor, type AssembledExam } from '../../exam/assemble';
-import { mulberry32 } from '../../exam/rng';
+import { mulberry32, newSeed } from '../../exam/rng';
 import { scoreExam } from '../../exam/scoring';
 import type { Repo } from '../../storage';
 import { checkFraction, loadLessonStatus, markOpened, recordCheck } from '../../study/lessonStatus';
@@ -19,18 +19,18 @@ import './learn.css';
 type View =
   | { kind: 'list' }
   | { kind: 'lesson'; id: string }
-  | { kind: 'check'; id: string; startedAt: Date }
+  | { kind: 'check'; id: string; startedAt: Date; seed: number }
   | { kind: 'result'; id: string; done: Finished; fraction: number };
 
-/** A lesson's check items, in lesson order, from the approved bundled questions. */
-function checkExam(examCode: string, checkIds: string[]): AssembledExam {
+/** A lesson's check items, in lesson order, from the approved bundled questions; `seed` shuffles MCQ options, a new one per check. */
+export function checkExam(examCode: string, checkIds: string[], seed: number): AssembledExam {
   const byId = new Map(getBundledQuestions(examCode).map((q) => [q.id, q]));
-  const rng = mulberry32(0);
+  const rng = mulberry32(seed);
   const items = checkIds.flatMap((id) => {
     const q = byId.get(id);
     return q ? [itemFor(q, rng)] : [];
   });
-  return onlySeen({ exam: examCode, seed: 0, items, mcqCount: 0, pbqWeightSum: 0 }, items.map((i) => i.question.id));
+  return onlySeen({ exam: examCode, seed, items, mcqCount: 0, pbqWeightSum: 0 }, items.map((i) => i.question.id));
 }
 
 export function LearnFlow({ repo, examCode, lessonId, onExit }: { repo: Repo; examCode: string; lessonId?: string; onExit: () => void }) {
@@ -39,7 +39,8 @@ export function LearnFlow({ repo, examCode, lessonId, onExit }: { repo: Repo; ex
   const [view, setView] = useState<View>(lessonId ? { kind: 'lesson', id: lessonId } : { kind: 'list' });
   const [status, reload] = useLoad(() => loadLessonStatus(repo, examCode), [repo, examCode]);
   const lesson = view.kind === 'list' ? undefined : lessons.find((l) => l.id === view.id);
-  const exam = useMemo(() => (lesson ? checkExam(examCode, lesson.checkIds) : undefined), [examCode, lesson]);
+  const seed = view.kind === 'check' ? view.seed : 0;
+  const exam = useMemo(() => (lesson ? checkExam(examCode, lesson.checkIds, seed) : undefined), [examCode, lesson, seed]);
 
   const openId = view.kind === 'lesson' && lesson ? lesson.id : undefined;
   useEffect(() => {
@@ -92,5 +93,5 @@ export function LearnFlow({ repo, examCode, lessonId, onExit }: { repo: Repo; ex
       />
     );
   }
-  return <LessonView lesson={lesson} checkCount={exam.items.length} onCheck={() => setView({ kind: 'check', id: lesson.id, startedAt: new Date() })} onBack={toList} />;
+  return <LessonView lesson={lesson} checkCount={exam.items.length} onCheck={() => setView({ kind: 'check', id: lesson.id, startedAt: new Date(), seed: newSeed() })} onBack={toList} />;
 }

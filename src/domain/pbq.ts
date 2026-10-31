@@ -199,6 +199,16 @@ function dupes(path: (string | number)[], ids: string[], out: Issue[]) {
   if (new Set(ids).size !== ids.length) out.push({ path, message: 'duplicate id' });
 }
 
+/**
+ * Select option lists shuffled per attempt, by part: config and data fields, and terminal steps
+ * that choose an action. Authored option order would otherwise let the key's position give it away.
+ */
+export function optionLists(q: Question): Record<string, string[]> {
+  if (q.type === 'pbq-config' || q.type === 'pbq-data') return Object.fromEntries((q.payload as ConfigPayload).fields.map((f) => [f.id, ids(f.options)]));
+  if (q.type === 'pbq-terminal') return Object.fromEntries((q.payload as TerminalPayload).steps.flatMap((s) => (s.options ? [[s.id, ids(s.options)]] : [])));
+  return {};
+}
+
 type Box = { x: number; y: number; w: number; h: number };
 type Spot = HotspotPayload['spots'][number];
 const sameBox = (a: Box, b: Box) => a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h;
@@ -243,6 +253,18 @@ function extraIssues(type: PbqTemplate, payload: unknown, out: Issue[]) {
     dupes(['payload', 'nodes'], h.nodes.map((n) => n.id), out);
     boxIssues(h.width, h.height, h.nodes, 'nodes', 'node', out);
     boxIssues(h.width, h.height, h.spots, 'spots', 'spot', out);
+    // Spots are shuffled into each other's boxes per attempt (hotspotLayout), so every box must fit every spot,
+    // and a node must sit exactly under one spot (it moves with it) or clear of all of them (it stays put).
+    const first = h.spots[0];
+    h.spots.forEach((s, i) => {
+      if (s.w !== first.w || s.h !== first.h) out.push({ path: ['payload', 'spots', i], message: 'every spot must have the same width and height' });
+    });
+    const overlaps = (a: Box, b: Box) => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h;
+    h.nodes.forEach((n, i) => {
+      if (h.spots.some((s) => overlaps(n, s)) && !h.spots.some((s) => sameBox(n, s))) {
+        out.push({ path: ['payload', 'nodes', i], message: 'a node must match a spot box exactly or not overlap any spot' });
+      }
+    });
   }
   if (type === 'pbq-data') {
     const d = payload as DataPayload;

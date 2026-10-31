@@ -6,6 +6,8 @@ export function HotspotView({ item, value, onChange }: PbqProps) {
   const p = item.question.payload as HotspotPayload;
   const layout = hotspotLayout(p, item.elementOrder);
   const underSpots = new Set(layout.map((x) => x.node));
+  // Text is in image units, so a wider image would shrink it; scale to match a 480-wide image.
+  const fontSize = `${(13 * Math.max(p.width, 480)) / 480}px`;
   const on = (id: string) => value[id] === HOTSPOT_ON;
   const toggle = (id: string) => {
     const next = { ...value };
@@ -26,7 +28,7 @@ export function HotspotView({ item, value, onChange }: PbqProps) {
               <rect x={slot.x} y={slot.y} width={slot.w} height={slot.h} strokeWidth={on(spot.id) ? 5 : 1.5} strokeDasharray={on(spot.id) ? undefined : '6 4'} />
               {/* HTML inside the SVG so long labels wrap within the box (issue #1). */}
               <foreignObject x={slot.x} y={slot.y} width={slot.w} height={slot.h}>
-                <div className="spot-label">{label}</div>
+                <div className="spot-label" style={{ fontSize }}>{label}</div>
               </foreignObject>
               {on(spot.id) && (
                 <text x={slot.x + slot.w - 4} y={slot.y + 15} textAnchor="end" fontSize={14} fontWeight="bold">
