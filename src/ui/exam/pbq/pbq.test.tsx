@@ -89,6 +89,11 @@ describe('PBQ templates 5-8', () => {
     expect(onChange).toHaveBeenLastCalledWith({});
   });
 
+  it('hotspot: lists checkboxes in the attempt order', () => {
+    setup({ question: pbqFixture('hotspot'), elementOrder: ['s3', 's1', 's4', 's2'] });
+    expect(screen.getAllByRole('checkbox').map((c) => c.closest('label')!.textContent)).toEqual(['Database', 'Web server', 'Queue', 'Cache']);
+  });
+
   it('buckets: choosing a bucket places the item, and a later choice replaces it', async () => {
     const { onChange, user } = setup({ question: pbqFixture('buckets'), elementOrder: ['i3', 'i1', 'i2'] }, { i1: 'b2' });
     expect(screen.getAllByRole('combobox').map((c) => c.getAttribute('aria-label') ?? c.id)).toHaveLength(3);

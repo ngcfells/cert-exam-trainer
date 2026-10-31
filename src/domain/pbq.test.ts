@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { questionSchema } from './schema';
-import { acceptedText, correctParts, elementIds, HOTSPOT_ON, matchesPattern, partCorrect, partIds, partLabel, PBQ_TEMPLATES, valueText } from './pbq';
+import { acceptedText, correctParts, elementIds, HOTSPOT_ON, hotspotLayout, type HotspotPayload, matchesPattern, partCorrect, partIds, partLabel, PBQ_TEMPLATES, valueText } from './pbq';
 import type { Question } from './types';
 import { dataPlusQuestions } from '../banks/dataplus/questions';
 import { fixtures, items } from './pbqFixtures';
@@ -43,6 +43,20 @@ describe('PBQ schemas', () => {
     expect(elementIds(fixtures.config as unknown as Question)).toEqual([]);
     expect(elementIds(fixtures.diagram as unknown as Question)).toEqual(['l1', 'l2']);
     expect(partLabel(fixtures.diagram as unknown as Question, 'z1')).toBe('Destination box');
+    expect(elementIds(fixtures.hotspot as unknown as Question)).toEqual(['s1', 's2', 's3', 's4']);
+  });
+
+  it('places hotspot spots in the authored slots, in attempt order', () => {
+    const p = fixtures.hotspot.payload as HotspotPayload;
+    const auth = hotspotLayout(p);
+    expect(auth.map((x) => [x.spot.id, x.slot.x])).toEqual([['s1', 10], ['s2', 100], ['s3', 200], ['s4', 300]]);
+    // The spot over node n1 takes its text; others use their name.
+    expect(auth.map((x) => x.label)).toEqual(['Web', 'Cache', 'Database', 'Queue']);
+    expect(auth[0].node).toBe('n1');
+    const moved = hotspotLayout(p, ['s3', 's1', 's4', 's2']);
+    expect(moved.map((x) => [x.spot.id, x.slot.x])).toEqual([['s3', 10], ['s1', 100], ['s4', 200], ['s2', 300]]);
+    // An order missing a spot (an old or partial record) falls back to authored order.
+    expect(hotspotLayout(p, ['s2']).map((x) => x.spot.id)).toEqual(['s1', 's2', 's3', 's4']);
   });
 });
 

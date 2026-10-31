@@ -121,6 +121,7 @@ const TEMPLATES: Record<PbqTemplate, { parts: (p: never) => Part[]; key: (a: nev
   'pbq-hotspot': {
     parts: (p: HotspotPayload) => p.spots.map((s) => part(s.id, s.name, HOTSPOT_VALUES)),
     key: (a: { selected: string[] }, parts) => Object.fromEntries(parts.map(({ id }) => [id, a.selected.includes(id) ? HOTSPOT_ON : 'off'])),
+    pool: (p: HotspotPayload) => p.spots.map((s) => s.id),
   },
   'pbq-buckets': {
     parts: (p: BucketsPayload) => p.items.map((x) => part(x.id, x.text, p.buckets)),
@@ -199,6 +200,25 @@ function dupes(path: (string | number)[], ids: string[], out: Issue[]) {
 }
 
 type Box = { x: number; y: number; w: number; h: number };
+type Spot = HotspotPayload['spots'][number];
+const sameBox = (a: Box, b: Box) => a.x === b.x && a.y === b.y && a.w === b.w && a.h === b.h;
+
+/**
+ * Where each hotspot spot is drawn this attempt. The authored spot boxes are fixed slots;
+ * spot `order[i]` takes slot `i`, so the layout gives no tell (issue #2). A node drawn exactly
+ * under a spot moves with it and supplies its label. An order that is not a full permutation
+ * of the spot ids falls back to authored order.
+ */
+export function hotspotLayout(p: HotspotPayload, order?: string[]): { spot: Spot; slot: Box; label: string; node?: string }[] {
+  const ids = p.spots.map((s) => s.id);
+  const full = order && order.length === ids.length && ids.every((id) => order.includes(id));
+  const spots = full ? order.map((id) => p.spots.find((s) => s.id === id)!) : p.spots;
+  return spots.map((spot, i) => {
+    const s = p.spots[i];
+    const node = p.nodes.find((n) => sameBox(n, spot));
+    return { spot, slot: { x: s.x, y: s.y, w: s.w, h: s.h }, label: node?.text ?? spot.name, node: node?.id };
+  });
+}
 function boxIssues(width: number, height: number, boxes: Box[], path: string, what: string, out: Issue[]) {
   const inside = (x: number, y: number) => x >= 0 && y >= 0 && x <= width && y <= height;
   boxes.forEach((b, i) => {

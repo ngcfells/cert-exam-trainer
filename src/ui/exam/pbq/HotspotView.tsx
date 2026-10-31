@@ -1,9 +1,11 @@
-import { HOTSPOT_ON, type HotspotPayload } from '../../../domain/pbq';
+import { HOTSPOT_ON, hotspotLayout, type HotspotPayload } from '../../../domain/pbq';
 import type { PbqProps } from './PbqView';
 import { Boxes } from './parts';
 
 export function HotspotView({ item, value, onChange }: PbqProps) {
   const p = item.question.payload as HotspotPayload;
+  const layout = hotspotLayout(p, item.elementOrder);
+  const underSpots = new Set(layout.map((x) => x.node));
   const on = (id: string) => value[id] === HOTSPOT_ON;
   const toggle = (id: string) => {
     const next = { ...value };
@@ -18,12 +20,16 @@ export function HotspotView({ item, value, onChange }: PbqProps) {
       <div className="diagram hotspot" style={{ aspectRatio: `${p.width} / ${p.height}` }}>
         {/* Pointer enhancement only; the checkboxes below are the accessible path. */}
         <svg viewBox={`0 0 ${p.width} ${p.height}`} aria-hidden="true">
-          <Boxes nodes={p.nodes} />
-          {p.spots.map((s) => (
-            <g key={s.id} className={on(s.id) ? 'spot on' : 'spot'} onClick={() => toggle(s.id)}>
-              <rect x={s.x} y={s.y} width={s.w} height={s.h} strokeWidth={on(s.id) ? 5 : 1.5} strokeDasharray={on(s.id) ? undefined : '6 4'} />
-              {on(s.id) && (
-                <text x={s.x + s.w - 6} y={s.y + 16} textAnchor="end" fontSize={16} fontWeight="bold">
+          <Boxes nodes={p.nodes.filter((n) => !underSpots.has(n.id))} />
+          {layout.map(({ spot, slot, label }) => (
+            <g key={spot.id} className={on(spot.id) ? 'spot on' : 'spot'} onClick={() => toggle(spot.id)}>
+              <rect x={slot.x} y={slot.y} width={slot.w} height={slot.h} strokeWidth={on(spot.id) ? 5 : 1.5} strokeDasharray={on(spot.id) ? undefined : '6 4'} />
+              {/* HTML inside the SVG so long labels wrap within the box (issue #1). */}
+              <foreignObject x={slot.x} y={slot.y} width={slot.w} height={slot.h}>
+                <div className="spot-label">{label}</div>
+              </foreignObject>
+              {on(spot.id) && (
+                <text x={slot.x + slot.w - 4} y={slot.y + 15} textAnchor="end" fontSize={14} fontWeight="bold">
                   ✓
                 </text>
               )}
@@ -32,11 +38,11 @@ export function HotspotView({ item, value, onChange }: PbqProps) {
         </svg>
       </div>
       <ul className="parts">
-        {p.spots.map((s) => (
-          <li key={s.id}>
+        {layout.map(({ spot }) => (
+          <li key={spot.id}>
             <label className="check">
-              <input type="checkbox" checked={on(s.id)} onChange={() => toggle(s.id)} />
-              {s.name}
+              <input type="checkbox" checked={on(spot.id)} onChange={() => toggle(spot.id)} />
+              {spot.name}
             </label>
           </li>
         ))}
