@@ -103,5 +103,35 @@ describe('shipped Data+ bank', () => {
       const short = Object.entries(quotas).filter(([id, q]) => have[id].mcq < q.mcq || have[id].pbq < q.pbq);
       expect(short.map(([id]) => id)).toEqual([]);
     });
+
+    it('meets the math module targets (spec §7)', () => {
+      expect(shippedLessons.length).toBeGreaterThanOrEqual(30);
+      for (const l of shippedLessons) {
+        expect(l.checkIds.length).toBeGreaterThanOrEqual(3);
+        expect(l.checkIds.length).toBeLessThanOrEqual(5);
+      }
+      expect(approved.filter((q) => q.type === 'numeric').length).toBeGreaterThanOrEqual(60);
+      const joinPbqs = [
+        'da2-1-1-buckets-002', 'da2-1-1-match-002', 'da2-1-1-hotspot-002', 'da2-2-3-config-002', 'da2-2-3-config-003', 'da2-2-3-data-002',
+        'da2-2-3-data-003', 'da2-2-3-match-001', 'da2-2-3-order-002', 'da2-2-3-terminal-003', 'da2-2-3-diagram-001',
+      ];
+      expect(pbqs.filter((q) => joinPbqs.includes(q.id)).length).toBeGreaterThanOrEqual(10);
+    });
+  });
+
+  it('does not cluster select keys at one option index (config, data, terminal)', () => {
+    const at: number[] = [];
+    for (const q of items) {
+      const lists: [string, { id: string }[]][] =
+        q.type === 'pbq-config' || q.type === 'pbq-data'
+          ? (q.payload as { fields: { id: string; options: { id: string }[] }[] }).fields.map((f) => [f.id, f.options])
+          : q.type === 'pbq-terminal'
+            ? (q.payload as { steps: { id: string; options?: { id: string }[] }[] }).steps.filter((s) => s.options).map((s) => [s.id, s.options!])
+            : [];
+      const key = q.type === 'pbq-terminal' ? Object.fromEntries(Object.entries((q.answer as { accept: Record<string, string[]> }).accept).map(([k, v]) => [k, v[0]])) : (q.answer as { values: Record<string, string> }).values;
+      for (const [id, opts] of lists) at.push(opts.findIndex((o) => o.id === key[id]));
+    }
+    const counts = at.reduce<Record<number, number>>((m, i) => ({ ...m, [i]: (m[i] ?? 0) + 1 }), {});
+    expect(Math.max(...Object.values(counts)) / at.length).toBeLessThanOrEqual(0.5);
   });
 });
