@@ -24,6 +24,10 @@ const slope = (x1: number, y1: number, x2: number, y2: number) => (y2 - y1) / (x
 const movingAvg = (xs: number[], k: number) => mean(xs.slice(-k));
 /** Naive trend forecast: the last value plus the average change per period. */
 const trendForecast = (xs: number[]) => xs[xs.length - 1] + (xs[xs.length - 1] - xs[0]) / (xs.length - 1);
+const minMax = (x: number, lo: number, hi: number) => (x - lo) / (hi - lo);
+const zScore = (x: number, m: number, s: number) => (x - m) / s;
+/** Whole days from start to end (end minus start), dates as YYYY-MM-DD in UTC. */
+const daysBetween = (start: string, end: string) => (Date.parse(end) - Date.parse(start)) / 86_400_000;
 
 export const NUMERIC_CHECKS: Record<string, () => number> = {
   'da2-3-2-num-001': () => percentChange(40, 50),
@@ -61,4 +65,21 @@ export const NUMERIC_CHECKS: Record<string, () => number> = {
   'da2-3-2-num-031': () => [0.82, 0.45, 0.67, 0.3, 0.51, 0.49].filter((p) => p >= 0.5).length,
   'da2-3-2-num-032': () => movingAvg([40, 50, 60, 70, 80], 3),
   'da2-3-2-num-033': () => trendForecast([100, 110, 120, 130]),
+  'da2-2-3-num-001': () => 0.075 * 100,
+  'da2-2-3-num-002': () => 2_400_000 / 1000,
+  'da2-2-3-num-003': () => 100 / 3,
+  'da2-2-3-num-004': () => minMax(30, 10, 50),
+  'da2-2-3-num-005': () => zScore(76, 60, 8),
+  'da2-2-3-num-006': () => 50 + -1.5 * 10,
+  'da2-2-3-num-007': () => (60 - 0) / 4,
+  // Bins of width 15 starting at 0: bin 1 is 0 to under 15, and so on.
+  'da2-2-3-num-008': () => Math.floor((38 - 0) / 15) + 1,
+  'da2-2-3-num-009': () => daysBetween('2026-03-10', '2026-04-02'),
+  'da2-2-3-num-010': () => 17 - 8.5,
+  'da2-2-3-num-011': () => (45 / 600) * 100,
+  'da2-2-3-num-012': () => 120 + 80 + 150,
+  'da2-2-2-num-001': () => weightedMean([10, 30], [300, 100]),
+  'da2-2-2-num-002': () => weightedMean([2, 7], [4, 16]) - mean([2, 7]),
+  // Order 1 ($200) matches 3 shipment rows, order 2 ($100) matches 1.
+  'da2-2-2-num-003': () => 200 * 3 + 100 * 1,
 };

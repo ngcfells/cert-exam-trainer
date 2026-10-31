@@ -2398,5 +2398,144 @@
     },
     "acronyms": [],
     "status": "approved"
+  },
+  {
+    "id": "da2-2-2-num-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Region North had 300 orders with an average value of $10. Region South had 100 orders with an average value of $30. What is the true average order value across both regions? Answer in whole dollars.",
+    "payload": {
+      "prefix": "$"
+    },
+    "answer": {
+      "value": 15,
+      "tolerance": 0.5
+    },
+    "explanation": "Use totals, not the two averages. North total = 300 × 10 = $3,000; South total = 100 × 30 = $3,000. Overall = 6,000 ÷ 400 orders = $15. The simple average of $10 and $30 ($20) is wrong because the regions have different order counts."
+  },
+  {
+    "id": "da2-2-2-num-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "Team X closed 4 tickets averaging 2 hours each. Team Y closed 16 tickets averaging 7 hours each. The true overall average is total hours ÷ total tickets. By how many hours does the simple average of the two team averages understate the true overall average? Answer to one decimal place.",
+    "payload": {},
+    "answer": {
+      "value": 1.5,
+      "tolerance": 0.05
+    },
+    "explanation": "True average: (4 × 2 + 16 × 7) ÷ 20 = (8 + 112) ÷ 20 = 6.0 hours. Average of averages: (2 + 7) ÷ 2 = 4.5 hours. Gap: 6.0 − 4.5 = 1.5 hours."
+  },
+  {
+    "id": "da2-2-2-num-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "Order 1 is worth $200 and order 2 is worth $100. The orders table is joined to a shipments table: order 1 has 3 shipment rows and order 2 has 1. If the analyst sums the order value column after the join, what total do they get? Answer in whole dollars.",
+    "payload": {
+      "prefix": "$"
+    },
+    "answer": {
+      "value": 700,
+      "tolerance": 0.5
+    },
+    "explanation": "The join repeats each order once per matching shipment: order 1 appears 3 times (3 × 200 = 600) and order 2 once (100). The sum is 700, but the true order total is only $300. This is double counting."
+  },
+  {
+    "id": "da2-2-2-math-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Each store reports its own average sale, and stores have very different numbers of sales. How should an analyst find the average sale for the whole company?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Average the store averages"
+        },
+        {
+          "id": "b",
+          "text": "Use the median store average"
+        },
+        {
+          "id": "c",
+          "text": "Divide total sales value by total number of sales"
+        },
+        {
+          "id": "d",
+          "text": "Use the largest store's average"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An average of averages gives a small store the same weight as a large one. Add up the sales value and the number of sales across all stores, then divide. It matches the simple average only when every store has the same count."
+  },
+  {
+    "id": "da2-2-2-math-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After joining customers (one row each) to orders (many rows per customer), the sum of customers' credit limits is far higher than expected. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Change the join to a cross join"
+        },
+        {
+          "id": "b",
+          "text": "Sum the credit limits before joining, or count each customer once"
+        },
+        {
+          "id": "c",
+          "text": "Round the credit limits to thousands"
+        },
+        {
+          "id": "d",
+          "text": "Sort the joined table by customer ID"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A one-to-many join repeats each customer's row once per order, so the credit limit is counted many times. Aggregate at the customer level before the join, or de-duplicate on the customer ID before summing. A cross join would make it worse."
   }
 ]

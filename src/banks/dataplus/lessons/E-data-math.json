@@ -1,0 +1,207 @@
+[
+  {
+    "id": "e-units-precision",
+    "exam": "DA0-002",
+    "area": "E",
+    "title": "Rounding, precision and units",
+    "objectiveIds": ["2.3"],
+    "meaning": [
+      "The same number can be written many ways: 0.05 and 5% are equal, and 2.4 million is 2,400 thousand. Precision is how many decimal places you keep.",
+      "Analysts care because a wrong unit or an early rounding step quietly makes a report wrong, even when the formula is right."
+    ],
+    "rule": [
+      "A percent stored as a decimal (0.05) becomes a percent by multiplying by 100 (5%). A percent becomes a decimal by dividing by 100.",
+      "Scales: 1 thousand (K) = 1,000; 1 million (M) = 1,000,000 = 1,000 thousand. Check a column's unit before you add or compare it with another.",
+      "Keep full precision while you calculate. Round once, at the end, for display."
+    ],
+    "example": {
+      "intro": "Three values from a sales report, converted to the form a dashboard needs.",
+      "table": {
+        "caption": "Converting units and rounding",
+        "head": ["Stored value", "Step", "Displayed"],
+        "rows": [
+          ["0.075 (rate)", "0.075 × 100", "7.5%"],
+          ["2.4 million", "2.4 × 1,000", "2,400 thousand"],
+          ["100 ÷ 3", "33.333… rounded once at the end", "33.33"]
+        ]
+      },
+      "steps": [
+        "A rate column holding 0.075 means 7.5%, not 0.075%.",
+        "To show millions in thousands, multiply by 1,000.",
+        "100 ÷ 3 is 33.333…; keep every digit while calculating and round to 33.33 only for the final display."
+      ]
+    },
+    "trap": {
+      "wrong": "Reading 0.05 in a rate column as 0.05%, or rounding every row before summing.",
+      "why": "0.05 as a rate is 5%: a hundred times bigger than 0.05%. Rounding each row first lets small errors pile up over thousands of rows, so the total drifts away from the true figure."
+    },
+    "checkIds": ["da2-2-3-num-001", "da2-2-3-num-002", "da2-2-3-num-003", "da2-2-3-math-mcq-001"]
+  },
+  {
+    "id": "e-normalization",
+    "exam": "DA0-002",
+    "area": "E",
+    "title": "Normalization and scaling",
+    "objectiveIds": ["2.3"],
+    "meaning": [
+      "Scaling puts columns measured in different units (dollars, years) on a common footing so one does not swamp the other.",
+      "Analysts care because many models compare distances between rows, and an income in tens of thousands would drown out an age in tens."
+    ],
+    "formula": {
+      "text": "x′ = (x − min) ÷ (max − min)    z = (x − x̄) ÷ s",
+      "spoken": "min-max: x prime equals x minus the minimum, divided by the maximum minus the minimum. z-score: z equals x minus the mean, divided by the standard deviation",
+      "symbols": [
+        { "symbol": "x", "meaning": "the original value" },
+        { "symbol": "x′", "meaning": "\"x prime\", the min-max scaled value, from 0 (the minimum) to 1 (the maximum)" },
+        { "symbol": "min, max", "meaning": "the smallest and largest values in the column" },
+        { "symbol": "z", "meaning": "the z-score: how many standard deviations x is above (positive) or below (negative) the mean" },
+        { "symbol": "x̄", "meaning": "\"x-bar\", the mean of the column" },
+        { "symbol": "s", "meaning": "the standard deviation of the column" }
+      ]
+    },
+    "example": {
+      "intro": "A column has min 10, max 50, mean 30 and standard deviation 10. Scale three values both ways.",
+      "table": {
+        "caption": "Min-max and z-score for three values",
+        "head": ["x", "Min-max (x − 10) ÷ 40", "z-score (x − 30) ÷ 10"],
+        "rows": [
+          ["10", "0 ÷ 40 = 0", "−20 ÷ 10 = −2"],
+          ["30", "20 ÷ 40 = 0.5", "0 ÷ 10 = 0"],
+          ["50", "40 ÷ 40 = 1", "20 ÷ 10 = 2"]
+        ]
+      },
+      "steps": [
+        "Min-max: subtract the minimum, then divide by the range (50 − 10 = 40). Results run from 0 to 1.",
+        "z-score: subtract the mean, then divide by the standard deviation. Values below the mean come out negative.",
+        "To go back from a z-score: x = mean + z × s. A z of −1.5 with mean 30 and s 10 is 30 − 15 = 15.",
+        "Both methods keep the values in the same order; they only change the scale."
+      ]
+    },
+    "trap": {
+      "wrong": "Saying z-scores fall between 0 and 1, or mixing up which method uses the minimum and maximum.",
+      "why": "Only min-max scaling is bounded by 0 and 1. A z-score is centred on 0 and can be negative or larger than 1 (a value 3 standard deviations up has z = 3)."
+    },
+    "checkIds": ["da2-2-3-num-004", "da2-2-3-num-005", "da2-2-3-num-006", "da2-2-3-math-mcq-002", "da2-2-3-mcq-040"]
+  },
+  {
+    "id": "e-binning",
+    "exam": "DA0-002",
+    "area": "E",
+    "title": "Binning: equal width and equal count",
+    "objectiveIds": ["2.3"],
+    "meaning": [
+      "Binning groups a numeric column into ranges, such as ages 0–15, 15–30 and so on, so it can be counted and charted like a category.",
+      "Analysts care because the choice of bins changes what a histogram or report shows."
+    ],
+    "formula": {
+      "text": "bin width = (max − min) ÷ k",
+      "spoken": "bin width equals the maximum minus the minimum, divided by k",
+      "symbols": [
+        { "symbol": "max, min", "meaning": "the largest and smallest values to cover" },
+        { "symbol": "k", "meaning": "the number of bins you want" }
+      ]
+    },
+    "example": {
+      "intro": "Ages run from 0 to 60, and we want 4 equal-width bins.",
+      "table": {
+        "caption": "Four equal-width age bins",
+        "head": ["Bin", "Range", "Example value"],
+        "rows": [
+          ["1", "0 to under 15", "8"],
+          ["2", "15 to under 30", "22"],
+          ["3", "30 to under 45", "38"],
+          ["4", "45 to 60", "51"]
+        ]
+      },
+      "steps": [
+        "Width = (60 − 0) ÷ 4 = 15 years.",
+        "Each bin starts where the last ended. A value on an edge (15) goes in the higher bin, so no value is counted twice.",
+        "Equal-count (equal-frequency) bins instead put about the same number of rows in each bin, so their widths differ. They suit skewed data, where equal-width bins would leave most rows in one bin."
+      ]
+    },
+    "trap": {
+      "wrong": "Thinking equal-width bins hold equal numbers of rows.",
+      "why": "Equal width fixes the size of each range, not how many rows land in it. With skewed data, one bin can hold most of the rows. If you need the same count per bin, use equal-count bins."
+    },
+    "checkIds": ["da2-2-3-num-007", "da2-2-3-num-008", "da2-2-3-math-mcq-003", "da2-2-3-mcq-008", "da2-2-3-mcq-009"]
+  },
+  {
+    "id": "e-derived-fields",
+    "exam": "DA0-002",
+    "area": "E",
+    "title": "Derived fields: durations, ratios and running totals",
+    "objectiveIds": ["2.3"],
+    "meaning": [
+      "A derived field is a new column calculated from existing ones, such as days to deliver, return rate or year-to-date sales.",
+      "Analysts care because most business measures are derived, and small slips (counting a day twice, dividing minutes by 100) give wrong answers."
+    ],
+    "rule": [
+      "Duration = end − start. Say whether the start day counts: the usual date difference does not count it.",
+      "Convert minutes to hours by dividing by 60: 30 minutes is 0.5 hours, not 0.3.",
+      "Ratio or rate = part ÷ whole. Multiply by 100 to show it as a percent.",
+      "Running (cumulative) total = this row's value plus every row before it, in the table's order."
+    ],
+    "example": {
+      "intro": "Four days of sales, with a running total column.",
+      "table": {
+        "caption": "Daily sales and running total",
+        "head": ["Day", "Sales ($)", "Running total ($)"],
+        "rows": [
+          ["1", "120", "120"],
+          ["2", "80", "200"],
+          ["3", "150", "350"],
+          ["4", "60", "410"]
+        ]
+      },
+      "steps": [
+        "Running total: each row adds that day's sales to the row above: 120, then 120 + 80 = 200, then 200 + 150 = 350, then 350 + 60 = 410.",
+        "Duration: 10 March to 2 April is 21 days to the end of March plus 2 days = 23 days.",
+        "Time: 08:30 to 17:00 is 8 hours 30 minutes = 8 + 30 ÷ 60 = 8.5 hours.",
+        "Rate: 45 returns out of 600 orders = 45 ÷ 600 = 0.075 = 7.5%."
+      ]
+    },
+    "trap": {
+      "wrong": "Writing 8 hours 30 minutes as 8.3 hours, or counting both the start and end dates.",
+      "why": "There are 60 minutes in an hour, so 30 minutes is 0.5 hours. Subtracting dates gives the days between them; adding 1 to count the start day is a different measure and must be stated."
+    },
+    "checkIds": ["da2-2-3-num-009", "da2-2-3-num-010", "da2-2-3-num-011", "da2-2-3-num-012", "da2-2-3-math-mcq-004"]
+  },
+  {
+    "id": "e-aggregation-pitfalls",
+    "exam": "DA0-002",
+    "area": "E",
+    "title": "Aggregation pitfalls: average of averages and double counting",
+    "objectiveIds": ["2.2", "2.3"],
+    "meaning": [
+      "Aggregating means summarising many rows into one figure, such as a total or an average. Two common mistakes make the figure wrong: averaging averages, and summing after a join that repeated rows.",
+      "Analysts care because both mistakes produce a confident, plausible number that is simply wrong."
+    ],
+    "rule": [
+      "Overall average = total of all values ÷ total count. The simple average of group averages is right only when every group has the same count.",
+      "A one-to-many join repeats the \"one\" side's row once per match. Summing a column from the \"one\" side after the join counts it several times.",
+      "Fix double counting by aggregating before the join, or by counting each key (such as an order ID) once."
+    ],
+    "example": {
+      "intro": "Two regions with different order counts. What is the average order value overall?",
+      "table": {
+        "caption": "Region averages and totals",
+        "head": ["Region", "Orders", "Average ($)", "Total ($)"],
+        "rows": [
+          ["North", "300", "10", "3,000"],
+          ["South", "100", "30", "3,000"],
+          ["Both", "400", "?", "6,000"]
+        ]
+      },
+      "steps": [
+        "Wrong: (10 + 30) ÷ 2 = $20. This treats 100 South orders as if they mattered as much as 300 North orders.",
+        "Right: total value ÷ total orders = 6,000 ÷ 400 = $15.",
+        "Double counting: if order 1 ($200) matches 3 shipment rows and order 2 ($100) matches 1, summing order value after the join gives 3 × 200 + 100 = $700, not $300."
+      ]
+    },
+    "trap": {
+      "wrong": "Averaging the group averages, or summing a column after a one-to-many join.",
+      "why": "Group averages hide how many rows each group has, so they must be weighted by count. A join that repeats rows repeats their values too, which inflates every sum and count taken from that side."
+    },
+    "checkIds": ["da2-2-2-num-001", "da2-2-2-num-002", "da2-2-2-num-003", "da2-2-2-math-mcq-001", "da2-2-2-math-mcq-002"]
+  }
+]
