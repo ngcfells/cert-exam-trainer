@@ -178,7 +178,7 @@
     - Bug #1 fixed: hotspot labels are wrapping HTML in a `<foreignObject>`, scaled with the image width. The bank e2e checks that every shipped label fits at 360 and 1280 px.
     - Hotspot authoring rules (enforced by the validator, documented in `docs/pbq-authoring.md`): all spots are the same size; a node matches a spot box exactly or overlaps none.
     - `parseNumeric` now treats inner spaces as thousands separators only ("1 250" works; "5 3" is unanswered).
-  - **Left to do: merge `math-engine` to `main`, `npm run deploy`, and close issues #1 and #2** (waiting on the owner's go-ahead).
+  - **Merged to `main` (201bcd0) and deployed 2026-10-31; issues #1 and #2 closed. The math module is complete.** Next: chunk 11 (SecAI+).
   - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.
 - **After the math module: chunk 11, SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
