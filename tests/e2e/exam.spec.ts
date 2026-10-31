@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { expectNoSeriousAxe, singleUrl } from './util';
+import { expectNoSeriousAxe, singleUrl, openExam } from './util';
 
 // Each seed draws 6 PBQs, then the 2 approved MCQs. Together they cover all 8 templates:
 // seed 4: diagram, terminal, data, buckets, hotspot, match; seed 67 adds order and config.
@@ -9,6 +9,7 @@ const TOTAL = 9;
 
 async function startExam(page: Page) {
   await page.goto(seeded);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await page.getByRole('button', { name: 'Start exam' }).click();
   await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
@@ -27,6 +28,7 @@ async function submit(page: Page) {
 
 for (const seed of SEEDS) test(`mock exam screens (seed ${seed}) pass axe`, async ({ page }) => {
   await page.goto(`${singleUrl}?seed=${seed}`);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await expect(page.getByRole('button', { name: 'Start exam' })).toBeVisible();
   await expectNoSeriousAxe(page);
@@ -53,6 +55,7 @@ for (const seed of SEEDS) test(`mock exam screens (seed ${seed}) pass axe`, asyn
 
 for (const seed of SEEDS) test(`a mock exam with PBQs (seed ${seed}) can be completed with the keyboard only`, async ({ page }) => {
   await page.goto(`${singleUrl}?seed=${seed}`);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).focus();
   await page.keyboard.press('Enter');
   await page.getByRole('button', { name: 'Start exam' }).focus();

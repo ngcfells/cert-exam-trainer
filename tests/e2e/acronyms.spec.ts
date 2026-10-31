@@ -1,11 +1,12 @@
 import { test, expect, type Page } from '@playwright/test';
 import { dataPlusMeta } from '../../src/banks/dataplus/meta';
-import { expectNoSeriousAxe, singleUrl } from './util';
+import { expectNoSeriousAxe, singleUrl, openExam } from './util';
 
 const BUILT_IN = dataPlusMeta.acronyms.length;
 
 async function openSetup(page: Page) {
   await page.goto(`${singleUrl}?seed=1`);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Acronyms: DA0-002' }).click();
   await expect(page.getByRole('heading', { name: /^Acronyms:/ })).toBeVisible();
 }
@@ -17,6 +18,7 @@ async function cards(page: Page, n: number) {
 
 test('CY0-001 lists compound and mixed-case official terms and passes axe', async ({ page }) => {
   await page.goto(singleUrl);
+  await openExam(page, 'CY0-001');
   await page.getByRole('button', { name: 'Acronyms: CY0-001' }).click();
   await expect(page.getByRole('heading', { name: /^Acronyms:/ })).toBeVisible();
   await page.getByText('Full list', { exact: true }).click();

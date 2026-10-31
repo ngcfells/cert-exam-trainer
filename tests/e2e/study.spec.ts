@@ -1,5 +1,5 @@
 import { test, expect, type Page } from '@playwright/test';
-import { expectNoSeriousAxe, singleUrl } from './util';
+import { expectNoSeriousAxe, singleUrl, openExam } from './util';
 
 const PBQ_NAMES = [
   'Drag-and-drop match',
@@ -20,6 +20,7 @@ async function mcqOnlyPractice(page: Page, count: number) {
 
 async function submitEmptyMock(page: Page) {
   await page.goto(`${singleUrl}?seed=4`);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await page.getByRole('button', { name: 'Start exam' }).click();
   for (let i = 1; i < 9; i++) await page.getByRole('button', { name: 'Next' }).click();
@@ -31,6 +32,7 @@ async function submitEmptyMock(page: Page) {
 
 test('practice setup, a checked question and results pass axe', async ({ page }) => {
   await page.goto(singleUrl);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
   await expect(page.getByRole('heading', { name: /^Practice:/ })).toBeVisible();
   await expectNoSeriousAxe(page);
@@ -54,6 +56,7 @@ test('practice setup, a checked question and results pass axe', async ({ page })
 
 test('practice with every PBQ type passes axe on each item', async ({ page }) => {
   await page.goto(`${singleUrl}?seed=1`);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
   await page.getByRole('checkbox', { name: 'Multiple choice' }).uncheck();
   await page.getByRole('checkbox', { name: 'Type a number' }).uncheck();
@@ -71,6 +74,7 @@ test('practice with every PBQ type passes axe on each item', async ({ page }) =>
 
 test('practice can be completed with the keyboard only', async ({ page }) => {
   await page.goto(singleUrl);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Practice: DA0-002' }).focus();
   await page.keyboard.press('Enter');
   for (const name of [...PBQ_NAMES, 'Type a number']) {
@@ -95,6 +99,7 @@ test('practice can be completed with the keyboard only', async ({ page }) => {
 
 test('cram with a countdown passes axe and reaches the summary', async ({ page }) => {
   await page.goto(singleUrl);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Cram: DA0-002' }).click();
   await expect(page.getByRole('heading', { name: /^Cram:/ })).toBeVisible();
   await page.getByRole('checkbox', { name: 'Use a countdown' }).check();

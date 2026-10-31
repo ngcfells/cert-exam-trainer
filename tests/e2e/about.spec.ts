@@ -7,6 +7,6 @@ test('footer About opens the About page, axe clean, Back returns home', async ({
   await expect(page.getByRole('heading', { name: 'About Cert Exam Trainer' })).toBeFocused();
   await expect(page.getByRole('link', { name: 'Tips (opens Ko-fi in a new tab)' })).toBeVisible();
   await expectNoSeriousAxe(page);
-  await page.getByRole('button', { name: 'Back' }).click();
+  await page.getByRole('button', { name: 'Back', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Exams' })).toBeVisible();
 });

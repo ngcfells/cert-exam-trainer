@@ -1,8 +1,9 @@
 import { test, expect } from '@playwright/test';
-import { expectNoSeriousAxe, singleUrl } from './util';
+import { expectNoSeriousAxe, singleUrl, openExam } from './util';
 
 test('add an MCQ, switch to Mine, and practice it', async ({ page }) => {
   await page.goto(singleUrl);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'My questions: DA0-002' }).click();
   await expect(page.getByText(/solely responsible/)).toBeVisible();
   await expectNoSeriousAxe(page);
@@ -29,7 +30,7 @@ test('add an MCQ, switch to Mine, and practice it', async ({ page }) => {
   await expectNoSeriousAxe(page);
 
   await page.getByRole('button', { name: 'Back to exam' }).click();
-  await page.getByRole('radio', { name: 'Mine' }).check();
+  await page.getByRole('radio', { name: 'Custom only' }).check();
   await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
   await expect(page.getByRole('status')).toHaveText(/Only 1 question match/);
   await page.getByRole('button', { name: 'Start practice' }).click();

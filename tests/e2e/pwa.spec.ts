@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { PWA_URL } from './util';
+import { openExam, PWA_URL } from './util';
 
 // dist/ served under the GitHub Pages subpath (/cert-exam-trainer/) by the pwa project's web server.
 test('installs a service worker and works offline under the Pages subpath', async ({ page, context }) => {
@@ -12,6 +12,7 @@ test('installs a service worker and works offline under the Pages subpath', asyn
   await context.setOffline(true);
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Cert Exam Trainer' })).toBeVisible();
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
   await expect(page.getByRole('heading', { name: /practice/i }).first()).toBeVisible();
 });

@@ -1,11 +1,12 @@
 import { test, expect } from '@playwright/test';
-import { expectNoSeriousAxe, singleUrl } from './util';
+import { expectNoSeriousAxe, singleUrl, openExam } from './util';
 
 const LESSON = 'Fixture: percent change';
 const row = (page: import('@playwright/test').Page) => page.getByRole('listitem').filter({ has: page.getByRole('button', { name: LESSON }) });
 
 test('a lesson by keyboard: read, check, and the status reaches Done; axe clean throughout', async ({ page }) => {
   await page.goto(singleUrl);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Learn: DA0-002' }).click();
   await expect(page.getByRole('heading', { name: /^Learn:/ })).toBeFocused();
   await expect(row(page)).toContainText('Not started');

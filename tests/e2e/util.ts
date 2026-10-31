@@ -13,3 +13,9 @@ export async function expectNoSeriousAxe(page: Page): Promise<void> {
   const bad = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
   expect(bad).toEqual([]);
 }
+
+/** Opens an exam's page from the Home cards, where the study tools live. */
+export async function openExam(page: Page, code: string): Promise<void> {
+  await page.getByRole('button', { name: new RegExp(`\\(${code}\\)`) }).click();
+  await expect(page.getByRole('heading', { level: 2, name: new RegExp(`\\(${code}\\)`) })).toBeFocused();
+}

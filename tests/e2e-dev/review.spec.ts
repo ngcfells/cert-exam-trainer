@@ -1,10 +1,11 @@
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { test, expect } from '@playwright/test';
-import { expectNoSeriousAxe } from '../e2e/util';
+import { expectNoSeriousAxe, openExam } from '../e2e/util';
 
 test('the bank review tool passes axe', async ({ page }) => {
   await page.goto('/');
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Review bank (dev): DA0-002' }).click();
   await expect(page.getByRole('heading', { name: /Review bank/ })).toBeVisible();
   await expect(page.getByRole('region', { name: 'Answer key' })).toBeVisible();

@@ -1,26 +1,38 @@
 import { test, expect, type Page } from '@playwright/test';
-import AxeBuilder from '@axe-core/playwright';
 import path from 'node:path';
-import { singleUrl } from './util';
+import { expectNoSeriousAxe, openExam, singleUrl } from './util';
 
-const dataPlusRow = (page: Page) => page.getByRole('listitem').filter({ has: page.getByText('CompTIA Data+ (DA0-002)', { exact: true }) });
+const card = (page: Page, code: string) => page.getByRole('button', { name: new RegExp(`\\(${code}\\)`) });
 
-test('home screen lists both exams and passes axe', async ({ page }) => {
+test('home shows one card per exam with its counts and passes axe', async ({ page }) => {
   await page.goto(singleUrl);
-  await expect(page.getByText('CompTIA Data+ (DA0-002)')).toBeVisible();
-  await expect(page.getByText('CompTIA SecAI+ (CY0-001)')).toBeVisible();
-  await expect(dataPlusRow(page).getByText('11 questions (ours)')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Learn: DA0-002' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Practice: CY0-001' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Learn: CY0-001' })).toHaveCount(0);
-  const results = await new AxeBuilder({ page }).analyze();
-  const bad = results.violations.filter((v) => v.impact === 'serious' || v.impact === 'critical');
-  expect(bad).toEqual([]);
+  await expect(card(page, 'DA0-002')).toContainText('CompTIA Data+ (DA0-002)');
+  await expect(card(page, 'CY0-001')).toContainText('CompTIA SecAI+ (CY0-001)');
+  await expect(card(page, 'DA0-002').getByText('Stock: 11 questions', { exact: true })).toBeVisible();
+  await expect(card(page, 'DA0-002').getByText('Custom: 0 questions', { exact: true })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Settings' })).toBeVisible();
+  // The study tools live on each exam's page, not on Home.
+  await expect(page.getByRole('button', { name: 'Practice: DA0-002' })).toHaveCount(0);
+  await expectNoSeriousAxe(page);
 });
 
-test('importing a backup with one user question updates the mine count', async ({ page }) => {
+test('each exam page shows only the tools that exam has', async ({ page }) => {
   await page.goto(singleUrl);
-  await expect(dataPlusRow(page).getByText('0 questions (mine)')).toBeVisible();
+  await openExam(page, 'DA0-002');
+  await expect(page.getByRole('button', { name: 'Learn: DA0-002' })).toBeVisible();
+  await page.getByRole('button', { name: '⌂ All exams' }).click();
+  await openExam(page, 'CY0-001');
+  await expect(page.getByRole('button', { name: 'Practice: CY0-001' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Learn: CY0-001' })).toHaveCount(0);
+});
+
+test('importing a backup on Settings updates the Custom count on Home', async ({ page }) => {
+  await page.goto(singleUrl);
+  await expect(card(page, 'DA0-002').getByText('Custom: 0 questions', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Settings' }).click();
   await page.getByLabel(/import backup/i).setInputFiles(path.resolve('tests/e2e/fixtures/backup-one-question.json'));
-  await expect(dataPlusRow(page).getByText('1 question (mine)')).toBeVisible();
+  await expect(page.getByText(/^Imported 1 question\./)).toBeVisible();
+  await expectNoSeriousAxe(page);
+  await page.getByRole('button', { name: '⌂ All exams' }).click();
+  await expect(card(page, 'DA0-002').getByText('Custom: 1 question', { exact: true })).toBeVisible();
 });

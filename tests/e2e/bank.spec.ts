@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 import { test, expect, type Page } from '@playwright/test';
-import { expectNoSeriousAxe } from './util';
+import { expectNoSeriousAxe, openExam } from './util';
 
 // Runs against the shipped bank (dist-single), not the fixture build.
 const bankUrl = pathToFileURL(path.resolve('dist-single/index.html')).href;
@@ -18,17 +18,18 @@ const PBQ_NAMES = [
   'Sort into buckets',
 ];
 
-const examRow = (page: Page, name: string) => page.getByRole('listitem').filter({ has: page.getByText(name, { exact: true }) });
+const examCard = (page: Page, code: string) => page.getByRole('button', { name: new RegExp(`\\(${code}\\)`) });
 
 test('Home shows the full Data+ bundled count', async ({ page }) => {
   await page.goto(bankUrl);
-  const text = await examRow(page, 'CompTIA Data+ (DA0-002)').getByText(/^\d+ questions \(ours\)$/).textContent();
-  expect(Number(text?.match(/^\d+/)?.[0])).toBeGreaterThanOrEqual(580);
+  const text = await examCard(page, 'DA0-002').getByText(/^Stock: \d+ questions$/).textContent();
+  expect(Number(text?.match(/\d+/)?.[0])).toBeGreaterThanOrEqual(580);
 });
 
 // The bank fills the exam: 90 slots, where each PBQ takes its weight in slots, so fewer than 90 items show.
 test('a mock exam is filled from the bank', async ({ page }) => {
   await page.goto(`${bankUrl}?seed=1`);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await page.getByRole('button', { name: 'Start exam' }).click();
   const text = await page.getByText(/^Question 1 of \d+$/).textContent();
@@ -39,6 +40,7 @@ test('a mock exam is filled from the bank', async ({ page }) => {
 
 test('a one-question typed-number practice renders and passes axe', async ({ page }) => {
   await page.goto(bankUrl);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
   await page.getByRole('checkbox', { name: 'Multiple choice' }).uncheck();
   for (const other of PBQ_NAMES) await page.getByRole('checkbox', { name: other }).uncheck();
@@ -50,6 +52,7 @@ test('a one-question typed-number practice renders and passes axe', async ({ pag
 
 test('the percent-change lesson renders from the shipped bank and passes axe', async ({ page }) => {
   await page.goto(bankUrl);
+  await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Learn: DA0-002' }).click();
   await page.getByRole('button', { name: 'Percent change' }).click();
   await expect(page.getByRole('table', { name: /Percent change from May to June/ })).toBeVisible();
@@ -64,6 +67,7 @@ for (const width of [360, 1280]) {
   test(`every hotspot label fits its spot at ${width}px`, async ({ page }) => {
     await page.setViewportSize({ width, height: 900 });
     await page.goto(bankUrl);
+    await openExam(page, 'DA0-002');
     await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
     await page.getByRole('checkbox', { name: 'Multiple choice' }).uncheck();
     await page.getByRole('checkbox', { name: 'Type a number' }).uncheck();
@@ -87,6 +91,7 @@ for (const width of [360, 1280]) {
 for (const name of PBQ_NAMES) {
   test(`a one-question ${name} practice renders and passes axe`, async ({ page }) => {
     await page.goto(bankUrl);
+    await openExam(page, 'DA0-002');
     await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
     await page.getByRole('checkbox', { name: 'Multiple choice' }).uncheck();
     await page.getByRole('checkbox', { name: 'Type a number' }).uncheck();
@@ -113,6 +118,7 @@ test.describe('CY0-001 shipped bank', () => {
   // 60 slots; PBQs take their weight in slots (at most 6 PBQs of weight up to 6), so 30 to 60 items show once the bank fills the exam.
   test('a mock exam is filled from the bank', async ({ page }) => {
     await page.goto(`${bankUrl}?seed=1`);
+    await openExam(page, 'CY0-001');
     await page.getByRole('button', { name: 'Start mock exam: CY0-001' }).click();
     await page.getByRole('button', { name: 'Start exam' }).click();
     const text = await page.getByText(/^Question 1 of \d+$/).textContent();
@@ -127,6 +133,7 @@ test.describe('CY0-001 shipped bank', () => {
     test(`a one-question ${name} practice renders and passes axe`, async ({ page }) => {
       test.skip(!secAiApproved.some((q) => q.type === type), `no approved ${type} yet`);
       await page.goto(bankUrl);
+      await openExam(page, 'CY0-001');
       await page.getByRole('button', { name: 'Practice: CY0-001' }).click();
       await page.getByRole('checkbox', { name: 'Multiple choice' }).uncheck();
       await page.getByRole('checkbox', { name: 'Type a number' }).uncheck();
