@@ -28,7 +28,7 @@ export function About({ onExit }: { onExit: () => void }) {
       <p>Questions you add or import are yours; do not add copyrighted exam content.</p>
 
       <div className="kofi-tip">
-        <p>If you would like to help cover costs of development please click here.</p>
+        <p>If you would like to help cover the costs of development, you can leave a tip on Ko-fi.</p>
         <a className="kofi-button" href={KOFI_URL} target="_blank" rel="noopener noreferrer" aria-label="Tips (opens Ko-fi in a new tab)">
           Tips
         </a>

@@ -21,7 +21,7 @@ describe('About', () => {
 
   it('has the Ko-fi tip link', () => {
     render(<About onExit={() => {}} />);
-    expect(screen.getByText('If you would like to help cover costs of development please click here.')).toBeInTheDocument();
+    expect(screen.getByText('If you would like to help cover the costs of development, you can leave a tip on Ko-fi.')).toBeInTheDocument();
     const link = screen.getByRole('link', { name: /Tips/ });
     expect(link).toHaveAccessibleName('Tips (opens Ko-fi in a new tab)');
     expect(link).toHaveAttribute('href', 'https://ko-fi.com/M5K429C47U');
