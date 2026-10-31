@@ -19,7 +19,7 @@ export const examResultSchema = z.object({
   score: z.number(),
   passed: z.boolean(),
   /** Absent on mock exams (and on every result saved before chunk 5). */
-  mode: z.enum(['mock', 'practice', 'cram']).optional(),
+  mode: z.enum(['mock', 'practice', 'cram', 'lesson']).optional(),
 }).strict();
 
 export type ExamResult = z.infer<typeof examResultSchema>;

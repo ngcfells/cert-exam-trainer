@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from 'react';
 import { openRepo, type Repo } from './storage';
 import { About } from './ui/About';
 import { AcronymFlow } from './ui/acronyms/AcronymFlow';
+import { LearnFlow } from './ui/learn/LearnFlow';
 import { applyDisplay, loadDisplay } from './ui/display';
 import { APP_NAME } from './ui/legal';
 import { Disclaimer } from './ui/Disclaimer';
@@ -94,6 +95,8 @@ export default function App() {
         );
       case 'acronyms':
         return <AcronymFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} onExit={home} />;
+      case 'learn':
+        return <LearnFlow key={key} repo={repo} examCode={screen.exam} lessonId={screen.lesson} onExit={home} />;
       case 'questions':
         return <MyQuestions key={key} repo={repo} examCode={screen.exam} onExit={home} onEdit={(id) => go({ name: 'edit', exam: screen.exam, id })} />;
       case 'edit':

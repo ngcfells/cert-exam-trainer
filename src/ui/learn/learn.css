@@ -1,0 +1,14 @@
+.learn { max-width: 48rem; }
+.lesson-list { list-style: none; padding: 0; margin: 0 0 1rem; }
+.lesson-list li { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; margin-bottom: 0.5rem; }
+.lesson-list button { min-height: 2.75rem; text-align: left; }
+.lesson-state { font-size: 0.95rem; }
+.lesson-done { font-weight: bold; }
+.formula { font-size: 1.25rem; padding: 0.75rem 1rem; border: 1px solid var(--border); border-radius: 0.375rem; overflow-wrap: anywhere; }
+.symbols div { display: flex; flex-wrap: wrap; gap: 0 0.5rem; margin-bottom: 0.25rem; }
+.symbols dt { font-weight: bold; }
+.symbols dt::after { content: ':'; }
+.symbols dd { margin: 0; }
+.lesson .table-scroll { overflow-x: auto; }
+.lesson table { border-collapse: collapse; margin: 0.5rem 0 1rem; }
+.lesson th, .lesson td { border: 1px solid var(--border); padding: 0.25rem 0.5rem; text-align: left; }

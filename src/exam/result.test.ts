@@ -78,7 +78,9 @@ describe('result', () => {
       fake('r1', 'T-001', 1, ['mock']),
       { ...fake('r2', 'T-001', 2, ['practice']), mode: 'practice' },
       { ...fake('r3', 'T-001', 3, ['cram']), mode: 'cram' },
+      { ...fake('r4', 'T-001', 4, ['lesson']), mode: 'lesson' },
     ];
+    expect(examResultSchema.safeParse(results[3]).success).toBe(true);
     expect(recentQuestionIds(results, 'T-001')).toEqual(new Set(['mock']));
   });
 });

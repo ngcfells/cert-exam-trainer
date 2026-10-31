@@ -38,6 +38,7 @@ describe('Home', () => {
       ['Progress: DA0-002', 'progress'],
       ['My questions: DA0-002', 'questions'],
       ['Acronyms: DA0-002', 'acronyms'],
+      ['Learn: DA0-002', 'learn'],
     ] as const) {
       await user.click(screen.getByRole('button', { name }));
       expect(onNavigate).toHaveBeenLastCalledWith({ name: screenName, exam: 'DA0-002' });
