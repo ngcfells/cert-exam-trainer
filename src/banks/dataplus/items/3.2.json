@@ -146,5 +146,2557 @@
     "explanation": "Total 1,200 over 4 quarters gives a mean of 300. Q3 to Q4 is (390 − 270) / 270 ≈ 44%. Sorted, the middle values are 270 and 300, so the median is 285.",
     "acronyms": [],
     "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst reports last quarter's total revenue and average order value to show what already happened. Which type of analysis is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Predictive"
+        },
+        {
+          "id": "b",
+          "text": "Prescriptive"
+        },
+        {
+          "id": "c",
+          "text": "Inferential"
+        },
+        {
+          "id": "d",
+          "text": "Descriptive"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Descriptive analysis summarizes historical data to show what happened. Predictive analysis forecasts future outcomes, prescriptive analysis recommends actions, and inferential analysis generalizes from a sample to a population.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "A retailer uses three years of weekly sales to forecast demand for the next eight weeks. Which type of analysis is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Predictive"
+        },
+        {
+          "id": "b",
+          "text": "Descriptive"
+        },
+        {
+          "id": "c",
+          "text": "Prescriptive"
+        },
+        {
+          "id": "d",
+          "text": "Inferential"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Forecasting future values from historical patterns is predictive analysis. Descriptive analysis only summarizes past results, prescriptive analysis recommends a course of action, and inferential analysis draws population conclusions from a sample.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "A call center model evaluates labor costs and expected call volume, then recommends how many agents to schedule each hour to meet a service target at the lowest cost. Which type of analysis is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Descriptive"
+        },
+        {
+          "id": "b",
+          "text": "Inferential"
+        },
+        {
+          "id": "c",
+          "text": "Predictive"
+        },
+        {
+          "id": "d",
+          "text": "Prescriptive"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Recommending the best action under constraints, such as an optimal staffing level, is prescriptive analysis. Predictive analysis would only forecast the call volume, descriptive analysis would report past volume, and inferential analysis would generalize from a sample.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "A company surveys 400 of its 20,000 customers and reports a 95% confidence interval for the satisfaction rate of all customers. Which type of analysis is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Predictive"
+        },
+        {
+          "id": "b",
+          "text": "Descriptive"
+        },
+        {
+          "id": "c",
+          "text": "Prescriptive"
+        },
+        {
+          "id": "d",
+          "text": "Inferential"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Using a sample to estimate a population value with a confidence interval is inferential analysis. Descriptive analysis would only summarize the 400 responses, predictive analysis forecasts future outcomes, and prescriptive analysis recommends actions.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "Delivery times in days are 4, 6, 6, 8 and 41. Which measure best represents a typical delivery time?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mean"
+        },
+        {
+          "id": "b",
+          "text": "Median"
+        },
+        {
+          "id": "c",
+          "text": "Range"
+        },
+        {
+          "id": "d",
+          "text": "Standard deviation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The median (6) is not pulled by the outlier of 41, while the mean (13) is inflated by it. Range and standard deviation measure spread, not a typical value.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst wants to report the shirt color that customers choose most often. Which measure should be used?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mean"
+        },
+        {
+          "id": "b",
+          "text": "Median"
+        },
+        {
+          "id": "c",
+          "text": "Range"
+        },
+        {
+          "id": "d",
+          "text": "Mode"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The mode is the most frequent value and works for categorical data such as colors. The mean and median need numeric or ordered values, and the range measures spread.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "Daily sign-ups for five days were 10, 12, 15, 20 and 28. What is the mean number of sign-ups per day?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "15"
+        },
+        {
+          "id": "b",
+          "text": "18"
+        },
+        {
+          "id": "c",
+          "text": "17"
+        },
+        {
+          "id": "d",
+          "text": "21"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The sum is 85 and 85 / 5 = 17. The value 15 is the median (the middle of the sorted values), 18 comes from a sum of 90 (an addition error) divided by five, and 21 comes from dividing 85 by four.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "Order values in dollars are 3, 8, 10, 14, 20 and 25. What is the median order value?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "12"
+        },
+        {
+          "id": "b",
+          "text": "10"
+        },
+        {
+          "id": "c",
+          "text": "13.33"
+        },
+        {
+          "id": "d",
+          "text": "14"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "With six values, the median is the average of the two middle values: (10 + 14) / 2 = 12. The value 13.33 is the mean (80 / 6), and 10 and 14 are each only one of the two middle values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "Wait times in minutes are 7, 19, 4, 12 and 30. What is the range?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "23"
+        },
+        {
+          "id": "b",
+          "text": "14.4"
+        },
+        {
+          "id": "c",
+          "text": "26"
+        },
+        {
+          "id": "d",
+          "text": "12"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The range is the maximum minus the minimum: 30 - 4 = 26. The value 23 subtracts the first value from the last, 14.4 is the mean and 12 is the median.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "A full population of eight values is 2, 4, 4, 4, 5, 5, 7 and 9. What is the population standard deviation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "2"
+        },
+        {
+          "id": "b",
+          "text": "4"
+        },
+        {
+          "id": "c",
+          "text": "5"
+        },
+        {
+          "id": "d",
+          "text": "2.14"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The mean is 5, the squared deviations sum to 32, and the population variance is 32 / 8 = 4, so the standard deviation is its square root, 2. The value 4 is the variance, 5 is the mean, and 2.14 is the sample standard deviation (square root of 32 / 7).",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst needs a measure of spread for home prices that a few very expensive homes will not distort. Which measure fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Range"
+        },
+        {
+          "id": "b",
+          "text": "Interquartile range"
+        },
+        {
+          "id": "c",
+          "text": "Population standard deviation"
+        },
+        {
+          "id": "d",
+          "text": "Variance"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The interquartile range covers the middle 50% of values, so extreme values have little effect. The range uses the extremes directly, and variance and standard deviation square each deviation, which magnifies outliers.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "Store A has mean daily sales of $200 with a standard deviation of $20. Store B has mean daily sales of $50 with a standard deviation of $10. Which store has more variability relative to its mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Store A, coefficient of variation 0.10"
+        },
+        {
+          "id": "b",
+          "text": "Store A, coefficient of variation 0.20"
+        },
+        {
+          "id": "c",
+          "text": "Store B, coefficient of variation 0.10"
+        },
+        {
+          "id": "d",
+          "text": "Store B, coefficient of variation 0.20"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The coefficient of variation is standard deviation divided by mean: 20 / 200 = 0.10 for Store A and 10 / 50 = 0.20 for Store B, so Store B varies more relative to its mean. One wrong option gives the correct ratio for Store A but names the less variable store, one gives Store A the ratio of Store B, and one gives Store B the ratio of Store A. Comparing raw standard deviations would wrongly favor Store A.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "Exam scores have a mean of 70 and a standard deviation of 8. What is the z-score of a student who scored 86?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "1.5"
+        },
+        {
+          "id": "b",
+          "text": "16"
+        },
+        {
+          "id": "c",
+          "text": "2.0"
+        },
+        {
+          "id": "d",
+          "text": "0.5"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The z-score is (86 - 70) / 8 = 16 / 8 = 2.0. The value 16 is the raw difference before dividing. The value 1.5 comes from a score of 82 (12 / 8) and 0.5 from a score of 74 (4 / 8), so both use the wrong score.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which function returns one value when a condition is true and a different value when it is false?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "CONCAT function"
+        },
+        {
+          "id": "b",
+          "text": "TRIM function"
+        },
+        {
+          "id": "c",
+          "text": "IF function"
+        },
+        {
+          "id": "d",
+          "text": "ROUND function"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "IF is a logical function that tests a condition and returns one of two results. CONCAT and TRIM are string functions, and ROUND is a mathematical function.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "In a SQL query, an analyst must label each customer as High, Medium or Low based on three spending thresholds. Which construct should be used?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "COALESCE function"
+        },
+        {
+          "id": "b",
+          "text": "CASE expression"
+        },
+        {
+          "id": "c",
+          "text": "SUBSTRING function"
+        },
+        {
+          "id": "d",
+          "text": "DATEADD function"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A CASE expression evaluates several conditions in order and returns a label for the first one that is true. COALESCE returns the first non-null value, SUBSTRING extracts text and DATEADD shifts dates.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "A discount column contains NULL for orders without a discount, and the analyst wants those rows to show 0 in a SQL query. Which function should be used?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "COALESCE"
+        },
+        {
+          "id": "b",
+          "text": "CONCAT"
+        },
+        {
+          "id": "c",
+          "text": "NULLIF"
+        },
+        {
+          "id": "d",
+          "text": "CAST"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "COALESCE returns the first non-null argument, so COALESCE(discount, 0) turns NULL into 0. NULLIF does the opposite by returning NULL when two values match, CAST changes data type, and CONCAT joins strings.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "A rule flags an order when region = 'West' AND amount > 500. The orders are (West, 600), (West, 400), (East, 900) and (West, 501). How many orders are flagged?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "2"
+        },
+        {
+          "id": "b",
+          "text": "3"
+        },
+        {
+          "id": "c",
+          "text": "1"
+        },
+        {
+          "id": "d",
+          "text": "4"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Both conditions must be true, so only (West, 600) and (West, 501) qualify, giving 2. The East order fails the region test and the 400 order fails the amount test. Counting 1 keeps only the 600 order and misses 501, counting 3 counts every West order and ignores the amount test, and 4 results from using OR instead of AND.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst needs the number of days between each order date and its ship date. Which function should be used?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "DATEADD"
+        },
+        {
+          "id": "b",
+          "text": "DATEPART"
+        },
+        {
+          "id": "c",
+          "text": "GETDATE"
+        },
+        {
+          "id": "d",
+          "text": "DATEDIFF"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "DATEDIFF returns the interval between two dates in a chosen unit such as days. DATEADD shifts a date by an interval, DATEPART extracts one component such as the month, and GETDATE returns the current date and time.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "An order was placed on March 28, 2026 and shipped on April 3, 2026. What does a day-difference function return for these dates?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "6"
+        },
+        {
+          "id": "c",
+          "text": "7"
+        },
+        {
+          "id": "d",
+          "text": "4"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "March has 31 days, so March 28 to March 31 is 3 days and March 31 to April 3 is 3 more, for 6. The values 5 and 7 are off-by-one errors, and 4 assumes March has 29 days.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst wants to total sales by calendar year from a column of full order dates. Which function should be applied to the date column?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "DATEDIFF"
+        },
+        {
+          "id": "b",
+          "text": "DATEADD"
+        },
+        {
+          "id": "c",
+          "text": "DATEPART"
+        },
+        {
+          "id": "d",
+          "text": "GETDATE"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "DATEPART (or YEAR) extracts the year component so rows can be grouped by it. DATEDIFF measures intervals, DATEADD shifts dates, and GETDATE returns today's date rather than the order year.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "Invoices are due 30 days after the invoice date. For an invoice dated January 15, 2026, what due date does adding 30 days return?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "February 15, 2026"
+        },
+        {
+          "id": "b",
+          "text": "February 13, 2026"
+        },
+        {
+          "id": "c",
+          "text": "February 14, 2026"
+        },
+        {
+          "id": "d",
+          "text": "February 16, 2026"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "January 15 plus 16 days reaches January 31, and the remaining 14 days reach February 14. February 15 is one calendar month later but is 31 days away, while February 13 and February 16 are 29 and 32 days away.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst needs to join first-name and last-name columns into one full-name column. Which function should be used?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "TRIM"
+        },
+        {
+          "id": "b",
+          "text": "SUBSTRING"
+        },
+        {
+          "id": "c",
+          "text": "REPLACE"
+        },
+        {
+          "id": "d",
+          "text": "CONCAT"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "CONCAT joins two or more strings into one. TRIM removes surrounding spaces, SUBSTRING extracts part of a string, and REPLACE swaps one piece of text for another.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "A join on customer name misses matches because some names have extra spaces before or after the text. Which function fixes this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "UPPER"
+        },
+        {
+          "id": "b",
+          "text": "LEFT"
+        },
+        {
+          "id": "c",
+          "text": "TRIM"
+        },
+        {
+          "id": "d",
+          "text": "LEN"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "TRIM removes leading and trailing spaces so the values match exactly. UPPER changes case, LEFT extracts characters from the start, and LEN only counts characters.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "Product codes look like K7-2291-B4, where the first two characters identify the warehouse. Which expression returns the warehouse code?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "RIGHT(code, 2)"
+        },
+        {
+          "id": "b",
+          "text": "LEFT(code, 2)"
+        },
+        {
+          "id": "c",
+          "text": "MID(code, 4, 4)"
+        },
+        {
+          "id": "d",
+          "text": "LEN(code)"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "LEFT(code, 2) returns the first two characters, K7. RIGHT(code, 2) returns B4, MID(code, 4, 4) returns 2291, and LEN returns the length 10.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "For the product code K7-2291-B4, what does SUBSTRING(code, 4, 4) return when positions start at 1?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "-229"
+        },
+        {
+          "id": "b",
+          "text": "2291"
+        },
+        {
+          "id": "c",
+          "text": "7-22"
+        },
+        {
+          "id": "d",
+          "text": "291-"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Position 4 is the first 2 after the hyphen, and four characters from there are 2291. Starting at position 3 would give -229, at position 2 7-22, and at position 5 291-.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "A vendor table contains zenith foods, Zenith Foods and Zenith foods, and a grouping treats them as different vendors. Which function standardizes them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "UPPER"
+        },
+        {
+          "id": "b",
+          "text": "TRIM"
+        },
+        {
+          "id": "c",
+          "text": "CONCAT"
+        },
+        {
+          "id": "d",
+          "text": "LEFT"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "UPPER (or LOWER) converts every value to the same case so they group together. TRIM only removes spaces, CONCAT joins strings and LEFT extracts leading characters.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "An A/B test of two checkout pages returns a p-value of 0.03, and the team set a significance level of 0.05. What should the analyst conclude?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fail to reject the null; the gap is chance"
+        },
+        {
+          "id": "b",
+          "text": "Reject the null; the result is significant"
+        },
+        {
+          "id": "c",
+          "text": "Accept the null hypothesis as proven true"
+        },
+        {
+          "id": "d",
+          "text": "Conclude that page B lifts sales by 3%"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Because 0.03 is below 0.05, the analyst rejects the null hypothesis and treats the difference as statistically significant. Failing to reject would apply only if p exceeded 0.05, a null is never proven true, and the p-value is not the size of the effect.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst wants to check whether average basket size differs between members and non-members. Which method fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "t-test"
+        },
+        {
+          "id": "b",
+          "text": "Chi-square test"
+        },
+        {
+          "id": "c",
+          "text": "Moving average"
+        },
+        {
+          "id": "d",
+          "text": "Mode"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A t-test compares the means of two groups. A chi-square test examines relationships between categorical variables, a moving average smooths a time series and the mode only reports the most frequent value.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst wants to check whether customer region (North, South, East, West) is related to the subscription plan chosen. Which method fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Chi-square test"
+        },
+        {
+          "id": "b",
+          "text": "t-test"
+        },
+        {
+          "id": "c",
+          "text": "Linear regression"
+        },
+        {
+          "id": "d",
+          "text": "Standard deviation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A chi-square test of independence checks whether two categorical variables are related. A t-test compares two numeric means, linear regression models a numeric outcome and standard deviation only measures spread.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "The correlation coefficient between product price and units sold is -0.85. Which interpretation is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A weak negative relationship"
+        },
+        {
+          "id": "b",
+          "text": "Price changes cause unit sales to fall"
+        },
+        {
+          "id": "c",
+          "text": "A strong negative linear relationship"
+        },
+        {
+          "id": "d",
+          "text": "A strong positive linear relationship"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A coefficient near -1 indicates a strong negative linear relationship: as price rises, units sold tend to fall. It is not weak, the sign is negative rather than positive, and correlation alone does not prove causation.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "A marketing team wants to estimate monthly sales from advertising spend, both numeric. Which method should the analyst use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Chi-square test"
+        },
+        {
+          "id": "b",
+          "text": "Frequency distribution"
+        },
+        {
+          "id": "c",
+          "text": "Percent change"
+        },
+        {
+          "id": "d",
+          "text": "Linear regression"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Linear regression models a numeric outcome from a numeric predictor and supports estimates. A chi-square test is for categorical variables, a frequency distribution only counts values, and percent change compares two points in time.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "A regression model gives sales = 50 + 4x, where x is advertising spend in thousands of dollars and sales are in thousands of units. What sales does it predict for x = 12?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "62"
+        },
+        {
+          "id": "b",
+          "text": "98"
+        },
+        {
+          "id": "c",
+          "text": "54"
+        },
+        {
+          "id": "d",
+          "text": "48"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Sales = 50 + 4 × 12 = 50 + 48 = 98 thousand units. The value 48 ignores the intercept, 62 adds x instead of multiplying, and 54 uses only one unit of x.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-033",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "Monthly revenue rose from $80,000 to $92,000. What is the percent change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "13%"
+        },
+        {
+          "id": "b",
+          "text": "15%"
+        },
+        {
+          "id": "c",
+          "text": "12%"
+        },
+        {
+          "id": "d",
+          "text": "87%"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Percent change is (92,000 - 80,000) / 80,000 = 12,000 / 80,000 = 15%. Dividing by the new value gives about 13%, 12% confuses the dollar change with a percent, and 87% is the old value as a share of the new.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-034",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "Region 1 had 100 orders averaging $20 and Region 2 had 300 orders averaging $40. What is the average order value across all 400 orders?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "$35"
+        },
+        {
+          "id": "b",
+          "text": "$30"
+        },
+        {
+          "id": "c",
+          "text": "$32.50"
+        },
+        {
+          "id": "d",
+          "text": "$40"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The weighted mean is (100 × 20 + 300 × 40) / 400 = 14,000 / 400 = $35. The value $30 is the unweighted average of the two averages, $40 is only Region 2, and $32.50 would need Region 2 to have about 1.7 times the orders of Region 1, but it has three times.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-035",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are measures of central tendency?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Range"
+        },
+        {
+          "id": "b",
+          "text": "Variance"
+        },
+        {
+          "id": "c",
+          "text": "Standard deviation"
+        },
+        {
+          "id": "d",
+          "text": "Mean"
+        },
+        {
+          "id": "e",
+          "text": "Median"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "The mean and median both describe the center of a data set. Range, variance and standard deviation describe how spread out the values are.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-036",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are measures of dispersion?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mode"
+        },
+        {
+          "id": "b",
+          "text": "Median"
+        },
+        {
+          "id": "c",
+          "text": "Range"
+        },
+        {
+          "id": "d",
+          "text": "Weighted mean"
+        },
+        {
+          "id": "e",
+          "text": "Standard deviation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Range and standard deviation describe how spread out the values are. Mode, median and weighted mean each describe the center of the data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-037",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO activities are examples of predictive analysis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Charting last month's revenue by region"
+        },
+        {
+          "id": "b",
+          "text": "Scoring customers for likely cancellation"
+        },
+        {
+          "id": "c",
+          "text": "Forecasting demand from past seasonality"
+        },
+        {
+          "id": "d",
+          "text": "Recommending the price that maximizes profit"
+        },
+        {
+          "id": "e",
+          "text": "Summarizing the median order size for last year"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Churn scoring and demand forecasting both estimate future outcomes, which is predictive analysis. Charting revenue and summarizing order size are descriptive, and recommending an optimal price is prescriptive.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-038",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO techniques are inferential?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reporting the total of every sales record"
+        },
+        {
+          "id": "b",
+          "text": "Testing a population claim from a sample"
+        },
+        {
+          "id": "c",
+          "text": "Calculating the mode of a full product list"
+        },
+        {
+          "id": "d",
+          "text": "Confidence intervals from survey results"
+        },
+        {
+          "id": "e",
+          "text": "Sorting customers by lifetime spend"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Hypothesis tests and confidence intervals use a sample to draw conclusions about a larger population. Totals, modes of a full list and sorting simply describe the data already in hand.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-039",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are string functions?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "DATEADD"
+        },
+        {
+          "id": "b",
+          "text": "SUBSTRING"
+        },
+        {
+          "id": "c",
+          "text": "ROUND"
+        },
+        {
+          "id": "d",
+          "text": "AVG"
+        },
+        {
+          "id": "e",
+          "text": "REPLACE"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "SUBSTRING extracts part of a text value and REPLACE substitutes text, so both operate on strings. DATEADD is a date function, ROUND is mathematical and AVG is an aggregate measure of central tendency.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-040",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst must calculate each customer's current age from a birth date column. Which TWO functions are needed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "GETDATE"
+        },
+        {
+          "id": "b",
+          "text": "CONCAT"
+        },
+        {
+          "id": "c",
+          "text": "TRIM"
+        },
+        {
+          "id": "d",
+          "text": "DATEDIFF"
+        },
+        {
+          "id": "e",
+          "text": "COUNT"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "The current date (GETDATE, or TODAY in some systems) supplies the end point, and DATEDIFF measures the years between it and the birth date. CONCAT and TRIM work on text, and COUNT counts rows.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-041",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "Household incomes in a city are strongly right-skewed. Which THREE statements are true?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The mean is greater than the median"
+        },
+        {
+          "id": "b",
+          "text": "The long tail extends toward higher values"
+        },
+        {
+          "id": "c",
+          "text": "The mean is less than the median"
+        },
+        {
+          "id": "d",
+          "text": "The standard deviation must equal zero"
+        },
+        {
+          "id": "e",
+          "text": "The median better represents a typical value"
+        },
+        {
+          "id": "f",
+          "text": "The mode is greater than the mean"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "In a right-skewed distribution a few high values form a long right tail and pull the mean above the median, so the median better represents a typical value. The mean is not below the median, spread is not zero, and the mode usually sits below the mean.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-042",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "stem": "A data set contains 5, 7, 7, 9 and 12. Which TWO statements are true?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The mean is 8"
+        },
+        {
+          "id": "b",
+          "text": "The median is 9"
+        },
+        {
+          "id": "c",
+          "text": "The range is 12"
+        },
+        {
+          "id": "d",
+          "text": "The mean is 7.5"
+        },
+        {
+          "id": "e",
+          "text": "The mode is 7"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "The sum is 40, so the mean is 40 / 5 = 8, and 7 appears most often, so it is the mode. The median is 7, not 9; the range is 12 - 5 = 7, not 12; and 7.5 is not the mean.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-mcq-043",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are logical functions or operators?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "CONCAT function"
+        },
+        {
+          "id": "b",
+          "text": "DATEPART function"
+        },
+        {
+          "id": "c",
+          "text": "IF function"
+        },
+        {
+          "id": "d",
+          "text": "AND operator"
+        },
+        {
+          "id": "e",
+          "text": "LEN function"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "IF tests a condition and returns one of two chosen values, and AND returns true only when every condition it joins is true. CONCAT and LEN are string functions, and DATEPART is a date function.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-data-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A help desk lead at Brightwater Clinics logged the tickets opened each day last week. Use the table to answer each question.",
+    "payload": {
+      "caption": "Tickets opened per day",
+      "columns": [
+        "Day",
+        "Tickets"
+      ],
+      "rows": [
+        [
+          "Mon",
+          "15"
+        ],
+        [
+          "Tue",
+          "8"
+        ],
+        [
+          "Wed",
+          "22"
+        ],
+        [
+          "Thu",
+          "9"
+        ],
+        [
+          "Fri",
+          "18"
+        ],
+        [
+          "Sat",
+          "11"
+        ],
+        [
+          "Sun",
+          "15"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "mean",
+          "label": "Mean tickets per day",
+          "options": [
+            {
+              "id": "14",
+              "text": "14"
+            },
+            {
+              "id": "15",
+              "text": "15"
+            },
+            {
+              "id": "16.33",
+              "text": "16.33"
+            }
+          ]
+        },
+        {
+          "id": "median",
+          "label": "Median tickets per day",
+          "options": [
+            {
+              "id": "9",
+              "text": "9"
+            },
+            {
+              "id": "14",
+              "text": "14"
+            },
+            {
+              "id": "15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "mode",
+          "label": "Mode of tickets per day",
+          "options": [
+            {
+              "id": "15",
+              "text": "15"
+            },
+            {
+              "id": "22",
+              "text": "22"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Range of tickets per day",
+          "options": [
+            {
+              "id": "14",
+              "text": "14"
+            },
+            {
+              "id": "8",
+              "text": "8"
+            },
+            {
+              "id": "7",
+              "text": "7"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "mean": "14",
+        "median": "15",
+        "mode": "15",
+        "range": "14"
+      }
+    },
+    "explanation": "The total is 98 tickets over 7 days, so the mean is 14. Sorted, the values are 8, 9, 11, 15, 15, 18, 22, so the median is the fourth value, 15; 15 is also the only repeated value, so it is the mode. The range is 22 − 8 = 14. The distractors come from dividing by 6 instead of 7, taking the middle of the unsorted list, reporting how often the mode occurs, or reporting the minimum or the count instead of the range.",
+    "partExplanations": {
+      "mean": "15 + 8 + 22 + 9 + 18 + 11 + 15 = 98, and 98 / 7 = 14; 16.33 divides by 6 and 15 is the median.",
+      "median": "Sorted 8, 9, 11, 15, 15, 18, 22 has 15 in the middle; 9 is the middle of the unsorted list and 14 is the mean.",
+      "mode": "15 appears twice and every other value once, so the mode is 15; 2 is its frequency and 22 is the maximum.",
+      "range": "Range is maximum minus minimum: 22 − 8 = 14; 8 is the minimum and 7 is the number of days."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-data-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A logistics analyst at Corran Freight pulled delivery times for a random sample of 8 shipments to describe how consistent delivery is. Use the table to answer each question. Round to two decimal places.",
+    "payload": {
+      "caption": "Delivery time by shipment (days)",
+      "columns": [
+        "Shipment",
+        "Days"
+      ],
+      "rows": [
+        [
+          "S-101",
+          "4"
+        ],
+        [
+          "S-102",
+          "9"
+        ],
+        [
+          "S-103",
+          "5"
+        ],
+        [
+          "S-104",
+          "4"
+        ],
+        [
+          "S-105",
+          "2"
+        ],
+        [
+          "S-106",
+          "7"
+        ],
+        [
+          "S-107",
+          "4"
+        ],
+        [
+          "S-108",
+          "5"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "mean",
+          "label": "Mean delivery time (days)",
+          "options": [
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "4.5",
+              "text": "4.5"
+            },
+            {
+              "id": "5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "popvar",
+          "label": "Population variance, treating the 8 shipments as the whole population",
+          "options": [
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "4.57",
+              "text": "4.57"
+            }
+          ]
+        },
+        {
+          "id": "popsd",
+          "label": "Population standard deviation",
+          "options": [
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "2.14",
+              "text": "2.14"
+            },
+            {
+              "id": "4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "samplesd",
+          "label": "Standard deviation the analyst should report, given the data is a sample of all shipments",
+          "options": [
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "2.14",
+              "text": "2.14"
+            },
+            {
+              "id": "4.57",
+              "text": "4.57"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "mean": "5",
+        "popvar": "4",
+        "popsd": "2",
+        "samplesd": "2.14"
+      }
+    },
+    "explanation": "The mean is 40 / 8 = 5. The squared deviations from 5 are 1, 16, 0, 1, 9, 4, 1, 0, which sum to 32. Dividing by n = 8 gives a population variance of 4 and a population standard deviation of 2. Because the shipments are a sample, the sample formula divides by n − 1 = 7: 32 / 7 ≈ 4.57, and its square root is about 2.14. The distractors are the mode, the median, the variance reported as a standard deviation, or a population figure used for a sample.",
+    "partExplanations": {
+      "mean": "4 + 9 + 5 + 4 + 2 + 7 + 4 + 5 = 40 and 40 / 8 = 5; 4 is the mode and 4.5 is the median.",
+      "popvar": "Squared deviations 1 + 16 + 0 + 1 + 9 + 4 + 1 + 0 = 32, and 32 / 8 = 4; 4.57 divides by 7, and 2 is the standard deviation.",
+      "popsd": "The square root of the population variance 4 is 2; 4 is the variance itself and 2.14 is the sample standard deviation.",
+      "samplesd": "For a sample, divide by n − 1: 32 / 7 ≈ 4.571, and √4.571 ≈ 2.14; 4.57 is the sample variance and 2 is the population figure."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-data-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A product analyst at Lumen Reads reports changes in paying subscribers. Use the table to answer each question. Round to one decimal place.",
+    "payload": {
+      "caption": "Paying subscribers at month end",
+      "columns": [
+        "Month",
+        "Subscribers"
+      ],
+      "rows": [
+        [
+          "Jan",
+          "1250"
+        ],
+        [
+          "Feb",
+          "1500"
+        ],
+        [
+          "Mar",
+          "1200"
+        ],
+        [
+          "Apr",
+          "1800"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "janfeb",
+          "label": "Percent change from Jan to Feb",
+          "options": [
+            {
+              "id": "16.7",
+              "text": "16.7%"
+            },
+            {
+              "id": "20",
+              "text": "20.0%"
+            },
+            {
+              "id": "120",
+              "text": "120.0%"
+            }
+          ]
+        },
+        {
+          "id": "febmar",
+          "label": "Percent change from Feb to Mar",
+          "options": [
+            {
+              "id": "-20",
+              "text": "−20.0%"
+            },
+            {
+              "id": "-25",
+              "text": "−25.0%"
+            },
+            {
+              "id": "20",
+              "text": "20.0%"
+            }
+          ]
+        },
+        {
+          "id": "marapr",
+          "label": "Percent change from Mar to Apr",
+          "options": [
+            {
+              "id": "33.3",
+              "text": "33.3%"
+            },
+            {
+              "id": "50",
+              "text": "50.0%"
+            },
+            {
+              "id": "150",
+              "text": "150.0%"
+            }
+          ]
+        },
+        {
+          "id": "janapr",
+          "label": "Percent change from Jan to Apr",
+          "options": [
+            {
+              "id": "30.6",
+              "text": "30.6%"
+            },
+            {
+              "id": "44",
+              "text": "44.0%"
+            },
+            {
+              "id": "50",
+              "text": "50.0%"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "janfeb": "20",
+        "febmar": "-20",
+        "marapr": "50",
+        "janapr": "44"
+      }
+    },
+    "explanation": "Percent change is (new − old) / old × 100. Each distractor reflects a common slip: dividing by the new value instead of the old one, dropping the sign, reporting the ratio new / old instead of the change, or adding the monthly percentages instead of comparing the end points.",
+    "partExplanations": {
+      "janfeb": "(1,500 − 1,250) / 1,250 = 250 / 1,250 = 20.0%; 16.7% divides by the new value, 1,500, and 120.0% is the ratio 1,500 / 1,250.",
+      "febmar": "(1,200 − 1,500) / 1,500 = −300 / 1,500 = −20.0%; −25.0% divides by 1,200 and 20.0% drops the sign.",
+      "marapr": "(1,800 − 1,200) / 1,200 = 600 / 1,200 = 50.0%; 33.3% divides by 1,800 and 150.0% is the ratio 1,800 / 1,200.",
+      "janapr": "(1,800 − 1,250) / 1,250 = 550 / 1,250 = 44.0%; 30.6% divides by 1,800 and 50.0% adds 20 − 20 + 50."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "An analyst at Halden Outdoor is building helper columns in an orders spreadsheet. Choose the function for each column.",
+    "payload": {
+      "fields": [
+        {
+          "id": "avg",
+          "label": "Typical order value across all orders",
+          "options": [
+            {
+              "id": "average",
+              "text": "AVERAGE"
+            },
+            {
+              "id": "sum",
+              "text": "SUM"
+            },
+            {
+              "id": "count",
+              "text": "COUNT"
+            }
+          ]
+        },
+        {
+          "id": "countif",
+          "label": "Number of orders over $500",
+          "options": [
+            {
+              "id": "countif",
+              "text": "COUNTIF"
+            },
+            {
+              "id": "sumif",
+              "text": "SUMIF"
+            },
+            {
+              "id": "count",
+              "text": "COUNT"
+            }
+          ]
+        },
+        {
+          "id": "flag",
+          "label": "Show \"Late\" when ship days exceed 3, otherwise \"On time\"",
+          "options": [
+            {
+              "id": "if",
+              "text": "IF"
+            },
+            {
+              "id": "max",
+              "text": "MAX"
+            },
+            {
+              "id": "concat",
+              "text": "CONCAT"
+            }
+          ]
+        },
+        {
+          "id": "year",
+          "label": "Order year taken from the order date",
+          "options": [
+            {
+              "id": "year",
+              "text": "YEAR"
+            },
+            {
+              "id": "today",
+              "text": "TODAY"
+            },
+            {
+              "id": "left",
+              "text": "LEFT"
+            }
+          ]
+        },
+        {
+          "id": "trim",
+          "label": "Customer name with leading and trailing spaces removed",
+          "options": [
+            {
+              "id": "trim",
+              "text": "TRIM"
+            },
+            {
+              "id": "upper",
+              "text": "UPPER"
+            },
+            {
+              "id": "len",
+              "text": "LEN"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "avg": "average",
+        "countif": "countif",
+        "flag": "if",
+        "year": "year",
+        "trim": "trim"
+      }
+    },
+    "explanation": "The AVERAGE function is a mathematical function for central tendency, COUNTIF counts rows that meet a condition, IF is the logical function for a two-way flag, YEAR is a date function that extracts the year from a true date value, and TRIM is a string function that strips extra spaces. The distractors total, count every row, return the largest value, join text, return today's date, take characters from text, change case or measure length instead.",
+    "partExplanations": {
+      "avg": "The AVERAGE function returns the mean order value; SUM gives the total and COUNT the number of orders.",
+      "countif": "The COUNTIF function counts only rows meeting the condition; SUMIF adds their amounts and COUNT counts every row.",
+      "flag": "The IF function returns one value when the test is true and another when it is false.",
+      "year": "The YEAR function extracts the year from a date value; TODAY returns the current date and LEFT works on text, not dates.",
+      "trim": "The TRIM function removes extra spaces; UPPER changes case and LEN returns the length."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-config-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 5,
+    "stem": "An analyst at Pellow Supply is writing a SQL Server query for a shipping report. Choose the expression for each calculated column.",
+    "payload": {
+      "fields": [
+        {
+          "id": "days",
+          "label": "Number of days between order_date and ship_date",
+          "options": [
+            {
+              "id": "datediff",
+              "text": "DATEDIFF(day, order_date, ship_date)"
+            },
+            {
+              "id": "dateadd",
+              "text": "DATEADD(day, 1, order_date)"
+            },
+            {
+              "id": "getdate",
+              "text": "GETDATE() - order_date"
+            }
+          ]
+        },
+        {
+          "id": "prefix",
+          "label": "Region prefix: the first three characters of product_code",
+          "options": [
+            {
+              "id": "left",
+              "text": "LEFT(product_code, 3)"
+            },
+            {
+              "id": "right",
+              "text": "RIGHT(product_code, 3)"
+            },
+            {
+              "id": "len",
+              "text": "LEN(product_code)"
+            }
+          ]
+        },
+        {
+          "id": "discount",
+          "label": "Discount, treating a missing (NULL) discount as 0",
+          "options": [
+            {
+              "id": "coalesce",
+              "text": "COALESCE(discount, 0)"
+            },
+            {
+              "id": "nullif",
+              "text": "NULLIF(discount, 0)"
+            },
+            {
+              "id": "count",
+              "text": "COUNT(discount)"
+            }
+          ]
+        },
+        {
+          "id": "tier",
+          "label": "Speed tier: \"Fast\", \"Standard\" or \"Slow\" based on days to ship",
+          "options": [
+            {
+              "id": "case",
+              "text": "CASE WHEN ... THEN ... END"
+            },
+            {
+              "id": "groupby",
+              "text": "GROUP BY"
+            },
+            {
+              "id": "union",
+              "text": "UNION"
+            }
+          ]
+        },
+        {
+          "id": "spread",
+          "label": "Typical distance of days to ship from the mean, in days (a sample)",
+          "options": [
+            {
+              "id": "stdev",
+              "text": "STDEV(days_to_ship)"
+            },
+            {
+              "id": "var",
+              "text": "VAR(days_to_ship)"
+            },
+            {
+              "id": "avg",
+              "text": "AVG(days_to_ship)"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "days": "datediff",
+        "prefix": "left",
+        "discount": "coalesce",
+        "tier": "case",
+        "spread": "stdev"
+      }
+    },
+    "explanation": "The DATEDIFF function returns the interval between two dates, LEFT takes characters from the start of a string, COALESCE replaces NULL with a default, CASE WHEN maps values into more than two labels, and STDEV measures spread in the same units as the data. The distractors shift dates, take the wrong end of a string, turn 0 into NULL, group or stack rows, or report variance in squared units or the mean.",
+    "partExplanations": {
+      "days": "The expression DATEDIFF(day, start, end) counts the days between the two dates; DATEADD shifts a date and GETDATE uses today, not the ship date.",
+      "prefix": "The expression LEFT(product_code, 3) returns the first three characters; RIGHT returns the last three and LEN the length.",
+      "discount": "The COALESCE function returns the first non-NULL argument, so a missing discount becomes 0; NULLIF does the reverse.",
+      "tier": "A CASE expression assigns one of several labels per row; GROUP BY and UNION do not create labels.",
+      "spread": "The STDEV function returns the sample standard deviation, in days; VAR is in squared days and AVG measures the center."
+    },
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "The analytics team at Tarrow Grocers has four requests. Match each request to the type of statistical method it calls for.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Summarize last quarter's sales by store with totals and averages"
+        },
+        {
+          "id": "p2",
+          "text": "Forecast next month's demand for each product from two years of sales"
+        },
+        {
+          "id": "p3",
+          "text": "Recommend how many staff to schedule each shift to minimize cost while meeting service targets"
+        },
+        {
+          "id": "p4",
+          "text": "Use a survey of 400 shoppers to estimate the satisfaction of all customers, with a margin of error"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Descriptive"
+        },
+        {
+          "id": "c2",
+          "text": "Predictive"
+        },
+        {
+          "id": "c3",
+          "text": "Prescriptive"
+        },
+        {
+          "id": "c4",
+          "text": "Inferential"
+        },
+        {
+          "id": "c5",
+          "text": "Diagnostic"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "Descriptive methods summarize what happened, predictive methods forecast what is likely to happen, prescriptive methods recommend an action, and inferential methods draw conclusions about a population from a sample. Diagnostic methods explain why something happened, which none of the requests asks for.",
+    "partExplanations": {
+      "p1": "Totals and averages of past sales describe what already happened.",
+      "p2": "A forecast from historical data predicts a future value.",
+      "p3": "Choosing the best staffing level under constraints prescribes an action.",
+      "p4": "Generalizing from a sample to all customers, with a margin of error, is inference."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-2-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "An analyst at Fenwick Insurance is writing a summary of claim amounts. Sort each statistic by what it describes.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "center",
+          "text": "Central tendency (typical value)"
+        },
+        {
+          "id": "spread",
+          "text": "Dispersion (spread of values)"
+        }
+      ],
+      "items": [
+        {
+          "id": "mean",
+          "text": "Mean"
+        },
+        {
+          "id": "median",
+          "text": "Median"
+        },
+        {
+          "id": "mode",
+          "text": "Mode"
+        },
+        {
+          "id": "range",
+          "text": "Range"
+        },
+        {
+          "id": "variance",
+          "text": "Variance"
+        },
+        {
+          "id": "iqr",
+          "text": "Interquartile range"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "mean": "center",
+        "median": "center",
+        "mode": "center",
+        "range": "spread",
+        "variance": "spread",
+        "iqr": "spread"
+      }
+    },
+    "explanation": "Mean, median and mode each give a single typical value. Range, variance and interquartile range describe how far values are spread out.",
+    "partExplanations": {
+      "mean": "The mean is the arithmetic average, a measure of the center.",
+      "median": "The median is the middle value when sorted, a measure of the center.",
+      "mode": "The mode is the most frequent value, a measure of the center.",
+      "range": "The range is the maximum minus the minimum, a measure of spread.",
+      "variance": "Variance is the average squared deviation from the mean, a measure of spread.",
+      "iqr": "The interquartile range is the third quartile minus the first, the spread of the middle half."
+    },
+    "acronyms": [],
+    "status": "approved"
   }
 ]
