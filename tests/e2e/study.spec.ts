@@ -20,7 +20,7 @@ async function mcqOnlyPractice(page: Page, count: number) {
 
 async function submitEmptyMock(page: Page) {
   await page.goto(`${singleUrl}?seed=4`);
-  await page.getByRole('button', { name: /start mock exam/i }).click();
+  await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await page.getByRole('button', { name: 'Start exam' }).click();
   for (let i = 1; i < 9; i++) await page.getByRole('button', { name: 'Next' }).click();
   await page.getByRole('button', { name: 'Review', exact: true }).click();

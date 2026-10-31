@@ -1,6 +1,7 @@
+import { readdirSync, readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import { expectNoSeriousAxe } from './util';
 
 // Runs against the shipped bank (dist-single), not the fixture build.
@@ -17,16 +18,18 @@ const PBQ_NAMES = [
   'Sort into buckets',
 ];
 
+const examRow = (page: Page, name: string) => page.getByRole('listitem').filter({ has: page.getByText(name, { exact: true }) });
+
 test('Home shows the full Data+ bundled count', async ({ page }) => {
   await page.goto(bankUrl);
-  const text = await page.getByText(/^\d+ questions \(ours\)$/).first().textContent();
+  const text = await examRow(page, 'CompTIA Data+ (DA0-002)').getByText(/^\d+ questions \(ours\)$/).textContent();
   expect(Number(text?.match(/^\d+/)?.[0])).toBeGreaterThanOrEqual(580);
 });
 
 // The bank fills the exam: 90 slots, where each PBQ takes its weight in slots, so fewer than 90 items show.
 test('a mock exam is filled from the bank', async ({ page }) => {
   await page.goto(`${bankUrl}?seed=1`);
-  await page.getByRole('button', { name: /start mock exam/i }).click();
+  await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await page.getByRole('button', { name: 'Start exam' }).click();
   const text = await page.getByText(/^Question 1 of \d+$/).textContent();
   const total = Number(text?.match(/\d+$/)?.[0]);
@@ -94,3 +97,44 @@ for (const name of PBQ_NAMES) {
     await expectNoSeriousAxe(page);
   });
 }
+
+// CY0-001 (SecAI+): runs once the shipped bank has approved items. Read from the JSON files, since
+// Playwright cannot evaluate the app's import.meta.glob.
+const PBQ_TEMPLATES = ['pbq-match', 'pbq-order', 'pbq-config', 'pbq-diagram', 'pbq-terminal', 'pbq-data', 'pbq-hotspot', 'pbq-buckets'];
+const secAiDir = path.resolve('src/banks/secai/items');
+const secAiApproved = readdirSync(secAiDir)
+  .filter((f) => f.endsWith('.json'))
+  .flatMap((f) => JSON.parse(readFileSync(path.join(secAiDir, f), 'utf8')) as { type: string; status: string }[])
+  .filter((q) => q.status === 'approved');
+
+test.describe('CY0-001 shipped bank', () => {
+  test.skip(secAiApproved.length < 1, 'no approved CY0-001 items yet');
+
+  // 60 slots; PBQs take their weight in slots (at most 6 PBQs of weight up to 6), so 30 to 60 items show once the bank fills the exam.
+  test('a mock exam is filled from the bank', async ({ page }) => {
+    await page.goto(`${bankUrl}?seed=1`);
+    await page.getByRole('button', { name: 'Start mock exam: CY0-001' }).click();
+    await page.getByRole('button', { name: 'Start exam' }).click();
+    const text = await page.getByText(/^Question 1 of \d+$/).textContent();
+    const total = Number(text?.match(/\d+$/)?.[0]);
+    expect(total).toBeGreaterThanOrEqual(Math.min(30, secAiApproved.length));
+    expect(total).toBeLessThanOrEqual(60);
+    await expectNoSeriousAxe(page);
+  });
+
+  PBQ_TEMPLATES.forEach((type, i) => {
+    const name = PBQ_NAMES[i];
+    test(`a one-question ${name} practice renders and passes axe`, async ({ page }) => {
+      test.skip(!secAiApproved.some((q) => q.type === type), `no approved ${type} yet`);
+      await page.goto(bankUrl);
+      await page.getByRole('button', { name: 'Practice: CY0-001' }).click();
+      await page.getByRole('checkbox', { name: 'Multiple choice' }).uncheck();
+      await page.getByRole('checkbox', { name: 'Type a number' }).uncheck();
+      for (const other of PBQ_NAMES) if (other !== name) await page.getByRole('checkbox', { name: other }).uncheck();
+      await page.getByRole('spinbutton', { name: 'Number of questions' }).fill('1');
+      await page.getByRole('button', { name: 'Start practice' }).click();
+      await expect(page.getByRole('heading', { name: 'Item 1 of 1' })).toBeVisible();
+      await expectNoSeriousAxe(page);
+    });
+  });
+});
