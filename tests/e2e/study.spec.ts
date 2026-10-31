@@ -110,7 +110,7 @@ test('cram with a countdown passes axe and reaches the summary', async ({ page }
 
 test('progress after a mock exam shows history and passes axe', async ({ page }) => {
   await submitEmptyMock(page);
-  await page.getByRole('button', { name: 'Back to home' }).click();
+  await page.getByRole('button', { name: 'Back to exam' }).click();
   await page.getByRole('button', { name: 'Progress: DA0-002' }).click();
   const history = page.getByRole('table', { name: 'History' });
   await expect(history.getByRole('row')).toHaveCount(2);
