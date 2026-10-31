@@ -1,5 +1,31 @@
 import { describe, expect, it } from 'vitest';
-import { checkExpansion, expandTerms } from './expand-lib';
+import { checkExpansion, expandTerms, ollamaChat, parseExpandArgs } from './expand-lib';
+
+const stream = (body: string) => (async () => new Response(body)) as unknown as typeof fetch;
+
+describe('ollamaChat', () => {
+  it('joins streamed content, including a last line with no newline', async () => {
+    const chat = ollamaChat('m', 1000, stream('{"message":{"content":"{\\"it"}}\n{"message":{"content":"ems\\":[]}"}}'));
+    expect(await chat('x')).toBe('{"items":[]}');
+  });
+  it('throws on an error line', async () => {
+    await expect(ollamaChat('m', 1000, stream('{"error":"model not found"}\n'))('x')).rejects.toThrow(/model not found/);
+  });
+});
+
+describe('parseExpandArgs', () => {
+  it('parses flags and defaults', () => {
+    expect(parseExpandArgs(['--', '--report', 'r.json'])).toEqual({ report: 'r.json', out: '', model: 'qwen3.6:27b', minCount: 1 });
+    expect(parseExpandArgs(['--report', 'r.json', '--min-count', '3', '--model', 'q', '--out', 'o.json']))
+      .toEqual({ report: 'r.json', out: 'o.json', model: 'q', minCount: 3 });
+  });
+  it('rejects bad input', () => {
+    expect(() => parseExpandArgs(['--report', 'r', '--min-count', 'abc'])).toThrow(/min-count/);
+    expect(() => parseExpandArgs(['--report', 'r', '--min-count', '0'])).toThrow(/min-count/);
+    expect(() => parseExpandArgs([])).toThrow(/--report/);
+    expect(() => parseExpandArgs(['--report', 'r', '--x', '1'])).toThrow(/--x/);
+  });
+});
 
 describe('checkExpansion', () => {
   it('SQL → Structured Query Language passes checkExpansion', () => {
@@ -20,6 +46,15 @@ describe('checkExpansion', () => {
   it('SQL → Data Warehouse is flagged', () => {
     expect(checkExpansion('SQL', 'Data Warehouse')).toMatch(/initials/);
     expect(checkExpansion('KPI', '')).toMatch(/empty/);
+  });
+  it('rejects one-word and padded expansions', () => {
+    expect(checkExpansion('DBA', 'Database')).toMatch(/one word/);
+    expect(checkExpansion('KPI', 'Key Performance Indicator Dashboard')).toMatch(/initials/);
+    expect(checkExpansion('KPI', 'Main Key Performance Indicator')).toMatch(/initials/);
+    expect(checkExpansion('DBA', 'Database Administrator')).toBeNull();
+    expect(checkExpansion('DB', 'Database')).toBeNull();
+    // Strict on purpose: a trailing word the term does not use goes to a person.
+    expect(checkExpansion('CAP', 'Consistency, Availability, Partition Tolerance')).toMatch(/initials/);
   });
   it('digits must appear in the expansion', () => {
     expect(checkExpansion('S3', 'Simple Storage Service')).toMatch(/initials/);

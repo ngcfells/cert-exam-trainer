@@ -36,6 +36,28 @@ describe('robots', () => {
     expect(crawlDelay(specific)).toBeUndefined();
   });
 
+  it('robots: our token matches by prefix and case, and repeated groups merge', () => {
+    const r = parseRobots('User-agent: *\nDisallow: /\n\nUser-agent: Cert-Exam-Trainer/1.0\nDisallow: /a\n\nUser-agent: cert-exam-trainer-acronym-harvester\nDisallow: /b\nCrawl-delay: 3\n');
+    expect(isAllowed(r, '/a/1')).toBe(false);
+    expect(isAllowed(r, '/b/1')).toBe(false);
+    expect(isAllowed(r, '/c')).toBe(true);
+    expect(crawlDelay(r)).toBe(3);
+    expect(isAllowed(parseRobots('User-agent: cert\nDisallow: /\n'), '/x')).toBe(true);
+  });
+
+  it('robots: a Sitemap line does not split a user-agent group', () => {
+    const r = parseRobots('User-agent: googlebot\nSitemap: https://x/s.xml\nUser-agent: *\nDisallow: /a\n');
+    expect(isAllowed(r, '/a')).toBe(false);
+  });
+
+  it('robots: equal-length tie goes to Allow; $ with a mid wildcard; percent-encoding', () => {
+    expect(isAllowed(parseRobots('User-agent: *\nDisallow: /p\nAllow: /p\n'), '/p')).toBe(true);
+    const r = parseRobots('User-agent: *\nDisallow: /*/print$\nDisallow: /café\n');
+    expect(isAllowed(r, '/a/b/print')).toBe(false);
+    expect(isAllowed(r, '/a/print/x')).toBe(true);
+    expect(isAllowed(r, '/caf%C3%A9/menu')).toBe(false);
+  });
+
   it('robots: a group with several user-agent lines, comments, and other bots ignored', () => {
     const r = parseRobots('# hi\nUser-agent: googlebot\nUser-agent: *\nDisallow: /a # note\n\nUser-agent: badbot\nDisallow: /\n');
     expect(isAllowed(r, '/a/1')).toBe(false);

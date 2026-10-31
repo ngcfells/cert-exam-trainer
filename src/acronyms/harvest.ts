@@ -49,22 +49,31 @@ export function parseRobots(txt: string): RobotsRules {
       lastWasAgent = true;
       continue;
     }
+    // Only group-member lines end a run of User-agent lines; Sitemap and unknown keys do not.
+    if (key !== 'allow' && key !== 'disallow' && key !== 'crawl-delay') continue;
     lastWasAgent = false;
     if (!current) continue;
-    if (key === 'allow' || key === 'disallow') {
-      if (value) current.rules.push({ allow: key === 'allow', pattern: value });
-    } else if (key === 'crawl-delay') {
+    if (key === 'crawl-delay') {
       const n = Number(value);
       if (Number.isFinite(n) && n >= 0) current.delay = n;
-    }
+    } else if (value) current.rules.push({ allow: key === 'allow', pattern: value });
   }
-  const pick = groups.find((g) => g.agents.includes(HARVEST_AGENT)) ?? groups.find((g) => g.agents.includes('*'));
-  return { rules: pick?.rules ?? [], delay: pick?.delay };
+  // RFC 9309: match our product token case-insensitively by prefix ("cert-exam-trainer/1.0", "...-acronym-harvester"),
+  // merge every matching group, and fall back to "*".
+  const ours = groups.filter((g) => g.agents.some((a) => a.startsWith(HARVEST_AGENT)));
+  const picked = ours.length ? ours : groups.filter((g) => g.agents.includes('*'));
+  const delays = picked.map((g) => g.delay).filter((d): d is number => d !== undefined);
+  return { rules: picked.flatMap((g) => g.rules), delay: delays.length ? Math.max(...delays) : undefined };
+}
+
+/** Percent-encode a robots pattern the way URL.pathname is encoded, keeping existing %XX escapes. */
+function encodePattern(p: string): string {
+  return p.replace(/%[0-9A-Fa-f]{2}|[^%]+|%/g, (s) => (/^%[0-9A-Fa-f]{2}$/.test(s) ? s.toUpperCase() : encodeURI(s).replace(/%25/g, '%')));
 }
 
 function matchLength(pattern: string, path: string): number {
   const anchored = pattern.endsWith('$');
-  const body = anchored ? pattern.slice(0, -1) : pattern;
+  const body = encodePattern(anchored ? pattern.slice(0, -1) : pattern);
   const re = new RegExp('^' + body.split('*').map((p) => p.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('.*') + (anchored ? '$' : ''));
   return re.test(path) ? body.length : -1;
 }

@@ -2,7 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { HARVEST_UA, parseHarvestArgs, runHarvest } from './harvest-lib';
 import type { HarvestSource } from '../src/acronyms/harvest';
 
-type Reply = { status?: number; type?: string; body?: string } | 'throw';
+type Reply = { status?: number; type?: string; body?: string; location?: string } | 'throw';
 
 function fakeFetch(map: Record<string, Reply>) {
   const calls: { url: string; ua: string | null }[] = [];
@@ -12,7 +12,10 @@ function fakeFetch(map: Record<string, Reply>) {
     const r = map[url];
     if (r === 'throw') throw new TypeError('network down');
     if (!r) return new Response('nope', { status: 404 });
-    return new Response(r.body ?? '', { status: r.status ?? 200, headers: { 'content-type': r.type ?? 'text/html; charset=utf-8' } });
+    const headers: Record<string, string> = { 'content-type': r.type ?? 'text/html; charset=utf-8' };
+    if (r.location) headers.location = r.location;
+    const status = r.status ?? 200;
+    return new Response(status >= 300 && status < 400 ? null : r.body ?? '', { status, headers });
   }) as typeof fetch;
   return { fn, calls };
 }
@@ -86,6 +89,51 @@ describe('runHarvest', () => {
     const out = await runHarvest({ sources: [s('big', 'https://a.test/big')], fetch: f.fn, sleep: sleeper().sleep });
     expect(out.perSource[0].tokens.has('ETL')).toBe(true);
     expect(out.perSource[0].tokens.has('ZZQ')).toBe(false);
+  });
+
+  it('checks robots.txt on every redirect hop', async () => {
+    const f = fakeFetch({
+      'https://a.test/go': { status: 301, location: 'https://b.test/private/x' },
+      'https://b.test/robots.txt': { body: 'User-agent: *\nDisallow: /private', type: 'text/plain' },
+      'https://a.test/ok': { status: 302, location: '/final' },
+      'https://a.test/final': { body: '<p>ETL</p>' },
+    });
+    const out = await runHarvest({ sources: [s('go', 'https://a.test/go'), s('ok', 'https://a.test/ok')], fetch: f.fn, sleep: sleeper().sleep });
+    expect(out.skipped).toEqual([{ id: 'go', reason: 'robots' }]);
+    expect(out.perSource.map((p) => p.id)).toEqual(['ok']);
+    expect(f.calls.some((c) => c.url === 'https://b.test/private/x')).toBe(false);
+  });
+
+  it('follows a robots.txt redirect', async () => {
+    const f = fakeFetch({
+      'https://a.test/robots.txt': { status: 301, location: 'https://www.a.test/robots.txt' },
+      'https://www.a.test/robots.txt': { body: 'User-agent: *\nDisallow: /x', type: 'text/plain' },
+    });
+    const out = await runHarvest({ sources: [s('x', 'https://a.test/x')], fetch: f.fn, sleep: sleeper().sleep });
+    expect(out.skipped).toEqual([{ id: 'x', reason: 'robots' }]);
+  });
+
+  it('skips a site whose crawl-delay is over the cap', async () => {
+    const f = fakeFetch({ 'https://slow.test/robots.txt': { body: 'User-agent: *\nCrawl-delay: 86400', type: 'text/plain' } });
+    const z = sleeper();
+    const out = await runHarvest({ sources: [s('slow', 'https://slow.test/p')], fetch: f.fn, sleep: z.sleep });
+    expect(out.skipped).toEqual([{ id: 'slow', reason: 'crawl-delay' }]);
+    expect(z.waits).toEqual([]);
+  });
+
+  it('treats robots 401 and 403 as unavailable', async () => {
+    const f = fakeFetch({ 'https://a.test/robots.txt': { status: 401 }, 'https://b.test/robots.txt': { status: 403 } });
+    const out = await runHarvest({ sources: [s('a', 'https://a.test/p'), s('b', 'https://b.test/p')], fetch: f.fn, sleep: sleeper().sleep });
+    expect(out.failed.map((x) => x.reason)).toEqual(['robots unavailable', 'robots unavailable']);
+  });
+
+  it('records a timeout as TimeoutError', async () => {
+    const fn = (async (input: RequestInfo | URL) => {
+      if (String(input).endsWith('robots.txt')) return new Response('', { status: 404 });
+      throw new DOMException('timed out', 'TimeoutError');
+    }) as typeof fetch;
+    const out = await runHarvest({ sources: [s('t', 'https://a.test/t')], fetch: fn, sleep: sleeper().sleep });
+    expect(out.failed).toEqual([{ id: 't', reason: 'TimeoutError' }]);
   });
 
   it('sends the harvester user agent', async () => {

@@ -10,33 +10,33 @@ import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 import type { HarvestReport } from '../src/acronyms/harvest';
 import { listExams } from '../src/banks';
-import { expandTerms, ollamaChat } from './expand-lib';
+import { expandTerms, ollamaChat, parseExpandArgs } from './expand-lib';
 
 function fail(msg: string): never {
   console.error(`expand-acronyms: ${msg}`);
   process.exit(1);
 }
 
-const args = process.argv.slice(2).filter((a) => a !== '--');
-const flags: Record<string, string> = {};
-for (let i = 0; i < args.length; i++) {
-  const value = args[i + 1];
-  if (!args[i].startsWith('--') || value === undefined || value.startsWith('--')) fail(`bad argument ${args[i]}`);
-  flags[args[i].slice(2)] = value;
-  i++;
+let args;
+try {
+  args = parseExpandArgs(process.argv.slice(2));
+} catch (e) {
+  fail(`${(e as Error).message}\nusage: npm run expand-acronyms -- --report <harvest.json> [--out <file.json>] [--model <name>] [--min-count 1]`);
 }
-for (const k of Object.keys(flags)) if (!['report', 'out', 'model', 'min-count'].includes(k)) fail(`unknown argument --${k}`);
-if (!flags.report) fail('usage: npm run expand-acronyms -- --report <harvest.json> [--out <file.json>] [--model <name>] [--min-count 1]');
 
-const report = JSON.parse(readFileSync(flags.report, 'utf8')) as HarvestReport;
-if (report.format !== 'cert-exam-trainer-acronym-harvest') fail(`${flags.report} is not a harvest report`);
+let report: HarvestReport;
+try {
+  report = JSON.parse(readFileSync(args.report, 'utf8')) as HarvestReport;
+} catch (e) {
+  fail(`${args.report}: ${(e as Error).message}`);
+}
+if (report.format !== 'cert-exam-trainer-acronym-harvest') fail(`${args.report} is not a harvest report`);
 const meta = listExams().find((m) => m.code === report.exam) ?? fail(`unknown exam "${report.exam}"`);
-const minCount = Number(flags['min-count'] ?? 1);
-const terms = report.missing.filter((r) => r.count >= minCount).map((r) => r.term);
-const out = flags.out ?? `_WorkingData/expand-${meta.code}.json`;
+const terms = report.missing.filter((r) => r.count >= args.minCount).map((r) => r.term);
+const out = args.out || `_WorkingData/expand-${meta.code}.json`;
 
-console.log(`expanding ${terms.length} terms with ${flags.model ?? 'qwen3.6:27b'}...`);
-const rows = await expandTerms({ terms, exam: meta.code, examTitle: meta.name, chat: ollamaChat(flags.model) });
+console.log(`expanding ${terms.length} terms with ${args.model}...`);
+const rows = await expandTerms({ terms, exam: meta.code, examTitle: meta.name, chat: ollamaChat(args.model) });
 const counts = new Map(report.missing.map((r) => [r.term, r.count]));
 const full = rows.map((r) => ({ ...r, count: counts.get(r.term) ?? 0 }));
 mkdirSync(dirname(out), { recursive: true });

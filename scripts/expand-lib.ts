@@ -28,6 +28,7 @@ export function checkExpansion(term: string, expansion: string): string | null {
   if (!expansion.trim()) return 'empty expansion';
   const t = term.toLowerCase();
   const w = words(expansion);
+  if (t.length >= 3 && w.filter((x) => !STOP.has(x)).length < 2) return `"${expansion}" is one word, not an expansion of ${term}`;
   const memo = new Map<string, boolean>();
 
   const fits = (ti: number, wi: number, skips: number): boolean => {
@@ -36,12 +37,12 @@ export function checkExpansion(term: string, expansion: string): string | null {
     if (hit !== undefined) return hit;
     let ok = false;
     if (ti === t.length) {
-      ok = w.slice(wi).filter((x) => !STOP.has(x)).length <= skips;
+      ok = w.slice(wi).every((x) => STOP.has(x)); // no trailing extra words
     } else if (wi < w.length) {
       const word = w[wi];
       const stop = STOP.has(word);
       if (stop) ok = fits(ti, wi + 1, skips);
-      else if (skips > 0) ok = fits(ti, wi + 1, skips - 1);
+      else if (skips > 0 && ti > 0) ok = fits(ti, wi + 1, skips - 1); // only an inner word may be skipped
       for (let start = 0; !ok && start < Math.min(2, word.length); start++) {
         if (word[start] !== t[ti]) continue;
         // take this letter, then up to 2 more letters later in the same word
@@ -107,24 +108,55 @@ export async function expandTerms(opts: {
 }
 
 /** A chat function for a local Ollama model (streamed, as in draft-ollama.ts). */
-export function ollamaChat(model = 'qwen3.6:27b'): (prompt: string) => Promise<string> {
+export function ollamaChat(model = 'qwen3.6:27b', timeoutMs = 600_000, fetchFn: typeof fetch = fetch): (prompt: string) => Promise<string> {
   return async (content) => {
-    const res = await fetch('http://localhost:11434/api/chat', {
+    const res = await fetchFn('http://localhost:11434/api/chat', {
       method: 'POST',
+      signal: AbortSignal.timeout(timeoutMs),
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ model, stream: true, think: false, format: 'json', messages: [{ role: 'user', content }], options: { temperature: 0.2, num_ctx: 8192 } }),
     });
     if (!res.ok || !res.body) throw new Error(`Ollama ${res.status}`);
     let text = '';
     let pending = '';
+    const take = (line: string) => {
+      if (!line.trim()) return;
+      const msg = JSON.parse(line) as { message?: { content?: string }; error?: string };
+      if (msg.error) throw new Error(`Ollama: ${msg.error}`);
+      text += msg.message?.content ?? '';
+    };
     const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
     for (;;) {
       const { done, value } = await reader.read();
       if (done) break;
       const lines = (pending + value).split('\n');
       pending = lines.pop() ?? '';
-      for (const line of lines) if (line.trim()) text += (JSON.parse(line) as { message?: { content?: string } }).message?.content ?? '';
+      lines.forEach(take);
     }
+    take(pending);
     return text;
   };
+}
+
+export interface ExpandArgs { report: string; out: string; model: string; minCount: number }
+
+export function parseExpandArgs(argv: string[]): ExpandArgs {
+  const a: ExpandArgs = { report: '', out: '', model: 'qwen3.6:27b', minCount: 1 };
+  const args = argv.filter((x) => x !== '--');
+  for (let i = 0; i < args.length; i++) {
+    const flag = args[i];
+    if (!['--report', '--out', '--model', '--min-count'].includes(flag)) throw new Error(`unknown argument ${flag}`);
+    const value = args[++i];
+    if (value === undefined || value.startsWith('--')) throw new Error(`${flag} needs a value`);
+    if (flag === '--report') a.report = value;
+    else if (flag === '--out') a.out = value;
+    else if (flag === '--model') a.model = value;
+    else {
+      const n = Number(value);
+      if (!Number.isInteger(n) || n < 1) throw new Error('--min-count must be a whole number of at least 1');
+      a.minCount = n;
+    }
+  }
+  if (!a.report) throw new Error('--report is required');
+  return a;
 }
