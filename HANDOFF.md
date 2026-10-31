@@ -196,7 +196,18 @@
       - GenAI (initials do not spell it).
       - Vendor names XSOAR and XSIAM.
       - Everything else was cert or exam codes, product names, plain words or page text.
-    - **Next: Session 2, domain 1** (objectives 1.1–1.3), one domain per session per the plan. Deck slides for each objective are in `_WorkingData/SecAIPlus/notes/index.md`.
+  - **Session 2 done (2026-10-31), slice (a) domain 1, commits 9f5a934..8c538a7.** `npm run check` passes: 528 unit tests and 62 e2e tests. The CY0-001 e2e block now runs, so nothing is skipped.
+    - Each of 1.1, 1.2 and 1.3 has 38 approved items: 32 MCQ (26 single, 6 multi) and 6 PBQ, against a quota of 29 + 5. All spares were kept because every item passed review.
+    - PBQ templates so far: buckets 3, match 4, order 3, config 2, diagram 2, hotspot 2, data 1, terminal 1. Each template needs 10, so the rest of the exam needs at least buckets 7, match 6, order 7, config 8, diagram 8, hotspot 8, data 9 and terminal 9. That is 62 of the 75 PBQs left in the quotas, so lean on data, terminal, config, diagram and hotspot in slices (b)–(e).
+    - Fix: `check-drafts` reported a file already in `items/` as a duplicate of itself. `scripts/check-drafts-lib.ts` (`bankWithoutDrafts`, tested) fixes this.
+    - How the session ran:
+      - Extract the objective's v4.0 sub-bullets and deck slides into scratchpad text files, and give the agents those paths (never `_WorkingData`). The PDF text came from `pypdf`, installed with `pip --target` into the scratchpad.
+      - Keep the `--ref` notes in a folder that holds only deck notes. A stray file containing our own items flags every item.
+      - Drafters: one Sonnet agent per objective. Then one blind Sonnet security reviewer and one Haiku copywriter per objective. Send the fixes back to the same agents and re-review until clean.
+    - Watch in later slices:
+      - Fixing length tells over-corrects. The key became the shortest option in 11 of 26 singles in 1.1, and across domain 1 it is the longest in only 3%. Ask drafters for a natural mix: key longest and key shortest each about 15–25%.
+      - Do not rerun the drafters' generator scripts (in the scratchpad). Some final edits were made to the JSON directly.
+    - **Next: Session 3, slice (b): objectives 2.1–2.3.** Deck slides: S2 11–35 (2.1), S2 36–68 (2.2), S3 11–25 (2.3). See `_WorkingData/SecAIPlus/notes/index.md`.
   - **UI redesign (separate from chunk 11), awaiting the owner:**
     - Design doc: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`. It covers exam cards on the landing page, a page per exam, Back/All exams on every screen, Settings, Stock/Custom, ten exams and one master acronym table. The builder check is done.
     - Open question to the owner: should the phone/browser Back gesture step back inside the app (history integration), or only the on-screen buttons? Then owner approval, then superpowers:writing-plans.
