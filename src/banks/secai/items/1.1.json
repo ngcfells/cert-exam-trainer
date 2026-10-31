@@ -1,0 +1,1793 @@
+[
+  {
+    "id": "cy1-1-1-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which kind of technology creates new content, such as draft text, code, or images, by learning patterns from a large set of existing examples?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A generative AI model"
+        },
+        {
+          "id": "b",
+          "text": "A rule-based engine"
+        },
+        {
+          "id": "c",
+          "text": "A signature-matching scanner"
+        },
+        {
+          "id": "d",
+          "text": "A threshold alert"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Generative AI learns patterns from training data and produces new output that resembles it. A rule-based engine applies fixed logic written by people, a signature scanner compares input with known patterns, and a threshold alert fires at a preset value; none of them create new content.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "An email filter gets better at catching junk mail as it studies more labelled messages. What capability is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Static rule matching on sender domains"
+        },
+        {
+          "id": "b",
+          "text": "Learning patterns from example data"
+        },
+        {
+          "id": "c",
+          "text": "A hand-maintained keyword blocklist"
+        },
+        {
+          "id": "d",
+          "text": "Weekly manual signature updates"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Machine learning improves by finding patterns in data rather than following hard-coded rules. Domain rules, keyword blocklists, and manual signature updates all depend on people changing them, so they do not improve on their own as mail arrives.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst fits a regression model to past failed-login counts so that weeks far above the predicted value stand out. Which approach does this represent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reinforcement learning"
+        },
+        {
+          "id": "b",
+          "text": "Generative adversarial training"
+        },
+        {
+          "id": "c",
+          "text": "Statistical learning"
+        },
+        {
+          "id": "d",
+          "text": "Federated learning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Fitting a mathematical model such as a regression to explain and predict behavior is statistical learning, and it supports anomaly detection and forecasting. Reinforcement learning needs rewards from an environment, adversarial training pits two networks against each other, and federated learning trains across separate devices.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which mechanism lets a transformer weigh how strongly each part of a long incident report relates to every other part?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Convolution over fixed-size image patches"
+        },
+        {
+          "id": "b",
+          "text": "A generator and discriminator contest"
+        },
+        {
+          "id": "c",
+          "text": "A hand-written keyword weighting table"
+        },
+        {
+          "id": "d",
+          "text": "Self-attention over the sequence"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Self-attention lets a transformer relate every element of a sequence to every other, which is why it handles long, context-rich text well. Convolution over image patches is typical of vision models, the generator and discriminator contest describes a GAN, and a keyword table is a fixed rule, not a learned mechanism.",
+    "acronyms": [
+      "GAN"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A SOC wants a model that classifies malware straight from raw file bytes, discovering its own features through many stacked layers. Which type of AI fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A deep neural network"
+        },
+        {
+          "id": "b",
+          "text": "A linear threshold on file size"
+        },
+        {
+          "id": "c",
+          "text": "A hash lookup against known samples"
+        },
+        {
+          "id": "d",
+          "text": "Rule-based string matching"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Deep learning uses multi-layer neural networks that learn features directly from raw input, so it can classify binaries without hand-built features. A size threshold, a hash lookup, and string rules all rely on features or signatures that people define in advance and miss slight variations.",
+    "acronyms": [
+      "AI",
+      "SOC"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "In a generative adversarial network, what is the role of the discriminator?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Produces synthetic samples from random noise"
+        },
+        {
+          "id": "b",
+          "text": "Compresses weights to lower numeric precision"
+        },
+        {
+          "id": "c",
+          "text": "Tells real samples from generated ones"
+        },
+        {
+          "id": "d",
+          "text": "Aggregates updates from client devices"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The discriminator learns to tell real samples from fakes, and that pressure pushes the generator to produce more realistic output. Producing the synthetic samples is the generator's job, compressing weights is quantization, and aggregating client updates is part of federated learning.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which field of AI focuses on understanding free-form text, such as pulling names, topics, and intent out of phishing emails and threat reports?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Time-series demand forecasting"
+        },
+        {
+          "id": "b",
+          "text": "Computer vision systems"
+        },
+        {
+          "id": "c",
+          "text": "Anomaly score ranking"
+        },
+        {
+          "id": "d",
+          "text": "Natural language processing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Natural language processing turns unstructured text into entities, topics, and intent that security tools can use. Forecasting predicts numeric trends, computer vision handles images, and anomaly scoring ranks unusual events without reading language.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A vehicle telematics unit has a modest CPU and a tight power budget, and it must label diagnostic text messages as routine or suspicious within milliseconds. Which model choice fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A large language model with billions of parameters"
+        },
+        {
+          "id": "b",
+          "text": "A small language model tuned for the task"
+        },
+        {
+          "id": "c",
+          "text": "A generative adversarial network"
+        },
+        {
+          "id": "d",
+          "text": "A model trained for many more epochs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Small language models are light and fast enough to run on modest hardware, which suits an embedded unit with strict latency needs. A large model needs heavy accelerator capacity, a GAN is built to generate samples rather than label text, and extra epochs change training time, not the size of the deployed model.",
+    "acronyms": [
+      "GAN",
+      "CPU"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "A SOC compares an LLM with an SLM for summarizing long, varied incident reports. Which trade-off is accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The SLM copes better with open-ended work because it has more parameters"
+        },
+        {
+          "id": "b",
+          "text": "The LLM needs less compute because it is trained only once"
+        },
+        {
+          "id": "c",
+          "text": "The LLM copes better with open-ended work but needs far more compute"
+        },
+        {
+          "id": "d",
+          "text": "The SLM needs more GPUs but gives lower latency"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An LLM has very high parameter counts, which helps with broad, open-ended tasks and costs heavy GPU or accelerator capacity. Option a reverses the parameter relationship, since an SLM has fewer parameters, not more. Option b is wrong because training once does not cut the compute needed to run the model, and option d is wrong because an SLM needs fewer GPUs, not more.",
+    "acronyms": [
+      "LLM",
+      "SLM",
+      "SOC",
+      "GPU"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Why do teams hold back a validation set that the model does not train on?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To check performance on unseen data while tuning"
+        },
+        {
+          "id": "b",
+          "text": "To add more labelled rows to training"
+        },
+        {
+          "id": "c",
+          "text": "To speed up each training epoch"
+        },
+        {
+          "id": "d",
+          "text": "To remove personal data from the model"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A validation set gives a sanity check on data the model has not learned from, so tuning decisions are not made on memorized examples. It does not add training rows, it does not speed up an epoch, and it does not remove personal data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A supervised model that labels malware families scores well on families in its labelled set but mislabels a newly emerged family. What best explains this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It clusters samples without labels, so new families are ignored"
+        },
+        {
+          "id": "b",
+          "text": "It learns from reward signals, which hide new families"
+        },
+        {
+          "id": "c",
+          "text": "It generates its own training samples, which repeat old families"
+        },
+        {
+          "id": "d",
+          "text": "It learns only the patterns present in its training history"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A supervised model generalizes from the labelled examples it was given, so a family absent from that history looks unfamiliar. Supervised training does not cluster without labels, does not use rewards, and does not invent its own training samples.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A utility deploys a new fleet of smart meters and has no labelled examples of tampering. Which approach can still surface unusual readings?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Supervised training on known tampering labels"
+        },
+        {
+          "id": "b",
+          "text": "Unsupervised learning that flags outliers"
+        },
+        {
+          "id": "c",
+          "text": "Fine-tuning a model on labelled tickets"
+        },
+        {
+          "id": "d",
+          "text": "Scoring against a labelled test set"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Unsupervised learning works on unlabelled data and highlights readings that differ from the normal pattern. Supervised training needs tampering labels the utility does not have, fine-tuning on labelled tickets needs labels it does not have, and scoring against a labelled test set needs labels and measures known behavior rather than finding unusual readings.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "An agent chooses how long to hold suspicious attachments before release. It is rewarded when analysts need fewer manual escalations and penalized when a threat reaches a user. Which technique is this, and what shapes its behavior?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reinforcement learning, shaped by its rewards"
+        },
+        {
+          "id": "b",
+          "text": "Supervised learning, shaped by labelled examples"
+        },
+        {
+          "id": "c",
+          "text": "Unsupervised learning, shaped by cluster distance"
+        },
+        {
+          "id": "d",
+          "text": "Federated learning, shaped by client updates"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "In reinforcement learning an agent tries actions and learns a policy from rewards and penalties, so the reward mix encodes the business trade-off. Supervised learning uses labelled answers, unsupervised learning uses structure in the data, and federated learning is about where training happens.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "Several regional offices cannot move raw endpoint telemetry off site, yet want one shared detection model. Which technique fits, and what travels to the central server?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Federated learning, sending the raw telemetry"
+        },
+        {
+          "id": "b",
+          "text": "Supervised learning, sending the labelled logs"
+        },
+        {
+          "id": "c",
+          "text": "Federated learning, sending model updates"
+        },
+        {
+          "id": "d",
+          "text": "Quantization, sending the compressed logs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Federated learning trains the model locally at each site and sends only model updates, such as weights or gradients, for the server to combine. Sending raw telemetry or logs defeats the purpose. Supervised learning also needs the labelled logs gathered on one central server, which the offices cannot allow, and quantization shrinks a model rather than sharing training.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "A team has a general pretrained language model and a modest set of its own labelled incident tickets. Why fine-tune the model instead of training one from scratch?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It removes the need for any labelled examples"
+        },
+        {
+          "id": "b",
+          "text": "It stops the model from producing sensitive text"
+        },
+        {
+          "id": "c",
+          "text": "It shrinks the model by dropping low-value weights"
+        },
+        {
+          "id": "d",
+          "text": "It reuses prior knowledge and needs less data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Fine-tuning continues training a pretrained model on domain data, so it starts with general knowledge and needs far less data and compute than training from scratch. It still uses labelled examples, it does not by itself control what the model outputs, and dropping weights is pruning.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "In model training, what is an epoch?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A single batch of training examples"
+        },
+        {
+          "id": "b",
+          "text": "One full pass through the training dataset"
+        },
+        {
+          "id": "c",
+          "text": "One reduction in numeric precision"
+        },
+        {
+          "id": "d",
+          "text": "One round of removing weights"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An epoch is one complete pass over all the training data. A batch is only a slice of that pass, lowering precision is quantization, and removing weights is pruning.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "An engineer removes weights that contribute little to a trained network so that it becomes smaller and faster. What is this technique called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Quantization"
+        },
+        {
+          "id": "b",
+          "text": "Fine-tuning"
+        },
+        {
+          "id": "c",
+          "text": "Model pruning"
+        },
+        {
+          "id": "d",
+          "text": "Validation set"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Pruning deletes low-importance weights or connections to shrink a model. Quantization keeps every weight but lowers its precision, fine-tuning continues training, and validation measures performance.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "To fit a detection model on a low-memory sensor, an engineer stores each weight as an 8-bit integer instead of a 32-bit floating-point number. Which technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Quantization"
+        },
+        {
+          "id": "b",
+          "text": "Pruning"
+        },
+        {
+          "id": "c",
+          "text": "Fine-tuning"
+        },
+        {
+          "id": "d",
+          "text": "Federated learning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Quantization lowers the numeric precision of weights, which cuts memory use and speeds up inference. Pruning removes weights instead of changing their precision, fine-tuning continues training, and federated learning trains across devices.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which prompt carries the standing role, scope limits, and output format that an LLM-based assistant follows for a whole session?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "User prompt"
+        },
+        {
+          "id": "b",
+          "text": "System prompt"
+        },
+        {
+          "id": "c",
+          "text": "Multi-shot example"
+        },
+        {
+          "id": "d",
+          "text": "Template placeholder"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The system prompt is set up front and defines how the assistant should behave throughout the session. A user prompt is a single request, an example only demonstrates a pattern, and a placeholder is a slot in a template.",
+    "acronyms": [
+      "LLM"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst pastes a suspicious web address into an assistant and asks whether it looks like phishing. What is that pasted request called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A system prompt"
+        },
+        {
+          "id": "b",
+          "text": "A training epoch"
+        },
+        {
+          "id": "c",
+          "text": "A saved checkpoint"
+        },
+        {
+          "id": "d",
+          "text": "The user's prompt"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The request typed by the person using the assistant is the user prompt, which steers the model for that turn. The system prompt is written by the deployer, an epoch is a training pass, and a checkpoint is a saved model.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst asks a model to rate a never-before-seen domain lookup as benign or suspicious, giving instructions only and no worked examples. Which prompting style is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "One-shot prompting"
+        },
+        {
+          "id": "b",
+          "text": "Multi-shot prompting"
+        },
+        {
+          "id": "c",
+          "text": "Zero-shot prompting"
+        },
+        {
+          "id": "d",
+          "text": "Fine-tuning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Instructions with no examples are zero-shot prompting. One-shot adds a single example, multi-shot adds several, and fine-tuning changes the model itself rather than the prompt.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A prompt includes a single labelled alert marked malicious, followed by a new alert for the model to label. Which prompting style is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "One-shot prompting"
+        },
+        {
+          "id": "b",
+          "text": "Zero-shot prompting"
+        },
+        {
+          "id": "c",
+          "text": "Multi-shot prompting"
+        },
+        {
+          "id": "d",
+          "text": "Prompt templating"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A single worked example before the new input is one-shot prompting. Zero-shot has no example, multi-shot has several, and templating is about reusing prompt text with placeholders, not about the number of examples.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "A team moves from zero-shot to multi-shot prompting to label batches of alerts. Which trade-off should they expect?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Shorter prompts, because the examples replace the instructions"
+        },
+        {
+          "id": "b",
+          "text": "Permanent changes to the model weights"
+        },
+        {
+          "id": "c",
+          "text": "Lower accuracy, because examples can confuse the model"
+        },
+        {
+          "id": "d",
+          "text": "More consistent labels at a higher token cost"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Several examples show the model the pattern to follow, which improves consistency, but they lengthen each request and mean real samples leave the environment. Examples do not replace instructions, do not alter the weights as fine-tuning does, and usually help rather than hurt.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "The same outage must be written up as a notice for the legal team and as a short instruction for the service desk, using one assistant. Which prompt element should change between the two?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The pruning ratio"
+        },
+        {
+          "id": "b",
+          "text": "The system role text"
+        },
+        {
+          "id": "c",
+          "text": "The training labels"
+        },
+        {
+          "id": "d",
+          "text": "The validation data split"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A system role sets the persona, depth, and format, so switching it tailors the same evidence to a different audience. The pruning ratio, training labels, and validation split are model-building choices that do not change output style per request.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A SOC stores a reviewed set of instructions with slots for the ticket number and the severity scale, which automation fills in at run time. What is this practice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fine-tuning the model on each log"
+        },
+        {
+          "id": "b",
+          "text": "Raising the model temperature"
+        },
+        {
+          "id": "c",
+          "text": "Using a prompt template"
+        },
+        {
+          "id": "d",
+          "text": "Splitting data into training and test sets"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A template holds fixed wording with placeholders, so prompts stay consistent, reviewable, and easy to trace. Fine-tuning changes weights, temperature changes randomness of output, and a data split is part of validation.",
+    "acronyms": [
+      "SOC"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "During training, accuracy on the training set keeps rising across epochs while accuracy on the validation set starts to fall. What does this indicate, and what is a sensible response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Overfitting; stop training at the best point"
+        },
+        {
+          "id": "b",
+          "text": "Underfitting; keep adding epochs to training"
+        },
+        {
+          "id": "c",
+          "text": "Drift; prune the model to shrink it"
+        },
+        {
+          "id": "d",
+          "text": "Poisoning; quantize the model to protect it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A growing gap between training and validation accuracy means the model is memorizing its training data, so training should stop at the best validation result. More epochs would worsen it, and pruning or quantizing does not address memorization. Drift is a change in the input data over time and poisoning is tampered training data; neither explains a widening gap between training and validation accuracy.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are defensive uses of generative AI in a SOC?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Matching file hashes against a known-bad list"
+        },
+        {
+          "id": "b",
+          "text": "Drafting a first-pass incident summary for analyst review"
+        },
+        {
+          "id": "c",
+          "text": "Applying a fixed firewall rule to a port"
+        },
+        {
+          "id": "d",
+          "text": "Calculating a checksum of a log archive"
+        },
+        {
+          "id": "e",
+          "text": "Generating simulated phishing emails for awareness training"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Drafting summaries and generating training phishing both create new content for defenders to review or use. Hash matching, fixed firewall rules, and checksums are deterministic operations that produce no new content.",
+    "acronyms": [
+      "AI",
+      "SOC"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which THREE techniques make a trained model smaller or cheaper to run on constrained hardware?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "More training epochs"
+        },
+        {
+          "id": "b",
+          "text": "Pruning the network"
+        },
+        {
+          "id": "c",
+          "text": "More labelled samples"
+        },
+        {
+          "id": "d",
+          "text": "Quantizing the weights"
+        },
+        {
+          "id": "e",
+          "text": "Extra network layers"
+        },
+        {
+          "id": "f",
+          "text": "Knowledge distillation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "f"
+      ]
+    },
+    "explanation": "Pruning removes weights, quantization lowers precision, and distillation trains a smaller model to imitate a larger one; all three reduce footprint. More epochs or samples change training, and extra layers make the model larger.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO statements about federated learning are accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raw data stays on each client device"
+        },
+        {
+          "id": "b",
+          "text": "A central server collects the raw records of each client first"
+        },
+        {
+          "id": "c",
+          "text": "Clients train without receiving the global model"
+        },
+        {
+          "id": "d",
+          "text": "A server combines client updates into a global model"
+        },
+        {
+          "id": "e",
+          "text": "It needs no check on the updates it receives"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Federated learning keeps raw data local and aggregates the updates clients send back. Collecting raw records defeats the design, clients must receive the global model to train it, and updates still need checking because malicious clients can send bad ones.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO belong in a system prompt for an alert-triage assistant?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The persona the assistant should adopt"
+        },
+        {
+          "id": "b",
+          "text": "The raw alert text for one request"
+        },
+        {
+          "id": "c",
+          "text": "The weights of the pretrained model"
+        },
+        {
+          "id": "d",
+          "text": "The number of epochs used in training"
+        },
+        {
+          "id": "e",
+          "text": "Scope limits and the required output format"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "A system prompt defines role, scope, and format for the whole session. The alert text belongs in the user prompt, and weights and epochs are properties of the model, not instructions to it.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which THREE are sensible parts of a reusable prompt template for log analysis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A real customer's raw log lines pasted in"
+        },
+        {
+          "id": "b",
+          "text": "Fixed instructions and role wording"
+        },
+        {
+          "id": "c",
+          "text": "An embedded API credential"
+        },
+        {
+          "id": "d",
+          "text": "Named placeholders for the log excerpt"
+        },
+        {
+          "id": "e",
+          "text": "A required output format"
+        },
+        {
+          "id": "f",
+          "text": "A hard-coded copy of last week's alerts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "A template should hold stable instructions, placeholders filled at run time, and a defined output format. Pasted customer data, embedded credentials, and stale hard-coded alerts leak information or defeat reuse.",
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO describe unsupervised learning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It requires events to carry a verdict label"
+        },
+        {
+          "id": "b",
+          "text": "It learns from reward and penalty signals"
+        },
+        {
+          "id": "c",
+          "text": "It does not need labelled examples to learn"
+        },
+        {
+          "id": "d",
+          "text": "It splits training data across client devices"
+        },
+        {
+          "id": "e",
+          "text": "It can group events or flag outliers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Unsupervised learning works on unlabelled data and finds groupings or outliers. Required labels describe supervised learning, rewards describe reinforcement learning, and splitting data across devices describes federated learning.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-buckets-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each security task into the learning type that trains the model for it.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "sup",
+          "text": "Supervised learning"
+        },
+        {
+          "id": "uns",
+          "text": "Unsupervised learning"
+        },
+        {
+          "id": "rl",
+          "text": "Reinforcement learning"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Flagging unusual outbound traffic volumes by finding outliers in unlabelled flows"
+        },
+        {
+          "id": "i2",
+          "text": "Classifying email using a corpus in which each message is tagged phishing or legitimate"
+        },
+        {
+          "id": "i3",
+          "text": "Learning to isolate hosts in a lab, penalized for false positives"
+        },
+        {
+          "id": "i4",
+          "text": "Grouping login events to reveal normal behavior with no verdicts"
+        },
+        {
+          "id": "i5",
+          "text": "Predicting a malware family from samples that analysts have tagged"
+        },
+        {
+          "id": "i6",
+          "text": "Tuning a quarantine policy from rewards for fewer analyst escalations"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "uns",
+        "i2": "sup",
+        "i3": "rl",
+        "i4": "uns",
+        "i5": "sup",
+        "i6": "rl"
+      }
+    },
+    "explanation": "Supervised learning needs labelled examples, unsupervised learning finds structure in unlabelled data, and reinforcement learning learns a policy from rewards and penalties.",
+    "partExplanations": {
+      "i1": "Outliers in unlabelled flows are found without labels, which is unsupervised.",
+      "i2": "A corpus tagged phishing or legitimate supplies labels, so this is supervised.",
+      "i3": "Penalties for false positives are a reward signal in a lab environment, so this is reinforcement learning.",
+      "i4": "Clustering events without verdicts reveals normal behavior, which is unsupervised.",
+      "i5": "Analyst-tagged samples are labels, so this is supervised classification.",
+      "i6": "Rewards for fewer escalations shape the policy, which is reinforcement learning."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-buckets-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Sort each description into the model type it best fits.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "llm",
+          "text": "Large language model"
+        },
+        {
+          "id": "slm",
+          "text": "Small language model"
+        },
+        {
+          "id": "gan",
+          "text": "Generative adversarial network"
+        }
+      ],
+      "items": [
+        {
+          "id": "j1",
+          "text": "Runs on a CPU inside an on-premises appliance to score alerts in real time"
+        },
+        {
+          "id": "j2",
+          "text": "Has very high parameter counts and needs GPU or accelerator capacity"
+        },
+        {
+          "id": "j3",
+          "text": "A generator forges synthetic samples while a second network tries to reject them"
+        },
+        {
+          "id": "j4",
+          "text": "Summarizes a long report and drafts a response playbook"
+        },
+        {
+          "id": "j5",
+          "text": "A compact model tuned on narrow domain vocabulary to keep latency and cost low"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "j1": "slm",
+        "j2": "llm",
+        "j3": "gan",
+        "j4": "llm",
+        "j5": "slm"
+      }
+    },
+    "explanation": "LLMs trade heavy compute for broad, open-ended ability, SLMs are lighter and suit local, low-latency work, and GANs pair a generator with a discriminator.",
+    "partExplanations": {
+      "j1": "CPU-only, real-time scoring on an appliance points to a small language model.",
+      "j2": "Very high parameter counts and accelerator needs are typical of an LLM.",
+      "j3": "A generator and a rejecting network describe a GAN.",
+      "j4": "Long, open-ended summarizing and drafting is LLM territory.",
+      "j5": "A narrow domain with low latency and cost is the SLM use case."
+    },
+    "acronyms": [
+      "GAN",
+      "LLM",
+      "SLM",
+      "CPU",
+      "GPU"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-match-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each model term to what it does.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Quantization"
+        },
+        {
+          "id": "p2",
+          "text": "Federated learning"
+        },
+        {
+          "id": "p3",
+          "text": "Pruning"
+        },
+        {
+          "id": "p4",
+          "text": "Epoch"
+        },
+        {
+          "id": "p5",
+          "text": "Fine-tuning"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Further trains a pretrained model on domain data"
+        },
+        {
+          "id": "c2",
+          "text": "Stores weights at lower numeric precision"
+        },
+        {
+          "id": "c3",
+          "text": "Removes low-value weights to shrink a model"
+        },
+        {
+          "id": "c4",
+          "text": "Trains across devices without moving raw data"
+        },
+        {
+          "id": "c5",
+          "text": "One complete pass over the training set"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c2",
+        "p2": "c4",
+        "p3": "c3",
+        "p4": "c5",
+        "p5": "c1"
+      }
+    },
+    "explanation": "Each technique targets a different problem: precision, data locality, size, training progress, and domain adaptation.",
+    "partExplanations": {
+      "p1": "Quantization lowers the precision of stored weights.",
+      "p2": "Federated learning keeps raw data on devices and shares only updates.",
+      "p3": "Pruning removes weights that contribute little.",
+      "p4": "An epoch is one full pass over the training data.",
+      "p5": "Fine-tuning continues training a pretrained model on domain data."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-match-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each AI type to the security task it suits.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Generative adversarial network"
+        },
+        {
+          "id": "p2",
+          "text": "Statistical learning"
+        },
+        {
+          "id": "p3",
+          "text": "Natural language processing"
+        },
+        {
+          "id": "p4",
+          "text": "Deep learning"
+        },
+        {
+          "id": "p5",
+          "text": "Transformer"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Learns features directly from raw executable bytes"
+        },
+        {
+          "id": "c2",
+          "text": "Applies attention across the sequence of words in an email"
+        },
+        {
+          "id": "c3",
+          "text": "Creates synthetic samples to stress-test detections"
+        },
+        {
+          "id": "c4",
+          "text": "Fits a regression baseline for expected login counts"
+        },
+        {
+          "id": "c5",
+          "text": "The broad field of making sense of free-form text"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c3",
+        "p2": "c4",
+        "p3": "c5",
+        "p4": "c1",
+        "p5": "c2"
+      }
+    },
+    "explanation": "Each type has a characteristic strength in security work.",
+    "partExplanations": {
+      "p1": "A GAN's generator produces realistic synthetic samples useful for testing.",
+      "p2": "Regression is a statistical learning method for baselines and forecasts.",
+      "p3": "NLP is the broad field of making sense of free-form text, such as threat reports.",
+      "p4": "Deep networks learn features from raw input such as binaries.",
+      "p5": "A transformer uses attention across a sequence, so it can relate distant words."
+    },
+    "acronyms": [
+      "AI",
+      "GAN",
+      "NLP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-config-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A SOC is configuring an LLM-based alert triage assistant. Choose the right setting for each item.",
+    "payload": {
+      "fields": [
+        {
+          "id": "persona",
+          "label": "Where the analyst persona, scope limits, and output rules live",
+          "options": [
+            {
+              "id": "user",
+              "text": "User prompt"
+            },
+            {
+              "id": "system",
+              "text": "System prompt"
+            },
+            {
+              "id": "tpl",
+              "text": "Prompt template"
+            }
+          ]
+        },
+        {
+          "id": "examples",
+          "label": "Style to use when four labelled alerts will teach the labelling pattern",
+          "options": [
+            {
+              "id": "zero",
+              "text": "Zero-shot"
+            },
+            {
+              "id": "one",
+              "text": "One-shot"
+            },
+            {
+              "id": "multi",
+              "text": "Multi-shot"
+            }
+          ]
+        },
+        {
+          "id": "alert",
+          "label": "Where the alert text for this single request goes",
+          "options": [
+            {
+              "id": "user",
+              "text": "User prompt"
+            },
+            {
+              "id": "system",
+              "text": "System prompt"
+            },
+            {
+              "id": "tune",
+              "text": "Fine-tuning set"
+            }
+          ]
+        },
+        {
+          "id": "reuse",
+          "label": "Mechanism that reuses the same instructions with new alerts each run",
+          "options": [
+            {
+              "id": "epoch",
+              "text": "Extra epoch"
+            },
+            {
+              "id": "tpl",
+              "text": "Prompt template"
+            },
+            {
+              "id": "quant",
+              "text": "Quantization"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "persona": "system",
+        "examples": "multi",
+        "alert": "user",
+        "reuse": "tpl"
+      }
+    },
+    "explanation": "The system prompt sets standing rules, the user prompt carries the request, several examples make multi-shot, and a template reuses fixed wording with placeholders.",
+    "partExplanations": {
+      "persona": "Standing role, scope, and format belong in the system prompt.",
+      "examples": "Several labelled examples make the prompt multi-shot.",
+      "alert": "The alert for one request is the user prompt.",
+      "reuse": "A template with placeholders reuses instructions across runs."
+    },
+    "acronyms": [
+      "LLM",
+      "SOC"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-1-order-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Put the steps of one federated learning round in the order they run.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s1",
+          "text": "The server combines the updates into an improved global model"
+        },
+        {
+          "id": "s2",
+          "text": "The server sends the current global model to the clients"
+        },
+        {
+          "id": "s6",
+          "text": "The server screens the returned updates for anomalies"
+        },
+        {
+          "id": "s3",
+          "text": "Each client trains the model on its own local telemetry"
+        },
+        {
+          "id": "s4",
+          "text": "Clients return model updates, not their raw data"
+        },
+        {
+          "id": "s5",
+          "text": "The team checks whether the model reached the target accuracy"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s2",
+        "s3",
+        "s4",
+        "s6",
+        "s1",
+        "s5"
+      ]
+    },
+    "explanation": "A federated round distributes the model, trains locally, returns only updates, screens and aggregates them, and then checks whether another round is needed.",
+    "partExplanations": {
+      "s1": "Aggregation comes after updates arrive.",
+      "s2": "Distribution of the model starts the round.",
+      "s3": "Local training happens before anything is returned.",
+      "s4": "Only updates leave the device, after local training.",
+      "s5": "Checking whether the model reached the target accuracy closes the round and decides whether to repeat.",
+      "s6": "Screening updates before combining them catches malicious or faulty clients."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]
