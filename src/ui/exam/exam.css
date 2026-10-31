@@ -1,7 +1,7 @@
 .exam { font-family: Arial, Helvetica, sans-serif; font-size: 1.0625rem; color: var(--fg); background: var(--bg); max-width: 60rem; margin: 0 auto; }
 .exam-topbar { position: sticky; top: 0; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding: 0.5rem 1rem; background: var(--topbar-bg); color: var(--topbar-fg); z-index: 1; }
-.exam-topbar button { background: #fff; color: #1f2d3d; border: 2px solid #fff; padding: 0.25rem 0.75rem; }
-.exam-topbar button[aria-pressed='true'] { background: #ffd54f; border-color: #ffd54f; }
+.exam-topbar button { background: var(--topbar-fg); color: var(--topbar-bg); border: 2px solid var(--topbar-fg); padding: 0.25rem 0.75rem; }
+.exam-topbar button[aria-pressed='true'] { background: var(--flag-on); border-color: var(--flag-on); color: var(--flag-on-fg); }
 .exam-topbar .timer { font-variant-numeric: tabular-nums; font-weight: bold; }
 .exam-body { padding: 1rem; min-height: 50vh; }
 .exam-body h2:focus { outline: none; }

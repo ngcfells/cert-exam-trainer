@@ -3,7 +3,7 @@
  *
  *   npm run deploy               build, commit to gh-pages, push to origin
  *   npm run deploy -- --dry-run  build and commit in a temporary worktree, but do not push
- *   npm run deploy -- --force    allow deploying from a branch other than main
+ *   npm run deploy -- --force    allow deploying from a branch other than main (uncommitted changes are always refused)
  */
 import { execSync } from 'node:child_process';
 import { deploy } from './deploy-lib';
