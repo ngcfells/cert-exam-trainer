@@ -41,5 +41,5 @@ export const NUMERIC_CHECKS: Record<string, () => number> = {
   'da2-3-2-num-019': () => (70 - 60) / 5,
   'da2-3-2-num-020': () => 10 - 1.5 * (18 - 10),
   // 100 ± 2 × 10 is within 2 standard deviations: the 68-95-99.7 rule gives 95.
-  'da2-3-2-num-021': () => ((100 + 2 * 10 - 100) / 10 === 2 ? 95 : NaN),
+  'da2-3-2-num-021': () => 95,
 };
