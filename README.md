@@ -22,5 +22,8 @@ npm run check          # lint, typecheck, unit tests, single build, e2e + axe
 
 ## License
 
-- Code: MIT (see `LICENSE`).
-- Bundled original question content: CC BY-NC 4.0 (see `CONTENT_LICENSE.md`).
+Free to use and share, including by businesses and trainers. You may not sell it or charge for access to it.
+
+- Code: MIT with the Commons Clause (see `LICENSE`).
+- Bundled original question content: CC BY-NC 4.0 with an extra permission for teaching and internal training (see `CONTENT_LICENSE.md`).
+- Versions up to commit `8f4be2d` were released under plain MIT.
