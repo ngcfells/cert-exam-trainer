@@ -1,4 +1,4 @@
-import { useId } from 'react';
+import { useId, useState } from 'react';
 import { parseNumeric } from '../../domain/numeric';
 import type { NumericPayload } from '../../domain/types';
 import type { ExamItem } from '../../exam/assemble';
@@ -9,7 +9,8 @@ export function NumericView({ item, value, onChange }: { item: ExamItem; value: 
   const q = item.question;
   const { prefix, suffix } = q.payload as NumericPayload;
   const unit = [prefix, suffix].filter(Boolean).join(' ');
-  const invalid = value.trim() !== '' && parseNumeric(value) === null;
+  const [touched, setTouched] = useState(false);
+  const invalid = touched && value.trim() !== '' && parseNumeric(value) === null;
   const described = [unit && `${id}-unit`, invalid && `${id}-err`].filter(Boolean).join(' ') || undefined;
   return (
     <div className="numeric">
@@ -24,6 +25,7 @@ export function NumericView({ item, value, onChange }: { item: ExamItem; value: 
           value={value}
           aria-invalid={invalid || undefined}
           aria-describedby={described}
+          onBlur={() => setTouched(true)}
           onChange={(e) => onChange(e.target.value.trim() === '' ? [] : [e.target.value])}
         />
         {suffix && <span aria-hidden="true">{suffix}</span>}

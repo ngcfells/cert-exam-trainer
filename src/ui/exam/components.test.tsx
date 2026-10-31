@@ -35,8 +35,11 @@ describe('NumericView', () => {
     expect(onChange).toHaveBeenLastCalledWith([]);
   });
 
-  it('flags text that is not a number', () => {
+  it('flags text that is not a number only after leaving the field', async () => {
     render(<NumericView item={item} value="abc" onChange={() => {}} />);
+    expect(screen.getByLabelText('Number N0')).not.toHaveAttribute('aria-invalid');
+    await userEvent.click(screen.getByLabelText('Number N0'));
+    await userEvent.tab();
     expect(screen.getByLabelText('Number N0')).toHaveAccessibleDescription(/Enter a number, such as 12\.5/);
     expect(screen.getByLabelText('Number N0')).toHaveAttribute('aria-invalid', 'true');
   });

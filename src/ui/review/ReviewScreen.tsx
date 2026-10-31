@@ -10,7 +10,7 @@ import {
   pbqTypeCounts,
 } from '../../content';
 import { PBQ_TEMPLATES, isPbqTemplate } from '../../domain/pbq';
-import { questionSchema } from '../../domain/schema';
+import { QUESTION_TYPES, questionSchema } from '../../domain/schema';
 import type { Question } from '../../domain/types';
 import type { ItemResponse } from '../../exam/scoring';
 import { ItemReview } from '../exam/ItemReview';
@@ -165,7 +165,7 @@ export function ReviewScreen({
       <div className="review-filters">
         {filter('Status', status, (v) => setStatus(v as (typeof STATUSES)[number]), STATUSES.map((s) => [s, s]))}
         {filter('Objective', objective, setObjective, [['all', 'all'], ...meta.objectives.map((o): [string, string] => [o.id, o.id])])}
-        {filter('Type', type, setType, [['all', 'all'], ['mcq-single', 'mcq-single'], ['mcq-multi', 'mcq-multi'], ...PBQ_TEMPLATES.map((t): [string, string] => [t, t])])}
+        {filter('Type', type, setType, [['all', 'all'], ...QUESTION_TYPES.map((t): [string, string] => [t, t])])}
       </div>
       {error && <p role="alert">{error}</p>}
       {!q ? (

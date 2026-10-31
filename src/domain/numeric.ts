@@ -1,15 +1,17 @@
 import type { NumericAnswer, NumericPayload, Question } from './types';
 
-/** Digits, one `.`, a leading `-`; `,`, `$`, `%` and spaces are ignored. Anything else is null (unanswered). */
+const NUMBER = /^-?(\d{1,3}(,\d{3})+|\d+)(\.\d*)?$|^-?\.\d+$/;
+
+/** Digits, one `.`, a leading minus (typed or typographic); commas only in thousands groups; `$`, `%` and spaces are ignored. Anything else is null (unanswered). */
 export function parseNumeric(text: string): number | null {
-  const s = text.replace(/[,$%\s]/g, '');
-  return /^-?(\d+\.?\d*|\.\d+)$/.test(s) ? Number(s) : null;
+  const s = text.replace(/[−‒–]/g, '-').replace(/[$%\s]/g, '');
+  return NUMBER.test(s) ? Number(s.replace(/,/g, '')) : null;
 }
 
-/** Within tolerance, inclusive; the slack absorbs float error at the edge. */
+/** Within tolerance, inclusive; the slack, relative to the value, absorbs float error at the edge. */
 export function numericCorrect(answer: NumericAnswer, text: string | undefined): boolean {
   const n = text === undefined ? null : parseNumeric(text);
-  return n !== null && Math.abs(n - answer.value) <= answer.tolerance + 1e-9;
+  return n !== null && Math.abs(n - answer.value) <= answer.tolerance + 1e-9 * Math.max(1, Math.abs(answer.value));
 }
 
 /** One scoring unit (MCQs and typed numbers), never a PBQ. */
