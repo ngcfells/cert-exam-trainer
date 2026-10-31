@@ -1,0 +1,2252 @@
+[
+  {
+    "id": "da2-2-3-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst needs to find every product code in a text column that follows a fixed pattern of letters and digits. Which technique uses a pattern language to match, validate or replace text like this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "RegEx"
+        },
+        {
+          "id": "b",
+          "text": "Binning"
+        },
+        {
+          "id": "c",
+          "text": "Imputation"
+        },
+        {
+          "id": "d",
+          "text": "Exploding"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "RegEx describes text patterns and can match, validate, extract or replace strings that fit them. Binning groups numeric values into ranges, imputation fills missing values, and exploding splits list values into separate rows.",
+    "acronyms": [
+      "RegEx"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A data quality rule uses the RegEx ^\\d{5}$ to validate a postal code column. Which value passes the rule?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "1234"
+        },
+        {
+          "id": "b",
+          "text": "02139"
+        },
+        {
+          "id": "c",
+          "text": "02139-4307"
+        },
+        {
+          "id": "d",
+          "text": "A2139"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The pattern requires exactly five digits from the start to the end of the string, so 02139 passes. 1234 has only four digits, 02139-4307 has extra characters after the fifth digit, and A2139 starts with a letter.",
+    "acronyms": [
+      "RegEx"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "Phone numbers are stored as text such as (555) 123-4567. Which RegEx puts only the area code (555) in its capture group?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "^(\\d{3})"
+        },
+        {
+          "id": "b",
+          "text": "(\\d{4})$"
+        },
+        {
+          "id": "c",
+          "text": "^\\((\\d{3})\\)"
+        },
+        {
+          "id": "d",
+          "text": "\\)\\s(\\d{3})"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "^\\((\\d{3})\\) matches the opening parenthesis, captures the three digits inside, and matches the closing parenthesis. ^(\\d{3}) fails because the string starts with a parenthesis, (\\d{4})$ captures the last four digits, and \\)\\s(\\d{3}) captures the exchange 123 rather than the area code.",
+    "acronyms": [
+      "RegEx"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "City names in a survey export contain irregular spacing, such as \"New   York\". Which RegEx replacement leaves exactly one space between words?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace \\s with an empty string"
+        },
+        {
+          "id": "b",
+          "text": "Replace ^\\s+ with an empty string"
+        },
+        {
+          "id": "c",
+          "text": "Replace \\s$ with an empty string"
+        },
+        {
+          "id": "d",
+          "text": "Replace \\s+ with a single space"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Replacing \\s+ with one space collapses each run of whitespace into a single space. Replacing \\s with nothing joins the words into NewYork, ^\\s+ only removes leading whitespace, and \\s$ only removes one trailing character.",
+    "acronyms": [
+      "RegEx"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "Postal codes such as 02139 appear as 2139 after a file is loaded, because the column was read as an integer. Which transformation fixes the column?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Convert the column to a text data type"
+        },
+        {
+          "id": "b",
+          "text": "Scale the column to a range of 0 to 1"
+        },
+        {
+          "id": "c",
+          "text": "Bin the column into regional groups"
+        },
+        {
+          "id": "d",
+          "text": "Merge the column with a postal lookup table"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Postal codes are identifiers, not quantities, so they should be stored as text to keep leading zeros. Scaling and binning treat the codes as numbers, and merging adds columns without changing the data type.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A revenue column imported from a CSV file holds text values such as \"$1,250.00\", and a SUM over it returns an error. What should the analyst do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Convert the column to an integer data type and sum again"
+        },
+        {
+          "id": "b",
+          "text": "Strip the dollar signs and commas, then cast to decimal"
+        },
+        {
+          "id": "c",
+          "text": "Bin the values into revenue bands before summing"
+        },
+        {
+          "id": "d",
+          "text": "Impute the values with the column median"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The values are text because of the dollar sign and thousands separators; stripping them and converting to a decimal type makes the column summable. A direct cast to integer fails on the dollar sign and commas and would drop the cents, binning loses precision without fixing the type, and imputation is for missing values, not mistyped ones.",
+    "acronyms": [
+      "CSV"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "A marketing team wants customer ages grouped into ranges such as 18-24, 25-34 and 35-44 for a report. Which technique does this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Scaling"
+        },
+        {
+          "id": "b",
+          "text": "Parsing"
+        },
+        {
+          "id": "c",
+          "text": "Binning"
+        },
+        {
+          "id": "d",
+          "text": "Merging"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Binning (also called bucketing or discretization) places continuous values into labeled ranges. Scaling rescales numbers without grouping them, parsing breaks strings into parts, and merging combines data sets.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "Annual incomes in a data set range from 0 to 100,000. An analyst creates four equal-width bins. What is the width of each bin?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "20,000"
+        },
+        {
+          "id": "b",
+          "text": "25,000"
+        },
+        {
+          "id": "c",
+          "text": "33,333"
+        },
+        {
+          "id": "d",
+          "text": "50,000"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Equal-width bins divide the range evenly: (100,000 - 0) / 4 = 25,000. 20,000 would give five bins, 33,333 three bins, and 50,000 two bins.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "Order values are heavily right-skewed, and an analyst wants each bin to contain about the same number of orders. Which approach fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Equal-frequency binning"
+        },
+        {
+          "id": "b",
+          "text": "Equal-width binning across the full range"
+        },
+        {
+          "id": "c",
+          "text": "Min-max scaling"
+        },
+        {
+          "id": "d",
+          "text": "Z-score standardization"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Equal-frequency (quantile) binning sets bin edges at quantiles so each bin holds a similar count. With skewed data, equal-width bins would leave most orders in the first bin, and min-max scaling and z-score standardization rescale values without grouping them.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "A retailer adds census income and population figures for each postal code to its customer records to give more context for analysis. Which technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Deletion"
+        },
+        {
+          "id": "b",
+          "text": "Augmentation"
+        },
+        {
+          "id": "c",
+          "text": "Exploding"
+        },
+        {
+          "id": "d",
+          "text": "Parsing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Data augmentation enriches existing records with additional attributes, often from external sources. Deletion removes data, exploding splits list values into rows, and parsing splits strings into components.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A team has only 500 labeled product photos for training a model, so it creates extra training examples by rotating and flipping the existing images. Which technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Imputation"
+        },
+        {
+          "id": "b",
+          "text": "Standardization"
+        },
+        {
+          "id": "c",
+          "text": "Augmentation"
+        },
+        {
+          "id": "d",
+          "text": "Binning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Creating modified copies of existing examples to enlarge a training set is data augmentation. Imputation fills missing values, standardization makes values consistent or rescales them, and binning groups values into ranges.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "A Tags column holds values such as \"red;blue;green\" in a single cell, and the analyst needs one row per tag for counting. Which technique does this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Appending"
+        },
+        {
+          "id": "b",
+          "text": "Scaling"
+        },
+        {
+          "id": "c",
+          "text": "Imputation"
+        },
+        {
+          "id": "d",
+          "text": "Exploding"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Exploding splits a multi-valued cell into separate rows, one per value, while repeating the other columns. Appending stacks data sets, scaling rescales numbers, and imputation fills missing values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A JSON record contains id 7 and skills [\"SQL\", \"Python\"]. What results after the skills field is exploded?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Two rows, each with id 7 and one skill"
+        },
+        {
+          "id": "b",
+          "text": "One row with new Skill1 and Skill2 columns"
+        },
+        {
+          "id": "c",
+          "text": "One row with the skills joined into one string"
+        },
+        {
+          "id": "d",
+          "text": "Two rows, one with id 7 and one with a null id"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Exploding produces one row per array element and repeats the other fields, so both rows keep id 7. Spreading values into Skill1 and Skill2 columns is a pivot or split, joining them is concatenation, and exploding does not blank out the other fields.",
+    "acronyms": [
+      "JSON",
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which technique rescales a numeric feature so its values fall between 0 and 1?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Z-score standardization"
+        },
+        {
+          "id": "b",
+          "text": "Min-max scaling"
+        },
+        {
+          "id": "c",
+          "text": "Equal-width binning"
+        },
+        {
+          "id": "d",
+          "text": "Exploding"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Min-max scaling maps the minimum to 0 and the maximum to 1. Z-score standardization centers values on 0 with no fixed bounds, binning groups values into ranges, and exploding splits lists into rows.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A column has a minimum of 20 and a maximum of 120. After min-max scaling, what is the scaled value of 70?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "0.58"
+        },
+        {
+          "id": "b",
+          "text": "0.70"
+        },
+        {
+          "id": "c",
+          "text": "0.50"
+        },
+        {
+          "id": "d",
+          "text": "0.36"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Min-max scaling uses (x - min) / (max - min) = (70 - 20) / (120 - 20) = 0.50. 0.58 divides 70 by the maximum only, 0.70 divides by 100 without subtracting the minimum, and 0.36 adds the minimum to the denominator instead of subtracting it: 50 / 140.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "Before running a distance-based clustering algorithm, an analyst scales annual income (values in the tens of thousands) and age (values under 100). What is the main reason?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To remove outliers from both columns"
+        },
+        {
+          "id": "b",
+          "text": "To give both columns the same data type"
+        },
+        {
+          "id": "c",
+          "text": "To reduce the number of rows the algorithm processes"
+        },
+        {
+          "id": "d",
+          "text": "To keep income's larger range from dominating distances"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Distance calculations are driven by the feature with the largest numeric range, so unscaled income would outweigh age. Scaling does not remove outliers, change data types or reduce the row count.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "Test scores have a mean of 50 and a standard deviation of 10. What is the z-score of a score of 65?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "1.5"
+        },
+        {
+          "id": "b",
+          "text": "0.65"
+        },
+        {
+          "id": "c",
+          "text": "15"
+        },
+        {
+          "id": "d",
+          "text": "1.3"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The z-score is (65 - 50) / 10 = 1.5. 0.65 divides the raw score by 100, 15 is the raw difference before dividing by the standard deviation, and 1.3 divides 65 by 50.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A Department column contains \"Acct\", \"Acctg.\" and \"Accounting\" for the same department. Which technique should the analyst apply?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Binning the values into regions"
+        },
+        {
+          "id": "b",
+          "text": "Standardizing the values to one agreed name"
+        },
+        {
+          "id": "c",
+          "text": "Exploding the values into rows"
+        },
+        {
+          "id": "d",
+          "text": "Augmenting the values with census data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Standardization maps every variant to one agreed form, such as Accounting, so grouping and counting are correct. Binning, exploding and augmentation do not resolve inconsistent spellings.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "Order dates arrive as \"2025-03-04\", \"03/04/2025\" and \"4 Mar 2025\". All mean March 4, 2025. Which form should the analyst convert them to so that they are unambiguous and sort correctly as text?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "03/04/2025"
+        },
+        {
+          "id": "b",
+          "text": "04/03/2025"
+        },
+        {
+          "id": "c",
+          "text": "2025-03-04"
+        },
+        {
+          "id": "d",
+          "text": "March 4, 2025"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The year-first form 2025-03-04 puts year, then month, then day, so text sorting matches date order and day/month confusion disappears. 03/04/2025 and 04/03/2025 are ambiguous between regions and sort by month or day first, and March 4, 2025 sorts alphabetically by month name.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which technique replaces missing values with substitute estimates such as the mean or the most frequent value?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Deletion"
+        },
+        {
+          "id": "b",
+          "text": "Parsing"
+        },
+        {
+          "id": "c",
+          "text": "Appending"
+        },
+        {
+          "id": "d",
+          "text": "Imputation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Imputation fills gaps with estimated values so records can be kept. Deletion removes the incomplete records, parsing splits strings, and appending stacks data sets.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "Household income is strongly right-skewed and about 3% of values are missing. Which value is the best simple choice for imputing them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The median income"
+        },
+        {
+          "id": "b",
+          "text": "The mean income"
+        },
+        {
+          "id": "c",
+          "text": "The maximum income"
+        },
+        {
+          "id": "d",
+          "text": "An income of zero"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The median is resistant to skew and extreme values, so it represents a typical household better. The mean is pulled up by high earners, the maximum is extreme, and zero would invent a false value.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A categorical PaymentMethod column (Card, Cash, Voucher) is blank in 2% of rows. Which simple imputation fits this column?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The mean of the column"
+        },
+        {
+          "id": "b",
+          "text": "The mode of the column"
+        },
+        {
+          "id": "c",
+          "text": "Linear interpolation"
+        },
+        {
+          "id": "d",
+          "text": "The median of the column"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "For categorical data the mode, the most frequent category, is the usual simple imputation. A mean, a median and interpolation need numeric or ordered values, so none fits unordered categories.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "A sensor logs temperature every minute. Values change smoothly, and a few isolated minutes are missing. Which approach fills the gaps most accurately?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fill with the mean of the whole year"
+        },
+        {
+          "id": "b",
+          "text": "Delete every day that contains a gap"
+        },
+        {
+          "id": "c",
+          "text": "Interpolate between neighboring readings"
+        },
+        {
+          "id": "d",
+          "text": "Fill with the most common reading"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Because readings change smoothly over time, interpolating between the readings on either side of a gap gives the closest estimate. A yearly mean or the mode ignores the local trend, and deleting whole days discards good data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A Name column stores values such as \"Lopez, Maria\". The analyst splits it at the comma into LastName and FirstName columns. Which technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Binning"
+        },
+        {
+          "id": "b",
+          "text": "Appending"
+        },
+        {
+          "id": "c",
+          "text": "Augmentation"
+        },
+        {
+          "id": "d",
+          "text": "Parsing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Parsing breaks a string into its meaningful parts, here by splitting on a delimiter. Binning groups numbers, appending stacks rows, and augmentation adds new data from elsewhere.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A Timestamp column holds text such as \"2025-06-14T09:30:00Z\", and an analyst needs the hour of day. What is the best approach?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Parse the text as a datetime, then extract the hour"
+        },
+        {
+          "id": "b",
+          "text": "Take the first two characters of the text"
+        },
+        {
+          "id": "c",
+          "text": "Convert the text directly to an integer"
+        },
+        {
+          "id": "d",
+          "text": "Bin the text values into quarter-year groups"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Parsing the string into a datetime value lets the analyst extract the hour reliably. The first two characters are \"20\" from the year, the string cannot be converted to an integer as-is, and quarter bins do not give the hour.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst combines a Customers table and an Orders table side by side, matching rows on CustomerID. Which technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Appending"
+        },
+        {
+          "id": "b",
+          "text": "Merging"
+        },
+        {
+          "id": "c",
+          "text": "Exploding"
+        },
+        {
+          "id": "d",
+          "text": "Binning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Merging (joining) combines columns from two tables by matching a key. Appending stacks rows from data sets with the same columns, exploding splits lists into rows, and binning groups values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst merges Customers with Orders and must keep every customer, including those with no orders. Which join should be used?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Inner join on CustomerID"
+        },
+        {
+          "id": "b",
+          "text": "Right join from Customers to Orders"
+        },
+        {
+          "id": "c",
+          "text": "Left join from Customers to Orders"
+        },
+        {
+          "id": "d",
+          "text": "Cross join of the two tables"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A left join keeps every row from the left table, Customers, and fills order columns with nulls where no match exists. An inner join drops customers without orders, a right join keeps all orders instead, and a cross join pairs every customer with every order.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "Sales data arrives as twelve monthly files with the same columns, and the analyst stacks them into one table. Which technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Merging"
+        },
+        {
+          "id": "b",
+          "text": "Parsing"
+        },
+        {
+          "id": "c",
+          "text": "Exploding"
+        },
+        {
+          "id": "d",
+          "text": "Appending"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Appending (a union) adds the rows of data sets that share a structure. Merging joins columns on a key, parsing splits strings, and exploding turns list values into rows.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "January's file names a column CustID and February's names it Customer_ID. What should the analyst do before appending the files?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rename the columns to one common name"
+        },
+        {
+          "id": "b",
+          "text": "Merge the files on the CustID column"
+        },
+        {
+          "id": "c",
+          "text": "Explode the identifier columns into rows"
+        },
+        {
+          "id": "d",
+          "text": "Impute the null identifiers after appending"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Appending matches columns by name, so mismatched names would create two half-empty columns; aligning the schema first prevents this. Merging joins rather than stacks, exploding splits list values and does not align names, and imputing after the fact hides a structural problem.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "Two regional sales tables have the same columns, and identical rows can be genuine separate transactions. Which SQL operator appends them without losing rows?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "UNION"
+        },
+        {
+          "id": "b",
+          "text": "UNION ALL"
+        },
+        {
+          "id": "c",
+          "text": "INNER JOIN"
+        },
+        {
+          "id": "d",
+          "text": "INTERSECT"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "UNION ALL stacks all rows and keeps duplicates, so genuine repeat transactions survive. UNION removes duplicate rows, INNER JOIN combines columns on matches, and INTERSECT returns only rows found in both tables.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst adds a Profit column calculated as Revenue minus Cost for every row. What type of column is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A primary key"
+        },
+        {
+          "id": "b",
+          "text": "A parsed field"
+        },
+        {
+          "id": "c",
+          "text": "A derived variable"
+        },
+        {
+          "id": "d",
+          "text": "An imputed value"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A derived variable, or calculated field, is computed from existing columns. A primary key identifies rows, a parsed field comes from splitting a string, and an imputed value replaces a missing one.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO situations justify deleting rows from a sales table?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Exact duplicate rows created by loading the same file twice"
+        },
+        {
+          "id": "b",
+          "text": "Test records left in the table after UAT finished"
+        },
+        {
+          "id": "c",
+          "text": "Rows where the optional middle name is blank"
+        },
+        {
+          "id": "d",
+          "text": "Rows with unusually high but verified sales"
+        },
+        {
+          "id": "e",
+          "text": "Rows from the region with the fewest customers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Duplicate loads and leftover test records are not real transactions, so deleting them improves accuracy. A blank optional field is not an error, verified high sales are valid data, and deleting a small region's rows would bias the analysis.",
+    "acronyms": [
+      "UAT"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-033",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO findings are good reasons to delete a column before analysis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is 95% empty and no requirement uses it"
+        },
+        {
+          "id": "b",
+          "text": "It is an exact copy of another column"
+        },
+        {
+          "id": "c",
+          "text": "It contains a few outliers"
+        },
+        {
+          "id": "d",
+          "text": "It holds categorical values"
+        },
+        {
+          "id": "e",
+          "text": "It mixes upper- and lowercase text"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "A mostly empty, unused column and an exact duplicate add nothing but noise. Outliers, categorical values and inconsistent case are handled by investigation, encoding or standardization rather than deletion.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-034",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO values match the RegEx ^[a-z]{2}-\\d{4}$?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "tx-0042"
+        },
+        {
+          "id": "b",
+          "text": "tx-042"
+        },
+        {
+          "id": "c",
+          "text": "ny-12345"
+        },
+        {
+          "id": "d",
+          "text": "ca-9001"
+        },
+        {
+          "id": "e",
+          "text": "c-a9001"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "The pattern needs two lowercase letters, a hyphen and exactly four digits. tx-042 has only three digits, ny-12345 has five digits, and c-a9001 has only one letter before the hyphen.",
+    "acronyms": [
+      "RegEx"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-035",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 1,
+    "stem": "A data set has blank values in several columns. Which TWO techniques address the blanks directly?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Imputation"
+        },
+        {
+          "id": "b",
+          "text": "Deletion"
+        },
+        {
+          "id": "c",
+          "text": "Exploding"
+        },
+        {
+          "id": "d",
+          "text": "Appending"
+        },
+        {
+          "id": "e",
+          "text": "Scaling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Blanks are either filled with estimates (imputation) or removed by deleting the affected records. Exploding splits lists into rows, appending stacks data sets, and scaling rescales existing numbers.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-036",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO columns are derived variables?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Age calculated from BirthDate and today's date"
+        },
+        {
+          "id": "b",
+          "text": "LineTotal calculated as Quantity times UnitPrice"
+        },
+        {
+          "id": "c",
+          "text": "CustomerID loaded from the source system"
+        },
+        {
+          "id": "d",
+          "text": "EmailAddress entered by the customer"
+        },
+        {
+          "id": "e",
+          "text": "ProductName copied from the catalog"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Age and LineTotal are computed from other fields, which makes them derived variables. CustomerID, EmailAddress and ProductName are stored as received.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-037",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "After merging Orders with a Products table, total revenue is far higher than the expected figure. Which TWO causes are most likely?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Products contains duplicate rows for some ProductID values"
+        },
+        {
+          "id": "b",
+          "text": "The tables were joined on Category instead of ProductID"
+        },
+        {
+          "id": "c",
+          "text": "A left join was used where an inner join was planned"
+        },
+        {
+          "id": "d",
+          "text": "Products is missing a few discontinued items"
+        },
+        {
+          "id": "e",
+          "text": "Revenue was converted from text to decimal first"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Duplicate keys or a join on a non-unique column such as Category match each order to several rows, so revenue is counted more than once. A left join keeps unmatched orders once rather than duplicating them, missing products cause nulls rather than inflation, and a correct type conversion does not change totals.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-038",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are data type conversions?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Casting the text \"2025-01-31\" to a date"
+        },
+        {
+          "id": "b",
+          "text": "Changing the text \"42\" to an integer"
+        },
+        {
+          "id": "c",
+          "text": "Splitting the text \"Lopez, Maria\" into two columns"
+        },
+        {
+          "id": "d",
+          "text": "Dividing each value by the column maximum"
+        },
+        {
+          "id": "e",
+          "text": "Stacking two tables with the same columns"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Casting text to a date and text to an integer change the data type. Splitting the text is parsing, dividing by the maximum is scaling, and stacking tables is appending.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-039",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "stem": "A Country column contains \" germany\", \"Germany \" and \"Deutschland\". Which THREE steps help standardize it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Trim leading and trailing whitespace"
+        },
+        {
+          "id": "b",
+          "text": "Apply one consistent letter case"
+        },
+        {
+          "id": "c",
+          "text": "Map variants to one code using a lookup table"
+        },
+        {
+          "id": "d",
+          "text": "Bin the countries by population"
+        },
+        {
+          "id": "e",
+          "text": "Explode the values into separate rows"
+        },
+        {
+          "id": "f",
+          "text": "Impute the column with its mode"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Trimming, consistent case and a lookup of known variants together turn every form into one value such as one standard country code. Binning groups numbers, exploding splits lists, and imputing the mode would overwrite valid values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-mcq-040",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO statements about z-score standardization are true?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The result has a mean of 0 and a standard deviation of 1"
+        },
+        {
+          "id": "b",
+          "text": "Values below the mean become negative"
+        },
+        {
+          "id": "c",
+          "text": "The results fall between 0 and 1"
+        },
+        {
+          "id": "d",
+          "text": "It removes outliers from the column"
+        },
+        {
+          "id": "e",
+          "text": "It makes the distribution normal"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Subtracting the mean and dividing by the standard deviation gives mean 0 and standard deviation 1, and values below the mean become negative. Bounding to 0-1 is min-max scaling, outliers remain as large z-scores, and the shape of the distribution is unchanged.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "An analyst at Marlow Retail is preparing a customer table for a segmentation model. Choose the transformation for each column.",
+    "payload": {
+      "fields": [
+        {
+          "id": "age",
+          "label": "age: report customers in bands such as 18–24 and 25–34",
+          "options": [
+            {
+              "id": "bin",
+              "text": "Binning"
+            },
+            {
+              "id": "scale",
+              "text": "Scaling"
+            },
+            {
+              "id": "explode",
+              "text": "Exploding"
+            }
+          ]
+        },
+        {
+          "id": "tags",
+          "label": "interests: one cell holds \"hiking;cycling;camping\" and each interest needs its own row",
+          "options": [
+            {
+              "id": "explode",
+              "text": "Exploding"
+            },
+            {
+              "id": "append",
+              "text": "Appending"
+            },
+            {
+              "id": "bin",
+              "text": "Binning"
+            }
+          ]
+        },
+        {
+          "id": "income",
+          "label": "income: rescale to the range 0 to 1 so it does not dominate smaller-scale columns",
+          "options": [
+            {
+              "id": "minmax",
+              "text": "Min-max scaling"
+            },
+            {
+              "id": "z",
+              "text": "Z-score standardization"
+            },
+            {
+              "id": "round",
+              "text": "Rounding to thousands"
+            }
+          ]
+        },
+        {
+          "id": "visits",
+          "label": "store_visits: 4% of values are missing and the column is right-skewed",
+          "options": [
+            {
+              "id": "median",
+              "text": "Impute the median"
+            },
+            {
+              "id": "mean",
+              "text": "Impute the mean"
+            },
+            {
+              "id": "zero",
+              "text": "Replace with 0"
+            }
+          ]
+        },
+        {
+          "id": "name",
+          "label": "full_name: split \"Ortiz, Maria\" into last_name and first_name",
+          "options": [
+            {
+              "id": "parse",
+              "text": "Parsing"
+            },
+            {
+              "id": "merge",
+              "text": "Merging"
+            },
+            {
+              "id": "augment",
+              "text": "Augmentation"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "age": "bin",
+        "tags": "explode",
+        "income": "minmax",
+        "visits": "median",
+        "name": "parse"
+      }
+    },
+    "explanation": "Bands of ages are bins, not scaling, and a delimited list becomes rows by exploding, not appending. A 0-to-1 range is min-max scaling, while a z-score centers on 0 with no fixed range, and rounding to thousands changes nothing about the spread. The median resists skew better than the mean, and zero would invent a real value. Splitting one text field into parts is parsing; merging combines data sets and augmentation adds outside data.",
+    "partExplanations": {
+      "age": "Binning groups a continuous variable into ranges.",
+      "tags": "Exploding turns each item in a list cell into its own row.",
+      "income": "Min-max scaling maps the smallest value to 0 and the largest to 1.",
+      "visits": "The median is not pulled by the long right tail, unlike the mean.",
+      "name": "Parsing splits one string into structured parts at the comma."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-terminal-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "Phone numbers in a contact export use several formats. Review the file, then complete each step to standardize them to 10 digits.",
+    "payload": {
+      "output": [
+        "$ cat phones.txt",
+        "(555) 201-3344",
+        "555.201.7710",
+        "555 201 9082",
+        "+1 555-201-6650"
+      ],
+      "steps": [
+        {
+          "id": "clean",
+          "label": "Type a command that prints phones.txt with every non-digit character removed from each line"
+        },
+        {
+          "id": "regex",
+          "label": "In pandas, which RegEx pattern passed to str.replace(pattern, '', regex=True) removes every non-digit?",
+          "options": [
+            {
+              "id": "D",
+              "text": "\\D"
+            },
+            {
+              "id": "d",
+              "text": "\\d"
+            },
+            {
+              "id": "s",
+              "text": "\\s"
+            },
+            {
+              "id": "w",
+              "text": "[a-z]"
+            }
+          ]
+        },
+        {
+          "id": "eleven",
+          "label": "The last line becomes 15552016650 (11 digits). Choose the best next action",
+          "options": [
+            {
+              "id": "strip1",
+              "text": "Remove a leading 1 from any 11-digit result"
+            },
+            {
+              "id": "dropall",
+              "text": "Delete every row that had a plus sign"
+            },
+            {
+              "id": "last",
+              "text": "Remove the last digit from any 11-digit result"
+            },
+            {
+              "id": "keep",
+              "text": "Keep 11-digit values as they are"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "clean": [
+          "sed 's/[^0-9]//g' phones.txt",
+          "sed \"s/[^0-9]//g\" phones.txt",
+          "sed -E 's/[^0-9]//g' phones.txt",
+          "sed -e 's/[^0-9]//g' phones.txt",
+          "sed 's/[^[:digit:]]//g' phones.txt",
+          "sed 's/[^0-9]//g' ./phones.txt",
+          "cat phones.txt | sed 's/[^0-9]//g'",
+          "tr -cd '0-9\\n' < phones.txt",
+          "tr -dc '0-9\\n' < phones.txt",
+          "tr -cd '[:digit:]\\n' < phones.txt",
+          "cat phones.txt | tr -cd '0-9\\n'",
+          "cat phones.txt | tr -dc '0-9\\n'"
+        ],
+        "regex": [
+          "D"
+        ],
+        "eleven": [
+          "strip1"
+        ]
+      }
+    },
+    "explanation": "A substitution that replaces every character outside 0–9 with nothing leaves only digits, which is what [^0-9] in sed and \\D in pandas match. \\d would remove the digits instead, and \\s or [a-z] would leave punctuation. The 11-digit value carries the country code 1 at the front, so removing it gives the standard 10 digits; deleting rows or the last digit loses or corrupts data.",
+    "partExplanations": {
+      "clean": "sed 's/[^0-9]//g' phones.txt replaces every non-digit with nothing on each line.",
+      "regex": "\\D is the RegEx class for any character that is not a digit.",
+      "eleven": "The leading 1 is the country code, so dropping it leaves the 10-digit number."
+    },
+    "acronyms": [
+      "RegEx"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-terminal-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "An analyst has loaded an orders file into a pandas DataFrame named df. Review the session, then complete each step.",
+    "payload": {
+      "output": [
+        ">>> df.dtypes",
+        "order_id        int64",
+        "order_date     object",
+        "amount         object",
+        ">>> df['amount'].head(3).tolist()",
+        "['1,250.00', '980.50', '2,010.00']",
+        ">>> df['amount'].isna().sum()",
+        "12"
+      ],
+      "steps": [
+        {
+          "id": "date",
+          "label": "Type a statement that converts the order_date column to a datetime type in place"
+        },
+        {
+          "id": "amount",
+          "label": "Why is amount stored as text, and what fixes it?",
+          "options": [
+            {
+              "id": "comma",
+              "text": "Thousands separators; strip commas, then convert to float"
+            },
+            {
+              "id": "decimal",
+              "text": "Decimal points; round every value to whole numbers"
+            },
+            {
+              "id": "nulls",
+              "text": "The 12 missing values; drop the amount column"
+            },
+            {
+              "id": "int",
+              "text": "Too many digits; convert the column to int64"
+            }
+          ]
+        },
+        {
+          "id": "impute",
+          "label": "Amounts are strongly right-skewed. Which value should replace the 12 missing amounts?",
+          "options": [
+            {
+              "id": "median",
+              "text": "The median amount"
+            },
+            {
+              "id": "mean",
+              "text": "The mean amount"
+            },
+            {
+              "id": "max",
+              "text": "The largest amount"
+            },
+            {
+              "id": "zero",
+              "text": "A value of zero"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "date": [
+          "df['order_date'] = pd.to_datetime(df['order_date'])",
+          "df[\"order_date\"] = pd.to_datetime(df[\"order_date\"])",
+          "df['order_date']=pd.to_datetime(df['order_date'])",
+          "df[\"order_date\"]=pd.to_datetime(df[\"order_date\"])",
+          "df['order_date'] = pd.to_datetime(df.order_date)",
+          "df[\"order_date\"] = pd.to_datetime(df.order_date)",
+          "df.order_date = pd.to_datetime(df.order_date)",
+          "df['order_date'] = df['order_date'].astype('datetime64[ns]')",
+          "df = df.astype({'order_date': 'datetime64[ns]'})",
+          "df['order_date'] = pd.to_datetime(df['order_date'], errors='coerce')",
+          "df[\"order_date\"] = pd.to_datetime(df[\"order_date\"], errors=\"coerce\")",
+          "df['order_date'] = pd.to_datetime(df['order_date']).copy()"
+        ],
+        "amount": [
+          "comma"
+        ],
+        "impute": [
+          "median"
+        ]
+      }
+    },
+    "explanation": "pd.to_datetime parses text dates into a datetime column so they sort and filter correctly. The commas in values such as 1,250.00 make pandas read amount as text, so they must be stripped before converting to float; rounding, forcing integers or dropping the column ignores the cause. With a right skew, the median is a more typical value than the mean, and zero or the maximum would distort totals.",
+    "partExplanations": {
+      "date": "pd.to_datetime converts the text column, and assigning back to df['order_date'] keeps the change.",
+      "amount": "Removing the thousands separators lets the strings convert to float.",
+      "impute": "The median is not pulled up by the few very large orders."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-data-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "An analyst at Tallis Coffee is transforming monthly store sales before modeling. Use the table to answer each question.",
+    "payload": {
+      "caption": "Monthly sales by store (thousands of dollars)",
+      "columns": [
+        "Store",
+        "Sales"
+      ],
+      "rows": [
+        [
+          "A",
+          "40"
+        ],
+        [
+          "B",
+          "70"
+        ],
+        [
+          "C",
+          "100"
+        ],
+        [
+          "D",
+          "85"
+        ],
+        [
+          "E",
+          "55"
+        ],
+        [
+          "F",
+          "70"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "b",
+          "label": "Min-max scaled value for store B",
+          "options": [
+            {
+              "id": "0.5",
+              "text": "0.5"
+            },
+            {
+              "id": "0.7",
+              "text": "0.7"
+            },
+            {
+              "id": "0.3",
+              "text": "0.3"
+            }
+          ]
+        },
+        {
+          "id": "d",
+          "label": "Min-max scaled value for store D",
+          "options": [
+            {
+              "id": "0.75",
+              "text": "0.75"
+            },
+            {
+              "id": "0.85",
+              "text": "0.85"
+            },
+            {
+              "id": "0.45",
+              "text": "0.45"
+            }
+          ]
+        },
+        {
+          "id": "medium",
+          "label": "Stores in the Medium bin (60 to 89)",
+          "options": [
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "3",
+              "text": "3"
+            },
+            {
+              "id": "4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "centered",
+          "label": "Store E's sales minus the mean (a derived column)",
+          "options": [
+            {
+              "id": "-15",
+              "text": "−15"
+            },
+            {
+              "id": "-12.5",
+              "text": "−12.5"
+            },
+            {
+              "id": "15",
+              "text": "15"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "b": "0.5",
+        "d": "0.75",
+        "medium": "3",
+        "centered": "-15"
+      }
+    },
+    "explanation": "Min-max scaling uses (x − min) ÷ (max − min) with min 40 and max 100, a range of 60. Stores B, D and F (70, 85 and 70) fall in the 60 to 89 bin. The mean is 420 ÷ 6 = 70, so store E's centered value is 55 − 70 = −15.",
+    "partExplanations": {
+      "b": "(70 − 40) ÷ 60 = 0.5.",
+      "d": "(85 − 40) ÷ 60 = 0.75.",
+      "medium": "B (70), D (85) and F (70) lie from 60 to 89; A and E are lower and C is higher.",
+      "centered": "Mean = (40 + 70 + 100 + 85 + 55 + 70) ÷ 6 = 70; 55 − 70 = −15."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-order-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "Three regional sales files must become one clean table with a revenue band for each order. Put the cleansing steps in order.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s1",
+          "text": "Give the three files the same column names and data types"
+        },
+        {
+          "id": "s2",
+          "text": "Append the three files into one table"
+        },
+        {
+          "id": "s3",
+          "text": "Delete exact duplicate orders"
+        },
+        {
+          "id": "s4",
+          "text": "Impute missing quantities with the median of the deduplicated table"
+        },
+        {
+          "id": "s5",
+          "text": "Derive revenue as quantity × unit price"
+        },
+        {
+          "id": "s6",
+          "text": "Bin revenue into low, medium and high bands"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "Files can only be appended once their columns line up, and duplicates that span files appear only after appending. Duplicates are removed before imputing so they do not bias the median. Revenue depends on complete quantities, and the bands depend on revenue.",
+    "partExplanations": {
+      "s1": "Appending needs matching column names and types.",
+      "s2": "Appending stacks the rows of all three files.",
+      "s3": "Duplicates across files are visible only in the combined table.",
+      "s4": "Imputing after deduplication keeps repeated rows from skewing the median.",
+      "s5": "The derived revenue needs the imputed quantities.",
+      "s6": "Bins are applied to the revenue column, so they come last."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-3-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each cleansing task into the technique it uses.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "impute",
+          "text": "Imputation"
+        },
+        {
+          "id": "parse",
+          "text": "Parsing"
+        },
+        {
+          "id": "bin",
+          "text": "Binning"
+        },
+        {
+          "id": "std",
+          "text": "Standardization"
+        },
+        {
+          "id": "explode",
+          "text": "Exploding"
+        }
+      ],
+      "items": [
+        {
+          "id": "age",
+          "text": "Fill blank ages with the median age"
+        },
+        {
+          "id": "ts",
+          "text": "Split 2026-10-30T14:05 into a date field and a time field"
+        },
+        {
+          "id": "income",
+          "text": "Group income into under 50k, 50k–100k and over 100k"
+        },
+        {
+          "id": "street",
+          "text": "Change St., Str and Street to Street"
+        },
+        {
+          "id": "list",
+          "text": "Turn a cell listing three product codes into three rows"
+        },
+        {
+          "id": "ship",
+          "text": "Fill missing ship dates with order date plus average lead time"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "age": "impute",
+        "ts": "parse",
+        "income": "bin",
+        "street": "std",
+        "list": "explode",
+        "ship": "impute"
+      }
+    },
+    "explanation": "Filling gaps with an estimate is imputation, whether from a median or a calculated date. Splitting one string into fields is parsing, grouping a number into ranges is binning, and making variant spellings consistent is standardization. Turning a list in one cell into rows is exploding.",
+    "partExplanations": {
+      "age": "The median age replaces missing values, which is imputation.",
+      "ts": "Splitting the timestamp string into parts is parsing.",
+      "income": "Income ranges are bins.",
+      "street": "Mapping variants to one spelling standardizes the format.",
+      "list": "One row per listed code is exploding.",
+      "ship": "An estimated date fills the gap, so this is imputation too."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]
