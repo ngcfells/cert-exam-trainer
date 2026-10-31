@@ -14,7 +14,7 @@
     "test:e2e-dev": "playwright test -c playwright.dev.config.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run build:single && npm run build:e2e && npm run test:e2e",
+    "check": "npm run lint && npm run typecheck && npm run build && npm run build:single && cross-env CHECK=1 npm run test && npm run build:e2e && npm run test:e2e",
     "md-to-pack": "vite-node scripts/md-to-pack.ts --",
     "draft:ollama": "vite-node scripts/draft-ollama.ts --"
   },
@@ -46,7 +46,9 @@
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.72.1",
     "vite": "^6.4.5",
+    "vite-plugin-pwa": "^1.2.0",
     "vite-plugin-singlefile": "^2.3.4",
-    "vitest": "^3.2.7"
+    "vitest": "^3.2.7",
+    "workbox-window": "^7.4.1"
   }
 }
