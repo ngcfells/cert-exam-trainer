@@ -214,7 +214,7 @@ Expansions for non-official acronyms are written or verified by us.
 ## 12. Content pipeline (per exam)
 
 1. **Objectives:** fetch CompTIA's public objectives page and PDF, then extract domains, objectives, weightings, exam facts and the acronym list into exam metadata.
-2. **Drafting:** a local **Ollama** model drafts MCQs and PBQs per objective in our JSON schema. *This step is trialled on about 10 items first. If the quality is poor, drafting moves to Claude subagents using the strongest current model.*
+2. **Drafting:** a local **Ollama** model drafts MCQs and PBQs per objective in our JSON schema. *This step is trialled on about 10 items first. If the quality is poor, drafting moves to Claude subagents using the strongest current model.* **Trial outcome (chunk 8):** the Ollama trial met the bar only at the margin (8 of 10 keys acceptable, about 13 minutes per 10 items), so the Data+ bank was drafted by Claude subagents, then reviewed by two independent reviewers per domain.
 3. **Review:** Claude reviews every draft for accuracy and alignment with its objective, and writes or fixes the explanations. Our answers are determined independently.
 4. **Approval:** the owner approves or edits each item in the **review tool**. This is a dev-only page that is never shipped. It shows each draft rendered as in the exam, with Approve, Edit and Reject buttons, and writes the results back to the bank files through a small Node helper script. The status moves from draft to reviewed to approved.
 5. **Automated checks:**
