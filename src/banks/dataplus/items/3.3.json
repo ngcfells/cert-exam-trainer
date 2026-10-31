@@ -2110,8 +2110,16 @@
     "payload": {
       "steps": [
         {
+          "id": "s5",
+          "text": "Confirm the corrected figure with the manager and document the fix"
+        },
+        {
           "id": "s1",
           "text": "Ask the manager for the exact figure, filters and date range she used"
+        },
+        {
+          "id": "s4",
+          "text": "Trace and correct the cause, such as a stale refresh or a wrong filter"
         },
         {
           "id": "s2",
@@ -2120,14 +2128,6 @@
         {
           "id": "s3",
           "text": "Validate the figure against the source system for the same period"
-        },
-        {
-          "id": "s4",
-          "text": "Trace and correct the cause, such as a stale refresh or a wrong filter"
-        },
-        {
-          "id": "s5",
-          "text": "Confirm the corrected figure with the manager and document the fix"
         }
       ]
     },
@@ -2165,20 +2165,20 @@
     "payload": {
       "steps": [
         {
-          "id": "s1",
-          "text": "Check the server name, port and credentials in the connection settings"
+          "id": "s4",
+          "text": "Search the vendor community for the exact error message from the log"
         },
         {
-          "id": "s2",
-          "text": "Test network reachability to the database host"
+          "id": "s1",
+          "text": "Check the server name, port and credentials in the connection settings"
         },
         {
           "id": "s3",
           "text": "Enable detailed connector logging and retry the connection"
         },
         {
-          "id": "s4",
-          "text": "Search the vendor community for the exact error message from the log"
+          "id": "s2",
+          "text": "Test network reachability to the database host"
         }
       ]
     },

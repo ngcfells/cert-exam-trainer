@@ -1110,8 +1110,16 @@
     "payload": {
       "steps": [
         {
+          "id": "s5",
+          "text": "Deploy the model and monitor its outputs"
+        },
+        {
           "id": "s1",
           "text": "Pretrain the model on a broad, general dataset"
+        },
+        {
+          "id": "s4",
+          "text": "Evaluate the tuned model on held-out test data"
         },
         {
           "id": "s2",
@@ -1120,14 +1128,6 @@
         {
           "id": "s3",
           "text": "Fine-tune the pretrained model on the labeled examples"
-        },
-        {
-          "id": "s4",
-          "text": "Evaluate the tuned model on held-out test data"
-        },
-        {
-          "id": "s5",
-          "text": "Deploy the model and monitor its outputs"
         }
       ]
     },

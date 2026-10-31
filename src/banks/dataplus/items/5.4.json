@@ -831,28 +831,28 @@
     "payload": {
       "steps": [
         {
+          "id": "s6",
+          "text": "Release to production"
+        },
+        {
           "id": "s1",
           "text": "Commit the change to a branch in source control"
-        },
-        {
-          "id": "s2",
-          "text": "Run unit tests on the changed calculation"
-        },
-        {
-          "id": "s3",
-          "text": "Verify the output of the calculation against the written requirements on test data"
-        },
-        {
-          "id": "s4",
-          "text": "Stress test with full production data volume after functional checks pass"
         },
         {
           "id": "s5",
           "text": "Business users complete user acceptance testing"
         },
         {
-          "id": "s6",
-          "text": "Release to production"
+          "id": "s2",
+          "text": "Run unit tests on the changed calculation"
+        },
+        {
+          "id": "s4",
+          "text": "Stress test with full production data volume after functional checks pass"
+        },
+        {
+          "id": "s3",
+          "text": "Verify the output of the calculation against the written requirements on test data"
         }
       ]
     },

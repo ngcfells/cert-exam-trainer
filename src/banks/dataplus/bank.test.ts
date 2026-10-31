@@ -33,6 +33,14 @@ describe('shipped Data+ bank', () => {
     expect(longestOptionTell(items)).toBeLessThanOrEqual(CONTENT_TARGETS.maxLongestShare);
   });
 
+  it('never authors order PBQ steps in the answer order', () => {
+    const solved = items.filter(
+      (q) => q.type === 'pbq-order' &&
+        (q.payload as { steps: { id: string }[] }).steps.map((s) => s.id).join() === (q.answer as { order: string[] }).order.join(),
+    );
+    expect(solved.map((q) => q.id)).toEqual([]);
+  });
+
   describe('targets (approved items only)', () => {
     const approved = items.filter((q) => q.status === 'approved');
     const pbqs = approved.filter((q) => isPbqTemplate(q.type));

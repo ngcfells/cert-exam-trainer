@@ -15,6 +15,16 @@ const fileFor = (dir: string, objective: string) => path.join(dir, `${objective}
 const readItems = (file: string) => JSON.parse(readFileSync(file, 'utf8')) as Question[];
 const writeItems = (file: string, qs: Question[]) => writeFileSync(file, JSON.stringify(qs, null, 2) + '\n');
 
+/** True when a request may write: no Origin header (same-origin tools like curl), or the dev server's own origin. */
+export function originAllowed(origin: string | undefined, host: string | undefined): boolean {
+  if (origin === undefined) return true;
+  try {
+    return host !== undefined && new URL(origin).host === host;
+  } catch {
+    return false;
+  }
+}
+
 /** Saves one reviewed bank item to its objective's JSON file; a note is logged as a rejection. */
 export function applyReviewWrite(body: { question: unknown; note?: string }, opts: ReviewWriteOptions): { status: number; body: string } {
   const parsed = questionSchema.safeParse(body.question);
@@ -34,10 +44,11 @@ export function applyReviewWrite(body: { question: unknown; note?: string }, opt
   if (home === target) {
     writeItems(home, readItems(home).map((x) => (x.id === q.id ? q : x)));
   } else {
+    // Write the new home first, so a failed write never loses the item.
+    writeItems(target, [...(files.includes(path.basename(target)) ? readItems(target) : []), q]);
     const rest = readItems(home).filter((x) => x.id !== q.id);
     if (rest.length) writeItems(home, rest);
     else rmSync(home);
-    writeItems(target, [...(files.includes(path.basename(target)) ? readItems(target) : []), q]);
   }
 
   if (body.note) {

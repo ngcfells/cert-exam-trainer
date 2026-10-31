@@ -1,7 +1,7 @@
 import path from 'node:path';
 import type { Plugin } from 'vite';
 import { dataPlusMeta } from '../src/banks/dataplus/meta';
-import { applyReviewWrite } from '../src/content/reviewWrite';
+import { applyReviewWrite, originAllowed } from '../src/content/reviewWrite';
 
 /** Dev server only: POST /__review/item writes a reviewed item back to src/banks/dataplus/items/. */
 export function reviewPlugin(): Plugin {
@@ -13,6 +13,10 @@ export function reviewPlugin(): Plugin {
         if (req.method !== 'POST') {
           res.statusCode = 405;
           return res.end('POST only');
+        }
+        if (!originAllowed(req.headers.origin, req.headers.host)) {
+          res.statusCode = 403;
+          return res.end('cross-origin request refused');
         }
         let raw = '';
         req.on('data', (chunk: Buffer) => (raw += chunk.toString()));

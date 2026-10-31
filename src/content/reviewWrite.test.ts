@@ -5,7 +5,19 @@ import path from 'node:path';
 import { dataPlusFixtureQuestions } from '../banks/dataplus/fixture';
 import { dataPlusMeta } from '../banks/dataplus/meta';
 import type { Question } from '../domain/types';
-import { applyReviewWrite } from './reviewWrite';
+import { applyReviewWrite, originAllowed } from './reviewWrite';
+
+describe('originAllowed', () => {
+  it('accepts the dev server origin and requests with no Origin header', () => {
+    expect(originAllowed('http://localhost:5173', 'localhost:5173')).toBe(true);
+    expect(originAllowed(undefined, 'localhost:5173')).toBe(true);
+  });
+  it('rejects any other origin', () => {
+    expect(originAllowed('https://evil.example', 'localhost:5173')).toBe(false);
+    expect(originAllowed('http://localhost:5174', 'localhost:5173')).toBe(false);
+    expect(originAllowed('null', 'localhost:5173')).toBe(false);
+  });
+});
 
 const [a, b] = dataPlusFixtureQuestions;
 let root: string;
@@ -34,6 +46,12 @@ describe('applyReviewWrite', () => {
     const before = readFileSync(path.join(items, '1.1.json'), 'utf8');
     applyReviewWrite({ question: JSON.parse(before)[0] }, opts());
     expect(readFileSync(path.join(items, '1.1.json'), 'utf8')).toBe(before);
+  });
+
+  it('keeps the item in its old file when writing the new file fails', () => {
+    mkdirSync(path.join(items, '5.2.json')); // a directory, so the write fails
+    expect(() => applyReviewWrite({ question: { ...a, objectiveIds: ['5.2'] } }, opts())).toThrow();
+    expect(read('1.1.json').map((q) => q.id)).toEqual([a.id, b.id]);
   });
 
   it('moves the item when its first objective changes and drops an emptied file', () => {

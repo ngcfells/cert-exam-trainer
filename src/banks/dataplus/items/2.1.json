@@ -13,20 +13,20 @@
     "payload": {
       "steps": [
         {
-          "id": "s1",
-          "text": "Extract records from the source system"
+          "id": "s4",
+          "text": "Validate row counts against the source"
         },
         {
-          "id": "s2",
-          "text": "Clean and standardize the extracted values"
+          "id": "s1",
+          "text": "Extract records from the source system"
         },
         {
           "id": "s3",
           "text": "Load the transformed rows into the warehouse"
         },
         {
-          "id": "s4",
-          "text": "Validate row counts against the source"
+          "id": "s2",
+          "text": "Clean and standardize the extracted values"
         }
       ]
     },
@@ -2118,28 +2118,28 @@
     "payload": {
       "steps": [
         {
+          "id": "s6",
+          "text": "Compare respondents with the population to check for bias"
+        },
+        {
           "id": "s1",
           "text": "Define the target population of active customers"
-        },
-        {
-          "id": "s2",
-          "text": "Build the sampling frame from the customer list"
-        },
-        {
-          "id": "s3",
-          "text": "Divide the frame into strata by region"
-        },
-        {
-          "id": "s4",
-          "text": "Randomly select customers within each stratum"
         },
         {
           "id": "s5",
           "text": "Send the survey to the selected customers"
         },
         {
-          "id": "s6",
-          "text": "Compare respondents with the population to check for bias"
+          "id": "s2",
+          "text": "Build the sampling frame from the customer list"
+        },
+        {
+          "id": "s4",
+          "text": "Randomly select customers within each stratum"
+        },
+        {
+          "id": "s3",
+          "text": "Divide the frame into strata by region"
         }
       ]
     },
@@ -2179,28 +2179,28 @@
     "payload": {
       "steps": [
         {
+          "id": "s6",
+          "text": "ORDER BY: sort the result"
+        },
+        {
           "id": "s1",
           "text": "FROM and JOIN: build the combined set of rows"
-        },
-        {
-          "id": "s2",
-          "text": "WHERE: remove individual rows"
-        },
-        {
-          "id": "s3",
-          "text": "GROUP BY: form groups"
-        },
-        {
-          "id": "s4",
-          "text": "HAVING: remove whole groups"
         },
         {
           "id": "s5",
           "text": "SELECT: compute the output columns and aliases"
         },
         {
-          "id": "s6",
-          "text": "ORDER BY: sort the result"
+          "id": "s2",
+          "text": "WHERE: remove individual rows"
+        },
+        {
+          "id": "s4",
+          "text": "HAVING: remove whole groups"
+        },
+        {
+          "id": "s3",
+          "text": "GROUP BY: form groups"
         }
       ]
     },
