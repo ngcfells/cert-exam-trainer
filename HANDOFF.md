@@ -122,6 +122,13 @@
   - `npm run deploy [-- --dry-run] [-- --force]` (`scripts/deploy-lib.ts`): refuses uncommitted changes, refuses non-main without `--force`, builds `dist/`, commits it plus `.nojekyll` to `gh-pages` through a temporary worktree, pushes to origin.
 - **Decisions made in chunk 9:** app name stays Cert Exam Trainer; deploy target is the `gh-pages` branch.
 
+- **Streamline refactor merged** (2026-10-30, `refactor/streamline`; 354 unit and 45 e2e tests pass): app code down 481 lines (7,261 → 6,780, about 6.6%) with no behaviour change.
+  - `src/ui/kit.tsx`: `QuestionView` (MCQ or PBQ), `useLoad` (`undefined` loading, `null` failed, `reload(showLoading)`), `useCountdown`, `useFocusLater`, `useFocusHeading`, `RunnerFrame` (study, quiz and flashcard runners), `AcronymFlip`, `metaFor`, `pct`, `toCount`, `Loading`. `src/ui/Table.tsx` is the one captioned-table component (kept separate to avoid an import cycle with the PBQ views).
+  - `finishAttempt` and `acronymReview` (`src/ui/exam/saveAttempt.ts`) score and save attempts for mock, practice and cram.
+  - `src/domain/pbq.ts`: one `TEMPLATES` table gives each template's parts, answer key and shuffled pool. PBQ views share `PartSelects` and `Boxes` (`pbq/parts.tsx`).
+  - Mock exam now shows the load-error screen instead of hanging when loading fails.
+  - Decision: the owner chose not to collapse formatting just to reach a 25% line cut.
+
 ## Next session
 
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
