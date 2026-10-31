@@ -1,0 +1,189 @@
+[
+  {
+    "id": "f-keys",
+    "exam": "DA0-002",
+    "area": "F",
+    "title": "Primary keys and foreign keys",
+    "objectiveIds": ["1.1"],
+    "meaning": [
+      "A key is the column that tells rows apart. A primary key identifies each row of its own table; a foreign key in another table points back to it, which is how two tables are linked.",
+      "Analysts care because every join depends on keys. Joining on the wrong column, such as a name, silently pairs the wrong rows."
+    ],
+    "rule": [
+      "A primary key must be unique (no two rows share a value) and never blank. Examples: customer_id, order_id.",
+      "A foreign key holds the primary key value of a row in another table. It may repeat (one customer, many orders) and may be blank when there is no link yet. A filled-in foreign key that matches nothing is an orphan.",
+      "Join on identifiers, never on names or addresses: names repeat and get spelled differently, and both names and addresses change over time."
+    ],
+    "example": {
+      "intro": "A Customers table and an Orders table. Which column should link them?",
+      "table": {
+        "caption": "Customers (left) and the customer_id stored on each order",
+        "head": ["customer_id", "name", "Orders with this customer_id"],
+        "rows": [
+          ["1", "Ana Ruiz", "2"],
+          ["2", "Ben Cole", "1"],
+          ["3", "Ana Ruiz", "0"]
+        ]
+      },
+      "steps": [
+        "customer_id is unique and filled in for every customer, so it is the primary key of Customers.",
+        "Orders stores customer_id too. There it is a foreign key: customer 1 appears on 2 orders, so the value repeats.",
+        "Two different customers are called Ana Ruiz. Joining on name would give customer 3 the 2 orders that belong to customer 1."
+      ]
+    },
+    "trap": {
+      "wrong": "Joining two tables on a customer name or address because both tables happen to have that column.",
+      "why": "Names and addresses are not unique and change over time, so the join pairs the wrong rows or misses rows. Use the identifier that one table owns as its primary key and the other stores as a foreign key."
+    },
+    "checkIds": ["da2-1-1-num-001", "da2-1-1-num-002", "da2-1-1-math-mcq-001", "da2-1-1-math-mcq-002"]
+  },
+  {
+    "id": "f-join-types",
+    "exam": "DA0-002",
+    "area": "F",
+    "title": "Inner, left, right and full outer joins",
+    "objectiveIds": ["2.3"],
+    "meaning": [
+      "A join puts two tables side by side, pairing rows whose keys match. The join types differ only in what happens to rows that have no match.",
+      "Analysts care because the join type decides which rows reach the report: the wrong one quietly drops customers or adds orphan rows."
+    ],
+    "rule": [
+      "Inner join: only rows with a match in both tables.",
+      "Left join: every row of the left (first) table, plus matches; left rows with no match get blank (null) values in the right table's columns.",
+      "Right join: the mirror image, keeping every row of the right (second) table.",
+      "Full outer join: every row from both tables, matched where possible.",
+      "Row counts: each matching pair is one row, so a row that matches 2 rows appears twice. Left = matched rows + unmatched left rows; full outer = matched rows + unmatched left rows + unmatched right rows. A blank key never matches anything."
+    ],
+    "example": {
+      "intro": "Customers has keys A, B and C. Orders has rows with customer keys B, C, C and D. Customers is the left table.",
+      "table": {
+        "caption": "Rows returned by each join",
+        "head": ["Join", "Rows returned", "Count"],
+        "rows": [
+          ["Inner", "B, C, C (matches only)", "3"],
+          ["Left", "A (no order), B, C, C", "4"],
+          ["Right", "B, C, C, D (no customer)", "4"],
+          ["Full outer", "A, B, C, C, D", "5"]
+        ]
+      },
+      "steps": [
+        "Matches: B pairs with one order and C with two, so there are 3 matched rows.",
+        "Customer A has no order and order D has no customer.",
+        "Left adds A (3 + 1 = 4), right adds D (3 + 1 = 4), and full outer adds both (3 + 1 + 1 = 5)."
+      ]
+    },
+    "trap": {
+      "wrong": "Saying a left join always returns exactly as many rows as the left table.",
+      "why": "A left join returns every left row at least once, but a left row with several matches appears once per match. Customer C above matched 2 orders, so the left join returned 4 rows from a 3-row table."
+    },
+    "checkIds": ["da2-2-3-num-013", "da2-2-3-num-014", "da2-2-3-num-015", "da2-2-3-num-016", "da2-2-3-math-mcq-005"]
+  },
+  {
+    "id": "f-cross-join",
+    "exam": "DA0-002",
+    "area": "F",
+    "title": "Cross joins and missing join conditions",
+    "objectiveIds": ["2.3"],
+    "meaning": [
+      "A cross join pairs every row of one table with every row of another, ignoring keys. The result is every possible combination (also called a Cartesian product).",
+      "Analysts care because it is useful on purpose (every product in every size) but disastrous by accident: a join with its condition left out becomes a cross join."
+    ],
+    "formula": {
+      "text": "rows = m × n",
+      "spoken": "rows equals m times n",
+      "symbols": [
+        { "symbol": "rows", "meaning": "the number of rows the cross join returns" },
+        { "symbol": "m", "meaning": "the number of rows in the first table" },
+        { "symbol": "n", "meaning": "the number of rows in the second table" }
+      ]
+    },
+    "example": {
+      "intro": "A menu has 3 drink sizes (small, medium, large) and 4 flavors. The shop wants every size-and-flavor combination for its price list.",
+      "steps": [
+        "The first table has m = 3 rows and the second has n = 4 rows.",
+        "rows = 3 × 4 = 12: small with each of the 4 flavors, then medium, then large.",
+        "If the shop had meant to join on a key and left out the condition, it would also get 12 rows instead of a few matches. A result bigger than both tables is the warning sign."
+      ]
+    },
+    "trap": {
+      "wrong": "Adding the two row counts (3 + 4 = 7) to predict a cross join's size.",
+      "why": "Every row pairs with every row, so the counts multiply. Two modest tables of 1,000 rows each give 1,000,000 rows."
+    },
+    "checkIds": ["da2-2-3-num-017", "da2-2-3-num-018", "da2-2-3-math-mcq-006"]
+  },
+  {
+    "id": "f-bad-joins",
+    "exam": "DA0-002",
+    "area": "F",
+    "title": "What a bad join does: duplicates, lost rows, inflated totals",
+    "objectiveIds": ["2.3"],
+    "meaning": [
+      "A join can run without any error and still be wrong. The three usual symptoms are extra (duplicated) rows, missing rows and totals that are too big.",
+      "Analysts care because these errors flow straight into revenue, headcount and every other figure built on the joined table."
+    ],
+    "rule": [
+      "Duplicated rows: if the key repeats in a table that should have one row per key, each match repeats the other side's row.",
+      "Inflated totals: summing a column from the \"one\" side after a one-to-many join counts each value once per match. Sum before joining, or count each key once.",
+      "Lost rows: an inner join drops rows with no match, and keys stored in different types or formats (the text \"007\" and the number 7) never match.",
+      "Check every join: compare row counts and key totals before and after."
+    ],
+    "example": {
+      "intro": "An Accounts table holds account A1 with a balance of $1,000. A Contacts table lists 3 contacts for A1. The analyst joins them and sums balance.",
+      "table": {
+        "caption": "Accounts joined to Contacts",
+        "head": ["account", "balance ($)", "contact"],
+        "rows": [
+          ["A1", "1,000", "Kim"],
+          ["A1", "1,000", "Raj"],
+          ["A1", "1,000", "Lee"]
+        ]
+      },
+      "steps": [
+        "The balance repeats once per contact, so summing it gives 3 × 1,000 = $3,000.",
+        "The true balance is $1,000. Take it from Accounts before the join, or count each account once.",
+        "Row count check: 1 account became 3 rows, which flags the one-to-many link."
+      ]
+    },
+    "trap": {
+      "wrong": "Trusting a joined table because the query ran without errors.",
+      "why": "Databases do not warn about repeated or dropped rows; the join does exactly what the keys allow. Only comparing row counts and totals before and after reveals the problem."
+    },
+    "checkIds": ["da2-2-3-num-019", "da2-2-3-num-020", "da2-2-3-num-021", "da2-2-3-math-mcq-007"]
+  },
+  {
+    "id": "f-union-pivot",
+    "exam": "DA0-002",
+    "area": "F",
+    "title": "Unions, pivots and unpivots",
+    "objectiveIds": ["2.3"],
+    "meaning": [
+      "A union stacks the rows of two tables with the same columns, one under the other. A join puts tables side by side. Pivot and unpivot reshape one table between long (many rows) and wide (many columns).",
+      "Analysts care because combining monthly extracts, deduplicating lists and reshaping data for a chart are everyday tasks, and each needs the right operation."
+    ],
+    "rule": [
+      "Union: same columns in the same order; rows are added, columns are not. A plain union removes identical rows; union all keeps every row. Union rows = rows in A + rows in B − rows in both.",
+      "Pivot: the values of one column become column headings (long to wide). Unpivot: several columns become rows (wide to long); rows = original rows × number of unpivoted columns."
+    ],
+    "example": {
+      "intro": "Two branch mailing lists, and a small sales table to reshape.",
+      "table": {
+        "caption": "One store's sales, long and wide",
+        "head": ["Shape", "Columns", "Rows"],
+        "rows": [
+          ["Long", "store, quarter, sales", "North, Q1, 50 / North, Q2, 60"],
+          ["Wide (pivoted)", "store, Q1, Q2", "North, 50, 60"]
+        ]
+      },
+      "steps": [
+        "Union: list A has 3 names and list B has 3 names, 1 of them in both. A union gives 3 + 3 − 1 = 5 names; union all gives 6.",
+        "Pivoting the long table turns the quarter values Q1 and Q2 into columns: 2 rows become 1.",
+        "Unpivoting the wide table turns 2 quarter columns back into 2 rows: 1 row × 2 columns = 2 rows."
+      ]
+    },
+    "trap": {
+      "wrong": "Using a join to combine this month's extract with last month's, or a union to add a lookup column.",
+      "why": "Same columns, more rows calls for a union; more columns matched on a key calls for a join. Mixing them up gives either a huge cross-matched table or rows with misaligned columns."
+    },
+    "checkIds": ["da2-2-3-num-022", "da2-2-3-num-023", "da2-2-3-math-mcq-008", "da2-2-3-math-mcq-009"]
+  }
+]

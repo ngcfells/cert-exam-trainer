@@ -29,7 +29,36 @@ const zScore = (x: number, m: number, s: number) => (x - m) / s;
 /** Whole days from start to end (end minus start), dates as YYYY-MM-DD in UTC. */
 const daysBetween = (start: string, end: string) => (Date.parse(end) - Date.parse(start)) / 86_400_000;
 
+type Key = string | null;
+// Row count of a join on key lists. A null key never matches anything.
+const joinRows = (left: Key[], right: Key[], kind: 'inner' | 'left' | 'right' | 'full') => {
+  const matches = (k: Key, other: Key[]) => (k === null ? 0 : other.filter((o) => o === k).length);
+  const inner = left.reduce((s, k) => s + matches(k, right), 0);
+  const leftOnly = left.filter((k) => matches(k, right) === 0).length;
+  const rightOnly = right.filter((k) => matches(k, left) === 0).length;
+  return inner + (kind === 'left' || kind === 'full' ? leftOnly : 0) + (kind === 'right' || kind === 'full' ? rightOnly : 0);
+};
+const EMP_DEPT = ['10', '20', '20', '30', '40'];
+const DEPTS = ['10', '20', '50'];
+const CUSTS = ['K1', 'K2', 'K3', 'K4', 'K5', 'K6', 'K7', 'K8'];
+const CUST_ORDERS = ['K1', 'K2', 'K2', 'K4', 'K6', 'K9'];
+
 export const NUMERIC_CHECKS: Record<string, () => number> = {
+  'da2-1-1-num-001': () => 10 - new Set([101, 102, 103, 103, 104, 105, 105, 105, 106, 107]).size,
+  'da2-1-1-num-002': () =>
+    ['C1', 'C2', 'C2', 'C4', 'C5', null, 'C7', 'C1'].filter((k) => k !== null && !['C1', 'C2', 'C3', 'C5'].includes(k)).length,
+  'da2-2-3-num-013': () => joinRows(EMP_DEPT, DEPTS, 'inner'),
+  'da2-2-3-num-014': () => joinRows(EMP_DEPT, DEPTS, 'left'),
+  'da2-2-3-num-015': () => joinRows(EMP_DEPT, DEPTS, 'right'),
+  'da2-2-3-num-016': () => joinRows(EMP_DEPT, DEPTS, 'full'),
+  'da2-2-3-num-017': () => 4 * 6,
+  'da2-2-3-num-018': () => 120 * 15,
+  'da2-2-3-num-019': () => joinRows(['P1', 'P2', 'P3'], ['P1', 'P2', 'P2', 'P2', 'P3'], 'inner'),
+  // Order O1 ($80) matches 2 payment rows, order O2 ($120) matches 3.
+  'da2-2-3-num-020': () => 80 * 2 + 120 * 3,
+  'da2-2-3-num-021': () => joinRows(CUSTS, CUST_ORDERS, 'left') - joinRows(CUSTS, CUST_ORDERS, 'inner'),
+  'da2-2-3-num-022': () => 40 + 35 - 5,
+  'da2-2-3-num-023': () => 12 * 3,
   'da2-3-2-num-001': () => percentChange(40, 50),
   'da2-3-2-num-002': () => percentChange(200, 150),
   'da2-3-2-num-003': () => 6 - 4,
