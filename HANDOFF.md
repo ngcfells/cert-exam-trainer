@@ -142,7 +142,11 @@
 ## Next session
 
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
-- **Then start chunk 11: SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
+- **Owner reprioritised (2026-10-31): the Data+ Math & Data Concepts module comes before SecAI+.** Design (approved): `docs/superpowers/specs/2026-10-31-dataplus-math-module-design.md`. It is homework-style: a Learn area of lessons (meaning, formula, worked example, exam trap) with a check per lesson, a new `numeric` typed-answer question type, and more join PBQs. The owner is a trainer, not an analyst, so lessons must assume no stats background.
+  - Six sections, **each its own session with a `/clear` and a handoff update between** (design §8 and §8a): (1) engine: `numeric` type, lesson schema, Learn screens, status, one sample lesson; (2) content A+B; (3) content C+D; (4) content E; (5) content F (joins); (6) final audit, Opus whole-branch review, redeploy.
+  - **Next session: section 1 (engine).** Write the plan with superpowers:writing-plans, saved to `docs/superpowers/plans/`, then execute it.
+  - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.
+- **After the math module: chunk 11, SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 - **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 - **Owner rules for sessions:**
