@@ -1,9 +1,10 @@
 // Checks draft files before they join the bank: schema, id scheme, objective, acronyms, key balance and duplicates.
-// Usage: npm run check-drafts -- --exam CY0-001 <file.json>...
-import { readFileSync } from 'node:fs';
+// Usage: npm run check-drafts -- --exam CY0-001 [--ref <notes dir>] <file.json>...
+import { readdirSync, readFileSync } from 'node:fs';
+import path from 'node:path';
 import { acronymCovered, extractAcronyms, questionText } from '../src/acronyms/extract';
 import { itemIdPrefix } from '../src/banks/paths';
-import { answerBalance, longestOptionTell, nearDuplicates } from '../src/content';
+import { answerBalance, longestOptionTell, nearDuplicates, sharedRuns } from '../src/content';
 import { questionSchema } from '../src/domain/schema';
 import type { Question } from '../src/domain/types';
 import { examFromArgs, parseArgs } from './exam-args';
@@ -11,6 +12,13 @@ import { examFromArgs, parseArgs } from './exam-args';
 const args = parseArgs(process.argv.slice(2));
 const { meta, items: bankItems } = examFromArgs(args);
 const files = args.positional;
+// --ref <dir>: reference notes (every .txt in the folder) that no item may share an 8-word run with.
+const refs = args.flags.ref
+  ? readdirSync(args.flags.ref)
+      .filter((f) => f.endsWith('.txt'))
+      .map((f) => ({ name: f, text: readFileSync(path.join(args.flags.ref, f), 'utf8') }))
+  : [];
+if (args.flags.ref && !refs.length) throw new Error(`no .txt reference notes in ${args.flags.ref}`);
 const listed = new Set(meta.acronyms.map((a) => a.term));
 const objectives = new Set(meta.objectives.map((o) => o.id));
 let problems = 0;
@@ -35,6 +43,9 @@ for (const file of files) {
       if (missing.length) issues.push(`acronyms not in the list: ${[...new Set(missing)].join(', ')}`);
       const untagged = tokens.filter((t) => !acronymCovered(t, new Set(q.acronyms)));
       if (untagged.length) issues.push(`acronyms used but not tagged: ${[...new Set(untagged)].join(', ')}`);
+      for (const ref of refs) {
+        for (const run of sharedRuns(questionText(q), ref.text)) issues.push(`shares "${run}" with ${ref.name}`);
+      }
     }
     if (issues.length) {
       problems += issues.length;

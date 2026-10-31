@@ -6,6 +6,7 @@ This brief is given word for word to every drafter and reviewer of bundled quest
 
 - Write from the public exam objectives and your own knowledge of the field. Every question must be original.
 - Never read `_WorkingData/`, any question dump, practice-test site or vendor courseware. Do not reproduce wording from any exam or training product.
+- **Exception: instructor decks the owner provides.** You may be given extracted notes from them for your objective, labelled "reference only". Use them only to see which topics the objective covers, how deep to go, and to check facts. Never copy or paraphrase their wording, examples, questions, scenarios or diagrams, and never turn a slide into an item. Every draft must pass the overlap check: `npm run check-drafts -- --exam <code> --ref <notes dir> <files>` reports any 8-word run an item shares with the notes, and each one must be rewritten.
 
 ## Where items go
 
