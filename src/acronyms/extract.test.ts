@@ -1,6 +1,19 @@
 import { describe, it, expect } from 'vitest';
 import type { Question } from '../domain/types';
-import { extractAcronyms, NOT_ACRONYMS, questionText } from './extract';
+import { acronymCovered, extractAcronyms, NOT_ACRONYMS, questionText } from './extract';
+
+describe('acronymCovered', () => {
+  it('accepts a token that is a listed term or one part of one', () => {
+    expect(acronymCovered('CD', new Set(['CI/CD']))).toBe(true);
+    expect(acronymCovered('DSS', new Set(['PCI DSS']))).toBe(true);
+    expect(acronymCovered('SOC', new Set(['SOC 2']))).toBe(true);
+    expect(acronymCovered('SQL', new Set(['SQL']))).toBe(true);
+  });
+  it('rejects a token that only shares letters with a term', () => {
+    expect(acronymCovered('CDN', new Set(['CI/CD']))).toBe(false);
+    expect(acronymCovered('PC', new Set(['PCI DSS']))).toBe(false);
+  });
+});
 
 describe('extractAcronyms', () => {
   it('finds capitals tokens', () => {

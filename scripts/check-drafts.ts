@@ -1,7 +1,7 @@
 // Checks draft files before they join the bank: schema, id scheme, objective, acronyms, key balance and duplicates.
 // Usage: npm run check-drafts -- --exam CY0-001 <file.json>...
 import { readFileSync } from 'node:fs';
-import { extractAcronyms, questionText } from '../src/acronyms/extract';
+import { acronymCovered, extractAcronyms, questionText } from '../src/acronyms/extract';
 import { itemIdPrefix } from '../src/banks/paths';
 import { answerBalance, longestOptionTell, nearDuplicates } from '../src/content';
 import { questionSchema } from '../src/domain/schema';
@@ -29,10 +29,11 @@ for (const file of files) {
       if (!q.id.startsWith(want) || !/-\d{3}$/.test(q.id)) issues.push(`id should look like ${want}nnn`);
     }
     if (r.success) {
-      const tokens = [...new Set([...extractAcronyms(questionText(q)), ...q.acronyms])];
-      const missing = tokens.filter((t) => !listed.has(t));
-      if (missing.length) issues.push(`acronyms not in the list: ${missing.join(', ')}`);
-      const untagged = extractAcronyms(questionText(q)).filter((t) => !q.acronyms.includes(t));
+      const tokens = extractAcronyms(questionText(q));
+      // A token may be part of a compound term (CD in CI/CD); a tag must be a whole listed term.
+      const missing = [...tokens.filter((t) => !acronymCovered(t, listed)), ...q.acronyms.filter((t) => !listed.has(t))];
+      if (missing.length) issues.push(`acronyms not in the list: ${[...new Set(missing)].join(', ')}`);
+      const untagged = tokens.filter((t) => !acronymCovered(t, new Set(q.acronyms)));
       if (untagged.length) issues.push(`acronyms used but not tagged: ${[...new Set(untagged)].join(', ')}`);
     }
     if (issues.length) {

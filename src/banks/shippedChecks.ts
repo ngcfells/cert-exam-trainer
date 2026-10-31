@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { extractAcronyms, questionText } from '../acronyms/extract';
+import { acronymCovered, extractAcronyms, questionText } from '../acronyms/extract';
 import { CONTENT_TARGETS, answerBalance, coverage, listPositionTokens, longestOptionTell, nearDuplicates, objectiveQuotas, pbqTypeCounts } from '../content';
 import { isPbqTemplate } from '../domain/pbq';
 import type { ExamMeta, Question } from '../domain/types';
@@ -48,10 +48,12 @@ export function describeShippedBank(meta: ExamMeta, items: Question[], opts: Shi
     it('every acronym token and tag has an expansion', () => {
       const listed = new Set(meta.acronyms.map((a) => a.term));
       const tokens = new Set([
-        ...items.flatMap((q) => [...extractAcronyms(questionText(q)), ...q.acronyms]),
+        ...items.flatMap((q) => extractAcronyms(questionText(q))),
         ...(opts.extraText ?? []).flatMap((t) => extractAcronyms(t)),
       ]);
-      expect([...tokens].filter((t) => !listed.has(t)).sort()).toEqual([]);
+      expect([...tokens].filter((t) => !acronymCovered(t, listed)).sort()).toEqual([]);
+      // A tag names a whole listed term, such as "CI/CD", never a part of one.
+      expect([...new Set(items.flatMap((q) => q.acronyms))].filter((t) => !listed.has(t)).sort()).toEqual([]);
     });
 
     it('every id follows <prefix>-<objective>-<type>-nnn', () => {
