@@ -1,3 +1,4 @@
+import { isUnitItem } from '../domain/numeric';
 import { elementIds } from '../domain/pbq';
 import type { ExamMeta, McqPayload, Question, QuestionType } from '../domain/types';
 import { mulberry32, shuffle, weightedPick, type Rng } from './rng';
@@ -77,7 +78,7 @@ export function assembleExam({ meta, pool, seed, recentIds, pbqTypes }: Assemble
   const pbqItems = pbqs.map((q) => itemFor(q, rng));
 
   const byDomain = meta.domains.map((d) =>
-    freshFirst(pool.filter((q) => (q.type === 'mcq-single' || q.type === 'mcq-multi') && domainOf(meta, q) === d.id), recentIds, rng),
+    freshFirst(pool.filter((q) => isUnitItem(q) && domainOf(meta, q) === d.id), recentIds, rng),
   );
   const target = Math.min(meta.maxQuestions - pbqWeightSum, byDomain.reduce((s, qs) => s + qs.length, 0));
   const quota = allocateByWeight(target, meta.domains.map((d) => d.weight));

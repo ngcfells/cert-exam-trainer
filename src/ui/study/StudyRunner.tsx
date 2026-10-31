@@ -1,6 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import type { ExamItem } from '../../exam/assemble';
-import { isAnswered, itemFraction, type ItemResponse, type Responses } from '../../exam/scoring';
+import { hasAnswer, itemFraction, type ItemResponse, type Responses } from '../../exam/scoring';
 import type { AcronymCard } from '../../study/session';
 import { ItemReview } from '../exam/ItemReview';
 import { AcronymFlip, knownStatus, QuestionView, RunnerFrame, useCountdown, useFocusLater } from '../kit';
@@ -61,7 +61,7 @@ export function StudyRunner({
       setDone(true);
       onFinishRef.current({
         responses: r,
-        checked: feedback === 'instant' ? c : Object.keys(r).filter((id) => isAnswered(r[id])),
+        checked: feedback === 'instant' ? c : items.flatMap((s) => (s.kind === 'question' && hasAnswer(s.item.question, r[s.item.question.id]) ? [s.item.question.id] : [])),
         seen: items.slice(0, furthest.current + 1).flatMap((s) => (s.kind === 'question' ? [s.item.question.id] : [])),
         acronymGrades: Object.entries(g).map(([term, knew]) => ({ term, knew })),
         timedOut,
@@ -104,7 +104,7 @@ export function StudyRunner({
             <QuestionView item={current.item} response={responses[key]} onChange={(v: ItemResponse) => !isChecked && setResponses((r) => ({ ...r, [key]: v }))} />
           </fieldset>
           {feedback === 'instant' && !isChecked && (
-            <button type="button" className="primary" disabled={!isAnswered(responses[key])} onClick={() => { setChecked((c) => [...c, key]); focusStatus(); }}>
+            <button type="button" className="primary" disabled={!hasAnswer(current.item.question, responses[key])} onClick={() => { setChecked((c) => [...c, key]); focusStatus(); }}>
               Check answer
             </button>
           )}

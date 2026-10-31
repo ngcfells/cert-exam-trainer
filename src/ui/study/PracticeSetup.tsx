@@ -85,6 +85,9 @@ export function PracticeSetup({
         <Check checked={MCQ_TYPES.every((t) => value.types.includes(t))} onChange={(on) => types(MCQ_TYPES, on)}>
           Multiple choice
         </Check>
+        <Check checked={value.types.includes('numeric')} onChange={(on) => types(['numeric'], on)}>
+          Type a number
+        </Check>
         {PBQ_TEMPLATES.map((t) => (
           <Check key={t} checked={value.types.includes(t)} onChange={(on) => types([t], on)}>
             {TYPE_NAMES[t]}

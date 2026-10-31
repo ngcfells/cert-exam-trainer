@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
-import { isAnswered, isComplete, itemFraction, mcqFraction, pbqFraction, scoreExam, type Responses } from './scoring';
+import { hasAnswer, isAnswered, isComplete, itemFraction, mcqFraction, pbqFraction, scoreExam, type Responses } from './scoring';
 import type { AssembledExam } from './assemble';
-import { mcq, meta3, pbq } from './testFixtures';
+import { mcq, meta3, numeric, pbq } from './testFixtures';
 import type { Question } from '../domain/types';
 import { pbqFixture } from '../domain/pbqFixtures';
 
@@ -157,5 +157,22 @@ describe('itemFraction', () => {
     expect(itemFraction(p, { p1: 'c1' })).toBe(0.5);
     const r = scoreExam(examOf([p, m]), { P: { p1: 'c1' }, M: ['a'] }, meta3);
     expect(r.items.map((i) => i.fraction)).toEqual([0.5, 0.5]);
+  });
+});
+
+describe('numeric scoring', () => {
+  const n = numeric('N', 'A', 12.5, 0.05);
+  it('gives full credit at the tolerance edge, one unit out of 900 shared with an MCQ', () => {
+    const r = scoreExam(examOf([mcq('A0', 'A'), n]), { N: ['12.55'], A0: ['a'] }, meta3);
+    expect(r.items.map((i) => i.earned)).toEqual([450, 450]);
+    expect(r.items[1].answered).toBe(true);
+  });
+  it('treats unparseable text as unanswered 0', () => {
+    const r = scoreExam(examOf([n]), { N: ['abc'] }, meta3);
+    expect(r.items[0]).toMatchObject({ earned: 0, answered: false });
+    expect(hasAnswer(n, ['abc'])).toBe(false);
+    expect(hasAnswer(n, ['1,250'])).toBe(true);
+    expect(isComplete(n, ['12'])).toBe(true);
+    expect(isComplete(n, [''])).toBe(false);
   });
 });

@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { allocateByWeight, assembleExam, type AssembleInput } from './assemble';
-import { bank, mcq, meta3, pbq } from './testFixtures';
+import { bank, mcq, meta3, numeric, pbq } from './testFixtures';
 import type { McqPayload } from '../domain/types';
 
 const input = (over: Partial<AssembleInput> = {}): AssembleInput => ({
@@ -92,5 +92,13 @@ describe('assembleExam', () => {
     const ex = assembleExam(input({ meta: { ...meta3, maxQuestions: 6 }, pool: [...bank({ A: 9 }), pbq('P1', 6)], pbqTypes: ['pbq-match'] }));
     expect(ex.pbqWeightSum).toBe(0);
     expect(ex.items.every((i) => i.question.type.startsWith('mcq'))).toBe(true);
+  });
+});
+
+describe('numeric items in assembly', () => {
+  it('draws numeric items into the one-unit pool and counts them as MCQ units', () => {
+    const ex = assembleExam(input({ pool: [numeric('N0', 'A'), numeric('N1', 'B'), mcq('C0', 'C')] }));
+    expect(ex.mcqCount).toBe(3);
+    expect(ex.items.find((i) => i.question.id === 'N0')).toEqual({ question: expect.objectContaining({ id: 'N0' }) });
   });
 });

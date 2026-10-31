@@ -37,7 +37,7 @@ export function PracticeFlow({
   }, [repo, examCode]);
   const [choices, setChoices] = useState<PracticeChoices>(() => ({
     objectiveIds: presetObjectiveIds ?? meta.objectives.map((o) => o.id),
-    types: [...MCQ_TYPES, ...PBQ_TEMPLATES],
+    types: [...MCQ_TYPES, 'numeric', ...PBQ_TEMPLATES],
     count: DEFAULT_PRACTICE_COUNT,
     feedback: 'instant',
   }));
