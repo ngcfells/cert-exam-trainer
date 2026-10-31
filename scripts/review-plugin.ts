@@ -1,9 +1,8 @@
 import path from 'node:path';
 import type { Plugin } from 'vite';
-import { dataPlusMeta } from '../src/banks/dataplus/meta';
 import { applyReviewWrite, originAllowed } from '../src/content/reviewWrite';
 
-/** Dev server only: POST /__review/item writes a reviewed item back to src/banks/dataplus/items/. */
+/** Dev server only: POST /__review/item writes a reviewed item back to src/banks/<exam dir>/items/. */
 export function reviewPlugin(): Plugin {
   return {
     name: 'review-write-back',
@@ -24,9 +23,8 @@ export function reviewPlugin(): Plugin {
           let result: { status: number; body: string };
           try {
             result = applyReviewWrite(JSON.parse(raw) as { question: unknown; note?: string }, {
-              itemsDir: path.resolve('src/banks/dataplus/items'),
+              banksRoot: path.resolve('src/banks'),
               rejectLog: path.resolve('content-drafts/rejections.jsonl'),
-              meta: dataPlusMeta,
             });
           } catch (e) {
             result = { status: 500, body: String(e) };

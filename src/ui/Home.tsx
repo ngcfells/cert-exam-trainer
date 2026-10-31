@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { getBundledQuestions, listExams } from '../banks';
+import { getLessons } from '../banks/lessons';
 import type { Repo } from '../storage';
 import { BackupControls } from './BackupControls';
 import { DisplaySettings } from './DisplaySettings';
@@ -53,9 +54,11 @@ export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent:
                 <button type="button" onClick={() => onNavigate({ name: 'acronyms', exam: e.code })}>
                   {`Acronyms: ${e.code}`}
                 </button>
-                <button type="button" onClick={() => onNavigate({ name: 'learn', exam: e.code })}>
-                  {`Learn: ${e.code}`}
-                </button>
+                {getLessons(e.code).length > 0 && (
+                  <button type="button" onClick={() => onNavigate({ name: 'learn', exam: e.code })}>
+                    {`Learn: ${e.code}`}
+                  </button>
+                )}
                 <button type="button" onClick={() => onNavigate({ name: 'questions', exam: e.code })}>
                   {`My questions: ${e.code}`}
                 </button>

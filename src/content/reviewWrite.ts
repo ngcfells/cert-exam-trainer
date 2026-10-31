@@ -1,14 +1,16 @@
 import { appendFileSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
+import { metaFor } from '../banks/metas';
+import { BANKS } from '../banks/paths';
 import { questionSchema } from '../domain/schema';
-import type { ExamMeta, Question } from '../domain/types';
+import type { Question } from '../domain/types';
 
 // Node only: used by the dev server's review plugin (scripts/review-plugin.ts). Never import from app code.
 
 export interface ReviewWriteOptions {
-  itemsDir: string;
+  /** The folder holding each exam's bank folder (src/banks); items go to <banksRoot>/<dir>/items/. */
+  banksRoot: string;
   rejectLog: string;
-  meta: ExamMeta;
 }
 
 const fileFor = (dir: string, objective: string) => path.join(dir, `${objective}.json`);
@@ -33,14 +35,18 @@ export function applyReviewWrite(body: { question: unknown; note?: string }, opt
   }
   // Write what was sent, not Zod's output, which reorders keys and would churn the file's diff.
   const q = body.question as Question;
-  const unknown = q.objectiveIds.find((o) => !opts.meta.objectives.some((m) => m.id === o));
+  const bank = Object.hasOwn(BANKS, q.exam) ? BANKS[q.exam] : undefined;
+  const meta = metaFor(q.exam);
+  if (!bank || !meta) return { status: 400, body: `unknown exam "${q.exam}"` };
+  const unknown = q.objectiveIds.find((o) => !meta.objectives.some((m) => m.id === o));
   if (unknown) return { status: 400, body: `unknown objective ${unknown}` };
 
-  const files = readdirSync(opts.itemsDir).filter((f) => f.endsWith('.json'));
-  const home = files.map((f) => path.join(opts.itemsDir, f)).find((f) => readItems(f).some((x) => x.id === q.id));
+  const itemsDir = path.join(opts.banksRoot, bank.dir, 'items');
+  const files = readdirSync(itemsDir).filter((f) => f.endsWith('.json'));
+  const home = files.map((f) => path.join(itemsDir, f)).find((f) => readItems(f).some((x) => x.id === q.id));
   if (!home) return { status: 404, body: `no bank item ${q.id}` };
 
-  const target = fileFor(opts.itemsDir, q.objectiveIds[0]);
+  const target = fileFor(itemsDir, q.objectiveIds[0]);
   if (home === target) {
     writeItems(home, readItems(home).map((x) => (x.id === q.id ? q : x)));
   } else {

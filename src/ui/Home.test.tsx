@@ -18,6 +18,14 @@ describe('Home', () => {
     expect(await within(row).findByText('0 questions (mine)')).toBeInTheDocument();
   });
 
+  it('lists both exams and offers Learn only where lessons exist', async () => {
+    render(<Home repo={createMemoryRepo()} persistent onNavigate={vi.fn()} />);
+    expect(await screen.findByText('CompTIA Data+ (DA0-002)')).toBeInTheDocument();
+    expect(screen.getByText('CompTIA SecAI+ (CY0-001)')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Learn: DA0-002' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Learn: CY0-001' })).toBeNull();
+  });
+
   it('toggle persists', async () => {
     const user = userEvent.setup();
     const repo = createMemoryRepo();
