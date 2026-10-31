@@ -183,7 +183,26 @@
 - **Fix deployed 2026-10-31 (`5ad42c7`, deploy `86890e9`):** drag-and-drop chips (match, order, diagram) showed the keys in answer order by plain chance (3 keys: 1 time in 6). `itemFor` now reshuffles up to 3 times when that happens, so it is rare but never impossible.
 - **Next: chunk 11, SecAI+ (CY0-001).** Plan (awaiting the owner's review): `docs/superpowers/plans/2026-10-31-chunk11-secai.md`. Objectives are published (v4.0, launched 2026-02-17). Start with Session 1 (Tasks 1–6, including 4a) on branch `chunk11-secai`; content follows one slice per session; do not merge or deploy until Task 9.
   - **Owner decision (2026-10-31):** the CompTIA instructor slide decks in `_WorkingData/SecAIPlus/` may be used as reference and supporting documentation only (topics, depth, fact checks). Never copy or paraphrase their wording, examples, questions or diagrams; every draft passes the 8-word overlap check. Other `_WorkingData/` material stays off limits.
-  - Session 1 needs Ollama running locally for the acronym expansion step.
+  - **Session 1 done (2026-10-31), branch `chunk11-secai`, commits ee04475..af928b6.** Tasks 1, 2, 3, 4, 4a, 5 and 6 are complete. `npm run check` passes: 523 unit tests (2 skipped) and 53 e2e tests (9 skipped). The ledger is `.superpowers/sdd/2026-10-31-chunk11-secai/progress.md`; read its `Ruling:` lines before Task 9.
+    - What the session built:
+      - Exam-aware bank paths (`src/banks/paths.ts`) and a SecAI+ bank (empty items plus a 3-item fixture).
+      - `--exam` flags on `check-drafts` and `draft-ollama`.
+      - Shared shipped-bank checks (`src/banks/shippedChecks.ts`); 59 legacy Data+ ids are exempt.
+      - Verified CY0-001 metadata with 63 official acronyms; sources are in `docs/sources/CY0-001.md`.
+      - The 8-word deck overlap check (`check-drafts --ref`).
+      - The deck notes and objective map in `_WorkingData/SecAIPlus/notes/index.md` (git-ignored).
+    - Acronym harvest: 6 kept as community (BC, CBA, CIS, CUI, DMCA, SSL). The rest are flagged and not added:
+      - On topic but ambiguous: CSA (Cloud Security Alliance), DSA (EU Digital Services Act vs Digital Signature Algorithm), SSE (Server-Side Encryption vs Security Service Edge), CI, IA, SAM.
+      - GenAI (initials do not spell it).
+      - Vendor names XSOAR and XSIAM.
+      - Everything else was cert or exam codes, product names, plain words or page text.
+    - **Next: Session 2, domain 1** (objectives 1.1–1.3), one domain per session per the plan. Deck slides for each objective are in `_WorkingData/SecAIPlus/notes/index.md`.
+  - **UI redesign (separate from chunk 11), awaiting the owner:**
+    - Design doc: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`. It covers exam cards on the landing page, a page per exam, Back/All exams on every screen, Settings, Stock/Custom, ten exams and one master acronym table. The builder check is done.
+    - Open question to the owner: should the phone/browser Back gesture step back inside the app (history integration), or only the on-screen buttons? Then owner approval, then superpowers:writing-plans.
+    - No product code before approval.
+    - Branch: its own branch from `main`, so it is not blocked by chunk 11's content. This is my call; the owner can override it.
+    - Security+ is SY0-801 (launching about 2026-11-17). The owner will supply the v8 objectives at the next TTT class.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 - **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 - **Owner rules for sessions:**
