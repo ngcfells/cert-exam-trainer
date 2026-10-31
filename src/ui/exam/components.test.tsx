@@ -5,7 +5,9 @@ import { formatTime } from './formatTime';
 import { McqView } from './McqView';
 import { TopBar } from './TopBar';
 import { ReviewGrid } from './ReviewGrid';
-import { mcq } from '../../exam/testFixtures';
+import { mcq, numeric } from '../../exam/testFixtures';
+import { NumericView } from './NumericView';
+import { ItemReview } from './ItemReview';
 
 describe('formatTime', () => {
   it('formats m:ss and h:mm:ss', () => {
@@ -13,6 +15,40 @@ describe('formatTime', () => {
     expect(formatTime(3_600_000)).toBe('1:00:00');
     expect(formatTime(61_500)).toBe('1:01');
     expect(formatTime(-5)).toBe('0:00');
+  });
+});
+
+describe('NumericView', () => {
+  const item = { question: numeric('N0', 'A') };
+  it('labels the input with the stem, shows the unit and reports raw text', async () => {
+    const onChange = vi.fn();
+    const { rerender } = render(<NumericView item={item} value="" onChange={onChange} />);
+    const input = screen.getByLabelText('Number N0');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('inputmode', 'decimal');
+    expect(input).toHaveAccessibleDescription('Answer in %');
+    expect(screen.getByText('%')).toBeInTheDocument();
+    await userEvent.type(input, '7');
+    expect(onChange).toHaveBeenLastCalledWith(['7']);
+    rerender(<NumericView item={item} value="7" onChange={onChange} />);
+    await userEvent.clear(input);
+    expect(onChange).toHaveBeenLastCalledWith([]);
+  });
+
+  it('flags text that is not a number', () => {
+    render(<NumericView item={item} value="abc" onChange={() => {}} />);
+    expect(screen.getByLabelText('Number N0')).toHaveAccessibleDescription(/Enter a number, such as 12\.5/);
+    expect(screen.getByLabelText('Number N0')).toHaveAttribute('aria-invalid', 'true');
+  });
+});
+
+describe('ItemReview for numeric', () => {
+  it('shows the given and correct answers', () => {
+    const { rerender } = render(<ItemReview q={numeric('N0', 'A')} response={['24']} />);
+    expect(screen.getByText('24')).toBeInTheDocument();
+    expect(screen.getByText('25% (± 0.5)')).toBeInTheDocument();
+    rerender(<ItemReview q={numeric('N0', 'A')} response={undefined} />);
+    expect(screen.getByText('Not answered')).toBeInTheDocument();
   });
 });
 

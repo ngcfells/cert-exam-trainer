@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { act, fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { StudyRunner, type StudyItem } from './StudyRunner';
-import { mcq, pbq } from '../../exam/testFixtures';
+import { mcq, numeric, pbq } from '../../exam/testFixtures';
 
 const T0 = new Date('2026-01-01T00:00:00Z');
 const order = ['a', 'b', 'c', 'd'];
@@ -37,6 +37,17 @@ describe('StudyRunner', () => {
     expect(screen.getByText('Explanation A0')).toBeInTheDocument();
     expect(screen.getByLabelText('A0-a')).toBeDisabled();
     expect(screen.queryByRole('button', { name: 'Check answer' })).not.toBeInTheDocument();
+  });
+
+  it('numeric: Check answer stays disabled until the text is a number', async () => {
+    const { user } = setup({ items: [{ kind: 'question', item: { question: numeric('N0', 'A') } }] });
+    const check = screen.getByRole('button', { name: 'Check answer' });
+    await user.type(screen.getByLabelText('Number N0'), 'abc');
+    expect(check).toBeDisabled();
+    await user.clear(screen.getByLabelText('Number N0'));
+    await user.type(screen.getByLabelText('Number N0'), '25');
+    await user.click(check);
+    expect(screen.getByRole('status')).toHaveTextContent('Correct');
   });
 
   it('end feedback hides Check and reports answered items as checked at Finish', async () => {
