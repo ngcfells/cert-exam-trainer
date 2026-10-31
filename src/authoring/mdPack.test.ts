@@ -144,6 +144,23 @@ describe('parseMarkdown', () => {
     expect(() => parseMarkdown('Q?\nA - x\nB - y', opts)).toThrow(/Question 1: no correct answer/);
   });
 
+  it('Correct Number builds a numeric question', () => {
+    const md = 'Sales rose from 80 to 100. What is the percent change?\n\nCorrect Number: 25\nTolerance: 0.5\nSuffix: %\n\nExplanation\n(100 - 80) / 80 = 0.25, so 25%.';
+    expect(parseMarkdown(md, opts).questions[0]).toMatchObject({
+      type: 'numeric',
+      stem: 'Sales rose from 80 to 100. What is the percent change?',
+      payload: { suffix: '%' },
+      answer: { value: 25, tolerance: 0.5 },
+      explanation: '(100 - 80) / 80 = 0.25, so 25%.',
+    });
+    const prefixed = parseMarkdown('Cost?\nCorrect Number: 1,250.5\nPrefix: $', opts).questions[0];
+    expect(prefixed).toMatchObject({ payload: { prefix: '$' }, answer: { value: 1250.5, tolerance: 0 }, explanation: '' });
+  });
+
+  it('a Correct Number that is not a number names the line', () => {
+    expect(() => parseMarkdown('Q?\nCorrect Number: twelve', opts)).toThrow(/Question 1: .*Correct Number/);
+  });
+
   it('duplicate stems need an Id line', () => {
     expect(() => parseMarkdown(`${DASH}\n---\n${DASH}`, opts)).toThrow(/Id:/);
   });

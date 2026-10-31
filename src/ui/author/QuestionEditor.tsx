@@ -1,10 +1,10 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { z } from 'zod';
-import { isPbqTemplate, type PbqTemplate } from '../../domain/pbq';
+import { isPbqTemplate } from '../../domain/pbq';
 import type { ItemResponse } from '../../exam/scoring';
 import { QUESTION_TYPES, questionSchema } from '../../domain/schema';
 import type { McqAnswer, McqPayload, Question, QuestionType } from '../../domain/types';
-import { PBQ_STARTERS } from '../../authoring/starters';
+import { JSON_STARTERS, usesJsonEditor, type JsonType } from '../../authoring/starters';
 import type { Repo } from '../../storage';
 import { Loading, metaFor, QuestionView } from '../kit';
 import { LoadError } from '../study/LoadError';
@@ -26,8 +26,8 @@ interface Draft extends PbqTexts {
   options: Option[];
   correct: string[];
   pbqWeight: number;
-  /** JSON left behind by other PBQ templates, restored when the author switches back. */
-  parked: Partial<Record<PbqTemplate, PbqTexts>>;
+  /** JSON left behind by other JSON-edited types, restored when the author switches back. */
+  parked: Partial<Record<JsonType, PbqTexts>>;
 }
 
 /** Which input an error belongs to; the summary links to it. */
@@ -39,9 +39,9 @@ export interface EditorError {
 
 const json = (v: unknown) => JSON.stringify(v, null, 2);
 const blankOptions = (): Option[] => ['a', 'b', 'c', 'd'].map((id) => ({ id, text: '' }));
-const starterTexts = (t: PbqTemplate): PbqTexts => ({
-  payloadText: json(PBQ_STARTERS[t].payload),
-  answerText: json(PBQ_STARTERS[t].answer),
+const starterTexts = (t: JsonType): PbqTexts => ({
+  payloadText: json(JSON_STARTERS[t].payload),
+  answerText: json(JSON_STARTERS[t].answer),
   partExplanationsText: '',
 });
 
@@ -53,7 +53,7 @@ function newDraft(objectiveId: string): Draft {
 }
 
 function fromQuestion(q: Question): Draft {
-  const mcq = !isPbqTemplate(q.type);
+  const mcq = !usesJsonEditor(q.type);
   return {
     type: q.type, objectiveIds: q.objectiveIds, difficulty: q.difficulty, stem: q.stem, explanation: q.explanation, status: q.status,
     options: mcq ? (q.payload as McqPayload).options : blankOptions(),
@@ -81,11 +81,11 @@ export function buildQuestion(d: Draft, base: Pick<Question, 'id' | 'exam' | 'ac
     ...base, source: 'user', type: d.type, objectiveIds: d.objectiveIds, difficulty: d.difficulty,
     stem: d.stem.trim(), explanation: d.explanation.trim(), status: d.status,
   };
-  if (isPbqTemplate(d.type)) {
-    raw.pbqWeight = d.pbqWeight;
+  if (usesJsonEditor(d.type)) {
+    if (isPbqTemplate(d.type)) raw.pbqWeight = d.pbqWeight;
     raw.payload = parse(d.payloadText, 'Payload', 'payload');
     raw.answer = parse(d.answerText, 'Answer', 'answer');
-    if (d.partExplanationsText.trim()) raw.partExplanations = parse(d.partExplanationsText, 'Part explanations', 'parts');
+    if (isPbqTemplate(d.type) && d.partExplanationsText.trim()) raw.partExplanations = parse(d.partExplanationsText, 'Part explanations', 'parts');
   } else {
     raw.payload = { options: d.options.map((o) => ({ id: o.id, text: o.text.trim() })) };
     raw.answer = { correct: d.correct };
@@ -107,7 +107,7 @@ function describeIssue(i: z.ZodIssue, d: Draft): EditorError {
   if (head === 'objectiveIds') return { field: 'objectives', text: 'Choose at least one objective.' };
   if (head === 'payload' && second === 'options' && fourth === 'text') return { field: `option-${Number(third)}`, text: `Option ${Number(third) + 1} needs text.` };
   if (head === 'payload' && second === 'options') return { field: 'options', text: 'Add at least 2 options.' };
-  if (head === 'answer' && !isPbqTemplate(d.type)) {
+  if (head === 'answer' && !usesJsonEditor(d.type)) {
     if (d.correct.length === 0) return { field: 'correct', text: 'Mark the correct answer.' };
     return { field: 'correct', text: d.type === 'mcq-single' ? 'Mark exactly one correct answer.' : 'Mark at least 2 correct answers, or use "one answer".' };
   }
@@ -166,6 +166,7 @@ export function QuestionEditor({
   if (!draft || !built) return <Loading />;
 
   const set = (patch: Partial<Draft>) => setDraft({ ...draft, ...patch });
+  const jsonEdited = usesJsonEditor(draft.type);
   const pbq = isPbqTemplate(draft.type);
   const fieldId = (f: ErrorField) =>
     ({ stem: `${uid}-stem`, objectives: `${uid}-obj-0`, options: `${uid}-opt-0`, correct: `${uid}-correct-0`, payload: `${uid}-payload`,
@@ -189,10 +190,10 @@ export function QuestionEditor({
 
   function changeType(type: QuestionType) {
     if (!draft) return;
-    const parked = isPbqTemplate(draft.type)
+    const parked = usesJsonEditor(draft.type)
       ? { ...draft.parked, [draft.type]: { payloadText: draft.payloadText, answerText: draft.answerText, partExplanationsText: draft.partExplanationsText } }
       : draft.parked;
-    if (isPbqTemplate(type)) setDraft({ ...draft, type, parked, ...(parked[type] ?? starterTexts(type)) });
+    if (usesJsonEditor(type)) setDraft({ ...draft, type, parked, ...(parked[type] ?? starterTexts(type)) });
     else setDraft({ ...draft, type, parked, correct: type === 'mcq-single' ? draft.correct.slice(0, 1) : draft.correct });
   }
 
@@ -304,9 +305,9 @@ export function QuestionEditor({
         {inlineErrors('stem')}
       </div>
 
-      {pbq ? (
+      {jsonEdited ? (
         <>
-          <div className="field">
+          {pbq && <div className="field">
             <label htmlFor={`${uid}-weight`}>PBQ weight (1–6)</label>
             <select id={`${uid}-weight`} value={draft.pbqWeight} onChange={(e) => set({ pbqWeight: Number(e.currentTarget.value) })}>
               {[1, 2, 3, 4, 5, 6].map((w) => (
@@ -315,13 +316,17 @@ export function QuestionEditor({
                 </option>
               ))}
             </select>
-          </div>
-          <p className="hint">Edit the example data below. The rules for each template are in docs/pbq-authoring.md.</p>
+          </div>}
+          <p className="hint">
+            {pbq
+              ? 'Edit the example data below. The rules for each template are in docs/pbq-authoring.md.'
+              : 'Answer: value is the correct number and tolerance how far off still counts (0 = exact). Payload: an optional prefix (such as $) or suffix (such as %) shown beside the input.'}
+          </p>
           {(
             [
               ['payload', 'Payload (JSON)', 'payloadText'],
               ['answer', 'Answer (JSON)', 'answerText'],
-              ['parts', 'Part explanations (JSON, optional)', 'partExplanationsText'],
+              ...(pbq ? [['parts', 'Part explanations (JSON, optional)', 'partExplanationsText'] as const] : []),
             ] as const
           ).map(([f, label, key]) => (
             <div className="field" key={f}>

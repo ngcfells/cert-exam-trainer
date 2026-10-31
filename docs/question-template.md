@@ -59,6 +59,29 @@ Variance and range describe spread. Mean and mode describe the center.
 - Two or more correct answers make the question select-all (`mcq-multi`), scored as (right − wrong) / correct, never below 0.
 - The explanation is everything after the answer. A leading `Explanation` heading is removed. Blank lines separate paragraphs.
 
+## Typed number
+
+The student types a number. Write the stem, then a `Correct Number:` line, then any of these optional lines, then the explanation:
+
+- `Tolerance: 0.5` is how far off an answer may be and still count (default 0, an exact match).
+- `Prefix: $` or `Suffix: %` is shown beside the input.
+
+```text
+Objective: 3.2
+Sales rose from 80 to 100. What is the percent change? Answer as a percent, rounded to a whole number.
+
+Correct Number: 25
+Tolerance: 0.5
+Suffix: %
+
+Explanation
+Change = 100 - 80 = 20. Divide by the old value: 20 / 80 = 0.25. Times 100 = 25%.
+```
+
+- Say in the stem which form you want ("as a percent, e.g. 25" or "as a decimal, e.g. 0.25") and how to round.
+- Students may type `,`, `$`, `%` and spaces; they are ignored. Anything else that is not a number counts as unanswered.
+- The explanation should show the steps.
+
 ## PBQs
 
 A PBQ is a fenced block tagged `pbq` that holds JSON:
