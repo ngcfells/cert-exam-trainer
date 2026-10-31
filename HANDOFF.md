@@ -209,7 +209,16 @@
       - Do not rerun the drafters' generator scripts (in the scratchpad). Some final edits were made to the JSON directly.
     - **Owner decision (2026-10-31): merged to `main` early (faf0737) and deployed (gh-pages 04b69f5) to see domain 1 live.** This overrides the plan's "no merge or deploy until Task 9" rule for this slice. The live SecAI+ exam draws only from domain 1 until the other slices land.
     - Keep working on `chunk11-secai`, which stays alive. Merge it to `main` and redeploy whenever the owner asks, and in full at Task 9.
-    - **Next: Session 3, slice (b): objectives 2.1–2.3.** Deck slides: S2 11–35 (2.1), S2 36–68 (2.2), S3 11–25 (2.3). See `_WorkingData/SecAIPlus/notes/index.md`.
+  - **Session 3 done (2026-10-31), slice (b) 2.1–2.3, commit 04c3c85.** `npm run check` passes: 528 unit tests and 62 e2e tests. Not merged to `main` or deployed (the owner may ask; the live site still has domain 1 only).
+    - Each of 2.1, 2.2 and 2.3 has 45 approved items: 38 MCQ (31 single, 7 multi) and 7 PBQ, against a quota of 34 + 6. All spares were kept.
+    - Bank so far: 210 MCQ, 39 PBQ. PBQ templates: buckets 4, match 5, order 4, config 6, diagram 5, hotspot 6, data 4, terminal 5. To reach 10 each, the rest of the exam needs buckets 6, match 5, order 6, config 4, diagram 5, hotspot 4, data 6 and terminal 5 (41 of the 57 PBQs left in the quotas). Lean on buckets, order and data.
+    - Same method as session 2, with these lessons:
+      - First drafts follow slides closely (about 40 of 135 flagged). Drafters must be told to invent their own scenarios, not just to avoid copying words; the 8-word check alone does not catch this.
+      - Terminal PBQs keep hitting ambiguity (risks on both OWASP lists, duration and id formats). Brief drafters to show formats in the help output and to pick list-unique risks.
+      - Copywriter fixes ping-pong between length tells and stem/key word repeats. After round 3, apply the copywriter's own one-line wording yourself (keys unchanged).
+      - Reviewers sometimes report writing a file that does not exist (a Bash heredoc was blocked). Tell them to use the Write tool and confirm the file exists.
+    - Scratchpad tools from this session (not in the repo): `strip.mjs`, `subset.mjs`, `approve.mjs`, and `compare.mjs`, which now accepts bare-value answers and checks terminal answers against the accept lists. Do not rerun the drafters' generators: the last edits were made to the JSON directly.
+    - **Next: Session 4, slice (c): objectives 2.4–2.6.** Deck slides: S3 26–37 (2.4), S3 38–50 (2.5), S4 29–50 (2.6). See `_WorkingData/SecAIPlus/notes/index.md`. For the v4.0 sub-bullets, use the PDF text extracted in session 2 if its scratchpad still exists (`622b7a45-…/scratchpad/obj.txt`, where 2.4 starts at line 198); otherwise re-extract it with pypdf.
   - **UI redesign (separate from chunk 11), awaiting the owner:**
     - Design doc: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`. It covers exam cards on the landing page, a page per exam, Back/All exams on every screen, Settings, Stock/Custom, ten exams and one master acronym table. The builder check is done.
     - Open question to the owner: should the phone/browser Back gesture step back inside the app (history integration), or only the on-screen buttons? Then owner approval, then superpowers:writing-plans.
