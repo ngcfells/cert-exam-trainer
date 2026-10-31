@@ -1,0 +1,2407 @@
+[
+  {
+    "id": "cy1-2-1-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "An assistant quotes another user's earlier chat session when asked an unrelated question. Which risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Prompt injection of hidden rules"
+        },
+        {
+          "id": "b",
+          "text": "Model theft by repeated queries"
+        },
+        {
+          "id": "c",
+          "text": "Sensitive information disclosure"
+        },
+        {
+          "id": "d",
+          "text": "Misinformation shown as verified fact"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Sensitive information disclosure is a model revealing private or proprietary data through its answers, here because another user's content leaked into the reply. Prompt injection overrides instructions, model theft copies the model itself, and misinformation is false content rather than leaked data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A developer pastes whatever the model returns straight into a web page template without checking it. Which LLM risk does this create?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Improper output handling"
+        },
+        {
+          "id": "b",
+          "text": "Unbounded consumption"
+        },
+        {
+          "id": "c",
+          "text": "System prompt leakage"
+        },
+        {
+          "id": "d",
+          "text": "Prompt injection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Improper output handling means trusting model text downstream without validation, so a crafted reply can run as markup or code in the page. Unbounded consumption is about cost and availability, system prompt leakage exposes hidden instructions, and prompt injection manipulates instructions rather than trusting replies.",
+    "acronyms": [
+      "LLM"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "A support chatbot can issue refunds, delete accounts, and email customers through connected tools, though it only needs to look up order status. Which risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sensitive information disclosure"
+        },
+        {
+          "id": "b",
+          "text": "Unbounded consumption"
+        },
+        {
+          "id": "c",
+          "text": "Improper output handling"
+        },
+        {
+          "id": "d",
+          "text": "Excessive agency"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Excessive agency is a model given broader tools or permissions than its job requires, so a manipulated reply can trigger harmful actions. Disclosure concerns leaked data, unbounded consumption concerns runaway usage, and improper output handling concerns unchecked replies.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A public chat endpoint has no rate limit, and one user scripts thousands of very long requests, causing a huge cloud bill. Which LLM risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Prompt injection"
+        },
+        {
+          "id": "b",
+          "text": "Unbounded consumption"
+        },
+        {
+          "id": "c",
+          "text": "Data and model poisoning"
+        },
+        {
+          "id": "d",
+          "text": "Improper output handling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Unbounded consumption is uncontrolled use of an LLM service, driving up cost or degrading availability, and quotas and rate limits reduce it. Prompt injection manipulates instructions, poisoning corrupts training content, and output handling concerns unvalidated replies.",
+    "acronyms": [
+      "LLM"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An attacker coaxes an assistant into printing the hidden developer instructions that define its persona and rules. Which risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model inversion"
+        },
+        {
+          "id": "b",
+          "text": "System prompt leakage"
+        },
+        {
+          "id": "c",
+          "text": "Improper output handling"
+        },
+        {
+          "id": "d",
+          "text": "Membership inference"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "System prompt leakage is the exposure of hidden system instructions, which may reveal rules, internal details, or secrets placed there. Model inversion and membership inference concern training data, and improper output handling concerns trusting replies downstream.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "A chatbot confidently cites a court case that does not exist, and a clerk relies on it in a filing. Which risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Excessive agency"
+        },
+        {
+          "id": "b",
+          "text": "Data poisoning"
+        },
+        {
+          "id": "c",
+          "text": "Prompt injection"
+        },
+        {
+          "id": "d",
+          "text": "Misinformation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Misinformation is a model producing false or misleading content that people then rely on, often called hallucination. No tools were misused, no training data was tampered with, and no crafted input overrode instructions.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A RAG system keeps every tenant's document chunks in one shared search index with no per-tenant access control, so one customer's query returns another's text. Which risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Vector and embedding weaknesses"
+        },
+        {
+          "id": "b",
+          "text": "Supply chain vulnerabilities"
+        },
+        {
+          "id": "c",
+          "text": "Improper output handling"
+        },
+        {
+          "id": "d",
+          "text": "Prompt injection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Weak control over the vector store and embeddings lets one party retrieve or reconstruct another party's data, so retrieval needs per-tenant authorization. Supply chain risk concerns third-party components, output handling concerns unvalidated replies, and prompt injection manipulates instructions.",
+    "acronyms": [
+      "RAG"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A team downloads a community-hosted model and a plugin and deploys both without checking who published them or whether they were altered. Which risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Misinformation"
+        },
+        {
+          "id": "b",
+          "text": "Sensitive information disclosure"
+        },
+        {
+          "id": "c",
+          "text": "Supply chain vulnerabilities"
+        },
+        {
+          "id": "d",
+          "text": "Unbounded consumption"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Unverified third-party models, datasets, and plugins are supply chain vulnerabilities, so provenance and integrity should be checked before use. Misinformation, disclosure, and runaway usage describe different failures that may follow but are not the cause named here.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "An attacker slips mislabeled examples into a fine-tuning set so the assistant later misbehaves whenever a certain trigger phrase appears. Which risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Prompt injection"
+        },
+        {
+          "id": "b",
+          "text": "System prompt leakage"
+        },
+        {
+          "id": "c",
+          "text": "Excessive agency"
+        },
+        {
+          "id": "d",
+          "text": "Data and model poisoning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Tampering with training or fine-tuning content to change later behavior, including hidden triggers, is poisoning. Prompt injection happens at inference time through inputs, and the other two concern hidden instructions and over-broad tool access.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which ML attack tries to learn whether a specific person's record was part of a model's training set?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model inversion"
+        },
+        {
+          "id": "b",
+          "text": "Output integrity attack"
+        },
+        {
+          "id": "c",
+          "text": "Membership inference"
+        },
+        {
+          "id": "d",
+          "text": "Model skewing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Membership inference probes a model to decide whether a given record was used in training. Model inversion rebuilds training content, model skewing shifts behavior through altered data, and output integrity attacks tamper with results after the model produces them, not with what it learned from training.",
+    "acronyms": [
+      "ML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Attackers query a deployed prediction service thousands of times and use the answers to train a close copy for their own use. Which ML risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model skewing"
+        },
+        {
+          "id": "b",
+          "text": "Model theft"
+        },
+        {
+          "id": "c",
+          "text": "Model inversion"
+        },
+        {
+          "id": "d",
+          "text": "Input manipulation attack"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Replicating a model by harvesting its outputs is model theft, a loss of intellectual property and revenue. Skewing alters behavior over time, inversion recovers training data, and input manipulation crafts inputs to cause errors.",
+    "acronyms": [
+      "ML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "By studying the scores a face-matching service returns, an attacker rebuilds a recognizable approximation of a face from the training set. Which ML attack is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model inversion"
+        },
+        {
+          "id": "b",
+          "text": "Membership inference"
+        },
+        {
+          "id": "c",
+          "text": "Model skewing"
+        },
+        {
+          "id": "d",
+          "text": "Output integrity attack"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Model inversion reconstructs sensitive training content from a model's outputs. Membership inference only decides whether a record was present, skewing shifts behavior through bad data, and output integrity attacks tamper with results.",
+    "acronyms": [
+      "ML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Reviewers of a loan-scoring system submit slightly biased feedback, and over several months its decisions drift toward an outside party's advantage. Which ML attack is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model skewing"
+        },
+        {
+          "id": "b",
+          "text": "Model inversion"
+        },
+        {
+          "id": "c",
+          "text": "Membership inference"
+        },
+        {
+          "id": "d",
+          "text": "Transfer learning attack"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Model skewing is gradual change in behavior caused by altered training or feedback data. Inversion and membership inference extract information from a model, and a transfer learning attack comes from a compromised pretrained model.",
+    "acronyms": [
+      "ML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A team fine-tunes a downloaded pretrained image classifier, unaware that it carries a hidden backdoor from its original author. Which ML risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model inversion"
+        },
+        {
+          "id": "b",
+          "text": "Transfer learning attack"
+        },
+        {
+          "id": "c",
+          "text": "Model theft"
+        },
+        {
+          "id": "d",
+          "text": "Output integrity attack"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Weaknesses inherited from an unverified pretrained model, passed along when it is fine-tuned, are a transfer learning attack. Inversion recovers training data from a model, theft copies a model, and output integrity attacks alter results.",
+    "acronyms": [
+      "ML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "An attacker adds almost invisible noise to a road photo so that an image classifier reads a stop sign as a speed limit sign. Which ML risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model skewing through altered data"
+        },
+        {
+          "id": "b",
+          "text": "Model inversion of training data"
+        },
+        {
+          "id": "c",
+          "text": "Membership inference"
+        },
+        {
+          "id": "d",
+          "text": "Input manipulation attack"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Crafting inputs that cause wrong predictions at inference time is an input manipulation attack, also called evasion. Skewing changes the model through its data, while inversion and membership inference extract training information.",
+    "acronyms": [
+      "ML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "Scores from a credit model are altered between the model and the loan officer's screen because the results service has weak access controls. Which ML risk is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model skewing over time"
+        },
+        {
+          "id": "b",
+          "text": "Model theft via API queries"
+        },
+        {
+          "id": "c",
+          "text": "Output integrity attack"
+        },
+        {
+          "id": "d",
+          "text": "Model inversion"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Tampering with a model's results after they are produced, often through weak access control, is an output integrity attack, and it misleads decisions without touching the model. Skewing, theft, and inversion all involve the model or its training.",
+    "acronyms": [
+      "API",
+      "ML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A governance team needs one searchable catalog that consolidates AI hazards from many published frameworks. Which resource fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "ATLAS matrix"
+        },
+        {
+          "id": "b",
+          "text": "CVE AI Working Group"
+        },
+        {
+          "id": "c",
+          "text": "MIT AI Risk Repository"
+        },
+        {
+          "id": "d",
+          "text": "OWASP LLM application list"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The MIT AI Risk Repository is a living database that consolidates AI hazards from published sources into one taxonomy. ATLAS describes adversary behavior, the working group handles vulnerability identifiers, and the OWASP list ranks flaws in LLM applications.",
+    "acronyms": [
+      "AI",
+      "ATLAS",
+      "CVE",
+      "LLM",
+      "MIT",
+      "OWASP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A hiring screener scores applicants from one group lower than others with the same skills. Which type of AI hazard is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Privacy compromise"
+        },
+        {
+          "id": "b",
+          "text": "Malicious misuse"
+        },
+        {
+          "id": "c",
+          "text": "Overreliance by users"
+        },
+        {
+          "id": "d",
+          "text": "Unfair discrimination"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Unequal treatment or performance across groups is unfair discrimination, a hazard category that taxonomies such as the MIT AI Risk Repository include. The screener is not leaking personal data, being used by an attacker, or relied on too heavily by its users.",
+    "acronyms": [
+      "AI",
+      "MIT"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "How does the MIT AI Risk Repository differ from an AI incident database?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It catalogs potential hazards from research, not only past events"
+        },
+        {
+          "id": "b",
+          "text": "It lists only attacks that caused confirmed financial loss"
+        },
+        {
+          "id": "c",
+          "text": "It tracks patch status for every disclosed AI vulnerability"
+        },
+        {
+          "id": "d",
+          "text": "It hosts model weights that teams use for adversarial testing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The repository gathers hazards described across published work, including ones that have not yet happened, while an incident database records real events. It is not limited to costly attacks, does not track patches, and does not distribute models.",
+    "acronyms": [
+      "AI",
+      "MIT"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which description fits ATLAS?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A catalog of identifiers assigned to publicly disclosed flaws in AI software"
+        },
+        {
+          "id": "b",
+          "text": "A knowledge base of attacker tactics and techniques against AI systems"
+        },
+        {
+          "id": "c",
+          "text": "A taxonomy of AI hazards organized by cause and by domain"
+        },
+        {
+          "id": "d",
+          "text": "A ranked list of the most critical weaknesses in chat applications"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "ATLAS records how adversaries attack AI systems as tactics and techniques, in the style of an attack matrix. The identifier catalog is the CVE program, the taxonomy is the MIT repository, and the ranked list is an OWASP list.",
+    "acronyms": [
+      "AI",
+      "ATLAS",
+      "CVE",
+      "MIT",
+      "OWASP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "A detection engineer wants to map observed adversary behavior against a deployed vision model to detection ideas. Which resource fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "MIT AI Risk Repository"
+        },
+        {
+          "id": "b",
+          "text": "ATLAS knowledge base"
+        },
+        {
+          "id": "c",
+          "text": "CVE AI Working Group"
+        },
+        {
+          "id": "d",
+          "text": "NIST AIRMF"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "ATLAS focuses on attacker behavior against AI systems and supports detection and defense planning. The repository catalogs hazards, the working group handles vulnerability identifiers, and the NIST AIRMF is a governance framework.",
+    "acronyms": [
+      "AI",
+      "AIRMF",
+      "ATLAS",
+      "CVE",
+      "MIT",
+      "NIST"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "In ATLAS, how do a tactic and a technique relate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A tactic is the adversary's goal; a technique is how it is reached"
+        },
+        {
+          "id": "b",
+          "text": "A tactic is a defensive control; a technique is the attack it blocks"
+        },
+        {
+          "id": "c",
+          "text": "A tactic is a flaw identifier; a technique is its severity rating"
+        },
+        {
+          "id": "d",
+          "text": "A tactic is the attack tool; a technique is the goal it serves"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A tactic names what the adversary is trying to achieve, and a technique is the way that goal is reached. The other options swap the roles, describe defenses, or confuse the matrix with vulnerability scoring.",
+    "acronyms": [
+      "ATLAS"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "What does the CVE AI Working Group do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Publishes a ranked list of the weakest points in chat applications"
+        },
+        {
+          "id": "b",
+          "text": "Maintains a database of real-world AI incidents and their harms"
+        },
+        {
+          "id": "c",
+          "text": "Sets how AI-specific vulnerabilities are reported and assigned identifiers"
+        },
+        {
+          "id": "d",
+          "text": "Catalogs attacker tactics seen against machine learning systems in production"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The working group extends the existing CVE program to AI by shaping how AI vulnerabilities are reported and tracked. A ranked list is an OWASP product, an incident database records events, and tactic catalogs belong to ATLAS.",
+    "acronyms": [
+      "AI",
+      "ATLAS",
+      "CVE",
+      "OWASP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A maintainer finds a deserialization flaw in an open-source library that serves models, and enterprises must track their exposure through their usual patch processes. What should the maintainer seek?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An entry in the ATLAS tactic matrix"
+        },
+        {
+          "id": "b",
+          "text": "A new category in the MIT taxonomy"
+        },
+        {
+          "id": "c",
+          "text": "A place on the OWASP ML list"
+        },
+        {
+          "id": "d",
+          "text": "A CVE record for this issue"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A CVE record gives the flaw a standard identifier that scanners, trackers, and patch processes already understand. The matrix, taxonomy, and ranked list describe threats in general and do not identify one specific flaw for tracking.",
+    "acronyms": [
+      "ATLAS",
+      "CVE",
+      "MIT",
+      "ML",
+      "OWASP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "How does the CVE AI Working Group relate to the CVE program for conventional software?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It replaces the registry with a separate AI-only numbering scheme"
+        },
+        {
+          "id": "b",
+          "text": "It runs a competing registry maintained by model vendors"
+        },
+        {
+          "id": "c",
+          "text": "It reviews AI incidents in place of assigning identifiers"
+        },
+        {
+          "id": "d",
+          "text": "It extends the established registry to cover AI-specific vulnerabilities"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The working group builds on the existing CVE ecosystem rather than creating a new system, so AI vulnerabilities can use ordinary tracking and patching. It does not replace the registry, compete with it, or limit itself to reviewing incidents.",
+    "acronyms": [
+      "AI",
+      "CVE"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which NIST AIRMF function sets policies, roles, and accountability for managing AI?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Map"
+        },
+        {
+          "id": "b",
+          "text": "Govern"
+        },
+        {
+          "id": "c",
+          "text": "Measure"
+        },
+        {
+          "id": "d",
+          "text": "Manage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Govern establishes the culture, policies, roles, and accountability that the other functions rely on. Map frames context, Measure analyzes and tracks risk, and Manage prioritizes and treats it.",
+    "acronyms": [
+      "AI",
+      "AIRMF",
+      "NIST"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "A team documents an AI system's purpose, users, data, and operating context to understand where harm could arise. Which NIST AIRMF function is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Govern"
+        },
+        {
+          "id": "b",
+          "text": "Measure"
+        },
+        {
+          "id": "c",
+          "text": "Map"
+        },
+        {
+          "id": "d",
+          "text": "Manage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Map establishes context and identifies where risks come from. Govern sets policy and accountability, Measure analyzes and tracks risks, and Manage treats them.",
+    "acronyms": [
+      "AI",
+      "AIRMF",
+      "NIST"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A team prioritizes its identified AI risks, assigns resources, and applies treatments such as controls or acceptance decisions. Which NIST AIRMF function is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Manage"
+        },
+        {
+          "id": "b",
+          "text": "Map"
+        },
+        {
+          "id": "c",
+          "text": "Govern"
+        },
+        {
+          "id": "d",
+          "text": "Measure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Manage allocates resources to prioritized risks and carries out the response. Map frames context, Govern sets policy and accountability, and Measure analyzes and tracks risk with metrics and tests.",
+    "acronyms": [
+      "AI",
+      "AIRMF",
+      "NIST"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Before choosing a threat-modeling framework for a new AI feature, what should the team assemble?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The use case, data flows, and critical assets"
+        },
+        {
+          "id": "b",
+          "text": "Findings from a penetration test of a different product"
+        },
+        {
+          "id": "c",
+          "text": "A budget request for new security tooling"
+        },
+        {
+          "id": "d",
+          "text": "Remediation tickets for every identified threat"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The first step is to gather the business use case, diagrams, data flows, users, and most critical assets so the framework is applied to a real system. Unrelated test findings and budget requests do not describe this system, and remediation tickets come after threats are found.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A team swaps in a new base model and adds a payment plugin to a chatbot it already threat-modeled. What should it do with the threat model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep it as is, because the controls were already tested"
+        },
+        {
+          "id": "b",
+          "text": "Re-run it, because the assets and attack surface changed"
+        },
+        {
+          "id": "c",
+          "text": "Archive it, because modeling is a one-time design task"
+        },
+        {
+          "id": "d",
+          "text": "Update only the cover page and version number of the report"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Threat modeling is iterative, and a new model and payment capability add assets, data flows, and threats. Past tests do not cover the new components, modeling is not a one-time task, and changing a version number leaves the analysis stale.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A researcher reads a blog post claiming a new way to bypass an image classifier's safeguards. What is the best handling?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add it to the framework matrix as a confirmed technique"
+        },
+        {
+          "id": "b",
+          "text": "Treat it as invalid until a standards body publishes it"
+        },
+        {
+          "id": "c",
+          "text": "Reproduce it in a test environment before relying on it"
+        },
+        {
+          "id": "d",
+          "text": "Rewrite production defenses immediately to match it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "New techniques often appear in informal write-ups before frameworks catch up, but they are unreviewed, so teams should test and validate them. Adding it as confirmed or rewriting defenses acts on unproven claims, and waiting for a standards body leaves a known gap open.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO items should a team gather before it starts modeling threats for a new AI system?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Remediation results from the last audit"
+        },
+        {
+          "id": "b",
+          "text": "Architecture diagrams that show the data flows"
+        },
+        {
+          "id": "c",
+          "text": "A signed approval of the final controls"
+        },
+        {
+          "id": "d",
+          "text": "Incident reports from a different product line"
+        },
+        {
+          "id": "e",
+          "text": "The regulations that apply to the data it handles"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Diagrams of the system and data flows, and the regulatory context for the data, are prerequisites for modeling. Past audit results, final control approval, and unrelated incident reports are not required inputs; final approval cannot exist before threats are analyzed.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-033",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are functions of the NIST AIRMF?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Detect"
+        },
+        {
+          "id": "b",
+          "text": "Measure"
+        },
+        {
+          "id": "c",
+          "text": "Recover"
+        },
+        {
+          "id": "d",
+          "text": "Govern"
+        },
+        {
+          "id": "e",
+          "text": "Contain"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "The framework has four functions: Govern, Map, Measure, and Manage. Detect, Recover, and Contain are incident response or cybersecurity framework terms, not AIRMF functions.",
+    "acronyms": [
+      "AIRMF",
+      "NIST"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-034",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO statements describe ATLAS?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It assigns identifiers to vulnerabilities found in AI software."
+        },
+        {
+          "id": "b",
+          "text": "It organizes adversary behavior into tactics and techniques."
+        },
+        {
+          "id": "c",
+          "text": "It ranks the most critical weaknesses in chat applications."
+        },
+        {
+          "id": "d",
+          "text": "It supports detection and defense planning."
+        },
+        {
+          "id": "e",
+          "text": "It catalogs AI hazards by cause and by domain."
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "ATLAS is a knowledge base of adversary tactics and techniques that supports planning detections and defenses. Identifiers come from the CVE program, the ranked weakness list is an OWASP product, and the cause-and-domain catalog is the MIT repository.",
+    "acronyms": [
+      "AI",
+      "ATLAS",
+      "CVE",
+      "MIT",
+      "OWASP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-035",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO risks are reduced by per-user rate limits and quotas on a public model endpoint?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Misinformation"
+        },
+        {
+          "id": "b",
+          "text": "Unbounded consumption"
+        },
+        {
+          "id": "c",
+          "text": "Transfer learning attack"
+        },
+        {
+          "id": "d",
+          "text": "Model theft"
+        },
+        {
+          "id": "e",
+          "text": "Improper output handling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Limits cap runaway cost and denial of service, and they slow the mass querying needed to copy a model. Misinformation, inherited weaknesses in a pretrained model, and unvalidated replies are not addressed by throttling requests.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-036",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO controls help reduce data poisoning and model skewing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encode model replies before rendering them in a web page"
+        },
+        {
+          "id": "b",
+          "text": "Verify the provenance of training and fine-tuning sets"
+        },
+        {
+          "id": "c",
+          "text": "Cap the tokens allowed per request at the gateway"
+        },
+        {
+          "id": "d",
+          "text": "Screen each new batch of records for anomalies before use"
+        },
+        {
+          "id": "e",
+          "text": "Remove tool permissions the assistant does not need"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Checking where training data comes from and screening new batches for anomalies protect what the model learns. Output encoding, token caps, and permission trimming address output handling, consumption, and excessive agency instead.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-037",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO belong in the output of an AI threat-modeling exercise?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A copy of the current model weights"
+        },
+        {
+          "id": "b",
+          "text": "A prioritized list of threats"
+        },
+        {
+          "id": "c",
+          "text": "A new labeled training dataset"
+        },
+        {
+          "id": "d",
+          "text": "Recommended controls mapped to owners"
+        },
+        {
+          "id": "e",
+          "text": "A price comparison of vendors"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "The exercise produces ranked threats and controls tied to owners and a remediation plan. Model weights, training data, and vendor pricing are inputs or unrelated artifacts, not results of the analysis.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-mcq-038",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which THREE are good uses of repositories of real AI incidents and known AI failure modes during threat modeling?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replacing pre-release testing of the deployed system"
+        },
+        {
+          "id": "b",
+          "text": "Training analysts on scenarios drawn from earlier cases"
+        },
+        {
+          "id": "c",
+          "text": "Scoping red-team tests around risks seen in practice"
+        },
+        {
+          "id": "d",
+          "text": "Obtaining legal sign-off for the release"
+        },
+        {
+          "id": "e",
+          "text": "Judging how likely an attack is from prior occurrences"
+        },
+        {
+          "id": "f",
+          "text": "Certifying that a vendor's model is free of hidden defects"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Analyst training, red-team scoping, and likelihood estimates all draw on what others have already experienced. A repository cannot replace testing, give legal approval, or certify that a model is defect free.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-hotspot-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "An internal help assistant answers staff questions using retrieved pages and uploaded files. Select every component through which untrusted text could reach the model and act as an injected instruction.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Signed model weights file"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Staff chat box"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Encrypted audit log archive"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Retrieved wiki and web pages"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "GPU job scheduler"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Uploaded staff documents"
+        }
+      ],
+      "spots": [
+        {
+          "id": "weights",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Signed model weights file"
+        },
+        {
+          "id": "chat",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Staff chat box"
+        },
+        {
+          "id": "audit",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Encrypted audit log archive"
+        },
+        {
+          "id": "pages",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Retrieved wiki and web pages"
+        },
+        {
+          "id": "scheduler",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "GPU job scheduler"
+        },
+        {
+          "id": "uploads",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Uploaded staff documents"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "chat",
+        "pages",
+        "uploads"
+      ]
+    },
+    "explanation": "Prompt injection can arrive directly through what a user types or indirectly through content the model reads, such as retrieved pages and uploaded files. A signed weights file, an archived log, and a job scheduler are not channels that feed text to the model as input.",
+    "partExplanations": {
+      "weights": "Signed weights are model parameters, not input text, so they are not an injection path.",
+      "chat": "Anything a user types is untrusted and can carry instructions aimed at the model.",
+      "audit": "An encrypted log archive is written to and is not read back into the prompt.",
+      "pages": "Retrieved pages can hold hidden instructions the model may follow.",
+      "scheduler": "A GPU scheduler places jobs on hardware and never supplies prompt text.",
+      "uploads": "Uploaded files are untrusted content that enters the context and can carry instructions."
+    },
+    "acronyms": [
+      "GPU"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-hotspot-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "A spam filter retrains every week from user reports. Select every component an attacker could abuse to change its training or fine-tuning inputs, including inherited components.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Message submission rate limiter"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Report-as-spam feedback queue"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "TLS certificate for the admin console"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Pretrained encoder from a public hub"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Weekly accuracy dashboard"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Labeled message training set"
+        }
+      ],
+      "spots": [
+        {
+          "id": "limiter",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Message submission rate limiter"
+        },
+        {
+          "id": "feedback",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Report-as-spam feedback queue"
+        },
+        {
+          "id": "tlscert",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "TLS certificate for the admin console"
+        },
+        {
+          "id": "base",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Pretrained encoder from a public hub"
+        },
+        {
+          "id": "dashboard",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Weekly accuracy dashboard"
+        },
+        {
+          "id": "trainset",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Labeled message training set"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "feedback",
+        "base",
+        "trainset"
+      ]
+    },
+    "explanation": "Poisoning, skewing, and transfer learning attacks all work through what the model learns from: labeled data, feedback that flows back into retraining, and an inherited pretrained model. A rate limiter, a certificate, and a read-only dashboard do not feed training.",
+    "partExplanations": {
+      "limiter": "A rate limiter restricts submission volume and does not supply training content.",
+      "feedback": "Reports that are folded into retraining can be flooded to skew the filter over time.",
+      "tlscert": "A certificate secures the console connection and plays no part in training.",
+      "base": "An inherited pretrained component can pass hidden weaknesses on when it is fine-tuned.",
+      "dashboard": "An accuracy dashboard only displays results and does not feed them back to training.",
+      "trainset": "Tampered or mislabeled messages directly poison what the filter learns."
+    },
+    "acronyms": [
+      "TLS"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-match-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Match each security need to the threat-modeling resource that best serves it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Review how an application built around a chat model could be abused through prompts, plugins, and output use"
+        },
+        {
+          "id": "p2",
+          "text": "Assess risks to model training and to predictive services in production"
+        },
+        {
+          "id": "p3",
+          "text": "Check an internal threat register for gaps by browsing hazard groups across many areas of concern"
+        },
+        {
+          "id": "p4",
+          "text": "Trace adversary goals and techniques against AI systems to plan detections"
+        },
+        {
+          "id": "p5",
+          "text": "Give a flaw in an AI component an identifier so ordinary patch tracking can follow it"
+        },
+        {
+          "id": "p6",
+          "text": "Walk each component and data flow, sorting threats into six types such as spoofing and tampering"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "OWASP ML Security Top 10"
+        },
+        {
+          "id": "c2",
+          "text": "A category-based threat model"
+        },
+        {
+          "id": "c3",
+          "text": "ATLAS"
+        },
+        {
+          "id": "c4",
+          "text": "OWASP LLM Top 10"
+        },
+        {
+          "id": "c5",
+          "text": "CVE AI Working Group"
+        },
+        {
+          "id": "c6",
+          "text": "MIT AI Risk Repository"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c4",
+        "p2": "c1",
+        "p3": "c6",
+        "p4": "c3",
+        "p5": "c5",
+        "p6": "c2"
+      }
+    },
+    "explanation": "Each resource has a distinct job: the two OWASP lists rank application and ML flaws, the MIT repository catalogs hazards, ATLAS describes adversary behavior, the working group handles AI vulnerability identifiers, and a category-based model structures analysis per component.",
+    "partExplanations": {
+      "p1": "Prompt, plugin, and output-use abuse is the territory of the OWASP LLM Top 10.",
+      "p2": "Risks to model training and predictive services are covered by the OWASP ML Security Top 10.",
+      "p3": "Browsing hazard groups across many areas of concern to find register gaps is a use of the MIT AI Risk Repository.",
+      "p4": "Adversary goals and techniques against AI systems are what ATLAS records.",
+      "p5": "Identifiers that feed normal patch tracking come from the CVE AI Working Group.",
+      "p6": "Sorting threats per component into spoofing, tampering, and similar types is a category-based threat model."
+    },
+    "acronyms": [
+      "AI",
+      "ATLAS",
+      "CVE",
+      "LLM",
+      "MIT",
+      "ML",
+      "OWASP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-buckets-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each risk into the OWASP Top 10 list that names it.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "llm",
+          "text": "OWASP LLM Top 10"
+        },
+        {
+          "id": "ml",
+          "text": "OWASP ML Security Top 10"
+        }
+      ],
+      "items": [
+        {
+          "id": "skew",
+          "text": "Model skewing"
+        },
+        {
+          "id": "agency",
+          "text": "Excessive agency"
+        },
+        {
+          "id": "transfer",
+          "text": "Transfer learning attack"
+        },
+        {
+          "id": "inject",
+          "text": "Prompt injection"
+        },
+        {
+          "id": "member",
+          "text": "Membership inference"
+        },
+        {
+          "id": "disclose",
+          "text": "Sensitive information disclosure"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "skew": "ml",
+        "agency": "llm",
+        "transfer": "ml",
+        "inject": "llm",
+        "member": "ml",
+        "disclose": "llm"
+      }
+    },
+    "explanation": "The LLM list covers risks in applications built on language models, such as instruction manipulation, over-broad tool access, and leaked data. The ML list covers risks to training and predictive models, such as skewing, inherited weaknesses, and training-data inference.",
+    "partExplanations": {
+      "skew": "Skewing through altered training or feedback data is an ML risk.",
+      "agency": "Giving a language model tools or permissions beyond its job is an LLM application risk.",
+      "transfer": "Inheriting weaknesses from a pretrained model is an ML risk.",
+      "inject": "Overriding instructions through input is an LLM application risk.",
+      "member": "Testing whether a record was in a training set is an ML risk.",
+      "disclose": "A language model revealing private data in its replies is an LLM application risk."
+    },
+    "acronyms": [
+      "LLM",
+      "ML",
+      "OWASP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-data-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A team scored five threats from an AI assistant threat model. Risk score is likelihood multiplied by impact. Use the table to answer each question.",
+    "payload": {
+      "caption": "Threat scores (1 is lowest, 5 is highest)",
+      "columns": [
+        "Threat",
+        "Likelihood",
+        "Impact"
+      ],
+      "rows": [
+        [
+          "Prompt injection through help-bot chat",
+          "5",
+          "2"
+        ],
+        [
+          "Poisoned training set",
+          "2",
+          "5"
+        ],
+        [
+          "Model theft through API queries",
+          "3",
+          "4"
+        ],
+        [
+          "System prompt leakage",
+          "4",
+          "1"
+        ],
+        [
+          "Excessive agent permissions",
+          "3",
+          "5"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "theft",
+          "label": "Risk score for model theft through API queries",
+          "options": [
+            {
+              "id": "s7",
+              "text": "7"
+            },
+            {
+              "id": "s12",
+              "text": "12"
+            },
+            {
+              "id": "s15",
+              "text": "15"
+            }
+          ]
+        },
+        {
+          "id": "top",
+          "label": "Threat with the highest risk score",
+          "options": [
+            {
+              "id": "inject",
+              "text": "Prompt injection through help-bot chat"
+            },
+            {
+              "id": "poison",
+              "text": "Poisoned training set"
+            },
+            {
+              "id": "agent",
+              "text": "Excessive agent permissions"
+            }
+          ]
+        },
+        {
+          "id": "count",
+          "label": "Number of threats with a score of 10 or more",
+          "options": [
+            {
+              "id": "n4",
+              "text": "4"
+            },
+            {
+              "id": "n3",
+              "text": "3"
+            },
+            {
+              "id": "n5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "low",
+          "label": "Threat with the lowest score",
+          "options": [
+            {
+              "id": "theft",
+              "text": "Model theft through API queries"
+            },
+            {
+              "id": "leak",
+              "text": "System prompt leakage"
+            },
+            {
+              "id": "inject",
+              "text": "Prompt injection through help-bot chat"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "theft": "s12",
+        "top": "agent",
+        "count": "n4",
+        "low": "leak"
+      }
+    },
+    "explanation": "Scores: prompt injection 5 x 2 = 10, poisoned training set 2 x 5 = 10, model theft 3 x 4 = 12, system prompt leakage 4 x 1 = 4, excessive agent permissions 3 x 5 = 15.",
+    "partExplanations": {
+      "theft": "Likelihood 3 times impact 4 is 12; adding them gives 7, which is not the score.",
+      "top": "Excessive agent permissions scores 3 x 5 = 15, the highest of the five.",
+      "count": "Scores of 10, 10, 12, and 15 reach the threshold, so four threats qualify; leakage at 4 does not.",
+      "low": "System prompt leakage scores 4 x 1 = 4, below every other threat."
+    },
+    "acronyms": [
+      "AI",
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-terminal-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "Fernhill Logistics keeps its AI assistant threat register in threat_register.csv. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ cat threat_register.csv",
+        "id,component,threat,likelihood,impact,owner",
+        "T1,chat-api,prompt injection via uploaded documents,4,4,unassigned",
+        "T2,tool-runner,plugin installed from an unverified registry,3,5,j.moreno",
+        "T3,support-bot,hidden configuration text shown in a customer screenshot,3,5,unassigned",
+        "T4,scoring-api,probing shows whether a record was in the training set,2,4,k.osei"
+      ],
+      "steps": [
+        {
+          "id": "owner",
+          "label": "Type a command that shows only the register rows whose owner is unassigned"
+        },
+        {
+          "id": "action",
+          "label": "Choose the best next action for those rows",
+          "options": [
+            {
+              "id": "drop",
+              "text": "Delete the rows until someone volunteers"
+            },
+            {
+              "id": "lower",
+              "text": "Lower their likelihood so they leave the review"
+            },
+            {
+              "id": "assign",
+              "text": "Assign owners and map threats to controls"
+            },
+            {
+              "id": "accept",
+              "text": "Mark both threats accepted without review"
+            }
+          ]
+        },
+        {
+          "id": "llm",
+          "label": "Which resource names the weakness in T1, where instructions hidden in uploaded documents steer the assistant?",
+          "options": [
+            {
+              "id": "llmtop",
+              "text": "OWASP LLM Top 10"
+            },
+            {
+              "id": "mltop",
+              "text": "OWASP ML Security Top 10"
+            },
+            {
+              "id": "cve",
+              "text": "CVE AI Working Group"
+            },
+            {
+              "id": "mit",
+              "text": "MIT AI Risk Repository"
+            }
+          ]
+        },
+        {
+          "id": "ml",
+          "label": "Choose the control that best reduces T4, where probing a scoring service shows whether a record was in the training set",
+          "options": [
+            {
+              "id": "encode",
+              "text": "Encode replies before they are rendered in a page"
+            },
+            {
+              "id": "vet",
+              "text": "Verify the publisher of every downloaded plugin"
+            },
+            {
+              "id": "trim",
+              "text": "Remove tool permissions the assistant does not need"
+            },
+            {
+              "id": "limit",
+              "text": "Limit query volume and hide raw confidence scores"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "owner": [
+          "grep unassigned threat_register.csv",
+          "grep \"unassigned\" threat_register.csv",
+          "grep 'unassigned' threat_register.csv",
+          "grep unassigned ./threat_register.csv",
+          "grep -i unassigned threat_register.csv",
+          "grep -n unassigned threat_register.csv",
+          "grep -w unassigned threat_register.csv",
+          "grep -F unassigned threat_register.csv",
+          "cat threat_register.csv | grep unassigned",
+          "cat threat_register.csv | grep \"unassigned\"",
+          "cat threat_register.csv | grep 'unassigned'",
+          "cat threat_register.csv | grep -i unassigned",
+          "grep ',unassigned$' threat_register.csv",
+          "grep \",unassigned$\" threat_register.csv",
+          "grep ,unassigned threat_register.csv",
+          "grep -e unassigned threat_register.csv",
+          "grep unassigned < threat_register.csv",
+          "awk '/unassigned/' threat_register.csv",
+          "awk -F, '$6==\"unassigned\"' threat_register.csv",
+          "awk -F, '$6 == \"unassigned\"' threat_register.csv"
+        ],
+        "action": [
+          "assign"
+        ],
+        "llm": [
+          "llmtop"
+        ],
+        "ml": [
+          "limit"
+        ]
+      }
+    },
+    "explanation": "grep prints only matching lines, so it isolates rows T1 and T3. Unowned threats need owners and mapped controls, not deletion or score changes. Instructions hidden in uploaded content are prompt injection, a language-model application risk. Probing a scoring service to learn training membership is best reduced by limiting queries and hiding raw confidence scores, not by output encoding, plugin vetting, or tool trimming.",
+    "partExplanations": {
+      "owner": "grep unassigned threat_register.csv prints only the rows with no owner.",
+      "action": "A threat without an owner is never treated, so assign one and tie it to controls; deleting, lowering scores, or accepting hides the gap.",
+      "llm": "Prompt injection, instructions smuggled in through content the model reads, is named in the OWASP LLM Top 10.",
+      "ml": "Limiting query volume and hiding raw confidence scores makes membership probing much harder; the other controls address different risks."
+    },
+    "acronyms": [
+      "AI",
+      "CVE",
+      "LLM",
+      "MIT",
+      "ML",
+      "OWASP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-2-1-order-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Put the steps of an AI threat-modeling exercise in the order they are performed.",
+    "payload": {
+      "steps": [
+        {
+          "id": "prioritize",
+          "text": "Score and rank threats by chance of occurring and the harm they would cause"
+        },
+        {
+          "id": "gather",
+          "text": "Collect the system's purpose, diagrams, data flows, users, and most valuable assets"
+        },
+        {
+          "id": "iterate",
+          "text": "Repeat the exercise whenever the model, data, or regulations change"
+        },
+        {
+          "id": "identify",
+          "text": "List how an attacker could misuse each component and tag each threat to a framework"
+        },
+        {
+          "id": "select",
+          "text": "Choose which frameworks will guide the analysis"
+        },
+        {
+          "id": "recommend",
+          "text": "Write the report pairing each threat with a control and an accountable owner"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "gather",
+        "select",
+        "identify",
+        "prioritize",
+        "recommend",
+        "iterate"
+      ]
+    },
+    "explanation": "The exercise starts with the system and its assets, then picks frameworks, finds threats, ranks them, documents controls and owners, and repeats whenever the system changes.",
+    "partExplanations": {
+      "gather": "Everything else depends on knowing the purpose, data flows, users, and valuable assets.",
+      "select": "Frameworks are chosen once the system is understood.",
+      "identify": "Threats are found by thinking like an attacker and mapping them to the frameworks.",
+      "prioritize": "Ranking by likelihood and impact needs the threats to exist first.",
+      "recommend": "Controls and owners are assigned to the ranked threats in a report.",
+      "iterate": "Modeling is repeated when the system, data, or rules change, so it follows the first full pass."
+    },
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  }
+]

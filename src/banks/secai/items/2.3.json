@@ -1,0 +1,2411 @@
+[
+  {
+    "id": "cy1-2-3-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A new analyst signs in to the model platform with a username and a hardware security key. Which step does the key complete?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Authorization, which decides the models the analyst may use"
+        },
+        {
+          "id": "b",
+          "text": "Authentication, which proves the claimed identity"
+        },
+        {
+          "id": "c",
+          "text": "Accounting, which records what the analyst does afterward"
+        },
+        {
+          "id": "d",
+          "text": "Identification, which names the account being claimed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The hardware key proves that the person is who the username claims, which is authentication. Authorization comes afterward and decides which models the analyst may use, accounting records the activity, and identification is simply naming the account.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A signed-in user asks the model platform to export the weights of a fine-tuned model, a rare and sensitive action. Which control best fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Allow it because the session is already valid and was started recently"
+        },
+        {
+          "id": "b",
+          "text": "Send the user an email summary afterward"
+        },
+        {
+          "id": "c",
+          "text": "Prompt for step-up authentication before the export runs"
+        },
+        {
+          "id": "d",
+          "text": "Raise the session timeout for the export page"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A rare, high-impact action justifies asking for a stronger proof of identity right before it runs. A valid session alone could belong to someone who hijacked it, an email afterward is detective, and a longer timeout makes hijacking easier.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Staff at a firm are pasting source code into an unapproved public AI service. Which control best keeps their use to sanctioned models?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Block unsanctioned AI endpoints and route users to an approved gateway"
+        },
+        {
+          "id": "b",
+          "text": "Ask staff to re-read the acceptable use policy each year"
+        },
+        {
+          "id": "c",
+          "text": "Raise the quota on the approved model for everyone"
+        },
+        {
+          "id": "d",
+          "text": "Give the approved tool a more memorable name"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Technical enforcement at the network and gateway makes the approved model the only reachable path. Policy reminders rely on goodwill, a higher quota does not stop use of other services, and a new name changes nothing about access.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A vendor is testing a new model and needs evaluation data, but live customer records must stay out of reach. Which approach best fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mount the production database read-only for the vendor"
+        },
+        {
+          "id": "b",
+          "text": "Email the vendor a sample of live customer rows"
+        },
+        {
+          "id": "c",
+          "text": "Share a copy of the full training corpus with the vendor team"
+        },
+        {
+          "id": "d",
+          "text": "Provide a masked evaluation set held in a separate store"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A masked set in a separate store gives the vendor what the test needs without exposing real records. Read-only access to production, emailed live rows and a full corpus copy each hand over sensitive data the task does not require.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A company wants no engineer to be able to build a model and also push it live without a second person. Which design supports this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A shared team account that holds full rights for the entire group"
+        },
+        {
+          "id": "b",
+          "text": "Separate roles for training and for deployment approval"
+        },
+        {
+          "id": "c",
+          "text": "One owner role that holds every permission"
+        },
+        {
+          "id": "d",
+          "text": "A longer manual review of the training data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Separating duties between the person who builds a model and the person who approves its release keeps any single account from doing both. A shared account and an all-powerful owner role remove the separation, and a data review does not control who can release.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Administrators can change model versions on a production platform. Where should the platform send its model-change logs so that a malicious administrator cannot erase them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A separate log store that administrators cannot modify"
+        },
+        {
+          "id": "b",
+          "text": "The same server that hosts the model"
+        },
+        {
+          "id": "c",
+          "text": "A shared folder owned by the administrators"
+        },
+        {
+          "id": "d",
+          "text": "A local file that rotates every day"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Logs only support accountability if the people being logged cannot alter them, so they belong in a separate, protected store. The model host, an administrator-owned folder and a local rotating file can all be edited or overwritten by the same people.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A chatbot front end calls an internal LLM through a credential that every developer on the team knows. Which practice is better?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rotate the shared credential after each release"
+        },
+        {
+          "id": "b",
+          "text": "Add the credential to every developer laptop profile"
+        },
+        {
+          "id": "c",
+          "text": "Give the service its own identity with scoped permissions"
+        },
+        {
+          "id": "d",
+          "text": "Hard-code the credential in the front end and the build scripts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A dedicated service identity can be scoped, audited and revoked on its own. Rotating a credential that many people know still leaves no individual accountability, and copying it to laptops or into the front end spreads it further.",
+    "acronyms": [
+      "LLM"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "The weights of a proprietary fraud model sit in a storage bucket. Which control best reduces the risk of theft by a malicious insider?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rename the bucket to hide its purpose"
+        },
+        {
+          "id": "b",
+          "text": "Let the whole engineering group read it for debugging"
+        },
+        {
+          "id": "c",
+          "text": "Compress the files into a smaller archive"
+        },
+        {
+          "id": "d",
+          "text": "Limit reads to the deployment pipeline identity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Weights are valuable intellectual property, so only the automated pipeline that serves the model should read them. Renaming hides nothing from someone with access, broad group access widens the insider risk, and compression does nothing to restrict reads.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A model endpoint is shared by several internal teams. Which TWO controls give each team its own accountability?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "One API key used by every team"
+        },
+        {
+          "id": "b",
+          "text": "A separate service identity for each team"
+        },
+        {
+          "id": "c",
+          "text": "A daily count of total requests"
+        },
+        {
+          "id": "d",
+          "text": "Audit logs that record the calling team on each request"
+        },
+        {
+          "id": "e",
+          "text": "A larger context window for the endpoint"
+        },
+        {
+          "id": "f",
+          "text": "Anonymous access from inside the office network"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Separate identities let the platform tell teams apart, and audit logs naming the caller let investigators trace activity. A shared key and anonymous access hide who did what, a total request count has no caller detail, and a larger context window is unrelated.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which classification label marks data whose handling is dictated by an outside law or standard, such as customer personal details?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Regulated data under external legal rules"
+        },
+        {
+          "id": "b",
+          "text": "Internal staff data kept within the company"
+        },
+        {
+          "id": "c",
+          "text": "Public marketing data approved for release"
+        },
+        {
+          "id": "d",
+          "text": "Deprecated archive data no longer in active use"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Regulated data carries external legal or contractual handling rules, so access is tightly scoped. Internal data is for staff, public data is meant for release, and deprecated describes a lifecycle state rather than a sensitivity.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fine-tuning job for a retail bank's chat model needs some customer data. What is the least-privilege way to supply it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Read access to the whole customer database"
+        },
+        {
+          "id": "b",
+          "text": "The data team's administrator role for the job"
+        },
+        {
+          "id": "c",
+          "text": "A de-identified extract with the required fields"
+        },
+        {
+          "id": "d",
+          "text": "Permission to read any table the job account can find"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Supplying a de-identified extract with just the fields the job needs keeps sensitive data exposure small. Whole-database read access, an administrator role and unrestricted table discovery each give the job far more data than the task requires.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A model is refreshed monthly from a curated data store. Which control best prevents unauthorized changes to what it learns from?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Allow team members to upload files directly to the store for speed"
+        },
+        {
+          "id": "b",
+          "text": "Restrict write permissions to an audited ingestion process"
+        },
+        {
+          "id": "c",
+          "text": "Mirror the store to a second region"
+        },
+        {
+          "id": "d",
+          "text": "Compress older files to save space"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Limiting who can write to the store, and logging that path, blocks poisoned or altered data. Direct uploads widen the write surface, while mirroring and compression do nothing about who may change content.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A legal team and a sales team share one contract-search assistant. Legal may search privileged case notes, sales may not, and neither may use it from personal laptops. Which approach best enforces this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A single shared role covering both teams"
+        },
+        {
+          "id": "b",
+          "text": "A prompt telling the model to refuse sales users"
+        },
+        {
+          "id": "c",
+          "text": "Letting the model judge each question on its merits"
+        },
+        {
+          "id": "d",
+          "text": "Role rules plus data labels and device checks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Roles say who the person is, while data labels and device checks add the sensitivity and context, and all are enforced outside the model. A shared role is too broad, and a prompt or the model's own judgment is not a reliable control.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Why do teams define AI access policies as code kept in version control?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Changes can be reviewed, tested, and rolled back with a history"
+        },
+        {
+          "id": "b",
+          "text": "Policies are enforced by the model itself without needing a gateway"
+        },
+        {
+          "id": "c",
+          "text": "Each user can edit their own permissions"
+        },
+        {
+          "id": "d",
+          "text": "The model learns the rules during training"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Policy as code gives an audit trail, automated tests and quick rollback, which suits fast-changing AI environments. The model does not enforce policy itself or learn it in training, and letting users edit their own permissions defeats control.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which access model grants permissions according to a person's job function, such as claims adjuster or fraud investigator?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Discretionary access control"
+        },
+        {
+          "id": "b",
+          "text": "Role-based access control"
+        },
+        {
+          "id": "c",
+          "text": "Attribute-based access control"
+        },
+        {
+          "id": "d",
+          "text": "Mandatory label-based access control"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Role-based access control bundles permissions into roles that match job functions. Attribute-based control decides from attributes of the user, data and context, discretionary control lets owners share at will, and mandatory control uses system-enforced labels.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A tourism board launches a chatbot that visitors use to ask about local events. Which design best keeps unpublished budget drafts out of its answers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tell the bot in its prompt to ignore any unpublished files"
+        },
+        {
+          "id": "b",
+          "text": "Index everything and rely on output filtering"
+        },
+        {
+          "id": "c",
+          "text": "Back the bot with a separate, curated content set"
+        },
+        {
+          "id": "d",
+          "text": "Lower the bot's response length limit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "If the bot cannot retrieve the drafts, it cannot leak them. Prompt instructions and output filters are weaker because the data is still reachable, and a shorter response limit does not stop disclosure.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A contractor's project ended three months ago, but her account still has read rights to the training data. Which practice would have caught this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Periodic access reviews that revoke unused accounts and roles"
+        },
+        {
+          "id": "b",
+          "text": "Stronger password complexity rules combined with an account lockout policy"
+        },
+        {
+          "id": "c",
+          "text": "Encryption of the dataset at rest"
+        },
+        {
+          "id": "d",
+          "text": "More frequent model retraining"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Scheduled access reviews find accounts that no longer need rights and remove them. Complex passwords and encryption do not reveal stale permissions, and retraining is unrelated to who can read the data.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A policy lets a researcher open a private training corpus when the person is cleared for high-sensitivity work and the file is marked private. Which TWO attributes does this policy evaluate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Clearance level of the user"
+        },
+        {
+          "id": "b",
+          "text": "Time of day of the request"
+        },
+        {
+          "id": "c",
+          "text": "Sensitivity label on the document"
+        },
+        {
+          "id": "d",
+          "text": "Device posture of the caller"
+        },
+        {
+          "id": "e",
+          "text": "Tokenizer version of the model"
+        },
+        {
+          "id": "f",
+          "text": "Region of the storage account"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "The policy compares an attribute of the person (clearance) with an attribute of the resource (its sensitivity label). Time of day, device posture and storage region could appear in other policies but are not part of this one, and the tokenizer version has no bearing on access.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "A RAG assistant indexes confidential reports. Which TWO controls best govern access to that data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Restrict who can add documents to the index"
+        },
+        {
+          "id": "b",
+          "text": "Raise the embedding dimension of the index"
+        },
+        {
+          "id": "c",
+          "text": "Check labels against the user at query time"
+        },
+        {
+          "id": "d",
+          "text": "Cache every answer for reuse across users"
+        },
+        {
+          "id": "e",
+          "text": "Increase the chunk overlap between passages"
+        },
+        {
+          "id": "f",
+          "text": "Switch to a larger model for retrieval"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Controlling who writes to the index protects integrity, and checking labels against the user at query time protects confidentiality. Embedding size, chunk overlap and model size affect quality, and sharing cached answers across users could expose restricted content.",
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "New staff are learning how agents differ from tools. Which statement is accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A tool plans multistep goals; an agent does one action"
+        },
+        {
+          "id": "b",
+          "text": "An agent is a stored dataset; a tool is a prompt"
+        },
+        {
+          "id": "c",
+          "text": "A tool is a model checkpoint; an agent is a console"
+        },
+        {
+          "id": "d",
+          "text": "An agent picks which tools to call; a tool does one action"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An agent orchestrates and decides which tools to call, while a tool is a passive component that performs one action. Option a swaps the two roles, option b confuses an agent with a dataset and a tool with a prompt, and option c confuses a tool with a checkpoint and an agent with a console.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An internal scheduling agent should book meetings and read calendars. Which control enforces this limit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A longer system prompt that describes its duties in more detail"
+        },
+        {
+          "id": "b",
+          "text": "An explicit allow list of the tools the agent may call"
+        },
+        {
+          "id": "c",
+          "text": "A bigger context window for calendar data"
+        },
+        {
+          "id": "d",
+          "text": "A nightly report of its token usage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An allow list is enforced outside the model, so the agent cannot call other tools even if manipulated. A longer prompt only asks the agent to behave, a bigger window changes capacity, and a usage report is after-the-fact.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An agent calls a payments tool with a token that never expires and sits in a configuration file. Which change best reduces the damage if the token leaks?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Store the token in a second configuration file on the same host"
+        },
+        {
+          "id": "b",
+          "text": "Encode the token so it looks unreadable"
+        },
+        {
+          "id": "c",
+          "text": "Issue short-lived tokens that are rotated automatically"
+        },
+        {
+          "id": "d",
+          "text": "Give the token a longer descriptive name"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A short-lived rotated token limits how long a stolen one is useful. A second file and encoding only obscure the token, and a name has no security effect.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An email-drafting agent holds a token that can read, send, and delete in every mailbox, though it only summarizes one user's inbox. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Narrow its access to read-only for the requesting user"
+        },
+        {
+          "id": "b",
+          "text": "Tell the agent in its prompt to avoid deleting messages"
+        },
+        {
+          "id": "c",
+          "text": "Move the agent to a faster model"
+        },
+        {
+          "id": "d",
+          "text": "Log the agent's actions and review them yearly"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Excessive agency is fixed by narrowing the permissions the agent can actually exercise, so read-only access tied to the requesting user cannot send or delete anything. Prompt wording can be overridden, model speed is irrelevant, and a yearly review is far too late to prevent harm.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An agent can issue refunds to customers. Which control best limits harm from a manipulated request?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Send a notice to the customer after each one"
+        },
+        {
+          "id": "b",
+          "text": "Lower the token limit for every reply the agent writes"
+        },
+        {
+          "id": "c",
+          "text": "Review refund totals at the end of the month"
+        },
+        {
+          "id": "d",
+          "text": "Require human approval above a set value"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Human-in-the-loop approval stops high-value actions before they happen. Notices and month-end reviews are detective and arrive after the loss, and a lower reply limit does not affect what the agent may do.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A procurement agent is offered to vendors through a web portal and to buyers on the intranet. How should its access differ?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Offer both groups the purchasing tools to keep one design"
+        },
+        {
+          "id": "b",
+          "text": "Offer vendors a status lookup and buyers the purchasing tools"
+        },
+        {
+          "id": "c",
+          "text": "Let the agent decide each caller's level from the request text"
+        },
+        {
+          "id": "d",
+          "text": "Send buyers through the vendor portal for consistency"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Access should follow who and where the caller is, with outside callers getting the narrowest set. Identical tools expose purchasing power to vendors, letting the agent judge a caller's level from text can be manipulated, and forcing buyers through the vendor portal would push internal activity onto the public route.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A research agent queries a document store for many analysts using one powerful service account, so analysts can reach files they should not see. What is the better design?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rotate the service account password weekly"
+        },
+        {
+          "id": "b",
+          "text": "Add more files to the store so answers are diluted"
+        },
+        {
+          "id": "c",
+          "text": "Have the agent act with each analyst's own permissions"
+        },
+        {
+          "id": "d",
+          "text": "Ask analysts to avoid sensitive topics"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Acting on behalf of the user keeps the caller's own limits in force and avoids a confused-deputy problem. Rotating a password does not narrow what the account can read, and dilution or user etiquette are not controls.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which records help investigators reconstruct what an agent did after suspected misuse?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A history of the requests and the actions taken"
+        },
+        {
+          "id": "b",
+          "text": "Counts of idle GPU hours across each month of the year"
+        },
+        {
+          "id": "c",
+          "text": "The training loss curve plotted across every epoch"
+        },
+        {
+          "id": "d",
+          "text": "Billing totals grouped by team and by calendar month"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A history of what the agent was asked and which actions it took lets investigators reconstruct events. Idle hours, loss curves and billing totals say nothing about specific actions.",
+    "acronyms": [
+      "GPU"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "An agent connects to tool servers over MCP. Which TWO controls reduce the risk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Trust any server found on the network"
+        },
+        {
+          "id": "b",
+          "text": "Share one administrator token across all tools"
+        },
+        {
+          "id": "c",
+          "text": "Disable logging to improve speed"
+        },
+        {
+          "id": "d",
+          "text": "Allow only reviewed, approved servers"
+        },
+        {
+          "id": "e",
+          "text": "Widen the agent's context window"
+        },
+        {
+          "id": "f",
+          "text": "Give each tool a narrowly scoped, short-lived credential"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "f"
+      ]
+    },
+    "explanation": "An approved-server list limits what the agent can reach, and scoped short-lived credentials limit what a compromised tool can do. Trusting any server, sharing an administrator token and disabling logging each increase exposure, and a wider context window is unrelated.",
+    "acronyms": [
+      "MCP"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "An agent can deploy configuration changes to production servers. Which TWO safeguards fit this high-risk action?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Human approval before changes go live"
+        },
+        {
+          "id": "b",
+          "text": "A deployment token that never expires"
+        },
+        {
+          "id": "c",
+          "text": "Letting the agent approve its own changes"
+        },
+        {
+          "id": "d",
+          "text": "Hiding the change history from the operations team"
+        },
+        {
+          "id": "e",
+          "text": "A short-lived credential scoped to the target servers"
+        },
+        {
+          "id": "f",
+          "text": "A larger memory for the agent"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "Human approval gates the dangerous step, and a short-lived scoped credential limits what a compromised agent can reach and for how long. A permanent token, self-approval and hidden change history weaken control, and more memory does not affect risk.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is the main job of an API gateway in front of a model endpoint?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Retrain the model on incoming traffic"
+        },
+        {
+          "id": "b",
+          "text": "Compress the model's weights"
+        },
+        {
+          "id": "c",
+          "text": "Translate prompts and answers into the language of each caller"
+        },
+        {
+          "id": "d",
+          "text": "Enforce authentication, authorization, and throttling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A gateway is the control point where callers are authenticated, authorized and rate limited. It does not retrain, compress or translate.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A model is used by internal applications, yet its endpoint resolves on the public internet. Which change best reduces exposure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Give the endpoint a harder-to-guess hostname"
+        },
+        {
+          "id": "b",
+          "text": "Reach it through a private endpoint in the company VPC"
+        },
+        {
+          "id": "c",
+          "text": "Add a banner stating the service is private"
+        },
+        {
+          "id": "d",
+          "text": "Raise the request timeout for slow callers on the public internet"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A private endpoint removes the public path entirely. A hard-to-guess name and a banner do not stop a determined caller, and a timeout has nothing to do with reachability.",
+    "acronyms": [
+      "VPC"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A logistics vendor needs to pull one nightly shipment feed from the company's AI data API. Which authorization approach fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Share an administrator key with the vendor"
+        },
+        {
+          "id": "b",
+          "text": "Open the full API and hide unused routes"
+        },
+        {
+          "id": "c",
+          "text": "Issue a token whose scope covers just that feed"
+        },
+        {
+          "id": "d",
+          "text": "Allow the vendor's whole network range to reach every endpoint"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A narrow scope gives the vendor exactly the capability it needs. An administrator key and a fully open API give far more, and a range-wide allow rule does not limit what the vendor can call.",
+    "acronyms": [
+      "AI",
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-033",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Two internal services exchange prompts and results, and each must prove its identity to the other. Which mechanism provides this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mutual TLS with certificates on both sides"
+        },
+        {
+          "id": "b",
+          "text": "TLS where only the server presents a certificate"
+        },
+        {
+          "id": "c",
+          "text": "A shared secret placed in the request query string"
+        },
+        {
+          "id": "d",
+          "text": "A port that opens only during agreed hours each day"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Mutual TLS authenticates both ends and encrypts the channel. Server-only TLS proves only one side, a secret in a query string leaks into logs, and timed ports do not prove identity.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-034",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A web-browsing agent is manipulated into sending internal data to an attacker's site. Which network control most directly limits this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Inbound rate limiting on the agent's own API"
+        },
+        {
+          "id": "b",
+          "text": "A larger log retention period for the agent host and its gateway"
+        },
+        {
+          "id": "c",
+          "text": "A shorter session timeout for chat users"
+        },
+        {
+          "id": "d",
+          "text": "An outbound allow list limited to approved destinations"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Controlling where the agent can connect blocks exfiltration to unapproved hosts. Inbound limits, log retention and session timeouts do not constrain outbound destinations.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-035",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A public LLM API sometimes receives huge payloads and malformed fields. Which control should sit before the model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Response caching for prompts that repeat across callers"
+        },
+        {
+          "id": "b",
+          "text": "A longer maximum output length"
+        },
+        {
+          "id": "c",
+          "text": "Schema and size validation of each request"
+        },
+        {
+          "id": "d",
+          "text": "Automatic model version upgrades"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Validating structure and size rejects bad input before it reaches the model. Caching, output length and upgrades do not check incoming requests.",
+    "acronyms": [
+      "LLM",
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-036",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A session's risk score jumps after repeated attempts to extract restricted data through the model API. Which control adapts to this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A static allow rule that depends on the user's role and home team"
+        },
+        {
+          "id": "b",
+          "text": "A context-aware policy that raises the required authentication"
+        },
+        {
+          "id": "c",
+          "text": "A fixed daily quota for every user"
+        },
+        {
+          "id": "d",
+          "text": "A larger log buffer on the gateway"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Context-aware policies weigh signals such as risk and can demand stronger proof or end the session when risk rises. A static role rule ignores the change, a uniform quota is not identity-aware, and a bigger log buffer only records the event.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-037",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Outside developers will use a model API. The security lead wants to stop runaway usage, reject malformed payloads, and trace who called what. Which THREE elements deliver this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Per-caller throttling and quotas"
+        },
+        {
+          "id": "b",
+          "text": "Anonymous trial keys that never expire"
+        },
+        {
+          "id": "c",
+          "text": "Schema and size checks on each request"
+        },
+        {
+          "id": "d",
+          "text": "Public posting of the signing keys"
+        },
+        {
+          "id": "e",
+          "text": "Detailed audit logging of API calls"
+        },
+        {
+          "id": "f",
+          "text": "Weights download for external callers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Throttling stops runaway usage, request validation rejects malformed payloads, and audit logs trace callers. Unexpiring anonymous keys, public signing keys and weight downloads each defeat those goals.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-3-mcq-038",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO measures protect the network path to an internal inference service?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Listen publicly on every interface"
+        },
+        {
+          "id": "b",
+          "text": "Accept plaintext inside the network for speed"
+        },
+        {
+          "id": "c",
+          "text": "Firewall rules limited to application subnets"
+        },
+        {
+          "id": "d",
+          "text": "Cache responses on a public CDN"
+        },
+        {
+          "id": "e",
+          "text": "Skip authentication for internal callers"
+        },
+        {
+          "id": "f",
+          "text": "TLS on traffic between the services"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "f"
+      ]
+    },
+    "explanation": "Restricting reachability to known application subnets and encrypting traffic in transit protect the path. Public listening, plaintext, public caching and skipping authentication all widen exposure.",
+    "acronyms": [
+      "TLS",
+      "CDN"
+    ]
+  },
+  {
+    "id": "cy1-2-3-config-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Corvane Bank hosts a fraud-scoring model. Choose the access setting for each item.",
+    "payload": {
+      "fields": [
+        {
+          "id": "analyst",
+          "label": "Permission for the analyst role on the production endpoint",
+          "options": [
+            {
+              "id": "train",
+              "text": "Retrain the model on newly collected data"
+            },
+            {
+              "id": "infer",
+              "text": "Send prompts to the model and read answers"
+            },
+            {
+              "id": "prompt",
+              "text": "Edit the system prompt text and its variables"
+            }
+          ]
+        },
+        {
+          "id": "approver",
+          "label": "Who may approve promotion of a new model version",
+          "options": [
+            {
+              "id": "release",
+              "text": "Release approver role on the product team"
+            },
+            {
+              "id": "analyst",
+              "text": "Analyst role on the model build team"
+            },
+            {
+              "id": "contractor",
+              "text": "Contractor role assigned to the evaluation project"
+            }
+          ]
+        },
+        {
+          "id": "network",
+          "label": "Network exposure of the inference endpoint",
+          "options": [
+            {
+              "id": "pub",
+              "text": "Public address protected by a login page for staff"
+            },
+            {
+              "id": "open",
+              "text": "Reachable from any partner network that asks"
+            },
+            {
+              "id": "priv",
+              "text": "Private endpoint open to the application subnets"
+            }
+          ]
+        },
+        {
+          "id": "quota",
+          "label": "Limit on each application key calling the endpoint",
+          "options": [
+            {
+              "id": "none",
+              "text": "No limit, to avoid blocking users"
+            },
+            {
+              "id": "rate",
+              "text": "A per-key rate limit plus a daily quota"
+            },
+            {
+              "id": "global",
+              "text": "One cap shared by all keys with no per-key limit"
+            }
+          ]
+        },
+        {
+          "id": "evaljob",
+          "label": "Access for the nightly evaluation job",
+          "options": [
+            {
+              "id": "admin",
+              "text": "Administrator on the whole project"
+            },
+            {
+              "id": "every",
+              "text": "Inference and management on every model"
+            },
+            {
+              "id": "stage",
+              "text": "Inference rights on the staging model"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "analyst": "infer",
+        "approver": "release",
+        "network": "priv",
+        "quota": "rate",
+        "evaljob": "stage"
+      }
+    },
+    "explanation": "Least privilege gives analysts inference, separates the approver from the builders, keeps the endpoint off the public internet, caps each caller on its own, and gives automated jobs just the access they need.",
+    "partExplanations": {
+      "analyst": "Analysts only need to query the model, so inference without management rights fits.",
+      "approver": "A distinct approver keeps a builder from releasing their own work.",
+      "quota": "A per-key limit caps abuse by one caller; a cap shared by all keys lets one caller starve the rest.",
+      "evaljob": "The evaluation job only needs to send prompts to the staging model.",
+      "network": "A private endpoint reachable only from the application subnets removes the public path."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-config-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "Delmar Aerospace is adding a RAG assistant that searches export-controlled design drawings, supplier quotes and a public careers page. Configure the access controls.",
+    "payload": {
+      "fields": [
+        {
+          "id": "label",
+          "label": "What the policy checks on each design drawing",
+          "options": [
+            {
+              "id": "date",
+              "text": "Modification date of the file on disk"
+            },
+            {
+              "id": "name",
+              "text": "Name and folder path of the file"
+            },
+            {
+              "id": "class",
+              "text": "Sensitivity label set on the file"
+            }
+          ]
+        },
+        {
+          "id": "audit",
+          "label": "Where each retrieval of a drawing is recorded",
+          "options": [
+            {
+              "id": "none",
+              "text": "Nowhere, since retrieval is internal"
+            },
+            {
+              "id": "log",
+              "text": "Audit log linking each retrieval to a user"
+            },
+            {
+              "id": "chat",
+              "text": "A chat window history that users may delete"
+            }
+          ]
+        },
+        {
+          "id": "supplier",
+          "label": "How supplier staff reach the quotes index",
+          "options": [
+            {
+              "id": "indiv",
+              "text": "Individual accounts through the identity provider"
+            },
+            {
+              "id": "shared",
+              "text": "A shared supplier login kept in a spreadsheet"
+            },
+            {
+              "id": "link",
+              "text": "A link in a welcome email reused by the supplier team"
+            }
+          ]
+        },
+        {
+          "id": "basis",
+          "label": "What decides whether a supplier may see a quote",
+          "options": [
+            {
+              "id": "len",
+              "text": "Length of the question the supplier asks"
+            },
+            {
+              "id": "name",
+              "text": "The supplier's company name as typed into the chat"
+            },
+            {
+              "id": "owner",
+              "text": "The supplier account matched to the quote owner"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "label": "class",
+        "audit": "log",
+        "supplier": "indiv",
+        "basis": "owner"
+      }
+    },
+    "explanation": "Decisions use a label set on the file, retrievals are tied to an identity, suppliers sign in as individuals, and quote visibility follows the account that owns the quote rather than anything typed in chat.",
+    "partExplanations": {
+      "label": "A sensitivity label lets one rule cover every drawing of that level.",
+      "audit": "Linking retrievals to a user supports review and investigation.",
+      "supplier": "Individual accounts make each supplier user accountable and revocable.",
+      "basis": "Matching the authenticated account to the quote owner cannot be faked by typing a name into the chat."
+    },
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-2-3-terminal-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "The invoice-summary agent for Tallis Supply uses API token tok-4417. It should only read invoices. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ agentctl token --help",
+        "agentctl token show <id>",
+        "agentctl token scopes set <id> <scope>[,<scope>]   replaces the full scope list",
+        "agentctl token expiry set <id> <duration>          duration such as 30m or 2h",
+        "$ agentctl token show tok-4417",
+        "id       tok-4417",
+        "owner    svc-invoicebot",
+        "scopes   invoices:read, invoices:write, payments:transfer, users:admin",
+        "expires  never"
+      ],
+      "steps": [
+        {
+          "id": "show",
+          "label": "Type a command that displays the details of token tok-4417 again"
+        },
+        {
+          "id": "finding",
+          "label": "Choose the best description of the main problem",
+          "options": [
+            {
+              "id": "short",
+              "text": "The token lifetime is too short for its use"
+            },
+            {
+              "id": "name",
+              "text": "The owner name does not follow naming policy"
+            },
+            {
+              "id": "over",
+              "text": "The token has excess scopes and no expiry date"
+            },
+            {
+              "id": "read",
+              "text": "The token can read invoices the agent needs"
+            }
+          ]
+        },
+        {
+          "id": "scopes",
+          "label": "Type a command that limits tok-4417 to the single scope the agent needs"
+        },
+        {
+          "id": "expiry",
+          "label": "Type a command that sets the token lifetime to one hour"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "show": [
+          "agentctl token show tok-4417"
+        ],
+        "finding": [
+          "over"
+        ],
+        "scopes": [
+          "agentctl token scopes set tok-4417 invoices:read"
+        ],
+        "expiry": [
+          "agentctl token expiry set tok-4417 1h",
+          "agentctl token expiry set tok-4417 60m"
+        ]
+      }
+    },
+    "explanation": "The token carries write, payment and administrator scopes that summarizing invoices never needs, and it never expires. Narrow the scopes to read access and give it a short life.",
+    "partExplanations": {
+      "show": "The help text shows the show subcommand takes the token id.",
+      "finding": "The over-broad scopes and missing expiry are the risks; read access to invoices is what the agent legitimately needs.",
+      "scopes": "The agent only reads invoices, so the scope list is replaced with just invoices:read, removing write, payment and administrator rights.",
+      "expiry": "Using the duration format shown in the help, 1h (or 60m) gives a one-hour lifetime that limits how long a leaked token is useful."
+    },
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-3-terminal-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "The fraud-llm endpoint at Brightvale Insurance should answer only the claims application subnet. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ netpol show fraud-llm",
+        "rule-1  allow  source any            port 443",
+        "rule-2  allow  source 10.20.4.0/24   port 443",
+        "rule-3  allow  source 10.20.4.0/24   port 22",
+        "rule-4  deny   source any            port 8080",
+        "$ netpol --help",
+        "netpol rule delete <endpoint> <rule>",
+        "netpol test <endpoint> <source>"
+      ],
+      "steps": [
+        {
+          "id": "which",
+          "label": "Which rule exposes the endpoint to callers outside the claims subnet?",
+          "options": [
+            {
+              "id": "r2",
+              "text": "rule-2"
+            },
+            {
+              "id": "r3",
+              "text": "rule-3"
+            },
+            {
+              "id": "r1",
+              "text": "rule-1"
+            },
+            {
+              "id": "r4",
+              "text": "rule-4"
+            }
+          ]
+        },
+        {
+          "id": "delete",
+          "label": "Type a command that deletes that rule from fraud-llm"
+        },
+        {
+          "id": "verify",
+          "label": "Choose the best way to confirm the change",
+          "options": [
+            {
+              "id": "inside",
+              "text": "Test from the claims subnet and expect it to succeed"
+            },
+            {
+              "id": "outside",
+              "text": "Test from an outside source and expect refusal"
+            },
+            {
+              "id": "reboot",
+              "text": "Restart the endpoint and see if it starts"
+            },
+            {
+              "id": "log",
+              "text": "Read the rule list again and assume it works"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "which": [
+          "r1"
+        ],
+        "delete": [
+          "netpol rule delete fraud-llm rule-1"
+        ],
+        "verify": [
+          "outside"
+        ]
+      }
+    },
+    "explanation": "The source any rule opens port 443 to the whole network, while rules 2 and 3 are limited to the claims subnet and rule 4 is a deny. Deleting rule-1 leaves the claims subnet rules, and a test from an outside source proves the change took effect.",
+    "partExplanations": {
+      "which": "rule-1 allows any source on port 443; rule-2 and rule-3 name only the claims subnet, and rule-4 denies traffic.",
+      "delete": "The help text gives netpol rule delete followed by the endpoint and the rule name.",
+      "verify": "A refused connection from an outside source shows the exposure is closed; a test from inside proves nothing new."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-data-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A security analyst reviews one hour of the Larkin Logistics assistant access log, summarized by identity. Use the table to answer each question.",
+    "payload": {
+      "caption": "Dataset requests by identity, one hour",
+      "columns": [
+        "Identity",
+        "Requests",
+        "Denied",
+        "Rows returned"
+      ],
+      "rows": [
+        [
+          "ana.diaz",
+          "8",
+          "2",
+          "60"
+        ],
+        [
+          "ben.okoye",
+          "10",
+          "8",
+          "20"
+        ],
+        [
+          "svc-chatbot",
+          "20",
+          "0",
+          "300"
+        ],
+        [
+          "cai.ward",
+          "2",
+          "0",
+          "20"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 3
+      },
+      "fields": [
+        {
+          "id": "denied",
+          "label": "Total number of denied requests",
+          "options": [
+            {
+              "id": "o1",
+              "text": "8"
+            },
+            {
+              "id": "o2",
+              "text": "10"
+            },
+            {
+              "id": "o3",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "share",
+          "label": "Share of all requests that were denied",
+          "options": [
+            {
+              "id": "o1",
+              "text": "10%"
+            },
+            {
+              "id": "o2",
+              "text": "25%"
+            },
+            {
+              "id": "o3",
+              "text": "40%"
+            }
+          ]
+        },
+        {
+          "id": "who",
+          "label": "Identity with the highest share of its own requests denied",
+          "options": [
+            {
+              "id": "o1",
+              "text": "ben.okoye"
+            },
+            {
+              "id": "o2",
+              "text": "cai.ward"
+            },
+            {
+              "id": "o3",
+              "text": "ana.diaz"
+            }
+          ]
+        },
+        {
+          "id": "rows",
+          "label": "Share of all returned rows that went to svc-chatbot",
+          "options": [
+            {
+              "id": "o1",
+              "text": "50%"
+            },
+            {
+              "id": "o2",
+              "text": "60%"
+            },
+            {
+              "id": "o3",
+              "text": "75%"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "denied": "o2",
+        "share": "o2",
+        "who": "o1",
+        "rows": "o3"
+      }
+    },
+    "explanation": "There were 40 requests and 10 denials. The service account received most of the returned rows, which is worth reviewing against its intended scope.",
+    "partExplanations": {
+      "denied": "Denied requests: 2 + 8 + 0 + 0 = 10.",
+      "share": "Total requests are 8 + 10 + 20 + 2 = 40, and 10 / 40 = 25%.",
+      "who": "ben.okoye was denied 8 of 10 requests (80%), versus ana.diaz 2 of 8 (25%) and cai.ward 0 of 2.",
+      "rows": "Total rows are 60 + 20 + 300 + 20 = 400, and 300 / 400 = 75%."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-diagram-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A company runs an agent that serves users, calls a model and reads a data store. Place the access control that best fits each position.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n-user",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Users"
+        },
+        {
+          "id": "n-agent",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Agent"
+        },
+        {
+          "id": "n-model",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Model API"
+        },
+        {
+          "id": "n-data",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Data store"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n-user",
+          "to": "n-agent"
+        },
+        {
+          "from": "n-agent",
+          "to": "n-model"
+        },
+        {
+          "from": "n-agent",
+          "to": "n-data"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-user",
+          "x": 10,
+          "y": 120,
+          "name": "Control for people signing in"
+        },
+        {
+          "id": "z-agent",
+          "x": 160,
+          "y": 120,
+          "name": "Control on what the agent may do"
+        },
+        {
+          "id": "z-model",
+          "x": 310,
+          "y": 120,
+          "name": "Control on calls to the model"
+        },
+        {
+          "id": "z-data",
+          "x": 460,
+          "y": 120,
+          "name": "Control on what is read"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l-mfa",
+          "text": "Multifactor sign-in with role-based access"
+        },
+        {
+          "id": "l-tools",
+          "text": "Tool allow list with approval for risky actions"
+        },
+        {
+          "id": "l-gw",
+          "text": "Gateway with scoped tokens and rate limits"
+        },
+        {
+          "id": "l-perm",
+          "text": "Filter results by the caller's permissions"
+        },
+        {
+          "id": "l-temp",
+          "text": "Raise response randomness for variety"
+        },
+        {
+          "id": "l-shard",
+          "text": "Split the embeddings across more shards"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-user": "l-mfa",
+        "z-agent": "l-tools",
+        "z-model": "l-gw",
+        "z-data": "l-perm"
+      }
+    },
+    "explanation": "Each position has its own access risk: who the person is, what the agent can do, how the model is called, and what data comes back. Randomness and sharding are tuning choices, not access controls.",
+    "partExplanations": {
+      "z-user": "People should authenticate strongly and receive only the permissions of their role.",
+      "z-agent": "An allow list of tools, with approval for risky actions, limits what a manipulated agent can do.",
+      "z-model": "A gateway enforces scoped tokens and throttling on calls to the model.",
+      "z-data": "Filtering by the caller's permissions keeps restricted records from reaching the agent."
+    },
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-3-hotspot-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "A ticket-summarizing agent should only read tickets and draft replies for review. Select every permission in its current grant that exceeds this need.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Read the text of support tickets"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Delete customer accounts"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Save a reply draft for review"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Send payments to vendors"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Edit its own tool allow list"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Read the ticket subject lines"
+        }
+      ],
+      "spots": [
+        {
+          "id": "read",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Read ticket text"
+        },
+        {
+          "id": "delete",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Delete accounts"
+        },
+        {
+          "id": "draft",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Save reply draft"
+        },
+        {
+          "id": "pay",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Send payments"
+        },
+        {
+          "id": "allow",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Edit own allow list"
+        },
+        {
+          "id": "subject",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Read subject lines"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "delete",
+        "pay",
+        "allow"
+      ]
+    },
+    "explanation": "Reading tickets and saving drafts are the job. Deleting accounts, sending payments and editing its own allow list give the agent power it does not need and let a manipulated agent widen its own reach.",
+    "partExplanations": {
+      "read": "Reading ticket text is the core task.",
+      "delete": "Deleting accounts has nothing to do with summarizing tickets.",
+      "draft": "Saving a draft for review supports the task safely.",
+      "pay": "Sending payments is a high-risk action unrelated to the task.",
+      "allow": "An agent that can edit its own allow list can grant itself more tools.",
+      "subject": "Subject lines are part of the ticket data the agent already needs."
+    },
+    "acronyms": []
+  }
+]
