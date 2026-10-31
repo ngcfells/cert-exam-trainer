@@ -73,7 +73,7 @@ export function MyQuestions({
     <section className="my-questions" aria-labelledby={`${fileId}-h`}>
       <h2 id={`${fileId}-h`}>{`My questions: ${examCode}`}</h2>
       <button type="button" onClick={onExit}>
-        Back to home
+        Back to exam
       </button>
       {data.accepted || acceptedNow ? (
         <div className="author-actions">

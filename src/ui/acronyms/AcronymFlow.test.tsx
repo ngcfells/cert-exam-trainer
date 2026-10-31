@@ -78,7 +78,7 @@ describe('AcronymFlow setup', () => {
     await user.type(screen.getByRole('textbox', { name: 'Acronym' }), 'sql');
     await user.type(screen.getByRole('textbox', { name: 'Meaning' }), 'x');
     await user.click(screen.getByRole('button', { name: 'Save acronym' }));
-    expect(await screen.findByText('SQL is already in the built-in list (shown when questions come from Ours or Both).')).toBeInTheDocument();
+    expect(await screen.findByText('SQL is already in the stock list (shown when questions use Stock).')).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Acronym' })).toHaveAttribute('aria-invalid', 'true');
     await user.click(within(mine).getByRole('button', { name: 'Edit ARR' }));
     const term = screen.getByRole('textbox', { name: 'Acronym' });

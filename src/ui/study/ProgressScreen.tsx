@@ -105,7 +105,7 @@ export function ProgressScreen({ repo, examCode, onExit, onDrill }: { repo: Repo
       )}
       <p>
         <button type="button" onClick={onExit}>
-          Back to home
+          Back to exam
         </button>
       </p>
     </section>

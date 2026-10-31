@@ -44,7 +44,7 @@ export function AcronymResults({
         Study again
       </button>{' '}
       <button type="button" onClick={onExit}>
-        Back to home
+        Back to exam
       </button>
     </section>
   );

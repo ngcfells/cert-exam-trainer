@@ -18,7 +18,7 @@ export interface DeckChoices {
 export const DEFAULT_DECK: DeckChoices = { mode: 'flashcards', show: 'term', scope: 'due', count: 20, answer: 'type', minutes: 0 };
 export const MAX_CARDS = 200;
 const TIME_OPTIONS = [0, 2, 5, 10];
-export const SOURCE_LABELS: Record<AcronymSource, string> = { official: 'Official', community: 'Community', mine: 'Mine' };
+export const SOURCE_LABELS: Record<AcronymSource, string> = { official: 'Official', community: 'Community', mine: 'Custom' };
 
 export function AcronymSetup({
   meta,

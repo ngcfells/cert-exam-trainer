@@ -13,9 +13,9 @@ async function repoWithMine() {
 describe('loadPool', () => {
   it('defaults to both', async () => {
     const repo = await repoWithMine();
-    expect(await getSourceFilter(repo)).toBe('both');
+    expect(await getSourceFilter(repo, 'DA0-002')).toBe('both');
     await repo.setSetting(SOURCE_SETTING, 'nonsense');
-    expect(await getSourceFilter(repo)).toBe('both');
+    expect(await getSourceFilter(repo, 'DA0-002')).toBe('both');
     expect(await loadPool(repo, 'DA0-002')).toEqual([...getBundledQuestions('DA0-002'), userQ('u1')]);
   });
 

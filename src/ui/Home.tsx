@@ -1,78 +1,40 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getBundledQuestions, listExams } from '../banks';
-import { getLessons } from '../banks/lessons';
 import type { Repo } from '../storage';
-import { BackupControls } from './BackupControls';
-import { DisplaySettings } from './DisplaySettings';
-import { SourceToggle } from './SourceToggle';
 import { StorageBanner } from './StorageBanner';
 import { questions } from './plural';
-import type { ExamScreen } from './screens';
+import type { Screen } from './screens';
 
-export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent: boolean; onNavigate?: (s: ExamScreen) => void }) {
+/** The landing page: one card per exam, plus Settings. */
+export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent: boolean; onNavigate?: (s: Screen) => void }) {
   const [mine, setMine] = useState<Record<string, number>>({});
 
-  const refresh = useCallback(async () => {
-    const all = await repo.getUserQuestions();
-    const counts: Record<string, number> = {};
-    for (const q of all) counts[q.exam] = (counts[q.exam] ?? 0) + 1;
-    setMine(counts);
-  }, [repo]);
-
   useEffect(() => {
-    void refresh();
-  }, [refresh]);
+    void repo.getUserQuestions().then((all) => {
+      const counts: Record<string, number> = {};
+      for (const q of all) counts[q.exam] = (counts[q.exam] ?? 0) + 1;
+      setMine(counts);
+    });
+  }, [repo]);
 
   return (
     <>
       <StorageBanner persistent={persistent} />
       <h2>Exams</h2>
-      <SourceToggle repo={repo} />
-      <DisplaySettings repo={repo} />
-      <ul>
+      <ul className="exam-cards">
         {listExams().map((e) => (
           <li key={e.code}>
-            <strong>{`${e.name} (${e.code})`}</strong>
-            <ul>
-              <li>{`${questions(getBundledQuestions(e.code).length)} (ours)`}</li>
-              <li>{`${questions(mine[e.code] ?? 0)} (mine)`}</li>
-            </ul>
-            {onNavigate && (
-              <div className="home-actions">
-                <button type="button" className="primary" onClick={() => onNavigate({ name: 'mock', exam: e.code })}>
-                  {`Start mock exam: ${e.code}`}
-                </button>
-                <button type="button" onClick={() => onNavigate({ name: 'practice', exam: e.code })}>
-                  {`Practice: ${e.code}`}
-                </button>
-                <button type="button" onClick={() => onNavigate({ name: 'cram', exam: e.code })}>
-                  {`Cram: ${e.code}`}
-                </button>
-                <button type="button" onClick={() => onNavigate({ name: 'progress', exam: e.code })}>
-                  {`Progress: ${e.code}`}
-                </button>
-                <button type="button" onClick={() => onNavigate({ name: 'acronyms', exam: e.code })}>
-                  {`Acronyms: ${e.code}`}
-                </button>
-                {getLessons(e.code).length > 0 && (
-                  <button type="button" onClick={() => onNavigate({ name: 'learn', exam: e.code })}>
-                    {`Learn: ${e.code}`}
-                  </button>
-                )}
-                <button type="button" onClick={() => onNavigate({ name: 'questions', exam: e.code })}>
-                  {`My questions: ${e.code}`}
-                </button>
-                {import.meta.env.DEV && (
-                  <button type="button" onClick={() => onNavigate({ name: 'review', exam: e.code })}>
-                    {`Review bank (dev): ${e.code}`}
-                  </button>
-                )}
-              </div>
-            )}
+            <button type="button" className="exam-card" onClick={() => onNavigate?.({ name: 'exam', exam: e.code })}>
+              <strong>{`${e.name} (${e.code})`}</strong>
+              <span>{`Stock: ${questions(getBundledQuestions(e.code).length)}`}</span>
+              <span>{`Custom: ${questions(mine[e.code] ?? 0)}`}</span>
+            </button>
           </li>
         ))}
       </ul>
-      <BackupControls repo={repo} onImported={refresh} />
+      <button type="button" onClick={() => onNavigate?.({ name: 'settings' })}>
+        Settings
+      </button>
     </>
   );
 }

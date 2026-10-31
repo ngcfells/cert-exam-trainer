@@ -32,7 +32,7 @@ export function LessonList({ meta, lessons, status, onOpen, onExit }: { meta: Ex
         </section>
       ))}
       <p>
-        <button type="button" onClick={onExit}>Back to home</button>
+        <button type="button" onClick={onExit}>Back to exam</button>
       </p>
     </section>
   );

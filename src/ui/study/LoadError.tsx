@@ -3,7 +3,7 @@ export function LoadError({ onExit }: { onExit: () => void }) {
     <section aria-label="Error">
       <p role="alert">Could not load your data.</p>
       <button type="button" onClick={onExit}>
-        Back to home
+        Back to exam
       </button>
     </section>
   );

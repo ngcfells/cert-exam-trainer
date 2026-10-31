@@ -34,7 +34,7 @@ export async function saveUserAcronym(repo: Repo, exam: string, term: string, ex
   const x = expansion.trim();
   if (!t) return { error: 'Enter the acronym.' };
   if (!x) return { error: 'Enter what it stands for.' };
-  if (bankTerms(exam).has(t)) return { error: `${t} is already in the built-in list (shown when questions come from Ours or Both).` };
+  if (bankTerms(exam).has(t)) return { error: `${t} is already in the stock list (shown when questions use Stock).` };
   const rest = (await loadUserAcronyms(repo, exam)).filter((a) => a.term !== t);
   await repo.setSetting(userAcronymSetting(exam), [...rest, { term: t, expansion: x, source: 'mine' }].sort((a, b) => a.term.localeCompare(b.term)));
   return {};
@@ -46,7 +46,7 @@ export async function deleteUserAcronym(repo: Repo, exam: string, term: string):
 
 /** The exam's list for every mode: bank plus mine, after the source filter. */
 export async function loadAcronyms(repo: Repo, exam: string): Promise<AcronymEntry[]> {
-  const [mine, filter] = await Promise.all([loadUserAcronyms(repo, exam), getSourceFilter(repo)]);
+  const [mine, filter] = await Promise.all([loadUserAcronyms(repo, exam), getSourceFilter(repo, exam)]);
   return mergeAcronyms(listExams().find((m) => m.code === exam)?.acronyms ?? [], mine, filter);
 }
 

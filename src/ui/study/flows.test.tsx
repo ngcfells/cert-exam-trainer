@@ -98,7 +98,7 @@ describe('PracticeFlow', () => {
     const onExit = vi.fn();
     render(<PracticeFlow repo={repo} examCode="T-001" onExit={onExit} />);
     expect(await screen.findByRole('alert')).toHaveTextContent('Could not load your data.');
-    await userEvent.setup().click(screen.getByRole('button', { name: 'Back to home' }));
+    await userEvent.setup().click(screen.getByRole('button', { name: 'Back to exam' }));
     expect(onExit).toHaveBeenCalled();
   });
 

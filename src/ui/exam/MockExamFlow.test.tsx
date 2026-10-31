@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { MockExamFlow } from './MockExamFlow';
 import { ExamSetup } from './ExamSetup';
 import { listExams } from '../../banks';
-import { Home } from '../Home';
+import { ExamPage } from '../ExamPage';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { dataPlusQuestions } from '../../banks/dataplus/questions';
 import { examResultSchema } from '../../exam/result';
@@ -96,7 +96,7 @@ describe('MockExamFlow', () => {
   it('starts from Home and shows the short-bank notice', async () => {
     const user = userEvent.setup();
     const onNavigate = vi.fn();
-    render(<Home repo={createMemoryRepo()} persistent onNavigate={onNavigate} />);
+    render(<ExamPage repo={createMemoryRepo()} examCode="DA0-002" onNavigate={onNavigate} />);
     await user.click(await screen.findByRole('button', { name: 'Start mock exam: DA0-002' }));
     expect(onNavigate).toHaveBeenCalledWith({ name: 'mock', exam: 'DA0-002' });
 

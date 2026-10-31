@@ -10,7 +10,7 @@ const EXAM = 'DA0-002';
 describe('user acronyms', () => {
   it('refuses bank terms and normalizes', async () => {
     const repo = createMemoryRepo();
-    expect(await saveUserAcronym(repo, EXAM, ' etl ', 'Extract, Transform, Load')).toEqual({ error: 'ETL is already in the built-in list (shown when questions come from Ours or Both).' });
+    expect(await saveUserAcronym(repo, EXAM, ' etl ', 'Extract, Transform, Load')).toEqual({ error: 'ETL is already in the stock list (shown when questions use Stock).' });
     expect(await saveUserAcronym(repo, EXAM, ' arr ', '  Annual Recurring Revenue ')).toEqual({});
     expect(await saveUserAcronym(repo, EXAM, '', 'x')).toEqual({ error: 'Enter the acronym.' });
     expect(await saveUserAcronym(repo, EXAM, 'ROI', ' ')).toEqual({ error: 'Enter what it stands for.' });

@@ -16,7 +16,7 @@ export function ResultsScreen({
   mode = 'mock',
   onDrill,
   lessonFraction,
-  backLabel = 'Back to home',
+  backLabel = 'Back to exam',
   children,
 }: {
   /** Lesson checks: the score over every check item, shown in the heading. */
