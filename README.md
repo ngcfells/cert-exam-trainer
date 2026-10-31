@@ -17,7 +17,8 @@ npm run check          # lint, typecheck, unit tests, single build, e2e + axe
 
 - This app is not affiliated with or endorsed by CompTIA.
 - CompTIA and its exam names are trademarks of CompTIA, Inc.
-- All content is original and written from publicly available exam objectives. No exam content is included.
+- All content is original and written from publicly available exam objectives.
+- No exam content is included.
 - This app is not a guarantee of passing.
 
 ## License

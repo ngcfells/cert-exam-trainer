@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { DISCLAIMER_POINTS } from '../ui/legal';
 
 const read = (f: string) => readFileSync(f, 'utf8');
 
@@ -14,6 +15,11 @@ describe('license files', () => {
 
   it('package.json points at LICENSE', () => {
     expect(JSON.parse(read('package.json')).license).toBe('SEE LICENSE IN LICENSE');
+  });
+
+  it('README disclaimer matches the in-app points', () => {
+    const readme = read('README.md');
+    for (const p of DISCLAIMER_POINTS) expect(readme).toContain(`- ${p}\n`);
   });
 
   it('content license grants the training permission', () => {

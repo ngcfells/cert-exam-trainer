@@ -1,5 +1,6 @@
 export type Screen =
   | { name: 'home' }
+  | { name: 'about' }
   | { name: 'mock'; exam: string }
   | { name: 'practice'; exam: string; preset?: string[] }
   | { name: 'cram'; exam: string }
@@ -10,4 +11,4 @@ export type Screen =
   /** Dev only: the bank review tool. */
   | { name: 'review'; exam: string };
 
-export type ExamScreen = Exclude<Screen, { name: 'home' }>;
+export type ExamScreen = Exclude<Screen, { name: 'home' } | { name: 'about' }>;
