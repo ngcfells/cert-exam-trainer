@@ -141,27 +141,19 @@
 
 ## Next session
 
-- **START HERE (2026-10-31, latest): exam-cards UI MVP is merged to `main` and deployed live** (commits 91bb805 and the e2e rename after it; gh-pages 9e78e09). The owner cut the work to an MVP because session usage ran out. Plan: `docs/superpowers/plans/2026-10-31-exam-cards-layout.md`; spec: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md` (owner scope: cards + layout only; no new exams, no master acronym table).
-  - **Shipped:**
-    - Home (`src/ui/Home.tsx`) is a card grid with one button per registered exam ("CompTIA Data+ (DA0-002)" plus Stock/Custom counts) and a Settings button.
-    - `src/ui/ExamPage.tsx` (screen `exam`) shows the counts, the per-exam `SourceToggle` and the tool buttons. The tool buttons keep their old labels ("Start mock exam: DA0-002", etc.).
-    - `src/ui/SettingsScreen.tsx` (screen `settings`) holds DisplaySettings and BackupControls.
-    - Top nav "← Back" / "⌂ All exams" in `App.tsx` on every screen but home. `parentOf()` in `src/ui/screens.ts`: a tool goes to its exam page, edit goes to questions, everything else goes home.
-    - Flows' `onExit` goes to `parentOf`. Labels "Back to home" became "Back to exam" everywhere.
-    - Browser Back: every `go()` does `history.pushState({screen})`, and `popstate` restores that screen (with a fresh key).
-    - The source filter is per exam: `sourceFilter:<exam>` falls back to the old global `sourceFilter`; see `getSourceFilter(repo, exam)` / `setSourceFilter` in `src/banks/pool.ts`. On screen: "Stock + Custom" / "Stock only" / "Custom only", legend "Questions to use". Stored values are still `both`/`ours`/`mine`. Acronym source label `mine` reads "Custom".
-  - **Verified:** lint, typecheck and 527/527 unit tests. **The full `npm run check` was NOT run; the e2e specs are known to be broken.**
-  - **To do next, in order:**
-    1. **Fix the e2e specs.** They click tool buttons on Home, which now live on the exam page. Add an `openExam(page, code)` helper in `tests/e2e/util.ts` that clicks the card `getByRole('button', { name: new RegExp('\\(' + code + '\\)') })` and use it before each tool click. Specs affected: acronyms, author, bank, exam (incl. the keyboard `.focus()` test at about line 56), home (rewrite: cards, counts "Stock: N questions" / "Custom: N questions"; backup import now lives on Settings), learn, pwa, responsive, study (incl. the keyboard test at about line 74), and `tests/e2e-dev/review.spec.ts`. Also `about.spec.ts` line 10: `{ name: 'Back' }` now also matches the nav "← Back", so use `exact: true`. Add a `nav.spec.ts`: card → exam page → tool → "← Back" → exam page; "⌂ All exams"; browser `goBack()` steps in-app; axe on the exam page and Settings. Then run `npm run check` until it is green.
-    2. **Leave guard (deferred from plan T4):** browser Back or nav during a mock exam, practice run or cram run currently discards answers silently. Add a confirm "Leave this exam? Your answers will be lost." (plan T2 `useLeaveGuard`).
-    3. **Deferred from the plan (owner can trim):**
-       - Remove the duplicate in-screen back buttons now that the nav bar exists (plan T4).
-       - Remove the footer About button and move About into Settings (plan T3; `about.spec`/`responsive.spec` use the footer button).
-       - Unit tests for `ExamPage`, `SettingsScreen` and `parentOf`.
-       - Backup import on Settings does not refresh the Home counts (Home re-reads them on mount, so this is fine in practice).
-    4. Run the Opus whole-branch review of the UI change, fix its findings, then redeploy.
-  - Ledger: `.superpowers/sdd/2026-10-31-exam-cards-layout/progress.md` (pre-flight only; Tasks 1–6 were not run task by task because of the MVP cut).
-  - **SecAI+ content continues after this:** next slice (c) is objectives 2.4–2.6; see the chunk 11 session blocks below.
+- **START HERE (2026-10-31, latest): the exam-cards UI (part 1) is done, merged to `main` and deployed live** (last code commit d2467f4; gh-pages 88e73a5). Spec: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`; plan: `docs/superpowers/plans/2026-10-31-exam-cards-layout.md`.
+  - **Verified:** `npm run check` green (567 unit, 73 e2e), `npm run test:e2e-dev` green (2). The Opus whole-branch review's findings are all fixed, minors included.
+  - **What shipped:**
+    - Home: one card per exam (Stock and Custom counts), Settings at top right in the app header, About at bottom right. No footer About.
+    - Exam page (`src/ui/ExamPage.tsx`): counts, the per-exam source toggle, and tools in study order: Mock, Practice, Cram, Learn, Acronyms, Progress, My questions (+ dev Review).
+    - One way back: the nav bar (`NavBar` in `src/ui/nav.tsx`) with "← Back to <exam>" and "⌂ All exams" on every screen but Home, repeated at the bottom when the page is taller than the window (`useTallPage`). Screens carry no Back/Cancel of their own (QuestionEditor keeps Cancel). Learn and Acronyms register inner levels with `useNavUp` ("← Back to lessons", "← Back to lesson", "← Back to acronyms").
+    - Browser Back does what the bar's Back does, via a single trap history entry (`src/ui/history.ts`); on Home it leaves the app.
+    - Leave guard (`useLeaveGuard`): mock exams (always until submitted), timed or started practice/cram/acronym runs, and the editor with unsaved changes ask before leaving by the bar, "All exams" or browser Back.
+    - Focus moves to each screen's h2 on arrival. Importing a backup on Settings applies its theme and motion settings.
+    - Test helpers `TestNav` and `LeaveGuardProvider` live in `src/ui/testNav.tsx`.
+  - **Left as is (with reason):** Home and the exam page each count custom questions (two small reads, one per screen; sharing them would need a cache for no visible gain). The spec showed only the Stock count on cards; the MVP shows Stock and Custom, which the owner saw in the deployed MVP.
+  - **Still to do from the spec (later parts, owner-scoped out of part 1):** the eight further exams with provisional metadata, and the one master acronym table.
+  - **Next session: SecAI+ slice (c), objectives 2.4–2.6** (see the chunk 11 session blocks below).
 
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
 - **Owner reprioritised (2026-10-31): the Data+ Math & Data Concepts module comes before SecAI+.** Design (approved): `docs/superpowers/specs/2026-10-31-dataplus-math-module-design.md`. It is homework-style: a Learn area of lessons (meaning, formula, worked example, exam trap) with a check per lesson, a new `numeric` typed-answer question type, and more join PBQs. The owner is a trainer, not an analyst, so lessons must assume no stats background.
