@@ -2779,5 +2779,807 @@
       ]
     },
     "explanation": "The change is 75 − 60 = 15. Divided by the old price, 15 ÷ 60 = 0.25, so the increase is 25%. The analyst divided by the new price: 15 ÷ 75 = 0.20, which gives the wrong 20%."
+  },
+  {
+    "id": "da2-3-2-num-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A sign-up page converted 4% of visitors last month and 6% this month. By how many percentage points did the conversion rate change? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 2,
+      "tolerance": 0.5
+    },
+    "explanation": "Percentage points are a plain subtraction of two percents: 6 − 4 = 2 percentage points."
+  },
+  {
+    "id": "da2-3-2-num-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A sign-up page converted 4% of visitors last month and 6% this month. What is the percent change in the conversion rate? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 50,
+      "tolerance": 0.5
+    },
+    "explanation": "Percent change divides the change by the old value: (6 − 4) ÷ 4 = 0.5. Times 100 = 50%. The same move is 2 percentage points but a 50% increase."
+  },
+  {
+    "id": "da2-3-2-math-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A help desk's first-call resolution rate rose from 10% to 12%. Which statement is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It rose by 2 percent and by 20 percentage points"
+        },
+        {
+          "id": "b",
+          "text": "It rose by 2 percentage points, which is a 20% increase"
+        },
+        {
+          "id": "c",
+          "text": "It rose by 12 percentage points"
+        },
+        {
+          "id": "d",
+          "text": "It rose by 2 percentage points, which is a 2% increase"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Percentage points subtract the rates: 12 − 10 = 2 points. Percent change divides by the old rate: 2 ÷ 10 = 0.2, a 20% increase. Mixing the two words up is the usual mistake."
+  },
+  {
+    "id": "da2-3-2-num-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "Revenue was $50,000 in Q1 and $60,000 in Q2. What is the ratio of Q2 revenue to Q1 revenue? Round to two decimals.",
+    "payload": {},
+    "answer": {
+      "value": 1.2,
+      "tolerance": 0.01
+    },
+    "explanation": "Ratio = this period ÷ last period = 60,000 ÷ 50,000 = 1.20. A ratio above 1 means growth; 1.20 − 1 = 0.20, so revenue grew 20%."
+  },
+  {
+    "id": "da2-3-2-num-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "An app had 200 users in January, 220 in February and 242 in March. Each month grew by the same rate. What is that monthly growth rate? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 10,
+      "tolerance": 0.5
+    },
+    "explanation": "February ÷ January = 220 ÷ 200 = 1.10, and March ÷ February = 242 ÷ 220 = 1.10. Growth = ratio − 1 = 0.10, i.e. 10% per month."
+  },
+  {
+    "id": "da2-3-2-math-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An analyst divides this year's orders by last year's orders and gets a ratio of 0.8. What does that mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Orders grew by 80%"
+        },
+        {
+          "id": "b",
+          "text": "Orders grew by 8%"
+        },
+        {
+          "id": "c",
+          "text": "Orders fell by 20%"
+        },
+        {
+          "id": "d",
+          "text": "Orders fell by 80%"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Growth = ratio − 1 = 0.8 − 1 = −0.2. A negative result is a fall, so orders dropped 20%. A ratio below 1 always means the value went down."
+  },
+  {
+    "id": "da2-3-2-num-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A product line earned $100,000 in 2023 and $121,000 two years later in 2025. What is the compound annual growth rate (CAGR)? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 10,
+      "tolerance": 0.5
+    },
+    "explanation": "CAGR = (end ÷ start)^(1/n) − 1. End ÷ start = 121,000 ÷ 100,000 = 1.21. With n = 2 years, take the square root: √1.21 = 1.1. Then 1.1 − 1 = 0.10, i.e. 10% per year."
+  },
+  {
+    "id": "da2-3-2-num-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "Subscribers grew from 500 to 720 over 2 years. What is the compound annual growth rate? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 20,
+      "tolerance": 0.5
+    },
+    "explanation": "End ÷ start = 720 ÷ 500 = 1.44. n = 2, so take the square root: √1.44 = 1.2. 1.2 − 1 = 0.20, i.e. 20% per year. Check: 500 × 1.2 = 600, and 600 × 1.2 = 720."
+  },
+  {
+    "id": "da2-3-2-math-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Sales grew 50% in year 1 and fell 50% in year 2. A manager says the average growth is 0%, so sales are flat. Why is that wrong?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The manager should have added the two rates, giving 100%"
+        },
+        {
+          "id": "b",
+          "text": "Each year's rate applies to a different starting value, so sales actually ended 25% lower"
+        },
+        {
+          "id": "c",
+          "text": "Growth rates can never be averaged in any way"
+        },
+        {
+          "id": "d",
+          "text": "A 50% fall is impossible after a 50% rise"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Start at 100: up 50% gives 150, then down 50% gives 75. Sales ended 25% below the start. A simple average of yearly rates ignores compounding; CAGR, (75 ÷ 100)^(1/2) − 1 ≈ −13% per year, does not."
+  },
+  {
+    "id": "da2-3-2-num-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "An account grows by 8% per year. Using the Rule of 72, about how many years does it take to double? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 9,
+      "tolerance": 0.5
+    },
+    "explanation": "Years to double ≈ 72 ÷ rate = 72 ÷ 8 = 9 years. Use the rate as a whole number (8), not as a decimal (0.08)."
+  },
+  {
+    "id": "da2-3-2-num-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Web traffic is doubling every 6 years. Using the Rule of 72, what yearly growth rate does that suggest? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 12,
+      "tolerance": 0.5
+    },
+    "explanation": "The rule works both ways: rate ≈ 72 ÷ years to double = 72 ÷ 6 = 12% per year."
+  },
+  {
+    "id": "da2-3-2-math-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which statement about the Rule of 72 is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It gives the exact doubling time for any growth rate"
+        },
+        {
+          "id": "b",
+          "text": "It applies only to values that are shrinking"
+        },
+        {
+          "id": "c",
+          "text": "It is a quick estimate of doubling time for steady compound growth"
+        },
+        {
+          "id": "d",
+          "text": "It requires the rate written as a decimal, such as 0.06"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "72 ÷ rate is a shortcut for compound growth at a steady rate. It is an estimate, closest for rates of roughly 5% to 10%. Use the rate as a whole number: 72 ÷ 6, not 72 ÷ 0.06."
+  },
+  {
+    "id": "da2-3-2-num-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A student scored 80 in a 3-credit course and 90 in a 1-credit course. What is their credit-weighted average score? Round to one decimal.",
+    "payload": {},
+    "answer": {
+      "value": 82.5,
+      "tolerance": 0.05
+    },
+    "explanation": "Weighted average = Σ(weight × value) ÷ Σweight = (3 × 80 + 1 × 90) ÷ (3 + 1) = (240 + 90) ÷ 4 = 330 ÷ 4 = 82.5."
+  },
+  {
+    "id": "da2-3-2-num-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Store A had 100 orders averaging $20. Store B had 50 orders averaging $50. What is the average order value across both stores, in dollars? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 30,
+      "tolerance": 0.5
+    },
+    "explanation": "Weight each store's average by its orders: (100 × 20 + 50 × 50) ÷ (100 + 50) = (2,000 + 2,500) ÷ 150 = 4,500 ÷ 150 = $30."
+  },
+  {
+    "id": "da2-3-2-math-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Region 1 has 900 customers with an average spend of $10. Region 2 has 100 customers with an average spend of $60. An analyst reports the overall average spend as $35. What went wrong?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The analyst should have used the median"
+        },
+        {
+          "id": "b",
+          "text": "Nothing; $35 is the correct overall average"
+        },
+        {
+          "id": "c",
+          "text": "The analyst should have added the two averages"
+        },
+        {
+          "id": "d",
+          "text": "The analyst averaged the two averages without weighting by customer count"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "(10 + 60) ÷ 2 = 35 treats both regions as the same size. Weighted by customers: (900 × 10 + 100 × 60) ÷ 1,000 = 15,000 ÷ 1,000 = $15."
+  },
+  {
+    "id": "da2-3-2-num-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "Find the mean of these daily ticket counts: 4, 8, 6, 2.",
+    "payload": {},
+    "answer": {
+      "value": 5,
+      "tolerance": 0.01
+    },
+    "explanation": "Mean = Σx ÷ n. Σx = 4 + 8 + 6 + 2 = 20, and n = 4, so the mean is 20 ÷ 4 = 5."
+  },
+  {
+    "id": "da2-3-2-num-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Find the median of these delivery times in days: 3, 9, 5, 7, 1, 11.",
+    "payload": {},
+    "answer": {
+      "value": 6,
+      "tolerance": 0.01
+    },
+    "explanation": "Sort first: 1, 3, 5, 7, 9, 11. There are 6 values, an even count, so the median is the average of the middle two: (5 + 7) ÷ 2 = 6."
+  },
+  {
+    "id": "da2-3-2-math-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A company's salaries are mostly between $40,000 and $70,000, but the chief executive earns $2,000,000. Which measure best describes a typical salary?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Median"
+        },
+        {
+          "id": "b",
+          "text": "Mean"
+        },
+        {
+          "id": "c",
+          "text": "Range"
+        },
+        {
+          "id": "d",
+          "text": "Sum"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "One very large value drags the mean up, so it no longer looks typical. The median is the middle value and barely moves, so it suits skewed data."
+  },
+  {
+    "id": "da2-3-2-math-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A survey asks customers for their preferred contact method: email, phone or chat. Which measure of center fits this data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mean"
+        },
+        {
+          "id": "b",
+          "text": "Median"
+        },
+        {
+          "id": "c",
+          "text": "Mode"
+        },
+        {
+          "id": "d",
+          "text": "Standard deviation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Contact methods are categories with no numeric value or natural order, so you cannot average or sort them. The mode, the most frequent answer, is the only measure of center that works."
+  },
+  {
+    "id": "da2-3-2-num-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A sample of 4 orders took 2, 4, 6 and 8 minutes to pack. What is the sample standard deviation? Round to two decimals.",
+    "payload": {},
+    "answer": {
+      "value": 2.58,
+      "tolerance": 0.01
+    },
+    "explanation": "x̄ = 20 ÷ 4 = 5. Deviations x − x̄: −3, −1, 1, 3. Squares: 9, 1, 1, 9; Σ = 20. Divide by n − 1 = 3: 20 ÷ 3 ≈ 6.667 (the sample variance). √6.667 ≈ 2.58."
+  },
+  {
+    "id": "da2-3-2-num-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A sample has the values 1, 3 and 5. What is the sample variance?",
+    "payload": {},
+    "answer": {
+      "value": 4,
+      "tolerance": 0.01
+    },
+    "explanation": "x̄ = 9 ÷ 3 = 3. Deviations: −2, 0, 2. Squares: 4, 0, 4; Σ = 8. Divide by n − 1 = 2: 8 ÷ 2 = 4. Variance stops before the square root."
+  },
+  {
+    "id": "da2-3-2-num-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "A team has exactly 8 members, and this is the whole population. Their years of experience are 2, 4, 4, 4, 5, 5, 7 and 9. What is the population standard deviation? Round to two decimals.",
+    "payload": {},
+    "answer": {
+      "value": 2,
+      "tolerance": 0.01
+    },
+    "explanation": "x̄ = 40 ÷ 8 = 5. Squared deviations: 9, 1, 1, 1, 0, 0, 4, 16; Σ = 32. For a population divide by n = 8: 32 ÷ 8 = 4. √4 = 2.00."
+  },
+  {
+    "id": "da2-3-2-math-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst surveys 30 customers out of 5,000 and wants to estimate how spread out spending is for all customers. Which formula should they use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Divide the sum of squared deviations by n"
+        },
+        {
+          "id": "b",
+          "text": "Divide the sum of deviations by n"
+        },
+        {
+          "id": "c",
+          "text": "Divide the sum of squared deviations by n − 1"
+        },
+        {
+          "id": "d",
+          "text": "Divide the range by n"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The 30 customers are a sample, so use the sample formula with n − 1. Dividing by n is for a whole population and slightly understates the spread when used on a sample."
+  },
+  {
+    "id": "da2-3-2-num-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "For a set of response times, Q1 = 20 seconds and Q3 = 30 seconds. Using the 1.5 × IQR rule, what is the upper fence, in seconds? Values above it are outliers.",
+    "payload": {},
+    "answer": {
+      "value": 45,
+      "tolerance": 0.01
+    },
+    "explanation": "IQR = Q3 − Q1 = 30 − 20 = 10. Upper fence = Q3 + 1.5 × IQR = 30 + 15 = 45 seconds."
+  },
+  {
+    "id": "da2-3-2-num-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Test scores have a mean of 60 and a standard deviation of 5. What is the z-score of a score of 70?",
+    "payload": {},
+    "answer": {
+      "value": 2,
+      "tolerance": 0.01
+    },
+    "explanation": "z = (x − x̄) ÷ s = (70 − 60) ÷ 5 = 2. The score is 2 standard deviations above the mean."
+  },
+  {
+    "id": "da2-3-2-num-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "For a set of order sizes, Q1 = 10 and Q3 = 18. Using the 1.5 × IQR rule, what is the lower fence?",
+    "payload": {},
+    "answer": {
+      "value": -2,
+      "tolerance": 0.01
+    },
+    "explanation": "IQR = 18 − 10 = 8. Lower fence = Q1 − 1.5 × IQR = 10 − 12 = −2. Order sizes cannot be negative, so this data has no low outliers."
+  },
+  {
+    "id": "da2-3-2-math-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Five daily sales totals are $100, $110, $120, $130 and $1,000. What happens to the mean and median compared with the same data without the $1,000 day?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Both move up by the same amount"
+        },
+        {
+          "id": "b",
+          "text": "The mean rises a lot; the median moves only a little"
+        },
+        {
+          "id": "c",
+          "text": "The median rises a lot; the mean barely moves"
+        },
+        {
+          "id": "d",
+          "text": "Neither changes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Without $1,000, the four values have a mean and median of $115. With it, the mean jumps to 1,460 ÷ 5 = $292, while the median is the middle value, $120."
+  },
+  {
+    "id": "da2-3-2-num-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Package weights follow a normal distribution with a mean of 100 g and a standard deviation of 10 g. About what percent of packages weigh between 80 g and 120 g? Answer as a percent.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 95,
+      "tolerance": 0.5
+    },
+    "explanation": "80 and 120 are each 2 standard deviations from the mean (100 ± 2 × 10). The 68-95-99.7 rule says about 95% of values fall within 2 standard deviations."
+  },
+  {
+    "id": "da2-3-2-math-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A histogram of house prices has a long tail to the right (a few very expensive houses). How do the mean and median usually compare?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The mean is greater than the median"
+        },
+        {
+          "id": "b",
+          "text": "The mean is less than the median"
+        },
+        {
+          "id": "c",
+          "text": "The mean and median are equal"
+        },
+        {
+          "id": "d",
+          "text": "The median is always zero"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "In a right-skewed distribution the few high values pull the mean toward the tail, so the mean sits above the median. Left skew is the reverse."
+  },
+  {
+    "id": "da2-3-2-math-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which description fits a normal distribution?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Lopsided, with a long tail to the left"
+        },
+        {
+          "id": "b",
+          "text": "Flat, with every value equally likely"
+        },
+        {
+          "id": "c",
+          "text": "Two separate peaks"
+        },
+        {
+          "id": "d",
+          "text": "Bell-shaped and symmetric, with mean, median and mode about equal"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A normal distribution is a symmetric bell curve centered on its mean. Because it is symmetric, the mean, median and mode sit at the same point."
   }
 ]

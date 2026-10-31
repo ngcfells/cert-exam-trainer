@@ -101,5 +101,8 @@ export const dataPlusMeta: ExamMeta = {
     { term: 'SSL', expansion: 'Secure Sockets Layer', source: 'community' },
     { term: 'TCP', expansion: 'Transmission Control Protocol', source: 'community' },
     { term: 'WAN', expansion: 'Wide Area Network', source: 'community' },
+    // Math module terms.
+    { term: 'CAGR', expansion: 'Compound Annual Growth Rate', source: 'community' },
+    { term: 'IQR', expansion: 'Interquartile Range', source: 'community' },
   ],
 };
