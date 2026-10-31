@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import type { AcronymEntry } from '../../acronyms/list';
 import { deleteUserAcronym, saveUserAcronym } from '../../acronyms/userList';
 import type { Repo } from '../../storage';
+import { Table } from '../Table';
 
 export function MyAcronyms({
   repo,
@@ -24,6 +25,15 @@ export function MyAcronyms({
   /** The term being edited, if any. */
   const [editing, setEditing] = useState<string | null>(null);
   const errorOn = error.startsWith('Enter what') ? 'meaning' : error ? 'term' : null;
+
+  /** Loads a term into the form and moves focus to the meaning. */
+  function fill(t: string, meaning: string, edit: string | null) {
+    setTerm(t);
+    setExpansion(meaning);
+    setEditing(edit);
+    setError('');
+    document.getElementById('my-acr-meaning')?.focus();
+  }
 
   async function save(e: FormEvent) {
     e.preventDefault();
@@ -68,16 +78,7 @@ export function MyAcronyms({
           <ul className="acronym-suggestions">
             {suggestions.map((t) => (
               <li key={t}>
-                <button
-                  type="button"
-                  aria-label={`Add ${t}`}
-                  onClick={() => {
-                    setTerm(t);
-                    setEditing(null);
-                    setError('');
-                    document.getElementById('my-acr-meaning')?.focus();
-                  }}
-                >
+                <button type="button" aria-label={`Add ${t}`} onClick={() => fill(t, expansion, null)}>
                   {t}
                 </button>
               </li>
@@ -113,39 +114,23 @@ export function MyAcronyms({
       </form>
       <p role="status">{message}</p>
       {mine.length > 0 && (
-        <table>
-          <caption>Your acronyms</caption>
-          <thead>
-            <tr>
-              <th scope="col">Acronym</th>
-              <th scope="col">Meaning</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {mine.map((a) => (
-              <tr key={a.term}>
-                <th scope="row">{a.term}</th>
-                <td>{a.expansion}</td>
-                <td>
-                  <button type="button" aria-label={`Edit ${a.term}`} onClick={() => {
-                      setTerm(a.term);
-                      setExpansion(a.expansion);
-                      setEditing(a.term);
-                      setError('');
-                      document.getElementById('my-acr-meaning')?.focus();
-                    }}
-                  >
-                    Edit
-                  </button>{' '}
-                  <button type="button" aria-label={`Delete ${a.term}`} onClick={() => void remove(a.term)}>
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table
+          caption="Your acronyms"
+          head={['Acronym', 'Meaning', 'Actions']}
+          rows={mine.map((a) => [
+            a.term,
+            a.term,
+            a.expansion,
+            <>
+              <button type="button" aria-label={`Edit ${a.term}`} onClick={() => fill(a.term, a.expansion, a.term)}>
+                Edit
+              </button>{' '}
+              <button type="button" aria-label={`Delete ${a.term}`} onClick={() => void remove(a.term)}>
+                Delete
+              </button>
+            </>,
+          ])}
+        />
       )}
     </section>
   );

@@ -1,6 +1,7 @@
 import { acceptedText, partCorrect, partIds, partLabel, valueText, type PartMap } from '../../domain/pbq';
 import type { McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { ItemResponse } from '../../exam/scoring';
+import { Table } from '../Table';
 
 function optionTexts(q: Question, ids: string[]): string {
   const opts = (q.payload as McqPayload).options;
@@ -11,27 +12,17 @@ function PartsReview({ q, given }: { q: Question; given: PartMap }) {
   const notes = partIds(q).filter((id) => q.partExplanations?.[id]);
   return (
     <>
-      <table>
-        <caption>Parts</caption>
-        <thead>
-          <tr>
-            <th scope="col">Part</th>
-            <th scope="col">Your answer</th>
-            <th scope="col">Correct answer</th>
-            <th scope="col">Result</th>
-          </tr>
-        </thead>
-        <tbody>
-          {partIds(q).map((id) => (
-            <tr key={id}>
-              <th scope="row">{partLabel(q, id)}</th>
-              <td>{given[id] ? valueText(q, id, given[id]) : q.type === 'pbq-hotspot' ? 'Not selected' : 'Not answered'}</td>
-              <td>{acceptedText(q, id)}</td>
-              <td>{partCorrect(q, id, given) ? 'Correct' : 'Incorrect'}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Table
+        caption="Parts"
+        head={['Part', 'Your answer', 'Correct answer', 'Result']}
+        rows={partIds(q).map((id) => [
+          id,
+          partLabel(q, id),
+          given[id] ? valueText(q, id, given[id]) : q.type === 'pbq-hotspot' ? 'Not selected' : 'Not answered',
+          acceptedText(q, id),
+          partCorrect(q, id, given) ? 'Correct' : 'Incorrect',
+        ])}
+      />
       {notes.length > 0 && (
         <ul>
           {notes.map((id) => (

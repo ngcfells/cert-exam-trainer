@@ -1,7 +1,2 @@
-export function questions(n: number): string {
-  return `${n} ${n === 1 ? 'question' : 'questions'}`;
-}
-
-export function problems(n: number): string {
-  return `${n} ${n === 1 ? 'problem' : 'problems'}`;
-}
+export const plural = (n: number, word: string) => `${n} ${n === 1 ? word : `${word}s`}`;
+export const questions = (n: number) => plural(n, 'question');

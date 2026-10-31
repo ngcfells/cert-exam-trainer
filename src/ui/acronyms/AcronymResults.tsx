@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
 import type { AcronymEntry } from '../../acronyms/list';
+import { Table, useFocusHeading } from '../kit';
 import type { AcronymGrade } from './FlashcardRunner';
 
 export function AcronymResults({
@@ -19,8 +19,7 @@ export function AcronymResults({
   onAgain: () => void;
   onExit: () => void;
 }) {
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  useEffect(() => headingRef.current?.focus(), []);
+  const headingRef = useFocusHeading();
   const byTerm = new Map(deck.map((a) => [a.term, a]));
   const right = grades.filter((g) => g.correct).length;
   const missed = grades.filter((g) => !g.correct);
@@ -35,25 +34,11 @@ export function AcronymResults({
       {saveError && <p role="alert">{saveError}</p>}
       <p>{grades.length === 0 ? 'No cards answered.' : `${right} of ${grades.length} ${quiz ? 'correct' : 'known'}`}</p>
       {missed.length > 0 && (
-        <table>
-          <caption>{quiz ? 'Missed' : 'Not known yet'}</caption>
-          <thead>
-            <tr>
-              <th scope="col">Acronym</th>
-              <th scope="col">Meaning</th>
-              {quiz && <th scope="col">Your answer</th>}
-            </tr>
-          </thead>
-          <tbody>
-            {missed.map((g) => (
-              <tr key={g.term}>
-                <th scope="row">{g.term}</th>
-                <td>{byTerm.get(g.term)?.expansion}</td>
-                {quiz && <td>{g.given}</td>}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table
+          caption={quiz ? 'Missed' : 'Not known yet'}
+          head={quiz ? ['Acronym', 'Meaning', 'Your answer'] : ['Acronym', 'Meaning']}
+          rows={missed.map((g) => [g.term, g.term, byTerm.get(g.term)?.expansion, ...(quiz ? [g.given] : [])])}
+        />
       )}
       <button type="button" className="primary" onClick={onAgain}>
         Study again

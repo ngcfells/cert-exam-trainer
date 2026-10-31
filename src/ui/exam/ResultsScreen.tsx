@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { pct, Table, useFocusHeading } from '../kit';
 import type { ExamMeta } from '../../domain/types';
 import type { AssembledExam } from '../../exam/assemble';
 import type { ExamResult, ResultMode } from '../../exam/result';
@@ -28,8 +29,7 @@ export function ResultsScreen({
   children?: React.ReactNode;
 }) {
   const missed = exam.items.filter((_, i) => report.items[i].fraction < 1);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  useEffect(() => headingRef.current?.focus(), []);
+  const headingRef = useFocusHeading();
   // The alert region is mounted empty and filled after mount, so screen readers announce it.
   const [alertText, setAlertText] = useState('');
   useEffect(() => setAlertText(saveError ?? ''), [saveError]);
@@ -40,7 +40,7 @@ export function ResultsScreen({
       <h2 id="results-h" ref={headingRef} tabIndex={-1}>
         {mock
           ? `Your score: ${report.score} / 900`
-          : `${mode === 'cram' ? 'Cram' : 'Practice'} complete${exam.items.length ? `: ${Math.round((report.score / MAX_SCORE) * 100)}% correct` : ''}`}
+          : `${mode === 'cram' ? 'Cram' : 'Practice'} complete${exam.items.length ? `: ${pct(report.score / MAX_SCORE)} correct` : ''}`}
       </h2>
       {mock && (
         <>
@@ -55,25 +55,11 @@ export function ResultsScreen({
       {children}
       <p role="alert">{alertText}</p>
 
-      <table>
-        <caption>Score by domain</caption>
-        <thead>
-          <tr>
-            <th scope="col">Domain</th>
-            <th scope="col">Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {report.byDomain
-            .filter((d) => d.possible > 0)
-            .map((d) => (
-              <tr key={d.domainId}>
-                <th scope="row">{`${d.domainId}. ${d.title}`}</th>
-                <td>{`${Math.round((d.earned / d.possible) * 100)}%`}</td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
+      <Table
+        caption="Score by domain"
+        head={['Domain', 'Score']}
+        rows={report.byDomain.filter((d) => d.possible > 0).map((d) => [d.domainId, `${d.domainId}. ${d.title}`, pct(d.earned / d.possible)])}
+      />
 
       <h3>What to study</h3>
       {report.weakestObjectives.length === 0 ? (
@@ -82,7 +68,7 @@ export function ResultsScreen({
         <>
           <ul>
             {report.weakestObjectives.map((o) => (
-              <li key={o.objectiveId}>{`${o.objectiveId} ${o.title} (${Math.round(o.fraction * 100)}%)`}</li>
+              <li key={o.objectiveId}>{`${o.objectiveId} ${o.title} (${pct(o.fraction)})`}</li>
             ))}
           </ul>
           {onDrill && (

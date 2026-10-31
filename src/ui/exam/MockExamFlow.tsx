@@ -1,87 +1,36 @@
-import { useEffect, useState } from 'react';
-import { listExams } from '../../banks';
+import { useState } from 'react';
 import { loadPool } from '../../banks/pool';
 import { PBQ_TEMPLATES } from '../../domain/pbq';
-import { assembleExam, type AssembledExam } from '../../exam/assemble';
-import { buildResult, recentQuestionIds, type ExamResult } from '../../exam/result';
+import { assembleExam } from '../../exam/assemble';
+import { recentQuestionIds } from '../../exam/result';
 import { newSeed } from '../../exam/rng';
-import { scoreExam, type ScoreReport } from '../../exam/scoring';
 import type { Repo } from '../../storage';
-import { ExamRunner, type SubmitPayload } from './ExamRunner';
+import { Loading, metaFor, useLoad } from '../kit';
+import { LoadError } from '../study/LoadError';
+import { ExamRunner } from './ExamRunner';
 import { ExamSetup } from './ExamSetup';
 import { ResultsScreen } from './ResultsScreen';
-import { saveAttempt } from './saveAttempt';
+import { finishAttempt, type Finished } from './saveAttempt';
 
-type Stage =
-  | { stage: 'loading' }
-  | { stage: 'setup'; exam: AssembledExam }
-  | { stage: 'running'; exam: AssembledExam; startedAt: Date }
-  | { stage: 'results'; exam: AssembledExam; result: ExamResult; report: ScoreReport; saveError: string | null };
+export function MockExamFlow({ repo, examCode, onExit, onDrill, seed }: { repo: Repo; examCode: string; onExit: () => void; onDrill?: (objectiveIds: string[]) => void; seed?: number }) {
+  const meta = metaFor(examCode);
+  const [exam] = useLoad(async () => {
+    const [pool, history] = await Promise.all([loadPool(repo, examCode), repo.listRecords('results')]);
+    return assembleExam({ meta, pool, seed: seed ?? newSeed(), recentIds: recentQuestionIds(history, examCode), pbqTypes: PBQ_TEMPLATES });
+  }, [repo, examCode, seed]);
+  const [startedAt, setStartedAt] = useState<Date | null>(null);
+  const [done, setDone] = useState<Finished | null>(null);
 
-export function MockExamFlow({
-  repo,
-  examCode,
-  onExit,
-  onDrill,
-  seed,
-}: {
-  repo: Repo;
-  examCode: string;
-  onExit: () => void;
-  onDrill?: (objectiveIds: string[]) => void;
-  seed?: number;
-}) {
-  const meta = listExams().find((m) => m.code === examCode)!;
-  const [s, setS] = useState<Stage>({ stage: 'loading' });
-
-  useEffect(() => {
-    let live = true;
-    void (async () => {
-      const [pool, history] = await Promise.all([loadPool(repo, examCode), repo.listRecords('results')]);
-      const exam = assembleExam({
-        meta,
-        pool,
-        seed: seed ?? newSeed(),
-        recentIds: recentQuestionIds(history, examCode),
-        pbqTypes: PBQ_TEMPLATES,
-      });
-      if (live) setS({ stage: 'setup', exam });
-    })();
-    return () => {
-      live = false;
-    };
-  }, [repo, examCode, meta, seed]);
-
-  async function finish(exam: AssembledExam, startedAt: Date, p: SubmitPayload) {
-    const report = scoreExam(exam, p.responses, meta);
-    const result = buildResult({ exam, report, startedAt, ...p });
-    const answered = report.items.filter((i) => i.answered).map((i) => i.questionId);
-    const saveError = await saveAttempt(repo, result, report, answered, p.finishedAt);
-    setS({ stage: 'results', exam, result, report, saveError });
-  }
-
-  switch (s.stage) {
-    case 'loading':
-      return <p>Loading…</p>;
-    case 'setup':
-      return (
-        <ExamSetup
-          meta={meta}
-          plannedCount={s.exam.items.length}
-          onStart={() => setS({ stage: 'running', exam: s.exam, startedAt: new Date() })}
-          onCancel={onExit}
-        />
-      );
-    case 'running':
-      return (
-        <ExamRunner
-          exam={s.exam}
-          timeLimitMs={meta.timeLimitMinutes * 60_000}
-          startedAt={s.startedAt}
-          onSubmit={(p) => void finish(s.exam, s.startedAt, p)}
-        />
-      );
-    case 'results':
-      return <ResultsScreen meta={meta} exam={s.exam} result={s.result} report={s.report} saveError={s.saveError} onHome={onExit} onDrill={onDrill} />;
-  }
+  if (exam === undefined) return <Loading />;
+  if (exam === null) return <LoadError onExit={onExit} />;
+  if (done) return <ResultsScreen meta={meta} {...done} onHome={onExit} onDrill={onDrill} />;
+  if (!startedAt) return <ExamSetup meta={meta} plannedCount={exam.items.length} onStart={() => setStartedAt(new Date())} onCancel={onExit} />;
+  return (
+    <ExamRunner
+      exam={exam}
+      timeLimitMs={meta.timeLimitMinutes * 60_000}
+      startedAt={startedAt}
+      onSubmit={(p) => void finishAttempt(repo, meta, exam, startedAt, p).then(setDone)}
+    />
+  );
 }

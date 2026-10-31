@@ -1,15 +1,14 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { z } from 'zod';
-import { listExams } from '../../banks';
-import { isPbqTemplate, type PartMap, type PbqTemplate } from '../../domain/pbq';
+import { isPbqTemplate, type PbqTemplate } from '../../domain/pbq';
+import type { ItemResponse } from '../../exam/scoring';
 import { QUESTION_TYPES, questionSchema } from '../../domain/schema';
 import type { McqAnswer, McqPayload, Question, QuestionType } from '../../domain/types';
 import { PBQ_STARTERS } from '../../authoring/starters';
 import type { Repo } from '../../storage';
-import { McqView } from '../exam/McqView';
-import { PbqView } from '../exam/pbq/PbqView';
+import { Loading, metaFor, QuestionView } from '../kit';
 import { LoadError } from '../study/LoadError';
-import { problems } from '../plural';
+import { plural } from '../plural';
 import { TYPE_LABELS } from './typeLabels';
 import '../exam/exam.css';
 import './author.css';
@@ -128,14 +127,14 @@ export function QuestionEditor({
   id?: string;
   onDone: () => void;
 }) {
-  const meta = listExams().find((m) => m.code === examCode)!;
+  const meta = metaFor(examCode);
   const [initial, setInitial] = useState<Draft | null>(id ? null : newDraft(meta.objectives[0].id));
   const [draft, setDraft] = useState<Draft | null>(initial);
   const [existing, setExisting] = useState<Question | null>(null);
   const [failed, setFailed] = useState(false);
   const [saveError, setSaveError] = useState('');
   const [showErrors, setShowErrors] = useState(false);
-  const [preview, setPreview] = useState<{ mcq: string[]; pbq: PartMap }>({ mcq: [], pbq: {} });
+  const [preview, setPreview] = useState<ItemResponse>();
   const summaryRef = useRef<HTMLDivElement>(null);
   const uid = useId();
   const [newId] = useState(() => `user-${crypto.randomUUID()}`);
@@ -161,10 +160,10 @@ export function QuestionEditor({
   // Reset preview answers only when what the learner answers changes, not on stem or explanation edits.
   const q = built?.question;
   const previewKey = q ? JSON.stringify([q.type, q.payload]) : '';
-  useEffect(() => setPreview({ mcq: [], pbq: {} }), [previewKey]);
+  useEffect(() => setPreview(undefined), [previewKey]);
 
   if (failed) return <LoadError onExit={onDone} />;
-  if (!draft || !built) return <p>Loading…</p>;
+  if (!draft || !built) return <Loading />;
 
   const set = (patch: Partial<Draft>) => setDraft({ ...draft, ...patch });
   const pbq = isPbqTemplate(draft.type);
@@ -245,7 +244,7 @@ export function QuestionEditor({
       <h2 id={`${uid}-h`}>{id ? 'Edit question' : 'Add question'}</h2>
       {showErrors && built.errors.length > 0 && (
         <div ref={summaryRef} tabIndex={-1} className="editor-errors error-summary" aria-labelledby={`${uid}-sum`} role="group">
-          <h3 id={`${uid}-sum`}>{`${problems(built.errors.length)} to fix before saving`}</h3>
+          <h3 id={`${uid}-sum`}>{`${plural(built.errors.length, 'problem')} to fix before saving`}</h3>
           <ul>
             {built.errors.map((e, i) => (
               <li key={i}>
@@ -410,11 +409,7 @@ export function QuestionEditor({
       {q && (
         <section className="editor-preview" aria-label="Preview">
           <h3>Preview</h3>
-          {pbq ? (
-            <PbqView item={{ question: q }} value={preview.pbq} onChange={(v) => setPreview({ ...preview, pbq: v })} />
-          ) : (
-            <McqView item={{ question: q }} selected={preview.mcq} onChange={(v) => setPreview({ ...preview, mcq: v })} />
-          )}
+          <QuestionView item={{ question: q }} response={preview} onChange={setPreview} />
         </section>
       )}
     </section>
