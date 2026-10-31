@@ -150,7 +150,8 @@
     - Lesson status lives in the setting `lessonStatus:<exam>` (backup format unchanged); done at a check score of 80% or more. Check attempts save with `mode: 'lesson'` (count for mastery and SRS, not mock recency).
     - Numeric answers are recomputed in `bank.test.ts` from `src/banks/dataplus/numericChecks.ts`: **every new numeric item needs an entry there.**
     - The fixture bank gained a numeric item, so fixture mock exams have 9 items (e2e `TOTAL = 9`).
-  - **Next session: section 2 (content A+B).** Merge `math-engine` first if the owner approved it. Write the plan, then execute.
+  - **Owner decision (2026-10-31): do not merge `math-engine` until the whole math module is complete** (after section 6). Keep committing every section to `math-engine`; merge to `main` and redeploy only at the end.
+  - **Next session: section 2 (content A+B), on branch `math-engine`.** Write the plan with superpowers:writing-plans, then execute it (Native). Every new numeric item needs a `NUMERIC_CHECKS` entry.
   - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.
 - **After the math module: chunk 11, SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
