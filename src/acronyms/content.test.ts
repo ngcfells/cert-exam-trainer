@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { getBundledQuestions, listExams } from '../banks';
 import { getLessons } from '../banks/lessons';
 import { lessonText } from '../domain/lesson';
-import { extractAcronyms, questionText } from './extract';
+import { acronymCovered, extractAcronyms, questionText } from './extract';
 
 // The content check (spec §8 item 2): runs in `npm run test`, so `npm run check` fails on a gap.
 describe.each(listExams().map((m) => [m.code, m] as const))('acronyms for %s', (code, meta) => {
@@ -11,12 +11,12 @@ describe.each(listExams().map((m) => [m.code, m] as const))('acronyms for %s', (
 
   it('every token in bundled questions has an expansion', () => {
     const tokens = new Set(questions.flatMap((q) => extractAcronyms(questionText(q))));
-    expect([...tokens].filter((t) => !listed.has(t)).sort()).toEqual([]);
+    expect([...tokens].filter((t) => !acronymCovered(t, listed)).sort()).toEqual([]);
   });
 
   it('every token in bundled lessons has an expansion', () => {
     const tokens = new Set(getLessons(code).flatMap((l) => extractAcronyms(lessonText(l))));
-    expect([...tokens].filter((t) => !listed.has(t)).sort()).toEqual([]);
+    expect([...tokens].filter((t) => !acronymCovered(t, listed)).sort()).toEqual([]);
   });
 
   it('every tagged acronym is in the list', () => {

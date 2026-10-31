@@ -12,7 +12,7 @@ test('installs a service worker and works offline under the Pages subpath', asyn
   await context.setOffline(true);
   await page.reload();
   await expect(page.getByRole('heading', { name: 'Cert Exam Trainer' })).toBeVisible();
-  await page.getByRole('button', { name: /^Practice:/ }).first().click();
+  await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
   await expect(page.getByRole('heading', { name: /practice/i }).first()).toBeVisible();
 });
 

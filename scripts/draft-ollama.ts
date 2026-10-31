@@ -1,13 +1,16 @@
 // Drafts MCQs for one objective with a local Ollama model (spec §12 step 2), validating each with questionSchema.
-// Usage: npm run draft:ollama -- --objective 2.1 --count 10 --out content-drafts/ollama-trial.json [--model qwen3.6:27b]
+// Usage: npm run draft:ollama -- --exam DA0-002 --objective 2.1 --count 10 --out content-drafts/ollama-trial.json [--model qwen3.6:27b]
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
-import { dataPlusMeta } from '../src/banks/dataplus/meta';
+import { itemIdPrefix } from '../src/banks/paths';
 import { questionSchema } from '../src/domain/schema';
+import { examFromArgs, parseArgs } from './exam-args';
+
+const args = parseArgs(process.argv.slice(2));
+const { meta: exam } = examFromArgs(args);
 
 function arg(name: string, fallback?: string): string {
-  const i = process.argv.indexOf(`--${name}`);
-  const v = i >= 0 ? process.argv[i + 1] : fallback;
+  const v = args.flags[name] ?? fallback;
   if (v === undefined) throw new Error(`missing --${name}`);
   return v;
 }
@@ -16,19 +19,20 @@ const objective = arg('objective');
 const count = Number(arg('count', '10'));
 const out = arg('out');
 const model = arg('model', 'qwen3.6:27b');
-const meta = dataPlusMeta.objectives.find((o) => o.id === objective);
+const meta = exam.objectives.find((o) => o.id === objective);
 if (!meta) throw new Error(`unknown objective ${objective}`);
 
 const brief = readFileSync('docs/content-drafting.md', 'utf8');
 const topics = readFileSync('content-drafts/topics.md', 'utf8')
   .split(/\n(?=\d\.\d )/)
   .find((s) => s.startsWith(`${objective} `));
+const prefix = itemIdPrefix(exam.code, objective, 'mcq-single');
 const example = {
-  id: 'da2-1-1-mcq-001',
-  exam: 'DA0-002',
+  id: `${prefix}001`,
+  exam: exam.code,
   source: 'ours',
   type: 'mcq-single',
-  objectiveIds: ['1.1'],
+  objectiveIds: [objective],
   difficulty: 1,
   stem: 'A table column uniquely identifies each row and can never be empty. What is this column called?',
   payload: { options: [{ id: 'a', text: 'Primary key' }, { id: 'b', text: 'Foreign key' }, { id: 'c', text: 'Index' }, { id: 'd', text: 'View' }] },
@@ -37,7 +41,6 @@ const example = {
   acronyms: [],
   status: 'draft',
 };
-const prefix = `da2-${objective.replace('.', '-')}-mcq-`;
 
 const prompt = [
   brief,

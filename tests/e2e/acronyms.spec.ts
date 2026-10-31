@@ -15,6 +15,16 @@ async function cards(page: Page, n: number) {
   await page.getByRole('spinbutton', { name: 'Number of cards' }).fill(String(n));
 }
 
+test('CY0-001 lists compound and mixed-case official terms and passes axe', async ({ page }) => {
+  await page.goto(singleUrl);
+  await page.getByRole('button', { name: 'Acronyms: CY0-001' }).click();
+  await expect(page.getByRole('heading', { name: /^Acronyms:/ })).toBeVisible();
+  await page.getByText('Full list', { exact: true }).click();
+  const table = page.getByRole('table', { name: 'Full list of acronyms' });
+  for (const term of ['CI/CD', 'PCI DSS', 'SOC 2', 'DDoS']) await expect(table.getByRole('rowheader', { name: term, exact: true })).toBeVisible();
+  await expectNoSeriousAxe(page);
+});
+
 test('flashcards, results and my acronyms pass axe', async ({ page }) => {
   await openSetup(page);
   await expectNoSeriousAxe(page);

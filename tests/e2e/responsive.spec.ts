@@ -23,7 +23,7 @@ async function checkBothSchemes(page: Page, where: string) {
 
 async function startExam(page: Page, seed: number) {
   await page.goto(`${singleUrl}?seed=${seed}`);
-  await page.getByRole('button', { name: /start mock exam/i }).click();
+  await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await page.getByRole('button', { name: 'Start exam' }).click();
   await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
 }

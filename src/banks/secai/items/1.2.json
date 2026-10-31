@@ -1,0 +1,2002 @@
+[
+  {
+    "id": "cy1-1-2-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Before training a fraud model, an analyst removes duplicate rows, fixes inconsistent date formats and drops impossible values. Which data-processing step is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data lineage"
+        },
+        {
+          "id": "b",
+          "text": "Data balancing"
+        },
+        {
+          "id": "c",
+          "text": "Data cleansing"
+        },
+        {
+          "id": "d",
+          "text": "Data augmentation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Removing duplicates, normalizing formats and discarding impossible values is data cleansing. Lineage documents where data has been, balancing evens out class counts, and augmentation adds new samples.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Why do security teams treat data cleansing as a poisoning defense and not only a quality task?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Cleansing can reject malformed or planted records at ingestion"
+        },
+        {
+          "id": "b",
+          "text": "Cleansing encrypts records so planted rows cannot be read"
+        },
+        {
+          "id": "c",
+          "text": "Cleansing proves that each remaining row came from a trusted owner"
+        },
+        {
+          "id": "d",
+          "text": "Cleansing makes later monitoring of the training data less important"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Schema, range and format checks at ingestion can stop crafted or corrupt rows before they shape the model. Cleansing does not encrypt data, cannot prove who authored a row (that is provenance and signing), and does not remove the need for continued monitoring.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A pipeline strips hidden text and embedded scripts from documents before they are indexed for a RAG assistant. Which risk does this mainly reduce?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Loss of the dataset's licensing records"
+        },
+        {
+          "id": "b",
+          "text": "Overfitting to the most common document type in the corpus"
+        },
+        {
+          "id": "c",
+          "text": "Drift in the embedding dimension over time"
+        },
+        {
+          "id": "d",
+          "text": "Indirect prompt injection through retrieved content"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Instructions hidden in a document can reach the model when that document is retrieved, so sanitizing content before indexing cuts that path. It does not create licensing records, change class mix, or cause embedding drift over time.",
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-1-2-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A job recomputes the cryptographic hash of a training dataset and compares it with the value recorded when the dataset was approved. What does a mismatch indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The dataset holds personal data that must be masked before further use"
+        },
+        {
+          "id": "b",
+          "text": "The data changed after approval"
+        },
+        {
+          "id": "c",
+          "text": "The classes in the dataset are no longer balanced"
+        },
+        {
+          "id": "d",
+          "text": "The vectors came from a different embedding model"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A hash changes when any byte changes, so a mismatch means the dataset is not the approved one, and the pipeline should halt and investigate. Hashes say nothing about personal data, class counts, or which embedding model was used.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which term describes documenting each transformation applied to a dataset on its way from source systems to a model input?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data watermarking"
+        },
+        {
+          "id": "b",
+          "text": "Data lineage"
+        },
+        {
+          "id": "c",
+          "text": "Data integrity"
+        },
+        {
+          "id": "d",
+          "text": "Data verification"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Lineage records the route and every transformation along it. Watermarking embeds ownership markers, integrity is the property of being unaltered, and verification checks data against a baseline.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After a data feed is found to be tainted, an engineer must locate every dataset, feature table and model built from it. Which record makes this possible?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Per-class record counts recorded for each version of each dataset"
+        },
+        {
+          "id": "b",
+          "text": "Access logs from the vector store"
+        },
+        {
+          "id": "c",
+          "text": "A watermark placed on the final model"
+        },
+        {
+          "id": "d",
+          "text": "Lineage metadata linking each output to its inputs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Lineage links downstream artifacts back to their sources, so the impact of a tainted feed can be traced and cleaned up. Class counts, retrieval access logs and a model watermark do not show what was derived from what.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A legal team asks where a licensed image set came from and on what terms, while an incident responder asks which pipeline jobs reshaped it. Which pair of records answers these questions?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Provenance for the first, lineage for the second"
+        },
+        {
+          "id": "b",
+          "text": "Lineage for the first, provenance for the second"
+        },
+        {
+          "id": "c",
+          "text": "Lineage for both, since lineage covers origin"
+        },
+        {
+          "id": "d",
+          "text": "Integrity records for both, since they show changes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Provenance captures origin, license and consent; lineage captures the transformation path. The reversed pairing swaps them, and neither lineage alone nor integrity records cover both origin terms and processing history.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which property means data has not been altered in an unauthorized way, whether stored or in transit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data lineage"
+        },
+        {
+          "id": "b",
+          "text": "Data classification"
+        },
+        {
+          "id": "c",
+          "text": "Data integrity"
+        },
+        {
+          "id": "d",
+          "text": "Data balancing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Integrity is protection against unauthorized change. Lineage tracks transformations, classification labels how sensitive data is rather than whether it was changed, and balancing adjusts class proportions.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A contractor delivers a new training batch. The team needs proof of who produced it and that it was not changed on the way. Which control provides both?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A plain checksum posted on the same page as the download link"
+        },
+        {
+          "id": "b",
+          "text": "TLS protection on the connection used to download it"
+        },
+        {
+          "id": "c",
+          "text": "A row count confirmed by the contractor in an email"
+        },
+        {
+          "id": "d",
+          "text": "A digital signature made with the contractor's private key"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A signature binds the data to its signer and breaks if the data changes. A posted checksum can be recomputed by anyone who alters the batch, TLS protects only the transfer and not the origin, and a row count is trivially matched.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-1-2-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which mechanism gives a tamper-evident audit trail of changes made to a training dataset?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A wiki page where editors list their own change notes"
+        },
+        {
+          "id": "b",
+          "text": "An append-only ledger of change records"
+        },
+        {
+          "id": "c",
+          "text": "A shared folder of dated copies that anyone can replace"
+        },
+        {
+          "id": "d",
+          "text": "A dashboard that shows the current row count"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An append-only ledger cannot be rewritten without detection, so history stays trustworthy. A wiki page, a replaceable folder and a live count can all be edited or overwritten without leaving evidence.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which record states where a dataset originated, the license it is under and the consent conditions attached to it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data balancing"
+        },
+        {
+          "id": "b",
+          "text": "Data cleansing"
+        },
+        {
+          "id": "c",
+          "text": "Data provenance"
+        },
+        {
+          "id": "d",
+          "text": "Data augmentation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Provenance is the dataset's origin story plus its usage terms. Balancing, cleansing and augmentation are processing techniques that change the data, not records of where it came from.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team needs a training corpus and must choose a source. Which source carries the least provenance risk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A licensed dataset with documented origin"
+        },
+        {
+          "id": "b",
+          "text": "An archive shared by an anonymous account on a public forum"
+        },
+        {
+          "id": "c",
+          "text": "A scraped collection that contains no license information"
+        },
+        {
+          "id": "d",
+          "text": "A re-uploaded mirror posted by an account of unknown ownership"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Documented origin lets the team verify who produced the data and under what terms. Anonymous, unlicensed or unattributable sources give no basis for trust and are easy vehicles for poisoned content or legal exposure.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A public dataset accepts contributions from anyone. Its provenance data shows that 40 percent of this week's new rows came from accounts created in the last few days. What is the best response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Quarantine those rows until the contributors are reviewed"
+        },
+        {
+          "id": "b",
+          "text": "Oversample the older rows to dilute the new ones"
+        },
+        {
+          "id": "c",
+          "text": "Add the new rows to the augmentation pool"
+        },
+        {
+          "id": "d",
+          "text": "Accept them because a large volume lowers each row's influence"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A burst from brand-new accounts is a classic poisoning signal, and provenance data lets the team isolate it. Oversampling or augmenting does not remove the suspect rows, and sheer volume is exactly how poisoning succeeds.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which technique expands a training set by creating modified or synthetic variants of existing samples?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data lineage"
+        },
+        {
+          "id": "b",
+          "text": "Data cleansing"
+        },
+        {
+          "id": "c",
+          "text": "Data augmentation"
+        },
+        {
+          "id": "d",
+          "text": "Data provenance tracking"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Augmentation produces new samples from existing ones. Lineage records transformations, cleansing removes bad records, and provenance tracking records origin and terms, not the processing that produced a sample.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Why should synthetic or augmented samples be tagged as such in dataset metadata?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "So the model skips them during each training run"
+        },
+        {
+          "id": "b",
+          "text": "So auditors can tell real data from generated data"
+        },
+        {
+          "id": "c",
+          "text": "So they are stored under a stronger encryption key"
+        },
+        {
+          "id": "d",
+          "text": "So they can bypass the integrity check at load time"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Tags let reviewers trace a fault or a bias to generated data and keep real and synthetic records distinguishable for audits. Tags do not instruct the model to skip rows, change encryption, or exempt data from integrity checks.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Only 0.5 percent of payment records in a training set are confirmed fraud. What security-relevant problem follows if the set is used as it is?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The model memorizes the personal data stored in the majority class records"
+        },
+        {
+          "id": "b",
+          "text": "The set fails signature verification when it is loaded"
+        },
+        {
+          "id": "c",
+          "text": "The vector index grows beyond the storage allocation"
+        },
+        {
+          "id": "d",
+          "text": "The model may treat nearly all activity as normal and miss real fraud"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Heavy skew toward the common class teaches a model that calling everything benign is almost always right, so detections are missed. Balancing the classes addresses this. Skew does not cause memorization of personal data, break signatures, or bloat an index.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Event payloads from a chat-bot platform arrive as tagged, nested records and will be used to train a classifier. Which hidden risk calls for a scanning pass first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Stack traces that name internal functions in the code"
+        },
+        {
+          "id": "b",
+          "text": "Version numbers that reveal which software release is deployed"
+        },
+        {
+          "id": "c",
+          "text": "Access tokens and personal details left inside field values"
+        },
+        {
+          "id": "d",
+          "text": "Row counts and timestamps that reveal how many users are active"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Nested records without a fixed schema can carry credentials and personal details in fields no one anticipated, so they are scanned and redacted before use. Stack traces, version numbers and activity counts leak some internal detail, but each is far lower in impact than a live token or personal data.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Scanned contracts are being added to a RAG index. Which step before chunking best reduces the chance that answers expose personal data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the chunk size so fewer chunks hold PII"
+        },
+        {
+          "id": "b",
+          "text": "Limit retrieval to one document per question"
+        },
+        {
+          "id": "c",
+          "text": "Compress the scans so fine detail is lost"
+        },
+        {
+          "id": "d",
+          "text": "Detect and redact PII in the extracted text"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Unstructured content has no labeled fields, so personal data must be found by scanning and redacted before it enters the index. Larger chunks and a lower retrieval count only change how much is exposed, and compression does not remove text.",
+    "acronyms": [
+      "PII",
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-1-2-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which technique embeds hidden markers in data or in model behavior so that ownership can be shown later?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Watermarking"
+        },
+        {
+          "id": "b",
+          "text": "Data tokenization"
+        },
+        {
+          "id": "c",
+          "text": "Data masking"
+        },
+        {
+          "id": "d",
+          "text": "Hashing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Watermarking places an identifiable marker that the owner can later demonstrate. Tokenization and masking replace sensitive values, and hashing creates a digest but does not mark ownership.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A rival's model returns the same unusual reply to a secret test prompt that only the owner's model was trained to answer that way. What does this support?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A finding that the rival's training data was poisoned"
+        },
+        {
+          "id": "b",
+          "text": "A claim that the rival copied or cloned the protected model"
+        },
+        {
+          "id": "c",
+          "text": "Proof that the rival balanced its classes carefully"
+        },
+        {
+          "id": "d",
+          "text": "Evidence that the rival's vector store was breached by a third party"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A rare, planted response is a watermark that the owner can use to show model theft. It says nothing about poisoning, class balance, or retrieval-store breaches.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Why does a dataset watermark not replace access control?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It encrypts the content only while the data is in transit"
+        },
+        {
+          "id": "b",
+          "text": "It helps prove misuse after a copy exists but does not stop the copy"
+        },
+        {
+          "id": "c",
+          "text": "It blocks reads from users who have not signed in"
+        },
+        {
+          "id": "d",
+          "text": "It makes copied data unusable for training other models or fine-tuning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A watermark is evidence for tracing and disputes, not a barrier. It does not encrypt, does not authenticate readers, and does not degrade the data for someone who has already copied it.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In a RAG system, what is the job of the retrieval step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fetch relevant stored content and add it to the model's prompt"
+        },
+        {
+          "id": "b",
+          "text": "Retrain the model weights whenever new documents are added to storage"
+        },
+        {
+          "id": "c",
+          "text": "Encrypt the user's question before it is processed"
+        },
+        {
+          "id": "d",
+          "text": "Filter the finished answer for harmful language"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Retrieval finds the most relevant stored chunks and supplies them to the model as context. It does not retrain weights, encrypt questions, or moderate output.",
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-1-2-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A shared vector database holds documents from several customers. Which control stops one customer's query from retrieving another's content?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A larger embedding dimension for every customer"
+        },
+        {
+          "id": "b",
+          "text": "Caching the most popular queries from every customer to give faster replies"
+        },
+        {
+          "id": "c",
+          "text": "A lower similarity threshold on the retrieval step"
+        },
+        {
+          "id": "d",
+          "text": "Tenant isolation enforced in the store"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Isolation enforced where the data lives, with access filtering on each query, so similarity search cannot cross customers. Embedding size, caching and a lower threshold affect relevance or speed, and a lower threshold actually returns more content.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Vectors in an index do not look like readable content. Why is the index still sensitive?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Vectors inherit the original file permissions automatically"
+        },
+        {
+          "id": "b",
+          "text": "Vectors are signed so that tampering is impossible"
+        },
+        {
+          "id": "c",
+          "text": "Retrieval returns source chunks, and vectors can reveal information about them"
+        },
+        {
+          "id": "d",
+          "text": "Vector indexes cannot be encrypted when stored on disk or in a managed cloud service"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The store usually keeps or points to the original chunks, and the vectors themselves can leak information about the content, so the index needs the same protection as the documents. Permissions are not inherited automatically, vectors are not signed by default, and indexes can be encrypted.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An attacker with write access to a RAG index adds chunks crafted to rank first for many questions. Which defense is the most direct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the embedding dimension of every vector and rebuild the whole index"
+        },
+        {
+          "id": "b",
+          "text": "Restrict who can add to the index and verify its sources"
+        },
+        {
+          "id": "c",
+          "text": "Shorten the context window so fewer retrieved chunks reach the model"
+        },
+        {
+          "id": "d",
+          "text": "Remove the system prompt that guides the assistant"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Controlling who can add content and checking where it comes from prevents planted chunks from entering the index. Vector size, context length and the system prompt do not stop poisoned entries from being retrieved.",
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-1-2-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is an embedding in a RAG pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A numeric vector that represents a piece of content"
+        },
+        {
+          "id": "b",
+          "text": "A cryptographic digest that is used to detect later changes in a file"
+        },
+        {
+          "id": "c",
+          "text": "A signed record that states where a dataset came from"
+        },
+        {
+          "id": "d",
+          "text": "A synthetic copy made from an existing training sample"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An embedding maps content to a vector so that similar meanings sit close together for retrieval. A digest only detects changes, a provenance record gives origin and terms, and a synthetic copy is generated data.",
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-1-2-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO checks confirm that a new dataset is consistent with its trusted baseline before it is used for training?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Oversample the rarest class until the class counts match"
+        },
+        {
+          "id": "b",
+          "text": "Compare the batch hash with the signed-off hash"
+        },
+        {
+          "id": "c",
+          "text": "Generate synthetic variants of the new data to expand it"
+        },
+        {
+          "id": "d",
+          "text": "Compare the column schema with the recorded one"
+        },
+        {
+          "id": "e",
+          "text": "Compute an embedding for every file in the batch and store it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A matching hash shows the content is unchanged, and a matching schema shows the structure is the same, so together they confirm the data is consistent with what was signed off. Oversampling is balancing, synthetic variants are augmentation, and embeddings serve retrieval; none of them compare the data with a baseline.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO actions are cleansing steps that also reduce exposure to poisoning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reject rows that fail range and schema checks"
+        },
+        {
+          "id": "b",
+          "text": "Apply a watermark to the finished dataset"
+        },
+        {
+          "id": "c",
+          "text": "Remove bursts of duplicate rows from one source"
+        },
+        {
+          "id": "d",
+          "text": "Tag generated rows in the metadata"
+        },
+        {
+          "id": "e",
+          "text": "Lower the similarity threshold used at retrieval"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Validation rejects malformed or crafted rows, and removing duplicate bursts blunts attempts to over-weight a planted pattern. Watermarking and tagging are ownership and audit measures, and a retrieval threshold has no effect on training data quality.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE controls protect a vector store that holds internal documents?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypt the index at rest and protect connections with TLS"
+        },
+        {
+          "id": "b",
+          "text": "Increase the embedding dimension used for each chunk"
+        },
+        {
+          "id": "c",
+          "text": "Raise the number of overlapping tokens between neighboring chunks"
+        },
+        {
+          "id": "d",
+          "text": "Filter every query's results by the user's permissions"
+        },
+        {
+          "id": "e",
+          "text": "Limit write access and review new content before it is ingested"
+        },
+        {
+          "id": "f",
+          "text": "Publish the full index schema to all employees so they can query it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "Encryption, per-user filtering of results and controlled, reviewed writes protect confidentiality and integrity of the store. Larger vectors, more chunk overlap and a public schema do not restrict who can read or change content.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-1-2-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO items belong in a provenance record for a licensed dataset?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The batch size used in the first training run"
+        },
+        {
+          "id": "b",
+          "text": "The similarity threshold used by the retriever"
+        },
+        {
+          "id": "c",
+          "text": "Where the data came from and under what license"
+        },
+        {
+          "id": "d",
+          "text": "The number of GPU hours used for preparation"
+        },
+        {
+          "id": "e",
+          "text": "The consent conditions attached to the data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Provenance covers origin, license and consent. Batch size, retrieval threshold and compute hours describe how a model is trained or served, not the data's source or terms.",
+    "acronyms": [
+      "GPU"
+    ]
+  },
+  {
+    "id": "cy1-1-2-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO statements about data types and their security handling are accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Structured data keeps sensitive values in columns that controls can target"
+        },
+        {
+          "id": "b",
+          "text": "Semi-structured data is safe to share because its field tags rule out embedded secrets"
+        },
+        {
+          "id": "c",
+          "text": "Structured data cannot reveal defensive patterns once it is in a table"
+        },
+        {
+          "id": "d",
+          "text": "Unstructured data needs content scanning because details sit in free text and media"
+        },
+        {
+          "id": "e",
+          "text": "Unstructured data can be protected by masking a known set of columns"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "A schema makes structured data easy to target, while free text and media must be inspected to find what they hold. Semi-structured files often contain secrets, structured tables can expose defensive patterns, and unstructured data has no columns to mask.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO benefits come from capturing data lineage automatically in the pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Poisoned rows are rejected at ingestion before any training starts"
+        },
+        {
+          "id": "b",
+          "text": "Models and tables built from a tainted source are easy to find"
+        },
+        {
+          "id": "c",
+          "text": "Auditors can see how a record was transformed"
+        },
+        {
+          "id": "d",
+          "text": "The need for hash checks on datasets is reduced over time"
+        },
+        {
+          "id": "e",
+          "text": "Every dataset is encrypted with its own separate key"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Lineage maps what depends on what and shows each transformation, which supports impact analysis and audits. It is documentation, so it does not block poisoned rows, replace integrity checks, or provide encryption.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-diagram-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A RAG assistant ingests documents, builds a vector index and answers questions from it. Place the control that best protects each stage.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n-src",
+          "x": 10,
+          "y": 30,
+          "w": 130,
+          "h": 60,
+          "text": "Source documents"
+        },
+        {
+          "id": "n-ing",
+          "x": 160,
+          "y": 30,
+          "w": 130,
+          "h": 60,
+          "text": "Ingestion and embedding"
+        },
+        {
+          "id": "n-vec",
+          "x": 310,
+          "y": 30,
+          "w": 130,
+          "h": 60,
+          "text": "Vector store"
+        },
+        {
+          "id": "n-ret",
+          "x": 460,
+          "y": 30,
+          "w": 130,
+          "h": 60,
+          "text": "Retrieval service"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n-src",
+          "to": "n-ing"
+        },
+        {
+          "from": "n-ing",
+          "to": "n-vec"
+        },
+        {
+          "from": "n-vec",
+          "to": "n-ret"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-src",
+          "x": 10,
+          "y": 120,
+          "name": "Control on receipt of source documents"
+        },
+        {
+          "id": "z-ing",
+          "x": 160,
+          "y": 120,
+          "name": "Control on the extracted text"
+        },
+        {
+          "id": "z-vec",
+          "x": 310,
+          "y": 120,
+          "name": "Control for the vector store"
+        },
+        {
+          "id": "z-ret",
+          "x": 460,
+          "y": 120,
+          "name": "Control for retrieval"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l-sig",
+          "text": "Verify the supplier signature and file hash"
+        },
+        {
+          "id": "l-red",
+          "text": "Redact PII and strip hidden text from extracts"
+        },
+        {
+          "id": "l-enc",
+          "text": "Encrypt the index and restrict writes to it"
+        },
+        {
+          "id": "l-flt",
+          "text": "Filter results by user permission"
+        },
+        {
+          "id": "l-wm",
+          "text": "Watermark final answers to show ownership"
+        },
+        {
+          "id": "l-bal",
+          "text": "Oversample rare classes to balance counts"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-src": "l-sig",
+        "z-ing": "l-red",
+        "z-vec": "l-enc",
+        "z-ret": "l-flt"
+      }
+    },
+    "explanation": "Each stage has its own main exposure: unsigned sources on receipt, hostile or sensitive content before embedding, stored vectors and who may write to them, and results returned to users who may not be entitled to them. Watermarking marks outputs for ownership and oversampling changes class counts; neither protects a stage.",
+    "partExplanations": {
+      "z-src": "Verifying the supplier signature on receipt confirms the documents are genuine and unchanged.",
+      "z-ing": "Redacting PII and stripping hidden text before embedding keeps sensitive data and injected instructions out of the index.",
+      "z-vec": "The store holds the sensitive knowledge, so it is encrypted and only trusted writers may add content.",
+      "z-ret": "Filtering by the asker's permissions stops retrieval from returning documents they may not see."
+    },
+    "acronyms": [
+      "PII",
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-1-2-diagram-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Label each stage of this dataset-preparation pipeline with the data-handling term it describes.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 30,
+          "w": 135,
+          "h": 70,
+          "text": "Digest compared with the approved baseline"
+        },
+        {
+          "id": "n2",
+          "x": 155,
+          "y": 30,
+          "w": 135,
+          "h": 70,
+          "text": "Duplicate and invalid rows removed"
+        },
+        {
+          "id": "n3",
+          "x": 300,
+          "y": 30,
+          "w": 135,
+          "h": 70,
+          "text": "Majority class cut to match the rare class"
+        },
+        {
+          "id": "n4",
+          "x": 445,
+          "y": 30,
+          "w": 135,
+          "h": 70,
+          "text": "Origin, license and consent written down"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 130,
+          "name": "Stage 1 term"
+        },
+        {
+          "id": "z2",
+          "x": 155,
+          "y": 130,
+          "name": "Stage 2 term"
+        },
+        {
+          "id": "z3",
+          "x": 300,
+          "y": 130,
+          "name": "Stage 3 term"
+        },
+        {
+          "id": "z4",
+          "x": 445,
+          "y": 130,
+          "name": "Stage 4 term"
+        }
+      ],
+      "labels": [
+        {
+          "id": "t-ver",
+          "text": "Data verification"
+        },
+        {
+          "id": "t-cln",
+          "text": "Data cleansing"
+        },
+        {
+          "id": "t-bal",
+          "text": "Data balancing"
+        },
+        {
+          "id": "t-prv",
+          "text": "Data provenance"
+        },
+        {
+          "id": "t-aug",
+          "text": "Data augmentation"
+        },
+        {
+          "id": "t-lin",
+          "text": "Data lineage"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "t-ver",
+        "z2": "t-cln",
+        "z3": "t-bal",
+        "z4": "t-prv"
+      }
+    },
+    "explanation": "Verification checks data against a baseline, cleansing removes bad rows, balancing evens out class counts, and provenance records origin and terms.",
+    "partExplanations": {
+      "z1": "Comparing a digest with an approved baseline is verification.",
+      "z2": "Removing duplicate and invalid rows is cleansing.",
+      "z3": "Reducing the majority class to match the rare one is balancing, not augmentation, which adds samples.",
+      "z4": "Recording origin, license and consent is provenance; lineage would track the transformations instead."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-buckets-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "Sort each data source by the type of data it holds.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "str",
+          "text": "Structured"
+        },
+        {
+          "id": "semi",
+          "text": "Semi-structured"
+        },
+        {
+          "id": "unstr",
+          "text": "Unstructured"
+        }
+      ],
+      "items": [
+        {
+          "id": "badge",
+          "text": "Badge-reader table with typed columns"
+        },
+        {
+          "id": "asset",
+          "text": "Relational asset inventory"
+        },
+        {
+          "id": "tags",
+          "text": "Tagged records with optional nested fields"
+        },
+        {
+          "id": "svc",
+          "text": "Web service replies in tagged key-value form"
+        },
+        {
+          "id": "audio",
+          "text": "Recorded support calls"
+        },
+        {
+          "id": "scan",
+          "text": "Scanned contract images"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "badge": "str",
+        "asset": "str",
+        "tags": "semi",
+        "svc": "semi",
+        "audio": "unstr",
+        "scan": "unstr"
+      }
+    },
+    "explanation": "Structured data has a fixed schema, semi-structured data carries its own tags without one, and unstructured data has no model at all. The type decides how sensitive content is found and protected.",
+    "partExplanations": {
+      "badge": "Typed columns make this structured, so sensitive columns can be targeted directly.",
+      "asset": "A relational inventory has a fixed schema and is structured.",
+      "tags": "Optional nested fields mean there is no fixed schema, so it is semi-structured; secrets can hide in any field.",
+      "svc": "Tagged key-value replies are semi-structured and should be scanned for embedded credentials.",
+      "audio": "Audio has no fields and must be transcribed and scanned to find sensitive content.",
+      "scan": "Scanned images are unstructured; text must be extracted before personal data can be found."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-match-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each need to the data-security technique that meets it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Show the route a record took through each pipeline job"
+        },
+        {
+          "id": "p2",
+          "text": "Show where a corpus came from and the terms it was licensed under"
+        },
+        {
+          "id": "p3",
+          "text": "Remove duplicate and malformed rows before training"
+        },
+        {
+          "id": "p4",
+          "text": "Create extra training samples by making safe changes to existing ones"
+        },
+        {
+          "id": "p5",
+          "text": "Show that a suspect model copies yours, using secret test prompts"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Data lineage"
+        },
+        {
+          "id": "c2",
+          "text": "Data provenance"
+        },
+        {
+          "id": "c3",
+          "text": "Data cleansing"
+        },
+        {
+          "id": "c4",
+          "text": "Data augmentation"
+        },
+        {
+          "id": "c5",
+          "text": "Watermarking"
+        },
+        {
+          "id": "c6",
+          "text": "Data balancing"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5"
+      }
+    },
+    "explanation": "Each technique answers a different question: the path of the data, its origin and terms, its quality, its size, and who owns a model.",
+    "partExplanations": {
+      "p1": "Lineage documents the transformation route.",
+      "p2": "Provenance records origin, license and consent.",
+      "p3": "Cleansing removes duplicate and malformed rows.",
+      "p4": "Augmentation adds samples by transforming existing ones; balancing would only change class proportions.",
+      "p5": "Secret test prompts that trigger a planted reply are a model watermark."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-data-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A security team reviews the class counts and verification results for a network-intrusion training set. Use the table to answer each question.",
+    "payload": {
+      "caption": "Training set by class, with rows that failed hash verification",
+      "columns": [
+        "Class",
+        "Records",
+        "Failed verification"
+      ],
+      "rows": [
+        [
+          "Benign",
+          "18000",
+          "60"
+        ],
+        [
+          "Port scan",
+          "1500",
+          "15"
+        ],
+        [
+          "Credential stuffing",
+          "400",
+          "20"
+        ],
+        [
+          "Exfiltration",
+          "100",
+          "5"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "share",
+          "label": "Share of all records that are Exfiltration",
+          "options": [
+            {
+              "id": "o1",
+              "text": "5%"
+            },
+            {
+              "id": "o2",
+              "text": "0.5%"
+            },
+            {
+              "id": "o3",
+              "text": "1%"
+            }
+          ]
+        },
+        {
+          "id": "ratio",
+          "label": "Ratio of Benign records to Exfiltration records",
+          "options": [
+            {
+              "id": "o1",
+              "text": "180:1"
+            },
+            {
+              "id": "o2",
+              "text": "18:1"
+            },
+            {
+              "id": "o3",
+              "text": "1,800:1"
+            }
+          ]
+        },
+        {
+          "id": "cut",
+          "label": "Benign records to remove so that Benign matches the next-largest class",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1,500"
+            },
+            {
+              "id": "o2",
+              "text": "18,000"
+            },
+            {
+              "id": "o3",
+              "text": "16,500"
+            }
+          ]
+        },
+        {
+          "id": "fail",
+          "label": "Share of Exfiltration records that failed verification",
+          "options": [
+            {
+              "id": "o1",
+              "text": "50%"
+            },
+            {
+              "id": "o2",
+              "text": "5%"
+            },
+            {
+              "id": "o3",
+              "text": "0.5%"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "share": "o2",
+        "ratio": "o1",
+        "cut": "o3",
+        "fail": "o2"
+      }
+    },
+    "explanation": "The records total 20,000. Exfiltration is the rarest class by far, and its failures are a larger share than those of the set as a whole.",
+    "partExplanations": {
+      "share": "Total = 18,000 + 1,500 + 400 + 100 = 20,000. 100 / 20,000 = 0.005, which is 0.5%.",
+      "ratio": "18,000 / 100 = 180, so the ratio is 180:1.",
+      "cut": "The next-largest class is Port scan with 1,500. 18,000 - 1,500 = 16,500 Benign records to remove.",
+      "fail": "5 failed out of 100 Exfiltration records = 5%, whereas all failures (100 of 20,000) are only 0.5%."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-1-2-hotspot-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Attackers could plant content that a RAG assistant later retrieves and repeats. Select every place where an attacker could introduce such content.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Shared upload folder for new documents"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "User interface color theme"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Vector index write interface"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Wiki pages the crawler ingests"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Embedding model license file"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Partner connector that feeds documents"
+        }
+      ],
+      "spots": [
+        {
+          "id": "upload",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Shared upload folder"
+        },
+        {
+          "id": "theme",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Color theme"
+        },
+        {
+          "id": "write",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Vector index write interface"
+        },
+        {
+          "id": "wiki",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Crawled wiki pages"
+        },
+        {
+          "id": "license",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "License file"
+        },
+        {
+          "id": "partner",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Partner connector"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "upload",
+        "write",
+        "wiki",
+        "partner"
+      ]
+    },
+    "explanation": "Anything that can add content to the corpus or the index is an entry point for poisoning, so each needs write control and source verification. Cosmetic settings and a license file never feed retrieval.",
+    "partExplanations": {
+      "upload": "Anyone with access can drop in documents that will be indexed.",
+      "theme": "A color theme affects appearance only and adds nothing to the corpus.",
+      "write": "Direct writes to the index can insert chunks crafted to be retrieved.",
+      "wiki": "Crawled pages are content the owner may not control, so hostile text can arrive through them.",
+      "license": "A license file is not ingested into retrieval and cannot carry content to users.",
+      "partner": "A third-party feed is an upstream source whose trust must be verified."
+    },
+    "acronyms": [
+      "RAG"
+    ]
+  }
+]

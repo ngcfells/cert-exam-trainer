@@ -183,7 +183,38 @@
 - **Fix deployed 2026-10-31 (`5ad42c7`, deploy `86890e9`):** drag-and-drop chips (match, order, diagram) showed the keys in answer order by plain chance (3 keys: 1 time in 6). `itemFor` now reshuffles up to 3 times when that happens, so it is rare but never impossible.
 - **Next: chunk 11, SecAI+ (CY0-001).** Plan (awaiting the owner's review): `docs/superpowers/plans/2026-10-31-chunk11-secai.md`. Objectives are published (v4.0, launched 2026-02-17). Start with Session 1 (Tasks 1–6, including 4a) on branch `chunk11-secai`; content follows one slice per session; do not merge or deploy until Task 9.
   - **Owner decision (2026-10-31):** the CompTIA instructor slide decks in `_WorkingData/SecAIPlus/` may be used as reference and supporting documentation only (topics, depth, fact checks). Never copy or paraphrase their wording, examples, questions or diagrams; every draft passes the 8-word overlap check. Other `_WorkingData/` material stays off limits.
-  - Session 1 needs Ollama running locally for the acronym expansion step.
+  - **Session 1 done (2026-10-31), branch `chunk11-secai`, commits ee04475..af928b6.** Tasks 1, 2, 3, 4, 4a, 5 and 6 are complete. `npm run check` passes: 523 unit tests (2 skipped) and 53 e2e tests (9 skipped). The ledger is `.superpowers/sdd/2026-10-31-chunk11-secai/progress.md`; read its `Ruling:` lines before Task 9.
+    - What the session built:
+      - Exam-aware bank paths (`src/banks/paths.ts`) and a SecAI+ bank (empty items plus a 3-item fixture).
+      - `--exam` flags on `check-drafts` and `draft-ollama`.
+      - Shared shipped-bank checks (`src/banks/shippedChecks.ts`); 59 legacy Data+ ids are exempt.
+      - Verified CY0-001 metadata with 63 official acronyms; sources are in `docs/sources/CY0-001.md`.
+      - The 8-word deck overlap check (`check-drafts --ref`).
+      - The deck notes and objective map in `_WorkingData/SecAIPlus/notes/index.md` (git-ignored).
+    - Acronym harvest: 6 kept as community (BC, CBA, CIS, CUI, DMCA, SSL). The rest are flagged and not added:
+      - On topic but ambiguous: CSA (Cloud Security Alliance), DSA (EU Digital Services Act vs Digital Signature Algorithm), SSE (Server-Side Encryption vs Security Service Edge), CI, IA, SAM.
+      - GenAI (initials do not spell it).
+      - Vendor names XSOAR and XSIAM.
+      - Everything else was cert or exam codes, product names, plain words or page text.
+  - **Session 2 done (2026-10-31), slice (a) domain 1, commits 9f5a934..8c538a7.** `npm run check` passes: 528 unit tests and 62 e2e tests. The CY0-001 e2e block now runs, so nothing is skipped.
+    - Each of 1.1, 1.2 and 1.3 has 38 approved items: 32 MCQ (26 single, 6 multi) and 6 PBQ, against a quota of 29 + 5. All spares were kept because every item passed review.
+    - PBQ templates so far: buckets 3, match 4, order 3, config 2, diagram 2, hotspot 2, data 1, terminal 1. Each template needs 10, so the rest of the exam needs at least buckets 7, match 6, order 7, config 8, diagram 8, hotspot 8, data 9 and terminal 9. That is 62 of the 75 PBQs left in the quotas, so lean on data, terminal, config, diagram and hotspot in slices (b)–(e).
+    - Fix: `check-drafts` reported a file already in `items/` as a duplicate of itself. `scripts/check-drafts-lib.ts` (`bankWithoutDrafts`, tested) fixes this.
+    - How the session ran:
+      - Extract the objective's v4.0 sub-bullets and deck slides into scratchpad text files, and give the agents those paths (never `_WorkingData`). The PDF text came from `pypdf`, installed with `pip --target` into the scratchpad.
+      - Keep the `--ref` notes in a folder that holds only deck notes. A stray file containing our own items flags every item.
+      - Drafters: one Sonnet agent per objective. Then one blind Sonnet security reviewer and one Haiku copywriter per objective. Send the fixes back to the same agents and re-review until clean.
+    - Watch in later slices:
+      - Fixing length tells over-corrects. The key became the shortest option in 11 of 26 singles in 1.1, and across domain 1 it is the longest in only 3%. Ask drafters for a natural mix: key longest and key shortest each about 15–25%.
+      - Do not rerun the drafters' generator scripts (in the scratchpad). Some final edits were made to the JSON directly.
+    - `chunk11-secai` is pushed to origin (2026-10-31). The owner asked to see domain 1 live. A deploy of the branch (`npm run deploy -- --force`) was blocked by the permission check, so the live site still shows `main`. Once the owner runs or allows it, the live SecAI+ exam draws only from domain 1 until the other slices land. A later deploy from `main` would remove SecAI+ again.
+    - **Next: Session 3, slice (b): objectives 2.1–2.3.** Deck slides: S2 11–35 (2.1), S2 36–68 (2.2), S3 11–25 (2.3). See `_WorkingData/SecAIPlus/notes/index.md`.
+  - **UI redesign (separate from chunk 11), awaiting the owner:**
+    - Design doc: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`. It covers exam cards on the landing page, a page per exam, Back/All exams on every screen, Settings, Stock/Custom, ten exams and one master acronym table. The builder check is done.
+    - Open question to the owner: should the phone/browser Back gesture step back inside the app (history integration), or only the on-screen buttons? Then owner approval, then superpowers:writing-plans.
+    - No product code before approval.
+    - Branch: its own branch from `main`, so it is not blocked by chunk 11's content. This is my call; the owner can override it.
+    - Security+ is SY0-801 (launching about 2026-11-17). The owner will supply the v8 objectives at the next TTT class.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 - **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 - **Owner rules for sessions:**

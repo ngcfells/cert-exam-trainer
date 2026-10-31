@@ -3,7 +3,6 @@ import { mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSyn
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { dataPlusFixtureQuestions } from '../banks/dataplus/fixture';
-import { dataPlusMeta } from '../banks/dataplus/meta';
 import type { Question } from '../domain/types';
 import { applyReviewWrite, originAllowed } from './reviewWrite';
 
@@ -26,13 +25,13 @@ const read = (f: string) => JSON.parse(readFileSync(path.join(items, f), 'utf8')
 
 beforeEach(() => {
   root = mkdtempSync(path.join(tmpdir(), 'review-'));
-  items = path.join(root, 'items');
-  mkdirSync(items);
+  items = path.join(root, 'dataplus', 'items');
+  mkdirSync(items, { recursive: true });
   writeFileSync(path.join(items, '1.1.json'), JSON.stringify([a, { ...b, objectiveIds: ['1.1'] }], null, 2) + '\n');
 });
 afterEach(() => rmSync(root, { recursive: true, force: true }));
 
-const opts = () => ({ itemsDir: items, rejectLog: path.join(root, 'rejections.jsonl'), meta: dataPlusMeta });
+const opts = () => ({ banksRoot: root, rejectLog: path.join(root, 'rejections.jsonl') });
 
 describe('applyReviewWrite', () => {
   it('replaces the item in place, keeping file order and format', () => {
@@ -70,6 +69,23 @@ describe('applyReviewWrite', () => {
   it('rejects an unknown objective and an unknown id', () => {
     expect(applyReviewWrite({ question: { ...a, objectiveIds: ['9.9'] } }, opts())).toEqual({ status: 400, body: 'unknown objective 9.9' });
     expect(applyReviewWrite({ question: { ...a, id: 'nope' } }, opts())).toEqual({ status: 404, body: 'no bank item nope' });
+  });
+
+  it('writes a CY0-001 item under secai/items', () => {
+    const secai = path.join(root, 'secai', 'items');
+    mkdirSync(secai, { recursive: true });
+    const q = { ...a, id: 'cy1-1-1-mcq-001', exam: 'CY0-001', objectiveIds: ['1.1'] };
+    writeFileSync(path.join(secai, '1.1.json'), JSON.stringify([q], null, 2) + '\n');
+    expect(applyReviewWrite({ question: { ...q, stem: 'Changed?' } }, opts())).toEqual({ status: 200, body: 'ok' });
+    const saved = JSON.parse(readFileSync(path.join(secai, '1.1.json'), 'utf8')) as Question[];
+    expect(saved.map((x) => x.stem)).toEqual(['Changed?']);
+    expect(read('1.1.json').map((x) => x.id)).toEqual([a.id, b.id]);
+  });
+
+  it('rejects an item whose exam has no bank', () => {
+    const r = applyReviewWrite({ question: { ...a, exam: 'XX0-000' } }, opts());
+    expect(r.status).toBe(400);
+    expect(r.body).toBe('unknown exam "XX0-000"');
   });
 
   it('logs a reject note', () => {

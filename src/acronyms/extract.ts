@@ -29,6 +29,16 @@ export function extractAcronyms(text: string): string[] {
   return [...found].sort();
 }
 
+/**
+ * True when `token` is a listed term, or one of the parts of a compound term split on "/" or spaces.
+ * The extractor reads "CI/CD" as CI and CD, and "PCI DSS" as PCI and DSS, so those parts are covered.
+ */
+export function acronymCovered(token: string, terms: ReadonlySet<string>): boolean {
+  if (terms.has(token)) return true;
+  for (const term of terms) if (/[/\s]/.test(term) && term.split(/[/\s]+/).includes(token)) return true;
+  return false;
+}
+
 function strings(x: unknown): string[] {
   if (typeof x === 'string') return [x];
   if (Array.isArray(x)) return x.flatMap(strings);

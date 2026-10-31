@@ -9,7 +9,7 @@ const TOTAL = 9;
 
 async function startExam(page: Page) {
   await page.goto(seeded);
-  await page.getByRole('button', { name: /start mock exam/i }).click();
+  await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await page.getByRole('button', { name: 'Start exam' }).click();
   await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
 }
@@ -27,7 +27,7 @@ async function submit(page: Page) {
 
 for (const seed of SEEDS) test(`mock exam screens (seed ${seed}) pass axe`, async ({ page }) => {
   await page.goto(`${singleUrl}?seed=${seed}`);
-  await page.getByRole('button', { name: /start mock exam/i }).click();
+  await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await expect(page.getByRole('button', { name: 'Start exam' })).toBeVisible();
   await expectNoSeriousAxe(page);
 
@@ -53,7 +53,7 @@ for (const seed of SEEDS) test(`mock exam screens (seed ${seed}) pass axe`, asyn
 
 for (const seed of SEEDS) test(`a mock exam with PBQs (seed ${seed}) can be completed with the keyboard only`, async ({ page }) => {
   await page.goto(`${singleUrl}?seed=${seed}`);
-  await page.getByRole('button', { name: /start mock exam/i }).focus();
+  await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).focus();
   await page.keyboard.press('Enter');
   await page.getByRole('button', { name: 'Start exam' }).focus();
   await page.keyboard.press('Enter');

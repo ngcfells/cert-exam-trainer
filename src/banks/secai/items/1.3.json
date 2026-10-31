@@ -1,0 +1,1850 @@
+[
+  {
+    "id": "cy1-1-3-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "A retailer wants an AI assistant in its stores. Why should security staff join the planning at the business use case stage, before any data is gathered?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Models cannot be attacked until they reach production"
+        },
+        {
+          "id": "b",
+          "text": "A security review can replace the written business case"
+        },
+        {
+          "id": "c",
+          "text": "Risk decisions made early cost far less than redesign later"
+        },
+        {
+          "id": "d",
+          "text": "Regulators require the vendor to be chosen before any planning starts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Security input at the business use case stage shapes scope, data needs and risk appetite while changes are still cheap. Models can be targeted well before production through their data and build pipeline, a security review does not replace a business case, and no rule requires the vendor to be picked first.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A logistics firm's board has set a goal of cutting fraud losses. A team proposes an AI project that writes social media posts. From a governance view, what is the main concern?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The project serves no stated objective, so its risk is unjustified"
+        },
+        {
+          "id": "b",
+          "text": "Text generation cannot be made secure under any design"
+        },
+        {
+          "id": "c",
+          "text": "Boards are barred from sponsoring any AI project"
+        },
+        {
+          "id": "d",
+          "text": "The project needs a much larger compute budget before it is approved"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Alignment with corporate objectives means each AI system should earn the risk it adds. A project tied to no objective adds data exposure and attack surface for no business gain. Text generation can be secured with design controls, boards may sponsor AI projects, and compute budget does not decide whether a project serves an objective.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A crawler gathers public web pages to build a training set. Which control most improves the trustworthiness of the collected data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Crawling every reachable page to maximize volume"
+        },
+        {
+          "id": "b",
+          "text": "Running the crawler faster so that source pages cannot change first"
+        },
+        {
+          "id": "c",
+          "text": "Deleting the logs of finished crawl jobs"
+        },
+        {
+          "id": "d",
+          "text": "Restricting the crawler to a list of vetted sources"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Limiting collection to vetted sources reduces the chance that poisoned or manipulated pages enter the data. Gathering everything widens exposure, speed does nothing for source quality, and deleting logs removes the record needed to investigate bad data later.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A partner delivers a dataset for model training. Which control best shows that the file is authentic and was not altered in transit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A file name that includes the partner's company name"
+        },
+        {
+          "id": "b",
+          "text": "A hash that the partner signed, checked on receipt"
+        },
+        {
+          "id": "c",
+          "text": "A listing of the file's row count in the email"
+        },
+        {
+          "id": "d",
+          "text": "A compressed archive format to shrink the download"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A signed hash lets the receiver confirm both who produced the file and that its content is unchanged. A name, a row count in an email and a compression format are all easy to fake or change and prove nothing about origin or integrity.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "During data preparation, an engineer joins customer records to build training features. Which security step belongs here?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Adding the identifiers as extra features for accuracy"
+        },
+        {
+          "id": "b",
+          "text": "Tokenizing identifiers the model does not need"
+        },
+        {
+          "id": "c",
+          "text": "Copying the working set to a shared drive for the team"
+        },
+        {
+          "id": "d",
+          "text": "Keeping the staging copy indefinitely for later projects"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Data preparation is the stage where unneeded sensitive fields can be removed or tokenized before they spread. Adding identifiers, sharing the set widely and keeping staging copies forever all increase exposure.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A team picks a pretrained open-source model from a public hub. Which check belongs to model selection?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Confirming the model name matches the name of the project team"
+        },
+        {
+          "id": "b",
+          "text": "Choosing whichever model has the most downloads"
+        },
+        {
+          "id": "c",
+          "text": "Skipping checks because the model costs nothing"
+        },
+        {
+          "id": "d",
+          "text": "Scanning the model file and dependencies for tampering"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Public models and their packages can carry tampered files or known flaws, so selection includes scanning and verifying them. A matching name, popularity and a zero price say nothing about safety.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Before release, a security team feeds a model deliberately malformed and hostile inputs. What is the purpose of this test?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To see how the model behaves when conditions are abnormal"
+        },
+        {
+          "id": "b",
+          "text": "To enlarge the training set with many more labeled samples"
+        },
+        {
+          "id": "c",
+          "text": "To replace the need for monitoring after release"
+        },
+        {
+          "id": "d",
+          "text": "To lower the licensing cost of the model"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Model evaluation includes testing resilience, not only accuracy. Hostile inputs show weaknesses before attackers do. The test does not train the model, does not replace monitoring, and has no effect on licensing.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A company releases a new fraud model to a small share of traffic while the old version stays live. What is the main security benefit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Removes the need to log the model's predictions"
+        },
+        {
+          "id": "b",
+          "text": "Makes the model immune to data poisoning during later retraining"
+        },
+        {
+          "id": "c",
+          "text": "Limits harm if the model misbehaves and eases rollback"
+        },
+        {
+          "id": "d",
+          "text": "Lets the release skip the validation stage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A staged release such as a canary exposes few users to a faulty or compromised model and keeps a known-good version ready. Logging stays necessary, staging does not stop poisoning, and validation is still required.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Before go-live, an independent team confirms that a model meets its security, privacy and business acceptance criteria in a production-like setting. Which life cycle stage is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Validation"
+        },
+        {
+          "id": "b",
+          "text": "Data collection"
+        },
+        {
+          "id": "c",
+          "text": "Feedback and iteration"
+        },
+        {
+          "id": "d",
+          "text": "Business use case"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Validation confirms the system meets agreed requirements before sign-off. Data collection gathers inputs, feedback and iteration reuses what is learned after release, and the business use case defines the need at the start.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Weeks after launch, a model's accuracy slowly falls because customer behavior has shifted. Which activity is meant to catch this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A single evaluation run completed shortly before launch day"
+        },
+        {
+          "id": "b",
+          "text": "Selecting a pretrained model from a hub"
+        },
+        {
+          "id": "c",
+          "text": "Ongoing monitoring of performance and input patterns"
+        },
+        {
+          "id": "d",
+          "text": "Planning which data sources to collect"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Monitoring and maintenance watches live performance and inputs for drift and anomalies. A one-time pre-launch test cannot see later change, and selection and collection planning are earlier stages.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Analysts flag false positives from an alerting model, and the team wants to retrain on them. Which security concern applies to this feedback?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Feedback should come from anonymous users to raise its volume"
+        },
+        {
+          "id": "b",
+          "text": "The feedback channel must resist injected or forged labels"
+        },
+        {
+          "id": "c",
+          "text": "Feedback should reach production with no review"
+        },
+        {
+          "id": "d",
+          "text": "Feedback should be deleted after a single use"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A feedback loop is an input path an attacker can abuse, so sources are authenticated and changes reviewed before reaching production. Anonymous input, unreviewed promotion and discarding feedback each weaken the process.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "A fraud model recommends freezing a large payment, but policy says a qualified clerk must confirm each freeze before it is carried out. Which concept or practice is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data tokenization"
+        },
+        {
+          "id": "b",
+          "text": "Canary release"
+        },
+        {
+          "id": "c",
+          "text": "Concept drift"
+        },
+        {
+          "id": "d",
+          "text": "Human-in-the-loop"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Human-in-the-loop puts a qualified person into the decision path for consequential actions. Tokenization protects data, a canary release stages a rollout, and concept drift is a change in data patterns over time.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "What is the main purpose of human oversight of a deployed AI system?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Labeling each training record by hand"
+        },
+        {
+          "id": "b",
+          "text": "Replacing automated logs with manual notes"
+        },
+        {
+          "id": "c",
+          "text": "Approving every single prediction before anyone may use it"
+        },
+        {
+          "id": "d",
+          "text": "Monitoring broadly, with authority to escalate or stop"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Oversight is a governance function: reviewing dashboards, logs and metrics, with escalation paths and the power to halt a system. Hand labeling is data work, manual notes replace useful telemetry, and approving each prediction describes a human in the loop.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A reviewer independently samples a model's outputs each month. Why does this help security?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It removes the need for any automated testing"
+        },
+        {
+          "id": "b",
+          "text": "It can expose blind spots that automated metrics miss"
+        },
+        {
+          "id": "c",
+          "text": "It directly raises the model's accuracy and lowers its risk"
+        },
+        {
+          "id": "d",
+          "text": "It encrypts the outputs the model produces"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Human validation compares real outputs with expectations and can reveal failures the metrics were never built to see. It complements automated tests, does not change the model by itself, and has nothing to do with encryption.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A model service is about to go live. Which control belongs to the deployment stage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Removing duplicate rows from the training set"
+        },
+        {
+          "id": "b",
+          "text": "Choosing the loss function for training"
+        },
+        {
+          "id": "c",
+          "text": "Hardening the host and limiting access to the API"
+        },
+        {
+          "id": "d",
+          "text": "Writing the business case for the whole project portfolio"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Deployment security covers the environment and access path around the running model. Deduplication belongs to data preparation, the loss function to model development, and the business case to the first stage.",
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "A build pipeline pulls machine learning libraries automatically at each run. Which control at the development stage best reduces supply chain risk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Running SCA with pinned library versions"
+        },
+        {
+          "id": "b",
+          "text": "Training with a larger batch size"
+        },
+        {
+          "id": "c",
+          "text": "Publishing the library list on the public website"
+        },
+        {
+          "id": "d",
+          "text": "Removing code comments from the build"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "SCA finds known vulnerable or tampered components, and pinned versions keep the build from silently pulling a changed package. Batch size has no bearing, publishing the list gives attackers information, and comments are irrelevant.",
+    "acronyms": [
+      "SCA"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "An evaluation reports high accuracy, but a reviewer finds that the test set shares records with the training set. What is the security-relevant consequence?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The model will refuse to load in production"
+        },
+        {
+          "id": "b",
+          "text": "The training data is encrypted twice by the platform"
+        },
+        {
+          "id": "c",
+          "text": "Results look inflated, so weaknesses may go unseen"
+        },
+        {
+          "id": "d",
+          "text": "Accuracy will be lower only because of hardware"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Overlapping test and training data makes the evaluation look better than reality, which lets a flawed or exposed model pass the gate. A model that fails to load is a deployment problem, not a result of overlap; encryption is a platform setting that overlap does not affect; and hardware does not change measured accuracy.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "A new attack technique is published that affects the kind of model a bank runs. How should the life cycle respond?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reassess and retest, then redeploy if needed"
+        },
+        {
+          "id": "b",
+          "text": "Wait for the next annual project cycle"
+        },
+        {
+          "id": "c",
+          "text": "Retire the monitoring tools to cut noise"
+        },
+        {
+          "id": "d",
+          "text": "Ignore it because the model already passed validation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Monitoring and maintenance is a cycle, and a new attack method is a reason to reassess and retest the deployed model. Waiting a year, switching off monitoring and trusting an old validation all leave a known gap open.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Why is the AI life cycle drawn as a cycle rather than a straight line?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Each stage must be completed twice before any release is allowed"
+        },
+        {
+          "id": "b",
+          "text": "Findings from operation feed earlier stages, so work repeats"
+        },
+        {
+          "id": "c",
+          "text": "Models are always retrained on a fixed calendar"
+        },
+        {
+          "id": "d",
+          "text": "All stages run at once with no defined order"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Monitoring and feedback produce reasons to revisit data, models and deployment, so the security tasks recur. Doubling each stage, a fixed retraining calendar and having no order are not how the cycle works.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "An AI assistant drafts a firewall change that would cut off a regional office if it were wrong, and its own confidence score is weak. Which approach is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply the change automatically and review it next quarter"
+        },
+        {
+          "id": "b",
+          "text": "Promote it because it passed an automated test run"
+        },
+        {
+          "id": "c",
+          "text": "Let the model approve its own change record"
+        },
+        {
+          "id": "d",
+          "text": "Have two qualified reviewers sign off first"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Low confidence combined with high impact calls for human approval, ideally from two qualified people. Automatic application, reliance on one test run and self-approval remove the human check that the situation demands.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which feature of a deployed AI system best supports human oversight in an emergency?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A longer system prompt for the model"
+        },
+        {
+          "id": "b",
+          "text": "A tested stop switch for authorized staff"
+        },
+        {
+          "id": "c",
+          "text": "Model weights hidden from all staff"
+        },
+        {
+          "id": "d",
+          "text": "Automatic retraining every night on new data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An emergency stop lets people halt the system when it misbehaves, and testing it proves it will work. A longer prompt, hidden weights and nightly retraining give humans no way to intervene.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "A chatbot approved to answer common public questions is later given access to customer account data by a team that wants it to be more helpful. What should happen?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing, since the chatbot was already approved by the board"
+        },
+        {
+          "id": "b",
+          "text": "Hide the new access from the governance group"
+        },
+        {
+          "id": "c",
+          "text": "Approve it only after the next model update"
+        },
+        {
+          "id": "d",
+          "text": "Repeat the risk review, as the use case has changed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The original approval covered a lower-risk purpose. Adding sensitive data changes the use case, so alignment with objectives and the risk assessment must be redone. Ignoring the change, hiding it or waiting for an update bypasses governance.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which question belongs at the business use case stage of a security-minded project?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Which sensitive data would the system touch?"
+        },
+        {
+          "id": "b",
+          "text": "Which activation function trains fastest?"
+        },
+        {
+          "id": "c",
+          "text": "How many replicas will serve the model at peak times?"
+        },
+        {
+          "id": "d",
+          "text": "What color scheme will the dashboard use?"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Identifying the sensitive data and decisions in scope sets the risk profile at the start. The activation function, replica count and color scheme are technical or cosmetic choices for later stages.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "After go-live, a malware-detection model sends each detection into the central SIEM that the SOC uses. What does this mainly provide?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It makes the model more accurate on its own over time"
+        },
+        {
+          "id": "b",
+          "text": "It lets the team dismiss the need for analysts"
+        },
+        {
+          "id": "c",
+          "text": "It gives analysts a trail to check and fix the model"
+        },
+        {
+          "id": "d",
+          "text": "It stops the model from being updated"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Sending detections to a SIEM gives analysts a trail they can verify and a way to correct the model. It does not change accuracy by itself, does not replace staff, and does not block updates.",
+    "acronyms": [
+      "SIEM",
+      "SOC"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "At the validation stage, which result should stop a model from being released?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A long training time"
+        },
+        {
+          "id": "b",
+          "text": "A very large number of model parameters"
+        },
+        {
+          "id": "c",
+          "text": "A vendor the team has not heard of"
+        },
+        {
+          "id": "d",
+          "text": "A failed security or compliance check"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Validation gates release on agreed criteria, so a failed security or compliance test blocks it. Training time, size and vendor familiarity are not acceptance criteria.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which factor matters most when choosing between hosting a model internally and calling a third-party model API?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "How prompts and data are routed and who sees them"
+        },
+        {
+          "id": "b",
+          "text": "How fast the vendor's model returns answers"
+        },
+        {
+          "id": "c",
+          "text": "How many accelerators the vendor advertises for its service"
+        },
+        {
+          "id": "d",
+          "text": "How often the vendor publishes release notes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Data flow and access are the central security concerns of the choice. Response speed, advertised hardware and release-note frequency say nothing about protecting the data.",
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO controls belong to the data preparation stage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Restrict and log write access to the prepared dataset"
+        },
+        {
+          "id": "b",
+          "text": "Verify that crowd-sourced labelers are real, vetted workers"
+        },
+        {
+          "id": "c",
+          "text": "Raise the decision threshold of the model"
+        },
+        {
+          "id": "d",
+          "text": "Select the pretrained foundation model"
+        },
+        {
+          "id": "e",
+          "text": "Start a canary release"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Controlling who can change prepared data and vetting labelers both protect the training set from tampering. The decision threshold is a tuning step, model selection is a later stage, and a canary release is a deployment practice.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO activities belong to model development and selection?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Check a pretrained model's origin and license terms"
+        },
+        {
+          "id": "b",
+          "text": "Apply adversarial training to improve robustness"
+        },
+        {
+          "id": "c",
+          "text": "Route alerts into the security operations SIEM"
+        },
+        {
+          "id": "d",
+          "text": "Schedule the monthly red-team exercise"
+        },
+        {
+          "id": "e",
+          "text": "Sample each model's production outputs for reviewers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Checking where a model came from and hardening it during training are development-stage security tasks. Alert routing belongs to deployment, and red-teaming and output sampling belong to maintenance and human validation.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO controls belong to the deployment stage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run the model in a hardened environment"
+        },
+        {
+          "id": "b",
+          "text": "Use a staged rollout with a rollback plan"
+        },
+        {
+          "id": "c",
+          "text": "Label training records by hand"
+        },
+        {
+          "id": "d",
+          "text": "Analyze last quarter's traffic for concept drift"
+        },
+        {
+          "id": "e",
+          "text": "Define the business objective for the project"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Hardening the environment and staging the release with rollback are deployment controls. Hand labeling is data work, drift analysis is monitoring, and the business objective is set at the first stage.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE are elements of human oversight of AI systems?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reviewing dashboards, logs and metrics on a regular basis"
+        },
+        {
+          "id": "b",
+          "text": "Defining an escalation path to governance owners"
+        },
+        {
+          "id": "c",
+          "text": "Scheduling audits on a fixed cadence"
+        },
+        {
+          "id": "d",
+          "text": "Letting the model approve its own configuration changes"
+        },
+        {
+          "id": "e",
+          "text": "Turning off logging to reduce noise"
+        },
+        {
+          "id": "f",
+          "text": "Training only on unlabeled data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Regular review, clear escalation and an audit cadence give people real visibility and control. Self-approval removes control, disabling logs removes visibility, and the training data type has nothing to do with oversight.",
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO measures protect the feedback and iteration loop?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Authenticate and rate-limit the sources of feedback"
+        },
+        {
+          "id": "b",
+          "text": "Review feedback-derived training data before production"
+        },
+        {
+          "id": "c",
+          "text": "Accept labels from anonymous submitters to speed things up"
+        },
+        {
+          "id": "d",
+          "text": "Overwrite earlier model versions without keeping records"
+        },
+        {
+          "id": "e",
+          "text": "Pause feedback alerting while the model retrains"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Authenticated, rate-limited sources and a review step make it much harder to poison the loop. Anonymous labels invite abuse, overwriting versions destroys accountability, and pausing alerts creates a blind period.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO activities belong to model evaluation rather than monitoring and maintenance?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Testing the candidate model with adversarial inputs"
+        },
+        {
+          "id": "b",
+          "text": "Measuring training data leakage in held-out tests"
+        },
+        {
+          "id": "c",
+          "text": "Watching live production traffic for input drift"
+        },
+        {
+          "id": "d",
+          "text": "Applying library patches to the running service"
+        },
+        {
+          "id": "e",
+          "text": "Escalating anomalies to the governance group"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Adversarial testing and leakage checks happen before release to judge the model. Watching live traffic, patching the running service and escalating anomalies are operational activities after deployment.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-order-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Put these life cycle stages of an AI system into the order they occur, from first to last.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s1",
+          "text": "Deploy behind hardened access controls"
+        },
+        {
+          "id": "s2",
+          "text": "Collect data from vetted sources"
+        },
+        {
+          "id": "s3",
+          "text": "Evaluate the model against attacks and quality goals"
+        },
+        {
+          "id": "s4",
+          "text": "Define the business use case and risk appetite"
+        },
+        {
+          "id": "s5",
+          "text": "Prepare and label the data"
+        },
+        {
+          "id": "s6",
+          "text": "Develop or select the model"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s4",
+        "s2",
+        "s5",
+        "s6",
+        "s3",
+        "s1"
+      ]
+    },
+    "explanation": "Security starts with the business use case, then follows the data through collection and preparation, the model through development and evaluation, and finally the release into production.",
+    "partExplanations": {
+      "s4": "The use case sets scope, data needs and risk appetite before anything is built.",
+      "s2": "Collection comes next, and its sources must be trusted.",
+      "s5": "Prepared and labeled data is needed before a model can be built.",
+      "s6": "The model is developed or chosen using the prepared data.",
+      "s3": "Evaluation tests the finished model before release.",
+      "s1": "Deployment follows evaluation, with hardened access around the running model."
+    },
+    "acronyms": [
+      "AI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-order-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "A monitoring team wants to improve a deployed model using analyst feedback under change control. Put the steps in the order they should happen.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s1",
+          "text": "Release in a change window with a rollback plan"
+        },
+        {
+          "id": "s2",
+          "text": "Retrain a candidate model on the vetted feedback"
+        },
+        {
+          "id": "s3",
+          "text": "Collect analyst feedback through an authenticated channel"
+        },
+        {
+          "id": "s4",
+          "text": "Obtain documented approval from the model and risk owners"
+        },
+        {
+          "id": "s5",
+          "text": "Re-evaluate the candidate against the security test set"
+        },
+        {
+          "id": "s6",
+          "text": "Review the feedback for tampering and bias"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s3",
+        "s6",
+        "s2",
+        "s5",
+        "s4",
+        "s1"
+      ]
+    },
+    "explanation": "Feedback is gathered securely, vetted, used to build a candidate, retested, approved by accountable people and only then released with a way back.",
+    "partExplanations": {
+      "s3": "Feedback enters through an authenticated channel so its source is known.",
+      "s6": "Vetting stops tampered or biased feedback from reaching training.",
+      "s2": "A candidate model is built only from vetted feedback.",
+      "s5": "The candidate is retested before anyone is asked to approve it.",
+      "s4": "Documented approvals assign accountability for the change.",
+      "s1": "Release comes last, in a defined window with rollback ready."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-match-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each situation to the oversight or response model it describes.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A clerk must confirm each flagged payment freeze before it is carried out"
+        },
+        {
+          "id": "p2",
+          "text": "A governance group tracks fleet-wide metrics and can suspend any system"
+        },
+        {
+          "id": "p3",
+          "text": "A second team replays a sample of past answers and records what it found"
+        },
+        {
+          "id": "p4",
+          "text": "The tool surfaces suspicious activity to staff but takes no action"
+        },
+        {
+          "id": "p5",
+          "text": "The tool shuts down a compromised session by itself using a stored routine"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Human validation"
+        },
+        {
+          "id": "c2",
+          "text": "Auto-remediate"
+        },
+        {
+          "id": "c3",
+          "text": "Human-in-the-loop"
+        },
+        {
+          "id": "c4",
+          "text": "Detect-only"
+        },
+        {
+          "id": "c5",
+          "text": "Human oversight"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c3",
+        "p2": "c5",
+        "p3": "c1",
+        "p4": "c4",
+        "p5": "c2"
+      }
+    },
+    "explanation": "Approval inside the decision path is human-in-the-loop, broad monitoring with escalation is oversight, independent sampling is validation, and the two response levels differ in whether the system acts.",
+    "partExplanations": {
+      "p1": "A person in the decision path is human-in-the-loop.",
+      "p2": "Fleet-wide review with authority to suspend describes oversight.",
+      "p3": "Independent replay of samples with recorded findings is human validation.",
+      "p4": "A tool that only surfaces activity runs in detect-only mode.",
+      "p5": "A tool that acts by itself is auto-remediating."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-hotspot-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Select every stage that comes before model training begins.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Business use case"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Data collection"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Data preparation"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Model development"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Deployment"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Monitoring and maintenance"
+        }
+      ],
+      "spots": [
+        {
+          "id": "usecase",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Business use case"
+        },
+        {
+          "id": "collect",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Data collection"
+        },
+        {
+          "id": "prepare",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Data preparation"
+        },
+        {
+          "id": "develop",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Model development"
+        },
+        {
+          "id": "deploy",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Deployment"
+        },
+        {
+          "id": "monitor",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Monitoring and maintenance"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "usecase",
+        "collect",
+        "prepare"
+      ]
+    },
+    "explanation": "The use case, data collection and data preparation all come before a model is trained or selected, so mistakes there carry into everything built afterward. Development, deployment and monitoring follow.",
+    "partExplanations": {
+      "usecase": "The use case is defined first.",
+      "collect": "Data must be collected before any training can start.",
+      "prepare": "Data is prepared and labeled before the model is built."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-config-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A lender is deploying a model that proposes freezing card payments. Configure the deployment gate and oversight settings.",
+    "payload": {
+      "fields": [
+        {
+          "id": "level",
+          "label": "Response level for payment freezes",
+          "options": [
+            {
+              "id": "auto",
+              "text": "Auto-remediate"
+            },
+            {
+              "id": "approve",
+              "text": "Human-in-the-loop"
+            },
+            {
+              "id": "detect",
+              "text": "Detect-only"
+            }
+          ]
+        },
+        {
+          "id": "rollout",
+          "label": "Rollout method for the new model version",
+          "options": [
+            {
+              "id": "canary",
+              "text": "Canary release with rollback plan"
+            },
+            {
+              "id": "all",
+              "text": "Switch all traffic at once"
+            },
+            {
+              "id": "adhoc",
+              "text": "Deploy whenever the build finishes"
+            }
+          ]
+        },
+        {
+          "id": "approvals",
+          "label": "Approvals required before promotion",
+          "options": [
+            {
+              "id": "none",
+              "text": "None, if tests pass"
+            },
+            {
+              "id": "one",
+              "text": "The developer alone"
+            },
+            {
+              "id": "two",
+              "text": "Two independent reviewers"
+            }
+          ]
+        },
+        {
+          "id": "stop",
+          "label": "Emergency-stop control",
+          "options": [
+            {
+              "id": "off",
+              "text": "Disabled to avoid outages"
+            },
+            {
+              "id": "tested",
+              "text": "Tested and open to authorized staff"
+            },
+            {
+              "id": "vendor",
+              "text": "Open only to the model vendor"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "level": "approve",
+        "rollout": "canary",
+        "approvals": "two",
+        "stop": "tested"
+      }
+    },
+    "explanation": "Freezing card payments is high impact, so a person approves it, the release is staged with a way back, independent reviewers sign off, and staff can stop the system.",
+    "partExplanations": {
+      "level": "High-impact actions call for human approval rather than full automation or alerts only.",
+      "rollout": "A canary release limits exposure and keeps rollback ready.",
+      "approvals": "Two independent reviewers give documented approval for a high-impact change.",
+      "stop": "An emergency stop only helps if it is tested and reachable by the right staff."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-terminal-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "A partner dataset named partner_feed.csv was received on the Lumen Freight ingestion host. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ cat manifest.txt",
+        "partner_feed.csv  published-hash  82fa6f3335a15a06c257406f5d42c0e9c746075ecabb8ce9151b136fed2a5fb7",
+        "$ tail -n 4 ingest.log",
+        "09:14:02 INFO  received partner_feed.csv (2,114,880 bytes) from ftp-gw02",
+        "09:14:03 INFO  computed hash 06f51b2ada2b6d7a336216b8966ae79a7581ecfafd667b9f7b3365b5a1388a61",
+        "09:14:03 WARN  hash differs from manifest 82fa6f3335a15a06c257406f5d42c0e9c746075ecabb8ce9151b136fed2a5fb7",
+        "09:14:03 INFO  file held in /ingest/incoming; training job not started"
+      ],
+      "steps": [
+        {
+          "id": "hash",
+          "label": "Type a command that prints the cryptographic hash of partner_feed.csv"
+        },
+        {
+          "id": "action",
+          "label": "Choose the best next action",
+          "options": [
+            {
+              "id": "proceed",
+              "text": "Start training and note the warning"
+            },
+            {
+              "id": "edit",
+              "text": "Replace the manifest hash with the computed one"
+            },
+            {
+              "id": "quarantine",
+              "text": "Quarantine the file and ask the partner to resend"
+            },
+            {
+              "id": "delete",
+              "text": "Delete ingest.log so the warning is cleared"
+            }
+          ]
+        },
+        {
+          "id": "stage",
+          "label": "Which life cycle stage does this control belong to?",
+          "options": [
+            {
+              "id": "deploy",
+              "text": "Deployment"
+            },
+            {
+              "id": "collect",
+              "text": "Data collection"
+            },
+            {
+              "id": "monitor",
+              "text": "Monitoring and maintenance"
+            },
+            {
+              "id": "eval",
+              "text": "Model evaluation"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "hash": [
+          "sha256sum partner_feed.csv",
+          "sha256sum ./partner_feed.csv",
+          "sha256sum \"partner_feed.csv\"",
+          "sha256sum 'partner_feed.csv'",
+          "shasum -a 256 partner_feed.csv",
+          "shasum -a 256 ./partner_feed.csv",
+          "openssl dgst -sha256 partner_feed.csv",
+          "openssl sha256 partner_feed.csv",
+          "cat partner_feed.csv | sha256sum",
+          "sha256sum < partner_feed.csv"
+        ],
+        "action": [
+          "quarantine"
+        ],
+        "stage": [
+          "collect"
+        ]
+      }
+    },
+    "explanation": "The computed hash does not match the published one, so the file may have been altered or corrupted. It should be held out of training and re-obtained, and the check is a data collection control.",
+    "partExplanations": {
+      "hash": "sha256sum partner_feed.csv prints the hash to compare with the manifest.",
+      "action": "A mismatch means the file cannot be trusted, so it is quarantined and a clean copy requested; editing the manifest or deleting logs hides the problem.",
+      "stage": "Verifying authenticity of received data is done at data collection, before preparation or training."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]

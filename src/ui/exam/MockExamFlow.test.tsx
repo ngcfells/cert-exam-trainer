@@ -97,7 +97,7 @@ describe('MockExamFlow', () => {
     const user = userEvent.setup();
     const onNavigate = vi.fn();
     render(<Home repo={createMemoryRepo()} persistent onNavigate={onNavigate} />);
-    await user.click(await screen.findByRole('button', { name: /start mock exam/i }));
+    await user.click(await screen.findByRole('button', { name: 'Start mock exam: DA0-002' }));
     expect(onNavigate).toHaveBeenCalledWith({ name: 'mock', exam: 'DA0-002' });
 
     render(<MockExamFlow repo={createMemoryRepo()} examCode="DA0-002" seed={5} onExit={() => {}} />);
