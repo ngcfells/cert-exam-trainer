@@ -44,4 +44,9 @@ export const NUMERIC_CHECKS: Record<string, () => number> = {
   'da2-3-2-num-021': () => 95,
   // 6 ± 1 × 2 is within 1 standard deviation: the rule gives 68.
   'da2-3-2-num-022': () => 68,
+  'da2-3-2-num-023': () => (250 / 5000) * 100,
+  'da2-3-2-num-024': () => (1 - 0.01) * 100,
+  'da2-3-2-num-025': () => 30 - 4,
+  'da2-3-2-num-026': () => (50 - 42) / 2,
+  'da2-3-2-num-027': () => 120 + 6.5,
 };

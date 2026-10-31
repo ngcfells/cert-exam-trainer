@@ -3604,5 +3604,658 @@
       "tolerance": 0.5
     },
     "explanation": "4 and 8 are each 1 standard deviation from the mean (6 ± 2). The 68-95-99.7 rule says about 68% of values fall within 1 standard deviation."
+  },
+  {
+    "id": "da2-3-2-num-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A company surveys 250 of its 5,000 customers. What percent of the population is in the sample? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 5,
+      "tolerance": 0.5
+    },
+    "explanation": "Sample share = sample size ÷ population size × 100 = 250 ÷ 5,000 × 100 = 5%."
+  },
+  {
+    "id": "da2-3-2-math-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A streaming service measures the viewing time of 1,000 randomly chosen subscribers out of its 2 million subscribers. In this study, what are the 2 million subscribers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The sample"
+        },
+        {
+          "id": "b",
+          "text": "The population"
+        },
+        {
+          "id": "c",
+          "text": "The parameter"
+        },
+        {
+          "id": "d",
+          "text": "The statistic"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The population is the whole group the question is about: all 2 million subscribers. The 1,000 measured subscribers are the sample."
+  },
+  {
+    "id": "da2-3-2-math-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "In the same study, the average viewing time of the 1,000 chosen subscribers works out to 2.5 hours a day. What is that 2.5-hour figure called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A parameter"
+        },
+        {
+          "id": "b",
+          "text": "A population"
+        },
+        {
+          "id": "c",
+          "text": "A census"
+        },
+        {
+          "id": "d",
+          "text": "A statistic"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A number worked out from a sample is a statistic. The true average of all 2 million subscribers, which nobody measured, is the parameter the statistic estimates."
+  },
+  {
+    "id": "da2-3-2-math-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A manager claims that mean weekly sales are now greater than $8,000. Which pair of hypotheses tests this claim?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "H₀: mean > $8,000; H₁: mean = $8,000"
+        },
+        {
+          "id": "b",
+          "text": "H₀: mean ≠ $8,000; H₁: mean = $8,000"
+        },
+        {
+          "id": "c",
+          "text": "H₀: mean = $8,000; H₁: mean > $8,000"
+        },
+        {
+          "id": "d",
+          "text": "H₀: mean = $8,000; H₁: mean < $8,000"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The null hypothesis H₀ is the \"no change\" position, so it holds the equals sign: mean = $8,000. The alternative H₁ is the claim being tested, in the direction the claim states: greater than, so mean > $8,000."
+  },
+  {
+    "id": "da2-3-2-math-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team tests a new checkout layout. Which statement belongs in the null hypothesis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The new layout changes the conversion rate"
+        },
+        {
+          "id": "b",
+          "text": "The new layout raises the conversion rate"
+        },
+        {
+          "id": "c",
+          "text": "The new layout lowers the conversion rate"
+        },
+        {
+          "id": "d",
+          "text": "The new layout makes no difference to the conversion rate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The null hypothesis says nothing has changed. Each of the other three is a possible alternative hypothesis (two-tailed, or one-tailed up or down)."
+  },
+  {
+    "id": "da2-3-2-math-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst wants to know whether the average call length is different, either higher or lower, after a policy change. Which kind of test fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Two-tailed, because H₁ says the mean is not equal to the old value"
+        },
+        {
+          "id": "b",
+          "text": "One-tailed, because H₁ says the mean is greater than the old value"
+        },
+        {
+          "id": "c",
+          "text": "One-tailed, because H₁ says the mean is less than the old value"
+        },
+        {
+          "id": "d",
+          "text": "No test, because a change in either direction cannot be tested"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "\"Either higher or lower\" means H₁ uses ≠ (not equal), so a difference in either direction counts. That is a two-tailed test. A one-tailed test checks only one direction."
+  },
+  {
+    "id": "da2-3-2-math-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fraud model flags a legitimate purchase as fraud. The null hypothesis is \"this purchase is legitimate.\" What kind of error is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A Type II error"
+        },
+        {
+          "id": "b",
+          "text": "A Type I error"
+        },
+        {
+          "id": "c",
+          "text": "A sampling error"
+        },
+        {
+          "id": "d",
+          "text": "No error, since the model acted"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The purchase really was legitimate (H₀ true), but the model rejected H₀ by calling it fraud. Rejecting a true H₀ is a Type I error, a false positive."
+  },
+  {
+    "id": "da2-3-2-math-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A study concludes that a new training course has no effect on test scores, but in fact it does raise them. What is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A Type I error (false positive)"
+        },
+        {
+          "id": "b",
+          "text": "A correct decision"
+        },
+        {
+          "id": "c",
+          "text": "A Type II error (false negative)"
+        },
+        {
+          "id": "d",
+          "text": "A significance level"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The null hypothesis (\"no effect\") was false, but the study failed to reject it. Missing a real effect is a Type II error, a false negative."
+  },
+  {
+    "id": "da2-3-2-math-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst sets the significance level α to 0.05. What does that mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "There is a 5% chance that H₀ is true"
+        },
+        {
+          "id": "b",
+          "text": "There is a 5% chance of a Type II error"
+        },
+        {
+          "id": "c",
+          "text": "There is a 95% chance the result matters"
+        },
+        {
+          "id": "d",
+          "text": "They accept a 5% chance of rejecting H₀ when it is true"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "α is the risk of a Type I error the analyst is willing to take: rejecting H₀ when H₀ is actually true. It is not the chance that H₀ is true, and it says nothing direct about Type II errors."
+  },
+  {
+    "id": "da2-3-2-num-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "An analyst uses a significance level α of 0.01. What confidence level goes with it? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 99,
+      "tolerance": 0.5
+    },
+    "explanation": "Confidence level = (1 − α) × 100 = (1 − 0.01) × 100 = 99%."
+  },
+  {
+    "id": "da2-3-2-math-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A test returns a p-value of 0.12, and the analyst set α to 0.05 beforehand. What should the analyst conclude?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fail to reject H₀; the result is not statistically significant"
+        },
+        {
+          "id": "b",
+          "text": "Reject H₀; the result is statistically significant"
+        },
+        {
+          "id": "c",
+          "text": "Accept H₀, because it is now proven true"
+        },
+        {
+          "id": "d",
+          "text": "Reject H₁ and report a 12% effect"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "0.12 is larger than 0.05, so the evidence is not strong enough to reject H₀. We say \"fail to reject\", never \"accept\": the test did not prove H₀ true, it just found too little evidence against it."
+  },
+  {
+    "id": "da2-3-2-math-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What does a p-value of 0.02 mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "There is a 2% chance that H₀ is true"
+        },
+        {
+          "id": "b",
+          "text": "If H₀ were true, results this extreme would happen about 2% of the time"
+        },
+        {
+          "id": "c",
+          "text": "The effect is 2% in size"
+        },
+        {
+          "id": "d",
+          "text": "There is a 98% chance that H₁ is true"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A p-value assumes H₀ is true and asks how often chance alone would give results at least this extreme. It is not the chance that H₀ is true, and it says nothing about how big the effect is."
+  },
+  {
+    "id": "da2-3-2-num-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A sample of delivery times has a mean of 30 minutes. The 95% confidence interval uses a margin of error of 4 minutes. What is the lower bound of the interval, in minutes? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 26,
+      "tolerance": 0.5
+    },
+    "explanation": "Interval = mean ± margin of error = 30 ± 4. Lower bound = 30 − 4 = 26 minutes (the upper bound is 30 + 4 = 34)."
+  },
+  {
+    "id": "da2-3-2-num-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A report gives a 95% confidence interval for average order value of $42 to $50. What is the margin of error, in dollars? Answer as a whole number.",
+    "payload": {
+      "prefix": "$"
+    },
+    "answer": {
+      "value": 4,
+      "tolerance": 0.5
+    },
+    "explanation": "The interval is centred on the sample mean, so the margin of error is half its width: (50 − 42) ÷ 2 = 8 ÷ 2 = $4. The sample mean is 42 + 4 = $46."
+  },
+  {
+    "id": "da2-3-2-num-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A sample of 40 stores has a mean daily footfall of 120 visitors, with a margin of error of 6.5 visitors at 95% confidence. What is the upper bound of the interval? Answer to one decimal place.",
+    "payload": {},
+    "answer": {
+      "value": 126.5,
+      "tolerance": 0.05
+    },
+    "explanation": "Upper bound = mean + margin of error = 120 + 6.5 = 126.5 visitors."
+  },
+  {
+    "id": "da2-3-2-math-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A 95% confidence interval for mean order value is $40 to $50. Which statement is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "95% of all orders are between $40 and $50"
+        },
+        {
+          "id": "b",
+          "text": "The sample mean is certain to be exactly $45"
+        },
+        {
+          "id": "c",
+          "text": "If we repeated the sampling many times, about 95% of intervals made this way would contain the true mean"
+        },
+        {
+          "id": "d",
+          "text": "There is a 95% chance that the true mean is between $40 and $50"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The 95% describes the method: across many samples, about 95% of the intervals it builds catch the true mean. Any one interval either contains it or not. The interval is about the mean, not about individual orders."
+  },
+  {
+    "id": "da2-3-2-math-mcq-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [
+      "ANOVA"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst wants to compare average spend between two store layouts. Which test fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A chi-squared test"
+        },
+        {
+          "id": "b",
+          "text": "ANOVA (Analysis of Variance)"
+        },
+        {
+          "id": "c",
+          "text": "Linear regression"
+        },
+        {
+          "id": "d",
+          "text": "A t-test"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A t-test compares the means of two groups. ANOVA is for three or more groups, and chi-squared is for counts in categories."
+  },
+  {
+    "id": "da2-3-2-math-mcq-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [
+      "ANOVA"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst wants to compare mean delivery times across four couriers. Which test fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "ANOVA (Analysis of Variance)"
+        },
+        {
+          "id": "b",
+          "text": "A t-test"
+        },
+        {
+          "id": "c",
+          "text": "A chi-squared test"
+        },
+        {
+          "id": "d",
+          "text": "A correlation coefficient"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Comparing means across three or more groups is the job of ANOVA. Running many separate t-tests instead raises the chance of a false positive."
+  },
+  {
+    "id": "da2-3-2-math-mcq-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [
+      "ANOVA"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst wants to know whether payment method (card, cash or app) is related to region (north or south), using counts of transactions. Which test fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A t-test"
+        },
+        {
+          "id": "b",
+          "text": "ANOVA (Analysis of Variance)"
+        },
+        {
+          "id": "c",
+          "text": "A chi-squared test"
+        },
+        {
+          "id": "d",
+          "text": "A moving average"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Both variables are categories and the data are counts, so a chi-squared test of independence fits. t-tests and ANOVA compare means of a number."
   }
 ]

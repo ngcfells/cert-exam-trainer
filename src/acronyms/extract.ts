@@ -6,6 +6,8 @@ export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
   'ON', 'AS', 'AND', 'OR', 'NOT', 'NULL', 'IN', 'IS', 'LIKE', 'UNION', 'ALL', 'DISTINCT', 'LIMIT', 'ASC', 'DESC',
   'INSERT', 'INTO', 'VALUES', 'UPDATE', 'SET', 'DELETE', 'CREATE', 'TABLE', 'VIEW', 'INDEX', 'CASE', 'WHEN', 'THEN', 'ELSE', 'END',
   'COUNT', 'SUM', 'AVG', 'MIN', 'MAX',
+  // Roman numerals, as in "Type II error".
+  'II', 'III',
   'EXISTS', 'EXCEPT', 'INTERSECT', 'CAST', 'EXTRACT', 'VARCHAR', 'CHAR', 'INT', 'INTEGER', 'DECIMAL', 'FLOAT', 'DATE', 'YEAR', 'MONTH',
   'BETWEEN', 'COALESCE', 'OFFSET', 'PARTITION', 'OVER', 'WITH', 'TOP', 'ROUND', 'TRIM', 'UPPER', 'LOWER', 'CONCAT', 'IF', 'IFNULL', 'ISNULL',
   'PRIMARY', 'KEY', 'FOREIGN', 'REFERENCES', 'TRUE', 'FALSE',

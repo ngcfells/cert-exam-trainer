@@ -1,0 +1,328 @@
+[
+  {
+    "id": "c-population-sample",
+    "exam": "DA0-002",
+    "area": "C",
+    "title": "Population vs. sample",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "meaning": [
+      "The population is every member of the group you care about. A sample is the part of it you actually measure, because measuring everyone is usually too slow or costly.",
+      "Analysts care because almost every result they report comes from a sample, so they need to know how well it stands for the whole population."
+    ],
+    "rule": [
+      "Population: everyone or everything in the group the question is about. Sample: the members you actually measure.",
+      "Parameter: a true value for the population, such as the real average. Statistic: the same value worked out from a sample, used as an estimate.",
+      "A random sample gives every member the same chance of selection, which keeps the estimate fair."
+    ],
+    "example": {
+      "intro": "A retailer has 5,000 customers and surveys 250 of them, chosen at random, about delivery speed.",
+      "table": {
+        "caption": "Population and sample terms for the delivery survey",
+        "head": [
+          "Term",
+          "In this survey"
+        ],
+        "rows": [
+          [
+            "Population",
+            "All 5,000 customers"
+          ],
+          [
+            "Sample",
+            "The 250 surveyed customers"
+          ],
+          [
+            "Parameter",
+            "The true average rating of all 5,000 (unknown)"
+          ],
+          [
+            "Statistic",
+            "The average rating of the 250 (what we report)"
+          ]
+        ]
+      },
+      "steps": [
+        "Sample share = 250 ÷ 5,000 × 100 = 5% of the customers.",
+        "The statistic (the sample average) is our estimate of the parameter (the population average).",
+        "Choosing at random means every customer had the same chance of being picked, so the sample is less likely to be biased."
+      ]
+    },
+    "trap": {
+      "wrong": "Calling the sample result a parameter, or assuming a sample tells you about a group it was not drawn from.",
+      "why": "A parameter belongs to the population and a statistic to the sample: \"s\" for sample, \"p\" for population is an easy way to remember it. A survey of web visitors says little about customers who only shop in store."
+    },
+    "checkIds": [
+      "da2-3-2-num-023",
+      "da2-3-2-math-mcq-012",
+      "da2-3-2-math-mcq-013"
+    ]
+  },
+  {
+    "id": "c-hypotheses",
+    "exam": "DA0-002",
+    "area": "C",
+    "title": "Null and alternative hypotheses",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "meaning": [
+      "A hypothesis test starts with two opposite statements: the null hypothesis, which says nothing has changed, and the alternative, which is the claim you want evidence for.",
+      "Analysts care because the exam often gives a scenario and asks which pair of hypotheses fits it."
+    ],
+    "rule": [
+      "H₀, the null hypothesis: no change or no difference. It always uses the equals sign, for example mean = $8,000.",
+      "H₁, the alternative hypothesis: the claim being tested. It uses > (greater), < (less) or ≠ (not equal), copied from the scenario.",
+      "One-tailed test: H₁ uses > or <, one direction only. Two-tailed test: H₁ uses ≠, either direction.",
+      "The test then asks whether the data give enough evidence to reject H₀ in favour of H₁."
+    ],
+    "example": {
+      "intro": "A manager says mean weekly sales are now greater than $8,000. Write the hypotheses.",
+      "steps": [
+        "The claim is \"greater than $8,000\", so that is H₁: mean > $8,000.",
+        "H₀ is the no-change position with the equals sign: mean = $8,000.",
+        "The claim names one direction (greater), so this is a one-tailed test.",
+        "If the claim were \"sales have changed\", H₁ would be mean ≠ $8,000, a two-tailed test."
+      ]
+    },
+    "trap": {
+      "wrong": "Putting the claim in H₀, or using the wrong direction in H₁.",
+      "why": "H₀ always holds the equals sign and the \"no effect\" position; the claim goes in H₁. Copy the direction from the wording: \"more than\" gives >, \"less than\" gives <, \"different\" or \"changed\" gives ≠."
+    },
+    "checkIds": [
+      "da2-3-2-math-mcq-014",
+      "da2-3-2-math-mcq-015",
+      "da2-3-2-math-mcq-016"
+    ]
+  },
+  {
+    "id": "c-type-errors",
+    "exam": "DA0-002",
+    "area": "C",
+    "title": "Type I and Type II errors",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "meaning": [
+      "A hypothesis test can be wrong in two ways: it can find an effect that is not there (Type I), or miss one that is (Type II).",
+      "Analysts care because the two mistakes have different costs, and the exam asks which one a scenario describes."
+    ],
+    "rule": [
+      "Type I error (false positive): rejecting H₀ when it is true. Its chance is α, the significance level.",
+      "Type II error (false negative): failing to reject H₀ when it is false.",
+      "α, the Greek letter alpha, is the Type I risk the analyst chooses before testing, usually 0.05 (5%)."
+    ],
+    "example": {
+      "intro": "A spam filter tests each email. H₀: \"this email is genuine.\" H₁: \"this email is spam.\"",
+      "table": {
+        "caption": "The four outcomes of the spam filter",
+        "head": [
+          "Filter decision",
+          "Email is genuine (H₀ true)",
+          "Email is spam (H₀ false)"
+        ],
+        "rows": [
+          [
+            "Marks as spam (reject H₀)",
+            "Type I error: false positive",
+            "Correct"
+          ],
+          [
+            "Lets it through (fail to reject H₀)",
+            "Correct",
+            "Type II error: false negative"
+          ]
+        ]
+      },
+      "steps": [
+        "A genuine email sent to the spam folder is a Type I error.",
+        "A spam email that reaches the inbox is a Type II error.",
+        "Lowering α (say from 0.05 to 0.01) makes Type I errors rarer but Type II errors more likely."
+      ]
+    },
+    "trap": {
+      "wrong": "Swapping the two: calling a missed effect a Type I error.",
+      "why": "Type I comes first, like a false alarm: it rejects a true H₀. Type II is a miss: it keeps a false H₀. Find what H₀ says in the scenario, then ask whether the decision rejected it wrongly or kept it wrongly."
+    },
+    "checkIds": [
+      "da2-3-2-math-mcq-017",
+      "da2-3-2-math-mcq-018",
+      "da2-3-2-math-mcq-019"
+    ]
+  },
+  {
+    "id": "c-p-values",
+    "exam": "DA0-002",
+    "area": "C",
+    "title": "p-values and significance",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "meaning": [
+      "A p-value says how surprising the data would be if the null hypothesis were true. A small p-value means the data would be unusual under H₀, which is evidence against it.",
+      "Analysts care because \"statistically significant\" in a report means the p-value fell below the chosen significance level."
+    ],
+    "rule": [
+      "The p-value: if H₀ were true, the chance of getting results at least as extreme as the ones observed.",
+      "α, the significance level, is the cut-off chosen before the test, usually 0.05.",
+      "If p ≤ α, reject H₀: the result is statistically significant. If p > α, fail to reject H₀.",
+      "The confidence level that matches α is (1 − α) × 100, so α = 0.05 goes with 95%."
+    ],
+    "example": {
+      "intro": "An A/B test of two email subject lines gives p = 0.03. The team chose α = 0.05 before the test.",
+      "table": {
+        "caption": "Decisions for three p-values at α = 0.05",
+        "head": [
+          "p-value",
+          "Compared with 0.05",
+          "Decision"
+        ],
+        "rows": [
+          [
+            "0.03",
+            "smaller",
+            "Reject H₀: significant"
+          ],
+          [
+            "0.05",
+            "equal",
+            "Reject H₀: significant"
+          ],
+          [
+            "0.20",
+            "larger",
+            "Fail to reject H₀: not significant"
+          ]
+        ]
+      },
+      "steps": [
+        "0.03 ≤ 0.05, so reject H₀: the difference in open rates is statistically significant.",
+        "The confidence level that goes with α = 0.05 is (1 − 0.05) × 100 = 95%.",
+        "Significant does not mean large: a tiny difference can be significant in a huge sample."
+      ]
+    },
+    "trap": {
+      "wrong": "Reading the p-value as the chance that H₀ is true, or saying \"accept H₀\" when p is large.",
+      "why": "The p-value is worked out by assuming H₀ is true, so it cannot be the chance that H₀ is true. A large p-value only means there is not enough evidence against H₀: say \"fail to reject H₀\"."
+    },
+    "checkIds": [
+      "da2-3-2-num-024",
+      "da2-3-2-math-mcq-020",
+      "da2-3-2-math-mcq-021",
+      "da2-3-2-mcq-027"
+    ]
+  },
+  {
+    "id": "c-confidence-intervals",
+    "exam": "DA0-002",
+    "area": "C",
+    "title": "Confidence intervals",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "meaning": [
+      "A confidence interval is a range around a sample result that is likely to contain the true population value, such as \"average spend is $46, give or take $4\".",
+      "Analysts care because a single number from a sample hides its uncertainty; the interval shows how precise the estimate is."
+    ],
+    "formula": {
+      "text": "interval = x̄ ± margin of error",
+      "spoken": "the interval is the sample mean, x bar, plus or minus the margin of error",
+      "symbols": [
+        {
+          "symbol": "x̄",
+          "meaning": "\"x bar\", the mean of the sample"
+        },
+        {
+          "symbol": "±",
+          "meaning": "plus or minus: subtract for the lower bound, add for the upper bound"
+        },
+        {
+          "symbol": "margin of error",
+          "meaning": "how far the interval reaches each side of the mean; it is given on the exam, not computed"
+        }
+      ]
+    },
+    "example": {
+      "intro": "A sample of orders has a mean of $46. The 95% confidence interval uses a margin of error of $4.",
+      "steps": [
+        "Lower bound = 46 − 4 = $42.",
+        "Upper bound = 46 + 4 = $50.",
+        "The interval is $42 to $50, and its width is 50 − 42 = $8, twice the margin of error.",
+        "Read it as: \"the method we used catches the true mean in about 95% of samples.\"",
+        "A larger sample gives a smaller margin of error, so a narrower interval."
+      ]
+    },
+    "trap": {
+      "wrong": "Saying there is a 95% chance the true mean is in this particular interval, or that 95% of the data lie in it.",
+      "why": "The 95% describes the method across many samples, not this one interval, which either contains the true mean or does not. And the interval is about the mean, not individual values: most single orders may fall outside it."
+    },
+    "checkIds": [
+      "da2-3-2-num-025",
+      "da2-3-2-num-026",
+      "da2-3-2-num-027",
+      "da2-3-2-math-mcq-022",
+      "da2-3-2-mcq-004"
+    ]
+  },
+  {
+    "id": "c-choosing-a-test",
+    "exam": "DA0-002",
+    "area": "C",
+    "title": "Choosing a test: t-test, chi-squared, ANOVA",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "meaning": [
+      "Different questions need different tests. The exam does not ask you to compute them, only to name the one that fits a scenario.",
+      "Analysts care because the wrong test gives a wrong answer even when the arithmetic is perfect."
+    ],
+    "rule": [
+      "t-test: compares the means of two groups (a number measured in each group).",
+      "ANOVA (Analysis of Variance): compares the means of three or more groups.",
+      "Chi-squared test (χ², said \"kai squared\"): checks whether two category variables are related, using counts."
+    ],
+    "example": {
+      "intro": "Match each question to a test.",
+      "table": {
+        "caption": "Scenarios and the test that fits",
+        "head": [
+          "Question",
+          "Data",
+          "Test"
+        ],
+        "rows": [
+          [
+            "Does layout A or B have higher average spend?",
+            "A number, 2 groups",
+            "t-test"
+          ],
+          [
+            "Do four couriers differ in mean delivery time?",
+            "A number, 4 groups",
+            "ANOVA"
+          ],
+          [
+            "Is payment method related to region?",
+            "Counts in categories",
+            "Chi-squared"
+          ]
+        ]
+      },
+      "steps": [
+        "Ask first: is the outcome a number (spend, time) or a category (card, cash)?",
+        "For a number, count the groups: two means a t-test, three or more means ANOVA.",
+        "For categories, use chi-squared."
+      ]
+    },
+    "trap": {
+      "wrong": "Running several t-tests to compare three or more groups.",
+      "why": "Each extra t-test adds another chance of a false positive. ANOVA (Analysis of Variance) compares all the group means in one test."
+    },
+    "checkIds": [
+      "da2-3-2-math-mcq-023",
+      "da2-3-2-math-mcq-024",
+      "da2-3-2-math-mcq-025"
+    ]
+  }
+]

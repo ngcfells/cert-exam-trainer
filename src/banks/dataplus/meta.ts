@@ -104,5 +104,6 @@ export const dataPlusMeta: ExamMeta = {
     // Math module terms.
     { term: 'CAGR', expansion: 'Compound Annual Growth Rate', source: 'community' },
     { term: 'IQR', expansion: 'Interquartile Range', source: 'community' },
+    { term: 'ANOVA', expansion: 'Analysis of Variance', source: 'community' },
   ],
 };
