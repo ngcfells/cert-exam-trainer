@@ -2,7 +2,7 @@
 //   strip   <out.json> <draft.json>...   writes the items without answer, explanation or partExplanations (for the analyst)
 //   compare <answers.json> <draft.json>... scores the analyst's answers against the keys and lists every mismatch
 // Analyst answers: { "<id>": ["b"] } for MCQs; { "<id>": { "<partId>": "<valueId or typed command>" } } for PBQs;
-// for pbq-hotspot, the list of spot ids to select.
+// for pbq-hotspot, the list of spot ids to select; for pbq-order, either a position map or the ids in order.
 import { readFileSync, writeFileSync } from 'node:fs';
 import { HOTSPOT_ON, isPbqTemplate, partCorrect, partIds, type PartMap } from '../src/domain/pbq';
 import type { McqAnswer, Question } from '../src/domain/types';
@@ -27,7 +27,11 @@ if (cmd === 'strip') {
       const got = [...(given as string[])].sort().join(',');
       if (key !== got) wrong = [`analyst ${got}, key ${key}`];
     } else {
-      const parts: PartMap = Array.isArray(given) ? Object.fromEntries(given.map((id) => [id, HOTSPOT_ON])) : given;
+      const parts: PartMap = !Array.isArray(given)
+        ? given
+        : q.type === 'pbq-order'
+          ? Object.fromEntries(given.map((id, i) => [String(i), id]))
+          : Object.fromEntries(given.map((id) => [id, HOTSPOT_ON]));
       wrong = partIds(q).filter((id) => !partCorrect(q, id, parts)).map((id) => `part ${id}: analyst ${parts[id] ?? '(none)'}`);
     }
     if (wrong.length) {
