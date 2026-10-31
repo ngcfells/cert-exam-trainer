@@ -14,7 +14,7 @@ import { QUESTION_TYPES, questionSchema } from '../../domain/schema';
 import type { Question } from '../../domain/types';
 import type { ItemResponse } from '../../exam/scoring';
 import { ItemReview } from '../exam/ItemReview';
-import { metaFor, pct, QuestionView, Table } from '../kit';
+import { metaFor, pct, QuestionView, Table, useFocusHeading } from '../kit';
 
 const STATUSES = ['approved', 'reviewed', 'draft', 'all'] as const;
 
@@ -73,6 +73,7 @@ export function ReviewScreen({
   questions?: Question[];
 }) {
   const meta = metaFor(examCode);
+  const headingRef = useFocusHeading();
   const [questions, setQuestions] = useState<Question[]>(() => initial ?? getBundledQuestions(examCode, { includeDrafts: true }));
   const [status, setStatus] = useState<(typeof STATUSES)[number]>('approved');
   const [objective, setObjective] = useState('all');
@@ -154,7 +155,7 @@ export function ReviewScreen({
 
   return (
     <section aria-labelledby={`${uid}-h`}>
-      <h2 id={`${uid}-h`}>Review bank: {meta.code} (dev only)</h2>
+      <h2 id={`${uid}-h`} ref={headingRef} tabIndex={-1}>Review bank: {meta.code} (dev only)</h2>
       <div className="review-filters">
         {filter('Status', status, (v) => setStatus(v as (typeof STATUSES)[number]), STATUSES.map((s) => [s, s]))}
         {filter('Objective', objective, setObjective, [['all', 'all'], ...meta.objectives.map((o): [string, string] => [o.id, o.id])])}

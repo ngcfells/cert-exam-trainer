@@ -5,7 +5,7 @@ import type { AcronymEntry } from '../../acronyms/list';
 import { SOURCE_SETTING } from '../../banks/pool';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { parseSrsRecords } from '../../study/srs';
-import { TestNav } from '../nav';
+import { TestNav } from '../testNav';
 import { AcronymFlow } from './AcronymFlow';
 import { AcronymResults } from './AcronymResults';
 import { QuizRunner } from './QuizRunner';

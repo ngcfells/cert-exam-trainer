@@ -7,6 +7,9 @@ import { questions } from './plural';
 import type { ExamScreen } from './screens';
 import { SourceToggle } from './SourceToggle';
 
+/** The tools an exam page opens directly (the editor opens from My questions). */
+type ToolName = Exclude<ExamScreen['name'], 'exam' | 'edit'>;
+
 /** One exam's page: its question counts, its source choice and every study tool. */
 export function ExamPage({ repo, examCode, onNavigate }: { repo: Repo; examCode: string; onNavigate: (s: ExamScreen) => void }) {
   const headingRef = useFocusHeading();
@@ -18,7 +21,7 @@ export function ExamPage({ repo, examCode, onNavigate }: { repo: Repo; examCode:
   }, [repo, examCode]);
 
   if (!meta) return <p>Unknown exam.</p>;
-  const go = (name: ExamScreen['name']) => () => onNavigate({ name, exam: examCode } as ExamScreen);
+  const go = (name: ToolName) => () => onNavigate({ name, exam: examCode });
   const e = examCode;
   return (
     <section className="exam-page" aria-labelledby="exam-h">
@@ -29,9 +32,9 @@ export function ExamPage({ repo, examCode, onNavigate }: { repo: Repo; examCode:
         <button type="button" className="primary" onClick={go('mock')}>{`Start mock exam: ${e}`}</button>
         <button type="button" onClick={go('practice')}>{`Practice: ${e}`}</button>
         <button type="button" onClick={go('cram')}>{`Cram: ${e}`}</button>
-        <button type="button" onClick={go('progress')}>{`Progress: ${e}`}</button>
-        <button type="button" onClick={go('acronyms')}>{`Acronyms: ${e}`}</button>
         {getLessons(e).length > 0 && <button type="button" onClick={go('learn')}>{`Learn: ${e}`}</button>}
+        <button type="button" onClick={go('acronyms')}>{`Acronyms: ${e}`}</button>
+        <button type="button" onClick={go('progress')}>{`Progress: ${e}`}</button>
         <button type="button" onClick={go('questions')}>{`My questions: ${e}`}</button>
         {import.meta.env.DEV && <button type="button" onClick={go('review')}>{`Review bank (dev): ${e}`}</button>}
       </div>

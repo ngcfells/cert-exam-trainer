@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { getBundledQuestions, listExams } from '../banks';
 import type { Repo } from '../storage';
+import { useFocusHeading } from './kit';
 import { StorageBanner } from './StorageBanner';
 import { questions } from './plural';
 import type { Screen } from './screens';
 
 /** The landing page: one card per exam, and About. Settings sits in the app header. */
 export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent: boolean; onNavigate?: (s: Screen) => void }) {
+  const headingRef = useFocusHeading();
   const [mine, setMine] = useState<Record<string, number>>({});
 
   useEffect(() => {
@@ -20,7 +22,7 @@ export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent:
   return (
     <>
       <StorageBanner persistent={persistent} />
-      <h2>Exams</h2>
+      <h2 ref={headingRef} tabIndex={-1}>Exams</h2>
       <ul className="exam-cards">
         {listExams().map((e) => (
           <li key={e.code}>

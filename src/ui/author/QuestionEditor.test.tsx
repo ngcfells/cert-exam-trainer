@@ -4,7 +4,8 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { userQ } from '../../storage/testFixtures';
 import { JSON_STARTERS } from '../../authoring/starters';
-import { LeaveGuardProvider, LeaveGuards } from '../nav';
+import { LeaveGuards } from '../nav';
+import { LeaveGuardProvider } from '../testNav';
 import { QuestionEditor } from './QuestionEditor';
 
 afterEach(() => vi.restoreAllMocks());

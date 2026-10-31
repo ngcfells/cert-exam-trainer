@@ -5,7 +5,7 @@ import { createMemoryRepo } from '../../storage/memoryRepo';
 import { examResultSchema } from '../../exam/result';
 import { parseSrsRecords } from '../../study/srs';
 import { recordCheck } from '../../study/lessonStatus';
-import { TestNav } from '../nav';
+import { TestNav } from '../testNav';
 import { checkExam, LearnFlow } from './LearnFlow';
 
 type User = ReturnType<typeof userEvent.setup>;

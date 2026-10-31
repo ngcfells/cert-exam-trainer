@@ -6,7 +6,7 @@ import { computeMastery } from '../../study/mastery';
 import { assembleCram, onlySeen } from '../../study/session';
 import { ResultsScreen } from '../exam/ResultsScreen';
 import { acronymReview, finishAttempt, type Finished } from '../exam/saveAttempt';
-import { Loading, metaFor, toCount, useLoad } from '../kit';
+import { Loading, metaFor, toCount, useFocusHeading, useLoad } from '../kit';
 import { LoadError } from './LoadError';
 import { loadStudy } from './loadStudy';
 import { StudyRunner, type StudyOutcome } from './StudyRunner';
@@ -24,6 +24,8 @@ export function CramFlow({ repo, examCode, seed }: { repo: Repo; examCode: strin
   const [minutes, setMinutes] = useState(DEFAULT_CRAM_MINUTES);
   const [startedAt, setStartedAt] = useState<Date | null>(null);
   const [done, setDone] = useState<(Finished & { known: number }) | null>(null);
+  // The setup heading appears once the session has loaded.
+  const headingRef = useFocusHeading([session === undefined]);
 
   if (session === undefined) return <Loading />;
   if (session === null) return <LoadError />;
@@ -57,7 +59,7 @@ export function CramFlow({ repo, examCode, seed }: { repo: Repo; examCode: strin
   const empty = session.exam.items.length + acronymTotal === 0;
   return (
     <section className="study-setup" aria-labelledby="cram-h">
-      <h2 id="cram-h">{`Cram: ${meta.name} (${meta.code})`}</h2>
+      <h2 id="cram-h" ref={headingRef} tabIndex={-1}>{`Cram: ${meta.name} (${meta.code})`}</h2>
       {empty ? (
         <p>Nothing to cram yet.</p>
       ) : (

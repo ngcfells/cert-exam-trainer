@@ -1,7 +1,7 @@
 import { PBQ_TEMPLATES } from '../../domain/pbq';
 import type { ExamMeta, Question, QuestionType } from '../../domain/types';
 import { matchingPool, type PracticeOptions } from '../../study/session';
-import { toCount } from '../kit';
+import { toCount, useFocusHeading } from '../kit';
 import { questions } from '../plural';
 import './study.css';
 
@@ -47,6 +47,7 @@ export function PracticeSetup({
   onChange: (v: PracticeChoices) => void;
   onStart: () => void;
 }) {
+  const headingRef = useFocusHeading();
   const matches = matchingPool(pool, value).length;
   const set = (patch: Partial<PracticeChoices>) => onChange({ ...value, ...patch });
   const objectives = (ids: string[], on: boolean) => set({ objectiveIds: toggleAll(value.objectiveIds, ids, on) });
@@ -58,7 +59,7 @@ export function PracticeSetup({
 
   return (
     <section className="study-setup" aria-labelledby="practice-h">
-      <h2 id="practice-h">{`Practice: ${meta.name} (${meta.code})`}</h2>
+      <h2 id="practice-h" ref={headingRef} tabIndex={-1}>{`Practice: ${meta.name} (${meta.code})`}</h2>
       <p>Untimed. Pick what to practise; PBQs come first when included.</p>
       {meta.domains.map((d) => {
         const ids = meta.objectives.filter((o) => o.domainId === d.id).map((o) => o.id);

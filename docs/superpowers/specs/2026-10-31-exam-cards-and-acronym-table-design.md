@@ -113,7 +113,7 @@ Rules:
 
 - **Master table** (one file, for example `src/acronyms/master.ts` or JSON): each term maps to a list of meanings, each with a stable id and an expansion.
 
-  ```
+  ```text
   IP:  [ { id: 'ip-intellectual-property', expansion: 'Intellectual Property' },
          { id: 'ip-internet-protocol',     expansion: 'Internet Protocol' } ]
   SOC: [ { id: 'soc-security-operations-center', expansion: 'Security Operations Center' },
@@ -153,4 +153,5 @@ Rules:
 
 ## Open for the owner
 
-- Browser and phone Back: see the question in chat. The answer is recorded here once given.
+- Browser and phone Back (answered 2026-10-31): they step back inside the app and do exactly what the nav bar's **← Back** does, inner levels and the leave-confirm included. On the landing page they leave the app as usual.
+- Scope (owner, 2026-10-31): part 1 ships the cards for the two registered exams, Settings, the exam page, the nav bar and Stock/Custom with a per-exam source. Still to do: the eight new exams, provisional metadata and "Details not final", course assessments, and the master acronym table.

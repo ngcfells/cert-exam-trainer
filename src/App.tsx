@@ -74,11 +74,16 @@ export default function App() {
   // Browser Back does exactly what the nav bar's Back does (see history.ts).
   const backRef = useRef(back);
   backRef.current = back;
+  const screenRef = useRef(screen);
+  screenRef.current = screen;
   const historyRef = useRef<ReturnType<typeof armHistory> | null>(null);
   useEffect(() => {
-    const h = armHistory(() => {
-      if (backRef.current().name !== 'home') h.arm();
-    });
+    const h = armHistory(
+      () => {
+        if (backRef.current().name !== 'home') h.arm();
+      },
+      () => screenRef.current.name === 'home',
+    );
     historyRef.current = h;
     return () => h.dispose();
   }, []);

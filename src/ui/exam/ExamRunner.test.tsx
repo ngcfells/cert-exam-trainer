@@ -2,7 +2,8 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ExamRunner } from './ExamRunner';
-import { LEAVE_RUN, LeaveGuardProvider, LeaveGuards } from '../nav';
+import { LEAVE_RUN, LeaveGuards } from '../nav';
+import { LeaveGuardProvider } from '../testNav';
 import type { AssembledExam } from '../../exam/assemble';
 import { mcq } from '../../exam/testFixtures';
 
@@ -33,20 +34,24 @@ function setup(timeLimitMs = 600_000) {
 }
 
 describe('ExamRunner', () => {
-  it('asks before leaving only after the first answer', async () => {
+  it('asks before leaving from the start (it is timed), and stops once submitted', () => {
     const confirm = vi.spyOn(window, 'confirm').mockReturnValue(false);
     const guards = new LeaveGuards();
-    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    const onSubmit = vi.fn();
     render(
       <LeaveGuardProvider guards={guards}>
-        <ExamRunner exam={exam} timeLimitMs={600_000} startedAt={T0} onSubmit={vi.fn()} />
+        <ExamRunner exam={exam} timeLimitMs={2_000} startedAt={T0} onSubmit={onSubmit} />
       </LeaveGuardProvider>,
     );
-    expect(guards.confirmLeave()).toBe(true);
-    expect(confirm).not.toHaveBeenCalled();
-    await user.click(screen.getByLabelText('A0-a'));
     expect(guards.confirmLeave()).toBe(false);
     expect(confirm).toHaveBeenCalledWith(LEAVE_RUN);
+    confirm.mockClear();
+    act(() => {
+      vi.advanceTimersByTime(3_000);
+    });
+    expect(onSubmit).toHaveBeenCalled();
+    expect(guards.confirmLeave()).toBe(true);
+    expect(confirm).not.toHaveBeenCalled();
     confirm.mockRestore();
   });
 

@@ -30,7 +30,7 @@ export interface NavUp {
   onUp: () => void;
 }
 
-interface NavApi {
+export interface NavApi {
   guards: LeaveGuards;
   setUp: (up: NavUp) => void;
   clearUp: (up: NavUp) => void;
@@ -41,11 +41,6 @@ const NavContext = createContext<NavApi>({ guards: new LeaveGuards(), setUp: () 
 
 export function NavProvider({ api, children }: { api: NavApi; children: ReactNode }) {
   return <NavContext.Provider value={api}>{children}</NavContext.Provider>;
-}
-
-/** Test helper: provide only guards. */
-export function LeaveGuardProvider({ guards, children }: { guards: LeaveGuards; children: ReactNode }) {
-  return <NavProvider api={{ guards, setUp: () => {}, clearUp: () => {} }}>{children}</NavProvider>;
 }
 
 /** While `active`, leaving by the nav bar or browser Back asks `message` first. */
@@ -88,17 +83,6 @@ export function navBack(api: NavApi, up: NavUp | null, toParent: () => void): bo
   if (up) up.onUp();
   else toParent();
   return true;
-}
-
-/** Test helper: one screen inside a working nav bar. `onParent` is where Back goes with no inner level. */
-export function TestNav({ children, onParent = () => {} }: { children: ReactNode; onParent?: () => void }) {
-  const { api, up } = useNavState();
-  return (
-    <NavProvider api={api}>
-      <NavBar label="Page navigation" backLabel={up?.label ?? '← Back'} onBack={() => void navBack(api, up, onParent)} onHome={() => {}} />
-      {children}
-    </NavProvider>
-  );
 }
 
 export function NavBar({ label, backLabel, onBack, onHome }: { label: string; backLabel: string; onBack: () => void; onHome: () => void }) {

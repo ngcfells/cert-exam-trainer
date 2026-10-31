@@ -1,4 +1,5 @@
 import type { ExamMeta } from '../../domain/types';
+import { useFocusHeading } from '../kit';
 import { questions } from '../plural';
 
 export function ExamSetup({
@@ -10,9 +11,10 @@ export function ExamSetup({
   plannedCount: number;
   onStart: () => void;
 }) {
+  const headingRef = useFocusHeading();
   return (
     <section aria-labelledby="setup-h">
-      <h2 id="setup-h">{`Mock exam: ${meta.name} (${meta.code})`}</h2>
+      <h2 id="setup-h" ref={headingRef} tabIndex={-1}>{`Mock exam: ${meta.name} (${meta.code})`}</h2>
       <ul>
         <li>{questions(plannedCount)}</li>
         <li>{`Time limit: ${meta.timeLimitMinutes} minutes`}</li>

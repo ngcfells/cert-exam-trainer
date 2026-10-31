@@ -46,7 +46,8 @@ export function StudyRunner({
   const [grades, setGrades] = useState<Record<string, boolean>>({});
   const [done, setDone] = useState(false);
   const finished = useRef(false);
-  useLeaveGuard(!done && (Object.keys(responses).length > 0 || Object.keys(grades).length > 0));
+  // A timed run asks from the start; an untimed one once something is answered.
+  useLeaveGuard(!done && (timeLimitMs !== undefined || Object.keys(responses).length > 0 || Object.keys(grades).length > 0));
   const furthest = useRef(0);
   furthest.current = Math.max(furthest.current, index);
   const state = useRef({ responses, checked, grades });

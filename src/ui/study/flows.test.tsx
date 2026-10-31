@@ -7,7 +7,7 @@ import { examResultSchema } from '../../exam/result';
 import { parseSrsRecords } from '../../study/srs';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import type { ExamMeta } from '../../domain/types';
-import { TestNav } from '../nav';
+import { TestNav } from '../testNav';
 import { PracticeFlow } from './PracticeFlow';
 import { CramFlow } from './CramFlow';
 

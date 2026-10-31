@@ -1,6 +1,8 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { render } from '@testing-library/react';
-import { LEAVE_RUN, LeaveGuardProvider, LeaveGuards, useLeaveGuard } from './nav';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { LEAVE_RUN, LeaveGuards, navBack, useLeaveGuard, useNavUp } from './nav';
+import { LeaveGuardProvider, TestNav } from './testNav';
 
 function Guarded({ active, message }: { active: boolean; message?: string }) {
   useLeaveGuard(active, message);
@@ -59,5 +61,49 @@ describe('leave guards', () => {
     );
     guards.confirmLeave();
     expect(confirm).toHaveBeenCalledWith('Discard your changes?');
+  });
+});
+
+function Level({ label, onUp }: { label: string | null; onUp: () => void }) {
+  useNavUp(label, onUp);
+  return null;
+}
+
+describe('inner levels and Back', () => {
+  it('shows the inner level on the bar, swaps it, and clears it on unmount', async () => {
+    const onUp = vi.fn();
+    const ui = (label: string | null, show = true) => <TestNav>{show && <Level label={label} onUp={onUp} />}</TestNav>;
+    const { rerender } = render(ui('← Back to lessons'));
+    expect(screen.getByRole('button', { name: '← Back to lessons' })).toBeInTheDocument();
+
+    rerender(ui('← Back to lesson'));
+    expect(screen.queryByRole('button', { name: '← Back to lessons' })).not.toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: '← Back to lesson' }));
+    expect(onUp).toHaveBeenCalledTimes(1);
+
+    rerender(ui(null));
+    expect(screen.getByRole('button', { name: '← Back' })).toBeInTheDocument();
+    rerender(ui('← Back to lessons'));
+    rerender(ui('← Back to lessons', false));
+    expect(screen.getByRole('button', { name: '← Back' })).toBeInTheDocument();
+  });
+
+  it('navBack climbs the inner level, else goes to the parent, and does neither when the user stays', () => {
+    const guards = new LeaveGuards();
+    const api = { guards, setUp: () => {}, clearUp: () => {} };
+    const onUp = vi.fn();
+    const toParent = vi.fn();
+    expect(navBack(api, { label: 'x', onUp }, toParent)).toBe(true);
+    expect(onUp).toHaveBeenCalledTimes(1);
+    expect(toParent).not.toHaveBeenCalled();
+    expect(navBack(api, null, toParent)).toBe(true);
+    expect(toParent).toHaveBeenCalledTimes(1);
+
+    guards.add({ message: LEAVE_RUN });
+    vi.spyOn(window, 'confirm').mockReturnValue(false);
+    expect(navBack(api, { label: 'x', onUp }, toParent)).toBe(false);
+    expect(navBack(api, null, toParent)).toBe(false);
+    expect(onUp).toHaveBeenCalledTimes(1);
+    expect(toParent).toHaveBeenCalledTimes(1);
   });
 });

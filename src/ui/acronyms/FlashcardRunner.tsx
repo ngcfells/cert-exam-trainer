@@ -18,9 +18,13 @@ export function FlashcardRunner({ deck, show, onFinish }: { deck: AcronymEntry[]
   const [index, setIndex] = useState(0);
   const [revealed, setRevealed] = useState<Set<number>>(new Set());
   const [grades, setGrades] = useState<Record<string, boolean>>({});
-  useLeaveGuard(Object.keys(grades).length > 0);
+  const [isFinished, setIsFinished] = useState(false);
+  useLeaveGuard(!isFinished && Object.keys(grades).length > 0);
   const card = deck[index];
-  const finish = (g: Record<string, boolean>) => onFinish(deck.filter((a) => a.term in g).map((a) => ({ term: a.term, correct: g[a.term] })), false);
+  const finish = (g: Record<string, boolean>) => {
+    setIsFinished(true);
+    onFinish(deck.filter((a) => a.term in g).map((a) => ({ term: a.term, correct: g[a.term] })), false);
+  };
 
   function grade(knew: boolean) {
     const g = { ...grades, [card.term]: knew };

@@ -4,7 +4,7 @@ import type { Repo } from '../../storage';
 import { ImportError } from '../../storage/backup';
 import { exportPack, importPack } from '../../storage/pack';
 import { dateStamp, downloadJson } from '../download';
-import { Loading, Table, useLoad } from '../kit';
+import { Loading, Table, useFocusHeading, useLoad } from '../kit';
 import { questions as plural } from '../plural';
 import { LoadError } from '../study/LoadError';
 import { ContentNotice, NOTICE_SETTING } from './ContentNotice';
@@ -30,6 +30,8 @@ export function MyQuestions({
     return { list: qs.sort((a, b) => a.stem.localeCompare(b.stem)), accepted: ok === true };
   }, [repo, examCode]);
   const [acceptedNow, setAcceptedNow] = useState(false);
+  // The heading appears once the list has loaded.
+  const headingRef = useFocusHeading([data === undefined]);
   const [message, setMessage] = useState('');
   const fileId = useId();
 
@@ -69,7 +71,7 @@ export function MyQuestions({
   const { list } = data;
   return (
     <section className="my-questions" aria-labelledby={`${fileId}-h`}>
-      <h2 id={`${fileId}-h`}>{`My questions: ${examCode}`}</h2>
+      <h2 id={`${fileId}-h`} ref={headingRef} tabIndex={-1}>{`My questions: ${examCode}`}</h2>
       {data.accepted || acceptedNow ? (
         <div className="author-actions">
           <button type="button" className="primary" onClick={() => onEdit()}>

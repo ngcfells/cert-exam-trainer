@@ -6,15 +6,15 @@ import { QUESTION_TYPES, questionSchema } from '../../domain/schema';
 import type { McqAnswer, McqPayload, Question, QuestionType } from '../../domain/types';
 import { JSON_STARTERS, usesJsonEditor, type JsonType } from '../../authoring/starters';
 import type { Repo } from '../../storage';
-import { Loading, metaFor, QuestionView } from '../kit';
+import { Loading, metaFor, QuestionView, useFocusHeading } from '../kit';
 import { useLeaveGuard } from '../nav';
 import { LoadError } from '../study/LoadError';
-
-const DISCARD = 'Discard your changes to this question?';
 import { plural } from '../plural';
 import { TYPE_LABELS } from './typeLabels';
 import '../exam/exam.css';
 import './author.css';
+
+const DISCARD = 'Discard your changes to this question?';
 
 type Option = { id: string; text: string };
 type PbqTexts = { payloadText: string; answerText: string; partExplanationsText: string };
@@ -139,6 +139,8 @@ export function QuestionEditor({
   const [showErrors, setShowErrors] = useState(false);
   const [preview, setPreview] = useState<ItemResponse>();
   const summaryRef = useRef<HTMLDivElement>(null);
+  // The heading appears once an existing question has loaded.
+  const headingRef = useFocusHeading([draft === null]);
   const uid = useId();
   const [newId] = useState(() => `user-${crypto.randomUUID()}`);
 
@@ -247,7 +249,7 @@ export function QuestionEditor({
 
   return (
     <section className="question-editor" aria-labelledby={`${uid}-h`}>
-      <h2 id={`${uid}-h`}>{id ? 'Edit question' : 'Add question'}</h2>
+      <h2 id={`${uid}-h`} ref={headingRef} tabIndex={-1}>{id ? 'Edit question' : 'Add question'}</h2>
       {showErrors && built.errors.length > 0 && (
         <div ref={summaryRef} tabIndex={-1} className="editor-errors error-summary" aria-labelledby={`${uid}-sum`} role="group">
           <h3 id={`${uid}-sum`}>{`${plural(built.errors.length, 'problem')} to fix before saving`}</h3>

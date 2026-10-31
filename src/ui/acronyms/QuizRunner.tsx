@@ -30,7 +30,9 @@ export function QuizRunner({
   const [index, setIndex] = useState(0);
   const [input, setInput] = useState('');
   const [graded, setGraded] = useState<Record<string, AcronymGrade>>({});
-  useLeaveGuard(Object.keys(graded).length > 0);
+  const [isFinished, setIsFinished] = useState(false);
+  // A timed quiz asks from the start; an untimed one once a card is graded.
+  useLeaveGuard(!isFinished && (minutes > 0 || Object.keys(graded).length > 0));
   const [deadline] = useState(() => (minutes > 0 ? now() + minutes * 60_000 : undefined));
   const choices = useMemo(() => {
     const rng = mulberry32(seed);
@@ -47,6 +49,7 @@ export function QuizRunner({
     (timedOut: boolean) => {
       if (finished.current) return;
       finished.current = true;
+      setIsFinished(true);
       onFinishRef.current(deck.flatMap((a) => gradedRef.current[a.term] ?? []), timedOut);
     },
     [deck],

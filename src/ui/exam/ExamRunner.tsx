@@ -34,7 +34,9 @@ export function ExamRunner({
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
   const [confirming, setConfirming] = useState(false);
   const submitted = useRef(false);
-  useLeaveGuard(Object.keys(responses).length > 0);
+  // A mock exam is always timed, so leaving asks from the start until it is submitted.
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  useLeaveGuard(!isSubmitted);
   const state = useRef({ responses, flagged });
   state.current = { responses, flagged };
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -47,6 +49,7 @@ export function ExamRunner({
     (autoSubmitted: boolean) => {
       if (submitted.current) return;
       submitted.current = true;
+      setIsSubmitted(true);
       dialogRef.current?.close();
       const { responses: r, flagged: f } = state.current;
       onSubmitRef.current({ responses: r, flagged: [...f], autoSubmitted, finishedAt: new Date(now()) });
