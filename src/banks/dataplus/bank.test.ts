@@ -2,13 +2,18 @@ import { describe, it, expect } from 'vitest';
 import { extractAcronyms, questionText } from '../../acronyms/extract';
 import { CONTENT_TARGETS, answerBalance, coverage, longestOptionTell, nearDuplicates, objectiveQuotas, pbqTypeCounts } from '../../content';
 import { isPbqTemplate } from '../../domain/pbq';
+import type { NumericAnswer } from '../../domain/types';
+import { lessonText } from '../../domain/lesson';
+import { shippedLessons } from '../lessons';
 import { createRegistry } from '../registry';
+import { NUMERIC_CHECKS } from './numericChecks';
 import { dataPlusItems } from './items';
 import { dataPlusMeta } from './meta';
 
 // Checks on the shipped bank. Unit tests otherwise run against the fixture bank (VITE_BANK=fixture).
 const items = dataPlusItems;
-const singleCount = items.filter((q) => q.type === 'mcq-single').length;
+const byIdType = (id: string) => items.find((q) => q.id === id)?.type;
+const singleCount =items.filter((q) => q.type === 'mcq-single').length;
 
 describe('shipped Data+ bank', () => {
   it('registers: schema, ids, objectives and source all valid', () => {
@@ -17,8 +22,41 @@ describe('shipped Data+ bank', () => {
 
   it('every acronym token and tag has an expansion', () => {
     const listed = new Set(dataPlusMeta.acronyms.map((a) => a.term));
-    const tokens = new Set(items.flatMap((q) => [...extractAcronyms(questionText(q)), ...q.acronyms]));
+    const tokens = new Set([
+      ...items.flatMap((q) => [...extractAcronyms(questionText(q)), ...q.acronyms]),
+      ...shippedLessons.flatMap((l) => extractAcronyms(lessonText(l))),
+    ]);
     expect([...tokens].filter((t) => !listed.has(t)).sort()).toEqual([]);
+  });
+
+  describe('lessons', () => {
+    const byId = new Map(items.map((q) => [q.id, q]));
+
+    it('link only existing, approved questions', () => {
+      const bad = shippedLessons.flatMap((l) => l.checkIds.filter((id) => byId.get(id)?.status !== 'approved').map((id) => `${l.id}: ${id}`));
+      expect(bad).toEqual([]);
+    });
+
+    it('with a formula link at least one numeric item', () => {
+      const none = shippedLessons.filter((l) => l.formula && !l.checkIds.some((id) => byId.get(id)?.type === 'numeric'));
+      expect(none.map((l) => l.id)).toEqual([]);
+    });
+
+    it('have unique ids', () => {
+      const ids = shippedLessons.map((l) => l.id);
+      expect(ids.filter((id, i) => ids.indexOf(id) !== i)).toEqual([]);
+    });
+  });
+
+  it('every numeric answer matches its recomputation within tolerance', () => {
+    const wrong = items.flatMap((q) => {
+      const check = NUMERIC_CHECKS[q.id];
+      if (q.type !== 'numeric' || !check) return [];
+      const a = q.answer as NumericAnswer;
+      return Math.abs(check() - a.value) <= a.tolerance + 1e-9 ? [] : [`${q.id}: ${a.value} vs ${check()}`];
+    });
+    expect(wrong).toEqual([]);
+    expect(Object.keys(NUMERIC_CHECKS).filter((id) => byIdType(id) !== 'numeric')).toEqual([]);
   });
 
   it('has no near-duplicate stems', () => {

@@ -1,0 +1,45 @@
+[
+  {
+    "id": "a-percent-change",
+    "exam": "DA0-002",
+    "area": "A",
+    "title": "Percent change",
+    "objectiveIds": ["3.2"],
+    "meaning": [
+      "Percent change says how much a number grew or shrank, compared with where it started. A rise from 80 to 100 is a change of 20, and 20 is one quarter of the starting 80, so the change is 25%.",
+      "Analysts use it because a raw difference can mislead: going up by 20 is huge for a store that sold 10 last month and tiny for one that sold 10,000. Percent change puts both on the same scale."
+    ],
+    "formula": {
+      "text": "percent change = ((new − old) ÷ old) × 100",
+      "spoken": "percent change equals new value minus old value, divided by old value, times 100",
+      "symbols": [
+        { "symbol": "old", "meaning": "the starting value (the earlier period)" },
+        { "symbol": "new", "meaning": "the ending value (the later period)" },
+        { "symbol": "new − old", "meaning": "the change; it is negative when the value went down" },
+        { "symbol": "× 100", "meaning": "turns a decimal such as 0.25 into a percent such as 25%" }
+      ]
+    },
+    "example": {
+      "intro": "A shop sold 80 mugs in May and 100 mugs in June. What is the percent change from May to June?",
+      "table": {
+        "caption": "Percent change from May to June, one step per row",
+        "head": ["Step", "Working", "Result"],
+        "rows": [
+          ["1. Find the change", "100 − 80", "20"],
+          ["2. Divide by the old value", "20 ÷ 80", "0.25"],
+          ["3. Turn it into a percent", "0.25 × 100", "25%"]
+        ]
+      },
+      "steps": [
+        "The old value is May (80), because May comes first.",
+        "The answer is positive, so it is an increase of 25%.",
+        "Check the other way: if sales fell from 100 back to 80, the change is −20 ÷ 100 = −0.20, a decrease of 20%. Going up 25% and then down 20% gets you back where you started, because each step divides by a different old value."
+      ]
+    },
+    "trap": {
+      "wrong": "Dividing by the new value: 20 ÷ 100 = 20%.",
+      "why": "Percent change is always measured against where you started, so the old value goes on the bottom. Exam answer lists often include the divide-by-new result, so check which number you divided by before you pick."
+    },
+    "checkIds": ["da2-3-2-num-001", "da2-3-2-num-002", "da2-3-2-pct-mcq-001"]
+  }
+]

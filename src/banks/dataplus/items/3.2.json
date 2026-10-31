@@ -2698,5 +2698,86 @@
     },
     "acronyms": [],
     "status": "approved"
+  },
+  {
+    "id": "da2-3-2-num-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A store sold 40 umbrellas in March and 50 in April. What is the percent change from March to April? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 25,
+      "tolerance": 0.5
+    },
+    "explanation": "Change = 50 − 40 = 10. Divide by the old value (March): 10 ÷ 40 = 0.25. Times 100 = 25%. It is positive, so sales rose by 25%."
+  },
+  {
+    "id": "da2-3-2-num-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A website had 200 visitors on Monday and 150 on Tuesday. What is the percent change from Monday to Tuesday? Answer as a percent, rounded to a whole number, with a minus sign for a decrease.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": -25,
+      "tolerance": 0.5
+    },
+    "explanation": "Change = 150 − 200 = −50. Divide by the old value (Monday): −50 ÷ 200 = −0.25. Times 100 = −25%, a 25% decrease. Dividing by Tuesday instead would give −33%, which is the trap."
+  },
+  {
+    "id": "da2-3-2-pct-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A ticket price rose from $60 to $75. An analyst reported a 20% increase. What went wrong?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "They subtracted the new price from the old price"
+        },
+        {
+          "id": "b",
+          "text": "They forgot to multiply by 100"
+        },
+        {
+          "id": "c",
+          "text": "They divided the change by the new price instead of the old price"
+        },
+        {
+          "id": "d",
+          "text": "Nothing; a 20% increase is correct"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The change is 75 − 60 = 15. Divided by the old price, 15 ÷ 60 = 0.25, so the increase is 25%. The analyst divided by the new price: 15 ÷ 75 = 0.20, which gives the wrong 20%."
   }
 ]
