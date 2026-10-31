@@ -15,6 +15,14 @@ describe('extractAcronyms', () => {
     expect(extractAcronyms('A table, I think; json and Api are not tokens. X1 neither.')).toEqual([]);
   });
 
+  it('ignores more SQL keywords and types', () => {
+    expect(extractAcronyms('WHERE EXISTS, EXCEPT, CAST(x AS VARCHAR), EXTRACT(YEAR FROM d), DATE BETWEEN, COALESCE, LEFT JOIN, OFFSET, PARTITION, OVER, COUNTIF, DATEDIFF, STDEV, IFERROR, VLOOKUP')).toEqual([]);
+  });
+
+  it('ignores the select-count words in stems', () => {
+    expect(extractAcronyms('Which TWO apply? Which THREE apply? Pick FOUR.')).toEqual([]);
+  });
+
   it('ignores tokens longer than 8 characters', () => {
     expect(extractAcronyms('ABCDEFGHI')).toEqual([]);
   });

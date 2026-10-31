@@ -1,0 +1,1342 @@
+[
+  {
+    "id": "da2-pbq-hotspot-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 2,
+    "stem": "A customer record holds the fields shown. Select every field that is personally identifiable information.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Full name"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Product category"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Email address"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Order count"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Home address"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Region code"
+        }
+      ],
+      "spots": [
+        {
+          "id": "name",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Full name"
+        },
+        {
+          "id": "category",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Product category"
+        },
+        {
+          "id": "email",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Email address"
+        },
+        {
+          "id": "orders",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Order count"
+        },
+        {
+          "id": "address",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Home address"
+        },
+        {
+          "id": "region",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Region code"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "name",
+        "email",
+        "address"
+      ]
+    },
+    "explanation": "Name, email and home address each identify a person. Category, order count and a broad region code do not on their own.",
+    "acronyms": [
+      "PII"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-seed-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which practice limits each user to only the data they need for their role?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Least privilege"
+        },
+        {
+          "id": "b",
+          "text": "Data mining"
+        },
+        {
+          "id": "c",
+          "text": "Normalization"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Under the principle of least privilege, each user gets only the access their role needs.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "da2-5-3-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which practice assigns permissions by job function rather than by individual?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Role-based access control"
+        },
+        {
+          "id": "b",
+          "text": "Discretionary file sharing"
+        },
+        {
+          "id": "c",
+          "text": "Single sign-on alone"
+        },
+        {
+          "id": "d",
+          "text": "Data masking"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Role-based access control ties permissions to roles such as analyst or auditor. File sharing by individual choice is ad hoc, single sign-on only handles authentication, and masking hides values rather than assigning access.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst sends a report across a public network. Which control keeps the content unreadable to anyone intercepting the traffic?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encryption at rest"
+        },
+        {
+          "id": "b",
+          "text": "Encryption in transit"
+        },
+        {
+          "id": "c",
+          "text": "Data masking"
+        },
+        {
+          "id": "d",
+          "text": "Role-based access control"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Encryption in transit protects data while it moves between systems. Encryption at rest protects stored data, masking changes displayed values, and role-based access controls who may open data, not what an eavesdropper sees.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "A laptop holding customer extracts is stolen. Which control best keeps the files unreadable to the thief?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encryption in transit"
+        },
+        {
+          "id": "b",
+          "text": "Role-based access control"
+        },
+        {
+          "id": "c",
+          "text": "Full-disk encryption"
+        },
+        {
+          "id": "d",
+          "text": "Masked report views"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Full-disk encryption is encryption at rest, so stored files stay unreadable without the key. Encryption in transit only covers data moving over a network, role-based access does not stop someone reading a stolen disk, and masked views only affect what reports show.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which item is an example of personally identifiable information?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A product category name"
+        },
+        {
+          "id": "b",
+          "text": "Total monthly order count"
+        },
+        {
+          "id": "c",
+          "text": "Average delivery time by region"
+        },
+        {
+          "id": "d",
+          "text": "A customer's home address"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A home address points to a specific person, so it is PII. The other options are product, aggregate or regional values that do not identify an individual.",
+    "acronyms": [
+      "PII"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which data is protected health information?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A patient's diagnosis linked to their name"
+        },
+        {
+          "id": "b",
+          "text": "Monthly clinic visit counts by site"
+        },
+        {
+          "id": "c",
+          "text": "A hospital's published parking rules"
+        },
+        {
+          "id": "d",
+          "text": "An anonymous survey of staff lunch choices"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "PHI is health data connected to an identifiable patient. Aggregate counts, public facility rules and anonymous non-health surveys do not link health details to a person.",
+    "acronyms": [
+      "PHI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which organization publishes widely used national frameworks and guidance for security and privacy controls?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The Unicode Consortium"
+        },
+        {
+          "id": "b",
+          "text": "The National Institute of Standards and Technology"
+        },
+        {
+          "id": "c",
+          "text": "The Internet Engineering Task Force"
+        },
+        {
+          "id": "d",
+          "text": "The Apache Software Foundation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "NIST publishes security and privacy frameworks and control catalogs. The Unicode Consortium maintains character encoding standards, the Internet Engineering Task Force develops internet protocols, and the Apache Software Foundation runs open-source software projects.",
+    "acronyms": [
+      "NIST"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "A team must share a dataset with researchers so that individuals can never be re-identified, even by the team itself. Which technique fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Masking with a reversible lookup table"
+        },
+        {
+          "id": "b",
+          "text": "Encryption with a stored key"
+        },
+        {
+          "id": "c",
+          "text": "Anonymization that removes identifiers irreversibly"
+        },
+        {
+          "id": "d",
+          "text": "Read-only roles for the researchers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "True anonymization cannot be reversed, so no one can link records back to people. A reversible lookup table and a stored key both allow recovery of the original values, and roles control access but leave identifiers in the data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "Developers need realistic test data but must not see real customer names. Which technique replaces real values with believable fake ones?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data profiling"
+        },
+        {
+          "id": "b",
+          "text": "Source control"
+        },
+        {
+          "id": "c",
+          "text": "Encryption in transit"
+        },
+        {
+          "id": "d",
+          "text": "Data masking"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Masking substitutes sensitive values with realistic stand-ins for non-production use. Profiling only summarizes columns, source control tracks code changes, and encryption in transit protects network traffic.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "A company collected email addresses for order confirmations and now wants to use them for unrelated advertising. Which principle is in question?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Purpose limitation"
+        },
+        {
+          "id": "b",
+          "text": "Data retention scheduling"
+        },
+        {
+          "id": "c",
+          "text": "Encryption at rest"
+        },
+        {
+          "id": "d",
+          "text": "Data lineage tracking"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Data should be used only for the purpose people were told about when it was collected. Retention is about how long data is kept, encryption at rest protects storage, and lineage records where data came from.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "Before sending customer data to a third-party vendor, what should an analyst make sure is in place?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A larger storage quota at the vendor"
+        },
+        {
+          "id": "b",
+          "text": "A data sharing agreement defining permitted use"
+        },
+        {
+          "id": "c",
+          "text": "A faster network link to the vendor"
+        },
+        {
+          "id": "d",
+          "text": "A copy of the internal style guide"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A sharing agreement sets what the vendor may do with the data and how it must protect it. Storage quotas, bandwidth and style guides do nothing to govern use of the data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "A new analyst needs to see only the sales tables. Which approach follows good practice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Share one administrator login with the whole team"
+        },
+        {
+          "id": "b",
+          "text": "Grant full warehouse access and review it later"
+        },
+        {
+          "id": "c",
+          "text": "Assign a role limited to the tables needed"
+        },
+        {
+          "id": "d",
+          "text": "Email the analyst a copy of all tables"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Limiting a role to what the job needs keeps exposure small and is easy to audit. Shared logins break accountability, broad access defeats the purpose of review, and emailed copies escape any access control.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 3,
+    "stem": "A database server's drives are encrypted, but queries from the application server cross the network as plain text. What gap remains?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data at rest is unprotected"
+        },
+        {
+          "id": "b",
+          "text": "Masking is missing on the drives"
+        },
+        {
+          "id": "c",
+          "text": "Role definitions are far too broad to review"
+        },
+        {
+          "id": "d",
+          "text": "Data in transit is unprotected"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Encrypted drives cover data at rest only, so traffic on the network can still be read. The scenario says the drives are already encrypted, and nothing in it mentions masking or roles.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 3,
+    "stem": "A hospital shares patient data with a university. Names are removed, but birth dates, postal codes and rare diagnoses remain. What is the main risk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Individuals may be re-identified by combining fields"
+        },
+        {
+          "id": "b",
+          "text": "The data can no longer be encrypted at rest"
+        },
+        {
+          "id": "c",
+          "text": "Role-based access no longer applies"
+        },
+        {
+          "id": "d",
+          "text": "The dataset becomes too small to analyze"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Combining quasi-identifiers such as birth date and postal code can single out a person even without a name. Encryption and role-based access work on any dataset, and removing a few fields does not shrink it enough to prevent analysis.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 3,
+    "stem": "A team needs production-like data in a test system, and testers must never be able to recover the real values. What is the better choice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypting the columns and sharing the key"
+        },
+        {
+          "id": "b",
+          "text": "One-way masking of sensitive columns"
+        },
+        {
+          "id": "c",
+          "text": "Copying production unchanged behind a firewall"
+        },
+        {
+          "id": "d",
+          "text": "Giving testers read-only roles to production data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "One-way masking leaves nothing to recover, which is what the requirement asks for. Sharing a key lets testers decrypt, an unchanged copy still holds real values, and roles on production still expose the real data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which pair of fields, taken together, is most likely to identify a specific person?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Product category and order month"
+        },
+        {
+          "id": "b",
+          "text": "Store region and store type"
+        },
+        {
+          "id": "c",
+          "text": "Full name and date of birth"
+        },
+        {
+          "id": "d",
+          "text": "Browser version and screen size"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A full name with a birth date narrows to one person and is PII. The other pairs describe products, locations in general or devices and are shared by many people.",
+    "acronyms": [
+      "PII"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are examples of PII?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Passport number on file"
+        },
+        {
+          "id": "b",
+          "text": "Email address of the customer"
+        },
+        {
+          "id": "c",
+          "text": "Aggregated monthly revenue for the region"
+        },
+        {
+          "id": "d",
+          "text": "Store opening hours for each branch"
+        },
+        {
+          "id": "e",
+          "text": "Average basket size for the store"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "A passport number on file and an email address of a customer each point to an individual. Aggregated revenue, store opening hours and average basket size describe the business, not a person.",
+    "acronyms": [
+      "PII"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO controls protect data at rest?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "VPN for remote staff"
+        },
+        {
+          "id": "b",
+          "text": "Full-disk encryption"
+        },
+        {
+          "id": "c",
+          "text": "Encrypted database columns"
+        },
+        {
+          "id": "d",
+          "text": "Secure browser connections"
+        },
+        {
+          "id": "e",
+          "text": "Role assignments for viewers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Disk and column encryption protect stored data if media or files are taken. A VPN and secure browser connections protect data in transit, and role assignments control access rather than protect stored bytes.",
+    "acronyms": [
+      "VPN"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE items are PHI when linked to an identifiable patient?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Laboratory results"
+        },
+        {
+          "id": "b",
+          "text": "Prescription history"
+        },
+        {
+          "id": "c",
+          "text": "Hospital cafeteria menu"
+        },
+        {
+          "id": "d",
+          "text": "Insurance claim record"
+        },
+        {
+          "id": "e",
+          "text": "Ward bed count"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Lab results, prescriptions and claims describe a patient's health or care and are PHI once tied to a person. A cafeteria menu and ward bed count carry no patient information.",
+    "acronyms": [
+      "PHI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO practices support responsible data sharing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sending the full extract to be safe"
+        },
+        {
+          "id": "b",
+          "text": "Limiting fields to what the recipient needs"
+        },
+        {
+          "id": "c",
+          "text": "Using personal email accounts for files"
+        },
+        {
+          "id": "d",
+          "text": "Leaving shared links open indefinitely"
+        },
+        {
+          "id": "e",
+          "text": "Writing down permitted uses in an agreement"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Minimizing fields and documenting permitted uses limit exposure and set expectations. Oversharing, personal accounts and links that never expire all increase the risk of misuse.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are benefits of role-based access control?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypts all traffic automatically"
+        },
+        {
+          "id": "b",
+          "text": "Simplifies changes when staff change jobs"
+        },
+        {
+          "id": "c",
+          "text": "Makes reviews easier to perform"
+        },
+        {
+          "id": "d",
+          "text": "Removes the need for anonymization"
+        },
+        {
+          "id": "e",
+          "text": "Profiles data quality on a schedule"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Roles let administrators change access by moving a person between roles, and reviews can check a handful of roles instead of many individuals. Role-based access does not encrypt traffic, replace anonymization or profile data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Choose the best protection for each scenario.",
+    "payload": {
+      "fields": [
+        {
+          "id": "lost",
+          "label": "A laptop holding a customer extract is stolen",
+          "options": [
+            {
+              "id": "rest",
+              "text": "Encryption at rest"
+            },
+            {
+              "id": "transit",
+              "text": "Encryption in transit"
+            },
+            {
+              "id": "mask",
+              "text": "Masking"
+            }
+          ]
+        },
+        {
+          "id": "net",
+          "label": "Data crosses a public network between a dashboard and its database",
+          "options": [
+            {
+              "id": "rest",
+              "text": "Encryption at rest"
+            },
+            {
+              "id": "transit",
+              "text": "Encryption in transit"
+            },
+            {
+              "id": "anon",
+              "text": "Anonymization"
+            }
+          ]
+        },
+        {
+          "id": "agents",
+          "label": "Support agents must see only the last four digits of a card number",
+          "options": [
+            {
+              "id": "anon",
+              "text": "Anonymization"
+            },
+            {
+              "id": "transit",
+              "text": "Encryption in transit"
+            },
+            {
+              "id": "mask",
+              "text": "Masking"
+            }
+          ]
+        },
+        {
+          "id": "research",
+          "label": "A university receives a dataset that must never be linkable to individuals",
+          "options": [
+            {
+              "id": "rest",
+              "text": "Encryption at rest"
+            },
+            {
+              "id": "mask",
+              "text": "Masking"
+            },
+            {
+              "id": "anon",
+              "text": "Anonymization"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "lost": "rest",
+        "net": "transit",
+        "agents": "mask",
+        "research": "anon"
+      }
+    },
+    "explanation": "Encryption at rest protects stored files, encryption in transit protects data on the wire, masking hides part of a value from viewers, and anonymization removes the link to individuals.",
+    "partExplanations": {
+      "lost": "Stored data on a stolen device is protected by encryption at rest.",
+      "net": "Traffic on a public network needs encryption in transit.",
+      "agents": "Masking shows only the digits agents need.",
+      "research": "Anonymization removes identifiers so records cannot be linked back."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-config-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Configure access under role-based access control. Choose the right permission for each role.",
+    "payload": {
+      "fields": [
+        {
+          "id": "analyst",
+          "label": "Sales analyst who builds reports from the sales dataset but must not change it",
+          "options": [
+            {
+              "id": "ro",
+              "text": "Read only"
+            },
+            {
+              "id": "rw",
+              "text": "Read and write"
+            },
+            {
+              "id": "admin",
+              "text": "Full control"
+            }
+          ]
+        },
+        {
+          "id": "clerk",
+          "label": "Payroll clerk who enters and corrects pay records in the payroll table",
+          "options": [
+            {
+              "id": "none",
+              "text": "No access"
+            },
+            {
+              "id": "ro",
+              "text": "Read only"
+            },
+            {
+              "id": "rw",
+              "text": "Read and write"
+            }
+          ]
+        },
+        {
+          "id": "auditor",
+          "label": "External auditor on the financial reports",
+          "options": [
+            {
+              "id": "admin",
+              "text": "Full control"
+            },
+            {
+              "id": "ro",
+              "text": "Read only"
+            },
+            {
+              "id": "rw",
+              "text": "Read and write"
+            }
+          ]
+        },
+        {
+          "id": "former",
+          "label": "Account of an employee who left last week",
+          "options": [
+            {
+              "id": "ro",
+              "text": "Read only"
+            },
+            {
+              "id": "rw",
+              "text": "Read and write"
+            },
+            {
+              "id": "none",
+              "text": "No access"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "analyst": "ro",
+        "clerk": "rw",
+        "auditor": "ro",
+        "former": "none"
+      }
+    },
+    "explanation": "Each role gets the least access its job needs. Analysts and auditors read, the clerk maintains payroll, and a departed employee's access is removed.",
+    "partExplanations": {
+      "analyst": "Analysts report on sales and do not change source rows.",
+      "clerk": "Maintaining payroll needs write access to that table.",
+      "auditor": "Auditors need to see records, not alter them.",
+      "former": "Access ends when employment ends."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each data element into the category of sensitive data it belongs to.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "pii",
+          "text": "PII"
+        },
+        {
+          "id": "phi",
+          "text": "PHI"
+        },
+        {
+          "id": "neither",
+          "text": "Neither"
+        }
+      ],
+      "items": [
+        {
+          "id": "passport",
+          "text": "Passport number"
+        },
+        {
+          "id": "lab",
+          "text": "Laboratory test results"
+        },
+        {
+          "id": "units",
+          "text": "Total units sold per month"
+        },
+        {
+          "id": "email",
+          "text": "Personal email address"
+        },
+        {
+          "id": "rx",
+          "text": "Prescription history"
+        },
+        {
+          "id": "price",
+          "text": "Average ticket price by region"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "passport": "pii",
+        "lab": "phi",
+        "units": "neither",
+        "email": "pii",
+        "rx": "phi",
+        "price": "neither"
+      }
+    },
+    "explanation": "Identifiers such as a passport number or email address are PII, health details tied to a patient are PHI, and aggregate business figures are neither.",
+    "partExplanations": {
+      "passport": "A passport number identifies one person.",
+      "lab": "Test results are health information.",
+      "units": "An aggregate with no individual in it.",
+      "email": "A personal email address identifies a person.",
+      "rx": "Medication history is health information.",
+      "price": "A regional average does not identify anyone."
+    },
+    "acronyms": [
+      "PII",
+      "PHI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-5-3-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "5.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Match each outcome to the practice that produces it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A support screen shows ****-****-1234 instead of the full card number."
+        },
+        {
+          "id": "p2",
+          "text": "No one, including the data owner, can link the released records back to a person."
+        },
+        {
+          "id": "p3",
+          "text": "Someone who intercepts traffic between a dashboard and its database cannot read it."
+        },
+        {
+          "id": "p4",
+          "text": "A security team's controls follow a published framework from a federal agency."
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Masking"
+        },
+        {
+          "id": "c2",
+          "text": "Anonymization"
+        },
+        {
+          "id": "c3",
+          "text": "Encryption in transit"
+        },
+        {
+          "id": "c4",
+          "text": "NIST guidance"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "Masking hides part of a value, anonymization breaks the link to people, encryption in transit protects traffic, and NIST publishes security frameworks.",
+    "partExplanations": {
+      "p1": "Showing only part of a value is masking.",
+      "p2": "Irreversible removal of identity is anonymization.",
+      "p3": "Protecting data on the wire is encryption in transit.",
+      "p4": "NIST publishes security and privacy frameworks."
+    },
+    "acronyms": [
+      "NIST"
+    ],
+    "status": "approved"
+  }
+]

@@ -7,12 +7,15 @@
     "dev": "vite",
     "build": "vite build",
     "build:single": "cross-env SINGLE=1 vite build",
+    "build:e2e": "cross-env SINGLE=1 VITE_BANK=fixture vite build",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "test:e2e-dev": "playwright test -c playwright.dev.config.ts",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run test && npm run build:single && npm run test:e2e",
-    "md-to-pack": "vite-node scripts/md-to-pack.ts --"
+    "check": "npm run lint && npm run typecheck && npm run test && npm run build:single && npm run build:e2e && npm run test:e2e",
+    "md-to-pack": "vite-node scripts/md-to-pack.ts --",
+    "draft:ollama": "vite-node scripts/draft-ollama.ts --"
   },
   "dependencies": {
     "idb": "^8.0.4",

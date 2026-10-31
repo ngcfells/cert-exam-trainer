@@ -1,0 +1,2507 @@
+[
+  {
+    "id": "da2-pbq-order-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 2,
+    "stem": "Put the steps of a basic ETL load into the order they run.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Validate row counts against the source"
+        },
+        {
+          "id": "s1",
+          "text": "Extract records from the source system"
+        },
+        {
+          "id": "s3",
+          "text": "Load the transformed rows into the warehouse"
+        },
+        {
+          "id": "s2",
+          "text": "Clean and standardize the extracted values"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "explanation": "ETL extracts, transforms, then loads; reconciliation checks the load against the source afterwards.",
+    "acronyms": [
+      "ETL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-pbq-terminal-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 2,
+    "stem": "The nightly load of orders.csv failed. Review the pipeline log, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 5 load_orders.log",
+        "02:00:01 INFO  start load orders.csv -> staging.orders",
+        "02:00:04 INFO  read 18,402 rows",
+        "02:00:05 WARN  row 7311: order_date \"31/02/2026\" is not a valid date",
+        "02:00:05 ERROR row 7311: rejected; batch aborted (strict mode)",
+        "02:00:05 INFO  0 rows committed"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that shows every ERROR line in load_orders.log"
+        },
+        {
+          "id": "fix",
+          "label": "Choose the best next action",
+          "options": [
+            {
+              "id": "rerun",
+              "text": "Rerun the load unchanged"
+            },
+            {
+              "id": "quarantine",
+              "text": "Route invalid rows to a reject table, then reload the valid rows"
+            },
+            {
+              "id": "disable",
+              "text": "Turn off date validation for the orders table"
+            },
+            {
+              "id": "truncate",
+              "text": "Truncate staging.orders and stop the schedule"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep ERROR load_orders.log",
+          "grep \"ERROR\" load_orders.log",
+          "grep 'ERROR' load_orders.log",
+          "grep ERROR ./load_orders.log",
+          "grep -i error load_orders.log",
+          "grep -w ERROR load_orders.log",
+          "grep -n ERROR load_orders.log",
+          "cat load_orders.log | grep ERROR"
+        ],
+        "fix": [
+          "quarantine"
+        ]
+      }
+    },
+    "explanation": "grep filters a log to matching lines. One bad date aborted the batch, so the reliable fix is to quarantine invalid rows for review and load the rest; rerunning fails again, and disabling validation lets bad data in.",
+    "partExplanations": {
+      "find": "grep ERROR load_orders.log prints only the lines that contain ERROR.",
+      "fix": "A reject (quarantine) table keeps the bad rows for correction without blocking valid data."
+    },
+    "acronyms": [
+      "CSV"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-pbq-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 2,
+    "stem": "An analyst needs every customer, with their order total where one exists, for customers who joined in 2025. Configure the query.",
+    "payload": {
+      "fields": [
+        {
+          "id": "join",
+          "label": "Join type from customers to orders",
+          "options": [
+            {
+              "id": "inner",
+              "text": "INNER JOIN"
+            },
+            {
+              "id": "left",
+              "text": "LEFT JOIN"
+            },
+            {
+              "id": "cross",
+              "text": "CROSS JOIN"
+            }
+          ]
+        },
+        {
+          "id": "agg",
+          "label": "Aggregate for the order total",
+          "options": [
+            {
+              "id": "sum",
+              "text": "SUM(amount)"
+            },
+            {
+              "id": "count",
+              "text": "COUNT(amount)"
+            },
+            {
+              "id": "max",
+              "text": "MAX(amount)"
+            }
+          ]
+        },
+        {
+          "id": "filter",
+          "label": "Clause that limits customers to 2025 joiners",
+          "options": [
+            {
+              "id": "where",
+              "text": "WHERE"
+            },
+            {
+              "id": "having",
+              "text": "HAVING"
+            },
+            {
+              "id": "order",
+              "text": "ORDER BY"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "join": "left",
+        "agg": "sum",
+        "filter": "where"
+      }
+    },
+    "explanation": "A LEFT JOIN keeps customers without orders, SUM totals the amounts, and WHERE filters rows before grouping.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "In SQL, which operator stacks the results of two SELECT statements with matching columns and removes duplicate rows from the combined output?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "UNION"
+        },
+        {
+          "id": "b",
+          "text": "UNION ALL"
+        },
+        {
+          "id": "c",
+          "text": "INNER JOIN"
+        },
+        {
+          "id": "d",
+          "text": "CROSS JOIN"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "UNION appends the second result set below the first and discards duplicate rows. UNION ALL keeps the duplicates, while INNER JOIN and CROSS JOIN combine tables side by side rather than stacking rows.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst appends twelve monthly extracts into one table. Some rows are legitimately identical, such as two equal cash sales, and every row must be kept. Which operator should combine the extracts?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "UNION"
+        },
+        {
+          "id": "b",
+          "text": "UNION ALL"
+        },
+        {
+          "id": "c",
+          "text": "INTERSECT"
+        },
+        {
+          "id": "d",
+          "text": "FULL OUTER JOIN"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "UNION ALL appends every row from each SELECT, including exact duplicates, and skips the cost of a duplicate check. UNION would silently drop the identical sales, INTERSECT keeps only rows common to both inputs, and FULL OUTER JOIN matches rows side by side instead of appending them.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A sales manager wants a list of every customer with their order count. Customers who have never ordered should show a count of zero. The query starts FROM customers. Which join to orders is appropriate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "INNER JOIN on customer_id"
+        },
+        {
+          "id": "b",
+          "text": "CROSS JOIN with no join condition"
+        },
+        {
+          "id": "c",
+          "text": "LEFT JOIN on customer_id"
+        },
+        {
+          "id": "d",
+          "text": "INNER JOIN filtered on order_date"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A LEFT JOIN keeps every row from customers and fills order columns with NULL where there is no match, so COUNT(orders.order_id) returns zero for those customers. An INNER JOIN, filtered or not, drops customers without orders, and a CROSS JOIN pairs every customer with every order.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst groups sales by store and needs only stores whose total sales exceed 10,000. Which clause completes the query SELECT store_id, SUM(amount) FROM sales GROUP BY store_id ___?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "WHERE SUM(amount) > 10000"
+        },
+        {
+          "id": "b",
+          "text": "ORDER BY SUM(amount) DESC, store_id"
+        },
+        {
+          "id": "c",
+          "text": "WHERE amount > 10000"
+        },
+        {
+          "id": "d",
+          "text": "HAVING SUM(amount) > 10000"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "HAVING filters groups after aggregation, so it can test SUM(amount). WHERE runs before grouping and cannot reference an aggregate; WHERE amount > 10000 filters individual sales instead of totals, and ORDER BY only sorts the groups.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which SQL clause makes an aggregate such as SUM or AVG return one result per region instead of one result for the whole table?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "GROUP BY region"
+        },
+        {
+          "id": "b",
+          "text": "ORDER BY region"
+        },
+        {
+          "id": "c",
+          "text": "SELECT DISTINCT region"
+        },
+        {
+          "id": "d",
+          "text": "WHERE region IS NOT NULL"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "GROUP BY collapses rows sharing a region value so each aggregate is computed per region. ORDER BY only sorts, DISTINCT removes duplicate output rows without aggregating, and the WHERE condition filters rows but still leaves one overall total.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst needs all products priced above the average price of all products. Which query returns them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "SELECT * FROM products WHERE price > (SELECT price FROM products)"
+        },
+        {
+          "id": "b",
+          "text": "SELECT * FROM products WHERE price > (SELECT AVG(price) FROM products)"
+        },
+        {
+          "id": "c",
+          "text": "SELECT * FROM products GROUP BY price HAVING price > AVG(price)"
+        },
+        {
+          "id": "d",
+          "text": "SELECT * FROM products WHERE price > (SELECT AVG(price) FROM orders)"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The nested query computes the overall average once and the outer WHERE compares each price against it. An aggregate cannot appear directly in WHERE, a subquery that returns every price cannot be compared with one value, grouping by price makes each group's average equal its own price, and the average of orders is the wrong table.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "The query SELECT name FROM customers WHERE customer_id NOT IN (SELECT customer_id FROM orders) returns no rows, yet several customers have never ordered. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The customers table has no primary key on customer_id"
+        },
+        {
+          "id": "b",
+          "text": "The subquery needs a UNION to compare both tables"
+        },
+        {
+          "id": "c",
+          "text": "At least one orders row has a NULL customer_id"
+        },
+        {
+          "id": "d",
+          "text": "NOT IN accepts only one value from the subquery"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "If the subquery list contains a NULL, every NOT IN comparison evaluates to unknown, so no rows qualify; filtering NULLs out of the subquery fixes it. A missing primary key does not change the comparison, UNION stacks rows rather than comparing them, and NOT IN accepts multi-row lists.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "A table stores first_name and last_name in separate columns. Which operation produces a single full_name column such as 'Ana Ruiz'?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Casting the name values to a numeric type"
+        },
+        {
+          "id": "b",
+          "text": "Taking a substring of the first_name value"
+        },
+        {
+          "id": "c",
+          "text": "Trimming spaces from the last_name value"
+        },
+        {
+          "id": "d",
+          "text": "Joining the two name values with a space"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Concatenation joins strings end to end, so first_name || ' ' || last_name builds the full name. Casting changes data type, a substring extracts part of one string, and trimming only removes whitespace.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst needs only rows for the Northeast region from a 40-million-row sales table before loading them into a spreadsheet. What should the query include?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A WHERE clause that keeps region = 'Northeast'"
+        },
+        {
+          "id": "b",
+          "text": "A GROUP BY region clause with no aggregate"
+        },
+        {
+          "id": "c",
+          "text": "An ORDER BY region clause to sort the rows"
+        },
+        {
+          "id": "d",
+          "text": "A UNION with a second query against the same table"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A WHERE clause filters rows at the source, returning only the Northeast records. Grouping without an aggregate still returns all regions, sorting changes order but not row count, and a UNION adds rows rather than removing them.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst joins orders to order_lines on order_id and then computes SUM(orders.order_total). The result is far higher than the finance report. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The join should have been a CROSS JOIN to include every order"
+        },
+        {
+          "id": "b",
+          "text": "Each order total is repeated once for every line in the order"
+        },
+        {
+          "id": "c",
+          "text": "SUM ignores NULL values, which inflates the remaining totals"
+        },
+        {
+          "id": "d",
+          "text": "The order_id column needs an index before it can be joined"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "In a one-to-many join each order row is duplicated for each of its lines, so summing the order-level total counts it several times; aggregate lines first or sum at the order level. A CROSS JOIN would inflate it even more, ignoring NULLs cannot raise a total, and an index affects speed, not results.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A query that filters a 50-million-row transactions table on customer_id takes several minutes. Which change is most likely to speed it up?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add an ORDER BY customer_id clause to the query"
+        },
+        {
+          "id": "b",
+          "text": "Convert customer_id to a text data type"
+        },
+        {
+          "id": "c",
+          "text": "Create an index on the customer_id column"
+        },
+        {
+          "id": "d",
+          "text": "Rewrite the filter as a nested query on itself"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An index lets the database locate matching customer_id values without scanning every row. Sorting adds work, converting the type does not avoid a scan, and wrapping the table in a subquery leaves the same full scan.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A reporting tool runs the same SQL statement hundreds of times a day, changing only the start and end dates that users type in. Which approach reuses the execution plan and also protects against injected SQL?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Building the statement by joining user text into the string"
+        },
+        {
+          "id": "b",
+          "text": "Copying the results into a new table for each user"
+        },
+        {
+          "id": "c",
+          "text": "Running the query without any date filter at all"
+        },
+        {
+          "id": "d",
+          "text": "Using a parameterized query with placeholders for the dates"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Parameterized queries send the statement once with placeholders and pass the dates as values, so the plan can be reused and input is never executed as code. String building invites injection, per-user copies waste storage, and dropping the filter returns far more data than needed.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst is exploring a 2-billion-row clickstream table to test a hypothesis about last week's traffic. Which approach is the most efficient starting point?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Query only needed columns for last week, or a sample"
+        },
+        {
+          "id": "b",
+          "text": "Select every column from the full table and filter later"
+        },
+        {
+          "id": "c",
+          "text": "Export the whole table to a CSV file before looking at it"
+        },
+        {
+          "id": "d",
+          "text": "Join the table to every dimension table to be safe"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Working on a subset of rows and columns reduces input/output and memory and is enough to explore the question. Selecting everything, exporting it to CSV or joining every dimension moves far more data than the analysis needs.",
+    "acronyms": [
+      "CSV"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Within one session, an analyst computes a cleaned list of active customers that four later queries each need to join. Which technique avoids recomputing it four times?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Repeating the same nested query in each of the four statements"
+        },
+        {
+          "id": "b",
+          "text": "Storing the result in a temporary table and reusing it"
+        },
+        {
+          "id": "c",
+          "text": "Creating a permanent table in the production schema"
+        },
+        {
+          "id": "d",
+          "text": "Adding DISTINCT to each of the four later queries"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A temporary table holds the intermediate result for the session so later queries read it directly, and it is dropped automatically afterward. Repeating the subquery recomputes it each time, a permanent production table leaves clutter and needs permissions, and DISTINCT does not cache anything.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A database administrator wants to add indexes on eight columns of an order table that receives thousands of inserts per minute. What is the main trade-off to consider?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The table can no longer be joined to other tables"
+        },
+        {
+          "id": "b",
+          "text": "Queries that filter on the indexed columns run more slowly"
+        },
+        {
+          "id": "c",
+          "text": "Inserts and updates slow down as each index is maintained"
+        },
+        {
+          "id": "d",
+          "text": "The indexes remove the need for a primary key"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Every index must be updated on each insert, update or delete, so heavy write workloads slow down and storage grows. Indexes do not block joins, they usually speed up filtering on the indexed columns, and they do not replace a primary key.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A query keeps only 2025 orders by applying a year-extraction function to the indexed order_date column, and it scans the whole table every time. Which rewrite lets the database use the index?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Convert order_date to text and match it against a '2025%' pattern"
+        },
+        {
+          "id": "b",
+          "text": "Compare the extracted year using an IN list rather than with an equals sign"
+        },
+        {
+          "id": "c",
+          "text": "Keep the year function and add a check that order_date is not null"
+        },
+        {
+          "id": "d",
+          "text": "Compare order_date directly with the range 2025-01-01 to before 2026-01-01"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Comparing the bare column against a date range lets the optimizer seek on the index. Converting the column to text or still applying the year function hides it from the index, and a not-null check adds a condition without removing the function.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "In a traditional ETL process, where does the transformation of the data take place?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "In a staging area before the data reaches the target"
+        },
+        {
+          "id": "b",
+          "text": "Inside the target warehouse after the raw data is loaded"
+        },
+        {
+          "id": "c",
+          "text": "In the source system before any extraction occurs"
+        },
+        {
+          "id": "d",
+          "text": "In the reporting tool when a user opens a dashboard"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "ETL extracts data, transforms it in a staging area or processing engine, and then loads the finished result into the target. Transforming inside the target after loading describes ELT, and the source system and reporting tool are outside the ETL transform step.",
+    "acronyms": [
+      "ELT",
+      "ETL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A company moves to a cloud data warehouse with elastic compute. Engineers want to land raw data quickly and reshape it later with SQL as new questions arise. Which approach fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "ETL, transforming all data before it is loaded"
+        },
+        {
+          "id": "b",
+          "text": "ELT, loading first and transforming in place"
+        },
+        {
+          "id": "c",
+          "text": "Manual exports emailed to analysts each week"
+        },
+        {
+          "id": "d",
+          "text": "A one-time full copy with no later transformation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "ELT loads raw data into the warehouse and uses its scalable compute to transform it later, keeping the raw copy for new questions. ETL transforms before loading, so the raw form is not kept in the warehouse, while manual exports and a one-off copy do not provide a repeatable pipeline.",
+    "acronyms": [
+      "ELT",
+      "ETL",
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A hospital must mask patient PII before any of it reaches a shared analytics warehouse. Which pipeline pattern best meets this requirement?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "ELT, so the warehouse can mask the data after it lands"
+        },
+        {
+          "id": "b",
+          "text": "A direct replica of the source database in the warehouse"
+        },
+        {
+          "id": "c",
+          "text": "ETL, so records are masked during the transform step"
+        },
+        {
+          "id": "d",
+          "text": "Loading unmasked raw files to the warehouse and restricting access"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "With ETL the masking happens in the transform step, so unmasked PII never reaches the warehouse. ELT, a direct replica and raw file loads all place the sensitive values in the warehouse before any masking or access control is applied.",
+    "acronyms": [
+      "ELT",
+      "ETL",
+      "PII"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A nightly job copies a 300-million-row orders table in full, but only a few thousand rows change each day. Each row has a last_modified timestamp. Which change reduces the load time most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run the full copy twice a day instead of once"
+        },
+        {
+          "id": "b",
+          "text": "Drop the indexes on the target before each full copy"
+        },
+        {
+          "id": "c",
+          "text": "Compress the full extract before network transfer"
+        },
+        {
+          "id": "d",
+          "text": "Switch to an incremental load of recent changes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An incremental (delta) load uses last_modified to extract only new or changed rows, so a few thousand rows move instead of 300 million. Running the full copy more often, dropping indexes or compressing the file still moves the entire table.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which stage of an ETL pipeline reads data out of source systems such as databases, files and APIs?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Extract"
+        },
+        {
+          "id": "b",
+          "text": "Transform"
+        },
+        {
+          "id": "c",
+          "text": "Load"
+        },
+        {
+          "id": "d",
+          "text": "Publish"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Extract pulls data from the sources. Transform cleans and reshapes it, Load writes it to the target, and publishing is not one of the three ETL stages.",
+    "acronyms": [
+      "API",
+      "ETL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst must combine customer records from a customer relationship management system and a billing system. Each system uses its own customer identifier. What is the best first step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Join the two tables on customer name only"
+        },
+        {
+          "id": "b",
+          "text": "Build a mapping table that links the two codes"
+        },
+        {
+          "id": "c",
+          "text": "Union both tables and keep every single row"
+        },
+        {
+          "id": "d",
+          "text": "Drop the identifiers and rely on the row order"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A mapping (cross-reference) table gives a reliable key for joining records that describe the same customer across systems. Names are not unique and vary in spelling, a union stacks records without linking them, and row order carries no meaning.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst pulls order data from a vendor API that returns JSON. The extract always stops at exactly 100 records, though the vendor reports 4,800 orders. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The JSON format cannot hold more than 100 records"
+        },
+        {
+          "id": "b",
+          "text": "The API key has expired since the first request"
+        },
+        {
+          "id": "c",
+          "text": "The script does not request the next page of results"
+        },
+        {
+          "id": "d",
+          "text": "The vendor database has a lock on the orders table"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Many APIs return results in pages and supply a next-page token or link; the script must loop until no pages remain. JSON has no 100-record limit, an expired key would return an error rather than data, and a lock would not cap results at a round number.",
+    "acronyms": [
+      "API",
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A company wants analysts to query data in three separate databases where it lives, through one access layer, without copying the data into a new store. Which integration approach is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Nightly batch ETL into a warehouse"
+        },
+        {
+          "id": "b",
+          "text": "Database replication to a reporting server"
+        },
+        {
+          "id": "c",
+          "text": "Weekly CSV exports to a shared drive"
+        },
+        {
+          "id": "d",
+          "text": "Data virtualization with federated queries"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Data virtualization presents several sources through one logical layer and runs federated queries against them where they live. Batch ETL, replication and CSV exports all copy the data into another location.",
+    "acronyms": [
+      "CSV",
+      "ETL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "In a simple random sample, what is true of the members of the population?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Each member has an equal chance of being selected"
+        },
+        {
+          "id": "b",
+          "text": "Members are chosen from every subgroup in proportion"
+        },
+        {
+          "id": "c",
+          "text": "Every member at a fixed interval in a list is chosen"
+        },
+        {
+          "id": "d",
+          "text": "Members who are easiest to reach are chosen first"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Simple random sampling gives every member the same probability of selection. Proportional draws from subgroups describe stratified sampling, fixed intervals describe systematic sampling, and choosing the easiest members describes convenience sampling.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A retailer surveys customers and must make sure each of its five regions appears in the sample in proportion to its share of customers. Which sampling method fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Simple random sampling"
+        },
+        {
+          "id": "b",
+          "text": "Stratified sampling"
+        },
+        {
+          "id": "c",
+          "text": "Convenience sampling"
+        },
+        {
+          "id": "d",
+          "text": "Snowball sampling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Stratified sampling divides the population into strata such as regions and samples each in proportion, guaranteeing representation. A simple random draw may under-represent small regions by chance, and convenience and snowball sampling are nonprobability methods.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An auditor sorts 12,000 invoices by number, picks a random start between 1 and 20, and then selects every 20th invoice. Which sampling method is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Cluster sampling"
+        },
+        {
+          "id": "b",
+          "text": "Quota sampling"
+        },
+        {
+          "id": "c",
+          "text": "Systematic sampling"
+        },
+        {
+          "id": "d",
+          "text": "Stratified sampling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Selecting every kth item after a random start is systematic sampling. Cluster sampling selects whole groups, quota sampling fills target counts without random selection, and stratified sampling draws from defined subgroups.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "To estimate satisfaction across all customers, a bank surveys whoever visits its downtown branch on weekday mornings. What is the main problem with this approach?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The sample will be too large to analyze easily"
+        },
+        {
+          "id": "b",
+          "text": "Weekday morning visits produce too many missing answers"
+        },
+        {
+          "id": "c",
+          "text": "The survey would have to use open-ended questions"
+        },
+        {
+          "id": "d",
+          "text": "The convenience sample may not represent customers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Surveying whoever is easy to reach is convenience sampling, which over-represents one branch and one type of customer, so results cannot be generalized. Sample size, missing answers and question format are not the core flaw here.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A draft survey asks, \"How much do you love our improved checkout process?\" What is the main problem with this question?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a leading question that suggests a positive answer"
+        },
+        {
+          "id": "b",
+          "text": "It is a double-barreled question about two separate topics"
+        },
+        {
+          "id": "c",
+          "text": "It asks respondents for a number instead of an opinion"
+        },
+        {
+          "id": "d",
+          "text": "It uses an open format that cannot be analyzed easily"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The words \"love\" and \"improved\" push respondents toward a favorable answer, so it should be reworded neutrally. It asks about one topic, so it is not double-barreled, and it neither requests a number nor uses an unanalyzable format.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "A survey team wants answers that can be counted and averaged with little cleanup. Which question format best supports this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Open-ended comment boxes with no length limit"
+        },
+        {
+          "id": "b",
+          "text": "Closed-ended items with a fixed rating scale"
+        },
+        {
+          "id": "c",
+          "text": "Free-text fields for the respondent's own words"
+        },
+        {
+          "id": "d",
+          "text": "Follow-up phone interviews with each respondent"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Closed-ended items with a fixed scale produce consistent values that are easy to tally and average. Comment boxes, free text and interviews yield qualitative data that must be coded before it can be aggregated.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A franchise randomly selects 10 of its 200 stores and then surveys every employee at those 10 stores. Which sampling method is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Stratified sampling"
+        },
+        {
+          "id": "b",
+          "text": "Systematic sampling"
+        },
+        {
+          "id": "c",
+          "text": "Cluster sampling"
+        },
+        {
+          "id": "d",
+          "text": "Quota sampling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Cluster sampling randomly selects whole groups and includes everyone in them. Stratified sampling draws from every subgroup, systematic sampling uses a fixed interval, and quota sampling is nonrandom.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO conditions must be met for a UNION of two SELECT statements to run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Both SELECT statements return the same number of columns"
+        },
+        {
+          "id": "b",
+          "text": "Both SELECT statements read from the same table"
+        },
+        {
+          "id": "c",
+          "text": "Corresponding columns have compatible data types"
+        },
+        {
+          "id": "d",
+          "text": "Each SELECT statement has its own ORDER BY clause"
+        },
+        {
+          "id": "e",
+          "text": "Both result sets share a primary key column"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "UNION needs the same column count and compatible types in each position. The inputs can come from different tables, only one ORDER BY is allowed at the end, and no shared key is required.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-033",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst needs, for each month, the average order value and the number of different customers who ordered. Which TWO aggregate expressions are needed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "SUM(customer_id)"
+        },
+        {
+          "id": "b",
+          "text": "AVG(order_total)"
+        },
+        {
+          "id": "c",
+          "text": "MAX(order_total)"
+        },
+        {
+          "id": "d",
+          "text": "COUNT(*)"
+        },
+        {
+          "id": "e",
+          "text": "COUNT(DISTINCT customer_id)"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "AVG(order_total) gives the average order value and COUNT(DISTINCT customer_id) counts each customer once. Summing identifiers is meaningless, MAX gives the largest order, and COUNT(*) counts orders rather than customers.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-034",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE tasks belong to the transform stage of an ETL pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Removing duplicate customer records"
+        },
+        {
+          "id": "b",
+          "text": "Calling a vendor API to pull new orders"
+        },
+        {
+          "id": "c",
+          "text": "Converting dates to one standard format"
+        },
+        {
+          "id": "d",
+          "text": "Writing the final rows into the warehouse"
+        },
+        {
+          "id": "e",
+          "text": "Replacing product codes with product names"
+        },
+        {
+          "id": "f",
+          "text": "Scheduling the source system's nightly export"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Deduplicating, standardizing dates and looking up descriptions all reshape data between extract and load. Calling the API is extraction, writing to the warehouse is loading, and scheduling the source export is outside the pipeline's transform logic.",
+    "acronyms": [
+      "API",
+      "ETL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-035",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A customer survey has a low response rate, and analysts worry that the people who answer differ from those who do not. Which TWO actions best reduce this nonresponse bias?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Send reminders to people who have not yet responded"
+        },
+        {
+          "id": "b",
+          "text": "Analyze only customers who answered last year's survey"
+        },
+        {
+          "id": "c",
+          "text": "Shorten the survey so it takes a few minutes to finish"
+        },
+        {
+          "id": "d",
+          "text": "Delete partially completed surveys without noting it"
+        },
+        {
+          "id": "e",
+          "text": "Offer the survey through a single channel only"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Reminders and a shorter survey raise response rates across the whole sample, narrowing the gap between responders and nonresponders. Reusing past responders, silently dropping partial surveys and restricting channels all make the respondents less representative.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-036",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are nonprobability sampling methods?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Simple random sampling"
+        },
+        {
+          "id": "b",
+          "text": "Stratified sampling"
+        },
+        {
+          "id": "c",
+          "text": "Convenience sampling"
+        },
+        {
+          "id": "d",
+          "text": "Cluster sampling"
+        },
+        {
+          "id": "e",
+          "text": "Quota sampling"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Convenience and quota sampling choose members without random selection, so selection probabilities are unknown. Simple random, stratified and cluster sampling all rely on random selection.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-037",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO statements describe a typical session-scoped temporary table in a relational database?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is dropped automatically when the session ends"
+        },
+        {
+          "id": "b",
+          "text": "Every user of the database can see its contents"
+        },
+        {
+          "id": "c",
+          "text": "It is written back to the source system on commit"
+        },
+        {
+          "id": "d",
+          "text": "It can be queried and joined like a regular table"
+        },
+        {
+          "id": "e",
+          "text": "It cannot hold more than a few thousand rows"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "A session-scoped temporary table disappears when the session closes and otherwise behaves like a normal table in queries and joins. It is private to the session, is not written back to any source and has no small fixed row limit.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-038",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are advantages of acquiring data from a documented API rather than scraping the vendor's web pages?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Calls are not subject to any rate limits"
+        },
+        {
+          "id": "b",
+          "text": "Responses arrive in a structured format such as JSON"
+        },
+        {
+          "id": "c",
+          "text": "No authentication is required for any request"
+        },
+        {
+          "id": "d",
+          "text": "The interface is less likely to break when layouts change"
+        },
+        {
+          "id": "e",
+          "text": "Results include the HTML styling of each page"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "An API returns structured data such as JSON through a documented contract, so it does not break when the site's HTML layout changes. APIs commonly enforce rate limits and authentication, and returning page styling is a drawback of scraping, not an API benefit.",
+    "acronyms": [
+      "API",
+      "HTML",
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-039",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "The column order_date stores calendar dates with no time part. Which TWO WHERE clauses return exactly the orders from the East or West region placed in 2025?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "WHERE region IN ('East', 'West') AND order_date >= '2025-01-01' AND order_date < '2026-01-01'"
+        },
+        {
+          "id": "b",
+          "text": "WHERE region = 'East' OR region = 'West' AND order_date >= '2025-01-01' AND order_date < '2026-01-01'"
+        },
+        {
+          "id": "c",
+          "text": "WHERE (region = 'East' OR region = 'West') AND order_date >= '2025-01-01' AND order_date <= '2025-12-31'"
+        },
+        {
+          "id": "d",
+          "text": "WHERE region IN ('East', 'West') OR order_date >= '2025-01-01' AND order_date <= '2025-12-31'"
+        },
+        {
+          "id": "e",
+          "text": "WHERE region = 'East' AND region = 'West' AND order_date >= '2025-01-01'"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Both keys restrict region to the two values and the date to 2025, using IN or parentheses to group the OR. Without parentheses AND binds first, so all East orders from any year slip through; joining with OR returns any 2025 order or any East or West order, and a region cannot equal two values at once.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-mcq-040",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO statements about a correlated subquery are true?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It runs once in total before the outer query starts"
+        },
+        {
+          "id": "b",
+          "text": "It references a column from the outer query"
+        },
+        {
+          "id": "c",
+          "text": "It can appear only in the FROM clause"
+        },
+        {
+          "id": "d",
+          "text": "It is logically evaluated once for each outer row"
+        },
+        {
+          "id": "e",
+          "text": "It cannot contain an aggregate function"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A correlated subquery depends on a column of the outer query, so it is logically evaluated per outer row. An uncorrelated subquery is the one that can run once, correlated subqueries usually appear in WHERE or SELECT, and they may use aggregates.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Lakeview Outfitters stores east_customers and west_customers tables with identical columns; some customers appear in both. An analyst needs each customer once, keeps only customers whose total spend exceeds 5,000, and will rerun the query daily for different order dates. Configure the query.",
+    "payload": {
+      "fields": [
+        {
+          "id": "combine",
+          "label": "Operator that stacks the two tables and keeps each customer once",
+          "options": [
+            {
+              "id": "union",
+              "text": "UNION"
+            },
+            {
+              "id": "unionall",
+              "text": "UNION ALL"
+            },
+            {
+              "id": "inner",
+              "text": "INNER JOIN"
+            },
+            {
+              "id": "cross",
+              "text": "CROSS JOIN"
+            }
+          ]
+        },
+        {
+          "id": "filter",
+          "label": "Clause that keeps customers whose SUM(amount) exceeds 5,000",
+          "options": [
+            {
+              "id": "where",
+              "text": "WHERE"
+            },
+            {
+              "id": "having",
+              "text": "HAVING"
+            },
+            {
+              "id": "orderby",
+              "text": "ORDER BY"
+            }
+          ]
+        },
+        {
+          "id": "date",
+          "label": "How the daily order date reaches the query",
+          "options": [
+            {
+              "id": "param",
+              "text": "A parameter placeholder bound at run time"
+            },
+            {
+              "id": "concat",
+              "text": "Text pasted into the query string at each run"
+            },
+            {
+              "id": "hard",
+              "text": "A fixed date edited by hand before each run"
+            }
+          ]
+        },
+        {
+          "id": "speed",
+          "label": "Change that speeds up filtering on order_date",
+          "options": [
+            {
+              "id": "index",
+              "text": "Add an index on order_date"
+            },
+            {
+              "id": "star",
+              "text": "Select every column with *"
+            },
+            {
+              "id": "distinct",
+              "text": "Add DISTINCT to the outer query"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "combine": "union",
+        "filter": "having",
+        "date": "param",
+        "speed": "index"
+      }
+    },
+    "explanation": "UNION stacks rows and removes duplicates, UNION ALL stacks them and keeps duplicates, and joins combine columns rather than rows. HAVING filters on an aggregate after grouping, which WHERE cannot do. A bound parameter reuses one safe query plan, while pasted text invites injection and a hand-edited date must be changed every day. An index on the filtered column avoids a full scan, while selecting every column or adding DISTINCT only adds work.",
+    "partExplanations": {
+      "combine": "UNION appends the rows of both tables and drops exact duplicates.",
+      "filter": "A condition on SUM() must go in HAVING, which runs after GROUP BY.",
+      "date": "Parameterization reuses the query plan and blocks injection through pasted text.",
+      "speed": "An index on order_date lets the database seek matching rows instead of scanning the table."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-diagram-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Harborline Freight runs an ELT pipeline into its cloud warehouse. Label the three blank stages in the order data moves through them.",
+    "payload": {
+      "width": 600,
+      "height": 280,
+      "nodes": [
+        {
+          "id": "pos",
+          "x": 20,
+          "y": 20,
+          "w": 140,
+          "h": 50,
+          "text": "Point-of-sale database"
+        },
+        {
+          "id": "api",
+          "x": 20,
+          "y": 200,
+          "w": 140,
+          "h": 50,
+          "text": "Carrier API (JSON)"
+        },
+        {
+          "id": "n1",
+          "x": 200,
+          "y": 110,
+          "w": 110,
+          "h": 50
+        },
+        {
+          "id": "n2",
+          "x": 340,
+          "y": 110,
+          "w": 110,
+          "h": 50
+        },
+        {
+          "id": "n3",
+          "x": 470,
+          "y": 110,
+          "w": 110,
+          "h": 50
+        },
+        {
+          "id": "dash",
+          "x": 470,
+          "y": 20,
+          "w": 110,
+          "h": 50,
+          "text": "Dashboards"
+        }
+      ],
+      "edges": [
+        {
+          "from": "pos",
+          "to": "n1"
+        },
+        {
+          "from": "api",
+          "to": "n1"
+        },
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "dash"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 200,
+          "y": 170,
+          "name": "First blank stage"
+        },
+        {
+          "id": "z2",
+          "x": 340,
+          "y": 170,
+          "name": "Second blank stage"
+        },
+        {
+          "id": "z3",
+          "x": 470,
+          "y": 170,
+          "name": "Third blank stage"
+        }
+      ],
+      "labels": [
+        {
+          "id": "extract",
+          "text": "Extract from sources"
+        },
+        {
+          "id": "load",
+          "text": "Load raw data"
+        },
+        {
+          "id": "transform",
+          "text": "Transform in warehouse"
+        },
+        {
+          "id": "survey",
+          "text": "Survey drivers"
+        },
+        {
+          "id": "sample",
+          "text": "Sample 10% of rows"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "extract",
+        "z2": "load",
+        "z3": "transform"
+      }
+    },
+    "explanation": "In ELT, data is extracted from the sources, loaded raw into the target, and transformed inside the warehouse; ETL would transform before loading. Surveys and sampling are collection methods, not pipeline stages here.",
+    "partExplanations": {
+      "z1": "Every pipeline starts by extracting from the source systems.",
+      "z2": "ELT loads the raw extract into the warehouse before changing it.",
+      "z3": "The warehouse's own compute runs the SQL transformations last, feeding the dashboards."
+    },
+    "acronyms": [
+      "ELT",
+      "ETL",
+      "SQL",
+      "API",
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-order-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Pinecrest Bank wants a stratified random sample of its customers for a satisfaction survey. Put the steps in order.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s6",
+          "text": "Compare respondents with the population to check for bias"
+        },
+        {
+          "id": "s1",
+          "text": "Define the target population of active customers"
+        },
+        {
+          "id": "s5",
+          "text": "Send the survey to the selected customers"
+        },
+        {
+          "id": "s2",
+          "text": "Build the sampling frame from the customer list"
+        },
+        {
+          "id": "s4",
+          "text": "Randomly select customers within each stratum"
+        },
+        {
+          "id": "s3",
+          "text": "Divide the frame into strata by region"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "You define who you want to study, list them, split the list into strata, and draw randomly within each stratum. Only then is the survey sent, and responses are compared with the population to spot nonresponse bias.",
+    "partExplanations": {
+      "s1": "The population definition decides who is eligible.",
+      "s2": "The frame is the concrete list that sample members are drawn from.",
+      "s3": "Strata must exist before you can sample within them.",
+      "s4": "Random selection inside each stratum keeps every region represented.",
+      "s5": "The survey goes only to the drawn sample.",
+      "s6": "Comparing respondents with the population reveals nonresponse bias."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-order-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "An analyst's grouped SQL query returns unexpected totals. Put the clauses in the logical order in which the database evaluates them.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s6",
+          "text": "ORDER BY: sort the result"
+        },
+        {
+          "id": "s1",
+          "text": "FROM and JOIN: build the combined set of rows"
+        },
+        {
+          "id": "s5",
+          "text": "SELECT: compute the output columns and aliases"
+        },
+        {
+          "id": "s2",
+          "text": "WHERE: remove individual rows"
+        },
+        {
+          "id": "s4",
+          "text": "HAVING: remove whole groups"
+        },
+        {
+          "id": "s3",
+          "text": "GROUP BY: form groups"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The database first assembles rows with FROM and JOIN, filters rows with WHERE, groups them, filters groups with HAVING, computes SELECT expressions, and sorts last. This is why a WHERE clause cannot use an aggregate, while ORDER BY can use a SELECT alias.",
+    "partExplanations": {
+      "s1": "The source rows, including joined tables, must exist before anything else.",
+      "s2": "WHERE filters single rows before any grouping.",
+      "s3": "GROUP BY collapses the remaining rows into groups.",
+      "s4": "HAVING filters groups using aggregates.",
+      "s5": "SELECT computes output columns once groups are final.",
+      "s6": "ORDER BY runs last, so it can use SELECT aliases."
+    },
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-terminal-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "An analyst is pulling shipment records from a partner's paged API. Review the first response and the fetch log, then complete each step.",
+    "payload": {
+      "output": [
+        "$ head -c 120 ship_p1.json",
+        "{\"page\":1,\"page_size\":500,\"total_records\":1840,\"total_pages\":4,\"data\":[{\"shipment_id\":\"S-100231\",",
+        "$ cat fetch.log",
+        "10:02:11 page 1 status 200 records 500",
+        "10:02:11 page 2 status 200 records 500",
+        "10:02:12 page 3 status 429 retry-after 30",
+        "10:02:12 page 4 status 429 retry-after 30"
+      ],
+      "steps": [
+        {
+          "id": "count",
+          "label": "Type a command that counts the lines in fetch.log that contain 429"
+        },
+        {
+          "id": "missing",
+          "label": "How many records are still missing?",
+          "options": [
+            {
+              "id": "340",
+              "text": "340"
+            },
+            {
+              "id": "840",
+              "text": "840"
+            },
+            {
+              "id": "1000",
+              "text": "1,000"
+            },
+            {
+              "id": "1840",
+              "text": "1,840"
+            }
+          ]
+        },
+        {
+          "id": "cause",
+          "label": "Why did pages 3 and 4 fail?",
+          "options": [
+            {
+              "id": "rate",
+              "text": "The API rate-limited requests sent too quickly"
+            },
+            {
+              "id": "auth",
+              "text": "The access token expired partway through the run"
+            },
+            {
+              "id": "empty",
+              "text": "Pages 3 and 4 were served with no records at all"
+            },
+            {
+              "id": "json",
+              "text": "The JSON response was malformed on pages 3 and 4"
+            }
+          ]
+        },
+        {
+          "id": "fix",
+          "label": "Choose the best next action",
+          "options": [
+            {
+              "id": "wait",
+              "text": "Wait the retry-after period, then retry pages 3-4 slowly"
+            },
+            {
+              "id": "all",
+              "text": "Restart from page 1 immediately with parallel requests"
+            },
+            {
+              "id": "size",
+              "text": "Report the data set as complete at 1,000 records now"
+            },
+            {
+              "id": "scrape",
+              "text": "Scrape the partner's public website for the missing pages"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "count": [
+          "grep -c 429 fetch.log",
+          "grep -c \"429\" fetch.log",
+          "grep -c '429' fetch.log",
+          "grep -c 429 ./fetch.log",
+          "grep 429 fetch.log | wc -l",
+          "grep \"429\" fetch.log | wc -l",
+          "grep '429' fetch.log | wc -l",
+          "cat fetch.log | grep -c 429",
+          "cat fetch.log | grep 429 | wc -l",
+          "grep -c \"status 429\" fetch.log",
+          "grep -c 'status 429' fetch.log",
+          "grep -c 429 < fetch.log",
+          "grep -cw 429 fetch.log",
+          "grep --count 429 fetch.log",
+          "grep -c \" 429 \" fetch.log",
+          "grep -c ' 429 ' fetch.log"
+        ],
+        "missing": [
+          "840"
+        ],
+        "cause": [
+          "rate"
+        ],
+        "fix": [
+          "wait"
+        ]
+      }
+    },
+    "explanation": "Status 429 means too many requests, and the log shows the server's retry-after value. Pages 1 and 2 returned 1,000 of the 1,840 records, so 840 remain. Waiting and pacing requests respects the limit; parallel calls make it worse, and scraping or stopping early leaves the data incomplete.",
+    "partExplanations": {
+      "count": "grep -c 429 fetch.log prints the number of matching lines, 2.",
+      "missing": "1,840 total − (500 + 500) received = 840 missing (500 on page 3 and 340 on page 4).",
+      "cause": "A 429 status with retry-after is a rate limit, not an authentication error.",
+      "fix": "Backing off for the stated period and pacing calls lets the remaining pages succeed."
+    },
+    "acronyms": [
+      "API",
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-1-data-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Pinecrest Bank draws a proportional stratified sample of 600 customers from 30,000. Response rate = responses received / customers sampled. Use the table to answer each question.",
+    "payload": {
+      "caption": "Customers and survey responses by region",
+      "columns": [
+        "Region",
+        "Customers",
+        "Responses received"
+      ],
+      "rows": [
+        [
+          "North",
+          "12000",
+          "192"
+        ],
+        [
+          "South",
+          "8000",
+          "128"
+        ],
+        [
+          "East",
+          "6000",
+          "60"
+        ],
+        [
+          "West",
+          "4000",
+          "72"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "fraction",
+          "label": "Sampling fraction applied to every region",
+          "options": [
+            {
+              "id": "0.5",
+              "text": "0.5%"
+            },
+            {
+              "id": "2",
+              "text": "2%"
+            },
+            {
+              "id": "5",
+              "text": "5%"
+            }
+          ]
+        },
+        {
+          "id": "north",
+          "label": "Customers sampled from North",
+          "options": [
+            {
+              "id": "150",
+              "text": "150"
+            },
+            {
+              "id": "192",
+              "text": "192"
+            },
+            {
+              "id": "240",
+              "text": "240"
+            }
+          ]
+        },
+        {
+          "id": "west",
+          "label": "Customers sampled from West",
+          "options": [
+            {
+              "id": "72",
+              "text": "72"
+            },
+            {
+              "id": "80",
+              "text": "80"
+            },
+            {
+              "id": "150",
+              "text": "150"
+            }
+          ]
+        },
+        {
+          "id": "low",
+          "label": "Region with the lowest response rate",
+          "options": [
+            {
+              "id": "north",
+              "text": "North"
+            },
+            {
+              "id": "east",
+              "text": "East"
+            },
+            {
+              "id": "west",
+              "text": "West"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "fraction": "2",
+        "north": "240",
+        "west": "80",
+        "low": "east"
+      }
+    },
+    "explanation": "600 / 30,000 = 2%, so each region is sampled at 2%: North 240, South 160, East 120, West 80. Response rates are North 192/240 = 80%, South 128/160 = 80%, East 60/120 = 50% and West 72/80 = 90%, so East is lowest and most at risk of non-response bias.",
+    "partExplanations": {
+      "fraction": "600 ÷ 30,000 = 0.02, or 2%.",
+      "north": "12,000 × 2% = 240.",
+      "west": "4,000 × 2% = 80.",
+      "low": "East returned 60 of 120 (50%), against 80% for North and South and 90% for West."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]

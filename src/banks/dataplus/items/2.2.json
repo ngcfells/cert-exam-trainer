@@ -1,0 +1,2402 @@
+[
+  {
+    "id": "da2-2-2-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 1,
+    "stem": "During profiling, an analyst finds that 140 of 2,000 customer rows have no value in the email column. Which data issue is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Missing values"
+        },
+        {
+          "id": "b",
+          "text": "Redundant columns"
+        },
+        {
+          "id": "c",
+          "text": "Outliers"
+        },
+        {
+          "id": "d",
+          "text": "Duplicate records"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Empty cells where a value is expected are missing values. Redundancy means the same information is stored more than once, outliers are extreme but present values, and duplicates are repeated records, none of which describes blank cells.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 1,
+    "stem": "A product table contains two rows with the same product code, name, price and category. Which issue should the analyst flag?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Missing data"
+        },
+        {
+          "id": "b",
+          "text": "Duplication"
+        },
+        {
+          "id": "c",
+          "text": "Outlier"
+        },
+        {
+          "id": "d",
+          "text": "Invalid formatting"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Two identical rows for one product are duplicates and can double-count results. Nothing is blank, no value is extreme, and no value breaks a format rule.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 1,
+    "stem": "A sales table stores both unit_price and price_in_cents, and the second column is always the first multiplied by 100. Which issue does this show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Duplication of records"
+        },
+        {
+          "id": "b",
+          "text": "Incomplete data"
+        },
+        {
+          "id": "c",
+          "text": "Redundancy"
+        },
+        {
+          "id": "d",
+          "text": "Outliers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Storing the same fact in two columns, one derivable from the other, is redundancy. No rows are repeated, nothing is missing, and no values are extreme.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 1,
+    "stem": "Daily website visits for a month mostly fall between 900 and 1,300, but one day shows 48,000. What should the analyst call that value?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A duplicate"
+        },
+        {
+          "id": "b",
+          "text": "A null"
+        },
+        {
+          "id": "c",
+          "text": "A redundant value"
+        },
+        {
+          "id": "d",
+          "text": "An outlier"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A value far outside the range of the rest of the data is an outlier and should be investigated before it is kept or removed. It is not repeated, not empty, and not a copy of another field.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst runs SELECT COUNT(*), COUNT(phone) FROM customers and gets 5,000 and 4,610. What does the difference tell the analyst?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "390 rows have a null phone value"
+        },
+        {
+          "id": "b",
+          "text": "390 phone numbers are duplicates"
+        },
+        {
+          "id": "c",
+          "text": "390 phone numbers are invalid"
+        },
+        {
+          "id": "d",
+          "text": "390 rows are outliers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "COUNT(*) counts every row, while COUNT(column) skips nulls, so 5,000 minus 4,610 means 390 rows have a null phone. The query does not test for duplicates, formats or extreme values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst suspects that some orders were loaded twice. Which SQL approach best confirms this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sort by order_date and read the first rows"
+        },
+        {
+          "id": "b",
+          "text": "Group by order_id and keep groups with HAVING COUNT(*) > 1"
+        },
+        {
+          "id": "c",
+          "text": "Filter WHERE order_id IS NULL"
+        },
+        {
+          "id": "d",
+          "text": "Compute the average of order_total"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Grouping on the identifier and keeping groups with more than one row lists every repeated order. Sorting only shows a sample, IS NULL finds missing values, and an average cannot reveal which orders repeat.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "A data set has quartiles Q1 = 20 and Q3 = 40. Using the 1.5 × interquartile range rule, what is the upper fence for outliers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "50"
+        },
+        {
+          "id": "b",
+          "text": "60"
+        },
+        {
+          "id": "c",
+          "text": "70"
+        },
+        {
+          "id": "d",
+          "text": "80"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The interquartile range is 40 − 20 = 20, and 1.5 × 20 = 30, so the upper fence is 40 + 30 = 70. The values 50 and 60 are inside the fence, and 80 adds 2 × the interquartile range instead of 1.5 ×.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "A survey file has 1,200 responses, but only 900 include an answer to the income question. What is the completeness of the income field?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "25%"
+        },
+        {
+          "id": "b",
+          "text": "33%"
+        },
+        {
+          "id": "c",
+          "text": "67%"
+        },
+        {
+          "id": "d",
+          "text": "75%"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Completeness is populated values divided by total records: 900 / 1,200 = 75%. 25% is the missing share (300 / 1,200), 33% divides missing by populated (300 / 900), and 67% is 1 minus that wrong figure.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "An age column in a patient table contains the values 34, 51, −4 and 212. What kind of check would flag the last two values?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A range validation check"
+        },
+        {
+          "id": "b",
+          "text": "A duplicate-record check"
+        },
+        {
+          "id": "c",
+          "text": "A field completeness check"
+        },
+        {
+          "id": "d",
+          "text": "A redundancy check"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A range check confirms values fall within allowed limits, such as 0 to 120 for age, so −4 and 212 fail it. Duplicate, completeness and redundancy checks look for repeated, blank or doubly stored data instead.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "Customer records show 'Robert Lin, 12 Oak St' and 'Bob Lin, 12 Oak Street' with different customer IDs. What issue is most likely?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An outlier in the address field"
+        },
+        {
+          "id": "b",
+          "text": "A near-duplicate of the same customer"
+        },
+        {
+          "id": "c",
+          "text": "A missing value in the customer name field"
+        },
+        {
+          "id": "d",
+          "text": "A redundant derived column"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The same person and address appear under two customer IDs with small spelling differences, which is a near-duplicate that exact matching would miss. No value is extreme or blank, and no column is derived from another.",
+    "acronyms": [
+      "ID"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "While profiling a table, an analyst finds that the country column contains 'Germany', 'germany', 'Deutschland' and 'Germnay'. Which issue has been found?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Missing values in the country column"
+        },
+        {
+          "id": "b",
+          "text": "Numeric outliers"
+        },
+        {
+          "id": "c",
+          "text": "Inconsistent coding of one category"
+        },
+        {
+          "id": "d",
+          "text": "Duplicate rows"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Several spellings for the same country are an inconsistent representation of one category, which splits counts in grouping. The cells are not blank, not numeric extremes, and the rows are not necessarily repeated.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "Shipments are expected every day, but the daily shipments table has no rows for March 9 through March 11. Which issue does this indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A redundancy problem"
+        },
+        {
+          "id": "b",
+          "text": "A duplication problem"
+        },
+        {
+          "id": "c",
+          "text": "An outlier problem"
+        },
+        {
+          "id": "d",
+          "text": "A completeness problem"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Missing whole periods means the data set does not contain all the records it should, which is a completeness problem. No data is repeated or stored twice, and absent rows are not extreme values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "An email column should match the pattern of text, an @ sign and a domain. Which method checks this most efficiently across 50,000 rows?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Validate the column against a RegEx pattern"
+        },
+        {
+          "id": "b",
+          "text": "Compute the column's standard deviation"
+        },
+        {
+          "id": "c",
+          "text": "Count the distinct values"
+        },
+        {
+          "id": "d",
+          "text": "Sort the column alphabetically"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A RegEx test applies the format rule to every row and returns the ones that fail. Standard deviation applies to numbers, distinct counts do not test format, and sorting only helps a person scan by eye.",
+    "acronyms": [
+      "RegEx"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst wants a quick visual check for outliers in delivery times across five warehouses. Which chart is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A pie chart of delivery share"
+        },
+        {
+          "id": "b",
+          "text": "A box plot for each warehouse"
+        },
+        {
+          "id": "c",
+          "text": "A stacked area chart over time"
+        },
+        {
+          "id": "d",
+          "text": "A treemap of deliveries by warehouse"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A box plot shows the median, quartiles and points beyond the whiskers, so outliers stand out by group. Pie charts and treemaps show composition, and a stacked area chart shows totals over time; none shows the spread of individual values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "An orders table has an order_total column stored next to quantity and unit_price, and order_total always equals their product. What is the main risk of this redundancy?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Order totals will be counted twice in reports"
+        },
+        {
+          "id": "b",
+          "text": "Unit prices will be lost when the table loads"
+        },
+        {
+          "id": "c",
+          "text": "The total can drift from its sources after updates"
+        },
+        {
+          "id": "d",
+          "text": "Quantity values will become statistical outliers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A stored value that can be derived from other columns can disagree with them after an update, which creates an inconsistency. The redundancy does not double-count rows, delete prices or change the distribution of quantity.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "A table's order_date column has a few values of 1900-01-01 among dates from 2024 and 2025. What do these values most likely represent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Legitimate early orders"
+        },
+        {
+          "id": "b",
+          "text": "Duplicated orders from a reload"
+        },
+        {
+          "id": "c",
+          "text": "Rounded timestamps"
+        },
+        {
+          "id": "d",
+          "text": "Placeholders for missing dates"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A default date far outside the real range usually means a system filled in a placeholder where the date was missing, so these are hidden missing values. Real orders could not date from 1900, the rows are not repeated, and rounding would not move a date by a century.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which summary best shows how many values are missing in each column of a new data set?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A per-column count of nulls and blanks"
+        },
+        {
+          "id": "b",
+          "text": "A correlation matrix of numeric columns"
+        },
+        {
+          "id": "c",
+          "text": "A histogram of one numeric column"
+        },
+        {
+          "id": "d",
+          "text": "A list of the first ten rows"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Counting nulls and blanks per column shows where data is missing at a glance. A correlation matrix shows relationships, one histogram covers one column, and the first rows are only a small sample.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst finds a transaction of $250,000 in a table where most transactions are under $500. What should the analyst do first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the row so it does not skew the average"
+        },
+        {
+          "id": "b",
+          "text": "Check the source to see if the value is real"
+        },
+        {
+          "id": "c",
+          "text": "Replace the value with the column mean"
+        },
+        {
+          "id": "d",
+          "text": "Keep it unchanged, since a single row has little effect"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An outlier may be a data-entry error or a genuine, important event, so it should be checked against the source before any action. Deleting or replacing it first could discard real data, and keeping it unchecked ignores how much one large value can distort totals and means.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "Two source systems both feed customer records into a warehouse, and some customers exist in both. Which exploration step reveals the overlap?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Count the rows in each source separately"
+        },
+        {
+          "id": "b",
+          "text": "Average the customer ages in each source"
+        },
+        {
+          "id": "c",
+          "text": "Match records on a shared key across sources"
+        },
+        {
+          "id": "d",
+          "text": "Check each source table for null names"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Matching on a shared key shows which customers appear in both sources and would be duplicated after loading. Row counts and averages do not identify specific shared records, and null checks find missing values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "A store_id column in a sales table contains the value 907, but the stores reference table only lists store IDs 100 to 450. Which validation has failed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A uniqueness check on store_id"
+        },
+        {
+          "id": "b",
+          "text": "A null check"
+        },
+        {
+          "id": "c",
+          "text": "A data type check"
+        },
+        {
+          "id": "d",
+          "text": "A referential integrity check"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Each store_id in sales should match a row in the stores table, so 907 breaks referential integrity. The value is not repeated, not empty, and is a valid integer type.",
+    "acronyms": [
+      "ID"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "Eight salaries, in thousands, are 42, 45, 47, 48, 50, 52, 55 and 310. Which statement is accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The mean is about 81.1 and the median is 49"
+        },
+        {
+          "id": "b",
+          "text": "The mean and the median are both about 49"
+        },
+        {
+          "id": "c",
+          "text": "The median is about 81.1 and the mean is 49"
+        },
+        {
+          "id": "d",
+          "text": "The mean is 49 and the median is about 50"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The sum is 649, so the mean is 649 / 8 = 81.125, while the median is the average of 48 and 50, which is 49. The outlier pulls the mean far above the median; option b ignores the outlier's pull on the mean, option c swaps the two measures, and option d gives the median as the mean and miscalculates the median.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst joins orders (10,000 rows) to customers on customer_id and gets 10,450 rows instead of 10,000. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Some orders have a null value in customer_id"
+        },
+        {
+          "id": "b",
+          "text": "Some customer_id values repeat in customers"
+        },
+        {
+          "id": "c",
+          "text": "Some order amounts are extreme outliers"
+        },
+        {
+          "id": "d",
+          "text": "The join compared mismatched data types"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A join produces extra rows when the key is duplicated on the lookup side, so each matching order repeats. Null keys would drop or keep rows without adding any, amounts do not affect row counts, and a type mismatch would usually return fewer matches.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "Temperature readings are meant to be in Celsius, but one region shows readings between 68 and 95 while others range from 18 to 35. What inconsistency is most likely?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Duplicate sensor readings"
+        },
+        {
+          "id": "b",
+          "text": "Missing readings from the region"
+        },
+        {
+          "id": "c",
+          "text": "A different unit of measure"
+        },
+        {
+          "id": "d",
+          "text": "Random measurement noise"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Readings of 68 to 95 °F equal about 20 to 35 °C, which matches the other regions, so that region likely records in Fahrenheit. Duplicates or gaps would not shift the range, and random noise would not shift a whole region's values consistently.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "A form lets users leave the phone field blank, and the loader converts blanks to the text 'N/A'. A profile reports the phone column as 100% complete. What is the problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The phone column contains numeric outliers"
+        },
+        {
+          "id": "b",
+          "text": "The phone column is redundant with email"
+        },
+        {
+          "id": "c",
+          "text": "The profile counted duplicate rows twice"
+        },
+        {
+          "id": "d",
+          "text": "Placeholder text is hiding missing values"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "'N/A' is a non-null placeholder, so a null count treats those rows as filled and overstates completeness. The issue is not about extreme values, a second field holding the same data, or repeated rows.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "Monthly revenue values are 120, 125, 118, 130, 0 and 127 (in thousands). The store was open all six months. Which interpretation is most reasonable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The 0 is probably missing data stored as zero"
+        },
+        {
+          "id": "b",
+          "text": "The 0 is a valid low-sales month to keep"
+        },
+        {
+          "id": "c",
+          "text": "The 130 is the outlier that should be removed"
+        },
+        {
+          "id": "d",
+          "text": "The series is complete and fully consistent"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A store open all month would not earn exactly zero, so the 0 most likely represents a missing value stored as zero, which also drags down the average. Treating it as valid, flagging 130 instead, or calling the series consistent all ignore the gap.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "Using z-scores, an analyst flags any value more than 3 standard deviations from the mean. Order amounts have a mean of 80 and a standard deviation of 15. Which amount is flagged?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "40"
+        },
+        {
+          "id": "b",
+          "text": "110"
+        },
+        {
+          "id": "c",
+          "text": "120"
+        },
+        {
+          "id": "d",
+          "text": "130"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The z-score of 130 is (130 − 80) / 15 ≈ 3.33, which is above 3. By comparison, 120 gives about 2.67, 110 gives 2.0, and 40 gives about −2.67, so none of those is more than 3 standard deviations away.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "A customers table has a total_spend column. For one customer, total_spend is 900, but that customer's rows in the orders table sum to 750. Which issue does this reveal?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A duplicate customer record"
+        },
+        {
+          "id": "b",
+          "text": "A missing customer key"
+        },
+        {
+          "id": "c",
+          "text": "A stored total out of sync with its source"
+        },
+        {
+          "id": "d",
+          "text": "A normal rounding difference"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "total_spend repeats information derivable from orders, and the two disagree by 150, so the redundant value has fallen out of sync. Nothing points to a second record for the customer, the customer key exists, and a 150 gap is far too large for rounding.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "A data set records order_date and ship_date. Which validation rule finds logically impossible records?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Flag rows where order_date is a weekend"
+        },
+        {
+          "id": "b",
+          "text": "Flag rows where ship_date falls in this year"
+        },
+        {
+          "id": "c",
+          "text": "Flag rows where order_date is not null"
+        },
+        {
+          "id": "d",
+          "text": "Flag rows where ship_date precedes order_date"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An item cannot ship before it is ordered, so a cross-field check comparing the two dates finds impossible rows. Weekend orders, current-year shipments and non-null dates are all valid.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which term describes the degree to which all required records and fields in a data set are present?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Completeness"
+        },
+        {
+          "id": "b",
+          "text": "Consistency"
+        },
+        {
+          "id": "c",
+          "text": "Uniqueness"
+        },
+        {
+          "id": "d",
+          "text": "Timeliness"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Completeness measures whether every expected record and value is present. Consistency is agreement across sources, uniqueness is the absence of duplicates, and timeliness is how current the data is.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 1,
+    "stem": "Before analysis, an analyst confirms that a quantity column contains only whole numbers greater than zero. What is this activity called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data imputation"
+        },
+        {
+          "id": "b",
+          "text": "Data validation"
+        },
+        {
+          "id": "c",
+          "text": "Data augmentation"
+        },
+        {
+          "id": "d",
+          "text": "Data binning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Checking values against rules for type and range is data validation. Imputation fills missing values, augmentation adds new data, and binning groups values into ranges.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 1,
+    "stem": "Before analysis, an analyst runs summary statistics, value frequencies and null counts on every column of a new table. What is this activity called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data masking"
+        },
+        {
+          "id": "b",
+          "text": "Data imputation"
+        },
+        {
+          "id": "c",
+          "text": "Data profiling"
+        },
+        {
+          "id": "d",
+          "text": "Data normalization"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Profiling summarizes each column so missing values, duplicates and outliers surface early. Masking hides sensitive values, imputation fills gaps, and normalization restructures tables or rescales values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO situations are examples of missing data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An order row that appears twice"
+        },
+        {
+          "id": "b",
+          "text": "A price of $9,999 among prices near $10"
+        },
+        {
+          "id": "c",
+          "text": "A null value in the zip_code column"
+        },
+        {
+          "id": "d",
+          "text": "A state column that mixes codes and full names"
+        },
+        {
+          "id": "e",
+          "text": "A blank cell in a required birth_date field"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "A null and a blank in a required field are both missing values. A repeated row is duplication, an extreme price is an outlier, and mixed codes and names for one state are an inconsistency.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-033",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO checks can reveal that an order_id column contains duplicate values?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Filter rows WHERE order_id IS NULL"
+        },
+        {
+          "id": "b",
+          "text": "Compare COUNT(order_id) with COUNT(*)"
+        },
+        {
+          "id": "c",
+          "text": "Compare COUNT(order_id) to COUNT(DISTINCT order_id)"
+        },
+        {
+          "id": "d",
+          "text": "Compute AVG(order_id) across all rows"
+        },
+        {
+          "id": "e",
+          "text": "Try creating a unique index on order_id"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "If COUNT(order_id) is larger than COUNT(DISTINCT order_id), some values repeat, and building a unique index fails when duplicate keys exist. IS NULL and COUNT(order_id) versus COUNT(*) find missing values rather than repeats, and an average says nothing about repeated keys.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-034",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst is exploring a new customer table. Which THREE steps are exploration checks rather than cleansing or transformation steps?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace nulls with the median"
+        },
+        {
+          "id": "b",
+          "text": "Count nulls in each column"
+        },
+        {
+          "id": "c",
+          "text": "Bin ages into ranges"
+        },
+        {
+          "id": "d",
+          "text": "Count rows per customer_id"
+        },
+        {
+          "id": "e",
+          "text": "Scale income to 0–1"
+        },
+        {
+          "id": "f",
+          "text": "Profile minimum and maximum values"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "f"
+      ]
+    },
+    "explanation": "Counting nulls finds missing values, counting rows per key finds duplicates, and profiling minimums and maximums finds out-of-range values or outliers, all without altering the table. Replacing nulls, binning and scaling change the data, which is cleansing and transformation rather than exploration.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-035",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO findings indicate redundancy in a table design?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A purchase amount far above all the others"
+        },
+        {
+          "id": "b",
+          "text": "A blank value in the region column"
+        },
+        {
+          "id": "c",
+          "text": "A product code that appears in two different rows"
+        },
+        {
+          "id": "d",
+          "text": "A full_name column stored alongside first_name and last_name"
+        },
+        {
+          "id": "e",
+          "text": "An age column alongside a birth_date column"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "full_name can be built from first and last name, and age can be derived from birth date, so both store the same information twice. A blank is missing data, a large amount is an outlier, and a repeated product code is duplication.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-036",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO methods are commonly used to identify numeric outliers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Flag rows after sorting by a text column"
+        },
+        {
+          "id": "b",
+          "text": "Flag values that appear only once in the column"
+        },
+        {
+          "id": "c",
+          "text": "Flag values beyond 1.5 × the interquartile range from the quartiles"
+        },
+        {
+          "id": "d",
+          "text": "Flag rows where the column is null"
+        },
+        {
+          "id": "e",
+          "text": "Flag values with an absolute z-score above 3"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "The interquartile range fence and the z-score threshold both measure distance from the bulk of the data. Distinct counts, null checks and sorting text do not judge how extreme a number is.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-037",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "stem": "A team validates an incoming file of employee records. Which THREE are validation checks?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a tenure column from hire_date"
+        },
+        {
+          "id": "b",
+          "text": "Confirm hire_date is a valid date"
+        },
+        {
+          "id": "c",
+          "text": "Merge the file with last month's file"
+        },
+        {
+          "id": "d",
+          "text": "Confirm employee_id is unique"
+        },
+        {
+          "id": "e",
+          "text": "Convert names to uppercase"
+        },
+        {
+          "id": "f",
+          "text": "Confirm department codes exist in the department list"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "f"
+      ]
+    },
+    "explanation": "Type, uniqueness and reference-list checks each test the data against a rule. Creating a derived column, merging files and changing case are transformations, not validation.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-038",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst is checking whether a data set is complete enough for a monthly report. Which TWO checks address completeness?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Calculate the standard deviation of sales"
+        },
+        {
+          "id": "b",
+          "text": "Compare the row count with the source system's row count"
+        },
+        {
+          "id": "c",
+          "text": "Look for values above the 99th percentile"
+        },
+        {
+          "id": "d",
+          "text": "Check for columns that repeat other columns"
+        },
+        {
+          "id": "e",
+          "text": "Check that every required field is populated"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Row-count reconciliation confirms no records were lost, and required-field checks confirm no values are missing, which are the two sides of completeness. Spread, extreme percentiles and repeated columns deal with distribution, outliers and redundancy.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-039",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "A table of 6 rows has the customer_id values 101, 102, 102, 103, NULL, 104. Which TWO statements are accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Removing the duplicate leaves 4 rows"
+        },
+        {
+          "id": "b",
+          "text": "The column is 100% complete"
+        },
+        {
+          "id": "c",
+          "text": "There are 4 distinct non-null customer_id values"
+        },
+        {
+          "id": "d",
+          "text": "One customer_id value is duplicated"
+        },
+        {
+          "id": "e",
+          "text": "SELECT DISTINCT customer_id returns 4 rows"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "The distinct non-null values are 101, 102, 103 and 104, and 102 appears twice. SELECT DISTINCT returns 5 rows because the null counts as its own group, removing the duplicate leaves 5 rows, and the null makes the column about 83% complete.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-mcq-040",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst finds that a product weight column, labeled in kilograms, has a few values about 1,000 times larger than the rest. Which TWO explanations should be investigated first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The rows are exact duplicates"
+        },
+        {
+          "id": "b",
+          "text": "Some weights were entered in grams instead of kilograms"
+        },
+        {
+          "id": "c",
+          "text": "The column has missing values"
+        },
+        {
+          "id": "d",
+          "text": "Those products are genuinely much heavier"
+        },
+        {
+          "id": "e",
+          "text": "The column is redundant with price"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A factor of about 1,000 suggests a grams-versus-kilograms mix-up, but the analyst should also confirm whether the items are truly heavy before treating the values as errors. Duplication, missing values and redundancy with price would not produce values 1,000 times larger.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-data-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A profiling run on the 2,000-row customer table of Corvale Telecom produced this summary. Distinct counts exclude nulls. Every field must be at least 90% complete. Answer each question.",
+    "payload": {
+      "caption": "Profile of the customer table (2,000 rows)",
+      "columns": [
+        "Field",
+        "Non-null values",
+        "Distinct values"
+      ],
+      "rows": [
+        [
+          "customer_id",
+          "2000",
+          "1960"
+        ],
+        [
+          "email",
+          "1850",
+          "1838"
+        ],
+        [
+          "phone",
+          "1400",
+          "1390"
+        ],
+        [
+          "birth_date",
+          "1700",
+          "1500"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "dup",
+          "label": "Rows whose customer_id repeats an earlier row",
+          "options": [
+            {
+              "id": "0",
+              "text": "0"
+            },
+            {
+              "id": "40",
+              "text": "40"
+            },
+            {
+              "id": "1960",
+              "text": "1,960"
+            }
+          ]
+        },
+        {
+          "id": "email",
+          "label": "Completeness of email",
+          "options": [
+            {
+              "id": "92.5",
+              "text": "92.5%"
+            },
+            {
+              "id": "91.9",
+              "text": "91.9%"
+            },
+            {
+              "id": "7.5",
+              "text": "7.5%"
+            }
+          ]
+        },
+        {
+          "id": "lowest",
+          "label": "Field with the lowest completeness",
+          "options": [
+            {
+              "id": "email",
+              "text": "email"
+            },
+            {
+              "id": "phone",
+              "text": "phone"
+            },
+            {
+              "id": "birth",
+              "text": "birth_date"
+            }
+          ]
+        },
+        {
+          "id": "fail",
+          "label": "Number of fields that fail the 90% rule",
+          "options": [
+            {
+              "id": "1",
+              "text": "1"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "3",
+              "text": "3"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "dup": "40",
+        "email": "92.5",
+        "lowest": "phone",
+        "fail": "2"
+      }
+    },
+    "explanation": "customer_id has 2,000 values but only 1,960 distinct, so 40 rows repeat an identifier that should be unique. Completeness is non-null ÷ rows: customer_id 100%, email 92.5%, phone 70% and birth_date 85%, so phone is lowest and phone and birth_date fail the 90% rule.",
+    "partExplanations": {
+      "dup": "2,000 non-null − 1,960 distinct = 40 repeated identifiers.",
+      "email": "1,850 ÷ 2,000 = 92.5%; the distinct count (1,838) is not used for completeness.",
+      "lowest": "phone is 1,400 ÷ 2,000 = 70%, below email (92.5%) and birth_date (85%).",
+      "fail": "phone (70%) and birth_date (1,700 ÷ 2,000 = 85%) are below 90%."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-data-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "An analyst at Fenwick Home checks delivery times for outliers with the interquartile range rule (1.5 × the interquartile range beyond Q1 and Q3). Using the median of each half, Q1 = 3 and Q3 = 6. Answer each question.",
+    "payload": {
+      "caption": "Days from order to delivery",
+      "columns": [
+        "Order",
+        "Days"
+      ],
+      "rows": [
+        [
+          "7101",
+          "4"
+        ],
+        [
+          "7102",
+          "3"
+        ],
+        [
+          "7103",
+          "6"
+        ],
+        [
+          "7104",
+          "2"
+        ],
+        [
+          "7105",
+          "21"
+        ],
+        [
+          "7106",
+          "5"
+        ],
+        [
+          "7107",
+          "3"
+        ],
+        [
+          "7108",
+          "6"
+        ],
+        [
+          "7109",
+          "5"
+        ],
+        [
+          "7110",
+          "-2"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "iqr",
+          "label": "Interquartile range",
+          "options": [
+            {
+              "id": "3",
+              "text": "3"
+            },
+            {
+              "id": "4.5",
+              "text": "4.5"
+            },
+            {
+              "id": "9",
+              "text": "9"
+            }
+          ]
+        },
+        {
+          "id": "upper",
+          "label": "Upper fence",
+          "options": [
+            {
+              "id": "9",
+              "text": "9"
+            },
+            {
+              "id": "10.5",
+              "text": "10.5"
+            },
+            {
+              "id": "12",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "count",
+          "label": "Number of outliers",
+          "options": [
+            {
+              "id": "1",
+              "text": "1"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "invalid",
+          "label": "Order whose value is impossible, not just extreme",
+          "options": [
+            {
+              "id": "7104",
+              "text": "7104"
+            },
+            {
+              "id": "7105",
+              "text": "7105"
+            },
+            {
+              "id": "7110",
+              "text": "7110"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "iqr": "3",
+        "upper": "10.5",
+        "count": "2",
+        "invalid": "7110"
+      }
+    },
+    "explanation": "The interquartile range is 6 − 3 = 3, so the fences are 3 − 1.5 × 3 = −1.5 and 6 + 1.5 × 3 = 10.5. Order 7105 (21 days) and order 7110 (−2 days) fall outside. A late delivery of 21 days can happen, but a negative delivery time cannot, so 7110 is a data error to correct rather than an outlier to investigate.",
+    "partExplanations": {
+      "iqr": "Q3 − Q1 = 6 − 3 = 3.",
+      "upper": "6 + 1.5 × 3 = 10.5.",
+      "count": "Fences are −1.5 and 10.5; only 21 and −2 lie outside, so 2 outliers.",
+      "invalid": "A delivery cannot arrive 2 days before the order, so −2 fails validation."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-hotspot-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Validation rules for Brookhaven Health's employee records: dates are year-month-day and not in the future (today is 2026-10-30), state names are spelled in full, and salary is positive. Select every field in this record that fails validation.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "text": "employee_id: E-2291"
+        },
+        {
+          "id": "n2",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "text": "hire_date: 2031-05-14"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 280,
+          "h": 40,
+          "text": "state: Texs"
+        },
+        {
+          "id": "n4",
+          "x": 310,
+          "y": 90,
+          "w": 280,
+          "h": 40,
+          "text": "department: Finance"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 280,
+          "h": 40,
+          "text": "salary: -52000"
+        },
+        {
+          "id": "n6",
+          "x": 310,
+          "y": 170,
+          "w": 280,
+          "h": 40,
+          "text": "birth_date: 1988-11-02"
+        }
+      ],
+      "spots": [
+        {
+          "id": "empid",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "name": "employee_id"
+        },
+        {
+          "id": "hire",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "name": "hire_date"
+        },
+        {
+          "id": "state",
+          "x": 10,
+          "y": 90,
+          "w": 280,
+          "h": 40,
+          "name": "state"
+        },
+        {
+          "id": "dept",
+          "x": 310,
+          "y": 90,
+          "w": 280,
+          "h": 40,
+          "name": "department"
+        },
+        {
+          "id": "salary",
+          "x": 10,
+          "y": 170,
+          "w": 280,
+          "h": 40,
+          "name": "salary"
+        },
+        {
+          "id": "birth",
+          "x": 310,
+          "y": 170,
+          "w": 280,
+          "h": 40,
+          "name": "birth_date"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "hire",
+        "state",
+        "salary"
+      ]
+    },
+    "explanation": "The hire date is in the future, the state is misspelled, and the salary is negative, so each breaks a stated rule. The identifier, department and birth date are well formed and plausible.",
+    "partExplanations": {
+      "empid": "The identifier is present and well formed.",
+      "hire": "2031-05-14 is after today, so the hire date fails the no-future-dates rule.",
+      "state": "Texs is a misspelling of Texas.",
+      "dept": "Finance is a valid department name.",
+      "salary": "A negative salary fails the positive-value rule.",
+      "birth": "1988-11-02 is a valid past date."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-hotspot-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "A profiling report for the 50,000-row orders table of Oakridge Supply shows these findings. Every order must name a customer. Select every finding that breaks a data rule.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "text": "order_id: 50,000 distinct values"
+        },
+        {
+          "id": "n2",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "text": "customer_id: 3% null"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 280,
+          "h": 40,
+          "text": "quantity: min 1, max 12"
+        },
+        {
+          "id": "n4",
+          "x": 310,
+          "y": 90,
+          "w": 280,
+          "h": 40,
+          "text": "unit_price: min -4.50"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 280,
+          "h": 40,
+          "text": "212 rows ship before order date"
+        },
+        {
+          "id": "n6",
+          "x": 310,
+          "y": 170,
+          "w": 280,
+          "h": 40,
+          "text": "region: North, South, East, West"
+        }
+      ],
+      "spots": [
+        {
+          "id": "orderid",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "name": "order_id distinct count"
+        },
+        {
+          "id": "custnull",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "name": "customer_id nulls"
+        },
+        {
+          "id": "qty",
+          "x": 10,
+          "y": 90,
+          "w": 280,
+          "h": 40,
+          "name": "quantity range"
+        },
+        {
+          "id": "price",
+          "x": 310,
+          "y": 90,
+          "w": 280,
+          "h": 40,
+          "name": "unit_price minimum"
+        },
+        {
+          "id": "ship",
+          "x": 10,
+          "y": 170,
+          "w": 280,
+          "h": 40,
+          "name": "ship date before order date"
+        },
+        {
+          "id": "region",
+          "x": 310,
+          "y": 170,
+          "w": 280,
+          "h": 40,
+          "name": "region values"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "custnull",
+        "price",
+        "ship"
+      ]
+    },
+    "explanation": "Every order must name a customer, prices cannot be negative, and an order cannot ship before it is placed. A unique order_id on every row, a sensible quantity range and four expected region values are signs of good data.",
+    "partExplanations": {
+      "orderid": "50,000 distinct values in 50,000 rows means no duplicate order numbers.",
+      "custnull": "Missing customer_id on 3% of orders breaks completeness for a required field.",
+      "qty": "Quantities of 1 to 12 are plausible.",
+      "price": "A negative unit price is an invalid value.",
+      "ship": "Shipping before ordering is a cross-field inconsistency.",
+      "region": "Four expected regions with consistent spelling show no problem."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-terminal-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "An analyst suspects duplicate rows in a supplier export. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ wc -l suppliers.csv",
+        "1201 suppliers.csv",
+        "$ sort -u suppliers.csv | wc -l",
+        "1188",
+        "$ grep -i brightwave suppliers.csv",
+        "S-0417,Brightwave Ltd,Leeds,2024-02-11",
+        "S-0417,brightwave ltd. ,Leeds,2024-02-11"
+      ],
+      "steps": [
+        {
+          "id": "count",
+          "label": "How many extra copies are there, beyond the first copy of each line?",
+          "options": [
+            {
+              "id": "12",
+              "text": "12"
+            },
+            {
+              "id": "13",
+              "text": "13"
+            },
+            {
+              "id": "1188",
+              "text": "1,188"
+            },
+            {
+              "id": "1201",
+              "text": "1,201"
+            }
+          ]
+        },
+        {
+          "id": "show",
+          "label": "Type a command that prints each line of suppliers.csv that appears more than once"
+        },
+        {
+          "id": "near",
+          "label": "The two Brightwave lines were not counted as duplicates. Choose the best next action",
+          "options": [
+            {
+              "id": "norm",
+              "text": "Normalize case, spacing and punctuation, then compare again"
+            },
+            {
+              "id": "keep",
+              "text": "Keep both rows since the raw text does not match"
+            },
+            {
+              "id": "drop",
+              "text": "Delete every supplier whose name contains the word Ltd"
+            },
+            {
+              "id": "sortr",
+              "text": "Sort the file in reverse order and recount the lines"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "count": [
+          "13"
+        ],
+        "show": [
+          "sort suppliers.csv | uniq -d",
+          "sort ./suppliers.csv | uniq -d",
+          "cat suppliers.csv | sort | uniq -d",
+          "sort suppliers.csv | uniq --repeated",
+          "sort suppliers.csv | uniq -D",
+          "cat suppliers.csv | sort | uniq -D",
+          "sort suppliers.csv | uniq -c | awk '$1 > 1'",
+          "sort suppliers.csv | uniq -c | awk '$1>1'",
+          "sort * | uniq -d",
+          "sort *.csv | uniq -d",
+          "sort < suppliers.csv | uniq -d",
+          "sort -- suppliers.csv | uniq -d",
+          "sort suppliers.csv | uniq -cd"
+        ],
+        "near": [
+          "norm"
+        ]
+      }
+    },
+    "explanation": "The file has 1,201 lines but only 1,188 unique ones, so 13 lines are extra copies of lines already in the file. uniq only collapses adjacent lines, so the file must be sorted first. Near-duplicates that differ only in case, spacing or punctuation need standardizing before they will match; keeping them or deleting by keyword would leave or create errors.",
+    "partExplanations": {
+      "count": "1,201 lines − 1,188 unique lines = 13 extra copies.",
+      "show": "sort suppliers.csv | uniq -d groups identical lines together and prints each repeated one once.",
+      "near": "Normalizing case, whitespace and punctuation turns these near-duplicates into exact matches."
+    },
+    "acronyms": [
+      "CSV"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-2-2-terminal-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "An analyst is checking missing contact details in a customer relationship table. Review the query results, then complete each step.",
+    "payload": {
+      "output": [
+        "analytics=> select count(*) as total, count(email) as with_email from crm.contacts;",
+        " total | with_email",
+        "-------+-----------",
+        "  4800 |       4512",
+        "analytics=> select count(*) from crm.contacts where trim(email) = '';",
+        " count",
+        "-------",
+        "    96"
+      ],
+      "steps": [
+        {
+          "id": "nulls",
+          "label": "How many rows have a null email?",
+          "options": [
+            {
+              "id": "96",
+              "text": "96"
+            },
+            {
+              "id": "288",
+              "text": "288"
+            },
+            {
+              "id": "384",
+              "text": "384"
+            },
+            {
+              "id": "4512",
+              "text": "4,512"
+            }
+          ]
+        },
+        {
+          "id": "phone",
+          "label": "Type a query that counts the rows in crm.contacts whose phone is null"
+        },
+        {
+          "id": "usable",
+          "label": "How many rows have no usable email at all?",
+          "options": [
+            {
+              "id": "96",
+              "text": "96"
+            },
+            {
+              "id": "288",
+              "text": "288"
+            },
+            {
+              "id": "384",
+              "text": "384"
+            },
+            {
+              "id": "4416",
+              "text": "4,416"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "nulls": [
+          "288"
+        ],
+        "phone": [
+          "SELECT COUNT(*) FROM crm.contacts WHERE phone IS NULL;",
+          "SELECT COUNT(*) FROM crm.contacts WHERE phone IS NULL",
+          "select count(*) from crm.contacts where phone is null;",
+          "select count(*) from crm.contacts where phone is null",
+          "SELECT COUNT(1) FROM crm.contacts WHERE phone IS NULL;",
+          "SELECT COUNT(1) FROM crm.contacts WHERE phone IS NULL",
+          "select count(1) from crm.contacts where phone is null;",
+          "select count(1) from crm.contacts where phone is null",
+          "SELECT COUNT(*) - COUNT(phone) FROM crm.contacts;",
+          "SELECT COUNT(*) - COUNT(phone) FROM crm.contacts",
+          "select count(*) - count(phone) from crm.contacts;",
+          "select count(*) - count(phone) from crm.contacts"
+        ],
+        "usable": [
+          "384"
+        ]
+      }
+    },
+    "explanation": "count(email) skips nulls, so 4,800 − 4,512 = 288 rows are null. The second query finds 96 more rows holding blank text, which count(email) counted as present. Together 288 + 96 = 384 rows have no usable email, so checking only for nulls understates missing values.",
+    "partExplanations": {
+      "nulls": "count(*) counts every row and count(email) skips nulls: 4,800 − 4,512 = 288.",
+      "phone": "WHERE phone IS NULL keeps only rows with no phone, and COUNT(*) counts them.",
+      "usable": "288 nulls + 96 blank strings = 384 rows with no usable email."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]

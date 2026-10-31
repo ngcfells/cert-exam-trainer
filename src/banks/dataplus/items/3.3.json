@@ -1,0 +1,2439 @@
+[
+  {
+    "id": "da2-3-3-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 1,
+    "stem": "A report fails to refresh with the message \"Login failed for user.\" What is the most likely category of problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Corrupted or unreadable source file"
+        },
+        {
+          "id": "b",
+          "text": "Syntax error in the query"
+        },
+        {
+          "id": "c",
+          "text": "Missing join condition"
+        },
+        {
+          "id": "d",
+          "text": "Authentication credentials"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A login failure means the connection was reached but the credentials were rejected, so the stored username or password should be checked. A corrupted file, a syntax error or a missing join produce different errors and would not appear as a login failure.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst's dashboard stopped refreshing after the database team moved the server to a new host name. Nothing else changed. What should the analyst update first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The refresh schedule frequency"
+        },
+        {
+          "id": "b",
+          "text": "The saved connection string entry"
+        },
+        {
+          "id": "c",
+          "text": "The visual filters on the dashboard"
+        },
+        {
+          "id": "d",
+          "text": "The column data types in the model"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The connection string still points at the old host, so the server name must be changed for the refresh to connect. Refresh frequency, filters and data types do not affect whether the tool can reach the moved server.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "A remote analyst can query the warehouse from the office but gets a timeout from home. Colleagues at home connect fine once they start the corporate client. What is the most likely fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rebuild the warehouse indexes"
+        },
+        {
+          "id": "b",
+          "text": "Request a larger query timeout from the team"
+        },
+        {
+          "id": "c",
+          "text": "Connect to the VPN before querying"
+        },
+        {
+          "id": "d",
+          "text": "Clear the local browser cache"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The warehouse is reachable only from the corporate network, so connecting through the VPN resolves the timeout. Indexes and timeout settings will not help if traffic cannot reach the server, and the browser cache is unrelated to a database connection.",
+    "acronyms": [
+      "VPN"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "A scheduled extract that ran for months now fails with \"connection refused\" on the database port. The server responds to other requests. What should the analyst check next?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether the extract query has a typo"
+        },
+        {
+          "id": "b",
+          "text": "Whether the source table now has duplicate rows"
+        },
+        {
+          "id": "c",
+          "text": "Whether the report uses the right chart"
+        },
+        {
+          "id": "d",
+          "text": "Whether a firewall rule now blocks the port"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "\"Connection refused\" on a specific port while the host is otherwise up points to a blocked or closed port, such as a new firewall rule. A query typo or duplicates would surface only after connecting, and chart choice has no bearing on connectivity.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which tool or method gives an analyst a step-by-step record of what a failing data refresh did before it stopped?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Adding a slicer to the report"
+        },
+        {
+          "id": "b",
+          "text": "Increasing the sample size"
+        },
+        {
+          "id": "c",
+          "text": "Sorting the output table"
+        },
+        {
+          "id": "d",
+          "text": "Enabling detailed logging"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Turning on logging records each step, connection attempt and error message, which shows where the refresh failed. Slicers, sample size and sorting change what is displayed or analyzed, not what is recorded about the process.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "An ETL job fails at night with only a generic \"job failed\" message. The analyst cannot reproduce the error during the day. What is the best next step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rewrite the job in another programming language"
+        },
+        {
+          "id": "b",
+          "text": "Raise the logging level for the next run"
+        },
+        {
+          "id": "c",
+          "text": "Delete the target table and reload it"
+        },
+        {
+          "id": "d",
+          "text": "Move the job to run every hour instead"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Raising the logging level captures detailed messages on the next nightly run so the actual cause can be seen. Rewriting or deleting data acts before the cause is known, and running more often only produces more failures without more information.",
+    "acronyms": [
+      "ETL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "A user reports that the sales dashboard \"shows wrong numbers.\" What should the analyst do first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rebuild the dashboard from scratch"
+        },
+        {
+          "id": "b",
+          "text": "Change the dashboard color scheme"
+        },
+        {
+          "id": "c",
+          "text": "Send the user the raw source tables to review"
+        },
+        {
+          "id": "d",
+          "text": "Ask which numbers, filters and dates they saw"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A vague user report must first be clarified so the issue can be reproduced, including which values, filters and dates were involved. Rebuilding or restyling acts without understanding the problem, and raw tables shift the troubleshooting to the user.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "A regional manager says a report shows no data, while the analyst sees full results for the same report. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The source database is corrupted"
+        },
+        {
+          "id": "b",
+          "text": "The report query has a syntax error in its filter"
+        },
+        {
+          "id": "c",
+          "text": "The manager's row-level permissions filter the data"
+        },
+        {
+          "id": "d",
+          "text": "The server is offline for everyone"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "If the same report works for one user and not another, the difference is the user context, such as row-level security or an applied filter. Corruption, syntax errors and an offline server would affect the analyst too.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "A user says a dashboard shows yesterday's figures even though the source was updated this morning. What should the analyst check first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The chart axis labels"
+        },
+        {
+          "id": "b",
+          "text": "The last successful refresh time"
+        },
+        {
+          "id": "c",
+          "text": "The legend placement on the main chart"
+        },
+        {
+          "id": "d",
+          "text": "The font size of the totals"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Stale figures usually mean the refresh did not run or failed, so the last successful refresh time is the first thing to check. Axis labels, legends and fonts are presentation details that do not change which data is loaded.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 1,
+    "stem": "Before troubleshooting a user's complaint about a slow report, why should the analyst try to reproduce the issue?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To prove the user is wrong"
+        },
+        {
+          "id": "b",
+          "text": "To confirm the problem and see its conditions"
+        },
+        {
+          "id": "c",
+          "text": "To avoid logging the ticket"
+        },
+        {
+          "id": "d",
+          "text": "To skip testing the eventual fix before release"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Reproducing the problem confirms it exists and shows the conditions under which it happens, which guides the fix. The goal is not to dispute the user, avoid tickets or skip testing, all of which weaken troubleshooting.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 1,
+    "stem": "The query SELECT name, region FROM customers WHERE region = 'West returns a syntax error. What is wrong?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The column list needs parentheses"
+        },
+        {
+          "id": "b",
+          "text": "The table name must be plural"
+        },
+        {
+          "id": "c",
+          "text": "The string literal is missing its closing quote"
+        },
+        {
+          "id": "d",
+          "text": "The WHERE clause must come before the FROM clause"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The literal 'West has no closing single quote, so the parser cannot find the end of the string. Column lists do not use parentheses, table names have no plural rule, and WHERE follows FROM.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "The query SELECT region, SUM(sales) FROM orders; fails with an error about region. What change fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace SUM with COUNT"
+        },
+        {
+          "id": "b",
+          "text": "Add an ORDER BY clause"
+        },
+        {
+          "id": "c",
+          "text": "Add a GROUP BY clause"
+        },
+        {
+          "id": "d",
+          "text": "Move region after SUM"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "When a non-aggregated column appears with an aggregate, it must be listed in GROUP BY. Swapping the aggregate, adding ORDER BY or reordering columns leaves region ungrouped, so the error remains.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst writes SELECT region, COUNT(*) FROM orders WHERE COUNT(*) > 100 GROUP BY region; and gets an error. What is the fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace COUNT(*) with COUNT(region) in both places"
+        },
+        {
+          "id": "b",
+          "text": "Filter the aggregate with HAVING after GROUP BY"
+        },
+        {
+          "id": "c",
+          "text": "Move WHERE after the GROUP BY clause"
+        },
+        {
+          "id": "d",
+          "text": "Add DISTINCT before region"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Aggregates cannot be used in WHERE because rows are filtered before grouping; HAVING filters the grouped results. Changing the counted column, moving WHERE or adding DISTINCT does not allow an aggregate in a row filter.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "A query joins orders to customers with FROM orders, customers WHERE orders.total > 50 and returns far more rows than there are orders. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "No condition links the two tables"
+        },
+        {
+          "id": "b",
+          "text": "The total column holds text values"
+        },
+        {
+          "id": "c",
+          "text": "The orders table has a missing index"
+        },
+        {
+          "id": "d",
+          "text": "The WHERE filter uses the wrong operator"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Listing two tables without a condition matching their keys produces a Cartesian product, multiplying the row count. Text values or a different operator would change which rows are kept, not multiply them, and a missing index affects speed only.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "The query SELECT * FROM tickets WHERE closed_date = NULL; returns no rows, although many tickets are open. Which change returns the open tickets?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Use closed_date IS NULL"
+        },
+        {
+          "id": "b",
+          "text": "Use closed_date == NULL"
+        },
+        {
+          "id": "c",
+          "text": "Use closed_date = 'NULL'"
+        },
+        {
+          "id": "d",
+          "text": "Use closed_date <> NULL"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "NULL is not equal to anything, so comparisons with = or <> evaluate to unknown and return no rows; IS NULL is the correct test. The == operator is not standard SQL, and 'NULL' in quotes matches only the literal text.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst runs this query: FROM orders LEFT JOIN returns ON orders.id = returns.order_id WHERE returns.reason = 'Damaged'. It returns only orders with a damaged return, but the analyst wants every order. What fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Change LEFT JOIN to INNER JOIN"
+        },
+        {
+          "id": "b",
+          "text": "Change LEFT JOIN to CROSS JOIN so no orders are lost"
+        },
+        {
+          "id": "c",
+          "text": "Add DISTINCT to the select list"
+        },
+        {
+          "id": "d",
+          "text": "Move the reason filter into the ON clause"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A WHERE filter on the right-hand table removes rows where it is NULL, turning the left join into an inner join; filtering in the ON clause keeps every order. An inner join has the same problem, a cross join multiplies rows, and DISTINCT does not restore missing rows.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "A query fails with \"invalid column name 'CustomerID'\" though the column exists as customer_id. What is the problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The column name in the query is misspelled"
+        },
+        {
+          "id": "b",
+          "text": "The table is locked by another user's open transaction"
+        },
+        {
+          "id": "c",
+          "text": "The server ran out of memory"
+        },
+        {
+          "id": "d",
+          "text": "The column contains NULL values"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The error names a column the database cannot find, so the query refers to it by the wrong name. Locks and memory problems produce different errors, and NULL values do not prevent a column from being referenced.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "The query SELECT o.id, c.name FROM orders o JOIN customers c ON o.cust_id = c.id WHERE id > 1000; fails with an \"ambiguous column\" error. What fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rename the orders table alias"
+        },
+        {
+          "id": "b",
+          "text": "Change JOIN to LEFT JOIN so unmatched rows are kept"
+        },
+        {
+          "id": "c",
+          "text": "Qualify id with a table alias, such as o.id"
+        },
+        {
+          "id": "d",
+          "text": "Remove the WHERE clause entirely"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Both tables have an id column, so the unqualified id in WHERE is ambiguous; prefixing it with o. tells the database which one to use. Renaming the alias or changing the join type leaves the ambiguity, and removing the filter changes the result.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst opens a CSV export and sees garbled characters such as \"Ã©\" in customer names. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A missing primary key"
+        },
+        {
+          "id": "b",
+          "text": "A filter applied to the file"
+        },
+        {
+          "id": "c",
+          "text": "A rounding error in the totals"
+        },
+        {
+          "id": "d",
+          "text": "An encoding mismatch in the file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Garbled accented characters appear when a file saved in one character encoding is read as another. Keys, filters and rounding affect which rows or numbers appear, not how text characters are decoded.",
+    "acronyms": [
+      "CSV"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "A nightly file load fails partway, and the last rows of the loaded table are cut off mid-record. The source system shows the full file. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A transfer that stopped early"
+        },
+        {
+          "id": "b",
+          "text": "A missing GROUP BY clause"
+        },
+        {
+          "id": "c",
+          "text": "An incorrect chart type"
+        },
+        {
+          "id": "d",
+          "text": "A user permission filter"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Records cut off mid-row while the source is complete indicate the file was truncated during transfer. GROUP BY, chart type and permissions do not cut records in half during a load.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst suspects a downloaded data file was corrupted in transit. Which method best confirms it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Compare the file checksum with the source's"
+        },
+        {
+          "id": "b",
+          "text": "Open the file and scan the first ten rows for problems"
+        },
+        {
+          "id": "c",
+          "text": "Check the file name for typos"
+        },
+        {
+          "id": "d",
+          "text": "Look at the file's created date"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A checksum computed on the copy will differ from the source's value if even one byte changed, which confirms corruption. Scanning a few rows can miss damage elsewhere, and the name or date says nothing about the contents.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "A database table returns read errors on certain pages after a storage failure, while other tables work. Which action best recovers the table?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rerun the reports against the damaged table"
+        },
+        {
+          "id": "b",
+          "text": "Restore the table from the last good backup"
+        },
+        {
+          "id": "c",
+          "text": "Drop the indexes on the healthy tables"
+        },
+        {
+          "id": "d",
+          "text": "Increase the server's RAM allocation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Damaged pages from a storage failure are best recovered by restoring from a known good backup, then reapplying later changes. Reporting from damaged data spreads bad results, healthy indexes are unrelated, and more RAM does not repair pages.",
+    "acronyms": [
+      "RAM"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "Totals in a new report are double the figures in the finance system. Which troubleshooting method helps most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Validate the source against authoritative records"
+        },
+        {
+          "id": "b",
+          "text": "Change the visual to a table"
+        },
+        {
+          "id": "c",
+          "text": "Add a company logo and reporting period to the header"
+        },
+        {
+          "id": "d",
+          "text": "Sort the report by descending total"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Comparing counts and totals with authoritative records shows whether the report pulls the right source or duplicates rows. Changing visuals, branding or sort order leaves the underlying numbers unchanged.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "A report connects to a table named sales_2024. Figures look plausible but differ slightly from the official numbers. What should the analyst confirm first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "That the report uses the approved dark color theme"
+        },
+        {
+          "id": "b",
+          "text": "That users have the latest browser"
+        },
+        {
+          "id": "c",
+          "text": "That this is the approved production source"
+        },
+        {
+          "id": "d",
+          "text": "That the report has a title on every page"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A similarly named table may be a test copy or an outdated extract, so the analyst should confirm the report uses the approved production source. Themes, browsers and titles do not explain a difference in values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which action is part of validating a data source?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Checking row counts against the original system"
+        },
+        {
+          "id": "b",
+          "text": "Changing the chart color palette to match branding"
+        },
+        {
+          "id": "c",
+          "text": "Renaming the dashboard"
+        },
+        {
+          "id": "d",
+          "text": "Adding tooltips to visuals"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Validating a source means confirming the data matches what the source holds, for example by comparing row counts and totals. Colors, names and tooltips are design choices that do not check the data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "After an upgrade, a BI connector throws an unfamiliar error code that is not in the internal documentation. What is the most efficient next step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reinstall the operating system"
+        },
+        {
+          "id": "b",
+          "text": "Search the vendor's community forum and knowledge base"
+        },
+        {
+          "id": "c",
+          "text": "Rebuild every report from scratch in the new version"
+        },
+        {
+          "id": "d",
+          "text": "Wait for users to stop reporting it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Vendor communities and knowledge bases often document new error codes and known fixes after upgrades, so searching them is fast and targeted. Reinstalling or rebuilding is drastic without a known cause, and waiting leaves the problem unresolved.",
+    "acronyms": [
+      "BI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst finds a forum post with a fix for a reporting tool error. What should the analyst do before applying it to production?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply it to production immediately"
+        },
+        {
+          "id": "b",
+          "text": "Share it with all users first so they know about it"
+        },
+        {
+          "id": "c",
+          "text": "Test the fix in a separate staging copy"
+        },
+        {
+          "id": "d",
+          "text": "Delete the existing error logs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Community advice may not match the local setup, so it should be tested in a separate staging copy before rollout. Applying it directly risks outages, sharing first spreads an unverified fix, and deleting logs removes evidence.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which resource is most likely to list known bugs and workarounds for a specific version of an analytics tool?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The vendor's release notes"
+        },
+        {
+          "id": "b",
+          "text": "A general statistics textbook"
+        },
+        {
+          "id": "c",
+          "text": "The company style guide"
+        },
+        {
+          "id": "d",
+          "text": "The internal data dictionary"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Vendor release notes describe changes, known issues and workarounds for each version. A statistics textbook, style guide or data dictionary covers concepts, branding or field definitions, not product bugs.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "A dashboard refresh fails only on the first business day of each month, when the source has far more rows. Logs show the query is cancelled after 30 minutes. What is the most likely fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Change the dashboard's color scheme"
+        },
+        {
+          "id": "b",
+          "text": "Speed up the job or raise the time limit"
+        },
+        {
+          "id": "c",
+          "text": "Add a new user to the workspace"
+        },
+        {
+          "id": "d",
+          "text": "Convert the source table to JSON"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A query cancelled at a fixed duration only on high-volume days points to a timeout, so optimizing the query or raising the limit addresses it. Colors and users do not affect execution time, and converting to JSON does not make the query faster.",
+    "acronyms": [
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst's query ran in seconds last week and now takes minutes. Data volume is unchanged, and the database team recently dropped some objects. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An index used for lookups was removed"
+        },
+        {
+          "id": "b",
+          "text": "A missing closing quote in the query"
+        },
+        {
+          "id": "c",
+          "text": "A user-reported filter on the dashboard"
+        },
+        {
+          "id": "d",
+          "text": "A character encoding mismatch in the data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Same data volume and a sudden slowdown after objects were dropped suggests the query lost a supporting index and now scans the table. A syntax error would stop the query, and filters or encoding do not explain a sudden slowdown.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "A query computes SUM(revenue) / COUNT(*) and returns 0 for many regions, although revenue is positive. The columns are stored as integers. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The COUNT function ignores NULL rows"
+        },
+        {
+          "id": "b",
+          "text": "The SUM function skips negative values"
+        },
+        {
+          "id": "c",
+          "text": "The GROUP BY clause is missing a column"
+        },
+        {
+          "id": "d",
+          "text": "Division truncates the fractional part"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "In many databases, dividing one integer by another truncates the result, so averages below 1 become 0; casting to a decimal fixes it. COUNT(*) counts all rows, SUM includes negatives, and a missing GROUP BY column would cause an error, not zeros.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "After a source system migration, a monthly report shows sales dropping to zero on several dates. The source application shows normal sales for those days. The new extract's date column was loaded with default settings. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The report uses too many visuals"
+        },
+        {
+          "id": "b",
+          "text": "The users lack permission to the report"
+        },
+        {
+          "id": "c",
+          "text": "Dates are parsed in the wrong day-month order"
+        },
+        {
+          "id": "d",
+          "text": "The server lost network connectivity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A day-month swap misplaces or rejects dates where the day is above 12, leaving gaps and zero totals. Too many visuals or missing permissions would not create date-specific zeros, and a connectivity loss would fail the whole refresh.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-033",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst gets \"permission denied\" when querying one table but can query others in the same database. What should the analyst do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Restart the database server"
+        },
+        {
+          "id": "b",
+          "text": "Ask the owner for read access"
+        },
+        {
+          "id": "c",
+          "text": "Reinstall the query editor"
+        },
+        {
+          "id": "d",
+          "text": "Rewrite the query using a subquery"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A permission error on a single table means the account lacks rights to that object, so access must be granted. Restarts and reinstalls do not change permissions, and a subquery still reads the same restricted table.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-034",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "An on-premises database works in the desktop tool but fails in the online service with a \"host unreachable\" error. What should the analyst check?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether the visuals use consistent fonts"
+        },
+        {
+          "id": "b",
+          "text": "Whether the query has a GROUP BY"
+        },
+        {
+          "id": "c",
+          "text": "Whether the file is in CSV format"
+        },
+        {
+          "id": "d",
+          "text": "Whether the data gateway is running"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The online service reaches on-premises data through a gateway, so a stopped or offline gateway produces this error while the desktop connection still works. Fonts, GROUP BY and file format do not cause a gateway error.",
+    "acronyms": [
+      "CSV"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-035",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "A scheduled refresh that worked yesterday now fails to connect to the database. Which TWO checks are the most appropriate first steps?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Confirm the server is reachable"
+        },
+        {
+          "id": "b",
+          "text": "Change the report's chart types"
+        },
+        {
+          "id": "c",
+          "text": "Add more calculated columns"
+        },
+        {
+          "id": "d",
+          "text": "Check the credentials have not expired"
+        },
+        {
+          "id": "e",
+          "text": "Rename the dashboard pages"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Connection failures most often come from the server being unreachable or from expired or changed credentials, so those are checked first. Chart types, calculated columns and page names have no effect on whether the refresh can connect.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-036",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO pieces of information are most useful to collect from a user who reports that a report is broken?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The exact error text or a screenshot"
+        },
+        {
+          "id": "b",
+          "text": "The user's preferred color palette"
+        },
+        {
+          "id": "c",
+          "text": "The user's job title history"
+        },
+        {
+          "id": "d",
+          "text": "The number of reports the user owns"
+        },
+        {
+          "id": "e",
+          "text": "The steps and filters used beforehand"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "An exact error message and the steps that led to it let the analyst reproduce and diagnose the issue. Color preferences, job history and report counts do not describe the problem.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-037",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO SQL errors would cause a query to fail to run, rather than return wrong results?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A join on the wrong but valid key"
+        },
+        {
+          "id": "b",
+          "text": "A WHERE filter with the wrong date"
+        },
+        {
+          "id": "c",
+          "text": "An unclosed parenthesis in WHERE"
+        },
+        {
+          "id": "d",
+          "text": "A misspelled keyword, such as selct"
+        },
+        {
+          "id": "e",
+          "text": "Using AVG where SUM was intended"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "An unclosed parenthesis and a misspelled keyword are syntax errors that the parser rejects. A wrong join key, a wrong date and the wrong aggregate are logic errors that run but return incorrect results.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-038",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "A query returns duplicated customer rows after a join is added. Which TWO causes are most likely?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "One customer matches several joined rows"
+        },
+        {
+          "id": "b",
+          "text": "The join matches on part of a composite key"
+        },
+        {
+          "id": "c",
+          "text": "The query uses an ORDER BY clause"
+        },
+        {
+          "id": "d",
+          "text": "The SELECT list uses column aliases"
+        },
+        {
+          "id": "e",
+          "text": "The query filters on a date range"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "A one-to-many relationship, or a join that matches on only part of a composite key, produces multiple matches per customer. Sorting, aliases and date filters do not create extra rows.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-039",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO signs suggest that a data file is corrupted rather than merely containing bad values?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A few customer names are misspelled"
+        },
+        {
+          "id": "b",
+          "text": "The file cannot be opened or parsed"
+        },
+        {
+          "id": "c",
+          "text": "Some prices are outliers"
+        },
+        {
+          "id": "d",
+          "text": "The checksum does not match the source"
+        },
+        {
+          "id": "e",
+          "text": "Several rows have missing optional fields"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A file that cannot be parsed or whose checksum differs from the source has damaged bytes. Misspellings, outliers and empty optional fields are data quality issues in a file that is otherwise intact.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-040",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO actions validate that a report is using the correct data source?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the report's font size"
+        },
+        {
+          "id": "b",
+          "text": "Add a logo to each page"
+        },
+        {
+          "id": "c",
+          "text": "Check the server and database names"
+        },
+        {
+          "id": "d",
+          "text": "Switch the report to a dark theme"
+        },
+        {
+          "id": "e",
+          "text": "Reconcile totals with a trusted copy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Checking the connection details and reconciling totals with a trusted copy both confirm the data source. Fonts, logos and themes are cosmetic and say nothing about the source.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-041",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE details are most useful to capture when logging is enabled for a failing data pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The analyst's desktop wallpaper"
+        },
+        {
+          "id": "b",
+          "text": "Timestamps for each step"
+        },
+        {
+          "id": "c",
+          "text": "Error messages and codes"
+        },
+        {
+          "id": "d",
+          "text": "The dashboard's color scheme"
+        },
+        {
+          "id": "e",
+          "text": "Row counts read and written"
+        },
+        {
+          "id": "f",
+          "text": "The office floor plan"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Timestamps, error messages and row counts show when the pipeline failed, why, and how much data moved. Wallpaper, colors and floor plans are unrelated to pipeline behavior.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-042",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst cannot solve an error in a vendor's analytics tool and plans to post on the vendor's community forum. Which TWO practices are most appropriate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Post the full customer table to show the problem"
+        },
+        {
+          "id": "b",
+          "text": "Share the database password so others can test"
+        },
+        {
+          "id": "c",
+          "text": "Mark the post urgent without any details"
+        },
+        {
+          "id": "d",
+          "text": "Include the product version and exact error text"
+        },
+        {
+          "id": "e",
+          "text": "Remove PII and credentials from shared logs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "Version details and exact error text help others diagnose the issue, and removing PII and credentials protects sensitive data. Posting customer data or passwords exposes them publicly, and a post without details is unlikely to get help.",
+    "acronyms": [
+      "PII"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-mcq-043",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst finds that a load to the warehouse produced half the expected rows. Which TWO steps best isolate the cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Change the dashboard to a bar chart"
+        },
+        {
+          "id": "b",
+          "text": "Compare source and extracted row counts"
+        },
+        {
+          "id": "c",
+          "text": "Review the load log for rejected rows"
+        },
+        {
+          "id": "d",
+          "text": "Add a new date slicer to the report"
+        },
+        {
+          "id": "e",
+          "text": "Ask users to stop opening the report"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Comparing source and file counts shows whether rows were lost in extraction, and the load log shows rows rejected during loading. Chart types, slicers and user activity do not explain missing rows in the load.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-terminal-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "A scheduled dashboard refresh at Larkfield Outfitters stopped updating overnight. Review the refresh log, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 6 refresh_sales.log",
+        "05:30:00 INFO  refresh started: dataset sales_daily",
+        "05:30:01 INFO  connecting to dbprod02.larkfield.local:5432",
+        "05:30:31 ERROR connection timed out after 30 s (host dbprod02.larkfield.local)",
+        "05:30:31 INFO  retry 1 of 1",
+        "05:31:01 ERROR connection timed out after 30 s (host dbprod02.larkfield.local)",
+        "05:31:01 ERROR refresh failed: dataset sales_daily unchanged"
+      ],
+      "steps": [
+        {
+          "id": "count",
+          "label": "Type a command that counts the lines containing ERROR in refresh_sales.log"
+        },
+        {
+          "id": "test",
+          "label": "Type a command that checks whether the database host dbprod02.larkfield.local responds on the network"
+        },
+        {
+          "id": "next",
+          "label": "The host answers ping, and port 5432 accepts connections from other servers but not from the reporting server. Choose the best next action",
+          "options": [
+            {
+              "id": "firewall",
+              "text": "Ask the network team to check the firewall rules"
+            },
+            {
+              "id": "rewrite",
+              "text": "Rewrite the dataset query to return fewer rows"
+            },
+            {
+              "id": "timeout",
+              "text": "Raise the connection timeout to 10 minutes"
+            },
+            {
+              "id": "reinstall",
+              "text": "Reinstall the reporting tool on that server"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "count": [
+          "grep -c ERROR refresh_sales.log",
+          "grep -c \"ERROR\" refresh_sales.log",
+          "grep -c 'ERROR' refresh_sales.log",
+          "grep -c ERROR ./refresh_sales.log",
+          "grep ERROR refresh_sales.log | wc -l",
+          "grep \"ERROR\" refresh_sales.log | wc -l",
+          "grep 'ERROR' refresh_sales.log | wc -l",
+          "cat refresh_sales.log | grep ERROR | wc -l",
+          "cat refresh_sales.log | grep -c ERROR",
+          "grep -wc ERROR refresh_sales.log",
+          "grep -cw ERROR refresh_sales.log"
+        ],
+        "test": [
+          "ping dbprod02.larkfield.local",
+          "ping -c 4 dbprod02.larkfield.local",
+          "ping -c * dbprod02.larkfield.local",
+          "ping -n * dbprod02.larkfield.local"
+        ],
+        "next": [
+          "firewall"
+        ]
+      }
+    },
+    "explanation": "The log shows repeated connection timeouts, a connectivity issue rather than a query or software fault. Counting errors with grep -c and testing reachability with ping narrow the cause; a port blocked from one server points to a firewall rule, so a longer timeout, a smaller query or a reinstall would not fix it.",
+    "partExplanations": {
+      "count": "grep -c ERROR refresh_sales.log prints how many lines contain ERROR (here, 3).",
+      "test": "ping sends echo requests to show whether the host is reachable at all.",
+      "next": "A reachable host with a closed port from one source is a classic firewall symptom, which the network team must fix."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-terminal-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "An analyst at Brightwater Clinics receives a monthly extract, visits_oct.csv, and the import tool reports a corrupted file. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ wc -l visits_oct.csv",
+        "48210 visits_oct.csv",
+        "$ cat visits_oct.sha256",
+        "9f3c1e7a2b6d4f0e8a1c5b7d3e9f2a4c6b0d8e2f4a1c7d9b3e5f0a2c4d6e8b1a  visits_oct.csv",
+        "$ sha256sum visits_oct.csv",
+        "1b8e4d2f7c0a9e3b5d6f1a8c2e4b7d9f3a5c7e9b1d2f4a6c8e0b2d4f6a8c1e3b  visits_oct.csv",
+        "$ tail -n 2 visits_oct.csv",
+        "48209,2026-10-31,north07,Follow-up,45",
+        "48210,2026-10-31,nor"
+      ],
+      "steps": [
+        {
+          "id": "diag",
+          "label": "What do the checksum and the last line show?",
+          "options": [
+            {
+              "id": "trunc",
+              "text": "The file was cut off during transfer"
+            },
+            {
+              "id": "enc",
+              "text": "The file uses the wrong character encoding"
+            },
+            {
+              "id": "dup",
+              "text": "The file contains duplicate visit rows"
+            },
+            {
+              "id": "ok",
+              "text": "The file is complete and the import tool is faulty"
+            }
+          ]
+        },
+        {
+          "id": "head",
+          "label": "Type a command that shows the first 5 lines of visits_oct.csv to confirm the header row"
+        },
+        {
+          "id": "fix",
+          "label": "Choose the best way to resolve the problem",
+          "options": [
+            {
+              "id": "resend",
+              "text": "Request a fresh copy and verify its checksum"
+            },
+            {
+              "id": "droplast",
+              "text": "Delete the partial last row, then load the file"
+            },
+            {
+              "id": "ignore",
+              "text": "Load the file and note the error in the footer"
+            },
+            {
+              "id": "rename",
+              "text": "Rename the file and import it once more"
+            }
+          ]
+        },
+        {
+          "id": "prevent",
+          "label": "Choose the control that would catch this sooner next month",
+          "options": [
+            {
+              "id": "check",
+              "text": "Check the checksum and row count before each load"
+            },
+            {
+              "id": "bigger",
+              "text": "Add more disk space to the import server"
+            },
+            {
+              "id": "manual",
+              "text": "Open each file in a spreadsheet before loading"
+            },
+            {
+              "id": "compress",
+              "text": "Ask the source to send files uncompressed"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "diag": [
+          "trunc"
+        ],
+        "head": [
+          "head -n 5 visits_oct.csv",
+          "head -5 visits_oct.csv",
+          "head -n5 visits_oct.csv",
+          "head -n 5 ./visits_oct.csv",
+          "head -5 ./visits_oct.csv",
+          "cat visits_oct.csv | head -n 5",
+          "cat visits_oct.csv | head -5",
+          "sed -n 1,5p visits_oct.csv",
+          "sed -n '1,5p' visits_oct.csv"
+        ],
+        "fix": [
+          "resend"
+        ],
+        "prevent": [
+          "check"
+        ]
+      }
+    },
+    "explanation": "A checksum that differs from the published value plus a half-written last row shows the transfer was truncated, so the data is corrupted, not just oddly encoded or duplicated. Validating the source by requesting a fresh copy is the reliable fix; trimming the row hides missing data, and renaming changes nothing. An automated checksum and row-count check catches the problem before load. The file is not complete, so the import tool is not at fault; loading it anyway publishes missing data, and opening every file by hand is slow and misses checksum errors.",
+    "partExplanations": {
+      "diag": "Mismatched checksums and a row that stops mid-field mean the file was cut off.",
+      "head": "head -n 5 visits_oct.csv prints the first five lines, including the header.",
+      "fix": "Only a fresh, verified copy restores the rows that were lost in transfer.",
+      "prevent": "Automatic checksum and row-count validation stops a corrupted file before it reaches reports."
+    },
+    "acronyms": [
+      "CSV"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-terminal-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A nightly script that pulls exchange rates from a vendor API began failing on Monday. Verbose logging is now enabled. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 5 fx_pull.log",
+        "01:10:02 DEBUG request https://rates.examplefx.net/v2/daily?base=usd",
+        "01:10:03 DEBUG response status 410 Gone",
+        "01:10:03 DEBUG body: {\"message\": \"v2 retired 2026-10-26; use /v3/daily\"}",
+        "01:10:03 ERROR no rates parsed; 0 rows written to fx_rates",
+        "01:10:03 INFO  run finished with errors"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that shows every DEBUG line in fx_pull.log"
+        },
+        {
+          "id": "cause",
+          "label": "Choose the most likely cause",
+          "options": [
+            {
+              "id": "retired",
+              "text": "The vendor retired the endpoint version the script calls"
+            },
+            {
+              "id": "network",
+              "text": "The server lost its internet connection"
+            },
+            {
+              "id": "creds",
+              "text": "The script's access key expired"
+            },
+            {
+              "id": "table",
+              "text": "The fx_rates table is locked"
+            }
+          ]
+        },
+        {
+          "id": "resource",
+          "label": "Choose the best place to confirm the change and the new request format",
+          "options": [
+            {
+              "id": "vendor",
+              "text": "The vendor's developer forum and release notes"
+            },
+            {
+              "id": "general",
+              "text": "A general social media search"
+            },
+            {
+              "id": "helpdesk",
+              "text": "The company's internal help desk"
+            },
+            {
+              "id": "dba",
+              "text": "The database administrator"
+            }
+          ]
+        },
+        {
+          "id": "after",
+          "label": "After updating the script, choose what to do with logging",
+          "options": [
+            {
+              "id": "lower",
+              "text": "Return the log level to INFO once runs succeed"
+            },
+            {
+              "id": "keep",
+              "text": "Keep DEBUG on permanently for every job"
+            },
+            {
+              "id": "off",
+              "text": "Turn logging off to save disk space"
+            },
+            {
+              "id": "delete",
+              "text": "Delete the old log files"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep DEBUG fx_pull.log",
+          "grep \"DEBUG\" fx_pull.log",
+          "grep 'DEBUG' fx_pull.log",
+          "grep DEBUG ./fx_pull.log",
+          "grep -n DEBUG fx_pull.log",
+          "grep -w DEBUG fx_pull.log",
+          "grep -i debug fx_pull.log",
+          "grep -i DEBUG fx_pull.log",
+          "cat fx_pull.log | grep DEBUG"
+        ],
+        "cause": [
+          "retired"
+        ],
+        "resource": [
+          "vendor"
+        ],
+        "after": [
+          "lower"
+        ]
+      }
+    },
+    "explanation": "Verbose logs show the request got a 410 response saying version 2 is retired, so the network and credentials are working and the table is not involved. The vendor's forum and release notes are the authoritative source for the new endpoint. Once fixed, logging returns to normal so logs stay readable and small. A general social media search is unreliable, and the help desk and the database administrator do not own the vendor's API. Keeping DEBUG on everywhere fills disks, turning logging off hides future failures, and deleting old logs does not change the log level.",
+    "partExplanations": {
+      "find": "grep DEBUG fx_pull.log prints only the verbose request and response lines.",
+      "cause": "A 410 Gone response with a retirement message means the endpoint version was withdrawn.",
+      "resource": "Vendor communities and release notes document endpoint changes and migration steps.",
+      "after": "Debug logging is for diagnosis; leaving it on fills disks and buries real errors."
+    },
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-order-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "A regional manager at Corvane Foods reports that the revenue figure on her dashboard is lower than her own records. Put the troubleshooting steps in the order they should happen.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "Confirm the corrected figure with the manager and document the fix"
+        },
+        {
+          "id": "s1",
+          "text": "Ask the manager for the exact figure, filters and date range she used"
+        },
+        {
+          "id": "s4",
+          "text": "Trace and correct the cause, such as a stale refresh or a wrong filter"
+        },
+        {
+          "id": "s2",
+          "text": "Reproduce the number in the dashboard with the same filters"
+        },
+        {
+          "id": "s3",
+          "text": "Validate the figure against the source system for the same period"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "explanation": "A user-reported issue starts with exact details, then reproducing it, then checking the source of truth before changing anything. Only after the cause is found and fixed does the analyst confirm with the user and record the resolution.",
+    "partExplanations": {
+      "s1": "Exact details keep the analyst from chasing a different number than the user saw.",
+      "s2": "Reproducing the issue proves it exists and shows what the user sees.",
+      "s3": "Comparing with the source shows whether the dashboard or the user's records are wrong.",
+      "s4": "The fix comes only after the cause is known.",
+      "s5": "Confirming with the user and documenting closes the issue and helps next time."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-order-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A connector in a reporting tool can no longer reach a cloud database. Put the troubleshooting steps in the order they should happen, from simplest to most involved, starting with the settings the analyst can see.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Search the vendor community for the exact error message from the log"
+        },
+        {
+          "id": "s1",
+          "text": "Check the server name, port and credentials in the connection settings"
+        },
+        {
+          "id": "s3",
+          "text": "Enable detailed connector logging and retry the connection"
+        },
+        {
+          "id": "s2",
+          "text": "Test network reachability to the database host"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
+    },
+    "explanation": "Simple causes such as a typo or expired password are checked first, then the network path. If both are fine, detailed logs capture the exact error, which is what makes a vendor community search useful.",
+    "partExplanations": {
+      "s1": "Wrong settings or credentials are the most common and quickest cause to rule out.",
+      "s2": "Reachability shows whether the problem is in the network rather than the tool.",
+      "s3": "Detailed logs record the precise error once the basics are ruled out.",
+      "s4": "Searching the vendor community works best with the exact error text from the log."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "This query should list each store with its 2026 sales total, keeping only stores whose sales are above 50,000, but it fails: SELECT store_id, SUM(amount) FROM sales WHERE SUM(amount) > 50000 AND sale_date >= '2026-01-01'. Configure the corrected query.",
+    "payload": {
+      "fields": [
+        {
+          "id": "where",
+          "label": "Condition to keep in the WHERE clause",
+          "options": [
+            {
+              "id": "date",
+              "text": "sale_date >= '2026-01-01'"
+            },
+            {
+              "id": "sum",
+              "text": "SUM(amount) > 50000"
+            },
+            {
+              "id": "both",
+              "text": "Both conditions, unchanged"
+            }
+          ]
+        },
+        {
+          "id": "group",
+          "label": "Clause to add so the total is calculated per store",
+          "options": [
+            {
+              "id": "groupby",
+              "text": "GROUP BY store_id"
+            },
+            {
+              "id": "orderby",
+              "text": "ORDER BY store_id"
+            },
+            {
+              "id": "distinct",
+              "text": "SELECT DISTINCT store_id"
+            }
+          ]
+        },
+        {
+          "id": "having",
+          "label": "Clause for the 50,000 threshold",
+          "options": [
+            {
+              "id": "having",
+              "text": "HAVING SUM(amount) > 50000"
+            },
+            {
+              "id": "where",
+              "text": "WHERE amount > 50000"
+            },
+            {
+              "id": "limit",
+              "text": "LIMIT 50000"
+            }
+          ]
+        },
+        {
+          "id": "method",
+          "label": "Best way to confirm the fixed query is correct",
+          "options": [
+            {
+              "id": "spot",
+              "text": "Total one store by hand and compare"
+            },
+            {
+              "id": "runs",
+              "text": "Check only that the query runs cleanly"
+            },
+            {
+              "id": "rows",
+              "text": "Check that it returns at least one row"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "where": "date",
+        "group": "groupby",
+        "having": "having",
+        "method": "spot"
+      }
+    },
+    "explanation": "Aggregates cannot appear in WHERE, which filters rows before grouping, so the date filter stays there and the sum threshold moves to HAVING. GROUP BY store_id makes SUM total each store; ORDER BY and DISTINCT do not aggregate. A query that runs can still be wrong, so the result is checked against a hand total.",
+    "partExplanations": {
+      "where": "WHERE filters individual rows, so it keeps the date condition but cannot hold an aggregate.",
+      "group": "Without GROUP BY, SUM cannot be returned alongside store_id for each store.",
+      "having": "HAVING filters groups after aggregation, which is where SUM(amount) > 50000 belongs.",
+      "method": "Comparing one store's total with a manual calculation validates the logic, not just the syntax."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-3-hotspot-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "An import job log for a product file is shown. Select every line that points to corrupted data rather than a connectivity problem.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 50,
+          "text": "Row 112: unexpected character 0xFF in name"
+        },
+        {
+          "id": "n2",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 50,
+          "text": "Connection refused by files.corvane.local"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 100,
+          "w": 280,
+          "h": 50,
+          "text": "Row 540: 9 fields found, 12 expected"
+        },
+        {
+          "id": "n4",
+          "x": 310,
+          "y": 100,
+          "w": 280,
+          "h": 50,
+          "text": "Name lookup failed for files.corvane.local"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 190,
+          "w": 280,
+          "h": 50,
+          "text": "Archive checksum mismatch: products.zip"
+        },
+        {
+          "id": "n6",
+          "x": 310,
+          "y": 190,
+          "w": 280,
+          "h": 50,
+          "text": "Read timed out after 60 s"
+        }
+      ],
+      "spots": [
+        {
+          "id": "badchar",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 50,
+          "name": "Unexpected character in row 112"
+        },
+        {
+          "id": "refused",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 50,
+          "name": "Connection refused"
+        },
+        {
+          "id": "fields",
+          "x": 10,
+          "y": 100,
+          "w": 280,
+          "h": 50,
+          "name": "Wrong field count in row 540"
+        },
+        {
+          "id": "lookup",
+          "x": 310,
+          "y": 100,
+          "w": 280,
+          "h": 50,
+          "name": "Name lookup failed"
+        },
+        {
+          "id": "checksum",
+          "x": 10,
+          "y": 190,
+          "w": 280,
+          "h": 50,
+          "name": "Archive checksum mismatch"
+        },
+        {
+          "id": "timeout",
+          "x": 310,
+          "y": 190,
+          "w": 280,
+          "h": 50,
+          "name": "Read timed out"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "badchar",
+        "fields",
+        "checksum"
+      ]
+    },
+    "explanation": "Invalid bytes, rows with the wrong number of fields and a failed checksum all describe damaged content. A refused connection, a failed name lookup and a timeout describe trouble reaching the server, not the data itself.",
+    "partExplanations": {
+      "badchar": "An invalid byte inside a field is a sign of corrupted or wrongly encoded content.",
+      "fields": "A row with too few fields means the file structure is damaged.",
+      "checksum": "A checksum mismatch proves the archive changed after it was created."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]

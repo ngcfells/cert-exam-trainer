@@ -6,8 +6,13 @@ export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
   'ON', 'AS', 'AND', 'OR', 'NOT', 'NULL', 'IN', 'IS', 'LIKE', 'UNION', 'ALL', 'DISTINCT', 'LIMIT', 'ASC', 'DESC',
   'INSERT', 'INTO', 'VALUES', 'UPDATE', 'SET', 'DELETE', 'CREATE', 'TABLE', 'VIEW', 'INDEX', 'CASE', 'WHEN', 'THEN', 'ELSE', 'END',
   'COUNT', 'SUM', 'AVG', 'MIN', 'MAX',
+  'EXISTS', 'EXCEPT', 'INTERSECT', 'CAST', 'EXTRACT', 'VARCHAR', 'CHAR', 'INT', 'INTEGER', 'DECIMAL', 'FLOAT', 'DATE', 'YEAR', 'MONTH',
+  'BETWEEN', 'COALESCE', 'OFFSET', 'PARTITION', 'OVER', 'WITH', 'TOP', 'ROUND', 'TRIM', 'UPPER', 'LOWER', 'CONCAT', 'IF', 'IFNULL', 'ISNULL',
+  'PRIMARY', 'KEY', 'FOREIGN', 'REFERENCES', 'TRUE', 'FALSE',
+  'COUNTIF', 'COUNTIFS', 'SUMIF', 'SUMIFS', 'AVERAGEIF', 'DATEDIFF', 'DATEADD', 'STDEV', 'MEDIAN', 'MODE', 'LEN', 'MID', 'SUBSTR', 'NOW', 'TODAY',
+  'IFERROR', 'VLOOKUP', 'XLOOKUP', 'AVERAGE', 'REPLACE', 'NULLIF', 'GETDATE', 'DATEPART', 'VAR',
   'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL',
-  'TWO', 'NO', 'YES',
+  'TWO', 'THREE', 'FOUR', 'NO', 'YES',
 ]);
 
 // 2–8 letters or digits, starting with a letter, with an optional plural "s".

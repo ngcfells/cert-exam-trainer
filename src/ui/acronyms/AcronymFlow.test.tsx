@@ -27,7 +27,7 @@ describe('AcronymFlow setup', () => {
 
   it('choose is disabled with one entry', async () => {
     const user = userEvent.setup();
-    render(<AcronymFlow repo={await repoWith('mine', [['KPI', 'Key Performance Indicator']])} examCode={EXAM} onExit={() => {}} />);
+    render(<AcronymFlow repo={await repoWith('mine', [['ARR', 'Annual Recurring Revenue']])} examCode={EXAM} onExit={() => {}} />);
     await user.click(await screen.findByRole('radio', { name: 'Quiz' }));
     expect(screen.getByRole('radio', { name: 'Choose' })).toBeDisabled();
     expect(screen.getByRole('radio', { name: 'Type it' })).toBeChecked();
@@ -50,7 +50,7 @@ describe('AcronymFlow setup', () => {
 
   it('shows counts and the full list', async () => {
     render(<AcronymFlow repo={await repoWith('ours')} examCode={EXAM} onExit={() => {}} />);
-    expect(await screen.findByText('6 acronyms, 0 due for review')).toBeInTheDocument();
+    expect(await screen.findByText(`${listExams()[0].acronyms.length} acronyms, 0 due for review`)).toBeInTheDocument();
     const table = screen.getByRole('table', { name: /full list/i });
     expect(within(table).getByRole('cell', { name: 'Structured Query Language' })).toBeInTheDocument();
   });
@@ -58,21 +58,21 @@ describe('AcronymFlow setup', () => {
   it('my acronyms saves and lists a term found in my questions', async () => {
     const user = userEvent.setup();
     const repo = createMemoryRepo();
-    await repo.upsertUserQuestion({ ...userQ('u1'), stem: 'Which KPI matters most?' });
+    await repo.upsertUserQuestion({ ...userQ('u1'), stem: 'Which ARR matters most?' });
     render(<AcronymFlow repo={repo} examCode={EXAM} onExit={() => {}} />);
     const found = await screen.findByRole('region', { name: 'My acronyms' });
-    await user.click(within(found).getByRole('button', { name: 'Add KPI' }));
-    expect(screen.getByRole('textbox', { name: 'Acronym' })).toHaveValue('KPI');
-    await user.type(screen.getByRole('textbox', { name: 'Meaning' }), 'Key Performance Indicator');
+    await user.click(within(found).getByRole('button', { name: 'Add ARR' }));
+    expect(screen.getByRole('textbox', { name: 'Acronym' })).toHaveValue('ARR');
+    await user.type(screen.getByRole('textbox', { name: 'Meaning' }), 'Annual Recurring Revenue');
     await user.click(screen.getByRole('button', { name: 'Save acronym' }));
-    expect(await screen.findByText('Saved KPI.')).toBeInTheDocument();
-    expect(within(found).getByRole('cell', { name: 'Key Performance Indicator' })).toBeInTheDocument();
-    expect(within(found).queryByRole('button', { name: 'Add KPI' })).toBeNull();
+    expect(await screen.findByText('Saved ARR.')).toBeInTheDocument();
+    expect(within(found).getByRole('cell', { name: 'Annual Recurring Revenue' })).toBeInTheDocument();
+    expect(within(found).queryByRole('button', { name: 'Add ARR' })).toBeNull();
   });
 
   it('my acronyms shows a save error and deletes after confirm', async () => {
     const user = userEvent.setup();
-    const repo = await repoWith('both', [['KPI', 'Key Performance Indicator']]);
+    const repo = await repoWith('both', [['ARR', 'Annual Recurring Revenue']]);
     render(<AcronymFlow repo={repo} examCode={EXAM} onExit={() => {}} />);
     const mine = await screen.findByRole('region', { name: 'My acronyms' });
     await user.type(screen.getByRole('textbox', { name: 'Acronym' }), 'sql');
@@ -80,20 +80,20 @@ describe('AcronymFlow setup', () => {
     await user.click(screen.getByRole('button', { name: 'Save acronym' }));
     expect(await screen.findByText('SQL is already in the built-in list (shown when questions come from Ours or Both).')).toBeInTheDocument();
     expect(screen.getByRole('textbox', { name: 'Acronym' })).toHaveAttribute('aria-invalid', 'true');
-    await user.click(within(mine).getByRole('button', { name: 'Edit KPI' }));
+    await user.click(within(mine).getByRole('button', { name: 'Edit ARR' }));
     const term = screen.getByRole('textbox', { name: 'Acronym' });
     await user.clear(term);
-    await user.type(term, 'KPIS');
+    await user.type(term, 'ARRS');
     await user.click(screen.getByRole('button', { name: 'Save acronym' }));
-    expect(await within(mine).findByRole('rowheader', { name: 'KPIS' })).toBeInTheDocument();
-    expect(within(mine).queryByRole('rowheader', { name: 'KPI' })).toBeNull();
-    await user.click(within(mine).getByRole('button', { name: 'Edit KPIS' }));
+    expect(await within(mine).findByRole('rowheader', { name: 'ARRS' })).toBeInTheDocument();
+    expect(within(mine).queryByRole('rowheader', { name: 'ARR' })).toBeNull();
+    await user.click(within(mine).getByRole('button', { name: 'Edit ARRS' }));
     await user.clear(term);
-    await user.type(term, 'KPI');
+    await user.type(term, 'ARR');
     await user.click(screen.getByRole('button', { name: 'Save acronym' }));
-    await within(mine).findByRole('rowheader', { name: 'KPI' });
+    await within(mine).findByRole('rowheader', { name: 'ARR' });
     vi.spyOn(window, 'confirm').mockReturnValueOnce(true);
-    await user.click(within(mine).getByRole('button', { name: 'Delete KPI' }));
-    expect(await screen.findByText('Deleted KPI.')).toBeInTheDocument();
+    await user.click(within(mine).getByRole('button', { name: 'Delete ARR' }));
+    expect(await screen.findByText('Deleted ARR.')).toBeInTheDocument();
   });
 });

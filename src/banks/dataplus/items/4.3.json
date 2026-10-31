@@ -1,0 +1,2192 @@
+[
+  {
+    "id": "da2-4-3-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 1,
+    "stem": "A sales dashboard at Marlowe Foods takes 40 seconds to open. It holds 30 visuals, each running its own query. What is the best first fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reduce the number of visuals per page"
+        },
+        {
+          "id": "b",
+          "text": "Add more filter slicers to the report"
+        },
+        {
+          "id": "c",
+          "text": "Switch every chart to a 3D style"
+        },
+        {
+          "id": "d",
+          "text": "Email a static copy to each viewer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Fewer visuals means fewer queries run on load, so the page opens faster. More slicers add more queries, 3D styling adds rendering work, and emailing copies avoids the problem instead of fixing the dashboard.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A report built on a live connection loads slowly every morning when 200 people open it. The data changes only once a day. Which change helps most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Query the source tables again on every click"
+        },
+        {
+          "id": "b",
+          "text": "Cache results or import a daily extract"
+        },
+        {
+          "id": "c",
+          "text": "Add a second copy of the live report"
+        },
+        {
+          "id": "d",
+          "text": "Disable all report-level filters"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Caching or importing an extract serves the same daily data without hitting the source repeatedly. Querying on every click makes load worse, a duplicate report doubles the demand, and disabling filters does not reduce source queries.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A dataset refresh at Tern Logistics takes six hours because it reloads ten years of history nightly. Only the last week changes. What should the analyst configure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A full refresh twice each night"
+        },
+        {
+          "id": "b",
+          "text": "A longer timeout on the connection setting"
+        },
+        {
+          "id": "c",
+          "text": "Incremental refresh of recent partitions"
+        },
+        {
+          "id": "d",
+          "text": "A wider table with extra columns"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Incremental refresh reloads only new or changed partitions, which cuts the time sharply. Running full refreshes more often makes it slower, a longer timeout only hides the delay, and extra columns add data to move.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "Two scheduled refreshes of the same dataset overlap, and the second one fails with a lock message. Which action fixes this pattern?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the older refresh history"
+        },
+        {
+          "id": "b",
+          "text": "Add more visuals to the report"
+        },
+        {
+          "id": "c",
+          "text": "Rename the dataset to a shorter, clearer name"
+        },
+        {
+          "id": "d",
+          "text": "Stagger the schedules so they do not overlap"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Spacing the schedules lets each run finish before the next starts, so the lock does not occur. Deleting history does not change timing, more visuals add load, and renaming a dataset has no effect on locking.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A file feeding a report has grown to eight gigabytes, and the report slows down. The report uses only 6 of the file's 90 columns. What is the best action?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove unused columns before loading"
+        },
+        {
+          "id": "b",
+          "text": "Load every column and hide the unused ones"
+        },
+        {
+          "id": "c",
+          "text": "Convert every number to text"
+        },
+        {
+          "id": "d",
+          "text": "Duplicate the file for backup"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Dropping columns before load shrinks memory use and load time. Hidden columns are still loaded, text values usually take more space than numbers, and a duplicate adds storage without helping the report.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A report on three years of individual transactions is too large to refresh quickly, yet users only view monthly totals. What should the analyst do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a column for each transaction type"
+        },
+        {
+          "id": "b",
+          "text": "Pre-aggregate the data to monthly totals"
+        },
+        {
+          "id": "c",
+          "text": "Raise the report page size"
+        },
+        {
+          "id": "d",
+          "text": "Store the rows in a text file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Summarizing to the level users need reduces row count and speeds queries. Adding columns grows the data, a larger page size changes layout only, and a text file is usually slower to read than a structured table.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A manager picks the region North in a slicer, but the table still shows all regions. What is the likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The table has too many rows"
+        },
+        {
+          "id": "b",
+          "text": "The chart title is too long"
+        },
+        {
+          "id": "c",
+          "text": "The slicer's interactions with that table are off"
+        },
+        {
+          "id": "d",
+          "text": "The slicer's font is set too small to read"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "If interactions are disabled, the slicer does not pass its selection to the table. Row count, title length and font size do not affect whether a filter applies.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A filter on order date returns no rows even though orders exist for that month. The date column was imported as text. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the page refresh rate"
+        },
+        {
+          "id": "b",
+          "text": "Sort the column in descending order"
+        },
+        {
+          "id": "c",
+          "text": "Hide the column from the report view on each page"
+        },
+        {
+          "id": "d",
+          "text": "Change the column to a date data type"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Filters on dates need a true date type, so converting the column lets the range comparison work. Refresh rate, sort order and visibility do not change how the filter reads the values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A status filter for Active returns 480 customers, but the source holds 500. Twenty rows contain Active with a trailing space. How should the analyst correct this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Trim whitespace in the column during cleaning"
+        },
+        {
+          "id": "b",
+          "text": "Round the customer count upward"
+        },
+        {
+          "id": "c",
+          "text": "Rename the column to Status2"
+        },
+        {
+          "id": "d",
+          "text": "Filter on the customer name instead of status"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Trimming makes the values match exactly, so every Active row passes the filter. Rounding changes the count without fixing it, renaming the column does not touch the values, and filtering on name answers a different question.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 1,
+    "stem": "A dashboard showing store inventory has displayed the same numbers for three days. What is the most likely reason the data is stale?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The chart colors were reset"
+        },
+        {
+          "id": "b",
+          "text": "The refresh job fails, so no new data loads"
+        },
+        {
+          "id": "c",
+          "text": "The slicer lists too many values to scroll"
+        },
+        {
+          "id": "d",
+          "text": "The report has too few pages"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A failed scheduled refresh leaves the last successful data in place, which looks current but is old. Chart colors, slicer size and page count do not stop new data from loading.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A report shows yesterday's sales to users who open it before 9 a.m., although the source updates at 6 a.m. The refresh is set for 5 a.m. What should change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Hide the last-updated timestamp"
+        },
+        {
+          "id": "b",
+          "text": "Delete the cached copy and rebuild it hourly"
+        },
+        {
+          "id": "c",
+          "text": "Schedule the refresh after the source finishes updating"
+        },
+        {
+          "id": "d",
+          "text": "Remove the date slicer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Running the refresh once the source has updated means the report picks up the latest data before people open it. Hiding the timestamp conceals the issue, rebuilding the cache hourly still misses the 6 a.m. source update because it does not wait for that load, and the date slicer is unrelated.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "After a file load, a name column shows garbled characters, such as accented letters replaced by symbols. Which cause is most likely?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A missing chart legend"
+        },
+        {
+          "id": "b",
+          "text": "An overly wide dashboard"
+        },
+        {
+          "id": "c",
+          "text": "A slicer set to allow multi-select values"
+        },
+        {
+          "id": "d",
+          "text": "A character encoding mismatch during import"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Reading a file with the wrong encoding corrupts non-standard characters. A legend, dashboard width and slicer mode affect display or filtering, not how file text is decoded.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A nightly file from a vendor arrives cut off halfway through, and the report totals are far too low. What is the best validation step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Compare the file's row count to the source count"
+        },
+        {
+          "id": "b",
+          "text": "Switch every visual to a bar chart style"
+        },
+        {
+          "id": "c",
+          "text": "Add a title to the dashboard"
+        },
+        {
+          "id": "d",
+          "text": "Sort the report by date"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Comparing counts shows the file is incomplete before it reaches users. Chart type, titles and sorting do not detect missing rows.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A report shows revenue that does not match the finance system. Which technique best finds out which figure is right?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reformat the numbers with commas in the service"
+        },
+        {
+          "id": "b",
+          "text": "Source validation against the system of record"
+        },
+        {
+          "id": "c",
+          "text": "Apply a new color theme"
+        },
+        {
+          "id": "d",
+          "text": "Increase the font size of totals"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Checking the report's figures against the system of record shows where they diverge. Formatting, themes and font size change appearance without testing accuracy.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst narrows a slow, wrong-looking report to one customer segment and sees the numbers become correct. What technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Branding the report"
+        },
+        {
+          "id": "b",
+          "text": "Adding data labels"
+        },
+        {
+          "id": "c",
+          "text": "Data filtering to isolate the problem"
+        },
+        {
+          "id": "d",
+          "text": "Publishing to more users on each page"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Filtering to a smaller subset isolates where results go wrong. Branding, labels and wider publishing do not help locate a fault.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 1,
+    "stem": "Before release, a second analyst reads through a colleague's report logic line by line to find mistakes. Which technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Source validation"
+        },
+        {
+          "id": "b",
+          "text": "Monitoring alert"
+        },
+        {
+          "id": "c",
+          "text": "Data filtering"
+        },
+        {
+          "id": "d",
+          "text": "Peer review"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A peer review has another person inspect the work for errors before it ships. Source validation compares to the origin data, an alert fires on a condition, and filtering narrows the rows.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A calculated field for profit margin divides profit by revenue, but the report shows values above 100 percent. The analyst checks the formula's logic and inputs. Which review is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Calculation review"
+        },
+        {
+          "id": "b",
+          "text": "Source validation"
+        },
+        {
+          "id": "c",
+          "text": "Peer review of branding"
+        },
+        {
+          "id": "d",
+          "text": "Alert tuning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Reviewing the calculation's logic and inputs finds errors in the formula itself. Source validation checks the origin data, branding review covers appearance, and alert tuning adjusts notification thresholds.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A report that worked yesterday now shows an error for a missing field after the source team renamed a column. Which technique prevents this from recurring?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the dashboard font size and spacing"
+        },
+        {
+          "id": "b",
+          "text": "Track data structure changes and update mappings"
+        },
+        {
+          "id": "c",
+          "text": "Add a second legend"
+        },
+        {
+          "id": "d",
+          "text": "Reduce the refresh rate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Following structure changes lets the analyst update field mappings before the report breaks. Fonts, legends and refresh rate do not protect against renamed columns.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 1,
+    "stem": "A team wants to learn immediately when a nightly refresh fails instead of waiting for users to complain. What should they set up?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A larger chart on page one"
+        },
+        {
+          "id": "b",
+          "text": "A pie chart of refresh times"
+        },
+        {
+          "id": "c",
+          "text": "A monitoring alert on refresh failure"
+        },
+        {
+          "id": "d",
+          "text": "A footer that lists the report's author"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An alert notifies the team when the refresh fails, so they can react before users see stale data. Charts and footers show information only if someone looks at them.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A report's load time doubles after a developer adds a calculation that scans every row for each visual. Which review would most likely find the cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Branding review of the logo placement"
+        },
+        {
+          "id": "b",
+          "text": "Review of the color palette"
+        },
+        {
+          "id": "c",
+          "text": "Review of the page titles"
+        },
+        {
+          "id": "d",
+          "text": "Code review of the new calculation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Reading the code reveals the costly row scan and lets the team rewrite it. Logo, palette and title reviews cannot reveal performance problems in a formula.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A weekly report shows a customer count that suddenly drops by 30 percent. Source totals are unchanged, and the analyst suspects a join now drops unmatched rows. Which fix is most appropriate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Review the join type and keep unmatched rows"
+        },
+        {
+          "id": "b",
+          "text": "Delete the customer table"
+        },
+        {
+          "id": "c",
+          "text": "Switch the chart to a gauge with a target"
+        },
+        {
+          "id": "d",
+          "text": "Shorten the report title"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Reviewing the join and using one that keeps unmatched rows restores the missing customers. Deleting the table loses data, and a gauge or shorter title does not affect the count.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A date filter works for most users but shows a different range for a team in another time zone. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The chart has too many colors"
+        },
+        {
+          "id": "b",
+          "text": "The filter evaluates dates in a time zone that differs by user"
+        },
+        {
+          "id": "c",
+          "text": "The legend is placed at the bottom of each chart area"
+        },
+        {
+          "id": "d",
+          "text": "The dashboard uses a dark theme"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Date boundaries shift when the filter evaluates in different time zones. Colors, legend position and theme do not change which dates are included.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "Users complain that a report is slow only on the tab that shows detail rows for all years. Which design change helps most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add extra detail columns to the table view"
+        },
+        {
+          "id": "b",
+          "text": "Remove the page title from the tab"
+        },
+        {
+          "id": "c",
+          "text": "Show a summary first with drill-through to detail"
+        },
+        {
+          "id": "d",
+          "text": "Enlarge every chart on the tab"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A summary view with drill-through loads a small result first and fetches detail only when needed. Extra columns, titles and larger charts do not reduce the work.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A refresh succeeds, yet report totals include duplicate customer rows after the source added a second feed. Which technique should the analyst apply?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the refresh frequency of the dataset"
+        },
+        {
+          "id": "b",
+          "text": "Change the theme color"
+        },
+        {
+          "id": "c",
+          "text": "Hide the totals row"
+        },
+        {
+          "id": "d",
+          "text": "Validate the source and remove duplicate records"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Checking the source reveals the extra feed, and removing duplicates restores correct totals. More frequent refreshes would reload the same duplicates, and a theme or hidden totals do not fix them.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A retail report's currency column loads with some values as text, such as 1,250.00, so sums skip them. What is the best correction?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Convert the column to a numeric type after cleaning"
+        },
+        {
+          "id": "b",
+          "text": "Sort the column alphabetically"
+        },
+        {
+          "id": "c",
+          "text": "Hide the rows that look odd"
+        },
+        {
+          "id": "d",
+          "text": "Add a text label on the chart"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Converting to a numeric type, after removing formatting characters, lets aggregations include every value. Sorting, hiding rows and labels leave the text values unusable in sums.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A data steward wants a warning whenever the daily row count of a source table falls more than 20 percent below its average. What should be created?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A new report theme"
+        },
+        {
+          "id": "b",
+          "text": "A threshold-based monitoring alert"
+        },
+        {
+          "id": "c",
+          "text": "A manual weekly printout"
+        },
+        {
+          "id": "d",
+          "text": "A longer dashboard title"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A threshold alert triggers automatically when the row count drops past the defined limit. Themes, printouts and titles do not notify anyone in time.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A slicer for Product Category shows a blank entry and filters out rows with missing categories. How should the analyst keep those rows selectable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the slicer from the report page"
+        },
+        {
+          "id": "b",
+          "text": "Change the page orientation to landscape"
+        },
+        {
+          "id": "c",
+          "text": "Replace missing categories with an Unknown value"
+        },
+        {
+          "id": "d",
+          "text": "Sort the categories by their name length"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Filling gaps with a labeled value keeps those rows selectable instead of lost. Deleting the slicer, changing orientation and sorting do not address missing values.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A team is unsure whether a margin measure is right, so a colleague who did not write it traces the logic with test values. What is this technique?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Font and color theme planning"
+        },
+        {
+          "id": "b",
+          "text": "Slicer layout planning with users"
+        },
+        {
+          "id": "c",
+          "text": "Scheduled refresh caching"
+        },
+        {
+          "id": "d",
+          "text": "Calculation review with a peer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An independent person tracing the logic with known inputs combines calculation review with peer review. The other options are theme, layout and caching choices, and none of them tests a formula.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 1,
+    "stem": "A report loads slowly because it pulls full detail from a very large source. Which TWO changes would most reduce load time?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Aggregate data to the needed level"
+        },
+        {
+          "id": "b",
+          "text": "Remove unused columns before load"
+        },
+        {
+          "id": "c",
+          "text": "Add more detailed visuals"
+        },
+        {
+          "id": "d",
+          "text": "Turn on 3D chart effects"
+        },
+        {
+          "id": "e",
+          "text": "Increase the font size"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Aggregating and dropping unused columns both shrink the data the report must load. More detailed visuals add queries, 3D effects add rendering work, and a larger font does nothing for load time.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A scheduled dataset refresh runs too long and sometimes fails. Which TWO actions are most likely to help?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add extra calculated columns"
+        },
+        {
+          "id": "b",
+          "text": "Use incremental refresh"
+        },
+        {
+          "id": "c",
+          "text": "Load all history each night"
+        },
+        {
+          "id": "d",
+          "text": "Partition the table and refresh only recent partitions"
+        },
+        {
+          "id": "e",
+          "text": "Rename every field"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Incremental refresh loads only changed data, and partitioning limits each run to recent partitions, so runs are shorter and less likely to fail. Extra columns add work, reloading all history is the slow approach, and renaming fields has no effect on duration.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 1,
+    "stem": "A report shows stale numbers. Which TWO checks should the analyst make first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether the scheduled refresh succeeded"
+        },
+        {
+          "id": "b",
+          "text": "Whether the logo is current"
+        },
+        {
+          "id": "c",
+          "text": "Whether the source itself was updated"
+        },
+        {
+          "id": "d",
+          "text": "Whether the chart has a legend"
+        },
+        {
+          "id": "e",
+          "text": "Whether the theme is dark"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Stale data comes from a failed refresh or from a source that has not changed. A logo, a legend and a theme are cosmetic and cannot make numbers old.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A filter returns fewer rows than expected. Which TWO causes are plausible?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Values with trailing spaces"
+        },
+        {
+          "id": "b",
+          "text": "A chart title that is too short"
+        },
+        {
+          "id": "c",
+          "text": "A page with a light background"
+        },
+        {
+          "id": "d",
+          "text": "A legend on the right"
+        },
+        {
+          "id": "e",
+          "text": "A column stored as the wrong data type"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "Hidden spaces and mismatched data types stop values from matching the filter. A short title, a light background and a legend position have no effect on which rows pass.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-033",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE are examples of review techniques used to validate a report before release?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Code review"
+        },
+        {
+          "id": "b",
+          "text": "Calculation review"
+        },
+        {
+          "id": "c",
+          "text": "Chart recoloring"
+        },
+        {
+          "id": "d",
+          "text": "Font resizing"
+        },
+        {
+          "id": "e",
+          "text": "Logo swapping"
+        },
+        {
+          "id": "f",
+          "text": "Peer review"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "f"
+      ]
+    },
+    "explanation": "Code, calculation and peer reviews each inspect the logic or work for errors. Recoloring, resizing and swapping a logo change appearance and do not validate anything.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-034",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A file load produced corrupt text values. Which TWO steps help find and fix the problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Compare the file to the original export"
+        },
+        {
+          "id": "b",
+          "text": "Add a trendline"
+        },
+        {
+          "id": "c",
+          "text": "Change the page layout"
+        },
+        {
+          "id": "d",
+          "text": "Re-import with the correct encoding"
+        },
+        {
+          "id": "e",
+          "text": "Enlarge the dashboard"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Comparing to the original export confirms the corruption, and re-importing with the right encoding repairs it. A trendline, layout change or larger dashboard leaves the stored values unchanged.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-035",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "stem": "A vendor renamed two source columns, and the report broke. Which TWO practices reduce the chance of this recurring?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Hide all report errors"
+        },
+        {
+          "id": "b",
+          "text": "Track source structure changes"
+        },
+        {
+          "id": "c",
+          "text": "Use larger chart fonts"
+        },
+        {
+          "id": "d",
+          "text": "Alert on refresh errors"
+        },
+        {
+          "id": "e",
+          "text": "Remove the data model"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Tracking structure changes warns the team in advance, and error alerts reveal breaks quickly. Hiding errors masks the problem, fonts are irrelevant, and removing the model destroys the report.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-036",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are benefits of a monitoring alert on a nightly refresh?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The team learns of failures quickly"
+        },
+        {
+          "id": "b",
+          "text": "Report colors update on their own"
+        },
+        {
+          "id": "c",
+          "text": "Source columns are renamed automatically"
+        },
+        {
+          "id": "d",
+          "text": "Chart types are chosen for the user"
+        },
+        {
+          "id": "e",
+          "text": "Stale data is caught before users see it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "An alert tells the team about a failure fast, so the stale data can be corrected before users notice. Alerts do not change colors, rename columns or choose chart types.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-mcq-037",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "stem": "A dashboard is slow on first load. Which THREE changes would most likely help?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Limit the visuals per page"
+        },
+        {
+          "id": "b",
+          "text": "Add more slicers to the layout"
+        },
+        {
+          "id": "c",
+          "text": "Cache results for repeat viewers"
+        },
+        {
+          "id": "d",
+          "text": "Pre-aggregate large tables"
+        },
+        {
+          "id": "e",
+          "text": "Show detail rows for every year"
+        },
+        {
+          "id": "f",
+          "text": "Use bigger images"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "Fewer visuals, cached results and pre-aggregated tables all cut the work done at load. More slicers and detail rows add queries, and bigger images add download size.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-terminal-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "The sales dashboard did not update overnight. Review the refresh log, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 7 refresh_sales.log",
+        "03:00:02 INFO  refresh start dataset=SalesModel",
+        "03:00:03 INFO  source query started: fact_sales (41,200,000 rows)",
+        "03:14:50 WARN  source query slow: 887 s elapsed",
+        "03:15:02 ERROR source query timeout after 900 s",
+        "03:15:02 ERROR refresh failed; dashboard keeps data from 2026-10-28",
+        "03:15:03 INFO  refresh end status=failed"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that shows every ERROR line in refresh_sales.log"
+        },
+        {
+          "id": "cause",
+          "label": "Choose the most likely cause",
+          "options": [
+            {
+              "id": "creds",
+              "text": "Expired credentials for the data source"
+            },
+            {
+              "id": "timeout",
+              "text": "The source query reads too many rows and times out"
+            },
+            {
+              "id": "layout",
+              "text": "Too many visuals on the report page"
+            },
+            {
+              "id": "filter",
+              "text": "A slicer is set to the wrong region"
+            }
+          ]
+        },
+        {
+          "id": "fix",
+          "label": "Choose the best fix",
+          "options": [
+            {
+              "id": "full",
+              "text": "Keep the full reload and raise the timeout every week"
+            },
+            {
+              "id": "incr",
+              "text": "Refresh only new or changed partitions each night"
+            },
+            {
+              "id": "hide",
+              "text": "Hide the last-refreshed date on the dashboard"
+            },
+            {
+              "id": "drop",
+              "text": "Delete the dataset and rebuild it by hand"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep ERROR refresh_sales.log",
+          "grep \"ERROR\" refresh_sales.log",
+          "grep 'ERROR' refresh_sales.log",
+          "grep ERROR ./refresh_sales.log",
+          "grep -n ERROR refresh_sales.log",
+          "grep -w ERROR refresh_sales.log",
+          "grep -i error refresh_sales.log",
+          "cat refresh_sales.log | grep ERROR"
+        ],
+        "cause": [
+          "timeout"
+        ],
+        "fix": [
+          "incr"
+        ]
+      }
+    },
+    "explanation": "The log shows a slow query that hits a timeout, so the refresh fails and old data stays. Refreshing only changed partitions shrinks the work; credentials and slicers do not cause a timeout, and hiding the date only conceals stale data.",
+    "partExplanations": {
+      "find": "grep ERROR refresh_sales.log prints only the ERROR lines.",
+      "cause": "The WARN and ERROR lines name a source query timeout.",
+      "fix": "Incremental refresh reduces the rows read each night."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-data-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Use the refresh times to answer each question.",
+    "payload": {
+      "caption": "Nightly refresh duration (minutes)",
+      "columns": [
+        "Day",
+        "Minutes"
+      ],
+      "rows": [
+        [
+          "Mon",
+          "10"
+        ],
+        [
+          "Tue",
+          "12"
+        ],
+        [
+          "Wed",
+          "11"
+        ],
+        [
+          "Thu",
+          "45"
+        ],
+        [
+          "Fri",
+          "12"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "mean",
+          "label": "Mean refresh time",
+          "options": [
+            {
+              "id": "12",
+              "text": "12 minutes"
+            },
+            {
+              "id": "18",
+              "text": "18 minutes"
+            },
+            {
+              "id": "90",
+              "text": "90 minutes"
+            }
+          ]
+        },
+        {
+          "id": "median",
+          "label": "Median refresh time",
+          "options": [
+            {
+              "id": "11",
+              "text": "11 minutes"
+            },
+            {
+              "id": "12",
+              "text": "12 minutes"
+            },
+            {
+              "id": "18",
+              "text": "18 minutes"
+            }
+          ]
+        },
+        {
+          "id": "gap",
+          "label": "Thursday minutes above the median",
+          "options": [
+            {
+              "id": "27",
+              "text": "27"
+            },
+            {
+              "id": "33",
+              "text": "33"
+            },
+            {
+              "id": "45",
+              "text": "45"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "mean": "18",
+        "median": "12",
+        "gap": "33"
+      }
+    },
+    "explanation": "The total is 10 + 12 + 11 + 45 + 12 = 90, so the mean is 18. Sorted, 10, 11, 12, 12, 45 gives a median of 12, and Thursday is 45 - 12 = 33 minutes above it.",
+    "partExplanations": {
+      "mean": "90 divided by 5 is 18.",
+      "median": "The middle of 10, 11, 12, 12, 45 is 12.",
+      "gap": "45 - 12 = 33."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-order-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "A region filter on a report drops rows it should keep. Put the troubleshooting steps in order.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "Retest and compare the totals with the source"
+        },
+        {
+          "id": "s1",
+          "text": "Reproduce the problem and note the expected row count"
+        },
+        {
+          "id": "s4",
+          "text": "Correct the cause in the source or the filter"
+        },
+        {
+          "id": "s2",
+          "text": "Check the region values in the source for spelling variants first"
+        },
+        {
+          "id": "s3",
+          "text": "Then check how the filter is scoped and which visuals it affects"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "explanation": "Reproduce first, then inspect data and configuration, fix the cause, and confirm against the source.",
+    "partExplanations": {
+      "s1": "A known expected count makes the problem measurable.",
+      "s2": "Source values are the most common cause.",
+      "s3": "Scope settings come next.",
+      "s4": "Fix only once the cause is known.",
+      "s5": "Retesting proves the fix."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Match each report problem to the best technique for catching or fixing it.",
+    "payload": {
+      "fields": [
+        {
+          "id": "stale",
+          "label": "The nightly refresh silently stops and owners learn days later",
+          "options": [
+            {
+              "id": "alert",
+              "text": "Monitoring alert on refresh failure"
+            },
+            {
+              "id": "peer",
+              "text": "Peer review of the layout"
+            },
+            {
+              "id": "legend",
+              "text": "Add a legend"
+            }
+          ]
+        },
+        {
+          "id": "slow",
+          "label": "A page that pulls 90 million detail rows takes three minutes to open",
+          "options": [
+            {
+              "id": "font",
+              "text": "Change the heading font"
+            },
+            {
+              "id": "agg",
+              "text": "Aggregate to the grain the page needs"
+            },
+            {
+              "id": "alert2",
+              "text": "Add a monitoring alert"
+            }
+          ]
+        },
+        {
+          "id": "calc",
+          "label": "A margin measure divides by the wrong column",
+          "options": [
+            {
+              "id": "snap",
+              "text": "Take a snapshot"
+            },
+            {
+              "id": "live",
+              "text": "Switch to real-time data"
+            },
+            {
+              "id": "review",
+              "text": "Calculation review by a peer"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "stale": "alert",
+        "slow": "agg",
+        "calc": "review"
+      }
+    },
+    "explanation": "An alert tells owners about a failed refresh, aggregation cuts the volume a page loads, and a second person checking the formula catches a wrong divisor. The other options do not address those causes.",
+    "partExplanations": {
+      "stale": "Only an alert reports a silent failure promptly.",
+      "slow": "Loading less detail speeds the page.",
+      "calc": "A peer can spot a wrong column in a formula."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-hotspot-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "A report page opens very slowly. Select every element likely to be a cause of the slow load.",
+    "payload": {
+      "width": 480,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Map plotting all 800,000 transactions"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Chart of 14 months from a summary table"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Table loading 2 million detail rows at once"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Region slicer with 30 values"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Visual running its own 5-minute query on raw rows"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Static company logo"
+        }
+      ],
+      "spots": [
+        {
+          "id": "map",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Map plotting all 800,000 transactions"
+        },
+        {
+          "id": "trend",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Chart of 14 months from a summary table"
+        },
+        {
+          "id": "table",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Table loading 2 million detail rows at once"
+        },
+        {
+          "id": "slicer",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Region slicer with 30 values"
+        },
+        {
+          "id": "custom",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Visual running its own 5-minute query on raw rows"
+        },
+        {
+          "id": "logo",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Static company logo"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "map",
+        "table",
+        "custom"
+      ]
+    },
+    "explanation": "Plotting every transaction, loading millions of rows and running a long raw query all add heavy load. A summary chart, a small slicer and a logo are cheap.",
+    "partExplanations": {
+      "map": "Plotting 800,000 points is expensive.",
+      "trend": "A summary table is light.",
+      "table": "Two million rows at once is heavy.",
+      "slicer": "Thirty values are trivial.",
+      "custom": "A five-minute query dominates load time.",
+      "logo": "A static image costs almost nothing."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-diagram-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Place the validation technique that best protects each point in the reporting pipeline.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 135,
+          "h": 60,
+          "text": "Source tables that may hold corrupt values"
+        },
+        {
+          "id": "n2",
+          "x": 155,
+          "y": 10,
+          "w": 135,
+          "h": 60,
+          "text": "Nightly refresh job"
+        },
+        {
+          "id": "n3",
+          "x": 300,
+          "y": 10,
+          "w": 135,
+          "h": 60,
+          "text": "Measure that computes margin"
+        },
+        {
+          "id": "n4",
+          "x": 445,
+          "y": 10,
+          "w": 135,
+          "h": 60,
+          "text": "Slicer that narrows the page"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 90,
+          "name": "Stage 1"
+        },
+        {
+          "id": "z2",
+          "x": 155,
+          "y": 90,
+          "name": "Stage 2"
+        },
+        {
+          "id": "z3",
+          "x": 300,
+          "y": 90,
+          "name": "Stage 3"
+        },
+        {
+          "id": "z4",
+          "x": 445,
+          "y": 90,
+          "name": "Stage 4"
+        }
+      ],
+      "labels": [
+        {
+          "id": "src",
+          "text": "Source validation"
+        },
+        {
+          "id": "mon",
+          "text": "Monitoring alert"
+        },
+        {
+          "id": "calc",
+          "text": "Calculation review"
+        },
+        {
+          "id": "filt",
+          "text": "Data filtering check"
+        },
+        {
+          "id": "brand",
+          "text": "Brand review"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "src",
+        "z2": "mon",
+        "z3": "calc",
+        "z4": "filt"
+      }
+    },
+    "explanation": "Each stage has a matching check: validate the source for corruption, alert on job failures, review calculations and test the filters. A brand review concerns appearance, not data correctness.",
+    "partExplanations": {
+      "z1": "Corrupt values are found by checking the source.",
+      "z2": "Job failures are caught by alerts.",
+      "z3": "A calculation is checked by reviewing it.",
+      "z4": "A slicer is checked by testing what it removes."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-4-3-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each symptom by the kind of problem it points to.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "perf",
+          "text": "Speed or size problem"
+        },
+        {
+          "id": "corr",
+          "text": "Data correctness problem"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "The page takes two minutes to open"
+        },
+        {
+          "id": "i2",
+          "text": "The refresh runs for six hours"
+        },
+        {
+          "id": "i3",
+          "text": "The extract has grown to 40 gigabytes"
+        },
+        {
+          "id": "i4",
+          "text": "Totals on the dashboard do not match the source"
+        },
+        {
+          "id": "i5",
+          "text": "A date column contains the text N/A in some cells"
+        },
+        {
+          "id": "i6",
+          "text": "A region filter hides half of the rows"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "perf",
+        "i2": "perf",
+        "i3": "perf",
+        "i4": "corr",
+        "i5": "corr",
+        "i6": "corr"
+      }
+    },
+    "explanation": "Load time, refresh time and data volume are about speed and size. Mismatched totals, corrupt values and a faulty filter all make the numbers wrong.",
+    "partExplanations": {
+      "i1": "Slow opening is a load-time issue.",
+      "i2": "A long refresh is a speed issue.",
+      "i3": "Growth in size is a volume issue.",
+      "i4": "Totals that differ from the source are a correctness problem.",
+      "i5": "Text in a date column is corruption.",
+      "i6": "A filter that drops rows gives wrong results."
+    },
+    "acronyms": [],
+    "status": "approved"
+  }
+]

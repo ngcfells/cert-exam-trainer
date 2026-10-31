@@ -1,5 +1,8 @@
 import { test, expect, type Page } from '@playwright/test';
+import { dataPlusMeta } from '../../src/banks/dataplus/meta';
 import { expectNoSeriousAxe, singleUrl } from './util';
+
+const BUILT_IN = dataPlusMeta.acronyms.length;
 
 async function openSetup(page: Page) {
   await page.goto(`${singleUrl}?seed=1`);
@@ -33,13 +36,13 @@ test('flashcards, results and my acronyms pass axe', async ({ page }) => {
   await expectNoSeriousAxe(page);
 
   await page.getByRole('button', { name: 'Study again' }).click();
-  await expect(page.getByText('6 acronyms, 0 due for review')).toBeVisible();
+  await expect(page.getByText(`${BUILT_IN} acronyms, 0 due for review`)).toBeVisible();
   const mine = page.getByRole('region', { name: 'My acronyms' });
-  await mine.getByRole('textbox', { name: 'Acronym' }).fill('kpi');
-  await mine.getByRole('textbox', { name: 'Meaning' }).fill('Key Performance Indicator');
+  await mine.getByRole('textbox', { name: 'Acronym' }).fill('arr');
+  await mine.getByRole('textbox', { name: 'Meaning' }).fill('Annual Recurring Revenue');
   await mine.getByRole('button', { name: 'Save acronym' }).click();
-  await expect(page.getByText('Saved KPI.')).toBeVisible();
-  await expect(page.getByText('7 acronyms, 0 due for review')).toBeVisible();
+  await expect(page.getByText('Saved ARR.')).toBeVisible();
+  await expect(page.getByText(`${BUILT_IN + 1} acronyms, 0 due for review`)).toBeVisible();
   await expectNoSeriousAxe(page);
 });
 

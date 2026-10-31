@@ -6,6 +6,8 @@ export type Screen =
   | { name: 'progress'; exam: string }
   | { name: 'acronyms'; exam: string }
   | { name: 'questions'; exam: string }
-  | { name: 'edit'; exam: string; id?: string };
+  | { name: 'edit'; exam: string; id?: string }
+  /** Dev only: the bank review tool. */
+  | { name: 'review'; exam: string };
 
 export type ExamScreen = Exclude<Screen, { name: 'home' }>;

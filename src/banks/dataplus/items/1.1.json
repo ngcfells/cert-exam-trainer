@@ -1,0 +1,1557 @@
+[
+  {
+    "id": "da2-seed-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "A table column uniquely identifies each row and can never be empty. What is this column called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Primary key"
+        },
+        {
+          "id": "b",
+          "text": "Foreign key"
+        },
+        {
+          "id": "c",
+          "text": "Index"
+        },
+        {
+          "id": "d",
+          "text": "View"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A primary key uniquely identifies each row and cannot be null. A foreign key references another table.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-pbq-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 2,
+    "stem": "Match each data source to the structure of the data it holds.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A relational sales table"
+        },
+        {
+          "id": "p2",
+          "text": "A JSON document from a web API"
+        },
+        {
+          "id": "p3",
+          "text": "A folder of scanned invoices"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Structured"
+        },
+        {
+          "id": "c2",
+          "text": "Semi-structured"
+        },
+        {
+          "id": "c3",
+          "text": "Unstructured"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3"
+      }
+    },
+    "explanation": "Tables have a fixed schema, JSON carries its own flexible tags, and images have no data model at all.",
+    "partExplanations": {
+      "p1": "Rows and typed columns make a relational table structured.",
+      "p2": "JSON has keys and nesting but no fixed schema, so it is semi-structured.",
+      "p3": "Scanned images have no fields to query until they are processed."
+    },
+    "acronyms": [
+      "JSON",
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-pbq-diagram-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 2,
+    "stem": "Label the tables in this star schema.",
+    "payload": {
+      "width": 600,
+      "height": 300,
+      "nodes": [
+        {
+          "id": "center",
+          "x": 230,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "left",
+          "x": 20,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "right",
+          "x": 440,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "top",
+          "x": 230,
+          "y": 10,
+          "w": 140,
+          "h": 60,
+          "text": "Dim: Date"
+        }
+      ],
+      "edges": [
+        {
+          "from": "center",
+          "to": "left"
+        },
+        {
+          "from": "center",
+          "to": "right"
+        },
+        {
+          "from": "center",
+          "to": "top"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-center",
+          "x": 230,
+          "y": 190,
+          "name": "Center table"
+        },
+        {
+          "id": "z-left",
+          "x": 20,
+          "y": 190,
+          "name": "Left table"
+        }
+      ],
+      "labels": [
+        {
+          "id": "fact",
+          "text": "Fact: Sales"
+        },
+        {
+          "id": "dim",
+          "text": "Dim: Product"
+        },
+        {
+          "id": "bridge",
+          "text": "Staging table"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-center": "fact",
+        "z-left": "dim"
+      }
+    },
+    "explanation": "A star schema puts one fact table at the center, joined to the dimension tables around it.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-pbq-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "pbqWeight": 2,
+    "stem": "Sort each variable into the data type it represents.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "qual",
+          "text": "Qualitative (categorical)"
+        },
+        {
+          "id": "quant",
+          "text": "Quantitative (numeric)"
+        }
+      ],
+      "items": [
+        {
+          "id": "colour",
+          "text": "Eye colour"
+        },
+        {
+          "id": "temp",
+          "text": "Temperature in °C"
+        },
+        {
+          "id": "zip",
+          "text": "Postal code"
+        },
+        {
+          "id": "revenue",
+          "text": "Monthly revenue"
+        },
+        {
+          "id": "rating",
+          "text": "Satisfaction: low, medium, high"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "colour": "qual",
+        "temp": "quant",
+        "zip": "qual",
+        "revenue": "quant",
+        "rating": "qual"
+      }
+    },
+    "explanation": "Postal codes are labels, not amounts, so they are categorical even though they use digits. An ordered scale such as low/medium/high is ordinal, which is still qualitative.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "A database stores data in tables of rows and columns and links the tables through keys. Which kind of database is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Relational"
+        },
+        {
+          "id": "b",
+          "text": "Document"
+        },
+        {
+          "id": "c",
+          "text": "Graph"
+        },
+        {
+          "id": "d",
+          "text": "Key-value"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A relational database organizes data into related tables joined by keys. Document, graph and key-value stores are non-relational models that do not rely on fixed tables and joins.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A mobile game stores player profiles whose fields vary from player to player, and the team wants to add fields without changing a schema. Which database type fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A relational database with strict constraints"
+        },
+        {
+          "id": "b",
+          "text": "A star schema in a data warehouse"
+        },
+        {
+          "id": "c",
+          "text": "A non-relational document database"
+        },
+        {
+          "id": "d",
+          "text": "A flat file with fixed-width columns"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Document databases are non-relational and accept records with different fields, so the schema can change freely. A relational database and a star schema both need a defined schema, and fixed-width files cannot hold variable fields.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which file extension indicates a spreadsheet workbook that can hold several worksheets, formulas and formatting?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": ".csv"
+        },
+        {
+          "id": "b",
+          "text": ".xlsx"
+        },
+        {
+          "id": "c",
+          "text": ".txt"
+        },
+        {
+          "id": "d",
+          "text": ".dat"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An .xlsx file is an Excel workbook, which supports multiple sheets, formulas and formatting. A .csv or .txt file holds plain text only, and .dat is a generic data file with no standard structure.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst receives a file named export.dat from a legacy system. What should the analyst do first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Open it in an image viewer"
+        },
+        {
+          "id": "b",
+          "text": "Load it into a spreadsheet as a workbook"
+        },
+        {
+          "id": "c",
+          "text": "Parse it with a JSON reader"
+        },
+        {
+          "id": "d",
+          "text": "Inspect the raw contents"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A .dat extension promises no standard layout; the file may be plain text, delimited values or binary, so the analyst must inspect it before choosing a tool. Opening it as an image, loading it as a workbook or parsing it as JSON each assumes a format the extension does not guarantee.",
+    "acronyms": [
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which file extension stores photographs using lossy compression?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": ".jpg"
+        },
+        {
+          "id": "b",
+          "text": ".png"
+        },
+        {
+          "id": "c",
+          "text": ".gif"
+        },
+        {
+          "id": "d",
+          "text": ".tiff"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A .jpg file uses lossy compression, which shrinks photographs by discarding some detail. The .png and .gif formats use lossless compression, and a .tiff file is usually stored uncompressed or with lossless compression.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "In a sales data warehouse, which table holds the measurable events such as quantity sold and sale amount, along with keys to descriptive tables?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Dimension table"
+        },
+        {
+          "id": "b",
+          "text": "Bridge table"
+        },
+        {
+          "id": "c",
+          "text": "Fact table"
+        },
+        {
+          "id": "d",
+          "text": "Staging table"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A fact table records measures for each business event plus foreign keys to dimensions. Dimension tables hold descriptive attributes, a bridge table resolves many-to-many links, and a staging table holds raw loads temporarily before transformation.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A warehouse table lists each product with its name, brand and category, and the sales table joins to it by product key. What is this table?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A fact table"
+        },
+        {
+          "id": "b",
+          "text": "A dimension table"
+        },
+        {
+          "id": "c",
+          "text": "A bridge table"
+        },
+        {
+          "id": "d",
+          "text": "An aggregate table"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A dimension table holds descriptive attributes used to filter and group facts. A fact table holds the measures, a bridge table links many-to-many relationships, and an aggregate table stores pre-summarized measures.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "A customer moves to a new region. The warehouse must keep past sales under the old region and new sales under the new one. Which approach meets this need?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Overwrite the region value in the existing row"
+        },
+        {
+          "id": "b",
+          "text": "Delete the customer and reload all history"
+        },
+        {
+          "id": "c",
+          "text": "Copy the region into each fact table row"
+        },
+        {
+          "id": "d",
+          "text": "Add a new dimension row with effective dates"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Adding a new row with effective dates (a Type 2 slowly changing dimension) preserves history, so each sale links to the region that was current at the time. Overwriting (Type 1) loses history, deleting and reloading rewrites history, and copying attributes into the fact table breaks the dimensional design.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "In a healthcare warehouse, one patient visit can carry several diagnoses and each diagnosis applies to many visits. Which table resolves this relationship?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A bridge table"
+        },
+        {
+          "id": "b",
+          "text": "A wider fact table"
+        },
+        {
+          "id": "c",
+          "text": "A degenerate dimension"
+        },
+        {
+          "id": "d",
+          "text": "A slowly changing dimension"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A bridge table sits between the fact and the dimension to model a many-to-many relationship. Widening the fact table repeats measures, a degenerate dimension is an attribute stored in the fact, and a slowly changing dimension tracks attribute history.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "What does a database schema define?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The physical disk where data files are kept"
+        },
+        {
+          "id": "b",
+          "text": "The data values entered by users each day"
+        },
+        {
+          "id": "c",
+          "text": "The tables, columns, types and relationships"
+        },
+        {
+          "id": "d",
+          "text": "The reports that are built from the data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A schema is the blueprint of a database: its tables, columns, data types and relationships. It is not the storage location, the data itself or the reports built on top.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "An order record in JSON contains a customer object and an array of line items, each with its own fields. How is this data best described?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Structured data in fixed columns"
+        },
+        {
+          "id": "b",
+          "text": "Semi-structured data with nesting"
+        },
+        {
+          "id": "c",
+          "text": "Unstructured data with no model"
+        },
+        {
+          "id": "d",
+          "text": "Spatial data with coordinates"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "JSON labels values with keys and allows nested objects and arrays, so it is semi-structured. It lacks a fixed tabular schema, so it is not structured, yet its keys give it more organization than unstructured data. Nothing here is geographic, so it is not spatial data.",
+    "acronyms": [
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which source produces unstructured data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A product table in a relational database"
+        },
+        {
+          "id": "b",
+          "text": "An XML feed of product listings"
+        },
+        {
+          "id": "c",
+          "text": "A CSV export of sales orders"
+        },
+        {
+          "id": "d",
+          "text": "Recorded customer service phone calls"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Audio recordings have no predefined data model, so they are unstructured. A relational table is structured, while XML and CSV files carry tags or delimiters that give them structure.",
+    "acronyms": [
+      "XML",
+      "CSV"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A column stores two-letter country codes, and every value is exactly two characters long. Which data type is most efficient?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "char(2)"
+        },
+        {
+          "id": "b",
+          "text": "varchar(255)"
+        },
+        {
+          "id": "c",
+          "text": "nvarchar(max)"
+        },
+        {
+          "id": "d",
+          "text": "float"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The char type stores fixed-length strings, which suits values that are always two characters. The varchar(255) and nvarchar(max) types are variable length and oversized here, and float is numeric.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "A product name column must hold names in Japanese, Arabic and English, and lengths vary widely. Which data type should the analyst choose?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "char"
+        },
+        {
+          "id": "b",
+          "text": "varchar"
+        },
+        {
+          "id": "c",
+          "text": "nvarchar"
+        },
+        {
+          "id": "d",
+          "text": "integer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The nvarchar type stores variable-length Unicode text, so it handles many scripts and varied lengths. The char type is fixed length, varchar in many systems uses a single-byte code page that cannot hold every script, and integer stores numbers.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A survey field for annual income is left empty when a respondent declines to answer. How should the database represent that missing value?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "As zero"
+        },
+        {
+          "id": "b",
+          "text": "As null"
+        },
+        {
+          "id": "c",
+          "text": "As an empty string"
+        },
+        {
+          "id": "d",
+          "text": "As the column average"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Null means the value is unknown or missing. Zero would claim the income is nothing, an empty string is a known blank text value rather than a missing number, and the average is an imputation rather than a record of missing data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A delivery company stores the latitude and longitude of each depot so it can find the nearest depot to a customer. Which data type category fits these values?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Boolean"
+        },
+        {
+          "id": "b",
+          "text": "Datetime"
+        },
+        {
+          "id": "c",
+          "text": "String"
+        },
+        {
+          "id": "d",
+          "text": "Spatial"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Spatial (geographic) types store coordinates and shapes and support distance queries. Boolean holds true or false, datetime holds dates and times, and plain strings cannot be used in distance calculations directly.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "A finance table stores invoice amounts in dollars and cents, and totals must match the ledger exactly. Which numeric type should the amount column use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Decimal"
+        },
+        {
+          "id": "b",
+          "text": "Float"
+        },
+        {
+          "id": "c",
+          "text": "Integer"
+        },
+        {
+          "id": "d",
+          "text": "Boolean"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Decimal stores exact fixed-precision values, so cents add up without rounding error. Float is approximate and can introduce small errors, integer drops the cents, and Boolean is not numeric.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO data types are designed to store large objects in a database?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "BLOB"
+        },
+        {
+          "id": "b",
+          "text": "CLOB"
+        },
+        {
+          "id": "c",
+          "text": "GUID"
+        },
+        {
+          "id": "d",
+          "text": "Boolean"
+        },
+        {
+          "id": "e",
+          "text": "Timestamp"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "A BLOB holds large binary content such as images, and a CLOB holds large text such as documents. A GUID is a 128-bit identifier, Boolean holds true or false, and a timestamp holds a point in time.",
+    "acronyms": [
+      "BLOB",
+      "CLOB",
+      "GUID"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO statements about a GUID or UUID are correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a 128-bit identifier"
+        },
+        {
+          "id": "b",
+          "text": "It stays unique across separate systems"
+        },
+        {
+          "id": "c",
+          "text": "It increases by one for each new row"
+        },
+        {
+          "id": "d",
+          "text": "It stores a date and time with a time zone"
+        },
+        {
+          "id": "e",
+          "text": "It holds large binary files"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "A GUID or UUID is a 128-bit value designed to be unique even when created independently on different systems. It is not a sequential counter, not a datetime type and not a large-object type.",
+    "acronyms": [
+      "GUID",
+      "UUID"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst must pick column types for an events table. Which THREE pairings are appropriate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Event time recorded to the second: timestamp"
+        },
+        {
+          "id": "b",
+          "text": "Flag showing whether an event was billed: Boolean"
+        },
+        {
+          "id": "c",
+          "text": "Number of attendees: integer"
+        },
+        {
+          "id": "d",
+          "text": "Event title of a few words: BLOB"
+        },
+        {
+          "id": "e",
+          "text": "Venue identifier shared across systems: float"
+        },
+        {
+          "id": "f",
+          "text": "Ticket price in dollars and cents: integer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "A timestamp records date and time, Boolean suits a yes/no flag, and integer suits whole counts. A short title belongs in a string type rather than a BLOB, identifiers should not be stored as approximate floats, and integer would drop the cents in a price.",
+    "acronyms": [
+      "BLOB"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are non-relational databases?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Document store"
+        },
+        {
+          "id": "b",
+          "text": "Key-value store"
+        },
+        {
+          "id": "c",
+          "text": "Relational database"
+        },
+        {
+          "id": "d",
+          "text": "Star schema warehouse"
+        },
+        {
+          "id": "e",
+          "text": "Normalized OLTP database"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Document and key-value stores are non-relational models. A relational database, a star schema and a normalized OLTP database are all built on the relational model.",
+    "acronyms": [
+      "OLTP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO file extensions usually hold plain text that opens in a basic text editor?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": ".csv"
+        },
+        {
+          "id": "b",
+          "text": ".txt"
+        },
+        {
+          "id": "c",
+          "text": ".jpg"
+        },
+        {
+          "id": "d",
+          "text": ".xlsx"
+        },
+        {
+          "id": "e",
+          "text": ".png"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "The .csv and .txt extensions mark plain text files. A .jpg or .png file is a binary image, and .xlsx is a compressed workbook package rather than plain text.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Sort each data source into the structure of the data it holds.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "st",
+          "text": "Structured"
+        },
+        {
+          "id": "semi",
+          "text": "Semi-structured"
+        },
+        {
+          "id": "un",
+          "text": "Unstructured"
+        }
+      ],
+      "items": [
+        {
+          "id": "ledger",
+          "text": "General ledger table with typed columns"
+        },
+        {
+          "id": "xml",
+          "text": "XML product feed"
+        },
+        {
+          "id": "email",
+          "text": "Body text of customer emails"
+        },
+        {
+          "id": "video",
+          "text": "Store security video"
+        },
+        {
+          "id": "logs",
+          "text": "Application logs with key=value pairs"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "ledger": "st",
+        "xml": "semi",
+        "email": "un",
+        "video": "un",
+        "logs": "semi"
+      }
+    },
+    "explanation": "A table with a fixed schema is structured. XML and key=value logs carry their own labels without a fixed schema, so they are semi-structured. Free text and video have no data model.",
+    "partExplanations": {
+      "ledger": "Fixed, typed columns make the ledger structured.",
+      "xml": "XML tags label the data but allow flexible nesting.",
+      "email": "Free-form email text has no fields to query.",
+      "video": "Video is binary media with no data model.",
+      "logs": "Key=value pairs give logs partial structure."
+    },
+    "acronyms": [
+      "XML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Match each value to the data type that should store it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Number of failed login attempts"
+        },
+        {
+          "id": "p2",
+          "text": "Order placed at 2026-03-14 09:26:53"
+        },
+        {
+          "id": "p3",
+          "text": "Scanned contract stored in the database"
+        },
+        {
+          "id": "p4",
+          "text": "Scientific sensor reading such as 0.000317"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Integer"
+        },
+        {
+          "id": "c2",
+          "text": "Timestamp"
+        },
+        {
+          "id": "c3",
+          "text": "BLOB"
+        },
+        {
+          "id": "c4",
+          "text": "Float"
+        },
+        {
+          "id": "c5",
+          "text": "Varchar"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "A whole-number count is an integer, a date with time of day is a timestamp, a binary file is a BLOB, and an approximate scientific measurement suits float. Varchar is a distractor for text values.",
+    "partExplanations": {
+      "p1": "A count of attempts is a whole number, stored as an integer.",
+      "p2": "Date plus time of day is a timestamp.",
+      "p3": "A scanned file is binary content, stored as a BLOB.",
+      "p4": "Float stores approximate real numbers across a wide range."
+    },
+    "acronyms": [
+      "BLOB"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-diagram-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "This warehouse tracks loans that can have several borrowers. Label the unlabeled tables.",
+    "payload": {
+      "width": 600,
+      "height": 300,
+      "nodes": [
+        {
+          "id": "fact",
+          "x": 20,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "bridge",
+          "x": 230,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "borrower",
+          "x": 440,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "date",
+          "x": 20,
+          "y": 10,
+          "w": 140,
+          "h": 60,
+          "text": "Dim: Date"
+        }
+      ],
+      "edges": [
+        {
+          "from": "fact",
+          "to": "bridge"
+        },
+        {
+          "from": "bridge",
+          "to": "borrower"
+        },
+        {
+          "from": "fact",
+          "to": "date"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-fact",
+          "x": 20,
+          "y": 190,
+          "name": "Left table"
+        },
+        {
+          "id": "z-bridge",
+          "x": 230,
+          "y": 190,
+          "name": "Middle table"
+        },
+        {
+          "id": "z-borrower",
+          "x": 440,
+          "y": 190,
+          "name": "Right table"
+        }
+      ],
+      "labels": [
+        {
+          "id": "fact",
+          "text": "Fact: Loan balance"
+        },
+        {
+          "id": "bridge",
+          "text": "Bridge: Loan-borrower group"
+        },
+        {
+          "id": "dim",
+          "text": "Dim: Borrower"
+        },
+        {
+          "id": "scd",
+          "text": "Aggregate: Monthly loan totals"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-fact": "fact",
+        "z-bridge": "bridge",
+        "z-borrower": "dim"
+      }
+    },
+    "explanation": "The fact table holds loan measures and joins to the date dimension. Because one loan has many borrowers and a borrower can hold many loans, a bridge table sits between the fact and the borrower dimension. An aggregate table stores pre-summarized measures and does not resolve the many-to-many link.",
+    "partExplanations": {
+      "z-fact": "The fact table holds the measures and links to the date dimension.",
+      "z-bridge": "The bridge resolves the many-to-many link between loans and borrowers.",
+      "z-borrower": "Borrower attributes live in a dimension table."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-1-hotspot-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "The column definitions for a customer table are shown. Select every column that stores string data.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "customer_id UUID (native type)"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "last_name varchar(60)"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "country char(2)"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "credit_limit decimal(10,2)"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "notes nvarchar(500)"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "is_active Boolean"
+        }
+      ],
+      "spots": [
+        {
+          "id": "id",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "customer_id UUID (native type)"
+        },
+        {
+          "id": "last",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "last_name varchar(60)"
+        },
+        {
+          "id": "country",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "country char(2)"
+        },
+        {
+          "id": "credit",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "credit_limit decimal(10,2)"
+        },
+        {
+          "id": "notes",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "notes nvarchar(500)"
+        },
+        {
+          "id": "active",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "is_active Boolean"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "last",
+        "country",
+        "notes"
+      ]
+    },
+    "explanation": "The char, varchar and nvarchar types store strings. A UUID column uses a dedicated identifier type, decimal is numeric and Boolean holds true or false.",
+    "partExplanations": {
+      "id": "UUID is an identifier type, not a string type.",
+      "last": "The varchar type is a variable-length string.",
+      "country": "The char type is a fixed-length string.",
+      "credit": "The decimal type is an exact numeric type.",
+      "notes": "The nvarchar type is a variable-length Unicode string.",
+      "active": "Boolean stores true or false."
+    },
+    "acronyms": [
+      "UUID"
+    ],
+    "status": "approved"
+  }
+]

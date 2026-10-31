@@ -1,0 +1,2443 @@
+[
+  {
+    "id": "da2-3-1-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 1,
+    "stem": "Before building a dashboard, an analyst sketches its layout with placeholder charts so stakeholders can react to it. What is this sketch called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A data dictionary"
+        },
+        {
+          "id": "b",
+          "text": "A mock-up"
+        },
+        {
+          "id": "c",
+          "text": "A snapshot"
+        },
+        {
+          "id": "d",
+          "text": "An executive summary"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A mock-up is a draft of a report or dashboard layout used to gather feedback before development. A data dictionary documents fields, a snapshot captures data at a point in time, and an executive summary condenses findings in text.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A sales director gives vague requirements for a new regional report. What should the analyst do first to confirm expectations before building it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Publish the finished report"
+        },
+        {
+          "id": "b",
+          "text": "Send the raw query output"
+        },
+        {
+          "id": "c",
+          "text": "Share a mock-up for review"
+        },
+        {
+          "id": "d",
+          "text": "Schedule a recurring refresh"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A mock-up lets the director confirm layout and content cheaply before effort is spent building. Publishing first risks rework, raw query output does not show the intended design, and a refresh schedule assumes the report is already agreed.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "Stakeholders reviewing a dashboard mock-up keep debating the colors of the placeholder charts instead of the metrics shown. Which change best refocuses the review?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add the final corporate logo"
+        },
+        {
+          "id": "b",
+          "text": "Load live production data"
+        },
+        {
+          "id": "c",
+          "text": "Use a grayscale wireframe"
+        },
+        {
+          "id": "d",
+          "text": "Add more chart types"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A low-fidelity grayscale wireframe removes styling so reviewers focus on content and layout. Adding branding, live data or more chart types adds distractions and effort before the structure is agreed.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst must show a mock-up of a churn dashboard to a client, but the only available sample contains real customer names. What is the best approach?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the names with fictitious sample values"
+        },
+        {
+          "id": "b",
+          "text": "Show the real names but mark the slides draft"
+        },
+        {
+          "id": "c",
+          "text": "Blur the names after the meeting ends"
+        },
+        {
+          "id": "d",
+          "text": "Ask the client to sign an agreement covering the names"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Mock-ups only need representative data, so invented values avoid exposing customer information. A draft label, blurring later or a signature does not prevent the disclosure during the review.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A stakeholder has approved a mock-up. What is the main benefit of that approval?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Faster query execution"
+        },
+        {
+          "id": "b",
+          "text": "Less rework during development"
+        },
+        {
+          "id": "c",
+          "text": "Smaller data storage needs"
+        },
+        {
+          "id": "d",
+          "text": "Automatic validation of the source data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Agreeing on the design early reduces rework once the real build starts. A mock-up has no effect on query speed, storage size or validation of the underlying data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which design choice most improves a chart's readability for viewers with red-green color vision deficiency?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Red and green indicators for every status"
+        },
+        {
+          "id": "b",
+          "text": "More gradient shading"
+        },
+        {
+          "id": "c",
+          "text": "A darker page background"
+        },
+        {
+          "id": "d",
+          "text": "A palette that varies in lightness"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A palette that varies in lightness as well as hue keeps categories distinguishable for viewers with color vision deficiency. Red and green indicators are exactly the pair those viewers confuse, while gradients and dark backgrounds do not address hue confusion.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A public agency publishes a dashboard that some users read with screen readers. What should the analyst add to each chart?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Alternative text describing the key insight"
+        },
+        {
+          "id": "b",
+          "text": "Animated transitions between views"
+        },
+        {
+          "id": "c",
+          "text": "Smaller fonts to fit more labels"
+        },
+        {
+          "id": "d",
+          "text": "Detail tooltips that appear only on mouse hover"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Alternative text gives screen reader users the meaning of the chart. Animations add nothing for them, smaller fonts hurt readability, and hover-only tooltips cannot be reached without a mouse.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A status report marks on-track projects in green and late projects in red, with no other cue. Which change best supports accessibility?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Use brighter shades of red and green"
+        },
+        {
+          "id": "b",
+          "text": "Add icons or text labels to each status"
+        },
+        {
+          "id": "c",
+          "text": "Increase the size of the colored status dots"
+        },
+        {
+          "id": "d",
+          "text": "Move the legend to the bottom"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Pairing color with a shape or text label means status does not depend on color perception alone. Brighter or larger red and green marks remain indistinguishable to some viewers, and moving the legend changes nothing.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 1,
+    "stem": "Light gray text on a white background is hard for many viewers to read. Which accessibility property needs improving?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Contrast ratio"
+        },
+        {
+          "id": "b",
+          "text": "Data granularity"
+        },
+        {
+          "id": "c",
+          "text": "Refresh frequency"
+        },
+        {
+          "id": "d",
+          "text": "Chart aspect ratio"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Low contrast between text and background reduces legibility, so the contrast ratio should be increased. Granularity, refresh frequency and aspect ratio do not affect how readable the text is.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "A university must make its enrollment dashboard accessible to staff who use keyboards only and screen readers. Which TWO changes best meet this requirement?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rely on hover tooltips for exact values"
+        },
+        {
+          "id": "b",
+          "text": "Use color alone to separate categories"
+        },
+        {
+          "id": "c",
+          "text": "Add decorative background images"
+        },
+        {
+          "id": "d",
+          "text": "Make filters usable without a mouse"
+        },
+        {
+          "id": "e",
+          "text": "Provide a data table view of each chart"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "Keyboard-accessible filters and a table alternative let keyboard and screen reader users reach the same information. Hover tooltips require a mouse, color-only encoding excludes some viewers, and decorative images add noise for screen readers.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst presents model results to the marketing team, who have no statistics background. Which approach fits this audience best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Full regression output with p-values"
+        },
+        {
+          "id": "b",
+          "text": "The source code used for the model"
+        },
+        {
+          "id": "c",
+          "text": "A complete list of every model parameter tried"
+        },
+        {
+          "id": "d",
+          "text": "Plain language focused on business impact"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A non-technical audience needs conclusions and impact explained simply. Raw regression output, code and parameter lists suit technical reviewers rather than marketers.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A data engineering team asks how a weekly report's figures were produced so they can reproduce them. What should the analyst provide?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A one-page summary of the trends"
+        },
+        {
+          "id": "b",
+          "text": "An infographic of the headline numbers"
+        },
+        {
+          "id": "c",
+          "text": "The queries, joins and transformation steps"
+        },
+        {
+          "id": "d",
+          "text": "A recorded video walkthrough of the summary slides"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A technical audience reproducing results needs the methodology: queries, joins and transformations. A summary, infographic or slide video describes results but not how to reproduce them.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst must explain a seasonal forecast to both store managers and the data science team in one meeting. Which structure works best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Open with model diagnostics for everyone"
+        },
+        {
+          "id": "b",
+          "text": "Present only the forecast with no methods"
+        },
+        {
+          "id": "c",
+          "text": "Hold the meeting in technical terms throughout"
+        },
+        {
+          "id": "d",
+          "text": "Lead with findings; put methods in an appendix"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Leading with findings serves managers, while an appendix gives the data scientists the detail without losing the rest of the room. Opening with diagnostics or using technical terms throughout loses managers, and omitting methods fails the data scientists.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "In a presentation to the operations team, an analyst wants to explain what a confidence interval means. Which wording suits a non-technical audience?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The interval bounded by alpha over two"
+        },
+        {
+          "id": "b",
+          "text": "The standard error multiplied by a z critical value"
+        },
+        {
+          "id": "c",
+          "text": "A two-tailed test on the sample mean"
+        },
+        {
+          "id": "d",
+          "text": "A likely range in which the true value falls"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A confidence interval is a range that likely contains the true value, which is the plain-language reading a non-technical audience needs; it simplifies the formal meaning that about 95% of intervals built this way capture the true value. The alpha-over-two bound and the z-critical-value formula are technical definitions, and a two-tailed test on the mean describes a hypothesis test, not an interval.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst is preparing results for hospital administrators who are not technical. Which TWO practices help this audience most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Define any unavoidable terms briefly"
+        },
+        {
+          "id": "b",
+          "text": "Tie each finding to a decision they own"
+        },
+        {
+          "id": "c",
+          "text": "Show the full SQL behind each chart"
+        },
+        {
+          "id": "d",
+          "text": "Report results to six decimal places"
+        },
+        {
+          "id": "e",
+          "text": "Describe each data pipeline step in detail"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Brief definitions and links to decisions make findings usable for non-technical readers. Full SQL, excess precision and pipeline detail add complexity that does not help administrators act.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 1,
+    "stem": "A team lead asks for a report where each row is one transaction rather than monthly totals. What is being changed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The color scheme"
+        },
+        {
+          "id": "b",
+          "text": "The level of detail"
+        },
+        {
+          "id": "c",
+          "text": "The refresh method"
+        },
+        {
+          "id": "d",
+          "text": "The intended audience type"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Moving from monthly totals to individual transactions increases the level of detail, or granularity. Color, refresh method and audience are separate design choices.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A regional manager wants a dashboard showing totals by region but needs to investigate a single store when a figure looks wrong. Which feature meets this need?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Drill-down from summary to detail"
+        },
+        {
+          "id": "b",
+          "text": "A static image of the totals"
+        },
+        {
+          "id": "c",
+          "text": "A higher-level national summary"
+        },
+        {
+          "id": "d",
+          "text": "A larger font for the totals"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Drill-down shows summary totals by default while letting the user move to store-level detail. A static image or national summary removes the needed detail, and font size does not change the data shown.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "A finance analyst's monthly report has grown to 40 pages of transaction tables, and executives say they cannot find the key points. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reduce the font size so the report has fewer pages"
+        },
+        {
+          "id": "b",
+          "text": "Split the tables into two separate monthly reports"
+        },
+        {
+          "id": "c",
+          "text": "Lead with a summary; move tables to an appendix"
+        },
+        {
+          "id": "d",
+          "text": "Remove all transaction data from the report entirely"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A summary up front gives executives the key points while keeping the detail available in an appendix for those who need it. Smaller fonts and splitting do not surface insights, and removing the data entirely loses information others may need.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "An auditor needs to verify each entry behind a quarterly expense total. Which level of detail should the analyst provide?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The quarterly total only"
+        },
+        {
+          "id": "b",
+          "text": "A trend chart of yearly totals"
+        },
+        {
+          "id": "c",
+          "text": "Individual line-item records"
+        },
+        {
+          "id": "d",
+          "text": "A ranked list of the top-spending departments"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Verifying entries requires the individual line items. A total, yearly trend or top-department list are aggregations that hide the records the auditor must check.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "A logistics director wants a single-page view to decide each morning whether to add delivery drivers. Which TWO design choices fit this requirement?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Include every shipment record from the night"
+        },
+        {
+          "id": "b",
+          "text": "Add each warehouse's full history"
+        },
+        {
+          "id": "c",
+          "text": "Show the few metrics that drive the decision"
+        },
+        {
+          "id": "d",
+          "text": "Show all metrics the system collects"
+        },
+        {
+          "id": "e",
+          "text": "Highlight values that cross set thresholds"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "A focused page with only the decision-driving metrics and clear threshold highlights supports a fast daily decision. Every shipment record, full histories and every collected metric bury the signal the director needs.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 1,
+    "stem": "A report will be shared with outside investors rather than staff. Which kind of audience is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "External"
+        },
+        {
+          "id": "b",
+          "text": "Internal"
+        },
+        {
+          "id": "c",
+          "text": "Technical"
+        },
+        {
+          "id": "d",
+          "text": "Operational"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Investors outside the company are an external audience. Internal means staff, and technical or operational describe skills or roles rather than whether the reader is outside the organization.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst is converting an internal sales report into a version for a partner company. What should be removed first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Chart titles and axis labels on every page"
+        },
+        {
+          "id": "b",
+          "text": "The date range of the data"
+        },
+        {
+          "id": "c",
+          "text": "The legend for each chart"
+        },
+        {
+          "id": "d",
+          "text": "Profit margin and cost figures"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Profit margins and costs are confidential and should not reach an outside party. Titles, labels, date ranges and legends are needed for any audience to read the report correctly.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A nonprofit publishes an annual impact report for donors. Which element is more important here than in an internal team update?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Links to internal file shares"
+        },
+        {
+          "id": "b",
+          "text": "Team-specific jargon and shorthand"
+        },
+        {
+          "id": "c",
+          "text": "Draft notes from team meetings"
+        },
+        {
+          "id": "d",
+          "text": "Plain-language context for figures"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Donors are outside readers who need each impact figure explained in plain language, which matters more than it does for an internal team that already knows the terms. Internal file links, team jargon and meeting notes are inappropriate or meaningless for outside readers.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "A hospital's quality team wants to share readmission trends with a regional health board. Which approach balances transparency with protection?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Share the patient-level extract including names"
+        },
+        {
+          "id": "b",
+          "text": "Share aggregated rates with small counts suppressed"
+        },
+        {
+          "id": "c",
+          "text": "Share nothing until the board files a request"
+        },
+        {
+          "id": "d",
+          "text": "Share the internal dashboard login with the board"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Aggregated rates with small cells suppressed give the board the trends without exposing individual patients. Patient-level data with names exposes PHI, withholding everything fails the requirement, and sharing internal logins grants uncontrolled access.",
+    "acronyms": [
+      "PHI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A company prepares quarterly results for its public website. Which TWO steps are appropriate for this external audience?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Obtain approval from legal or communications"
+        },
+        {
+          "id": "b",
+          "text": "Include employee-level performance data"
+        },
+        {
+          "id": "c",
+          "text": "Link to the internal data warehouse"
+        },
+        {
+          "id": "d",
+          "text": "Keep the draft watermark on the charts"
+        },
+        {
+          "id": "e",
+          "text": "Use clear labels without internal codes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "External releases need sign-off and plain labeling readers outside can follow. Employee-level data is confidential, internal links do not work for outsiders, and draft watermarks are unsuitable for a public release.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 1,
+    "stem": "A chief executive has five minutes before a board meeting to review quarterly results. Which format suits this persona best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A detailed table of all orders"
+        },
+        {
+          "id": "b",
+          "text": "A guide to building the report"
+        },
+        {
+          "id": "c",
+          "text": "The full query documentation"
+        },
+        {
+          "id": "d",
+          "text": "A brief summary of top KPIs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "C-suite readers need a concise view of headline KPIs and what they mean. Order tables, build guides and query documentation are detail for individual contributors or technical staff.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A call center agent wants to use a dashboard during each shift. Which content suits this individual contributor best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Company-wide quarterly revenue figures"
+        },
+        {
+          "id": "b",
+          "text": "Their own handle time and queue status"
+        },
+        {
+          "id": "c",
+          "text": "Board-level strategic growth targets"
+        },
+        {
+          "id": "d",
+          "text": "Year-over-year regional market share"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An individual contributor needs operational metrics about their own work that they can act on during a shift. Revenue, strategic targets and market share are executive-level measures the agent cannot influence directly.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst builds one sales dashboard used by both the chief revenue officer and frontline sales reps. Which design best serves both personas?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A summary landing page with role-based detail views"
+        },
+        {
+          "id": "b",
+          "text": "One long page listing every metric for every user"
+        },
+        {
+          "id": "c",
+          "text": "Separate data sources built for each persona"
+        },
+        {
+          "id": "d",
+          "text": "A single static chart of total company revenue"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A summary landing page serves the executive while detail views give reps their own pipeline data from one consistent source. Listing everything overwhelms both groups, separate sources risk inconsistent numbers, and a single chart lacks the reps' detail.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A chief financial officer asks why operating costs rose last quarter. How should the analyst open the response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "State the main driver and its impact"
+        },
+        {
+          "id": "b",
+          "text": "Describe the data cleaning steps used"
+        },
+        {
+          "id": "c",
+          "text": "List every cost center alphabetically"
+        },
+        {
+          "id": "d",
+          "text": "Explain the tool used to build it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Executives want the answer first: the main driver and how much it mattered. Cleaning steps, alphabetical lists and tool details delay the point and suit other audiences.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst designs a report for warehouse pickers, who are individual contributors. Which TWO features suit this persona?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Task-level metrics they can act on today"
+        },
+        {
+          "id": "b",
+          "text": "Five-year strategic growth projections"
+        },
+        {
+          "id": "c",
+          "text": "Board meeting talking points"
+        },
+        {
+          "id": "d",
+          "text": "Simple views usable on a handheld device"
+        },
+        {
+          "id": "e",
+          "text": "Enterprise-wide profitability ratios"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Individual contributors need actionable task-level metrics in a format suited to their work setting. Long-range projections, board talking points and enterprise ratios are executive concerns.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which of the following is an example of sensitive data that needs protection in a report?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Average order size by month"
+        },
+        {
+          "id": "b",
+          "text": "Number of stores per region"
+        },
+        {
+          "id": "c",
+          "text": "Public product price list"
+        },
+        {
+          "id": "d",
+          "text": "Customers' home addresses"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Home addresses are PII and must be protected. Monthly averages, store counts and public prices do not identify individuals.",
+    "acronyms": [
+      "PII"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A dashboard of employee survey results will be shared with all managers. Which practice protects respondents?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Show each respondent's comments by name"
+        },
+        {
+          "id": "b",
+          "text": "Hide results for groups below a minimum size"
+        },
+        {
+          "id": "c",
+          "text": "Allow filtering results by employee number"
+        },
+        {
+          "id": "d",
+          "text": "Allow export of each individual response"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Suppressing small groups prevents managers from inferring who said what. Named comments, filtering by employee number and exporting individual responses all expose respondents.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-033",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "A payroll analysis must go to department heads, but some heads should see only their own staff's salaries. What is the best approach?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Email the full file and ask for discretion"
+        },
+        {
+          "id": "b",
+          "text": "Hide the salary column in the default view"
+        },
+        {
+          "id": "c",
+          "text": "Apply row-level security per team"
+        },
+        {
+          "id": "d",
+          "text": "Rename the salary column to a coded label"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Row-level security limits each head to their own department's rows. Relying on discretion, hiding a column or renaming it still leaves the full data accessible to everyone.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-034",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst must send a clinic's appointment data to an outside vendor for scheduling analysis. Which step best protects patients?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Compress the file before sending it"
+        },
+        {
+          "id": "b",
+          "text": "Send it to the vendor's general inbox"
+        },
+        {
+          "id": "c",
+          "text": "De-identify the data before it is sent"
+        },
+        {
+          "id": "d",
+          "text": "Convert the file from CSV to JSON"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "De-identifying removes PHI so the vendor can analyze patterns without seeing who the patients are. Compression and format changes do not protect content, and a general inbox widens exposure.",
+    "acronyms": [
+      "PHI",
+      "CSV",
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-035",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which report is least likely to need special sensitivity controls before wide internal sharing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Website page views by week"
+        },
+        {
+          "id": "b",
+          "text": "Employee disciplinary records"
+        },
+        {
+          "id": "c",
+          "text": "Stored customer card numbers"
+        },
+        {
+          "id": "d",
+          "text": "Patient diagnosis codes by name"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Aggregated page view counts identify no one and carry no regulated data. Disciplinary records, card numbers and diagnoses are confidential, PCI or health data that must be protected.",
+    "acronyms": [
+      "PCI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-036",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "A bank wants to share fraud trend analysis with its retail branch staff. Which THREE steps are appropriate before sharing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Include full customer names for context"
+        },
+        {
+          "id": "b",
+          "text": "Remove or mask account numbers"
+        },
+        {
+          "id": "c",
+          "text": "Aggregate cases to branch level"
+        },
+        {
+          "id": "d",
+          "text": "Restrict access to those who need it"
+        },
+        {
+          "id": "e",
+          "text": "Publish it on the public website"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "Masking account numbers, aggregating cases and limiting access protect customers while still showing the trend. Customer names add exposure without analytic value, and publishing publicly is inappropriate for internal fraud data.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-037",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 1,
+    "stem": "A measurable value that shows how well an organization is meeting a business objective is called what?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A dimension, such as region"
+        },
+        {
+          "id": "b",
+          "text": "A data type, such as integer"
+        },
+        {
+          "id": "c",
+          "text": "A key performance indicator (KPI)"
+        },
+        {
+          "id": "d",
+          "text": "A primary key that identifies rows"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A KPI tracks progress toward a business objective. A dimension describes data, a data type defines a field's format, and a primary key identifies rows.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-038",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A customer support director wants to know whether customers are happy with service. Which KPI fits this requirement?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Number of agents hired"
+        },
+        {
+          "id": "b",
+          "text": "Average satisfaction rating"
+        },
+        {
+          "id": "c",
+          "text": "Server disk usage rate"
+        },
+        {
+          "id": "d",
+          "text": "Count of software licenses"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A satisfaction rating directly measures how customers feel about service. Hiring counts, disk usage and license counts do not measure satisfaction.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-039",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "A KPI shows monthly revenue of $1.2 million, but executives cannot tell whether this is good or bad. What should the analyst add?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A comparison to the target and prior period"
+        },
+        {
+          "id": "b",
+          "text": "A larger font for the monthly revenue value"
+        },
+        {
+          "id": "c",
+          "text": "The revenue figure in a second currency"
+        },
+        {
+          "id": "d",
+          "text": "A list of every invoice behind the figure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Context such as the target and prior period shows whether the KPI is on track. Font size, currency conversion and invoice lists do not answer whether performance is good.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-040",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "An executive dashboard shows 30 metrics, and leaders say they cannot tell what matters. What is the best improvement?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add more metrics for completeness"
+        },
+        {
+          "id": "b",
+          "text": "Use a different color for each"
+        },
+        {
+          "id": "c",
+          "text": "Feature a few KPIs tied to goals"
+        },
+        {
+          "id": "d",
+          "text": "Sort all the metrics by name"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Highlighting a small set of goal-linked KPIs focuses attention on what matters. Adding metrics, extra colors or alphabetical sorting does not reduce the overload.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-041",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "A manufacturing plant tracks units produced per shift, and supervisors push volume while defects rise. Which change to the KPI set best addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raise the units-produced target"
+        },
+        {
+          "id": "b",
+          "text": "Pair output with a quality measure"
+        },
+        {
+          "id": "c",
+          "text": "Report the output weekly instead"
+        },
+        {
+          "id": "d",
+          "text": "Remove the units-produced KPI"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Balancing volume with a quality measure discourages gaining output at the cost of defects. A higher target worsens the incentive, weekly reporting does not change behavior, and removing output loses a needed measure.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-042",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "stem": "A subscription business wants KPIs that show customer retention health. Which TWO measures fit best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Number of office locations"
+        },
+        {
+          "id": "b",
+          "text": "Monthly churn rate of accounts"
+        },
+        {
+          "id": "c",
+          "text": "Share of subscribers who renew"
+        },
+        {
+          "id": "d",
+          "text": "Average page load time"
+        },
+        {
+          "id": "e",
+          "text": "Count of marketing emails sent"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Churn rate and renewal rate measure directly whether customers stay. Office counts, page load time and emails sent are not retention outcomes.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-mcq-043",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst is choosing how to communicate a sensitive layoff-impact analysis to the executive team only. Which TWO choices fit these requirements?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A company-wide dashboard with employee names"
+        },
+        {
+          "id": "b",
+          "text": "A concise summary with key cost figures"
+        },
+        {
+          "id": "c",
+          "text": "Detailed code notes for the data team"
+        },
+        {
+          "id": "d",
+          "text": "Distribution limited to named recipients"
+        },
+        {
+          "id": "e",
+          "text": "An external press-ready infographic"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Executives need a concise summary, and the sensitive content must be restricted to the named recipients. A company-wide dashboard exposes personnel data, code notes suit a technical audience, and a press infographic is for external release.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Harborline Logistics has finished a delivery-delay analysis. Match each audience to the communication approach that best fits it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "The executive leadership team, reviewing results in a 15-minute board slot"
+        },
+        {
+          "id": "p2",
+          "text": "A dispatch supervisor who reassigns routes every morning"
+        },
+        {
+          "id": "p3",
+          "text": "The data engineering team that will productionize the model"
+        },
+        {
+          "id": "p4",
+          "text": "Retail customers reading the company's public service update"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Three headline KPIs with a one-line recommendation each"
+        },
+        {
+          "id": "c2",
+          "text": "An operational view scoped to their own area, with drill-down to individual stops"
+        },
+        {
+          "id": "c3",
+          "text": "Full methodology, field definitions, query logic and known data limitations"
+        },
+        {
+          "id": "c4",
+          "text": "Plain-language summary of aggregated results with no internal or customer-level data"
+        },
+        {
+          "id": "c5",
+          "text": "A raw extract of every delayed shipment record"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "Executives need few high-level KPIs and a decision, individual contributors need detail scoped to their own work, technical audiences need method and definitions, and external audiences need plain language with sensitive data removed. A raw extract suits none of them.",
+    "partExplanations": {
+      "p1": "C-suite readers with little time need a few summary KPIs tied to a recommendation.",
+      "p2": "An individual contributor acts on detail for their own area, so a scoped drill-down view fits.",
+      "p3": "A technical audience needs methodology, definitions and limitations to rebuild the work.",
+      "p4": "An external, non-technical audience gets plain language and only aggregated, non-sensitive results."
+    },
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Fernwood Credit Union will publish a member-facing savings report and keep a separate internal version for staff. Sort each element into the report it belongs in.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "ext",
+          "text": "External member report"
+        },
+        {
+          "id": "int",
+          "text": "Internal staff report only"
+        }
+      ],
+      "items": [
+        {
+          "id": "avgrate",
+          "text": "Average savings rate paid across all accounts"
+        },
+        {
+          "id": "branchmargin",
+          "text": "Net margin by branch compared with internal targets"
+        },
+        {
+          "id": "members",
+          "text": "Table of top depositors with member names and balances"
+        },
+        {
+          "id": "growth",
+          "text": "Year-over-year growth in total member deposits"
+        },
+        {
+          "id": "churn",
+          "text": "Model scores predicting which members are likely to close accounts"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "avgrate": "ext",
+        "branchmargin": "int",
+        "members": "int",
+        "growth": "ext",
+        "churn": "int"
+      }
+    },
+    "explanation": "Aggregated, non-sensitive figures such as an average rate and total deposit growth can go to members. Branch margins and churn scores are confidential business data, and named balances are sensitive personal data, so they stay internal.",
+    "partExplanations": {
+      "avgrate": "An average across all accounts is aggregated and non-sensitive, so it can be shared externally.",
+      "branchmargin": "Branch margins against targets are confidential internal performance data.",
+      "members": "Names with balances are sensitive personal data and must not appear in an external report.",
+      "growth": "Total deposit growth is an aggregate figure suitable for members.",
+      "churn": "Member-level risk scores are sensitive and meant for internal action only."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-hotspot-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "An analyst at Pinecrest Health drafted a dashboard for a public community-outreach page. It must be accessible and contain no sensitive data. Select every element that must be changed before publishing.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 60,
+          "text": "Title: Clinic visits by month"
+        },
+        {
+          "id": "n2",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 60,
+          "text": "Status shown only by red and green dots"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 100,
+          "w": 280,
+          "h": 60,
+          "text": "Line chart with labeled axes"
+        },
+        {
+          "id": "n4",
+          "x": 310,
+          "y": 100,
+          "w": 280,
+          "h": 60,
+          "text": "Table of patient names and diagnoses"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 190,
+          "w": 280,
+          "h": 60,
+          "text": "Chart image with no alternative text"
+        },
+        {
+          "id": "n6",
+          "x": 310,
+          "y": 190,
+          "w": 280,
+          "h": 60,
+          "text": "Footnote: data source and refresh date"
+        }
+      ],
+      "spots": [
+        {
+          "id": "title",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 60,
+          "name": "Title"
+        },
+        {
+          "id": "color",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 60,
+          "name": "Red and green status dots"
+        },
+        {
+          "id": "line",
+          "x": 10,
+          "y": 100,
+          "w": 280,
+          "h": 60,
+          "name": "Line chart with labeled axes"
+        },
+        {
+          "id": "patients",
+          "x": 310,
+          "y": 100,
+          "w": 280,
+          "h": 60,
+          "name": "Patient names and diagnoses table"
+        },
+        {
+          "id": "alttext",
+          "x": 10,
+          "y": 190,
+          "w": 280,
+          "h": 60,
+          "name": "Chart image without alternative text"
+        },
+        {
+          "id": "footnote",
+          "x": 310,
+          "y": 190,
+          "w": 280,
+          "h": 60,
+          "name": "Source and refresh footnote"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "color",
+        "patients",
+        "alttext"
+      ]
+    },
+    "explanation": "Color alone fails readers with color-vision deficiency and images need alternative text for screen readers, while patient names and diagnoses are sensitive health data that cannot go on a public page. The title, labeled chart and source footnote are good practice.",
+    "partExplanations": {
+      "color": "Status conveyed only by red and green is inaccessible; add text or shape cues.",
+      "patients": "Patient names with diagnoses are PHI and must be removed from an external dashboard.",
+      "alttext": "Charts need alternative text so screen-reader users get the same information."
+    },
+    "acronyms": [
+      "PHI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-order-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "The operations director at Quillstone Manufacturing asked for a new downtime dashboard. Put the analyst's communication steps in the order they should happen.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "Present the finished dashboard and agree how it will be shared"
+        },
+        {
+          "id": "s1",
+          "text": "Meet the director to confirm the audience, decisions and KPIs the dashboard must support"
+        },
+        {
+          "id": "s4",
+          "text": "Build the dashboard on live data to the approved design"
+        },
+        {
+          "id": "s2",
+          "text": "Build a low-fidelity mock-up of the layout and visuals"
+        },
+        {
+          "id": "s3",
+          "text": "Review the mock-up with the director and capture changes"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "explanation": "Requirements come first, a mock-up turns them into something reviewable, feedback is gathered before the costly build, and the finished product is then delivered and its distribution agreed.",
+    "partExplanations": {
+      "s1": "Audience, decisions and KPIs must be known before anything is designed.",
+      "s2": "A mock-up makes the requirements concrete cheaply.",
+      "s3": "Reviewing the mock-up catches mismatches before build effort is spent.",
+      "s4": "The real build follows the approved design.",
+      "s5": "Delivery and the sharing method come once the dashboard is complete."
+    },
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "The chief financial officer of Marrow Bay Foods wants a quarterly results overview to read on a phone before an investor call. Configure the report.",
+    "payload": {
+      "fields": [
+        {
+          "id": "detail",
+          "label": "Level of detail",
+          "options": [
+            {
+              "id": "summary",
+              "text": "Summary KPIs with variance to target"
+            },
+            {
+              "id": "transaction",
+              "text": "Transaction-level detail for every account"
+            },
+            {
+              "id": "method",
+              "text": "Full statistical methodology appendix"
+            }
+          ]
+        },
+        {
+          "id": "language",
+          "label": "Wording style",
+          "options": [
+            {
+              "id": "business",
+              "text": "Business terms tied to outcomes"
+            },
+            {
+              "id": "technical",
+              "text": "Field names and query logic"
+            },
+            {
+              "id": "jargon",
+              "text": "Statistical terms without definitions"
+            }
+          ]
+        },
+        {
+          "id": "kpis",
+          "label": "Number of headline KPIs",
+          "options": [
+            {
+              "id": "few",
+              "text": "Three to five"
+            },
+            {
+              "id": "many",
+              "text": "Twenty or more"
+            },
+            {
+              "id": "none",
+              "text": "None; show charts only"
+            }
+          ]
+        },
+        {
+          "id": "handling",
+          "label": "Handling of unreleased earnings figures",
+          "options": [
+            {
+              "id": "restricted",
+              "text": "Mark confidential and restrict access to named recipients"
+            },
+            {
+              "id": "public",
+              "text": "Post to the public website ahead of the call"
+            },
+            {
+              "id": "allstaff",
+              "text": "Email to the all-staff distribution list"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "detail": "summary",
+        "language": "business",
+        "kpis": "few",
+        "handling": "restricted"
+      }
+    },
+    "explanation": "A C-suite reader on a phone needs a short summary of a few KPIs in business language, and unreleased earnings are sensitive, so access must be restricted rather than broadcast.",
+    "partExplanations": {
+      "detail": "Executives need summary results and variance, not transaction detail or methodology.",
+      "language": "A non-technical executive audience reads business terms tied to outcomes.",
+      "kpis": "A handful of headline KPIs fits a phone screen and a quick read.",
+      "handling": "Unreleased earnings are sensitive, so they are marked confidential and restricted."
+    },
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-diagram-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "An analyst at Tidewater Retail is sketching a mock-up of a sales dashboard for regional managers. Label each empty area of the layout.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "top",
+          "x": 10,
+          "y": 10,
+          "w": 580,
+          "h": 40,
+          "text": "Header: Regional Sales Dashboard"
+        },
+        {
+          "id": "kpi",
+          "x": 140,
+          "y": 60,
+          "w": 450,
+          "h": 50
+        },
+        {
+          "id": "filter",
+          "x": 10,
+          "y": 60,
+          "w": 120,
+          "h": 150
+        },
+        {
+          "id": "main",
+          "x": 140,
+          "y": 120,
+          "w": 450,
+          "h": 90
+        },
+        {
+          "id": "foot",
+          "x": 10,
+          "y": 220,
+          "w": 580,
+          "h": 30
+        }
+      ],
+      "edges": [],
+      "zones": [
+        {
+          "id": "z-kpi",
+          "x": 140,
+          "y": 60,
+          "name": "Strip across the top of the content area"
+        },
+        {
+          "id": "z-filter",
+          "x": 10,
+          "y": 60,
+          "name": "Narrow panel on the left"
+        },
+        {
+          "id": "z-main",
+          "x": 140,
+          "y": 120,
+          "name": "Large central area"
+        },
+        {
+          "id": "z-foot",
+          "x": 10,
+          "y": 220,
+          "name": "Footer strip"
+        }
+      ],
+      "labels": [
+        {
+          "id": "cards",
+          "text": "KPI cards: sales, margin and units against target"
+        },
+        {
+          "id": "slicers",
+          "text": "Filters for region and date range"
+        },
+        {
+          "id": "trend",
+          "text": "Sales trend chart by week"
+        },
+        {
+          "id": "source",
+          "text": "Data source and last refresh time"
+        },
+        {
+          "id": "raw",
+          "text": "Full export of order-line records"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-kpi": "cards",
+        "z-filter": "slicers",
+        "z-main": "trend",
+        "z-foot": "source"
+      }
+    },
+    "explanation": "A common mock-up layout puts headline KPI cards at the top, filters in a side panel, the main visual in the center and source details in the footer. A raw order-line export does not belong on a manager dashboard.",
+    "partExplanations": {
+      "z-kpi": "Headline KPI cards go where the eye lands first, at the top.",
+      "z-filter": "A narrow side panel holds filters that apply to the whole page.",
+      "z-main": "The largest area holds the main visual, the sales trend.",
+      "z-foot": "Source and refresh time sit in the footer so readers can judge currency."
+    },
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-3-1-data-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "The vice president of sales at Cobalt Ridge Supply wants one KPI headline for the leadership meeting. Use the table to answer each question.",
+    "payload": {
+      "caption": "Quarterly revenue by region (thousands of dollars)",
+      "columns": [
+        "Region",
+        "Target",
+        "Actual"
+      ],
+      "rows": [
+        [
+          "North",
+          "500",
+          "450"
+        ],
+        [
+          "South",
+          "400",
+          "420"
+        ],
+        [
+          "East",
+          "250",
+          "200"
+        ],
+        [
+          "West",
+          "350",
+          "385"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 2
+      },
+      "fields": [
+        {
+          "id": "east",
+          "label": "East actual as a percent of target",
+          "options": [
+            {
+              "id": "80",
+              "text": "80%"
+            },
+            {
+              "id": "75",
+              "text": "75%"
+            },
+            {
+              "id": "125",
+              "text": "125%"
+            }
+          ]
+        },
+        {
+          "id": "total",
+          "label": "Company-wide actual as a percent of target",
+          "options": [
+            {
+              "id": "97",
+              "text": "97%"
+            },
+            {
+              "id": "103",
+              "text": "103%"
+            },
+            {
+              "id": "95",
+              "text": "95%"
+            }
+          ]
+        },
+        {
+          "id": "lowest",
+          "label": "Region furthest below target in percent terms",
+          "options": [
+            {
+              "id": "north",
+              "text": "North"
+            },
+            {
+              "id": "east",
+              "text": "East"
+            },
+            {
+              "id": "south",
+              "text": "South"
+            }
+          ]
+        },
+        {
+          "id": "headline",
+          "label": "Best headline for the leadership audience",
+          "options": [
+            {
+              "id": "summary",
+              "text": "Revenue at 97% of target; East is the main gap at 80%"
+            },
+            {
+              "id": "rows",
+              "text": "A list of all four regions' target and actual values"
+            },
+            {
+              "id": "west",
+              "text": "West beat its target by 35 thousand dollars"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "east": "80",
+        "total": "97",
+        "lowest": "east",
+        "headline": "summary"
+      }
+    },
+    "explanation": "East reached 200 / 250 = 80%. Totals are 1,455 actual against 1,500 target, so 97%. North is at 90%, South 105%, West 110%, so East is furthest below. Leaders need the overall result plus the main gap, not every row or one isolated win.",
+    "partExplanations": {
+      "east": "200 / 250 = 0.80, so East is at 80% of target.",
+      "total": "Actual 450 + 420 + 200 + 385 = 1,455; target 500 + 400 + 250 + 350 = 1,500; 1,455 / 1,500 = 0.97.",
+      "lowest": "North 450 / 500 = 90%, South 420 / 400 = 105%, East 80%, West 385 / 350 = 110%; East is lowest.",
+      "headline": "A leadership headline states the overall KPI and the biggest exception in one line."
+    },
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "approved"
+  }
+]

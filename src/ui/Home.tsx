@@ -54,6 +54,11 @@ export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent:
                 <button type="button" onClick={() => onNavigate({ name: 'questions', exam: e.code })}>
                   {`My questions: ${e.code}`}
                 </button>
+                {import.meta.env.DEV && (
+                  <button type="button" onClick={() => onNavigate({ name: 'review', exam: e.code })}>
+                    {`Review bank (dev): ${e.code}`}
+                  </button>
+                )}
               </div>
             )}
           </li>
