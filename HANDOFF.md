@@ -129,10 +129,20 @@
   - Mock exam now shows the load-error screen instead of hanging when loading fails.
   - Decision: the owner chose not to collapse formatting just to reach a 25% line cut.
 
+- **Chunk 10 is done and merged to `main`** (2026-10-31; 392 unit and 45 e2e tests pass; all final-review findings fixed, minors included; plan: `docs/superpowers/plans/2026-10-30-chunk10-acronym-harvester.md`):
+  - `src/acronyms/harvest.ts`: sources schema, robots.txt rules (RFC 9309-style: prefix agent match, merged groups, longest match, Allow on ties, `*`/`$`, percent-encoding), `htmlToText`, `tallyTokens`, `buildReport`.
+  - `scripts/harvest-lib.ts` + `npm run harvest-acronyms`: one request at a time, ≥ 5 s per site (or Crawl-delay; over 60 s the site is skipped), robots checked on every redirect hop, robots 4xx other than 404/410 or 5xx skips the site, 20 s timeout, 2 MB cap. Page text never reaches the report, logs or disk.
+  - `scripts/expand-lib.ts` + `npm run expand-acronyms`: local Ollama (`qwen3.6:27b`) drafts expansions and flags off-topic or doubtful terms; `checkExpansion` flags expansions whose initials do not spell the term (strict: no trailing extra words, no one-word expansions).
+  - Workflow in `docs/acronyms.md`. Real source list: `_WorkingData/DataPlus/harvest-sources.json` (18 sources, 8 dump). Reports: `_WorkingData/harvest-DA0-002.json`, `_WorkingData/expand-DA0-002.json`.
+- **Decisions made in chunk 10:**
+  - Owner override: dump sources are **on by default** (`--no-dumps` turns them off). Expansions are drafted by Ollama and checked by Claude, not written by hand.
+  - The DA0-002 harvest found 576 unlisted terms, mostly cert/exam codes from dump-site menus. Ollama passed 62; 17 on-topic ones were added as `community` (CBA, CDP, CRM, DAMA, DAS, DB, DBA, IT, MB, ML, OS, PDF, PSV, SKU, SSL, TCP, WAN).
+  - **Flagged acronyms (not shipped; owner to decide):** SD (Standard Deviation vs Secure Digital), CAP (CAP theorem vs Corrective Action Plan), MQ (usually the IBM MQ product), PBQ (exam-format term), GCP (vendor product), IO (written "I/O", never tokenised), DC (Data Center, ambiguous), SOC (System and Organization Controls vs Security Operations Center), SSE (Server-Side Encryption vs Server-Sent Events), CIS, APM, SOA, DBS, DSP, CEP, CPE (ambiguous or marginal), XSIAM and DEVOPS (wrong expansion or not an acronym), GENAI (not a standard acronym). Off-topic but real: OCI, ITIL, SIEM, CNCF, CAPA, SCADA, SCOR, CLF, COBIT, FSM, HCM, OMG, RSS, AIX, ANSI, BSD, CSS3, DMCA, ECMS, HIT, HTML5, ISM, PMO, PST, TOGAF, ZT.
+
 ## Next session
 
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
-- **Then start chunk 10: remaining tooling** (spec §13 item 10): the acronym harvester (dump-site source off by default). The dev-only review tool already exists from chunk 8.
+- **Then start chunk 11: SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 - **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 - **Owner rules for sessions:**
