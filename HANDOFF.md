@@ -120,7 +120,7 @@
   5. Update this file and merge to `main`.
 - **Owner rules for sessions:**
   - Content work runs one domain at a time, with a `/clear` between.
-  - Subagents use the cheapest model that does the job: Sonnet for drafting, analyst, fixing and re-review, Haiku for copywriting. Use Opus only if the owner asks. This covers the final whole-branch reviewer too, despite the plan saying "most capable model"; check with the owner if in doubt.
+  - Subagents use the cheapest model that does the job: Sonnet for drafting, analyst, fixing and re-review, Haiku for copywriting. The one exception: once all domains are complete, the final whole-branch review of everything runs on Opus.
   - Inline `node -e` with a multi-line script fails silently in the Bash tool here. Write a script file instead.
 
 **Chunk order changed by the owner (2026-10-30).** The spec's §13 list has been updated to match:
