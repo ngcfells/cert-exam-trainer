@@ -96,46 +96,33 @@
   - `npm run build` writes `dist/`; `npm run build:single` writes `dist-single/index.html`.
   - On a new machine, run `npx playwright install chromium` first.
 - **Open issues and notes:**
-  - Data+ objectives are placeholders until chunk 9.
-  - Data+ has only 2 approved MCQs and 6 acronyms, so cram and acronym sessions on Data+ are small until content lands.
   - Tooling: a local hook blocks Bash heredocs that contain an apostrophe; write files with Write/Edit instead.
   - Manual keyboard-only pass: covered by the automated keyboard e2e; a human pass in a real screen reader is still to do.
 - **Priority:** Data+ (DA0-002) first, working end to end, before any other exam.
 - **Bank targets per exam:** at least 500 MCQs and at least 80 PBQs (10 of each of the 8 types).
 
+- **Chunk 8 is done on branch `chunk8-dataplus-bank`** (2026-10-30; 331 unit tests and 30 e2e tests pass; all final-review findings fixed, minors included; plan: `docs/superpowers/plans/2026-10-30-chunk8-dataplus-bank.md`). **Merge to `main` is pending the owner's go-ahead.**
+  - Data+ objectives, metadata and the official acronym list are verified (no `VERIFY chunk 9` values left; 18 objectives).
+  - The shipped bank is JSON per objective in `src/banks/dataplus/items/`: 553 MCQs (552 approved, 1 draft seed) and 104 approved PBQs. Per template: match 15, buckets 14, order 13, config 13, data 13, diagram 12, hotspot 12, terminal 12.
+  - Unit tests and the fixture e2e run against the fixture bank (`VITE_BANK=fixture`, build `dist-e2e`). `src/banks/dataplus/bank.test.ts` checks the shipped bank: schema, acronyms, near-duplicates, key position and length tells, no order PBQ authored in answer order, and targets (totals, per template, per-objective quotas).
+  - Playwright has two projects: `fixture` (everything but `bank.spec.ts`) and `bank` (`tests/e2e/bank.spec.ts` on `dist-single`: Home count, a full mock exam, and a one-item practice per PBQ template with axe).
+  - Dev-only review tool: `npm run dev` → Review bank. The write-back endpoint refuses cross-origin requests and writes the new file before trimming the old one. Nothing of it ships in `dist/` or `dist-single/`.
+- **Decisions made in chunk 8:**
+  - Drafting used Claude subagents, as the Ollama trial only met the bar at the margin (spec §12 note).
+  - A full mock exam shows fewer than 90 items, because PBQs take their weight in slots; the bank e2e checks 75 to 90.
+  - ESLint ignores `content-drafts/`, `dist-e2e/` and `_WorkingData/`.
+  - Azure Data Studio (retired 2026-02-28) stays as an exam-named tool but is never keyed as the current recommendation.
+
 ## Next session
 
-**Chunk 8 is in progress on branch `chunk8-dataplus-bank`. Resume at plan Task 7.**
+**Merge `chunk8-dataplus-bank` into `main` once the owner approves, then start chunk 9: legal, branding and deploy** (spec §13 item 9): licenses, disclaimers, the About page, look-and-feel polish, phone and tablet checks, the PWA service worker, and a local deploy script for GitHub Pages.
 
-- Tasks 1–6 are done. All five domains are drafted, reviewed by two independent reviewers (analyst plus copywriter), fixed, re-reviewed and committed as `approved` in `src/banks/dataplus/items/`.
-- Approved totals: 552 MCQs and 104 PBQs. Per template: match 15, buckets 14, order 13, config 13, data 13, diagram 12, hotspot 12, terminal 12. All bank, acronym and content tests pass. `5.3.json` keeps one `draft` seed MCQ, which is expected.
-- Spares were not trimmed. The bank is above every target, and the quality checks (duplicates, key position, key length) pass.
-- Commit e573e27 is mislabelled: it holds only the `review-tools.ts` change. Domain 1's items are in dc03e74.
-- The working files in `content-drafts/` (gitignored) hold the drafts, the review logs, `promote.cjs` and `count.cjs`.
-- **Next:** Task 7.
-  1. Write the target tests in `bank.test.ts`.
-  2. Write `tests/e2e/bank.spec.ts`, which runs against `dist-single`.
-  3. Run `npm run check`.
-  4. Run one whole-branch reviewer and fix every finding.
-  5. Update this file and merge to `main`.
+- Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
+- **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 - **Owner rules for sessions:**
   - Content work runs one domain at a time, with a `/clear` between.
-  - Subagents use the cheapest model that does the job: Sonnet for drafting, analyst, fixing and re-review, Haiku for copywriting. The one exception: once all domains are complete, the final whole-branch review of everything runs on Opus.
+  - Subagents use the cheapest model that does the job; final whole-branch reviews of a large content chunk run on Opus.
   - Inline `node -e` with a multi-line script fails silently in the Bash tool here. Write a script file instead.
-
-**Chunk order changed by the owner (2026-10-30).** The spec's §13 list has been updated to match:
-
-- **Chunk 8 (next): generate and load the question bank we ship, Data+ (DA0-002) first.**
-  - Generate original MCQs and PBQs from the public exam objectives, and load them into the bundled bank in `src/banks/dataplus/`.
-  - Targets: at least 500 MCQs and at least 80 PBQs (10 of each of the 8 types), spread across the objectives in proportion to the domain weightings.
-  - Every item must be original, pass `questionSchema` and pass the acronym content check, which means adding a `community` expansion for each new acronym.
-  - This chunk pulls forward what it needs from spec §12 (the old chunks 9–11): verifying the objectives (resolving every `VERIFY chunk 9` value, the real objectives and the official acronym list), drafting, review and validation checks.
-  - Never use `_WorkingData/` as a source.
-- **Chunk 9: legal, branding and deploy** (spec §13 item 9): licenses, disclaimers, the About page, look-and-feel polish, phone and tablet checks, the PWA service worker, and a local deploy script for GitHub Pages.
-
-Start with chunk 8. Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
-
-**Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
 
 ## Standing rules
 
