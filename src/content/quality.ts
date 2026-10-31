@@ -1,4 +1,10 @@
+import { questionText } from '../acronyms/extract';
 import type { McqAnswer, McqPayload, Question } from '../domain/types';
+
+/** Numbered list positions such as LLM01, ML05 or A03:, which go stale when a list is revised. */
+export function listPositionTokens(q: Question): string[] {
+  return questionText(q).match(/\b(LLM|ML)\d{2}\b|\bA\d{2}:/g) ?? [];
+}
 
 export const CONTENT_TARGETS = {
   mcq: 500,

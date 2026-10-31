@@ -1,6 +1,17 @@
 import { describe, it, expect } from 'vitest';
 import type { Question } from '../domain/types';
-import { answerBalance, longestOptionTell, nearDuplicates } from './quality';
+import { answerBalance, listPositionTokens, longestOptionTell, nearDuplicates } from './quality';
+
+describe('listPositionTokens', () => {
+  const withStem = (stem: string): Question => ({ ...mcq('q', ['a']), stem });
+  it('finds OWASP-style list positions', () => {
+    expect(listPositionTokens(withStem('Which risk does LLM01 covers?'))).toEqual(['LLM01']);
+    expect(listPositionTokens(withStem('See ML05 and A03: Injection.'))).toEqual(['ML05', 'A03:']);
+  });
+  it('ignores plain mentions of LLMs and ML', () => {
+    expect(listPositionTokens(withStem('an LLM and ML model'))).toEqual([]);
+  });
+});
 
 const mcq = (id: string, correct: string[], texts = ['w', 'x', 'y', 'z'], stem = id): Question =>
   ({
