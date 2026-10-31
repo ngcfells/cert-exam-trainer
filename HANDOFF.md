@@ -207,6 +207,7 @@
     - Watch in later slices:
       - Fixing length tells over-corrects. The key became the shortest option in 11 of 26 singles in 1.1, and across domain 1 it is the longest in only 3%. Ask drafters for a natural mix: key longest and key shortest each about 15–25%.
       - Do not rerun the drafters' generator scripts (in the scratchpad). Some final edits were made to the JSON directly.
+    - `chunk11-secai` is pushed to origin (2026-10-31). The owner asked to see domain 1 live. A deploy of the branch (`npm run deploy -- --force`) was blocked by the permission check, so the live site still shows `main`. Once the owner runs or allows it, the live SecAI+ exam draws only from domain 1 until the other slices land. A later deploy from `main` would remove SecAI+ again.
     - **Next: Session 3, slice (b): objectives 2.1–2.3.** Deck slides: S2 11–35 (2.1), S2 36–68 (2.2), S3 11–25 (2.3). See `_WorkingData/SecAIPlus/notes/index.md`.
   - **UI redesign (separate from chunk 11), awaiting the owner:**
     - Design doc: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`. It covers exam cards on the landing page, a page per exam, Back/All exams on every screen, Settings, Stock/Custom, ten exams and one master acronym table. The builder check is done.
