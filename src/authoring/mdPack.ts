@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { parseNumeric } from '../domain/numeric';
 import { questionSchema } from '../domain/schema';
 
 /** Converts the plain-text authoring format (docs/question-template.md) into pack entries. */
@@ -19,7 +20,9 @@ const BARE_LETTER = /^([A-H])$/;
 /** `Correct Answer:` / `Correct Answer(s):` with nothing after it marks the option just above. */
 const MARKER = /^correct answers?(\(s\))?:\s*$/i;
 const ANSWER_LINE = /^correct answers?(\(s\))?:\s*(.+)$/i;
-const META = /^(id|objectives?|difficulty):\s*(.+)$/i;
+const NUMBER_LINE = /^correct number:\s*(.+)$/i;
+const NUMBER_OPTION = /^(tolerance|prefix|suffix):\s*(.+)$/i;
+const META =/^(id|objectives?|difficulty):\s*(.+)$/i;
 /** Copy-paste leftovers from quiz pages. */
 const NOISE = /^(answer|correct)$/i;
 
@@ -153,6 +156,31 @@ function parseMcq(lines: string[], n: number): { stem: string; options: { id: st
   };
 }
 
+/** Stem, then `Correct Number:`, then optional Tolerance / Prefix / Suffix lines, then the explanation. */
+function parseNumericBlock(lines: string[], n: number) {
+  const t = lines.map((l) => l.trim());
+  const at = t.findIndex((l) => NUMBER_LINE.test(l));
+  const value = parseNumeric(NUMBER_LINE.exec(t[at])![1]);
+  if (value === null) throw new Error(`Question ${n}: Correct Number must be a number, such as 12.5`);
+  const payload: { prefix?: string; suffix?: string } = {};
+  let tolerance = 0;
+  let i = at + 1;
+  for (; i < t.length; i++) {
+    if (!t[i]) continue;
+    const m = NUMBER_OPTION.exec(t[i]);
+    if (!m) break;
+    const key = m[1].toLowerCase();
+    if (key === 'tolerance') {
+      const tol = parseNumeric(m[2]);
+      if (tol === null) throw new Error(`Question ${n}: Tolerance must be a number, such as 0.5`);
+      tolerance = tol;
+    } else payload[key as 'prefix' | 'suffix'] = m[2].trim();
+  }
+  let rest = t.slice(i);
+  if (rest[0] && /^explanation:?$/i.test(rest[0])) rest = rest.slice(1);
+  return { stem: paragraphs(t.slice(0, at)), payload, answer: { value, tolerance }, explanation: paragraphs(rest) };
+}
+
 function fenceBody(lines: string[]): string | undefined {
   const start = lines.findIndex((l) => /^```pbq\s*$/i.test(l.trim()));
   if (start < 0) return undefined;
@@ -189,6 +217,22 @@ export function parseMarkdown(md: string, opts: MdOptions): MdResult {
         objectiveIds: meta.objectiveIds ?? pbq.objectiveIds ?? [opts.defaultObjective],
         difficulty: meta.difficulty ?? pbq.difficulty ?? 2,
         acronyms: pbq.acronyms ?? [],
+        status: 'approved',
+      };
+    } else if (rest.some((l) => NUMBER_LINE.test(l.trim()))) {
+      const m = parseNumericBlock(rest, n);
+      q = {
+        id: meta.id ?? `${opts.idPrefix}-${hash(m.stem)}`,
+        exam: opts.exam,
+        source: 'user',
+        type: 'numeric',
+        objectiveIds: meta.objectiveIds ?? [opts.defaultObjective],
+        difficulty: meta.difficulty ?? 2,
+        stem: m.stem,
+        payload: m.payload,
+        answer: m.answer,
+        explanation: m.explanation,
+        acronyms: [],
         status: 'approved',
       };
     } else {

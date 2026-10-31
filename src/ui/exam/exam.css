@@ -7,6 +7,10 @@
 .exam-body h2:focus { outline: none; }
 .exam-body h2:focus-visible { outline: 3px solid var(--focus); }
 .mcq { border: 0; padding: 0; margin: 0; }
+.numeric .stem { display: block; font-size: 1.125rem; font-weight: bold; margin-bottom: 0.75rem; }
+.numeric-field { display: flex; gap: 0.5rem; align-items: center; }
+.numeric-field input { max-width: 12rem; min-height: 2.75rem; font-size: 1.125rem; }
+.numeric .hint { font-style: italic; margin: 0.5rem 0 0; }
 .mcq .stem { font-size: 1.125rem; font-weight: bold; margin-bottom: 0.75rem; }
 .mcq .hint { font-style: italic; margin: 0 0 0.5rem; }
 .mcq .option { display: flex; gap: 0.5rem; align-items: flex-start; padding: 0.5rem; border: 1px solid var(--border); border-radius: 0.375rem; margin-bottom: 0.5rem; cursor: pointer; min-height: 2.75rem; }
@@ -66,8 +70,14 @@ dialog { max-width: 30rem; }
 .diagram svg rect { fill: var(--bg); stroke: var(--fg); }
 .diagram svg line { stroke: var(--fg); }
 .diagram svg text { fill: var(--fg); }
-.hotspot .spot rect { fill: transparent; stroke: var(--chart); }
-.hotspot .spot.on rect { fill: color-mix(in srgb, var(--chart) 18%, transparent); }
+.hotspot .spot rect { fill: var(--bg); stroke: var(--chart); }
+.hotspot .spot.on rect { fill: color-mix(in srgb, var(--chart) 18%, var(--bg)); }
+/* Labels wrap inside their spot; the right padding keeps the tick clear of the text. */
+.hotspot .spot-label {
+  box-sizing: border-box; width: 100%; height: 100%; overflow: hidden;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  padding: 2px 18px 2px 6px; line-height: 1.15; overflow-wrap: anywhere; color: var(--fg);
+}
 .hotspot .spot text { fill: var(--chart); }
 .chart text { fill: var(--fg); }
 .chart rect { fill: var(--chart); }

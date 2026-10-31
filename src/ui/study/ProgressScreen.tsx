@@ -9,7 +9,7 @@ import { loadStudy } from './loadStudy';
 import './study.css';
 
 const DRILL_OBJECTIVES = 5;
-const MODE_NAMES = { mock: 'Mock exam', practice: 'Practice', cram: 'Cram' } as const;
+const MODE_NAMES = { mock: 'Mock exam', practice: 'Practice', cram: 'Cram', lesson: 'Lesson check' } as const;
 
 function Bar({ fraction }: { fraction: number | null }) {
   if (fraction === null) return 'Not attempted';

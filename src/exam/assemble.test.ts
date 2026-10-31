@@ -1,7 +1,10 @@
 import { describe, it, expect } from 'vitest';
-import { allocateByWeight, assembleExam, type AssembleInput } from './assemble';
-import { bank, mcq, meta3, pbq } from './testFixtures';
+import { allocateByWeight, assembleExam, itemFor, type AssembleInput } from './assemble';
+import { bank, mcq, meta3, numeric, pbq } from './testFixtures';
 import type { McqPayload } from '../domain/types';
+import type { Question } from '../domain/types';
+import { pbqFixture } from '../domain/pbqFixtures';
+import { mulberry32 } from './rng';
 
 const input = (over: Partial<AssembleInput> = {}): AssembleInput => ({
   meta: meta3,
@@ -88,9 +91,26 @@ describe('assembleExam', () => {
     expect(seen.size).toBeGreaterThan(1);
   });
 
+  it('shuffles select options per part for config, data and terminal PBQs', () => {
+    const q = { ...pbqFixture('config'), payload: { fields: [{ id: 'f1', label: 'Join', options: ['a', 'b', 'c', 'd'].map((id) => ({ id, text: id })) }] } } as Question;
+    const orders = Array.from({ length: 20 }, (_, i) => itemFor(q, mulberry32(i + 1)).partOrders!.f1);
+    for (const o of orders) expect([...o].sort()).toEqual(['a', 'b', 'c', 'd']);
+    expect(new Set(orders.map((o) => o.join())).size).toBeGreaterThan(1);
+    expect(itemFor(q, mulberry32(7))).toEqual(itemFor(q, mulberry32(7)));
+    expect(itemFor(pbqFixture('match'), mulberry32(1)).partOrders).toBeUndefined();
+  });
+
   it('never lets PBQ weight fill the whole exam', () => {
     const ex = assembleExam(input({ meta: { ...meta3, maxQuestions: 6 }, pool: [...bank({ A: 9 }), pbq('P1', 6)], pbqTypes: ['pbq-match'] }));
     expect(ex.pbqWeightSum).toBe(0);
     expect(ex.items.every((i) => i.question.type.startsWith('mcq'))).toBe(true);
+  });
+});
+
+describe('numeric items in assembly', () => {
+  it('draws numeric items into the one-unit pool and counts them as MCQ units', () => {
+    const ex = assembleExam(input({ pool: [numeric('N0', 'A'), numeric('N1', 'B'), mcq('C0', 'C')] }));
+    expect(ex.mcqCount).toBe(3);
+    expect(ex.items.find((i) => i.question.id === 'N0')).toEqual({ question: expect.objectContaining({ id: 'N0' }) });
   });
 });

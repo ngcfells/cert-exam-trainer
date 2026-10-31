@@ -1291,7 +1291,7 @@
       "3.2"
     ],
     "difficulty": 3,
-    "stem": "The correlation coefficient between product price and units sold is -0.85. Which interpretation is correct?",
+    "stem": "The correlation coefficient between product price and units sold is −0.85. Which interpretation is correct?",
     "payload": {
       "options": [
         {
@@ -1317,7 +1317,7 @@
         "c"
       ]
     },
-    "explanation": "A coefficient near -1 indicates a strong negative linear relationship: as price rises, units sold tend to fall. It is not weak, the sign is negative rather than positive, and correlation alone does not prove causation.",
+    "explanation": "A coefficient near −1 indicates a strong negative linear relationship: as price rises, units sold tend to fall. It is not weak, the sign is negative rather than positive, and correlation alone does not prove causation.",
     "acronyms": [],
     "status": "approved"
   },
@@ -2698,5 +2698,1953 @@
     },
     "acronyms": [],
     "status": "approved"
+  },
+  {
+    "id": "da2-3-2-num-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A store sold 40 umbrellas in March and 50 in April. What is the percent change from March to April? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 25,
+      "tolerance": 0.5
+    },
+    "explanation": "Change = 50 − 40 = 10. Divide by the old value (March): 10 ÷ 40 = 0.25. Times 100 = 25%. It is positive, so sales rose by 25%."
+  },
+  {
+    "id": "da2-3-2-num-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A website had 200 visitors on Monday and 150 on Tuesday. What is the percent change from Monday to Tuesday? Answer as a percent, rounded to a whole number, with a minus sign for a decrease.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": -25,
+      "tolerance": 0.5
+    },
+    "explanation": "Change = 150 − 200 = −50. Divide by the old value (Monday): −50 ÷ 200 = −0.25. Times 100 = −25%, a 25% decrease. Dividing by Tuesday instead would give −33%, which is the trap."
+  },
+  {
+    "id": "da2-3-2-pct-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A ticket price rose from $60 to $75. An analyst reported a 20% increase. What went wrong?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "They subtracted the new price from the old price"
+        },
+        {
+          "id": "b",
+          "text": "They forgot to multiply by 100"
+        },
+        {
+          "id": "c",
+          "text": "They divided the change by the new price instead of the old price"
+        },
+        {
+          "id": "d",
+          "text": "Nothing; a 20% increase is correct"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The change is 75 − 60 = 15. Divided by the old price, 15 ÷ 60 = 0.25, so the increase is 25%. The analyst divided by the new price: 15 ÷ 75 = 0.20, which gives the wrong 20%."
+  },
+  {
+    "id": "da2-3-2-num-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A sign-up page converted 5% of visitors last month and 8% this month. By how many percentage points did the conversion rate change? Answer as a whole number.",
+    "payload": {
+      "suffix": " points"
+    },
+    "answer": {
+      "value": 3,
+      "tolerance": 0.5
+    },
+    "explanation": "Percentage points are a plain subtraction of two percents: 8 − 5 = 3 percentage points."
+  },
+  {
+    "id": "da2-3-2-num-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A sign-up page converted 5% of visitors last month and 8% this month. What is the percent change in the conversion rate? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 60,
+      "tolerance": 0.5
+    },
+    "explanation": "Percent change divides the change by the old value: (8 − 5) ÷ 5 = 0.6. Times 100 = 60%. The same move is 3 percentage points but a 60% increase."
+  },
+  {
+    "id": "da2-3-2-math-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A help desk's first-call resolution rate rose from 10% to 12%. Which statement is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It rose by 2 percent and by 20 percentage points"
+        },
+        {
+          "id": "b",
+          "text": "It rose by 2 percentage points, which is a 20% increase"
+        },
+        {
+          "id": "c",
+          "text": "It rose by 12 percentage points"
+        },
+        {
+          "id": "d",
+          "text": "It rose by 2 percentage points, which is a 2% increase"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Percentage points subtract the rates: 12 − 10 = 2 points. Percent change divides by the old rate: 2 ÷ 10 = 0.2, a 20% increase. Mixing the two words up is the usual mistake."
+  },
+  {
+    "id": "da2-3-2-num-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "Revenue was $50,000 in Q1 and $60,000 in Q2. What is the ratio of Q2 revenue to Q1 revenue? Round to two decimals.",
+    "payload": {},
+    "answer": {
+      "value": 1.2,
+      "tolerance": 0.01
+    },
+    "explanation": "Ratio = this period ÷ last period = 60,000 ÷ 50,000 = 1.20. A ratio above 1 means growth; 1.20 − 1 = 0.20, so revenue grew 20%."
+  },
+  {
+    "id": "da2-3-2-num-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "An app had 400 users in January, 460 in February and 529 in March. Each month grew by the same rate. What is that monthly growth rate? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 15,
+      "tolerance": 0.5
+    },
+    "explanation": "February ÷ January = 460 ÷ 400 = 1.15, and March ÷ February = 529 ÷ 460 = 1.15. Growth = ratio − 1 = 0.15, i.e. 15% per month."
+  },
+  {
+    "id": "da2-3-2-math-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An analyst divides this year's orders by last year's orders and gets a ratio of 0.8. What does that mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Orders grew by 80%"
+        },
+        {
+          "id": "b",
+          "text": "Orders grew by 8%"
+        },
+        {
+          "id": "c",
+          "text": "Orders fell by 20%"
+        },
+        {
+          "id": "d",
+          "text": "Orders fell by 80%"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Growth = ratio − 1 = 0.8 − 1 = −0.2. A negative result is a fall, so orders dropped 20%. A ratio below 1 always means the value went down."
+  },
+  {
+    "id": "da2-3-2-num-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A product line earned $100,000 in 2023 and $121,000 two years later in 2025. What is the compound annual growth rate (CAGR)? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 10,
+      "tolerance": 0.5
+    },
+    "explanation": "CAGR = (end ÷ start)^(1/n) − 1. End ÷ start = 121,000 ÷ 100,000 = 1.21. With n = 2 years, take the square root: √1.21 = 1.1. Then 1.1 − 1 = 0.10, i.e. 10% per year."
+  },
+  {
+    "id": "da2-3-2-num-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "Subscribers grew from 800 to 1,250 over 2 years. What is the compound annual growth rate? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 25,
+      "tolerance": 0.5
+    },
+    "explanation": "End ÷ start = 1,250 ÷ 800 = 1.5625. n = 2, so take the square root: √1.5625 = 1.25. 1.25 − 1 = 0.25, i.e. 25% per year. Check: 800 × 1.25 = 1,000, and 1,000 × 1.25 = 1,250."
+  },
+  {
+    "id": "da2-3-2-math-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Sales grew 50% in year 1 and fell 50% in year 2. A manager says the average growth is 0%, so sales are flat. Why is that wrong?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The rates should be added, so sales grew by 100% overall"
+        },
+        {
+          "id": "b",
+          "text": "Each rate applies to a different base, so sales fell"
+        },
+        {
+          "id": "c",
+          "text": "The rates cancel, so sales ended at the start value"
+        },
+        {
+          "id": "d",
+          "text": "A 50% fall cannot follow a 50% rise in the same data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Start at 100: up 50% gives 150, then down 50% gives 75. Sales ended 25% below the start. A simple average of yearly rates ignores compounding; CAGR, (75 ÷ 100)^(1/2) − 1 ≈ −13% per year, does not."
+  },
+  {
+    "id": "da2-3-2-num-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "An account grows by 8% per year. Using the Rule of 72, about how many years does it take to double? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 9,
+      "tolerance": 0.5
+    },
+    "explanation": "Years to double ≈ 72 ÷ rate = 72 ÷ 8 = 9 years. Use the rate as a whole number (8), not as a decimal (0.08)."
+  },
+  {
+    "id": "da2-3-2-num-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Web traffic is doubling every 9 years. Using the Rule of 72, what yearly growth rate does that suggest? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 8,
+      "tolerance": 0.5
+    },
+    "explanation": "The rule works both ways: rate ≈ 72 ÷ years to double = 72 ÷ 9 = 8% per year."
+  },
+  {
+    "id": "da2-3-2-math-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which statement about the Rule of 72 is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It gives the exact doubling time for any growth rate"
+        },
+        {
+          "id": "b",
+          "text": "It gives the years to triple a value"
+        },
+        {
+          "id": "c",
+          "text": "It is a quick estimate of doubling time for steady compound growth"
+        },
+        {
+          "id": "d",
+          "text": "It requires the rate written as a decimal, such as 0.06"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "72 ÷ rate is a shortcut for compound growth at a steady rate. It is an estimate, closest for rates of roughly 5% to 10%. Use the rate as a whole number: 72 ÷ 6, not 72 ÷ 0.06."
+  },
+  {
+    "id": "da2-3-2-num-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A student scored 80 in a 3-credit course and 90 in a 1-credit course. What is their credit-weighted average score? Round to one decimal.",
+    "payload": {},
+    "answer": {
+      "value": 82.5,
+      "tolerance": 0.05
+    },
+    "explanation": "Weighted average = Σ(weight × value) ÷ Σweight = (3 × 80 + 1 × 90) ÷ (3 + 1) = (240 + 90) ÷ 4 = 330 ÷ 4 = 82.5."
+  },
+  {
+    "id": "da2-3-2-num-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Store A had 100 orders averaging $20. Store B had 50 orders averaging $50. What is the average order value across both stores, in dollars? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 30,
+      "tolerance": 0.5
+    },
+    "explanation": "Weight each store's average by its orders: (100 × 20 + 50 × 50) ÷ (100 + 50) = (2,000 + 2,500) ÷ 150 = 4,500 ÷ 150 = $30."
+  },
+  {
+    "id": "da2-3-2-math-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Region 1 has 900 customers with an average spend of $10. Region 2 has 100 customers with an average spend of $60. An analyst reports the overall average spend as $35. What went wrong?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The analyst should have reported the median spend instead"
+        },
+        {
+          "id": "b",
+          "text": "Nothing; $35 is the correct average spend across both regions"
+        },
+        {
+          "id": "c",
+          "text": "The analyst weighted by region count instead of by customers"
+        },
+        {
+          "id": "d",
+          "text": "The analyst averaged the two averages without weighting them"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "(10 + 60) ÷ 2 = 35 treats both regions as the same size. Weighted by customers: (900 × 10 + 100 × 60) ÷ 1,000 = 15,000 ÷ 1,000 = $15."
+  },
+  {
+    "id": "da2-3-2-num-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "Find the mean of these daily ticket counts: 4, 8, 6, 2. Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 5,
+      "tolerance": 0.01
+    },
+    "explanation": "Mean = Σx ÷ n. Σx = 4 + 8 + 6 + 2 = 20, and n = 4, so the mean is 20 ÷ 4 = 5."
+  },
+  {
+    "id": "da2-3-2-num-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Find the median of these delivery times in days: 3, 9, 5, 7, 1, 11. Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 6,
+      "tolerance": 0.01
+    },
+    "explanation": "Sort first: 1, 3, 5, 7, 9, 11. There are 6 values, an even count, so the median is the average of the middle two: (5 + 7) ÷ 2 = 6."
+  },
+  {
+    "id": "da2-3-2-math-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A company's salaries are mostly between $40,000 and $70,000, but the chief executive earns $2,000,000. Which measure best describes a typical salary?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Median"
+        },
+        {
+          "id": "b",
+          "text": "Mean"
+        },
+        {
+          "id": "c",
+          "text": "Range"
+        },
+        {
+          "id": "d",
+          "text": "Mode"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "One very large value drags the mean up, so it no longer looks typical. The median is the middle value and barely moves, so it suits skewed data."
+  },
+  {
+    "id": "da2-3-2-math-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A survey asks customers for their preferred contact method: email, phone or chat. Which measure of center fits this data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mean"
+        },
+        {
+          "id": "b",
+          "text": "Median"
+        },
+        {
+          "id": "c",
+          "text": "Mode"
+        },
+        {
+          "id": "d",
+          "text": "Standard deviation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Contact methods are categories with no numeric value or natural order, so you cannot average or sort them. The mode, the most frequent answer, is the only measure of center that works."
+  },
+  {
+    "id": "da2-3-2-num-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A sample of 4 orders took 2, 4, 6 and 8 minutes to pack. What is the sample standard deviation? Round to two decimals.",
+    "payload": {},
+    "answer": {
+      "value": 2.58,
+      "tolerance": 0.01
+    },
+    "explanation": "x̄ = 20 ÷ 4 = 5. Deviations x − x̄: −3, −1, 1, 3. Squares: 9, 1, 1, 9; Σ = 20. Divide by n − 1 = 3: 20 ÷ 3 ≈ 6.667 (the sample variance). √6.667 ≈ 2.58."
+  },
+  {
+    "id": "da2-3-2-num-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A sample has the values 1, 3 and 5. What is the sample variance? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 4,
+      "tolerance": 0.01
+    },
+    "explanation": "x̄ = 9 ÷ 3 = 3. Deviations: −2, 0, 2. Squares: 4, 0, 4; Σ = 8. Divide by n − 1 = 2: 8 ÷ 2 = 4. Variance stops before the square root."
+  },
+  {
+    "id": "da2-3-2-num-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "A team has exactly 8 members, and this is the whole population. Their years of experience are 2, 4, 4, 4, 5, 5, 7 and 9. What is the population standard deviation? Round to two decimals.",
+    "payload": {},
+    "answer": {
+      "value": 2,
+      "tolerance": 0.01
+    },
+    "explanation": "x̄ = 40 ÷ 8 = 5. Squared deviations: 9, 1, 1, 1, 0, 0, 4, 16; Σ = 32. For a population divide by n = 8: 32 ÷ 8 = 4. √4 = 2.00."
+  },
+  {
+    "id": "da2-3-2-math-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst surveys 30 customers out of 5,000 and wants to estimate how spread out spending is for all customers. Which formula should they use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Divide the sum of squared deviations by n"
+        },
+        {
+          "id": "b",
+          "text": "Divide the sum of deviations by n"
+        },
+        {
+          "id": "c",
+          "text": "Divide the sum of squared deviations by n − 1"
+        },
+        {
+          "id": "d",
+          "text": "Divide the sum of squared deviations by n + 1"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The 30 customers are a sample, so use the sample formula with n − 1. Dividing by n is for a whole population and slightly understates the spread when used on a sample."
+  },
+  {
+    "id": "da2-3-2-num-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "For a set of response times, Q1 = 20 seconds and Q3 = 30 seconds. Using the 1.5 × IQR rule, what is the upper fence, in seconds, as a whole number? Values above it are outliers.",
+    "payload": {},
+    "answer": {
+      "value": 45,
+      "tolerance": 0.01
+    },
+    "explanation": "IQR = Q3 − Q1 = 30 − 20 = 10. Upper fence = Q3 + 1.5 × IQR = 30 + 15 = 45 seconds."
+  },
+  {
+    "id": "da2-3-2-num-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Test scores have a mean of 60 and a standard deviation of 5. What is the z-score of a score of 70? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 2,
+      "tolerance": 0.01
+    },
+    "explanation": "z = (x − x̄) ÷ s = (70 − 60) ÷ 5 = 2. The score is 2 standard deviations above the mean."
+  },
+  {
+    "id": "da2-3-2-num-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "For a set of order sizes, Q1 = 10 and Q3 = 18. Using the 1.5 × IQR rule, what is the lower fence? Answer as a whole number; it may be negative.",
+    "payload": {},
+    "answer": {
+      "value": -2,
+      "tolerance": 0.01
+    },
+    "explanation": "IQR = 18 − 10 = 8. Lower fence = Q1 − 1.5 × IQR = 10 − 12 = −2. Order sizes cannot be negative, so this data has no low outliers."
+  },
+  {
+    "id": "da2-3-2-math-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Five daily sales totals are $100, $110, $120, $130 and $1,000. What happens to the mean and median compared with the same data without the $1,000 day?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Both move up by the same amount"
+        },
+        {
+          "id": "b",
+          "text": "The mean rises a lot; the median moves only a little"
+        },
+        {
+          "id": "c",
+          "text": "The median rises a lot; the mean barely moves"
+        },
+        {
+          "id": "d",
+          "text": "Neither changes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Without $1,000, the four values have a mean and median of $115. With it, the mean jumps to 1,460 ÷ 5 = $292, while the median is the middle value, $120."
+  },
+  {
+    "id": "da2-3-2-num-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Package weights follow a normal distribution with a mean of 100 g and a standard deviation of 10 g. About what percent of packages weigh between 80 g and 120 g? Answer as a whole-number percent.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 95,
+      "tolerance": 0.5
+    },
+    "explanation": "80 and 120 are each 2 standard deviations from the mean (100 ± 2 × 10). The 68-95-99.7 rule says about 95% of values fall within 2 standard deviations."
+  },
+  {
+    "id": "da2-3-2-math-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A histogram of house prices has a long tail to the right (a few very expensive houses). How do the mean and median usually compare?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The mean is greater than the median"
+        },
+        {
+          "id": "b",
+          "text": "The mean is less than the median"
+        },
+        {
+          "id": "c",
+          "text": "The mean and median are equal"
+        },
+        {
+          "id": "d",
+          "text": "It depends on the mode, not the tail"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "In a right-skewed distribution the few high values pull the mean toward the tail, so the mean sits above the median. Left skew is the reverse."
+  },
+  {
+    "id": "da2-3-2-math-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which description fits a normal distribution?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Lopsided, with a long left tail"
+        },
+        {
+          "id": "b",
+          "text": "Flat, with every value equally likely"
+        },
+        {
+          "id": "c",
+          "text": "Two separate peaks"
+        },
+        {
+          "id": "d",
+          "text": "Bell-shaped and symmetric"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A normal distribution is a symmetric bell curve centered on its mean. Because it is symmetric, the mean, median and mode sit at the same point."
+  },
+  {
+    "id": "da2-3-2-num-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "Call lengths follow a normal distribution with a mean of 6 minutes and a standard deviation of 2 minutes. About what percent of calls last between 4 and 8 minutes? Answer as a whole-number percent.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 68,
+      "tolerance": 0.5
+    },
+    "explanation": "4 and 8 are each 1 standard deviation from the mean (6 ± 2). The 68-95-99.7 rule says about 68% of values fall within 1 standard deviation."
+  },
+  {
+    "id": "da2-3-2-num-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A company surveys 240 of its 3,000 customers. What percent of the population is in the sample? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 8,
+      "tolerance": 0.5
+    },
+    "explanation": "Sample share = sample size ÷ population size × 100 = 240 ÷ 3,000 × 100 = 8%."
+  },
+  {
+    "id": "da2-3-2-math-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A streaming service measures the viewing time of 1,000 randomly chosen subscribers out of its 2 million subscribers. In this study, what are the 2 million subscribers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The sample"
+        },
+        {
+          "id": "b",
+          "text": "The population"
+        },
+        {
+          "id": "c",
+          "text": "The parameter"
+        },
+        {
+          "id": "d",
+          "text": "The statistic"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The population is the whole group the question is about: all 2 million subscribers. The 1,000 measured subscribers are the sample."
+  },
+  {
+    "id": "da2-3-2-math-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "In the same study, the average viewing time of the 1,000 chosen subscribers works out to 2.5 hours a day. What is that 2.5-hour figure called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A parameter"
+        },
+        {
+          "id": "b",
+          "text": "A population"
+        },
+        {
+          "id": "c",
+          "text": "A census"
+        },
+        {
+          "id": "d",
+          "text": "A statistic"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A number worked out from a sample is a statistic. The true average of all 2 million subscribers, which nobody measured, is the parameter the statistic estimates."
+  },
+  {
+    "id": "da2-3-2-math-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A support lead claims that the mean call length is now less than 6 minutes. Which pair of hypotheses tests this claim?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "H₀: mean < 6 minutes; H₁: mean = 6 minutes"
+        },
+        {
+          "id": "b",
+          "text": "H₀: mean ≠ 6 minutes; H₁: mean = 6 minutes"
+        },
+        {
+          "id": "c",
+          "text": "H₀: mean = 6 minutes; H₁: mean < 6 minutes"
+        },
+        {
+          "id": "d",
+          "text": "H₀: mean = 6 minutes; H₁: mean > 6 minutes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The null hypothesis H₀ is the \"no change\" position, so it holds the equals sign: mean = 6 minutes. The alternative H₁ is the claim being tested, in the direction the claim states: less than, so mean < 6 minutes."
+  },
+  {
+    "id": "da2-3-2-math-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team tests a new checkout layout. Which statement belongs in the null hypothesis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The new layout changes the conversion rate"
+        },
+        {
+          "id": "b",
+          "text": "The new layout raises the conversion rate"
+        },
+        {
+          "id": "c",
+          "text": "The new layout lowers the conversion rate"
+        },
+        {
+          "id": "d",
+          "text": "The new layout has no effect on the conversion rate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The null hypothesis says nothing has changed. Each of the other three is a possible alternative hypothesis (two-tailed, or one-tailed up or down)."
+  },
+  {
+    "id": "da2-3-2-math-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst wants to know whether the average call length is different, either higher or lower, after a policy change. Which kind of test fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Two-tailed, because H₁ says the mean is not equal to the old value"
+        },
+        {
+          "id": "b",
+          "text": "One-tailed, because H₁ says the mean is greater than the old value"
+        },
+        {
+          "id": "c",
+          "text": "One-tailed, because H₁ says the mean is less than the old value"
+        },
+        {
+          "id": "d",
+          "text": "Two-tailed, because H₁ says the mean is greater than the old value"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "\"Either higher or lower\" means H₁ uses ≠ (not equal), so a difference in either direction counts. That is a two-tailed test. A one-tailed test checks only one direction."
+  },
+  {
+    "id": "da2-3-2-math-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fraud model flags a legitimate purchase as fraud. The null hypothesis is \"this purchase is legitimate.\" What kind of error is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A Type II error"
+        },
+        {
+          "id": "b",
+          "text": "A Type I error"
+        },
+        {
+          "id": "c",
+          "text": "A sampling error"
+        },
+        {
+          "id": "d",
+          "text": "A correct decision, since fraud checks should be strict"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The purchase really was legitimate (H₀ true), but the model rejected H₀ by calling it fraud. Rejecting a true H₀ is a Type I error, a false positive."
+  },
+  {
+    "id": "da2-3-2-math-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A study finds no significant effect of a new training course on test scores, so it fails to reject H₀ (the null hypothesis, \"no effect\"). In fact the course does raise scores. What is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A Type I error (false positive)"
+        },
+        {
+          "id": "b",
+          "text": "A correct decision"
+        },
+        {
+          "id": "c",
+          "text": "A Type II error (false negative)"
+        },
+        {
+          "id": "d",
+          "text": "A significance level"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The null hypothesis (\"no effect\") was false, but the study failed to reject it. Missing a real effect is a Type II error, a false negative."
+  },
+  {
+    "id": "da2-3-2-math-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst sets the significance level α (alpha) to 0.05. H₀ is the null hypothesis. What does that mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "There is a 5% chance that H₀ is true"
+        },
+        {
+          "id": "b",
+          "text": "There is a 5% chance of a Type II error"
+        },
+        {
+          "id": "c",
+          "text": "There is a 95% chance the result matters in practice"
+        },
+        {
+          "id": "d",
+          "text": "There is a 5% risk of rejecting H₀ when it is true"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "α is the risk of a Type I error the analyst is willing to take: rejecting H₀ when H₀ is actually true. It is not the chance that H₀ is true, and it says nothing direct about Type II errors."
+  },
+  {
+    "id": "da2-3-2-math-mcq-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An airport bag scanner uses H₀ (the null hypothesis): \"the bag is safe.\" Which error is usually more costly here, and why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A Type II error, because a dangerous bag is let through"
+        },
+        {
+          "id": "b",
+          "text": "A Type I error, because a safe bag gets a hand search"
+        },
+        {
+          "id": "c",
+          "text": "Both cost the same, so α should be set to 0.50"
+        },
+        {
+          "id": "d",
+          "text": "Neither, because scanners cannot make errors"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A Type II error fails to reject H₀ when it is false: a dangerous bag is treated as safe and let through. A Type I error (a false alarm) only leads to a hand search. Which error is worse depends on the cost of each mistake."
+  },
+  {
+    "id": "da2-3-2-num-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "An analyst uses a significance level α of 0.01. What confidence level goes with it? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 99,
+      "tolerance": 0.5
+    },
+    "explanation": "Confidence level = (1 − α) × 100 = (1 − 0.01) × 100 = 99%."
+  },
+  {
+    "id": "da2-3-2-math-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A test returns a p-value of 0.12, and the analyst set the significance level α to 0.05 beforehand. H₀ is the null hypothesis and H₁ the alternative. What should the analyst conclude?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fail to reject H₀; the result is not statistically significant"
+        },
+        {
+          "id": "b",
+          "text": "Reject H₀; the result is statistically significant"
+        },
+        {
+          "id": "c",
+          "text": "Accept H₀, because it is now proven true"
+        },
+        {
+          "id": "d",
+          "text": "Reject H₁ and report a 12% effect"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "0.12 is larger than 0.05, so the evidence is not strong enough to reject H₀. We say \"fail to reject\", never \"accept\": the test did not prove H₀ true, it just found too little evidence against it."
+  },
+  {
+    "id": "da2-3-2-math-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What does a p-value of 0.02 mean? (H₀ is the null hypothesis, H₁ the alternative.)",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "There is a 2% chance that H₀ is true, given the data observed"
+        },
+        {
+          "id": "b",
+          "text": "If H₀ were true, results this extreme would occur about 2% of the time"
+        },
+        {
+          "id": "c",
+          "text": "The effect is 2% in size compared with the old value"
+        },
+        {
+          "id": "d",
+          "text": "There is a 98% chance that H₁ is true for this data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A p-value assumes H₀ is true and asks how often chance alone would give results at least this extreme. It is not the chance that H₀ is true, and it says nothing about how big the effect is."
+  },
+  {
+    "id": "da2-3-2-num-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A sample of delivery times has a mean of 30 minutes. The 95% confidence interval uses a margin of error of 4 minutes. What is the lower bound of the interval, in minutes? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 26,
+      "tolerance": 0.5
+    },
+    "explanation": "Interval = mean ± margin of error = 30 ± 4. Lower bound = 30 − 4 = 26 minutes (the upper bound is 30 + 4 = 34)."
+  },
+  {
+    "id": "da2-3-2-num-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A report gives a 95% confidence interval for average basket size of $61 to $71. What is the margin of error, in dollars? Answer as a whole number.",
+    "payload": {
+      "prefix": "$"
+    },
+    "answer": {
+      "value": 5,
+      "tolerance": 0.5
+    },
+    "explanation": "The interval is centred on the sample mean, so the margin of error is half its width: (71 − 61) ÷ 2 = 10 ÷ 2 = $5. The sample mean is 61 + 5 = $66."
+  },
+  {
+    "id": "da2-3-2-num-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A sample of 40 stores has a mean daily footfall of 120 visitors, with a margin of error of 6.5 visitors at 95% confidence. What is the upper bound of the 95% confidence interval, in visitors? Answer to one decimal place.",
+    "payload": {},
+    "answer": {
+      "value": 126.5,
+      "tolerance": 0.05
+    },
+    "explanation": "Upper bound = mean + margin of error = 120 + 6.5 = 126.5 visitors."
+  },
+  {
+    "id": "da2-3-2-math-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A 95% confidence interval for mean order value is $40 to $50. Which statement is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "95% of all individual orders in the population are between $40 and $50"
+        },
+        {
+          "id": "b",
+          "text": "The true mean is certain to be exactly $45"
+        },
+        {
+          "id": "c",
+          "text": "If we repeated the sampling many times, about 95% of intervals made this way would contain the true mean"
+        },
+        {
+          "id": "d",
+          "text": "There is a 95% probability that the true mean lies between $40 and $50, for this interval"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The 95% describes the method: across many samples, about 95% of the intervals it builds catch the true mean. Any one interval either contains it or not. The interval is centred on the sample mean ($45), but the true mean is unknown. The interval is about the mean, not about individual orders."
+  },
+  {
+    "id": "da2-3-2-math-mcq-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [
+      "ANOVA"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst wants to compare average test scores between two training methods. Which test fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A chi-squared test"
+        },
+        {
+          "id": "b",
+          "text": "ANOVA (Analysis of Variance)"
+        },
+        {
+          "id": "c",
+          "text": "Linear regression"
+        },
+        {
+          "id": "d",
+          "text": "A t-test"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A t-test compares the means of two groups. ANOVA is for three or more groups, and chi-squared is for counts in categories."
+  },
+  {
+    "id": "da2-3-2-math-mcq-024",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [
+      "ANOVA"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst wants to compare mean checkout wait times across five stores. Which test fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "ANOVA (Analysis of Variance)"
+        },
+        {
+          "id": "b",
+          "text": "A t-test"
+        },
+        {
+          "id": "c",
+          "text": "A chi-squared test"
+        },
+        {
+          "id": "d",
+          "text": "A correlation coefficient"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Comparing means across three or more groups is the job of ANOVA. Running many separate t-tests instead raises the chance of a false positive."
+  },
+  {
+    "id": "da2-3-2-math-mcq-025",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [
+      "ANOVA"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst wants to know whether device type (phone, tablet or desktop) is related to whether a visitor buys (yes or no), using counts of visits. Which test fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A t-test"
+        },
+        {
+          "id": "b",
+          "text": "ANOVA (Analysis of Variance)"
+        },
+        {
+          "id": "c",
+          "text": "A chi-squared test"
+        },
+        {
+          "id": "d",
+          "text": "A moving average"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Both variables are categories and the data are counts, so a chi-squared test of independence fits. t-tests and ANOVA compare means of a number."
+  },
+  {
+    "id": "da2-3-2-math-mcq-026",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The correlation coefficient r between monthly ad spend and monthly sales is +0.9. What does this tell the analyst?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "There is a weak relationship between the two"
+        },
+        {
+          "id": "b",
+          "text": "Ad spend causes 90% of sales"
+        },
+        {
+          "id": "c",
+          "text": "There is a strong positive linear relationship"
+        },
+        {
+          "id": "d",
+          "text": "There is a strong negative linear relationship"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The sign of r gives the direction (+ means both rise together) and its size gives the strength (0.9 is close to 1, so strong). r says nothing about cause, and it is not a percentage of sales."
+  },
+  {
+    "id": "da2-3-2-math-mcq-027",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Across 40 cities, the number of coffee shops and the number of parking tickets issued have a correlation of r = 0.8. What is the best explanation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Opening coffee shops makes drivers park illegally"
+        },
+        {
+          "id": "b",
+          "text": "Parking tickets make people buy more coffee"
+        },
+        {
+          "id": "c",
+          "text": "The correlation must come from an error in the data"
+        },
+        {
+          "id": "d",
+          "text": "A third factor, city population, drives both"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Correlation is not causation. Here a confounding variable, the size of the city, raises both the number of coffee shops and the number of parking tickets, so they move together without one causing the other."
+  },
+  {
+    "id": "da2-3-2-math-mcq-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which correlation coefficient shows the strongest linear relationship?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "r = −0.85"
+        },
+        {
+          "id": "b",
+          "text": "r = 0.10"
+        },
+        {
+          "id": "c",
+          "text": "r = 0.60"
+        },
+        {
+          "id": "d",
+          "text": "r = −0.30"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Strength is how close r is to −1 or +1. The size of r ignoring its sign, written |r|, is largest for −0.85 (|−0.85| = 0.85), so it is the strongest, even though the relationship is negative."
+  },
+  {
+    "id": "da2-3-2-num-028",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A regression model gives y = 4x + 15, where x is the number of sales calls and y is weekly orders. Predict y when x = 6. Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 39,
+      "tolerance": 0.5
+    },
+    "explanation": "Put x = 6 into the equation: y = 4 × 6 + 15 = 24 + 15 = 39 orders."
+  },
+  {
+    "id": "da2-3-2-num-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A straight line passes through the points (x = 2, y = 10) and (x = 6, y = 30). What is its slope? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 5,
+      "tolerance": 0.5
+    },
+    "explanation": "Slope = change in y ÷ change in x = (30 − 10) ÷ (6 − 2) = 20 ÷ 4 = 5. Each 1-unit rise in x adds 5 to y."
+  },
+  {
+    "id": "da2-3-2-num-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A simple linear regression with one predictor has a correlation coefficient r = 0.7. What is R² (R-squared)? Answer as a percent, rounded to a whole number.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 49,
+      "tolerance": 0.5
+    },
+    "explanation": "With one predictor, R² = r² = 0.7 × 0.7 = 0.49, which is 49%. The model accounts for 49% of the variation in y."
+  },
+  {
+    "id": "da2-3-2-math-mcq-029",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A model predicting sales from ad spend has R² (R-squared) = 0.81. What does this mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Ad spend causes 81% of all sales"
+        },
+        {
+          "id": "b",
+          "text": "The model explains 81% of the variation in sales"
+        },
+        {
+          "id": "c",
+          "text": "The predictions are correct 81% of the time"
+        },
+        {
+          "id": "d",
+          "text": "The slope of the line is 0.81"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "R² (R-squared) is the share of the variation in the outcome that the model accounts for. It is not an accuracy rate, it is not the slope, and it does not show cause."
+  },
+  {
+    "id": "da2-3-2-num-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A logistic regression model gives these predicted probabilities that six customers will cancel: 0.82, 0.45, 0.67, 0.30, 0.51 and 0.49. With a threshold of 0.5, how many customers are classed as \"will cancel\"? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 3,
+      "tolerance": 0.5
+    },
+    "explanation": "A probability of 0.5 or more is classed as \"yes\". 0.82, 0.67 and 0.51 qualify; 0.45, 0.30 and 0.49 do not. That is 3 customers."
+  },
+  {
+    "id": "da2-3-2-num-032",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Monthly sign-ups were 25, 30, 35, 45 and 55. What is the 3-month moving average for the latest month? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 45,
+      "tolerance": 0.5
+    },
+    "explanation": "Take the last 3 months: (35 + 45 + 55) ÷ 3 = 135 ÷ 3 = 45."
+  },
+  {
+    "id": "da2-3-2-num-033",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Quarterly sales were 100, 110, 120 and 130 (thousand dollars). Using the average change per quarter, forecast next quarter's sales in thousand dollars. Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 140,
+      "tolerance": 0.5
+    },
+    "explanation": "Average change = (130 − 100) ÷ 3 changes = 30 ÷ 3 = 10 per quarter. Forecast = last value + average change = 130 + 10 = 140."
+  },
+  {
+    "id": "da2-3-2-math-mcq-030",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Retail sales rise every December and fall every January, year after year. What is this pattern called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Trend"
+        },
+        {
+          "id": "b",
+          "text": "Seasonality"
+        },
+        {
+          "id": "c",
+          "text": "An outlier"
+        },
+        {
+          "id": "d",
+          "text": "Random noise"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A pattern that repeats at the same point in each period (here, every year) is seasonality. A trend is the long-run direction, up or down."
+  },
+  {
+    "id": "da2-3-2-math-mcq-031",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Over five years, monthly sales slowly climb, despite ups and downs from month to month. What is that long-run climb called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The trend"
+        },
+        {
+          "id": "b",
+          "text": "Seasonality"
+        },
+        {
+          "id": "c",
+          "text": "A moving average"
+        },
+        {
+          "id": "d",
+          "text": "A residual"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The trend is the overall direction over a long period. The month-to-month ups and downs are seasonality or noise. A moving average is a tool that smooths them out to show the trend."
   }
 ]

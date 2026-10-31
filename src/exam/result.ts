@@ -14,12 +14,13 @@ export const examResultSchema = z.object({
   questionIds: z.array(z.string()),
   optionOrders: z.record(z.array(z.string())),
   elementOrders: z.record(z.array(z.string())).optional(),
+  partOrders: z.record(z.record(z.array(z.string()))).optional(),
   responses: z.record(z.union([z.array(z.string()), z.record(z.string())])),
   flagged: z.array(z.string()),
   score: z.number(),
   passed: z.boolean(),
   /** Absent on mock exams (and on every result saved before chunk 5). */
-  mode: z.enum(['mock', 'practice', 'cram']).optional(),
+  mode: z.enum(['mock', 'practice', 'cram', 'lesson']).optional(),
 }).strict();
 
 export type ExamResult = z.infer<typeof examResultSchema>;
@@ -50,6 +51,7 @@ export function buildResult(args: {
     questionIds: exam.items.map((i) => i.question.id),
     optionOrders: Object.fromEntries(exam.items.filter((i) => i.optionOrder).map((i) => [i.question.id, i.optionOrder!])),
     elementOrders: Object.fromEntries(exam.items.filter((i) => i.elementOrder).map((i) => [i.question.id, i.elementOrder!])),
+    partOrders: Object.fromEntries(exam.items.filter((i) => i.partOrders).map((i) => [i.question.id, i.partOrders!])),
     responses: args.responses,
     flagged: args.flagged,
     score: report.score,

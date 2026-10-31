@@ -37,6 +37,23 @@ export function mcq(id: string, domain: string, type: 'mcq-single' | 'mcq-multi'
   };
 }
 
+export function numeric(id: string, domain: string, value = 25, tolerance = 0.5): Question {
+  return {
+    id,
+    exam: 'T-001',
+    source: 'ours',
+    type: 'numeric',
+    objectiveIds: [`${domain}.1`],
+    difficulty: 1,
+    stem: `Number ${id}`,
+    payload: { suffix: '%' },
+    answer: { value, tolerance },
+    explanation: `Explanation ${id}`,
+    acronyms: [],
+    status: 'approved',
+  };
+}
+
 export function pbq(id: string, w: number, type: QuestionType = 'pbq-match'): Question {
   return {
     id,

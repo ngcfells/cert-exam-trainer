@@ -1,7 +1,7 @@
 import { useId } from 'react';
 import type { TerminalPayload } from '../../../domain/pbq';
 import type { PbqProps } from './PbqView';
-import { PartSelect } from './parts';
+import { inOrder, PartSelect } from './parts';
 
 function CommandInput({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   const id = useId();
@@ -31,7 +31,7 @@ export function TerminalView({ item, value, onChange }: PbqProps) {
         {p.steps.map((s) => (
           <li key={s.id}>
             {s.options ? (
-              <PartSelect label={s.label} values={s.options} value={value[s.id] ?? ''} onChange={(id) => set(s.id, id)} />
+              <PartSelect label={s.label} values={inOrder(s.options, item.partOrders?.[s.id])} value={value[s.id] ?? ''} onChange={(id) => set(s.id, id)} />
             ) : (
               <CommandInput label={s.label} value={value[s.id] ?? ''} onChange={(v) => set(s.id, v)} />
             )}

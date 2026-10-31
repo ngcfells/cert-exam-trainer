@@ -144,7 +144,41 @@
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
 - **Owner reprioritised (2026-10-31): the Data+ Math & Data Concepts module comes before SecAI+.** Design (approved): `docs/superpowers/specs/2026-10-31-dataplus-math-module-design.md`. It is homework-style: a Learn area of lessons (meaning, formula, worked example, exam trap) with a check per lesson, a new `numeric` typed-answer question type, and more join PBQs. The owner is a trainer, not an analyst, so lessons must assume no stats background.
   - Six sections, **each its own session with a `/clear` and a handoff update between** (design §8 and §8a): (1) engine: `numeric` type, lesson schema, Learn screens, status, one sample lesson; (2) content A+B; (3) content C+D; (4) content E; (5) content F (joins); (6) final audit, Opus whole-branch review, redeploy.
-  - **Next session: section 1 (engine).** Write the plan with superpowers:writing-plans, saved to `docs/superpowers/plans/`, then execute it.
+  - **Section 1 (engine) is done on branch `math-engine`** (2026-10-31; 472 unit and 50 e2e tests pass; plan: `docs/superpowers/plans/2026-10-31-math-section1-engine.md`; Opus final review findings all fixed). Not yet merged to `main`.
+    - `numeric` type: one scoring unit like an MCQ; response is `[rawText]` (`[]` = blank). `parseNumeric` accepts typographic minus signs and thousands-group commas only; `numericCorrect` is inclusive with a relative float slack. Authored in the editor (JSON) and in Markdown (`Correct Number:` line).
+    - Lessons: strict Zod schema in `src/domain/lesson.ts`, files in `src/banks/dataplus/lessons/*.json` (one per area). Formula markup: `^{}` and `_{}`, plus a spoken form for screen readers. 3 to 5 check items per lesson; a lesson with a formula must link a numeric item.
+    - Lesson status lives in the setting `lessonStatus:<exam>` (backup format unchanged); done at a check score of 80% or more. Check attempts save with `mode: 'lesson'` (count for mastery and SRS, not mock recency).
+    - Numeric answers are recomputed in `bank.test.ts` from `src/banks/dataplus/numericChecks.ts`: **every new numeric item needs an entry there.**
+    - The fixture bank gained a numeric item, so fixture mock exams have 9 items (e2e `TOTAL = 9`).
+  - **Owner decision (2026-10-31): do not merge `math-engine` until the whole math module is complete** (after section 6). Keep committing every section to `math-engine`; merge to `main` and redeploy only at the end.
+  - **Section 2 (content A+B) is done on `math-engine`** (2026-10-31; 473 unit and 50 e2e tests pass; plan: `docs/superpowers/plans/2026-10-31-math-section2-content-ab.md`; Opus review found no math errors; its 3 important and 12 minor findings are all fixed).
+    - 10 lessons in all: area A has 6 (percent change, percentage points, growth ratios, CAGR, Rule of 72, weighted average) and area B has 4 in `B-descriptive-stats.json` (mean/median/mode, range/variance/SD, outliers/IQR/z, distribution shape).
+    - New items in `3.2.json`: `da2-3-2-num-003..022` (20 numeric, 22 in the bank) and `da2-3-2-math-mcq-001..011`. Community acronyms CAGR and IQR were added (23 community).
+    - Symbol names in lessons render as plain text. `bank.test.ts` now rejects `^{}`/`_{}` there; use Unicode (², "to the power 1/n").
+    - Tally toward §7: 10 of 30 lessons and 22 of 60 numeric items.
+  - **Section 3 (content C+D) is done on `math-engine`** (2026-10-31; 473 unit and 50 e2e tests pass; plan: `docs/superpowers/plans/2026-10-31-math-section3-content-cd.md`; the Opus review's 1 critical, 3 important and 16 minor findings are all fixed).
+    - 10 lessons: `C-inferential-stats.json` has 6 (population vs. sample, hypotheses, Type I/II, p-values, confidence intervals, choosing a test) and `D-correlation-regression.json` has 4 (correlation, linear regression, logistic regression, time series).
+    - New items: `da2-3-2-num-023..033`, `da2-3-2-math-mcq-012..032` and `da2-1-5-math-mcq-001..002`. ANOVA was added as a community acronym (24 community). `II` and `III` are in `NOT_ACRONYMS`.
+    - Numeric items always carry `payload` (use `{}` when it has no unit). Dollar amounts use `prefix: "$"`.
+    - Tally toward §7: 20 of 30 lessons and 33 of 60 numeric items.
+  - **Section 4 (content E) is done on `math-engine`** (2026-10-31; all of `npm run check` passes; plan: `docs/superpowers/plans/2026-10-31-math-section4-content-e.md`; the Opus review found no math errors, and its 3 important and 5 minor findings are all fixed).
+    - 5 lessons in `E-data-math.json`: units and precision, normalization (min-max, z-score), binning, derived fields, aggregation pitfalls.
+    - New items: `da2-2-3-num-001..012`, `da2-2-3-math-mcq-001..004` (2.3), `da2-2-2-num-001..003`, `da2-2-2-math-mcq-001..002` (2.2). Links to existing `da2-2-3-mcq-008`, `-009`, `-040`.
+    - Rule learned: check items must not reuse the lesson example's numbers (the review caught this); use different numbers so the check tests skill, not recall.
+    - Tally toward §7: 25 of 30 lessons and 48 of 60 numeric items.
+  - **Section 5 (content F) is done on `math-engine`** (2026-10-31; 473 unit and 50 e2e tests pass; plan: `docs/superpowers/plans/2026-10-31-math-section5-content-f.md`; the Opus review found no wrong answers, and its 5 important and 8 minor findings are all fixed).
+    - 5 lessons in `F-joins-keys.json`: keys, join types, cross join, bad joins, union/pivot/unpivot.
+    - New items: `da2-1-1-num-001..002`, `da2-1-1-math-mcq-001..002`, `da2-2-3-num-013..023`, `da2-2-3-math-mcq-005..009`, and 11 join PBQs (`da2-1-1-buckets-002`, `-match-002`, `-hotspot-002`; `da2-2-3-config-002..003`, `-data-002..003`, `-match-001`, `-order-002`, `-terminal-003`, `-diagram-001`).
+    - `numericChecks.ts` has a `joinRows(left, right, kind)` helper; join counts are recomputed from key lists. `USING` was added to `NOT_ACRONYMS`.
+    - Terminology: lessons and items say "null" for a missing key (a null never matches, even another null).
+    - Tally toward §7: 30 of 30 lessons, 61 of 60 numeric items, 11 of 10 join PBQs.
+  - **Section 6 (final) is done on `math-engine`** (2026-10-31; 487 unit and 52 e2e tests pass; plan: `docs/superpowers/plans/2026-10-31-math-section6-final.md`; the Opus whole-branch review found no wrong answers, and its 2 important and 7 minor findings are all fixed).
+    - `bank.test.ts` locks the §7 targets (30 lessons with 3 to 5 checks, at least 60 numeric items, at least 10 join PBQs), checks that select keys do not cluster at one option index, and fails if a numeric check reuses its lesson example's numbers. That last test found 10 such items, now rewritten (`da2-3-2-num-003/004/010/023/026/028/030/032`, `da2-2-3-num-004`), plus 6 MCQ near-repeats.
+    - Bug #2 fixed: hotspot spots shuffle into the authored boxes per attempt (`hotspotLayout`, via `elementOrder`). Select options in config, data and terminal PBQs also shuffle per attempt (`ExamItem.partOrders`, saved as the optional `partOrders` in results). Lesson checks use a new seed on every attempt.
+    - Bug #1 fixed: hotspot labels are wrapping HTML in a `<foreignObject>`, scaled with the image width. The bank e2e checks that every shipped label fits at 360 and 1280 px.
+    - Hotspot authoring rules (enforced by the validator, documented in `docs/pbq-authoring.md`): all spots are the same size; a node matches a spot box exactly or overlaps none.
+    - `parseNumeric` now treats inner spaces as thousands separators only ("1 250" works; "5 3" is unanswered).
+  - **Left to do: merge `math-engine` to `main`, `npm run deploy`, and close issues #1 and #2** (waiting on the owner's go-ahead).
   - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.
 - **After the math module: chunk 11, SecAI+ content** (spec §13 item 11). Check that its objectives are published (builder's call in §13); run the harvester for its exam code to seed its acronym list.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.

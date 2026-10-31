@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { assembleCram, assemblePractice, CRAM_ACRONYMS, CRAM_SIZE, matchingPool } from './session';
+import { assembleCram, assemblePractice, CRAM_ACRONYMS, CRAM_SIZE, matchingPool, onlySeen } from './session';
 import { computeMastery } from './mastery';
 import { review } from './srs';
-import { bank, mcq, meta3, pbq } from '../exam/testFixtures';
+import { bank, mcq, meta3, numeric, pbq } from '../exam/testFixtures';
 import type { ExamMeta } from '../domain/types';
 import { pbqFixture } from '../domain/pbqFixtures';
 import type { ExamResult } from '../exam/result';
@@ -115,5 +115,12 @@ describe('cram', () => {
     expect(s.exam.pbqWeightSum).toBe(0);
     const small = assembleCram({ meta: meta3, acronyms: [], pool: [mcq('A0', 'A'), pbq('P1', 1)], seed: 1, srs: [], mastery: computeMastery(meta3, [], []), now });
     expect(ids(small.exam.items)).toEqual(['A0']);
+  });
+
+  it('includes numeric items and counts them as one unit each', () => {
+    const s = assembleCram({ meta: meta3, acronyms: [], pool: [mcq('A0', 'A'), numeric('N0', 'B'), pbq('P1', 1)], seed: 1, srs: [], mastery: computeMastery(meta3, [], []), now });
+    expect(ids(s.exam.items).sort()).toEqual(['A0', 'N0']);
+    expect(s.exam.mcqCount).toBe(2);
+    expect(onlySeen(s.exam, ['N0'])).toMatchObject({ mcqCount: 1, pbqWeightSum: 0 });
   });
 });

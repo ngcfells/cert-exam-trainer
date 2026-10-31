@@ -6,6 +6,7 @@ export type Screen =
   | { name: 'cram'; exam: string }
   | { name: 'progress'; exam: string }
   | { name: 'acronyms'; exam: string }
+  | { name: 'learn'; exam: string; lesson?: string }
   | { name: 'questions'; exam: string }
   | { name: 'edit'; exam: string; id?: string }
   /** Dev only: the bank review tool. */

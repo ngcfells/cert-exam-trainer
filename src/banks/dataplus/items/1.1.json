@@ -1553,5 +1553,410 @@
       "UUID"
     ],
     "status": "approved"
+  },
+  {
+    "id": "da2-1-1-num-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A column proposed as the primary key of a 10-row table holds these values: 101, 102, 103, 103, 104, 105, 105, 105, 106, 107. How many rows repeat a value already used by an earlier row? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 3,
+      "tolerance": 0.5
+    },
+    "explanation": "There are 7 distinct values in 10 rows, so 10 − 7 = 3 rows repeat an earlier value: one extra 103 and two extra 105s. A primary key must be unique, so this column cannot be the key as it stands."
+  },
+  {
+    "id": "da2-1-1-num-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A Customers table has customer_id values C1, C2, C3 and C5. An Orders table has 8 rows whose customer_id values are C1, C2, C2, C4, C5, (null), C7 and C1. An orphan is an order whose customer_id is filled in but matches no customer. How many orphan orders are there? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 2,
+      "tolerance": 0.5
+    },
+    "explanation": "C4 and C7 do not exist in Customers, so those 2 orders are orphans. The null row is a missing value, not an orphan: it has no key to look up. The repeated C1 and C2 values are fine, because a foreign key may repeat."
+  },
+  {
+    "id": "da2-1-1-math-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst must link a CRM export to a billing system. Both have a customer name column, and the billing system also stores the CRM customer identifier. Which field should the join use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Customer name, because both systems already have it"
+        },
+        {
+          "id": "b",
+          "text": "Billing address, because each household has one"
+        },
+        {
+          "id": "c",
+          "text": "The CRM customer ID column"
+        },
+        {
+          "id": "d",
+          "text": "Customer name plus city, to reduce duplicate names"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Join on the identifier: it is unique and does not change. Names repeat (two people called Ana Ruiz), get spelled differently and change on marriage. Addresses are shared by households and change when people move. Adding the city makes a name clash less likely but not impossible."
+  },
+  {
+    "id": "da2-1-1-math-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which statement about a foreign key is true?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Its values may repeat, and each should match a primary key in another table"
+        },
+        {
+          "id": "b",
+          "text": "It must be unique and can never be blank in any table it appears in"
+        },
+        {
+          "id": "c",
+          "text": "It is the column a table uses to identify each of its own rows"
+        },
+        {
+          "id": "d",
+          "text": "It must be a number that the database assigns in sequence"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A foreign key points to the primary key of another table, so many rows can share one value (many orders for one customer). Being unique and never blank describes a primary key, as does identifying the table's own rows. Keys can be text as well as numbers."
+  },
+  {
+    "id": "da2-1-1-buckets-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A Rentals table at Saltmarsh Car Hire links to a Customers table and a Vehicles table. Sort each Rentals column by the role it plays.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "pk",
+          "text": "Primary key of Rentals"
+        },
+        {
+          "id": "fk",
+          "text": "Foreign key to another table"
+        },
+        {
+          "id": "none",
+          "text": "Not a key"
+        }
+      ],
+      "items": [
+        {
+          "id": "rental",
+          "text": "rental_id: one value per rental, never blank"
+        },
+        {
+          "id": "cust",
+          "text": "customer_id: matches a row in Customers"
+        },
+        {
+          "id": "veh",
+          "text": "vehicle_id: matches a row in Vehicles"
+        },
+        {
+          "id": "date",
+          "text": "pickup_date"
+        },
+        {
+          "id": "driver",
+          "text": "driver_name"
+        },
+        {
+          "id": "rate",
+          "text": "daily_rate"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "rental": "pk",
+        "cust": "fk",
+        "veh": "fk",
+        "date": "none",
+        "driver": "none",
+        "rate": "none"
+      }
+    },
+    "explanation": "rental_id is unique and never blank, so it identifies each rental. customer_id and vehicle_id point to the primary keys of other tables, so they are foreign keys and may repeat. Dates, names and rates describe the rental but do not identify rows; a name in particular repeats and changes.",
+    "partExplanations": {
+      "rental": "Unique and required: the primary key.",
+      "cust": "Points to Customers, so it is a foreign key.",
+      "veh": "Points to Vehicles, so it is a foreign key.",
+      "date": "Many rentals share a date; it is an attribute.",
+      "driver": "Names repeat and change, so they are not keys.",
+      "rate": "A price is a measure, not an identifier."
+    }
+  },
+  {
+    "id": "da2-1-1-match-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "acronyms": [
+      "SKU"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 1,
+    "pbqWeight": 3,
+    "stem": "Match each pair of tables to the field they should be joined on.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Students and Enrollments"
+        },
+        {
+          "id": "p2",
+          "text": "Products and Order lines"
+        },
+        {
+          "id": "p3",
+          "text": "Employees and Timesheets"
+        },
+        {
+          "id": "p4",
+          "text": "Stores and Daily sales"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "student_id"
+        },
+        {
+          "id": "c2",
+          "text": "product SKU"
+        },
+        {
+          "id": "c3",
+          "text": "employee_id"
+        },
+        {
+          "id": "c4",
+          "text": "store_id"
+        },
+        {
+          "id": "c5",
+          "text": "last_name"
+        },
+        {
+          "id": "c6",
+          "text": "store_name"
+        },
+        {
+          "id": "c7",
+          "text": "enrollment_id"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "Each pair joins on the identifier that is the primary key of one table and a foreign key in the other. Last names and store names are not keys: names repeat, change and get spelled in different ways. enrollment_id identifies an enrollment, so it cannot link a student on its own.",
+    "partExplanations": {
+      "p1": "Each enrollment row stores the student_id of the student it belongs to.",
+      "p2": "Order lines store the SKU of the product sold.",
+      "p3": "Timesheets store the employee_id of the person who worked.",
+      "p4": "Daily sales store the store_id; a store name could be renamed or shared."
+    }
+  },
+  {
+    "id": "da2-1-1-hotspot-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "The columns of a Patients table at Larkfield Hospital are shown. Select every column that could serve as the primary key on its own.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "patient_id: unique, set at admission"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "full_name: required"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "ward_code: shared by a ward"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "phone: unique when given, optional"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "date_of_birth"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "health_number: unique, required"
+        }
+      ],
+      "spots": [
+        {
+          "id": "pid",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "patient_id: unique, set at admission"
+        },
+        {
+          "id": "name",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "full_name: required"
+        },
+        {
+          "id": "ward",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "ward_code: shared by a ward"
+        },
+        {
+          "id": "phone",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "phone: unique when given, optional"
+        },
+        {
+          "id": "dob",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "date_of_birth"
+        },
+        {
+          "id": "health",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "health_number: unique, required"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "pid",
+        "health"
+      ]
+    },
+    "explanation": "A primary key must be unique and never null. patient_id and health_number meet both rules, so either could be the key (each is a candidate key). full_name is required but repeats, phone is unique but optional, a ward code is shared and birth dates repeat.",
+    "partExplanations": {
+      "pid": "Unique and always set: a valid key.",
+      "name": "Required, but two patients can share a name.",
+      "ward": "Many patients share a ward.",
+      "phone": "Unique when given, but optional, so it can be null.",
+      "dob": "Many patients share a birth date.",
+      "health": "Unique and required: also a valid key."
+    }
   }
 ]

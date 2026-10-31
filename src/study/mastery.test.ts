@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { computeMastery, history, trendPoints, weakestObjectives } from './mastery';
-import { mcq, meta3, pbq } from '../exam/testFixtures';
+import { mcq, meta3, numeric, pbq } from '../exam/testFixtures';
 import type { ExamResult } from '../exam/result';
 
 let n = 0;
@@ -59,5 +59,12 @@ describe('mastery', () => {
     expect(h.map((x) => x.id)).toEqual([c.id, b.id, a.id]);
     expect(h[1].mode).toBe('practice');
     expect(trendPoints(h).map((p) => p.score)).toEqual([600, 700]);
+  });
+});
+
+describe('numeric in mastery', () => {
+  it('weights a numeric item as 1', () => {
+    const m = computeMastery(meta3, [res({ N: ['25'], A0: ['b'] })], [...qs, numeric('N', 'A')]);
+    expect(obj(m, 'A.1')).toMatchObject({ earned: 1, possible: 2 });
   });
 });

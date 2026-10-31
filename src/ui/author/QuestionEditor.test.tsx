@@ -3,7 +3,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { userQ } from '../../storage/testFixtures';
-import { PBQ_STARTERS } from '../../authoring/starters';
+import { JSON_STARTERS } from '../../authoring/starters';
 import { QuestionEditor } from './QuestionEditor';
 
 afterEach(() => vi.restoreAllMocks());
@@ -61,11 +61,36 @@ describe('QuestionEditor', () => {
     const { user } = setup();
     await user.type(screen.getByLabelText('Question text'), 'Sort these.');
     await user.selectOptions(screen.getByLabelText('Question type'), 'pbq-buckets');
-    expect(JSON.parse((screen.getByLabelText('Payload (JSON)') as HTMLTextAreaElement).value)).toEqual(PBQ_STARTERS['pbq-buckets'].payload);
+    expect(JSON.parse((screen.getByLabelText('Payload (JSON)') as HTMLTextAreaElement).value)).toEqual(JSON_STARTERS['pbq-buckets'].payload);
     expect(screen.queryByLabelText('Option 1')).not.toBeInTheDocument();
     await user.selectOptions(screen.getByLabelText('Question type'), 'pbq-order');
-    expect(JSON.parse((screen.getByLabelText('Answer (JSON)') as HTMLTextAreaElement).value)).toEqual(PBQ_STARTERS['pbq-order'].answer);
+    expect(JSON.parse((screen.getByLabelText('Answer (JSON)') as HTMLTextAreaElement).value)).toEqual(JSON_STARTERS['pbq-order'].answer);
     expect(within(screen.getByRole('region', { name: 'Preview' })).getByText('Sort these.')).toBeInTheDocument();
+  });
+
+  it('numeric uses the JSON starter, has no PBQ weight and saves', async () => {
+    const { repo, user } = setup();
+    await user.type(screen.getByLabelText('Question text'), 'What is 5 of 20, as a percent?');
+    await user.selectOptions(screen.getByLabelText('Question type'), 'numeric');
+    expect(JSON.parse((screen.getByLabelText('Answer (JSON)') as HTMLTextAreaElement).value)).toEqual(JSON_STARTERS.numeric.answer);
+    expect(screen.queryByLabelText(/PBQ weight/)).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(/Part explanations/)).not.toBeInTheDocument();
+    await user.click(save());
+    const [q] = await repo.getUserQuestions('DA0-002');
+    expect(q).toMatchObject({ type: 'numeric', answer: { value: 25, tolerance: 0.5 } });
+    expect(q.pbqWeight).toBeUndefined();
+  });
+
+  it('a negative numeric tolerance is linked to the answer editor', async () => {
+    const { repo, user } = setup();
+    await user.type(screen.getByLabelText('Question text'), 'Q');
+    await user.selectOptions(screen.getByLabelText('Question type'), 'numeric');
+    const answer = screen.getByLabelText('Answer (JSON)');
+    await user.clear(answer);
+    await user.type(answer, '{{"value":1,"tolerance":-1}');
+    await user.click(save());
+    expect(answer).toHaveAccessibleDescription(/answer\.tolerance/);
+    expect(await repo.getUserQuestions()).toEqual([]);
   });
 
   it('switching back to a template restores its edited JSON', async () => {

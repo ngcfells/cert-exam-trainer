@@ -1,0 +1,252 @@
+[
+  {
+    "id": "a-percent-change",
+    "exam": "DA0-002",
+    "area": "A",
+    "title": "Percent change",
+    "objectiveIds": ["3.2"],
+    "meaning": [
+      "Percent change says how much a number grew or shrank, compared with where it started. A rise from 80 to 100 is a change of 20, and 20 is one quarter of the starting 80, so the change is 25%.",
+      "Analysts use it because a raw difference can mislead: going up by 20 is huge for a store that sold 10 last month and tiny for one that sold 10,000. Percent change puts both on the same scale."
+    ],
+    "formula": {
+      "text": "percent change = ((new − old) ÷ old) × 100",
+      "spoken": "percent change equals new value minus old value, divided by old value, times 100",
+      "symbols": [
+        { "symbol": "old", "meaning": "the starting value (the earlier period)" },
+        { "symbol": "new", "meaning": "the ending value (the later period)" },
+        { "symbol": "new − old", "meaning": "the change; it is negative when the value went down" },
+        { "symbol": "× 100", "meaning": "turns a decimal such as 0.25 into a percent such as 25%" }
+      ]
+    },
+    "example": {
+      "intro": "A shop sold 80 mugs in May and 100 mugs in June. What is the percent change from May to June?",
+      "table": {
+        "caption": "Percent change from May to June, one step per row",
+        "head": ["Step", "Working", "Result"],
+        "rows": [
+          ["1. Find the change", "100 − 80", "20"],
+          ["2. Divide by the old value", "20 ÷ 80", "0.25"],
+          ["3. Turn it into a percent", "0.25 × 100", "25%"]
+        ]
+      },
+      "steps": [
+        "The old value is May (80), because May comes first.",
+        "The answer is positive, so it is an increase of 25%.",
+        "Check the other way: if sales fell from 100 back to 80, the change is −20 ÷ 100 = −0.20, a decrease of 20%. Going up 25% and then down 20% gets you back where you started, because each step divides by a different old value."
+      ]
+    },
+    "trap": {
+      "wrong": "Dividing by the new value: 20 ÷ 100 = 0.20, i.e. 20%.",
+      "why": "Percent change is always measured against where you started, so the old value goes on the bottom. Exam answer lists often include the divide-by-new result, so check which number you divided by before you pick."
+    },
+    "checkIds": ["da2-3-2-num-001", "da2-3-2-num-002", "da2-3-2-pct-mcq-001"]
+  },
+  {
+    "id": "a-percentage-points",
+    "exam": "DA0-002",
+    "area": "A",
+    "title": "Percentage points vs. percent",
+    "objectiveIds": ["3.2"],
+    "meaning": [
+      "When the thing you are comparing is already a percent, such as a conversion rate, there are two ways to describe a change. Percentage points are the plain gap between the two percents; percent change is that gap compared with where you started.",
+      "Analysts must say which one they mean, because the same move can sound small (2 points) or large (50%), and readers make decisions on the number they hear."
+    ],
+    "formula": {
+      "text": "percentage-point change = new% − old%",
+      "spoken": "percentage point change equals the new percent minus the old percent",
+      "symbols": [
+        { "symbol": "old%", "meaning": "the starting rate, such as 4%" },
+        { "symbol": "new%", "meaning": "the ending rate, such as 6%" },
+        { "symbol": "percentage point", "meaning": "one unit on the percent scale; 4% to 6% is 2 points" }
+      ]
+    },
+    "example": {
+      "intro": "An email campaign's click rate went from 4% to 6%. Describe the change both ways.",
+      "table": {
+        "caption": "The same change as percentage points and as percent change",
+        "head": ["Measure", "Working", "Result"],
+        "rows": [
+          ["Percentage points", "6 − 4", "2 points"],
+          ["Percent change", "(6 − 4) ÷ 4 × 100", "50%"]
+        ]
+      },
+      "steps": [
+        "Percentage points only subtract: no dividing.",
+        "Percent change uses the percent change rule from the previous lesson, with the old rate (4) on the bottom.",
+        "Both are true. \"Up 2 points\" and \"up 50%\" describe the same move."
+      ]
+    },
+    "trap": {
+      "wrong": "Saying the click rate \"rose 2%\" when it went from 4% to 6%.",
+      "why": "Going from 4% to 6% is 2 percentage points, but a 50% increase. \"Rose 2%\" would mean 4% became 4.08%. On the exam, read whether the question asks for points or percent."
+    },
+    "checkIds": ["da2-3-2-num-003", "da2-3-2-num-004", "da2-3-2-math-mcq-001"]
+  },
+  {
+    "id": "a-growth-ratios",
+    "exam": "DA0-002",
+    "area": "A",
+    "title": "Growth rates and ratios across periods",
+    "objectiveIds": ["3.2"],
+    "meaning": [
+      "A period-over-period ratio divides one period's value by the one before it. A ratio above 1 means growth, below 1 means decline, and exactly 1 means no change.",
+      "Analysts use ratios to compare months, quarters or years quickly, and to see whether growth is steady."
+    ],
+    "formula": {
+      "text": "ratio = this period ÷ last period;  growth rate = (ratio − 1) × 100",
+      "spoken": "ratio equals this period divided by last period. Growth rate equals the ratio minus 1, times 100",
+      "symbols": [
+        { "symbol": "this period", "meaning": "the later value, such as February's sales" },
+        { "symbol": "last period", "meaning": "the earlier value, such as January's sales" },
+        { "symbol": "ratio − 1", "meaning": "the growth as a decimal; 1.10 − 1 = 0.10" },
+        { "symbol": "× 100", "meaning": "turns the decimal into a percent" }
+      ]
+    },
+    "example": {
+      "intro": "A café served 100 customers in week 1, 110 in week 2 and 121 in week 3. Is growth steady?",
+      "table": {
+        "caption": "Week-over-week ratios and growth rates",
+        "head": ["Weeks", "Ratio", "Growth rate"],
+        "rows": [
+          ["Week 2 ÷ week 1", "110 ÷ 100 = 1.10", "10%"],
+          ["Week 3 ÷ week 2", "121 ÷ 110 = 1.10", "10%"]
+        ]
+      },
+      "steps": [
+        "Each ratio is 1.10, so the café grows 10% every week.",
+        "The weekly gain in customers grows (10, then 11) even though the rate stays the same. That is compound growth.",
+        "This is the same as percent change: (110 − 100) ÷ 100 = 0.10."
+      ]
+    },
+    "trap": {
+      "wrong": "Reading a ratio of 0.8 as \"80% growth\".",
+      "why": "Subtract 1 first: 0.8 − 1 = −0.2, so the value fell 20%. Only the part above or below 1 is growth."
+    },
+    "checkIds": ["da2-3-2-num-005", "da2-3-2-num-006", "da2-3-2-math-mcq-002"]
+  },
+  {
+    "id": "a-cagr",
+    "exam": "DA0-002",
+    "area": "A",
+    "title": "Compound annual growth rate (CAGR)",
+    "objectiveIds": ["3.2"],
+    "meaning": [
+      "CAGR is the one steady yearly growth rate that would take a value from its start to its end over a number of years. It smooths out bumpy years into a single comparable rate.",
+      "Analysts use it to compare products or companies that grew over different spans, and because a simple average of yearly rates gives the wrong answer."
+    ],
+    "formula": {
+      "text": "CAGR = (end ÷ start)^{1/n} − 1",
+      "spoken": "CAGR equals end value divided by start value, raised to the power 1 over n, minus 1",
+      "symbols": [
+        { "symbol": "start", "meaning": "the value at the beginning" },
+        { "symbol": "end", "meaning": "the value at the finish" },
+        { "symbol": "n", "meaning": "the number of years between start and end" },
+        { "symbol": "to the power 1/n", "meaning": "the n-th root; with n = 2 it is the square root" },
+        { "symbol": "− 1", "meaning": "leaves only the growth part; multiply by 100 for a percent" }
+      ]
+    },
+    "example": {
+      "intro": "Revenue grew from $100 to $144 (in thousands) over 2 years. What is the CAGR?",
+      "table": {
+        "caption": "CAGR from $100 to $144 over 2 years, one step per row",
+        "head": ["Step", "Working", "Result"],
+        "rows": [
+          ["1. Divide end by start", "144 ÷ 100", "1.44"],
+          ["2. Take the n-th root (n = 2)", "√1.44", "1.2"],
+          ["3. Subtract 1", "1.2 − 1", "0.20"],
+          ["4. Turn it into a percent", "0.20 × 100", "20%"]
+        ]
+      },
+      "steps": [
+        "Check: 100 × 1.2 = 120 after year 1, and 120 × 1.2 = 144 after year 2.",
+        "On a phone calculator, the n-th root is the same as raising to the power 1 ÷ n: 1.44 ^ 0.5 = 1.2."
+      ]
+    },
+    "trap": {
+      "wrong": "Averaging the yearly growth rates: +50% then −50% \"averages to 0%\".",
+      "why": "Each year's rate applies to a different starting value. 100 up 50% is 150, and 150 down 50% is 75, so the value fell. CAGR uses only the start, the end and n, which captures compounding."
+    },
+    "checkIds": ["da2-3-2-num-007", "da2-3-2-num-008", "da2-3-2-math-mcq-003"]
+  },
+  {
+    "id": "a-rule-of-72",
+    "exam": "DA0-002",
+    "area": "A",
+    "title": "Rule of 72",
+    "objectiveIds": ["3.2"],
+    "meaning": [
+      "The Rule of 72 is a mental shortcut: divide 72 by a yearly growth rate to estimate how many years it takes a value to double.",
+      "Analysts use it to sanity-check growth claims without a calculator, such as whether \"doubling in 3 years\" is realistic."
+    ],
+    "formula": {
+      "text": "years to double ≈ 72 ÷ rate",
+      "spoken": "years to double is approximately 72 divided by the rate",
+      "symbols": [
+        { "symbol": "rate", "meaning": "the yearly growth rate written as a whole number, such as 6 for 6%" },
+        { "symbol": "≈", "meaning": "approximately; the rule is an estimate, not exact" }
+      ]
+    },
+    "example": {
+      "intro": "Users grow 6% per year. About how long until the user count doubles? And what rate doubles a value in 4 years?",
+      "table": {
+        "caption": "Using the Rule of 72 both ways",
+        "head": ["Question", "Working", "Result"],
+        "rows": [
+          ["Years to double at 6%", "72 ÷ 6", "about 12 years"],
+          ["Rate to double in 4 years", "72 ÷ 4", "about 18% per year"]
+        ]
+      },
+      "steps": [
+        "The rule works in either direction: 72 ÷ rate gives years, and 72 ÷ years gives the rate.",
+        "It assumes steady compound growth. It is closest for rates between about 5% and 10%."
+      ]
+    },
+    "trap": {
+      "wrong": "Writing the rate as a decimal: 72 ÷ 0.06 = 1,200 years.",
+      "why": "The rule is built for the whole-number percent. Use 72 ÷ 6, not 72 ÷ 0.06."
+    },
+    "checkIds": ["da2-3-2-num-009", "da2-3-2-num-010", "da2-3-2-math-mcq-004"]
+  },
+  {
+    "id": "a-weighted-average",
+    "exam": "DA0-002",
+    "area": "A",
+    "title": "Weighted averages",
+    "objectiveIds": ["3.2"],
+    "meaning": [
+      "A weighted average lets some values count more than others. Each value is multiplied by its weight (how many orders, credits or customers it stands for) before averaging.",
+      "Analysts need it whenever groups differ in size; a plain average of group averages treats a tiny group like a huge one."
+    ],
+    "formula": {
+      "text": "weighted average = Σ(w × x) ÷ Σw",
+      "spoken": "weighted average equals the sum of each weight times its value, divided by the sum of the weights",
+      "symbols": [
+        { "symbol": "x", "meaning": "each value, such as a store's average order" },
+        { "symbol": "w", "meaning": "each value's weight, such as that store's number of orders" },
+        { "symbol": "Σ", "meaning": "the Greek letter sigma, meaning \"add them all up\"" }
+      ]
+    },
+    "example": {
+      "intro": "Team A has 3 people averaging 10 tickets a day; team B has 1 person averaging 30. What is the average per person across both teams?",
+      "table": {
+        "caption": "Weighted average tickets per person",
+        "head": ["Team", "Value x", "Weight w", "w × x"],
+        "rows": [
+          ["A", "10", "3", "30"],
+          ["B", "30", "1", "30"],
+          ["Total (Σ)", "", "4", "60"]
+        ]
+      },
+      "steps": [
+        "Divide Σ(w × x) by Σw: 60 ÷ 4 = 15 tickets per person.",
+        "The plain average of 10 and 30 is 20, which is too high because team B has only one person."
+      ]
+    },
+    "trap": {
+      "wrong": "Averaging the group averages: (10 + 30) ÷ 2 = 20.",
+      "why": "That gives every group equal say no matter its size. Multiply each average by its count first, then divide by the total count."
+    },
+    "checkIds": ["da2-3-2-num-011", "da2-3-2-num-012", "da2-3-2-math-mcq-005"]
+  }
+]

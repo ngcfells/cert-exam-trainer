@@ -15,8 +15,13 @@ export function ResultsScreen({
   onHome,
   mode = 'mock',
   onDrill,
+  lessonFraction,
+  backLabel = 'Back to home',
   children,
 }: {
+  /** Lesson checks: the score over every check item, shown in the heading. */
+  lessonFraction?: number;
+  backLabel?: string;
   meta: ExamMeta;
   exam: AssembledExam;
   result: ExamResult;
@@ -40,7 +45,9 @@ export function ResultsScreen({
       <h2 id="results-h" ref={headingRef} tabIndex={-1}>
         {mock
           ? `Your score: ${report.score} / 900`
-          : `${mode === 'cram' ? 'Cram' : 'Practice'} complete${exam.items.length ? `: ${pct(report.score / MAX_SCORE)} correct` : ''}`}
+          : mode === 'lesson'
+            ? `Lesson check complete: ${pct(lessonFraction ?? report.score / MAX_SCORE)}`
+            : `${mode === 'cram' ? 'Cram' : 'Practice'} complete${exam.items.length ? `: ${pct(report.score / MAX_SCORE)} correct` : ''}`}
       </h2>
       {mock && (
         <>
@@ -92,7 +99,7 @@ export function ResultsScreen({
         </>
       )}
       <button type="button" className="primary" onClick={onHome}>
-        Back to home
+        {backLabel}
       </button>
     </section>
   );

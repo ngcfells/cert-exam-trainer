@@ -27,6 +27,7 @@ describe('Data+ bank files', () => {
       'da2-pbq-data-001',
       'da2-pbq-hotspot-001',
       'da2-pbq-buckets-001',
+      'da2-fx-num-001',
       'da2-seed-003',
     ]);
   });

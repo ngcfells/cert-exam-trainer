@@ -32,6 +32,22 @@ const meta = {
   acronyms: [],
 };
 
+describe('numeric questions', () => {
+  const num = { ...mcq, id: 'n1', type: 'numeric', payload: { suffix: '%' }, answer: { value: 25, tolerance: 0.5 } };
+  it('parses a valid numeric', () => {
+    expect(parseQuestion(num).type).toBe('numeric');
+  });
+  it.each([
+    ['pbqWeight', { ...num, pbqWeight: 2 }, 'pbqWeight'],
+    ['negative tolerance', { ...num, answer: { value: 25, tolerance: -1 } }, 'answer'],
+    ['infinite value', { ...num, answer: { value: Infinity, tolerance: 0 } }, 'answer'],
+    ['missing value', { ...num, answer: { tolerance: 0 } }, 'answer'],
+    ['extra payload key', { ...num, payload: { suffix: '%', options: [] } }, 'payload'],
+  ])('rejects %s', (_n, q, path) => {
+    expect(() => parseQuestion(q)).toThrow(new RegExp(path));
+  });
+});
+
 describe('parseQuestion', () => {
   it('parses a valid mcq-single', () => {
     expect(parseQuestion(mcq).id).toBe('q1');

@@ -30,6 +30,14 @@ describe('backup', () => {
     expect(await snapshot(target)).toEqual(await snapshot(repo));
   });
 
+  it('round-trips a numeric user question with a numeric response', async () => {
+    await repo.upsertUserQuestion({ ...userQ('n1'), type: 'numeric', payload: {}, answer: { value: 3, tolerance: 0 } });
+    await repo.putRecord('results', { ...resultRec('r2'), questionIds: ['n1'], optionOrders: {}, responses: { n1: ['3'] } });
+    const target = createMemoryRepo();
+    expect(await importBackup(target, JSON.stringify(await exportBackup(repo)), 'merge')).toEqual({ imported: 2, skipped: [] });
+    expect(await snapshot(target)).toEqual(await snapshot(repo));
+  });
+
   it('rejects invalid JSON and leaves repo unchanged', async () => {
     const before = await snapshot(repo);
     await expect(importBackup(repo, '{nope', 'replace')).rejects.toBeInstanceOf(ImportError);

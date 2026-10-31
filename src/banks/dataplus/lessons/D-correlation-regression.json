@@ -1,0 +1,305 @@
+[
+  {
+    "id": "d-correlation",
+    "exam": "DA0-002",
+    "area": "D",
+    "title": "Correlation and causation",
+    "objectiveIds": [
+      "3.2",
+      "1.5"
+    ],
+    "meaning": [
+      "Correlation measures how closely two numbers move together in a straight-line pattern. The correlation coefficient r runs from −1 to +1.",
+      "Analysts care because a strong correlation is easy to spot but is often mistaken for proof that one thing causes the other."
+    ],
+    "rule": [
+      "r, the correlation coefficient, is between −1 and +1.",
+      "Sign: positive r means the two rise together; negative r means one falls as the other rises.",
+      "Strength: the closer r is to −1 or +1, the stronger the straight-line relationship. Near 0 means little or no linear relationship.",
+      "A correlation, however strong, does not show that one variable causes the other."
+    ],
+    "example": {
+      "intro": "Four pairs of measures and their correlation coefficients.",
+      "table": {
+        "caption": "Reading the sign and size of r",
+        "head": [
+          "Pair",
+          "r",
+          "Reading"
+        ],
+        "rows": [
+          [
+            "Study hours and test score",
+            "+0.9",
+            "Strong positive"
+          ],
+          [
+            "Price and units sold",
+            "−0.8",
+            "Strong negative"
+          ],
+          [
+            "Height and phone number",
+            "0.0",
+            "No linear relationship"
+          ],
+          [
+            "Temperature and heating bill",
+            "−0.4",
+            "Moderate negative"
+          ]
+        ]
+      },
+      "steps": [
+        "The sign gives the direction: + means both rise together, − means one rises as the other falls.",
+        "The size, ignoring the sign, gives the strength: −0.8 is stronger than −0.4.",
+        "None of these values shows cause: a third factor, or chance, can link two measures."
+      ]
+    },
+    "trap": {
+      "wrong": "Concluding that one variable causes the other because r is large.",
+      "why": "Correlation is not causation. A confounding variable (a third factor) can drive both, as hot weather drives both ice cream sales and sunburn. A controlled experiment, such as an A/B test, is the usual way to show cause."
+    },
+    "checkIds": [
+      "da2-3-2-math-mcq-026",
+      "da2-3-2-math-mcq-027",
+      "da2-3-2-math-mcq-028",
+      "da2-3-2-mcq-030"
+    ]
+  },
+  {
+    "id": "d-linear-regression",
+    "exam": "DA0-002",
+    "area": "D",
+    "title": "Linear regression: slope, intercept and R²",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "meaning": [
+      "Linear regression draws the straight line that best fits a set of points, so you can predict one number from another.",
+      "Analysts care because the exam gives an equation such as sales = 50 + 4x and asks what the numbers mean or what it predicts."
+    ],
+    "formula": {
+      "text": "y = mx + b",
+      "spoken": "y equals m times x, plus b",
+      "symbols": [
+        {
+          "symbol": "y",
+          "meaning": "the value being predicted (the outcome)"
+        },
+        {
+          "symbol": "x",
+          "meaning": "the value used to predict it (the predictor)"
+        },
+        {
+          "symbol": "m",
+          "meaning": "the slope: how much y changes for each 1-unit rise in x; from two points, (y₂ − y₁) ÷ (x₂ − x₁)"
+        },
+        {
+          "symbol": "b",
+          "meaning": "the intercept: the value of y when x is 0"
+        },
+        {
+          "symbol": "R²",
+          "meaning": "\"R-squared\", the share of the variation in y that the line explains, from 0 to 1; with one predictor it equals r × r"
+        }
+      ]
+    },
+    "example": {
+      "intro": "A model predicts weekly orders y from sales calls x: y = 3x + 20, with r = 0.8.",
+      "table": {
+        "caption": "Predicted orders for three call counts",
+        "head": [
+          "x (calls)",
+          "3x",
+          "y = 3x + 20"
+        ],
+        "rows": [
+          [
+            "0",
+            "0",
+            "20"
+          ],
+          [
+            "5",
+            "15",
+            "35"
+          ],
+          [
+            "10",
+            "30",
+            "50"
+          ]
+        ]
+      },
+      "steps": [
+        "The intercept b = 20: with no calls, the model predicts 20 orders.",
+        "The slope m = 3: each extra call adds 3 orders.",
+        "Slope from two points: (50 − 35) ÷ (10 − 5) = 15 ÷ 5 = 3, which matches m.",
+        "R² = r² = 0.8 × 0.8 = 0.64: the line accounts for 64% of the variation in orders."
+      ]
+    },
+    "trap": {
+      "wrong": "Reading R² as the share of predictions that are right, or as proof that x causes y.",
+      "why": "R² is the share of the variation in y that the line explains. A high R² can still come from a confounder, and a prediction far outside the data range can be badly wrong."
+    },
+    "checkIds": [
+      "da2-3-2-num-028",
+      "da2-3-2-num-029",
+      "da2-3-2-num-030",
+      "da2-3-2-math-mcq-029",
+      "da2-3-2-mcq-032"
+    ]
+  },
+  {
+    "id": "d-logistic-regression",
+    "exam": "DA0-002",
+    "area": "D",
+    "title": "Logistic regression",
+    "objectiveIds": [
+      "1.5",
+      "3.2"
+    ],
+    "meaning": [
+      "Logistic regression predicts the chance of a yes/no outcome, such as whether a customer will cancel, as a probability between 0 and 1.",
+      "Analysts care because the exam asks which model fits a question, and a yes/no outcome points to logistic, not linear, regression."
+    ],
+    "rule": [
+      "The outcome has two values: yes or no, cancel or stay, fraud or genuine.",
+      "The model outputs a probability from 0 (surely no) to 1 (surely yes).",
+      "A threshold, usually 0.5, turns the probability into a class: at or above it is \"yes\".",
+      "Compare: linear regression predicts a number such as sales; logistic regression predicts the chance of a category."
+    ],
+    "example": {
+      "intro": "A churn model gives four customers a probability of cancelling. The team uses a threshold of 0.5.",
+      "table": {
+        "caption": "Turning probabilities into classes at a 0.5 threshold",
+        "head": [
+          "Customer",
+          "Probability",
+          "Class"
+        ],
+        "rows": [
+          [
+            "A",
+            "0.82",
+            "Will cancel"
+          ],
+          [
+            "B",
+            "0.45",
+            "Will stay"
+          ],
+          [
+            "C",
+            "0.50",
+            "Will cancel"
+          ],
+          [
+            "D",
+            "0.12",
+            "Will stay"
+          ]
+        ]
+      },
+      "steps": [
+        "Compare each probability with the threshold: 0.5 or more is classed as \"yes\".",
+        "A and C are classed as \"will cancel\"; B and D as \"will stay\".",
+        "Raising the threshold to 0.7 would leave only A, catching fewer real cancellations but raising fewer false alarms."
+      ]
+    },
+    "trap": {
+      "wrong": "Choosing linear regression for a yes/no outcome.",
+      "why": "Linear regression predicts any number and can give impossible values like 1.3 or −0.2 for a yes/no question. Logistic regression keeps the output between 0 and 1."
+    },
+    "checkIds": [
+      "da2-3-2-num-031",
+      "da2-1-5-math-mcq-001",
+      "da2-1-5-math-mcq-002"
+    ]
+  },
+  {
+    "id": "d-time-series",
+    "exam": "DA0-002",
+    "area": "D",
+    "title": "Time series: trend, seasonality and moving averages",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "meaning": [
+      "A time series is a measure recorded in time order, such as monthly sales. It can show a long-run trend, a repeating seasonal pattern, and random noise.",
+      "Analysts care because forecasting starts by separating these parts; a moving average smooths the noise so the trend shows."
+    ],
+    "formula": {
+      "text": "moving average = (sum of the last k values) ÷ k",
+      "spoken": "the moving average equals the sum of the last k values, divided by k",
+      "symbols": [
+        {
+          "symbol": "k",
+          "meaning": "the window: how many recent periods to average, such as 3 months"
+        },
+        {
+          "symbol": "sum of the last k values",
+          "meaning": "add up the k most recent values"
+        },
+        {
+          "symbol": "÷ k",
+          "meaning": "divide by the window size to get their mean"
+        }
+      ]
+    },
+    "example": {
+      "intro": "Monthly sign-ups were 40, 50, 60, 70 and 80. Find the 3-month moving averages.",
+      "table": {
+        "caption": "3-month moving average of sign-ups",
+        "head": [
+          "Month",
+          "Sign-ups",
+          "3-month moving average"
+        ],
+        "rows": [
+          [
+            "1",
+            "40",
+            "—"
+          ],
+          [
+            "2",
+            "50",
+            "—"
+          ],
+          [
+            "3",
+            "60",
+            "(40 + 50 + 60) ÷ 3 = 50"
+          ],
+          [
+            "4",
+            "70",
+            "(50 + 60 + 70) ÷ 3 = 60"
+          ],
+          [
+            "5",
+            "80",
+            "(60 + 70 + 80) ÷ 3 = 70"
+          ]
+        ]
+      },
+      "steps": [
+        "Each moving average uses only the latest 3 months, so months 1 and 2 have none.",
+        "The average change is (80 − 40) ÷ 4 changes = 10 a month.",
+        "A simple trend forecast for month 6 is 80 + 10 = 90."
+      ]
+    },
+    "trap": {
+      "wrong": "Calling a pattern that repeats every year a trend.",
+      "why": "Seasonality repeats at the same time each period, such as every December. A trend is the long-run direction across many periods. A forecast that ignores seasonality will miss the December peak."
+    },
+    "checkIds": [
+      "da2-3-2-num-032",
+      "da2-3-2-num-033",
+      "da2-3-2-math-mcq-030",
+      "da2-3-2-math-mcq-031"
+    ]
+  }
+]

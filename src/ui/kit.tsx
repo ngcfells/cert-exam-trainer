@@ -6,6 +6,7 @@ import type { ExamItem } from '../exam/assemble';
 import type { ItemResponse } from '../exam/scoring';
 import { formatTime } from './exam/formatTime';
 import { McqView } from './exam/McqView';
+import { NumericView } from './exam/NumericView';
 import { PbqView } from './exam/pbq/PbqView';
 
 export const metaFor = (code: string): ExamMeta => listExams().find((m) => m.code === code)!;
@@ -19,6 +20,7 @@ export { Table } from './Table';
 /** An MCQ or a PBQ, whichever the item is. */
 export function QuestionView({ item, response, onChange }: { item: ExamItem; response: ItemResponse | undefined; onChange: (v: ItemResponse) => void }) {
   const key = item.question.id;
+  if (item.question.type === 'numeric') return <NumericView key={key} item={item} value={Array.isArray(response) ? (response[0] ?? '') : ''} onChange={onChange} />;
   return isPbqTemplate(item.question.type) ? (
     <PbqView key={key} item={item} value={response && !Array.isArray(response) ? response : ({} as PartMap)} onChange={onChange} />
   ) : (

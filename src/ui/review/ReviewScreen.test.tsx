@@ -39,6 +39,14 @@ describe('ReviewScreen', () => {
     expect(screen.getByText('No items match.')).toBeInTheDocument();
   });
 
+  it('filters to typed-number items', async () => {
+    const user = userEvent.setup();
+    const num = dataPlusFixtureQuestions.find((q) => q.type === 'numeric')!;
+    render(<ReviewScreen examCode="DA0-002" questions={[...questions, { ...num, status: 'approved' }]} onExit={() => {}} />);
+    await user.selectOptions(screen.getByRole('combobox', { name: 'Type' }), 'numeric');
+    expect(screen.getByText('Item 1 of 1')).toBeInTheDocument();
+  });
+
   it('approve posts the item as approved and moves on', async () => {
     const user = userEvent.setup();
     render(<ReviewScreen examCode="DA0-002" questions={questions} onExit={() => {}} />);

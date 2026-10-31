@@ -2248,5 +2248,1762 @@
     },
     "acronyms": [],
     "status": "approved"
+  },
+  {
+    "id": "da2-2-3-num-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A discount rate column stores 0.035. What is that rate as a percent? Answer as a percent to one decimal place, e.g. 12.5.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 3.5,
+      "tolerance": 0.05
+    },
+    "explanation": "A rate stored as a decimal becomes a percent when you multiply by 100: 0.035 × 100 = 3.5%."
+  },
+  {
+    "id": "da2-2-3-num-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A report shows revenue of 3.7 million dollars. A dashboard tile shows revenue in thousands. What number should the tile show? Answer as a whole number of thousands.",
+    "payload": {},
+    "answer": {
+      "value": 3700,
+      "tolerance": 0.5
+    },
+    "explanation": "One million is 1,000 thousands, so 3.7 million = 3.7 × 1,000 = 3,700 thousand."
+  },
+  {
+    "id": "da2-2-3-num-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A $200 bonus pool is split equally among 3 staff. What is each share? Answer in dollars, rounded to two decimal places.",
+    "payload": {
+      "prefix": "$"
+    },
+    "answer": {
+      "value": 66.67,
+      "tolerance": 0.005
+    },
+    "explanation": "200 ÷ 3 = 66.666…, which rounds to 66.67. Round once, at the end: three rounded shares add to 200.01, so the report should note the rounding."
+  },
+  {
+    "id": "da2-2-3-num-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A column has a minimum of 20 and a maximum of 100. After min-max scaling to the range 0 to 1, what is the scaled value of 40? Answer as a decimal to two places.",
+    "payload": {},
+    "answer": {
+      "value": 0.25,
+      "tolerance": 0.01
+    },
+    "explanation": "Scaled value = (x − min) ÷ (max − min) = (40 − 20) ÷ (100 − 20) = 20 ÷ 80 = 0.25."
+  },
+  {
+    "id": "da2-2-3-num-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Test scores have a mean of 40 and a standard deviation of 5. What is the z-score of a score of 32? Answer to one decimal place, including a minus sign if it is negative.",
+    "payload": {},
+    "answer": {
+      "value": -1.6,
+      "tolerance": 0.05
+    },
+    "explanation": "z = (x − mean) ÷ standard deviation = (32 − 40) ÷ 5 = −8 ÷ 5 = −1.6. The score is 1.6 standard deviations below the mean, so z is negative."
+  },
+  {
+    "id": "da2-2-3-num-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "Delivery times have a mean of 50 minutes and a standard deviation of 10 minutes. One delivery has a z-score of −1.5. How many minutes did it take? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 35,
+      "tolerance": 0.5
+    },
+    "explanation": "Work backwards: x = mean + z × standard deviation = 50 + (−1.5 × 10) = 50 − 15 = 35 minutes."
+  },
+  {
+    "id": "da2-2-3-num-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "Values in a column run from 20 to 95. An analyst makes 5 equal-width bins. How wide is each bin? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 15,
+      "tolerance": 0.5
+    },
+    "explanation": "Bin width = (max − min) ÷ number of bins = (95 − 20) ÷ 5 = 75 ÷ 5 = 15."
+  },
+  {
+    "id": "da2-2-3-num-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Bins are 20 units wide and start at 0: bin 1 holds 0 up to (but not including) 20, bin 2 holds 20 up to 40, and so on. Which bin number holds the value 52? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 3,
+      "tolerance": 0.5
+    },
+    "explanation": "Bin 1 is 0–under 20, bin 2 is 20–under 40, bin 3 is 40–under 60. 52 falls in bin 3. As arithmetic: 52 ÷ 20 = 2.6, drop the decimals to get 2, then add 1."
+  },
+  {
+    "id": "da2-2-3-num-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "An order was placed on 20 February 2026 and delivered on 5 March 2026. How many days is that, computed as delivery date minus order date (do not count the order date itself)? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 13,
+      "tolerance": 0.5
+    },
+    "explanation": "February 2026 has 28 days, so 20 February to 28 February is 8 days, and 28 February to 5 March is 5 more: 8 + 5 = 13 days."
+  },
+  {
+    "id": "da2-2-3-num-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A shift starts at 07:45 and ends at 16:15 on the same day. How long is the shift in hours? Answer as a decimal to one place, e.g. 7.5.",
+    "payload": {},
+    "answer": {
+      "value": 8.5,
+      "tolerance": 0.05
+    },
+    "explanation": "From 07:45 to 15:45 is 8 hours, and 15:45 to 16:15 is 30 minutes = 0.5 hours. 8 + 0.5 = 8.5 hours. Convert minutes to hours by dividing by 60, not by 100."
+  },
+  {
+    "id": "da2-2-3-num-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A store had 450 orders and 27 returns in a month. What is the return rate? Answer as a percent to one decimal place.",
+    "payload": {
+      "suffix": "%"
+    },
+    "answer": {
+      "value": 6,
+      "tolerance": 0.05
+    },
+    "explanation": "Return rate = returns ÷ orders = 27 ÷ 450 = 0.06, and 0.06 × 100 = 6.0%."
+  },
+  {
+    "id": "da2-2-3-num-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "Daily sales were $90, $140, $70 and $110. A running total column adds each day to the days before it. What is the running total on day 3? Answer in whole dollars.",
+    "payload": {
+      "prefix": "$"
+    },
+    "answer": {
+      "value": 300,
+      "tolerance": 0.5
+    },
+    "explanation": "Day 1: 90. Day 2: 90 + 140 = 230. Day 3: 230 + 70 = 300. The running total stops at the current row, so day 4 is not included."
+  },
+  {
+    "id": "da2-2-3-math-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst rounds each unit price to the nearest dollar, then multiplies by quantity and sums 10,000 order lines. The total is noticeably off from finance's figure. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The quantity column is stored as text"
+        },
+        {
+          "id": "b",
+          "text": "Rounding happened before the calculation"
+        },
+        {
+          "id": "c",
+          "text": "The prices should be in thousands"
+        },
+        {
+          "id": "d",
+          "text": "Floating-point error in the multiplication"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Rounding each value first lets small errors add up across thousands of rows. Keep full precision in the calculation and round only the final figure for display. Floating-point error is far too small to explain a noticeable gap."
+  },
+  {
+    "id": "da2-2-3-math-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A model needs every input bounded between 0 and 1, with the smallest value at 0 and the largest at 1. Which scaling method fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "z-score standardization"
+        },
+        {
+          "id": "b",
+          "text": "Min-max scaling"
+        },
+        {
+          "id": "c",
+          "text": "Log transformation"
+        },
+        {
+          "id": "d",
+          "text": "Equal-width binning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Min-max scaling, (x − min) ÷ (max − min), maps the minimum to 0 and the maximum to 1. A z-score is centred on 0 and can be negative or above 1; a log transformation has no fixed bounds; binning turns numbers into ranges."
+  },
+  {
+    "id": "da2-2-3-math-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Scores run from 0 to 100 and are split into 5 equal-width bins. Which set of bin ranges is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "0–20, 20–40, 40–60, 60–80, 80–100"
+        },
+        {
+          "id": "b",
+          "text": "0–45, 45–60, 60–70, 70–80, 80–100"
+        },
+        {
+          "id": "c",
+          "text": "0–25, 25–50, 50–75, 75–100"
+        },
+        {
+          "id": "d",
+          "text": "0–10, 10–30, 30–50, 50–70, 70–100"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Width = (100 − 0) ÷ 5 = 20, so each of the 5 bins covers 20 points from 0 up to 100. Bins of different widths, such as 0–45 then 45–60, are what equal-count (equal-frequency) binning produces. Four 25-point bins are the wrong number of bins."
+  },
+  {
+    "id": "da2-2-3-math-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A monthly sales table gains a column whose value in each row is that month's sales plus all earlier months' sales in the year. What is this derived field?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A moving average"
+        },
+        {
+          "id": "b",
+          "text": "A ratio"
+        },
+        {
+          "id": "c",
+          "text": "A running total"
+        },
+        {
+          "id": "d",
+          "text": "A duration"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A running (cumulative) total adds each row to everything before it. A moving average takes the mean of a fixed window of recent rows, a ratio divides one value by another, and a duration subtracts two dates or times."
+  },
+  {
+    "id": "da2-2-3-num-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Employees (dept_id values 10, 20, 20, 30, 40) is inner joined to Departments (dept_id values 10, 20, 50) on dept_id. How many rows are in the result? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 3,
+      "tolerance": 0.5
+    },
+    "explanation": "An inner join keeps only matched pairs. The employee in 10 matches one department and both employees in 20 match one department each: 1 + 2 = 3. Departments 30 and 40 do not exist, and no employee is in 50."
+  },
+  {
+    "id": "da2-2-3-num-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A human resources analyst must list every employee, with the department details where they exist. Employees holds dept_id 10, 20, 20, 30 and 40; Departments holds dept_id 10, 20 and 50. Using Employees LEFT JOIN Departments, how many rows come back? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 5,
+      "tolerance": 0.5
+    },
+    "explanation": "A left join keeps every row of the left table at least once. The 3 matched rows stay, and the employees in 30 and 40 are kept with blank (null) department columns: 3 + 2 = 5."
+  },
+  {
+    "id": "da2-2-3-num-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "A manager wants every department listed, even ones with no staff yet. Employees holds dept_id 10, 20, 20, 30 and 40; Departments holds dept_id 10, 20 and 50. Using Employees RIGHT JOIN Departments on dept_id, how many result rows are there? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 4,
+      "tolerance": 0.5
+    },
+    "explanation": "A right join keeps every row of the right table at least once. The 3 matched rows stay, and department 50, which has no employees, is added with null employee columns: 3 + 1 = 4."
+  },
+  {
+    "id": "da2-2-3-num-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "To reconcile two systems, an analyst runs a full outer join of Employees (dept_id 10, 20, 20, 30, 40) and Departments (dept_id 10, 20, 50). How many rows does the result show, including unmatched rows from both sides? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 6,
+      "tolerance": 0.5
+    },
+    "explanation": "A full outer join returns matched rows once, plus unmatched rows from each side: 3 matched + 2 unmatched employees (30, 40) + 1 unmatched department (50) = 6."
+  },
+  {
+    "id": "da2-2-3-num-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A clothing shop has a Sizes table with 4 rows and a Colors table with 6 rows. A cross join builds every size-and-color combination. How many rows does it return? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 24,
+      "tolerance": 0.5
+    },
+    "explanation": "A cross join pairs every row of one table with every row of the other: 4 × 6 = 24."
+  },
+  {
+    "id": "da2-2-3-num-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "An analyst joins a 120-row Orders table to a 15-row Stores table but forgets the join condition, so the database pairs every order with every store. How many rows come back? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 1800,
+      "tolerance": 0.5
+    },
+    "explanation": "Without a condition the join becomes a cross join: 120 × 15 = 1,800 rows, instead of 120 (one store per order). A result far larger than either table is the warning sign."
+  },
+  {
+    "id": "da2-2-3-num-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Products has one row each for P1, P2 and P3. A Prices table was meant to hold one price per product, but P2 appears 3 times (P1, P2, P2, P2, P3). How many rows does an inner join on product_id return? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 5,
+      "tolerance": 0.5
+    },
+    "explanation": "P1 and P3 match once each, and P2 matches 3 price rows, so it appears 3 times: 1 + 3 + 1 = 5. The 2 extra rows are duplicates caused by the key that is not unique in Prices."
+  },
+  {
+    "id": "da2-2-3-num-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Orders has two rows: O1 with order_amount $80 and O2 with order_amount $120. Payments has 2 rows for O1 (a split payment) and 3 rows for O2. After joining Orders to Payments on order_id, an analyst sums order_amount. What total do they get? Answer in whole dollars.",
+    "payload": {
+      "prefix": "$"
+    },
+    "answer": {
+      "value": 520,
+      "tolerance": 0.5
+    },
+    "explanation": "Each order amount repeats once per payment row: 80 × 2 + 120 × 3 = 160 + 360 = $520. The true order total is 80 + 120 = $200. Sum the order amounts before the join, or count each order once."
+  },
+  {
+    "id": "da2-2-3-num-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 3,
+    "stem": "Customers has 8 rows (K1 to K8). Orders has 6 rows with customer_id K1, K2, K2, K4, K6 and K9. Compared with a left join from Customers, how many customers disappear from the result when an inner join is used instead? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 4,
+      "tolerance": 0.5
+    },
+    "explanation": "Customers K3, K5, K7 and K8 have no orders. A left join keeps them with null order columns (9 rows); an inner join drops them (5 rows). K9 matches no customer, so both joins leave it out."
+  },
+  {
+    "id": "da2-2-3-num-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 2,
+    "stem": "Two monthly extracts with the same columns are stacked. January has 40 distinct rows, February has 35 distinct rows, and 5 rows are identical in both months. How many rows does a union that removes duplicate rows return? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 70,
+      "tolerance": 0.5
+    },
+    "explanation": "A union that removes duplicates keeps one copy of each shared row: 40 + 35 − 5 = 70. A union all would keep every row: 75."
+  },
+  {
+    "id": "da2-2-3-num-023",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "numeric",
+    "difficulty": 1,
+    "stem": "A wide table has 12 rows, one per store, with the columns store, jan_sales, feb_sales and mar_sales. Unpivoting the three month columns makes one row per store per month. How many rows result? Answer as a whole number.",
+    "payload": {},
+    "answer": {
+      "value": 36,
+      "tolerance": 0.5
+    },
+    "explanation": "Unpivoting turns each of the 3 month columns into its own row for every store: 12 × 3 = 36 rows, with columns store, month and sales."
+  },
+  {
+    "id": "da2-2-3-math-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A sales manager wants a list of every customer, including customers who have never ordered, with any order totals beside them. Customers is the left table and Orders the right. Which join should the analyst use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Inner join"
+        },
+        {
+          "id": "b",
+          "text": "Cross join"
+        },
+        {
+          "id": "c",
+          "text": "Right join"
+        },
+        {
+          "id": "d",
+          "text": "Left join"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A left join keeps every row of the left table (Customers) and fills order columns with nulls where there is no match. An inner join drops customers with no orders, a right join keeps every order instead, and a cross join pairs every customer with every order."
+  },
+  {
+    "id": "da2-2-3-math-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A query joins a 50-row table to a 20-row table with no join condition and returns 1,000 rows. What happened?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Only rows whose keys matched in both tables came back"
+        },
+        {
+          "id": "b",
+          "text": "Each row was paired with every row of the other table"
+        },
+        {
+          "id": "c",
+          "text": "Duplicate keys in the 20-row table doubled the matches"
+        },
+        {
+          "id": "d",
+          "text": "Unmatched rows from both tables were added with nulls"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "With no condition, the database makes a cross join: 50 × 20 = 1,000 combinations. Matched rows only is an inner join, unmatched rows from both sides is a full outer join, and duplicate keys would not multiply every row."
+  },
+  {
+    "id": "da2-2-3-math-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Before a join, Orders had 1,000 rows. After a left join to a Shipments table on order_id, the result has 1,340 rows. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Some orders have more than one shipment row"
+        },
+        {
+          "id": "b",
+          "text": "The left join dropped orders with no shipment"
+        },
+        {
+          "id": "c",
+          "text": "The two order_id columns use different types"
+        },
+        {
+          "id": "d",
+          "text": "Shipments holds fewer rows than Orders does"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A left join keeps each order at least once and repeats it once per matching shipment, so split shipments add rows. A left join never drops left rows, a type mismatch would cause missing matches rather than extra rows, and a smaller Shipments table cannot add rows on its own."
+  },
+  {
+    "id": "da2-2-3-math-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which of these describes a union rather than a join?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Adds columns from a second table that shares a key"
+        },
+        {
+          "id": "b",
+          "text": "Pairs every row with every row of another table"
+        },
+        {
+          "id": "c",
+          "text": "Stacks rows from tables that have the same columns"
+        },
+        {
+          "id": "d",
+          "text": "Keeps unmatched rows from both tables with nulls"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A union stacks rows, so the tables need the same columns in the same order. Joins work side by side: they add columns by matching keys (inner, left, right, full outer) or by pairing every row (cross join)."
+  },
+  {
+    "id": "da2-2-3-math-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A table has one row per store per month (store, month, sales). A report needs one row per store with a separate column for each month. Which operation does this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Unpivot"
+        },
+        {
+          "id": "b",
+          "text": "Union"
+        },
+        {
+          "id": "c",
+          "text": "Cross join"
+        },
+        {
+          "id": "d",
+          "text": "Pivot"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Pivoting turns the values of one column (month) into column headings, giving one row per store. Unpivoting does the reverse, a union stacks rows, and a cross join pairs every row with every row."
+  },
+  {
+    "id": "da2-2-3-config-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "An analyst at Brightwater Books has a Customers table and an Orders table, both with customer_id. Customers is always the left table. Choose the join for each request.",
+    "payload": {
+      "fields": [
+        {
+          "id": "buyers",
+          "label": "Only customers who have placed at least one order, with their orders",
+          "options": [
+            {
+              "id": "left",
+              "text": "Left join"
+            },
+            {
+              "id": "inner",
+              "text": "Inner join"
+            },
+            {
+              "id": "full",
+              "text": "Full outer join"
+            }
+          ]
+        },
+        {
+          "id": "all",
+          "label": "Every customer, with order details where they exist",
+          "options": [
+            {
+              "id": "inner",
+              "text": "Inner join"
+            },
+            {
+              "id": "cross",
+              "text": "Cross join"
+            },
+            {
+              "id": "left",
+              "text": "Left join"
+            }
+          ]
+        },
+        {
+          "id": "orders",
+          "label": "Every order, including orders whose customer_id matches no customer",
+          "options": [
+            {
+              "id": "right",
+              "text": "Right join"
+            },
+            {
+              "id": "left",
+              "text": "Left join"
+            },
+            {
+              "id": "inner",
+              "text": "Inner join"
+            }
+          ]
+        },
+        {
+          "id": "recon",
+          "label": "Every customer and every order, matched where possible, to reconcile the two systems",
+          "options": [
+            {
+              "id": "inner",
+              "text": "Inner join"
+            },
+            {
+              "id": "full",
+              "text": "Full outer join"
+            },
+            {
+              "id": "right",
+              "text": "Right join"
+            }
+          ]
+        },
+        {
+          "id": "mail",
+          "label": "Every customer paired with every row of a 4-row Mailings table",
+          "options": [
+            {
+              "id": "left",
+              "text": "Left join"
+            },
+            {
+              "id": "full",
+              "text": "Full outer join"
+            },
+            {
+              "id": "cross",
+              "text": "Cross join"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "buyers": "inner",
+        "all": "left",
+        "orders": "right",
+        "recon": "full",
+        "mail": "cross"
+      }
+    },
+    "explanation": "Inner keeps only matches; left keeps all of the left table (Customers); right keeps all of the right table (Orders); full outer keeps everything from both; cross pairs every row with every row.",
+    "partExplanations": {
+      "buyers": "Customers with no order have no match, so an inner join drops them.",
+      "all": "A left join keeps customers without orders, with null order columns.",
+      "orders": "Orders is the right table, so a right join keeps every order, even orphans.",
+      "recon": "A full outer join shows unmatched rows from both sides, which is what a reconciliation needs.",
+      "mail": "Every combination of customer and mailing is a cross join."
+    }
+  },
+  {
+    "id": "da2-2-3-config-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 3,
+    "pbqWeight": 5,
+    "stem": "An analyst at Kestrel Logistics is combining and reshaping shipment data. Choose the operation for each task.",
+    "payload": {
+      "fields": [
+        {
+          "id": "years",
+          "label": "Stack this year's and last year's shipment extracts, which have identical columns, keeping every row",
+          "options": [
+            {
+              "id": "union",
+              "text": "Union (removes duplicates)"
+            },
+            {
+              "id": "unionall",
+              "text": "Union all"
+            },
+            {
+              "id": "inner",
+              "text": "Inner join"
+            }
+          ]
+        },
+        {
+          "id": "codes",
+          "label": "Build one list of distinct supplier codes from two regional lists",
+          "options": [
+            {
+              "id": "unionall",
+              "text": "Union all"
+            },
+            {
+              "id": "cross",
+              "text": "Cross join"
+            },
+            {
+              "id": "union",
+              "text": "Union (removes duplicates)"
+            }
+          ]
+        },
+        {
+          "id": "carrier",
+          "label": "Add each shipment's carrier name from the Carriers table",
+          "options": [
+            {
+              "id": "join",
+              "text": "Join on carrier_id"
+            },
+            {
+              "id": "union",
+              "text": "Union (removes duplicates)"
+            },
+            {
+              "id": "pivot",
+              "text": "Pivot"
+            }
+          ]
+        },
+        {
+          "id": "wide",
+          "label": "Turn one row per depot per month into one row per depot with a column per month",
+          "options": [
+            {
+              "id": "unpivot",
+              "text": "Unpivot"
+            },
+            {
+              "id": "pivot",
+              "text": "Pivot"
+            },
+            {
+              "id": "unionall",
+              "text": "Union all"
+            }
+          ]
+        },
+        {
+          "id": "long",
+          "label": "Turn the columns q1_cost to q4_cost into one row per depot per quarter",
+          "options": [
+            {
+              "id": "pivot",
+              "text": "Pivot"
+            },
+            {
+              "id": "join",
+              "text": "Join on carrier_id"
+            },
+            {
+              "id": "unpivot",
+              "text": "Unpivot"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "years": "unionall",
+        "codes": "union",
+        "carrier": "join",
+        "wide": "pivot",
+        "long": "unpivot"
+      }
+    },
+    "explanation": "Unions stack rows from tables with the same columns: union all keeps every row and union removes duplicates. A join adds columns by matching a key. Pivot turns row values into columns; unpivot turns columns into rows.",
+    "partExplanations": {
+      "years": "Every row must stay, so union all; a plain union would drop identical rows.",
+      "codes": "A distinct list needs duplicates removed, which a union does.",
+      "carrier": "Carrier name is a new column, matched by carrier_id: a join.",
+      "wide": "Month values become column headings: pivot.",
+      "long": "Four quarter columns become rows: unpivot."
+    }
+  },
+  {
+    "id": "da2-2-3-data-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "At Larchmont Clinic, a Visits table is joined to a Doctors table on doctor_id, with Visits as the left table. The table below lists every row of both tables. A null doctor_id matches nothing. Answer each question.",
+    "payload": {
+      "caption": "Rows of the Visits and Doctors tables",
+      "columns": [
+        "Table",
+        "Row",
+        "doctor_id"
+      ],
+      "rows": [
+        [
+          "Visits",
+          "V1",
+          "D1"
+        ],
+        [
+          "Visits",
+          "V2",
+          "D2"
+        ],
+        [
+          "Visits",
+          "V3",
+          "D2"
+        ],
+        [
+          "Visits",
+          "V4",
+          "D4"
+        ],
+        [
+          "Visits",
+          "V5",
+          "(null)"
+        ],
+        [
+          "Doctors",
+          "Dr Okafor",
+          "D1"
+        ],
+        [
+          "Doctors",
+          "Dr Lind",
+          "D2"
+        ],
+        [
+          "Doctors",
+          "Dr Sato",
+          "D3"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "inner",
+          "label": "Rows from an inner join",
+          "options": [
+            {
+              "id": "5",
+              "text": "5"
+            },
+            {
+              "id": "3",
+              "text": "3"
+            },
+            {
+              "id": "4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "left",
+          "label": "Rows from a left join",
+          "options": [
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "6",
+              "text": "6"
+            },
+            {
+              "id": "5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "right",
+          "label": "Rows from a right join",
+          "options": [
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "3",
+              "text": "3"
+            },
+            {
+              "id": "5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "full",
+          "label": "Rows from a full outer join",
+          "options": [
+            {
+              "id": "7",
+              "text": "7"
+            },
+            {
+              "id": "5",
+              "text": "5"
+            },
+            {
+              "id": "6",
+              "text": "6"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "inner": "3",
+        "left": "5",
+        "right": "4",
+        "full": "6"
+      }
+    },
+    "explanation": "Matches: V1 with D1, and V2 and V3 with D2, so 3 matched rows. V4 (D4 does not exist) and V5 (null) have no doctor, and Dr Sato (D3) has no visits. Left adds the 2 unmatched visits, right adds the 1 unmatched doctor, and full outer adds all 3.",
+    "partExplanations": {
+      "inner": "Only matched pairs: V1–D1, V2–D2, V3–D2.",
+      "left": "3 matches + V4 and V5 with null doctor columns = 5.",
+      "right": "3 matches + Dr Sato with null visit columns = 4.",
+      "full": "3 matches + 2 unmatched visits + 1 unmatched doctor = 6."
+    }
+  },
+  {
+    "id": "da2-2-3-data-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "An analyst at Pinecrest Outfitters joined Orders to Shipments on order_id and got the result below. Each order should be counted once in revenue. Answer each question.",
+    "payload": {
+      "caption": "Orders joined to Shipments",
+      "columns": [
+        "order_id",
+        "order_amount ($)",
+        "shipment_id"
+      ],
+      "rows": [
+        [
+          "5001",
+          "200",
+          "S1"
+        ],
+        [
+          "5001",
+          "200",
+          "S2"
+        ],
+        [
+          "5002",
+          "150",
+          "S3"
+        ],
+        [
+          "5003",
+          "90",
+          "S4"
+        ],
+        [
+          "5003",
+          "90",
+          "S5"
+        ],
+        [
+          "5003",
+          "90",
+          "S6"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "sum",
+          "label": "Sum of order_amount in this result",
+          "options": [
+            {
+              "id": "440",
+              "text": "$440"
+            },
+            {
+              "id": "620",
+              "text": "$620"
+            },
+            {
+              "id": "820",
+              "text": "$820"
+            }
+          ]
+        },
+        {
+          "id": "true",
+          "label": "True revenue, counting each order once",
+          "options": [
+            {
+              "id": "440",
+              "text": "$440"
+            },
+            {
+              "id": "820",
+              "text": "$820"
+            },
+            {
+              "id": "290",
+              "text": "$290"
+            }
+          ]
+        },
+        {
+          "id": "multi",
+          "label": "Orders with more than one shipment",
+          "options": [
+            {
+              "id": "1",
+              "text": "1"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "fix",
+          "label": "Best fix for the revenue figure",
+          "options": [
+            {
+              "id": "inner",
+              "text": "Switch to an inner join"
+            },
+            {
+              "id": "drop",
+              "text": "Delete the shipment_id column"
+            },
+            {
+              "id": "before",
+              "text": "Sum order_amount in Orders before joining"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "sum": "820",
+        "true": "440",
+        "multi": "2",
+        "fix": "before"
+      }
+    },
+    "explanation": "Each order amount repeats once per shipment: 200 × 2 + 150 + 90 × 3 = $820, but the three orders total 200 + 150 + 90 = $440. Orders 5001 and 5003 have several shipments. Aggregate before the join (or count each order once); changing the join type or dropping a column does not remove the repeats.",
+    "partExplanations": {
+      "sum": "400 + 150 + 270 = $820.",
+      "true": "200 + 150 + 90 = $440.",
+      "multi": "5001 has 2 shipments and 5003 has 3; 5002 has 1.",
+      "fix": "Summing in Orders first counts each order once. An inner join still repeats matched orders, and dropping shipment_id leaves the repeated rows."
+    }
+  },
+  {
+    "id": "da2-2-3-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Match each operation to the rows it returns.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Inner join"
+        },
+        {
+          "id": "p2",
+          "text": "Left join"
+        },
+        {
+          "id": "p3",
+          "text": "Right join"
+        },
+        {
+          "id": "p4",
+          "text": "Full outer join"
+        },
+        {
+          "id": "p5",
+          "text": "Cross join"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Only rows with a match in both tables"
+        },
+        {
+          "id": "c2",
+          "text": "All rows from the first table, plus matches from the second"
+        },
+        {
+          "id": "c3",
+          "text": "All rows from the second table, plus matches from the first"
+        },
+        {
+          "id": "c4",
+          "text": "All rows from both tables, matched where possible"
+        },
+        {
+          "id": "c5",
+          "text": "Every row of one table paired with every row of the other"
+        },
+        {
+          "id": "c6",
+          "text": "Rows of both tables stacked under the same columns"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5"
+      }
+    },
+    "explanation": "Joins differ in which unmatched rows they keep: none (inner), the first table's (left), the second table's (right) or both (full outer). A cross join ignores keys and makes every combination. Stacking rows is a union, not a join.",
+    "partExplanations": {
+      "p1": "Unmatched rows on either side are dropped.",
+      "p2": "Left rows with no match are kept with nulls.",
+      "p3": "Right rows with no match are kept with nulls.",
+      "p4": "Unmatched rows from both sides are kept.",
+      "p5": "Rows = rows in one table × rows in the other."
+    }
+  },
+  {
+    "id": "da2-2-3-order-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Put the steps for safely joining a vendor price extract to the product master into order.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Run the join on the key"
+        },
+        {
+          "id": "s1",
+          "text": "Profile the key column in both tables for blanks and duplicates"
+        },
+        {
+          "id": "s5",
+          "text": "Compare row counts and totals before and after the join"
+        },
+        {
+          "id": "s3",
+          "text": "Resolve duplicate keys in the table meant to have one row per key"
+        },
+        {
+          "id": "s2",
+          "text": "Convert both key columns to the same data type"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "explanation": "Look at the keys first, then make them comparable and unique, and only then join. Checking row counts and totals afterwards proves the join neither lost nor duplicated rows.",
+    "partExplanations": {
+      "s1": "Profiling shows what needs fixing before anything changes.",
+      "s2": "A text \"007\" never matches a number 7, so types must agree first; converting also exposes hidden duplicates such as \"007\" and 7, which the next step resolves.",
+      "s3": "Duplicate keys would repeat rows in the result.",
+      "s4": "The join runs once the keys are clean.",
+      "s5": "Reconciling counts and totals catches lost or repeated rows."
+    }
+  },
+  {
+    "id": "da2-2-3-terminal-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "An analyst at Fairmont Credit Union must list every member with their loan balances, including members who have no loan. Every loan belongs to an existing member. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "tables: members(member_id, full_name, branch)",
+        "        loans(loan_id, member_id, balance)",
+        "sql> SELECT COUNT(*) FROM members;",
+        "120",
+        "sql> SELECT COUNT(DISTINCT member_id) FROM loans;",
+        "85"
+      ],
+      "steps": [
+        {
+          "id": "kind",
+          "label": "Choose the join to write after FROM members",
+          "options": [
+            {
+              "id": "inner",
+              "text": "INNER JOIN loans"
+            },
+            {
+              "id": "cross",
+              "text": "CROSS JOIN loans"
+            },
+            {
+              "id": "left",
+              "text": "LEFT JOIN loans"
+            },
+            {
+              "id": "right",
+              "text": "RIGHT JOIN loans"
+            }
+          ]
+        },
+        {
+          "id": "on",
+          "label": "Type the ON condition that links the two tables, using full table names (or a USING clause)"
+        },
+        {
+          "id": "min",
+          "label": "Choose the fewest rows the result can have",
+          "options": [
+            {
+              "id": "85",
+              "text": "85"
+            },
+            {
+              "id": "120",
+              "text": "120"
+            },
+            {
+              "id": "205",
+              "text": "205"
+            },
+            {
+              "id": "10200",
+              "text": "10,200"
+            }
+          ]
+        },
+        {
+          "id": "blank",
+          "label": "Choose what balance shows for the 35 members with no loan",
+          "options": [
+            {
+              "id": "zero",
+              "text": "0"
+            },
+            {
+              "id": "null",
+              "text": "Null (empty)"
+            },
+            {
+              "id": "dropped",
+              "text": "Nothing: those rows are dropped"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "kind": [
+          "left"
+        ],
+        "on": [
+          "ON members.member_id=loans.member_id",
+          "on members.member_id=loans.member_id",
+          "On members.member_id=loans.member_id",
+          "members.member_id=loans.member_id",
+          "ON members.member_id = loans.member_id",
+          "on members.member_id = loans.member_id",
+          "On members.member_id = loans.member_id",
+          "members.member_id = loans.member_id",
+          "ON members.member_id= loans.member_id",
+          "on members.member_id= loans.member_id",
+          "On members.member_id= loans.member_id",
+          "members.member_id= loans.member_id",
+          "ON members.member_id =loans.member_id",
+          "on members.member_id =loans.member_id",
+          "On members.member_id =loans.member_id",
+          "members.member_id =loans.member_id",
+          "ON loans.member_id=members.member_id",
+          "on loans.member_id=members.member_id",
+          "On loans.member_id=members.member_id",
+          "loans.member_id=members.member_id",
+          "ON loans.member_id = members.member_id",
+          "on loans.member_id = members.member_id",
+          "On loans.member_id = members.member_id",
+          "loans.member_id = members.member_id",
+          "ON loans.member_id= members.member_id",
+          "on loans.member_id= members.member_id",
+          "On loans.member_id= members.member_id",
+          "loans.member_id= members.member_id",
+          "ON loans.member_id =members.member_id",
+          "on loans.member_id =members.member_id",
+          "On loans.member_id =members.member_id",
+          "loans.member_id =members.member_id",
+          "USING (member_id)",
+          "USING(member_id)",
+          "using (member_id)",
+          "using(member_id)",
+          "Using (member_id)",
+          "Using(member_id)"
+        ],
+        "min": [
+          "120"
+        ],
+        "blank": [
+          "null"
+        ]
+      }
+    },
+    "explanation": "A left join from members keeps all 120 members. They join to loans on member_id, the foreign key in loans. Members with several loans appear more than once, so 120 is the minimum. The 35 members with no loan (120 − 85) get null in the loan columns.",
+    "partExplanations": {
+      "kind": "Members is the first (left) table, so LEFT JOIN keeps every member. An inner join would drop the 35 without loans.",
+      "on": "member_id is the primary key of members and a foreign key in loans.",
+      "min": "Every member appears at least once; extra loans only add rows.",
+      "blank": "An outer join fills unmatched columns with null, not 0; 0 would claim a real balance."
+    }
+  },
+  {
+    "id": "da2-2-3-diagram-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "acronyms": [],
+    "status": "approved",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Label the tables and the keys on the link between Sales and Product in this sales model.",
+    "payload": {
+      "width": 600,
+      "height": 300,
+      "nodes": [
+        {
+          "id": "center",
+          "x": 230,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "left",
+          "x": 20,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "right",
+          "x": 440,
+          "y": 120,
+          "w": 140,
+          "h": 60,
+          "text": "Dim: Store"
+        }
+      ],
+      "edges": [
+        {
+          "from": "center",
+          "to": "left"
+        },
+        {
+          "from": "center",
+          "to": "right"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-center",
+          "x": 230,
+          "y": 190,
+          "name": "Center table"
+        },
+        {
+          "id": "z-left",
+          "x": 20,
+          "y": 190,
+          "name": "Left table"
+        },
+        {
+          "id": "z-fk",
+          "x": 230,
+          "y": 60,
+          "name": "Key on the Sales side of the link"
+        },
+        {
+          "id": "z-pk",
+          "x": 20,
+          "y": 60,
+          "name": "Key on the Product side of the link"
+        }
+      ],
+      "labels": [
+        {
+          "id": "fact",
+          "text": "Fact: Sales"
+        },
+        {
+          "id": "dim",
+          "text": "Dim: Product"
+        },
+        {
+          "id": "fk",
+          "text": "Foreign key: product_id in Sales"
+        },
+        {
+          "id": "pk",
+          "text": "Primary key: product_id in Product"
+        },
+        {
+          "id": "bad",
+          "text": "Primary key: sale_id in Product"
+        },
+        {
+          "id": "name",
+          "text": "Join field: product_name"
+        },
+        {
+          "id": "store",
+          "text": "Foreign key: store_id in Sales"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-center": "fact",
+        "z-left": "dim",
+        "z-fk": "fk",
+        "z-pk": "pk"
+      }
+    },
+    "explanation": "The fact table sits at the center and stores a product_id on each sale: a foreign key that may repeat. Product holds one row per product_id, its primary key. The link joins on that identifier, never on a product name.",
+    "partExplanations": {
+      "z-center": "The fact table (sales events) is at the center of a star schema.",
+      "z-left": "Product describes the items sold: a dimension.",
+      "z-fk": "Many sales share a product_id, so in Sales it is a foreign key.",
+      "z-pk": "product_id is unique in Product: its primary key."
+    }
   }
 ]

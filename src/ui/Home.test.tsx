@@ -14,7 +14,7 @@ describe('Home', () => {
     vi.stubEnv('DEV', false);
     render(<Home repo={createMemoryRepo()} persistent />);
     const row = (await screen.findByText('CompTIA Data+ (DA0-002)')).closest('li')!;
-    expect(within(row).getByText('10 questions (ours)')).toBeInTheDocument();
+    expect(within(row).getByText('11 questions (ours)')).toBeInTheDocument();
     expect(await within(row).findByText('0 questions (mine)')).toBeInTheDocument();
   });
 
@@ -38,6 +38,7 @@ describe('Home', () => {
       ['Progress: DA0-002', 'progress'],
       ['My questions: DA0-002', 'questions'],
       ['Acronyms: DA0-002', 'acronyms'],
+      ['Learn: DA0-002', 'learn'],
     ] as const) {
       await user.click(screen.getByRole('button', { name }));
       expect(onNavigate).toHaveBeenLastCalledWith({ name: screenName, exam: 'DA0-002' });

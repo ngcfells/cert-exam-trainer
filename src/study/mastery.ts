@@ -1,3 +1,4 @@
+import { isUnitItem } from '../domain/numeric';
 import type { ExamMeta, Question } from '../domain/types';
 import { parseResults, resultMode, type ResultMode } from '../exam/result';
 import { itemFraction } from '../exam/scoring';
@@ -29,7 +30,7 @@ export function computeMastery(meta: ExamMeta, results: unknown[], questions: Qu
       const q = byId.get(id);
       const o = q && objectives.find((x) => x.objectiveId === q.objectiveIds[0]);
       if (!q || !o) continue;
-      const w = q.type === 'mcq-single' || q.type === 'mcq-multi' ? 1 : (q.pbqWeight ?? 1);
+      const w = isUnitItem(q) ? 1 : (q.pbqWeight ?? 1);
       o.attempts++;
       o.possible += w;
       o.earned += w * itemFraction(q, r.responses[id]);

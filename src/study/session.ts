@@ -1,11 +1,13 @@
 import type { AcronymEntry } from '../acronyms/list';
+import { isUnitItem } from '../domain/numeric';
 import type { ExamMeta, Question, QuestionType } from '../domain/types';
 import { freshFirst, itemFor, type AssembledExam } from '../exam/assemble';
 import { mulberry32, shuffle, type Rng } from '../exam/rng';
 import { weakestObjectives, type Mastery } from './mastery';
 import { isDue, parseSrsRecords } from './srs';
 
-const isMcq = (q: Question) => q.type === 'mcq-single' || q.type === 'mcq-multi';
+/** One-unit items (MCQs and typed numbers); everything else is a PBQ. */
+const isMcq = isUnitItem;
 
 function toExam(meta: ExamMeta, seed: number, chosen: Question[], rng: Rng): AssembledExam {
   const pbqs = chosen.filter((q) => !isMcq(q));

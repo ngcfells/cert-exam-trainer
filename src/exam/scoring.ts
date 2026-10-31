@@ -1,5 +1,6 @@
 import { HOTSPOT_ON, normalizeCommand, partCorrect, partIds, type PartMap } from '../domain/pbq';
-import type { ExamMeta, McqAnswer, Question } from '../domain/types';
+import { isUnitItem, numericCorrect, parseNumeric } from '../domain/numeric';
+import type { ExamMeta, McqAnswer, NumericAnswer, Question } from '../domain/types';
 import { domainOf, type AssembledExam } from './assemble';
 
 /** MCQ: selected option ids. PBQ: partId -> value id. */
@@ -11,11 +12,18 @@ export function isAnswered(r: ItemResponse | undefined): boolean {
   return Array.isArray(r) ? r.length > 0 : Object.values(r).some((v) => v.trim() !== '');
 }
 
+/** Answered at all: a numeric item needs a parseable number; others use `isAnswered`. */
+export function hasAnswer(q: Question, r: ItemResponse | undefined): boolean {
+  if (q.type === 'numeric') return Array.isArray(r) && r.length > 0 && parseNumeric(r[0]) !== null;
+  return isAnswered(r);
+}
+
 /**
- * Fully answered: an MCQ with a pick, a hotspot with any spot selected, or
- * another PBQ with every part filled. Drives the review grid.
+ * Fully answered: an MCQ with a pick, a number that parses, a hotspot with
+ * any spot selected, or another PBQ with every part filled. Drives the review grid.
  */
 export function isComplete(q: Question, r: ItemResponse | undefined): boolean {
+  if (q.type === 'numeric') return hasAnswer(q, r);
   if (!r || Array.isArray(r)) return isAnswered(r);
   if (q.type === 'pbq-hotspot') return Object.values(r).includes(HOTSPOT_ON);
   return partIds(q).every((id) => !!r[id] && normalizeCommand(r[id]) !== '');
@@ -34,6 +42,7 @@ export function pbqFraction(q: Question, given: PartMap): number {
 
 /** Fraction earned on one question, 0..1. */
 export function itemFraction(q: Question, r: ItemResponse | undefined): number {
+  if (q.type === 'numeric') return numericCorrect(q.answer as NumericAnswer, Array.isArray(r) ? r[0] : undefined) ? 1 : 0;
   if (q.type === 'mcq-single' || q.type === 'mcq-multi') return mcqFraction((q.answer as McqAnswer).correct, Array.isArray(r) ? r : [], q.type);
   return pbqFraction(q, r && !Array.isArray(r) ? r : {});
 }
@@ -78,10 +87,9 @@ export function scoreExam(exam: AssembledExam, responses: Responses, meta: ExamM
 
   const items: ItemScore[] = exam.items.map(({ question: q }) => {
     const r = responses[q.id];
-    if (q.type === 'mcq-single' || q.type === 'mcq-multi') {
-      const picked = Array.isArray(r) ? r : [];
-      const fraction = itemFraction(q, picked);
-      return { questionId: q.id, earned: unit * fraction, possible: unit, fraction, answered: picked.length > 0 };
+    if (isUnitItem(q)) {
+      const fraction = itemFraction(q, r);
+      return { questionId: q.id, earned: unit * fraction, possible: unit, fraction, answered: hasAnswer(q, r) };
     }
     const given: PartMap = r && !Array.isArray(r) ? r : {};
     const parts = partIds(q).map((partId) => ({ partId, correct: partCorrect(q, partId, given) }));

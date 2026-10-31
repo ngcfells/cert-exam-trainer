@@ -73,6 +73,12 @@ describe('question pack', () => {
     expect(res).toEqual({ imported: 1, skipped: [{ id: 'u2', reason: 'it is for T-PACK, not DA0-002' }] });
   });
 
+  it('imports a numeric user question and rejects a negative tolerance with a path', async () => {
+    const num = { ...userQ('n1'), type: 'numeric', payload: { suffix: '%' }, answer: { value: 25, tolerance: 0.5 } };
+    expect(await importPack(createMemoryRepo(), pack([num, userQ('u1')]))).toEqual({ imported: 2, skipped: [] });
+    await expect(importPack(createMemoryRepo(), pack([{ ...num, answer: { value: 1, tolerance: -1 } }]))).rejects.toThrow(/answer\.tolerance/);
+  });
+
   it('rejects invalid JSON', async () => {
     await expect(importPack(createMemoryRepo(), '{')).rejects.toThrow(/not valid JSON/);
   });

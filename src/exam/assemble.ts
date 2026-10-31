@@ -1,4 +1,5 @@
-import { elementIds } from '../domain/pbq';
+import { isUnitItem } from '../domain/numeric';
+import { elementIds, optionLists } from '../domain/pbq';
 import type { ExamMeta, McqPayload, Question, QuestionType } from '../domain/types';
 import { mulberry32, shuffle, weightedPick, type Rng } from './rng';
 
@@ -8,6 +9,8 @@ export interface ExamItem {
   optionOrder?: string[];
   /** Shuffled PBQ element ids (choices, steps, labels). */
   elementOrder?: string[];
+  /** Shuffled select option ids per part (config and data fields, terminal choice steps). */
+  partOrders?: Record<string, string[]>;
 }
 
 export interface AssembledExam {
@@ -55,7 +58,10 @@ export function itemFor(question: Question, rng: Rng): ExamItem {
     return { question, optionOrder: shuffle((question.payload as McqPayload).options.map((o) => o.id), rng) };
   }
   const ids = elementIds(question);
-  return ids.length ? { question, elementOrder: shuffle(ids, rng) } : { question };
+  const item: ExamItem = ids.length ? { question, elementOrder: shuffle(ids, rng) } : { question };
+  const lists = Object.entries(optionLists(question));
+  if (lists.length) item.partOrders = Object.fromEntries(lists.map(([part, opts]) => [part, shuffle(opts, rng)]));
+  return item;
 }
 
 /** Shuffled fresh questions, then shuffled recent ones. */
@@ -77,7 +83,7 @@ export function assembleExam({ meta, pool, seed, recentIds, pbqTypes }: Assemble
   const pbqItems = pbqs.map((q) => itemFor(q, rng));
 
   const byDomain = meta.domains.map((d) =>
-    freshFirst(pool.filter((q) => (q.type === 'mcq-single' || q.type === 'mcq-multi') && domainOf(meta, q) === d.id), recentIds, rng),
+    freshFirst(pool.filter((q) => isUnitItem(q) && domainOf(meta, q) === d.id), recentIds, rng),
   );
   const target = Math.min(meta.maxQuestions - pbqWeightSum, byDomain.reduce((s, qs) => s + qs.length, 0));
   const quota = allocateByWeight(target, meta.domains.map((d) => d.weight));

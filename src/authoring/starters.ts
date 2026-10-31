@@ -1,7 +1,14 @@
-import type { PbqTemplate } from '../domain/pbq';
+import { isPbqTemplate, type PbqTemplate } from '../domain/pbq';
+import type { QuestionType } from '../domain/types';
 
-/** A valid example payload and answer per PBQ template, loaded when an author picks the type. */
-export const PBQ_STARTERS: Record<PbqTemplate, { payload: unknown; answer: unknown }> = {
+export type JsonType = PbqTemplate | 'numeric';
+
+/** Types written as payload and answer JSON in the editor (PBQs and typed numbers). */
+export const usesJsonEditor = (t: QuestionType): t is JsonType => t === 'numeric' || isPbqTemplate(t);
+
+/** A valid example payload and answer per JSON-edited type, loaded when an author picks the type. */
+export const JSON_STARTERS: Record<JsonType, { payload: unknown; answer: unknown }> = {
+  numeric: { payload: { suffix: '%' }, answer: { value: 25, tolerance: 0.5 } },
   'pbq-match': {
     payload: {
       prompts: [{ id: 'p1', text: 'Prompt one' }, { id: 'p2', text: 'Prompt two' }],

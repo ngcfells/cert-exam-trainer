@@ -10,7 +10,7 @@ import { dataPlusQuestions } from '../../banks/dataplus/questions';
 import { examResultSchema } from '../../exam/result';
 import { parseSrsRecords } from '../../study/srs';
 import { correctParts, partLabel, valueText } from '../../domain/pbq';
-import type { McqAnswer, McqPayload, Question } from '../../domain/types';
+import type { McqAnswer, McqPayload, NumericAnswer, Question } from '../../domain/types';
 import type { Repo } from '../../storage';
 
 beforeEach(() => vi.stubEnv('DEV', false));
@@ -50,6 +50,11 @@ async function answerPbq(user: User, q: Question) {
 }
 
 async function answerCurrent(user: User, which: 'right' | 'wrong') {
+  const num = dataPlusQuestions.find((x) => x.type === 'numeric' && screen.queryByLabelText(x.stem));
+  if (num) {
+    await user.type(screen.getByLabelText(num.stem), which === 'right' ? String((num.answer as NumericAnswer).value) : '99999');
+    return;
+  }
   const stem = screen.getAllByRole('group')[0].querySelector('legend')!.textContent!;
   const q = dataPlusQuestions.find((x) => x.stem === stem)!;
   if (q.type.startsWith('pbq')) {

@@ -14,7 +14,7 @@ const PBQ_NAMES = [
 
 /** Practice setup limited to the bundled MCQs, `count` questions. */
 async function mcqOnlyPractice(page: Page, count: number) {
-  for (const name of PBQ_NAMES) await page.getByRole('checkbox', { name }).uncheck();
+  for (const name of [...PBQ_NAMES, 'Type a number']) await page.getByRole('checkbox', { name }).uncheck();
   await page.getByRole('spinbutton', { name: 'Number of questions' }).fill(String(count));
 }
 
@@ -22,7 +22,7 @@ async function submitEmptyMock(page: Page) {
   await page.goto(`${singleUrl}?seed=4`);
   await page.getByRole('button', { name: /start mock exam/i }).click();
   await page.getByRole('button', { name: 'Start exam' }).click();
-  for (let i = 1; i < 8; i++) await page.getByRole('button', { name: 'Next' }).click();
+  for (let i = 1; i < 9; i++) await page.getByRole('button', { name: 'Next' }).click();
   await page.getByRole('button', { name: 'Review', exact: true }).click();
   await page.getByRole('button', { name: 'Submit exam' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Submit', exact: true }).click();
@@ -56,6 +56,7 @@ test('practice with every PBQ type passes axe on each item', async ({ page }) =>
   await page.goto(`${singleUrl}?seed=1`);
   await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
   await page.getByRole('checkbox', { name: 'Multiple choice' }).uncheck();
+  await page.getByRole('checkbox', { name: 'Type a number' }).uncheck();
   await expect(page.getByRole('status')).toHaveText('Only 8 questions match; the session will use all of them.');
   await page.getByRole('radio', { name: 'At the end' }).check();
   await page.getByRole('button', { name: 'Start practice' }).click();
@@ -72,7 +73,7 @@ test('practice can be completed with the keyboard only', async ({ page }) => {
   await page.goto(singleUrl);
   await page.getByRole('button', { name: 'Practice: DA0-002' }).focus();
   await page.keyboard.press('Enter');
-  for (const name of PBQ_NAMES) {
+  for (const name of [...PBQ_NAMES, 'Type a number']) {
     await page.getByRole('checkbox', { name }).focus();
     await page.keyboard.press('Space');
   }

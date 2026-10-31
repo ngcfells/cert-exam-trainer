@@ -5,7 +5,7 @@ import { expectNoSeriousAxe, singleUrl } from './util';
 // seed 4: diagram, terminal, data, buckets, hotspot, match; seed 67 adds order and config.
 const SEEDS = [4, 67];
 const seeded = `${singleUrl}?seed=${SEEDS[0]}`;
-const TOTAL = 8;
+const TOTAL = 9;
 
 async function startExam(page: Page) {
   await page.goto(seeded);
@@ -62,7 +62,7 @@ for (const seed of SEEDS) test(`a mock exam with PBQs (seed ${seed}) can be comp
   const active = () =>
     page.evaluate(() => {
       const el = document.activeElement as HTMLInputElement | null;
-      return { tag: el?.tagName ?? '', type: el?.type ?? '', label: el?.getAttribute('aria-label') ?? '', text: el?.textContent ?? '' };
+      return { tag: el?.tagName ?? '', type: el?.type ?? '', mode: el?.inputMode ?? '', label: el?.getAttribute('aria-label') ?? '', text: el?.textContent ?? '' };
     });
 
   /** Tab through the screen, filling every part, and stop on the nav button `name`. */
@@ -73,7 +73,7 @@ for (const seed of SEEDS) test(`a mock exam with PBQs (seed ${seed}) can be comp
       const a = await active();
       if (a.text === name) return page.keyboard.press('Enter');
       if (a.tag === 'SELECT') await page.keyboard.press('ArrowDown');
-      if (a.tag === 'INPUT' && a.type === 'text') await page.keyboard.type('grep ERROR load_orders.log');
+      if (a.tag === 'INPUT' && a.type === 'text') await page.keyboard.type(a.mode === 'decimal' ? '25' : 'grep ERROR load_orders.log');
       if (a.text === 'Keep this order') await page.keyboard.press('Enter');
       if (!picked && (a.type === 'radio' || a.type === 'checkbox')) {
         await page.keyboard.press('Space');

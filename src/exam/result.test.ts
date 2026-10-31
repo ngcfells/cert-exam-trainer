@@ -31,6 +31,8 @@ describe('result', () => {
   it('accepts MCQ arrays and PBQ part maps', () => {
     expect(examResultSchema.safeParse({ ...sample(), responses: { q1: ['a'], p1: { x: 'y' } } }).success).toBe(true);
     expect(examResultSchema.safeParse({ ...sample(), elementOrders: { p1: ['b', 'a'] } }).success).toBe(true);
+    expect(examResultSchema.safeParse({ ...sample(), partOrders: { p1: { f1: ['b', 'a'] } } }).success).toBe(true);
+    expect(examResultSchema.safeParse({ ...sample(), partOrders: { p1: ['b'] } }).success).toBe(false);
   });
 
   it('rejects a record without a seed', () => {
@@ -78,7 +80,9 @@ describe('result', () => {
       fake('r1', 'T-001', 1, ['mock']),
       { ...fake('r2', 'T-001', 2, ['practice']), mode: 'practice' },
       { ...fake('r3', 'T-001', 3, ['cram']), mode: 'cram' },
+      { ...fake('r4', 'T-001', 4, ['lesson']), mode: 'lesson' },
     ];
+    expect(examResultSchema.safeParse(results[3]).success).toBe(true);
     expect(recentQuestionIds(results, 'T-001')).toEqual(new Set(['mock']));
   });
 });
