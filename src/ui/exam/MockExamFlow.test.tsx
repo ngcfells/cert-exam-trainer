@@ -72,7 +72,7 @@ async function answerCurrent(user: User, which: 'right' | 'wrong') {
 
 async function start(repo: Repo = createMemoryRepo()) {
   const user = userEvent.setup();
-  render(<MockExamFlow repo={repo} examCode="DA0-002" seed={5} onExit={() => {}} />);
+  render(<MockExamFlow repo={repo} examCode="DA0-002" seed={5} />);
   await user.click(await screen.findByRole('button', { name: 'Start exam' }));
   return { user, repo };
 }
@@ -100,7 +100,7 @@ describe('MockExamFlow', () => {
     await user.click(await screen.findByRole('button', { name: 'Start mock exam: DA0-002' }));
     expect(onNavigate).toHaveBeenCalledWith({ name: 'mock', exam: 'DA0-002' });
 
-    render(<MockExamFlow repo={createMemoryRepo()} examCode="DA0-002" seed={5} onExit={() => {}} />);
+    render(<MockExamFlow repo={createMemoryRepo()} examCode="DA0-002" seed={5} />);
     expect(await screen.findByText(/^\d+ questions$/)).toBeInTheDocument();
     expect(screen.getByText(/shorter than the real one \(90\)/)).toBeInTheDocument();
   });
@@ -185,7 +185,7 @@ describe('MockExamFlow', () => {
 
   it('disables Start when assembly yields no questions', () => {
     const meta = listExams()[0];
-    render(<ExamSetup meta={meta} plannedCount={0} onStart={() => {}} onCancel={() => {}} />);
+    render(<ExamSetup meta={meta} plannedCount={0} onStart={() => {}} />);
     expect(screen.getByRole('button', { name: 'Start exam' })).toBeDisabled();
     expect(screen.getByText('No questions available for this exam yet.')).toBeInTheDocument();
   });
@@ -193,7 +193,7 @@ describe('MockExamFlow', () => {
   it('reads history to deprioritize recent questions', async () => {
     const repo = createMemoryRepo();
     const spy = vi.spyOn(repo, 'listRecords');
-    render(<MockExamFlow repo={repo} examCode="DA0-002" seed={5} onExit={() => {}} />);
+    render(<MockExamFlow repo={repo} examCode="DA0-002" seed={5} />);
     await screen.findByRole('button', { name: 'Start exam' });
     expect(spy).toHaveBeenCalledWith('results');
   });

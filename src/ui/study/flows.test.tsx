@@ -7,6 +7,7 @@ import { examResultSchema } from '../../exam/result';
 import { parseSrsRecords } from '../../study/srs';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import type { ExamMeta } from '../../domain/types';
+import { TestNav } from '../nav';
 import { PracticeFlow } from './PracticeFlow';
 import { CramFlow } from './CramFlow';
 
@@ -37,7 +38,7 @@ async function answerRightAndCheck(user: User) {
 describe('PracticeFlow', () => {
   it('with no types checked, Start is disabled and says no questions match', async () => {
     const user = userEvent.setup();
-    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} onExit={() => {}} />);
+    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} />);
     expect(await screen.findByRole('status')).toHaveTextContent(/Only 6 questions match/);
     await user.click(screen.getByRole('checkbox', { name: 'Multiple choice' }));
     expect(screen.getByRole('status')).toHaveTextContent('No questions match these choices.');
@@ -47,14 +48,14 @@ describe('PracticeFlow', () => {
   it('mine with no questions shows empty message', async () => {
     const repo = createMemoryRepo();
     await repo.setSetting('sourceFilter', 'mine');
-    render(<PracticeFlow repo={repo} examCode="T-001" seed={1} onExit={() => {}} />);
+    render(<PracticeFlow repo={repo} examCode="T-001" seed={1} />);
     expect(await screen.findByRole('status')).toHaveTextContent('No questions match these choices.');
     expect(screen.getByRole('button', { name: 'Start practice' })).toBeDisabled();
   });
 
   it('notes when the count is above the pool', async () => {
     const user = userEvent.setup();
-    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} onExit={() => {}} />);
+    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} />);
     const count = await screen.findByRole('spinbutton', { name: 'Number of questions' });
     await user.clear(count);
     await user.type(count, '2');
@@ -67,7 +68,7 @@ describe('PracticeFlow', () => {
   it('an instant run saves a practice result and review records', async () => {
     const user = userEvent.setup();
     const repo = createMemoryRepo();
-    render(<PracticeFlow repo={repo} examCode="T-001" seed={1} onExit={() => {}} />);
+    render(<PracticeFlow repo={repo} examCode="T-001" seed={1} />);
     const count = await screen.findByRole('spinbutton', { name: 'Number of questions' });
     await user.clear(count);
     await user.type(count, '2');
@@ -84,7 +85,7 @@ describe('PracticeFlow', () => {
   it('Finish now saves and scores only the questions the user reached', async () => {
     const user = userEvent.setup();
     const repo = createMemoryRepo();
-    render(<PracticeFlow repo={repo} examCode="T-001" seed={1} onExit={() => {}} />);
+    render(<PracticeFlow repo={repo} examCode="T-001" seed={1} />);
     await user.click(await screen.findByRole('button', { name: 'Start practice' }));
     await answerRightAndCheck(user);
     await user.click(screen.getByRole('button', { name: 'Finish now' }));
@@ -92,18 +93,22 @@ describe('PracticeFlow', () => {
     expect(examResultSchema.parse((await repo.listRecords('results'))[0]).questionIds).toHaveLength(1);
   });
 
-  it('shows an error with a way back when loading fails', async () => {
+  it('shows an error when loading fails, with the nav bar as the way back', async () => {
     const repo = createMemoryRepo();
     repo.listRecords = () => Promise.reject(new Error('idb'));
-    const onExit = vi.fn();
-    render(<PracticeFlow repo={repo} examCode="T-001" onExit={onExit} />);
+    const onParent = vi.fn();
+    render(
+      <TestNav onParent={onParent}>
+        <PracticeFlow repo={repo} examCode="T-001" />
+      </TestNav>,
+    );
     expect(await screen.findByRole('alert')).toHaveTextContent('Could not load your data.');
-    await userEvent.setup().click(screen.getByRole('button', { name: 'Back to exam' }));
-    expect(onExit).toHaveBeenCalled();
+    await userEvent.setup().click(screen.getByRole('button', { name: '← Back' }));
+    expect(onParent).toHaveBeenCalled();
   });
 
   it('a drill preset checks only the given objectives', async () => {
-    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} presetObjectiveIds={['B.1']} onExit={() => {}} />);
+    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} presetObjectiveIds={['B.1']} />);
     expect(await screen.findByRole('checkbox', { name: 'B.1 Objective B1' })).toBeChecked();
     expect(screen.getByRole('checkbox', { name: 'A.1 Objective A1' })).not.toBeChecked();
     expect(screen.getByRole('status')).toHaveTextContent(/Only 2 questions match/);
@@ -111,7 +116,7 @@ describe('PracticeFlow', () => {
 
   it('the whole-domain box toggles its objectives', async () => {
     const user = userEvent.setup();
-    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} onExit={() => {}} />);
+    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} />);
     await user.click(await screen.findByRole('checkbox', { name: 'All of domain A' }));
     expect(screen.getByRole('checkbox', { name: 'A.1 Objective A1' })).not.toBeChecked();
     expect(screen.getByRole('status')).toHaveTextContent(/Only 3 questions match/);
@@ -122,7 +127,7 @@ describe('CramFlow', () => {
   it('shows an error when loading fails', async () => {
     const repo = createMemoryRepo();
     repo.listRecords = () => Promise.reject(new Error('idb'));
-    render(<CramFlow repo={repo} examCode="T-001" onExit={() => {}} />);
+    render(<CramFlow repo={repo} examCode="T-001" />);
     expect(await screen.findByRole('alert')).toHaveTextContent('Could not load your data.');
   });
 
@@ -130,7 +135,7 @@ describe('CramFlow', () => {
     vi.useFakeTimers({ shouldAdvanceTime: true });
     const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
     const repo = createMemoryRepo();
-    render(<CramFlow repo={repo} examCode="T-001" seed={1} onExit={() => {}} />);
+    render(<CramFlow repo={repo} examCode="T-001" seed={1} />);
     await user.click(await screen.findByRole('checkbox', { name: 'Use a countdown' }));
     const minutes = screen.getByRole('spinbutton', { name: 'Minutes' });
     await user.clear(minutes);
@@ -150,7 +155,7 @@ describe('CramFlow', () => {
   it('reports acronyms known in the summary and schedules them', async () => {
     const user = userEvent.setup();
     const repo = createMemoryRepo();
-    render(<CramFlow repo={repo} examCode="T-001" seed={1} onExit={() => {}} />);
+    render(<CramFlow repo={repo} examCode="T-001" seed={1} />);
     await user.click(await screen.findByRole('button', { name: 'Start cram' }));
     for (;;) {
       const show = screen.queryByRole('button', { name: 'Show answer' });

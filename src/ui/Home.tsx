@@ -5,7 +5,7 @@ import { StorageBanner } from './StorageBanner';
 import { questions } from './plural';
 import type { Screen } from './screens';
 
-/** The landing page: one card per exam, plus Settings. */
+/** The landing page: one card per exam, and About. Settings sits in the app header. */
 export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent: boolean; onNavigate?: (s: Screen) => void }) {
   const [mine, setMine] = useState<Record<string, number>>({});
 
@@ -32,9 +32,11 @@ export function Home({ repo, persistent, onNavigate }: { repo: Repo; persistent:
           </li>
         ))}
       </ul>
-      <button type="button" onClick={() => onNavigate?.({ name: 'settings' })}>
-        Settings
-      </button>
+      <p className="home-about">
+        <button type="button" className="link-button" onClick={() => onNavigate?.({ name: 'about' })}>
+          About
+        </button>
+      </p>
     </>
   );
 }

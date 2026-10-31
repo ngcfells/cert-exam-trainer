@@ -33,7 +33,7 @@ const result = (id: string, t: string, responses: ExamResult['responses'], extra
 
 describe('ProgressScreen', () => {
   it('shows Not attempted and No attempts yet with no results', async () => {
-    render(<ProgressScreen repo={createMemoryRepo()} examCode="T-001" onExit={() => {}} />);
+    render(<ProgressScreen repo={createMemoryRepo()} examCode="T-001" />);
     expect(await screen.findByText('No attempts yet.')).toBeInTheDocument();
     const domains = screen.getByRole('table', { name: 'Mastery by domain' });
     expect(within(domains).getAllByText('Not attempted')).toHaveLength(3);
@@ -44,7 +44,7 @@ describe('ProgressScreen', () => {
   it('shows an error when loading fails', async () => {
     const repo = createMemoryRepo();
     repo.listRecords = () => Promise.reject(new Error('idb'));
-    render(<ProgressScreen repo={repo} examCode="T-001" onExit={() => {}} />);
+    render(<ProgressScreen repo={repo} examCode="T-001" />);
     expect(await screen.findByRole('alert')).toHaveTextContent('Could not load your data.');
   });
 
@@ -60,7 +60,7 @@ describe('ProgressScreen', () => {
     await repo.putRecord('srs', review(undefined, { exam: 'T-001', kind: 'question', itemId: 'gone', quality: 1 }, past));
     await repo.putRecord('srs', review(undefined, { exam: 'T-001', kind: 'acronym', itemId: 'OLD', quality: 1 }, past));
     const onDrill = vi.fn();
-    render(<ProgressScreen repo={repo} examCode="T-001" onExit={() => {}} onDrill={onDrill} />);
+    render(<ProgressScreen repo={repo} examCode="T-001" onDrill={onDrill} />);
 
     const objA = await screen.findByRole('table', { name: 'A. Domain A objectives' });
     expect(within(objA).getByRole('row', { name: /A\.1 Objective A1/ })).toHaveTextContent('50%');

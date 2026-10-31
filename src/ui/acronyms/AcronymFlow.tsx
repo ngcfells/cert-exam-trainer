@@ -7,6 +7,7 @@ import type { Repo } from '../../storage';
 import { applyReviews } from '../../study/srs';
 import { acronymReview } from '../exam/saveAttempt';
 import { Loading, metaFor, useLoad } from '../kit';
+import { useNavUp } from '../nav';
 import { LoadError } from '../study/LoadError';
 import '../study/study.css';
 import { AcronymResults } from './AcronymResults';
@@ -20,7 +21,7 @@ type Stage =
   | { stage: 'running'; deck: AcronymEntry[]; seed: number }
   | { stage: 'results'; deck: AcronymEntry[]; grades: AcronymGrade[]; timedOut: boolean; saveError: string | null };
 
-export function AcronymFlow({ repo, examCode, seed, onExit }: { repo: Repo; examCode: string; seed?: number; onExit: () => void }) {
+export function AcronymFlow({ repo, examCode, seed }: { repo: Repo; examCode: string; seed?: number }) {
   const meta = metaFor(examCode);
   const [s, setS] = useState<Stage>({ stage: 'setup' });
   const [choices, setChoices] = useState<DeckChoices>(DEFAULT_DECK);
@@ -33,6 +34,12 @@ export function AcronymFlow({ repo, examCode, seed, onExit }: { repo: Repo; exam
     ]);
     return { entries, srs, mine, userQuestions };
   }, [repo, examCode]);
+  const toSetup = () => {
+    setS({ stage: 'setup' });
+    void reload(true);
+  };
+  // A run or its results goes Back to the setup; the setup goes Back to the exam page.
+  useNavUp(s.stage === 'setup' ? null : '← Back to acronyms', toSetup);
 
   async function finish(deck: AcronymEntry[], grades: AcronymGrade[], timedOut: boolean) {
     let saveError: string | null = null;
@@ -45,7 +52,7 @@ export function AcronymFlow({ repo, examCode, seed, onExit }: { repo: Repo; exam
   }
 
   if (data === undefined) return <Loading />;
-  if (data === null) return <LoadError onExit={onExit} />;
+  if (data === null) return <LoadError />;
   const { entries, srs, mine, userQuestions } = data;
   const onFinish = (deck: AcronymEntry[]) => (g: AcronymGrade[], t: boolean) => void finish(deck, g, t);
 
@@ -59,7 +66,7 @@ export function AcronymFlow({ repo, examCode, seed, onExit }: { repo: Repo; exam
       };
       return (
         <>
-          <AcronymSetup meta={meta} entries={entries} srs={srs} value={choices} onChange={setChoices} onCancel={onExit} onStart={start} />
+          <AcronymSetup meta={meta} entries={entries} srs={srs} value={choices} onChange={setChoices} onStart={start} />
           <MyAcronyms repo={repo} examCode={examCode} mine={mine} suggestions={suggestions} onChanged={reload} />
         </>
       );
@@ -86,11 +93,7 @@ export function AcronymFlow({ repo, examCode, seed, onExit }: { repo: Repo; exam
           mode={choices.mode}
           timedOut={s.timedOut}
           saveError={s.saveError}
-          onAgain={() => {
-            setS({ stage: 'setup' });
-            void reload(true);
-          }}
-          onExit={onExit}
+          onAgain={toSetup}
         />
       );
   }

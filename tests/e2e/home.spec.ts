@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import path from 'node:path';
-import { expectNoSeriousAxe, openExam, singleUrl } from './util';
+import { expectNoSeriousAxe, openExam, singleUrl, allExams } from './util';
 
 const card = (page: Page, code: string) => page.getByRole('button', { name: new RegExp(`\\(${code}\\)`) });
 
@@ -20,7 +20,7 @@ test('each exam page shows only the tools that exam has', async ({ page }) => {
   await page.goto(singleUrl);
   await openExam(page, 'DA0-002');
   await expect(page.getByRole('button', { name: 'Learn: DA0-002' })).toBeVisible();
-  await page.getByRole('button', { name: '⌂ All exams' }).click();
+  await allExams(page);
   await openExam(page, 'CY0-001');
   await expect(page.getByRole('button', { name: 'Practice: CY0-001' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Learn: CY0-001' })).toHaveCount(0);
@@ -33,6 +33,6 @@ test('importing a backup on Settings updates the Custom count on Home', async ({
   await page.getByLabel(/import backup/i).setInputFiles(path.resolve('tests/e2e/fixtures/backup-one-question.json'));
   await expect(page.getByText(/^Imported 1 question\./)).toBeVisible();
   await expectNoSeriousAxe(page);
-  await page.getByRole('button', { name: '⌂ All exams' }).click();
+  await allExams(page);
   await expect(card(page, 'DA0-002').getByText('Custom: 1 question', { exact: true })).toBeVisible();
 });

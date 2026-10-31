@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { expectNoSeriousAxe, singleUrl, openExam } from './util';
+import { expectNoSeriousAxe, singleUrl, openExam, topNav } from './util';
 
 test('add an MCQ, switch to Mine, and practice it', async ({ page }) => {
   await page.goto(singleUrl);
@@ -29,7 +29,7 @@ test('add an MCQ, switch to Mine, and practice it', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Edit: Which value is the largest?' })).toBeVisible();
   await expectNoSeriousAxe(page);
 
-  await page.getByRole('button', { name: 'Back to exam' }).click();
+  await topNav(page).getByRole('button', { name: '← Back to Data+' }).click();
   await page.getByRole('radio', { name: 'Custom only' }).check();
   await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
   await expect(page.getByRole('status')).toHaveText(/Only 1 question match/);

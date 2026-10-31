@@ -11,7 +11,7 @@ afterEach(() => vi.restoreAllMocks());
 
 function setup(repo = createMemoryRepo()) {
   const onEdit = vi.fn();
-  render(<MyQuestions repo={repo} examCode="DA0-002" onExit={() => {}} onEdit={onEdit} />);
+  render(<MyQuestions repo={repo} examCode="DA0-002" onEdit={onEdit} />);
   return { repo, onEdit, user: userEvent.setup() };
 }
 

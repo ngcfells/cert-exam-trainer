@@ -20,7 +20,7 @@ const posted = (i = 0) => JSON.parse(fetchMock.mock.calls[i][1].body as string) 
 
 describe('ReviewScreen', () => {
   it('lists approved items by default with the answer key and explanation', () => {
-    render(<ReviewScreen examCode="DA0-002" questions={questions} onExit={() => {}} />);
+    render(<ReviewScreen examCode="DA0-002" questions={questions} />);
     expect(screen.getByText(`Item 1 of ${mcqs.length}`)).toBeInTheDocument();
     expect(screen.getByText(mcqs[0].stem)).toBeInTheDocument();
     const key = screen.getByRole('region', { name: 'Answer key' });
@@ -30,7 +30,7 @@ describe('ReviewScreen', () => {
 
   it('filters by status, objective and type', async () => {
     const user = userEvent.setup();
-    render(<ReviewScreen examCode="DA0-002" questions={questions} onExit={() => {}} />);
+    render(<ReviewScreen examCode="DA0-002" questions={questions} />);
     await user.selectOptions(screen.getByRole('combobox', { name: 'Status' }), 'all');
     await user.selectOptions(screen.getByRole('combobox', { name: 'Type' }), 'pbq-order');
     expect(screen.getByText('Item 1 of 1')).toBeInTheDocument();
@@ -42,14 +42,14 @@ describe('ReviewScreen', () => {
   it('filters to typed-number items', async () => {
     const user = userEvent.setup();
     const num = dataPlusFixtureQuestions.find((q) => q.type === 'numeric')!;
-    render(<ReviewScreen examCode="DA0-002" questions={[...questions, { ...num, status: 'approved' }]} onExit={() => {}} />);
+    render(<ReviewScreen examCode="DA0-002" questions={[...questions, { ...num, status: 'approved' }]} />);
     await user.selectOptions(screen.getByRole('combobox', { name: 'Type' }), 'numeric');
     expect(screen.getByText('Item 1 of 1')).toBeInTheDocument();
   });
 
   it('approve posts the item as approved and moves on', async () => {
     const user = userEvent.setup();
-    render(<ReviewScreen examCode="DA0-002" questions={questions} onExit={() => {}} />);
+    render(<ReviewScreen examCode="DA0-002" questions={questions} />);
     await user.click(screen.getByRole('button', { name: 'Approve' }));
     expect(fetchMock).toHaveBeenCalledWith('/__review/item', expect.objectContaining({ method: 'POST' }));
     expect(posted().question).toMatchObject({ id: mcqs[0].id, status: 'approved' });
@@ -58,7 +58,7 @@ describe('ReviewScreen', () => {
 
   it('reject needs a note and posts the item back to draft', async () => {
     const user = userEvent.setup();
-    render(<ReviewScreen examCode="DA0-002" questions={questions} onExit={() => {}} />);
+    render(<ReviewScreen examCode="DA0-002" questions={questions} />);
     await user.click(screen.getByRole('button', { name: 'Reject' }));
     expect(fetchMock).not.toHaveBeenCalled();
     expect(screen.getByRole('alert')).toHaveTextContent('Say why you are rejecting it.');
@@ -70,7 +70,7 @@ describe('ReviewScreen', () => {
 
   it('edit validates the JSON and saves it', async () => {
     const user = userEvent.setup();
-    render(<ReviewScreen examCode="DA0-002" questions={questions} onExit={() => {}} />);
+    render(<ReviewScreen examCode="DA0-002" questions={questions} />);
     await user.click(screen.getByRole('button', { name: 'Edit' }));
     const box = screen.getByRole('textbox', { name: 'Item JSON' });
     await user.clear(box);
@@ -89,14 +89,14 @@ describe('ReviewScreen', () => {
   it('shows a server error and stays on the item', async () => {
     fetchMock.mockResolvedValueOnce(new Response('bad objective', { status: 400 }));
     const user = userEvent.setup();
-    render(<ReviewScreen examCode="DA0-002" questions={questions} onExit={() => {}} />);
+    render(<ReviewScreen examCode="DA0-002" questions={questions} />);
     await user.click(screen.getByRole('button', { name: 'Approve' }));
     expect(await screen.findByRole('alert')).toHaveTextContent('bad objective');
     expect(screen.getByText(`Item 1 of ${mcqs.length}`)).toBeInTheDocument();
   });
 
   it('summarises bank checks', () => {
-    render(<ReviewScreen examCode="DA0-002" questions={questions} onExit={() => {}} />);
+    render(<ReviewScreen examCode="DA0-002" questions={questions} />);
     const checks = screen.getByRole('region', { name: 'Bank checks' });
     expect(within(checks).getByText(/MCQs: 3 of 500/)).toBeInTheDocument();
     expect(within(checks).getByText(/PBQs: 0 of 80/)).toBeInTheDocument();

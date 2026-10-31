@@ -12,8 +12,9 @@ import { SettingsScreen } from './ui/SettingsScreen';
 import { MyQuestions } from './ui/author/MyQuestions';
 import { QuestionEditor } from './ui/author/QuestionEditor';
 import { MockExamFlow } from './ui/exam/MockExamFlow';
-import { LeaveGuardProvider, useLeaveGuards } from './ui/nav';
-import { parentOf, type Screen } from './ui/screens';
+import { armHistory } from './ui/history';
+import { navBack, NavBar, NavProvider, useNavState, useTallPage } from './ui/nav';
+import { backLabel, parentOf, type Screen } from './ui/screens';
 import { CramFlow } from './ui/study/CramFlow';
 import { PracticeFlow } from './ui/study/PracticeFlow';
 import { ProgressScreen } from './ui/study/ProgressScreen';
@@ -34,9 +35,9 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>({ name: 'home' });
   // Bumped on every navigation so revisiting a screen starts it fresh.
   const [visit, setVisit] = useState(0);
-  const screenRef = useRef(screen);
-  screenRef.current = screen;
-  const guards = useLeaveGuards();
+  const { api: nav, up } = useNavState();
+  const bottomRef = useRef<HTMLDivElement>(null);
+  const tall = useTallPage(bottomRef);
 
   useEffect(() => {
     void openRepo().then(async (s) => {
@@ -51,37 +52,44 @@ export default function App() {
     });
   }, []);
 
-  // Browser Back steps through in-app screens: each navigation is a history entry.
-  useEffect(() => {
-    window.history.replaceState({ screen: { name: 'home' } }, '');
-    const onPop = (e: PopStateEvent) => {
-      // A run in progress may refuse: put back the entry the browser just left.
-      if (!guards.confirmLeave()) {
-        window.history.pushState({ screen: screenRef.current }, '');
-        return;
-      }
-      const s = (e.state as { screen?: Screen } | null)?.screen;
-      setScreen(s ?? { name: 'home' });
-      setVisit((v) => v + 1);
-    };
-    window.addEventListener('popstate', onPop);
-    return () => window.removeEventListener('popstate', onPop);
-  }, [guards]);
-
   function go(s: Screen) {
-    window.history.pushState({ screen: s }, '');
     setScreen(s);
     setVisit((v) => v + 1);
   }
 
-  /** Leaving by the nav bar or footer asks first while a run is in progress. */
-  function leave(s: Screen) {
-    if (guards.confirmLeave()) go(s);
+  /** The nav bar's Back (see navBack). Returns the screen the app ends up on. */
+  function back(): Screen {
+    let next = screen;
+    navBack(nav, up, () => {
+      next = parentOf(screen);
+      go(next);
+    });
+    return next;
   }
 
+  function allExams() {
+    if (nav.guards.confirmLeave()) go({ name: 'home' });
+  }
+
+  // Browser Back does exactly what the nav bar's Back does (see history.ts).
+  const backRef = useRef(back);
+  backRef.current = back;
+  const historyRef = useRef<ReturnType<typeof armHistory> | null>(null);
+  useEffect(() => {
+    const h = armHistory(() => {
+      if (backRef.current().name !== 'home') h.arm();
+    });
+    historyRef.current = h;
+    return () => h.dispose();
+  }, []);
+  useEffect(() => {
+    if (screen.name === 'home') historyRef.current?.disarm();
+    else historyRef.current?.arm();
+  }, [screen]);
+
   function body(repo: Repo, persistent: boolean) {
-    const home = () => go(parentOf(screen));
     const key = `${screen.name}-${visit}`;
+    const drill = (exam: string) => (ids: string[]) => go({ name: 'practice', exam, preset: ids });
     switch (screen.name) {
       case 'home':
         return <Home repo={repo} persistent={persistent} onNavigate={go} />;
@@ -90,18 +98,9 @@ export default function App() {
       case 'settings':
         return <SettingsScreen key={key} repo={repo} />;
       case 'about':
-        return <About key={key} onExit={home} />;
+        return <About key={key} />;
       case 'mock':
-        return (
-          <MockExamFlow
-            key={key}
-            repo={repo}
-            examCode={screen.exam}
-            seed={seedFromUrl()}
-            onExit={home}
-            onDrill={(ids) => go({ name: 'practice', exam: screen.exam, preset: ids })}
-          />
-        );
+        return <MockExamFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} onDrill={drill(screen.exam)} />;
       case 'practice':
         return (
           <PracticeFlow
@@ -110,56 +109,48 @@ export default function App() {
             examCode={screen.exam}
             seed={seedFromUrl()}
             presetObjectiveIds={screen.preset}
-            onExit={home}
-            onDrill={(ids) => go({ name: 'practice', exam: screen.exam, preset: ids })}
+            onDrill={drill(screen.exam)}
           />
         );
       case 'cram':
-        return <CramFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} onExit={home} />;
+        return <CramFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} />;
       case 'progress':
-        return (
-          <ProgressScreen
-            key={key}
-            repo={repo}
-            examCode={screen.exam}
-            onExit={home}
-            onDrill={(ids) => go({ name: 'practice', exam: screen.exam, preset: ids })}
-          />
-        );
+        return <ProgressScreen key={key} repo={repo} examCode={screen.exam} onDrill={drill(screen.exam)} />;
       case 'acronyms':
-        return <AcronymFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} onExit={home} />;
+        return <AcronymFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} />;
       case 'learn':
-        return <LearnFlow key={key} repo={repo} examCode={screen.exam} lessonId={screen.lesson} onExit={home} />;
+        return <LearnFlow key={key} repo={repo} examCode={screen.exam} lessonId={screen.lesson} />;
       case 'questions':
-        return <MyQuestions key={key} repo={repo} examCode={screen.exam} onExit={home} onEdit={(id) => go({ name: 'edit', exam: screen.exam, id })} />;
+        return <MyQuestions key={key} repo={repo} examCode={screen.exam} onEdit={(id) => go({ name: 'edit', exam: screen.exam, id })} />;
       case 'edit':
         return <QuestionEditor key={key} repo={repo} examCode={screen.exam} id={screen.id} onDone={() => go({ name: 'questions', exam: screen.exam })} />;
       case 'review':
         return ReviewScreen ? (
           <Suspense fallback={<p>Loading…</p>}>
-            <ReviewScreen key={key} examCode={screen.exam} onExit={home} />
+            <ReviewScreen key={key} examCode={screen.exam} />
           </Suspense>
         ) : null;
     }
   }
 
+  const onHome = screen.name === 'home';
+  const bar = (label: string) => <NavBar label={label} backLabel={up?.label ?? backLabel(screen)} onBack={() => void back()} onHome={allExams} />;
   return (
     <>
       <main>
-        <h1>{APP_NAME}</h1>
-        {screen.name !== 'home' && (
-          <nav className="top-nav" aria-label="Navigation">
-            <button type="button" onClick={() => leave(parentOf(screen))}>
-              ← Back
+        <header className="app-header">
+          <h1>{APP_NAME}</h1>
+          {onHome && (
+            <button type="button" onClick={() => go({ name: 'settings' })}>
+              Settings
             </button>
-            <button type="button" onClick={() => leave({ name: 'home' })}>
-              ⌂ All exams
-            </button>
-          </nav>
-        )}
-        <LeaveGuardProvider guards={guards}>{!storage ? <p>Loading…</p> : body(storage.repo, storage.persistent)}</LeaveGuardProvider>
+          )}
+        </header>
+        {!onHome && bar('Page navigation')}
+        <NavProvider api={nav}>{!storage ? <p>Loading…</p> : body(storage.repo, storage.persistent)}</NavProvider>
+        {!onHome && tall && <div ref={bottomRef} className="bottom-nav">{bar('Page navigation (bottom)')}</div>}
       </main>
-      <Disclaimer onAbout={() => leave({ name: 'about' })} />
+      <Disclaimer />
     </>
   );
 }

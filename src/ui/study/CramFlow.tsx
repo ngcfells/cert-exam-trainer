@@ -14,7 +14,7 @@ import './study.css';
 
 export const DEFAULT_CRAM_MINUTES = 10;
 
-export function CramFlow({ repo, examCode, seed, onExit }: { repo: Repo; examCode: string; seed?: number; onExit: () => void }) {
+export function CramFlow({ repo, examCode, seed }: { repo: Repo; examCode: string; seed?: number }) {
   const meta = metaFor(examCode);
   const [session] = useLoad(async () => {
     const [{ pool, results, srs }, acronyms] = await Promise.all([loadStudy(repo, examCode), loadAcronyms(repo, examCode)]);
@@ -26,11 +26,11 @@ export function CramFlow({ repo, examCode, seed, onExit }: { repo: Repo; examCod
   const [done, setDone] = useState<(Finished & { known: number }) | null>(null);
 
   if (session === undefined) return <Loading />;
-  if (session === null) return <LoadError onExit={onExit} />;
+  if (session === null) return <LoadError />;
   const acronymTotal = session.acronyms.length;
   if (done) {
     return (
-      <ResultsScreen meta={meta} {...done} onHome={onExit} mode="cram">
+      <ResultsScreen meta={meta} {...done} mode="cram">
         {acronymTotal > 0 && <p>{`Acronyms: ${done.known} of ${acronymTotal} known`}</p>}
       </ResultsScreen>
     );
@@ -80,9 +80,6 @@ export function CramFlow({ repo, examCode, seed, onExit }: { repo: Repo; examCod
           </p>
         </>
       )}
-      <button type="button" onClick={onExit}>
-        {empty ? 'Back' : 'Cancel'}
-      </button>
     </section>
   );
 }

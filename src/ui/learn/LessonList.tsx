@@ -5,7 +5,7 @@ import { useFocusHeading } from '../kit';
 
 const STATE_LABELS: Record<LessonState, string> = { 'not-started': 'Not started', 'in-progress': 'In progress', done: 'Done' };
 
-export function LessonList({ meta, lessons, status, onOpen, onExit }: { meta: ExamMeta; lessons: Lesson[]; status: LessonStatus; onOpen: (id: string) => void; onExit: () => void }) {
+export function LessonList({ meta, lessons, status, onOpen }: { meta: ExamMeta; lessons: Lesson[]; status: LessonStatus; onOpen: (id: string) => void }) {
   const headingRef = useFocusHeading();
   const areas = LESSON_AREAS.filter((a) => lessons.some((l) => l.area === a));
   return (
@@ -31,9 +31,6 @@ export function LessonList({ meta, lessons, status, onOpen, onExit }: { meta: Ex
           </ul>
         </section>
       ))}
-      <p>
-        <button type="button" onClick={onExit}>Back to exam</button>
-      </p>
     </section>
   );
 }

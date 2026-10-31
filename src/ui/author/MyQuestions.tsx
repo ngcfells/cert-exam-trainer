@@ -18,12 +18,10 @@ export function packFileName(exam: string, d: Date): string {
 export function MyQuestions({
   repo,
   examCode,
-  onExit,
   onEdit,
 }: {
   repo: Repo;
   examCode: string;
-  onExit: () => void;
   /** No id = new question. */
   onEdit: (id?: string) => void;
 }) {
@@ -66,15 +64,12 @@ export function MyQuestions({
     input.value = '';
   }
 
-  if (data === null) return <LoadError onExit={onExit} />;
+  if (data === null) return <LoadError />;
   if (!data) return <Loading />;
   const { list } = data;
   return (
     <section className="my-questions" aria-labelledby={`${fileId}-h`}>
       <h2 id={`${fileId}-h`}>{`My questions: ${examCode}`}</h2>
-      <button type="button" onClick={onExit}>
-        Back to exam
-      </button>
       {data.accepted || acceptedNow ? (
         <div className="author-actions">
           <button type="button" className="primary" onClick={() => onEdit()}>

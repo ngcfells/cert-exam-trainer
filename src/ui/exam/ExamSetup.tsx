@@ -5,12 +5,10 @@ export function ExamSetup({
   meta,
   plannedCount,
   onStart,
-  onCancel,
 }: {
   meta: ExamMeta;
   plannedCount: number;
   onStart: () => void;
-  onCancel: () => void;
 }) {
   return (
     <section aria-labelledby="setup-h">
@@ -27,9 +25,6 @@ export function ExamSetup({
       <p>The timer starts when you press Start exam. The exam submits automatically when time runs out.</p>
       <button type="button" className="primary" disabled={plannedCount === 0} onClick={onStart}>
         Start exam
-      </button>{' '}
-      <button type="button" onClick={onCancel}>
-        Cancel
       </button>
     </section>
   );

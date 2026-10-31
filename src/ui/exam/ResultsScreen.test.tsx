@@ -18,7 +18,7 @@ describe('ResultsScreen', () => {
     const responses = { P1: { p1: 'c1', p2: 'c3' } };
     const report = scoreExam(exam, responses, meta3);
     const result = buildResult({ exam, responses, flagged: [], report, startedAt: new Date(0), finishedAt: new Date(1), autoSubmitted: false });
-    render(<ResultsScreen meta={meta3} exam={exam} result={result} report={report} saveError={null} onHome={() => {}} />);
+    render(<ResultsScreen meta={meta3} exam={exam} result={result} report={report} saveError={null} />);
 
     const table = screen.getByRole('table', { name: 'Parts' });
     const rows = within(table).getAllByRole('row').slice(1);
@@ -32,7 +32,7 @@ describe('ResultsScreen', () => {
     const responses = { [q.id]: given };
     const report = scoreExam(exam, responses, meta3);
     const result = buildResult({ exam, responses, flagged: [], report, startedAt: new Date(0), finishedAt: new Date(1), autoSubmitted: false });
-    render(<ResultsScreen meta={meta3} exam={exam} result={result} report={report} saveError={null} onHome={() => {}} />);
+    render(<ResultsScreen meta={meta3} exam={exam} result={result} report={report} saveError={null} />);
     return within(screen.getByRole('table', { name: 'Parts' })).getAllByRole('row').slice(1);
   }
 
@@ -53,7 +53,7 @@ describe('ResultsScreen', () => {
     const responses = { B0: ['b'], A0: ['a'] };
     const report = scoreExam(exam, responses, meta3);
     const result = buildResult({ exam, responses, flagged: [], report, startedAt: new Date(0), finishedAt: new Date(1), autoSubmitted: false });
-    render(<ResultsScreen meta={meta3} exam={exam} result={result} report={report} saveError={null} onHome={() => {}} {...props} />);
+    render(<ResultsScreen meta={meta3} exam={exam} result={result} report={report} saveError={null} {...props} />);
   }
 
   it('practice mode shows a percent and no pass or fail', () => {

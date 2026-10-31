@@ -40,14 +40,12 @@ export function PracticeSetup({
   value,
   onChange,
   onStart,
-  onCancel,
 }: {
   meta: ExamMeta;
   pool: Question[];
   value: PracticeChoices;
   onChange: (v: PracticeChoices) => void;
   onStart: () => void;
-  onCancel: () => void;
 }) {
   const matches = matchingPool(pool, value).length;
   const set = (patch: Partial<PracticeChoices>) => onChange({ ...value, ...patch });
@@ -113,9 +111,6 @@ export function PracticeSetup({
       <p role="status">{note}</p>
       <button type="button" className="primary" disabled={matches === 0 || value.count < 1} onClick={onStart}>
         Start practice
-      </button>{' '}
-      <button type="button" onClick={onCancel}>
-        Cancel
       </button>
     </section>
   );

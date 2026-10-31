@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { APP_NAME, DISCLAIMER_POINTS, KOFI_URL, LICENSE_SUMMARY } from './legal';
 
-export function About({ onExit }: { onExit: () => void }) {
+export function About() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => headingRef.current?.focus(), []);
 
@@ -33,8 +33,6 @@ export function About({ onExit }: { onExit: () => void }) {
           Tips
         </a>
       </div>
-
-      <button type="button" onClick={onExit}>Back</button>
     </section>
   );
 }

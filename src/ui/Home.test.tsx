@@ -15,8 +15,10 @@ describe('Home', () => {
     expect(screen.getByRole('button', { name: /CompTIA SecAI\+ \(CY0-001\)/ })).toBeInTheDocument();
     await userEvent.click(card);
     expect(onNavigate).toHaveBeenLastCalledWith({ name: 'exam', exam: 'DA0-002' });
-    await userEvent.click(screen.getByRole('button', { name: 'Settings' }));
-    expect(onNavigate).toHaveBeenLastCalledWith({ name: 'settings' });
+    await userEvent.click(screen.getByRole('button', { name: 'About' }));
+    expect(onNavigate).toHaveBeenLastCalledWith({ name: 'about' });
+    // The source choice lives on each exam page; Settings sits in the app header.
+    expect(screen.queryByRole('group', { name: 'Questions to use' })).not.toBeInTheDocument();
   });
 
   it('shows the storage banner only when not persistent', async () => {

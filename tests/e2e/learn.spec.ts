@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { expectNoSeriousAxe, singleUrl, openExam } from './util';
+import { expectNoSeriousAxe, singleUrl, openExam, topNav } from './util';
 
 const LESSON = 'Fixture: percent change';
 const row = (page: import('@playwright/test').Page) => page.getByRole('listitem').filter({ has: page.getByRole('button', { name: LESSON }) });
@@ -17,7 +17,7 @@ test('a lesson by keyboard: read, check, and the status reaches Done; axe clean 
   await expect(page.getByRole('heading', { level: 2, name: LESSON })).toBeFocused();
   await expect(page.getByRole('math')).toHaveAccessibleName(/divided by old value/);
   await expectNoSeriousAxe(page);
-  await page.getByRole('button', { name: 'Back to lessons' }).click();
+  await topNav(page).getByRole('button', { name: '← Back to lessons' }).click();
   await expect(row(page)).toContainText('In progress');
 
   await page.getByRole('button', { name: LESSON }).click();
@@ -43,7 +43,7 @@ test('a lesson by keyboard: read, check, and the status reaches Done; axe clean 
   await expect(page.getByRole('heading', { name: 'Lesson check complete: 100%' })).toBeVisible();
   await expectNoSeriousAxe(page);
 
-  await page.getByRole('button', { name: 'Back to lesson' }).click();
-  await page.getByRole('button', { name: 'Back to lessons' }).click();
+  await topNav(page).getByRole('button', { name: '← Back to lesson' }).click();
+  await topNav(page).getByRole('button', { name: '← Back to lessons' }).click();
   await expect(row(page)).toContainText('Done');
 });

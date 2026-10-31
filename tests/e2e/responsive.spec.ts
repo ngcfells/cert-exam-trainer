@@ -48,7 +48,7 @@ test('home fits and is axe clean in light and dark', async ({ page }) => {
 
 test('about page fits and is axe clean in light and dark', async ({ page }) => {
   await page.goto(singleUrl);
-  await page.getByRole('contentinfo').getByRole('button', { name: 'About' }).click();
+  await page.getByRole('button', { name: 'About' }).click();
   await checkBothSchemes(page, 'about');
 });
 

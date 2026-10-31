@@ -38,7 +38,7 @@ function Trend({ points, passingScore }: { points: { score: number }[]; passingS
   );
 }
 
-export function ProgressScreen({ repo, examCode, onExit, onDrill }: { repo: Repo; examCode: string; onExit: () => void; onDrill?: (objectiveIds: string[]) => void }) {
+export function ProgressScreen({ repo, examCode, onDrill }: { repo: Repo; examCode: string; onDrill?: (objectiveIds: string[]) => void }) {
   const meta = metaFor(examCode);
   const headingRef = useFocusHeading();
   const [data] = useLoad(async () => {
@@ -51,7 +51,7 @@ export function ProgressScreen({ repo, examCode, onExit, onDrill }: { repo: Repo
     return { mastery: computeMastery(meta, results, pool), entries: history(results, examCode), due: { questions: count('question'), acronyms: count('acronym') } };
   }, [repo, examCode]);
 
-  if (data === null) return <LoadError onExit={onExit} />;
+  if (data === null) return <LoadError />;
   const points = data ? trendPoints(data.entries) : [];
 
   return (
@@ -103,11 +103,6 @@ export function ProgressScreen({ repo, examCode, onExit, onDrill }: { repo: Repo
           )}
         </>
       )}
-      <p>
-        <button type="button" onClick={onExit}>
-          Back to exam
-        </button>
-      </p>
     </section>
   );
 }

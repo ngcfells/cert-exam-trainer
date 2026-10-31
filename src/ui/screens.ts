@@ -1,3 +1,5 @@
+import { listExams } from '../banks';
+
 export type Screen =
   | { name: 'home' }
   | { name: 'about' }
@@ -21,4 +23,12 @@ export function parentOf(s: Screen): Screen {
   if (s.name === 'edit') return { name: 'questions', exam: s.exam };
   if ('exam' in s && s.name !== 'exam') return { name: 'exam', exam: s.exam };
   return { name: 'home' };
+}
+
+/** The Back button's words: it names the exam when Back goes to that exam's page. */
+export function backLabel(s: Screen): string {
+  const parent = parentOf(s);
+  if (parent.name !== 'exam') return '← Back';
+  const meta = listExams().find((m) => m.code === parent.exam);
+  return meta ? `← Back to ${meta.name.replace(/^CompTIA /, '')}` : '← Back';
 }

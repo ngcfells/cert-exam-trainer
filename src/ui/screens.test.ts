@@ -1,5 +1,18 @@
 import { describe, it, expect } from 'vitest';
-import { parentOf } from './screens';
+import { backLabel, parentOf } from './screens';
+
+describe('backLabel', () => {
+  it('names the exam when Back goes to its page', () => {
+    expect(backLabel({ name: 'practice', exam: 'DA0-002' })).toBe('← Back to Data+');
+    expect(backLabel({ name: 'mock', exam: 'CY0-001' })).toBe('← Back to SecAI+');
+  });
+
+  it('is plain elsewhere', () => {
+    expect(backLabel({ name: 'settings' })).toBe('← Back');
+    expect(backLabel({ name: 'exam', exam: 'DA0-002' })).toBe('← Back');
+    expect(backLabel({ name: 'edit', exam: 'DA0-002' })).toBe('← Back');
+  });
+});
 
 describe('parentOf', () => {
   it('sends a tool back to its exam page', () => {

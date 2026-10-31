@@ -20,14 +20,12 @@ export function PracticeFlow({
   examCode,
   seed,
   presetObjectiveIds,
-  onExit,
   onDrill,
 }: {
   repo: Repo;
   examCode: string;
   seed?: number;
   presetObjectiveIds?: string[];
-  onExit: () => void;
   onDrill?: (objectiveIds: string[]) => void;
 }) {
   const meta = metaFor(examCode);
@@ -45,11 +43,11 @@ export function PracticeFlow({
   const [done, setDone] = useState<Finished | null>(null);
 
   if (data === undefined) return <Loading />;
-  if (data === null) return <LoadError onExit={onExit} />;
-  if (done) return <ResultsScreen meta={meta} {...done} onHome={onExit} mode="practice" onDrill={onDrill} />;
+  if (data === null) return <LoadError />;
+  if (done) return <ResultsScreen meta={meta} {...done} mode="practice" onDrill={onDrill} />;
   if (!run) {
     const start = () => setRun({ exam: assemblePractice({ meta, pool: data.pool, seed: seed ?? newSeed(), recentIds: data.recent, options: choices }), startedAt: new Date() });
-    return <PracticeSetup meta={meta} pool={data.pool} value={choices} onChange={setChoices} onStart={start} onCancel={onExit} />;
+    return <PracticeSetup meta={meta} pool={data.pool} value={choices} onChange={setChoices} onStart={start} />;
   }
   return (
     <StudyRunner

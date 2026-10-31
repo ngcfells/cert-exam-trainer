@@ -2,7 +2,7 @@ import type { Lesson } from '../../domain/lesson';
 import { plural, Table, useFocusHeading } from '../kit';
 import { Formula } from './Formula';
 
-export function LessonView({ lesson, checkCount, onCheck, onBack }: { lesson: Lesson; checkCount: number; onCheck: () => void; onBack: () => void }) {
+export function LessonView({ lesson, checkCount, onCheck }: { lesson: Lesson; checkCount: number; onCheck: () => void }) {
   const headingRef = useFocusHeading([lesson.id]);
   const { formula, rule, example, trap } = lesson;
   return (
@@ -56,9 +56,6 @@ export function LessonView({ lesson, checkCount, onCheck, onBack }: { lesson: Le
       ) : (
         <p>The check questions for this lesson are not available.</p>
       )}
-      <p>
-        <button type="button" onClick={onBack}>Back to lessons</button>
-      </p>
     </article>
   );
 }

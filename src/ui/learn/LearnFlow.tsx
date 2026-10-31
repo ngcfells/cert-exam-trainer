@@ -10,6 +10,7 @@ import { onlySeen } from '../../study/session';
 import { ResultsScreen } from '../exam/ResultsScreen';
 import { finishAttempt, type Finished } from '../exam/saveAttempt';
 import { Loading, metaFor, useLoad } from '../kit';
+import { useNavUp } from '../nav';
 import { LoadError } from '../study/LoadError';
 import { StudyRunner } from '../study/StudyRunner';
 import { LessonList } from './LessonList';
@@ -33,7 +34,7 @@ export function checkExam(examCode: string, checkIds: string[], seed: number): A
   return onlySeen({ exam: examCode, seed, items, mcqCount: 0, pbqWeightSum: 0 }, items.map((i) => i.question.id));
 }
 
-export function LearnFlow({ repo, examCode, lessonId, onExit }: { repo: Repo; examCode: string; lessonId?: string; onExit: () => void }) {
+export function LearnFlow({ repo, examCode, lessonId }: { repo: Repo; examCode: string; lessonId?: string }) {
   const meta = metaFor(examCode);
   const lessons = useMemo(() => getLessons(examCode), [examCode]);
   const [view, setView] = useState<View>(lessonId ? { kind: 'lesson', id: lessonId } : { kind: 'list' });
@@ -51,24 +52,26 @@ export function LearnFlow({ repo, examCode, lessonId, onExit }: { repo: Repo; ex
     setView({ kind: 'list' });
     void reload();
   };
+  // Back climbs one level: check or result → lesson → list → exam page.
+  const inCheck = (view.kind === 'check' || view.kind === 'result') && !!lesson;
+  useNavUp(view.kind === 'list' ? null : inCheck ? '← Back to lesson' : '← Back to lessons', () =>
+    inCheck && lesson ? setView({ kind: 'lesson', id: lesson.id }) : toList(),
+  );
 
   if (view.kind === 'list') {
     if (status === undefined) return <Loading />;
-    if (status === null) return <LoadError onExit={onExit} />;
-    return <LessonList meta={meta} lessons={lessons} status={status} onOpen={(id) => setView({ kind: 'lesson', id })} onExit={onExit} />;
+    if (status === null) return <LoadError />;
+    return <LessonList meta={meta} lessons={lessons} status={status} onOpen={(id) => setView({ kind: 'lesson', id })} />;
   }
   if (!lesson || !exam) {
     return (
       <section className="learn">
         <p>Lesson not found.</p>
-        <button type="button" onClick={toList}>Back to lessons</button>
       </section>
     );
   }
   if (view.kind === 'result') {
-    return (
-      <ResultsScreen meta={meta} {...view.done} mode="lesson" lessonFraction={view.fraction} backLabel="Back to lesson" onHome={() => setView({ kind: 'lesson', id: lesson.id })} />
-    );
+    return <ResultsScreen meta={meta} {...view.done} mode="lesson" lessonFraction={view.fraction} />;
   }
   if (view.kind === 'check') {
     const startedAt = view.startedAt;
@@ -93,5 +96,5 @@ export function LearnFlow({ repo, examCode, lessonId, onExit }: { repo: Repo; ex
       />
     );
   }
-  return <LessonView lesson={lesson} checkCount={exam.items.length} onCheck={() => setView({ kind: 'check', id: lesson.id, startedAt: new Date(), seed: newSeed() })} onBack={toList} />;
+  return <LessonView lesson={lesson} checkCount={exam.items.length} onCheck={() => setView({ kind: 'check', id: lesson.id, startedAt: new Date(), seed: newSeed() })} />;
 }

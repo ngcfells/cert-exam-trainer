@@ -12,22 +12,18 @@ export function ResultsScreen({
   result,
   report,
   saveError,
-  onHome,
   mode = 'mock',
   onDrill,
   lessonFraction,
-  backLabel = 'Back to exam',
   children,
 }: {
   /** Lesson checks: the score over every check item, shown in the heading. */
   lessonFraction?: number;
-  backLabel?: string;
   meta: ExamMeta;
   exam: AssembledExam;
   result: ExamResult;
   report: ScoreReport;
   saveError: string | null;
-  onHome: () => void;
   mode?: ResultMode;
   onDrill?: (objectiveIds: string[]) => void;
   /** Extra summary lines, shown under the score. */
@@ -98,9 +94,6 @@ export function ResultsScreen({
           </ol>
         </>
       )}
-      <button type="button" className="primary" onClick={onHome}>
-        {backLabel}
-      </button>
     </section>
   );
 }

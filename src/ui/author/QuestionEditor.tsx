@@ -168,7 +168,7 @@ export function QuestionEditor({
   const dirty = !!draft && !!initial && comparable(draft) !== comparable(initial);
   useLeaveGuard(dirty, DISCARD);
 
-  if (failed) return <LoadError onExit={onDone} />;
+  if (failed) return <LoadError />;
   if (!draft || !built) return <Loading />;
 
   const set = (patch: Partial<Draft>) => setDraft({ ...draft, ...patch });

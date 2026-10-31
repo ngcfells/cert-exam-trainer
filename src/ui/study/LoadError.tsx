@@ -1,10 +1,8 @@
-export function LoadError({ onExit }: { onExit: () => void }) {
+/** The nav bar above stays the way out. */
+export function LoadError() {
   return (
     <section aria-label="Error">
       <p role="alert">Could not load your data.</p>
-      <button type="button" onClick={onExit}>
-        Back to exam
-      </button>
     </section>
   );
 }

@@ -1,18 +1,23 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { examResultSchema } from '../../exam/result';
 import { parseSrsRecords } from '../../study/srs';
 import { recordCheck } from '../../study/lessonStatus';
+import { TestNav } from '../nav';
 import { checkExam, LearnFlow } from './LearnFlow';
 
 type User = ReturnType<typeof userEvent.setup>;
 const LESSON = 'Fixture: percent change';
 
-function setup(repo = createMemoryRepo(), lessonId?: string) {
+function setup(repo = createMemoryRepo(), lessonId?: string, onParent = () => {}) {
   const user = userEvent.setup();
-  render(<LearnFlow repo={repo} examCode="DA0-002" lessonId={lessonId} onExit={() => {}} />);
+  render(
+    <TestNav onParent={onParent}>
+      <LearnFlow repo={repo} examCode="DA0-002" lessonId={lessonId} />
+    </TestNav>,
+  );
   return { repo, user };
 }
 
@@ -57,7 +62,7 @@ describe('LearnFlow', () => {
     }
     expect(screen.getByRole('math', { name: /new value minus old value, divided by old value, times 100/ })).toBeInTheDocument();
     expect(screen.getByRole('table', { name: 'Fixture steps' })).toBeInTheDocument();
-    await user.click(screen.getByRole('button', { name: 'Back to lessons' }));
+    await user.click(screen.getByRole('button', { name: '← Back to lessons' }));
     expect(within(await statusOf(LESSON)).getByText('In progress')).toBeInTheDocument();
   });
 
@@ -70,8 +75,8 @@ describe('LearnFlow', () => {
     const [rec] = await repo.listRecords('results');
     expect(examResultSchema.parse(rec).mode).toBe('lesson');
     expect(parseSrsRecords(await repo.listRecords('srs')).map((r) => r.itemId).sort()).toEqual(['da2-fx-num-001', 'da2-seed-001', 'da2-seed-002']);
-    await user.click(screen.getByRole('button', { name: 'Back to lesson' }));
-    await user.click(await screen.findByRole('button', { name: 'Back to lessons' }));
+    await user.click(screen.getByRole('button', { name: '← Back to lesson' }));
+    await user.click(await screen.findByRole('button', { name: '← Back to lessons' }));
     expect(within(await statusOf(LESSON)).getByText('Done')).toBeInTheDocument();
   });
 
@@ -84,8 +89,8 @@ describe('LearnFlow', () => {
     await user.click(screen.getByRole('button', { name: 'Finish now' }));
     expect(await screen.findByRole('heading', { name: 'Lesson check complete: 33%' })).toBeInTheDocument();
     expect(examResultSchema.parse((await repo.listRecords('results'))[0]).questionIds).toEqual(['da2-fx-num-001']);
-    await user.click(screen.getByRole('button', { name: 'Back to lesson' }));
-    await user.click(await screen.findByRole('button', { name: 'Back to lessons' }));
+    await user.click(screen.getByRole('button', { name: '← Back to lesson' }));
+    await user.click(await screen.findByRole('button', { name: '← Back to lessons' }));
     expect(within(await statusOf(LESSON)).getByText('In progress')).toBeInTheDocument();
   });
 
@@ -99,7 +104,24 @@ describe('LearnFlow', () => {
   it('an unknown lesson id says so and offers a way back', async () => {
     const { user } = setup(createMemoryRepo(), 'nope');
     expect(await screen.findByText('Lesson not found.')).toBeInTheDocument();
-    await user.click(screen.getByRole('button', { name: 'Back to lessons' }));
+    await user.click(screen.getByRole('button', { name: '← Back to lessons' }));
     expect(await screen.findByRole('heading', { name: /^Learn:/ })).toBeInTheDocument();
+  });
+
+  it('Back climbs check → lesson → list → exam page, and no in-screen back button remains', async () => {
+    const onParent = vi.fn();
+    const { user } = setup(createMemoryRepo(), undefined, onParent);
+    await user.click(await screen.findByRole('button', { name: new RegExp(LESSON) }));
+    await user.click(await screen.findByRole('button', { name: /Start the check/ }));
+    expect(screen.getByRole('button', { name: '← Back to lesson' })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: '← Back to lesson' }));
+    expect(await screen.findByRole('heading', { level: 2, name: LESSON })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /^back to/i })).not.toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: '← Back to lessons' }));
+    expect(await screen.findByRole('heading', { name: /^Learn:/ })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /^back to/i })).not.toBeInTheDocument();
+    expect(onParent).not.toHaveBeenCalled();
+    await user.click(screen.getByRole('button', { name: '← Back' }));
+    expect(onParent).toHaveBeenCalledTimes(1);
   });
 });

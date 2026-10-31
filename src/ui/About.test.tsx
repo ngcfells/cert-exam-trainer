@@ -1,12 +1,11 @@
 import { render, screen, within } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 import { About } from './About';
 import { DISCLAIMER_POINTS } from './legal';
 
 describe('About', () => {
   it('shows name, disclaimer, licenses, version, privacy and user-content lines', () => {
-    render(<About onExit={() => {}} />);
+    render(<About />);
     const h = screen.getByRole('heading', { name: 'About Cert Exam Trainer' });
     expect(h).toHaveFocus();
     const list = screen.getByRole('list', { name: 'Disclaimer' });
@@ -20,7 +19,7 @@ describe('About', () => {
   });
 
   it('has the Ko-fi tip link', () => {
-    render(<About onExit={() => {}} />);
+    render(<About />);
     expect(screen.getByText('If you would like to help cover the costs of development, you can leave a tip on Ko-fi.')).toBeInTheDocument();
     const link = screen.getByRole('link', { name: /Tips/ });
     expect(link).toHaveAccessibleName('Tips (opens Ko-fi in a new tab)');
@@ -29,10 +28,8 @@ describe('About', () => {
     expect(link).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
-  it('Back calls onExit', async () => {
-    const onExit = vi.fn();
-    render(<About onExit={onExit} />);
-    await userEvent.click(screen.getByRole('button', { name: 'Back' }));
-    expect(onExit).toHaveBeenCalled();
+  it('has no in-screen Back; the nav bar is the way out', () => {
+    render(<About />);
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 });

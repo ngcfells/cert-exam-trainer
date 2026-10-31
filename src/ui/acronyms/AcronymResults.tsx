@@ -9,7 +9,6 @@ export function AcronymResults({
   timedOut,
   saveError,
   onAgain,
-  onExit,
 }: {
   deck: AcronymEntry[];
   grades: AcronymGrade[];
@@ -17,7 +16,6 @@ export function AcronymResults({
   timedOut: boolean;
   saveError: string | null;
   onAgain: () => void;
-  onExit: () => void;
 }) {
   const headingRef = useFocusHeading();
   const byTerm = new Map(deck.map((a) => [a.term, a]));
@@ -42,9 +40,6 @@ export function AcronymResults({
       )}
       <button type="button" className="primary" onClick={onAgain}>
         Study again
-      </button>{' '}
-      <button type="button" onClick={onExit}>
-        Back to exam
       </button>
     </section>
   );

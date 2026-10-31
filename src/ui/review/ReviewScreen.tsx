@@ -67,12 +67,10 @@ function BankChecks({ examCode, questions }: { examCode: string; questions: Ques
 export function ReviewScreen({
   examCode,
   questions: initial,
-  onExit,
 }: {
   examCode: string;
   /** Defaults to every bundled item, drafts included. */
   questions?: Question[];
-  onExit: () => void;
 }) {
   const meta = metaFor(examCode);
   const [questions, setQuestions] = useState<Question[]>(() => initial ?? getBundledQuestions(examCode, { includeDrafts: true }));
@@ -157,11 +155,6 @@ export function ReviewScreen({
   return (
     <section aria-labelledby={`${uid}-h`}>
       <h2 id={`${uid}-h`}>Review bank: {meta.code} (dev only)</h2>
-      <p>
-        <button type="button" onClick={onExit}>
-          Back
-        </button>
-      </p>
       <div className="review-filters">
         {filter('Status', status, (v) => setStatus(v as (typeof STATUSES)[number]), STATUSES.map((s) => [s, s]))}
         {filter('Objective', objective, setObjective, [['all', 'all'], ...meta.objectives.map((o): [string, string] => [o.id, o.id])])}

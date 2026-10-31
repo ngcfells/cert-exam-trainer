@@ -5,6 +5,7 @@ import type { AcronymEntry } from '../../acronyms/list';
 import { SOURCE_SETTING } from '../../banks/pool';
 import { createMemoryRepo } from '../../storage/memoryRepo';
 import { parseSrsRecords } from '../../study/srs';
+import { TestNav } from '../nav';
 import { AcronymFlow } from './AcronymFlow';
 import { AcronymResults } from './AcronymResults';
 import { QuizRunner } from './QuizRunner';
@@ -20,7 +21,7 @@ describe('FlashcardRunner via AcronymFlow', () => {
     const user = userEvent.setup();
     const repo = createMemoryRepo();
     await repo.setSetting(SOURCE_SETTING, 'ours');
-    render(<AcronymFlow repo={repo} examCode={EXAM} seed={3} onExit={() => {}} />);
+    render(<AcronymFlow repo={repo} examCode={EXAM} seed={3} />);
     await user.click(await screen.findByRole('radio', { name: 'All' }));
     const count = screen.getByRole('spinbutton', { name: 'Number of cards' });
     await user.clear(count);
@@ -46,6 +47,35 @@ describe('FlashcardRunner via AcronymFlow', () => {
 
     await user.click(screen.getByRole('button', { name: 'Study again' }));
     expect(await screen.findByRole('heading', { name: /^Acronyms:/ })).toHaveFocus();
+  });
+});
+
+describe('AcronymFlow Back', () => {
+  it('goes from a run to the setup, asking once a card is rated', async () => {
+    const user = userEvent.setup();
+    const repo = createMemoryRepo();
+    await repo.setSetting(SOURCE_SETTING, 'ours');
+    const onParent = vi.fn();
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValueOnce(false).mockReturnValueOnce(true);
+    render(
+      <TestNav onParent={onParent}>
+        <AcronymFlow repo={repo} examCode={EXAM} seed={3} />
+      </TestNav>,
+    );
+    await user.click(await screen.findByRole('radio', { name: 'All' }));
+    expect(screen.queryByRole('button', { name: /^(cancel|back)$/i })).not.toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: 'Start' }));
+    await user.click(await screen.findByRole('button', { name: 'Show answer' }));
+    await user.click(screen.getByRole('button', { name: 'I knew it' }));
+
+    await user.click(screen.getByRole('button', { name: '← Back to acronyms' }));
+    expect(confirm).toHaveBeenCalledWith('Leave this exam? Your answers will be lost.');
+    expect(screen.getByRole('heading', { name: /^Card 2 of/ })).toBeInTheDocument();
+    await user.click(screen.getByRole('button', { name: '← Back to acronyms' }));
+    expect(await screen.findByRole('heading', { name: /^Acronyms:/ })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '← Back' })).toBeInTheDocument();
+    expect(onParent).not.toHaveBeenCalled();
+    confirm.mockRestore();
   });
 });
 
@@ -116,7 +146,7 @@ describe('AcronymResults', () => {
         timedOut
         saveError="Review scheduling could not be saved."
         onAgain={() => {}}
-        onExit={() => {}}
+       
       />,
     );
     expect(screen.getByText('1 of 2 correct')).toBeInTheDocument();

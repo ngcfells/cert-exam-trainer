@@ -20,14 +20,14 @@ async function repoWith(filter: string, mine: [string, string][] = []) {
 
 describe('AcronymFlow setup', () => {
   it('empty list shows message', async () => {
-    render(<AcronymFlow repo={await repoWith('mine')} examCode={EXAM} onExit={() => {}} />);
+    render(<AcronymFlow repo={await repoWith('mine')} examCode={EXAM} />);
     expect(await screen.findByText('No acronyms for this exam with the current source setting.')).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Start' })).toBeNull();
   });
 
   it('choose is disabled with one entry', async () => {
     const user = userEvent.setup();
-    render(<AcronymFlow repo={await repoWith('mine', [['ARR', 'Annual Recurring Revenue']])} examCode={EXAM} onExit={() => {}} />);
+    render(<AcronymFlow repo={await repoWith('mine', [['ARR', 'Annual Recurring Revenue']])} examCode={EXAM} />);
     await user.click(await screen.findByRole('radio', { name: 'Quiz' }));
     expect(screen.getByRole('radio', { name: 'Choose' })).toBeDisabled();
     expect(screen.getByRole('radio', { name: 'Type it' })).toBeChecked();
@@ -41,7 +41,7 @@ describe('AcronymFlow setup', () => {
     for (const a of listExams().find((m) => m.code === EXAM)!.acronyms) {
       await repo.putRecord('srs', review(undefined, { exam: EXAM, kind: 'acronym', itemId: a.term, quality: 5 }, now));
     }
-    render(<AcronymFlow repo={repo} examCode={EXAM} onExit={() => {}} />);
+    render(<AcronymFlow repo={repo} examCode={EXAM} />);
     expect(await screen.findByText('Nothing due. Choose "All" to study every card.')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Start' })).toBeDisabled();
     await user.click(screen.getByRole('radio', { name: 'All' }));
@@ -49,7 +49,7 @@ describe('AcronymFlow setup', () => {
   });
 
   it('shows counts and the full list', async () => {
-    render(<AcronymFlow repo={await repoWith('ours')} examCode={EXAM} onExit={() => {}} />);
+    render(<AcronymFlow repo={await repoWith('ours')} examCode={EXAM} />);
     expect(await screen.findByText(`${listExams()[0].acronyms.length} acronyms, 0 due for review`)).toBeInTheDocument();
     const table = screen.getByRole('table', { name: /full list/i });
     expect(within(table).getByRole('cell', { name: 'Structured Query Language' })).toBeInTheDocument();
@@ -59,7 +59,7 @@ describe('AcronymFlow setup', () => {
     const user = userEvent.setup();
     const repo = createMemoryRepo();
     await repo.upsertUserQuestion({ ...userQ('u1'), stem: 'Which ARR matters most?' });
-    render(<AcronymFlow repo={repo} examCode={EXAM} onExit={() => {}} />);
+    render(<AcronymFlow repo={repo} examCode={EXAM} />);
     const found = await screen.findByRole('region', { name: 'My acronyms' });
     await user.click(within(found).getByRole('button', { name: 'Add ARR' }));
     expect(screen.getByRole('textbox', { name: 'Acronym' })).toHaveValue('ARR');
@@ -73,7 +73,7 @@ describe('AcronymFlow setup', () => {
   it('my acronyms shows a save error and deletes after confirm', async () => {
     const user = userEvent.setup();
     const repo = await repoWith('both', [['ARR', 'Annual Recurring Revenue']]);
-    render(<AcronymFlow repo={repo} examCode={EXAM} onExit={() => {}} />);
+    render(<AcronymFlow repo={repo} examCode={EXAM} />);
     const mine = await screen.findByRole('region', { name: 'My acronyms' });
     await user.type(screen.getByRole('textbox', { name: 'Acronym' }), 'sql');
     await user.type(screen.getByRole('textbox', { name: 'Meaning' }), 'x');

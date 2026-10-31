@@ -27,7 +27,6 @@ export function AcronymSetup({
   value,
   onChange,
   onStart,
-  onCancel,
 }: {
   meta: ExamMeta;
   entries: AcronymEntry[];
@@ -35,7 +34,6 @@ export function AcronymSetup({
   value: DeckChoices;
   onChange: (v: DeckChoices) => void;
   onStart: () => void;
-  onCancel: () => void;
 }) {
   // Mounted once per visit to the setup, including after "Study again".
   const headingRef = useFocusHeading();
@@ -104,12 +102,9 @@ export function AcronymSetup({
           <p role="status">{note}</p>
           <button type="button" className="primary" disabled={available === 0 || value.count < 1} onClick={onStart}>
             Start
-          </button>{' '}
+          </button>
         </>
       )}
-      <button type="button" onClick={onCancel}>
-        {entries.length === 0 ? 'Back' : 'Cancel'}
-      </button>
       {entries.length > 0 && (
         <details className="acronym-list">
           <summary>Full list</summary>

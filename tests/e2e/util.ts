@@ -14,6 +14,11 @@ export async function expectNoSeriousAxe(page: Page): Promise<void> {
   expect(bad).toEqual([]);
 }
 
+/** The top nav bar; tall pages repeat it at the bottom, so clicks target this one. */
+export const topNav = (page: Page) => page.getByRole('navigation', { name: 'Page navigation', exact: true });
+
+export const allExams = (page: Page) => topNav(page).getByRole('button', { name: '⌂ All exams' }).click();
+
 /** Opens an exam's page from the Home cards, where the study tools live. */
 export async function openExam(page: Page, code: string): Promise<void> {
   await page.getByRole('button', { name: new RegExp(`\\(${code}\\)`) }).click();
