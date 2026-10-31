@@ -124,7 +124,7 @@
 
 ## Next session
 
-- **First:** if not done yet, the owner approves the first real `npm run deploy`, then sets Settings → Pages → Source "Deploy from a branch", `gh-pages`, `/ (root)`. Check <https://ngcfells.github.io/cert-exam-trainer/> loads and works offline.
+- **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
 - **Then start chunk 10: remaining tooling** (spec §13 item 10): the acronym harvester (dump-site source off by default). The dev-only review tool already exists from chunk 8.
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 - **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
