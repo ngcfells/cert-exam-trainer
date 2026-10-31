@@ -1,0 +1,1327 @@
+[
+  {
+    "id": "da2-1-2-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which data repository stores large volumes of raw data in its native format until someone needs it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data lake"
+        },
+        {
+          "id": "b",
+          "text": "Data mart"
+        },
+        {
+          "id": "c",
+          "text": "Data silo"
+        },
+        {
+          "id": "d",
+          "text": "Data cube"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A data lake keeps raw structured, semi-structured and unstructured data as is and applies a schema when the data is read. A data mart is a curated subset for one team, a silo is data cut off from the rest of the organization, and a cube is a pre-aggregated analytical structure.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 1,
+    "stem": "A finance team has its own small, subject-specific store of cleaned data drawn from the company warehouse. What is this store called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data lake"
+        },
+        {
+          "id": "b",
+          "text": "Data mart"
+        },
+        {
+          "id": "c",
+          "text": "Data lakehouse"
+        },
+        {
+          "id": "d",
+          "text": "Data silo"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A data mart is a focused subset of warehouse data built for one department or subject. A lake holds raw data, a lakehouse combines lake storage with warehouse features, and a silo is isolated data rather than a planned subset of a shared warehouse.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 1,
+    "stem": "The sales and support departments each keep customer records in separate systems that cannot share data with each other. Which term describes this situation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data lake"
+        },
+        {
+          "id": "b",
+          "text": "Data mart"
+        },
+        {
+          "id": "c",
+          "text": "Data silos"
+        },
+        {
+          "id": "d",
+          "text": "Data lineage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Data silos are stores held by one group and cut off from the rest of the organization, which leads to duplicate and conflicting records. A lake and a mart are planned repositories, and lineage tracks where data came from.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "A company wants one platform that keeps low-cost raw file storage but also supports transactions, schema enforcement and fast SQL queries for reporting. Which repository fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A data mart"
+        },
+        {
+          "id": "b",
+          "text": "A data silo"
+        },
+        {
+          "id": "c",
+          "text": "A flat file"
+        },
+        {
+          "id": "d",
+          "text": "A data lakehouse"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A data lakehouse adds warehouse features such as transactions, schema enforcement and fast queries on top of cheap lake storage. A mart is a small departmental subset, a silo is isolated data, and a flat file offers none of these features.",
+    "acronyms": [
+      "SQL"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst needs current exchange rates every hour from a provider that publishes them through documented endpoints that return JSON. Which source type is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An API"
+        },
+        {
+          "id": "b",
+          "text": "Web scraping"
+        },
+        {
+          "id": "c",
+          "text": "A server log"
+        },
+        {
+          "id": "d",
+          "text": "A data mart"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Documented endpoints that return structured JSON are an API. Web scraping parses pages built for people, a server log records system events, and a data mart is an internal repository rather than an external feed.",
+    "acronyms": [
+      "API",
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "A competitor shows its product prices only on public web pages and offers no data feed. How can an analyst collect these prices automatically?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Query its database"
+        },
+        {
+          "id": "b",
+          "text": "Use web scraping"
+        },
+        {
+          "id": "c",
+          "text": "Read its log files"
+        },
+        {
+          "id": "d",
+          "text": "Call its API"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Web scraping extracts data from the HTML of web pages when no feed exists. The analyst has no access to the competitor's database or logs, and the scenario says there is no API.",
+    "acronyms": [
+      "HTML",
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst wants to know which pages of the company website return errors and at what times. Which source holds this detail?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The customer data mart"
+        },
+        {
+          "id": "b",
+          "text": "The order database"
+        },
+        {
+          "id": "c",
+          "text": "The web server logs"
+        },
+        {
+          "id": "d",
+          "text": "The product catalog file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Web server logs record each request with a timestamp, the page requested and the response status, including errors. The data mart, order database and catalog hold business data, not request events.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which file format stores tabular data as plain text, with one record per line and fields separated by commas?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "JSON"
+        },
+        {
+          "id": "b",
+          "text": "XML"
+        },
+        {
+          "id": "c",
+          "text": "HTML"
+        },
+        {
+          "id": "d",
+          "text": "CSV"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A CSV file holds one record per line with comma-separated fields. JSON uses key-value pairs and nesting, XML uses tagged elements, and HTML is markup for web pages.",
+    "acronyms": [
+      "CSV",
+      "JSON",
+      "XML",
+      "HTML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "A store's point-of-sale system records every sale the moment it happens and must handle many small inserts and updates at once. What kind of database is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An OLTP database"
+        },
+        {
+          "id": "b",
+          "text": "An OLAP cube"
+        },
+        {
+          "id": "c",
+          "text": "A data lake"
+        },
+        {
+          "id": "d",
+          "text": "A data mart"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "OLTP databases are built for many fast, small transactions such as recording sales. OLAP cubes, lakes and marts are designed for analysis of data that has already been captured.",
+    "acronyms": [
+      "OLTP",
+      "OLAP"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst must run heavy reporting queries on order data without slowing the live checkout system. Which source should the analyst query?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The live production database directly"
+        },
+        {
+          "id": "b",
+          "text": "A read replica of the production database"
+        },
+        {
+          "id": "c",
+          "text": "Order pages scraped from the storefront"
+        },
+        {
+          "id": "d",
+          "text": "The web server's request logs for checkout"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A read replica holds a synchronized copy of production data, so heavy queries run there without competing with live transactions. Querying production directly adds load to checkout, scraped storefront pages show only what customers see, and request logs record traffic rather than complete order records.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst can get the same supplier stock levels from a scraped supplier web page or from the supplier's published API. Why is the API usually the better choice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It returns the data as rendered pages"
+        },
+        {
+          "id": "b",
+          "text": "It removes the need for authentication"
+        },
+        {
+          "id": "c",
+          "text": "Its structured output is stable across redesigns"
+        },
+        {
+          "id": "d",
+          "text": "It loads faster than the rendered page"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An API returns structured data in a documented format that does not break when the website layout changes, whereas a scraper breaks when the page changes. APIs return data rather than rendered pages, often require keys or tokens, and speed is not the main reason to prefer an API.",
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 3,
+    "stem": "A team dumps raw files into a data lake for two years with no catalog, metadata or ownership. Analysts can no longer find or trust anything in it. What has the lake become?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A data mart"
+        },
+        {
+          "id": "b",
+          "text": "A data lakehouse"
+        },
+        {
+          "id": "c",
+          "text": "A data warehouse"
+        },
+        {
+          "id": "d",
+          "text": "A data swamp"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A data lake without governance, metadata and cataloging degrades into a data swamp. A mart, lakehouse and warehouse all imply more structure and management, not less.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "A partner sends order data as files in which each order is an element wrapped in opening and closing tags such as <order> and </order>. What format are the files?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "XML"
+        },
+        {
+          "id": "b",
+          "text": "CSV"
+        },
+        {
+          "id": "c",
+          "text": "JSON"
+        },
+        {
+          "id": "d",
+          "text": "Plain text log"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "XML marks data with named opening and closing tags. CSV separates fields with commas, JSON uses braces and key-value pairs, and a plain text log has no tag structure.",
+    "acronyms": [
+      "XML",
+      "CSV",
+      "JSON"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "Before building a scraper for a public retail site, what should an analyst check first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The site's database schema"
+        },
+        {
+          "id": "b",
+          "text": "The site's terms of use"
+        },
+        {
+          "id": "c",
+          "text": "The site's server logs"
+        },
+        {
+          "id": "d",
+          "text": "The site's data mart"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A site's terms of use (and its robots.txt file) state whether automated collection is allowed. An outside analyst cannot see the site's schema, logs or data mart, and none of them grants permission to scrape.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst pulls a full year of orders from a web API, but each call returns only 100 records and a link to the next set. What must the extraction handle?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Normalization"
+        },
+        {
+          "id": "b",
+          "text": "Log rotation"
+        },
+        {
+          "id": "c",
+          "text": "Pagination"
+        },
+        {
+          "id": "d",
+          "text": "Indexing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "APIs often split large results into pages, so the client must follow each next link until all records are retrieved. Normalization and indexing are database design concerns, and log rotation relates to log files.",
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 1,
+    "stem": "An analyst needs a monthly report of current customer balances, which change with every transaction. Which source should the analyst use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A spreadsheet exported last quarter by finance"
+        },
+        {
+          "id": "b",
+          "text": "A scraped copy of the customer portal"
+        },
+        {
+          "id": "c",
+          "text": "The billing system's server log files"
+        },
+        {
+          "id": "d",
+          "text": "The billing system's relational database"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The billing database is the system of record, so querying it returns current, complete balances. A spreadsheet from last quarter is stale, a scraped portal shows only what a customer-facing page displays, and server logs record events rather than account balances.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 3,
+    "stem": "Marketing and sales each report a different number of active customers because each team keeps its own customer list. Which approach best fixes the root cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Have each team reconcile its list by hand every month"
+        },
+        {
+          "id": "b",
+          "text": "Scrape both teams' dashboards nightly"
+        },
+        {
+          "id": "c",
+          "text": "Consolidate both lists into one shared repository"
+        },
+        {
+          "id": "d",
+          "text": "Add more logging to each team's system"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The conflicting counts come from data silos, so integrating the lists into one governed, shared repository gives a single source of truth. Manual reconciliation keeps the silos in place, scraping dashboards copies the conflict, and logging records events but does not reconcile records.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO statements correctly describe a data lake?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It can hold structured, semi-structured and unstructured data"
+        },
+        {
+          "id": "b",
+          "text": "It requires a schema before any data is loaded"
+        },
+        {
+          "id": "c",
+          "text": "It applies a schema when the data is read"
+        },
+        {
+          "id": "d",
+          "text": "It serves one department with a small curated subset"
+        },
+        {
+          "id": "e",
+          "text": "It accepts only cleaned and aggregated data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A data lake accepts any kind of raw data and uses schema-on-read. Requiring a schema up front and holding only cleaned, aggregated data describe a warehouse, and a small departmental subset is a data mart.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "A vendor offers its product catalog in several ways. Which TWO options deliver the data as files the analyst must load, rather than data retrieved on request?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A query against the vendor's SQL database"
+        },
+        {
+          "id": "b",
+          "text": "A JSON export saved to a shared folder"
+        },
+        {
+          "id": "c",
+          "text": "A call to the vendor's live API endpoint"
+        },
+        {
+          "id": "d",
+          "text": "An XML feed file emailed each night"
+        },
+        {
+          "id": "e",
+          "text": "A scraper reading the vendor's web pages"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A JSON export and an emailed XML file are file sources: the data arrives as a fixed snapshot that the analyst loads. A SQL query, an API call and a scraper all retrieve data on request from a live system or website.",
+    "acronyms": [
+      "API",
+      "JSON",
+      "SQL",
+      "XML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO fields would an analyst expect to find in a typical application log entry?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Timestamp of the event"
+        },
+        {
+          "id": "b",
+          "text": "Customer lifetime value"
+        },
+        {
+          "id": "c",
+          "text": "Severity level such as WARN or ERROR"
+        },
+        {
+          "id": "d",
+          "text": "Quarterly sales target"
+        },
+        {
+          "id": "e",
+          "text": "Product profit margin"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Log entries record when an event occurred and how severe it was, plus a message. Lifetime value, sales targets and profit margins are calculated business measures, not fields a system writes to its log.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO are common drawbacks of web scraping as a data source?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Page layout changes can break the scraper"
+        },
+        {
+          "id": "b",
+          "text": "Site terms may prohibit automated collection"
+        },
+        {
+          "id": "c",
+          "text": "It can only read data stored in CSV files"
+        },
+        {
+          "id": "d",
+          "text": "It returns data that is already typed and validated"
+        },
+        {
+          "id": "e",
+          "text": "It requires direct access to the site's database"
+        },
+        {
+          "id": "f",
+          "text": "It requires a paid license from the site owner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Scrapers depend on page structure, and may breach terms of use. Scraped text arrives untyped and needs cleaning, scraping reads HTML rather than CSV files or databases, and it needs no license from the site owner.",
+    "acronyms": [
+      "CSV",
+      "HTML"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO are examples of databases an analyst might query directly?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A MySQL customer database"
+        },
+        {
+          "id": "b",
+          "text": "A CSV export of last month's orders"
+        },
+        {
+          "id": "c",
+          "text": "A MongoDB product catalog"
+        },
+        {
+          "id": "d",
+          "text": "An exported image of a sales dashboard"
+        },
+        {
+          "id": "e",
+          "text": "A recorded sales call"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "MySQL is a relational database and MongoDB is a document database; both can be queried directly. A CSV export and a dashboard image are files, not databases, and a call recording is media.",
+    "acronyms": [
+      "CSV"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Match each data need to the source type that best supplies it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Shipment status from a carrier that issues access keys for requests"
+        },
+        {
+          "id": "p2",
+          "text": "Review ratings visible only on a public review site's pages"
+        },
+        {
+          "id": "p3",
+          "text": "Login failures recorded by an authentication server"
+        },
+        {
+          "id": "p4",
+          "text": "Current order records in the company's transactional system"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "API"
+        },
+        {
+          "id": "c2",
+          "text": "Web scraping"
+        },
+        {
+          "id": "c3",
+          "text": "Log files"
+        },
+        {
+          "id": "c4",
+          "text": "Database"
+        },
+        {
+          "id": "c5",
+          "text": "Data mart"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "A carrier that issues access keys offers an API, ratings visible only on web pages need scraping, system events live in logs, and live orders sit in the operational database. A data mart holds curated analytical subsets, not any of these raw sources.",
+    "partExplanations": {
+      "p1": "Access keys for programmatic requests mean the carrier offers an API.",
+      "p2": "Data that appears only on web pages is collected by scraping.",
+      "p3": "Servers write authentication events to log files.",
+      "p4": "Transactional order records are stored in an operational database."
+    },
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each description into the data repository it describes.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "lake",
+          "text": "Data lake"
+        },
+        {
+          "id": "lakehouse",
+          "text": "Data lakehouse"
+        },
+        {
+          "id": "mart",
+          "text": "Data mart"
+        },
+        {
+          "id": "silo",
+          "text": "Data silo"
+        }
+      ],
+      "items": [
+        {
+          "id": "raw",
+          "text": "Clickstream data, images and scanned documents landed together for later exploration"
+        },
+        {
+          "id": "acid",
+          "text": "Lake storage where updates to a table are all-or-nothing"
+        },
+        {
+          "id": "dept",
+          "text": "A curated store of payroll measures built for human resources reporting"
+        },
+        {
+          "id": "isolated",
+          "text": "A spreadsheet only one manager can open, duplicating company records"
+        },
+        {
+          "id": "subject",
+          "text": "A small store of sales measures built for one regional office"
+        },
+        {
+          "id": "unify",
+          "text": "One platform that serves both data science and business reporting on the same storage"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "raw": "lake",
+        "acid": "lakehouse",
+        "dept": "mart",
+        "isolated": "silo",
+        "subject": "mart",
+        "unify": "lakehouse"
+      }
+    },
+    "explanation": "Lakes keep raw data, lakehouses add warehouse features to lake storage, marts are subject-focused subsets for one group, and silos are stores cut off from the rest of the organization.",
+    "partExplanations": {
+      "raw": "Landing mixed raw data in native form for later exploration defines a data lake.",
+      "acid": "All-or-nothing (transactional) updates on lake storage are a defining lakehouse feature.",
+      "dept": "A curated store built for one department's reporting is a data mart.",
+      "isolated": "Data that one person controls and others cannot reach is a silo.",
+      "subject": "A small subject-specific store for one office is a data mart.",
+      "unify": "Serving data science and business reporting from one store is the goal of a lakehouse."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-diagram-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "This diagram shows how data flows from raw sources to departmental reporting. Label the three unlabeled repositories.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "src",
+          "x": 10,
+          "y": 90,
+          "w": 120,
+          "h": 60,
+          "text": "Apps, logs, files"
+        },
+        {
+          "id": "raw",
+          "x": 160,
+          "y": 90,
+          "w": 120,
+          "h": 60
+        },
+        {
+          "id": "wh",
+          "x": 310,
+          "y": 90,
+          "w": 120,
+          "h": 60
+        },
+        {
+          "id": "dept",
+          "x": 460,
+          "y": 90,
+          "w": 120,
+          "h": 60
+        }
+      ],
+      "edges": [
+        {
+          "from": "src",
+          "to": "raw"
+        },
+        {
+          "from": "raw",
+          "to": "wh"
+        },
+        {
+          "from": "wh",
+          "to": "dept"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-raw",
+          "x": 160,
+          "y": 170,
+          "name": "Store 1"
+        },
+        {
+          "id": "z-wh",
+          "x": 310,
+          "y": 170,
+          "name": "Store 2"
+        },
+        {
+          "id": "z-dept",
+          "x": 460,
+          "y": 170,
+          "name": "Store 3"
+        }
+      ],
+      "labels": [
+        {
+          "id": "lake",
+          "text": "Data lake"
+        },
+        {
+          "id": "warehouse",
+          "text": "Data warehouse"
+        },
+        {
+          "id": "mart",
+          "text": "Data mart"
+        },
+        {
+          "id": "silo",
+          "text": "Data silo"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-raw": "lake",
+        "z-wh": "warehouse",
+        "z-dept": "mart"
+      }
+    },
+    "explanation": "Raw data lands in a lake, is cleaned and modeled into a company-wide warehouse, and is then cut into subject-specific marts. A silo is isolated data and has no place in a planned flow.",
+    "partExplanations": {
+      "z-raw": "A data lake receives raw data from many sources in native format.",
+      "z-wh": "A data warehouse holds cleaned, structured data for the whole company.",
+      "z-dept": "A data mart is a subject-specific subset of the warehouse for one department."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-2-hotspot-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "An analyst lists possible data sources for a project. Select every item that is a file-based source.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "orders_2026.csv"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Web endpoint /v1/rates"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "budget.xlsx"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "PostgreSQL sales schema"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "products.json export"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Competitor price pages"
+        }
+      ],
+      "spots": [
+        {
+          "id": "csv",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "orders_2026.csv"
+        },
+        {
+          "id": "rest",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Web endpoint /v1/rates"
+        },
+        {
+          "id": "xlsx",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "budget.xlsx"
+        },
+        {
+          "id": "pg",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "PostgreSQL sales schema"
+        },
+        {
+          "id": "json",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "products.json export"
+        },
+        {
+          "id": "pages",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Competitor price pages"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "csv",
+        "xlsx",
+        "json"
+      ]
+    },
+    "explanation": "The CSV, spreadsheet and JSON export are files. The endpoint is an API, the PostgreSQL schema is a database, and competitor pages would be collected by web scraping.",
+    "partExplanations": {
+      "csv": "A CSV file is a flat file source.",
+      "rest": "An endpoint is an API, not a file.",
+      "xlsx": "A spreadsheet workbook is a file source.",
+      "pg": "A schema in PostgreSQL is a database source.",
+      "json": "A JSON export saved to disk is a file source.",
+      "pages": "Web pages are gathered by scraping, not read as files."
+    },
+    "acronyms": [
+      "CSV",
+      "JSON",
+      "API"
+    ],
+    "status": "approved"
+  }
+]

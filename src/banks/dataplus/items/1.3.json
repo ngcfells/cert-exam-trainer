@@ -1,0 +1,1269 @@
+[
+  {
+    "id": "da2-1-3-mcq-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which cloud provider offers the Azure platform?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Microsoft"
+        },
+        {
+          "id": "b",
+          "text": "Amazon"
+        },
+        {
+          "id": "c",
+          "text": "Google"
+        },
+        {
+          "id": "d",
+          "text": "Oracle"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Azure is Microsoft's public cloud platform. Amazon runs AWS, Google runs Google Cloud, and Oracle runs its own Oracle Cloud Infrastructure.",
+    "acronyms": [
+      "AWS"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-002",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which cloud deployment model shares a provider's infrastructure among many unrelated customers over the internet?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Private cloud"
+        },
+        {
+          "id": "b",
+          "text": "Public cloud"
+        },
+        {
+          "id": "c",
+          "text": "Hybrid cloud"
+        },
+        {
+          "id": "d",
+          "text": "On-premises"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A public cloud is multi-tenant infrastructure that a provider sells to any customer. A private cloud serves one organization, a hybrid cloud combines private and public resources, and on-premises infrastructure is owned and run in the organization's own facility.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-003",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which storage type keeps data as items in a flat namespace, each with a unique key and its own metadata?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Block storage"
+        },
+        {
+          "id": "b",
+          "text": "File storage"
+        },
+        {
+          "id": "c",
+          "text": "Object storage"
+        },
+        {
+          "id": "d",
+          "text": "Local storage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Object storage holds each item with a key and metadata in a flat bucket rather than a folder tree. Block storage exposes raw fixed-size blocks, file storage uses a hierarchy of folders, and local storage is simply a disk attached to one machine.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-004",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "What does a container package together so that an application runs the same way on any host?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A full guest operating system and virtual hardware"
+        },
+        {
+          "id": "b",
+          "text": "The application's source code files"
+        },
+        {
+          "id": "c",
+          "text": "The host's kernel and its device drivers"
+        },
+        {
+          "id": "d",
+          "text": "The application and its runtime libraries"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A container bundles the application with its libraries, runtime and settings while sharing the host's kernel. A virtual machine carries a full guest operating system, source code alone lacks dependencies, and containers do not include the host kernel or drivers.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-005",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which storage type uses a dedicated network to give servers block-level access to shared disk arrays?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "NAS"
+        },
+        {
+          "id": "b",
+          "text": "SAN"
+        },
+        {
+          "id": "c",
+          "text": "Object store"
+        },
+        {
+          "id": "d",
+          "text": "Local drive"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A SAN is a dedicated network that gives servers block-level access to shared disks. NAS shares files over the regular network, an object store is accessed by key through an API, and a local drive is attached to a single machine.",
+    "acronyms": [
+      "SAN",
+      "NAS",
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-006",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "A team saves analysis files to a NAS device on the office network. Which storage type are they using?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Shared file storage"
+        },
+        {
+          "id": "b",
+          "text": "Local block storage"
+        },
+        {
+          "id": "c",
+          "text": "Cloud object storage"
+        },
+        {
+          "id": "d",
+          "text": "In-memory storage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "NAS is a network device that shares files and folders with many users, so it is shared file storage. It is not attached to one machine as a block device, it is not a cloud object service, and it persists data on disk rather than in RAM.",
+    "acronyms": [
+      "NAS",
+      "RAM"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-007",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A hospital keeps patient records in its own data center but runs seasonal reporting workloads on a public provider, with both environments connected. Which model is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Public cloud"
+        },
+        {
+          "id": "b",
+          "text": "Private cloud"
+        },
+        {
+          "id": "c",
+          "text": "Hybrid cloud"
+        },
+        {
+          "id": "d",
+          "text": "Community cloud"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Combining connected on-premises or private resources with public cloud services is a hybrid cloud. Public alone would move the records off-site, private alone would exclude the public provider, and a community cloud is shared by organizations with common needs.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-008",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A bank must keep full control of hardware and data location but wants self-service provisioning for its analysts. Which model fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Public cloud"
+        },
+        {
+          "id": "b",
+          "text": "Hybrid cloud"
+        },
+        {
+          "id": "c",
+          "text": "Multicloud"
+        },
+        {
+          "id": "d",
+          "text": "Private cloud"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A private cloud gives cloud-style self-service on infrastructure dedicated to and controlled by one organization. Public cloud and multicloud place data on providers' hardware, and hybrid puts some workloads on public infrastructure.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-009",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst must archive millions of image files and serve them to a web application at low cost. Which storage type fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Block storage"
+        },
+        {
+          "id": "b",
+          "text": "Object storage"
+        },
+        {
+          "id": "c",
+          "text": "Local storage"
+        },
+        {
+          "id": "d",
+          "text": "File storage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Object storage scales cheaply to huge numbers of unstructured files and is accessed by web address or API. Block storage is costly and tied to a server, local storage cannot be shared at scale, and file shares struggle with very large flat collections served to the web.",
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-010",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A database server needs a volume with low latency for frequent small random writes. Which storage type is the usual choice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Block storage"
+        },
+        {
+          "id": "b",
+          "text": "Object storage"
+        },
+        {
+          "id": "c",
+          "text": "Archive storage"
+        },
+        {
+          "id": "d",
+          "text": "A network file share"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Block storage lets the database read and write individual blocks with low latency, which suits transactional workloads. Object storage rewrites whole objects, archive tiers are slow to retrieve, and file shares add protocol overhead and locking.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-011",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst's Python script works on her laptop but fails on a colleague's machine because of library version differences. What best solves this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Move the script to a larger server"
+        },
+        {
+          "id": "b",
+          "text": "Store the script in object storage"
+        },
+        {
+          "id": "c",
+          "text": "Run the script in a container"
+        },
+        {
+          "id": "d",
+          "text": "Email the colleague the script again"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A container image fixes the runtime and library versions, so the script behaves the same everywhere. A larger server, a different storage location or resending the file leaves the version mismatch in place.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-012",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Compared with virtual machines, what is the main reason containers start faster and use fewer resources?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "They need dedicated physical hardware"
+        },
+        {
+          "id": "b",
+          "text": "They share the host operating system kernel"
+        },
+        {
+          "id": "c",
+          "text": "They store all their data in object storage"
+        },
+        {
+          "id": "d",
+          "text": "They compile applications into machine code"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Containers share the host kernel instead of booting a guest operating system, so they are lightweight. They run on virtual or physical hosts alike, their storage choice does not drive startup time, and they do not compile code.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-013",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst keeps an extract on her laptop's internal drive. What is the main drawback of this local storage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It has higher latency than a network share"
+        },
+        {
+          "id": "b",
+          "text": "It requires an internet connection to read"
+        },
+        {
+          "id": "c",
+          "text": "It cannot store image or video files"
+        },
+        {
+          "id": "d",
+          "text": "Others cannot easily access or back it up"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Local storage is tied to one device, so sharing and central backup are hard and the data is lost if the device fails. It is usually faster than network storage, works offline, and can hold any kind of file.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-014",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "A company buys servers for its own data center instead of renting cloud capacity. Which cost pattern does it take on?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Large upfront capital spending"
+        },
+        {
+          "id": "b",
+          "text": "Pay-per-use operating charges"
+        },
+        {
+          "id": "c",
+          "text": "Per-query billing by the provider"
+        },
+        {
+          "id": "d",
+          "text": "A monthly subscription per seat"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "On-premises hardware is bought upfront as a capital expense, and the company also runs and maintains it. Pay-per-use, per-query and subscription billing are cloud consumption models.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-015",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "A retailer's on-premises reporting server runs at 20% most of the year but is overloaded for two weeks each holiday season. Which approach handles the peak most cost-effectively?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Buy enough servers on-premises to cover the peak"
+        },
+        {
+          "id": "b",
+          "text": "Move all reporting into a private cloud"
+        },
+        {
+          "id": "c",
+          "text": "Shut off reporting during the holiday weeks"
+        },
+        {
+          "id": "d",
+          "text": "Burst the extra load to public cloud resources"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Cloud bursting is a hybrid pattern that rents public capacity only while it is needed. Buying for the peak leaves hardware idle most of the year, a private cloud still needs owned capacity for the peak, and shutting off reporting fails the business.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-016",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "Several analytics servers must mount the same set of folders, edit files in place and keep standard file permissions. Which storage fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Object storage buckets"
+        },
+        {
+          "id": "b",
+          "text": "A shared network file system"
+        },
+        {
+          "id": "c",
+          "text": "A block volume on one server"
+        },
+        {
+          "id": "d",
+          "text": "Each server's local disk"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A shared file system lets many hosts mount one folder tree, edit files in place and honor file permissions. Objects are replaced whole rather than edited, a block volume normally attaches to one server at a time, and local disks are not shared.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-017",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "A company runs dozens of containerized ETL jobs that must restart on failure and scale with load across a cluster. What does it need?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A NAS device for the job files"
+        },
+        {
+          "id": "b",
+          "text": "A larger single virtual machine"
+        },
+        {
+          "id": "c",
+          "text": "A container orchestrator"
+        },
+        {
+          "id": "d",
+          "text": "A VPN to the cloud provider"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A container orchestration platform schedules containers across a cluster, restarts failed ones and scales them with demand. A bigger single virtual machine is still one point of failure, a NAS device only stores files, and a VPN only secures the network link.",
+    "acronyms": [
+      "ETL",
+      "NAS",
+      "VPN"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-018",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO of the following are major public cloud providers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "AWS"
+        },
+        {
+          "id": "b",
+          "text": "Tableau"
+        },
+        {
+          "id": "c",
+          "text": "Google Cloud"
+        },
+        {
+          "id": "d",
+          "text": "pandas"
+        },
+        {
+          "id": "e",
+          "text": "MySQL Workbench"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "AWS and Google Cloud sell public cloud infrastructure and services. Tableau is business intelligence software, pandas is a Python library, and MySQL Workbench is a database client tool.",
+    "acronyms": [
+      "AWS"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-019",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are typical advantages of public cloud over on-premises infrastructure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Full physical control of the hardware"
+        },
+        {
+          "id": "b",
+          "text": "Rapid scaling up or down on demand"
+        },
+        {
+          "id": "c",
+          "text": "Access that works without a network connection"
+        },
+        {
+          "id": "d",
+          "text": "Paying only for capacity actually used"
+        },
+        {
+          "id": "e",
+          "text": "Lower cost for steady, heavy workloads"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Public cloud offers elastic scaling and consumption-based pricing. Physical control is an on-premises trait, cloud access depends on the network, and steady heavy workloads can cost more in the cloud.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-020",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO statements describe benefits of containerization for analytics workloads?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Environments are reproducible across machines"
+        },
+        {
+          "id": "b",
+          "text": "Each container boots its own full operating system"
+        },
+        {
+          "id": "c",
+          "text": "Containers store persistent data inside the image"
+        },
+        {
+          "id": "d",
+          "text": "Workloads move easily between cloud and on-premises"
+        },
+        {
+          "id": "e",
+          "text": "Containers are tied to the provider that built them"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Containers give a reproducible environment and are portable across on-premises and any cloud. They share the host kernel rather than booting an operating system, keep persistent data in external volumes rather than the image, and are not tied to the provider that built them.",
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-021",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO storage options can be shared by multiple servers over a network?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A laptop's internal drive"
+        },
+        {
+          "id": "b",
+          "text": "NAS"
+        },
+        {
+          "id": "c",
+          "text": "A flash drive plugged into one server"
+        },
+        {
+          "id": "d",
+          "text": "SAN"
+        },
+        {
+          "id": "e",
+          "text": "A server's RAM disk"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "NAS shares files and a SAN shares block volumes over a network. An internal drive, a flash drive in one server and a RAM disk are local to a single machine.",
+    "acronyms": [
+      "NAS",
+      "SAN",
+      "RAM"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-mcq-022",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "stem": "A company needs analysts in three regions to read the same raw data lake files and wants storage to grow without capacity planning. Which THREE object storage traits meet these needs?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Practically unlimited scale"
+        },
+        {
+          "id": "b",
+          "text": "Access by key through a web API"
+        },
+        {
+          "id": "c",
+          "text": "Rich metadata stored with each item"
+        },
+        {
+          "id": "d",
+          "text": "In-place edits of a few bytes in a file"
+        },
+        {
+          "id": "e",
+          "text": "Lowest latency for database transactions"
+        },
+        {
+          "id": "f",
+          "text": "Mounting as a boot volume for servers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Object storage scales almost without limit, is reached by key through an API from any region, and stores custom metadata with each object. It replaces whole objects instead of editing bytes in place, and low-latency transactions and boot volumes need block storage.",
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-diagram-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "The diagram shows a company's analytics infrastructure. Label each unlabeled box.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "dc",
+          "x": 20,
+          "y": 20,
+          "w": 160,
+          "h": 60
+        },
+        {
+          "id": "link",
+          "x": 220,
+          "y": 20,
+          "w": 160,
+          "h": 60,
+          "text": "Encrypted VPN link"
+        },
+        {
+          "id": "cloud",
+          "x": 420,
+          "y": 20,
+          "w": 160,
+          "h": 60,
+          "text": "Public cloud provider"
+        },
+        {
+          "id": "share",
+          "x": 20,
+          "y": 150,
+          "w": 160,
+          "h": 60,
+          "text": "Shared folders for analysts"
+        },
+        {
+          "id": "bucket",
+          "x": 420,
+          "y": 150,
+          "w": 160,
+          "h": 60,
+          "text": "Raw files stored by key"
+        }
+      ],
+      "edges": [
+        {
+          "from": "dc",
+          "to": "link"
+        },
+        {
+          "from": "link",
+          "to": "cloud"
+        },
+        {
+          "from": "dc",
+          "to": "share"
+        },
+        {
+          "from": "cloud",
+          "to": "bucket"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-dc",
+          "x": 20,
+          "y": 90,
+          "name": "Upper-left box"
+        },
+        {
+          "id": "z-share",
+          "x": 20,
+          "y": 220,
+          "name": "Lower-left box"
+        },
+        {
+          "id": "z-bucket",
+          "x": 420,
+          "y": 220,
+          "name": "Lower-right box"
+        }
+      ],
+      "labels": [
+        {
+          "id": "onprem",
+          "text": "On-premises"
+        },
+        {
+          "id": "nas",
+          "text": "NAS (file storage)"
+        },
+        {
+          "id": "object",
+          "text": "Object storage"
+        },
+        {
+          "id": "block",
+          "text": "Block storage"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-dc": "onprem",
+        "z-share": "nas",
+        "z-bucket": "object"
+      }
+    },
+    "explanation": "An owned data center linked to a public provider forms a hybrid setup: the data center is on-premises, shared folders for many users sit on NAS file storage, and raw files addressed by key sit in cloud object storage. Block storage is a raw volume for a single server, not a shared folder tree or keyed files.",
+    "partExplanations": {
+      "z-dc": "Hardware the company owns and runs in its own facility is on-premises.",
+      "z-share": "NAS shares a folder hierarchy with many users over the network.",
+      "z-bucket": "Object storage holds items in a flat namespace addressed by key."
+    },
+    "acronyms": [
+      "VPN",
+      "NAS"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-buckets-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Sort each description into the storage type it describes.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "object",
+          "text": "Object storage"
+        },
+        {
+          "id": "file",
+          "text": "File storage"
+        },
+        {
+          "id": "block",
+          "text": "Block storage"
+        }
+      ],
+      "items": [
+        {
+          "id": "meta",
+          "text": "Files are reached by key through a web API"
+        },
+        {
+          "id": "tree",
+          "text": "Data is organized in a hierarchy of folders and paths"
+        },
+        {
+          "id": "volume",
+          "text": "A raw volume that a server formats with its own file system"
+        },
+        {
+          "id": "archive",
+          "text": "Cheap, near-unlimited capacity for a data lake"
+        },
+        {
+          "id": "san",
+          "text": "The disk a virtual machine boots from"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "meta": "object",
+        "tree": "file",
+        "volume": "block",
+        "archive": "object",
+        "san": "block"
+      }
+    },
+    "explanation": "Object storage uses keys, a web API and a flat namespace that scales cheaply. File storage uses folders and paths. Block storage gives raw volumes, such as a virtual machine's boot disk, that the server formats itself.",
+    "partExplanations": {
+      "meta": "Access by key through a web API defines object storage.",
+      "tree": "A folder and path hierarchy is file storage.",
+      "volume": "An unformatted raw volume is block storage.",
+      "archive": "Data lakes usually sit on low-cost, highly scalable object storage.",
+      "san": "A boot disk is a raw block volume attached to the virtual machine."
+    },
+    "acronyms": [
+      "API"
+    ],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-match-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Match each scenario to the infrastructure model it describes.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A startup rents all its servers from Azure and pays by the hour"
+        },
+        {
+          "id": "p2",
+          "text": "A defense contractor runs an internal portal where teams spin up their own virtual servers on its hardware"
+        },
+        {
+          "id": "p3",
+          "text": "A clinic keeps records in its own server room and backs them up to Google Cloud"
+        },
+        {
+          "id": "p4",
+          "text": "A factory runs its database on servers it bought and keeps on site, with no cloud tooling"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Public cloud"
+        },
+        {
+          "id": "c2",
+          "text": "Private cloud"
+        },
+        {
+          "id": "c3",
+          "text": "Hybrid cloud"
+        },
+        {
+          "id": "c4",
+          "text": "Traditional on-premises"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4"
+      }
+    },
+    "explanation": "Renting shared provider capacity is public cloud, dedicated self-service infrastructure is private cloud, combining owned and public resources is hybrid, and owned servers without cloud features are traditional on-premises.",
+    "partExplanations": {
+      "p1": "Pay-as-you-go capacity from a provider such as Azure is public cloud.",
+      "p2": "Cloud-style self-service on the company's own hardware is a private cloud.",
+      "p3": "Owned infrastructure combined with a public provider is hybrid.",
+      "p4": "Owned servers on site with no self-service layer are traditional on-premises."
+    },
+    "acronyms": [],
+    "status": "approved"
+  },
+  {
+    "id": "da2-1-3-config-001",
+    "exam": "DA0-002",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "Pinewood Analytics is moving a Python forecasting job to the cloud. The job must run identically in testing and production, read years of raw sensor files cheaply, and write results to a transactional database. Configure the deployment.",
+    "payload": {
+      "fields": [
+        {
+          "id": "runtime",
+          "label": "How to package the forecasting job",
+          "options": [
+            {
+              "id": "container",
+              "text": "Container image with pinned libraries"
+            },
+            {
+              "id": "laptop",
+              "text": "Script copied from an analyst's laptop"
+            },
+            {
+              "id": "nas",
+              "text": "Script stored on a NAS share"
+            }
+          ]
+        },
+        {
+          "id": "raw",
+          "label": "Storage for the raw sensor files",
+          "options": [
+            {
+              "id": "object",
+              "text": "Object storage"
+            },
+            {
+              "id": "block",
+              "text": "Block storage"
+            },
+            {
+              "id": "local",
+              "text": "Local disk on the job host"
+            }
+          ]
+        },
+        {
+          "id": "db",
+          "label": "Storage for the database volume",
+          "options": [
+            {
+              "id": "object",
+              "text": "Object storage"
+            },
+            {
+              "id": "block",
+              "text": "Block storage"
+            },
+            {
+              "id": "file",
+              "text": "File storage"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "runtime": "container",
+        "raw": "object",
+        "db": "block"
+      }
+    },
+    "explanation": "A container image makes the job reproducible across environments, object storage holds large raw archives cheaply, and block storage gives the database low-latency volumes. A copied or shared script does not pin dependencies, local disks vanish with the host, and file or object storage add latency for transactional writes.",
+    "partExplanations": {
+      "runtime": "Pinned libraries in a container image give identical runs in testing and production.",
+      "raw": "Object storage is the low-cost, scalable home for years of raw files.",
+      "db": "Databases need the low-latency random access of block storage."
+    },
+    "acronyms": [
+      "NAS"
+    ],
+    "status": "approved"
+  }
+]
