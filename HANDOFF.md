@@ -166,7 +166,13 @@
     - New items: `da2-2-3-num-001..012`, `da2-2-3-math-mcq-001..004` (2.3), `da2-2-2-num-001..003`, `da2-2-2-math-mcq-001..002` (2.2). Links to existing `da2-2-3-mcq-008`, `-009`, `-040`.
     - Rule learned: check items must not reuse the lesson example's numbers (the review caught this); use different numbers so the check tests skill, not recall.
     - Tally toward §7: 25 of 30 lessons and 48 of 60 numeric items.
-  - **Next session: section 5 (content F, joins and keys), on branch `math-engine`.** Write the plan with superpowers:writing-plans, then execute it (Native). Needs at least 5 lessons (to reach 30), at least 10 new join PBQs (key choice, join type, row-count outcomes), and at least 12 numeric items (row counts after joins work well) to reach 60. Every new numeric item needs a `NUMERIC_CHECKS` entry.
+  - **Section 5 (content F) is done on `math-engine`** (2026-10-31; 473 unit and 50 e2e tests pass; plan: `docs/superpowers/plans/2026-10-31-math-section5-content-f.md`; the Opus review found no wrong answers, and its 5 important and 8 minor findings are all fixed).
+    - 5 lessons in `F-joins-keys.json`: keys, join types, cross join, bad joins, union/pivot/unpivot.
+    - New items: `da2-1-1-num-001..002`, `da2-1-1-math-mcq-001..002`, `da2-2-3-num-013..023`, `da2-2-3-math-mcq-005..009`, and 11 join PBQs (`da2-1-1-buckets-002`, `-match-002`, `-hotspot-002`; `da2-2-3-config-002..003`, `-data-002..003`, `-match-001`, `-order-002`, `-terminal-003`, `-diagram-001`).
+    - `numericChecks.ts` has a `joinRows(left, right, kind)` helper; join counts are recomputed from key lists. `USING` was added to `NOT_ACRONYMS`.
+    - Terminology: lessons and items say "null" for a missing key (a null never matches, even another null).
+    - Tally toward §7: 30 of 30 lessons, 61 of 60 numeric items, 11 of 10 join PBQs.
+  - **Next session: section 6 (final), on branch `math-engine`.** Audit the bank against spec §7, fix bugs #1 and #2 below, run one Opus whole-branch review and fix every finding, then merge to `main` and `npm run deploy`.
   - **Open bug [#2](https://github.com/ngcfells/cert-exam-trainer/issues/2):** hotspot PBQ spots are always in the same place (all correct ones in one column), so the layout gives the answer away. Shuffle spot placement per display (seeded, saved in results like `elementOrders`) and audit other types for the same tell. Fix before the section 6 redeploy, or in a separate session.
   - **Open bug [#1](https://github.com/ngcfells/cert-exam-trainer/issues/1):** hotspot PBQ spot labels overflow their boxes (SVG text does not wrap). Fix it before the redeploy in section 6, or in a separate session.
   - The owner's practice-exam screenshots (std dev by hand, percent change, join fields) guide the topics only and are never copied.

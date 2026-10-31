@@ -2690,7 +2690,7 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "A manager wants every department listed, even ones with no staff yet. Departments (dept_id 10, 20, 50) is the right table in a right join from Employees (dept_id 10, 20, 20, 30, 40). How many result rows are there? Answer as a whole number.",
+    "stem": "A manager wants every department listed, even ones with no staff yet. Employees holds dept_id 10, 20, 20, 30 and 40; Departments holds dept_id 10, 20 and 50. Using Employees RIGHT JOIN Departments on dept_id, how many result rows are there? Answer as a whole number.",
     "payload": {},
     "answer": {
       "value": 4,
@@ -3309,7 +3309,7 @@
     "type": "pbq-data",
     "difficulty": 3,
     "pbqWeight": 4,
-    "stem": "At Larchmont Clinic, a Visits table is joined to a Doctors table on doctor_id, with Visits as the left table. The table below lists every row of both tables. A blank doctor_id matches nothing. Answer each question.",
+    "stem": "At Larchmont Clinic, a Visits table is joined to a Doctors table on doctor_id, with Visits as the left table. The table below lists every row of both tables. A null doctor_id matches nothing. Answer each question.",
     "payload": {
       "caption": "Rows of the Visits and Doctors tables",
       "columns": [
@@ -3341,7 +3341,7 @@
         [
           "Visits",
           "V5",
-          "(blank)"
+          "(null)"
         ],
         [
           "Doctors",
@@ -3442,7 +3442,7 @@
         "full": "6"
       }
     },
-    "explanation": "Matches: V1 with D1, and V2 and V3 with D2, so 3 matched rows. V4 (D4 does not exist) and V5 (blank) have no doctor, and Dr Sato (D3) has no visits. Left adds the 2 unmatched visits, right adds the 1 unmatched doctor, and full outer adds all 3.",
+    "explanation": "Matches: V1 with D1, and V2 and V3 with D2, so 3 matched rows. V4 (D4 does not exist) and V5 (null) have no doctor, and Dr Sato (D3) has no visits. Left adds the 2 unmatched visits, right adds the 1 unmatched doctor, and full outer adds all 3.",
     "partExplanations": {
       "inner": "Only matched pairs: V1–D1, V2–D2, V3–D2.",
       "left": "3 matches + V4 and V5 with null doctor columns = 5.",
@@ -3723,7 +3723,7 @@
     "explanation": "Look at the keys first, then make them comparable and unique, and only then join. Checking row counts and totals afterwards proves the join neither lost nor duplicated rows.",
     "partExplanations": {
       "s1": "Profiling shows what needs fixing before anything changes.",
-      "s2": "A text \"007\" never matches a number 7, so types must agree before matching.",
+      "s2": "A text \"007\" never matches a number 7, so types must agree first; converting also exposes hidden duplicates such as \"007\" and 7, which the next step resolves.",
       "s3": "Duplicate keys would repeat rows in the result.",
       "s4": "The join runs once the keys are clean.",
       "s5": "Reconciling counts and totals catches lost or repeated rows."
@@ -3743,7 +3743,7 @@
     "type": "pbq-terminal",
     "difficulty": 3,
     "pbqWeight": 4,
-    "stem": "An analyst at Fairmont Credit Union must list every member with their loan balances, including members who have no loan. Review the output, then complete each step.",
+    "stem": "An analyst at Fairmont Credit Union must list every member with their loan balances, including members who have no loan. Every loan belongs to an existing member. Review the output, then complete each step.",
     "payload": {
       "output": [
         "tables: members(member_id, full_name, branch)",
@@ -3778,7 +3778,7 @@
         },
         {
           "id": "on",
-          "label": "Type the ON condition that links the two tables, using full table names"
+          "label": "Type the ON condition that links the two tables, using full table names (or a USING clause)"
         },
         {
           "id": "min",
@@ -3828,14 +3828,44 @@
           "left"
         ],
         "on": [
-          "ON members.member_id = loans.member_id",
-          "ON loans.member_id = members.member_id",
           "ON members.member_id=loans.member_id",
-          "ON loans.member_id=members.member_id",
-          "on members.member_id = loans.member_id",
-          "on loans.member_id = members.member_id",
           "on members.member_id=loans.member_id",
-          "on loans.member_id=members.member_id"
+          "On members.member_id=loans.member_id",
+          "members.member_id=loans.member_id",
+          "ON members.member_id = loans.member_id",
+          "on members.member_id = loans.member_id",
+          "On members.member_id = loans.member_id",
+          "members.member_id = loans.member_id",
+          "ON members.member_id= loans.member_id",
+          "on members.member_id= loans.member_id",
+          "On members.member_id= loans.member_id",
+          "members.member_id= loans.member_id",
+          "ON members.member_id =loans.member_id",
+          "on members.member_id =loans.member_id",
+          "On members.member_id =loans.member_id",
+          "members.member_id =loans.member_id",
+          "ON loans.member_id=members.member_id",
+          "on loans.member_id=members.member_id",
+          "On loans.member_id=members.member_id",
+          "loans.member_id=members.member_id",
+          "ON loans.member_id = members.member_id",
+          "on loans.member_id = members.member_id",
+          "On loans.member_id = members.member_id",
+          "loans.member_id = members.member_id",
+          "ON loans.member_id= members.member_id",
+          "on loans.member_id= members.member_id",
+          "On loans.member_id= members.member_id",
+          "loans.member_id= members.member_id",
+          "ON loans.member_id =members.member_id",
+          "on loans.member_id =members.member_id",
+          "On loans.member_id =members.member_id",
+          "loans.member_id =members.member_id",
+          "USING (member_id)",
+          "USING(member_id)",
+          "using (member_id)",
+          "using(member_id)",
+          "Using (member_id)",
+          "Using(member_id)"
         ],
         "min": [
           "120"
@@ -3953,6 +3983,10 @@
         {
           "id": "name",
           "text": "Join field: product_name"
+        },
+        {
+          "id": "store",
+          "text": "Foreign key: store_id in Sales"
         }
       ]
     },

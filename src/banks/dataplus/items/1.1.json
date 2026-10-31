@@ -1584,13 +1584,13 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "A Customers table has customer_id values C1, C2, C3 and C5. An Orders table has 8 rows whose customer_id values are C1, C2, C2, C4, C5, (blank), C7 and C1. An orphan is an order whose customer_id is filled in but matches no customer. How many orphan orders are there? Answer as a whole number.",
+    "stem": "A Customers table has customer_id values C1, C2, C3 and C5. An Orders table has 8 rows whose customer_id values are C1, C2, C2, C4, C5, (null), C7 and C1. An orphan is an order whose customer_id is filled in but matches no customer. How many orphan orders are there? Answer as a whole number.",
     "payload": {},
     "answer": {
       "value": 2,
       "tolerance": 0.5
     },
-    "explanation": "C4 and C7 do not exist in Customers, so those 2 orders are orphans. The blank row is a missing value, not an orphan: it has no key to look up. The repeated C1 and C2 values are fine, because a foreign key may repeat."
+    "explanation": "C4 and C7 do not exist in Customers, so those 2 orders are orphans. The null row is a missing value, not an orphan: it has no key to look up. The repeated C1 and C2 values are fine, because a foreign key may repeat."
   },
   {
     "id": "da2-1-1-math-mcq-001",
@@ -1616,7 +1616,7 @@
         },
         {
           "id": "c",
-          "text": "The CRM customer identifier stored in billing"
+          "text": "The CRM customer ID column"
         },
         {
           "id": "d",
@@ -1803,6 +1803,10 @@
         {
           "id": "c6",
           "text": "store_name"
+        },
+        {
+          "id": "c7",
+          "text": "enrollment_id"
         }
       ]
     },
@@ -1814,7 +1818,7 @@
         "p4": "c4"
       }
     },
-    "explanation": "Each pair joins on the identifier that is the primary key of one table and a foreign key in the other. Last names and store names are not keys: names repeat, change and get spelled in different ways.",
+    "explanation": "Each pair joins on the identifier that is the primary key of one table and a foreign key in the other. Last names and store names are not keys: names repeat, change and get spelled in different ways. enrollment_id identifies an enrollment, so it cannot link a student on its own.",
     "partExplanations": {
       "p1": "Each enrollment row stores the student_id of the student it belongs to.",
       "p2": "Order lines store the SKU of the product sold.",
@@ -1853,7 +1857,7 @@
           "y": 10,
           "w": 220,
           "h": 40,
-          "text": "full_name: free text"
+          "text": "full_name: required"
         },
         {
           "id": "n3",
@@ -1869,7 +1873,7 @@
           "y": 90,
           "w": 220,
           "h": 40,
-          "text": "phone: optional"
+          "text": "phone: unique when given, optional"
         },
         {
           "id": "n5",
@@ -1903,7 +1907,7 @@
           "y": 10,
           "w": 220,
           "h": 40,
-          "name": "full_name: free text"
+          "name": "full_name: required"
         },
         {
           "id": "ward",
@@ -1919,7 +1923,7 @@
           "y": 90,
           "w": 220,
           "h": 40,
-          "name": "phone: optional"
+          "name": "phone: unique when given, optional"
         },
         {
           "id": "dob",
@@ -1945,12 +1949,12 @@
         "health"
       ]
     },
-    "explanation": "A primary key must be unique and never blank. patient_id and health_number both qualify, so either could be the key (each is a candidate key). Names and birth dates repeat across patients, a ward code is shared by many patients, and an optional phone can be blank.",
+    "explanation": "A primary key must be unique and never null. patient_id and health_number meet both rules, so either could be the key (each is a candidate key). full_name is required but repeats, phone is unique but optional, a ward code is shared and birth dates repeat.",
     "partExplanations": {
       "pid": "Unique and always set: a valid key.",
-      "name": "Two patients can share a name.",
+      "name": "Required, but two patients can share a name.",
       "ward": "Many patients share a ward.",
-      "phone": "Optional values can be blank, and phones can be shared.",
+      "phone": "Unique when given, but optional, so it can be null.",
       "dob": "Many patients share a birth date.",
       "health": "Unique and required: also a valid key."
     }
