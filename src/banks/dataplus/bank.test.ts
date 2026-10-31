@@ -47,6 +47,20 @@ describe('shipped Data+ bank', () => {
       expect(bad).toEqual([]);
     });
 
+    it('never reuse the worked example in a numeric check (the check tests skill, not recall)', () => {
+      const nums = (s: string) => new Set((s.replace(/(\d),(\d{3})/g, '$1$2').match(/\d+(\.\d+)?/g) ?? []).map(Number));
+      const bad = shippedLessons.flatMap((l) => {
+        const ex = nums(JSON.stringify(l.example));
+        return l.checkIds.filter((id) => {
+          const q = byId.get(id);
+          if (q?.type !== 'numeric') return false;
+          const stem = [...nums(q.stem)];
+          return stem.length > 0 && stem.every((n) => ex.has(n)) && ex.has((q.answer as NumericAnswer).value);
+        }).map((id) => `${l.id}: ${id}`);
+      });
+      expect(bad).toEqual([]);
+    });
+
     it('have unique ids', () => {
       const ids = shippedLessons.map((l) => l.id);
       expect(ids.filter((id, i) => ids.indexOf(id) !== i)).toEqual([]);

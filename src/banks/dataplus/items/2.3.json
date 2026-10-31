@@ -2321,13 +2321,13 @@
     "status": "approved",
     "type": "numeric",
     "difficulty": 2,
-    "stem": "A column has a minimum of 10 and a maximum of 50. After min-max scaling to the range 0 to 1, what is the scaled value of 30? Answer as a decimal to two places.",
+    "stem": "A column has a minimum of 20 and a maximum of 100. After min-max scaling to the range 0 to 1, what is the scaled value of 40? Answer as a decimal to two places.",
     "payload": {},
     "answer": {
-      "value": 0.5,
+      "value": 0.25,
       "tolerance": 0.01
     },
-    "explanation": "Scaled value = (x − min) ÷ (max − min) = (30 − 10) ÷ (50 − 10) = 20 ÷ 40 = 0.50."
+    "explanation": "Scaled value = (x − min) ÷ (max − min) = (40 − 20) ÷ (100 − 20) = 20 ÷ 80 = 0.25."
   },
   {
     "id": "da2-2-3-num-005",
