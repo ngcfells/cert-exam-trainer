@@ -105,6 +105,24 @@
 
 ## Next session
 
+**Chunk 8 is in progress on branch `chunk8-dataplus-bank`. Resume at plan Task 7.**
+
+- Tasks 1–6 are done. All five domains are drafted, reviewed by two independent reviewers (analyst plus copywriter), fixed, re-reviewed and committed as `approved` in `src/banks/dataplus/items/`.
+- Approved totals: 552 MCQs and 104 PBQs. Per template: match 15, buckets 14, order 13, config 13, data 13, diagram 12, hotspot 12, terminal 12. All bank, acronym and content tests pass. `5.3.json` keeps one `draft` seed MCQ, which is expected.
+- Spares were not trimmed. The bank is above every target, and the quality checks (duplicates, key position, key length) pass.
+- Commit e573e27 is mislabelled: it holds only the `review-tools.ts` change. Domain 1's items are in dc03e74.
+- The working files in `content-drafts/` (gitignored) hold the drafts, the review logs, `promote.cjs` and `count.cjs`.
+- **Next:** Task 7.
+  1. Write the target tests in `bank.test.ts`.
+  2. Write `tests/e2e/bank.spec.ts`, which runs against `dist-single`.
+  3. Run `npm run check`.
+  4. Run one whole-branch reviewer and fix every finding.
+  5. Update this file and merge to `main`.
+- **Owner rules for sessions:**
+  - Content work runs one domain at a time, with a `/clear` between.
+  - Subagents use the cheapest model that does the job: Sonnet for drafting, analyst, fixing and re-review, Haiku for copywriting. Use Opus only if the owner asks. This covers the final whole-branch reviewer too, despite the plan saying "most capable model"; check with the owner if in doubt.
+  - Inline `node -e` with a multi-line script fails silently in the Bash tool here. Write a script file instead.
+
 **Chunk order changed by the owner (2026-10-30).** The spec's §13 list has been updated to match:
 
 - **Chunk 8 (next): generate and load the question bank we ship, Data+ (DA0-002) first.**
