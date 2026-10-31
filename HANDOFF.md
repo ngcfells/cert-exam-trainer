@@ -101,7 +101,7 @@
 - **Priority:** Data+ (DA0-002) first, working end to end, before any other exam.
 - **Bank targets per exam:** at least 500 MCQs and at least 80 PBQs (10 of each of the 8 types).
 
-- **Chunk 8 is done on branch `chunk8-dataplus-bank`** (2026-10-30; 331 unit tests and 30 e2e tests pass; all final-review findings fixed, minors included; plan: `docs/superpowers/plans/2026-10-30-chunk8-dataplus-bank.md`). **Merge to `main` is pending the owner's go-ahead.**
+- **Chunk 8 is done and merged to `main`** (2026-10-30; 331 unit tests and 30 e2e tests pass; all final-review findings fixed, minors included; plan: `docs/superpowers/plans/2026-10-30-chunk8-dataplus-bank.md`). Merged to `main`.
   - Data+ objectives, metadata and the official acronym list are verified (no `VERIFY chunk 9` values left; 18 objectives).
   - The shipped bank is JSON per objective in `src/banks/dataplus/items/`: 553 MCQs (552 approved, 1 draft seed) and 104 approved PBQs. Per template: match 15, buckets 14, order 13, config 13, data 13, diagram 12, hotspot 12, terminal 12.
   - Unit tests and the fixture e2e run against the fixture bank (`VITE_BANK=fixture`, build `dist-e2e`). `src/banks/dataplus/bank.test.ts` checks the shipped bank: schema, acronyms, near-duplicates, key position and length tells, no order PBQ authored in answer order, and targets (totals, per template, per-objective quotas).
@@ -115,7 +115,7 @@
 
 ## Next session
 
-**Merge `chunk8-dataplus-bank` into `main` once the owner approves, then start chunk 9: legal, branding and deploy** (spec §13 item 9): licenses, disclaimers, the About page, look-and-feel polish, phone and tablet checks, the PWA service worker, and a local deploy script for GitHub Pages.
+**Start chunk 9: legal, branding and deploy** (spec §13 item 9): licenses, disclaimers, the About page, look-and-feel polish, phone and tablet checks, the PWA service worker, and a local deploy script for GitHub Pages.
 
 - Write the plan with superpowers:writing-plans, then execute it. Fix every review finding, minors included, before closing the chunk.
 - **Execution method (owner's choice):** Native. Use superpowers:executing-plans and implement every task inline, then dispatch one final whole-branch reviewer.
