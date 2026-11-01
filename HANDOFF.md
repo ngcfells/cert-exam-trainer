@@ -153,7 +153,7 @@
     - Test helpers `TestNav` and `LeaveGuardProvider` live in `src/ui/testNav.tsx`.
   - **Left as is (with reason):** Home and the exam page each count custom questions (two small reads, one per screen; sharing them would need a cache for no visible gain). The spec showed only the Stock count on cards; the MVP shows Stock and Custom, which the owner saw in the deployed MVP.
   - **Still to do from the spec (later parts, owner-scoped out of part 1):** the eight further exams with provisional metadata, and the one master acronym table.
-  - **Next session:** chunk 11 Tasks 8 and 9 (lock the targets, then the Opus whole-branch review, merge and deploy). All five SecAI+ slices and the pick-counts feature are done and committed on `chunk11-secai`; nothing from them is merged or deployed yet.
+  - **Chunk 11 (SecAI+) is done (2026-11-01, session 8).** See "Chunk 11 close-out" below.
 
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
 - **Owner reprioritised (2026-10-31): the Data+ Math & Data Concepts module comes before SecAI+.** Design (approved): `docs/superpowers/specs/2026-10-31-dataplus-math-module-design.md`. It is homework-style: a Learn area of lessons (meaning, formula, worked example, exam trap) with a check per lesson, a new `numeric` typed-answer question type, and more join PBQs. The owner is a trainer, not an analyst, so lessons must assume no stats background.
@@ -287,6 +287,19 @@
   - Content work runs one domain at a time, with a `/clear` between.
   - Subagents use the cheapest model that does the job; final whole-branch reviews of a large content chunk run on Opus.
   - Inline `node -e` with a multi-line script fails silently in the Bash tool here. Write a script file instead.
+
+## Chunk 11 close-out (2026-11-01, session 8)
+
+- **Done on `chunk11-secai`** (Tasks 8 and 9). `npm run check` passes: 642 unit and 73 e2e tests.
+- **Task 8:** `src/banks/secai/bank.test.ts` locks the targets with `describeBankTargets`. They passed with no new items.
+- **SecAI+ bank:** 666 approved items: 561 MCQs and 105 PBQs (buckets 15, match 16, config 13, order 12, diagram 12, data 14, hotspot 11, terminal 12). The deck-overlap check over all 15 files reports no flags.
+- **Opus whole-branch review:** it answered 81 sampled items blind and matched every key. It found 1 important issue and 5 minors, all fixed in `d76736c`:
+  - **Reverse length tell:** in 1.2 and 1.3 the key was never the longest option. Twelve distractors were trimmed, and the key is now the longest in 15–19% of singles in each domain-1 objective. A new per-objective floor in `shippedChecks` (at least 10% for an objective with 20 or more singles) guards this.
+  - Four order PBQ stems gained a rule for each pair of steps that could swap. `cy1-1-2-mcq-020` got its own scenario, away from the deck example. Two terminal accept lists now take the full path and `--flag=value` forms. Two unit tests now name their exam.
+  - `draft-ollama` now uses an example for the chosen exam (`scripts/draft-ollama-lib.ts`). It reads `content-drafts/topics.md` only when the file's heading names that exam: before this, a CY0-001 run would have been given Data+ topics.
+- **Open, owner to decide:** Data+ 2.1 (6%) and 4.1 (4%) are also below the new floor. They are exempt (`longestFloorExempt` in `src/banks/dataplus/bank.test.ts`), because chunk 11 must not change the Data+ bank. Rebalancing them is a small content pass.
+- **Flagged acronyms (not shipped):** see Session 1 above (CSA, DSA, SSE, CI, IA, SAM, GenAI, XSOAR, XSIAM).
+- **Next:** merge `chunk11-secai` into `main`, run `npm run deploy`, and check that the live site lists both exams with full SecAI+ counts. Then chunk 12, AutoOps+.
 
 ## Standing rules
 

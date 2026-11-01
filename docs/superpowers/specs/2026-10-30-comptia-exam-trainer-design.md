@@ -258,7 +258,7 @@ Each chunk ends with a `HANDOFF.md` update that records what's done, what's next
 10. **Remaining tooling:**
     - the acronym harvester, with the dump-site source off by default
     - the dev-only review tool, which reuses the question adder's preview, unless chunk 8 already needed it
-11. **SecAI+ content.**
+11. **SecAI+ content.** *Done 2026-11-01: CY0-001 with 561 MCQs and 105 PBQs.*
 12. **AutoOps+ content.**
 13. Each remaining exam gets its own content chunk.
 
