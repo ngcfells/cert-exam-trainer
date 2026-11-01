@@ -178,7 +178,7 @@ export function QuestionEditor({
   );
   // Reset preview answers only when what the learner answers changes, not on stem or explanation edits.
   const q = built?.question;
-  const previewKey = q ? JSON.stringify([q.type, q.payload]) : '';
+  const previewKey = q ? JSON.stringify([q.type, q.payload, q.pick]) : '';
   useEffect(() => setPreview(undefined), [previewKey]);
   const comparable = (d: Draft) => JSON.stringify({ ...d, parked: undefined });
   const dirty = !!draft && !!initial && comparable(draft) !== comparable(initial);

@@ -58,9 +58,10 @@ test('practice setup, a checked question and results pass axe', async ({ page })
 
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByRole('button', { name: 'Finish' }).click();
-  // Item 2 is unanswered, so practice asks first.
+  // Item 2 is unanswered, so practice asks first. Item 1 counts too if it is a select-two with one pick
+  // (the run's order is random).
   const dialog = page.getByRole('dialog', { name: 'Finish now?' });
-  await expect(dialog).toContainText('You have 1 unanswered or partly answered question.');
+  await expect(dialog).toContainText(/You have (1 unanswered or partly answered question|2 unanswered or partly answered questions)\./);
   await expect(dialog.getByRole('button', { name: 'Keep going' })).toBeFocused();
   await expectNoSeriousAxe(page);
   await dialog.getByRole('button', { name: 'Finish', exact: true }).click();

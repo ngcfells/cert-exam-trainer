@@ -34,11 +34,22 @@ for (const seed of SEEDS) test(`mock exam screens (seed ${seed}) pass axe`, asyn
   await expectNoSeriousAxe(page);
 
   await page.getByRole('button', { name: 'Start exam' }).click();
+  let lockedChecked = false;
   for (let i = 1; i <= TOTAL; i++) {
     await expect(page.getByText(`Question ${i} of ${TOTAL}`)).toBeVisible();
     await expectNoSeriousAxe(page);
+    // A "Select 2." item with two picks locks the other boxes; that state must pass axe too.
+    if ((await page.locator('.mcq .hint').allTextContents())[0] === 'Select 2.') {
+      const boxes = page.locator('.mcq input[type="checkbox"]');
+      await boxes.nth(0).check();
+      await boxes.nth(1).check();
+      await expect(boxes.nth(2)).toBeDisabled();
+      await expectNoSeriousAxe(page);
+      lockedChecked = true;
+    }
     if (i < TOTAL) await page.getByRole('button', { name: 'Next' }).click();
   }
+  expect(lockedChecked).toBe(true);
   await page.getByRole('button', { name: 'Review', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Review your answers' })).toBeVisible();
   await expectNoSeriousAxe(page);

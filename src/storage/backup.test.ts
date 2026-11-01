@@ -38,6 +38,19 @@ describe('backup', () => {
     expect(await snapshot(target)).toEqual(await snapshot(repo));
   });
 
+  it('round-trips multi-answer user questions with a pick', async () => {
+    const multi = (id: string, pick: number | 'all') => ({
+      ...userQ(id), type: 'mcq-multi' as const, pick,
+      payload: { options: ['a', 'b', 'c'].map((o) => ({ id: o, text: o })) }, answer: { correct: ['a', 'c'] },
+    });
+    await repo.upsertUserQuestion(multi('m2', 2));
+    await repo.upsertUserQuestion(multi('ma', 'all'));
+    const target = createMemoryRepo();
+    expect(await importBackup(target, JSON.stringify(await exportBackup(repo)), 'merge')).toEqual({ imported: 3, skipped: [] });
+    expect(await snapshot(target)).toEqual(await snapshot(repo));
+    expect((await target.getUserQuestions()).map((q) => q.pick)).toEqual(expect.arrayContaining([2, 'all']));
+  });
+
   it('rejects invalid JSON and leaves repo unchanged', async () => {
     const before = await snapshot(repo);
     await expect(importBackup(repo, '{nope', 'replace')).rejects.toBeInstanceOf(ImportError);

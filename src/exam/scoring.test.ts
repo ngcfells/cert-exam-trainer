@@ -97,6 +97,18 @@ describe('mcqFraction', () => {
   });
 });
 
+describe('odd saved responses on multi-answer items', () => {
+  it('a repeated id counts once', () => {
+    expect(mcqFraction(multi(['a', 'c'], 2), ['a', 'a'])).toBe(0.5);
+    expect(isComplete(multi(['a', 'c'], 2), ['a', 'a'])).toBe(false);
+  });
+  it('ids that are not options are ignored', () => {
+    expect(mcqFraction(multi(['a', 'c'], 2), ['a', 'zz'])).toBe(0.5);
+    // Four real picks plus a stale id is not "every choice" on a five-option item.
+    expect(mcqFraction(multi(['a', 'b', 'c'], 'all'), ['a', 'b', 'c', 'd', 'zz'])).toBeCloseTo(2 / 3);
+  });
+});
+
 describe('isComplete for multi-answer', () => {
   it('select two needs exactly two picks', () => {
     expect(isComplete(multi(['a', 'c'], 2), ['a'])).toBe(false);

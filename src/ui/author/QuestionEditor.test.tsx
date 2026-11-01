@@ -211,6 +211,17 @@ describe('QuestionEditor', () => {
       expect((await repo.getUserQuestions())[0]).toMatchObject({ pick: saved });
     });
 
+    it('changing the pick clears the preview answers', async () => {
+      const repo = createMemoryRepo();
+      await repo.upsertUserQuestion(multiQ(['a', 'c'], 'all'));
+      const { user } = setup('m1', repo);
+      const preview = await screen.findByRole('region', { name: 'Preview' });
+      for (const t of ['A', 'B', 'D']) await user.click(within(preview).getByLabelText(t));
+      await user.selectOptions(pickControl(), 'Select two');
+      expect(within(preview).getByLabelText('A')).not.toBeChecked();
+      expect(within(preview).getByLabelText('B')).toBeEnabled();
+    });
+
     it('multi to single drops pick', async () => {
       const repo = createMemoryRepo();
       await repo.upsertUserQuestion(multiQ(['a', 'c'], 2));

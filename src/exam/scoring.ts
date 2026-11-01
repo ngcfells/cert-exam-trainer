@@ -19,6 +19,12 @@ export function hasAnswer(q: Question, r: ItemResponse | undefined): boolean {
   return isAnswered(r);
 }
 
+/** An MCQ response as distinct ids of real options (saved or imported data can hold repeats or stale ids). */
+function cleanPicks(q: Question, picked: readonly string[]): string[] {
+  const ids = new Set((q.payload as McqPayload).options.map((o) => o.id));
+  return [...new Set(picked)].filter((p) => ids.has(p));
+}
+
 /**
  * Fully answered: an MCQ with a pick, a number that parses, a hotspot with
  * any spot selected, or another PBQ with every part filled. Drives the review grid.
@@ -27,7 +33,8 @@ export function isComplete(q: Question, r: ItemResponse | undefined): boolean {
   if (q.type === 'numeric') return hasAnswer(q, r);
   if (q.type === 'mcq-multi' && Array.isArray(r)) {
     const pick = effectivePick(q);
-    return pick === 'all' ? r.length > 0 : r.length === pick;
+    const n = cleanPicks(q, r).length;
+    return pick === 'all' ? n > 0 : n === pick;
   }
   if (!r || Array.isArray(r)) return isAnswered(r);
   if (q.type === 'pbq-hotspot') return Object.values(r).includes(HOTSPOT_ON);
@@ -85,8 +92,9 @@ export function selectAllFraction(correct: readonly string[], picked: readonly s
  * more than N picks earns 0. Select all: `selectAllFraction`, but picking every
  * choice earns 0 unless every choice is correct.
  */
-export function mcqFraction(q: Question, picked: readonly string[]): number {
+export function mcqFraction(q: Question, raw: readonly string[]): number {
   const correct = (q.answer as McqAnswer).correct;
+  const picked = cleanPicks(q, raw);
   const right = picked.filter((p) => correct.includes(p)).length;
   if (q.type === 'mcq-single') return picked.length === 1 && right === 1 ? 1 : 0;
   const pick = effectivePick(q);

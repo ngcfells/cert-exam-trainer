@@ -174,7 +174,10 @@ describe('CramFlow', () => {
       const finish = screen.queryByRole('button', { name: 'Finish' });
       if (finish) {
         await user.click(finish);
-        await finishAnyway(user);
+        // Cram warns too: its questions were left unanswered.
+        const dialog = screen.getByRole('dialog');
+        expect(dialog).toHaveTextContent(/unanswered or partly answered/);
+        await user.click(within(dialog).getByRole('button', { name: 'Finish' }));
         break;
       }
       await user.click(screen.getByRole('button', { name: 'Next' }));
