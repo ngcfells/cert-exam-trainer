@@ -299,8 +299,45 @@
   - `draft-ollama` now uses an example for the chosen exam (`scripts/draft-ollama-lib.ts`). It reads `content-drafts/topics.md` only when the file's heading names that exam: before this, a CY0-001 run would have been given Data+ topics.
 - **Merged to `main` (4d14ec6) and deployed (gh-pages 66adc1e).** The live bundle holds all 666 SecAI+ items and the Data+ bank.
 - **Flagged acronyms (not shipped):** see Session 1 above (CSA, DSA, SSE, CI, IA, SAM, GenAI, XSOAR, XSIAM).
-- **Next session (owner's choice): rebalance Data+ 2.1 and 4.1.** The key is the longest option in only 6% (2.1) and 4% (4.1) of their singles. Both are exempt for now (`longestFloorExempt` in `src/banks/dataplus/bank.test.ts`), because chunk 11 must not change the Data+ bank. Trim the longest distractors (keys unchanged), as session 8 did for SecAI+ domain 1, until each is at 10% or more. Then remove the exemption, run `npm run check`, merge and deploy. Branch from `main`.
+- **Next session: the Data+ length-tell fix.** START HERE; see "Next session: Data+ 2.1 and 4.1 length tell" below.
 - **After that:** chunk 12, AutoOps+.
+
+## Next session: Data+ 2.1 and 4.1 length tell
+
+**Problem.** In two Data+ objectives the correct answer is almost never the longest option, so a student can do well by never picking the longest one. The floor is at least 10% of single-answer MCQs per objective (`CONTENT_TARGETS.minLongestShare` in `src/content/quality.ts`, checked in `src/banks/shippedChecks.ts`).
+
+| Objective | Key longest now | Needed (≥ 10%) | Aim |
+|---|---|---|---|
+| 2.1 (`src/banks/dataplus/items/2.1.json`) | 2 of 31 (6%) | 4 | 4–6 |
+| 4.1 (`src/banks/dataplus/items/4.1.json`) | 1 of 28 (4%) | 3 | 4–5 |
+
+Both are exempt for now: `longestFloorExempt = ['2.1', '4.1']` in `src/banks/dataplus/bank.test.ts`.
+
+**Candidates.** These are near misses, where the key is about as long as the longest distractor (ratio = key length ÷ longest distractor):
+- 2.1: `mcq-010`, `-012`, `-022`, `-024`, `-027` (ties at 1.00), `mcq-016` (0.99), `mcq-015` (0.98).
+- 4.1: `mcq-001` (tie at 1.00), `mcq-014`, `-022`, `-027` (0.97), `mcq-015`, `-005`, `-023` (0.96).
+
+**Steps:**
+1. Branch `dataplus-length-tell` from `main`.
+2. Remove the exemption (`longestFloorExempt`) first, then run `npx vitest run src/banks`. Expect it to fail with `2.1: 6%` and `4.1: 4%` (this is the RED step).
+3. For each chosen item, shorten the longest distractor, and any other distractor at or above the key's length, until the key is the longest option. Keep the distractor's meaning and keep it wrong for the same reason, so the explanation still fits. Never change the key, the stem or the explanation's logic. Prefer trimming filler words ("on its own", "much", "before it is approved").
+4. Do not make the key longest in more than about 25% of an objective's singles. The bank-wide cap is 40% (`maxLongestShare`).
+5. Watch for these:
+   - A Data+ item may be linked from a Learn lesson check (`src/banks/dataplus/lessons/*.json`). Changing option text is fine, but keep the item's id and key.
+   - The near-duplicate and stem/key word-repeat checks still apply.
+6. Run `npx vitest run src/banks` (expect GREEN), then `npm run check` (expect it all to pass; last count 642 unit and 73 e2e tests).
+7. Commit as `fix(dataplus): rebalance key length in 2.1 and 4.1`, then delete the exemption comment. Merge to `main` with `--ff-only` and run `npm run deploy`. Check that the live bundle's asset hash matches gh-pages.
+8. Update this file: remove this section and record what was done.
+
+**Tools.** Session 8 used two scratchpad scripts (they are not in the repo; rewrite them if the scratchpad is gone):
+- `near.mjs` lists each single's key length against its longest distractor.
+- `apply-fixes.mjs` applies exact old → new option edits and refuses to apply one whose old text doesn't match.
+
+They kept the JSON formatting (2-space indent, trailing newline), so the diffs stayed small.
+
+**Scope.** This is a small content pass, so no subagent drafters or reviewers are needed. A blind re-check is optional, since the keys don't change. Do not touch any other Data+ objective.
+
+## Standing rules
 
 ## Standing rules
 
@@ -308,4 +345,5 @@
 - Bundled content must be original. Never ingest dump questions. The acronym harvester keeps only acronym tokens.
 - Accessibility is enforced: axe must show no serious or critical violations, and every drag interaction needs a keyboard and tap alternative.
 - Update this file at the end of every chunk.
+- **Keep the SDD ledgers (owner rule, 2026-11-01).** Do not delete the plan workspaces in `.superpowers/sdd/` (ledgers, rulings, logs) when a plan finishes, even where a skill says to. They are the reference for rulings while we build and test. Clear them all at once, and only after every current CompTIA exam is in the engine.
 - Finish each chunk in full before moving on. Fix review minors too; never defer them.
