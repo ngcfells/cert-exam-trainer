@@ -1,0 +1,23 @@
+[
+  {
+    "id": "at1-1-1-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": ["1.1"],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Bash script sets count=0 at the top level. A function then runs local count=5 followed by count=$((count + 1)). After the function returns, what does echo \"$count\" print at the top level?",
+    "payload": {
+      "options": [
+        { "id": "a", "text": "6" },
+        { "id": "b", "text": "5" },
+        { "id": "c", "text": "0" },
+        { "id": "d", "text": "1" }
+      ]
+    },
+    "answer": { "correct": ["c"] },
+    "explanation": "The local keyword makes a variable that exists only inside the function and hides the global one. The increment changes that local copy to 6, which is discarded when the function returns, so the global count is still 0. It would print 1 only if the function had changed the global variable without local.",
+    "acronyms": []
+  }
+]

@@ -5,6 +5,7 @@ import type { QuestionType } from '../domain/types';
 export const BANKS: Record<string, { dir: string; idPrefix: string }> = {
   'DA0-002': { dir: 'dataplus', idPrefix: 'da2' },
   'CY0-001': { dir: 'secai', idPrefix: 'cy1' },
+  'AT0-001': { dir: 'autoops', idPrefix: 'at1' },
 };
 
 export function bankFor(code: string): { dir: string; idPrefix: string } {
