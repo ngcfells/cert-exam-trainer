@@ -15,9 +15,13 @@ describe('ollamaChat', () => {
 
 describe('parseExpandArgs', () => {
   it('parses flags and defaults', () => {
-    expect(parseExpandArgs(['--', '--report', 'r.json'])).toEqual({ report: 'r.json', out: '', model: 'qwen3.6:27b', minCount: 1 });
+    expect(parseExpandArgs(['--', '--report', 'r.json'])).toEqual({ report: 'r.json', out: '', model: 'qwen3.6:27b', minCount: 1, terms: [] });
     expect(parseExpandArgs(['--report', 'r.json', '--min-count', '3', '--model', 'q', '--out', 'o.json']))
-      .toEqual({ report: 'r.json', out: 'o.json', model: 'q', minCount: 3 });
+      .toEqual({ report: 'r.json', out: 'o.json', model: 'q', minCount: 3, terms: [] });
+  });
+  it('--terms takes a comma list, trimmed and de-duplicated, case kept', () => {
+    expect(parseExpandArgs(['--report', 'r', '--terms', 'MTTR, SHA,,MTTR,FaaS']).terms).toEqual(['MTTR', 'SHA', 'FaaS']);
+    expect(() => parseExpandArgs(['--report', 'r', '--terms', ' , '])).toThrow(/--terms/);
   });
   it('rejects bad input', () => {
     expect(() => parseExpandArgs(['--report', 'r', '--min-count', 'abc'])).toThrow(/min-count/);
@@ -87,6 +91,19 @@ describe('expandTerms', () => {
     expect(rows.every((r) => r.verdict === 'flag' && r.reason === 'no answer')).toBe(true);
     const thrown = await expandTerms({ terms: ['SQL'], exam: 'X', examTitle: 'X', chat: async () => { throw new Error('down'); } });
     expect(thrown[0].reason).toBe('no answer');
+  });
+
+  it('describes the field from the exam domains, not a fixed subject', async () => {
+    const prompts: string[] = [];
+    await expandTerms({
+      terms: ['SRE'], exam: 'AT0-001', examTitle: 'CompTIA AutoOps+', topics: ['Source Control', 'Continuous Delivery'],
+      chat: async (p) => { prompts.push(p); return answer([]); },
+    });
+    expect(prompts[0]).toContain('Source Control; Continuous Delivery');
+    expect(prompts[0]).not.toMatch(/analytics/i);
+    const noTopics: string[] = [];
+    await expandTerms({ terms: ['SRE'], exam: 'X', examTitle: 'X', chat: async (p) => { noTopics.push(p); return answer([]); } });
+    expect(noTopics[0]).not.toMatch(/analytics/i);
   });
 
   it('batches of 25', async () => {

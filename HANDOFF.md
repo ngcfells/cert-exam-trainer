@@ -322,8 +322,15 @@
 - HTTP methods GET, PUT, PATCH, HEAD, OPTIONS are in `NOT_ACRONYMS`. POST stays a token because AT0-001 lists it (as "Power-on Self-test"); **do not tag `POST` on items that mean the HTTP method.**
 - **Task 2 done (2026-11-01, session 11), commit 1baa16a.** `npm run check` green: 664 unit, 75 e2e.
   - Harvest: `_WorkingData/harvest-AT0-001.json` (16 sources; certificationpractice and both Udemy pages refused). Expansion: `_WorkingData/expand-AT0-001.json` (477 terms, 49 `ok`).
-  - **17 community acronyms added:** ASCII, CSRF, DAG, DB, IP, IT, MIME, OWASP (corrected to "Open Worldwide…"), QPS, RFC, SQL, SRE, TCP, TLS, UDP, URI, XML.
-  - **Flagged, not shipped (owner to decide):** ambiguous: CA (Certificate Authority vs others), SCM (Source Control vs Supply Chain Management), BCP (Business Continuity Plan vs Best Current Practice), RC, SAM, CPE, SOA; no Ollama answer: MTTR (Repair/Recovery/Restore), SHA. Off-topic or marginal: IETF, IANA, ABNF, ISO, WWW, DOI, ITIL, COBIT, CNCF, ANSI, BSD, SCOR, SDSI, HTB, PCA, BI, DAS, DBA, FAQ, GZIP, UTF, CEU, CBT. Not acronyms for us: PBQ (exam term), CICD (covered by official CI/CD), GENAI. Drafters write flagged terms out in full.
+  - **Expander fix (owner request "expand if you can, Ollama primary"):** the prompt was hard-coded to data analytics. It now names the exam's domain titles, and `--terms A,B` reruns chosen terms. The first run also lost whole batches to `no answer` (bad JSON). A rerun of 164 terms (`_WorkingData/expand-AT0-001-rerun.json`) marked 32 more `ok`.
+  - **37 community acronyms (all Ollama-expanded, checked by Claude):** ASCII, CA, CPU, CRL, CRLF, CSRF, DAG, DB, HTML, IP, IT, ITSM, LF, MD5, MIME, MTTR ("Mean Time to Recovery"), NIST, OWASP (corrected to "Open Worldwide…"), PR, QPS, RBAC, RC, RFC, RPC, SAST, SCM ("Source Control Management"), SHA, SOA, SQL, SRE, TCP, TLS, UA, UDP, URI, WAN, XML.
+    - MTTR and SCM have common variant meanings (Repair/Restore; Source Code/Software Configuration Management). Drafters use the shipped expansions.
+  - **Flagged, not shipped (owner to decide):**
+    - Ambiguous: BCP (Business Continuity Plan vs Best Current Practice), SAM, CPE, DC, ADS, CR, ML, SD, TE, ID.
+    - Vendor names: GCP.
+    - Marginal or off-topic: IV, CGI, WEBDAV, BREACH, ALTSVC, IESG, IETF, IANA, ABNF, ISO, WWW, DOI, ITIL, COBIT, CNCF, ANSI, BSD, SCOR, SDSI, HTB, PCA, BI, DAS, DBA, FAQ, GZIP, UTF, CEU, CBT.
+    - Not acronyms for us: PBQ (exam term), CICD (the official list has CI/CD), DEVOPS and GENAI.
+    - Drafters write flagged terms out in full.
   - Deck notes: `_WorkingData/AutoOpsPlus/notes/` (6 decks + `index.md` objective map). The decks are thin topic lists; drafters should work from the objectives PDF sub-bullets. Text extracts were in session 10's scratchpad (`2b5018bd-…/scratchpad/src/`); regenerate with `scratchpad/tools/extract.py` if gone.
   - e2e: AT0-001 card and exam page (`home.spec.ts`), official terms CI/CD, FaaS, WinRM, IaC (`acronyms.spec.ts`), and the Review Focus 1 check in `study.spec.ts` (practice on domain 3 alone at 360 px: `.code-block` visible, no sideways scroll, axe clean).
 - **Next: session 2 = Task 3 for domain 1** (fresh quota window; see the plan's budget note).

@@ -61,13 +61,14 @@ export function checkExpansion(term: string, expansion: string): string | null {
   return fits(0, 0, 1) ? null : `initials of "${expansion}" do not spell ${term}`;
 }
 
-function prompt(terms: string[], exam: string, examTitle: string): string {
+function prompt(terms: string[], exam: string, examTitle: string, topics: string[]): string {
   return [
     `You are checking acronyms for the ${examTitle} (${exam}) certification exam.`,
-    'For each term, give its standard expansion as used in data, IT and analytics, in Title Case.',
+    ...(topics.length ? [`The exam covers: ${topics.join('; ')}.`] : []),
+    'For each term, give its standard expansion as used in IT and in the field this exam covers, in Title Case.',
     'Use verdict "flag" with a short reason when the term is not really an acronym (a word in capitals, a product or site name, a code),',
     'when it is a certification, exam or course code, a vendor, product or website name, or a country, currency or company,',
-    'when it is not used in data analytics or IT data work, when it has several common meanings in this field, or when you are not sure.',
+    'when it is not used in IT or in this exam\'s field, when it has several common meanings in this field, or when you are not sure.',
     'Otherwise use verdict "ok" with reason "".',
     'Return JSON only: {"items": [{"term": "SQL", "expansion": "Structured Query Language", "verdict": "ok", "reason": ""}, ...]}, one item per term, same terms.',
     `Terms: ${terms.join(', ')}`,
@@ -76,6 +77,8 @@ function prompt(terms: string[], exam: string, examTitle: string): string {
 
 export async function expandTerms(opts: {
   terms: string[]; exam: string; examTitle: string; chat: (prompt: string) => Promise<string>; batch?: number;
+  /** The exam's domain titles, so the model knows the field. */
+  topics?: string[];
 }): Promise<Expansion[]> {
   const size = opts.batch ?? 25;
   const out: Expansion[] = [];
@@ -83,7 +86,7 @@ export async function expandTerms(opts: {
     const batch = opts.terms.slice(i, i + size);
     let items: unknown[] = [];
     try {
-      const parsed = JSON.parse(await opts.chat(prompt(batch, opts.exam, opts.examTitle))) as { items?: unknown };
+      const parsed = JSON.parse(await opts.chat(prompt(batch, opts.exam, opts.examTitle, opts.topics ?? []))) as { items?: unknown };
       if (Array.isArray(parsed.items)) items = parsed.items;
     } catch {
       items = [];
@@ -138,20 +141,24 @@ export function ollamaChat(model = 'qwen3.6:27b', timeoutMs = 600_000, fetchFn: 
   };
 }
 
-export interface ExpandArgs { report: string; out: string; model: string; minCount: number }
+/** `terms`: when set, expand only these (from `--terms A,B`), instead of the report's missing terms. */
+export interface ExpandArgs { report: string; out: string; model: string; minCount: number; terms: string[] }
 
 export function parseExpandArgs(argv: string[]): ExpandArgs {
-  const a: ExpandArgs = { report: '', out: '', model: 'qwen3.6:27b', minCount: 1 };
+  const a: ExpandArgs = { report: '', out: '', model: 'qwen3.6:27b', minCount: 1, terms: [] };
   const args = argv.filter((x) => x !== '--');
   for (let i = 0; i < args.length; i++) {
     const flag = args[i];
-    if (!['--report', '--out', '--model', '--min-count'].includes(flag)) throw new Error(`unknown argument ${flag}`);
+    if (!['--report', '--out', '--model', '--min-count', '--terms'].includes(flag)) throw new Error(`unknown argument ${flag}`);
     const value = args[++i];
     if (value === undefined || value.startsWith('--')) throw new Error(`${flag} needs a value`);
     if (flag === '--report') a.report = value;
     else if (flag === '--out') a.out = value;
     else if (flag === '--model') a.model = value;
-    else {
+    else if (flag === '--terms') {
+      a.terms = [...new Set(value.split(',').map((t) => t.trim()).filter(Boolean))];
+      if (!a.terms.length) throw new Error('--terms needs at least one term');
+    } else {
       const n = Number(value);
       if (!Number.isInteger(n) || n < 1) throw new Error('--min-count must be a whole number of at least 1');
       a.minCount = n;

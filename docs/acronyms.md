@@ -45,13 +45,15 @@ Two scripts find acronyms that the exam list is missing. Neither ships in the ap
    - Dump sources are included by default (owner decision); `--no-dumps` skips them.
    - It fetches one page at a time, waits at least 5 seconds (or the Crawl-delay in robots.txt) between requests to a site, obeys robots.txt, and skips a site whose robots.txt cannot be read.
    - Page text is discarded as soon as its tokens are counted. The report (default `_WorkingData/harvest-<exam>.json`) holds terms, counts and source ids only.
-2. `npm run expand-acronyms -- --report <harvest.json> [--out <file.json>] [--model qwen3.6:27b] [--min-count 1]`
-   - Asks the local Ollama model for each missing term's expansion. It marks a term `flag` when it is off-topic (cert codes, vendors, site names) or unsure.
+2. `npm run expand-acronyms -- --report <harvest.json> [--out <file.json>] [--model qwen3.6:27b] [--min-count 1] [--terms A,B]`
+   - Asks the local Ollama model for each missing term's expansion. The prompt names the exam's domain titles, so the model judges terms against that exam's field. It marks a term `flag` when it is off-topic (cert codes, vendors, site names) or unsure.
+   - A batch of 25 whose reply is not valid JSON comes back as `no answer` for every term in it. Rerun those terms (and any flag worth a second look) with `--terms` and a separate `--out`.
    - A local check flags any expansion whose initials cannot spell the term.
 3. A person (or Claude) reviews the `ok` rows and adds the sensible, on-topic ones to the exam `meta.ts` as `community`. Doubtful terms are listed in HANDOFF.
 
 Results:
 
+- AT0-001 (2026-11-01): 16 sources (certificationpractice and both Udemy pages refused), 651 unlisted terms, 477 at count 2 or more. The first run used a Data+-only prompt and lost several batches to `no answer`; a `--terms` rerun of 164 terms with the exam's domains in the prompt marked 32 more `ok`. Kept 37 as `community` (see `src/banks/autoops/meta.ts`).
 - CY0-001 (2026-10-31): 17 sources (11 study, 6 dump; ISO skipped by robots.txt), 396 unlisted terms. Ollama marked 45 `ok` and 351 `flag`. Kept 6 as `community`: BC, CBA, CIS, CUI, DMCA, SSL. Most of the rest were cert or exam codes, vendor and product names, plain words and page text.
 
 Keep real source lists and reports in `_WorkingData/` (gitignored). Never commit them.
