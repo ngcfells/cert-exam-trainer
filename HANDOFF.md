@@ -310,7 +310,7 @@
   - 2.1: `mcq-010` a, `mcq-012` a, `mcq-022` d, `mcq-024` b. Key longest now 6 of 31 (19%).
   - 4.1: `mcq-014` a, `mcq-022` c, `mcq-015` b, `mcq-005` c. Key longest now 5 of 28 (18%).
 - **Deployed 2026-11-01** (gh-pages `8094385`). The live bundle's asset hash (`index-CqHHIIRQ.js`) matches gh-pages.
-- **Next: chunk 12, AutoOps+.**
+- **Next: chunk 12, AutoOps+ (AT0-001).** Plan (awaiting the owner's review): `docs/superpowers/plans/2026-11-01-chunk12-autoops.md`. Start with Session 1 (Tasks 1–2) on branch `chunk12-autoops`, then one domain per session. Owner rule: an unknown passing score is assumed to be 750 of 900, marked `VERIFY`.
 
 ## Standing rules
 
