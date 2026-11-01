@@ -82,7 +82,6 @@ export function ExamRunner({
   const byId = new Map(exam.items.map((i) => [i.question.id, i.question]));
   // A PBQ counts as answered only once every part is filled.
   const answered = (id: string) => isComplete(byId.get(id)!, responses[id]);
-  const unanswered = exam.items.filter((i) => !answered(i.question.id)).length;
 
   function toggleFlag() {
     setFlagged((f) => {
@@ -150,11 +149,7 @@ export function ExamRunner({
         {confirming && (
           <>
             <h2 id="exam-confirm-heading">Submit exam?</h2>
-            <p>
-              {unanswered === 0
-                ? 'All questions answered.'
-                : `You have ${unanswered} unanswered ${unanswered === 1 ? 'question' : 'questions'}.`}
-            </p>
+            <p>You can&apos;t change your answers after you submit.</p>
             <button type="button" onClick={() => submit(false)}>
               Submit
             </button>

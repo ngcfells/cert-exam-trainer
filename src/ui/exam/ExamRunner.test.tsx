@@ -77,14 +77,25 @@ describe('ExamRunner', () => {
     expect(screen.getByText('Stem B0')).toBeInTheDocument();
   });
 
-  it('confirms before submitting and names unanswered count', async () => {
+  it('marks a select-two item with one pick as unanswered in the grid', async () => {
+    const onSubmit = vi.fn();
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    const multiExam: AssembledExam = { ...exam, items: [{ question: mcq('M0', 'A', 'mcq-multi'), optionOrder: ['a', 'b', 'c', 'd'] }], mcqCount: 1 };
+    render(<ExamRunner exam={multiExam} timeLimitMs={600_000} startedAt={T0} onSubmit={onSubmit} />);
+    await user.click(screen.getByLabelText('M0-a'));
+    await user.click(screen.getByRole('button', { name: 'Review' }));
+    expect(screen.getByRole('button', { name: 'Question 1, unanswered' })).toBeInTheDocument();
+  });
+
+  it('confirms before submitting without counting unanswered items', async () => {
     const { user, onSubmit } = setup();
     await user.click(screen.getByLabelText('A0-b'));
     await user.click(screen.getByRole('button', { name: 'Next' }));
     await user.click(screen.getByRole('button', { name: 'Review' }));
     await user.click(screen.getByRole('button', { name: 'Submit exam' }));
     const dialog = screen.getByRole('dialog');
-    expect(dialog).toHaveTextContent('You have 1 unanswered question.');
+    expect(dialog).not.toHaveTextContent(/unanswered/i);
+    expect(dialog).toHaveTextContent("You can't change your answers after you submit.");
     await user.click(within(dialog).getByRole('button', { name: 'Cancel' }));
     expect(onSubmit).not.toHaveBeenCalled();
     expect(screen.queryByRole('dialog')).toBeNull();
