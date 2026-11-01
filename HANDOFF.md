@@ -153,7 +153,7 @@
     - Test helpers `TestNav` and `LeaveGuardProvider` live in `src/ui/testNav.tsx`.
   - **Left as is (with reason):** Home and the exam page each count custom questions (two small reads, one per screen; sharing them would need a cache for no visible gain). The spec showed only the Stock count on cards; the MVP shows Stock and Custom, which the owner saw in the deployed MVP.
   - **Still to do from the spec (later parts, owner-scoped out of part 1):** the eight further exams with provisional metadata, and the one master acronym table.
-  - **Next session: SecAI+ slice (c), objectives 2.4–2.6** (see the chunk 11 session blocks below).
+  - **Next session: SecAI+ slice (d), domain 3 (3.1–3.3)** (see the chunk 11 session blocks below; slice (c) is done).
 
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
 - **Owner reprioritised (2026-10-31): the Data+ Math & Data Concepts module comes before SecAI+.** Design (approved): `docs/superpowers/specs/2026-10-31-dataplus-math-module-design.md`. It is homework-style: a Learn area of lessons (meaning, formula, worked example, exam trap) with a check per lesson, a new `numeric` typed-answer question type, and more join PBQs. The owner is a trainer, not an analyst, so lessons must assume no stats background.
@@ -232,7 +232,16 @@
       - Copywriter fixes ping-pong between length tells and stem/key word repeats. After round 3, apply the copywriter's own one-line wording yourself (keys unchanged).
       - Reviewers sometimes report writing a file that does not exist (a Bash heredoc was blocked). Tell them to use the Write tool and confirm the file exists.
     - Scratchpad tools from this session (not in the repo): `strip.mjs`, `subset.mjs`, `approve.mjs`, and `compare.mjs`, which now accepts bare-value answers and checks terminal answers against the accept lists. Do not rerun the drafters' generators: the last edits were made to the JSON directly.
-    - **Next: Session 4, slice (c): objectives 2.4–2.6.** Deck slides: S3 26–37 (2.4), S3 38–50 (2.5), S4 29–50 (2.6). See `_WorkingData/SecAIPlus/notes/index.md`. For the v4.0 sub-bullets, use the PDF text extracted in session 2 if its scratchpad still exists (`622b7a45-…/scratchpad/obj.txt`, where 2.4 starts at line 198); otherwise re-extract it with pypdf.
+  - **Session 4 done (2026-10-31), slice (c) 2.4–2.6.** `main` (exam-cards UI, 438e1e4) was merged into `chunk11-secai` first, cleanly. `npm run check` passes: 567 unit tests and 73 e2e tests. Not merged to `main` or deployed; the live site still has SecAI+ domain 1 only.
+    - Each of 2.4, 2.5 and 2.6 has 45 approved items: 38 MCQ (31 single, 7 multi) and 7 PBQ, against a quota of 34 + 6. All spares were kept. The blind reviewer matched every key in every round.
+    - Bank so far: 324 MCQ, 60 PBQ. PBQ templates: buckets 8, match 7, order 6, config 8, diagram 7, hotspot 8, data 8, terminal 8. To reach 10 each, the rest of the exam needs buckets 2, match 3, order 4, config 2, diagram 3, hotspot 2, data 2 and terminal 2 (20 of the 39 PBQs left in the quotas). Lean on order (3.1 incident workflow), match (4.1 roles, 4.3 regulations) and diagram.
+    - Same method as session 3 (scratchpad `2d701005-…/scratchpad`: `render.mjs` fills the brief templates in `d3/`, plus `strip`, `subset`, `compare`, `approve`, `dropflag`, `drift`, `term`, `peek`). Lessons:
+      - The copywriter (Haiku) twice asked to rekey order-PBQ `partExplanations` from positions to step ids. That is wrong (order parts are positions); drop the flag before the fix pass, and tell it in re-review prompts.
+      - Blind reviewers never see terminal `accept` lists; check them by hand (`term.mjs`).
+      - Drafters that regenerate from their generator can touch unflagged items; `drift.mjs` confirms only the listed ids changed.
+      - With only 8 compensating controls in 2.6, match/diagram PBQs reuse a control from some MCQ; accepted when the attack and scenario differ.
+      - Round-3 copy fixes for 2.6 were applied by hand from the reviewers' own wording (keys unchanged), as session 3 did.
+    - **Next: Session 5, slice (d): domain 3 (3.1–3.3).** Quota 40 + 7 each; draft 44 MCQ + 8 PBQ each. Deck slides: S5 11–25 (3.1), S5 26–37 (3.2), S5 38–51 (3.3). v4.0 sub-bullets: `622b7a45-…/scratchpad/obj.txt` lines 277–341 (3.1 at 277, 3.2 at 297, 3.3 at 319), or re-extract with pypdf.
   - **UI redesign (separate from chunk 11), awaiting the owner:**
     - Design doc: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`. It covers exam cards on the landing page, a page per exam, Back/All exams on every screen, Settings, Stock/Custom, ten exams and one master acronym table. The builder check is done.
     - Open question to the owner: should the phone/browser Back gesture step back inside the app (history integration), or only the on-screen buttons? Then owner approval, then superpowers:writing-plans.
