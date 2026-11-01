@@ -326,7 +326,7 @@
   3. e2e: add AT0-001 to `tests/e2e/home.spec.ts` (card), the exam-page test, `acronyms.spec.ts` (e.g. `CI/CD`, `FaaS`, `WinRM`), and a Review Focus 1 test: open practice on AT0-001 (fixture build), find `at1-fx-mcq-002`, set the viewport to 360 px, and assert `document.documentElement.scrollWidth <= 360` and that `.code-block` is visible.
   4. `npm run check` green, commit `feat(autoops): community acronyms and e2e for AT0-001`, then record `Task 2: complete` in the ledger.
 - **Then:** session 2 = Task 3 for domain 1 (fresh quota window; see the plan's budget note).
-- **Next: chunk 12, AutoOps+ (AT0-001); resume at "Chunk 12 session 1" below.** Plan: `docs/superpowers/plans/2026-11-01-chunk12-autoops.md`. Start with Session 1 (Tasks 1–2) on branch `chunk12-autoops`, then one domain per session. Owner rule: an unknown passing score is assumed to be 750 of 900, marked `VERIFY`.
+- **Next: chunk 12, AutoOps+ (AT0-001); resume at "Chunk 12 session 1" above.** Plan: `docs/superpowers/plans/2026-11-01-chunk12-autoops.md`. Start with Session 1 (Tasks 1–2) on branch `chunk12-autoops`, then one domain per session. Owner rule: an unknown passing score is assumed to be 750 of 900, marked `VERIFY`.
 
 ## Standing rules
 
