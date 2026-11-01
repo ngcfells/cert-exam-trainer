@@ -66,19 +66,57 @@ describe('McqView', () => {
     expect(screen.getByRole('group', { name: 'Stem A0' })).toBeInTheDocument();
   });
 
-  it('toggles checkboxes for select-all', async () => {
+  it('select two: toggles checkboxes and locks the rest at two picks', async () => {
     const onChange = vi.fn();
     const item = { question: mcq('A0', 'A', 'mcq-multi'), optionOrder: ['a', 'b', 'c', 'd'] };
     const { rerender } = render(<McqView item={item} selected={[]} onChange={onChange} />);
-    expect(screen.getByText('Select all that apply.')).toBeInTheDocument();
+    expect(screen.getByText('Select 2.')).toBeInTheDocument();
     await userEvent.click(screen.getByLabelText('A0-a'));
     expect(onChange).toHaveBeenLastCalledWith(['a']);
     rerender(<McqView item={item} selected={['a']} onChange={onChange} />);
+    expect(screen.getByLabelText('A0-b')).toBeEnabled();
     await userEvent.click(screen.getByLabelText('A0-c'));
     expect(onChange).toHaveBeenLastCalledWith(['a', 'c']);
     rerender(<McqView item={item} selected={['a', 'c']} onChange={onChange} />);
+    expect(screen.getByLabelText('A0-b')).toBeDisabled();
+    expect(screen.getByLabelText('A0-d')).toBeDisabled();
+    expect(screen.getByLabelText('A0-a')).toBeEnabled();
+    onChange.mockClear();
+    await userEvent.click(screen.getByLabelText('A0-b'));
+    expect(onChange).not.toHaveBeenCalled();
     await userEvent.click(screen.getByLabelText('A0-a'));
     expect(onChange).toHaveBeenLastCalledWith(['c']);
+    rerender(<McqView item={item} selected={['c']} onChange={onChange} />);
+    expect(screen.getByLabelText('A0-b')).toBeEnabled();
+  });
+
+  it('select two: a fresh view with two picks starts locked (after Next / Previous)', () => {
+    const item = { question: mcq('A0', 'A', 'mcq-multi') };
+    render(<McqView item={item} selected={['a', 'c']} onChange={() => {}} />);
+    expect(screen.getByLabelText('A0-b')).toBeDisabled();
+  });
+
+  it('select all: no cap, and every choice can be picked', () => {
+    const item = { question: { ...mcq('A0', 'A', 'mcq-multi'), pick: 'all' as const } };
+    render(<McqView item={item} selected={['a', 'b', 'c']} onChange={() => {}} />);
+    expect(screen.getByText('Select all that apply.')).toBeInTheDocument();
+    expect(screen.getByLabelText('A0-d')).toBeEnabled();
+  });
+
+  it('adds the count to a stem that lacks it, and allows that many picks', () => {
+    const q = { ...mcq('A0', 'A', 'mcq-multi'), stem: 'Which apply?', answer: { correct: ['a', 'b', 'c', 'd'] } };
+    render(<McqView item={{ question: q }} selected={['a', 'b', 'c']} onChange={() => {}} />);
+    expect(screen.getByText('Which apply? (Choose four.)')).toBeInTheDocument();
+    expect(screen.getByLabelText('A0-d')).toBeEnabled();
+  });
+});
+
+describe('ItemReview for multi-answer', () => {
+  it('shows the stem with its count and the hint', () => {
+    const q = { ...mcq('A0', 'A', 'mcq-multi'), stem: 'Which apply?' };
+    render(<ItemReview q={q} response={['a']} />);
+    expect(screen.getByText('Which apply? (Choose two.)')).toBeInTheDocument();
+    expect(screen.getByText('Select 2.')).toBeInTheDocument();
   });
 });
 

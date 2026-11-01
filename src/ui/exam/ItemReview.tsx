@@ -1,5 +1,6 @@
 import { acceptedText, partCorrect, partIds, partLabel, valueText, type PartMap } from '../../domain/pbq';
 import { formatNumericAnswer } from '../../domain/numeric';
+import { displayStem, effectivePick, pickHint } from '../../domain/pick';
 import type { McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { ItemResponse } from '../../exam/scoring';
 import { Table } from '../Table';
@@ -43,9 +44,10 @@ export function ItemReview({ q, response, showStem = true }: { q: Question; resp
     <>
       {showStem && (
         <p>
-          <strong>{q.stem}</strong>
+          <strong>{displayStem(q)}</strong>
         </p>
       )}
+      {showStem && q.type === 'mcq-multi' && <p className="hint">{pickHint(effectivePick(q))}</p>}
       {q.type === 'numeric' ? (
         <dl>
           <dt>Your answer</dt>
