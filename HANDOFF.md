@@ -153,7 +153,7 @@
     - Test helpers `TestNav` and `LeaveGuardProvider` live in `src/ui/testNav.tsx`.
   - **Left as is (with reason):** Home and the exam page each count custom questions (two small reads, one per screen; sharing them would need a cache for no visible gain). The spec showed only the Stock count on cards; the MVP shows Stock and Custom, which the owner saw in the deployed MVP.
   - **Still to do from the spec (later parts, owner-scoped out of part 1):** the eight further exams with provisional metadata, and the one master acronym table.
-  - **Next session (2026-11-01):** first the owner's multi-answer request (see "Owner request: pick counts" under chunk 11 below), then chunk 11 Tasks 8 and 9 (lock the targets, then the Opus whole-branch review, merge and deploy). All five SecAI+ slices are done and committed.
+  - **Next session:** chunk 11 Tasks 8 and 9 (lock the targets, then the Opus whole-branch review, merge and deploy). All five SecAI+ slices and the pick-counts feature are done and committed on `chunk11-secai`; nothing from them is merged or deployed yet.
 
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
 - **Owner reprioritised (2026-10-31): the Data+ Math & Data Concepts module comes before SecAI+.** Design (approved): `docs/superpowers/specs/2026-10-31-dataplus-math-module-design.md`. It is homework-style: a Learn area of lessons (meaning, formula, worked example, exam trap) with a check per lesson, a new `numeric` typed-answer question type, and more join PBQs. The owner is a trainer, not an analyst, so lessons must assume no stats background.
@@ -263,10 +263,18 @@
       - Overlapping roles (MLOps vs ML engineer vs platform engineer, governance engineer vs risk analyst) need one clue in the stem that rules out the neighbour.
       - `render.mjs` mangles `\\$o` inside double quotes in Bash; the round-1 copy briefs got `items$o.json` (reviewers recovered). Pass paths with no `$` next to a backslash.
       - Acronyms written out rather than added: IT ("information technology"), CoE, CASB, DNS, IEC, AIMS, HR.
-- **Owner request: pick counts for multi-answer questions (2026-11-01, not started; brainstorm first).** The owner wants authors to choose "select two", "select three" or "select all that apply" when adding a question, and the answer screens to enforce it: exactly two or three picks, or any number for select all.
-  - Today: the editor's "Multiple choice (select all)" type (`mcq-multi`) already takes several correct answers (checkboxes, `QuestionEditor.tsx`). `McqView.tsx` always shows "Select all that apply." and allows any number of picks. Scoring is `mcqFraction` (select-all rule).
-  - Shipped bank: all 228 `mcq-multi` items have 2 or 3 correct answers and ask "Which two…" in the stem text; none has a pick-count field.
-  - Touches: question schema (new optional field; backup and pack compatibility, so old files must still import), editor, `McqView` (block extra picks, hint "Select 2"), md-to-pack, review, and possibly scoring for exact-count items. Default shipped items to their correct count.
+- **Pick counts for multi-answer questions: DONE (2026-11-01) on `chunk11-secai`, commits f131926..HEAD (design, plan, 8 tasks, review fixes).** Spec: `docs/superpowers/specs/2026-11-01-multi-answer-pick-counts-design.md`; plan: `docs/superpowers/plans/2026-11-01-multi-answer-pick-counts.md`. `npm run check` is green (631 unit, 73 e2e). The Opus whole-branch review found no critical or important issues; its minors are fixed except the one the owner decided (below).
+  - **Owner scope:** applies to Data+, SecAI+ and every future exam unless that exam's design says otherwise. The rules live in `src/domain/pick.ts`.
+  - **What shipped:**
+    - `mcq-multi` has an optional `pick` (a number equal to the correct count, or `"all"`). Missing = the number of correct answers, never select all. No shipped JSON was edited.
+    - Answer screen: "Select N." hint; extra boxes are disabled once N are picked. A stem that doesn't state its count shows "(Choose two.)" etc.
+    - Scoring (`mcqFraction`): select N = right ÷ N, more than N picks = 0; select all = (right − wrong) ÷ correct, never below 0, and picking every choice = 0 unless all are correct. Repeated or stale ids in saved responses are ignored. Hotspots keep the old formula (`selectAllFraction`).
+    - Mock exam: the submit dialog no longer counts unanswered items; the review grid keeps ✓/○/⚑, and a select-N item is ✓ only with N picks.
+    - Practice and cram: Finish asks "You have N unanswered or partly answered questions. Finish anyway?" (Finish / Keep going). Lesson checks and timeouts don't ask.
+    - Editor: type label "Multiple choice (more than one answer)" and a "How many to pick" control with only Select two / three / all. **Owner decision:** a question with 4+ correct answers shows and saves as Select all (no "Select four").
+    - Markdown packs: optional `Pick: all|2|3` line at the top of a block (documented in `docs/question-template.md`).
+    - Bank test and `check-drafts` require every multi-answer stem to state its count. All 228 shipped items pass.
+  - Also fixed: a flaky focus assertion in `src/ui/noBackButtons.test.tsx` (it failed before this work too).
   - **UI redesign (separate from chunk 11), awaiting the owner:**
     - Design doc: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`. It covers exam cards on the landing page, a page per exam, Back/All exams on every screen, Settings, Stock/Custom, ten exams and one master acronym table. The builder check is done.
     - Open question to the owner: should the phone/browser Back gesture step back inside the app (history integration), or only the on-screen buttons? Then owner approval, then superpowers:writing-plans.
