@@ -140,6 +140,89 @@ describe('QuestionEditor', () => {
     expect(within(preview).getByLabelText('A')).toBeChecked();
   });
 
+  describe('how many to pick', () => {
+    const multiQ = (correct: string[], pick?: number | 'all') => ({
+      ...userQ('m1'),
+      type: 'mcq-multi' as const,
+      stem: 'Which apply?',
+      payload: { options: ['a', 'b', 'c', 'd', 'e'].map((id) => ({ id, text: id.toUpperCase() })) },
+      answer: { correct },
+      ...(pick === undefined ? {} : { pick }),
+    });
+    const pickControl = () => screen.getByLabelText('How many to pick') as HTMLSelectElement;
+    const shownOptions = () => [...pickControl().options].map((o) => o.text);
+
+    async function newMulti(user: ReturnType<typeof userEvent.setup>, marked: number[]) {
+      await user.type(screen.getByLabelText('Question text'), 'Which apply?');
+      for (const [i, t] of ['A', 'B', 'C', 'D'].entries()) await user.type(screen.getByLabelText(`Option ${i + 1}`), t);
+      await user.selectOptions(screen.getByLabelText('Question type'), 'mcq-multi');
+      for (const i of marked) await user.click(screen.getByLabelText(`Option ${i} is correct`));
+    }
+
+    it('labels the type and offers only two, three and all', async () => {
+      const { user } = setup();
+      expect(screen.queryByLabelText('How many to pick')).not.toBeInTheDocument();
+      expect(screen.getByRole('option', { name: 'Multiple choice (more than one answer)' })).toBeInTheDocument();
+      await user.selectOptions(screen.getByLabelText('Question type'), 'mcq-multi');
+      expect(shownOptions()).toEqual(['Select two', 'Select three', 'Select all that apply']);
+      expect(pickControl()).toHaveDisplayValue('Select two');
+    });
+
+    it('saves select two with two correct answers', async () => {
+      const { repo, user } = setup();
+      await newMulti(user, [1, 3]);
+      await user.click(save());
+      expect((await repo.getUserQuestions())[0]).toMatchObject({ type: 'mcq-multi', pick: 2, answer: { correct: ['a', 'c'] } });
+    });
+
+    it('a mismatch blocks save with an error on the correct answers, and the control does not change itself', async () => {
+      const { repo, user } = setup();
+      await newMulti(user, [1, 2, 3]);
+      expect(pickControl()).toHaveDisplayValue('Select two');
+      await user.click(save());
+      expect(await repo.getUserQuestions()).toEqual([]);
+      const summary = screen.getByRole('group', { name: /to fix before saving/ });
+      expect(within(summary).getByRole('link', { name: 'Select two needs exactly 2 correct answers.' })).toBeInTheDocument();
+      expect(screen.getByRole('group', { name: 'Options' })).toHaveAccessibleDescription(/Select two needs exactly 2 correct answers\./);
+      await user.selectOptions(pickControl(), 'Select three');
+      await user.click(save());
+      expect((await repo.getUserQuestions())[0]).toMatchObject({ pick: 3 });
+    });
+
+    it('select all saves as all', async () => {
+      const { repo, user } = setup();
+      await newMulti(user, [1, 2]);
+      await user.selectOptions(pickControl(), 'Select all that apply');
+      await user.click(save());
+      expect((await repo.getUserQuestions())[0]).toMatchObject({ pick: 'all' });
+    });
+
+    it.each([
+      [['a', 'c', 'e'], undefined, 'Select three', 3],
+      [['a', 'b', 'c', 'd'], undefined, 'Select all that apply', 'all'],
+      [['a', 'c'], 'all', 'Select all that apply', 'all'],
+    ] as const)('an existing question with %j (pick %s) shows %s and saves %s', async (correct, pick, shown, saved) => {
+      const repo = createMemoryRepo();
+      await repo.upsertUserQuestion(multiQ([...correct], pick));
+      const { user } = setup('m1', repo);
+      await screen.findByLabelText('Question text');
+      expect(pickControl()).toHaveDisplayValue(shown);
+      await user.click(save());
+      expect((await repo.getUserQuestions())[0]).toMatchObject({ pick: saved });
+    });
+
+    it('multi to single drops pick', async () => {
+      const repo = createMemoryRepo();
+      await repo.upsertUserQuestion(multiQ(['a', 'c'], 2));
+      const { user } = setup('m1', repo);
+      await user.selectOptions(await screen.findByLabelText('Question type'), 'mcq-single');
+      await user.click(save());
+      const [q] = await repo.getUserQuestions();
+      expect(q.type).toBe('mcq-single');
+      expect(q).not.toHaveProperty('pick');
+    });
+  });
+
   it('edit loads existing question', async () => {
     const repo = createMemoryRepo();
     await repo.upsertUserQuestion(userQ('u1'));

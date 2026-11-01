@@ -1,6 +1,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { z } from 'zod';
 import { isPbqTemplate } from '../../domain/pbq';
+import { pickWord } from '../../domain/pick';
 import type { ItemResponse } from '../../exam/scoring';
 import { QUESTION_TYPES, questionSchema } from '../../domain/schema';
 import type { McqAnswer, McqPayload, Question, QuestionType } from '../../domain/types';
@@ -29,9 +30,17 @@ interface Draft extends PbqTexts {
   options: Option[];
   correct: string[];
   pbqWeight: number;
+  /** mcq-multi only: how many to pick. */
+  pick: EditorPick;
   /** JSON left behind by other JSON-edited types, restored when the author switches back. */
   parked: Partial<Record<JsonType, PbqTexts>>;
 }
+
+/** The editor offers only these (owner, 2026-11-01). */
+type EditorPick = 2 | 3 | 'all';
+const PICK_CHOICES: [EditorPick, string][] = [[2, 'Select two'], [3, 'Select three'], ['all', 'Select all that apply']];
+/** A pick for this many correct answers: two, three, or all for four or more (and two for fewer than two). */
+const pickFor = (n: number): EditorPick => (n >= 4 ? 'all' : n === 3 ? 3 : 2);
 
 /** Which input an error belongs to; the summary links to it. */
 export type ErrorField = 'stem' | 'objectives' | 'options' | 'correct' | 'payload' | 'answer' | 'parts' | `option-${number}` | 'other';
@@ -51,7 +60,7 @@ const starterTexts = (t: JsonType): PbqTexts => ({
 function newDraft(objectiveId: string): Draft {
   return {
     type: 'mcq-single', objectiveIds: [objectiveId], difficulty: 2, stem: '', explanation: '', status: 'approved',
-    options: blankOptions(), correct: [], pbqWeight: 2, payloadText: '', answerText: '', partExplanationsText: '', parked: {},
+    options: blankOptions(), correct: [], pbqWeight: 2, pick: 2, payloadText: '', answerText: '', partExplanationsText: '', parked: {},
   };
 }
 
@@ -62,6 +71,7 @@ function fromQuestion(q: Question): Draft {
     options: mcq ? (q.payload as McqPayload).options : blankOptions(),
     correct: mcq ? (q.answer as McqAnswer).correct : [],
     pbqWeight: q.pbqWeight ?? 2,
+    pick: q.pick === 'all' ? 'all' : pickFor(q.pick ?? (mcq ? new Set((q.answer as McqAnswer).correct).size : 2)),
     payloadText: mcq ? '' : json(q.payload),
     answerText: mcq ? '' : json(q.answer),
     partExplanationsText: q.partExplanations ? json(q.partExplanations) : '',
@@ -92,6 +102,7 @@ export function buildQuestion(d: Draft, base: Pick<Question, 'id' | 'exam' | 'ac
   } else {
     raw.payload = { options: d.options.map((o) => ({ id: o.id, text: o.text.trim() })) };
     raw.answer = { correct: d.correct };
+    if (d.type === 'mcq-multi') raw.pick = d.pick;
   }
   if (errors.length) return { errors };
   const r = questionSchema.safeParse(raw);
@@ -110,6 +121,9 @@ function describeIssue(i: z.ZodIssue, d: Draft): EditorError {
   if (head === 'objectiveIds') return { field: 'objectives', text: 'Choose at least one objective.' };
   if (head === 'payload' && second === 'options' && fourth === 'text') return { field: `option-${Number(third)}`, text: `Option ${Number(third) + 1} needs text.` };
   if (head === 'payload' && second === 'options') return { field: 'options', text: 'Add at least 2 options.' };
+  if (head === 'pick' && typeof d.pick === 'number') {
+    return { field: 'correct', text: `Select ${pickWord(d.pick)} needs exactly ${d.pick} correct answers.` };
+  }
   if (head === 'answer' && !usesJsonEditor(d.type)) {
     if (d.correct.length === 0) return { field: 'correct', text: 'Mark the correct answer.' };
     return { field: 'correct', text: d.type === 'mcq-single' ? 'Mark exactly one correct answer.' : 'Mark at least 2 correct answers, or use "one answer".' };
@@ -202,7 +216,12 @@ export function QuestionEditor({
       ? { ...draft.parked, [draft.type]: { payloadText: draft.payloadText, answerText: draft.answerText, partExplanationsText: draft.partExplanationsText } }
       : draft.parked;
     if (usesJsonEditor(type)) setDraft({ ...draft, type, parked, ...(parked[type] ?? starterTexts(type)) });
-    else setDraft({ ...draft, type, parked, correct: type === 'mcq-single' ? draft.correct.slice(0, 1) : draft.correct });
+    else {
+      const correct = type === 'mcq-single' ? draft.correct.slice(0, 1) : draft.correct;
+      // Arriving at multi-answer sets the pick from the answers marked; marking more later never changes it.
+      const pick = type === 'mcq-multi' && draft.type !== 'mcq-multi' ? pickFor(correct.length) : draft.pick;
+      setDraft({ ...draft, type, parked, correct, pick });
+    }
   }
 
   function setOption(i: number, text: string) {
@@ -281,6 +300,25 @@ export function QuestionEditor({
         </select>
         {inlineErrors('other')}
       </div>
+      {draft.type === 'mcq-multi' && (
+        <div className="field">
+          <label htmlFor={`${uid}-pick`}>How many to pick</label>
+          <select
+            id={`${uid}-pick`}
+            value={String(draft.pick)}
+            onChange={(e) => {
+              const v = e.currentTarget.value;
+              set({ pick: v === 'all' ? 'all' : (Number(v) as EditorPick) });
+            }}
+          >
+            {PICK_CHOICES.map(([v, label]) => (
+              <option key={v} value={String(v)}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
       <fieldset {...groupInvalid('objectives')}>
         <legend>Objectives</legend>
         {meta.objectives.map((o, i) => (
