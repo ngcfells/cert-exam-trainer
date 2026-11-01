@@ -1,0 +1,2253 @@
+[
+  {
+    "id": "cy1-4-2-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which responsible AI principle asks whether different groups of people receive comparable treatment and error rates from a model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reliability and safety"
+        },
+        {
+          "id": "b",
+          "text": "Transparency about AI use"
+        },
+        {
+          "id": "c",
+          "text": "Fairness in outcomes"
+        },
+        {
+          "id": "d",
+          "text": "Accountability for decisions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Fairness compares outcomes and error rates across groups. Reliability and safety is about dependable behavior without harm, transparency is about disclosing that and how AI is used, and accountability is about who answers for the system.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team feeds a model adversarial inputs and unusual edge cases for a week before launch to see how it behaves. Which responsible AI principle does this mainly support?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reliability and safety"
+        },
+        {
+          "id": "b",
+          "text": "Inclusiveness"
+        },
+        {
+          "id": "c",
+          "text": "Explainability"
+        },
+        {
+          "id": "d",
+          "text": "Privacy and data governance"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Probing a model with hostile and unusual inputs before launch checks that it behaves dependably and fails without causing harm, which is reliability and safety. Inclusiveness is about serving diverse users, explainability is about reasons for outputs, and privacy and data governance concerns how personal data is collected and protected, not how a model behaves under stress.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A bank must give each declined applicant the main factors behind that one decision. Which principle does this serve?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Inclusiveness"
+        },
+        {
+          "id": "b",
+          "text": "Consistency"
+        },
+        {
+          "id": "c",
+          "text": "Privacy and security"
+        },
+        {
+          "id": "d",
+          "text": "Explainability"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Giving the factors behind a single decision is explainability. Transparency is the nearest neighbor but concerns disclosing that AI is used and how the system was built, not the reasons for one output. Inclusiveness, consistency and privacy do not produce reasons for a decision.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A retailer's chat widget does not tell shoppers that its replies come from an AI model. Which principle is most directly breached?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Consistency"
+        },
+        {
+          "id": "b",
+          "text": "Transparency"
+        },
+        {
+          "id": "c",
+          "text": "Inclusiveness"
+        },
+        {
+          "id": "d",
+          "text": "Accountability"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Hiding that a user is dealing with an AI breaches transparency, which includes clear disclosure. Consistency is about stable results, inclusiveness is about serving diverse users, and accountability is about who answers for decisions, not about disclosing that AI is in use.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A support assistant writes customers' account details into plain text logs that many staff can read. Which principle is most directly at stake?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Explainability of outputs"
+        },
+        {
+          "id": "b",
+          "text": "Consistency of answers"
+        },
+        {
+          "id": "c",
+          "text": "Fairness across user groups"
+        },
+        {
+          "id": "d",
+          "text": "Privacy and security"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Unprotected personal data in broadly readable logs is a privacy and security failure. Explainability, consistency and fairness are not about how data is collected, minimized and protected.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What does differential privacy aim to guarantee about what an analysis publishes?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Adding or removing one person's record barely changes what comes out"
+        },
+        {
+          "id": "b",
+          "text": "Showing reviewers which model version and temperature produced each reply"
+        },
+        {
+          "id": "c",
+          "text": "Stripping direct identifiers from the training table first"
+        },
+        {
+          "id": "d",
+          "text": "Proving that the model reached its accuracy target"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Differential privacy limits the influence of any single record on the published outcome, usually by adding calibrated noise. Version labels, identifier stripping and accuracy proofs are different practices that do not give that statistical guarantee.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A kiosk assistant is hard to use for people who rely on screen readers or speak other languages, so the team adds captions, audio and several languages. Which principle drives this change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Consistency"
+        },
+        {
+          "id": "b",
+          "text": "Accountability"
+        },
+        {
+          "id": "c",
+          "text": "Inclusiveness"
+        },
+        {
+          "id": "d",
+          "text": "Explainability"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Designing the system so diverse populations can use it is inclusiveness. Fairness is a neighbor but compares outcomes between groups, which is not the issue here. Consistency, accountability and explainability do not address who can use the kiosk.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fraud-scoring vendor and the bank that uses it each assume the other reviews the model's decisions, so nobody does. Which principle is missing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Privacy and security"
+        },
+        {
+          "id": "b",
+          "text": "Accountability"
+        },
+        {
+          "id": "c",
+          "text": "Consistency"
+        },
+        {
+          "id": "d",
+          "text": "Explainability"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Accountability means a clear owner for reviewing and answering for the system. Privacy and security covers how personal data and systems are protected, not who owns a decision. Consistency is about stable outputs, and explainability is about reasons for outputs, so neither assigns an owner.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A resume screener scores the same resume differently when only the file name changes. Which principle is violated?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Consistency"
+        },
+        {
+          "id": "b",
+          "text": "Accountability"
+        },
+        {
+          "id": "c",
+          "text": "Inclusiveness"
+        },
+        {
+          "id": "d",
+          "text": "Privacy and security"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Stable results for equivalent inputs are consistency. Reliability is a neighbor but covers dependable, safe operation overall rather than equal treatment of equivalent inputs. Accountability, inclusiveness and privacy are not about repeatable scores.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Staff paste unreleased product plans into a public chatbot because they do not know the risks. Which control targets the cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A higher request rate limit on the company gateway"
+        },
+        {
+          "id": "b",
+          "text": "Stronger encryption of the stored model weights"
+        },
+        {
+          "id": "c",
+          "text": "A larger set of data for the next training run"
+        },
+        {
+          "id": "d",
+          "text": "Awareness training on approved uses and limits of AI"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The cause is human behavior, so awareness training on approved uses and limits is the control that fits. Rate limits, weight encryption and more training data do not change what staff decide to paste.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A hiring model trained on ten years of past hires favors applicants from three universities. What is the most likely root cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Too few layers in the scoring network"
+        },
+        {
+          "id": "b",
+          "text": "An overly small test set for final scoring"
+        },
+        {
+          "id": "c",
+          "text": "Historical patterns in the training data"
+        },
+        {
+          "id": "d",
+          "text": "Feature scaling that rounds applicant scores to whole numbers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Models learn the patterns in past decisions, so historical inequities in the data reproduce as bias. Network depth, test set size and score rounding would affect quality or precision, not produce a systematic preference for certain schools.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Before launching a claims triage model, which check best looks for introduced bias?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Measuring average response time for each claim request"
+        },
+        {
+          "id": "b",
+          "text": "Comparing error rates by group on held-out data"
+        },
+        {
+          "id": "c",
+          "text": "Counting tokens used for each claim file processed"
+        },
+        {
+          "id": "d",
+          "text": "Encrypting the held-back test data while it sits at rest"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Bias shows up as different error or outcome rates across groups, so a per-group comparison on unseen data is the direct test. Latency, token counts and encryption measure speed, cost and confidentiality.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An engineer pastes a customer contract into an approved assistant, and a later reply to another user repeats part of it. Which risk category is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Introduction of bias"
+        },
+        {
+          "id": "b",
+          "text": "Accuracy drift in the model"
+        },
+        {
+          "id": "c",
+          "text": "Failure of an autonomous system"
+        },
+        {
+          "id": "d",
+          "text": "Accidental data leakage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Sensitive content exposed to someone who should not see it, without an attacker, is accidental data leakage. The reply is not unfair to a group, a measured accuracy decline, or an agent acting on its own.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A vendor-hosted assistant receives customer account details over a plain connection and keeps the requests unprotected on disk. Which control most directly limits the exposure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypting requests and stored logs in transit and at rest"
+        },
+        {
+          "id": "b",
+          "text": "Raising the sampling temperature for more varied replies"
+        },
+        {
+          "id": "c",
+          "text": "Adding more reviewers to each weekly release meeting"
+        },
+        {
+          "id": "d",
+          "text": "Compressing the stored prompt archive to save disk space"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Encrypting the data on the wire and in storage protects the sensitive content directly. Temperature, extra reviewers and compression of the archive do not stop the details from being read.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A gift retailer's chatbot sends an offensive reply that is screenshotted and shared widely, and partners pause deals. Which risk category is most prominent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Intellectual property exposure"
+        },
+        {
+          "id": "b",
+          "text": "Introduction of bias"
+        },
+        {
+          "id": "c",
+          "text": "Reputational and brand damage"
+        },
+        {
+          "id": "d",
+          "text": "Accuracy and performance drift"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Public harm to trust and relationships from an output is reputational damage. The scenario does not describe copied content, unequal outcomes between groups, or a measured decline in model quality.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A face-unlock model fails more often for people with darker skin because few of them were in the training set. Which mitigation fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Lower the model's sampling temperature at inference time to cut variation"
+        },
+        {
+          "id": "b",
+          "text": "Audit group coverage and collect or generate examples for missing groups"
+        },
+        {
+          "id": "c",
+          "text": "Add an approval step before each unlock to catch the misses"
+        },
+        {
+          "id": "d",
+          "text": "Rotate the keys that the service uses on a fixed schedule"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The root cause is a gap in the training data, so auditing coverage and adding real or generated examples addresses it. Temperature, approvals and key rotation leave the data imbalance in place.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fraud model's precision falls steadily over six months after launch. What is the likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Training data poisoning by an insider"
+        },
+        {
+          "id": "b",
+          "text": "Prompt leakage through the system message"
+        },
+        {
+          "id": "c",
+          "text": "Excessive agency in a connected tool"
+        },
+        {
+          "id": "d",
+          "text": "Model drift as customer behavior evolves"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Models can degrade silently when live data moves away from the training baseline, which is drift. Poisoning, prompt leakage and excessive agency describe attacks or design flaws, not gradual change in behavior.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A sentiment model scored well in the lab but misreads slang from a new market. Which practice would have caught this earlier?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Piloting with a small group of local users before launch"
+        },
+        {
+          "id": "b",
+          "text": "Adding more reviewers to the weekly release meeting"
+        },
+        {
+          "id": "c",
+          "text": "Reducing the maximum length of generated replies to speed up responses"
+        },
+        {
+          "id": "d",
+          "text": "Encrypting the validation set while it is stored"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A pilot with real local users exposes weaknesses that clean lab data hides. More reviewers, shorter replies and encryption do not add the missing real-world coverage.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A marketing team fine-tunes a model on scraped articles whose licenses forbid reuse. Which risk is most directly created?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Introduction of bias"
+        },
+        {
+          "id": "b",
+          "text": "Accidental data leakage"
+        },
+        {
+          "id": "c",
+          "text": "IP-related legal exposure"
+        },
+        {
+          "id": "d",
+          "text": "Accuracy and performance drift"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Training on material without the owner's permission creates IP-related legal exposure. Bias, leakage and drift are other risk categories that the scenario does not describe.",
+    "acronyms": [
+      "IP"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A studio wants to show that an image came from its own generator and has not been altered. Which control helps most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rate limiting on the public image generation endpoint"
+        },
+        {
+          "id": "b",
+          "text": "Data minimization of the prompt history"
+        },
+        {
+          "id": "c",
+          "text": "Encryption of training prompts in transit"
+        },
+        {
+          "id": "d",
+          "text": "Watermarking with cryptographic signing of outputs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Provenance controls such as watermarking and signing let others verify origin and integrity of generated content. Rate limits, minimization and transport encryption do not prove where an image came from.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An agent can issue refunds of any size without review. Which control most reduces the risk of costly mistakes?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A higher sampling temperature for the agent"
+        },
+        {
+          "id": "b",
+          "text": "Human approval for refunds above a set amount"
+        },
+        {
+          "id": "c",
+          "text": "A monthly report listing the refunds issued"
+        },
+        {
+          "id": "d",
+          "text": "A broader access scope so the agent can retry failures"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "High-impact actions need validation before they happen, so an approval threshold limits the damage. A monthly report finds problems only afterward, and temperature or a broader access scope would raise the risk.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A scheduling agent told to fill every meeting room starts cancelling other teams' bookings overnight. Which root cause is most likely?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A target set with no limits on how to reach it"
+        },
+        {
+          "id": "b",
+          "text": "Biased labels in its past training data"
+        },
+        {
+          "id": "c",
+          "text": "Plain text storage of its prompt logs"
+        },
+        {
+          "id": "d",
+          "text": "Theft of its model weights by an outsider"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Autonomous systems cause side effects when the objective they are given has no limits on the means, even with benign intent. Label bias, log storage and weight theft do not explain the cancellations.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A marketing team buys a design service with a personal card and keeps client files there without telling the internal tech team. What is this called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Vendor lock-in with a supplier"
+        },
+        {
+          "id": "b",
+          "text": "Accumulated technical debt"
+        },
+        {
+          "id": "c",
+          "text": "Shadow information technology"
+        },
+        {
+          "id": "d",
+          "text": "A zero trust access model"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Technology adopted outside the knowledge and control of the internal tech team is shadow information technology. Vendor lock-in is dependence on a supplier, technical debt is the cost of past shortcuts, and zero trust is an access model.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Analysts at Brightwell Freight summarize contracts with a free chatbot extension that the security team never approved. Which term fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model drift"
+        },
+        {
+          "id": "b",
+          "text": "Shadow AI"
+        },
+        {
+          "id": "c",
+          "text": "Data poisoning"
+        },
+        {
+          "id": "d",
+          "text": "Federated learning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Unapproved use of AI tools by staff is shadow AI, a form of unsanctioned technology use. Drift is gradual model decay, poisoning is tampering with training data, and federated learning is a training approach.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Web proxy reports show forty staff uploading files to unapproved AI sites. Which first response best cuts risk while keeping work moving?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Block outbound web traffic from the department"
+        },
+        {
+          "id": "b",
+          "text": "Wait for the next annual audit to raise it"
+        },
+        {
+          "id": "c",
+          "text": "Ask staff to clear their browser history"
+        },
+        {
+          "id": "d",
+          "text": "Provide an approved AI tool with a usage policy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Staff use shadow AI to get work done, so offering a sanctioned alternative with clear rules reduces the risk without stopping the work. Blocking everything halts business, waiting leaves data exposed, and clearing history hides evidence.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Which data source best reveals use of unapproved AI websites?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Proxy or domain lookup logs showing AI service traffic"
+        },
+        {
+          "id": "b",
+          "text": "GPU utilization graphs on the shared training cluster nodes"
+        },
+        {
+          "id": "c",
+          "text": "Query counts on the internal vector database"
+        },
+        {
+          "id": "d",
+          "text": "Loss curves from the latest fine-tuning run"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Network egress records show which external AI services staff reach. Cluster graphs, internal database counts and loss curves describe the organization's own systems.",
+    "acronyms": [
+      "GPU",
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Clinicians accept AI-drafted notes without reading them. Which design change best counters over-trust?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Hide the model's confidence scores to avoid confusing busy users"
+        },
+        {
+          "id": "b",
+          "text": "Shorten replies so notes take less time to read"
+        },
+        {
+          "id": "c",
+          "text": "Highlight uncertain fields and require the user to confirm them"
+        },
+        {
+          "id": "d",
+          "text": "Remove the feedback button from the interface"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Interface design and procedural safeguards that prompt a human check counter over-trust. Hiding confidence, shortening text and removing feedback all make blind acceptance easier.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A support model's share of low-confidence predictions climbs week after week. Which risk does this most likely signal?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Loss of IP through theft of the trained model weights"
+        },
+        {
+          "id": "b",
+          "text": "Silent decline in accuracy and performance"
+        },
+        {
+          "id": "c",
+          "text": "Prompt injection against the gateway"
+        },
+        {
+          "id": "d",
+          "text": "Bias introduced by labelers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A growing share of low-confidence predictions is a sign of a model degrading as conditions change. Theft, injection and labeling bias would show up in different evidence.",
+    "acronyms": [
+      "IP"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which approach best reduces sensitive data in prompts sent to a hosted model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Lengthen the system prompt that users see"
+        },
+        {
+          "id": "b",
+          "text": "Switch to the largest model the vendor offers"
+        },
+        {
+          "id": "c",
+          "text": "Cache replies for a full year to save calls"
+        },
+        {
+          "id": "d",
+          "text": "Redact customer identifiers from requests first"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Redacting identifiers before the request leaves the company removes sensitive values where the leak would start. A longer system prompt, a bigger model and caching do nothing to remove them.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO actions put accountability into practice for an AI system?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A named risk owner for every deployed model"
+        },
+        {
+          "id": "b",
+          "text": "Compress the model weights to cut hosting cost"
+        },
+        {
+          "id": "c",
+          "text": "Share one administrator login among the support team"
+        },
+        {
+          "id": "d",
+          "text": "Hide the model version from internal auditors"
+        },
+        {
+          "id": "e",
+          "text": "A signed record of who approved each release"
+        },
+        {
+          "id": "f",
+          "text": "Raise the sampling temperature for creative tasks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "Accountability needs a named owner and a trail showing who decided what. Compression and temperature have nothing to do with responsibility, and a shared login and hidden versions remove the ability to attribute decisions.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO are common causes of bias in an AI system?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypting the training dataset at rest to meet policy"
+        },
+        {
+          "id": "b",
+          "text": "A training sample that leaves out most older users"
+        },
+        {
+          "id": "c",
+          "text": "Rotating API keys on a regular schedule for security"
+        },
+        {
+          "id": "d",
+          "text": "Annotators who disagreed on tagging borderline cases"
+        },
+        {
+          "id": "e",
+          "text": "Running model inference on a GPU instead of a CPU"
+        },
+        {
+          "id": "f",
+          "text": "Writing a longer system prompt with more instructions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A sample that omits a group and inconsistent subjective labels both teach the model unfair patterns. Encryption, key rotation, hardware choice and prompt length do not change what the model learns about groups.",
+    "acronyms": [
+      "API",
+      "CPU",
+      "GPU",
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE controls reduce accidental data leakage through AI prompts?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Redaction of personal data before text is sent out"
+        },
+        {
+          "id": "b",
+          "text": "Raising the sampling temperature for varied replies"
+        },
+        {
+          "id": "c",
+          "text": "A retention limit that deletes stored chat history on a schedule"
+        },
+        {
+          "id": "d",
+          "text": "An approved-tool policy that routes work to vetted services"
+        },
+        {
+          "id": "e",
+          "text": "Extending the context window to hold longer chats"
+        },
+        {
+          "id": "f",
+          "text": "Adding a public feedback form on the company website"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "Redaction, retention limits and routing work to vetted tools each shrink the chance that sensitive text is exposed. Temperature, context length and a feedback form do not protect sensitive prompt content.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-033",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO measures make an autonomous agent safer to run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Standing administrator permissions for flexibility"
+        },
+        {
+          "id": "b",
+          "text": "Rate limits on how many changes it can make"
+        },
+        {
+          "id": "c",
+          "text": "Turning off its action logs to save storage"
+        },
+        {
+          "id": "d",
+          "text": "Scoped credentials that expire after each task"
+        },
+        {
+          "id": "e",
+          "text": "Letting it rewrite its own goals during a task"
+        },
+        {
+          "id": "f",
+          "text": "Removing undo options to keep results final"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Rate limits cap the blast radius and short-lived scoped credentials limit what a misled agent can reach. Broad permissions, missing logs, self-edited goals and irreversible changes all increase risk.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-4-2-mcq-034",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO observations suggest shadow AI at a company?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Traffic to unapproved AI chat domains appears in proxy logs"
+        },
+        {
+          "id": "b",
+          "text": "Usage of the approved gateway rises each month"
+        },
+        {
+          "id": "c",
+          "text": "A team signs up for an AI tool with personal accounts"
+        },
+        {
+          "id": "d",
+          "text": "The model card was updated after the latest retraining"
+        },
+        {
+          "id": "e",
+          "text": "A scheduled red-team exercise is on the calendar"
+        },
+        {
+          "id": "f",
+          "text": "The vector database nightly backup completed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Shadow AI is AI use outside approved channels, which shows up as unapproved destinations and personal sign-ups for AI tools. Rising use of the approved gateway, an updated model card, a red-team exercise and a backup are normal governed activity.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-mcq-035",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO measures prepare an organization for a public AI misstep?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A pre-approved holding statement ready to publish"
+        },
+        {
+          "id": "b",
+          "text": "Larger batches during the next training run"
+        },
+        {
+          "id": "c",
+          "text": "A named spokesperson briefed on AI failure scenarios"
+        },
+        {
+          "id": "d",
+          "text": "Removing the model name from the user interface"
+        },
+        {
+          "id": "e",
+          "text": "Disabling output review once the launch period ends"
+        },
+        {
+          "id": "f",
+          "text": "Switching to a different font on the help page"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A ready holding statement and a briefed spokesperson let the organization respond quickly and consistently when a bad output goes public. Batch size, hiding the model name, ending output review and typography do nothing to reduce reputational damage.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-buckets-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "stem": "A review board logged six incidents with customer-facing AI systems. Sort each incident under the responsible AI principle it most directly breaches.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "fair",
+          "text": "Fairness"
+        },
+        {
+          "id": "expl",
+          "text": "Explainability"
+        },
+        {
+          "id": "priv",
+          "text": "Privacy and security"
+        },
+        {
+          "id": "acct",
+          "text": "Accountability"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "A scholarship ranker scores rural applicants below equally qualified urban applicants"
+        },
+        {
+          "id": "i2",
+          "text": "Clinic staff cannot say which inputs pushed the triage model to rank a patient low"
+        },
+        {
+          "id": "i3",
+          "text": "Interview recordings went to an outside transcription service with no data handling terms"
+        },
+        {
+          "id": "i4",
+          "text": "A pricing model misquoted thousands of customers, and product, data and legal teams each say another owns it"
+        },
+        {
+          "id": "i5",
+          "text": "A voice assistant makes far more word errors for older speakers than for younger ones"
+        },
+        {
+          "id": "i6",
+          "text": "Support transcripts holding customers' medical details were copied into a shared team spreadsheet"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "fair",
+        "i2": "expl",
+        "i3": "priv",
+        "i4": "acct",
+        "i5": "fair",
+        "i6": "priv"
+      }
+    },
+    "explanation": "Unequal outcomes between groups are fairness, missing reasons for a model's output are explainability, personal data exposed to parties that should not hold it is privacy and security, and a system nobody owns is an accountability gap.",
+    "partExplanations": {
+      "i1": "Lower scores for equally qualified people by school location is a fairness problem.",
+      "i2": "Not knowing which inputs drove a ranking is a lack of explainability.",
+      "i3": "Sending personal recordings to a third party without handling terms is a privacy and security failure.",
+      "i4": "Teams each pointing at another as owner is an accountability gap.",
+      "i5": "Unequal error rates between age groups are a fairness problem.",
+      "i6": "Copying sensitive medical details into a widely shared file is a privacy and security failure."
+    },
+    "pbqWeight": 6,
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-buckets-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "stem": "An AI governance team is classifying six incident reports. Sort each report into the risk category it best illustrates.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "bias",
+          "text": "Introduction of bias"
+        },
+        {
+          "id": "leak",
+          "text": "Accidental data leakage"
+        },
+        {
+          "id": "rep",
+          "text": "Reputational loss"
+        },
+        {
+          "id": "acc",
+          "text": "Accuracy and performance of the model"
+        },
+        {
+          "id": "ip",
+          "text": "IP-related risk"
+        },
+        {
+          "id": "auto",
+          "text": "Autonomous systems"
+        }
+      ],
+      "items": [
+        {
+          "id": "r1",
+          "text": "A match-ranking feature buries one community's profiles because past user swipes reflected prejudice"
+        },
+        {
+          "id": "r2",
+          "text": "A sales assistant autocompletes a quote using figures from another client's private proposal"
+        },
+        {
+          "id": "r3",
+          "text": "An eco brand's chatbot recommends products that contradict the company's pledge, and a viral thread follows"
+        },
+        {
+          "id": "r4",
+          "text": "A speech-to-text model trained in quiet offices makes many more errors in noisy warehouses"
+        },
+        {
+          "id": "r5",
+          "text": "An assistant reproduces long passages of a paid industry report that the company never licensed"
+        },
+        {
+          "id": "r6",
+          "text": "A building agent switches off server-room cooling to save energy with no check"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "r1": "bias",
+        "r2": "leak",
+        "r3": "rep",
+        "r4": "acc",
+        "r5": "ip",
+        "r6": "auto"
+      }
+    },
+    "explanation": "Each report points to one category: skewed outcomes learned from prejudiced history are bias, unintended exposure of another party's data is leakage, public damage to trust is reputational, poor results outside the training conditions are accuracy and performance, unlicensed reuse is IP, and unchecked action with side effects is an autonomy risk.",
+    "partExplanations": {
+      "r1": "Prejudiced historical behavior produces a systematic skew against a group, which is bias.",
+      "r2": "Another client's private figures surfacing in a quote is accidental data leakage.",
+      "r3": "Public backlash from output that contradicts stated values is reputational loss.",
+      "r4": "A model failing in conditions unlike its training data is an accuracy and performance problem.",
+      "r5": "Reproducing unlicensed material is an IP-related risk.",
+      "r6": "Taking a consequential action with no human check is an autonomous systems risk."
+    },
+    "pbqWeight": 6,
+    "acronyms": [
+      "AI",
+      "IP"
+    ]
+  },
+  {
+    "id": "cy1-4-2-match-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each mitigation to the AI risk it most directly addresses.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Differential privacy applied to a released dataset"
+        },
+        {
+          "id": "p2",
+          "text": "Awareness training on how and when to check AI output"
+        },
+        {
+          "id": "p3",
+          "text": "Model documentation that lists intended and prohibited uses"
+        },
+        {
+          "id": "p4",
+          "text": "Previews and undo options for automated changes"
+        },
+        {
+          "id": "p5",
+          "text": "An inventory of training data sources and their license terms"
+        },
+        {
+          "id": "p6",
+          "text": "Escalation path for sensitive replies before they go public"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Singling out individuals from published statistics"
+        },
+        {
+          "id": "c2",
+          "text": "Staff accepting generated text without verifying it"
+        },
+        {
+          "id": "c3",
+          "text": "Poor accuracy from applying a model to a task it was not built for"
+        },
+        {
+          "id": "c4",
+          "text": "Unintended side effects from an autonomous system"
+        },
+        {
+          "id": "c5",
+          "text": "Ownership claims over the material a model learned from"
+        },
+        {
+          "id": "c6",
+          "text": "Offensive or off-brand messages reaching customers"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5",
+        "p6": "c6"
+      }
+    },
+    "explanation": "Each mitigation targets a different risk: differential privacy protects individuals in released data, training changes how staff treat AI output, documented intended uses keep models on their tasks, previews and undo limit autonomous side effects, a source inventory supports IP compliance, and an escalation path for sensitive replies limits reputational harm.",
+    "partExplanations": {
+      "p1": "Differential privacy limits what can be inferred about one person from released statistics.",
+      "p2": "Training addresses the habit of accepting AI output without checking it.",
+      "p3": "Documented intended and prohibited uses help keep a model from being applied where its accuracy is unproven.",
+      "p4": "Previews and undo options limit the damage from side effects of automated changes.",
+      "p5": "Knowing the sources and license terms of training data addresses ownership claims.",
+      "p6": "Sending sensitive replies to a person before they go public stops offensive or off-brand text from reaching customers."
+    },
+    "pbqWeight": 6,
+    "acronyms": [
+      "AI",
+      "IP"
+    ]
+  },
+  {
+    "id": "cy1-4-2-data-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "stem": "A hiring team screened applicants with an AI resume ranker and recorded how many each region's applicants advanced. Use the table to answer each question.",
+    "payload": {
+      "caption": "Resume ranker results by applicant region",
+      "columns": [
+        "Region",
+        "Applicants",
+        "Advanced"
+      ],
+      "rows": [
+        [
+          "Harbor",
+          "400",
+          "240"
+        ],
+        [
+          "Ridge",
+          "300",
+          "150"
+        ],
+        [
+          "Delta",
+          "250",
+          "100"
+        ],
+        [
+          "Mesa",
+          "200",
+          "90"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "low",
+          "label": "Region with the lowest advance rate",
+          "options": [
+            {
+              "id": "mesa",
+              "text": "Mesa"
+            },
+            {
+              "id": "ridge",
+              "text": "Ridge"
+            },
+            {
+              "id": "delta",
+              "text": "Delta"
+            },
+            {
+              "id": "harbor",
+              "text": "Harbor"
+            }
+          ]
+        },
+        {
+          "id": "ratio",
+          "label": "Lowest advance rate divided by the highest advance rate",
+          "options": [
+            {
+              "id": "r50",
+              "text": "0.50"
+            },
+            {
+              "id": "r67",
+              "text": "0.67"
+            },
+            {
+              "id": "r75",
+              "text": "0.75"
+            }
+          ]
+        },
+        {
+          "id": "overall",
+          "label": "Overall advance rate across all regions",
+          "options": [
+            {
+              "id": "o50",
+              "text": "50%"
+            },
+            {
+              "id": "o46",
+              "text": "46%"
+            },
+            {
+              "id": "o55",
+              "text": "55%"
+            }
+          ]
+        },
+        {
+          "id": "act",
+          "label": "Best next step for the gap this table shows",
+          "options": [
+            {
+              "id": "ship",
+              "text": "Release widely because the overall rate is near half"
+            },
+            {
+              "id": "noise",
+              "text": "Assume the gap is random noise and move on without checking"
+            },
+            {
+              "id": "cutoff",
+              "text": "Lower the score cutoff for every region equally"
+            },
+            {
+              "id": "probe",
+              "text": "Examine the features and data behind the gap, then retest"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "low": "delta",
+        "ratio": "r67",
+        "overall": "o50",
+        "act": "probe"
+      }
+    },
+    "explanation": "Rates are Harbor 60%, Ridge 50%, Delta 40% and Mesa 45%. Delta is lowest, and the ratio of 40 to 60 is about 0.67, which signals a disparity. The overall figure hides it, so the gap needs investigation before wider use.",
+    "partExplanations": {
+      "low": "Harbor 240/400 = 60%, Ridge 150/300 = 50%, Delta 100/250 = 40%, Mesa 90/200 = 45%, so Delta is lowest.",
+      "ratio": "40% / 60% = 0.67.",
+      "overall": "Advanced 240 + 150 + 100 + 90 = 580 of 1,150 applicants, which is 50.4%, so about 50%.",
+      "act": "An overall average can hide a group gap, so investigate the cause and retest; releasing, dismissing the gap as noise, or shifting the cutoff equally for every region leaves the cause in place."
+    },
+    "pbqWeight": 4,
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-hotspot-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "pbq-hotspot",
+    "difficulty": 3,
+    "stem": "A security team maps how a company uses AI. Select every usage point that is shadow AI, meaning use that the technology team has not approved or does not oversee.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Browser add-on: free page summarizer"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Gateway: approved company assistant"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Personal chatbot login on guest Wi-Fi"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "CRM: contracted AI feature, approved"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Sheet add-on: AI API on a personal key"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Platform team's internal model host"
+        }
+      ],
+      "spots": [
+        {
+          "id": "browser",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Browser add-on: free page summarizer"
+        },
+        {
+          "id": "gateway",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Gateway: approved company assistant"
+        },
+        {
+          "id": "guest",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Personal chatbot login on guest Wi-Fi"
+        },
+        {
+          "id": "crm",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "CRM: contracted AI feature, approved"
+        },
+        {
+          "id": "sheet",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Sheet add-on: AI API on a personal key"
+        },
+        {
+          "id": "host",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Platform team's internal model host"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "browser",
+        "guest",
+        "sheet"
+      ]
+    },
+    "explanation": "Shadow AI is AI use outside approved and monitored channels. The browser add-on, the personal chatbot login and the add-on calling an AI API with a personal key all send company data to services the technology team has not vetted. The gateway assistant, the contracted CRM feature and the internal model host are governed.",
+    "partExplanations": {
+      "browser": "An unvetted add-on sending page text to a free service is shadow AI.",
+      "gateway": "An approved assistant behind the company gateway is governed use.",
+      "guest": "A personal account on a public tool outside company control is shadow AI.",
+      "crm": "A contracted, approved feature is governed use.",
+      "sheet": "An add-on calling an AI API on a personal key bypasses procurement and monitoring, so it is shadow AI.",
+      "host": "A model host run by the platform team is managed infrastructure."
+    },
+    "pbqWeight": 6,
+    "acronyms": [
+      "API",
+      "CRM",
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-terminal-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "A security analyst is reviewing web proxy records for staff use of AI services. Read the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ proxyq help",
+        "usage: proxyq filter <field>=<value> <file>   print the entries that match",
+        "       proxyq count <field>=<value> <file>    print how many entries match",
+        "fields: user, dest, cat, action, bytes",
+        "$ tail -n 5 proxy.log",
+        "09:02:11 user=amartin dest=docs.example.com cat=business action=allow bytes=2210",
+        "09:02:40 user=kdoyle dest=chat.quillmate.example cat=ai-chat action=allow bytes=48210",
+        "09:03:02 user=kdoyle dest=chat.quillmate.example cat=ai-chat action=allow bytes=51044",
+        "09:03:19 user=jroe dest=news.example.com cat=news action=allow bytes=910",
+        "09:03:44 user=kdoyle dest=chat.quillmate.example cat=ai-chat action=allow bytes=49872"
+      ],
+      "steps": [
+        {
+          "id": "list",
+          "label": "Type a command that prints the entries in proxy.log with cat=ai-chat"
+        },
+        {
+          "id": "count",
+          "label": "Type a command that prints how many entries in proxy.log have user=kdoyle"
+        },
+        {
+          "id": "term",
+          "label": "Which term describes staff use of an AI chat site that the company never approved?",
+          "options": [
+            {
+              "id": "drift",
+              "text": "Model drift"
+            },
+            {
+              "id": "poison",
+              "text": "Data poisoning"
+            },
+            {
+              "id": "shadow",
+              "text": "Shadow AI"
+            },
+            {
+              "id": "inject",
+              "text": "Prompt injection"
+            }
+          ]
+        },
+        {
+          "id": "act",
+          "label": "Choose the best next action",
+          "options": [
+            {
+              "id": "ignore",
+              "text": "Ignore it because the requests were allowed by the proxy"
+            },
+            {
+              "id": "block",
+              "text": "Block the AI chat domain now and close the review"
+            },
+            {
+              "id": "review",
+              "text": "Review what data was sent, then offer an approved tool and a policy"
+            },
+            {
+              "id": "report",
+              "text": "Report the first user listed to human resources before the facts are checked"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "list": [
+          "proxyq filter cat=ai-chat proxy.log",
+          "proxyq filter cat=ai-chat ./proxy.log",
+          "proxyq filter cat=\"ai-chat\" proxy.log",
+          "proxyq filter cat='ai-chat' proxy.log",
+          "grep cat=ai-chat proxy.log",
+          "grep \"cat=ai-chat\" proxy.log",
+          "grep 'cat=ai-chat' proxy.log",
+          "grep cat=ai-chat ./proxy.log",
+          "grep -n cat=ai-chat proxy.log",
+          "cat proxy.log | grep cat=ai-chat",
+          "cat proxy.log | grep \"cat=ai-chat\""
+        ],
+        "count": [
+          "proxyq count user=kdoyle proxy.log",
+          "proxyq count user=kdoyle ./proxy.log",
+          "proxyq count user=\"kdoyle\" proxy.log",
+          "proxyq count user='kdoyle' proxy.log",
+          "proxyq filter user=kdoyle proxy.log | wc -l",
+          "proxyq filter user=kdoyle ./proxy.log | wc -l",
+          "grep -c user=kdoyle proxy.log",
+          "grep -c \"user=kdoyle\" proxy.log",
+          "grep -c 'user=kdoyle' proxy.log",
+          "grep user=kdoyle proxy.log | wc -l",
+          "cat proxy.log | grep -c user=kdoyle",
+          "cat proxy.log | grep user=kdoyle | wc -l"
+        ],
+        "term": [
+          "shadow"
+        ],
+        "act": [
+          "review"
+        ]
+      }
+    },
+    "explanation": "The proxyq filter command lists matching entries and proxyq count prints a total. One user repeatedly reaching an unapproved AI chat site is shadow AI, and the right response is to find out what data left and give staff a sanctioned route with a clear policy.",
+    "partExplanations": {
+      "list": "proxyq filter cat=ai-chat proxy.log prints only the AI chat entries.",
+      "count": "proxyq count user=kdoyle proxy.log prints the number of entries for that user.",
+      "term": "Use of an AI service outside company approval is shadow AI.",
+      "act": "Review the exposure and offer an approved alternative; blocking or reporting a user before the data is reviewed skips the evidence step, and allowed traffic is not approved use."
+    },
+    "pbqWeight": 4,
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-4-2-config-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "stem": "Configure the rollout of a customer-service AI agent that can issue credits and answer questions, and that publishes aggregate usage statistics. Choose the setting for each control so that the deployment follows responsible AI practice.",
+    "payload": {
+      "fields": [
+        {
+          "id": "approval",
+          "label": "Human approval for credits issued by the agent",
+          "options": [
+            {
+              "id": "conf",
+              "text": "Skip approval when the agent reports high confidence"
+            },
+            {
+              "id": "post",
+              "text": "Approve credits in a weekly batch after they are issued"
+            },
+            {
+              "id": "limit",
+              "text": "Require approval for any credit above a set amount"
+            },
+            {
+              "id": "first",
+              "text": "Add approval only after the first complaint"
+            }
+          ]
+        },
+        {
+          "id": "budget",
+          "label": "Privacy budget for published usage statistics",
+          "options": [
+            {
+              "id": "fixed",
+              "text": "A small fixed budget, tracked per query"
+            },
+            {
+              "id": "open",
+              "text": "No limit for approved analysts"
+            },
+            {
+              "id": "reset",
+              "text": "Reset the budget after each query"
+            },
+            {
+              "id": "big",
+              "text": "Add noise only to the largest counts"
+            }
+          ]
+        },
+        {
+          "id": "disclose",
+          "label": "Disclosure to customers",
+          "options": [
+            {
+              "id": "ask",
+              "text": "Disclose only if a customer asks after a complaint"
+            },
+            {
+              "id": "human",
+              "text": "Present replies as written by a human agent"
+            },
+            {
+              "id": "report",
+              "text": "Mention the AI in the annual report"
+            },
+            {
+              "id": "label",
+              "text": "Label the chat as AI and say when a person can step in"
+            }
+          ]
+        },
+        {
+          "id": "logging",
+          "label": "Logging of agent activity",
+          "options": [
+            {
+              "id": "raw",
+              "text": "Keep full unmasked prompts with no expiry"
+            },
+            {
+              "id": "masked",
+              "text": "Log decisions and approvals with values masked"
+            },
+            {
+              "id": "off",
+              "text": "Turn logging off to protect customer privacy"
+            },
+            {
+              "id": "err",
+              "text": "Log only error messages from the chat service"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "approval": "limit",
+        "budget": "fixed",
+        "disclose": "label",
+        "logging": "masked"
+      }
+    },
+    "explanation": "A threshold for human approval keeps a person in charge of consequential actions. A privacy budget caps how much the published statistics can reveal about individuals in total, so a small tracked budget keeps differential privacy meaningful. A clear AI label supports transparency, and masked decision logs support accountability without hoarding sensitive data.",
+    "partExplanations": {
+      "approval": "Approval above a set amount keeps humans in control of high-impact actions.",
+      "budget": "A small budget that is tracked limits the cumulative information released about individuals.",
+      "disclose": "Telling customers they are talking to an AI, and when a person is available, is transparency.",
+      "logging": "Masked logs of decisions and approvals support accountability while protecting data."
+    },
+    "pbqWeight": 4,
+    "acronyms": [
+      "AI"
+    ]
+  }
+]

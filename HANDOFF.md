@@ -153,7 +153,7 @@
     - Test helpers `TestNav` and `LeaveGuardProvider` live in `src/ui/testNav.tsx`.
   - **Left as is (with reason):** Home and the exam page each count custom questions (two small reads, one per screen; sharing them would need a cache for no visible gain). The spec showed only the Stock count on cards; the MVP shows Stock and Custom, which the owner saw in the deployed MVP.
   - **Still to do from the spec (later parts, owner-scoped out of part 1):** the eight further exams with provisional metadata, and the one master acronym table.
-  - **Next session: SecAI+ slice (e), domain 4.** Slice (d), domain 3, is done and committed (see the Session 5/6 block below).
+  - **Next session (2026-11-01):** first the owner's multi-answer request (see "Owner request: pick counts" under chunk 11 below), then chunk 11 Tasks 8 and 9 (lock the targets, then the Opus whole-branch review, merge and deploy). All five SecAI+ slices are done and committed.
 
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
 - **Owner reprioritised (2026-10-31): the Data+ Math & Data Concepts module comes before SecAI+.** Design (approved): `docs/superpowers/specs/2026-10-31-dataplus-math-module-design.md`. It is homework-style: a Learn area of lessons (meaning, formula, worked example, exam trap) with a check per lesson, a new `numeric` typed-answer question type, and more join PBQs. The owner is a trainer, not an analyst, so lessons must assume no stats background.
@@ -253,6 +253,20 @@
       - 3.1's drafter keyed order `partExplanations` by step id; this is now fixed to positions.
       - Low-budget flow that worked: copy and sec reviews in round 2, then a sec-only blind recheck of the changed items, with the last few flags fixed by hand. If quota is tight, skip a second copy round.
       - Order PBQs need a rule for every adjacent pair that could swap. One rule still left SCA vs unit tests open in 3.3 `order-002`.
+  - **Session 7 (2026-11-01), slice (e) 4.1–4.3: DONE, approved and committed.** Each objective has 42 items: 29 single + 6 multi MCQ and 7 PBQs (quota 32 + 6; all spares kept). `check-drafts` and `npm run check` are clean (567 unit, 73 e2e).
+    - PBQs by template: 4.1 match 2, buckets, order, diagram, config, data. 4.2 buckets 2, match, data, hotspot, terminal, config. 4.3 match 2, buckets, config, data, diagram, order.
+    - **SecAI+ bank now: 561 MCQ, 105 PBQ** (buckets 15, match 16, config 13, order 12, diagram 12, data 14, hotspot 11, terminal 12). Every template is at 10 or more, so Task 8's targets should pass with no new items.
+    - Reviews: round 1 sec + copy on all items, round 2 sec + copy on the 99 changed items, round 3 blind sec only on the 47 changed again. The blind reviewer matched every key in every round. Round-2 copy fixes were not copy-reviewed again (the low-budget flow from session 6).
+    - Scratchpad: `ff96b377-…/scratchpad` (`d5/` holds briefs, reviews and snapshots; the root holds the tools plus `round.mjs`, which renders round-N briefs from the session-6 templates, and `diffitems.mjs`).
+    - Lessons:
+      - First drafts followed the slides heavily again (4.1: 32 of 42 flagged, mostly the role-duty slides). Domain 4 slides are definitions and lists, so the fix is an invented situation per item, not new wording for the duty.
+      - Overlapping roles (MLOps vs ML engineer vs platform engineer, governance engineer vs risk analyst) need one clue in the stem that rules out the neighbour.
+      - `render.mjs` mangles `\\$o` inside double quotes in Bash; the round-1 copy briefs got `items$o.json` (reviewers recovered). Pass paths with no `$` next to a backslash.
+      - Acronyms written out rather than added: IT ("information technology"), CoE, CASB, DNS, IEC, AIMS, HR.
+- **Owner request: pick counts for multi-answer questions (2026-11-01, not started; brainstorm first).** The owner wants authors to choose "select two", "select three" or "select all that apply" when adding a question, and the answer screens to enforce it: exactly two or three picks, or any number for select all.
+  - Today: the editor's "Multiple choice (select all)" type (`mcq-multi`) already takes several correct answers (checkboxes, `QuestionEditor.tsx`). `McqView.tsx` always shows "Select all that apply." and allows any number of picks. Scoring is `mcqFraction` (select-all rule).
+  - Shipped bank: all 228 `mcq-multi` items have 2 or 3 correct answers and ask "Which two…" in the stem text; none has a pick-count field.
+  - Touches: question schema (new optional field; backup and pack compatibility, so old files must still import), editor, `McqView` (block extra picks, hint "Select 2"), md-to-pack, review, and possibly scoring for exact-count items. Default shipped items to their correct count.
   - **UI redesign (separate from chunk 11), awaiting the owner:**
     - Design doc: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`. It covers exam cards on the landing page, a page per exam, Back/All exams on every screen, Settings, Stock/Custom, ten exams and one master acronym table. The builder check is done.
     - Open question to the owner: should the phone/browser Back gesture step back inside the app (history integration), or only the on-screen buttons? Then owner approval, then superpowers:writing-plans.
