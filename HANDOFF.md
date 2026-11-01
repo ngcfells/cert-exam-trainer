@@ -297,9 +297,10 @@
   - **Reverse length tell:** in 1.2 and 1.3 the key was never the longest option. Twelve distractors were trimmed, and the key is now the longest in 15–19% of singles in each domain-1 objective. A new per-objective floor in `shippedChecks` (at least 10% for an objective with 20 or more singles) guards this.
   - Four order PBQ stems gained a rule for each pair of steps that could swap. `cy1-1-2-mcq-020` got its own scenario, away from the deck example. Two terminal accept lists now take the full path and `--flag=value` forms. Two unit tests now name their exam.
   - `draft-ollama` now uses an example for the chosen exam (`scripts/draft-ollama-lib.ts`). It reads `content-drafts/topics.md` only when the file's heading names that exam: before this, a CY0-001 run would have been given Data+ topics.
-- **Open, owner to decide:** Data+ 2.1 (6%) and 4.1 (4%) are also below the new floor. They are exempt (`longestFloorExempt` in `src/banks/dataplus/bank.test.ts`), because chunk 11 must not change the Data+ bank. Rebalancing them is a small content pass.
+- **Merged to `main` (4d14ec6) and deployed (gh-pages 66adc1e).** The live bundle holds all 666 SecAI+ items and the Data+ bank.
 - **Flagged acronyms (not shipped):** see Session 1 above (CSA, DSA, SSE, CI, IA, SAM, GenAI, XSOAR, XSIAM).
-- **Next:** merge `chunk11-secai` into `main`, run `npm run deploy`, and check that the live site lists both exams with full SecAI+ counts. Then chunk 12, AutoOps+.
+- **Next session (owner's choice): rebalance Data+ 2.1 and 4.1.** The key is the longest option in only 6% (2.1) and 4% (4.1) of their singles. Both are exempt for now (`longestFloorExempt` in `src/banks/dataplus/bank.test.ts`), because chunk 11 must not change the Data+ bank. Trim the longest distractors (keys unchanged), as session 8 did for SecAI+ domain 1, until each is at 10% or more. Then remove the exemption, run `npm run check`, merge and deploy. Branch from `main`.
+- **After that:** chunk 12, AutoOps+.
 
 ## Standing rules
 
