@@ -15,10 +15,7 @@ const byIdType = (id: string) => items.find((q) => q.id === id)?.type;
 // Ids written before the <prefix>-<objective>-<type>-nnn scheme. Saved results and reviews refer to them, so they stay.
 const legacyIds = /^da2-(seed|pbq-[a-z]+)-\d{3}$|^da2-\d-\d-(math|pct)-mcq-\d{3}$/;
 
-// 2.1 and 4.1 rarely make the key the longest option. Chunk 11 must not change the Data+ bank, so they are exempt for now.
-const longestFloorExempt = ['2.1', '4.1'];
-
-describeShippedBank(dataPlusMeta, items, { extraText: shippedLessons.map(lessonText), legacyIds, longestFloorExempt });
+describeShippedBank(dataPlusMeta, items, { extraText: shippedLessons.map(lessonText), legacyIds });
 describeBankTargets(dataPlusMeta, items);
 
 describe('shipped Data+ bank', () => {
