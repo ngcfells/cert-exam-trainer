@@ -1,8 +1,9 @@
 // Drafts MCQs for one objective with a local Ollama model (spec §12 step 2), validating each with questionSchema.
 // Usage: npm run draft:ollama -- --exam DA0-002 --objective 2.1 --count 10 --out content-drafts/ollama-trial.json [--model qwen3.6:27b]
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import { itemIdPrefix } from '../src/banks/paths';
+import { exampleItem, topicsFor } from './draft-ollama-lib';
 import { questionSchema } from '../src/domain/schema';
 import { examFromArgs, parseArgs } from './exam-args';
 
@@ -23,24 +24,11 @@ const meta = exam.objectives.find((o) => o.id === objective);
 if (!meta) throw new Error(`unknown objective ${objective}`);
 
 const brief = readFileSync('docs/content-drafting.md', 'utf8');
-const topics = readFileSync('content-drafts/topics.md', 'utf8')
-  .split(/\n(?=\d\.\d )/)
-  .find((s) => s.startsWith(`${objective} `));
+// The topics file's first heading names its exam; another exam's topics are never used.
+const topicsPath = 'content-drafts/topics.md';
+const topics = existsSync(topicsPath) ? topicsFor(readFileSync(topicsPath, 'utf8'), exam.code, objective) : undefined;
 const prefix = itemIdPrefix(exam.code, objective, 'mcq-single');
-const example = {
-  id: `${prefix}001`,
-  exam: exam.code,
-  source: 'ours',
-  type: 'mcq-single',
-  objectiveIds: [objective],
-  difficulty: 1,
-  stem: 'A table column uniquely identifies each row and can never be empty. What is this column called?',
-  payload: { options: [{ id: 'a', text: 'Primary key' }, { id: 'b', text: 'Foreign key' }, { id: 'c', text: 'Index' }, { id: 'd', text: 'View' }] },
-  answer: { correct: ['a'] },
-  explanation: 'A primary key uniquely identifies each row and cannot be null. A foreign key references another table; an index speeds lookups; a view is a saved query.',
-  acronyms: [],
-  status: 'draft',
-};
+const example = exampleItem(exam.code, objective, prefix);
 
 const prompt = [
   brief,

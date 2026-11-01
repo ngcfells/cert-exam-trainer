@@ -14,6 +14,8 @@ export interface ShippedBankOptions {
   extraText?: string[];
   /** Ids from before the id scheme, kept so saved history still matches. */
   legacyIds?: RegExp;
+  /** Objectives that may stay below the key-longest floor, until their items are rebalanced. */
+  longestFloorExempt?: string[];
 }
 
 /** Share of config, data and terminal select parts whose key sits at the most common option index. */
@@ -84,6 +86,17 @@ export function describeShippedBank(meta: ExamMeta, items: Question[], opts: Shi
 
     it.runIf(singleCount >= 40)('does not make the correct answer the longest option too often', () => {
       expect(longestOptionTell(items)).toBeLessThanOrEqual(CONTENT_TARGETS.maxLongestShare);
+    });
+
+    it('makes the correct answer the longest option often enough in every objective', () => {
+      // A key that is almost never the longest is a reverse tell: "never pick the longest option".
+      const rare = meta.objectives.flatMap((o) => {
+        const own = items.filter((q) => q.type === 'mcq-single' && q.objectiveIds[0] === o.id);
+        if (own.length < CONTENT_TARGETS.minSinglesForLongest || opts.longestFloorExempt?.includes(o.id)) return [];
+        const share = longestOptionTell(own);
+        return share < CONTENT_TARGETS.minLongestShare ? [`${o.id}: ${Math.round(share * 100)}%`] : [];
+      });
+      expect(rare).toEqual([]);
     });
 
     it('never authors order PBQ steps in the answer order', () => {

@@ -1825,7 +1825,7 @@
     "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
-    "stem": "A payments service change is rated high risk by the AI model, and after release its error rate exceeds the agreed limit. Put the steps in the order they happen.",
+    "stem": "A payments service change is rated high risk by the AI model, and after release its error rate exceeds the agreed limit. A high-risk change needs a person's approval before any release. Put the steps in the order they happen.",
     "payload": {
       "steps": [
         {
@@ -2420,14 +2420,18 @@
       "accept": {
         "scan": [
           "pipectl scan results build-8841 --severity high",
-          "pipectl scan results --severity high build-8841"
+          "pipectl scan results --severity high build-8841",
+          "pipectl scan results build-8841 --severity=high",
+          "pipectl scan results --severity=high build-8841"
         ],
         "type": [
           "sca"
         ],
         "rollback": [
           "pipectl deploy rollback ledger-api --to rel-0411",
-          "pipectl deploy rollback --to rel-0411 ledger-api"
+          "pipectl deploy rollback --to rel-0411 ledger-api",
+          "pipectl deploy rollback ledger-api --to=rel-0411",
+          "pipectl deploy rollback --to=rel-0411 ledger-api"
         ],
         "verify": [
           "health"

@@ -50,7 +50,7 @@ describe('AcronymFlow setup', () => {
 
   it('shows counts and the full list', async () => {
     render(<AcronymFlow repo={await repoWith('ours')} examCode={EXAM} />);
-    expect(await screen.findByText(`${listExams()[0].acronyms.length} acronyms, 0 due for review`)).toBeInTheDocument();
+    expect(await screen.findByText(`${listExams().find((m) => m.code === EXAM)!.acronyms.length} acronyms, 0 due for review`)).toBeInTheDocument();
     const table = screen.getByRole('table', { name: /full list/i });
     expect(within(table).getByRole('cell', { name: 'Structured Query Language' })).toBeInTheDocument();
   });

@@ -12,6 +12,8 @@ export const CONTENT_TARGETS = {
   perPbqType: 10,
   maxPositionShare: 0.35,
   maxLongestShare: 0.4,
+  minLongestShare: 0.1,
+  minSinglesForLongest: 20,
   dupThreshold: 0.6,
 } as const;
 

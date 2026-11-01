@@ -66,7 +66,7 @@
         },
         {
           "id": "d",
-          "text": "The project needs a much larger compute budget before it is approved"
+          "text": "The project needs a larger compute budget first"
         }
       ]
     },
@@ -255,7 +255,7 @@
         },
         {
           "id": "b",
-          "text": "To enlarge the training set with many more labeled samples"
+          "text": "To enlarge the training set with more labeled samples"
         },
         {
           "id": "c",
@@ -407,7 +407,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Feedback should come from anonymous users to raise its volume"
+          "text": "Feedback should come from anonymous users for volume"
         },
         {
           "id": "b",
@@ -725,7 +725,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Each stage must be completed twice before any release is allowed"
+          "text": "Each stage must be done twice before any release"
         },
         {
           "id": "b",
@@ -926,7 +926,7 @@
       "options": [
         {
           "id": "a",
-          "text": "It makes the model more accurate on its own over time"
+          "text": "It makes the model more accurate over time"
         },
         {
           "id": "b",
@@ -1828,7 +1828,11 @@
           "openssl dgst -sha256 partner_feed.csv",
           "openssl sha256 partner_feed.csv",
           "cat partner_feed.csv | sha256sum",
-          "sha256sum < partner_feed.csv"
+          "sha256sum < partner_feed.csv",
+          "sha256sum /ingest/incoming/partner_feed.csv",
+          "shasum -a 256 /ingest/incoming/partner_feed.csv",
+          "openssl dgst -sha256 /ingest/incoming/partner_feed.csv",
+          "openssl sha256 /ingest/incoming/partner_feed.csv"
         ],
         "action": [
           "quarantine"

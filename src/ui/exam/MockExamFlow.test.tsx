@@ -184,7 +184,7 @@ describe('MockExamFlow', () => {
   });
 
   it('disables Start when assembly yields no questions', () => {
-    const meta = listExams()[0];
+    const meta = listExams().find((m) => m.code === 'DA0-002')!;
     render(<ExamSetup meta={meta} plannedCount={0} onStart={() => {}} />);
     expect(screen.getByRole('button', { name: 'Start exam' })).toBeDisabled();
     expect(screen.getByText('No questions available for this exam yet.')).toBeInTheDocument();
