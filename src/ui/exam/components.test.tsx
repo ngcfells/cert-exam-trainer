@@ -56,6 +56,15 @@ describe('ItemReview for numeric', () => {
 });
 
 describe('McqView', () => {
+  it('shows code in the stem as a block and code in an option inline', () => {
+    const base = mcq('A0', 'A');
+    const question = { ...base, stem: 'This script fails:\n```bash\nset -e\n  rm "$TMP"\n```\nWhy?', payload: { options: [{ id: 'a', text: 'Run `set -u`' }, { id: 'b', text: 'b' }] } };
+    render(<McqView item={{ question }} selected={[]} onChange={vi.fn()} />);
+    const block = screen.getByRole('group').querySelector('legend code.code-block');
+    expect(block?.textContent).toBe('set -e\n  rm "$TMP"');
+    expect(screen.getByLabelText('Run set -u').closest('label')!.querySelector('code')?.textContent).toBe('set -u');
+  });
+
   it('renders options in optionOrder and selects one', async () => {
     const onChange = vi.fn();
     render(<McqView item={{ question: mcq('A0', 'A'), optionOrder: ['c', 'a', 'd', 'b'] }} selected={[]} onChange={onChange} />);

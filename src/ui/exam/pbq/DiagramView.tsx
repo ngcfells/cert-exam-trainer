@@ -1,3 +1,4 @@
+import { plainText } from '../../../domain/richText';
 import type { DiagramPayload } from '../../../domain/pbq';
 import type { PbqProps } from './PbqView';
 import { Boxes, ChipPool, DropTarget, PartSelect, inOrder } from './parts';
@@ -38,7 +39,7 @@ export function DiagramView({ item, value, onChange }: PbqProps) {
         </ul>
       </div>
       <div className="diagram" style={{ aspectRatio: `${p.width} / ${p.height}` }}>
-        <svg viewBox={`0 0 ${p.width} ${p.height}`} role="img" aria-label={item.question.stem}>
+        <svg viewBox={`0 0 ${p.width} ${p.height}`} role="img" aria-label={plainText(item.question.stem)}>
           {p.edges.map((e, i) => {
             const a = center(e.from);
             const b = center(e.to);

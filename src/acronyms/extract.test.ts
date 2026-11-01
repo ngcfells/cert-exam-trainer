@@ -16,6 +16,10 @@ describe('acronymCovered', () => {
 });
 
 describe('extractAcronyms', () => {
+  it('skips identifiers inside inline code and code blocks', () => {
+    expect(extractAcronyms('Set `PATH` over SSH:\n```bash\nexport HOME_DIR=$HOME\n```\nThen call the API.')).toEqual(['API', 'SSH']);
+  });
+
   it('finds capitals tokens', () => {
     expect(extractAcronyms('Load the CSV via an API, then run SQL and ETL2 jobs.')).toEqual(['API', 'CSV', 'ETL2', 'SQL']);
   });

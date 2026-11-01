@@ -2,6 +2,7 @@ import { useId } from 'react';
 import { displayStem, effectivePick, pickHint } from '../../domain/pick';
 import type { McqPayload } from '../../domain/types';
 import type { ExamItem } from '../../exam/assemble';
+import { RichText } from '../RichText';
 
 export function McqView({ item, selected, onChange }: { item: ExamItem; selected: string[]; onChange: (ids: string[]) => void }) {
   const name = useId();
@@ -21,7 +22,7 @@ export function McqView({ item, selected, onChange }: { item: ExamItem; selected
 
   return (
     <fieldset className="mcq">
-      <legend className="stem">{displayStem(q)}</legend>
+      <legend className="stem"><RichText text={displayStem(q)} /></legend>
       {multi && <p className="hint">{pickHint(pick)}</p>}
       {ordered.map((o) => {
         const checked = selected.includes(o.id);
@@ -35,7 +36,7 @@ export function McqView({ item, selected, onChange }: { item: ExamItem; selected
               disabled={full && !checked}
               onChange={() => toggle(o.id)}
             />
-            {o.text}
+            <span><RichText text={o.text} /></span>
           </label>
         );
       })}

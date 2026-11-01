@@ -8,6 +8,7 @@ import { TerminalView } from './TerminalView';
 import { DiagramView } from './DiagramView';
 import { MatchView } from './MatchView';
 import { OrderView } from './OrderView';
+import { RichText } from '../../RichText';
 
 export interface PbqProps {
   item: ExamItem;
@@ -31,7 +32,7 @@ export function PbqView(props: PbqProps) {
   const View = views[q.type as keyof typeof views];
   return (
     <fieldset className="pbq">
-      <legend className="stem">{q.stem}</legend>
+      <legend className="stem"><RichText text={q.stem} /></legend>
       {View ? <View {...props} /> : <p>This question type is not supported yet.</p>}
     </fieldset>
   );

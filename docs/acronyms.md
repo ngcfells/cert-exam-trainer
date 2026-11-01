@@ -29,6 +29,8 @@ A trailing lower-case `s` is treated as a plural and dropped, so `APIs` counts a
 
 Mixed-case terms such as `IPv4` are not picked up automatically, but they can be listed by hand.
 
+Text in backticks (inline code or a fenced block, see `src/domain/richText.ts`) is skipped: identifiers such as `PATH` are not acronyms.
+
 ## Fixing a failing check
 
 - **The token is a real acronym:** add a `community` entry with an expansion we have written or verified.

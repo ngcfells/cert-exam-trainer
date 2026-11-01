@@ -49,6 +49,7 @@ This brief is given word for word to every drafter and reviewer of bundled quest
 - US English. Product names spelled as their vendors do (Power BI, Tableau, pandas, tidyverse).
 - Invented company and person names only; no real customers or data.
 - No two items in the bank may test the same fact the same way.
+- Code: wrap a command or identifier in single backticks (`` `git revert` ``) in a stem, an MCQ option, an explanation or a part explanation. Put a snippet of more than one line in a fenced block (a line with ```` ``` ```` or ```` ```yaml ````, the lines, then a closing ```` ``` ````) in a stem or explanation; it keeps its indentation and wraps long lines on phones. PBQ part texts stay plain. Code is skipped by the acronym check, so `$HOME` or `PATH` in code needs no expansion.
 
 ## Review (two independent reviewers)
 

@@ -1,4 +1,5 @@
 import type { Question } from '../domain/types';
+import { stripCode } from '../domain/richText';
 
 /** Words in capitals that are not acronyms: SQL keywords and functions, log levels, and plain emphasis. */
 export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
@@ -20,10 +21,10 @@ export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
 // 2–8 letters or digits, starting with a letter, with an optional plural "s".
 const TOKEN = /\b([A-Z][A-Z0-9]{1,7})s?\b/g;
 
-/** Acronym tokens in `text`, sorted and unique (docs/acronyms.md has the rule). */
+/** Acronym tokens in `text` outside code, sorted and unique (docs/acronyms.md has the rule). */
 export function extractAcronyms(text: string): string[] {
   const found = new Set<string>();
-  for (const [, t] of text.matchAll(TOKEN)) {
+  for (const [, t] of stripCode(text).matchAll(TOKEN)) {
     if ((t.match(/[A-Z]/g) ?? []).length >= 2 && !NOT_ACRONYMS.has(t)) found.add(t);
   }
   return [...found].sort();

@@ -2,6 +2,7 @@ import { useId, useState } from 'react';
 import { parseNumeric } from '../../domain/numeric';
 import type { NumericPayload } from '../../domain/types';
 import type { ExamItem } from '../../exam/assemble';
+import { RichText } from '../RichText';
 
 /** A typed number; the raw text is the response so the student's input survives re-renders. */
 export function NumericView({ item, value, onChange }: { item: ExamItem; value: string; onChange: (v: string[]) => void }) {
@@ -14,7 +15,7 @@ export function NumericView({ item, value, onChange }: { item: ExamItem; value: 
   const described = [unit && `${id}-unit`, invalid && `${id}-err`].filter(Boolean).join(' ') || undefined;
   return (
     <div className="numeric">
-      <label htmlFor={id} className="stem">{q.stem}</label>
+      <label htmlFor={id} className="stem"><RichText text={q.stem} /></label>
       <div className="numeric-field">
         {prefix && <span aria-hidden="true">{prefix}</span>}
         <input

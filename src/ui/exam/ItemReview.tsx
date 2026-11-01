@@ -4,6 +4,7 @@ import { displayStem, effectivePick, pickHint } from '../../domain/pick';
 import type { McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { ItemResponse } from '../../exam/scoring';
 import { Table } from '../Table';
+import { RichText } from '../RichText';
 
 function optionTexts(q: Question, ids: string[]): string {
   const opts = (q.payload as McqPayload).options;
@@ -28,7 +29,7 @@ function PartsReview({ q, given }: { q: Question; given: PartMap }) {
       {notes.length > 0 && (
         <ul>
           {notes.map((id) => (
-            <li key={id}>{q.partExplanations![id]}</li>
+            <li key={id}><RichText text={q.partExplanations![id]} /></li>
           ))}
         </ul>
       )}
@@ -44,7 +45,7 @@ export function ItemReview({ q, response, showStem = true }: { q: Question; resp
     <>
       {showStem && (
         <p>
-          <strong>{displayStem(q)}</strong>
+          <strong><RichText text={displayStem(q)} /></strong>
         </p>
       )}
       {showStem && q.type === 'mcq-multi' && <p className="hint">{pickHint(effectivePick(q))}</p>}
@@ -58,14 +59,14 @@ export function ItemReview({ q, response, showStem = true }: { q: Question; resp
       ) : mcqType ? (
         <dl>
           <dt>Your answer</dt>
-          <dd>{picked.length ? optionTexts(q, picked) : 'Not answered'}</dd>
+          <dd>{picked.length ? <RichText text={optionTexts(q, picked)} /> : 'Not answered'}</dd>
           <dt>Correct answer</dt>
-          <dd>{optionTexts(q, (q.answer as McqAnswer).correct)}</dd>
+          <dd><RichText text={optionTexts(q, (q.answer as McqAnswer).correct)} /></dd>
         </dl>
       ) : (
         <PartsReview q={q} given={response && !Array.isArray(response) ? response : {}} />
       )}
-      <p>{q.explanation}</p>
+      <p><RichText text={q.explanation} /></p>
     </>
   );
 }
