@@ -24,7 +24,7 @@ This brief is given word for word to every drafter and reviewer of bundled quest
 ## Multiple choice
 
 - `mcq-single`: exactly 4 options with ids `a`–`d`, one correct.
-- `mcq-multi`: 5 or 6 options with ids `a`–`f`; the stem says how many to pick ("Which TWO…?"); 2 or 3 correct.
+- `mcq-multi`: 5 or 6 options with ids `a`–`f`; the stem says how many to pick ("Which TWO…?"); 2 or 3 correct. Leave `pick` unset: the item is then "select N" with N = its number of correct answers, and the bank test checks that the stem states that count. Use `"pick": "all"` only for a deliberate select-all item whose stem says "Select all that apply".
 - One clearly best answer that a practitioner would not dispute. Rotate the correct position: across a batch, each of `a`–`d` is correct about a quarter of the time.
 - Distractors come from the same concept family, are plausible to someone who half-knows the topic, and are about the same length and grammatical shape as the key. The key must not be the longest option more than about a third of the time.
 - Never use "all of the above", "none of the above", "both A and B", or absolutes ("always", "never") as a giveaway.

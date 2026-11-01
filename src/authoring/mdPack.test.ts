@@ -71,6 +71,31 @@ describe('parseMarkdown', () => {
     expect(parseMarkdown(dotted, opts).questions[0]).toMatchObject({ type: 'mcq-multi', answer: { correct: ['a', 'c'] } });
   });
 
+  describe('Pick line', () => {
+    const TWO = 'Q?\n\nA. one\nB. two\nC. three\n\nCorrect Answer: A, C';
+    it('Pick: all sets select all', () => {
+      expect(parseMarkdown(`Pick: all\n${TWO}`, opts).questions[0]).toMatchObject({ type: 'mcq-multi', pick: 'all' });
+    });
+    it('Pick: 2 sets the count', () => {
+      expect(parseMarkdown(`Pick: 2\n${TWO}`, opts).questions[0]).toMatchObject({ pick: 2 });
+    });
+    it('no Pick line leaves pick unset', () => {
+      expect(parseMarkdown(TWO, opts).questions[0]).not.toHaveProperty('pick');
+    });
+    it('a count that differs from the correct answers is an error', () => {
+      expect(() => parseMarkdown(`Pick: 3\n${TWO}`, opts)).toThrow('Question 1: Pick 3 needs exactly 3 correct answers');
+    });
+    it('Pick on a single-answer question is an error', () => {
+      expect(() => parseMarkdown(`Pick: 2\n${DASH}`, opts)).toThrow('Question 1: Pick is only for questions with more than one correct answer');
+    });
+    it('Pick on a numeric question is an error', () => {
+      expect(() => parseMarkdown('Pick: 2\nHow many?\n\nCorrect Number: 4', opts)).toThrow('Question 1: Pick is only for questions with more than one correct answer');
+    });
+    it('a Pick value that is not all or a number is an error', () => {
+      expect(() => parseMarkdown(`Pick: some\n${TWO}`, opts)).toThrow('Question 1: Pick must be all or a number, such as 2');
+    });
+  });
+
   it('splits blocks on --- and keeps ids stable', () => {
     const a = parseMarkdown(`${DASH}\n---\n${BARE}\n---\n`, opts);
     const b = parseMarkdown(`${DASH}\n---\n${BARE}`, opts);

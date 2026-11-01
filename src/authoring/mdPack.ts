@@ -22,7 +22,7 @@ const MARKER = /^correct answers?(\(s\))?:\s*$/i;
 const ANSWER_LINE = /^correct answers?(\(s\))?:\s*(.+)$/i;
 const NUMBER_LINE = /^correct number:\s*(.+)$/i;
 const NUMBER_OPTION = /^(tolerance|prefix|suffix):\s*(.+)$/i;
-const META =/^(id|objectives?|difficulty):\s*(.+)$/i;
+const META = /^(id|objectives?|difficulty|pick):\s*(.+)$/i;
 /** Copy-paste leftovers from quiz pages. */
 const NOISE = /^(answer|correct)$/i;
 
@@ -53,6 +53,19 @@ interface Meta {
   id?: string;
   objectiveIds?: string[];
   difficulty?: number;
+  /** The raw `Pick:` value, checked once the question type is known. */
+  pick?: string;
+}
+
+/** A `Pick:` value for a question with `correct` correct answers: `all`, or that same number. */
+function pickOf(raw: string | undefined, correct: number, n: number): { pick?: number | 'all' } {
+  if (raw === undefined) return {};
+  if (correct < 2) throw new Error(`Question ${n}: Pick is only for questions with more than one correct answer`);
+  if (/^all$/i.test(raw)) return { pick: 'all' };
+  if (!/^\d+$/.test(raw)) throw new Error(`Question ${n}: Pick must be all or a number, such as 2`);
+  const pick = Number(raw);
+  if (pick !== correct) throw new Error(`Question ${n}: Pick ${pick} needs exactly ${pick} correct answers`);
+  return { pick };
 }
 
 function takeMeta(lines: string[]): { meta: Meta; rest: string[]; images: number } {
@@ -69,6 +82,7 @@ function takeMeta(lines: string[]): { meta: Meta; rest: string[]; images: number
       const key = m[1].toLowerCase();
       if (key === 'id') meta.id = m[2].trim();
       else if (key === 'difficulty') meta.difficulty = Number(m[2].trim());
+      else if (key === 'pick') meta.pick = m[2].trim();
       else meta.objectiveIds = m[2].split(',').map((s) => s.trim()).filter(Boolean);
     } else if (t.startsWith('![')) images++;
     else rest.push(line);
@@ -199,6 +213,8 @@ export function parseMarkdown(md: string, opts: MdOptions): MdResult {
     }
     if (images) warnings.push(`Question ${n}: ${images} image(s) ignored. Describe what they show in the text or a pbq block.`);
     const fence = fenceBody(rest);
+    const numericBlock = fence === undefined && rest.some((l) => NUMBER_LINE.test(l.trim()));
+    if (fence !== undefined || numericBlock) pickOf(meta.pick, 0, n); // Pick is for multi-answer MCQs only
     let q: Record<string, unknown>;
     if (fence !== undefined) {
       let pbq: Record<string, unknown>;
@@ -219,7 +235,7 @@ export function parseMarkdown(md: string, opts: MdOptions): MdResult {
         acronyms: pbq.acronyms ?? [],
         status: 'approved',
       };
-    } else if (rest.some((l) => NUMBER_LINE.test(l.trim()))) {
+    } else if (numericBlock) {
       const m = parseNumericBlock(rest, n);
       q = {
         id: meta.id ?? `${opts.idPrefix}-${hash(m.stem)}`,
@@ -242,6 +258,7 @@ export function parseMarkdown(md: string, opts: MdOptions): MdResult {
         exam: opts.exam,
         source: 'user',
         type: m.correct.length > 1 ? 'mcq-multi' : 'mcq-single',
+        ...pickOf(meta.pick, m.correct.length, n),
         objectiveIds: meta.objectiveIds ?? [opts.defaultObjective],
         difficulty: meta.difficulty ?? 2,
         stem: m.stem,

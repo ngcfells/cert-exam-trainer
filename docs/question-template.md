@@ -17,6 +17,7 @@ Packs are your own content. Keep them out of the repository: `_WorkingData/` is 
   - `Id: my-sql-01` gives the question a fixed id. Without one, the id comes from a hash of the stem, so editing the stem gives the question a new id. That orphans its progress history.
   - `Objective: 1.1` (comma-separated for several)
   - `Difficulty: 1`, `2` or `3` (default 2)
+  - `Pick: all` (or `Pick: 2`, `Pick: 3`) for a question with more than one correct answer. See "How many to pick" below.
 - Image lines (`![...](...)`) are ignored with a warning. Questions can't show images, so describe what an image shows in the text, or use a PBQ block.
 
 ## Multiple choice
@@ -50,14 +51,36 @@ Correct Answer(s): A, C
 
 Explanation
 Variance and range describe spread. Mean and mode describe the center.
+---
+Pick: all
+Which of these are measures of center? (Select all that apply.)
+
+A. Mean
+B. Range
+C. Median
+D. Variance
+
+Correct Answer(s): A, C
+
+Explanation
+Mean and median describe the center. Range and variance describe spread.
 ```
 
 - Options can be written `A - text`, `A. text`, `A) text`, or as a letter alone on its own line with the text on the next line. A line directly under an option, with no blank line between, continues that option.
 - The answer is either:
   - a `Correct Answer: B` line (or `Correct Answer(s): A, C`). Only the capital letters at the start count, so `Correct Answer: C, a firewall` means C, or
   - a bare `Correct Answer:` line placed directly under an option, which marks that option as correct. This is the shape you get when copying from many quiz pages.
-- Two or more correct answers make the question select-all (`mcq-multi`), scored as (right − wrong) / correct, never below 0.
+- Two or more correct answers make a multi-answer question (`mcq-multi`). See "How many to pick" below.
 - The explanation is everything after the answer. A leading `Explanation` heading is removed. Blank lines separate paragraphs.
+
+### How many to pick
+
+A multi-answer question is either "select N" or "select all that apply". These rules apply to every exam.
+
+- **Select N** (the default): without a `Pick:` line, N is the number of correct answers. `Pick: 2` says the same thing explicitly and must match the number of correct answers. The student can pick at most N choices; the rest are locked until they unpick one. Each right pick earns 1/N of the question; a wrong pick earns nothing and costs nothing.
+- **Select all** (`Pick: all`): any number of picks. Each wrong pick cancels one right pick, never below 0. Picking every choice scores 0 unless every choice is correct.
+- If the stem doesn't say how many to pick (for example "Which TWO…" or "Select all that apply"), the app adds "(Choose two.)" or "(Select all that apply.)" when it shows the question.
+- `Pick:` on a single-answer, numeric or PBQ question is an error.
 
 ## Typed number
 
