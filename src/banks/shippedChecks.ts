@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { acronymCovered, extractAcronyms, questionText } from '../acronyms/extract';
 import { CONTENT_TARGETS, answerBalance, coverage, listPositionTokens, longestOptionTell, nearDuplicates, objectiveQuotas, pbqTypeCounts } from '../content';
 import { isPbqTemplate } from '../domain/pbq';
+import { effectivePick, stemStatesPick } from '../domain/pick';
 import type { ExamMeta, Question } from '../domain/types';
 import { itemIdPrefix } from './paths';
 import { createRegistry } from './registry';
@@ -62,6 +63,11 @@ export function describeShippedBank(meta: ExamMeta, items: Question[], opts: Shi
         return !q.id.startsWith(itemIdPrefix(meta.code, q.objectiveIds[0], q.type)) || !/-\d{3}$/.test(q.id);
       });
       expect(bad.map((q) => q.id)).toEqual([]);
+    });
+
+    it('every multi-answer stem states how many to pick', () => {
+      const unstated = items.filter((q) => q.type === 'mcq-multi' && !stemStatesPick(q.stem, effectivePick(q)));
+      expect(unstated.map((q) => q.id)).toEqual([]);
     });
 
     it('never keys on a numbered list position (LLM01, ML05, A03:)', () => {

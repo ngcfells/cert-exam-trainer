@@ -5,6 +5,7 @@ import path from 'node:path';
 import { acronymCovered, extractAcronyms, questionText } from '../src/acronyms/extract';
 import { itemIdPrefix } from '../src/banks/paths';
 import { answerBalance, longestOptionTell, nearDuplicates, sharedRuns } from '../src/content';
+import { effectivePick, stemStatesPick } from '../src/domain/pick';
 import { questionSchema } from '../src/domain/schema';
 import type { Question } from '../src/domain/types';
 import { bankWithoutDrafts } from './check-drafts-lib';
@@ -44,6 +45,7 @@ for (const file of files) {
       if (missing.length) issues.push(`acronyms not in the list: ${[...new Set(missing)].join(', ')}`);
       const untagged = tokens.filter((t) => !acronymCovered(t, new Set(q.acronyms)));
       if (untagged.length) issues.push(`acronyms used but not tagged: ${[...new Set(untagged)].join(', ')}`);
+      if (q.type === 'mcq-multi' && !stemStatesPick(q.stem, effectivePick(q))) issues.push('stem does not say how many to pick (add "Which TWO…" or a pick field)');
       for (const ref of refs) {
         for (const run of sharedRuns(questionText(q), ref.text)) issues.push(`shares "${run}" with ${ref.name}`);
       }
