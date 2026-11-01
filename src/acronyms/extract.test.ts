@@ -36,6 +36,10 @@ describe('extractAcronyms', () => {
     expect(extractAcronyms('WHERE EXISTS, EXCEPT, CAST(x AS VARCHAR), EXTRACT(YEAR FROM d), DATE BETWEEN, COALESCE, LEFT JOIN, OFFSET, PARTITION, OVER, COUNTIF, DATEDIFF, STDEV, IFERROR, VLOOKUP')).toEqual([]);
   });
 
+  it('ignores HTTP method names, but not POST, which is a listed acronym in AT0-001', () => {
+    expect(extractAcronyms('GET, PUT, PATCH, DELETE, HEAD, OPTIONS and POST')).toEqual(['POST']);
+  });
+
   it('ignores the select-count words in stems', () => {
     expect(extractAcronyms('Which TWO apply? Which THREE apply? Pick FOUR.')).toEqual([]);
   });

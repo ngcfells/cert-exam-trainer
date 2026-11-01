@@ -19,6 +19,12 @@ const EXAMPLES: Record<string, { stem: string; options: string[]; explanation: s
     explanation:
       'Crafted input that overrides the system instructions is prompt injection. Model inversion rebuilds training data from outputs, poisoning tampers with training data, and membership inference tests whether a record was in the training set.',
   },
+  'AT0-001': {
+    stem: 'A developer needs to keep unfinished work aside, switch branches to fix a bug, then bring the work back. Which Git command saves the uncommitted changes?',
+    options: ['git stash', 'git revert', 'git tag', 'git fetch'],
+    explanation:
+      'git stash shelves uncommitted changes and cleans the working tree; git stash pop brings them back. git revert undoes a commit, git tag names a commit, and git fetch downloads remote changes without touching the working tree.',
+  },
 };
 
 /** One valid draft item that shows the model the JSON shape, in this exam's subject. */

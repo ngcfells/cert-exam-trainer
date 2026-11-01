@@ -5,6 +5,7 @@ describe('backLabel', () => {
   it('names the exam when Back goes to its page', () => {
     expect(backLabel({ name: 'practice', exam: 'DA0-002' })).toBe('← Back to Data+');
     expect(backLabel({ name: 'mock', exam: 'CY0-001' })).toBe('← Back to SecAI+');
+    expect(backLabel({ name: 'cram', exam: 'AT0-001' })).toBe('← Back to AutoOps+');
   });
 
   it('is plain elsewhere', () => {

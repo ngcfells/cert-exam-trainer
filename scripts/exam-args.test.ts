@@ -18,6 +18,7 @@ describe('examFromArgs', () => {
   it('returns the named exam', () => {
     expect(examFromArgs(parseArgs(['--exam', 'CY0-001'])).meta.code).toBe('CY0-001');
     expect(examFromArgs(parseArgs(['--exam', 'DA0-002'])).items.length).toBeGreaterThan(0);
+    expect(examFromArgs(parseArgs(['--exam', 'AT0-001'])).meta.name).toBe('CompTIA AutoOps+');
   });
 
   it('requires a known --exam', () => {

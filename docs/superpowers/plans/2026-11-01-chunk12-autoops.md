@@ -12,8 +12,8 @@
 
 ## Verified exam facts (from the objectives PDF, 2026-11-01)
 
-- Code `AT0-001`, version `1`, name `CompTIA AutoOps+`. Up to 60 questions, MCQ and performance-based, 60 minutes.
-- **Passing score is not in the PDF.** Check CompTIA's AutoOps+ page in Task 1. If it is not published, use `750` (on the 100–900 scale) and mark it `VERIFY` in `docs/sources/AT0-001.md`. **Owner rule (2026-11-01): when a passing score is unknown, assume 750 of 900.**
+- Code `AT0-001`, version `1`, name `CompTIA AutoOps+`. Up to 60 questions, MCQ and performance-based, 60 minutes. **14 objectives** (the "15" elsewhere in this plan is a slip; see the ledger).
+- **Passing score is not in the PDF.** (Checked 2026-11-01: CompTIA lists 600.) Check CompTIA's AutoOps+ page in Task 1. If it is not published, use `750` (on the 100–900 scale) and mark it `VERIFY` in `docs/sources/AT0-001.md`. **Owner rule (2026-11-01): when a passing score is unknown, assume 750 of 900.**
 - Domains and weights: 1 Automation Coding Concepts 31%, 2 System Configuration 25%, 3 Continuous Integration 24%, 4 Continuous Delivery 20%.
 - Objectives (titles copied in full from the PDF in Task 1; several wrap in the extract):
   - 1.1 use code to support automation; 1.2 source control to version code; 1.3 IaC concepts; 1.4 troubleshoot the code life cycle.

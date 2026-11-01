@@ -1,7 +1,7 @@
 import type { Question } from '../domain/types';
 import { stripCode } from '../domain/richText';
 
-/** Words in capitals that are not acronyms: SQL keywords and functions, log levels, and plain emphasis. */
+/** Words in capitals that are not acronyms: SQL keywords and functions, log levels, HTTP methods, and plain emphasis. */
 export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
   'SELECT', 'FROM', 'WHERE', 'GROUP', 'BY', 'ORDER', 'HAVING', 'JOIN', 'INNER', 'LEFT', 'RIGHT', 'FULL', 'OUTER', 'CROSS',
   'ON', 'AS', 'AND', 'OR', 'NOT', 'NULL', 'IN', 'IS', 'LIKE', 'UNION', 'ALL', 'USING', 'DISTINCT', 'LIMIT', 'ASC', 'DESC',
@@ -15,6 +15,8 @@ export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
   'COUNTIF', 'COUNTIFS', 'SUMIF', 'SUMIFS', 'AVERAGEIF', 'DATEDIFF', 'DATEADD', 'STDEV', 'MEDIAN', 'MODE', 'LEN', 'MID', 'SUBSTR', 'NOW', 'TODAY',
   'IFERROR', 'VLOOKUP', 'XLOOKUP', 'AVERAGE', 'REPLACE', 'NULLIF', 'GETDATE', 'DATEPART', 'VAR',
   'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL',
+  // HTTP methods (DELETE is above). POST stays a token: AT0-001 lists it as an acronym.
+  'GET', 'PUT', 'PATCH', 'HEAD', 'OPTIONS',
   'TWO', 'THREE', 'FOUR', 'NO', 'YES',
 ]);
 

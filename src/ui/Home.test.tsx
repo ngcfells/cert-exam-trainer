@@ -13,6 +13,7 @@ describe('Home', () => {
     expect(card).toHaveTextContent(/Stock: \d+ questions/);
     expect(card).toHaveTextContent(/Custom: 0 questions/);
     expect(screen.getByRole('button', { name: /CompTIA SecAI\+ \(CY0-001\)/ })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /CompTIA AutoOps\+ \(AT0-001\)/ })).toBeInTheDocument();
     await userEvent.click(card);
     expect(onNavigate).toHaveBeenLastCalledWith({ name: 'exam', exam: 'DA0-002' });
     await userEvent.click(screen.getByRole('button', { name: 'About' }));

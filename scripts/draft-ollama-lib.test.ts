@@ -28,6 +28,12 @@ describe('exampleItem', () => {
     expect(ex).toMatchObject({ id: 'cy1-2-1-mcq-001', exam: 'CY0-001', objectiveIds: ['2.1'], status: 'draft' });
   });
 
+  it('uses an AutoOps+ example for AT0-001', () => {
+    const ex = exampleItem('AT0-001', '1.2', 'at1-1-2-mcq-');
+    expect(ex.stem).toMatch(/Git/);
+    expect(ex).toMatchObject({ id: 'at1-1-2-mcq-001', exam: 'AT0-001', objectiveIds: ['1.2'] });
+  });
+
   it('refuses an exam with no example rather than showing another exam', () => {
     expect(() => exampleItem('XX0-001', '1.1', 'xx-1-1-mcq-')).toThrow(/no drafting example/);
   });

@@ -1,7 +1,7 @@
 import type { ExamMeta } from '../../domain/types';
 
 // Checked 2026-11-01 against the AT0-001 V1 Exam Objectives (document version 2.0).
-// Sources and dates: docs/sources/AT0-001.md. passingScore is not published: VERIFY (owner rule: assume 750).
+// Sources and dates: docs/sources/AT0-001.md. passingScore is from CompTIA's AutoOps+ exam page (checked 2026-11-01).
 // official: the AT0-001 acronym list, as printed (mixed case and compound terms kept).
 export const autoOpsMeta: ExamMeta = {
   code: 'AT0-001',
@@ -9,7 +9,7 @@ export const autoOpsMeta: ExamMeta = {
   name: 'CompTIA AutoOps+',
   maxQuestions: 60,
   timeLimitMinutes: 60,
-  passingScore: 750,
+  passingScore: 600,
   domains: [
     { id: '1', title: 'Automation Coding Concepts', weight: 31 },
     { id: '2', title: 'System Configuration', weight: 25 },
