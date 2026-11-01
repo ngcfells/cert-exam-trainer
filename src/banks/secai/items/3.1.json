@@ -1,0 +1,2687 @@
+[
+  {
+    "id": "cy1-3-1-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A developer asks an IDE plug-in to complete a function that builds a database query. What should the team do with the suggestion before it is merged?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Trust it because the model learned from public repositories"
+        },
+        {
+          "id": "b",
+          "text": "Skip review because the plug-in already formatted the code"
+        },
+        {
+          "id": "c",
+          "text": "Review it and test it the same way as any other new code"
+        },
+        {
+          "id": "d",
+          "text": "Merge it if it compiles and the happy-path tests pass"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "AI-generated code can omit validation or add risky libraries, so it gets the same review and testing as human code. Public training data, formatting, and a passing happy path do not show that the code is secure.",
+    "acronyms": [
+      "AI",
+      "IDE"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An IDE assistant suggests importing a small package to parse dates. The package turns out to be an unmaintained library with a known remote-execution flaw. Which risk of AI code suggestions does this show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A vulnerable component brought in by a suggestion"
+        },
+        {
+          "id": "b",
+          "text": "Training data poisoning of the plug-in vendor's model"
+        },
+        {
+          "id": "c",
+          "text": "Model inversion against the developer workstation"
+        },
+        {
+          "id": "d",
+          "text": "Denial of service from oversized completions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Assistants can recommend libraries without checking whether they are maintained or vulnerable, so dependencies from suggestions need vetting. Poisoning, inversion, and denial of service are attacks on the model or service, not a flaw brought in by the suggested code.",
+    "acronyms": [
+      "AI",
+      "IDE"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst's browser plug-in sends the text of each open page to a cloud model for explanations. What is the main concern?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Pages load more slowly because images are larger"
+        },
+        {
+          "id": "b",
+          "text": "The browser can no longer verify certificates"
+        },
+        {
+          "id": "c",
+          "text": "The plug-in clears saved cookies for all internal sites"
+        },
+        {
+          "id": "d",
+          "text": "Confidential page content leaves the organization"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Page text submitted to an external model can include internal tickets and customer data, so sending it out is a data exposure risk. Load speed, certificate checks, and cookies are not changed by sending text to a model.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A browser plug-in asks for permission to read and change data on every site an analyst visits. Which step best limits exposure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Let each user pick whichever version they prefer"
+        },
+        {
+          "id": "b",
+          "text": "Restrict it to the sites it needs and vet it before rollout"
+        },
+        {
+          "id": "c",
+          "text": "Grant the permission now and tighten it later if an incident occurs"
+        },
+        {
+          "id": "d",
+          "text": "Turn off HTTPS inspection for the sites it touches"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Narrow site access and a pre-deployment review keep the plug-in from seeing unrelated pages. Free choice of versions, a late fix, and weaker inspection all widen the exposure.",
+    "acronyms": [
+      "HTTPS"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A CLI plug-in generates a command that deletes files matching a pattern on a shared server. What is the safest next step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Read it and test it in a scratch directory first"
+        },
+        {
+          "id": "b",
+          "text": "Run it with elevated rights so permission errors do not interrupt it"
+        },
+        {
+          "id": "c",
+          "text": "Pipe it straight into the shell to save a step"
+        },
+        {
+          "id": "d",
+          "text": "Ask the plug-in to regenerate it until the output looks clean"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Generated commands can change or delete data, so a human reads them and tries them somewhere harmless. Elevated rights, piping into the shell, and regenerating until it looks right remove the chance to catch a mistake.",
+    "acronyms": [
+      "CLI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A hospital help-desk chatbot tells a nurse to reset a locked account by emailing the password to a manager, a step that no policy has ever contained. Which weakness does this show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Token spend growing past the monthly budget"
+        },
+        {
+          "id": "b",
+          "text": "Prompt injection arriving through the web chat window used by staff"
+        },
+        {
+          "id": "c",
+          "text": "Fabricated or outdated advice that staff may act on"
+        },
+        {
+          "id": "d",
+          "text": "Weak encryption on the chat connection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A chatbot that is not grounded in current, approved material can state invented or outdated steps with confidence, so its answers need monitoring. Cost, injection, and transport encryption are separate concerns that the scenario does not describe.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An executive's AI personal assistant can read mail, edit the calendar, and send messages. Which design best limits harm if a malicious email tricks it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Give it the executive's full credentials so that it is not blocked by prompts"
+        },
+        {
+          "id": "b",
+          "text": "Let it learn from incoming messages without review"
+        },
+        {
+          "id": "c",
+          "text": "Raise its response speed so it acts before users notice"
+        },
+        {
+          "id": "d",
+          "text": "Require the executive to confirm outbound messages and invitations"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Confirmation for actions taken on a person's behalf puts a human between a tricked instruction and its effect. Full credentials, unreviewed learning, and speed all increase the damage a hostile message can do.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "How does a personal assistant differ from a chatbot embedded in a public help page?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It answers fixed menu choices from a script"
+        },
+        {
+          "id": "b",
+          "text": "It acts for one person with access to that person's accounts"
+        },
+        {
+          "id": "c",
+          "text": "It is trained on the public web, with no knowledge of any particular user"
+        },
+        {
+          "id": "d",
+          "text": "It runs offline and cannot call any tools"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A personal assistant works on behalf of a particular user and can reach that user's mail, calendar, and files, which is why its permissions matter. The other options describe scripted menus, generic training, and a tool-less model.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does the Model Context Protocol provide?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A common way to connect AI to tools and data"
+        },
+        {
+          "id": "b",
+          "text": "A method for encrypting model weights at rest"
+        },
+        {
+          "id": "c",
+          "text": "A scoring system for ranking model vulnerabilities"
+        },
+        {
+          "id": "d",
+          "text": "A format for labeling data used in model training"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "MCP standardizes how AI clients exchange context with servers that expose tools and data. Weight encryption, vulnerability scoring, and data labeling are different topics.",
+    "acronyms": [
+      "AI",
+      "MCP"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A security team connects several MCP servers to ticketing, log storage, and a scanner. Which risk grows most as servers are added?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Slower responses from every added tool call"
+        },
+        {
+          "id": "b",
+          "text": "Tool names that the model invents and that do not exist"
+        },
+        {
+          "id": "c",
+          "text": "Version drift between the protocol libraries on each server"
+        },
+        {
+          "id": "d",
+          "text": "More places where sensitive records can be exposed or misused"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Every connected server adds another place where sensitive records can be exposed and shared context can be misused, so access must be scoped per server. Latency, invented tool names, and library drift are operational nuisances that do not grow into a data-exposure risk.",
+    "acronyms": [
+      "MCP"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A pharmacy chain connects an assistant to its refill-ticket queue through an MCP server. The assistant only needs to look up ticket status. Which setup follows least privilege?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Expose all queue functions and ask the prompt to avoid edits"
+        },
+        {
+          "id": "b",
+          "text": "Expose a single query-only function with a narrowly scoped, read-only credential"
+        },
+        {
+          "id": "c",
+          "text": "Share the queue administrator token so that no call ever fails"
+        },
+        {
+          "id": "d",
+          "text": "Accept calls from any client that can reach the server on the network"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Limiting the tool and the credential to lookups enforces the boundary technically. A prompt instruction can be bypassed, a shared administrator token is excessive, and open client access removes control over who calls.",
+    "acronyms": [
+      "MCP"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A developer wants to add a community-built MCP server, found online, to the company assistant. What should security require first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Install it in production first and watch the logs for errors"
+        },
+        {
+          "id": "b",
+          "text": "Give it broad scopes so that it works the first time"
+        },
+        {
+          "id": "c",
+          "text": "Review and approve the server and its tools before use"
+        },
+        {
+          "id": "d",
+          "text": "Ask the community forum whether other teams have used it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An MCP server brings in tools and text the assistant will trust, so an unvetted server is a supply-chain risk and needs review and approval before connection. Testing in production, broad scopes, and informal forum opinions do not vet it.",
+    "acronyms": [
+      "MCP"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which description fits signature matching?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Comparing activity against predefined known-bad patterns"
+        },
+        {
+          "id": "b",
+          "text": "Learning a baseline of normal activity and flagging deviations"
+        },
+        {
+          "id": "c",
+          "text": "Predicting an attacker's next step from past campaigns"
+        },
+        {
+          "id": "d",
+          "text": "Condensing an alert into a short brief"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Signature matching checks events against known indicators such as hashes and command patterns. Baselining is anomaly detection, predicting next steps is pattern-based analysis, and condensing alerts is summarization.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A detection rule matches the exact command line a known malware family uses. A variant adds one extra flag to that command. Why does the rule miss it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rule engines skip any command that carries more than two flags"
+        },
+        {
+          "id": "b",
+          "text": "Command lines are encrypted before the endpoint agent sees them"
+        },
+        {
+          "id": "c",
+          "text": "The variant runs under a different operating system user"
+        },
+        {
+          "id": "d",
+          "text": "The stored string no longer matches the altered command"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Signature matching compares activity with fixed known patterns, so a changed string falls outside the rule. Flag counts, encryption of command lines, and the account used are not how pattern rules work.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which activity belongs to code quality and linting rather than vulnerability analysis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mapping a flaw to a public weakness identifier"
+        },
+        {
+          "id": "b",
+          "text": "Flagging inconsistent naming and unreachable code"
+        },
+        {
+          "id": "c",
+          "text": "Scoring how exploitable a library flaw is"
+        },
+        {
+          "id": "d",
+          "text": "Checking dependencies against known exploited flaws"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Linting looks at style, readability, and logic problems. Weakness mapping, exploitability scoring, and dependency checks are vulnerability analysis tasks.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An engineer at Corvid Freight types a plain-language request into a CLI plug-in, asking for a way to list the largest files changed this week. Which benefit of the plug-in applies?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It guarantees the drafted command is safe on production systems"
+        },
+        {
+          "id": "b",
+          "text": "It grants whatever permissions the drafted command needs to run"
+        },
+        {
+          "id": "c",
+          "text": "It drafts a candidate command that the engineer can review first"
+        },
+        {
+          "id": "d",
+          "text": "It keeps the output in the vendor model so the next user can reuse it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "CLI plug-ins can draft commands from a plain-language request, and the engineer reviews the draft before running it. They cannot certify safety or grant permissions, and output should not be stored with the vendor.",
+    "acronyms": [
+      "CLI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A scanner reports 900 findings. For which task is an AI tool best suited?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Grouping and ranking findings using exposure and exploit context"
+        },
+        {
+          "id": "b",
+          "text": "Accepting risk on the business's behalf without owner sign-off"
+        },
+        {
+          "id": "c",
+          "text": "Proving that findings it did not list do not exist"
+        },
+        {
+          "id": "d",
+          "text": "Patching production hosts outside change control"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "AI helps interpret and prioritize large result sets, with people deciding what to fix. Risk acceptance, proving absence, and unapproved patching are decisions or actions that need humans and process.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which type of source would an AI-assisted vulnerability tool consult to enrich a finding with known weakness and exposure details?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Employee badge-reader access logs for the data center"
+        },
+        {
+          "id": "b",
+          "text": "Marketing campaign analytics reports for web traffic"
+        },
+        {
+          "id": "c",
+          "text": "Cloud provider billing statements for compute usage"
+        },
+        {
+          "id": "d",
+          "text": "Public CVE and CWE vulnerability entries"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "CVE lists known vulnerabilities and CWE categorizes weakness types. The other sources hold nothing about vulnerabilities.",
+    "acronyms": [
+      "AI",
+      "CVE",
+      "CWE"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "During an AI-driven penetration test of a retail chain's head office, the tool finds a vulnerable server in a branch segment that the engagement letter does not list. What should happen next?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Test it carefully, since the tool has already found a weakness there"
+        },
+        {
+          "id": "b",
+          "text": "Stop, record the discovery, and ask the client to extend the scope in writing"
+        },
+        {
+          "id": "c",
+          "text": "Exploit it to prove the impact and describe the result in the final report afterward"
+        },
+        {
+          "id": "d",
+          "text": "Leave it out of the report so the findings match the signed scope"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Testing is limited to the authorized scope, so the tester stops, documents what was seen, and gets written approval before going further. Testing it, exploiting it, or hiding it all break the engagement terms.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An AI penetration-testing tool reports successful exploitation on 40 hosts. What should the tester do before the report goes to the client?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Send it unchanged because the tool is automated"
+        },
+        {
+          "id": "b",
+          "text": "Drop the entries that the client's SOC alerted on"
+        },
+        {
+          "id": "c",
+          "text": "Validate a sample manually and confirm the real impact"
+        },
+        {
+          "id": "d",
+          "text": "Rerun the tool at higher intensity until the counts agree"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Automated results can include false positives or overstated impact, so a tester verifies them before reporting. Sending unchecked output, removing detected entries, or rerunning harder does not validate anything.",
+    "acronyms": [
+      "AI",
+      "SOC"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which event would an anomaly detection model most likely flag?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A build server suddenly contacting 200 external addresses"
+        },
+        {
+          "id": "b",
+          "text": "A build server running its usual nightly job against internal hosts"
+        },
+        {
+          "id": "c",
+          "text": "A developer pushing a code change during the normal workday"
+        },
+        {
+          "id": "d",
+          "text": "A scheduled vulnerability scan launched from the scanner host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Anomaly detection compares activity with an expected baseline and flags large departures. A server that normally talks to a few internal hosts contacting many external ones is such a departure; the other events are routine.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An anomaly detector trained on three quiet months starts flagging a busy holiday period as suspicious. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Downgrade all alerts to informational severity"
+        },
+        {
+          "id": "b",
+          "text": "Switch the model off until the season ends"
+        },
+        {
+          "id": "c",
+          "text": "Add rules that block flagged users automatically"
+        },
+        {
+          "id": "d",
+          "text": "Retrain or tune the baseline for seasonal patterns"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The baseline does not represent legitimate seasonal change, so it needs retraining or tuning. Downgrading alerts hides real ones, switching off removes coverage, and automatic blocking would harm legitimate users.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A model notices that failed logins, then one success, then a privilege change often precede a breach. Which use case is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Signature matching"
+        },
+        {
+          "id": "b",
+          "text": "Translation"
+        },
+        {
+          "id": "c",
+          "text": "Pattern recognition"
+        },
+        {
+          "id": "d",
+          "text": "Code quality and linting"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Finding recurring combinations of events in data is pattern recognition. Signature matching uses predefined indicators, translation converts language, and linting reviews code.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Which statement correctly separates pattern recognition from anomaly detection?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Pattern recognition needs a human to define each rule, while anomaly detection needs none"
+        },
+        {
+          "id": "b",
+          "text": "Pattern recognition finds repeated structure, while anomaly detection finds deviations"
+        },
+        {
+          "id": "c",
+          "text": "Pattern recognition works mainly on text, while anomaly detection works mainly on numbers"
+        },
+        {
+          "id": "d",
+          "text": "Pattern recognition flags first-seen events, while anomaly detection matches known indicators"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The two are related, since recognized patterns help define what is expected, but one finds repeated structure and the other finds deviation. The other statements wrongly describe rules, data types, and the roles of known indicators.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A SIEM's AI feature merges 300 related alerts into a single incident record. What benefit does this give the analysts?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Related events are handled together as one case"
+        },
+        {
+          "id": "b",
+          "text": "Alerts no longer need retention for later audits"
+        },
+        {
+          "id": "c",
+          "text": "Each alert is closed without any analyst view"
+        },
+        {
+          "id": "d",
+          "text": "Alert volume at the sensors is reduced"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Grouping related events into one incident saves duplicate triage and gives a single case to work. It does not remove the need to retain alerts, closes nothing automatically, and does not change what the sensors generate.",
+    "acronyms": [
+      "AI",
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A SOC lead gives an AI tool the ticket histories and written procedures to find where past responses slowed and what to change. Which phase of incident handling does this serve?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Initial detection"
+        },
+        {
+          "id": "b",
+          "text": "Evidence acquisition"
+        },
+        {
+          "id": "c",
+          "text": "Lessons learned"
+        },
+        {
+          "id": "d",
+          "text": "Eradication of the cause"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Reviewing how past responses went and recommending changes is post-incident review. Detection, evidence acquisition, and eradication happen while the incident is still active.",
+    "acronyms": [
+      "AI",
+      "SOC"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team uses an AI assistant while designing a new payment service, before any code exists. Which use case is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fraud detection on live payments once the service launches"
+        },
+        {
+          "id": "b",
+          "text": "Signature matching of known malware"
+        },
+        {
+          "id": "c",
+          "text": "Translation of incident reports"
+        },
+        {
+          "id": "d",
+          "text": "Threat modeling to find likely threats early"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Threat modeling identifies threats while the design can still change. Fraud detection, signature matching, and translation apply to running systems or other tasks.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An AI assistant produces a list of threats for a new design. What must the team do with it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat it as complete and skip the human design review meeting"
+        },
+        {
+          "id": "b",
+          "text": "Check it against the real architecture and add any gaps"
+        },
+        {
+          "id": "c",
+          "text": "Publish it to customers as the formal risk register"
+        },
+        {
+          "id": "d",
+          "text": "Discard any threat the assistant rated below high"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The list is a starting point that people check against the actual design and extend. Treating it as complete, publishing it, or dropping lower-rated items skips that judgment.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A card issuer's model scores each transaction using amount, location, and device. One transaction scores far above normal for that customer. What is the best use of the score?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Permanently close the customer's account and notify the credit bureaus"
+        },
+        {
+          "id": "b",
+          "text": "Delete the transaction from the ledger and reverse every fee it caused"
+        },
+        {
+          "id": "c",
+          "text": "Hold the transaction and verify it with the cardholder before it posts"
+        },
+        {
+          "id": "d",
+          "text": "Raise the customer's credit limit to cover the amount involved"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A high score is a reason to verify, which stops possible fraud while keeping legitimate customers. Closing accounts, deleting records, and raising limits are unjustified reactions.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fraud model flags many legitimate purchases made by travelers. Which outcome is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "False positives that frustrate customers and waste time"
+        },
+        {
+          "id": "b",
+          "text": "False negatives, which let real fraud pass through unnoticed"
+        },
+        {
+          "id": "c",
+          "text": "True negatives, which confirm that activity is normal"
+        },
+        {
+          "id": "d",
+          "text": "True positives, which show the model is catching fraud"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Flagging legitimate activity is a false positive, and it burdens customers and analysts. False negatives are missed fraud, and true negatives and positives are correct results.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A multinational SOC receives phishing emails written in languages its analysts cannot read. How can AI help?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Block all inbound mail in any language other than English"
+        },
+        {
+          "id": "b",
+          "text": "Delete the messages without reviewing what they contain"
+        },
+        {
+          "id": "c",
+          "text": "Reply to the senders and ask them to resend in English"
+        },
+        {
+          "id": "d",
+          "text": "Translate the message, then verify the links and sender"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Translation speeds up understanding of foreign-language content, and analysts still verify links and sender details. Blocking by language drops legitimate mail, deleting unread messages loses evidence, and replying to a phishing sender confirms the address is live.",
+    "acronyms": [
+      "AI",
+      "SOC"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An analyst relies on an AI translation of an attacker's message, and it renders a deadline as a different date. What is the best practice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Act on the translation because the model is fluent"
+        },
+        {
+          "id": "b",
+          "text": "Confirm critical details with a qualified human translator before acting"
+        },
+        {
+          "id": "c",
+          "text": "Ask the model to translate again and take whichever answer comes back faster"
+        },
+        {
+          "id": "d",
+          "text": "Ignore the message because translations are unreliable"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Translation errors in dates, names, and amounts can mislead response, so critical details get human confirmation. Fluency is no proof of accuracy, repeating the request does not verify it, and ignoring the message loses useful intelligence.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-033",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which task is an example of summarization in incident handling?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Spotting a sudden spike in overnight outbound traffic from one server"
+        },
+        {
+          "id": "b",
+          "text": "Matching a command line to a published detection rule"
+        },
+        {
+          "id": "c",
+          "text": "Condensing a long set of logs and notes into a short brief"
+        },
+        {
+          "id": "d",
+          "text": "Writing a firewall rule from a template"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Summarization turns large volumes of text into a short, readable account. Spotting a traffic spike is anomaly detection, matching a command line to a rule is signature matching, and writing a firewall rule is authoring, not condensing.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-034",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An AI summarizer condenses a 40-page forensic report for executives and leaves out that customer records were exposed. Which control addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Have an analyst compare the summary with the source for key facts"
+        },
+        {
+          "id": "b",
+          "text": "Ask the model to make the summary even shorter"
+        },
+        {
+          "id": "c",
+          "text": "Remove the forensic report from the source system to avoid confusion"
+        },
+        {
+          "id": "d",
+          "text": "Raise the model's creativity setting"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Summaries can drop critical details, so a person checks them against the source before they are used. A shorter summary loses more, deleting the report removes evidence, and more creativity increases error.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-035",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An alert-triage model produces many false positives for one noisy service. Which practice improves it over time?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mute alerts from that service"
+        },
+        {
+          "id": "b",
+          "text": "Raise the alert threshold to its maximum"
+        },
+        {
+          "id": "c",
+          "text": "Remove the analyst review step"
+        },
+        {
+          "id": "d",
+          "text": "Return analyst verdicts as tuning feedback"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Feedback loops let analyst decisions improve detection quality. Muting, an extreme threshold, and removing review reduce coverage or visibility instead of improving accuracy.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-036",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Two findings on a vulnerability report carry the same severity score. Which should an AI-assisted tool rank higher for remediation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The one on a retired lab machine with no network route"
+        },
+        {
+          "id": "b",
+          "text": "The one on an internet-facing server with a working public exploit"
+        },
+        {
+          "id": "c",
+          "text": "The one with the longer description in the report"
+        },
+        {
+          "id": "d",
+          "text": "The one most recently detected by the scanner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Exposure and exploit availability raise real risk beyond the base score, which is the context AI can use to prioritize. A disconnected machine, description length, and detection date say little about likelihood of attack.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-037",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are valid security concerns when developers use an IDE plug-in that sends code to a cloud model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Proprietary code or embedded secrets leaving the company"
+        },
+        {
+          "id": "b",
+          "text": "Slower code completion on very large source files"
+        },
+        {
+          "id": "c",
+          "text": "Licensing and IP exposure from reproduced code snippets"
+        },
+        {
+          "id": "d",
+          "text": "Extra plug-in license seats needed for each developer"
+        },
+        {
+          "id": "e",
+          "text": "Higher memory use in the editor while suggestions load"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Code sent to a cloud model can expose proprietary logic and secrets, and suggestions may reproduce licensed code the team has not reviewed. Completion speed, license seat counts, and editor memory use are performance or cost matters, not security concerns.",
+    "acronyms": [
+      "IDE",
+      "IP"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-038",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO practices keep a security-procedures chatbot accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Letting it learn procedures from unverified chat messages"
+        },
+        {
+          "id": "b",
+          "text": "Grounding its answers in current approved documents"
+        },
+        {
+          "id": "c",
+          "text": "Hiding the source documents from reviewers"
+        },
+        {
+          "id": "d",
+          "text": "Retiring the feedback buttons to reduce noise"
+        },
+        {
+          "id": "e",
+          "text": "Reviewing sampled replies and fixing the source documents"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Grounding in approved material and reviewing sampled replies catch and correct wrong answers. Learning from unverified chat, hiding sources, and removing feedback make errors harder to find.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-039",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO describe signature matching?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It learns a baseline of normal behavior"
+        },
+        {
+          "id": "b",
+          "text": "It flags first-seen activity that has no listed indicator"
+        },
+        {
+          "id": "c",
+          "text": "It removes the need to update indicators"
+        },
+        {
+          "id": "d",
+          "text": "It detects known threats with few false positives"
+        },
+        {
+          "id": "e",
+          "text": "It can miss new or altered threats"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "Signatures catch what is already known and miss changed or novel threats. Baselining and flagging unseen activity belong to anomaly detection, and signatures need regular updates.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-040",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE are appropriate uses of AI in incident management?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mapping affected hosts and accounts from log data into one view"
+        },
+        {
+          "id": "b",
+          "text": "Reimaging servers it suspects before any analyst has reviewed them"
+        },
+        {
+          "id": "c",
+          "text": "Deleting logs it considers noisy to cut storage costs"
+        },
+        {
+          "id": "d",
+          "text": "Drafting stakeholder updates from the current case notes"
+        },
+        {
+          "id": "e",
+          "text": "Closing incidents that look resolved without analyst sign-off"
+        },
+        {
+          "id": "f",
+          "text": "Comparing the case with past incidents to suggest playbooks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d",
+        "f"
+      ]
+    },
+    "explanation": "AI can assemble context, draft communications, and suggest relevant playbooks while people decide. Unreviewed isolation, deleting logs, and self-closing incidents remove oversight and evidence.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-041",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO events would an anomaly baseline help flag?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A monthly payroll file arriving at its usual size"
+        },
+        {
+          "id": "b",
+          "text": "A backup job starting at its scheduled night hour"
+        },
+        {
+          "id": "c",
+          "text": "An approved patch window opening as scheduled"
+        },
+        {
+          "id": "d",
+          "text": "A printer sending large transfers to an unfamiliar server"
+        },
+        {
+          "id": "e",
+          "text": "A contractor account opening records outside its project"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "A device sending data somewhere new and an account reaching beyond its usual work depart from the baseline. The payroll file, backup, and patch window are routine and scheduled.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-mcq-042",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO safeguards keep an automated penetration test from disrupting production?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Running at default intensity while business staff are working"
+        },
+        {
+          "id": "b",
+          "text": "Throttled request rates against production services"
+        },
+        {
+          "id": "c",
+          "text": "Letting the tool pick extra hosts in the same network segment"
+        },
+        {
+          "id": "d",
+          "text": "Agreed test windows with a named contact who can stop the run"
+        },
+        {
+          "id": "e",
+          "text": "Turning off SOC alerting for the test source addresses"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Throttling and agreed windows with a stop contact limit disruption. Default intensity during working hours, unplanned scope expansion, and switched-off alerting raise the chance of outages and leave defenders blind.",
+    "acronyms": [
+      "SOC"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-043",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE tasks suit AI translation and summarization in a SOC?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rendering a foreign-language phishing lure in English"
+        },
+        {
+          "id": "b",
+          "text": "Approving a firewall change for the on-call engineer"
+        },
+        {
+          "id": "c",
+          "text": "Condensing alert notes for a shift handover"
+        },
+        {
+          "id": "d",
+          "text": "Deleting evidence that looks redundant during triage"
+        },
+        {
+          "id": "e",
+          "text": "Signing a legal attestation for the response team"
+        },
+        {
+          "id": "f",
+          "text": "Writing a plain-language brief of an incident for managers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "f"
+      ]
+    },
+    "explanation": "Translation and summarization help people understand and communicate. Approvals, evidence handling, and attestations are human responsibilities.",
+    "acronyms": [
+      "AI",
+      "SOC"
+    ]
+  },
+  {
+    "id": "cy1-3-1-mcq-044",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO checks apply to an AI-suggested fix for a flagged vulnerability?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Accepting it as soon as it compiles and the build passes"
+        },
+        {
+          "id": "b",
+          "text": "Re-scanning after applying it to confirm the finding is gone"
+        },
+        {
+          "id": "c",
+          "text": "Deploying it directly to production to save review time"
+        },
+        {
+          "id": "d",
+          "text": "Running the regression tests that cover the affected feature"
+        },
+        {
+          "id": "e",
+          "text": "Relying on the model's own confidence score for the patch"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A suggested fix is verified by re-scanning and by regression tests that show nothing else broke. Compiling, hurried deployment, and the model's confidence do not show that the fix is secure.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-terminal-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "An analyst is using the vulnai CLI plug-in to triage findings on the Brindle Logistics network. Review the session, then complete each step.",
+    "payload": {
+      "output": [
+        "$ vulnai --help",
+        "usage: vulnai <command> [options]",
+        "  list --severity <level>                  list open findings (level: critical, high, medium, low)",
+        "  explain <finding-id>                     plain-language explanation and suggested fix",
+        "  export --format <csv|json> --out <file>  write the open findings to a file",
+        "$ vulnai list --severity high",
+        "id      host         title                        severity",
+        "F-2041  web-pay-02   Outdated TLS library         high",
+        "F-2044  hr-portal    Weak session cookie flags    high",
+        "$ vulnai explain F-2041",
+        "F-2041: web-pay-02 uses a TLS library with known flaws.",
+        "AI suggested fix: turn off certificate verification in the client so the connection errors stop."
+      ],
+      "steps": [
+        {
+          "id": "crit",
+          "label": "Type a command that lists the open critical findings"
+        },
+        {
+          "id": "explain",
+          "label": "Type a command that explains finding F-2044"
+        },
+        {
+          "id": "fix",
+          "label": "Choose the best response to the AI suggested fix for F-2041",
+          "options": [
+            {
+              "id": "apply",
+              "text": "Apply the change to web-pay-02 now to clear the errors"
+            },
+            {
+              "id": "reject",
+              "text": "Reject it, upgrade the library, and verify the fix in staging"
+            },
+            {
+              "id": "mute",
+              "text": "Hide finding F-2041 from the report until the next audit"
+            },
+            {
+              "id": "trust",
+              "text": "Accept it because the plug-in marked it as the suggested fix"
+            }
+          ]
+        },
+        {
+          "id": "export",
+          "label": "Type a command that writes the open findings to report.json using the json format"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "crit": [
+          "vulnai list --severity critical",
+          "vulnai list --severity=critical",
+          "vulnai list --severity \"critical\"",
+          "vulnai list --severity 'critical'"
+        ],
+        "explain": [
+          "vulnai explain F-2044"
+        ],
+        "fix": [
+          "reject"
+        ],
+        "export": [
+          "vulnai export --format json --out report.json",
+          "vulnai export --out report.json --format json",
+          "vulnai export --format=json --out=report.json",
+          "vulnai export --out=report.json --format=json",
+          "vulnai export --format json --out ./report.json",
+          "vulnai export --out ./report.json --format json",
+          "vulnai export --format=json --out report.json",
+          "vulnai export --format json --out=report.json",
+          "vulnai export --out=report.json --format json",
+          "vulnai export --out report.json --format=json"
+        ]
+      }
+    },
+    "explanation": "The list command takes a severity level, explain takes a finding id, and export takes a format and an output file. Disabling certificate verification removes a security control, so the right response is to fix the root cause and test it before release.",
+    "partExplanations": {
+      "crit": "The help text shows that list takes --severity followed by a level, and the level here is critical.",
+      "explain": "The explain command takes the finding id, which is F-2044.",
+      "fix": "Turning off certificate verification weakens security; upgrading the library and testing it in staging fixes the cause.",
+      "export": "Export needs --format json and --out report.json, in either order."
+    },
+    "acronyms": [
+      "AI",
+      "CLI",
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-3-1-config-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "A team connects an AI assistant to its vulnerability scanner and host-isolation tool through an MCP server. The assistant should read findings and be able to request host isolation, but not carry it out unattended. Choose the safest setting for each item.",
+    "payload": {
+      "fields": [
+        {
+          "id": "scope",
+          "label": "Scanner permission granted to the assistant",
+          "options": [
+            {
+              "id": "admin",
+              "text": "Full administrator"
+            },
+            {
+              "id": "read",
+              "text": "Read findings only"
+            },
+            {
+              "id": "scan",
+              "text": "Read findings and launch scans"
+            }
+          ]
+        },
+        {
+          "id": "isolate",
+          "label": "How a host-isolation request from the assistant is handled",
+          "options": [
+            {
+              "id": "auto",
+              "text": "Run as soon as the assistant requests it"
+            },
+            {
+              "id": "logonly",
+              "text": "Log the request and take no action"
+            },
+            {
+              "id": "approve",
+              "text": "Queue the request for a human to approve"
+            }
+          ]
+        },
+        {
+          "id": "servers",
+          "label": "Which MCP servers the assistant may connect to",
+          "options": [
+            {
+              "id": "list",
+              "text": "A reviewed and approved list"
+            },
+            {
+              "id": "any",
+              "text": "Any server a user adds"
+            },
+            {
+              "id": "public",
+              "text": "Any server in a public directory"
+            }
+          ]
+        },
+        {
+          "id": "content",
+          "label": "Ticket text returned by tools",
+          "options": [
+            {
+              "id": "instr",
+              "text": "Follow it as instructions to the assistant"
+            },
+            {
+              "id": "merge",
+              "text": "Merge it into the system prompt for context"
+            },
+            {
+              "id": "data",
+              "text": "Treat it as untrusted data, not instructions"
+            }
+          ]
+        },
+        {
+          "id": "log",
+          "label": "Tool call logging",
+          "options": [
+            {
+              "id": "off",
+              "text": "Disabled to reduce storage use"
+            },
+            {
+              "id": "full",
+              "text": "Every tool call with caller and result"
+            },
+            {
+              "id": "err",
+              "text": "Errors and failed sign-ins alone"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "scope": "read",
+        "isolate": "approve",
+        "servers": "list",
+        "content": "data",
+        "log": "full"
+      }
+    },
+    "explanation": "Read-only access, human approval for disruptive actions, an approved server list, treating returned text as data, and complete call logging apply least privilege, oversight, vetting, and auditing to an MCP connection.",
+    "partExplanations": {
+      "scope": "The assistant only reads findings, so read-only access is enough.",
+      "isolate": "Isolating a host is disruptive, so a human should approve it first.",
+      "servers": "Only reviewed servers should be connected, since unvetted ones bring in untrusted tools and text.",
+      "content": "Text returned by tools can contain hostile instructions, so it is handled as data only.",
+      "log": "Logging each call with its details lets investigators reconstruct what the assistant did."
+    },
+    "acronyms": [
+      "AI",
+      "MCP"
+    ]
+  },
+  {
+    "id": "cy1-3-1-data-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "A fraud detection model scored five card transactions for Harlow Credit Union. Policy: a score below 0.30 is approved, 0.30 to 0.79 is held for customer verification, and 0.80 or higher is declined and escalated to a fraud analyst. Choose the action for each transaction.",
+    "payload": {
+      "caption": "Fraud model output",
+      "columns": [
+        "Transaction",
+        "Amount",
+        "Usual pattern for customer",
+        "Model score"
+      ],
+      "rows": [
+        [
+          "T-1001",
+          "42.10",
+          "Grocery, same town",
+          "0.08"
+        ],
+        [
+          "T-1002",
+          "980.00",
+          "Small local purchases",
+          "0.47"
+        ],
+        [
+          "T-1003",
+          "4,500.00",
+          "New device, new country",
+          "0.93"
+        ],
+        [
+          "T-1004",
+          "310.00",
+          "Online store, rarely used",
+          "0.30"
+        ],
+        [
+          "T-1005",
+          "2,250.00",
+          "New device, new merchant type",
+          "0.80"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "t1",
+          "label": "T-1001",
+          "options": [
+            {
+              "id": "approve",
+              "text": "Approve"
+            },
+            {
+              "id": "hold",
+              "text": "Hold for customer verification"
+            },
+            {
+              "id": "decline",
+              "text": "Decline and escalate to a fraud analyst"
+            }
+          ]
+        },
+        {
+          "id": "t2",
+          "label": "T-1002",
+          "options": [
+            {
+              "id": "decline",
+              "text": "Decline and escalate to a fraud analyst"
+            },
+            {
+              "id": "approve",
+              "text": "Approve"
+            },
+            {
+              "id": "hold",
+              "text": "Hold for customer verification"
+            }
+          ]
+        },
+        {
+          "id": "t3",
+          "label": "T-1003",
+          "options": [
+            {
+              "id": "hold",
+              "text": "Hold for customer verification"
+            },
+            {
+              "id": "decline",
+              "text": "Decline and escalate to a fraud analyst"
+            },
+            {
+              "id": "approve",
+              "text": "Approve"
+            }
+          ]
+        },
+        {
+          "id": "t4",
+          "label": "T-1004",
+          "options": [
+            {
+              "id": "approve",
+              "text": "Approve"
+            },
+            {
+              "id": "decline",
+              "text": "Decline and escalate to a fraud analyst"
+            },
+            {
+              "id": "hold",
+              "text": "Hold for customer verification"
+            }
+          ]
+        },
+        {
+          "id": "t5",
+          "label": "T-1005",
+          "options": [
+            {
+              "id": "hold",
+              "text": "Hold for customer verification"
+            },
+            {
+              "id": "approve",
+              "text": "Approve"
+            },
+            {
+              "id": "decline",
+              "text": "Decline and escalate to a fraud analyst"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "t1": "approve",
+        "t2": "hold",
+        "t3": "decline",
+        "t4": "hold",
+        "t5": "decline"
+      }
+    },
+    "explanation": "Apply the score bands exactly: below 0.30 approve, 0.30 to 0.79 hold, 0.80 and above decline and escalate.",
+    "partExplanations": {
+      "t1": "0.08 is below 0.30, so the transaction is approved.",
+      "t2": "0.47 is in the 0.30 to 0.79 band, so it is held for verification.",
+      "t3": "0.93 is at least 0.80, so it is declined and escalated.",
+      "t4": "0.30 is the bottom of the hold band, so it is held rather than approved.",
+      "t5": "0.80 meets the decline threshold, so it is declined and escalated."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-1-hotspot-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "This is the settings screen for an AI browser plug-in that an analyst team uses with its security tools. Select every setting that creates a security risk.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Send chats to vendor for training: On"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Ticket queue access: Read-only"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Auto-run suggested commands: On"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Single sign-on with MFA: Required"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Plug-in site access: All websites"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Tool call audit log: Enabled"
+        }
+      ],
+      "spots": [
+        {
+          "id": "train",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Sends chats to vendor for training"
+        },
+        {
+          "id": "ticket",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Ticket queue access"
+        },
+        {
+          "id": "autorun",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Auto-runs suggested commands"
+        },
+        {
+          "id": "mfa",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Sign-in with MFA"
+        },
+        {
+          "id": "sites",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Access to all websites"
+        },
+        {
+          "id": "audit",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Tool call audit log"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "train",
+        "autorun",
+        "sites"
+      ]
+    },
+    "explanation": "Sharing chats for vendor training can leak sensitive content, auto-running suggested commands removes human review, and access to all websites exposes unrelated pages. Read-only access, MFA, and an audit log are sound settings.",
+    "partExplanations": {
+      "train": "Chats may contain incident details and credentials, which should not be sent to a vendor for training.",
+      "ticket": "Read-only access follows least privilege.",
+      "autorun": "Commands should be read and approved by a person before they run.",
+      "mfa": "Requiring MFA for sign-in protects the plug-in account.",
+      "sites": "Access to every website lets the plug-in read content it does not need.",
+      "audit": "An audit log supports investigation and accountability."
+    },
+    "acronyms": [
+      "AI",
+      "MFA"
+    ]
+  },
+  {
+    "id": "cy1-3-1-match-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 1,
+    "pbqWeight": 5,
+    "stem": "Match each security task to the AI use case that fits it best.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Notice a workstation signing in at 3 a.m. when its user never works nights"
+        },
+        {
+          "id": "p2",
+          "text": "Flag a file whose hash appears on a known-bad hash list"
+        },
+        {
+          "id": "p3",
+          "text": "Draft a short brief from 200 alert notes"
+        },
+        {
+          "id": "p4",
+          "text": "Review a pull request for naming and dead code"
+        },
+        {
+          "id": "p5",
+          "text": "Read a phishing email written in another language"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Summarization"
+        },
+        {
+          "id": "c2",
+          "text": "Translation"
+        },
+        {
+          "id": "c3",
+          "text": "Anomaly detection"
+        },
+        {
+          "id": "c4",
+          "text": "Signature matching"
+        },
+        {
+          "id": "c5",
+          "text": "Code quality and linting"
+        },
+        {
+          "id": "c6",
+          "text": "Fraud detection"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c3",
+        "p2": "c4",
+        "p3": "c1",
+        "p4": "c5",
+        "p5": "c2"
+      }
+    },
+    "explanation": "Each task maps to one use case: deviation from expected behavior, matching known indicators, condensing text, reviewing code, and converting language.",
+    "partExplanations": {
+      "p1": "Sign-ins far outside the normal pattern for that device are anomaly detection.",
+      "p2": "Checking a file hash against a known-bad list is signature matching.",
+      "p3": "Condensing many notes into a brief is summarization.",
+      "p4": "Naming and dead code are code quality and linting concerns.",
+      "p5": "Converting text from another language is translation."
+    },
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-1-match-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Match each AI tool type to the risk that most needs attention when it is used for security work.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "IDE plug-in"
+        },
+        {
+          "id": "p2",
+          "text": "Browser plug-in"
+        },
+        {
+          "id": "p3",
+          "text": "CLI plug-in"
+        },
+        {
+          "id": "p4",
+          "text": "Chatbot"
+        },
+        {
+          "id": "p5",
+          "text": "Personal assistant"
+        },
+        {
+          "id": "p6",
+          "text": "MCP server"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Staff acting on a conversational answer that contradicts the runbook"
+        },
+        {
+          "id": "c2",
+          "text": "Over-broad tool permissions that expose connected systems"
+        },
+        {
+          "id": "c3",
+          "text": "Plausible-looking code merged without a security review"
+        },
+        {
+          "id": "c4",
+          "text": "Sends mail and books meetings as one person after a tricked instruction"
+        },
+        {
+          "id": "c5",
+          "text": "Commands that alter or delete data when run unread"
+        },
+        {
+          "id": "c6",
+          "text": "Reads the pages and forms open in the user's tabs and sends them out"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c3",
+        "p2": "c6",
+        "p3": "c5",
+        "p4": "c1",
+        "p5": "c4",
+        "p6": "c2"
+      }
+    },
+    "explanation": "Each tool type has a characteristic weakness: generated code that goes unreviewed, page content leaving the browser, runnable commands, answers that conflict with policy, delegated actions, and wide tool access.",
+    "partExplanations": {
+      "p1": "Suggested code can look right yet be insecure, so it needs a security review before merging.",
+      "p2": "A browser plug-in sees page text and may send it to an external service.",
+      "p3": "A generated command can change or delete data, so it must be read before running.",
+      "p4": "A chatbot may give an answer that contradicts the approved runbook, and staff then follow it.",
+      "p5": "A personal assistant uses one person's accounts, so a tricked instruction becomes an action.",
+      "p6": "An MCP server connects tools and data, so over-broad permissions expose them."
+    },
+    "acronyms": [
+      "AI",
+      "CLI",
+      "IDE",
+      "MCP"
+    ]
+  },
+  {
+    "id": "cy1-3-1-order-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Put the steps of an AI-assisted incident response workflow in the order they happen.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "An analyst reviews the record and playbook for errors"
+        },
+        {
+          "id": "s1",
+          "text": "Detection tools send alerts into the SIEM"
+        },
+        {
+          "id": "s6",
+          "text": "The AI drafts a post-incident summary with improvement recommendations"
+        },
+        {
+          "id": "s3",
+          "text": "The AI pulls in similar past cases and the matching playbook"
+        },
+        {
+          "id": "s5",
+          "text": "A human responder approves and carries out the playbook containment steps"
+        },
+        {
+          "id": "s2",
+          "text": "The AI feature merges related alerts into one incident record"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "Alerts arrive first, the AI merges them into one record and enriches it with similar past cases, an analyst checks the result, a person approves containment, and the summary follows afterward.",
+    "partExplanations": {
+      "0": "Detection tools feed alerts to the SIEM, which starts the workflow.",
+      "1": "The AI merges related alerts into a single incident record.",
+      "2": "The record is enriched with similar past cases and the matching playbook.",
+      "3": "An analyst checks the AI-built record and playbook before anyone acts on them.",
+      "4": "A human approves and carries out containment.",
+      "5": "The summary and recommendations come after the incident is handled."
+    },
+    "acronyms": [
+      "AI",
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cy1-3-1-buckets-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each task into the AI use case it belongs to.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "sig",
+          "text": "Signature matching"
+        },
+        {
+          "id": "anom",
+          "text": "Anomaly detection"
+        },
+        {
+          "id": "pat",
+          "text": "Pattern recognition"
+        },
+        {
+          "id": "sum",
+          "text": "Summarization"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Turn an hour of chat and log excerpts into a five-line handover"
+        },
+        {
+          "id": "i2",
+          "text": "Alert when an intrusion string matches a published rule"
+        },
+        {
+          "id": "i3",
+          "text": "Group new beacon captures with a known malware family by their learned traffic structure"
+        },
+        {
+          "id": "i4",
+          "text": "Flag a service account that suddenly downloads far more than its history"
+        },
+        {
+          "id": "i5",
+          "text": "Block a download whose file name appears on a vendor list of known malicious names"
+        },
+        {
+          "id": "i6",
+          "text": "Cluster look-alike phishing messages that share the same structure and wording"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "sum",
+        "i2": "sig",
+        "i3": "pat",
+        "i4": "anom",
+        "i5": "sig",
+        "i6": "pat"
+      }
+    },
+    "explanation": "Known indicators are signature matching, departures from history are anomaly detection, recurring structures are pattern recognition, and condensing text is summarization.",
+    "partExplanations": {
+      "i1": "Condensing text into a handover is summarization.",
+      "i2": "A published rule is a predefined pattern, so this is signature matching.",
+      "i3": "Grouping new samples with a family by their learned structure is pattern recognition.",
+      "i4": "A departure from the account's own history is an anomaly.",
+      "i5": "A vendor list of known-bad names holds predefined indicators, so this is signature matching.",
+      "i6": "Messages that share structure and wording form a recurring pattern."
+    },
+    "acronyms": [
+      "AI"
+    ]
+  }
+]

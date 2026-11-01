@@ -1,0 +1,2754 @@
+[
+  {
+    "id": "cy1-3-3-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An operations team assembles a phishing-report workflow by dragging connectors onto a canvas and pasting one short script for a parsing step. What kind of platform is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "No-code, fully visual with no scripting at all"
+        },
+        {
+          "id": "b",
+          "text": "Low-code, mostly visual with a small amount of added logic"
+        },
+        {
+          "id": "c",
+          "text": "Full-stack development, written and compiled by engineers"
+        },
+        {
+          "id": "d",
+          "text": "Hard-wired macros, recorded once and replayed unchanged"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Low-code platforms let people build mostly from visual blocks and add a little hand-written logic where needed. No-code has no scripting step, full-stack development is written entirely by engineers, and recorded macros do not take a custom parsing script.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A compliance officer with no programming background asks an AI builder to create an evidence-collection form from a plain-language request. The generated logic is hidden from the user. What is the main security concern?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Flaws and excess access can go unnoticed without review"
+        },
+        {
+          "id": "b",
+          "text": "Visual builders cannot call external APIs, so the form stays isolated"
+        },
+        {
+          "id": "c",
+          "text": "Generated forms run slower than hand-written scripts on any device"
+        },
+        {
+          "id": "d",
+          "text": "The builder forces every user to share one password"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "With no-code output nobody reads the logic, so mistakes and over-broad data access are easy to miss. Limited speed is a performance matter, builders usually can call APIs, and a shared password is not how such tools work.",
+    "acronyms": [
+      "AI",
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst asks an AI assistant to write a script that disables stale accounts. What should happen before it runs in production?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run it once in production and watch the error output closely"
+        },
+        {
+          "id": "b",
+          "text": "Ask the assistant to certify that the script is safe to deploy"
+        },
+        {
+          "id": "c",
+          "text": "Schedule it nightly so any problems surface gradually"
+        },
+        {
+          "id": "d",
+          "text": "Review the generated script and test it in a safe environment"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Generated scripts can contain wrong assumptions, so a human reviews them and tests them away from production. Trial runs on live accounts risk lockouts, the assistant cannot give a reliable safety guarantee, and a nightly schedule only spreads out the damage.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A low-code workflow isolates hosts when an alert fires. After a faulty rule cuts off a payroll server, the team wants to limit damage next time. Which design change fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the isolation step and notify the team by email instead"
+        },
+        {
+          "id": "b",
+          "text": "Add an approval step for critical assets and a tested undo action"
+        },
+        {
+          "id": "c",
+          "text": "Give the workflow broader permissions so it can finish every action"
+        },
+        {
+          "id": "d",
+          "text": "Raise the alert volume so each host is isolated sooner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An approval step for critical assets plus a tested undo action limits harm and still keeps automation. Dropping isolation loses the response, broader permissions increase blast radius, and more alerts only produce more mistakes.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which task is a typical strength of AI summarization in a security team?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replacing the need to retain raw logs for compliance audits"
+        },
+        {
+          "id": "b",
+          "text": "Condensing long reports into a brief for managers"
+        },
+        {
+          "id": "c",
+          "text": "Proving that an alert is a true positive without human review"
+        },
+        {
+          "id": "d",
+          "text": "Encrypting finished reports before they are shared widely"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Summarization turns large amounts of text into a brief that busy readers can use. It does not replace retained evidence, it cannot confirm a detection on its own, and encryption is a separate control.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A tool writes a one-paragraph briefing from forty threat reports. A reviewer notices it left out the report about a newly exploited weakness. Which risk does this show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model inversion, where answers expose records used in training"
+        },
+        {
+          "id": "b",
+          "text": "Data poisoning, where tampered samples skew learning"
+        },
+        {
+          "id": "c",
+          "text": "Overfitting, where the model memorizes its training set"
+        },
+        {
+          "id": "d",
+          "text": "Omission, where a condensed summary drops important detail"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Summaries are lossy, so critical items can be missing without any sign. Inversion, poisoning and overfitting are different problems that involve training data, not a missing source report.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Analysts want an LLM to condense sensitive investigation notes for executives. Which control best protects confidentiality?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An approved internal summarizer with access limits"
+        },
+        {
+          "id": "b",
+          "text": "Paste the notes into a free public chatbot for speed"
+        },
+        {
+          "id": "c",
+          "text": "Remove headings so the notes look less sensitive"
+        },
+        {
+          "id": "d",
+          "text": "Ask the model to forget the notes after replying"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Keeping the notes inside an approved deployment with access limits keeps control of the data. A public chatbot sends the notes to a third party, deleting headings does not change sensitivity, and a model cannot be relied on to forget a request.",
+    "acronyms": [
+      "LLM"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A procurement team uses an LLM to produce a risk rating for a supplier from its questionnaire answers. How should reviewers treat that rating?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "As a final rating because the model read every answer given"
+        },
+        {
+          "id": "b",
+          "text": "As a draft to confirm with supporting evidence before approval"
+        },
+        {
+          "id": "c",
+          "text": "As unusable because models cannot judge supplier security"
+        },
+        {
+          "id": "d",
+          "text": "As proof that is ready to share with the supplier's customers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A model-produced rating is a draft that people confirm with supporting evidence before approving. Treating it as final ignores gaps and errors, discarding it wastes a useful first pass, and sharing it as proof overstates what a draft can show.",
+    "acronyms": [
+      "LLM"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An AI feature reads each new alert, assigns a severity and sends it to the correct queue. Which task does it automate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Incident triage and routing"
+        },
+        {
+          "id": "b",
+          "text": "Operating system patch deployment"
+        },
+        {
+          "id": "c",
+          "text": "Network vulnerability scanning"
+        },
+        {
+          "id": "d",
+          "text": "Offsite backup integrity checks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Assigning severity and routing work is triage, a common incident response automation. Patching, scanning and backup checks are separate tasks.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An AI assistant drafts updates for an ongoing incident record. Which practice keeps the record trustworthy?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Let the assistant overwrite older entries to keep notes tidy"
+        },
+        {
+          "id": "b",
+          "text": "Hide the assistant's contributions so timelines look consistent"
+        },
+        {
+          "id": "c",
+          "text": "Log the assistant's edits and have an analyst confirm entries"
+        },
+        {
+          "id": "d",
+          "text": "Leave out timestamps so drafts read cleanly"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Attributing edits and having a person confirm entries preserves accountability. Overwriting history, hiding who wrote what and dropping timestamps all weaken the record.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A service desk wants AI to merge duplicate alerts into one case. What is the main benefit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Lower storage cost for the SIEM's raw event archive"
+        },
+        {
+          "id": "b",
+          "text": "Stronger encryption of data moving between tools"
+        },
+        {
+          "id": "c",
+          "text": "Less analyst fatigue and faster handling of the underlying issue"
+        },
+        {
+          "id": "d",
+          "text": "Automatic closure of low-priority cases without analyst review"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Merging duplicates reduces noise so analysts focus on the underlying problem. It does not shrink the raw archive, change encryption, or remove the need for review.",
+    "acronyms": [
+      "AI",
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An AI agent enriches cases and can also close them. Auditors find cases closed with no analyst involvement, including a confirmed breach. Which change best addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Require human approval to close high-severity cases"
+        },
+        {
+          "id": "b",
+          "text": "Let the agent close cases only after midnight"
+        },
+        {
+          "id": "c",
+          "text": "Remove enrichment so the agent has less data"
+        },
+        {
+          "id": "d",
+          "text": "Switch the agent to a larger model for better judgment"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The root cause is unchecked authority over high-impact closures, so approval gates for serious cases fix it. Timing, less data and a bigger model leave the authority unchanged.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In AI-assisted change management, what does the AI typically do during approval?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Deploys the change on all systems at the same time"
+        },
+        {
+          "id": "b",
+          "text": "Stores the signed approval in the production database"
+        },
+        {
+          "id": "c",
+          "text": "Writes and tests the code that implements the change"
+        },
+        {
+          "id": "d",
+          "text": "Scores change risk and recommends a decision"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The AI contributes a risk score and a recommendation for approvers. Deployment, record storage and coding are different stages and not the role of an approval aid.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A company lets an AI model auto-approve low-risk changes. Which safeguard matters most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Set approval limits with human review of high-impact changes"
+        },
+        {
+          "id": "b",
+          "text": "Disable the audit trail so approvals are processed more quickly"
+        },
+        {
+          "id": "c",
+          "text": "Let the model tune its own thresholds without any oversight"
+        },
+        {
+          "id": "d",
+          "text": "Approve any change that is submitted by a senior engineer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Clear thresholds and human review for impactful changes keep automation accountable. Removing the audit trail, self-tuning thresholds and approving by seniority each remove oversight.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An AI approver passed a firewall change that exposed a database port. Review shows the model only saw the change title, not the diff. Which fix addresses the root cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rename change titles so they describe the exposure better"
+        },
+        {
+          "id": "b",
+          "text": "Lower the confidence threshold the model must reach to approve"
+        },
+        {
+          "id": "c",
+          "text": "Give the model full change details plus a person for network risk"
+        },
+        {
+          "id": "d",
+          "text": "Delay every approval by one day to allow a second look"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The model decided on too little information, so it needs the real change and a human check for risky categories. Better titles are still a summary, a lower threshold approves more, and delays fix nothing.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A deployment pipeline watches error rates for ten minutes after release and reverts the release if a limit is exceeded. What is this called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Static analysis of the release candidate"
+        },
+        {
+          "id": "b",
+          "text": "Penetration testing of the live service"
+        },
+        {
+          "id": "c",
+          "text": "Drift detection on infrastructure settings"
+        },
+        {
+          "id": "d",
+          "text": "Automated rollback on a health trigger"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Reverting automatically when a measured limit is crossed is automated rollback. Static analysis and penetration testing look for flaws, and drift detection compares settings with a baseline.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "After an automated revert reported success, customers still saw errors for an hour. Which missing element is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A larger pool of testers before the original release"
+        },
+        {
+          "id": "b",
+          "text": "A faster build server for the next deployment"
+        },
+        {
+          "id": "c",
+          "text": "A check confirming the restored version is healthy"
+        },
+        {
+          "id": "d",
+          "text": "An extra approval from the change board before the revert"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The revert ran but nothing verified the restored version, so a broken restore went unnoticed. More testers, a faster build server and an extra approval would not detect a restore that failed after it reported success.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team that ships weekly plans to rely on its one-click undo of bad releases and drop its pre-release checks. What is the best argument against that plan?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Undo features cannot restore application code, only databases"
+        },
+        {
+          "id": "b",
+          "text": "Undo limits harm after release, but checks keep flaws out"
+        },
+        {
+          "id": "c",
+          "text": "Pre-release checks slow undo features down once a release is live"
+        },
+        {
+          "id": "d",
+          "text": "Weekly releases are too frequent for any undo feature to work"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Undoing a release reduces the damage once a flaw is live, while pre-release checks stop many flaws from shipping at all. Undo features can restore code, checks do not slow an undo, and a weekly cadence does not stop undo from working.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A security AI agent can read alerts and call tools such as a ticketing API. What most limits the damage if it misbehaves?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A larger context window for longer instructions"
+        },
+        {
+          "id": "b",
+          "text": "Narrow permissions for the specific actions it needs"
+        },
+        {
+          "id": "c",
+          "text": "A friendlier and more cautious tone in its system prompt"
+        },
+        {
+          "id": "d",
+          "text": "Faster model responses and lower latency per call"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Limiting what the agent is allowed to do bounds the harm it can cause. Context size, tone and speed do not restrict actions.",
+    "acronyms": [
+      "AI",
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A security team deploys an AI agent that quarantines endpoints. Which logging practice best supports accountability?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep only the final summary the agent writes"
+        },
+        {
+          "id": "b",
+          "text": "Log failures but discard successful actions"
+        },
+        {
+          "id": "c",
+          "text": "Record each tool call with its inputs and outputs"
+        },
+        {
+          "id": "d",
+          "text": "Store logs in the agent's own writable memory"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A complete record of calls lets reviewers reconstruct what happened and why. A summary alone, partial logs, and logs the agent can edit are all unreliable evidence.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An agent meant only to isolate hosts is also allowed to reset passwords and delete mailboxes. Which principle does this violate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Least privilege, granting just the access the task needs"
+        },
+        {
+          "id": "b",
+          "text": "Separation of duties, splitting a task among several roles"
+        },
+        {
+          "id": "c",
+          "text": "Defense in depth, layering independent controls"
+        },
+        {
+          "id": "d",
+          "text": "Zero trust, verifying each request continuously"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Extra abilities beyond the job break least privilege. Separation of duties, layered controls and continuous verification are valid principles but are not the one at issue here.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A SOC lets an AI agent contain threats on its own. Which action is the best candidate to keep behind a human approval step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Adding an internal comment to an open case record"
+        },
+        {
+          "id": "b",
+          "text": "Cutting a production database server off the network"
+        },
+        {
+          "id": "c",
+          "text": "Tagging a new alert with a suspected adversary technique"
+        },
+        {
+          "id": "d",
+          "text": "Fetching reputation data for a suspicious file hash"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Cutting off a production server can interrupt the business, so a person should approve it. Commenting, tagging and read-only lookups are low-impact and safe to automate.",
+    "acronyms": [
+      "AI",
+      "SOC"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst asks an LLM to condense a lengthy password policy into a checklist for new staff. What must happen before staff rely on the checklist?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Translate the checklist into the staff's local language"
+        },
+        {
+          "id": "b",
+          "text": "Ask the model to rate its own accuracy on the checklist"
+        },
+        {
+          "id": "c",
+          "text": "Compare each checklist item with the original wording"
+        },
+        {
+          "id": "d",
+          "text": "Trim the checklist so it fits on a single page"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Condensed text can drop or distort requirements, so a person compares each item with the source policy. Translating, asking the model to grade itself and trimming for length do nothing to confirm accuracy.",
+    "acronyms": [
+      "LLM"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which CI/CD stage inspects newly written functions for risky coding flaws before the build proceeds?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Software composition analysis of libraries"
+        },
+        {
+          "id": "b",
+          "text": "Regression testing of old behavior"
+        },
+        {
+          "id": "c",
+          "text": "Model testing of prompt responses"
+        },
+        {
+          "id": "d",
+          "text": "Code scanning of the committed changes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Code scanning reads first-party logic for insecure patterns. Composition analysis examines third-party components, regression tests look for broken behavior, and model tests probe a model's responses.",
+    "acronyms": [
+      "CI/CD"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A build pulls in a third-party library that has a published CVE. Which pipeline check would flag it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Unit testing of the application's functions"
+        },
+        {
+          "id": "b",
+          "text": "Regression testing after each merge"
+        },
+        {
+          "id": "c",
+          "text": "Model testing with adversarial prompts"
+        },
+        {
+          "id": "d",
+          "text": "Composition analysis of the dependencies"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Composition analysis matches component versions to known vulnerabilities. Unit and regression tests verify behavior and model tests probe model responses, so none of them looks up known flaws.",
+    "acronyms": [
+      "CVE"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What does a software bill of materials give a team that runs composition analysis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A signed record of who approved each production deployment"
+        },
+        {
+          "id": "b",
+          "text": "An inventory of components and versions to check for flaws"
+        },
+        {
+          "id": "c",
+          "text": "A full list of the data sets used to train the model"
+        },
+        {
+          "id": "d",
+          "text": "A map of the network ports exposed by each running service"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The inventory is what analysis compares against vulnerability data. The other items describe approvals, training data and network exposure, which are different records.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which test type checks a single function or method separately from the rest of the application?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Regression testing of earlier checks"
+        },
+        {
+          "id": "b",
+          "text": "Acceptance testing against requirements"
+        },
+        {
+          "id": "c",
+          "text": "Integration testing of connected parts"
+        },
+        {
+          "id": "d",
+          "text": "Unit testing of one isolated module"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Unit tests exercise the smallest pieces in isolation. Regression tests rerun earlier checks, acceptance tests confirm requirements, and integration tests check pieces working together.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Once a developer edits a prompt template, security checks that passed last week begin to fail. Which test type is meant to catch this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Regression testing, rerunning earlier tests after each change"
+        },
+        {
+          "id": "b",
+          "text": "Load testing, measuring system behavior under heavy user demand"
+        },
+        {
+          "id": "c",
+          "text": "Acceptance testing, confirming a feature meets a request"
+        },
+        {
+          "id": "d",
+          "text": "Fuzzing, sending random malformed input at an interface"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Regression testing repeats earlier checks after a change to find newly broken behavior. Load tests measure capacity, acceptance tests confirm requirements, and fuzzing hunts for crashes with malformed input.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Before promoting a retrained classifier, a team runs a fixed set of adversarial and edge-case inputs and compares results with the version now in production. Which test type is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Composition analysis"
+        },
+        {
+          "id": "b",
+          "text": "Code scanning"
+        },
+        {
+          "id": "c",
+          "text": "Unit testing"
+        },
+        {
+          "id": "d",
+          "text": "Model testing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Model testing evaluates a model's behavior on defined inputs and compares it with a baseline. Composition analysis checks libraries, code scanning checks written logic, and unit tests check functions.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A pipeline gate blocks release when a retrained model refuses fewer harmful prompts than the baseline did. What does this gate verify?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "That safety behavior did not degrade after the retraining run"
+        },
+        {
+          "id": "b",
+          "text": "That every dependency has an approved open-source license"
+        },
+        {
+          "id": "c",
+          "text": "That each function returns the value its tests expect"
+        },
+        {
+          "id": "d",
+          "text": "That the container image is signed by an approved key"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The gate compares safety behavior against a baseline, which is model testing. License checks, function checks and image signing address other risks.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A pipeline fails a build because a transitive dependency has a critical flaw, but the vulnerable function is never called. Which response best balances security and delivery?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Record a time-limited exception with a reviewer's sign-off"
+        },
+        {
+          "id": "b",
+          "text": "Disable the dependency scanner for that whole repository"
+        },
+        {
+          "id": "c",
+          "text": "Lower the severity threshold for builds across the pipeline"
+        },
+        {
+          "id": "d",
+          "text": "Rerun the build repeatedly until the check happens to pass"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A time-limited, approved exception keeps the finding visible and tracked. Disabling the scanner, weakening thresholds and rerunning for a lucky pass all erode the control.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team adds an AI assistant that proposes remediation for scan findings in pull requests. Which control keeps the pipeline safe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Merge suggestions automatically once the build status is green"
+        },
+        {
+          "id": "b",
+          "text": "Let the assistant bypass scanning to save time"
+        },
+        {
+          "id": "c",
+          "text": "Give it write access to the production branch"
+        },
+        {
+          "id": "d",
+          "text": "Treat suggested fixes as untrusted until reviewed and tested"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "AI suggestions can be wrong or unsafe, so they go through the same review and tests as any change. Auto-merging, bypassing scans and broad write access remove those checks.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-033",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A generated deployment script contains a hard-coded API token. Which pipeline stage would most likely catch it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Regression testing of several earlier releases"
+        },
+        {
+          "id": "b",
+          "text": "Model testing of the assistant's response quality"
+        },
+        {
+          "id": "c",
+          "text": "Code scanning with embedded-secret detection"
+        },
+        {
+          "id": "d",
+          "text": "Load testing of the newly deployed service"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Scanning source for embedded secrets is part of code scanning. Regression, model and load tests do not read the source for credentials.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-034",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which step best reduces risk when an automated pipeline deploys to production?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Deploy to every region at the same time to shorten exposure"
+        },
+        {
+          "id": "b",
+          "text": "Release gradually to a small group of users before full rollout"
+        },
+        {
+          "id": "c",
+          "text": "Skip staging when the AI rates a change low risk"
+        },
+        {
+          "id": "d",
+          "text": "Disable monitoring during the release window"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A gradual rollout exposes a bad change to few users and gives monitoring time to react. Deploying everywhere, skipping staging and silencing monitoring raise risk.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-035",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A rollback restores the prior version, but that version contains the vulnerable dependency found by composition analysis. Which statement is accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rollback patches the vulnerable dependency while it restores"
+        },
+        {
+          "id": "b",
+          "text": "Rollback upgrades components to the latest safe version available"
+        },
+        {
+          "id": "c",
+          "text": "Rollback fixes regressions from the new release, not older flaws"
+        },
+        {
+          "id": "d",
+          "text": "Rollback proves the dependency cannot be exploited"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A rollback returns to an earlier state, including any flaw that state had. It does not patch, upgrade or prove anything about exploitability.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-036",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which CI/CD practice merges and verifies code automatically and often?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Release freezing, blocking merges until a quarterly review is done"
+        },
+        {
+          "id": "b",
+          "text": "Peer rotation, moving developers between teams on a schedule"
+        },
+        {
+          "id": "c",
+          "text": "Continuous integration, building and testing each commit"
+        },
+        {
+          "id": "d",
+          "text": "Risk acceptance, documenting that a flaw will not be fixed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Continuous integration builds and tests each commit automatically and often. Release freezing blocks merges for a review, peer rotation is a staffing choice, and risk acceptance documents a flaw that stays unfixed instead of verifying code.",
+    "acronyms": [
+      "CI/CD"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-037",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are benefits of low-code platforms for security automation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Faster building of response playbooks by non-specialists"
+        },
+        {
+          "id": "b",
+          "text": "Removal of any need to test workflows"
+        },
+        {
+          "id": "c",
+          "text": "Ability to add custom logic where a block falls short"
+        },
+        {
+          "id": "d",
+          "text": "Automatic compliance with every regulation"
+        },
+        {
+          "id": "e",
+          "text": "Elimination of access control requirements"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Low-code speeds up building and lets builders add custom logic. Testing, regulatory compliance and access control still need effort, so the other statements are wrong.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-038",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE checks are appropriate gates in a CI/CD pipeline that ships an AI feature?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Removing unit tests when builds run slowly"
+        },
+        {
+          "id": "b",
+          "text": "Code scanning of first-party application logic"
+        },
+        {
+          "id": "c",
+          "text": "Skipping dependency review for internal libraries"
+        },
+        {
+          "id": "d",
+          "text": "Software composition analysis of components"
+        },
+        {
+          "id": "e",
+          "text": "Model testing against a fixed baseline"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "Code scanning, composition analysis and model testing each catch a distinct risk. Removing tests or skipping dependency review weakens the pipeline.",
+    "acronyms": [
+      "AI",
+      "CI/CD"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-039",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A retailer wants its deployment pipeline to revert bad releases automatically, with no staff involvement. Which TWO items must exist for this to work?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A step that turns logging off while the revert runs"
+        },
+        {
+          "id": "b",
+          "text": "A known-good earlier version kept ready to restore"
+        },
+        {
+          "id": "c",
+          "text": "Permission for the pipeline to delete older backups"
+        },
+        {
+          "id": "d",
+          "text": "Removal of the staging environment before releases"
+        },
+        {
+          "id": "e",
+          "text": "A measurable health signal that shows the release is failing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "An automatic revert needs a known-good version to return to and a measurable signal that the release is failing. Turning logging off hides evidence, deleting backups removes recovery options, and removing staging drops a safety check.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-040",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A bank lets an AI agent update and route support cases. Which TWO controls best limit what a faulty agent could do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Access limited to the case system and a few actions"
+        },
+        {
+          "id": "b",
+          "text": "One administrator account shared among all agents"
+        },
+        {
+          "id": "c",
+          "text": "Automatic retries without a limit on failed actions"
+        },
+        {
+          "id": "d",
+          "text": "A tamper-resistant record of each step it takes"
+        },
+        {
+          "id": "e",
+          "text": "Read access to the whole company file share"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Limiting access and actions bounds the harm, and a tamper-resistant record lets reviewers see what happened. A shared administrator account, unlimited retries and wide file access each enlarge the damage a faulty agent can do.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-041",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE risks should reviewers weigh when an LLM summarizes sensitive incident data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Dropped or invented details in the summary"
+        },
+        {
+          "id": "b",
+          "text": "Confidential text reaching a third-party service"
+        },
+        {
+          "id": "c",
+          "text": "Higher disk fragmentation on analyst laptops"
+        },
+        {
+          "id": "d",
+          "text": "Reliance on the summary without checking sources"
+        },
+        {
+          "id": "e",
+          "text": "Loss of the ability to query the SIEM"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Summaries can omit or fabricate detail, expose data to external services and invite over-reliance. Disk fragmentation and SIEM access are unrelated to summarization.",
+    "acronyms": [
+      "LLM",
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cy1-3-3-mcq-042",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO findings does software composition analysis typically report?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Open-source license conflicts across dependencies"
+        },
+        {
+          "id": "b",
+          "text": "Logic flaws in first-party application functions"
+        },
+        {
+          "id": "c",
+          "text": "Known vulnerabilities in library versions"
+        },
+        {
+          "id": "d",
+          "text": "Weak safety behavior in a retrained model"
+        },
+        {
+          "id": "e",
+          "text": "Failed unit tests in a recently changed module"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Composition analysis inventories third-party components and reports known flaws and license issues. First-party logic is code scanning, model behavior is model testing, and unit results come from unit tests.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-043",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO tests help confirm the retrained model's safety behavior held?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Counting the lines of code that changed"
+        },
+        {
+          "id": "b",
+          "text": "Rerunning a fixed adversarial prompt set"
+        },
+        {
+          "id": "c",
+          "text": "Verifying the container base image signature"
+        },
+        {
+          "id": "d",
+          "text": "Comparing results with the current baseline"
+        },
+        {
+          "id": "e",
+          "text": "Checking that license files exist"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A fixed prompt set rerun against the new model and compared with a baseline shows whether safety behavior held. The other checks are valid pipeline hygiene but do not measure model behavior.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-3-3-mcq-044",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO practices suit AI-assisted change approvals?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Hiding the model's score from reviewers"
+        },
+        {
+          "id": "b",
+          "text": "Human review for high-impact changes"
+        },
+        {
+          "id": "c",
+          "text": "Letting requesters edit the model's decision"
+        },
+        {
+          "id": "d",
+          "text": "Recording the rationale for each decision"
+        },
+        {
+          "id": "e",
+          "text": "Approving changes the model is unsure about"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Human review of high-impact changes and a recorded rationale keep AI approvals accountable. Hiding scores, editing decisions and approving uncertain changes undermine them.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-order-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "A payments service change is rated high risk by the AI model, and after release its error rate exceeds the agreed limit. Put the steps in the order they happen.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Pipeline releases the change to a small canary group"
+        },
+        {
+          "id": "s1",
+          "text": "A person reviews the recommendation for a high risk score"
+        },
+        {
+          "id": "s6",
+          "text": "Pipeline reverts to the last good version and checks health"
+        },
+        {
+          "id": "s3",
+          "text": "Monitoring compares error rates with the agreed limit"
+        },
+        {
+          "id": "s5",
+          "text": "An AI model scores the change risk and recommends a decision"
+        },
+        {
+          "id": "s2",
+          "text": "An engineer submits a change request with the diff and target systems"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s2",
+        "s5",
+        "s1",
+        "s4",
+        "s3",
+        "s6"
+      ]
+    },
+    "explanation": "The request comes first, the model scores it, a person approves a risky change, the release goes to a small group, monitoring measures it, and automated rollback restores the last good version once the limit is breached.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "0": "The request carries the diff and targets the assessment needs.",
+      "1": "The model scores risk once it has the change details.",
+      "2": "A person reviews the recommendation before anything is released.",
+      "3": "A canary release limits exposure of an approved change.",
+      "4": "Monitoring measures the release against the agreed limit.",
+      "5": "Rollback fires after the breach and the health check confirms the restore."
+    },
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-order-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "Order these stages of a CI/CD pipeline for an AI-enabled service, from the trigger through to production. Team policy: the committed source is scanned before any dependency is resolved for the build.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "Regression and model tests run on the complete release candidate"
+        },
+        {
+          "id": "s2",
+          "text": "Code scanning inspects the committed first-party source before a build"
+        },
+        {
+          "id": "s6",
+          "text": "Deployment proceeds with automated rollback ready"
+        },
+        {
+          "id": "s1",
+          "text": "A commit triggers the pipeline"
+        },
+        {
+          "id": "s4",
+          "text": "Unit tests exercise individual functions of the built code"
+        },
+        {
+          "id": "s3",
+          "text": "Software composition analysis checks the dependencies declared for the build"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "A commit starts the run. Code scanning reads source before the build, composition analysis checks the dependencies declared for it, unit tests cover single functions of the built code, regression and model tests cover the whole release candidate, and deployment follows only after the gates pass.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "0": "A commit is what triggers the pipeline.",
+      "1": "Code scanning is a fast check of first-party source.",
+      "2": "Composition analysis checks the components the build pulls in.",
+      "3": "Unit tests cover the smallest scope.",
+      "4": "Regression and model tests cover the broadest scope and need the built candidate.",
+      "5": "Deployment runs last, with rollback ready."
+    },
+    "acronyms": [
+      "AI",
+      "CI/CD"
+    ]
+  },
+  {
+    "id": "cy1-3-3-diagram-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "Place the best AI security gate for each need named below the pipeline.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Commit"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Build"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Test"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Deploy"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Find risky patterns in our own functions"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Flag known flaws in imported libraries"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Check a retrained model on risky prompts"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Revert when health drops after release"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Automated rollback"
+        },
+        {
+          "id": "l2",
+          "text": "Model testing"
+        },
+        {
+          "id": "l3",
+          "text": "Code scanning"
+        },
+        {
+          "id": "l4",
+          "text": "Spell check on documentation"
+        },
+        {
+          "id": "l5",
+          "text": "Software composition analysis"
+        },
+        {
+          "id": "l6",
+          "text": "Database index tuning"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l3",
+        "z2": "l5",
+        "z3": "l2",
+        "z4": "l1"
+      }
+    },
+    "explanation": "Code scanning reads first-party logic, composition analysis matches third-party components to known flaws, model testing probes a retrained model, and automated rollback restores service after a bad release. Spell checking and index tuning are not security gates.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "z1": "Code scanning inspects the team's own source for insecure patterns.",
+      "z2": "Composition analysis compares library versions with vulnerability data.",
+      "z3": "Model testing runs a fixed risky-prompt set against the new model.",
+      "z4": "Automated rollback restores the last good release on a health trigger."
+    },
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-diagram-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "pbq-diagram",
+    "difficulty": 3,
+    "stem": "An AI agent triages alerts and manages cases. Place the best design element for each need named below the flow.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Alerts"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "AI agent"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Tools"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Case queue"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Enrich an alert with asset context"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Open or update one case record"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Isolate a production host"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Prove later what the agent did"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Human approval gate"
+        },
+        {
+          "id": "l2",
+          "text": "Shared administrator token"
+        },
+        {
+          "id": "l3",
+          "text": "Action log of calls and results"
+        },
+        {
+          "id": "l4",
+          "text": "Read-only lookup tool"
+        },
+        {
+          "id": "l5",
+          "text": "Scoped case-update permission"
+        },
+        {
+          "id": "l6",
+          "text": "Auto-close of low cases"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l4",
+        "z2": "l5",
+        "z3": "l1",
+        "z4": "l3"
+      }
+    },
+    "explanation": "Enrichment needs only read access, case updates need a permission scoped to cases, a disruptive containment step needs a person to approve, and an action log provides the audit trail. A shared admin token and blanket auto-close add risk.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "z1": "A read-only lookup gives context without any power to change systems.",
+      "z2": "A scoped permission lets the agent edit cases and nothing else.",
+      "z3": "Isolating a production host can disrupt the business, so a person approves it.",
+      "z4": "A log of calls and results lets reviewers reconstruct the agent's actions."
+    },
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-config-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "stem": "Configure an AI agent that handles incident response tickets and deploys fixes, with guardrails for rollback.",
+    "payload": {
+      "fields": [
+        {
+          "id": "scope",
+          "label": "Permission scope for the incident ticket agent",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Administrator on every connected system"
+            },
+            {
+              "id": "o2",
+              "text": "Read and update tickets, run approved playbooks"
+            },
+            {
+              "id": "o3",
+              "text": "Read-only access with no ability to act"
+            }
+          ]
+        },
+        {
+          "id": "deploy",
+          "label": "Rollout of an agent-proposed fix",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Canary group first, then wider release"
+            },
+            {
+              "id": "o2",
+              "text": "Direct to every production host"
+            },
+            {
+              "id": "o3",
+              "text": "Held until the next quarterly window"
+            }
+          ]
+        },
+        {
+          "id": "trigger",
+          "label": "Rollback trigger",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Once a week on a fixed schedule"
+            },
+            {
+              "id": "o2",
+              "text": "Only after a customer files a complaint"
+            },
+            {
+              "id": "o3",
+              "text": "Failed health check or error rate over the limit"
+            }
+          ]
+        },
+        {
+          "id": "after",
+          "label": "Step after a rollback completes",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Assume success and close the change"
+            },
+            {
+              "id": "o2",
+              "text": "Verify health checks pass and open a review ticket"
+            },
+            {
+              "id": "o3",
+              "text": "Redeploy the failed release automatically"
+            }
+          ]
+        },
+        {
+          "id": "audit",
+          "label": "Audit logging for agent actions",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Each action with inputs, results and approver"
+            },
+            {
+              "id": "o2",
+              "text": "Errors only, to save storage"
+            },
+            {
+              "id": "o3",
+              "text": "Disabled while the agent is in trial"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "scope": "o2",
+        "deploy": "o1",
+        "trigger": "o3",
+        "after": "o2",
+        "audit": "o1"
+      }
+    },
+    "explanation": "Limited permissions, a staged rollout, a measurable rollback trigger, verification after the revert and complete audit logs keep an automated agent safe. The rejected options grant too much power, remove checks or leave the agent unaccountable.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "scope": "Ticket and playbook access gives the agent what it needs and no more.",
+      "deploy": "A canary release exposes a bad fix to few hosts first.",
+      "trigger": "A measurable health trigger starts the revert at the right time.",
+      "after": "Verification proves the restored release is healthy, and review captures lessons.",
+      "audit": "Full action records support accountability and investigation."
+    },
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-terminal-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 3,
+    "stem": "The latest release of ledger-api crashed after an AI assistant proposed its dependency update. Use the pipeline CLI help and release history shown, then complete each step.",
+    "payload": {
+      "output": [
+        "$ pipectl --help",
+        "pipectl scan results <build-id> --severity <level>   list findings at or above a level (low, medium, high, critical)",
+        "pipectl deploy history <service>                     list releases, newest first",
+        "pipectl deploy rollback <service> --to <release-id>  restore an earlier release",
+        "$ pipectl deploy history ledger-api",
+        "rel-0412  14:02  status=failed  health=crashloop  build=build-8841",
+        "rel-0411  09:15  status=ok      health=ok         build=build-8830",
+        "rel-0410  16:40  status=ok      health=ok         build=build-8812"
+      ],
+      "steps": [
+        {
+          "id": "scan",
+          "label": "Type the command that lists findings rated high or above for build-8841"
+        },
+        {
+          "id": "type",
+          "label": "The scan prints a line: high sca libparse 2.3.1 remote code execution (fixed in 2.3.4). Choose what this finding is",
+          "options": [
+            {
+              "id": "code",
+              "text": "An insecure pattern in first-party code from code scanning"
+            },
+            {
+              "id": "unit",
+              "text": "A failed unit test in the changed module"
+            },
+            {
+              "id": "sca",
+              "text": "A vulnerable third-party component found by composition analysis"
+            },
+            {
+              "id": "model",
+              "text": "A drop in a model's safety behavior from model testing"
+            }
+          ]
+        },
+        {
+          "id": "rollback",
+          "label": "Type the command that restores the most recent healthy release of ledger-api"
+        },
+        {
+          "id": "verify",
+          "label": "Choose the best check after the rollback completes",
+          "options": [
+            {
+              "id": "health",
+              "text": "Confirm that health checks pass on the restored release"
+            },
+            {
+              "id": "logs",
+              "text": "Delete the failed release's logs to reduce noise"
+            },
+            {
+              "id": "redeploy",
+              "text": "Redeploy the failed release to see if it recovers"
+            },
+            {
+              "id": "disable",
+              "text": "Disable the scan so the next build is not blocked"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "scan": [
+          "pipectl scan results build-8841 --severity high",
+          "pipectl scan results --severity high build-8841"
+        ],
+        "type": [
+          "sca"
+        ],
+        "rollback": [
+          "pipectl deploy rollback ledger-api --to rel-0411",
+          "pipectl deploy rollback --to rel-0411 ledger-api"
+        ],
+        "verify": [
+          "health"
+        ]
+      }
+    },
+    "explanation": "The help text shows the command forms. The scan line names a library with a published flaw, which is composition analysis, the latest healthy release before the failed one is rel-0411, and verifying health proves the revert worked.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "scan": "Build id first, then the severity flag set to high, as the help shows.",
+      "type": "A named library version with a fix version is a third-party component flaw.",
+      "rollback": "The most recent healthy release is rel-0411, passed with the --to flag.",
+      "verify": "A revert is only done once health checks confirm the restored release works."
+    },
+    "acronyms": [
+      "AI",
+      "CLI"
+    ]
+  },
+  {
+    "id": "cy1-3-3-data-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "stem": "A pipeline reports these results for five builds of an AI-enabled service. Apply the gate policy to choose the decision for each build. Gate policy: block if the code scan shows any high finding, if composition analysis shows any critical flaw, if unit tests pass below 100 percent, or if the model's refusal rate on harmful prompts falls below 95 percent of baseline. Otherwise promote.",
+    "payload": {
+      "caption": "Pipeline gate results by build",
+      "columns": [
+        "Build",
+        "High code findings",
+        "Critical SCA flaws",
+        "Unit tests passed (%)",
+        "Refusal rate (% of baseline)"
+      ],
+      "rows": [
+        [
+          "build-301",
+          "0",
+          "0",
+          "100",
+          "98"
+        ],
+        [
+          "build-302",
+          "2",
+          "0",
+          "100",
+          "99"
+        ],
+        [
+          "build-303",
+          "0",
+          "1",
+          "100",
+          "100"
+        ],
+        [
+          "build-304",
+          "0",
+          "0",
+          "100",
+          "91"
+        ],
+        [
+          "build-305",
+          "0",
+          "0",
+          "97",
+          "97"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "r1",
+          "label": "Decision for build-301",
+          "options": [
+            {
+              "id": "d0",
+              "text": "Promote to deployment"
+            },
+            {
+              "id": "d1",
+              "text": "Block: code scanning"
+            },
+            {
+              "id": "d2",
+              "text": "Block: composition analysis"
+            },
+            {
+              "id": "d3",
+              "text": "Block: unit tests"
+            },
+            {
+              "id": "d4",
+              "text": "Block: model test"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "label": "Decision for build-302",
+          "options": [
+            {
+              "id": "d2",
+              "text": "Block: composition analysis"
+            },
+            {
+              "id": "d1",
+              "text": "Block: code scanning"
+            },
+            {
+              "id": "d0",
+              "text": "Promote to deployment"
+            },
+            {
+              "id": "d3",
+              "text": "Block: unit tests"
+            },
+            {
+              "id": "d4",
+              "text": "Block: model test"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "label": "Decision for build-303",
+          "options": [
+            {
+              "id": "d4",
+              "text": "Block: model test"
+            },
+            {
+              "id": "d3",
+              "text": "Block: unit tests"
+            },
+            {
+              "id": "d2",
+              "text": "Block: composition analysis"
+            },
+            {
+              "id": "d1",
+              "text": "Block: code scanning"
+            },
+            {
+              "id": "d0",
+              "text": "Promote to deployment"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "label": "Decision for build-304",
+          "options": [
+            {
+              "id": "d1",
+              "text": "Block: code scanning"
+            },
+            {
+              "id": "d4",
+              "text": "Block: model test"
+            },
+            {
+              "id": "d3",
+              "text": "Block: unit tests"
+            },
+            {
+              "id": "d0",
+              "text": "Promote to deployment"
+            },
+            {
+              "id": "d2",
+              "text": "Block: composition analysis"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "label": "Decision for build-305",
+          "options": [
+            {
+              "id": "d2",
+              "text": "Block: composition analysis"
+            },
+            {
+              "id": "d3",
+              "text": "Block: unit tests"
+            },
+            {
+              "id": "d0",
+              "text": "Promote to deployment"
+            },
+            {
+              "id": "d4",
+              "text": "Block: model test"
+            },
+            {
+              "id": "d1",
+              "text": "Block: code scanning"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "r1": "d0",
+        "r2": "d1",
+        "r3": "d2",
+        "r4": "d4",
+        "r5": "d3"
+      }
+    },
+    "explanation": "Each build trips at most one rule. build-301 meets every threshold. build-302 has two high code findings, build-303 has one critical dependency flaw, build-304 has a refusal rate of 91 percent, which is under 95, and build-305 has 97 percent of unit tests passing, which is under 100.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "r1": "0 high findings, 0 critical flaws, 100 percent unit tests and 98 percent refusal all pass, so promote.",
+      "r2": "Two high code findings block the build at code scanning.",
+      "r3": "One critical flaw blocks the build at composition analysis.",
+      "r4": "A refusal rate of 91 percent is below 95, so the model test blocks it.",
+      "r5": "97 percent of unit tests passing is below 100, so unit tests block it; 97 percent refusal is still above 95."
+    },
+    "acronyms": [
+      "AI",
+      "SCA"
+    ]
+  },
+  {
+    "id": "cy1-3-3-match-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each automation approach or test type to the risk it is best placed to catch or the concern it raises.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Code scanning"
+        },
+        {
+          "id": "p2",
+          "text": "Software composition analysis"
+        },
+        {
+          "id": "p3",
+          "text": "Regression testing"
+        },
+        {
+          "id": "p4",
+          "text": "Model testing"
+        },
+        {
+          "id": "p5",
+          "text": "Low-code workflow"
+        },
+        {
+          "id": "p6",
+          "text": "No-code builder"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Insecure patterns in first-party source"
+        },
+        {
+          "id": "c2",
+          "text": "Known flaws in imported libraries"
+        },
+        {
+          "id": "c3",
+          "text": "Earlier checks that break after a change"
+        },
+        {
+          "id": "c4",
+          "text": "Unsafe replies to adversarial inputs"
+        },
+        {
+          "id": "c5",
+          "text": "Hand-written script steps that skip review"
+        },
+        {
+          "id": "c6",
+          "text": "Generated logic with no script a user can read"
+        },
+        {
+          "id": "c7",
+          "text": "Weak passwords on administrator accounts"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5",
+        "p6": "c6"
+      }
+    },
+    "explanation": "Each approach has a characteristic risk: code scanning finds insecure patterns, composition analysis finds known library flaws, regression tests find broken earlier behavior, model tests find unsafe replies, low-code adds hand-written steps that may skip review, and no-code produces generated logic nobody can read. Weak passwords are an access control issue.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "p1": "Code scanning reads first-party source for insecure patterns.",
+      "p2": "Composition analysis maps imported components to known flaws.",
+      "p3": "Regression testing reruns earlier checks after a change.",
+      "p4": "Model testing probes a model with adversarial and edge-case inputs.",
+      "p5": "Low-code blends visual blocks with hand-written steps that may skip review.",
+      "p6": "No-code output is generated logic with no script a user can read."
+    },
+    "acronyms": []
+  }
+]

@@ -153,7 +153,7 @@
     - Test helpers `TestNav` and `LeaveGuardProvider` live in `src/ui/testNav.tsx`.
   - **Left as is (with reason):** Home and the exam page each count custom questions (two small reads, one per screen; sharing them would need a cache for no visible gain). The spec showed only the Stock count on cards; the MVP shows Stock and Custom, which the owner saw in the deployed MVP.
   - **Still to do from the spec (later parts, owner-scoped out of part 1):** the eight further exams with provisional metadata, and the one master acronym table.
-  - **Next session: finish SecAI+ slice (d), domain 3 (3.1–3.3), which is in progress.** See the Session 5 block below: the drafts are untracked in `items/`, and round-2 reviews are pending.
+  - **Next session: SecAI+ slice (e), domain 4.** Slice (d), domain 3, is done and committed (see the Session 5/6 block below).
 
 - **Deployed 2026-10-30:** <https://ngcfells.github.io/cert-exam-trainer/> is live from `gh-pages` (Pages already configured). Redeploy with `npm run deploy` after merging to `main`.
 - **Owner reprioritised (2026-10-31): the Data+ Math & Data Concepts module comes before SecAI+.** Design (approved): `docs/superpowers/specs/2026-10-31-dataplus-math-module-design.md`. It is homework-style: a Learn area of lessons (meaning, formula, worked example, exam trap) with a check per lesson, a new `numeric` typed-answer question type, and more join PBQs. The owner is a trainer, not an analyst, so lessons must assume no stats background.
@@ -241,18 +241,18 @@
       - Drafters that regenerate from their generator can touch unflagged items; `drift.mjs` confirms only the listed ids changed.
       - With only 8 compensating controls in 2.6, match/diagram PBQs reuse a control from some MCQ; accepted when the attack and scenario differ.
       - Round-3 copy fixes for 2.6 were applied by hand from the reviewers' own wording (keys unchanged), as session 3 did.
-  - **Session 5 (2026-10-31), slice (d) 3.1–3.3: IN PROGRESS, stopped at the 5-hour usage limit.** Items are in `src/banks/secai/items/3.1.json`, `3.2.json` and `3.3.json`, **untracked and not committed**, all `status: "draft"`. Each has 52 items: 36 single + 8 multi MCQ and 8 PBQs, keys a/b/c/d 9 each, and `check-drafts` reports no problems.
-    - PBQs by template: 3.1 terminal 1, config 1, data 1, hotspot 1, match 2, order 1, buckets 1. 3.2 match 1, buckets 2, diagram 1, hotspot 1, order 1, data 1, terminal 1. 3.3 order 2, diagram 2, config 1, terminal 1, data 1, match 1. Every template reaches 10 or more across the exam.
-    - Scratchpad: `b7ffd162-…/scratchpad`. The briefs are in `d4/`: `draft-`, `sec-brief-`, `copy-brief-` and `fix-` per objective, plus `resec`/`recopy` round briefs. Snapshots `before-`, `r1-` and `r2-` are kept for `drift.mjs`. The tools are at the scratchpad root, and `keepflagged.mjs` is new: it drops entries without flags from a re-review subset's `compare` output.
-    - Where each objective stands:
-      - **3.3:** three review rounds done, and every flag is resolved. I then rewrote only the stem of `order-002`, after the reviewers disagreed on it: it now gives one rule, that the source is scanned before dependencies are resolved. That stem has not been blind re-checked (the request hit the limit). Next: re-check order-002, then run `term.mjs` on terminal-001 by hand.
-      - **3.1:** round 1 fixed 38 items (`changed-3.1.json`). The round-2 subset files `d4/reblind-3.1.json` and `refull-3.1.json` are ready, but both round-2 reviews failed at the limit.
-      - **3.2:** round 1 fixed 32 items (`changed-3.2.json`). The round-2 subset `d4/reblind-3.2.json`/`refull-3.2.json` is ready, and both reviews failed at the limit.
-    - **Resume:** run fresh round-2 reviews of 3.1 and 3.2 with the same brief templates (IN = reblind/refull, OUT = resec/recopy). Then `compare.mjs` → `keepflagged.mjs` → a fix pass with a fresh Sonnet drafter (generators are stale; edit the JSON directly). Then a hand `term.mjs` check of every terminal PBQ, `approve.mjs` on all three files, `npm run check`, an update to this block, and a commit.
+  - **Sessions 5–6 (2026-10-31), slice (d) 3.1–3.3: DONE, approved and committed.** Each objective has 52 items: 36 single + 8 multi MCQ and 8 PBQs, keys a/b/c/d 9 each. `check-drafts` and `npm run check` are clean.
+    - PBQs by template: 3.1 terminal 1, config 1, data 1, hotspot 1, match 2, order 1, buckets 1. 3.2 match 1, buckets 2, diagram 1, hotspot 1, order 1, data 1, terminal 1. 3.3 order 2, diagram 2, config 1, terminal 1, data 1, match 1.
+    - Bank now: 456 MCQ, 84 PBQ.
+    - Reviews: 3.3 had three rounds plus a blind re-check of `order-002`. 3.1 and 3.2 had a round 2 (16 and 18 items fixed by a Sonnet drafter), then a blind-only round 3 on the changed items. The round-3 reviewers matched every key, and session 6 fixed their few remaining wording flags by hand.
+    - Terminal PBQs were checked by hand: mixed `=`/space flag forms were added to the accept lists, and `weblog summary` was added to the 3.2 help text.
+    - Scratchpad with briefs and tools: `b7ffd162-…/scratchpad` (`d4/` holds the briefs, and the root holds `compare`, `keepflagged`, `subset`, `drift`, `term` and `approve`). The round-N briefs are made by `sed` from the 3.3 templates.
     - Lessons:
       - First drafts followed the slides heavily again (3.1: 36 of 52 flagged).
       - A reviewer's "the stem prescribes the order" flag on an order PBQ invites ping-pong. State one discriminating rule rather than the full order.
       - 3.1's drafter keyed order `partExplanations` by step id; this is now fixed to positions.
+      - Low-budget flow that worked: copy and sec reviews in round 2, then a sec-only blind recheck of the changed items, with the last few flags fixed by hand. If quota is tight, skip a second copy round.
+      - Order PBQs need a rule for every adjacent pair that could swap. One rule still left SCA vs unit tests open in 3.3 `order-002`.
   - **UI redesign (separate from chunk 11), awaiting the owner:**
     - Design doc: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`. It covers exam cards on the landing page, a page per exam, Back/All exams on every screen, Settings, Stock/Custom, ten exams and one master acronym table. The builder check is done.
     - Open question to the owner: should the phone/browser Back gesture step back inside the app (history integration), or only the on-screen buttons? Then owner approval, then superpowers:writing-plans.
