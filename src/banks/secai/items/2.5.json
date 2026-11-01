@@ -1,0 +1,2393 @@
+[
+  {
+    "id": "cy1-2-5-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which activity is query monitoring in an AI system?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Measuring how long the model takes to answer each separate request"
+        },
+        {
+          "id": "b",
+          "text": "Inspecting incoming prompts for injection and private data"
+        },
+        {
+          "id": "c",
+          "text": "Comparing replies with a labeled set of correct answers"
+        },
+        {
+          "id": "d",
+          "text": "Counting the tokens that each team uses every month"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Query monitoring watches what users send in: injection attempts, restricted topics, and sensitive values. Latency tracking is performance monitoring, comparing replies with a labeled set is an accuracy audit, and token counts by team are cost monitoring.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-5-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does response monitoring look for?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sensitive data, unsafe content, or unsupported claims in replies"
+        },
+        {
+          "id": "b",
+          "text": "Unusual request volume arriving from a single client key overnight"
+        },
+        {
+          "id": "c",
+          "text": "Changes made to the access rights of model administrators"
+        },
+        {
+          "id": "d",
+          "text": "Growth in the storage used by retained conversation history"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Response monitoring inspects what the model sends back so that leaks, harmful text, and fabricated claims can be flagged. Request volume is rate monitoring, access rights belong to an access audit, and storage growth is a cost signal.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After a complaint, a review finds that a support assistant sent one customer another customer's home address from a retrieved record. Which monitoring control would have caught it before the customer saw it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rate monitoring on the support team's service account"
+        },
+        {
+          "id": "b",
+          "text": "Cost alerts on monthly token spend for the assistant"
+        },
+        {
+          "id": "c",
+          "text": "Response monitoring that scans replies for personal data"
+        },
+        {
+          "id": "d",
+          "text": "Query monitoring that blocks prompts containing profanity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Response monitoring scans model output for personal data patterns and catches a leak at the point it would be delivered. Rate monitoring and cost alerts do not read content, and a profanity filter on the prompt side cannot see what the model returns.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Over ten minutes, one account sends forty prompts that repeat the same request with small wording changes, each aimed at getting the assistant to ignore its rules. What does query monitoring conclude?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The account is load testing the gateway capacity for a release"
+        },
+        {
+          "id": "b",
+          "text": "The account quota is set too low for normal use"
+        },
+        {
+          "id": "c",
+          "text": "The reply cache needs a longer expiry for repeated questions"
+        },
+        {
+          "id": "d",
+          "text": "The account is probing for a guardrail bypass"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Repeated rewording against the same restricted goal is the pattern of someone probing for a bypass, so an alert and a review of the account are warranted. Load testing would not vary the wording to dodge rules, a low quota would not explain the content, and caching has nothing to do with intent.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A customer disputes what the assistant told them last month. The log must show who asked and which model answered, yet the company does not want to store customer conversations. Which log entry design fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Source network only, with no user or model detail"
+        },
+        {
+          "id": "b",
+          "text": "Training data lineage, tuning logs, and serial numbers"
+        },
+        {
+          "id": "c",
+          "text": "Account, model version, timestamp, and a hash of the exchange"
+        },
+        {
+          "id": "d",
+          "text": "Full reply text and the complete conversation transcript"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Naming the account, model version, and time attributes the exchange, and a hash lets investigators later verify any retained copy without storing the text. A network address alone cannot attribute activity, lineage describes the model rather than the interaction, and full transcripts keep the sensitive content the company wants to avoid.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The gateway blocks a prompt, and a minute later the same user session triggers a refund tool call. Analysts see the two events in separate tools and cannot link them. What fixes this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Send both logs to the SIEM with a shared trace tag"
+        },
+        {
+          "id": "b",
+          "text": "Raise the log verbosity on the gateway alone for a week"
+        },
+        {
+          "id": "c",
+          "text": "Rotate both log files more often during the working day"
+        },
+        {
+          "id": "d",
+          "text": "Give analysts login rights on the tool host machine"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Central collection with a correlating tag lets one query show the blocked prompt and the tool call together. Extra verbosity on one source and faster rotation leave the logs separate, and host logins make analysts search by hand while widening access.",
+    "acronyms": [
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cy1-2-5-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A review of the prompt log store finds full payment card numbers that users pasted into chat. The team still wants the logs for debugging. Which action best addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Move the log files to a faster storage tier"
+        },
+        {
+          "id": "b",
+          "text": "Mask card numbers before entries are written"
+        },
+        {
+          "id": "c",
+          "text": "Add a banner asking users not to share card numbers"
+        },
+        {
+          "id": "d",
+          "text": "Compress the logs so the numbers are harder to read"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Sanitizing at write time keeps the debugging value of the log while the card numbers never land in storage. A faster tier changes nothing about content, a banner relies on user behavior, and compression is trivially reversed.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is log sanitization?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Deleting every log older than the retention period"
+        },
+        {
+          "id": "b",
+          "text": "Checking that timestamps match across all servers"
+        },
+        {
+          "id": "c",
+          "text": "Compressing logs to reduce the storage space they take"
+        },
+        {
+          "id": "d",
+          "text": "Masking sensitive values before storing entries"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Sanitization removes or masks sensitive values such as personal data or secrets so they are not kept in the log. Deleting old logs is retention, aligning clocks is time synchronization, and compression is storage management.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "All forty developers on a team can open the production prompt logs, which sometimes hold customer details. Which log-protection change fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Email a weekly log summary to the developer team"
+        },
+        {
+          "id": "b",
+          "text": "Copy the logs to each laptop for faster searching"
+        },
+        {
+          "id": "c",
+          "text": "Limit read access to named roles and log who opens them"
+        },
+        {
+          "id": "d",
+          "text": "Move the logs into the application source repository"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Role-limited access with an access record applies least privilege and leaves an audit trail for the logs themselves. Mailing summaries and copying to laptops spread the data further, and a source repository is readable by even more people.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An intruder with administrator rights on the application server deletes the log lines that record their session. Which design best protects the evidence?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep logs in a folder only the application owner can change"
+        },
+        {
+          "id": "b",
+          "text": "Rotate the local logs every hour"
+        },
+        {
+          "id": "c",
+          "text": "Keep a second copy on the same server in another folder"
+        },
+        {
+          "id": "d",
+          "text": "Stream entries to write-once storage under separate credentials"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Logs shipped off the host to write-once storage with separate credentials cannot be erased by someone who controls the server. A folder permission, rotation, or a second copy on the same machine all fall to the same administrator.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A prompt log store keeps every conversation indefinitely, although the privacy notice promises deletion after a fixed period. Which control closes the gap?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A retention schedule that expires entries on the stated timeline"
+        },
+        {
+          "id": "b",
+          "text": "A larger archive disk so the logs never run out of room for new entries"
+        },
+        {
+          "id": "c",
+          "text": "A weekly report that counts how many logs exist in the archive"
+        },
+        {
+          "id": "d",
+          "text": "Encryption of the logs with a stronger cipher"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An automated retention rule makes actual practice match the promise. More disk space enlarges the problem, a count report only describes it, and stronger encryption protects the data without ending its retention.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does a response confidence level indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "How quickly the model produced the reply for a user"
+        },
+        {
+          "id": "b",
+          "text": "How sure the system is that its answer is right"
+        },
+        {
+          "id": "c",
+          "text": "How many users rated the reply as helpful or not"
+        },
+        {
+          "id": "d",
+          "text": "How much it cost to generate the reply"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A confidence level is an estimate of how likely an answer is to be right, which can drive review decisions. Speed is latency, ratings are user feedback, and generation cost is a spend metric.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An internal assistant attaches a confidence score to every answer, and answers scoring under 0.4 are becoming a larger share of traffic. Which use of the score best protects users?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Hide the score so that users are not confused by it"
+        },
+        {
+          "id": "b",
+          "text": "Retrain the model each time a low score appears in traffic"
+        },
+        {
+          "id": "c",
+          "text": "Delete low-scoring answers from the logs"
+        },
+        {
+          "id": "d",
+          "text": "Route weak answers to a person or add a warning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Acting on a low score, through human review or a visible warning, keeps users from relying on shaky answers. Hiding the score removes the signal, retraining on every instance is impractical, and deleting log entries destroys evidence needed for the trend.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A model answers a legal question with a confidence score of 0.97 but cites a court case that does not exist. What does this show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The score is dependable and the citation lookup must have failed"
+        },
+        {
+          "id": "b",
+          "text": "The score measures only how fast the reply was generated"
+        },
+        {
+          "id": "c",
+          "text": "A high score can still be wrong, so check claims against sources"
+        },
+        {
+          "id": "d",
+          "text": "The prompt was too short to produce a usable score"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A fluent model can be confident and wrong, so the score is one signal and must be paired with grounding checks and sampling. The case does not exist, so a failed citation lookup cannot be the cause. The score is not a speed measure, and prompt length does not explain a fabricated case.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does rate monitoring track?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The volume of requests each client sends over time"
+        },
+        {
+          "id": "b",
+          "text": "The accuracy of answers measured against a labeled test set"
+        },
+        {
+          "id": "c",
+          "text": "The number of administrators with access to the model"
+        },
+        {
+          "id": "d",
+          "text": "The storage used by the retained conversation history of every user"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Rate monitoring measures how many requests arrive, per client and per period, so spikes and abuse stand out. The other options describe an accuracy audit, an access audit, and a storage cost metric.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "On a quiet Sunday, a reporting key that usually makes 15 requests an hour jumps to 700 an hour, all from a network never seen before. What is the best response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raise the key limit so legitimate traffic is not blocked"
+        },
+        {
+          "id": "b",
+          "text": "Alert, suspend or rotate the key, and review its activity"
+        },
+        {
+          "id": "c",
+          "text": "Wait for the monthly invoice to confirm that the spike is real"
+        },
+        {
+          "id": "d",
+          "text": "Delete the logs for that period to save space"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A sharp departure from a normal rate on a new network suggests a leaked key or runaway job, so contain it and investigate. Raising the limit lets the abuse continue, waiting for the invoice delays containment, and deleting logs destroys the evidence.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An attacker sends one request every 40 seconds, far under the gateway limit, with prompts that methodically cover a topic area over several weeks. Which monitoring is most likely to catch this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Per-minute request caps enforced at the gateway edge"
+        },
+        {
+          "id": "b",
+          "text": "Alerts on the response latency of single requests"
+        },
+        {
+          "id": "c",
+          "text": "Daily token totals for the whole company across every team"
+        },
+        {
+          "id": "d",
+          "text": "Multi-day client baselines with input variety checks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A slow, systematic sweep stays beneath short-window limits, so detection needs long-horizon per-client baselines and content patterns. Per-minute caps never trigger, single-request latency looks normal, and company-wide totals hide one client.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An assistant's monthly bill doubles after a developer adds twelve pages of policy text to every request. Which cost driver should the team monitor?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Output tokens per generated reply, split by feature"
+        },
+        {
+          "id": "b",
+          "text": "Stored embeddings per vector index, split by feature"
+        },
+        {
+          "id": "c",
+          "text": "Input tokens per prompt, split by feature"
+        },
+        {
+          "id": "d",
+          "text": "GPU hours per tuning job"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The added text enlarges every prompt, so tracking input tokens per prompt by feature exposes the change. Output tokens, stored embeddings, and tuning hours did not change when the prompt template grew.",
+    "acronyms": [
+      "GPU"
+    ]
+  },
+  {
+    "id": "cy1-2-5-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A chat product keeps every conversation and its embeddings for audit, and storage charges climb each month. What should the team monitor?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Growth in kept data by type, with retention rules"
+        },
+        {
+          "id": "b",
+          "text": "Input tokens per prompt on the busiest day of the month"
+        },
+        {
+          "id": "c",
+          "text": "Peak requests per second at the gateway during the day"
+        },
+        {
+          "id": "d",
+          "text": "Processing time of each generated reply"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Storage cost follows how much data is kept and for how long, so growth by data type and lifecycle rules are the levers. Prompt size, request peaks, and latency belong to other cost or performance categories.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Replies from a summarizer average 1,800 tokens when users need about 300, and output tokens are priced higher than input tokens. Which control cuts this cost?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Move the summarizer to a larger instance size for the model"
+        },
+        {
+          "id": "b",
+          "text": "Cache the incoming prompts at the gateway"
+        },
+        {
+          "id": "c",
+          "text": "Raise the per-user request limit"
+        },
+        {
+          "id": "d",
+          "text": "Set a maximum length and ask the model to be brief"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Response cost scales with generated tokens, so bounding length attacks it directly. A larger instance raises processing spend, prompt caching affects input rather than output, and a higher limit invites more usage.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Fine-tuning jobs start at random times, and many leave GPUs idle while waiting for data. Which measure targets this processing cost?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Shorten the system prompt used by the production assistant"
+        },
+        {
+          "id": "b",
+          "text": "Track compute utilization and schedule training runs"
+        },
+        {
+          "id": "c",
+          "text": "Mask sensitive values in the application logs"
+        },
+        {
+          "id": "d",
+          "text": "Archive old conversations to cold storage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Processing spend is driven by compute time, so utilization tracking and scheduling reduce waste. System prompt length affects input cost, log masking is sanitization, and cold storage changes the storage bill.",
+    "acronyms": [
+      "GPU"
+    ]
+  },
+  {
+    "id": "cy1-2-5-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A nightly batch job that summarizes a document archive is misconfigured and resubmits the whole archive every ten minutes, using a month of budget by morning. Which control would have stopped the spending soonest?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An automatic spend cap and a limit on repeat runs"
+        },
+        {
+          "id": "b",
+          "text": "A weekly cost review held by the finance team"
+        },
+        {
+          "id": "c",
+          "text": "A longer retention period for the job logs"
+        },
+        {
+          "id": "d",
+          "text": "A larger context window for the summarizer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Automated limits react in minutes: a spend cap that suspends the job and a limit on repeated runs break a resubmission storm quickly. A weekly review comes too late, longer retention records the storm without stopping it, and a larger context window does nothing to curb repeats.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A dashboard alerts on blocked prompts all day. Once a quarter, reviewers sample outputs against a written checklist and file a report. What is the quarterly activity?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Monitoring, since it watches the live system continuously"
+        },
+        {
+          "id": "b",
+          "text": "Sanitization, since it masks sensitive values in logs"
+        },
+        {
+          "id": "c",
+          "text": "Auditing, since it is a scheduled criteria-based review"
+        },
+        {
+          "id": "d",
+          "text": "Rate limiting, since it caps requests per client"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A scheduled, deeper review against stated criteria with a written report is an audit, while the all-day dashboard is monitoring. Sanitization masks values in logs and rate limiting caps client volume, and neither involves sampling outputs for review.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "To measure hallucination in a document-answering assistant, auditors sample replies. What do they compare each reply against?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The confidence score the model gave to the reply"
+        },
+        {
+          "id": "b",
+          "text": "The satisfaction rating from the user"
+        },
+        {
+          "id": "c",
+          "text": "The volume of data used in training"
+        },
+        {
+          "id": "d",
+          "text": "The source documents retrieved for the response"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A hallucination is a claim the sources do not support, so each sampled claim is checked against the retrieved material. A confidence score can be high on fabricated text, satisfaction reflects tone more than truth, and training volume says nothing about one reply.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An auditor needs to know whether an incident-triage model has become less accurate since its last release. Which evidence is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The number of user complaints received during this week"
+        },
+        {
+          "id": "b",
+          "text": "Test-set results compared with the previous release"
+        },
+        {
+          "id": "c",
+          "text": "The average reply length measured for the new release"
+        },
+        {
+          "id": "d",
+          "text": "Gateway latency measured across both releases in use"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Accuracy is measured against known correct labels, and comparing releases on the same set isolates the change. Complaints are noisy and incomplete, reply length and latency are unrelated to correctness.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An audit of a resume-ranking assistant finds that equally qualified candidates from one group are ranked lower. Which audit check surfaced this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Comparing token usage across the two candidate groups"
+        },
+        {
+          "id": "b",
+          "text": "Measuring the latency of each ranking request"
+        },
+        {
+          "id": "c",
+          "text": "Comparing outcomes across groups for like inputs"
+        },
+        {
+          "id": "d",
+          "text": "Verifying that the model endpoint uses TLS"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Fairness auditing holds qualifications constant and compares results between groups. Token usage, latency, and transport encryption can all look normal while the ranking is skewed.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-5-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An access audit lists seven accounts with read rights on the prompt logs. Two belong to staff who changed teams a year ago, and one is a shared login. What is the right finding and fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Access is stale and shared; remove old rights and use named accounts"
+        },
+        {
+          "id": "b",
+          "text": "Accounts are fine because every holder once had a business need"
+        },
+        {
+          "id": "c",
+          "text": "Access is too narrow; grant the logs to the whole department"
+        },
+        {
+          "id": "d",
+          "text": "Only the shared login matters because it is the easiest to guess"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Stale rights break least privilege and a shared login destroys accountability, so both should be corrected. Past need does not justify current access, widening access adds risk, and the two stale accounts are also findings.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An auditor must confirm that the content filter was switched on during an incident last spring. Which record shows this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A dashboard showing today's average response latency"
+        },
+        {
+          "id": "b",
+          "text": "A cost report grouped by team and month"
+        },
+        {
+          "id": "c",
+          "text": "A guardrail test report from the original launch"
+        },
+        {
+          "id": "d",
+          "text": "Dated change history for its moderation settings"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Dated change records show what the filter configuration was on a given day, which is the traceability an audit needs. A latency dashboard and a cost report say nothing about the filter, and a launch-time test shows only that it worked then.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fairness audit finds that a loan assistant approves 60% of applications from group one and 45% from group two, with similar qualifications. What is group two's approval rate divided by group one's?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "About 0.25"
+        },
+        {
+          "id": "b",
+          "text": "About 0.75"
+        },
+        {
+          "id": "c",
+          "text": "About 1.33"
+        },
+        {
+          "id": "d",
+          "text": "About 15"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Dividing group two's approval rate of 45 by group one's of 60 gives 0.75, a disparity the audit should investigate and document. Neither 0.25 nor 15 is the quotient of these rates, and 1.33 inverts the division.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An audit finds that an assistant calculates refund amounts incorrectly, and the team ships a fix. What should the auditor do before closing the finding?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Re-run the failed test cases and record the result"
+        },
+        {
+          "id": "b",
+          "text": "Close it once the developer says it is fixed"
+        },
+        {
+          "id": "c",
+          "text": "Remove the original finding to keep the report short and tidy"
+        },
+        {
+          "id": "d",
+          "text": "Wait for the next annual audit to see if it recurs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A finding is closed on verified evidence, so the failed cases are tested again and the outcome is recorded. A verbal assurance is unverified, deleting findings removes the audit trail, and waiting a year leaves the defect unconfirmed.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Refusals from an internal coding assistant doubled over a weekend, and nobody noticed until Wednesday. Which addition would have flagged the change earlier?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A longer retention period for the request logs on the gateway"
+        },
+        {
+          "id": "b",
+          "text": "A monthly report that lists the model builds available to staff"
+        },
+        {
+          "id": "c",
+          "text": "An alert on the share of declines against its rolling baseline"
+        },
+        {
+          "id": "d",
+          "text": "A larger log disk on the gateway host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An alert comparing the share of declines with its recent baseline raises the shift within minutes instead of days. More retention, a monthly report, and extra disk space all keep or list data without watching it for change.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO fields belong in each AI request log entry at a minimum?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Full response text for every request"
+        },
+        {
+          "id": "b",
+          "text": "Caller identity for the account or service"
+        },
+        {
+          "id": "c",
+          "text": "The caller's home address"
+        },
+        {
+          "id": "d",
+          "text": "Model version that produced the reply"
+        },
+        {
+          "id": "e",
+          "text": "The source code of the model"
+        },
+        {
+          "id": "f",
+          "text": "The raw encryption keys used by the service"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Caller identity and model version attribute each request to a person or service and a specific model, which is the minimum for tracing. Full response text and home addresses add sensitive data the log does not need, and source code and keys must never be written to a log.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-5-mcq-033",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE measures protect AI logs that contain prompts?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypt the logs both at rest and in transit"
+        },
+        {
+          "id": "b",
+          "text": "Keep every log until someone asks to delete it"
+        },
+        {
+          "id": "c",
+          "text": "Restrict read access to a few named roles"
+        },
+        {
+          "id": "d",
+          "text": "Give all engineers read access for debugging"
+        },
+        {
+          "id": "e",
+          "text": "Send a copy to separate write-once storage"
+        },
+        {
+          "id": "f",
+          "text": "Store logs on the web server for fast access"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Encryption, role-limited access, and a protected off-host copy keep logs confidential and tamper resistant. Open-ended retention, broad read access, and web-server storage each increase exposure.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-5-mcq-034",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO patterns in monitored queries suggest someone is trying to extract a model's behavior?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Occasional questions from staff about the holiday calendar"
+        },
+        {
+          "id": "b",
+          "text": "Short greetings sent from a front-desk kiosk screen"
+        },
+        {
+          "id": "c",
+          "text": "Many systematic variations of one topic from one account"
+        },
+        {
+          "id": "d",
+          "text": "One long prompt pasted by a newly hired employee"
+        },
+        {
+          "id": "e",
+          "text": "Scripted runs of near-identical inputs at steady intervals"
+        },
+        {
+          "id": "f",
+          "text": "Requests that match a user's usual working hours and topics"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Extraction looks like methodical, machine-paced coverage of an input space by one source. Calendar questions, greetings, one long prompt, and ordinary working patterns are normal use.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-035",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO factors drive the processing cost of an AI service?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "GPU hours consumed by inference and tuning jobs"
+        },
+        {
+          "id": "b",
+          "text": "The size of the model chosen for each request"
+        },
+        {
+          "id": "c",
+          "text": "Gigabytes of embeddings kept in the vector index"
+        },
+        {
+          "id": "d",
+          "text": "Months of conversation history kept for audit"
+        },
+        {
+          "id": "e",
+          "text": "The length of the log retention schedule"
+        },
+        {
+          "id": "f",
+          "text": "The number of users with read access to logs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Compute time and the size of the model doing the work set processing spend. Stored embeddings and kept history are storage costs, and retention length and the number of log readers do not change the compute bill.",
+    "acronyms": [
+      "AI",
+      "GPU"
+    ]
+  },
+  {
+    "id": "cy1-2-5-mcq-036",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO responses fit answers that fall below a set confidence threshold?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Send the answer faster to avoid user frustration"
+        },
+        {
+          "id": "b",
+          "text": "Remove the answer from the logs"
+        },
+        {
+          "id": "c",
+          "text": "Retrain the model after every low score"
+        },
+        {
+          "id": "d",
+          "text": "Route the answer to a human reviewer"
+        },
+        {
+          "id": "e",
+          "text": "Hide the score from the interface"
+        },
+        {
+          "id": "f",
+          "text": "Show a visible caveat or ask a clarifying question"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "f"
+      ]
+    },
+    "explanation": "Low confidence is a cue for oversight or a user-facing warning. Speeding delivery ignores the risk, removing logs loses evidence, per-answer retraining is impractical, and hiding the score discards the signal.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-037",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE belong in an audit of an assistant for hallucinations?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sample replies and check their claims against sources"
+        },
+        {
+          "id": "b",
+          "text": "Track the share of unsupported claims across releases"
+        },
+        {
+          "id": "c",
+          "text": "Include questions the sources cannot answer"
+        },
+        {
+          "id": "d",
+          "text": "Measure how long each page takes to load for users"
+        },
+        {
+          "id": "e",
+          "text": "Count total user logins across the staff accounts"
+        },
+        {
+          "id": "f",
+          "text": "Compare the monthly cloud bill for each team and service"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Source checks, a trend of the unsupported-claim rate, and questions the sources cannot answer (to see whether it admits uncertainty) reveal fabrication. Page speed, logins, and billing are unrelated to whether answers are true.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-mcq-038",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO checks belong in an access audit of an AI platform?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Measure whether replies show demographic bias"
+        },
+        {
+          "id": "b",
+          "text": "Compare labeled test-set scores between releases"
+        },
+        {
+          "id": "c",
+          "text": "Total the monthly token spend by team"
+        },
+        {
+          "id": "d",
+          "text": "Review accounts with rights to models, data, and logs"
+        },
+        {
+          "id": "e",
+          "text": "Verify that replies cite their sources"
+        },
+        {
+          "id": "f",
+          "text": "Confirm that dormant and shared accounts are removed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "f"
+      ]
+    },
+    "explanation": "An access audit asks who can reach models, data, and logs, and whether those rights are still justified. Bias, test-set scores, spend, and citations belong to fairness, accuracy, cost, and hallucination reviews.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-5-data-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "stem": "The gateway rate report compares each client's normal request rate with the last ten minutes. Use it to answer each question.",
+    "payload": {
+      "caption": "Requests per minute by client",
+      "columns": [
+        "Client",
+        "Baseline",
+        "Observed"
+      ],
+      "rows": [
+        [
+          "hr-bot",
+          "90",
+          "95"
+        ],
+        [
+          "sales-copilot",
+          "60",
+          "240"
+        ],
+        [
+          "batch-ingest",
+          "30",
+          "28"
+        ],
+        [
+          "partner-api",
+          "25",
+          "500"
+        ],
+        [
+          "docs-search",
+          "150",
+          "120"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "spike",
+          "label": "Client with the largest rise over its own baseline",
+          "options": [
+            {
+              "id": "hr",
+              "text": "hr-bot"
+            },
+            {
+              "id": "partner",
+              "text": "partner-api"
+            },
+            {
+              "id": "sales",
+              "text": "sales-copilot"
+            },
+            {
+              "id": "docs",
+              "text": "docs-search"
+            }
+          ]
+        },
+        {
+          "id": "mult",
+          "label": "That client's observed rate as a multiple of its baseline",
+          "options": [
+            {
+              "id": "m4",
+              "text": "4 times"
+            },
+            {
+              "id": "m8",
+              "text": "8 times"
+            },
+            {
+              "id": "m20",
+              "text": "20 times"
+            },
+            {
+              "id": "m500",
+              "text": "500 times"
+            }
+          ]
+        },
+        {
+          "id": "total",
+          "label": "Total observed requests per minute across all clients",
+          "options": [
+            {
+              "id": "t983",
+              "text": "983"
+            },
+            {
+              "id": "t883",
+              "text": "883"
+            },
+            {
+              "id": "t1483",
+              "text": "1,483"
+            }
+          ]
+        },
+        {
+          "id": "action",
+          "label": "Best first response for that client, whose traffic was not announced",
+          "options": [
+            {
+              "id": "ignore",
+              "text": "Treat it as normal variation and keep current limits"
+            },
+            {
+              "id": "raise",
+              "text": "Raise its limit to match the new observed rate"
+            },
+            {
+              "id": "delete",
+              "text": "Delete its baseline and start over from fresh data"
+            },
+            {
+              "id": "suspend",
+              "text": "Suspend or rotate its key and review its activity"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "spike": "partner",
+        "mult": "m20",
+        "total": "t983",
+        "action": "suspend"
+      }
+    },
+    "explanation": "The partner-api client shows the largest jump: 500 against a baseline of 25. A rate monitor compares each client with its own history, so the sharpest multiple stands out even when another client sends more in absolute terms.",
+    "partExplanations": {
+      "spike": "sales-copilot is 4 times baseline, but partner-api is 500 / 25, far higher; hr-bot and docs-search are near or below baseline.",
+      "mult": "500 / 25 = 20 times its baseline.",
+      "total": "95 + 240 + 28 + 500 + 120 = 983 requests per minute.",
+      "action": "A 20-fold jump from a small client suggests a leaked key or runaway job, so contain and investigate before raising limits."
+    },
+    "pbqWeight": 4,
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-5-data-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "stem": "Use the monthly usage table and the stated prices to answer each cost question.",
+    "payload": {
+      "caption": "Monthly AI usage by feature. Prices: $3 per million prompt tokens, $12 per million response tokens, $0.10 per gigabyte stored, $4 per GPU hour.",
+      "columns": [
+        "Feature",
+        "Prompt tokens (millions)",
+        "Response tokens (millions)",
+        "Storage (gigabytes)",
+        "Processing (GPU hours)"
+      ],
+      "rows": [
+        [
+          "Helpdesk",
+          "40",
+          "5",
+          "200",
+          "30"
+        ],
+        [
+          "Search",
+          "120",
+          "10",
+          "1000",
+          "10"
+        ],
+        [
+          "Summarizer",
+          "20",
+          "25",
+          "100",
+          "5"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "promptTop",
+          "label": "Feature with the highest prompt cost",
+          "options": [
+            {
+              "id": "help",
+              "text": "Helpdesk"
+            },
+            {
+              "id": "search",
+              "text": "Search"
+            },
+            {
+              "id": "summ",
+              "text": "Summarizer"
+            }
+          ]
+        },
+        {
+          "id": "respTop",
+          "label": "Feature whose largest cost category is response tokens",
+          "options": [
+            {
+              "id": "help",
+              "text": "Helpdesk"
+            },
+            {
+              "id": "search",
+              "text": "Search"
+            },
+            {
+              "id": "summ",
+              "text": "Summarizer"
+            }
+          ]
+        },
+        {
+          "id": "helpTotal",
+          "label": "Total monthly cost of Helpdesk",
+          "options": [
+            {
+              "id": "c320",
+              "text": "$320"
+            },
+            {
+              "id": "c280",
+              "text": "$280"
+            },
+            {
+              "id": "c420",
+              "text": "$420"
+            }
+          ]
+        },
+        {
+          "id": "allTotal",
+          "label": "Total monthly cost across all three features",
+          "options": [
+            {
+              "id": "c1240",
+              "text": "$1,240"
+            },
+            {
+              "id": "c1430",
+              "text": "$1,430"
+            },
+            {
+              "id": "c1330",
+              "text": "$1,330"
+            }
+          ]
+        },
+        {
+          "id": "topCat",
+          "label": "Cost category with the largest total",
+          "options": [
+            {
+              "id": "storage",
+              "text": "Storage"
+            },
+            {
+              "id": "proc",
+              "text": "Processing"
+            },
+            {
+              "id": "resp",
+              "text": "Response tokens"
+            },
+            {
+              "id": "prompt",
+              "text": "Prompt tokens"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "promptTop": "search",
+        "respTop": "summ",
+        "helpTotal": "c320",
+        "allTotal": "c1330",
+        "topCat": "prompt"
+      }
+    },
+    "explanation": "Price each category per feature, then total. Prompt tokens are the largest category at $540, ahead of response tokens at $480, processing at $180, and storage at $130.",
+    "partExplanations": {
+      "promptTop": "Search uses 120 million prompt tokens at $3, which is $360, more than Helpdesk ($120) or Summarizer ($60).",
+      "respTop": "Summarizer response cost is 25 x $12 = $300 of its $390 total; the other features lead elsewhere.",
+      "helpTotal": "Helpdesk: prompts $120 + responses $60 + storage $20 + processing $120 = $320.",
+      "allTotal": "Helpdesk $320 + Search $620 + Summarizer $390 = $1,330.",
+      "topCat": "Prompt $540, response $480, processing $180, storage $130, so prompt tokens lead."
+    },
+    "pbqWeight": 5,
+    "acronyms": [
+      "AI",
+      "GPU"
+    ]
+  },
+  {
+    "id": "cy1-2-5-terminal-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "An analyst is reviewing the AI gateway log after a burst of blocked requests. Read the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 6 gateway.log",
+        "10:14:02 client=kiosk-7 model=assist-2 status=ok tokens=310",
+        "10:14:09 client=svc-bravo model=assist-2 status=blocked rule=r14 note=\"ignore the previous instructions\"",
+        "10:14:11 client=svc-bravo model=assist-2 status=blocked rule=r14 note=\"ignore the previous instructions\"",
+        "10:14:15 client=kiosk-3 model=assist-2 status=ok tokens=288",
+        "10:14:18 client=svc-bravo model=assist-2 status=blocked rule=r14 note=\"ignore the previous instructions\"",
+        "10:14:21 client=svc-bravo model=assist-2 status=blocked rule=r14 note=\"ignore the previous instructions\"",
+        "# grep pattern file prints matching lines; grep -c pattern file prints how many lines match"
+      ],
+      "steps": [
+        {
+          "id": "blocked",
+          "label": "Type a command that shows every line in gateway.log containing status=blocked"
+        },
+        {
+          "id": "count",
+          "label": "Type a command that prints how many lines in gateway.log mention client=svc-bravo"
+        },
+        {
+          "id": "risk",
+          "label": "Which risk does the repeated note from svc-bravo point to?",
+          "options": [
+            {
+              "id": "poison",
+              "text": "Training data poisoning"
+            },
+            {
+              "id": "inject",
+              "text": "Prompt injection attempts"
+            },
+            {
+              "id": "theft",
+              "text": "Model theft by extraction"
+            },
+            {
+              "id": "halluc",
+              "text": "Hallucination in replies"
+            }
+          ]
+        },
+        {
+          "id": "act",
+          "label": "Choose the best next action",
+          "options": [
+            {
+              "id": "raise",
+              "text": "Raise the gateway limits for svc-bravo to stop the blocks"
+            },
+            {
+              "id": "rules",
+              "text": "Turn off the blocking rule to cut down the noise in logs"
+            },
+            {
+              "id": "suspend",
+              "text": "Suspend the svc-bravo key and review its prompts"
+            },
+            {
+              "id": "clear",
+              "text": "Clear gateway.log so the next review starts from clean"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "blocked": [
+          "grep status=blocked gateway.log",
+          "grep \"status=blocked\" gateway.log",
+          "grep 'status=blocked' gateway.log",
+          "grep status=blocked ./gateway.log",
+          "grep -n status=blocked gateway.log",
+          "grep -i status=blocked gateway.log",
+          "cat gateway.log | grep status=blocked",
+          "cat gateway.log | grep \"status=blocked\""
+        ],
+        "count": [
+          "grep -c client=svc-bravo gateway.log",
+          "grep -c \"client=svc-bravo\" gateway.log",
+          "grep -c 'client=svc-bravo' gateway.log",
+          "grep -c client=svc-bravo ./gateway.log",
+          "grep client=svc-bravo gateway.log | wc -l",
+          "grep \"client=svc-bravo\" gateway.log | wc -l",
+          "cat gateway.log | grep -c client=svc-bravo",
+          "cat gateway.log | grep client=svc-bravo | wc -l"
+        ],
+        "risk": [
+          "inject"
+        ],
+        "act": [
+          "suspend"
+        ]
+      }
+    },
+    "explanation": "The log shows one client repeatedly blocked for an override phrase. grep filters the lines, grep -c counts them, and the pattern is prompt injection probing that calls for containing the key and reviewing the source.",
+    "partExplanations": {
+      "blocked": "grep status=blocked gateway.log prints only the blocked lines.",
+      "count": "grep -c counts the lines that match client=svc-bravo.",
+      "risk": "Repeated attempts to override instructions are prompt injection attempts, not poisoning, theft, or hallucination.",
+      "act": "Suspending the key and reviewing the source contains the activity; raising limits, disabling the rule, or clearing the log helps the abuser or destroys evidence."
+    },
+    "pbqWeight": 4,
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-5-terminal-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 3,
+    "stem": "The chat application's prompt log holds pasted card numbers and is readable by everyone on the host. Read the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ ls -l prompts.log",
+        "-rw-rw-rw- 1 chatapp chatapp 48213 prompts.log",
+        "$ head -n 3 prompts.log",
+        "09:02:11 user=u1842 prompt=\"my card is 4111111111111111 and it was declined\"",
+        "09:02:40 user=u2210 prompt=\"reset my password\"",
+        "09:03:05 user=u1842 prompt=\"the card 4111111111111111 again\"",
+        "# logscrub --mask card --in infile --out outfile   masks card numbers into a new file",
+        "# chmod mode file   mode is three digits for owner, group, others (4 read, 2 write, 1 run)"
+      ],
+      "steps": [
+        {
+          "id": "scrub",
+          "label": "Type the command that masks card numbers in prompts.log and writes the result to prompts.clean.log"
+        },
+        {
+          "id": "perm",
+          "label": "Type a command that gives prompts.clean.log owner read and write, group read only, and others no access"
+        },
+        {
+          "id": "orig",
+          "label": "What should happen to the original prompts.log once the clean copy is verified and no legal hold applies?",
+          "options": [
+            {
+              "id": "keep",
+              "text": "Keep it beside the clean copy as a backup for the team"
+            },
+            {
+              "id": "delete",
+              "text": "Securely delete it so no copy keeps the data"
+            },
+            {
+              "id": "mail",
+              "text": "Email it to the compliance team for their records"
+            },
+            {
+              "id": "rename",
+              "text": "Rename it prompts.old and leave it in the same folder"
+            }
+          ]
+        },
+        {
+          "id": "ship",
+          "label": "Where should the clean copy go for long-term review?",
+          "options": [
+            {
+              "id": "siem",
+              "text": "A SIEM index with role-restricted read access"
+            },
+            {
+              "id": "share",
+              "text": "A shared drive open to the whole company"
+            },
+            {
+              "id": "bucket",
+              "text": "A public bucket so vendors can read it"
+            },
+            {
+              "id": "laptop",
+              "text": "Each developer's laptop"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "scrub": [
+          "logscrub --mask card --in prompts.log --out prompts.clean.log",
+          "logscrub --mask card --in ./prompts.log --out ./prompts.clean.log",
+          "logscrub --in prompts.log --out prompts.clean.log --mask card",
+          "logscrub --in prompts.log --mask card --out prompts.clean.log",
+          "logscrub --mask card --out prompts.clean.log --in prompts.log"
+        ],
+        "perm": [
+          "chmod 640 prompts.clean.log",
+          "chmod 0640 prompts.clean.log",
+          "chmod 640 ./prompts.clean.log",
+          "chmod u=rw,g=r,o= prompts.clean.log",
+          "chmod u=rw,g=r,o-rwx prompts.clean.log"
+        ],
+        "orig": [
+          "delete"
+        ],
+        "ship": [
+          "siem"
+        ]
+      }
+    },
+    "explanation": "Sanitization masks the card numbers into a new file, protection tightens the file mode, and the unsanitized original is removed so the sensitive values are not kept anywhere. The clean copy goes to a restricted store.",
+    "partExplanations": {
+      "scrub": "logscrub with --mask card, an input file and an output file writes a masked copy.",
+      "perm": "Mode 640 gives owner read and write (6), group read (4), and others nothing (0).",
+      "orig": "Leaving, mailing, or renaming the original keeps card numbers in storage; secure deletion removes them.",
+      "ship": "A SIEM index with role-restricted access protects the log; open shares, public buckets, and laptops expose it."
+    },
+    "pbqWeight": 4,
+    "acronyms": [
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cy1-2-5-hotspot-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "pbq-hotspot",
+    "difficulty": 3,
+    "stem": "An AI chat service sends user traffic through a gateway to a model host and writes events through a log pipeline to a log store. Select every component that performs prompt or response monitoring, log sanitization, or log protection (not cost tracking).",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n-inbound",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Gateway: inspects each inbound prompt"
+        },
+        {
+          "id": "n-billing",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Billing exporter: totals spend per team"
+        },
+        {
+          "id": "n-mask",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Log pipeline: masks sensitive values"
+        },
+        {
+          "id": "n-host",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Model host: runs inference on GPU nodes"
+        },
+        {
+          "id": "n-vault",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Log store: encrypted, read access by role"
+        },
+        {
+          "id": "n-outbound",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Gateway: scans each outbound reply"
+        }
+      ],
+      "spots": [
+        {
+          "id": "inbound",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Gateway: inspects each inbound prompt"
+        },
+        {
+          "id": "billing",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Billing exporter: totals spend per team"
+        },
+        {
+          "id": "mask",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Log pipeline: masks sensitive values"
+        },
+        {
+          "id": "host",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Model host: runs inference on GPU nodes"
+        },
+        {
+          "id": "vault",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Log store: encrypted, read access by role"
+        },
+        {
+          "id": "outbound",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Gateway: scans each outbound reply"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "inbound",
+        "mask",
+        "vault",
+        "outbound"
+      ]
+    },
+    "explanation": "Inspection of prompts and replies happens at the gateway, masking happens in the log pipeline before storage, and protection happens at the log store through encryption and role-based access. The billing exporter and the model host do none of these jobs.",
+    "partExplanations": {
+      "inbound": "Inbound inspection is prompt (query) monitoring.",
+      "billing": "Totalling spend is cost monitoring, not prompt monitoring, sanitization, or log protection.",
+      "mask": "Masking before write is log sanitization.",
+      "host": "The model host serves inference; it does not monitor or protect logs.",
+      "vault": "Encryption and role-limited reads are log protection.",
+      "outbound": "Outbound scanning is response monitoring."
+    },
+    "pbqWeight": 6,
+    "acronyms": [
+      "AI",
+      "GPU"
+    ]
+  },
+  {
+    "id": "cy1-2-5-order-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "Put the steps of an audit for AI quality and compliance in the order they are carried out.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s1",
+          "text": "Rate each failed check by severity and write up the evidence"
+        },
+        {
+          "id": "s2",
+          "text": "Define the audit scope, systems, and pass criteria"
+        },
+        {
+          "id": "s3",
+          "text": "Re-test the fixed items and close findings with proof"
+        },
+        {
+          "id": "s4",
+          "text": "Collect output samples, logs, and access lists"
+        },
+        {
+          "id": "s5",
+          "text": "Assign remediation owners and due dates"
+        },
+        {
+          "id": "s6",
+          "text": "Test the samples against the criteria for hallucination, accuracy, and bias"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s2",
+        "s4",
+        "s6",
+        "s1",
+        "s5",
+        "s3"
+      ]
+    },
+    "explanation": "An audit moves from scope to evidence to testing, then records findings, assigns fixes, and verifies them before closure.",
+    "partExplanations": {
+      "0": "Scope and criteria come first so the rest of the work is measured against something.",
+      "1": "Evidence is gathered once the scope is known.",
+      "2": "The samples are tested against the criteria.",
+      "3": "Findings are recorded with severity and evidence after testing.",
+      "4": "Owners and dates turn findings into remediation work.",
+      "5": "Re-testing confirms the fixes before findings are closed."
+    },
+    "pbqWeight": 6,
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-5-buckets-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.5"
+    ],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "stem": "An auditor logged six findings on a human resources assistant. Sort each finding into the audit category it belongs to.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "hall",
+          "text": "Hallucination"
+        },
+        {
+          "id": "acc",
+          "text": "Accuracy"
+        },
+        {
+          "id": "bias",
+          "text": "Bias and fairness"
+        },
+        {
+          "id": "access",
+          "text": "Access"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "The assistant cited a policy section that does not exist in the handbook"
+        },
+        {
+          "id": "i2",
+          "text": "On factual questions, only 81% of answers matched the reference set, down from 92% last quarter"
+        },
+        {
+          "id": "i3",
+          "text": "Applicants from one postal region are declined twice as often as equally qualified applicants elsewhere"
+        },
+        {
+          "id": "i4",
+          "text": "Replies to the same question use warmer wording for some first names than others"
+        },
+        {
+          "id": "i5",
+          "text": "Fourteen former contractors still hold read rights to the prompt logs"
+        },
+        {
+          "id": "i6",
+          "text": "Five engineers query the model with one shared administrator login"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "hall",
+        "i2": "acc",
+        "i3": "bias",
+        "i4": "bias",
+        "i5": "access",
+        "i6": "access"
+      }
+    },
+    "explanation": "Fabricated references are hallucination, a score against known answers is accuracy, unequal treatment of groups is bias and fairness, and who can reach the system is access.",
+    "partExplanations": {
+      "i1": "A citation to something that does not exist is a fabricated claim, which is hallucination.",
+      "i2": "A match rate against a reference set measures accuracy.",
+      "i3": "Different outcomes for equally qualified people by region is a fairness finding.",
+      "i4": "Different treatment by first name is a bias finding.",
+      "i5": "Stale rights to sensitive logs are an access finding.",
+      "i6": "A shared administrator login is an access finding because it removes accountability."
+    },
+    "pbqWeight": 6,
+    "acronyms": []
+  }
+]

@@ -1,0 +1,2286 @@
+[
+  {
+    "id": "cy1-2-4-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which protection covers data while it moves from a data pipeline to a model-hosting endpoint?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encryption at rest on the endpoint's disk volume"
+        },
+        {
+          "id": "b",
+          "text": "Hashing of each record before it is stored"
+        },
+        {
+          "id": "c",
+          "text": "Encryption in transit between systems, such as TLS"
+        },
+        {
+          "id": "d",
+          "text": "Role-based access to the endpoint's admin console"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Data moving over a network is protected by encryption in transit, typically TLS. Encryption at rest protects stored copies, hashing is one-way so the endpoint could not read the data, and role-based access limits who administers the endpoint without protecting the traffic.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team keeps embeddings in a vector database on shared disks. Which control protects the vectors if someone copies a disk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encryption at rest on the storage volume"
+        },
+        {
+          "id": "b",
+          "text": "TLS on the connection used for similarity queries"
+        },
+        {
+          "id": "c",
+          "text": "Rate limits on the search API that serves queries"
+        },
+        {
+          "id": "d",
+          "text": "Output filtering of the text that retrieval returns"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Encryption at rest leaves a copied disk unreadable without the keys, which matters because vectors can leak information about the source text. TLS protects traffic in motion, rate limits restrict query speed, and output filtering controls responses; none of them protect a copied disk.",
+    "acronyms": [
+      "API",
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A lender wants a partner to run a scoring model over applicant data in the partner's cloud, but the cloud operator must not be able to read the data in memory. Which control addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypt the storage bucket with a key the lender manages"
+        },
+        {
+          "id": "b",
+          "text": "Require TLS between the lender's systems and the partner"
+        },
+        {
+          "id": "c",
+          "text": "Replace applicant names with random tokens before upload"
+        },
+        {
+          "id": "d",
+          "text": "Run the job in a hardware-isolated confidential computing enclave"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A confidential computing enclave protects data in use by isolating the computation and its memory from the host and its operator. Bucket encryption covers data at rest and TLS covers data in transit, but both leave plaintext in memory while the job runs. Tokenizing names hides one field, not the rest of the data.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which technique lets a service run certain calculations on ciphertext without decrypting it first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Dynamic data masking"
+        },
+        {
+          "id": "b",
+          "text": "Homomorphic encryption"
+        },
+        {
+          "id": "c",
+          "text": "Tokenization with a vault"
+        },
+        {
+          "id": "d",
+          "text": "Full-disk encryption"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Homomorphic encryption permits some operations on encrypted values and returns an encrypted result, at a cost in speed. Dynamic masking hides values from viewers at query time, tokenization swaps values for surrogates, and full-disk encryption protects stored data but the data is decrypted before processing.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which training approach limits what a trained model could reveal about any single person in the training set?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Differentially private training"
+        },
+        {
+          "id": "b",
+          "text": "Dynamic masking of the training table"
+        },
+        {
+          "id": "c",
+          "text": "Encryption of checkpoints at rest"
+        },
+        {
+          "id": "d",
+          "text": "Tokenization of the label column"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Differentially private training adds controlled noise and clips gradients so that no single record has much influence on the model, which limits what can be inferred about an individual. Masking the table, encrypting checkpoints and tokenizing labels protect data in other ways but do not change what the trained weights reveal.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A privacy lead raises the amount of noise used in differentially private training. What is the expected effect?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Weaker privacy for individuals, with higher model accuracy"
+        },
+        {
+          "id": "b",
+          "text": "Faster training, with identical privacy and accuracy"
+        },
+        {
+          "id": "c",
+          "text": "Stronger privacy for individuals, but lower accuracy"
+        },
+        {
+          "id": "d",
+          "text": "Stronger privacy for individuals, with no effect on accuracy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "More noise makes it harder to infer any one person's data, but it also blurs the signal the model learns from, so accuracy usually falls. Weaker privacy with higher accuracy reverses the trade-off, faster training is unrelated to the noise level, and claiming no effect on accuracy ignores the cost of the added noise.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A pipeline copies training batches from an on-premises file share to a cloud cluster over the internet. Which setting protects the transfer itself?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Server-side encryption on the destination bucket"
+        },
+        {
+          "id": "b",
+          "text": "TLS with server certificate validation on the sync job"
+        },
+        {
+          "id": "c",
+          "text": "A checksum recorded for each batch"
+        },
+        {
+          "id": "d",
+          "text": "Access to the destination limited to the cluster's role"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "TLS with certificate validation encrypts the transfer and confirms the destination is genuine. Bucket encryption protects the data only after it arrives, a checksum detects changes without hiding content, and limiting access governs who may write to the bucket rather than who can read the traffic.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer disables server certificate checks in an AI client library to get past a test error, though the traffic still uses TLS. What risk does this introduce?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Stored prompts become readable to anyone with read access to the disk volume"
+        },
+        {
+          "id": "b",
+          "text": "The model weights can be altered in memory by another process"
+        },
+        {
+          "id": "c",
+          "text": "Requests stop being counted against the gateway's rate limit"
+        },
+        {
+          "id": "d",
+          "text": "A machine on the network path can pose as the endpoint and read prompts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Without certificate validation the client cannot tell the real endpoint from an impostor, so an attacker on the path can terminate the session and read the prompts even though encryption is on. Disk readability is an at-rest matter, in-memory tampering is unrelated to certificate checks, and rate-limit accounting belongs to the gateway.",
+    "acronyms": [
+      "AI",
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Why is the encryption key for a data store held in a separate managed service from the data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It makes a stolen copy of the data unreadable without a second compromise"
+        },
+        {
+          "id": "b",
+          "text": "It makes decryption noticeably faster for the model workers that read the store"
+        },
+        {
+          "id": "c",
+          "text": "It removes the need to rotate the key"
+        },
+        {
+          "id": "d",
+          "text": "It allows tenants to read one another's data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Separating the key from the data means an attacker who copies the store still has to compromise the key service as well. Separation does not speed up decryption, rotation is still needed, and it does nothing to let tenants read each other's data; separate keys actually limit that.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A provider hosts RAG indexes for several customers. Which design limits the damage if one encryption key is exposed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "One master key for all indexes, to simplify rotation"
+        },
+        {
+          "id": "b",
+          "text": "A separate encryption key for each customer's index"
+        },
+        {
+          "id": "c",
+          "text": "A key derived from the shared service account name"
+        },
+        {
+          "id": "d",
+          "text": "The same key with a longer length for all indexes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Giving each customer's index its own key confines an exposure to that customer. A single master key puts all indexes at risk, a key derived from a guessable name is weak and shared, and a longer key that is still shared opens all the indexes at once.",
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A feature store's primary volume is encrypted, but nightly snapshots land in archive storage unencrypted. What is the gap?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Snapshots are exempt because they are read-only copies"
+        },
+        {
+          "id": "b",
+          "text": "The primary volume encryption covers its snapshots automatically"
+        },
+        {
+          "id": "c",
+          "text": "Copies of sensitive data need the same at-rest protection"
+        },
+        {
+          "id": "d",
+          "text": "Archive storage is too rarely read to be worth protecting"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Backups and snapshots contain the same data, so they need encryption at rest as well. Being read-only does not reduce what an attacker gains from a copy, encryption on one volume does not carry over to separately stored copies, and rare reads do not stop theft of the archive.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team will release a dataset publicly, and re-identification of individuals must not be reasonably possible. Which technique should prepare it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data masking"
+        },
+        {
+          "id": "b",
+          "text": "Tokenization"
+        },
+        {
+          "id": "c",
+          "text": "Encryption at rest and in transit"
+        },
+        {
+          "id": "d",
+          "text": "Data anonymization"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Anonymization strips or generalizes identifying details so the result cannot reasonably be tied back to a person. Masking swaps values for fictitious ones to preserve formats, tokenization keeps a mapping that can be reversed, and encryption is reversible with the key.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A researcher shares survey data after swapping names for random codes, while keeping birth date, postal code and gender. Why might the file still not be anonymous?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The random codes can be decrypted by anyone who knows the survey title"
+        },
+        {
+          "id": "b",
+          "text": "Those attributes can be linked with outside data to single people out"
+        },
+        {
+          "id": "c",
+          "text": "Birth dates cannot be stored without encryption at rest"
+        },
+        {
+          "id": "d",
+          "text": "Names are the only fields regulators consider identifying"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Combining birth date, postal code and gender with other data sets can single out individuals, so removing names alone leaves a re-identification risk. The random codes are not ciphertext, encrypting birth dates would not change that they identify, and regulators treat many indirect attributes as identifying.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A people-analytics team needs compensation trends by job family. Which change best anonymizes the exact salary column?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace it with a band such as 60 to 70 thousand"
+        },
+        {
+          "id": "b",
+          "text": "Hash the amount with a fast algorithm and no salt"
+        },
+        {
+          "id": "c",
+          "text": "Move the column to a second table under the same row number"
+        },
+        {
+          "id": "d",
+          "text": "Encrypt the column and keep the key on the same server"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Generalizing the amount to a band keeps trend analysis possible while removing the precision that could single someone out. An unsalted hash of a small set of amounts is easy to reverse, a second table is still linkable by row number, and encryption with a co-located key is easily undone.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A team swaps customer identifiers for tokens, but a lookup table linking tokens back to customers stays in a restricted vault. How should the data set be treated?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "As anonymous data, since the tokens carry no meaning"
+        },
+        {
+          "id": "b",
+          "text": "As public data, since the names have been removed"
+        },
+        {
+          "id": "c",
+          "text": "As pseudonymized personal data, since the lookup table can re-link tokens"
+        },
+        {
+          "id": "d",
+          "text": "As encrypted data, since tokens are a form of ciphertext held in a vault"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Because the lookup table allows re-linking, the data is pseudonymized and remains personal data under privacy regulations. Tokens that can be mapped back are not anonymous, removing names does not make data public, and tokens from a vault are surrogates rather than ciphertext.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does a data classification label tell people and systems?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Which team first collected the data"
+        },
+        {
+          "id": "b",
+          "text": "How many records the data contains"
+        },
+        {
+          "id": "c",
+          "text": "Which model architecture will consume the data later"
+        },
+        {
+          "id": "d",
+          "text": "How sensitive the data is and how to handle it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A classification label records the sensitivity of the data and ties it to handling rules such as encryption, access and retention. Who collected it, how large it is and which model uses it are properties of the data set, not what the label conveys.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A company labels data public, internal, confidential or regulated. A RAG corpus mixes press releases with customer contracts. How should the combined index be handled?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "At the highest label among the content it holds"
+        },
+        {
+          "id": "b",
+          "text": "At the label covering the largest share of its content"
+        },
+        {
+          "id": "c",
+          "text": "At the label of the team that built the index"
+        },
+        {
+          "id": "d",
+          "text": "At whichever label the first document carried"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A mixed index can return any of its content, so it must be protected at the strictest label present unless the content is split into separate indexes. Using the majority label, the builder's label or the first document's label would expose the contracts under weaker handling rules.",
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A policy bars data labeled regulated from reaching external model endpoints. What makes the label enforceable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Staff are reminded of the label in a quarterly email"
+        },
+        {
+          "id": "b",
+          "text": "A gateway or data loss prevention tool reads it and blocks the request"
+        },
+        {
+          "id": "c",
+          "text": "The label is printed on the dataset's wiki page"
+        },
+        {
+          "id": "d",
+          "text": "The label is stored in the file header next to a stronger checksum of the content"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Labels become controls when tools read them and act, for example by blocking a request that carries regulated content. Emails and wiki pages depend on people remembering, and a checksum protects integrity rather than where data may go.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A dataset labeled internal begins receiving a partner feed that adds customer bank details, and the label stays as it was. Which process failure does this show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encryption in transit was not enforced between the pipeline and the store"
+        },
+        {
+          "id": "b",
+          "text": "Tokens were issued with a scope wider than needed"
+        },
+        {
+          "id": "c",
+          "text": "The retention period for the dataset was set too long"
+        },
+        {
+          "id": "d",
+          "text": "The classification was not reviewed when the content changed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Labels must be reviewed as data evolves, otherwise sensitive content is handled under rules meant for less sensitive data. Transit encryption, token scope and retention length are separate controls and do not explain a stale label.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which technique permanently removes or blacks out sensitive parts of a document before it is shared or used?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tokenization"
+        },
+        {
+          "id": "b",
+          "text": "Replication"
+        },
+        {
+          "id": "c",
+          "text": "Redaction"
+        },
+        {
+          "id": "d",
+          "text": "Normalization"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Redaction removes or obscures the sensitive elements so they cannot be recovered from the output. Tokenization substitutes surrogates and keeps a mapping, replication copies data, and normalization restructures values for consistency.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Call notes that mention patient diagnoses will feed a fine-tuning job. What should happen before the job starts?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Move the call notes to a bucket with a restricted label"
+        },
+        {
+          "id": "b",
+          "text": "Scan for medical information and redact it from the text"
+        },
+        {
+          "id": "c",
+          "text": "Lengthen the retention period so audits can review them"
+        },
+        {
+          "id": "d",
+          "text": "Add noise to the learning rate during the fine-tuning job itself"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Sensitive values should be removed from text before a model can learn or memorize them. A restricted bucket limits who opens the files but still lets the job train on the diagnoses, a longer retention period increases exposure, and noise in the learning rate does nothing for the content.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Traffic between a retrieval service and its vector database stays inside a private network and is sent without encryption. What is the weakness?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A compromised internal host could read the data in motion, so links need TLS too"
+        },
+        {
+          "id": "b",
+          "text": "Nothing, because traffic on a private network cannot be captured"
+        },
+        {
+          "id": "c",
+          "text": "The database will refuse unencrypted queries and the service will fail"
+        },
+        {
+          "id": "d",
+          "text": "The traffic is already covered by encryption of the volumes behind the database"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A compromised or misconfigured host inside the private network can capture unencrypted traffic, so internal links need encryption in transit as well. Private addressing does not prevent capture, a database does not refuse unencrypted clients unless configured to, and volume encryption protects stored data rather than data moving between services.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A developer needs a customer table in a test environment that keeps the same formats but contains no real people. Which control fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encryption at rest on the test database"
+        },
+        {
+          "id": "b",
+          "text": "Read-only access to the production table"
+        },
+        {
+          "id": "c",
+          "text": "Row-level deletion of records older than a year"
+        },
+        {
+          "id": "d",
+          "text": "Static data masking that swaps in fictitious values"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Static masking produces a permanent copy whose values are fictitious but keep the same formats. Encryption protects the real data rather than replacing it, read-only access still exposes real people, and deleting old rows leaves the rest of the real records in place.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Analysts query a production view that shows only the last four digits of an account number unless the user holds a privileged role. The stored values stay complete. Which control is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Static data masking"
+        },
+        {
+          "id": "b",
+          "text": "Data anonymization"
+        },
+        {
+          "id": "c",
+          "text": "Dynamic data masking"
+        },
+        {
+          "id": "d",
+          "text": "Data minimization at the source"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Dynamic masking hides values at query time based on who is asking, while the stored data is unchanged. Static masking creates a separate altered copy, anonymization removes identifiability permanently, and minimization limits what is collected in the first place.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fraud model must join records by customer but must not see real account numbers. Which technique keeps the join working?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Consistent tokenization, so each account maps to the same surrogate"
+        },
+        {
+          "id": "b",
+          "text": "Redacting the account column from all of the records in the joined data set"
+        },
+        {
+          "id": "c",
+          "text": "Generalizing account numbers into ranges"
+        },
+        {
+          "id": "d",
+          "text": "Replacing each value with a fixed run of asterisks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Tokenizing each account number to a stable surrogate hides the real value yet preserves matching across records. Redaction removes the column, ranges merge different customers, and identical asterisks make every record look the same, so each of those breaks the join.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team building an appointment-reminder assistant asks users for their full medical history, home address and employer. Which approach should shape the data request?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Request all fields, then mask what goes unused"
+        },
+        {
+          "id": "b",
+          "text": "Request just the fields the reminders need"
+        },
+        {
+          "id": "c",
+          "text": "Request all fields and encrypt them at rest"
+        },
+        {
+          "id": "d",
+          "text": "Request all fields and delete them after a year"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Data minimization limits collection to what the purpose requires, so unneeded fields are never at risk. Masking, encrypting or deleting later all still collect and hold the extra data in the meantime.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A model predicts delivery delays from a table that also holds customer names and emails, none of which the model uses. What should the team do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep the columns and encrypt the table"
+        },
+        {
+          "id": "b",
+          "text": "Keep the columns in case future features need them"
+        },
+        {
+          "id": "c",
+          "text": "Drop the unused personal columns before training"
+        },
+        {
+          "id": "d",
+          "text": "Hash the columns and keep them in the training table"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Minimization means removing data the use case does not need, which also shrinks the impact of any breach or memorization. Encrypting, hoarding for future use, or hashing the columns still keeps the personal data in the training set.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which practice supports data minimization in how long data is kept?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Archiving prompt logs indefinitely in cheap storage"
+        },
+        {
+          "id": "b",
+          "text": "Copying prompt logs to developer laptops for easier offline analysis"
+        },
+        {
+          "id": "c",
+          "text": "Logging more fields to make later debugging easier"
+        },
+        {
+          "id": "d",
+          "text": "Setting a retention period and deleting prompt logs when it ends"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A retention limit with deletion keeps the holdings to what is still needed. Indefinite archiving, extra copies on laptops and wider logging all increase the amount of data exposed.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Researchers need conversation text and product names but must not identify customers, and no re-linking will be needed. Which approach fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Anonymize by removing identifiers and generalizing details such as exact dates"
+        },
+        {
+          "id": "b",
+          "text": "Tokenize the identifiers and send the lookup vault as well"
+        },
+        {
+          "id": "c",
+          "text": "Encrypt the file and share the key with the research group"
+        },
+        {
+          "id": "d",
+          "text": "Apply dynamic masking on the live system and give researchers accounts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Anonymization removes identifiability for good, which fits a recipient that never needs to re-link. Sending the lookup vault defeats tokenization, a shared key gives the researchers the plaintext, and dynamic masking on a live system keeps real data in place.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A plugin sends ticket text to a third-party summarizer, and tickets sometimes contain national identification numbers. Which control keeps those numbers from reaching the summarizer?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "TLS on the outbound connection between the plugin and the summarizer"
+        },
+        {
+          "id": "b",
+          "text": "A filter that redacts them before the call is sent"
+        },
+        {
+          "id": "c",
+          "text": "An output filter on the summarizer's replies"
+        },
+        {
+          "id": "d",
+          "text": "Encryption at rest on the ticket archive"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A filter that detects and redacts the numbers removes them before they leave. TLS would deliver the numbers to the summarizer securely, an output filter acts only on replies, and encryption at rest protects the stored archive, not the outbound request.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A model runs inside a confidential computing enclave with encrypted memory. Which threat does this mainly address?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A stolen backup copy of the storage volume"
+        },
+        {
+          "id": "b",
+          "text": "A packet capture taken on the network path"
+        },
+        {
+          "id": "c",
+          "text": "A privileged host process reading data while it is processed"
+        },
+        {
+          "id": "d",
+          "text": "A hostile instruction hidden in a document the assistant retrieves"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Enclave memory encryption protects data in use from other processes on the host, including privileged ones. A stolen backup is an at-rest threat, a packet capture is an in-transit threat, and a hostile instruction in a document is a prompt injection that encryption does not stop.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO controls protect data in transit in an AI pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "TLS on calls to the model API"
+        },
+        {
+          "id": "b",
+          "text": "Encrypted volumes on the training servers"
+        },
+        {
+          "id": "c",
+          "text": "An encrypted site-to-site tunnel to the cloud"
+        },
+        {
+          "id": "d",
+          "text": "Dynamic masking in the analyst view"
+        },
+        {
+          "id": "e",
+          "text": "Redaction of card numbers in stored logs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "TLS on API calls and an encrypted site-to-site tunnel both encrypt data while it crosses a network. Encrypted volumes protect data at rest, dynamic masking hides values from viewers, and redaction removes sensitive values from stored logs.",
+    "acronyms": [
+      "AI",
+      "API",
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-033",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO measures protect data at rest in an AI platform?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Requiring HTTPS on the inference endpoint"
+        },
+        {
+          "id": "b",
+          "text": "Model checkpoints encrypted in object storage"
+        },
+        {
+          "id": "c",
+          "text": "Running inference inside a hardware enclave"
+        },
+        {
+          "id": "d",
+          "text": "Validating server certificates in the client library"
+        },
+        {
+          "id": "e",
+          "text": "Encrypted volumes holding the vector index"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Checkpoints and index volumes are stored data, so encrypting them is encryption at rest. HTTPS and certificate validation protect data in transit, and an enclave protects data while it is being processed.",
+    "acronyms": [
+      "AI",
+      "HTTPS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-034",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO protect data while it is in use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Computing on encrypted values with homomorphic encryption"
+        },
+        {
+          "id": "b",
+          "text": "TLS between the notebook and the model endpoint"
+        },
+        {
+          "id": "c",
+          "text": "Encrypting nightly backups of the feature store"
+        },
+        {
+          "id": "d",
+          "text": "Running the workload in a confidential computing environment"
+        },
+        {
+          "id": "e",
+          "text": "Server-side encryption of the training bucket"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Homomorphic encryption and confidential computing keep data protected while it is being processed. TLS covers data in transit, while backup and bucket encryption cover data at rest.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-035",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE items in chat logs should a redaction rule remove before the logs are used to fine-tune a model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A customer's full card number"
+        },
+        {
+          "id": "b",
+          "text": "The model name and version"
+        },
+        {
+          "id": "c",
+          "text": "A home address typed by the customer"
+        },
+        {
+          "id": "d",
+          "text": "The response time in milliseconds"
+        },
+        {
+          "id": "e",
+          "text": "An API token pasted into a message"
+        },
+        {
+          "id": "f",
+          "text": "The timestamp of the request"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Card numbers, home addresses and pasted secrets are sensitive values that a model could memorize and later reproduce. Model name, response time and timestamp are operational metadata that carry no personal or secret content.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-036",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are benefits of data minimization for an AI project?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model accuracy improves as fields are removed"
+        },
+        {
+          "id": "b",
+          "text": "Encryption becomes unnecessary for the remaining data"
+        },
+        {
+          "id": "c",
+          "text": "Less data is exposed if the store is breached"
+        },
+        {
+          "id": "d",
+          "text": "Classification labels can be skipped"
+        },
+        {
+          "id": "e",
+          "text": "Fewer records fall under retention and deletion duties"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Holding less data shrinks the impact of a breach and the number of records that must be tracked, retained or erased. Minimization does not guarantee accuracy, and the data that remains still needs encryption and labels.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-4-mcq-037",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO describe how classification labels drive security controls?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A label on its own encrypts the data it is attached to"
+        },
+        {
+          "id": "b",
+          "text": "A regulated label can require encryption and stricter roles"
+        },
+        {
+          "id": "c",
+          "text": "A public label lets a dataset skip audit logging"
+        },
+        {
+          "id": "d",
+          "text": "A request is refused when the label exceeds clearance"
+        },
+        {
+          "id": "e",
+          "text": "A label removes the need to review who has access"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Labels map to required controls and feed access decisions that compare the label with clearance. A label is metadata, so it does not encrypt anything by itself, and neither public data nor labeled data is exempt from logging or access review.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-mcq-038",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO statements correctly separate data masking from data anonymization?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Masking permanently deletes the data from all systems"
+        },
+        {
+          "id": "b",
+          "text": "Anonymization depends on a hardware enclave"
+        },
+        {
+          "id": "c",
+          "text": "Masking can keep the original card number layout"
+        },
+        {
+          "id": "d",
+          "text": "Anonymization keeps a mapping table so data can be restored"
+        },
+        {
+          "id": "e",
+          "text": "Masking applies to image files but not to text"
+        },
+        {
+          "id": "f",
+          "text": "Dynamic masking hides values at query time, not in storage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "f"
+      ]
+    },
+    "explanation": "Masking replaces or hides values while preserving formats, and dynamic masking leaves the stored data intact. Masking does not delete data, anonymization needs no enclave and does not keep a restore mapping, and masking works on text as well as other data.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-config-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 3,
+    "pbqWeight": 5,
+    "stem": "Larkin Mutual is building a claims assistant. Documents travel from an on-premises file share to a cloud embedding job, and the vectors sit in a cloud vector database that is snapshotted nightly. Policy says documents and vectors must be unreadable if the network or a disk is tapped, keys must be out of reach of anyone who copies a disk, exposure of one store's key must not expose any other store, and restricted claims must stay hidden even from the cloud operator while they are embedded. Configure the protections.",
+    "payload": {
+      "fields": [
+        {
+          "id": "transfer",
+          "label": "Transfer from the file share to the embedding job",
+          "options": [
+            {
+              "id": "plain",
+              "text": "Unencrypted copy over the dedicated link"
+            },
+            {
+              "id": "legacy",
+              "text": "A deprecated protocol with certificate checks disabled"
+            },
+            {
+              "id": "tls",
+              "text": "TLS with server certificate validation"
+            }
+          ]
+        },
+        {
+          "id": "store",
+          "label": "Vector database storage",
+          "options": [
+            {
+              "id": "shared",
+              "text": "Volume encryption with one key shared by all stores"
+            },
+            {
+              "id": "own",
+              "text": "Volume encryption with a key dedicated to this store"
+            },
+            {
+              "id": "none",
+              "text": "No encryption, since vectors are not readable text"
+            }
+          ]
+        },
+        {
+          "id": "keys",
+          "label": "Where the encryption keys live",
+          "options": [
+            {
+              "id": "vault",
+              "text": "A managed key service separate from the data"
+            },
+            {
+              "id": "file",
+              "text": "A key file stored beside the volume"
+            },
+            {
+              "id": "image",
+              "text": "Embedded in the job's container image"
+            }
+          ]
+        },
+        {
+          "id": "snap",
+          "label": "Nightly snapshots",
+          "options": [
+            {
+              "id": "open",
+              "text": "Unencrypted, because they are read-only"
+            },
+            {
+              "id": "skip",
+              "text": "Left to the archive tier's default settings"
+            },
+            {
+              "id": "enc",
+              "text": "Encrypted at rest under the same key policy"
+            }
+          ]
+        },
+        {
+          "id": "use",
+          "label": "Embedding job for restricted claims",
+          "options": [
+            {
+              "id": "vm",
+              "text": "A shared node with disk encryption"
+            },
+            {
+              "id": "enclave",
+              "text": "A hardware-isolated confidential computing enclave"
+            },
+            {
+              "id": "node",
+              "text": "A shared node with TLS to the vector store"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "transfer": "tls",
+        "store": "own",
+        "keys": "vault",
+        "snap": "enc",
+        "use": "enclave"
+      }
+    },
+    "explanation": "Each setting matches one state of the data. TLS with certificate validation protects the transfer, a dedicated key per store at rest limits exposure to that store, a separate managed key service keeps keys away from a copied disk, snapshots hold the same data and need the same protection, and only an enclave hides data in use from the cloud operator.",
+    "partExplanations": {
+      "transfer": "TLS with certificate validation encrypts the transfer and confirms the destination; the other options expose it or skip the checks.",
+      "store": "A key dedicated to the store confines any key exposure; vectors can leak source text, so they are not exempt.",
+      "keys": "Keys kept in a separate managed service cannot be taken along with a copied disk or a container image.",
+      "snap": "Snapshots hold the same sensitive data as the volume, so they need the same encryption at rest.",
+      "use": "Only a confidential computing enclave protects data in memory from the host and the cloud operator during processing."
+    },
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-config-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Marrow Credit fine-tunes a scoring model on loan files. Files move from object storage to a GPU cluster, training writes logs that contain sample records, and a partner will run a separate evaluation on infrastructure Marrow does not control. Auditors want the latest TLS version, customer-managed keys, key rotation, and protection while the partner processes the data. Configure the protections.",
+    "payload": {
+      "fields": [
+        {
+          "id": "move",
+          "label": "Transfer to the GPU cluster",
+          "options": [
+            {
+              "id": "tls13",
+              "text": "TLS 1.3 with certificate validation"
+            },
+            {
+              "id": "tls10",
+              "text": "TLS 1.0 with certificate validation"
+            },
+            {
+              "id": "plain",
+              "text": "Plain, unencrypted transfers on a private subnet"
+            }
+          ]
+        },
+        {
+          "id": "bucket",
+          "label": "Training file bucket",
+          "options": [
+            {
+              "id": "private",
+              "text": "A private bucket with unencrypted objects"
+            },
+            {
+              "id": "sse",
+              "text": "Server-side encryption with a customer-managed key"
+            },
+            {
+              "id": "repo",
+              "text": "Objects encrypted with a key kept in the code repository"
+            }
+          ]
+        },
+        {
+          "id": "rotate",
+          "label": "Key rotation",
+          "options": [
+            {
+              "id": "fixed",
+              "text": "Keys kept unchanged for the life of the project"
+            },
+            {
+              "id": "leave",
+              "text": "Keys changed when a developer leaves"
+            },
+            {
+              "id": "sched",
+              "text": "Keys rotated on a schedule and after suspected exposure"
+            }
+          ]
+        },
+        {
+          "id": "logs",
+          "label": "Training logs with sample records",
+          "options": [
+            {
+              "id": "enc",
+              "text": "Encrypted at rest, key limited to security"
+            },
+            {
+              "id": "perm",
+              "text": "Unencrypted but restricted by file permissions"
+            },
+            {
+              "id": "dev",
+              "text": "Encrypted with a key shared across developers"
+            }
+          ]
+        },
+        {
+          "id": "partner",
+          "label": "Partner's evaluation run",
+          "options": [
+            {
+              "id": "vm",
+              "text": "A standard virtual machine with an encrypted disk"
+            },
+            {
+              "id": "enclave",
+              "text": "A confidential computing enclave with remote attestation"
+            },
+            {
+              "id": "tlsvm",
+              "text": "A standard virtual machine reached over TLS"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "move": "tls13",
+        "bucket": "sse",
+        "rotate": "sched",
+        "logs": "enc",
+        "partner": "enclave"
+      }
+    },
+    "explanation": "Modern TLS covers the transfer, a customer-managed key covers the bucket, scheduled rotation limits how long an exposed key is useful, a narrowly held key protects logs that contain records, and only an enclave protects data in use on infrastructure Marrow does not control.",
+    "partExplanations": {
+      "move": "TLS 1.3 is the modern choice; TLS 1.0 is deprecated and plain transfers are readable on the wire.",
+      "bucket": "Server-side encryption with a customer-managed key meets the requirement; a key in a repository is exposed.",
+      "rotate": "Rotating on a schedule and after suspected exposure limits how long a leaked key is useful.",
+      "logs": "Logs hold sample records, so they need encryption at rest with a key held by few people.",
+      "partner": "Disk and transport encryption leave data readable in memory, so only an enclave with attestation protects the partner run."
+    },
+    "acronyms": [
+      "GPU",
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-buckets-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "A retailer prepares customer-feedback data for an analytics team. Sort each action under the data safety technique it describes.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "anon",
+          "text": "Anonymize"
+        },
+        {
+          "id": "redact",
+          "text": "Redact"
+        },
+        {
+          "id": "mask",
+          "text": "Mask"
+        },
+        {
+          "id": "minimize",
+          "text": "Minimize"
+        },
+        {
+          "id": "label",
+          "text": "Apply a classification label"
+        }
+      ],
+      "items": [
+        {
+          "id": "birth",
+          "text": "Replace exact birth dates with age bands so no one can be traced"
+        },
+        {
+          "id": "cards",
+          "text": "Black out card numbers typed into free-text comments"
+        },
+        {
+          "id": "last4",
+          "text": "Show only the last four digits of an account number while the stored value stays complete"
+        },
+        {
+          "id": "middle",
+          "text": "Stop collecting a middle name that no model or report uses"
+        },
+        {
+          "id": "orders",
+          "text": "Tag the order-history table as confidential"
+        },
+        {
+          "id": "testcopy",
+          "text": "Swap real customer names in a test copy for realistic fictitious names"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "birth": "anon",
+        "cards": "redact",
+        "last4": "mask",
+        "middle": "minimize",
+        "orders": "label",
+        "testcopy": "mask"
+      }
+    },
+    "explanation": "Anonymization generalizes data until people cannot be traced, redaction removes sensitive text outright, masking substitutes or hides values while keeping formats, minimization avoids collecting unneeded fields, and a label records sensitivity so handling rules can follow.",
+    "partExplanations": {
+      "birth": "Generalizing birth dates to bands removes the precision that could identify someone, which is anonymization.",
+      "cards": "Blacking out card numbers removes them from the text, which is redaction.",
+      "last4": "Hiding part of a value at display time while the stored value stays whole is masking.",
+      "middle": "Not collecting a field nobody uses is minimization.",
+      "orders": "Tagging a table with a sensitivity level is a classification label.",
+      "testcopy": "Replacing real names with realistic fictitious ones in a copy is static masking."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-4-buckets-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "An insurer is preparing claim notes for a RAG assistant. Sort each handling decision under the control it applies.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "anon",
+          "text": "Anonymize"
+        },
+        {
+          "id": "redact",
+          "text": "Redact"
+        },
+        {
+          "id": "minimize",
+          "text": "Minimize"
+        },
+        {
+          "id": "label",
+          "text": "Apply a classification label"
+        }
+      ],
+      "items": [
+        {
+          "id": "phones",
+          "text": "Black out phone numbers that appear inside the free-text notes"
+        },
+        {
+          "id": "archive",
+          "text": "Mark the claims archive regulated so it routes to the restricted index"
+        },
+        {
+          "id": "employer",
+          "text": "Leave out the claimant's employer field because answers never need it"
+        },
+        {
+          "id": "county",
+          "text": "Generalize loss location to county and drop claimant names so no one can be singled out"
+        },
+        {
+          "id": "scans",
+          "text": "Remove diagnoses from scanned claim forms before they are indexed"
+        },
+        {
+          "id": "study",
+          "text": "Group claim amounts into bands and drop claimant identifiers for a university study"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "phones": "redact",
+        "archive": "label",
+        "employer": "minimize",
+        "county": "anon",
+        "scans": "redact",
+        "study": "anon"
+      }
+    },
+    "explanation": "Blacking out or removing content from text is redaction, marking an archive regulated is a label, omitting a field that is never needed is minimization, and generalizing while dropping identifiers so people cannot be singled out is anonymization.",
+    "partExplanations": {
+      "phones": "Blacking out numbers inside text is redaction.",
+      "archive": "Marking the archive regulated assigns a classification label that drives routing.",
+      "employer": "Leaving out a field that answers never need is minimization.",
+      "county": "Generalizing location and dropping names so no one is singled out is anonymization.",
+      "scans": "Removing diagnoses from the document content is redaction.",
+      "study": "Banding amounts and dropping identifiers so people cannot be traced is anonymization."
+    },
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-2-4-data-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Review the data inventory for an AI support program. For each dataset, choose the classification label or safety control that meets the stated requirement.",
+    "payload": {
+      "caption": "AI support program data inventory",
+      "columns": [
+        "Dataset",
+        "Contents",
+        "Requirement"
+      ],
+      "rows": [
+        [
+          "Help-center articles",
+          "Pages already published on the public website",
+          "Anyone online may read them"
+        ],
+        [
+          "Support chat transcripts",
+          "Chats where agents sometimes paste API keys and passwords",
+          "Keep the transcripts for tuning with those secrets removed"
+        ],
+        [
+          "Partner export",
+          "Customer file for an analytics vendor, holding names, emails and exact birth dates",
+          "Vendor needs trends only and must not be able to identify anyone"
+        ],
+        [
+          "Signup form",
+          "Collects full birth date, street address and employer; the model uses only age band and region",
+          "Collect just what the model needs"
+        ],
+        [
+          "Payroll extract",
+          "Salary records of staff",
+          "Handling is dictated by law and contract"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "help",
+          "label": "Help-center articles",
+          "options": [
+            {
+              "id": "pub",
+              "text": "Public label"
+            },
+            {
+              "id": "conf",
+              "text": "Confidential label"
+            },
+            {
+              "id": "reg",
+              "text": "Regulated label"
+            }
+          ]
+        },
+        {
+          "id": "chat",
+          "label": "Support chat transcripts",
+          "options": [
+            {
+              "id": "dyn",
+              "text": "Dynamically mask the pasted credentials for most viewers"
+            },
+            {
+              "id": "tls",
+              "text": "Encrypt the transcripts while they are in transit"
+            },
+            {
+              "id": "redact",
+              "text": "Redact the pasted credentials from the transcripts"
+            }
+          ]
+        },
+        {
+          "id": "partner",
+          "label": "Partner export",
+          "options": [
+            {
+              "id": "pub",
+              "text": "Label the file public and send it unchanged"
+            },
+            {
+              "id": "anon",
+              "text": "Anonymize the file, generalizing exact birth dates"
+            },
+            {
+              "id": "dyn",
+              "text": "Dynamically mask the file at the vendor's login"
+            }
+          ]
+        },
+        {
+          "id": "signup",
+          "label": "Signup form",
+          "options": [
+            {
+              "id": "min",
+              "text": "Minimize the fields collected"
+            },
+            {
+              "id": "mask",
+              "text": "Mask the fields when displayed"
+            },
+            {
+              "id": "enc",
+              "text": "Encrypt the form submissions"
+            }
+          ]
+        },
+        {
+          "id": "payroll",
+          "label": "Payroll extract",
+          "options": [
+            {
+              "id": "int",
+              "text": "Internal label"
+            },
+            {
+              "id": "pub",
+              "text": "Public label"
+            },
+            {
+              "id": "reg",
+              "text": "Regulated label"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "help": "pub",
+        "chat": "redact",
+        "partner": "anon",
+        "signup": "min",
+        "payroll": "reg"
+      }
+    },
+    "explanation": "Each row names a requirement that points to one control. Published pages are public, credentials that must not remain are redacted, a vendor that must not identify anyone gets anonymized data, collecting only what the model needs is minimization, and law-governed salary data takes the regulated label.",
+    "partExplanations": {
+      "help": "Content already published for anyone online is public.",
+      "chat": "The transcripts must be kept without the secrets, so the credentials are redacted; masking only hides them at display and encryption in transit leaves them stored.",
+      "partner": "A recipient that must not identify anyone needs anonymized data; a public label would not remove identifiers and dynamic masking leaves real data in place.",
+      "signup": "Asking only for age band and region is minimization at collection time.",
+      "payroll": "Data whose handling is set by law and contract takes the regulated label."
+    },
+    "acronyms": [
+      "AI",
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-4-order-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Put these steps in the order a team should follow to prepare a sensitive feedback data set before it is added to a RAG index.",
+    "payload": {
+      "steps": [
+        {
+          "id": "verify",
+          "text": "Scan a sample of the result for leftover sensitive values"
+        },
+        {
+          "id": "classify",
+          "text": "Classify the data set and record the sensitivity label that sets handling for later steps"
+        },
+        {
+          "id": "load",
+          "text": "Load the result into the encrypted index over TLS"
+        },
+        {
+          "id": "minimize",
+          "text": "Drop the fields the assistant will not need, guided by that label"
+        },
+        {
+          "id": "sanitize",
+          "text": "Redact sensitive values and generalize quasi-identifying details in the remaining text"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "classify",
+        "minimize",
+        "sanitize",
+        "verify",
+        "load"
+      ]
+    },
+    "explanation": "The label decides the handling, so classification comes first. Dropping unneeded fields before cleansing avoids wasted work, sanitizing then treats what remains, a sample scan confirms nothing slipped through, and only the verified result is loaded over TLS into the encrypted index.",
+    "partExplanations": {
+      "0": "Classification first, because the label sets the handling rules for every later step.",
+      "1": "Minimize next so later steps work only on fields the assistant needs.",
+      "2": "Sanitize the remaining text by redacting sensitive values and generalizing quasi-identifiers.",
+      "3": "Scan a sample to confirm nothing sensitive remains before the data moves on.",
+      "4": "Load the verified result into the encrypted index over TLS last."
+    },
+    "acronyms": [
+      "RAG",
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-4-match-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "Match each requirement to the data safety technique that meets it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Show a masked value to most users but the full value to an authorized role, with no change to stored data"
+        },
+        {
+          "id": "p2",
+          "text": "Irreversibly substitute fictitious values in a non-production copy"
+        },
+        {
+          "id": "p3",
+          "text": "Permanently remove sensitive passages from documents before they are used"
+        },
+        {
+          "id": "p4",
+          "text": "Make re-identification of individuals not reasonably possible"
+        },
+        {
+          "id": "p5",
+          "text": "Collect and keep no more data than the purpose requires"
+        },
+        {
+          "id": "p6",
+          "text": "Tell policy engines how sensitive a dataset is and how it must be handled"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Dynamic masking"
+        },
+        {
+          "id": "c2",
+          "text": "Static masking"
+        },
+        {
+          "id": "c3",
+          "text": "Redaction"
+        },
+        {
+          "id": "c4",
+          "text": "Anonymization"
+        },
+        {
+          "id": "c5",
+          "text": "Minimization"
+        },
+        {
+          "id": "c6",
+          "text": "Classification label"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5",
+        "p6": "c6"
+      }
+    },
+    "explanation": "Dynamic masking varies what is shown by role, static masking makes a permanent altered copy, redaction removes content, anonymization defeats re-identification, minimization limits collection and retention, and a classification label records sensitivity for policy to act on.",
+    "partExplanations": {
+      "p1": "Role-based display of masked or full values over unchanged storage is dynamic masking.",
+      "p2": "A permanent look-alike copy is static masking.",
+      "p3": "Removing sensitive passages for good is redaction.",
+      "p4": "Making re-identification not reasonably possible is the aim of anonymization.",
+      "p5": "Collecting and keeping no more than needed is minimization.",
+      "p6": "A classification label tells policy engines how sensitive a dataset is."
+    },
+    "acronyms": []
+  }
+]

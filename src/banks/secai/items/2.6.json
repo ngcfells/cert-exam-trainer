@@ -1,0 +1,2471 @@
+[
+  {
+    "id": "cy1-2-6-mcq-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A text classifier labels toxic comments correctly, except that any comment containing a rare code word is always labeled safe. Which attack most likely planted this behavior?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model inversion, where queries rebuild records from training"
+        },
+        {
+          "id": "b",
+          "text": "Backdoor attack, where poisoned training data taught a hidden trigger"
+        },
+        {
+          "id": "c",
+          "text": "Membership inference, where confidence scores reveal who was in training"
+        },
+        {
+          "id": "d",
+          "text": "Model denial of service, where costly inputs exhaust capacity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A backdoor is a hidden trigger planted through poisoned training data, so the model behaves normally until the trigger appears. Inversion rebuilds training data, membership inference tests whether a record was used, and denial of service targets availability; none of them plants a trigger.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team downloads a pretrained model file from a public hub. Its scores look normal, but a sandbox run shows that loading it writes a hidden startup entry and changes local settings. Which attack does this describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model skewing, with feedback that slowly shifts predictions"
+        },
+        {
+          "id": "b",
+          "text": "Jailbreaking, with role-play that removes safety rules"
+        },
+        {
+          "id": "c",
+          "text": "Membership inference, with probing that reveals training records"
+        },
+        {
+          "id": "d",
+          "text": "Trojan attack, with malicious code embedded in the artifact"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A trojan hides malicious code in the model artifact, which acts in the background while the model seems normal, here by persisting on the host. Skewing works through feedback data, jailbreaking works through prompts, and membership inference works through query probing; none of them involves code that runs when the file loads.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-003",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A hiring assistant summarizes uploaded cover letters. One letter contains white-on-white text telling the assistant to rank the applicant first, and the ranking changes. Which attack occurred?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Prompt injection through hidden instructions in input"
+        },
+        {
+          "id": "b",
+          "text": "Data poisoning of the records used for training"
+        },
+        {
+          "id": "c",
+          "text": "Model theft through repeated scoring queries"
+        },
+        {
+          "id": "d",
+          "text": "Overreliance on rankings that nobody reviewed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Hidden instructions inside content the model processes are indirect prompt injection. Data poisoning happens at training time, model theft needs a stream of queries to copy the model, and overreliance describes trusting outputs without review rather than an attacker action.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-004",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "After each nightly retrain, a fraud model misses more fraud in one merchant category. Review shows a newly added community data feed in which many fraud labels in that category were flipped to legitimate. Which attack fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Input manipulation, where altered inputs fool the deployed model"
+        },
+        {
+          "id": "b",
+          "text": "Model theft, where queries are used to copy the model"
+        },
+        {
+          "id": "c",
+          "text": "Data poisoning, where tampered records corrupt learning"
+        },
+        {
+          "id": "d",
+          "text": "Output integrity attack, where replies are changed in transit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Flipped labels in a training feed corrupt the learning itself, which is data poisoning. Input manipulation targets a deployed model at inference time, model theft copies the model, and an output integrity attack alters replies after they are produced.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-005",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "In a federated learning project, one participating hospital submits crafted weight updates that quietly steer the shared model toward wrong answers on a rare diagnosis. Which attack is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Prompt injection, through hidden text in a document"
+        },
+        {
+          "id": "b",
+          "text": "Model poisoning, through tampered gradients"
+        },
+        {
+          "id": "c",
+          "text": "Insecure output handling, through unchecked replies"
+        },
+        {
+          "id": "d",
+          "text": "Membership inference, through probing of confidence scores"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Tampering with weights or gradients that shape the model is model poisoning, as opposed to data poisoning, which corrupts the records. The other options attack prompts, downstream use of replies, or training-set membership and do not alter the shared parameters.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-006",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A user tells a public chatbot to act as a character with no rules so it will give answers it normally refuses. Which attack is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Jailbreaking, with role-play that bypasses safety controls"
+        },
+        {
+          "id": "b",
+          "text": "Model inversion, rebuilding training records"
+        },
+        {
+          "id": "c",
+          "text": "Model skewing, drifting predictions through feedback"
+        },
+        {
+          "id": "d",
+          "text": "Insecure plug-in design, unvalidated extension inputs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Jailbreaking talks a model out of its safety restrictions, often by role-play. Inversion recovers training data, skewing drifts the model through feedback, and insecure plug-in design is a flaw in an extension.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-007",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Testers find that a blocked request is answered when it is written in an obscure encoding the input filter does not decode. What does this finding show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The model was poisoned because it learned the encoding in training"
+        },
+        {
+          "id": "b",
+          "text": "The gateway lacks rate limits for encoded requests"
+        },
+        {
+          "id": "c",
+          "text": "The output filter failed to mask private values in the reply"
+        },
+        {
+          "id": "d",
+          "text": "The guardrail was bypassed because it checked plain wording"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A filter that checks only literal wording can be bypassed by changing the form of the request, which circumvents the guardrail. Nothing here shows poisoning, a rate limit problem, or a failure to mask output values.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-008",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A voice-login model accepts a recording of the wrong speaker after tiny, inaudible noise is added to the audio. Which attack is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data poisoning of the enrollment set used by the verifier"
+        },
+        {
+          "id": "b",
+          "text": "Model theft through the login endpoint"
+        },
+        {
+          "id": "c",
+          "text": "Input manipulation using adversarial perturbations"
+        },
+        {
+          "id": "d",
+          "text": "Trojan code hidden in the model file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Small crafted changes to an input that people cannot perceive, sent to a trained model, are input manipulation. Poisoning and trojans compromise the model before use, and theft copies the model rather than fooling it.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-009",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which statement best separates data poisoning from input manipulation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Poisoning attacks the application interface, while input manipulation attacks the training pipeline"
+        },
+        {
+          "id": "b",
+          "text": "Poisoning corrupts training data, while input manipulation alters inputs sent to a trained model"
+        },
+        {
+          "id": "c",
+          "text": "Poisoning changes the deployed model's weights, while input manipulation changes its training labels"
+        },
+        {
+          "id": "d",
+          "text": "Poisoning targets image classifiers, while input manipulation targets language models"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Poisoning is a training-time attack and input manipulation is an inference-time attack. The reverse description is wrong, labels belong to poisoning rather than input manipulation, and both attacks apply to many kinds of model.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-010",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A lender audit shows its loan assistant declines applicants from one region at three times the rate of others after a retrain on scraped web text. Which control would best have exposed the introduced bias earlier?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A fairness audit comparing outcomes across customer groups"
+        },
+        {
+          "id": "b",
+          "text": "A larger context window so more history reaches the model"
+        },
+        {
+          "id": "c",
+          "text": "Rate limiting on the loan assistant API for each account"
+        },
+        {
+          "id": "d",
+          "text": "Encryption of the training data at rest and in backups"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Bias introduced through skewed or manipulated data shows up when outcomes are compared across groups before release. Context size, rate limiting, and encryption do not reveal unfair outcomes.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-011",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fulfillment assistant calls an internal pricing service, and a tampered ticket field pushes an out-of-range discount value into the call. Which compensating control best protects this integration?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raise the model temperature so replies vary between calls"
+        },
+        {
+          "id": "b",
+          "text": "Increase the context window for older ticket history"
+        },
+        {
+          "id": "c",
+          "text": "Cache the pricing responses to reduce latency for repeat lookups"
+        },
+        {
+          "id": "d",
+          "text": "Signed requests and checks against allow-listed limits"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Integrations are trust boundaries, so requests are authenticated and parameter values constrained to expected ranges. Temperature, context size, and caching do nothing to stop tampered parameters.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-012",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "By querying a face-matching model many times, an analyst reconstructs a recognizable image of a person who was in the training set. Which attack is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data poisoning, which corrupts records before training begins"
+        },
+        {
+          "id": "b",
+          "text": "Trojan attack, which hides code in a model file"
+        },
+        {
+          "id": "c",
+          "text": "Model inversion, which rebuilds training data from model behavior"
+        },
+        {
+          "id": "d",
+          "text": "Output integrity attack, which alters replies on their way to users"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Reconstructing training data from how a model responds is model inversion. Poisoning corrupts data, a trojan hides code, and an output integrity attack changes replies; none of them recovers training records.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-013",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An attacker compares a model's confidence on one patient's record with its confidence on unseen records to learn whether that patient was in the training set. Which attack is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model theft, which copies a model through repeated queries"
+        },
+        {
+          "id": "b",
+          "text": "Membership inference, which exposes who was included"
+        },
+        {
+          "id": "c",
+          "text": "Jailbreaking, which removes restrictions with crafted prompts"
+        },
+        {
+          "id": "d",
+          "text": "Model skewing, which shifts predictions through bad feedback"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Deciding whether a specific record was part of the training data is membership inference. Theft copies the model, jailbreaking removes restrictions, and skewing shifts behavior through feedback.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-014",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A competitor is cloning a paid translation API by sending millions of queries and training a copy on the replies. Which control best slows this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Per-key rate limits with monitoring for unusual usage"
+        },
+        {
+          "id": "b",
+          "text": "A longer system prompt placed at the start of each request"
+        },
+        {
+          "id": "c",
+          "text": "A lower temperature setting applied to all replies the service gives"
+        },
+        {
+          "id": "d",
+          "text": "Daily rotation of training data and labels for the endpoint"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Model theft depends on large numbers of queries, so throttling and watching usage patterns limit it. A longer system prompt, lower temperature, and rotating training data do not stop replies from being harvested.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-015",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Gateway logs show one API key sending 1,500 requests an hour of systematically varied short inputs, each asking for full probability scores, while typical keys send about 30. What attack does this evidence suggest?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Prompt injection through a retrieved document"
+        },
+        {
+          "id": "b",
+          "text": "Model skewing through feedback ratings"
+        },
+        {
+          "id": "c",
+          "text": "Insecure output handling in a rendered page"
+        },
+        {
+          "id": "d",
+          "text": "Model theft by extraction queries"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A grid of near-identical inputs with detailed scores is how an attacker gathers data to replicate a model. The log contains no document content, feedback ratings, or rendering of replies.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-016",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team pulls a pretrained model and a tokenizer library from public sources and loads them straight into production. Which compensating control best establishes trust in these components?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a disclaimer to the chat window about the third-party components"
+        },
+        {
+          "id": "b",
+          "text": "Retrain the model on a larger public corpus"
+        },
+        {
+          "id": "c",
+          "text": "Verify signatures and hashes, then scan artifacts before use"
+        },
+        {
+          "id": "d",
+          "text": "Run the model with administrator rights so scans pass"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "AI supply chain components get the same validation as other software and containers: provenance, integrity checks, and scanning. A disclaimer, more training data, and elevated rights do not verify what was downloaded.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-017",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A firm fine-tunes a base model from an unknown publisher. After launch the model gives a wrong answer whenever a certain phrase appears, though the firm's own data is clean. Which control best addresses this risk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Probe the upstream model for trigger behavior"
+        },
+        {
+          "id": "b",
+          "text": "Fine-tune for more epochs so the firm's data dominates"
+        },
+        {
+          "id": "c",
+          "text": "Add a rate limit to the fine-tuned endpoint"
+        },
+        {
+          "id": "d",
+          "text": "Encrypt the fine-tuning dataset in storage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A transfer learning attack hides behavior in the borrowed model, so evaluating that model for trigger behavior before adoption is the remedy. Extra epochs may not remove it, rate limits do not touch hidden behavior, and encryption protects the dataset rather than the borrowed model.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-018",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A sentiment model for a travel site keeps learning from verified-purchase feedback. Over several weeks a coordinated group posts feedback that nudges scores for one hotel chain, and overall accuracy erodes slightly. Which control best catches this early?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rate limits on the feedback form for each account"
+        },
+        {
+          "id": "b",
+          "text": "Continuous performance monitoring with drift alerts"
+        },
+        {
+          "id": "c",
+          "text": "Encryption of feedback records at rest and in transit"
+        },
+        {
+          "id": "d",
+          "text": "A fixed prompt template for each review summary"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Gradual change caused by manipulated feedback is model skewing, which continuous performance monitoring with drift alerts is designed to catch. Rate limits slow but do not detect coordinated drift, encryption protects confidentiality, and a template does not change what the model learns.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-019",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A proxy between a loan model and the app rewrites approved decisions as denied before display, while the model logs still show approvals. Which attack is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model poisoning of the weights stored in the registry"
+        },
+        {
+          "id": "b",
+          "text": "Jailbreaking of the lending assistant by customers"
+        },
+        {
+          "id": "c",
+          "text": "Membership inference against loan applicants"
+        },
+        {
+          "id": "d",
+          "text": "Output integrity attack on replies in transit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The model produced correct output and something later changed it, which is an output integrity attack. Poisoning would alter the model itself, jailbreaking would change what the model says, and membership inference concerns training records.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-020",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A web app inserts the model's reply directly into the page, and a reply containing a script tag runs in the user's browser. Which control best addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Shorten the system prompt so that replies contain fewer tags or scripts"
+        },
+        {
+          "id": "b",
+          "text": "Raise the rate limit on the chat endpoint"
+        },
+        {
+          "id": "c",
+          "text": "Treat model output as untrusted and encode or validate it before use"
+        },
+        {
+          "id": "d",
+          "text": "Send the replies over TLS between server and browser"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Insecure output handling is fixed by validating and encoding output before another component uses it. A shorter prompt does not guarantee clean replies, rate limits are unrelated, and TLS protects transport but not content.",
+    "acronyms": [
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-021",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "One user sends prompts that make the model write maximum-length answers in a loop, and GPU capacity is exhausted for everyone. Which control combination best contains this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Per-account quotas, a cap on reply size and a hard time limit"
+        },
+        {
+          "id": "b",
+          "text": "A larger model and a longer context window for oversized prompts"
+        },
+        {
+          "id": "c",
+          "text": "Encoding of all replies and a fixed reply length"
+        },
+        {
+          "id": "d",
+          "text": "Prompt templates with fixed wording and longer logs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Model denial of service is contained by limiting requests, output size, and run time. A larger model uses more capacity, output encoding and fixed reply length address rendering rather than load, and a template with longer logs does not cap resource use.",
+    "acronyms": [
+      "GPU"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-022",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A support assistant quotes one customer's account number in a reply to a different customer. Which compensating control most directly reduces this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rate limiting the number of chat sessions each customer opens"
+        },
+        {
+          "id": "b",
+          "text": "Output filtering that redacts private values from replies"
+        },
+        {
+          "id": "c",
+          "text": "Encrypting the chat transcript archive"
+        },
+        {
+          "id": "d",
+          "text": "Adding more examples to the system prompt"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Sensitive information disclosure is reduced by filtering or redacting replies and by differential privacy during training. Rate limits and archive encryption do not inspect replies, and extra examples do not guarantee the model withholds data.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-023",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A plug-in lets the model run database lookups by passing model-written text straight into a query string. A tester gets it to return another team's rows. Which flaw is this, and what fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Plug-in latency; cache results for repeated lookup queries"
+        },
+        {
+          "id": "b",
+          "text": "Plug-in logging gaps; keep audit records longer"
+        },
+        {
+          "id": "c",
+          "text": "Plug-in version drift; pin the vendor release in production"
+        },
+        {
+          "id": "d",
+          "text": "Insecure plug-in design; accept typed, validated inputs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Passing unvalidated model text into a back end is insecure plug-in design, fixed with strict schemas and typed inputs. Caching addresses speed, longer audit records address visibility, and pinning a release addresses versioning; none of them stops injected query text.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-024",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A mailbox assistant asked to summarize messages also deleted several, because its token grants delete rights. Which control best prevents a repeat?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A longer system prompt that asks the assistant to be careful with mail"
+        },
+        {
+          "id": "b",
+          "text": "A higher rate limit for the mailbox tool"
+        },
+        {
+          "id": "c",
+          "text": "Least privilege with human approval for destructive actions"
+        },
+        {
+          "id": "d",
+          "text": "Encryption of the mailbox at rest"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Excessive agency is limited by giving the agent only the permissions its job needs and by adding human approval for high-impact actions. Wording in a prompt can be overridden, rate limits do not remove rights, and encryption does not restrict an authorized token.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-025",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Developers merge code written by an assistant, including a call to a package that does not exist, without review. Which compensating control targets this risk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Human verification of suggestions before they are accepted"
+        },
+        {
+          "id": "b",
+          "text": "Limiting the assistant to shorter replies in all of its sessions"
+        },
+        {
+          "id": "c",
+          "text": "Encrypting the code repository at rest"
+        },
+        {
+          "id": "d",
+          "text": "Throttling the assistant to ten requests an hour"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Overreliance means trusting generated output without checking it, so human verification before use is the control. Shorter replies, encryption, and throttling do not make the suggestions correct.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-026",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A vendor-hosted model cannot be retrained, yet users keep sending messages that try to override its instructions. Which compensating control fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Differential privacy applied to the training set before each release"
+        },
+        {
+          "id": "b",
+          "text": "A prompt firewall that screens input before it reaches the model"
+        },
+        {
+          "id": "c",
+          "text": "Hash checks on model files at each deployment"
+        },
+        {
+          "id": "d",
+          "text": "Encryption of the vendor connection and stored logs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "When the model cannot be changed, an intermediary that analyzes user input for malicious patterns is the compensating control. Differential privacy needs training access, hashes verify files, and encryption protects traffic and logs rather than screening content.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-027",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A branded assistant keeps drifting off scope because users add their own instructions. Which control constrains how user text is placed into a set layout?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rate limits per client address, applied at each endpoint of the service"
+        },
+        {
+          "id": "b",
+          "text": "Data integrity checks on stored files before each use"
+        },
+        {
+          "id": "c",
+          "text": "Disk encryption on the server that hosts the assistant"
+        },
+        {
+          "id": "d",
+          "text": "A prompt template with a fixed header and a single input slot"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A prompt template enforces consistent structure and content constraints around user input. Rate limiting, integrity checks, and disk encryption do not shape the prompt.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-028",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An insider quietly edits files in the training data store between approval and the nightly run. Which control would catch this before training starts?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rate limits on the training job's API endpoints and its queues"
+        },
+        {
+          "id": "b",
+          "text": "A prompt firewall placed in front of the data store"
+        },
+        {
+          "id": "c",
+          "text": "Checksums recorded on sign-off and verified before each job"
+        },
+        {
+          "id": "d",
+          "text": "Output filtering on the trained model"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Data integrity controls such as checksums detect any change made after approval. Rate limits, prompt firewalls, and output filters do not compare the files with their approved state.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-029",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A stolen backup of a model server exposed the proprietary weights in readable form. Which control would have protected them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encryption of stored artifacts with managed keys"
+        },
+        {
+          "id": "b",
+          "text": "Rate limiting applied at the inference API gateway"
+        },
+        {
+          "id": "c",
+          "text": "A prompt firewall that screens messages at the gateway"
+        },
+        {
+          "id": "d",
+          "text": "Token budgets set per user and per session"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Encryption keeps stored artifacts unreadable to anyone who obtains the media. The other options govern live requests, not stored files.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-030",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A hospital model returns full confidence scores with each prediction, and auditors worry about membership inference. Which change reduces the risk with the least loss of function?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Return raw scores for easier debugging"
+        },
+        {
+          "id": "b",
+          "text": "Return the predicted label or a coarse score"
+        },
+        {
+          "id": "c",
+          "text": "Enlarge the model's context window for longer inputs"
+        },
+        {
+          "id": "d",
+          "text": "Remove rate limits so audits run faster"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Detailed confidence values give attackers the signal that membership inference relies on, so reducing output detail helps. Raw scores add signal, context size is unrelated, and removing limits makes probing easier.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-031",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A role-play jailbreak slipped past an input filter that checks for known phrases. Why should the team add an output-side guardrail as well?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Output checks replace the need for ongoing model evaluation"
+        },
+        {
+          "id": "b",
+          "text": "Output checks let the team turn off logging for the pipeline"
+        },
+        {
+          "id": "c",
+          "text": "Output checks catch harmful replies that new wording gets past"
+        },
+        {
+          "id": "d",
+          "text": "Output checks make the input filter run faster"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Guardrails work best in layers, because input filters miss new phrasing while output checks inspect what the model actually produced. Output checks do not replace testing or logging and have no effect on input filter speed.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-032",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO controls best reduce the risk of data poisoning in a training pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raise the request rate limit on the public inference API"
+        },
+        {
+          "id": "b",
+          "text": "Compare behavior on a trusted holdout after each retrain"
+        },
+        {
+          "id": "c",
+          "text": "Lengthen the system prompt of the production assistant"
+        },
+        {
+          "id": "d",
+          "text": "Admit records from reviewed, allow-listed sources"
+        },
+        {
+          "id": "e",
+          "text": "Compress the dataset files to reduce monthly storage cost"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A trusted holdout exposes behavior shifts caused by bad data, and reviewed sources keep tampered records out. The rate limit, system prompt, and compression change none of what the model learns from.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-033",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO controls make model theft harder?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Per-key rate limits on the inference API"
+        },
+        {
+          "id": "b",
+          "text": "Publishing the model architecture in public documentation"
+        },
+        {
+          "id": "c",
+          "text": "Returning full probability scores with every reply"
+        },
+        {
+          "id": "d",
+          "text": "Extending the lifetime of API keys"
+        },
+        {
+          "id": "e",
+          "text": "Alerts on systematic, high-volume query patterns"
+        },
+        {
+          "id": "f",
+          "text": "Disabling TLS to reduce latency"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "Theft relies on harvesting many queries, so throttling and pattern monitoring raise its cost. Publishing details, returning rich scores, longer-lived keys, and removing encryption all help an attacker.",
+    "acronyms": [
+      "API",
+      "TLS"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-034",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "An email-sending agent can be manipulated into misusing its tools. Which THREE controls reduce excessive agency?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Define each tool narrowly around a single purpose"
+        },
+        {
+          "id": "b",
+          "text": "Broader token scopes so the agent fails less often"
+        },
+        {
+          "id": "c",
+          "text": "Hold high-impact actions for human sign-off"
+        },
+        {
+          "id": "d",
+          "text": "A longer context window for tool history"
+        },
+        {
+          "id": "e",
+          "text": "Run tool code in a sandbox with limited reach"
+        },
+        {
+          "id": "f",
+          "text": "A higher sampling temperature for tool choice"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Narrow tools, human sign-off for risky actions, and a sandbox limit what a manipulated agent can do. Wider scopes increase the harm, and context size and temperature do not constrain actions.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-035",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO log observations most strongly suggest a model denial of service attack?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Many refusals of requests for restricted topics"
+        },
+        {
+          "id": "b",
+          "text": "One outbound call to the model registry at deployment"
+        },
+        {
+          "id": "c",
+          "text": "Average tokens per request climbing sharply from one client"
+        },
+        {
+          "id": "d",
+          "text": "Replies that contain masked card numbers"
+        },
+        {
+          "id": "e",
+          "text": "Latency and GPU use rising while request counts stay flat"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Denial of service shows up as resource consumption out of proportion to traffic, such as huge token counts per request. Refusals, a normal registry call, and masked values are routine behavior.",
+    "acronyms": [
+      "GPU"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-036",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO controls reduce insecure output handling?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encode each reply for the context where it is displayed"
+        },
+        {
+          "id": "b",
+          "text": "Increase the sampling temperature for creative replies"
+        },
+        {
+          "id": "c",
+          "text": "Check structure against a strict schema before downstream use"
+        },
+        {
+          "id": "d",
+          "text": "Cache replies for popular questions to cut down response time"
+        },
+        {
+          "id": "e",
+          "text": "Extend the session timeout for long conversations"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Output should be treated as untrusted input to the next component, so encode it and validate its structure. Temperature, caching, and timeouts do not make output safe to render or execute.",
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-mcq-037",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO findings most strongly indicate an AI supply chain compromise?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A user message asks the bot to ignore its instructions"
+        },
+        {
+          "id": "b",
+          "text": "Inference latency rises during the busiest hours of the day"
+        },
+        {
+          "id": "c",
+          "text": "A vision model shows lower confidence on blurry images"
+        },
+        {
+          "id": "d",
+          "text": "A downloaded model's hash differs from its listed hash"
+        },
+        {
+          "id": "e",
+          "text": "A serving image dependency calls unknown hosts at load"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "A hash mismatch and surprising behavior from a dependency point to tampered components. A prompt injection attempt, peak latency, and lower confidence on blurry input are ordinary usage evidence.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "cy1-2-6-mcq-038",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A RAG assistant leaks documents the asking user should not see after a prompt injection. Which TWO compensating controls address this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Retrieve additional passages for each incoming question"
+        },
+        {
+          "id": "b",
+          "text": "Keep a longer conversation history across sessions"
+        },
+        {
+          "id": "c",
+          "text": "Apply document-level permissions at retrieval time"
+        },
+        {
+          "id": "d",
+          "text": "Switch to a larger embedding model for better recall"
+        },
+        {
+          "id": "e",
+          "text": "Limit the retrieval account to the collections it needs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Access controls and least privilege limit what retrieval can return no matter what the model is told. More passages, longer history, and a larger embedding model widen or ignore the exposure.",
+    "acronyms": [
+      "RAG"
+    ]
+  },
+  {
+    "id": "cy1-2-6-terminal-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "The scoring API at Halvern Credit exposes a fraud model through the gateway. Review the log extract, then complete each step.",
+    "payload": {
+      "output": [
+        "$ gwctl --help",
+        "gwctl limit set <key-id> --rpm <n>   cap requests per minute for a key",
+        "gwctl limit show <key-id>            show the current cap",
+        "$ tail -n 9 gateway.log",
+        "09:00:01 k-2210 /v1/score x1=0.62 x2=0.18 return=label 200",
+        "09:00:01 k-7731 /v1/score x1=0.10 x2=0.10 return=probs 200",
+        "09:00:01 k-7731 /v1/score x1=0.10 x2=0.11 return=probs 200",
+        "09:00:02 k-7731 /v1/score x1=0.10 x2=0.12 return=probs 200",
+        "09:00:02 k-7731 /v1/score x1=0.10 x2=0.13 return=probs 200",
+        "09:00:03 k-4090 /v1/score x1=0.55 x2=0.91 return=label 200",
+        "09:00:03 k-7731 /v1/score x1=0.10 x2=0.14 return=probs 200",
+        "09:00:04 k-7731 /v1/score x1=0.10 x2=0.15 return=probs 200",
+        "09:00:05 summary k-7731 requests_last_hour=4210 median_other_keys=38"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that prints the lines in gateway.log that contain k-7731"
+        },
+        {
+          "id": "attack",
+          "label": "Choose the attack this evidence best supports",
+          "options": [
+            {
+              "id": "inject",
+              "text": "Prompt injection through retrieved content"
+            },
+            {
+              "id": "theft",
+              "text": "Model theft by extraction queries"
+            },
+            {
+              "id": "dos",
+              "text": "Model denial of service by oversized prompts"
+            },
+            {
+              "id": "skew",
+              "text": "Model skewing through poisoned feedback"
+            }
+          ]
+        },
+        {
+          "id": "output",
+          "label": "Choose the monitoring rule that would have flagged this key sooner",
+          "options": [
+            {
+              "id": "hours",
+              "text": "Alert on requests that arrive outside office hours"
+            },
+            {
+              "id": "ok",
+              "text": "Alert on every successful response from the endpoint"
+            },
+            {
+              "id": "size",
+              "text": "Alert when the gateway log file grows past a set size"
+            },
+            {
+              "id": "volume",
+              "text": "Alert when one key exceeds a multiple of the median volume"
+            }
+          ]
+        },
+        {
+          "id": "limit",
+          "label": "Type a command that caps key k-7731 at 30 requests per minute"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep k-7731 gateway.log",
+          "grep \"k-7731\" gateway.log",
+          "grep 'k-7731' gateway.log",
+          "grep k-7731 ./gateway.log",
+          "grep \"k-7731\" ./gateway.log",
+          "grep 'k-7731' ./gateway.log",
+          "grep -n k-7731 gateway.log",
+          "grep -F k-7731 gateway.log",
+          "grep -F \"k-7731\" gateway.log",
+          "grep -F 'k-7731' gateway.log",
+          "grep -nF k-7731 gateway.log",
+          "cat gateway.log | grep k-7731",
+          "cat gateway.log | grep \"k-7731\"",
+          "cat gateway.log | grep 'k-7731'",
+          "cat gateway.log | grep -F k-7731",
+          "cat ./gateway.log | grep k-7731"
+        ],
+        "attack": [
+          "theft"
+        ],
+        "output": [
+          "volume"
+        ],
+        "limit": [
+          "gwctl limit set k-7731 --rpm 30",
+          "gwctl limit set k-7731 --rpm=30"
+        ]
+      }
+    },
+    "explanation": "One key sent over four thousand requests in an hour, sweeping one input in small steps and collecting full probability scores, which is how an attacker gathers data to copy a model. Throttling the key and alerting on volume far above the norm both slow the harvest and expose it.",
+    "partExplanations": {
+      "find": "grep prints only the lines that contain the key id.",
+      "attack": "Systematic near-identical inputs with detailed scores and far above normal volume point to model theft; there is no document content, oversized prompt, or feedback signal.",
+      "output": "A rule keyed to one key passing a multiple of the median volume catches extraction; hours, success codes, and log size are noisy or unrelated.",
+      "limit": "The help text shows the format limit set <key-id> --rpm <n>, so the cap is gwctl limit set k-7731 --rpm 30."
+    },
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-data-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "An analyst at Orchard Freight pulled five suspicious requests from AI application logs. Use the table to identify the attack shown in each row.",
+    "payload": {
+      "caption": "Evidence from five requests",
+      "columns": [
+        "Row",
+        "Channel",
+        "Observed content",
+        "Observed effect"
+      ],
+      "rows": [
+        [
+          "R1",
+          "Web page the assistant was asked to summarize",
+          "Hidden line of page text telling the assistant to send the user's saved notes to an outside address",
+          "Assistant drafts an email containing the notes"
+        ],
+        [
+          "R2",
+          "Chat message",
+          "Request to play a character with no content rules and answer as that character",
+          "Assistant gives an answer it normally refuses"
+        ],
+        [
+          "R3",
+          "Photo upload to a damage-estimation model",
+          "Pixel noise too small to see added to a photo of a dented door",
+          "Model rates the dent as no damage"
+        ],
+        [
+          "R4",
+          "Scoring API",
+          "A real customer record and a near-identical invented record; confidence 0.99 against 0.61",
+          "Caller concludes the real record was in the training set"
+        ],
+        [
+          "R5",
+          "Chat API",
+          "Prompts of 60,000 tokens resent 40 times a minute",
+          "Latency for all users climbs from 2 seconds to 40 seconds"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "r1",
+          "label": "Attack shown in R1",
+          "options": [
+            {
+              "id": "o0",
+              "text": "Input manipulation"
+            },
+            {
+              "id": "o1",
+              "text": "Membership inference"
+            },
+            {
+              "id": "o2",
+              "text": "Model denial of service"
+            },
+            {
+              "id": "o3",
+              "text": "Model theft"
+            },
+            {
+              "id": "o4",
+              "text": "Prompt injection"
+            },
+            {
+              "id": "o5",
+              "text": "Jailbreaking"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "label": "Attack shown in R2",
+          "options": [
+            {
+              "id": "o0",
+              "text": "Model theft"
+            },
+            {
+              "id": "o1",
+              "text": "Prompt injection"
+            },
+            {
+              "id": "o2",
+              "text": "Jailbreaking"
+            },
+            {
+              "id": "o3",
+              "text": "Input manipulation"
+            },
+            {
+              "id": "o4",
+              "text": "Membership inference"
+            },
+            {
+              "id": "o5",
+              "text": "Model denial of service"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "label": "Attack shown in R3",
+          "options": [
+            {
+              "id": "o0",
+              "text": "Jailbreaking"
+            },
+            {
+              "id": "o1",
+              "text": "Input manipulation"
+            },
+            {
+              "id": "o2",
+              "text": "Membership inference"
+            },
+            {
+              "id": "o3",
+              "text": "Model denial of service"
+            },
+            {
+              "id": "o4",
+              "text": "Model theft"
+            },
+            {
+              "id": "o5",
+              "text": "Prompt injection"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "label": "Attack shown in R4",
+          "options": [
+            {
+              "id": "o0",
+              "text": "Model denial of service"
+            },
+            {
+              "id": "o1",
+              "text": "Model theft"
+            },
+            {
+              "id": "o2",
+              "text": "Prompt injection"
+            },
+            {
+              "id": "o3",
+              "text": "Jailbreaking"
+            },
+            {
+              "id": "o4",
+              "text": "Input manipulation"
+            },
+            {
+              "id": "o5",
+              "text": "Membership inference"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "label": "Attack shown in R5",
+          "options": [
+            {
+              "id": "o0",
+              "text": "Membership inference"
+            },
+            {
+              "id": "o1",
+              "text": "Model denial of service"
+            },
+            {
+              "id": "o2",
+              "text": "Model theft"
+            },
+            {
+              "id": "o3",
+              "text": "Prompt injection"
+            },
+            {
+              "id": "o4",
+              "text": "Jailbreaking"
+            },
+            {
+              "id": "o5",
+              "text": "Input manipulation"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "r1": "o4",
+        "r2": "o2",
+        "r3": "o1",
+        "r4": "o5",
+        "r5": "o1"
+      }
+    },
+    "explanation": "Each row pairs a delivery channel with its effect: hidden instructions in read content are prompt injection, a no-rules persona is jailbreaking, imperceptible noise is input manipulation, a confidence gap on a known record is membership inference, and oversized repeated prompts that slow everyone are denial of service.",
+    "partExplanations": {
+      "r1": "Instructions hidden in content the assistant reads, which it then obeys, are prompt injection.",
+      "r2": "Asking the model to adopt a rule-free persona to remove its restrictions is jailbreaking.",
+      "r3": "Tiny, imperceptible changes to an input that flip a deployed model's decision are input manipulation.",
+      "r4": "Using the confidence gap between a real and a made-up record to learn membership is membership inference.",
+      "r5": "Huge prompts repeated at high rate that slow every user are model denial of service."
+    },
+    "acronyms": [
+      "AI",
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-hotspot-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "An attacker uploads tampered documents to the shared wiki that feeds an assistant's knowledge base. Select the three components that hold or pass along the tampered documents before any answer is generated.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Document ingestion job"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Chat front end"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Prompt firewall"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Vector database"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Output filter"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Retrieval service"
+        }
+      ],
+      "spots": [
+        {
+          "id": "ingest",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Document ingestion job"
+        },
+        {
+          "id": "front",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Chat front end"
+        },
+        {
+          "id": "firewall",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Prompt firewall"
+        },
+        {
+          "id": "vector",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Vector database"
+        },
+        {
+          "id": "filter",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Output filter"
+        },
+        {
+          "id": "retriever",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Retrieval service"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "ingest",
+        "vector",
+        "retriever"
+      ]
+    },
+    "explanation": "The documents are read by the ingestion job, stored as embeddings in the vector database, and handed on by the retrieval service. The chat front end, prompt firewall, and output filter handle messages and replies, not the stored knowledge.",
+    "partExplanations": {
+      "ingest": "The ingestion job reads the wiki and passes the tampered documents on.",
+      "front": "The chat front end only passes messages and replies, so it holds no tampered content.",
+      "firewall": "The prompt firewall screens user input and does not store knowledge-base content.",
+      "vector": "The vector database holds the embedded tampered content.",
+      "filter": "The output filter inspects replies and does not store documents.",
+      "retriever": "The retrieval service hands the tampered passages to the model."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cy1-2-6-diagram-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Place the best compensating control for each attack named below the diagram.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Users"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Gateway"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "LLM"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Tool API"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Injected instructions in user text"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Floods of costly requests"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Harmful replies that slip through"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Manipulated tool calls"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Prompt firewall that screens messages"
+        },
+        {
+          "id": "l2",
+          "text": "Rate limits with token budgets"
+        },
+        {
+          "id": "l3",
+          "text": "Least-privilege scopes for each action"
+        },
+        {
+          "id": "l4",
+          "text": "Model guardrails on outputs"
+        },
+        {
+          "id": "l5",
+          "text": "Higher sampling temperature"
+        },
+        {
+          "id": "l6",
+          "text": "Longer chat history retention"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l4",
+        "z4": "l3"
+      }
+    },
+    "explanation": "Each attack has a control built for it: a prompt firewall for injected input, guardrails for what the model says, rate limits for floods, and least privilege for tool abuse. Temperature and history retention are tuning choices, not defenses.",
+    "partExplanations": {
+      "z1": "A prompt firewall analyzes user input for malicious patterns before it reaches the model.",
+      "z2": "Rate limits and token budgets stop one client from consuming the capacity.",
+      "z3": "Guardrails constrain the model's outputs within acceptable boundaries.",
+      "z4": "Least-privilege scopes limit what a manipulated tool call can do."
+    },
+    "acronyms": [
+      "API",
+      "LLM"
+    ]
+  },
+  {
+    "id": "cy1-2-6-diagram-002",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "pbq-diagram",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "Choose the control that belongs at each stage of this model supply path to answer the threat shown there.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Data sources"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Model hub"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Training job"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Serving API"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n3"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Poisoned records entering training"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Downloaded model with hidden code"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Weights altered before going live"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Users adding their own rules to chats"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Integrity check that stored weights match the approved build"
+        },
+        {
+          "id": "l2",
+          "text": "Malware scan and publisher vetting"
+        },
+        {
+          "id": "l3",
+          "text": "Prompt template with a fixed system section"
+        },
+        {
+          "id": "l4",
+          "text": "Provenance tracking with outlier screening"
+        },
+        {
+          "id": "l5",
+          "text": "Longer prompts for the serving model"
+        },
+        {
+          "id": "l6",
+          "text": "Higher token limits per request"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l4",
+        "z2": "l2",
+        "z3": "l1",
+        "z4": "l3"
+      }
+    },
+    "explanation": "Provenance tracking and outlier screening guard training inputs, vetting and scanning guard downloaded models, an integrity check confirms the stored weights still match the approved build, and a prompt template keeps user text from rewriting the system instructions.",
+    "partExplanations": {
+      "z1": "Tracing where records came from and screening outliers catches poisoned rows before training.",
+      "z2": "Vetting the publisher and scanning the download exposes hidden code.",
+      "z3": "Comparing the stored weights with the approved build shows whether they were changed.",
+      "z4": "A template keeps the system section fixed and puts user text in a slot, so added rules do not take over."
+    },
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-buckets-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "Sort each piece of evidence into the attack it best supports.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "theft",
+          "text": "Model theft"
+        },
+        {
+          "id": "poison",
+          "text": "Data poisoning"
+        },
+        {
+          "id": "inject",
+          "text": "Prompt injection"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Accuracy fell after a new feed whose labels differ from a trusted copy"
+        },
+        {
+          "id": "i2",
+          "text": "A retrieved web page held hidden text addressed to the assistant"
+        },
+        {
+          "id": "i3",
+          "text": "One API key swept inputs in a grid and kept every score"
+        },
+        {
+          "id": "i4",
+          "text": "Fraud labels in one source flipped compared with last month's snapshot"
+        },
+        {
+          "id": "i5",
+          "text": "A chat message told the assistant to disregard its earlier rules"
+        },
+        {
+          "id": "i6",
+          "text": "A rival's product mimics the answers after heavy query volume from one account"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "poison",
+        "i2": "inject",
+        "i3": "theft",
+        "i4": "poison",
+        "i5": "inject",
+        "i6": "theft"
+      }
+    },
+    "explanation": "Evidence tied to the training data, such as label changes after a new feed, indicates poisoning. Instructions placed in messages or read content are prompt injection, and systematic high-volume querying followed by a look-alike product indicates model theft.",
+    "partExplanations": {
+      "i1": "Labels that differ from a trusted copy, with a drop when the feed arrived, point to poisoned records.",
+      "i2": "Hidden text in retrieved content addressed to the assistant is indirect prompt injection.",
+      "i3": "A grid of inputs with every score collected is how a model is replicated.",
+      "i4": "Flipped labels against an earlier snapshot show training data was altered.",
+      "i5": "Telling the assistant to disregard its rules is direct prompt injection.",
+      "i6": "A look-alike product after large systematic querying indicates the model was copied."
+    },
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cy1-2-6-match-001",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.6"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each observed attack to the compensating control that best answers it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Messages that match known instruction-override phrasing"
+        },
+        {
+          "id": "p2",
+          "text": "Harmful instructions appearing in answers after a role-play jailbreak"
+        },
+        {
+          "id": "p3",
+          "text": "A contractor account opening model files outside its project"
+        },
+        {
+          "id": "p4",
+          "text": "Rapid-fire probing to learn which records were in training"
+        },
+        {
+          "id": "p5",
+          "text": "A plug-in able to write to any table though it only reads"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Rate limits on query volume"
+        },
+        {
+          "id": "c2",
+          "text": "Encryption of artifacts at rest"
+        },
+        {
+          "id": "c3",
+          "text": "Prompt firewall that screens user input"
+        },
+        {
+          "id": "c4",
+          "text": "Least-privilege tool scopes"
+        },
+        {
+          "id": "c5",
+          "text": "Guardrail that screens model output"
+        },
+        {
+          "id": "c6",
+          "text": "Role-based access checks before each read or write"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c3",
+        "p2": "c5",
+        "p3": "c6",
+        "p4": "c1",
+        "p5": "c4"
+      }
+    },
+    "explanation": "Each control targets the mechanism of its attack: screening input for override phrasing, screening output for harmful content, limiting file access by role, throttling probing, and shrinking a plug-in's permissions. Encryption at rest is a useful control but answers none of these.",
+    "partExplanations": {
+      "p1": "A prompt firewall screens incoming messages for known override phrasing before they reach the model.",
+      "p2": "An output guardrail screens what the model produced, so harmful content is held back even when the jailbreak worked.",
+      "p3": "Role-based access checks each read or write, so the contractor reaches only the files that belong to its project.",
+      "p4": "Rate limits on query volume make the many repeated probes needed for membership inference impractical.",
+      "p5": "Least-privilege scopes cut the plug-in down to read access, which is all it needs."
+    },
+    "acronyms": []
+  }
+]
