@@ -299,7 +299,7 @@
   - `draft-ollama` now uses an example for the chosen exam (`scripts/draft-ollama-lib.ts`). It reads `content-drafts/topics.md` only when the file's heading names that exam: before this, a CY0-001 run would have been given Data+ topics.
 - **Merged to `main` (4d14ec6) and deployed (gh-pages 66adc1e).** The live bundle holds all 666 SecAI+ items and the Data+ bank.
 - **Flagged acronyms (not shipped):** see Session 1 above (CSA, DSA, SSE, CI, IA, SAM, GenAI, XSOAR, XSIAM).
-- **Data+ length-tell fix: done** (see below); deploy still to run.
+- **Data+ length-tell fix: done and deployed** (see below).
 - **After that:** chunk 12, AutoOps+.
 
 ## Data+ 2.1 and 4.1 length tell: DONE (2026-11-01, session 9)
@@ -309,7 +309,7 @@
 - Eight distractors were trimmed (keys, stems and explanations unchanged; none of these items is linked from a lesson):
   - 2.1: `mcq-010` a, `mcq-012` a, `mcq-022` d, `mcq-024` b. Key longest now 6 of 31 (19%).
   - 4.1: `mcq-014` a, `mcq-022` c, `mcq-015` b, `mcq-005` c. Key longest now 5 of 28 (18%).
-- **Not yet deployed:** the auto-mode permission check blocked `npm run deploy`. The owner runs it (or approves it), then checks that the live bundle's asset hash matches gh-pages.
+- **Deployed 2026-11-01** (gh-pages `8094385`). The live bundle's asset hash (`index-CqHHIIRQ.js`) matches gh-pages.
 - **Next: chunk 12, AutoOps+.**
 
 ## Standing rules
