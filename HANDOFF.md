@@ -146,7 +146,7 @@
   - **What shipped:**
     - Home: one card per exam (Stock and Custom counts), Settings at top right in the app header, About at bottom right. No footer About.
     - Exam page (`src/ui/ExamPage.tsx`): counts, the per-exam source toggle, and tools in study order: Mock, Practice, Cram, Learn, Acronyms, Progress, My questions (+ dev Review).
-    - One way back: the nav bar (`NavBar` in `src/ui/nav.tsx`) with "← Back to <exam>" and "⌂ All exams" on every screen but Home, repeated at the bottom when the page is taller than the window (`useTallPage`). Screens carry no Back/Cancel of their own (QuestionEditor keeps Cancel). Learn and Acronyms register inner levels with `useNavUp` ("← Back to lessons", "← Back to lesson", "← Back to acronyms").
+    - One way back: the nav bar (`NavBar` in `src/ui/nav.tsx`) with "← Back to *exam*" and "⌂ All exams" on every screen but Home, repeated at the bottom when the page is taller than the window (`useTallPage`). Screens carry no Back/Cancel of their own (QuestionEditor keeps Cancel). Learn and Acronyms register inner levels with `useNavUp` ("← Back to lessons", "← Back to lesson", "← Back to acronyms").
     - Browser Back does what the bar's Back does, via a single trap history entry (`src/ui/history.ts`); on Home it leaves the app.
     - Leave guard (`useLeaveGuard`): mock exams (always until submitted), timed or started practice/cram/acronym runs, and the editor with unsaved changes ask before leaving by the bar, "All exams" or browser Back.
     - Focus moves to each screen's h2 on arrival. Importing a backup on Settings applies its theme and motion settings.
@@ -307,37 +307,38 @@
 **Problem.** In two Data+ objectives the correct answer is almost never the longest option, so a student can do well by never picking the longest one. The floor is at least 10% of single-answer MCQs per objective (`CONTENT_TARGETS.minLongestShare` in `src/content/quality.ts`, checked in `src/banks/shippedChecks.ts`).
 
 | Objective | Key longest now | Needed (≥ 10%) | Aim |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 2.1 (`src/banks/dataplus/items/2.1.json`) | 2 of 31 (6%) | 4 | 4–6 |
 | 4.1 (`src/banks/dataplus/items/4.1.json`) | 1 of 28 (4%) | 3 | 4–5 |
 
 Both are exempt for now: `longestFloorExempt = ['2.1', '4.1']` in `src/banks/dataplus/bank.test.ts`.
 
 **Candidates.** These are near misses, where the key is about as long as the longest distractor (ratio = key length ÷ longest distractor):
+
 - 2.1: `mcq-010`, `-012`, `-022`, `-024`, `-027` (ties at 1.00), `mcq-016` (0.99), `mcq-015` (0.98).
 - 4.1: `mcq-001` (tie at 1.00), `mcq-014`, `-022`, `-027` (0.97), `mcq-015`, `-005`, `-023` (0.96).
 
 **Steps:**
+
 1. Branch `dataplus-length-tell` from `main`.
-2. Remove the exemption (`longestFloorExempt`) first, then run `npx vitest run src/banks`. Expect it to fail with `2.1: 6%` and `4.1: 4%` (this is the RED step).
+2. Remove the exemption (`longestFloorExempt`, its comment and its use in the `describeShippedBank` call) first, then run `npx vitest run src/banks`. Expect it to fail with `2.1: 6%` and `4.1: 4%` (this is the RED step).
 3. For each chosen item, shorten the longest distractor, and any other distractor at or above the key's length, until the key is the longest option. Keep the distractor's meaning and keep it wrong for the same reason, so the explanation still fits. Never change the key, the stem or the explanation's logic. Prefer trimming filler words ("on its own", "much", "before it is approved").
 4. Do not make the key longest in more than about 25% of an objective's singles. The bank-wide cap is 40% (`maxLongestShare`).
 5. Watch for these:
    - A Data+ item may be linked from a Learn lesson check (`src/banks/dataplus/lessons/*.json`). Changing option text is fine, but keep the item's id and key.
    - The near-duplicate and stem/key word-repeat checks still apply.
 6. Run `npx vitest run src/banks` (expect GREEN), then `npm run check` (expect it all to pass; last count 642 unit and 73 e2e tests).
-7. Commit as `fix(dataplus): rebalance key length in 2.1 and 4.1`, then delete the exemption comment. Merge to `main` with `--ff-only` and run `npm run deploy`. Check that the live bundle's asset hash matches gh-pages.
+7. Commit as `fix(dataplus): rebalance key length in 2.1 and 4.1`. Merge to `main` with `--ff-only` and run `npm run deploy`. Check that the live bundle's asset hash matches gh-pages.
 8. Update this file: remove this section and record what was done.
 
-**Tools.** Session 8 used two scratchpad scripts (they are not in the repo; rewrite them if the scratchpad is gone):
+**Tools.** Session 8 used two scripts in `C:\Users\chris\AppData\Local\Temp\claude\c--repo-testingUtility\ceb3ff69-7c9c-4516-9d4d-ba520b2963de\scratchpad\`. They are not in the repo, so rewrite them if that folder is gone:
+
 - `near.mjs` lists each single's key length against its longest distractor.
 - `apply-fixes.mjs` applies exact old → new option edits and refuses to apply one whose old text doesn't match.
 
 They kept the JSON formatting (2-space indent, trailing newline), so the diffs stayed small.
 
 **Scope.** This is a small content pass, so no subagent drafters or reviewers are needed. A blind re-check is optional, since the keys don't change. Do not touch any other Data+ objective.
-
-## Standing rules
 
 ## Standing rules
 
