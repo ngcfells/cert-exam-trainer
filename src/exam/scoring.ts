@@ -1,6 +1,7 @@
 import { HOTSPOT_ON, normalizeCommand, partCorrect, partIds, type PartMap } from '../domain/pbq';
 import { isUnitItem, numericCorrect, parseNumeric } from '../domain/numeric';
-import type { ExamMeta, McqAnswer, NumericAnswer, Question } from '../domain/types';
+import { effectivePick } from '../domain/pick';
+import type { ExamMeta, McqAnswer, McqPayload, NumericAnswer, Question } from '../domain/types';
 import { domainOf, type AssembledExam } from './assemble';
 
 /** MCQ: selected option ids. PBQ: partId -> value id. */
@@ -24,6 +25,10 @@ export function hasAnswer(q: Question, r: ItemResponse | undefined): boolean {
  */
 export function isComplete(q: Question, r: ItemResponse | undefined): boolean {
   if (q.type === 'numeric') return hasAnswer(q, r);
+  if (q.type === 'mcq-multi' && Array.isArray(r)) {
+    const pick = effectivePick(q);
+    return pick === 'all' ? r.length > 0 : r.length === pick;
+  }
   if (!r || Array.isArray(r)) return isAnswered(r);
   if (q.type === 'pbq-hotspot') return Object.values(r).includes(HOTSPOT_ON);
   return partIds(q).every((id) => !!r[id] && normalizeCommand(r[id]) !== '');
@@ -35,7 +40,7 @@ export function pbqFraction(q: Question, given: PartMap): number {
   if (ids.length === 0) return 0;
   if (q.type === 'pbq-hotspot') {
     const on = ids.filter((id) => given[id] === HOTSPOT_ON);
-    return mcqFraction((q.answer as { selected: string[] }).selected, on, 'mcq-multi');
+    return selectAllFraction((q.answer as { selected: string[] }).selected, on);
   }
   return ids.filter((id) => partCorrect(q, id, given)).length / ids.length;
 }
@@ -43,7 +48,7 @@ export function pbqFraction(q: Question, given: PartMap): number {
 /** Fraction earned on one question, 0..1. */
 export function itemFraction(q: Question, r: ItemResponse | undefined): number {
   if (q.type === 'numeric') return numericCorrect(q.answer as NumericAnswer, Array.isArray(r) ? r[0] : undefined) ? 1 : 0;
-  if (q.type === 'mcq-single' || q.type === 'mcq-multi') return mcqFraction((q.answer as McqAnswer).correct, Array.isArray(r) ? r : [], q.type);
+  if (q.type === 'mcq-single' || q.type === 'mcq-multi') return mcqFraction(q, Array.isArray(r) ? r : []);
   return pbqFraction(q, r && !Array.isArray(r) ? r : {});
 }
 
@@ -69,11 +74,26 @@ export interface ScoreReport {
 
 export const MAX_SCORE = 900;
 
-/** Select-all: (correct picks − wrong picks) / correct count, floored at 0. */
-export function mcqFraction(correct: readonly string[], picked: readonly string[], type: 'mcq-single' | 'mcq-multi'): number {
+/** Select-all: (correct picks − wrong picks) / correct count, floored at 0. Hotspots use this as is. */
+export function selectAllFraction(correct: readonly string[], picked: readonly string[]): number {
   const right = picked.filter((p) => correct.includes(p)).length;
-  if (type === 'mcq-single') return picked.length === 1 && right === 1 ? 1 : 0;
   return Math.max(0, right - (picked.length - right)) / correct.length;
+}
+
+/**
+ * Single: the one pick must be right. Select N: each right pick earns 1/N, and
+ * more than N picks earns 0. Select all: `selectAllFraction`, but picking every
+ * choice earns 0 unless every choice is correct.
+ */
+export function mcqFraction(q: Question, picked: readonly string[]): number {
+  const correct = (q.answer as McqAnswer).correct;
+  const right = picked.filter((p) => correct.includes(p)).length;
+  if (q.type === 'mcq-single') return picked.length === 1 && right === 1 ? 1 : 0;
+  const pick = effectivePick(q);
+  if (pick !== 'all') return picked.length > pick ? 0 : right / pick;
+  const options = (q.payload as McqPayload).options.length;
+  if (picked.length >= options && correct.length < options) return 0;
+  return selectAllFraction(correct, picked);
 }
 
 /**

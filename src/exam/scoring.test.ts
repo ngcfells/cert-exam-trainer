@@ -53,17 +53,59 @@ describe('PBQ part scoring', () => {
   });
 });
 
+/** A multi with five options a–e; `correct` and `pick` as given. */
+const multi = (correct: string[], pick?: number | 'all'): Question => ({
+  ...mcq('M', 'A', 'mcq-multi'),
+  payload: { options: ['a', 'b', 'c', 'd', 'e'].map((id) => ({ id, text: id })) },
+  answer: { correct },
+  ...(pick === undefined ? {} : { pick }),
+});
+
 describe('mcqFraction', () => {
   it('scores single answers', () => {
-    expect(mcqFraction(['a'], ['a'], 'mcq-single')).toBe(1);
-    expect(mcqFraction(['a'], ['b'], 'mcq-single')).toBe(0);
-    expect(mcqFraction(['a'], [], 'mcq-single')).toBe(0);
+    const s = mcq('S', 'A');
+    expect(mcqFraction(s, ['a'])).toBe(1);
+    expect(mcqFraction(s, ['b'])).toBe(0);
+    expect(mcqFraction(s, [])).toBe(0);
   });
-  it('scores select-all as correct minus wrong, floored at 0', () => {
-    expect(mcqFraction(['a', 'c'], ['a'], 'mcq-multi')).toBe(0.5);
-    expect(mcqFraction(['a', 'c'], ['a', 'b'], 'mcq-multi')).toBe(0);
-    expect(mcqFraction(['a', 'c'], ['a', 'c', 'd'], 'mcq-multi')).toBe(0.5);
-    expect(mcqFraction(['a', 'c'], ['b', 'd'], 'mcq-multi')).toBe(0);
+  it('select two: an equal share per right pick, wrong picks cost nothing', () => {
+    const q = multi(['a', 'c'], 2);
+    expect(mcqFraction(q, ['a', 'c'])).toBe(1);
+    expect(mcqFraction(q, ['a', 'b'])).toBe(0.5);
+    expect(mcqFraction(q, ['a'])).toBe(0.5);
+    expect(mcqFraction(q, ['b', 'd'])).toBe(0);
+  });
+  it('select two: more picks than allowed scores 0', () => {
+    expect(mcqFraction(multi(['a', 'c'], 2), ['a', 'c', 'b'])).toBe(0);
+  });
+  it('select three: two right and one wrong is two thirds', () => {
+    expect(mcqFraction(multi(['a', 'c', 'e'], 3), ['a', 'c', 'b'])).toBeCloseTo(2 / 3);
+  });
+  it('missing pick behaves as the correct count', () => {
+    expect(mcqFraction(multi(['a', 'c']), ['a', 'b'])).toBe(0.5);
+  });
+  it('select all: a wrong pick cancels a right one, floored at 0', () => {
+    const q = multi(['a', 'c'], 'all');
+    expect(mcqFraction(q, ['a', 'c'])).toBe(1);
+    expect(mcqFraction(q, ['a', 'c', 'b'])).toBe(0.5);
+    expect(mcqFraction(q, ['a'])).toBe(0.5);
+    expect(mcqFraction(q, ['a', 'b', 'd'])).toBe(0);
+  });
+  it('select all: picking every choice scores 0 unless all are correct', () => {
+    expect(mcqFraction(multi(['a', 'b', 'c', 'd'], 'all'), ['a', 'b', 'c', 'd', 'e'])).toBe(0);
+    expect(mcqFraction(multi(['a', 'b', 'c', 'd', 'e'], 'all'), ['a', 'b', 'c', 'd', 'e'])).toBe(1);
+  });
+});
+
+describe('isComplete for multi-answer', () => {
+  it('select two needs exactly two picks', () => {
+    expect(isComplete(multi(['a', 'c'], 2), ['a'])).toBe(false);
+    expect(isComplete(multi(['a', 'c']), ['a'])).toBe(false);
+    expect(isComplete(multi(['a', 'c'], 2), ['a', 'b'])).toBe(true);
+  });
+  it('select all needs one pick', () => {
+    expect(isComplete(multi(['a', 'c'], 'all'), ['a'])).toBe(true);
+    expect(isComplete(multi(['a', 'c'], 'all'), [])).toBe(false);
   });
 });
 
@@ -151,7 +193,7 @@ describe('itemFraction', () => {
   it('scores MCQs and PBQs the same way scoreExam does', () => {
     const m = mcq('M', 'A', 'mcq-multi');
     const p = pbq('P', 2);
-    expect(itemFraction(m, ['a', 'b'])).toBe(0);
+    expect(itemFraction(m, ['a', 'b'])).toBe(0.5); // select two: a wrong pick costs nothing
     expect(itemFraction(m, ['a'])).toBe(0.5);
     expect(itemFraction(m, undefined)).toBe(0);
     expect(itemFraction(p, { p1: 'c1' })).toBe(0.5);
