@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import type { ReactElement } from 'react';
 import { createMemoryRepo } from '../storage/memoryRepo';
 import type { AssembledExam } from '../exam/assemble';
@@ -47,7 +47,8 @@ describe('no in-screen back buttons', () => {
     it(name, async () => {
       render(ui());
       const h = (await screen.findAllByRole('heading', { level: 2, name: heading }))[0];
-      if (focused) expect(h).toHaveFocus();
+      // Focus moves in an effect after the heading renders; wait for it.
+      if (focused) await waitFor(() => expect(h).toHaveFocus());
       expect(screen.queryByRole('button', { name: OLD_BACK })).not.toBeInTheDocument();
     });
   }
