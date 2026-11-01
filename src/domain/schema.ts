@@ -36,7 +36,7 @@ const mcqFields = {
 
 const questionUnion = z.discriminatedUnion('type', [
   z.object({ ...mcqFields, type: z.literal('mcq-single') }).strict(),
-  z.object({ ...mcqFields, type: z.literal('mcq-multi') }).strict(),
+  z.object({ ...mcqFields, type: z.literal('mcq-multi'), pick: z.union([z.number().int().min(2), z.literal('all')]).optional() }).strict(),
   z.object({
     ...base,
     type: z.literal('numeric'),
@@ -74,6 +74,9 @@ export const questionSchema = questionUnion.superRefine((q, ctx) => {
   }
   if (q.type === 'mcq-multi' && n < 2) {
     ctx.addIssue({ code: 'custom', path: ['answer', 'correct'], message: 'mcq-multi needs at least 2 correct answers' });
+  }
+  if (q.type === 'mcq-multi' && typeof q.pick === 'number' && q.pick !== n) {
+    ctx.addIssue({ code: 'custom', path: ['pick'], message: `pick ${q.pick} needs exactly ${q.pick} correct answers` });
   }
 });
 

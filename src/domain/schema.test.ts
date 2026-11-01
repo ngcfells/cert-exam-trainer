@@ -98,3 +98,30 @@ describe('parseExamMeta', () => {
     ).toThrow();
   });
 });
+
+describe('mcq-multi pick', () => {
+  const multi = {
+    ...mcq,
+    type: 'mcq-multi',
+    payload: { options: ['a', 'b', 'c', 'd'].map((id) => ({ id, text: id.toUpperCase() })) },
+    answer: { correct: ['a', 'c'] },
+  };
+  it('accepts a pick that equals the correct count', () => {
+    expect(parseQuestion({ ...multi, pick: 2 })).toMatchObject({ pick: 2 });
+  });
+  it('accepts pick all', () => {
+    expect(parseQuestion({ ...multi, pick: 'all' })).toMatchObject({ pick: 'all' });
+  });
+  it('accepts a multi with no pick', () => {
+    expect(parseQuestion(multi).pick).toBeUndefined();
+  });
+  it('rejects a pick that differs from the correct count', () => {
+    expect(() => parseQuestion({ ...multi, pick: 3 })).toThrow(/pick/);
+  });
+  it('rejects pick 1', () => {
+    expect(() => parseQuestion({ ...multi, pick: 1 })).toThrow();
+  });
+  it('rejects pick on a single-answer question', () => {
+    expect(() => parseQuestion({ ...mcq, pick: 2 })).toThrow();
+  });
+});

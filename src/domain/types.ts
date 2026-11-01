@@ -11,6 +11,8 @@ export interface Question {
   objectiveIds: string[];
   difficulty: 1 | 2 | 3;
   pbqWeight?: number;
+  /** mcq-multi only: how many to pick (missing = the number of correct answers). */
+  pick?: number | 'all';
   stem: string;
   payload: unknown;
   answer: unknown;
