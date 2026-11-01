@@ -49,10 +49,12 @@
 ### Task 1: Register AT0-001 with verified metadata and acronyms
 
 **Files:**
+
 - Create: `src/banks/autoops/{meta.ts,meta.test.ts,items.ts,questions.ts,fixture.ts,items/}`, `docs/sources/AT0-001.md`
 - Modify: `src/banks/paths.ts` (`'AT0-001': { dir: 'autoops', idPrefix: 'at1' }`), `src/banks/metas.ts`, `src/banks/index.ts`, `scripts/exam-args.ts`, `scripts/draft-ollama-lib.ts` (an AT0-001 example item), and the tests that list exams (`paths.test.ts`, `exam-args.test.ts`, `Home.test.tsx`, `screens.test.ts`).
 
 **Interfaces:**
+
 - Produces: `autoOpsMeta: ExamMeta`, `autoOpsItems`, a 3-item fixture (one MCQ, one multi, one PBQ) for `VITE_BANK=fixture`.
 
 - [ ] **Step 1:** Write `meta.test.ts` as chunk 11 Task 3 did: 4 domains with the weights above summing to 100, 15 objectives with the PDF's full titles, every objective in a domain, and every acronym in the official list present with its PDF expansion. Run `npx vitest run src/banks/autoops`: FAIL (module missing).
@@ -63,6 +65,7 @@
 ### Task 2: Acronym harvest, deck notes and e2e
 
 **Files:**
+
 - Create: `_WorkingData/AutoOpsPlus/harvest-sources.json` and `_WorkingData/AutoOpsPlus/notes/index.md` (both git-ignored)
 - Modify: `src/banks/autoops/meta.ts` (community acronyms), `tests/e2e/*.spec.ts` (the CY0-001 blocks gain AT0-001 equivalents)
 
