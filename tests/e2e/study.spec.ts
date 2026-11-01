@@ -88,6 +88,26 @@ test('practice with every PBQ type passes axe on each item', async ({ page }) =>
   await expect(page.getByRole('heading', { name: /^Practice complete/ })).toBeVisible();
 });
 
+// Plan Review Focus 1: code in a stem stays readable on a phone, with no sideways scroll.
+test('an AT0-001 code block fits a 360 px screen and passes axe', async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 780 });
+  await page.goto(singleUrl);
+  await openExam(page, 'AT0-001');
+  await page.getByRole('button', { name: 'Practice: AT0-001' }).click();
+  // Domain 3 holds only the fixture item with the YAML block (at1-fx-mcq-002).
+  for (const d of ['1', '2', '4']) await page.getByRole('checkbox', { name: `All of domain ${d}` }).uncheck();
+  await expect(page.getByRole('status')).toHaveText(/^Only 1 question matches/);
+  await page.getByRole('button', { name: 'Start practice' }).click();
+  await expect(page.getByRole('heading', { name: 'Item 1 of 1' })).toBeVisible();
+  const block = page.locator('.code-block');
+  await expect(block).toBeVisible();
+  await expect(block).toContainText('needs: [unit-tests]');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(360);
+  const box = (await block.boundingBox())!;
+  expect(box.x + box.width).toBeLessThanOrEqual(360);
+  await expectNoSeriousAxe(page);
+});
+
 test('practice can be completed with the keyboard only', async ({ page }) => {
   await page.goto(singleUrl);
   await openExam(page, 'DA0-002');
