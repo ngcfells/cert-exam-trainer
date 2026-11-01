@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { registerExam } from '../../banks';
 import { bank, meta3 } from '../../exam/testFixtures';
@@ -10,6 +10,12 @@ import type { ExamMeta } from '../../domain/types';
 import { TestNav } from '../testNav';
 import { PracticeFlow } from './PracticeFlow';
 import { CramFlow } from './CramFlow';
+
+/** Practice and cram ask before finishing with unfinished questions; say Finish. */
+async function finishAnyway(user: ReturnType<typeof userEvent.setup>) {
+  const dialog = screen.queryByRole('dialog');
+  if (dialog) await user.click(within(dialog).getByRole('button', { name: 'Finish' }));
+}
 
 const meta: ExamMeta = {
   ...meta3,
@@ -76,6 +82,7 @@ describe('PracticeFlow', () => {
     await answerRightAndCheck(user);
     await user.click(screen.getByRole('button', { name: 'Next' }));
     await user.click(screen.getByRole('button', { name: 'Finish' }));
+    await finishAnyway(user);
     expect(await screen.findByRole('heading', { name: 'Practice complete: 50% correct' })).toBeInTheDocument();
     const result = examResultSchema.parse((await repo.listRecords('results'))[0]);
     expect(result.mode).toBe('practice');
@@ -89,6 +96,7 @@ describe('PracticeFlow', () => {
     await user.click(await screen.findByRole('button', { name: 'Start practice' }));
     await answerRightAndCheck(user);
     await user.click(screen.getByRole('button', { name: 'Finish now' }));
+    await finishAnyway(user);
     expect(await screen.findByRole('heading', { name: 'Practice complete: 100% correct' })).toBeInTheDocument();
     expect(examResultSchema.parse((await repo.listRecords('results'))[0]).questionIds).toHaveLength(1);
   });
@@ -166,6 +174,7 @@ describe('CramFlow', () => {
       const finish = screen.queryByRole('button', { name: 'Finish' });
       if (finish) {
         await user.click(finish);
+        await finishAnyway(user);
         break;
       }
       await user.click(screen.getByRole('button', { name: 'Next' }));

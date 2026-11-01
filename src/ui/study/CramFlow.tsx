@@ -47,6 +47,7 @@ export function CramFlow({ repo, examCode, seed }: { repo: Repo; examCode: strin
   if (startedAt) {
     return (
       <StudyRunner
+        warnIncomplete
         items={[...session.exam.items.map((item) => ({ kind: 'question' as const, item })), ...session.acronyms.map((card) => ({ kind: 'acronym' as const, card }))]}
         feedback="instant"
         timeLimitMs={timed ? minutes * 60_000 : undefined}

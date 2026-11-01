@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { act, fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { StudyRunner, type StudyItem } from './StudyRunner';
 import { mcq, numeric, pbq } from '../../exam/testFixtures';
@@ -135,5 +135,60 @@ describe('StudyRunner', () => {
     act(() => vi.advanceTimersByTime(5_000));
     expect(onFinish).toHaveBeenCalledTimes(1);
     expect(onFinish.mock.calls[0][0]).toMatchObject({ checked: ['A0'], timedOut: true });
+  });
+});
+
+describe('StudyRunner Finish warning', () => {
+  const three: StudyItem[] = [
+    { kind: 'question', item: { question: mcq('A0', 'A'), optionOrder: order } },
+    { kind: 'question', item: { question: mcq('B0', 'B'), optionOrder: order } },
+    { kind: 'question', item: { question: mcq('M0', 'A', 'mcq-multi'), optionOrder: order } },
+    { kind: 'acronym', card: { term: 'SQL', expansion: 'Structured Query Language' } },
+  ];
+
+  it('counts unanswered and partly answered questions, not cards; Keep going stays', async () => {
+    const { user, onFinish } = setup({ items: three, feedback: 'end', warnIncomplete: true });
+    await user.click(screen.getByLabelText('A0-a'));
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    await user.click(screen.getByLabelText('M0-a')); // select two, one pick: partly answered
+    await user.click(screen.getByRole('button', { name: 'Finish now' }));
+    const dialog = screen.getByRole('dialog');
+    expect(dialog).toHaveTextContent('You have 2 unanswered or partly answered questions. Finish anyway?');
+    await user.click(within(dialog).getByRole('button', { name: 'Keep going' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(onFinish).not.toHaveBeenCalled();
+    await user.click(screen.getByRole('button', { name: 'Finish now' }));
+    await user.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Finish' }));
+    expect(onFinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('uses the singular for one question', async () => {
+    const { user } = setup({ items: three.slice(0, 2), feedback: 'end', warnIncomplete: true });
+    await user.click(screen.getByLabelText('A0-a'));
+    await user.click(screen.getByRole('button', { name: 'Finish now' }));
+    expect(screen.getByRole('dialog')).toHaveTextContent('You have 1 unanswered or partly answered question. Finish anyway?');
+  });
+
+  it('finishes with no dialog when everything is answered', async () => {
+    const { user, onFinish } = setup({ items: three.slice(0, 1), feedback: 'end', warnIncomplete: true });
+    await user.click(screen.getByLabelText('A0-a'));
+    await user.click(screen.getByRole('button', { name: 'Finish' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(onFinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('never warns without warnIncomplete (lesson checks)', async () => {
+    const { user, onFinish } = setup({ items: three, feedback: 'end' });
+    await user.click(screen.getByRole('button', { name: 'Finish now' }));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(onFinish).toHaveBeenCalledTimes(1);
+  });
+
+  it('a timeout finishes with no dialog', () => {
+    const { onFinish } = setup({ items: three, feedback: 'end', warnIncomplete: true, timeLimitMs: 2_000 });
+    act(() => vi.advanceTimersByTime(3_000));
+    expect(screen.queryByRole('dialog')).toBeNull();
+    expect(onFinish).toHaveBeenCalledTimes(1);
   });
 });

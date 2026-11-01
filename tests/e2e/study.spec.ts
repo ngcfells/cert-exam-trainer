@@ -12,6 +12,14 @@ const PBQ_NAMES = [
   'Sort into buckets',
 ];
 
+/** Practice and cram ask before finishing with unfinished questions; answer Finish. */
+async function finishAnyway(page: Page) {
+  const dialog = page.getByRole('dialog', { name: 'Finish now?' });
+  // Wait for either the dialog or the summary, so the check below doesn't race the render.
+  await expect(dialog.or(page.getByRole('heading', { name: /complete/ }))).toBeVisible();
+  if (await dialog.isVisible()) await dialog.getByRole('button', { name: 'Finish', exact: true }).click();
+}
+
 /** Practice setup limited to the bundled MCQs, `count` questions. */
 async function mcqOnlyPractice(page: Page, count: number) {
   for (const name of [...PBQ_NAMES, 'Type a number']) await page.getByRole('checkbox', { name }).uncheck();
@@ -50,6 +58,12 @@ test('practice setup, a checked question and results pass axe', async ({ page })
 
   await page.getByRole('button', { name: 'Next' }).click();
   await page.getByRole('button', { name: 'Finish' }).click();
+  // Item 2 is unanswered, so practice asks first.
+  const dialog = page.getByRole('dialog', { name: 'Finish now?' });
+  await expect(dialog).toContainText('You have 1 unanswered or partly answered question.');
+  await expect(dialog.getByRole('button', { name: 'Keep going' })).toBeFocused();
+  await expectNoSeriousAxe(page);
+  await dialog.getByRole('button', { name: 'Finish', exact: true }).click();
   await expect(page.getByRole('heading', { name: /^Practice complete/ })).toBeVisible();
   await expectNoSeriousAxe(page);
 });
@@ -69,6 +83,7 @@ test('practice with every PBQ type passes axe on each item', async ({ page }) =>
     if (i < 8) await page.getByRole('button', { name: 'Next' }).click();
   }
   await page.getByRole('button', { name: 'Finish' }).click();
+  await finishAnyway(page);
   await expect(page.getByRole('heading', { name: /^Practice complete/ })).toBeVisible();
 });
 
@@ -94,6 +109,14 @@ test('practice can be completed with the keyboard only', async ({ page }) => {
   await expect(page.getByRole('status')).toHaveText(/^(Correct|Partly correct|Incorrect)$/);
   await page.getByRole('button', { name: 'Finish' }).focus();
   await page.keyboard.press('Enter');
+  // A select-two item with one pick is partly answered: the dialog opens on Keep going.
+  const dialog = page.getByRole('dialog', { name: 'Finish now?' });
+  await expect(dialog.or(page.getByRole('heading', { name: /^Practice complete/ }))).toBeVisible();
+  if (await dialog.isVisible()) {
+    await page.keyboard.press('Shift+Tab');
+    await expect(dialog.getByRole('button', { name: 'Finish', exact: true })).toBeFocused();
+    await page.keyboard.press('Enter');
+  }
   await expect(page.getByRole('heading', { name: /^Practice complete/ })).toBeFocused();
 });
 
@@ -109,6 +132,7 @@ test('cram with a countdown passes axe and reaches the summary', async ({ page }
   await expect(page.getByRole('timer')).toHaveText(/^(10:00|9:5\d)$/);
   await expectNoSeriousAxe(page);
   await page.getByRole('button', { name: 'Finish now' }).click();
+  await finishAnyway(page);
   await expect(page.getByRole('heading', { name: /^Cram complete/ })).toBeVisible();
   await expectNoSeriousAxe(page);
 });

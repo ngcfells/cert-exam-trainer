@@ -1,6 +1,7 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import type { ExamItem } from '../../exam/assemble';
-import { hasAnswer, itemFraction, type ItemResponse, type Responses } from '../../exam/scoring';
+import { hasAnswer, isComplete, itemFraction, type ItemResponse, type Responses } from '../../exam/scoring';
+import { plural } from '../plural';
 import type { AcronymCard } from '../../study/session';
 import { ItemReview } from '../exam/ItemReview';
 import { AcronymFlip, knownStatus, QuestionView, RunnerFrame, useCountdown, useFocusLater } from '../kit';
@@ -31,8 +32,11 @@ export function StudyRunner({
   startedAt,
   now = Date.now,
   onFinish,
+  warnIncomplete = false,
 }: {
   items: StudyItem[];
+  /** Practice and cram: Finish asks first when questions are unanswered or partly answered. */
+  warnIncomplete?: boolean;
   feedback: 'instant' | 'end';
   timeLimitMs?: number;
   startedAt: Date;
@@ -44,6 +48,18 @@ export function StudyRunner({
   const [checked, setChecked] = useState<string[]>([]);
   const [revealed, setRevealed] = useState<Set<string>>(new Set());
   const [grades, setGrades] = useState<Record<string, boolean>>({});
+  const [confirming, setConfirming] = useState(false);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const keepRef = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const d = dialogRef.current;
+    if (!d) return;
+    if (confirming && !d.open) {
+      d.showModal();
+      keepRef.current?.focus();
+    }
+    if (!confirming && d.open) d.close();
+  }, [confirming]);
   const [done, setDone] = useState(false);
   const finished = useRef(false);
   // A timed run asks from the start; an untimed one once something is answered.
@@ -78,6 +94,7 @@ export function StudyRunner({
 
   const current = items[index];
   const key = keyOf(current);
+  const unfinished = items.filter((s) => s.kind === 'question' && !isComplete(s.item.question, responses[s.item.question.id])).length;
   const isChecked = checked.includes(key);
   const status =
     current.kind === 'question'
@@ -98,7 +115,7 @@ export function StudyRunner({
       }
       navLabel="Study navigation"
       onIndex={setIndex}
-      onFinish={() => finish(false)}
+      onFinish={() => (warnIncomplete && unfinished > 0 ? setConfirming(true) : finish(false))}
     >
       {current.kind === 'question' ? (
         <>
@@ -125,6 +142,20 @@ export function StudyRunner({
         {status}
       </p>
       {current.kind === 'question' && isChecked && <ItemReview q={current.item.question} response={responses[key]} showStem={false} />}
+      <dialog ref={dialogRef} aria-labelledby="study-confirm-heading" onClose={() => setConfirming(false)}>
+        {confirming && (
+          <>
+            <h2 id="study-confirm-heading">Finish now?</h2>
+            <p>{`You have ${plural(unfinished, 'unanswered or partly answered question')}. Finish anyway?`}</p>
+            <button type="button" onClick={() => { setConfirming(false); finish(false); }}>
+              Finish
+            </button>
+            <button type="button" ref={keepRef} onClick={() => setConfirming(false)}>
+              Keep going
+            </button>
+          </>
+        )}
+      </dialog>
     </RunnerFrame>
   );
 }

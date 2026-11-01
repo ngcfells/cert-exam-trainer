@@ -70,7 +70,11 @@ for (const seed of SEEDS) test(`a mock exam with PBQs (seed ${seed}) can be comp
 
   /** Tab through the screen, filling every part, and stop on the nav button `name`. */
   const answerThen = async (name: string) => {
-    let picked = false;
+    // A "Select N." multi-answer item needs N picks to count as answered; anything else needs one.
+    const hints = await page.locator('.mcq .hint').allTextContents(); // no wait: PBQ screens have none
+    const hint = hints[0];
+    const need = Number(/^Select (\d+)\.$/.exec(hint ?? '')?.[1] ?? 1);
+    let picks = 0;
     for (let i = 0; i < 40; i++) {
       await page.keyboard.press('Tab');
       const a = await active();
@@ -78,9 +82,9 @@ for (const seed of SEEDS) test(`a mock exam with PBQs (seed ${seed}) can be comp
       if (a.tag === 'SELECT') await page.keyboard.press('ArrowDown');
       if (a.tag === 'INPUT' && a.type === 'text') await page.keyboard.type(a.mode === 'decimal' ? '25' : 'grep ERROR load_orders.log');
       if (a.text === 'Keep this order') await page.keyboard.press('Enter');
-      if (!picked && (a.type === 'radio' || a.type === 'checkbox')) {
+      if (picks < need && (a.type === 'radio' || a.type === 'checkbox')) {
         await page.keyboard.press('Space');
-        picked = true;
+        picks += a.type === 'radio' ? need : 1;
       }
     }
     throw new Error(`could not tab to ${name}`);
