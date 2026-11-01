@@ -1850,5 +1850,44 @@
     },
     "acronyms": [],
     "status": "approved"
+  },
+  {
+    "id": "cy1-1-3-mcq-033",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A retailer is retiring a fine-tuned support model that was trained on customer chat logs. Which step best protects that data as the model leaves service?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Archive the weights on a shared drive in case a later team wants them"
+        },
+        {
+          "id": "b",
+          "text": "Leave the endpoint running but remove it from the internal docs"
+        },
+        {
+          "id": "c",
+          "text": "Revoke its credentials and securely delete the weights and training copies"
+        },
+        {
+          "id": "d",
+          "text": "Cut the endpoint's rate limit so that only a few calls still succeed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Retirement is part of the life cycle: a model trained on customer chats can leak that data, so its access is revoked and its weights and data copies are destroyed. Archiving to a shared drive spreads the data, a hidden endpoint is still reachable, and a lower rate limit still lets calls through.",
+    "acronyms": []
   }
 ]

@@ -2407,5 +2407,44 @@
       "subject": "Subject lines are part of the ticket data the agent already needs."
     },
     "acronyms": []
+  },
+  {
+    "id": "cy1-2-3-mcq-039",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An internal assistant answers payroll questions by searching an index of company files. An intern asked about leave and got a reply quoting a manager's salary file. Which control best fixes the cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a system prompt telling the model never to mention salaries"
+        },
+        {
+          "id": "b",
+          "text": "Require multifactor sign-in before anyone can open the assistant"
+        },
+        {
+          "id": "c",
+          "text": "Log every prompt and response so audits can spot such leaks later"
+        },
+        {
+          "id": "d",
+          "text": "Filter retrieved files by the asking user's own permissions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The assistant retrieved a file the intern could not open directly, so retrieval must enforce the caller's own permissions. A prompt instruction can be bypassed, sign-in proves who the intern is but not what they may read, and logging only finds the leak after it happens.",
+    "acronyms": []
   }
 ]

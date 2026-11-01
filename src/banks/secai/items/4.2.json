@@ -2249,5 +2249,46 @@
     "acronyms": [
       "AI"
     ]
+  },
+  {
+    "id": "cy1-4-2-mcq-036",
+    "exam": "CY0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A marketing team pastes unreleased product plans into a free public chatbot to polish the wording. Which risk does this create most directly for the company?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Model drift that lowers answer quality over time"
+        },
+        {
+          "id": "b",
+          "text": "Bias in the polished text toward one audience"
+        },
+        {
+          "id": "c",
+          "text": "Confidential plans leaving the company's control"
+        },
+        {
+          "id": "d",
+          "text": "Invented facts slipping into the final copy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Pasting secrets into a public service sends them to a third party that may store or train on them, so the direct risk is data leaving the company's control. Drift, bias and invented facts are AI risks too, but polishing wording does not make them the main concern here.",
+    "acronyms": [
+      "AI"
+    ]
   }
 ]

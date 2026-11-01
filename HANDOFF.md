@@ -310,6 +310,7 @@
   - 2.1: `mcq-010` a, `mcq-012` a, `mcq-022` d, `mcq-024` b. Key longest now 6 of 31 (19%).
   - 4.1: `mcq-014` a, `mcq-022` c, `mcq-015` b, `mcq-005` c. Key longest now 5 of 28 (18%).
 - **Deployed 2026-11-01** (gh-pages `8094385`). The live bundle's asset hash (`index-CqHHIIRQ.js`) matches gh-pages.
+- **SecAI+ +5 MCQs (2026-11-01, owner request to move off 666):** `cy1-1-3-mcq-033`, `cy1-2-1-mcq-039`, `cy1-2-3-mcq-039`, `cy1-4-2-mcq-036`, `cy1-4-3-mcq-036` (random objectives; keys c/d/d/c/c to even out key positions). Bank now **671: 566 MCQs, 105 PBQs**. `check-drafts --ref` clean, `npm run check` green (642 unit, 73 e2e). Written and checked inline, without the subagent review rounds. Not yet deployed.
 - **Next: chunk 12, AutoOps+ (AT0-001).** Plan (awaiting the owner's review): `docs/superpowers/plans/2026-11-01-chunk12-autoops.md`. Start with Session 1 (Tasks 1–2) on branch `chunk12-autoops`, then one domain per session. Owner rule: an unknown passing score is assumed to be 750 of 900, marked `VERIFY`.
 
 ## Standing rules
