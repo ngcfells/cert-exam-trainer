@@ -351,7 +351,7 @@
   4. Update the "Batch progress" line below, then `bash .superpowers/sdd/2026-11-01-chunk12-autoops/d1/ship.sh "content(autoops): approve <obj> <ids>"`. This runs the bank tests, commits, fast-forwards `main`, deploys, and pushes both branches.
   - If quota runs out mid-batch, `git stash` or discard that batch; everything shipped is already complete.
   - When an objective is fully approved, run `npm run check` once.
-- **Batch progress:** 1.3 mcq-001..035 approved and deployed (batch 7). Next: 1.3 mcq-036.. (`node .superpowers/sdd/2026-11-01-chunk12-autoops/d1/peek.mjs 1.3 5` prints the next 5 with their flags).
+- **Batch progress:** 1.3 mcq-001..040 approved and deployed (batch 8). Next: 1.3 mcq-041..043, terminal-001, config-001 (`node .superpowers/sdd/2026-11-01-chunk12-autoops/d1/peek.mjs 1.3 5` prints the next 5 with their flags).
 
 - **START HERE (next session, fresh quota).** Branch `chunk12-autoops`. Domain 1 items are committed as `status: "draft"`, so they do not show in the app (`registry.ts` serves approved items only).
 - **Drafted:** 1.1, 1.2, 1.3 and 1.4 each hold 51 items: 36 single + 7 multi MCQ and 8 PBQs (one of each template), against a quota of 39 + 7. Keys a/b/c/d are 9 each per objective; key longest about 19% and shortest 17–25%. `check-drafts --ref` is clean on all four. 1.1 keeps the approved `mcq-001` (its code is now in backticks).
