@@ -45,7 +45,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A Python 3 script runs the code below. What happens?\n\n```python\ntotal = 0\n\ndef add(n):\n    total += n\n\nadd(5)\nprint(total)\n```",
@@ -65,7 +65,7 @@
         },
         {
           "id": "d",
-          "text": "It raises an `UnboundLocalError` inside `add`"
+          "text": "It raises an `UnboundLocalError` when the function runs"
         }
       ]
     },
@@ -84,7 +84,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A PowerShell script runs the lines below at the top level. What does the last line write?\n\n```powershell\n$count = 1\nfunction Step { $count = $count + 1 }\nStep\nWrite-Output $count\n```",
@@ -92,7 +92,7 @@
       "options": [
         {
           "id": "a",
-          "text": "It writes `1`"
+          "text": "It writes `1`, the outer value"
         },
         {
           "id": "b",
@@ -123,10 +123,10 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "A Bash script contains the two lines below. Running it prints a `not found` error for `host` and then an empty line. What is the cause?\n\n```bash\nhost = \"web01\"\necho \"$host\"\n```",
+    "stem": "A Bash script contains the two lines below. Running it prints a `not found` error for `server` and then an empty line. What is the cause?\n\n```bash\nserver = \"web01\"\necho \"$server\"\n```",
     "payload": {
       "options": [
         {
@@ -152,7 +152,7 @@
         "c"
       ]
     },
-    "explanation": "A Bash assignment has no spaces around `=`. With spaces, Bash treats `host` as a command name and `=` and the value as its arguments, so the variable stays unset and `echo` prints an empty line. Lowercase names are fine, double quotes are valid for a plain value, and braces are optional here.",
+    "explanation": "A Bash assignment has no spaces around `=`. With spaces, Bash treats `server` as a command name and `=` and the value as its arguments, so the variable stays unset and `echo` prints an empty line. Lowercase names are fine, double quotes are valid for a plain value, and braces are optional here.",
     "acronyms": []
   },
   {
@@ -162,7 +162,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does this Bash script print?\n\n```bash\nstatus=3\nif [ \"$status\" -eq 0 ]; then\n  echo ok\nelif [ \"$status\" -lt 5 ]; then\n  echo retry\nelse\n  echo fail\nfi\n```",
@@ -191,7 +191,7 @@
         "b"
       ]
     },
-    "explanation": "The first test is false because 3 is not 0, so Bash checks the `elif` branch. 3 is less than 5, so `retry` prints and the rest of the chain is skipped. `ok` would need a status of 0, and `fail` runs only when both tests are false, and a single chain runs exactly one branch.",
+    "explanation": "The first test is false because 3 is not 0, so Bash checks the `elif` branch. 3 is less than 5, so `retry` prints and the rest of the chain is skipped. `ok` would need a status of 0, and `fail` runs only when both tests are false. An `if`/`elif` chain runs at most one branch.",
     "acronyms": []
   },
   {
