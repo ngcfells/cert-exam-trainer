@@ -1,4 +1,4 @@
-import type { AcronymEntry, AcronymSource } from '../../acronyms/list';
+import { meaningText, type AcronymEntry, type AcronymSource } from '../../acronyms/list';
 import { assembleDeck, MIN_CHOICE_ENTRIES, type DeckScope, type Direction } from '../../acronyms/quiz';
 import type { ExamMeta } from '../../domain/types';
 import { isDue, parseSrsRecords } from '../../study/srs';
@@ -108,7 +108,7 @@ export function AcronymSetup({
       {entries.length > 0 && (
         <details className="acronym-list">
           <summary>Full list</summary>
-          <Table caption="Full list of acronyms" head={['Acronym', 'Meaning', 'Source']} rows={entries.map((a) => [a.term, a.term, a.expansion, SOURCE_LABELS[a.source]])} />
+          <Table caption="Full list of acronyms" head={['Acronym', 'Meaning', 'Source']} rows={entries.map((a) => [a.term, a.term, meaningText(a), SOURCE_LABELS[a.source]])} />
         </details>
       )}
     </section>

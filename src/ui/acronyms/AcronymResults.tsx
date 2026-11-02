@@ -1,4 +1,4 @@
-import type { AcronymEntry } from '../../acronyms/list';
+import { meaningText, type AcronymEntry } from '../../acronyms/list';
 import { Table, useFocusHeading } from '../kit';
 import type { AcronymGrade } from './FlashcardRunner';
 
@@ -18,7 +18,7 @@ export function AcronymResults({
   onAgain: () => void;
 }) {
   const headingRef = useFocusHeading();
-  const byTerm = new Map(deck.map((a) => [a.term, a]));
+  const meaningOf = new Map(deck.map((a) => [a.term, meaningText(a)]));
   const right = grades.filter((g) => g.correct).length;
   const missed = grades.filter((g) => !g.correct);
   const quiz = mode === 'quiz';
@@ -35,7 +35,7 @@ export function AcronymResults({
         <Table
           caption={quiz ? 'Missed' : 'Not known yet'}
           head={quiz ? ['Acronym', 'Meaning', 'Your answer'] : ['Acronym', 'Meaning']}
-          rows={missed.map((g) => [g.term, g.term, byTerm.get(g.term)?.expansion, ...(quiz ? [g.given] : [])])}
+          rows={missed.map((g) => [g.term, g.term, meaningOf.get(g.term), ...(quiz ? [g.given] : [])])}
         />
       )}
       <button type="button" className="primary" onClick={onAgain}>

@@ -92,6 +92,18 @@ describe('QuizRunner', () => {
     expect(onFinish).toHaveBeenCalledWith([{ term: 'ETL', correct: true, given: '  extract transform LOAD' }], false);
   });
 
+  it('typed quiz accepts an alternate meaning, and a miss lists the alternates', async () => {
+    const mttr: AcronymEntry = { term: 'MTTR', expansion: 'Mean Time to Recovery', alternates: ['Mean Time to Repair'], source: 'community' };
+    const user = userEvent.setup();
+    const { unmount } = render(<QuizRunner deck={[mttr]} entries={[mttr, ...deck]} show="term" answer="type" minutes={0} seed={1} onFinish={vi.fn()} />);
+    await user.type(screen.getByRole('textbox', { name: 'Your answer' }), 'mean time to repair{Enter}');
+    expect(screen.getByRole('status')).toHaveTextContent('Correct');
+    unmount();
+    render(<QuizRunner deck={[mttr]} entries={[mttr, ...deck]} show="term" answer="type" minutes={0} seed={1} onFinish={vi.fn()} />);
+    await user.type(screen.getByRole('textbox', { name: 'Your answer' }), 'mean time to respond{Enter}');
+    expect(screen.getByRole('status')).toHaveTextContent('Not quite: Mean Time to Recovery (also: Mean Time to Repair)');
+  });
+
   it('count as correct flips a miss', async () => {
     const user = userEvent.setup();
     const onFinish = vi.fn();

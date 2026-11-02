@@ -26,7 +26,7 @@ function words(expansion: string): string[] {
  */
 export function checkExpansion(term: string, expansion: string): string | null {
   if (!expansion.trim()) return 'empty expansion';
-  const t = term.toLowerCase();
+  const t = term.toLowerCase().replace(/[^a-z0-9]+/g, ''); // CI/CD and SOC 2 spell cicd and soc2
   const w = words(expansion);
   if (t.length >= 3 && w.filter((x) => !STOP.has(x)).length < 2) return `"${expansion}" is one word, not an expansion of ${term}`;
   const memo = new Map<string, boolean>();
@@ -110,6 +110,73 @@ export async function expandTerms(opts: {
   return out;
 }
 
+export interface AlternateRow {
+  term: string;
+  expansion: string;
+  /** Passed the local checks; a person (or Claude) still reviews them before they go in meta.ts. */
+  alternates: string[];
+  rejected: { text: string; reason: string }[];
+  reason?: string;
+}
+
+function alternatesPrompt(entries: { term: string; expansion: string }[], exam: string, examTitle: string, topics: string[]): string {
+  return [
+    `You are checking acronyms for the ${examTitle} (${exam}) certification exam.`,
+    ...(topics.length ? [`The exam covers: ${topics.join('; ')}.`] : []),
+    'Each acronym below is listed with the meaning this exam uses. For each one, list other expansions of the SAME letters',
+    'that people in this field use for the same idea, so a learner who types one of them should be marked right.',
+    'Examples: wording variants (MTTR: Mean Time to Repair, Mean Time to Restore) or the other reading of a shared term that the exam treats as one idea.',
+    'Do not list unrelated meanings of the letters, spelling-only changes (case, hyphens) or the listed meaning itself. Use Title Case.',
+    'Return [] for an acronym with no such variant; most have none.',
+    'Return JSON only: {"items": [{"term": "MTTR", "alternates": ["Mean Time to Repair"]}, ...]}, one item per acronym, same terms.',
+    'Acronyms:',
+    ...entries.map((e) => `${e.term} = ${e.expansion}`),
+  ].join('\n');
+}
+
+const fold = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '');
+
+/** Asks the model for same-idea alternate meanings of each listed acronym, then checks each one locally. */
+export async function draftAlternates(opts: {
+  entries: { term: string; expansion: string }[]; exam: string; examTitle: string; topics?: string[];
+  chat: (prompt: string) => Promise<string>; batch?: number;
+}): Promise<AlternateRow[]> {
+  const size = opts.batch ?? 25;
+  const out: AlternateRow[] = [];
+  for (let i = 0; i < opts.entries.length; i += size) {
+    const batch = opts.entries.slice(i, i + size);
+    const byTerm = new Map<string, unknown[]>();
+    try {
+      const parsed = JSON.parse(await opts.chat(alternatesPrompt(batch, opts.exam, opts.examTitle, opts.topics ?? []))) as { items?: unknown };
+      for (const it of Array.isArray(parsed.items) ? parsed.items : []) {
+        const r = z.object({ term: z.string(), alternates: z.array(z.unknown()) }).safeParse(it);
+        if (r.success) byTerm.set(r.data.term.toUpperCase(), r.data.alternates);
+      }
+    } catch {
+      // A bad reply leaves every term in the batch as "no answer".
+    }
+    for (const { term, expansion } of batch) {
+      const got = byTerm.get(term.toUpperCase());
+      const row: AlternateRow = { term, expansion, alternates: [], rejected: [] };
+      if (!got) { out.push({ ...row, reason: 'no answer' }); continue; }
+      const seen = new Set([fold(expansion)]);
+      for (const raw of got) {
+        if (typeof raw !== 'string' || !raw.trim()) continue;
+        const text = raw.trim();
+        if (seen.has(fold(text))) {
+          row.rejected.push({ text, reason: fold(text) === fold(expansion) ? 'repeats the expansion' : 'repeated' });
+          continue;
+        }
+        const why = checkExpansion(term, text);
+        if (why) row.rejected.push({ text, reason: why });
+        else { row.alternates.push(text); seen.add(fold(text)); }
+      }
+      out.push(row);
+    }
+  }
+  return out;
+}
+
 /** A chat function for a local Ollama model (streamed, as in draft-ollama.ts). */
 export function ollamaChat(model = 'qwen3.6:27b', timeoutMs = 600_000, fetchFn: typeof fetch = fetch): (prompt: string) => Promise<string> {
   return async (content) => {
@@ -139,6 +206,83 @@ export function ollamaChat(model = 'qwen3.6:27b', timeoutMs = 600_000, fetchFn: 
     take(pending);
     return text;
   };
+}
+
+function judgePrompt(pairs: { term: string; expansion: string; alt: string }[], exam: string, examTitle: string, topics: string[]): string {
+  return [
+    `You are checking acronyms for the ${examTitle} (${exam}) certification exam.`,
+    ...(topics.length ? [`The exam covers: ${topics.join('; ')}.`] : []),
+    'Each line gives an acronym, the meaning this exam uses, and a suggested alternate expansion.',
+    'Answer "same" when people in this field use the alternate for the same idea, so a learner who types it should be marked right.',
+    'Answer "different" when it names another idea, is wrong, or you are not sure, with a short reason.',
+    'Return JSON only: {"items": [{"term": "MTTR", "alternate": "Mean Time to Repair", "verdict": "same", "reason": ""}, ...]}, one item per line.',
+    ...pairs.map((p) => `${p.term} = ${p.expansion}; suggested: ${p.alt}`),
+  ].join('\n');
+}
+
+/**
+ * Asks the model to judge alternates someone suggested (the model stays the judge). A suggestion is kept only when
+ * it passes the local checks and the model calls it the same idea.
+ */
+export async function judgeAlternates(opts: {
+  entries: { term: string; expansion: string }[]; suggestions: Record<string, string[]>; exam: string; examTitle: string;
+  topics?: string[]; chat: (prompt: string) => Promise<string>; batch?: number;
+}): Promise<AlternateRow[]> {
+  const rows: AlternateRow[] = [];
+  const pairs: { term: string; expansion: string; alt: string; row: AlternateRow }[] = [];
+  for (const { term, expansion } of opts.entries) {
+    const alts = opts.suggestions[term];
+    if (!alts?.length) continue;
+    const row: AlternateRow = { term, expansion, alternates: [], rejected: [] };
+    rows.push(row);
+    const seen = new Set([fold(expansion)]);
+    for (const raw of alts) {
+      const alt = raw.trim();
+      const why = seen.has(fold(alt)) ? 'repeats a meaning' : checkExpansion(term, alt);
+      if (why) row.rejected.push({ text: alt, reason: why });
+      else { seen.add(fold(alt)); pairs.push({ term, expansion, alt, row }); }
+    }
+  }
+  const size = opts.batch ?? 25;
+  for (let i = 0; i < pairs.length; i += size) {
+    const batch = pairs.slice(i, i + size);
+    const verdicts = new Map<string, { verdict: string; reason: string }>();
+    try {
+      const parsed = JSON.parse(await opts.chat(judgePrompt(batch, opts.exam, opts.examTitle, opts.topics ?? []))) as { items?: unknown };
+      for (const it of Array.isArray(parsed.items) ? parsed.items : []) {
+        const r = z.object({ term: z.string(), alternate: z.string(), verdict: z.string(), reason: z.string().default('') }).safeParse(it);
+        if (r.success) verdicts.set(`${r.data.term.toUpperCase()}|${fold(r.data.alternate)}`, r.data);
+      }
+    } catch {
+      // A bad reply leaves the whole batch unjudged, so nothing in it is kept.
+    }
+    for (const p of batch) {
+      const v = verdicts.get(`${p.term.toUpperCase()}|${fold(p.alt)}`);
+      if (v?.verdict === 'same') p.row.alternates.push(p.alt);
+      else p.row.rejected.push({ text: p.alt, reason: `model: ${v ? v.reason || v.verdict : 'no answer'}` });
+    }
+  }
+  return rows;
+}
+
+export interface AlternateArgs { exam: string; out: string; model: string; terms: string[]; suggest: string }
+
+export function parseAlternateArgs(argv: string[]): AlternateArgs {
+  const a: AlternateArgs = { exam: '', out: '', model: 'qwen3.6:27b', terms: [], suggest: '' };
+  const args = argv.filter((x) => x !== '--');
+  for (let i = 0; i < args.length; i++) {
+    const flag = args[i];
+    if (!['--exam', '--out', '--model', '--terms', '--suggest'].includes(flag)) throw new Error(`unknown argument ${flag}`);
+    const value = args[++i];
+    if (value === undefined || value.startsWith('--')) throw new Error(`${flag} needs a value`);
+    if (flag === '--exam') a.exam = value;
+    else if (flag === '--out') a.out = value;
+    else if (flag === '--model') a.model = value;
+    else if (flag === '--suggest') a.suggest = value;
+    else a.terms = [...new Set(value.split(',').map((t) => t.trim()).filter(Boolean))];
+  }
+  if (!a.exam) throw new Error('--exam is required');
+  return a;
 }
 
 /** `terms`: when set, expand only these (from `--terms A,B`), instead of the report's missing terms. */

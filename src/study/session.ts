@@ -1,4 +1,4 @@
-import type { AcronymEntry } from '../acronyms/list';
+import { meaningText, type AcronymEntry } from '../acronyms/list';
 import { isUnitItem } from '../domain/numeric';
 import type { ExamMeta, Question, QuestionType } from '../domain/types';
 import { freshFirst, itemFor, type AssembledExam } from '../exam/assemble';
@@ -101,7 +101,7 @@ export function assembleCram({
   const dueTerms = dueFirst.filter((r) => r.kind === 'acronym').map((r) => r.itemId);
   // First entry per term wins, so a duplicated term never yields two cards.
   const byTerm = new Map<string, AcronymCard>();
-  for (const { term, expansion } of list) if (!byTerm.has(term)) byTerm.set(term, { term, expansion });
+  for (const a of list) if (!byTerm.has(a.term)) byTerm.set(a.term, { term: a.term, expansion: meaningText(a) });
   const acronyms = [
     ...dueTerms.flatMap((t) => byTerm.get(t) ?? []),
     ...shuffle([...byTerm.values()].filter((a) => !reviewed.has(a.term)), rng),

@@ -35,6 +35,8 @@ test('AT0-001 lists compound and mixed-case official terms and passes axe', asyn
   await page.getByText('Full list', { exact: true }).click();
   const table = page.getByRole('table', { name: 'Full list of acronyms' });
   for (const term of ['CI/CD', 'FaaS', 'WinRM', 'IaC']) await expect(table.getByRole('rowheader', { name: term, exact: true })).toBeVisible();
+  const mttr = table.getByRole('row').filter({ has: page.getByRole('rowheader', { name: 'MTTR', exact: true }) });
+  await expect(mttr).toContainText('Mean Time to Recovery (also: Mean Time to Repair; Mean Time to Restore)');
   await expectNoSeriousAxe(page);
 });
 

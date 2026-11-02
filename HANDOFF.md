@@ -331,6 +331,14 @@
     - Marginal or off-topic: IV, CGI, WEBDAV, BREACH, ALTSVC, IESG, IETF, IANA, ABNF, ISO, WWW, DOI, ITIL, COBIT, CNCF, ANSI, BSD, SCOR, SDSI, HTB, PCA, BI, DAS, DBA, FAQ, GZIP, UTF, CEU, CBT.
     - Not acronyms for us: PBQ (exam term), CICD (the official list has CI/CD), DEVOPS and GENAI.
     - Drafters write flagged terms out in full.
+  - **Alternate meanings (owner rule, 2026-11-01):** CompTIA never asks learners to type an expansion, but for practice the typed quiz accepts any alternate that fits the exam's intent. Every exam is covered (rules in `docs/acronyms.md`, "Alternate meanings").
+    - Entries take an optional `alternates`. Typed answers also ignore spacing inside words, so "multi-factor" matches "multifactor" and "lifecycle" matches "life cycle". The full list, flashcards, cram, quiz feedback and results show "Expansion (also: A; B)". Choice quizzes use the main expansion, and distractors never read as one of the answer's alternates. User acronyms have none.
+    - `npm run alternate-acronyms -- --exam <code>` asks Ollama to draft alternates. `--suggest <file.json>` instead has Ollama judge alternates that someone suggests. Ollama stays the judge, and Claude checks what it keeps.
+    - `checkExpansion` now ignores `/` and spaces in a term (CI/CD, SOC 2).
+    - Shipped on this branch: 24 alternates across the three exams. AT0-001: CI/CD (Continuous Deployment), FaaS, MTBF, SDK, CA (Certification Authority), CRLF, ITSM, MD5, MTTR (Repair, Restore), SCM (Source Code Management). DA0-002: GUID, OLAP, PHI (Protected Health Information), PII, RegEx, SDLC (Systems…), UAT, ID, SAS, DBA. CY0-001: AIRMF, CI/CD (Continuous Delivery), GRC, SOC (Centre).
+    - Rejected by Ollama: CD as Continuous Deployment (a different practice from Delivery), SRE as "Engineer", MTTR as "Resolve", SCM as "Software Configuration Management", EDR as "Remediation", SOC 2 as "Service Organization Control 2" (an outdated name), and others.
+    - Rejected by Claude although Ollama accepted them: "Machine Learning Ops" and "Network ACL" (abbreviated, not spelled out).
+    - The Data+ and SecAI+ changes reach the live site only when this branch is merged and deployed.
   - Deck notes: `_WorkingData/AutoOpsPlus/notes/` (6 decks + `index.md` objective map). The decks are thin topic lists; drafters should work from the objectives PDF sub-bullets. Text extracts were in session 10's scratchpad (`2b5018bd-…/scratchpad/src/`); regenerate with `scratchpad/tools/extract.py` if gone.
   - e2e: AT0-001 card and exam page (`home.spec.ts`), official terms CI/CD, FaaS, WinRM, IaC (`acronyms.spec.ts`), and the Review Focus 1 check in `study.spec.ts` (practice on domain 3 alone at 360 px: `.code-block` visible, no sideways scroll, axe clean).
 - **Next: session 2 = Task 3 for domain 1** (fresh quota window; see the plan's budget note).

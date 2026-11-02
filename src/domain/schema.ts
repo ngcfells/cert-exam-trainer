@@ -92,6 +92,8 @@ export const examMetaSchema = z.object({
   acronyms: z.array(z.object({
     term: z.string().min(1),
     expansion: z.string().min(1),
+    /** Other meanings of the same concept that typed answers also accept (e.g. MTTR: Repair, Restore). */
+    alternates: z.array(z.string().min(1)).min(1).optional(),
     source: z.enum(['official', 'community']),
   })),
 }).strict().superRefine((m, ctx) => {
@@ -103,6 +105,13 @@ export const examMetaSchema = z.object({
   m.acronyms.forEach((a, i) => {
     if (terms.has(a.term)) ctx.addIssue({ code: 'custom', path: ['acronyms', i, 'term'], message: `repeated acronym "${a.term}"` });
     terms.add(a.term);
+    // Rough fold (case and punctuation), enough to catch an alternate that repeats a meaning.
+    const fold = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '');
+    const seen = new Set([fold(a.expansion)]);
+    a.alternates?.forEach((alt, j) => {
+      if (seen.has(fold(alt))) ctx.addIssue({ code: 'custom', path: ['acronyms', i, 'alternates', j], message: `alternate "${alt}" repeats a meaning of ${a.term}` });
+      seen.add(fold(alt));
+    });
   });
   const domainIds = new Set(m.domains.map((d) => d.id));
   m.objectives.forEach((o, i) => {

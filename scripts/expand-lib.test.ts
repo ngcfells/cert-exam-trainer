@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { checkExpansion, expandTerms, ollamaChat, parseExpandArgs } from './expand-lib';
+import { checkExpansion, draftAlternates, judgeAlternates, expandTerms, ollamaChat, parseAlternateArgs, parseExpandArgs } from './expand-lib';
 
 const stream = (body: string) => (async () => new Response(body)) as unknown as typeof fetch;
 
@@ -18,6 +18,13 @@ describe('parseExpandArgs', () => {
     expect(parseExpandArgs(['--', '--report', 'r.json'])).toEqual({ report: 'r.json', out: '', model: 'qwen3.6:27b', minCount: 1, terms: [] });
     expect(parseExpandArgs(['--report', 'r.json', '--min-count', '3', '--model', 'q', '--out', 'o.json']))
       .toEqual({ report: 'r.json', out: 'o.json', model: 'q', minCount: 3, terms: [] });
+  });
+  it('parseAlternateArgs needs --exam and takes --out, --model and --terms', () => {
+    expect(parseAlternateArgs(['--', '--exam', 'AT0-001'])).toEqual({ exam: 'AT0-001', out: '', model: 'qwen3.6:27b', terms: [], suggest: '' });
+    expect(parseAlternateArgs(['--exam', 'X', '--suggest', 's.json']).suggest).toBe('s.json');
+    expect(parseAlternateArgs(['--exam', 'X', '--out', 'o.json', '--model', 'q', '--terms', 'CD, MTTR'])).toEqual({ exam: 'X', out: 'o.json', model: 'q', terms: ['CD', 'MTTR'], suggest: '' });
+    expect(() => parseAlternateArgs([])).toThrow(/--exam/);
+    expect(() => parseAlternateArgs(['--exam', 'X', '--report', 'r'])).toThrow(/--report/);
   });
   it('--terms takes a comma list, trimmed and de-duplicated, case kept', () => {
     expect(parseExpandArgs(['--report', 'r', '--terms', 'MTTR, SHA,,MTTR,FaaS']).terms).toEqual(['MTTR', 'SHA', 'FaaS']);
@@ -59,6 +66,11 @@ describe('checkExpansion', () => {
     expect(checkExpansion('DB', 'Database')).toBeNull();
     // Strict on purpose: a trailing word the term does not use goes to a person.
     expect(checkExpansion('CAP', 'Consistency, Availability, Partition Tolerance')).toMatch(/initials/);
+  });
+  it('ignores slashes and spaces in the term', () => {
+    expect(checkExpansion('CI/CD', 'Continuous Integration and Continuous Deployment')).toBeNull();
+    expect(checkExpansion('SOC 2', 'Service Organization Control 2')).toBeNull();
+    expect(checkExpansion('CI/CD', 'Continuous Integration')).toMatch(/initials/);
   });
   it('digits must appear in the expansion', () => {
     expect(checkExpansion('S3', 'Simple Storage Service')).toMatch(/initials/);
@@ -104,6 +116,55 @@ describe('expandTerms', () => {
     const noTopics: string[] = [];
     await expandTerms({ terms: ['SRE'], exam: 'X', examTitle: 'X', chat: async (p) => { noTopics.push(p); return answer([]); } });
     expect(noTopics[0]).not.toMatch(/analytics/i);
+  });
+
+  it('draftAlternates keeps alternates that spell the term and differ from the expansion', async () => {
+    const prompts: string[] = [];
+    const chat = async (p: string) => {
+      prompts.push(p);
+      return JSON.stringify({ items: [
+        { term: 'MTTR', alternates: ['Mean Time to Repair', 'mean time to recovery', 'Mean Time to Restore', 'Maximum Tolerable Downtime'] },
+        { term: 'SQL', alternates: [] },
+      ] });
+    };
+    const rows = await draftAlternates({
+      entries: [{ term: 'MTTR', expansion: 'Mean Time to Recovery' }, { term: 'SQL', expansion: 'Structured Query Language' }, { term: 'CD', expansion: 'Continuous Delivery' }],
+      exam: 'AT0-001', examTitle: 'CompTIA AutoOps+', topics: ['Continuous Delivery'], chat,
+    });
+    expect(prompts[0]).toContain('MTTR = Mean Time to Recovery');
+    expect(prompts[0]).toContain('Continuous Delivery');
+    expect(rows[0]).toEqual({
+      term: 'MTTR', expansion: 'Mean Time to Recovery', alternates: ['Mean Time to Repair', 'Mean Time to Restore'],
+      rejected: [
+        { text: 'mean time to recovery', reason: 'repeats the expansion' },
+        { text: 'Maximum Tolerable Downtime', reason: 'initials of "Maximum Tolerable Downtime" do not spell MTTR' },
+      ],
+    });
+    expect(rows[1]).toEqual({ term: 'SQL', expansion: 'Structured Query Language', alternates: [], rejected: [] });
+    expect(rows[2]).toEqual({ term: 'CD', expansion: 'Continuous Delivery', alternates: [], rejected: [], reason: 'no answer' });
+  });
+
+  it('judgeAlternates keeps only suggestions the model accepts and that pass the local checks', async () => {
+    const prompts: string[] = [];
+    const chat = async (p: string) => {
+      prompts.push(p);
+      return JSON.stringify({ items: [
+        { term: 'CD', alternate: 'Continuous Deployment', verdict: 'same', reason: '' },
+        { term: 'CD', alternate: 'Compact Disc', verdict: 'different', reason: 'unrelated' },
+        { term: 'SOC', alternate: 'Security Operations Centre', verdict: 'same', reason: '' },
+        { term: 'SOC', alternate: 'System on Chip Unit', verdict: 'same', reason: '' },
+      ] });
+    };
+    const rows = await judgeAlternates({
+      entries: [{ term: 'CD', expansion: 'Continuous Delivery' }, { term: 'SOC', expansion: 'Security Operations Center' }],
+      suggestions: { CD: ['Continuous Deployment', 'Compact Disc'], SOC: ['Security Operations Centre', 'System on Chip Unit'], ZZ: ['Zig Zag'] },
+      exam: 'X', examTitle: 'X', chat,
+    });
+    expect(prompts[0]).toContain('CD = Continuous Delivery; suggested: Continuous Deployment');
+    expect(rows).toEqual([
+      { term: 'CD', expansion: 'Continuous Delivery', alternates: ['Continuous Deployment'], rejected: [{ text: 'Compact Disc', reason: 'model: unrelated' }] },
+      { term: 'SOC', expansion: 'Security Operations Center', alternates: ['Security Operations Centre'], rejected: [{ text: 'System on Chip Unit', reason: 'initials of "System on Chip Unit" do not spell SOC' }] },
+    ]);
   });
 
   it('batches of 25', async () => {

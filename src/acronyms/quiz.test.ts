@@ -53,6 +53,23 @@ describe('answer matching', () => {
     expect(isCorrect(entries[4], 'expansion', 'sq')).toBe(false);
   });
 
+  it('matching ignores spacing inside words (multifactor, lifecycle)', () => {
+    const mfa = e('MFA', 'Multifactor Authentication');
+    expect(isCorrect(mfa, 'term', 'multi-factor authentication')).toBe(true);
+    expect(isCorrect(mfa, 'term', 'multi factor authentication')).toBe(true);
+    expect(isCorrect(e('SDLC', 'Software Development Life Cycle'), 'term', 'software development lifecycle')).toBe(true);
+    expect(isCorrect(mfa, 'term', 'multifactor')).toBe(false);
+  });
+
+  it('a typed meaning may be the expansion or any alternate', () => {
+    const mttr: AcronymEntry = { term: 'MTTR', expansion: 'Mean Time to Recovery', alternates: ['Mean Time to Repair', 'Mean Time to Restore'], source: 'community' };
+    expect(isCorrect(mttr, 'term', 'mean time to recovery')).toBe(true);
+    expect(isCorrect(mttr, 'term', 'Mean time to repair')).toBe(true);
+    expect(isCorrect(mttr, 'term', 'mean-time-to-restore')).toBe(true);
+    expect(isCorrect(mttr, 'term', 'mean time to respond')).toBe(false);
+    expect(isCorrect(mttr, 'expansion', 'mttr')).toBe(true);
+  });
+
   it('empty input is wrong', () => {
     expect(isCorrect(entries[0], 'term', '   ')).toBe(false);
     expect(isCorrect(entries[0], 'expansion', '')).toBe(false);
@@ -69,6 +86,16 @@ describe('buildChoices', () => {
       expect(c.filter((x) => x === 'Comma-Separated Values')).toHaveLength(1);
     }
     expect(buildChoices(entries[1], entries, 'expansion', mulberry32(1))).toContain('CSV');
+  });
+
+  it('a distractor never matches one of the answer entry alternates', () => {
+    const cd: AcronymEntry = { term: 'CD', expansion: 'Continuous Delivery', alternates: ['Continuous Deployment'], source: 'official' };
+    const pool = [cd, e('XCD', 'continuous deployment'), ...entries];
+    for (let seed = 0; seed < 20; seed++) {
+      const c = buildChoices(cd, pool, 'term', mulberry32(seed));
+      expect(c).toContain('Continuous Delivery');
+      expect(c.map(normalizeAnswer)).not.toContain('continuous deployment');
+    }
   });
 
   it('choices need two entries', () => {

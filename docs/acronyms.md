@@ -7,6 +7,19 @@ Each exam's acronym list lives in its metadata (`src/banks/<exam>/meta.ts`, fiel
 
 A term may appear only once per exam; the schema rejects repeats.
 
+## Alternate meanings
+
+An entry may also carry `alternates`: other expansions of the same letters that mean the same idea in that exam (owner rule, 2026-11-01). Example: MTTR is listed as "Mean Time to Recovery", with "Mean Time to Repair" and "Mean Time to Restore" as alternates.
+
+- CompTIA never asks learners to type an expansion. The typed quiz exists for practice, so it accepts the expansion or any alternate. Learners should not lose a point for a variant the field also uses.
+- The full list, flashcard backs, cram cards, quiz feedback and results show them as "Expansion (also: A; B)".
+- Choice quizzes show the main expansion only, and a distractor never reads as one of the answer's alternates.
+- An alternate must not repeat the expansion or another alternate; the schema checks this, ignoring case and punctuation.
+- Unrelated meanings of the same letters are not alternates (for example, SOC as Security Operations Center in an exam that means System and Organization Controls).
+- User acronyms (`mine`) have no alternates.
+
+Drafting: `npm run alternate-acronyms -- --exam <code> [--out <file.json>] [--terms A,B]` asks local Ollama for same-idea variants of every built-in entry and drops any whose initials do not spell the term. Claude checks the remaining candidates against the exam's intent and copies the good ones into `meta.ts`. Report: `_WorkingData/alternates-<exam>.json`.
+
 The user's own list (`mine`) is stored locally in the setting `userAcronyms:<exam>`. It is never bundled. Terms are stored trimmed and upper-cased, one entry per term. A term the built-in list already has is refused. Deleting a term keeps its review history, so adding it again picks up its old schedule. The acronym screen suggests terms found in the user's questions that the list does not cover yet.
 
 ## Content check

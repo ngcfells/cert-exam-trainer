@@ -88,6 +88,15 @@ describe('parseExamMeta', () => {
     expect(() => parseExamMeta({ ...meta, acronyms: [entry, { ...entry, source: 'official' }] })).toThrow(/repeated acronym \\"SQL\\"/);
   });
 
+  it('accepts alternates, and rejects empty ones or one that repeats the expansion', () => {
+    const cd = { term: 'CD', expansion: 'Continuous Delivery', source: 'official' };
+    expect(parseExamMeta({ ...meta, acronyms: [{ ...cd, alternates: ['Continuous Deployment'] }] }).acronyms[0].alternates).toEqual(['Continuous Deployment']);
+    expect(() => parseExamMeta({ ...meta, acronyms: [{ ...cd, alternates: [] }] })).toThrow();
+    expect(() => parseExamMeta({ ...meta, acronyms: [{ ...cd, alternates: [''] }] })).toThrow();
+    expect(() => parseExamMeta({ ...meta, acronyms: [{ ...cd, alternates: ['continuous delivery'] }] })).toThrow(/alternate/);
+    expect(() => parseExamMeta({ ...meta, acronyms: [{ ...cd, alternates: ['Continuous Deployment', 'continuous-deployment'] }] })).toThrow(/alternate/);
+  });
+
   it('parses valid meta', () => {
     expect(parseExamMeta(meta).code).toBe('DA0-002');
   });

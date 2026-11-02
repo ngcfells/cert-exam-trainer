@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { AcronymEntry } from '../../acronyms/list';
+import { meaningText, type AcronymEntry } from '../../acronyms/list';
 import type { Direction } from '../../acronyms/quiz';
 import { AcronymFlip, knownStatus, RunnerFrame } from '../kit';
 import { useLeaveGuard } from '../nav';
@@ -13,6 +13,8 @@ export interface AcronymGrade {
 
 export const front = (a: AcronymEntry, show: Direction) => (show === 'term' ? a.term : a.expansion);
 export const back = (a: AcronymEntry, show: Direction) => (show === 'term' ? a.expansion : a.term);
+/** The back as shown to people: with the term on the front, the meaning lists its alternates too. */
+export const backText = (a: AcronymEntry, show: Direction) => (show === 'term' ? meaningText(a) : a.term);
 
 export function FlashcardRunner({ deck, show, onFinish }: { deck: AcronymEntry[]; show: Direction; onFinish: (grades: AcronymGrade[], timedOut: boolean) => void }) {
   const [index, setIndex] = useState(0);
@@ -37,7 +39,7 @@ export function FlashcardRunner({ deck, show, onFinish }: { deck: AcronymEntry[]
     <RunnerFrame label="Card" index={index} total={deck.length} navLabel="Flashcard navigation" onIndex={setIndex} onFinish={() => finish(grades)}>
       <AcronymFlip
         front={front(card, show)}
-        back={back(card, show)}
+        back={backText(card, show)}
         backClass="acronym-back"
         revealed={revealed.has(index)}
         onReveal={() => setRevealed((r) => new Set(r).add(index))}

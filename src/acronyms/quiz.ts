@@ -56,15 +56,23 @@ export function isCorrect(entry: AcronymEntry, direction: Direction, input: stri
     const t = input.replace(/[^a-z0-9]+/gi, '').toUpperCase();
     return t !== '' && t === entry.term.toUpperCase();
   }
-  const a = normalizeAnswer(input);
-  return a !== '' && a === normalizeAnswer(entry.expansion);
+  const a = squash(input);
+  return a !== '' && meanings(entry).some((m) => a === squash(m));
 }
+
+/** normalizeAnswer without spaces, so "multi-factor" matches "multifactor" and "life cycle" matches "lifecycle". */
+const squash = (s: string) => normalizeAnswer(s).replace(/ /g, '');
+
+/** Every meaning a typed answer may give: the expansion, then the alternates. */
+const meanings = (a: AcronymEntry) => [a.expansion, ...(a.alternates ?? [])];
 
 const answerOf = (a: AcronymEntry, direction: Direction) => (direction === 'term' ? a.expansion : a.term);
 
-/** The answer plus up to 3 distractors from other entries, with no repeated text, shuffled. */
+/** The answer plus up to 3 distractors from other entries, with no repeated text, shuffled. A distractor never reads as one of the answer's alternates. */
 export function buildChoices(entry: AcronymEntry, entries: AcronymEntry[], direction: Direction, rng: Rng): string[] {
   const answer = answerOf(entry, direction);
-  const others = [...new Set(entries.filter((a) => a.term !== entry.term).map((a) => answerOf(a, direction)))].filter((t) => t !== answer);
+  const taken = new Set(direction === 'term' ? meanings(entry).map(squash) : [squash(answer)]);
+  const others = [...new Set(entries.filter((a) => a.term !== entry.term).map((a) => answerOf(a, direction)))]
+    .filter((t) => t !== answer && !taken.has(squash(t)));
   return shuffle([answer, ...shuffle(others, rng).slice(0, CHOICES - 1)], rng);
 }

@@ -4,7 +4,7 @@ import { buildChoices, isCorrect, type Direction } from '../../acronyms/quiz';
 import { mulberry32 } from '../../exam/rng';
 import { RunnerFrame, useCountdown, useFocusLater } from '../kit';
 import { useLeaveGuard } from '../nav';
-import { back, front, type AcronymGrade } from './FlashcardRunner';
+import { back, backText, front, type AcronymGrade } from './FlashcardRunner';
 
 export function QuizRunner({
   deck,
@@ -120,7 +120,7 @@ export function QuizRunner({
         </form>
       </div>
       <p role="status" className="study-status" ref={statusRef} tabIndex={-1}>
-        {result ? (result.correct ? 'Correct' : `Not quite: ${correctText}`) : ''}
+        {result ? (result.correct ? 'Correct' : `Not quite: ${backText(card, show)}`) : ''}
       </p>
       {result && !result.correct && answer === 'type' && (
         <button type="button" onClick={() => grade({ ...result, correct: true })}>
