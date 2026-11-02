@@ -344,14 +344,14 @@
 
 ## Chunk 12 session 2 (2026-11-01, session 12): domain 1 drafted, review half done (PAUSED: weekly quota ran out)
 
-- **OWNER RULE (2026-11-01): review in batches of 5 questions, and ship after every batch.** Quota is nearly gone for the week, so no batch may leave work half done. For each batch of 5 draft items, in file order (1.3 first, since its round 1 fixes are in; then 1.1, 1.2, 1.4):
+- **OWNER RULE (2026-11-01): review in batches of 5 questions, and ship after every batch. One batch per session: after shipping, update "Batch progress" and stop so the owner can `/clear`.** Quota is nearly gone for the week, so no batch may leave work half done. For each batch of 5 draft items, in file order (1.3 first, since its round 1 fixes are in; then 1.1, 1.2, 1.4):
   1. Review the 5 inline (no subagents): answer each yourself, then apply its round 1 flags from `d1/work1-<obj>.json` (1.3: check that its round 1 fixes hold). Edit the JSON directly. For a terminal PBQ, check the accept list by hand (`node d1/term.mjs`).
   2. `npm run check-drafts -- --exam AT0-001 --ref .superpowers/sdd/2026-11-01-chunk12-autoops/d1/ref src/banks/autoops/items/<obj>.json`: no problems.
   3. `node .superpowers/sdd/2026-11-01-chunk12-autoops/d1/approve-ids.mjs <obj> <id> ...` (it prints progress and the next 5 drafts).
   4. Update the "Batch progress" line below, then `bash .superpowers/sdd/2026-11-01-chunk12-autoops/d1/ship.sh "content(autoops): approve <obj> <ids>"`. This runs the bank tests, commits, fast-forwards `main`, deploys, and pushes both branches.
   - If quota runs out mid-batch, `git stash` or discard that batch; everything shipped is already complete.
   - When an objective is fully approved, run `npm run check` once.
-- **Batch progress:** 1.3 mcq-001..015 approved and deployed (batch 3). Next: 1.3 mcq-016..
+- **Batch progress:** 1.3 mcq-001..020 approved and deployed (batch 4). Next: 1.3 mcq-021.. (`node .superpowers/sdd/2026-11-01-chunk12-autoops/d1/peek.mjs 1.3 5` prints the next 5 with their flags).
 
 - **START HERE (next session, fresh quota).** Branch `chunk12-autoops`. Domain 1 items are committed as `status: "draft"`, so they do not show in the app (`registry.ts` serves approved items only).
 - **Drafted:** 1.1, 1.2, 1.3 and 1.4 each hold 51 items: 36 single + 7 multi MCQ and 8 PBQs (one of each template), against a quota of 39 + 7. Keys a/b/c/d are 9 each per objective; key longest about 19% and shortest 17–25%. `check-drafts --ref` is clean on all four. 1.1 keeps the approved `mcq-001` (its code is now in backticks).
