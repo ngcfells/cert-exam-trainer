@@ -1,0 +1,2665 @@
+[
+  {
+    "id": "at1-1-4-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A Bash script ends with the lines below, and Bash reports an unexpected end of file. What is missing?\n```bash\ncount=9\nif [ \"$count\" -gt 5 ]; then\n  echo \"high\"\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A closing `done` line after the block"
+        },
+        {
+          "id": "b",
+          "text": "A closing `esac` line after the block"
+        },
+        {
+          "id": "c",
+          "text": "A closing `fi`"
+        },
+        {
+          "id": "d",
+          "text": "A closing brace `}` line after the block"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The `if` block was opened with `then` and never closed, so Bash reaches the end of the file mid-block; `fi` closes it. `done` ends a loop, `esac` ends a `case`, and a brace ends a function, and none of those blocks were opened.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A Python script fails to start with `SyntaxError: '(' was never closed`. Which change fixes it?\n```python\ndef total(items):\n    return sum(items\nprint(total([1, 2]))\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a `)` to the end of the `return` line"
+        },
+        {
+          "id": "b",
+          "text": "Add a `:` to the end of the `return` line"
+        },
+        {
+          "id": "c",
+          "text": "Indent the `print` line by four spaces"
+        },
+        {
+          "id": "d",
+          "text": "Replace `sum` with `len` on the `return` line"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The call to `sum(` on the second line has no closing parenthesis, so adding `)` fixes the parse error. A colon is needed only after statements such as `def` and `if`, moving `print` would change behavior but not close the bracket, and swapping `sum` for `len` leaves the bracket open.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A job runs this Python file, and `status` is never assigned anywhere in it. Which error does Python report first?\n```python\nif status == \"ok\":\nprint(\"deployed\")\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`NameError`, because `status` is not defined"
+        },
+        {
+          "id": "b",
+          "text": "`TypeError`, because a string cannot be compared"
+        },
+        {
+          "id": "c",
+          "text": "`IndentationError`, because Python parses the whole file before any line runs"
+        },
+        {
+          "id": "d",
+          "text": "`SyntaxWarning`, followed by a normal run"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Python compiles the file before running it, so the unindented body of the `if` raises `IndentationError` and no line executes. The `NameError` for `status` would only appear at run time, a comparison with a string is legal, and a bad block is an error rather than a warning.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "PowerShell refuses to run this script and reports a parse error before the first line executes. What is the cause?\n```powershell\n$names = @(\"web01\", \"web02\"\nforeach ($n in $names) { Write-Host $n }\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The `@(` array on line 1 is never closed"
+        },
+        {
+          "id": "b",
+          "text": "The `foreach` loop uses the wrong keyword"
+        },
+        {
+          "id": "c",
+          "text": "`Write-Host` cannot print a variable"
+        },
+        {
+          "id": "d",
+          "text": "`$names` must be declared with a type first"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The array expression opened with `@(` has no closing parenthesis, which the parser reports as a missing `)`. `foreach` is a valid keyword, `Write-Host` prints variables, and PowerShell variables do not need a declared type.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A deploy tool rejects `settings.json` with the message `Expecting property name enclosed in double quotes`. Which flaw in the file causes it?\n```json\n{\n  \"region\": \"east\",\n  \"retries\": 3,\n}\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A trailing comma after the last member"
+        },
+        {
+          "id": "b",
+          "text": "A number written without quotes"
+        },
+        {
+          "id": "c",
+          "text": "Keys that use single quotes instead of double quotes"
+        },
+        {
+          "id": "d",
+          "text": "Top-level braces where square brackets are required"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Strict JSON does not allow a comma after the last member, so the parser expects another key and complains. Numbers are written without quotes, the keys here already use double quotes, and an object correctly uses braces.",
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "at1-1-4-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A script contains the line `build = \"web01\"`, and Bash prints `build: command not found`. Why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Spaces around `=` turn `build` into a command"
+        },
+        {
+          "id": "b",
+          "text": "Variable names must be written in uppercase"
+        },
+        {
+          "id": "c",
+          "text": "A value must be assigned with the `let` keyword"
+        },
+        {
+          "id": "d",
+          "text": "The value must use single quotes to be stored"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A Bash assignment has no spaces around `=`; with spaces, the shell treats `build` as a program name and passes `=` and the string as arguments. Case does not matter, `let` is only for arithmetic, and quote style does not change how the line is parsed.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Python reports `SyntaxError: invalid syntax` on the first line of this snippet. Which change fixes it?\n```python\nif env = \"prod\":\n    print(\"locked\")\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Wrap `\"prod\"` in parentheses"
+        },
+        {
+          "id": "b",
+          "text": "Replace `if` with `while`"
+        },
+        {
+          "id": "c",
+          "text": "Use `==` to compare, not assign"
+        },
+        {
+          "id": "d",
+          "text": "Add an `else:` line after the print"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A single `=` assigns, which is not allowed in an `if` condition; `==` compares. Parentheses around the string, a `while` loop and an `else` branch do not change the assignment inside the condition.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Bash script starts with `set -u` and then runs `echo \"Deploying to $TARGET_ENV\"`, but `TARGET_ENV` was never set. What happens?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Bash prints an `unbound variable` error and exits"
+        },
+        {
+          "id": "b",
+          "text": "Bash prints `Deploying to` followed by an empty value"
+        },
+        {
+          "id": "c",
+          "text": "Bash asks the user to type a value for the variable"
+        },
+        {
+          "id": "d",
+          "text": "Bash assigns the variable the value `0` and continues"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`set -u` makes expanding an unset variable an error, so the script stops with `unbound variable`. Without that option the value would be empty; Bash never prompts for it or invents a default.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A cleanup script runs the line below, and `BUILD_DIR` is sometimes unset. Which version stops the script with an error instead of expanding to the filesystem root?\n```bash\nrm -rf \"$BUILD_DIR\"/*\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`rm -rf \"${BUILD_DIR:?}\"/*`"
+        },
+        {
+          "id": "b",
+          "text": "`rm -rf \"${BUILD_DIR:-}\"/*`"
+        },
+        {
+          "id": "c",
+          "text": "`rm -rf -- \"${BUILD_DIR:+}\"/*`"
+        },
+        {
+          "id": "d",
+          "text": "`rm -rf \"${BUILD_DIR=}\"/*`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The `:?` form aborts with an error when the variable is unset or empty. The `:-` form substitutes an empty default, `:+` expands to nothing when the variable is unset, and `=` assigns an empty value, so each of those still ends up as `/*`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Python raises `NameError: name 'count' is not defined` on the last line below. Why?\n```python\ndef report():\n    count = 3\nreport()\nprint(count)\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`count` exists only inside `report`, so module-level code cannot see it"
+        },
+        {
+          "id": "b",
+          "text": "`report()` was called before the function was written"
+        },
+        {
+          "id": "c",
+          "text": "`print` needs the value converted to a string first"
+        },
+        {
+          "id": "d",
+          "text": "`count` must be declared with `var` before use"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A variable assigned inside a function is local to that call, so the final `print` finds no such name. The function is defined before it is called, `print` accepts integers, and Python has no `var` declaration.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A PowerShell script prints `Backup to ` with a blank where a path should appear, because `$dest` was misspelled `$dst` and never assigned. Which setting would turn that mistake into an error?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`$ErrorActionPreference = \"Stop\"`"
+        },
+        {
+          "id": "b",
+          "text": "`$VerbosePreference = \"Continue\"`"
+        },
+        {
+          "id": "c",
+          "text": "`Set-StrictMode -Version Latest`"
+        },
+        {
+          "id": "d",
+          "text": "`Set-ExecutionPolicy RemoteSigned`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Strict mode makes reading an unassigned variable an error. Reading it is not an error by default, so `$ErrorActionPreference` has nothing to act on, verbose output only prints extra messages, and the execution policy controls which scripts may start.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A deploy script works on a developer laptop but fails in a CI job with `DEPLOY_TOKEN: unbound variable`. The laptop exports the variable in `~/.bashrc`. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Copy `~/.bashrc` into the repository so jobs can read it"
+        },
+        {
+          "id": "b",
+          "text": "Define it as a secret in the job's own settings"
+        },
+        {
+          "id": "c",
+          "text": "Remove the shebang line from the script"
+        },
+        {
+          "id": "d",
+          "text": "Switch the job to a larger runner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A CI job starts a clean, non-interactive shell that never reads a developer's profile, so the value must be supplied through the job's variables or secrets. Committing a profile exposes credentials, the shebang does not supply values, and runner size is unrelated.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-1-4-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "What does this Python snippet do when it runs?\n```python\nattempts = 0\ndef retry():\n    attempts += 1\n    return attempts\nprint(retry())\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It prints `1`, because the function updates the global"
+        },
+        {
+          "id": "b",
+          "text": "It raises `NameError`, because `attempts` is never defined"
+        },
+        {
+          "id": "c",
+          "text": "It raises `UnboundLocalError`, because `+=` makes `attempts` local to the function"
+        },
+        {
+          "id": "d",
+          "text": "It prints `0`, because the function works on a copy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An assignment anywhere in a function makes the name local for the whole function, so reading it before assignment fails with `UnboundLocalError`. The module-level `attempts` does exist, so it is not a `NameError`, and nothing is printed because the exception stops the script. A `global attempts` line would fix it.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A deploy script runs `make build`, which fails, but the script keeps going and prints `Done`. Which line near the top makes Bash stop at the first failing command?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`set -x`"
+        },
+        {
+          "id": "b",
+          "text": "`set -o noglob`"
+        },
+        {
+          "id": "c",
+          "text": "`set -o errexit`"
+        },
+        {
+          "id": "d",
+          "text": "`set -o allexport`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`set -o errexit`, the long form of `set -e`, exits when a command returns a non-zero status. `set -x` only traces commands, `noglob` disables filename expansion, and `allexport` marks every assigned variable for export.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which exception does Python raise when this snippet runs?\n```python\nconfig = {\"host\": \"db01\", \"port\": 5432}\nprint(config[\"user\"])\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`IndexError`"
+        },
+        {
+          "id": "b",
+          "text": "`AttributeError`"
+        },
+        {
+          "id": "c",
+          "text": "`ValueError`"
+        },
+        {
+          "id": "d",
+          "text": "`KeyError`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Looking up a dictionary key that does not exist raises `KeyError`. `IndexError` is for positions in a list, `AttributeError` for missing object attributes, and `ValueError` for a right type with a bad value.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A traceback ends as shown. Which line of `deploy.py` raised the exception?\n```text\nTraceback (most recent call last):\n  File \"deploy.py\", line 14, in <module>\n    run(cfg)\n  File \"deploy.py\", line 8, in run\n    return cfg[\"image\"].split(\":\")[1]\nIndexError: list index out of range\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Line 14, the first frame in the traceback"
+        },
+        {
+          "id": "b",
+          "text": "Line 8, the last frame in the traceback"
+        },
+        {
+          "id": "c",
+          "text": "Line 1, the traceback header"
+        },
+        {
+          "id": "d",
+          "text": "Line 14, because the call to `run` is the root cause"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The most recent call is listed last, so the exception was raised on line 8 inside `run`. Line 14 only shows how the program got there, and the header line names no file location.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "After a fresh clone, running `./deploy.sh` prints `Permission denied`, although the file exists and is readable. Which command fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`chmod 000 deploy.sh`"
+        },
+        {
+          "id": "b",
+          "text": "`touch deploy.sh`"
+        },
+        {
+          "id": "c",
+          "text": "`mv deploy.sh deploy`"
+        },
+        {
+          "id": "d",
+          "text": "`chmod +x deploy.sh`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The file lacks the execute permission, and `chmod +x` adds it. Mode `000` removes every permission, `touch` only updates the timestamp, and renaming the file does not change its mode.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A script uses `set -e` and then runs `build_all | tee build.log`. The build fails, yet the script carries on because the pipeline takes its status from `tee`. Which setting makes a failure in any stage fail the pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`set -o noclobber`"
+        },
+        {
+          "id": "b",
+          "text": "`set -o noglob`"
+        },
+        {
+          "id": "c",
+          "text": "`set -o pipefail`"
+        },
+        {
+          "id": "d",
+          "text": "`set -o noexec`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`pipefail` makes a pipeline return the status of the last command that failed. `noclobber` stops redirection from overwriting files, `noglob` disables wildcards, and `noexec` stops commands from running at all.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "In this PowerShell script the copy fails because the file is missing, but the script still prints `copied`. Which change makes the script stop at the failed copy?\n```powershell\nCopy-Item C:\\missing\\app.zip D:\\drop\nWrite-Host \"copied\"\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add `-ErrorAction SilentlyContinue` to `Copy-Item`"
+        },
+        {
+          "id": "b",
+          "text": "Add `-WhatIf` to `Copy-Item`"
+        },
+        {
+          "id": "c",
+          "text": "Add `-ErrorAction Stop` to `Copy-Item`"
+        },
+        {
+          "id": "d",
+          "text": "Add `-Verbose` to `Copy-Item`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A missing file is a non-terminating error by default, and `-ErrorAction Stop` promotes it to a terminating one. Silencing the error hides it, `-WhatIf` only simulates the copy, and `-Verbose` adds messages without changing flow.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Unit tests pass on a developer's machine, but the CI job fails with `ModuleNotFoundError: No module named 'requests'`. What is the most likely fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "List `requests` in the file the job installs"
+        },
+        {
+          "id": "b",
+          "text": "Commit the local `site-packages` folder"
+        },
+        {
+          "id": "c",
+          "text": "Pin the interpreter to an older minor version"
+        },
+        {
+          "id": "d",
+          "text": "Import the module twice at the top of the file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The CI environment is built fresh, so every library has to be declared in the dependency file that its install step reads. Committing installed packages bloats the repository, an older interpreter does not add a library, and a second import cannot find a module that is absent.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-1-4-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "After running a command, Git prints a long warning about a detached state. What does that mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The index has files staged for a merge"
+        },
+        {
+          "id": "b",
+          "text": "The working tree is far behind its upstream branch on the remote"
+        },
+        {
+          "id": "c",
+          "text": "The branch was deleted on the remote"
+        },
+        {
+          "id": "d",
+          "text": "`HEAD` points straight at a commit, not a branch"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A detached state means `HEAD` refers to a commit directly, so new commits are not tracked by any branch. Staged merge files, being behind an upstream and a deleted remote branch are different situations with different messages.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer is in a detached `HEAD` state after `git checkout 3f9a2c1`, and then makes two commits. Which command, run before leaving, keeps those commits on a branch?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git switch main`"
+        },
+        {
+          "id": "b",
+          "text": "`git stash push`"
+        },
+        {
+          "id": "c",
+          "text": "`git fetch --prune origin`"
+        },
+        {
+          "id": "d",
+          "text": "`git switch -c rescue-fix`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Creating a branch at the current commit gives the two new commits a name, so they stay reachable. Switching to `main` leaves them unreferenced, a stash only shelves uncommitted changes, and `fetch --prune` updates remote-tracking refs.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Running `git status` in `/srv/jobs/export` prints `fatal: not a git repository (or any of the parent directories): .git`. What is the cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The `.git` directory exists, but its index file is corrupt"
+        },
+        {
+          "id": "b",
+          "text": "No `.git` folder exists here or in a parent folder"
+        },
+        {
+          "id": "c",
+          "text": "The `.git` directory is present, but it has no remote set up"
+        },
+        {
+          "id": "d",
+          "text": "The `.git` directory is present, but another user owns it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Git searches upward for a `.git` directory and finds none, so the command ran outside any repository. A corrupt index, a missing remote and a mismatched owner each produce other messages.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A push to `main` is rejected with `! [rejected] main -> main (fetch first)` because a colleague pushed after the last pull. What is the best next step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run `git push --force` to replace the remote branch"
+        },
+        {
+          "id": "b",
+          "text": "Run `git pull`, resolve conflicts, then push again"
+        },
+        {
+          "id": "c",
+          "text": "Run `git commit --amend` and push the amended commit"
+        },
+        {
+          "id": "d",
+          "text": "Run `git reset --hard HEAD~1` and push again"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The remote holds commits the local branch lacks, so they must be integrated first. A forced push would discard the colleague's work, and amending or resetting the last commit does not bring the new remote commits in.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "`git switch release/2.4` fails with `Your local changes to the following files would be overwritten by checkout: app.conf`. What should the developer do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run `git clean -fd` on the repository, then switch"
+        },
+        {
+          "id": "b",
+          "text": "Run `git fetch --all` from the remote, then switch"
+        },
+        {
+          "id": "c",
+          "text": "Delete `.git/index`, then switch"
+        },
+        {
+          "id": "d",
+          "text": "Commit or stash the edits, then switch"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The target branch differs in `app.conf`, so Git protects the uncommitted edits until they are committed or stashed. `git clean` removes only untracked files, a fetch changes no local files, and deleting the index corrupts the repository state.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A freshly initialized local repository runs `git pull` from an existing remote and gets `fatal: refusing to merge unrelated histories`. If the histories are meant to be joined, which option lets the merge proceed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`--no-ff` to force a merge commit"
+        },
+        {
+          "id": "b",
+          "text": "`--squash` to collapse the commits"
+        },
+        {
+          "id": "c",
+          "text": "`--ff-only` to require a fast-forward"
+        },
+        {
+          "id": "d",
+          "text": "`--allow-unrelated-histories`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Git refuses to join two histories with no common ancestor unless told to. `--no-ff` forces a merge commit, `--squash` collapses commits, and `--ff-only` requires a fast-forward, which cannot occur here.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "During `git merge feature/retry` on `main`, a file contains the block below. What does the line `timeout: 30` represent?\n```text\n<<<<<<< HEAD\ntimeout: 30\n=======\ntimeout: 60\n>>>>>>> feature/retry\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The version that came from the `feature/retry` branch"
+        },
+        {
+          "id": "b",
+          "text": "The version on the branch checked out for the merge"
+        },
+        {
+          "id": "c",
+          "text": "The version stored in the common ancestor commit"
+        },
+        {
+          "id": "d",
+          "text": "A line that Git added by itself to mark the conflict"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The section above `=======` comes from the current branch, here `main`, and the section below it comes from the branch being merged. The common ancestor's text is not shown in the default conflict style, and Git's own marker lines are the ones with angle brackets or equals signs.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer has edited a conflicted file by hand to its final content and removed the markers. Which sequence completes the merge?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run `git add` on the file, then `git commit`"
+        },
+        {
+          "id": "b",
+          "text": "Run `git commit -m` first, then `git add` on the file"
+        },
+        {
+          "id": "c",
+          "text": "Run `git merge --abort`, then `git commit`"
+        },
+        {
+          "id": "d",
+          "text": "Run `git rebase --continue`, then `git add`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Staging the file tells Git the conflict is resolved, and the commit then records the merge. Committing first fails while the path is unmerged, aborting discards the merge, and `rebase --continue` belongs to a rebase.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A merge of the wrong branch has produced conflicts in eight files, and no merge commit exists yet. Which command returns the repository to its state before the merge?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git revert HEAD --no-edit`"
+        },
+        {
+          "id": "b",
+          "text": "`git rebase --abort`"
+        },
+        {
+          "id": "c",
+          "text": "`git cherry-pick --abort`"
+        },
+        {
+          "id": "d",
+          "text": "`git merge --abort`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`git merge --abort` restores the pre-merge state while a merge is in progress. `revert HEAD` would undo the previous commit, and the other two abort operations that are not running.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "While `main` is checked out and `git merge release/2.4` is stopped on a conflict in `app.conf`, which command takes the version from `release/2.4` for that file?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git checkout --ours app.conf`"
+        },
+        {
+          "id": "b",
+          "text": "`git checkout --theirs app.conf`"
+        },
+        {
+          "id": "c",
+          "text": "`git checkout HEAD app.conf`"
+        },
+        {
+          "id": "d",
+          "text": "`git checkout --conflict=merge app.conf`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "During a merge, `--theirs` means the branch being merged in and `--ours` means the current branch. Checking out from `HEAD` also restores the current branch's copy, and `--conflict=merge` only recreates the conflict markers rather than choosing a version.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A nightly job that clones over HTTPS with a personal access token starts failing with `Authentication failed`. The token was created with a 90-day lifetime three months ago. What is the likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The remote branch was force-pushed"
+        },
+        {
+          "id": "b",
+          "text": "The SSH key was removed from the agent"
+        },
+        {
+          "id": "c",
+          "text": "The repository was moved to a different folder"
+        },
+        {
+          "id": "d",
+          "text": "The credential passed its expiry date and must be reissued"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A token with a fixed lifetime stops working at its expiry, and the fix is to create a new one and update the stored value. A force-push, an SSH key and a local folder move do not affect HTTPS token authentication.",
+    "acronyms": [
+      "HTTPS",
+      "SSH"
+    ]
+  },
+  {
+    "id": "at1-1-4-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer's `git push` over SSH prints `Permission denied (publickey)`. What does the message mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The server's host key has changed"
+        },
+        {
+          "id": "b",
+          "text": "The server found no registered public key that matches a key the client offered"
+        },
+        {
+          "id": "c",
+          "text": "The repository is read-only for every user"
+        },
+        {
+          "id": "d",
+          "text": "The key passphrase has expired"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The server accepted the connection but none of the offered keys matched a public key on the account. A changed host key produces a different warning, a read-only repository fails after login, and passphrases do not expire.",
+    "acronyms": [
+      "SSH"
+    ]
+  },
+  {
+    "id": "at1-1-4-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "`ssh` refuses to use a private key and prints `UNPROTECTED PRIVATE KEY FILE! Permissions 0644 for 'id_ed25519' are too open.` Which command fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`chmod 777 ~/.ssh/id_ed25519`"
+        },
+        {
+          "id": "b",
+          "text": "`chmod 600 ~/.ssh/id_ed25519`"
+        },
+        {
+          "id": "c",
+          "text": "`chmod 644 ~/.ssh/id_ed25519.pub`"
+        },
+        {
+          "id": "d",
+          "text": "`chmod +x ~/.ssh/id_ed25519`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A private key must be readable and writable only by its owner, which mode `600` gives. Mode `777` is wider still, changing the public key does not affect the private key's permissions, and an execute bit is irrelevant.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A developer clones over HTTPS with a token and succeeds, but `git push` then fails with `The requested URL returned error: 403`. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The token expired between the clone and the push"
+        },
+        {
+          "id": "b",
+          "text": "The wrong SSH key is loaded in the agent"
+        },
+        {
+          "id": "c",
+          "text": "The token is valid but its scope is read-only"
+        },
+        {
+          "id": "d",
+          "text": "The server name cannot be resolved right now"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A 403 means the server knows who the caller is and refuses the action, which fits a read-only token. An expired token would be rejected as unauthenticated, SSH keys play no part over HTTPS, and a lookup failure would have blocked the clone.",
+    "acronyms": [
+      "HTTPS",
+      "SSH"
+    ]
+  },
+  {
+    "id": "at1-1-4-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "After the Git server `git.example.internal` was rebuilt, `git clone` over SSH fails with `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`. What is the right response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the private key and generate a new key pair for the account"
+        },
+        {
+          "id": "b",
+          "text": "Verify the new fingerprint with the administrator, then update the `known_hosts` entry"
+        },
+        {
+          "id": "c",
+          "text": "Turn off host key checking for every host on the network"
+        },
+        {
+          "id": "d",
+          "text": "Switch the remote to HTTPS and ignore the warning for now"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The stored host key no longer matches, which is expected after a rebuild but could also signal interception, so the new fingerprint is verified out of band before updating the entry. Replacing the user's key does not address the host key, and disabling checks removes the protection.",
+    "acronyms": [
+      "HTTPS",
+      "SSH"
+    ]
+  },
+  {
+    "id": "at1-1-4-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A CI job holds an SSH deploy key, yet `git push` fails with `fatal: could not read Username for 'https://git.example.internal': No such device or address`. What is wrong?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The deploy key is missing its passphrase"
+        },
+        {
+          "id": "b",
+          "text": "The runner has no network route to the server"
+        },
+        {
+          "id": "c",
+          "text": "The branch is protected and refuses pushes"
+        },
+        {
+          "id": "d",
+          "text": "The remote uses an HTTPS URL, so the deploy key is never used"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Git is prompting for HTTPS credentials because the remote URL is HTTPS, so the SSH key never comes into play; changing the remote to the SSH form fixes it. A passphrase problem, a missing route and branch protection would each show different messages.",
+    "acronyms": [
+      "HTTPS",
+      "SSH",
+      "URL",
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-1-4-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO problems does Python report before it runs any line of the script?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A missing colon after a `def` line"
+        },
+        {
+          "id": "b",
+          "text": "A list index that is out of range"
+        },
+        {
+          "id": "c",
+          "text": "An opening bracket that is never closed"
+        },
+        {
+          "id": "d",
+          "text": "A file path that does not exist"
+        },
+        {
+          "id": "e",
+          "text": "A dictionary key that is not present"
+        },
+        {
+          "id": "f",
+          "text": "A division by zero"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A missing colon and an unclosed bracket are syntax errors, found when Python parses the file. An out-of-range index, a missing path, an absent key and a division by zero can only be detected while the code runs.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE of these problems are runtime errors?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A `ZeroDivisionError` from `10 / count` when `count` is `0`"
+        },
+        {
+          "id": "b",
+          "text": "A `FileNotFoundError` from opening a deleted log"
+        },
+        {
+          "id": "c",
+          "text": "A Bash script that is missing its closing `fi`"
+        },
+        {
+          "id": "d",
+          "text": "A `KeyError` from a dictionary key that does not exist"
+        },
+        {
+          "id": "e",
+          "text": "An `IndentationError` on an unindented `if` body"
+        },
+        {
+          "id": "f",
+          "text": "An unclosed quote in a PowerShell string"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Dividing by zero, opening a missing file and reading an absent key all fail while the program is running. A missing `fi`, a bad indent and an unclosed quote stop the script from being parsed.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-039",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO actions are part of resolving a merge conflict in `app.yml` before the merge commit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Edit the file to its final content and remove the conflict markers"
+        },
+        {
+          "id": "b",
+          "text": "Stage the edited file with `git add`"
+        },
+        {
+          "id": "c",
+          "text": "Force-push the branch to the remote"
+        },
+        {
+          "id": "d",
+          "text": "Delete the branch that is being merged"
+        },
+        {
+          "id": "e",
+          "text": "Run `git gc` to compact the repository"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "The markers must be removed by editing the file, and `git add` marks the path as resolved. Pushing, deleting the other branch and compacting the repository are not steps of the resolution.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-040",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO checks help diagnose `Permission denied (publickey)` on a Git push over SSH?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run `ssh -v` to see which keys the client offers"
+        },
+        {
+          "id": "b",
+          "text": "Compare the key fingerprint with the keys registered on the server account"
+        },
+        {
+          "id": "c",
+          "text": "Regenerate the HTTPS personal access token"
+        },
+        {
+          "id": "d",
+          "text": "Turn off certificate verification in Git"
+        },
+        {
+          "id": "e",
+          "text": "Clear the local name-resolution cache"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Verbose output shows which keys are offered, and the fingerprint comparison shows whether the server knows any of them. An HTTPS token, TLS verification and name caching are unrelated to SSH key matching.",
+    "acronyms": [
+      "HTTPS",
+      "SSH",
+      "TLS"
+    ]
+  },
+  {
+    "id": "at1-1-4-mcq-041",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO settings turn the use of an unset variable into an error?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Bash `set -u`"
+        },
+        {
+          "id": "b",
+          "text": "PowerShell `Set-StrictMode -Version Latest`"
+        },
+        {
+          "id": "c",
+          "text": "Bash `set -x`"
+        },
+        {
+          "id": "d",
+          "text": "PowerShell `$ErrorActionPreference = \"SilentlyContinue\"`"
+        },
+        {
+          "id": "e",
+          "text": "Bash `set -f`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "`set -u` and strict mode both flag a variable that was read before it was assigned. `set -x` traces commands, silencing errors hides them, and `set -f` disables wildcard expansion.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-042",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "A developer is in a detached `HEAD` state. Which TWO commands put `HEAD` back on a branch?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git switch main`"
+        },
+        {
+          "id": "b",
+          "text": "`git switch -c rescue-fix`"
+        },
+        {
+          "id": "c",
+          "text": "`git log --oneline`"
+        },
+        {
+          "id": "d",
+          "text": "`git diff HEAD`"
+        },
+        {
+          "id": "e",
+          "text": "`git show 3f9a2c1`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Switching to an existing branch or creating a new one at the current commit attaches `HEAD` to a branch. Viewing the log, a diff or a commit only reads data.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-mcq-043",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE can cause `Authentication failed` on a `git clone` over HTTPS?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The token has expired"
+        },
+        {
+          "id": "b",
+          "text": "The token was revoked by its owner"
+        },
+        {
+          "id": "c",
+          "text": "A cached credential for an older token is still being sent"
+        },
+        {
+          "id": "d",
+          "text": "The local branch has a merge conflict"
+        },
+        {
+          "id": "e",
+          "text": "The working copy is in a detached `HEAD` state"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Expired, revoked and stale cached credentials all fail the login. A merge conflict and a detached `HEAD` concern the local working copy and cannot affect a clone.",
+    "acronyms": [
+      "HTTPS"
+    ]
+  },
+  {
+    "id": "at1-1-4-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "A developer checked out a commit by its hash and made a commit on top of it. Review the output and the help lines, then complete each step.",
+    "payload": {
+      "output": [
+        "$ git status",
+        "HEAD detached from 3f9a2c1",
+        "nothing to commit, working tree clean",
+        "$ git log --oneline -3",
+        "7be41d0 (HEAD) Tune retry delay",
+        "3f9a2c1 Add retry loop",
+        "a90bb12 (main) Initial pipeline",
+        "$ git switch --help",
+        "usage: git switch [-c | --create] <new-branch> [<start-point>]",
+        "$ git push --help",
+        "usage: git push [-u | --set-upstream] <remote> <branch>"
+      ],
+      "steps": [
+        {
+          "id": "cause",
+          "label": "Choose what put the repository in this state",
+          "options": [
+            {
+              "id": "o1",
+              "text": "A commit hash was checked out instead of a branch name"
+            },
+            {
+              "id": "o2",
+              "text": "A merge was started and then abandoned"
+            },
+            {
+              "id": "o3",
+              "text": "A fetch rewrote the local main branch"
+            },
+            {
+              "id": "o4",
+              "text": "A stash was applied on top of main"
+            }
+          ]
+        },
+        {
+          "id": "create",
+          "label": "Type one command that creates a branch named retry-fix at the current commit and switches to it"
+        },
+        {
+          "id": "push",
+          "label": "Type the command that pushes retry-fix to the remote origin and sets it as the upstream branch"
+        },
+        {
+          "id": "verify",
+          "label": "Choose the first line git status prints once retry-fix is checked out",
+          "options": [
+            {
+              "id": "o1",
+              "text": "HEAD detached at retry-fix"
+            },
+            {
+              "id": "o2",
+              "text": "On branch main"
+            },
+            {
+              "id": "o3",
+              "text": "On branch retry-fix"
+            },
+            {
+              "id": "o4",
+              "text": "HEAD detached from 3f9a2c1"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "cause": [
+          "o1"
+        ],
+        "create": [
+          "git switch -c retry-fix",
+          "git switch --create retry-fix",
+          "git switch --create=retry-fix",
+          "git switch -c retry-fix HEAD",
+          "git switch --create retry-fix HEAD",
+          "git switch -c retry-fix 7be41d0",
+          "git switch --create retry-fix 7be41d0",
+          "git checkout -b retry-fix",
+          "git checkout -b retry-fix HEAD",
+          "git checkout -b retry-fix 7be41d0"
+        ],
+        "push": [
+          "git push -u origin retry-fix",
+          "git push --set-upstream origin retry-fix",
+          "git push origin -u retry-fix",
+          "git push origin --set-upstream retry-fix",
+          "git push origin retry-fix -u",
+          "git push origin retry-fix --set-upstream",
+          "git push -u origin HEAD",
+          "git push --set-upstream origin HEAD",
+          "git push -u origin retry-fix:retry-fix",
+          "git push --set-upstream origin retry-fix:retry-fix",
+          "git push -u origin HEAD:retry-fix",
+          "git push --set-upstream origin HEAD:retry-fix"
+        ],
+        "verify": [
+          "o3"
+        ]
+      }
+    },
+    "explanation": "The status line reads HEAD detached because a commit hash was checked out, and the new commit belongs to no branch. Creating and switching to a branch at that commit keeps the work, pushing with the upstream flag publishes it, and status then names the branch.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "cause": "Checking out a hash rather than a branch name detaches HEAD, so the new commit has no branch.",
+      "create": "git switch -c names a new branch at the current commit and moves HEAD onto it.",
+      "push": "The -u flag publishes the branch and records origin/retry-fix as its upstream.",
+      "verify": "Once HEAD is attached to retry-fix, status begins with On branch retry-fix."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 3,
+    "stem": "This packaging script stops with an error. Choose the fix for each problem so that it runs with `set -u` still in place.\n```bash\n#!/bin/bash\nset -u\nAPP_NAME=\"orders-api\"\nRELEASE_DIR=\"/srv/releases/$APP_NAME\"\necho \"Packaging $APP_NMAE\"\ntar -czf \"$RELEASE_DIR/$PKG_VER.tar.gz\" build/\necho \"Packaged $PKG_VER to $RELEASE_DIR\"\n```\nThe run prints `package.sh: line 5: APP_NMAE: unbound variable`. The pipeline supplies the release number only as `RELEASE_VERSION`.",
+    "payload": {
+      "fields": [
+        {
+          "id": "typo",
+          "label": "Fix for line 5",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Add APP_NMAE=\"\" above line 5"
+            },
+            {
+              "id": "o2",
+              "text": "Change $APP_NMAE to $APP_NAME"
+            },
+            {
+              "id": "o3",
+              "text": "Remove set -u from the script"
+            }
+          ]
+        },
+        {
+          "id": "version",
+          "label": "Line that sets PKG_VER and stops with a clear message when RELEASE_VERSION is missing",
+          "options": [
+            {
+              "id": "o1",
+              "text": "PKG_VER=\"${RELEASE_VERSION:?RELEASE_VERSION is not set}\""
+            },
+            {
+              "id": "o2",
+              "text": "PKG_VER=\"${RELEASE_VERSION:-}\""
+            },
+            {
+              "id": "o3",
+              "text": "PKG_VER=\"${RELEASE_VERSION:=}\""
+            }
+          ]
+        },
+        {
+          "id": "place",
+          "label": "Where the PKG_VER line belongs",
+          "options": [
+            {
+              "id": "o1",
+              "text": "After the tar line"
+            },
+            {
+              "id": "o2",
+              "text": "After the last echo line"
+            },
+            {
+              "id": "o3",
+              "text": "Before the tar line"
+            }
+          ]
+        },
+        {
+          "id": "keep",
+          "label": "What to do with set -u",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Remove it so typos no longer stop the run"
+            },
+            {
+              "id": "o2",
+              "text": "Keep it so unset variables fail loudly"
+            },
+            {
+              "id": "o3",
+              "text": "Move it to the last line of the script"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "typo": "o2",
+        "version": "o1",
+        "place": "o3",
+        "keep": "o2"
+      }
+    },
+    "explanation": "Line 5 misspells the variable, so correcting the name fixes it. PKG_VER must be set from RELEASE_VERSION with the error form of expansion before tar uses it, and set -u stays because it is what exposed the typo.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "typo": "APP_NMAE is a misspelling of APP_NAME; assigning it an empty value would hide the typo.",
+      "version": "The :? form aborts with the given message when the variable is unset or empty; :- and := substitute an empty value.",
+      "place": "A variable must be assigned before the first line that reads it, and tar reads it on line 6.",
+      "keep": "set -u is what turned the misspelling into a clear error, so it stays at the top."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "A developer merges `feature/limits` into `main` and Git stops on conflicts. Put the steps in the order they happen. The team lists the conflicted files before editing anything, and tests the edited files before staging them.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "Stage each resolved file with git add"
+        },
+        {
+          "id": "s2",
+          "text": "List the conflicted files with git status"
+        },
+        {
+          "id": "s6",
+          "text": "Run git commit to record the merge"
+        },
+        {
+          "id": "s3",
+          "text": "Edit each conflicted file to its final content and remove the markers"
+        },
+        {
+          "id": "s1",
+          "text": "Merge the feature branch into the checked-out branch and see the conflict report"
+        },
+        {
+          "id": "s4",
+          "text": "Run the unit tests against the edited files before staging anything"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The merge is attempted first and reports the conflicts, status lists the files, they are edited and tested, and only then are they staged and committed.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "0": "The conflict only exists once the merge has been attempted.",
+      "1": "Status lists the files marked as unmerged before any editing starts.",
+      "2": "Each file is edited to its intended content and the markers are removed.",
+      "3": "The team rule is to test the edited files before staging them.",
+      "4": "Staging tells Git each conflict is resolved.",
+      "5": "The commit records the merge once every path is staged."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "stem": "A scheduler logged these failures overnight. Classify each one as a syntax error, which is found before the script runs, or a runtime error, which occurs while it runs, and then count the runtime errors.",
+    "payload": {
+      "caption": "Overnight script failures",
+      "columns": [
+        "Time",
+        "Script",
+        "Message"
+      ],
+      "rows": [
+        [
+          "02:00:12",
+          "backup.sh",
+          "line 12: syntax error: unexpected end of file"
+        ],
+        [
+          "02:01:40",
+          "report.py",
+          "ZeroDivisionError: division by zero"
+        ],
+        [
+          "02:03:05",
+          "sync.ps1",
+          "Missing closing ')' in expression."
+        ],
+        [
+          "02:04:51",
+          "deploy.py",
+          "NameError: name 'region' is not defined"
+        ],
+        [
+          "02:06:30",
+          "load.py",
+          "FileNotFoundError: no such file 'rates.csv'"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "r1",
+          "label": "Classify the failure of backup.sh",
+          "options": [
+            {
+              "id": "run",
+              "text": "Runtime error"
+            },
+            {
+              "id": "syn",
+              "text": "Syntax error"
+            },
+            {
+              "id": "auth",
+              "text": "Authentication failure"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "label": "Classify the failure of report.py",
+          "options": [
+            {
+              "id": "auth",
+              "text": "Authentication failure"
+            },
+            {
+              "id": "syn",
+              "text": "Syntax error"
+            },
+            {
+              "id": "run",
+              "text": "Runtime error"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "label": "Classify the failure of sync.ps1",
+          "options": [
+            {
+              "id": "syn",
+              "text": "Syntax error"
+            },
+            {
+              "id": "run",
+              "text": "Runtime error"
+            },
+            {
+              "id": "auth",
+              "text": "Authentication failure"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "label": "Classify the failure of deploy.py",
+          "options": [
+            {
+              "id": "syn",
+              "text": "Syntax error"
+            },
+            {
+              "id": "auth",
+              "text": "Authentication failure"
+            },
+            {
+              "id": "run",
+              "text": "Runtime error"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "label": "Classify the failure of load.py",
+          "options": [
+            {
+              "id": "run",
+              "text": "Runtime error"
+            },
+            {
+              "id": "auth",
+              "text": "Authentication failure"
+            },
+            {
+              "id": "syn",
+              "text": "Syntax error"
+            }
+          ]
+        },
+        {
+          "id": "count",
+          "label": "Number of runtime errors in the table",
+          "options": [
+            {
+              "id": "n2",
+              "text": "2"
+            },
+            {
+              "id": "n3",
+              "text": "3"
+            },
+            {
+              "id": "n4",
+              "text": "4"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "r1": "syn",
+        "r2": "run",
+        "r3": "syn",
+        "r4": "run",
+        "r5": "run",
+        "count": "n3"
+      }
+    },
+    "explanation": "Two messages are parse failures: a block that never ends and an unclosed parenthesis. The other three, a division by zero, an undefined name and a missing file, happen only while the code runs, so the count is 3.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "r1": "An unexpected end of file means the shell could not parse the script, which is a syntax error.",
+      "r2": "Dividing by zero is only detected when the line executes.",
+      "r3": "A missing closing parenthesis is a parse error that PowerShell reports before running.",
+      "r4": "A name that is read before it is assigned fails when that line runs, so it is a runtime error.",
+      "r5": "A file that does not exist is discovered only when the script tries to open it.",
+      "count": "Rows 2, 4 and 5 are runtime errors, which makes 3."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 3,
+    "stem": "A developer checked out commit c3 by its hash and made two commits, c4 and c5. `main` and its remote copy are both still at c3. Place the label that fits each description under the graph.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 100,
+          "h": 50,
+          "text": "c1"
+        },
+        {
+          "id": "n2",
+          "x": 135,
+          "y": 20,
+          "w": 100,
+          "h": 50,
+          "text": "c2"
+        },
+        {
+          "id": "n3",
+          "x": 260,
+          "y": 20,
+          "w": 100,
+          "h": 50,
+          "text": "c3"
+        },
+        {
+          "id": "n4",
+          "x": 385,
+          "y": 20,
+          "w": 100,
+          "h": 50,
+          "text": "c4"
+        },
+        {
+          "id": "n5",
+          "x": 510,
+          "y": 20,
+          "w": 80,
+          "h": 50,
+          "text": "c5"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        },
+        {
+          "from": "n4",
+          "to": "n5"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Local branch name still at c3"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Remote copy of the shared branch"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Where HEAD points after two commits"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Branch to create at c5 to keep c4 and c5"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "main"
+        },
+        {
+          "id": "l2",
+          "text": "origin/main"
+        },
+        {
+          "id": "l3",
+          "text": "HEAD (detached at c5)"
+        },
+        {
+          "id": "l4",
+          "text": "rescue-fix"
+        },
+        {
+          "id": "l5",
+          "text": "stash@{0}"
+        },
+        {
+          "id": "l6",
+          "text": "HEAD (on main)"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "The local and remote branch names both stay at c3, HEAD follows the new commits to c5 without a branch, and a new branch at c5 is what keeps c4 and c5 reachable once HEAD moves. A stash is not a commit pointer, and HEAD is not on main.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "z1": "The local main branch did not move, so it still points at c3.",
+      "z2": "The remote-tracking copy origin/main also stays at c3 until someone pushes.",
+      "z3": "A detached HEAD moves with each new commit and points at c5.",
+      "z4": "A branch created at c5 gives c4 and c5 a name so they stay reachable."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "stem": "A scheduled sync job printed the traceback below. Select the line of source code that raised the error and the line that names the exception.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n_tb",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Traceback (most recent call last):"
+        },
+        {
+          "id": "n_f1",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "File \"sync.py\", line 20, in <module>"
+        },
+        {
+          "id": "n_c1",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "main(cfg)"
+        },
+        {
+          "id": "n_f2",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "File \"sync.py\", line 11, in main"
+        },
+        {
+          "id": "n_src",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "host = cfg[\"db\"][\"host\"]"
+        },
+        {
+          "id": "n_err",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "KeyError: 'db'"
+        }
+      ],
+      "spots": [
+        {
+          "id": "tb",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Traceback (most recent call last):"
+        },
+        {
+          "id": "f1",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "File \"sync.py\", line 20, in <module>"
+        },
+        {
+          "id": "c1",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "main(cfg)"
+        },
+        {
+          "id": "f2",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "File \"sync.py\", line 11, in main"
+        },
+        {
+          "id": "src",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "host = cfg[\"db\"][\"host\"]"
+        },
+        {
+          "id": "err",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "KeyError: 'db'"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "src",
+        "err"
+      ]
+    },
+    "explanation": "The last frame holds the statement that failed, and the final line names the exception and the missing key. The file and line references only locate the frames, and the call to main is just how the program got there.",
+    "pbqWeight": 2,
+    "partExplanations": {
+      "src": "The source line under the last file reference is the statement that raised the error.",
+      "err": "The final line gives the exception type and the key that was not found."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-4-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each error message or Git state to its most likely cause.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "SyntaxError: '(' was never closed"
+        },
+        {
+          "id": "p2",
+          "text": "NameError: name 'region' is not defined"
+        },
+        {
+          "id": "p3",
+          "text": "ZeroDivisionError: division by zero"
+        },
+        {
+          "id": "p4",
+          "text": "Permission denied (publickey)"
+        },
+        {
+          "id": "p5",
+          "text": "Automatic merge failed; fix conflicts and then commit the result"
+        },
+        {
+          "id": "p6",
+          "text": "HEAD detached at 9c1d4ea"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "An opening bracket has no matching closing bracket"
+        },
+        {
+          "id": "c2",
+          "text": "A variable was read before it was assigned"
+        },
+        {
+          "id": "c3",
+          "text": "A divisor evaluated to zero while the code ran"
+        },
+        {
+          "id": "c4",
+          "text": "The server has no public key that matches the one offered"
+        },
+        {
+          "id": "c5",
+          "text": "Both branches changed the same lines differently"
+        },
+        {
+          "id": "c6",
+          "text": "A commit rather than a branch is checked out"
+        },
+        {
+          "id": "c7",
+          "text": "The HTTPS token has expired"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5",
+        "p6": "c6"
+      }
+    },
+    "explanation": "Each message points at one cause: a parse error from an unclosed bracket, a name used before assignment, a zero divisor at run time, an SSH key the server does not know, overlapping edits in a merge, and a checked-out commit. An expired token produces an authentication failure over HTTPS, which none of these messages shows.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "p1": "The parser reports an opening bracket that never closes.",
+      "p2": "Python raises NameError when a name is used before it is assigned.",
+      "p3": "Division by a zero value is detected only while the code runs.",
+      "p4": "The server accepted the connection but knows none of the offered public keys.",
+      "p5": "A content conflict means both branches edited the same lines in different ways.",
+      "p6": "A detached HEAD message means a commit was checked out directly."
+    },
+    "acronyms": [
+      "HTTPS",
+      "SSH"
+    ]
+  },
+  {
+    "id": "at1-1-4-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "stem": "Sort each failure into the kind of problem it is.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "syn",
+          "text": "Syntax error"
+        },
+        {
+          "id": "run",
+          "text": "Runtime error"
+        },
+        {
+          "id": "git",
+          "text": "Git error"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "A Bash script that is missing its closing fi"
+        },
+        {
+          "id": "i2",
+          "text": "A Python lookup of a dictionary key that does not exist"
+        },
+        {
+          "id": "i3",
+          "text": "Git refusing to merge unrelated histories"
+        },
+        {
+          "id": "i4",
+          "text": "A PowerShell script with an unclosed parenthesis"
+        },
+        {
+          "id": "i5",
+          "text": "A script that opens a log file which was deleted"
+        },
+        {
+          "id": "i6",
+          "text": "A push rejected because the remote has newer commits"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "syn",
+        "i2": "run",
+        "i3": "git",
+        "i4": "syn",
+        "i5": "run",
+        "i6": "git"
+      }
+    },
+    "explanation": "A missing fi and an unclosed parenthesis stop the script from being parsed. A missing key and a deleted file fail while the code runs. Unrelated histories and a rejected push are errors reported by Git itself.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "i1": "An unclosed if block cannot be parsed, so it is a syntax error.",
+      "i2": "A missing key is found only when the lookup executes.",
+      "i3": "Git itself refuses to join histories that share no commit.",
+      "i4": "The parser rejects the unclosed parenthesis before anything runs.",
+      "i5": "The missing file shows up only when the script tries to open it.",
+      "i6": "Git rejects a push when the remote branch has commits the local branch lacks."
+    },
+    "acronyms": []
+  }
+]

@@ -3,21 +3,2631 @@
     "id": "at1-1-1-mcq-001",
     "exam": "AT0-001",
     "source": "ours",
-    "objectiveIds": ["1.1"],
+    "objectiveIds": [
+      "1.1"
+    ],
     "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A Bash script sets count=0 at the top level. A function then runs local count=5 followed by count=$((count + 1)). After the function returns, what does echo \"$count\" print at the top level?",
+    "stem": "A Bash script sets `count=0` at the top level. A function then runs `local count=5` followed by `count=$((count + 1))`. After the function returns, what does `echo \"$count\"` print at the top level?",
     "payload": {
       "options": [
-        { "id": "a", "text": "6" },
-        { "id": "b", "text": "5" },
-        { "id": "c", "text": "0" },
-        { "id": "d", "text": "1" }
+        {
+          "id": "a",
+          "text": "6"
+        },
+        {
+          "id": "b",
+          "text": "5"
+        },
+        {
+          "id": "c",
+          "text": "0"
+        },
+        {
+          "id": "d",
+          "text": "1"
+        }
       ]
     },
-    "answer": { "correct": ["c"] },
-    "explanation": "The local keyword makes a variable that exists only inside the function and hides the global one. The increment changes that local copy to 6, which is discarded when the function returns, so the global count is still 0. It would print 1 only if the function had changed the global variable without local.",
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The `local` keyword makes a variable that exists only inside the function and hides the global one. The increment changes that local copy to 6, which is discarded when the function returns, so the global `count` is still 0. It would print 1 only if the function had changed the global variable without `local`.",
     "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A Python 3 script runs the code below. What happens?\n\n```python\ntotal = 0\n\ndef add(n):\n    total += n\n\nadd(5)\nprint(total)\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It prints `5`"
+        },
+        {
+          "id": "b",
+          "text": "It prints `0`"
+        },
+        {
+          "id": "c",
+          "text": "It raises a `SyntaxError` before anything runs"
+        },
+        {
+          "id": "d",
+          "text": "It raises an `UnboundLocalError` inside `add`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Assigning to `total` inside `add` makes it a local name for the whole function, so the read in `total += n` happens before the local has a value and raises `UnboundLocalError`. A `global total` line would let the function change the module-level value and print `5`. The code is valid syntax, so it does not fail at parse time, and `0` would print only if the function never touched `total`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A PowerShell script runs the lines below at the top level. What does the last line write?\n\n```powershell\n$count = 1\nfunction Step { $count = $count + 1 }\nStep\nWrite-Output $count\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It writes `1`"
+        },
+        {
+          "id": "b",
+          "text": "It writes `2`, the incremented value"
+        },
+        {
+          "id": "c",
+          "text": "It writes `0`, the starting default"
+        },
+        {
+          "id": "d",
+          "text": "It reports that `$count` is not defined"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A function can read a variable from its caller, but an assignment inside the function creates a local copy. `Step` computes 2 in its own scope and discards it, so the script-level `$count` is still 1. Writing `$script:count` in the assignment would change the outer value, `0` is never assigned, and reading a parent-scope variable does not cause an undefined-variable error.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A Bash script contains the two lines below. Running it prints a `not found` error for `host` and then an empty line. What is the cause?\n\n```bash\nhost = \"web01\"\necho \"$host\"\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Variable names in Bash must be written in uppercase"
+        },
+        {
+          "id": "b",
+          "text": "The value needs single quotes instead of double quotes"
+        },
+        {
+          "id": "c",
+          "text": "Spaces around `=` turn the name into a command"
+        },
+        {
+          "id": "d",
+          "text": "The `echo` line needs braces around the variable name"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A Bash assignment has no spaces around `=`. With spaces, Bash treats `host` as a command name and `=` and the value as its arguments, so the variable stays unset and `echo` prints an empty line. Lowercase names are fine, double quotes are valid for a plain value, and braces are optional here.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does this Bash script print?\n\n```bash\nstatus=3\nif [ \"$status\" -eq 0 ]; then\n  echo ok\nelif [ \"$status\" -lt 5 ]; then\n  echo retry\nelse\n  echo fail\nfi\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`ok`"
+        },
+        {
+          "id": "b",
+          "text": "`retry`"
+        },
+        {
+          "id": "c",
+          "text": "`fail`"
+        },
+        {
+          "id": "d",
+          "text": "`retry` followed by `fail`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The first test is false because 3 is not 0, so Bash checks the `elif` branch. 3 is less than 5, so `retry` prints and the rest of the chain is skipped. `ok` would need a status of 0, and `fail` runs only when both tests are false, and a single chain runs exactly one branch.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A Python script sets `retries = 7` and then runs the code below. What does it print?\n\n```python\nretries = 7\nif retries == 3 or 5:\n    print(\"limit\")\nelse:\n    print(\"ok\")\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It prints `ok`"
+        },
+        {
+          "id": "b",
+          "text": "It raises a `TypeError`"
+        },
+        {
+          "id": "c",
+          "text": "It prints nothing"
+        },
+        {
+          "id": "d",
+          "text": "It prints `limit`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The condition is read as `(retries == 3) or 5`. The first part is false, but a bare `5` is truthy, so the whole condition is always true and `limit` prints. The intended test is `retries in (3, 5)`, which would print `ok` for 7. No type error occurs, and one branch always runs.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What does this Bash loop print?\n\n```bash\nfor i in 1 2 3 4; do\n  if [ \"$i\" -eq 2 ]; then continue; fi\n  if [ \"$i\" -eq 4 ]; then break; fi\n  echo \"$i\"\ndone\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`1` and `3`, one per line"
+        },
+        {
+          "id": "b",
+          "text": "`1`, `2` and `3`"
+        },
+        {
+          "id": "c",
+          "text": "`1`, `3` and `4`"
+        },
+        {
+          "id": "d",
+          "text": "`3` alone"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "For 1 the tests are false and the value prints. For 2, `continue` skips the rest of that pass. For 3 the value prints. For 4, `break` ends the loop before the `echo` runs, so neither 2 nor 4 is printed.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What does this Python loop print, one value per line?\n\n```python\nfor n in range(1, 10, 3):\n    print(n)\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`1`, `4`, `7`, `10`"
+        },
+        {
+          "id": "b",
+          "text": "`0`, `3`, `6`, `9`"
+        },
+        {
+          "id": "c",
+          "text": "`1`, `4`, `7`"
+        },
+        {
+          "id": "d",
+          "text": "`1`, `2`, `3`, `4`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`range(start, stop, step)` begins at 1 and adds 3 each time: 1, 4, 7. The next value, 10, is not below the stop value 10, so it is excluded. Starting at 0 would give 0, 3, 6, 9, and 1, 2, 3, 4 would need a step of 1 and a stop of 5.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A script `deploy.sh` contains the lines below and is run as `./deploy.sh staging web01 web02`. What does it print?\n\n```bash\nenv=\"$1\"\nshift\necho \"$env: $# left\"\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`staging: 3 left`"
+        },
+        {
+          "id": "b",
+          "text": "`staging: 2 left`"
+        },
+        {
+          "id": "c",
+          "text": "`staging: 1 left`"
+        },
+        {
+          "id": "d",
+          "text": "`./deploy.sh: 2 left`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`$1` holds `staging`. `shift` then drops it, so `$#` counts the two remaining arguments, `web01` and `web02`. A count of 3 would be the value before `shift`, a count of 1 miscounts the arguments, and the script name is `$0`, not `$env`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "What does the final line print?\n\n```python\ndef add_tag(tag, tags=[]):\n    tags.append(tag)\n    return tags\n\nadd_tag(\"a\")\nprint(add_tag(\"b\"))\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`['b']`"
+        },
+        {
+          "id": "b",
+          "text": "`['a']`"
+        },
+        {
+          "id": "c",
+          "text": "`[]`"
+        },
+        {
+          "id": "d",
+          "text": "`['a', 'b']`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A default value is created once, when the function is defined, so every call that omits `tags` shares the same list. The first call adds `'a'` to it and the second adds `'b'`, giving `['a', 'b']`. A fresh list on each call would give `['b']`, which is why the usual fix is `tags=None` followed by a new list inside the function.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The code below calls a function and prints its result. What does the last line print?\n\n```python\ndef clean(path):\n    removed = 3\n    print(\"cleaned\", path)\n\nresult = clean(\"/tmp\")\nprint(result)\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`None`"
+        },
+        {
+          "id": "b",
+          "text": "`3`"
+        },
+        {
+          "id": "c",
+          "text": "`/tmp`"
+        },
+        {
+          "id": "d",
+          "text": "`cleaned /tmp`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A Python function with no `return` statement returns `None`. The text `cleaned /tmp` appears on the earlier line because `clean` prints it, but that is output, not the return value. The local `removed` is discarded, and `path` is only a parameter.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An application writes `DEBUG`, `INFO`, `WARN`, `ERROR` and `FATAL` entries, and its log level is set to `WARN`. Which entries are written?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`DEBUG`, `INFO` and `WARN`"
+        },
+        {
+          "id": "b",
+          "text": "`WARN` entries alone"
+        },
+        {
+          "id": "c",
+          "text": "`WARN`, `ERROR` and `FATAL`"
+        },
+        {
+          "id": "d",
+          "text": "`ERROR` and `FATAL` alone"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A log level is a threshold: the service writes entries at that severity and at every more severe level. `DEBUG` and `INFO` rank below `WARN` and are dropped. Setting the level to `ERROR` would leave just `ERROR` and `FATAL`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team changes a service to write each log entry as one JSON object per line instead of free text. What is the main benefit for the scripts that read the logs?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The log files become smaller than the plain text version"
+        },
+        {
+          "id": "b",
+          "text": "Fields such as the level can be read by name"
+        },
+        {
+          "id": "c",
+          "text": "Entries are encrypted while they are stored on disk"
+        },
+        {
+          "id": "d",
+          "text": "Old files no longer need to be rotated or removed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Structured entries let a script ask for the level or the order number by name instead of matching text with a pattern. JSON adds punctuation, so files usually grow rather than shrink. The format has nothing to do with encryption, and the files still fill a disk without rotation.",
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "at1-1-1-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A login handler writes `user=ana password=Spring9!` to the application log when a sign-in fails. Which change fixes the problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Write failed sign-ins at `DEBUG` level instead"
+        },
+        {
+          "id": "b",
+          "text": "Compress and rotate the log file each night"
+        },
+        {
+          "id": "c",
+          "text": "Add a timestamp to each failed sign-in entry"
+        },
+        {
+          "id": "d",
+          "text": "Mask the secret value before it is written"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Secrets must not reach the log at all, so the handler masks or drops the field before writing. Changing the level only moves the secret to a quieter stream, rotation and compression keep the same text, and a timestamp adds context without removing anything.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which `grep -E` pattern matches only lines that consist of exactly three digits and nothing else?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`^[0-9]{3}$`"
+        },
+        {
+          "id": "b",
+          "text": "`[0-9]{3}`"
+        },
+        {
+          "id": "c",
+          "text": "`^[0-9]{3}`"
+        },
+        {
+          "id": "d",
+          "text": "`[0-9]{3}$`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The `^` anchor ties the match to the start of the line and the `$` anchor ties it to the end, so nothing else can appear around the three digits. Without both anchors, a line such as `1234` or `x123` would also match.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The pattern `10.0.0.5` also matches the text `10x0y0z5` in `grep`. Why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A zero in a pattern matches any digit or letter"
+        },
+        {
+          "id": "b",
+          "text": "The `-i` flag lets a pattern match across letters"
+        },
+        {
+          "id": "c",
+          "text": "Each unescaped `.` matches any single character"
+        },
+        {
+          "id": "d",
+          "text": "Text between numbers is skipped by default"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "In a regular expression the dot is a wildcard for one character. Escaping each dot, as in `10\\.0\\.0\\.5`, makes it match a literal period. Digits in a pattern match themselves, `-i` affects letter case, and `grep` does not skip text on its own.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which line is selected by `grep -E '^(WARN|ERROR):'`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`error: disk full`"
+        },
+        {
+          "id": "b",
+          "text": "`ERROR: disk full`"
+        },
+        {
+          "id": "c",
+          "text": "`INFO ERROR: disk full`"
+        },
+        {
+          "id": "d",
+          "text": "`WARN disk full`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The pattern needs `WARN` or `ERROR` at the very start of the line, followed by a colon, in exactly that letter case. The lowercase line differs in case, the third line has other text before the level, and the last line has no colon after `WARN`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A script reads a port from a config file as the text `\"8080\"` and then runs the Python below. What happens?\n\n```python\nport = \"8080\"\nprint(port + 1)\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It prints `8081`"
+        },
+        {
+          "id": "b",
+          "text": "It prints `80801`"
+        },
+        {
+          "id": "c",
+          "text": "It prints `8080 1`"
+        },
+        {
+          "id": "d",
+          "text": "It raises a `TypeError`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Python does not add a string and an integer, so the call raises `TypeError`. Converting first, as in `int(port) + 1`, gives `8081`. The outputs `80801` and `8080 1` are what some other languages or shells produce, not Python.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which snippet is valid JSON?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`{\"name\": \"web01\", \"port\": 8080}`"
+        },
+        {
+          "id": "b",
+          "text": "`{'name': 'web01', 'port': 8080}`"
+        },
+        {
+          "id": "c",
+          "text": "`{\"name\": \"web01\", \"port\": 8080,}`"
+        },
+        {
+          "id": "d",
+          "text": "`{name: \"web01\", port: 8080}`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "JSON requires double-quoted keys and strings. The second snippet uses single quotes, the third has a trailing comma after the last member, and the fourth leaves the keys unquoted, so a strict parser rejects all three.",
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "at1-1-1-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In this YAML, what is the value of `servers`?\n\n```yaml\nservers:\n  - name: web01\n    port: 80\n  - name: web02\n    port: 80\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A mapping with two keys"
+        },
+        {
+          "id": "b",
+          "text": "A list of four strings"
+        },
+        {
+          "id": "c",
+          "text": "A list of two mappings"
+        },
+        {
+          "id": "d",
+          "text": "A single string"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Each leading dash starts one list item, and each item holds the keys `name` and `port`, so `servers` is a list of two mappings. It is not a mapping of two keys because the items are dash-prefixed, and the values under `name` and `port` stay inside their items rather than forming a flat list of strings.",
+    "acronyms": [
+      "YAML"
+    ]
+  },
+  {
+    "id": "at1-1-1-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A pipeline file contains the line `python: 3.10` with no quotes, and a YAML 1.2 parser loads it. Which result is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The string `3.10`, with the zero kept"
+        },
+        {
+          "id": "b",
+          "text": "The number `3.1`, with the trailing zero lost"
+        },
+        {
+          "id": "c",
+          "text": "Two integers, `3` and `10`"
+        },
+        {
+          "id": "d",
+          "text": "A parse error on the second dot"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An unquoted value that looks like a decimal is read as a floating-point number, so `3.10` becomes `3.1`. Quoting the value, as in `\"3.10\"`, keeps it a string. The parser does not split it into two integers, and a single dot is not a syntax error.",
+    "acronyms": [
+      "YAML"
+    ]
+  },
+  {
+    "id": "at1-1-1-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team wants to leave explanatory comments next to settings inside the file itself. Which standard format and comment syntax allow that?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "JSON, with lines that begin with `#`"
+        },
+        {
+          "id": "b",
+          "text": "JSON, with lines that begin with `//`"
+        },
+        {
+          "id": "c",
+          "text": "YAML, with lines that begin with `//`"
+        },
+        {
+          "id": "d",
+          "text": "YAML, with lines that begin with `#`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "YAML treats the text after `#` as a comment. Standard JSON has no comment syntax at all, whatever character is used, and `//` is not a comment marker in YAML.",
+    "acronyms": [
+      "JSON",
+      "YAML"
+    ]
+  },
+  {
+    "id": "at1-1-1-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which command lists only the names of files under `logs/` that contain the text `timeout`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`grep -rl timeout logs/`"
+        },
+        {
+          "id": "b",
+          "text": "`grep -rc timeout logs/`"
+        },
+        {
+          "id": "c",
+          "text": "`grep -rL timeout logs/`"
+        },
+        {
+          "id": "d",
+          "text": "`grep -rn timeout logs/`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The `-l` option prints the name of each file with a match, and `-r` searches the directory tree. `-c` prints a match count for every file, including zeros, `-L` lists the files without a match, and `-n` prints matching lines with numbers.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "The file `access.txt` holds the five lines below. What does `awk '$4 >= 500 {n++} END {print n}' access.txt` print?\n\n```text\nweb01 GET /home 200\nweb01 GET /cart 502\nweb02 POST /pay 500\nweb02 GET /home 200\nweb01 GET /pay 503\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`5`"
+        },
+        {
+          "id": "b",
+          "text": "`2`"
+        },
+        {
+          "id": "c",
+          "text": "`3`"
+        },
+        {
+          "id": "d",
+          "text": "an empty line"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The fourth field is the status code, and three lines have a value of at least 500: 502, 500 and 503. A result of 2 would come from using `> 500`, 5 would count every line, and an empty line would print only if no line matched, because `n` would be unset.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A file `hosts.txt` has comma-separated lines such as `db01,10.0.4.7,active`. Which command prints only the address column?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`awk '{print $2}' hosts.txt`"
+        },
+        {
+          "id": "b",
+          "text": "`awk -F, '{print $2}' hosts.txt`"
+        },
+        {
+          "id": "c",
+          "text": "`awk -F, '{print $1}' hosts.txt`"
+        },
+        {
+          "id": "d",
+          "text": "`awk -F, '{print $3}' hosts.txt`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The `-F,` option sets the field separator to a comma, and the address is the second field. Without `-F`, awk splits on whitespace, so each line is a single field and `$2` is empty. `$1` is the hostname and `$3` is the status.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What does `echo 'mode=debug;level=debug' | sed 's/debug/info/'` print?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`mode=info;level=info`"
+        },
+        {
+          "id": "b",
+          "text": "`mode=debug;level=info`"
+        },
+        {
+          "id": "c",
+          "text": "`mode=debug;level=debug`"
+        },
+        {
+          "id": "d",
+          "text": "`mode=info;level=debug`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Without the `g` flag, the `s` command replaces only the first match on each line, so only the first `debug` changes. Adding `g` would change both. The last option would mean no substitution happened, and the second option would change the wrong occurrence.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which command prints only lines 5 through 8 of `app.log`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`sed -n '5,8p' app.log`"
+        },
+        {
+          "id": "b",
+          "text": "`sed '5,8p' app.log`"
+        },
+        {
+          "id": "c",
+          "text": "`sed '5,8d' app.log`"
+        },
+        {
+          "id": "d",
+          "text": "`sed -n '5-8p' app.log`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The `-n` option turns off automatic printing, and `5,8p` prints the lines in that range. Without `-n`, every line prints and lines 5 to 8 print twice. The `d` command deletes that range instead, and `5-8` is not a valid line range.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "The file `status.json` holds the content below. Which filter, run as `jq -r FILTER status.json`, prints only `b1`?\n\n```json\n{\"service\": \"billing\", \"replicas\": [\n  {\"host\": \"b1\", \"up\": true},\n  {\"host\": \"b2\", \"up\": false}\n]}\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`.replicas[].host`"
+        },
+        {
+          "id": "b",
+          "text": "`.replicas[] | select(.up == false) | .host`"
+        },
+        {
+          "id": "c",
+          "text": "`.replicas[] | select(.up) | .host`"
+        },
+        {
+          "id": "d",
+          "text": "`.replicas | select(.up) | .host`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`.replicas[]` streams each element, `select(.up)` keeps the ones where `up` is true, and `.host` extracts the name. The first alternative prints both hosts, the second keeps the elements where `up` is false and prints `b2`, and the last applies `select` to the whole array, so `.up` fails on it.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A script runs `host=$(jq .name config.json)` and the variable holds the value with surrounding double quotes. Which change gives the bare text?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Use `jq -c .name config.json`"
+        },
+        {
+          "id": "b",
+          "text": "Use `jq -r .name config.json`"
+        },
+        {
+          "id": "c",
+          "text": "Use `jq -s .name config.json`"
+        },
+        {
+          "id": "d",
+          "text": "Use `jq -e .name config.json`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The `-r` option prints strings raw, without JSON quoting. `-c` compacts output but still quotes strings, `-s` reads all input into one array, and `-e` only sets the exit status from the result.",
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "at1-1-1-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which cmdlet completes this pipeline so it lists only stopped services?\n\n```powershell\nGet-Service | ____ { $_.Status -eq 'Stopped' }\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`Select-Object`"
+        },
+        {
+          "id": "b",
+          "text": "`Sort-Object`"
+        },
+        {
+          "id": "c",
+          "text": "`ForEach-Object`"
+        },
+        {
+          "id": "d",
+          "text": "`Where-Object`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`Where-Object` passes along only the objects for which the script block is true. `Select-Object` chooses properties or a count, `Sort-Object` orders the objects, and `ForEach-Object` would just emit true or false for each service.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An engineer is new to a PowerShell cmdlet and wants its parameters and usage examples without leaving the console. Which cmdlet shows them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`Get-Help`"
+        },
+        {
+          "id": "b",
+          "text": "`Get-Command`"
+        },
+        {
+          "id": "c",
+          "text": "`Get-Member`"
+        },
+        {
+          "id": "d",
+          "text": "`Get-History`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`Get-Help` displays a cmdlet's description, parameters and examples, for instance with `-Examples`. `Get-Command` finds commands, `Get-Member` lists the properties of objects, and `Get-History` shows earlier input.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Every small source edit makes this image build reinstall all packages, which is slow. Which change fixes it?\n\n```dockerfile\nFROM python:3.12-slim\nWORKDIR /app\nCOPY . .\nRUN pip install -r requirements.txt\nCMD [\"python\", \"main.py\"]\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace `COPY . .` with `ADD . .`"
+        },
+        {
+          "id": "b",
+          "text": "Move the `CMD` line above the `RUN` line"
+        },
+        {
+          "id": "c",
+          "text": "Copy `requirements.txt` and run the install before `COPY . .`"
+        },
+        {
+          "id": "d",
+          "text": "Run `pip install` inside the `CMD` instruction"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Build layers are cached in order, and a change to a copied file invalidates every layer after it. Copying the dependency list first lets the install layer be reused until `requirements.txt` itself changes. `ADD` behaves the same way as `COPY` for this purpose, the position of `CMD` does not affect caching, and installing in `CMD` would repeat the work each time a container starts.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which Dockerfile instruction runs a command while the image is being built and saves the result as a new layer?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`CMD`"
+        },
+        {
+          "id": "b",
+          "text": "`RUN`"
+        },
+        {
+          "id": "c",
+          "text": "`ENTRYPOINT`"
+        },
+        {
+          "id": "d",
+          "text": "`EXPOSE`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`RUN` executes at build time, so its changes become part of the image. `CMD` and `ENTRYPOINT` define what starts when a container runs, and `EXPOSE` only documents a port.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Dockerfile starts with `FROM python:latest`, and builds a month apart behave differently even though the code did not change. Which fix targets the cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add `--no-cache` to the build command"
+        },
+        {
+          "id": "b",
+          "text": "Copy the source files before installing packages"
+        },
+        {
+          "id": "c",
+          "text": "Switch the `CMD` instruction to `ENTRYPOINT`"
+        },
+        {
+          "id": "d",
+          "text": "Pin the base image to a version tag"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The `latest` tag moves to new releases, so the starting image changes between builds. A version tag such as `python:3.12-slim` keeps it stable. Skipping the cache does not stop a moving tag, the copy order only affects speed, and `CMD` versus `ENTRYPOINT` changes how the container starts, not what is inside it.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A `requirements.txt` file contains the line `flask~=2.3.1`. Which version can `pip` install for it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`2.3.7`"
+        },
+        {
+          "id": "b",
+          "text": "`2.4.0`"
+        },
+        {
+          "id": "c",
+          "text": "`2.3.0`"
+        },
+        {
+          "id": "d",
+          "text": "`3.0.0`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The compatible-release operator `~=2.3.1` means at least 2.3.1 and below 2.4, so patch releases such as `2.3.7` qualify. `2.4.0` and `3.0.0` are too high, and `2.3.0` is lower than the stated minimum.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer wants to record the exact versions installed in a working virtual environment as a file that `pip` can reinstall from. Which command does it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`pip show > requirements.txt`"
+        },
+        {
+          "id": "b",
+          "text": "`pip freeze > requirements.txt`"
+        },
+        {
+          "id": "c",
+          "text": "`pip check > requirements.txt`"
+        },
+        {
+          "id": "d",
+          "text": "`pip install > requirements.txt`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`pip freeze` prints every installed package in `name==version` form, which `pip install -r` can read back. `pip show` describes named packages, `pip check` reports broken dependencies, and `pip install` with no packages prints an error instead of a list.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "In most languages, which TWO of these values are primitives rather than collections?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`true`"
+        },
+        {
+          "id": "b",
+          "text": "`[\"web01\", \"web02\"]`"
+        },
+        {
+          "id": "c",
+          "text": "`{\"host\": \"web01\"}`"
+        },
+        {
+          "id": "d",
+          "text": "`3.14`"
+        },
+        {
+          "id": "e",
+          "text": "`(\"a\", \"b\")`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "A boolean and a floating-point number are single primitive values. An array, an object (a set of named values) and a tuple each hold several values, so they are collections.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO practices make Python package installs in an image repeatable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Install packages by name with no version"
+        },
+        {
+          "id": "b",
+          "text": "Pin each package to an exact version in `requirements.txt`"
+        },
+        {
+          "id": "c",
+          "text": "Use open-ended `>=` ranges for each package"
+        },
+        {
+          "id": "d",
+          "text": "Upgrade all packages automatically when a container starts"
+        },
+        {
+          "id": "e",
+          "text": "Record the exact versions of indirect dependencies, for example in a lock file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Exact pins, including for the packages that the listed ones pull in, make every build install the same versions. Unpinned names, open-ended ranges and start-up upgrades let versions drift between builds.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-039",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE items belong in an application log entry so that on-call staff can troubleshoot a failure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The user's password"
+        },
+        {
+          "id": "b",
+          "text": "A timestamp"
+        },
+        {
+          "id": "c",
+          "text": "The full payment card number"
+        },
+        {
+          "id": "d",
+          "text": "The severity level"
+        },
+        {
+          "id": "e",
+          "text": "The name of the component that reported the event"
+        },
+        {
+          "id": "f",
+          "text": "The user's private encryption key"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "A timestamp, a severity level and the reporting component let responders order events, filter by importance and find the code involved. Passwords, card numbers and private keys are secrets that must stay out of the log.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-040",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A Bash script must test, without printing anything, whether `app.log` contains `fatal` in any letter case. Which TWO `grep` options achieve that when combined?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`-n`"
+        },
+        {
+          "id": "b",
+          "text": "`-i`"
+        },
+        {
+          "id": "c",
+          "text": "`-c`"
+        },
+        {
+          "id": "d",
+          "text": "`-q`"
+        },
+        {
+          "id": "e",
+          "text": "`-l`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "The `-i` option ignores letter case and `-q` suppresses output so only the exit status reports whether a match exists. `-n` prints line numbers, `-c` prints a count and `-l` prints file names, so each of those writes output.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-041",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A Python function is defined as `def deploy(app, env=\"dev\"):`. Which THREE calls are valid?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`deploy()`"
+        },
+        {
+          "id": "b",
+          "text": "`deploy(\"shop\")`"
+        },
+        {
+          "id": "c",
+          "text": "`deploy(env=\"prod\")`"
+        },
+        {
+          "id": "d",
+          "text": "`deploy(\"shop\", env=\"prod\")`"
+        },
+        {
+          "id": "e",
+          "text": "`deploy(\"shop\", \"prod\", \"extra\")`"
+        },
+        {
+          "id": "f",
+          "text": "`deploy(\"shop\", \"prod\")`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "f"
+      ]
+    },
+    "explanation": "The parameter `app` is required and `env` has a default, so `app` can be passed alone, `env` can be passed by keyword, or both can be passed by position. `deploy()` and `deploy(env=\"prod\")` leave out `app`, and three positional values are one more than the function accepts.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-042",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO lines does `grep -E '^v[0-9]+\\.[0-9]+$'` select?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`v2`"
+        },
+        {
+          "id": "b",
+          "text": "`v2.10`"
+        },
+        {
+          "id": "c",
+          "text": "`v2.10.1`"
+        },
+        {
+          "id": "d",
+          "text": "`2.10`"
+        },
+        {
+          "id": "e",
+          "text": "`v3.0`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "The pattern needs a leading `v`, one or more digits, a literal dot and one or more digits, with nothing after them. `v2` has no dot part, `v2.10.1` has extra text before the end, and `2.10` lacks the `v`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-mcq-043",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "A team keeps each project's packages in its own virtual environment. Which TWO benefits does that give?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Packages are shared by all users of the machine"
+        },
+        {
+          "id": "b",
+          "text": "Two projects can use different versions of the same package"
+        },
+        {
+          "id": "c",
+          "text": "Packages update themselves when new releases appear"
+        },
+        {
+          "id": "d",
+          "text": "The `requirements.txt` file is no longer needed"
+        },
+        {
+          "id": "e",
+          "text": "Installs do not change the system-wide packages"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "A virtual environment isolates a project's packages, so versions can differ between projects and the system installation stays untouched. It does not share packages across users, does not update anything automatically, and still relies on `requirements.txt` to describe what to install.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "The payments service wrote the log shown below, and customers report failed charges. Review the log, then complete each step. File names are used exactly as shown.",
+    "payload": {
+      "output": [
+        "$ cat payments.log",
+        "09:14:02 INFO  charge ok order=1041 ms=212",
+        "09:14:05 ERROR charge failed order=1042 reason=card_declined",
+        "09:14:09 INFO  charge ok order=1043 ms=187",
+        "09:14:11 ERROR charge failed order=1044 reason=timeout",
+        "09:14:15 WARN  slow charge order=1045 ms=2410",
+        "09:14:20 ERROR charge failed order=1046 reason=timeout"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that prints only the lines of payments.log that contain ERROR"
+        },
+        {
+          "id": "count",
+          "label": "Type a command that prints how many lines of payments.log contain reason=timeout"
+        },
+        {
+          "id": "field",
+          "label": "Type an awk command that prints the second whitespace-separated field of every line of payments.log"
+        },
+        {
+          "id": "next",
+          "label": "Choose the best next action for the timeout failures",
+          "options": [
+            {
+              "id": "retry",
+              "text": "Retry each failed charge automatically until it succeeds"
+            },
+            {
+              "id": "gateway",
+              "text": "Check the connection to the payment gateway and its timeout setting"
+            },
+            {
+              "id": "delete",
+              "text": "Delete the log file so the errors stop being counted"
+            },
+            {
+              "id": "hide",
+              "text": "Filter the ERROR lines out of the weekly report"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep ERROR payments.log",
+          "grep \"ERROR\" payments.log",
+          "grep 'ERROR' payments.log",
+          "grep ERROR ./payments.log",
+          "grep -w ERROR payments.log",
+          "grep -n ERROR payments.log",
+          "grep -e ERROR payments.log",
+          "grep -F ERROR payments.log",
+          "grep -E ERROR payments.log",
+          "grep -i ERROR payments.log",
+          "grep --regexp=ERROR payments.log",
+          "grep ERROR < payments.log",
+          "cat payments.log | grep ERROR",
+          "cat payments.log | grep \"ERROR\"",
+          "cat payments.log | grep 'ERROR'",
+          "awk '/ERROR/' payments.log",
+          "awk '/ERROR/ {print}' payments.log",
+          "awk '/ERROR/{print}' payments.log",
+          "sed -n '/ERROR/p' payments.log"
+        ],
+        "count": [
+          "grep -c reason=timeout payments.log",
+          "grep -c \"reason=timeout\" payments.log",
+          "grep -c 'reason=timeout' payments.log",
+          "grep -c reason=timeout ./payments.log",
+          "grep -c timeout payments.log",
+          "grep -c \"timeout\" payments.log",
+          "grep -c 'timeout' payments.log",
+          "grep --count reason=timeout payments.log",
+          "grep -cF reason=timeout payments.log",
+          "grep -c -F reason=timeout payments.log",
+          "grep -ci reason=timeout payments.log",
+          "grep -c -i reason=timeout payments.log",
+          "grep reason=timeout payments.log | wc -l",
+          "grep \"reason=timeout\" payments.log | wc -l",
+          "grep 'reason=timeout' payments.log | wc -l",
+          "grep timeout payments.log | wc -l",
+          "grep \"timeout\" payments.log | wc -l",
+          "grep 'timeout' payments.log | wc -l",
+          "grep reason=timeout payments.log|wc -l",
+          "grep timeout payments.log|wc -l",
+          "cat payments.log | grep -c reason=timeout",
+          "cat payments.log | grep -c timeout",
+          "cat payments.log | grep reason=timeout | wc -l",
+          "cat payments.log | grep timeout | wc -l",
+          "grep -c reason=timeout < payments.log"
+        ],
+        "field": [
+          "awk '{print $2}' payments.log",
+          "awk '{ print $2 }' payments.log",
+          "awk '{print $2;}' payments.log",
+          "awk '{ print $2; }' payments.log",
+          "awk '{print $2}' ./payments.log",
+          "awk '{ print $2 }' ./payments.log",
+          "cat payments.log | awk '{print $2}'",
+          "cat payments.log | awk '{ print $2 }'",
+          "awk '{print $2}' < payments.log",
+          "awk -F' ' '{print $2}' payments.log",
+          "awk -F ' ' '{print $2}' payments.log"
+        ],
+        "next": [
+          "gateway"
+        ]
+      }
+    },
+    "explanation": "grep selects matching lines and its -c option counts them, awk prints chosen fields, and two of the three failures share the cause reason=timeout, which points at the connection to the gateway rather than at the data.",
+    "partExplanations": {
+      "find": "grep ERROR payments.log prints the three lines that contain ERROR.",
+      "count": "grep -c reason=timeout payments.log prints 2, the number of matching lines.",
+      "field": "awk '{print $2}' payments.log prints the level column: INFO, ERROR, INFO, ERROR, WARN, ERROR.",
+      "next": "Repeated timeouts point to the gateway connection or its timeout setting; blind retries, deleting the log or hiding errors do not fix the cause."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A Python service image builds slowly and behaves differently from week to week. Choose the Dockerfile steps so the base image is pinned, the dependency list is copied and installed before the rest of the source, and the service starts when a container runs.",
+    "payload": {
+      "fields": [
+        {
+          "id": "base",
+          "label": "Base image",
+          "options": [
+            {
+              "id": "latest",
+              "text": "Use python:latest as the base image"
+            },
+            {
+              "id": "pinned",
+              "text": "Use python:3.12-slim as the base image"
+            },
+            {
+              "id": "bare",
+              "text": "Use python with no tag as the base image"
+            }
+          ]
+        },
+        {
+          "id": "deps",
+          "label": "First copy step",
+          "options": [
+            {
+              "id": "req",
+              "text": "Copy requirements.txt into the image"
+            },
+            {
+              "id": "all",
+              "text": "Copy the whole project into the image"
+            },
+            {
+              "id": "main",
+              "text": "Copy main.py into the image"
+            }
+          ]
+        },
+        {
+          "id": "install",
+          "label": "Dependency install step",
+          "options": [
+            {
+              "id": "cmd",
+              "text": "Run pip install -r requirements.txt each time a container starts"
+            },
+            {
+              "id": "noflag",
+              "text": "Run pip install requirements.txt at build time"
+            },
+            {
+              "id": "run",
+              "text": "Run pip install -r requirements.txt at build time"
+            }
+          ]
+        },
+        {
+          "id": "start",
+          "label": "Start-up step",
+          "options": [
+            {
+              "id": "runstart",
+              "text": "Run python main.py at build time"
+            },
+            {
+              "id": "cmdstart",
+              "text": "Set python main.py as the default start command"
+            },
+            {
+              "id": "copystart",
+              "text": "Copy python main.py into the image"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "base": "pinned",
+        "deps": "req",
+        "install": "run",
+        "start": "cmdstart"
+      }
+    },
+    "explanation": "A version tag keeps the starting image stable, copying the dependency list first lets the install layer stay cached, a build-time step bakes the packages into the image, and a default start command runs when a container starts.",
+    "partExplanations": {
+      "base": "A specific version tag stops the base image from changing between builds, which latest or a bare name does not.",
+      "deps": "Copying only requirements.txt first keeps the install layer cached until the list changes.",
+      "install": "Running pip install -r requirements.txt at build time installs into the image; the -r flag tells pip to read the file, and a start-time install repeats the work.",
+      "start": "A default start command runs when a container starts; running it at build time would execute it once during the build instead."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Put the steps of a Bash script that counts the ERROR lines in a log file into the order the script runs them. The script finishes handling its input before it sets up any counters, and the counter is set once, before the loop begins.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "Add one to the counter when a line contains ERROR"
+        },
+        {
+          "id": "s2",
+          "text": "Exit with a usage message if no readable file was given"
+        },
+        {
+          "id": "s6",
+          "text": "Print the final counter after the loop ends"
+        },
+        {
+          "id": "s3",
+          "text": "Set the error counter to zero"
+        },
+        {
+          "id": "s1",
+          "text": "Take the log file path from the first parameter"
+        },
+        {
+          "id": "s4",
+          "text": "Read the file one line at a time in a loop"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The script reads and validates its input first, then creates the counter, loops over the file counting matches, and prints the total only after the loop has finished.",
+    "partExplanations": {
+      "0": "The path argument is needed before anything can be checked.",
+      "1": "Validation of the input comes before any counters exist.",
+      "2": "The counter is set once, before the loop, so it is not reset on each line.",
+      "3": "The loop starts only after the setup is done.",
+      "4": "Counting happens inside the loop, once per matching line.",
+      "5": "The total is complete only after the loop ends."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A service writes the application log excerpt below. Use the table to answer each question.",
+    "payload": {
+      "caption": "Application log excerpt, 09:00 to 09:09",
+      "columns": [
+        "Time",
+        "Service",
+        "Level",
+        "Duration (ms)"
+      ],
+      "rows": [
+        [
+          "09:00",
+          "cart",
+          "INFO",
+          "120"
+        ],
+        [
+          "09:01",
+          "auth",
+          "INFO",
+          "80"
+        ],
+        [
+          "09:02",
+          "cart",
+          "ERROR",
+          "1500"
+        ],
+        [
+          "09:03",
+          "search",
+          "WARN",
+          "1100"
+        ],
+        [
+          "09:04",
+          "auth",
+          "ERROR",
+          "90"
+        ],
+        [
+          "09:05",
+          "cart",
+          "ERROR",
+          "1300"
+        ],
+        [
+          "09:06",
+          "search",
+          "INFO",
+          "200"
+        ],
+        [
+          "09:07",
+          "auth",
+          "ERROR",
+          "70"
+        ],
+        [
+          "09:08",
+          "cart",
+          "ERROR",
+          "900"
+        ],
+        [
+          "09:09",
+          "search",
+          "ERROR",
+          "2400"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 3
+      },
+      "fields": [
+        {
+          "id": "errors",
+          "label": "Number of ERROR entries",
+          "options": [
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "5",
+              "text": "5"
+            },
+            {
+              "id": "6",
+              "text": "6"
+            }
+          ]
+        },
+        {
+          "id": "worst",
+          "label": "Service with the most ERROR entries",
+          "options": [
+            {
+              "id": "cart",
+              "text": "cart"
+            },
+            {
+              "id": "auth",
+              "text": "auth"
+            },
+            {
+              "id": "search",
+              "text": "search"
+            }
+          ]
+        },
+        {
+          "id": "slow",
+          "label": "Number of entries slower than 1000 ms",
+          "options": [
+            {
+              "id": "3",
+              "text": "3"
+            },
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "mean",
+          "label": "Mean duration of the auth entries (ms)",
+          "options": [
+            {
+              "id": "80",
+              "text": "80"
+            },
+            {
+              "id": "90",
+              "text": "90"
+            },
+            {
+              "id": "240",
+              "text": "240"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "errors": "6",
+        "worst": "cart",
+        "slow": "4",
+        "mean": "80"
+      }
+    },
+    "explanation": "Counting rows by level, by service and by duration, then averaging one service, gives 6 errors, cart as the noisiest service, 4 slow entries and a mean of 80 ms for auth.",
+    "partExplanations": {
+      "errors": "ERROR rows are 09:02, 09:04, 09:05, 09:07, 09:08 and 09:09, which makes 6.",
+      "worst": "cart has 3 ERROR rows (09:02, 09:05, 09:08), auth has 2 and search has 1.",
+      "slow": "Durations above 1000 are 1500, 1100, 1300 and 2400, which makes 4; 900 is below the limit.",
+      "mean": "auth durations are 80, 90 and 70, so the sum is 240 and the mean is 240 / 3 = 80."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A Python file defines `region` at module level. The function `build()` creates `tmp_dir` and defines a nested function `check()` that creates `result`. Place the label that describes where each variable can be read.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 170,
+          "h": 50,
+          "text": "Module level"
+        },
+        {
+          "id": "n2",
+          "x": 215,
+          "y": 20,
+          "w": 170,
+          "h": 50,
+          "text": "build()"
+        },
+        {
+          "id": "n3",
+          "x": 420,
+          "y": 20,
+          "w": 170,
+          "h": 50,
+          "text": "check() inside build()"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "region, set at module level"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "tmp_dir, created in build()"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "result, created in check()"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "tmp_dir, read at module level"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Readable in all three scopes"
+        },
+        {
+          "id": "l2",
+          "text": "Readable in build() and check()"
+        },
+        {
+          "id": "l3",
+          "text": "Readable in check() alone"
+        },
+        {
+          "id": "l4",
+          "text": "Raises a NameError"
+        },
+        {
+          "id": "l5",
+          "text": "Readable at module level alone"
+        },
+        {
+          "id": "l6",
+          "text": "Readable in build() alone"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "Names are looked up from the inner scope outward. A module-level name is visible everywhere below it, a name in build() is visible in build() and in functions nested inside it, a name in check() stays inside check(), and reading an inner name from outside fails with a NameError.",
+    "partExplanations": {
+      "z1": "A module-level name can be read from every function in the file.",
+      "z2": "A nested function can read the names of the function that encloses it.",
+      "z3": "A name created in check() ends when check() returns and is invisible outside it.",
+      "z4": "tmp_dir exists only inside build(), so reading it at module level raises a NameError."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "A Bash script should report every log file that holds more than five ERROR lines, but it misbehaves. Select every line that contains a bug.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n-l1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "1: for f in logs/*.log; do"
+        },
+        {
+          "id": "n-l2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "2: count = $(grep -c ERROR \"$f\")"
+        },
+        {
+          "id": "n-l3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "3: if [ \"$count\" > 5 ]; then"
+        },
+        {
+          "id": "n-l4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "4: echo \"$f: $count errors\""
+        },
+        {
+          "id": "n-l5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "5: fi"
+        },
+        {
+          "id": "n-l6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "6: done"
+        }
+      ],
+      "spots": [
+        {
+          "id": "l1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "1: for f in logs/*.log; do"
+        },
+        {
+          "id": "l2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "2: count = $(grep -c ERROR \"$f\")"
+        },
+        {
+          "id": "l3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "3: if [ \"$count\" > 5 ]; then"
+        },
+        {
+          "id": "l4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "4: echo \"$f: $count errors\""
+        },
+        {
+          "id": "l5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "5: fi"
+        },
+        {
+          "id": "l6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "6: done"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "l2",
+        "l3"
+      ]
+    },
+    "explanation": "Line 2 has spaces around the equals sign, so Bash runs count as a command, and line 3 uses a redirection operator instead of a numeric comparison. The other lines are correct.",
+    "partExplanations": {
+      "l1": "The loop header correctly walks every file that ends in .log.",
+      "l2": "Spaces around = make Bash run count as a command instead of assigning the result.",
+      "l3": "The > sign redirects output to a file named 5 and does not compare numbers; -gt does.",
+      "l4": "The echo line is valid and prints the file name and the count.",
+      "l5": "fi correctly closes the if block.",
+      "l6": "done correctly closes the loop."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-1-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 1,
+    "pbqWeight": 5,
+    "stem": "In a JSON document, match each value to its data type.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "\"8080\" (in double quotes)"
+        },
+        {
+          "id": "p2",
+          "text": "3.14"
+        },
+        {
+          "id": "p3",
+          "text": "false"
+        },
+        {
+          "id": "p4",
+          "text": "[\"web01\", \"web02\"]"
+        },
+        {
+          "id": "p5",
+          "text": "{\"host\": \"web01\"}"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "String"
+        },
+        {
+          "id": "c2",
+          "text": "Number"
+        },
+        {
+          "id": "c3",
+          "text": "Boolean"
+        },
+        {
+          "id": "c4",
+          "text": "Array"
+        },
+        {
+          "id": "c5",
+          "text": "Object"
+        },
+        {
+          "id": "c6",
+          "text": "Null"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5"
+      }
+    },
+    "explanation": "Quotes make a value a string even when it looks numeric, a bare decimal is a number, true and false are booleans, square brackets hold an ordered array, and curly braces hold an object of named members. No value here is null.",
+    "partExplanations": {
+      "p1": "Double quotes make it a string, even though the characters are digits.",
+      "p2": "A decimal without quotes is a number.",
+      "p3": "false is a boolean literal.",
+      "p4": "Square brackets enclose an ordered array of values.",
+      "p5": "Curly braces enclose an object of named members."
+    },
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "at1-1-1-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each statement into the data format or data type it describes.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "json",
+          "text": "JSON"
+        },
+        {
+          "id": "yaml",
+          "text": "YAML"
+        },
+        {
+          "id": "prim",
+          "text": "Primitive data type"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Allows comments that begin with #"
+        },
+        {
+          "id": "i2",
+          "text": "Does not allow comments of any kind"
+        },
+        {
+          "id": "i3",
+          "text": "Shows nesting by indenting with spaces"
+        },
+        {
+          "id": "i4",
+          "text": "Requires keys to be double-quoted strings"
+        },
+        {
+          "id": "i5",
+          "text": "A boolean value such as false"
+        },
+        {
+          "id": "i6",
+          "text": "A number such as 3.14"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "yaml",
+        "i2": "json",
+        "i3": "yaml",
+        "i4": "json",
+        "i5": "prim",
+        "i6": "prim"
+      }
+    },
+    "explanation": "YAML relies on indentation and permits # comments. JSON has no comments and fixes its key syntax with double quotes. Booleans and numbers are single primitive values rather than a file format.",
+    "partExplanations": {
+      "i1": "A # starts a comment in YAML.",
+      "i2": "Standard JSON has no comment syntax.",
+      "i3": "YAML marks nesting with leading spaces.",
+      "i4": "JSON object keys are always double-quoted strings.",
+      "i5": "A boolean is a single primitive value.",
+      "i6": "A number is a single primitive value."
+    },
+    "acronyms": [
+      "JSON",
+      "YAML"
+    ]
   }
 ]

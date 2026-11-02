@@ -1,0 +1,2613 @@
+[
+  {
+    "id": "at1-1-2-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A developer wants to see what teammates pushed to `origin` without changing any local branch or file in the working tree. Which command does this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git fetch origin`"
+        },
+        {
+          "id": "b",
+          "text": "`git pull origin main`"
+        },
+        {
+          "id": "c",
+          "text": "`git merge origin/main`"
+        },
+        {
+          "id": "d",
+          "text": "`git checkout origin/main`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`git fetch origin` downloads new commits and updates the remote-tracking branches, leaving local branches and files alone. `git pull` also integrates the commits, `git merge origin/main` changes the current branch, and `git checkout origin/main` replaces the working tree with that commit.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does `git pull` do with default settings?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It uploads local commits to the branch the current one tracks"
+        },
+        {
+          "id": "b",
+          "text": "It fetches new commits, then merges them into the current branch"
+        },
+        {
+          "id": "c",
+          "text": "It downloads new commits but leaves every local branch unchanged"
+        },
+        {
+          "id": "d",
+          "text": "It replaces the working tree with remote files and drops local history"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A default pull is a fetch followed by a merge of the upstream branch into the current one. Uploading is `git push`, fetching alone leaves local branches untouched, and a pull keeps history rather than replacing it.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Priya runs `git push origin main` and Git reports `! [rejected] main -> main (non-fast-forward)`. What does this mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The remote host refused her saved login details"
+        },
+        {
+          "id": "b",
+          "text": "Her working tree has changes that are not committed"
+        },
+        {
+          "id": "c",
+          "text": "The remote has commits her local branch lacks"
+        },
+        {
+          "id": "d",
+          "text": "The branch name is reserved for the remote administrators"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A non-fast-forward rejection means the remote branch has commits the local branch lacks, so Priya must integrate them (fetch, then merge or rebase) before pushing. A refused login produces an authentication error instead. Uncommitted changes do not affect a push, and Git has no reserved branch names.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer creates `feature/ledger-export` locally. The first push should also link it to `origin/feature/ledger-export`, so later `git pull` and `git push` need no arguments. Which command does this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git push origin feature/ledger-export`"
+        },
+        {
+          "id": "b",
+          "text": "`git push --follow-tags origin feature/ledger-export`"
+        },
+        {
+          "id": "c",
+          "text": "`git remote add origin feature/ledger-export`"
+        },
+        {
+          "id": "d",
+          "text": "`git push -u origin feature/ledger-export`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`git push -u origin feature/ledger-export` pushes the branch and records the remote branch as its upstream. Without `-u` the push works but sets no link. `--follow-tags` only adds annotated tags, and `git remote add` registers a remote from a name and an address, not a branch.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A repository has a modified `app.py` and a modified `notes.txt`. Which command stages only `app.py` for the next commit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git add notes.txt`"
+        },
+        {
+          "id": "b",
+          "text": "`git restore app.py`"
+        },
+        {
+          "id": "c",
+          "text": "`git stash push app.py`"
+        },
+        {
+          "id": "d",
+          "text": "`git add app.py`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`git add app.py` stages that one file. `git add notes.txt` stages the other file instead, `git restore app.py` discards the edits to it, and `git stash push app.py` shelves them out of the working tree.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer runs `git add parser.py`, then edits `parser.py` again. Which command shows only the changes that are already staged?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git diff`"
+        },
+        {
+          "id": "b",
+          "text": "`git status -s`"
+        },
+        {
+          "id": "c",
+          "text": "`git diff --staged`"
+        },
+        {
+          "id": "d",
+          "text": "`git log -p -1`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`git diff --staged` compares the index with the last commit, so it shows only staged changes. Plain `git diff` shows the newer unstaged edits, `git status -s` lists file states without content, and `git log -p -1` shows the last commit rather than what is staged.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer made a local commit, has not pushed it, and spots a typo in its message. Which command rewrites the message?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git revert HEAD --no-edit`"
+        },
+        {
+          "id": "b",
+          "text": "`git commit --amend`"
+        },
+        {
+          "id": "c",
+          "text": "`git reset --hard HEAD~1`"
+        },
+        {
+          "id": "d",
+          "text": "`git cherry-pick HEAD`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`git commit --amend` opens the message for editing and replaces the last local commit with the corrected one, which is safe before pushing. `git revert` adds a new commit that undoes the change, `git reset --hard HEAD~1` throws away the commit and its edits, and `git cherry-pick HEAD` adds a duplicate commit with the typo intact.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Dana's laptop has two `user.email` values:\n```ini\n# ~/.gitconfig\n[user]\n    email = dana@home.example\n\n# payments-api/.git/config\n[user]\n    email = dana@payments.example.internal\n```\nWhich address does Git record as the author of a commit made inside `payments-api`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "dana@payments.example.internal, because repository settings override user settings"
+        },
+        {
+          "id": "b",
+          "text": "dana@home.example, because user settings override repository settings"
+        },
+        {
+          "id": "c",
+          "text": "Both addresses, saved as co-authors of the same commit"
+        },
+        {
+          "id": "d",
+          "text": "Neither, because Git prompts for an address at every commit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Git reads settings from the system, user and repository files, and the narrowest scope wins, so the repository value is used. Git does not combine two values into co-authors, and it prompts for an address only when none is configured.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team keeps shared hook scripts in a tracked folder named `.githooks`. Which setting makes Git run them in each developer's clone?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git config hooks.directory .githooks`"
+        },
+        {
+          "id": "b",
+          "text": "`git config core.hooksPath .githooks`"
+        },
+        {
+          "id": "c",
+          "text": "`git config core.hookDirectory .githooks`"
+        },
+        {
+          "id": "d",
+          "text": "`git config init.hooksFolder .githooks`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`core.hooksPath` points Git at another folder for hooks, so a tracked folder can be shared; the default `.git/hooks` folder is not versioned. The other keys are not Git settings, so they have no effect.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "This executable file is saved as `.git/hooks/pre-commit`:\n```sh\n#!/bin/sh\n./scripts/lint.sh\necho \"lint finished\"\n```\nThe linter finds a problem and exits with status 1. What happens when a developer runs `git commit`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The commit is aborted, because the linter returned a failing exit status to Git"
+        },
+        {
+          "id": "b",
+          "text": "The commit succeeds, but Git records the lint failure in the log"
+        },
+        {
+          "id": "c",
+          "text": "The hook is skipped, because the script has no explicit `exit` line"
+        },
+        {
+          "id": "d",
+          "text": "The commit succeeds, because the last command in the script returns zero"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A hook's result is the exit status of the script, and here that status comes from the final `echo`, which succeeds, so the lint failure is lost and the commit goes ahead. Aborting would need `exit` with the linter's status. Git does not record lint results, and a script with no `exit` line still runs.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A broken linter hook blocks an urgent fix. Which option skips the `pre-commit` and `commit-msg` hooks for this one commit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git commit --no-verify`"
+        },
+        {
+          "id": "b",
+          "text": "`git commit --amend`"
+        },
+        {
+          "id": "c",
+          "text": "`git commit --allow-empty`"
+        },
+        {
+          "id": "d",
+          "text": "`git commit --signoff`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`--no-verify` bypasses the `pre-commit` and `commit-msg` hooks. `--amend` rewrites the previous commit, `--allow-empty` permits a commit with no changes, and `--signoff` appends a `Signed-off-by` line; none of them skip hooks.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which hook receives the path of the file that holds the commit message, so it can reject a badly formatted message?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`pre-commit`"
+        },
+        {
+          "id": "b",
+          "text": "`post-commit`"
+        },
+        {
+          "id": "c",
+          "text": "`commit-msg`"
+        },
+        {
+          "id": "d",
+          "text": "`pre-push`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Git passes the message file to `commit-msg`, which can exit non-zero to reject the message. `pre-commit` runs before the message exists, `post-commit` runs after the commit is made, and `pre-push` runs when pushing.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team wants unit tests to run on the developer's machine before any commit is uploaded to the shared remote. Which hook fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`post-merge`"
+        },
+        {
+          "id": "b",
+          "text": "`post-checkout`"
+        },
+        {
+          "id": "c",
+          "text": "`pre-push`"
+        },
+        {
+          "id": "d",
+          "text": "`post-commit`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`pre-push` runs on the developer's machine after `git push` starts and can stop the upload by failing. `post-merge`, `post-checkout` and `post-commit` run after other events and cannot hold back a push.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A security team wants the central repository to refuse any push that contains a private key, even from a developer who skipped local hooks. Where must the check run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "In a server-side hook such as `pre-receive` on the remote"
+        },
+        {
+          "id": "b",
+          "text": "In a `pre-commit` hook installed on every developer laptop"
+        },
+        {
+          "id": "c",
+          "text": "In a `post-checkout` hook installed on every developer laptop"
+        },
+        {
+          "id": "d",
+          "text": "In each developer's personal `~/.gitconfig` file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Local hooks can be skipped with `--no-verify` or never installed, so enforcement belongs on the server, where a `pre-receive` hook (or an equivalent push rule) can reject the push. The other locations are on each laptop or in a personal config file, which the developer controls.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A `pre-commit` hook runs this line, yet commits still contain unformatted code even though the working tree files look formatted:\n```sh\n#!/bin/sh\n./scripts/format.sh $(git diff --cached --name-only)\n```\nWhat is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Git reverts any file a hook modifies before the commit is created"
+        },
+        {
+          "id": "b",
+          "text": "`git diff --cached` lists unstaged files, so the wrong files are formatted"
+        },
+        {
+          "id": "c",
+          "text": "The hook must end with `exit 0` for formatter changes to be kept"
+        },
+        {
+          "id": "d",
+          "text": "The hook never stages the files it reformatted"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A formatter edits the working-tree copy, but a commit records the index, so the hook must run `git add` on the changed files again. Git does not undo hook edits, `git diff --cached` does list staged files, and the exit status does not decide whether edits are kept.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does a linter do when it runs as part of a pre-commit check?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It rewrites indentation and spacing to match a house style guide for the team"
+        },
+        {
+          "id": "b",
+          "text": "It flags suspicious code and rule violations without changing the files"
+        },
+        {
+          "id": "c",
+          "text": "It encrypts staged files before they enter the repository"
+        },
+        {
+          "id": "d",
+          "text": "It compares the local branch with the remote branch"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A linter inspects code for likely bugs and rule violations and reports them. Rewriting layout is a formatter's job, encryption is unrelated, and comparing a branch with the remote is done with `git fetch` and `git log` or `git diff`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A pre-commit secret scan blocks a commit because `deploy.sh` contains a cloud access key. Nothing has been committed yet. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the key from the script, read it from the environment, and stage the file again"
+        },
+        {
+          "id": "b",
+          "text": "Rename `deploy.sh` so that the scanner skips the file"
+        },
+        {
+          "id": "c",
+          "text": "Encode the key in base64 so the pattern no longer matches"
+        },
+        {
+          "id": "d",
+          "text": "Commit with `--no-verify` and remove the key in the next commit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Take the key out of the code, load it at run time, and stage the corrected file so the scan passes. Renaming the file or encoding the key hides the secret from the scanner but leaves it in the repository, and committing with `--no-verify` keeps the key in history even if a later commit deletes it.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer pushed a commit that contains a live database password. Beyond cleaning up the history, which action is required first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run `git revert` on the commit, which removes the secret from all history"
+        },
+        {
+          "id": "b",
+          "text": "Delete the local branch, which erases the pushed copy"
+        },
+        {
+          "id": "c",
+          "text": "Rotate the password, since anyone who fetched the commit may have a copy"
+        },
+        {
+          "id": "d",
+          "text": "Wait for garbage collection to purge the remote objects"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A pushed secret must be treated as exposed, so it is rotated. A revert adds a new commit and leaves the old one in history, deleting a local branch does not touch the remote, and garbage collection on a remote is not something the developer can rely on.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In the editor that opens for a commit message, lines that start with `#` are guidance for the author. What does Git do with them by default?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It saves them as the body of the message"
+        },
+        {
+          "id": "b",
+          "text": "It strips them out of the saved message"
+        },
+        {
+          "id": "c",
+          "text": "It runs them as commands before committing"
+        },
+        {
+          "id": "d",
+          "text": "It turns them into tags on the new commit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "By default Git strips comment lines that start with `#` when it saves the message. They are not stored, run as commands, or turned into tags.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which commit subject line follows common conventions for a concise summary?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fixed some bugs in the checkout totals"
+        },
+        {
+          "id": "b",
+          "text": "Misc updates and cleanup for checkout"
+        },
+        {
+          "id": "c",
+          "text": "Updates to checkout totals for empty carts, as discussed."
+        },
+        {
+          "id": "d",
+          "text": "Handle empty cart in checkout totals"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Short subjects in the imperative mood that name the change are the common convention. \"Fixed some bugs\" and \"Misc updates\" are vague, and the last line trails off with no action and a closing period, which makes `git log` harder to scan.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "`orders-sdk` is at `3.4.2`. The next release removes a method that client code calls. Under semantic versioning, which version number should it carry?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`3.5.0`"
+        },
+        {
+          "id": "b",
+          "text": "`3.4.3`"
+        },
+        {
+          "id": "c",
+          "text": "`4.4.2`"
+        },
+        {
+          "id": "d",
+          "text": "`4.0.0`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Removing a method breaks code that calls it, which is an incompatible change, so the major number goes up and minor and patch reset to zero. `3.5.0` is for compatible features, `3.4.3` for fixes, and `4.4.2` keeps the old minor and patch numbers.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "`report-cli` is at `1.8.3`. A release adds a new optional `--format` flag and keeps every existing flag working. What is the next version?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`2.0.0`"
+        },
+        {
+          "id": "b",
+          "text": "`1.9.0`"
+        },
+        {
+          "id": "c",
+          "text": "`1.8.4`"
+        },
+        {
+          "id": "d",
+          "text": "`1.9.3`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A new flag that keeps existing flags working is a backward-compatible feature, so the minor number goes up and the patch resets to zero. `2.0.0` is for incompatible changes, `1.8.4` for fixes only, and `1.9.3` wrongly carries over the old patch number.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which list shows these versions in ascending order of precedence under semantic versioning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`1.0.0`, `1.0.0-rc.1`, `1.0.0-beta`, `1.0.0-alpha`"
+        },
+        {
+          "id": "b",
+          "text": "`1.0.0-alpha`, `1.0.0`, `1.0.0-beta`, `1.0.0-rc.1`"
+        },
+        {
+          "id": "c",
+          "text": "`1.0.0-alpha`, `1.0.0-beta`, `1.0.0-rc.1`, `1.0.0`"
+        },
+        {
+          "id": "d",
+          "text": "`1.0.0-beta`, `1.0.0-alpha`, `1.0.0-rc.1`, `1.0.0`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A pre-release sorts below its release, and its identifiers compare in ASCII order: alpha, beta, rc.1, then the release itself. The other lists put the release too early or reverse the pre-release order.",
+    "acronyms": [
+      "ASCII"
+    ]
+  },
+  {
+    "id": "at1-1-2-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A script must pick the newest of these tags under semantic versioning rules: `2.1.0-rc.2`, `2.1.0-rc.11`, `2.1.0-rc.9` and `2.0.9`. Which one does it pick?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`2.1.0-rc.11`"
+        },
+        {
+          "id": "b",
+          "text": "`2.1.0-rc.9`"
+        },
+        {
+          "id": "c",
+          "text": "`2.1.0-rc.2`"
+        },
+        {
+          "id": "d",
+          "text": "`2.0.9`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "With the same major, minor and patch numbers, numeric pre-release identifiers compare as numbers, so rc.11 outranks rc.9 and rc.2. All three outrank 2.0.9 because 2.1.0 has a higher minor number. Comparing as text would wrongly rank rc.9 highest.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Under semantic versioning, how do `1.8.0+build.5` and `1.8.0+build.9` compare in precedence?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The second is higher, because 9 is greater than 5"
+        },
+        {
+          "id": "b",
+          "text": "They are equal, because build metadata is ignored"
+        },
+        {
+          "id": "c",
+          "text": "The first is higher, because it sorts earlier as text"
+        },
+        {
+          "id": "d",
+          "text": "Neither is valid, because `+` is reserved for pre-releases"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Build metadata after the plus sign is ignored when precedence is compared, so the two versions are equal. A larger build number does not make a version newer, text order is not used, and `+` introduces build metadata rather than a pre-release.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which command lists only the tags whose names start with `v2.`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git tag --list 'v2.*'`"
+        },
+        {
+          "id": "b",
+          "text": "`git tag --sort 'v2.*'`"
+        },
+        {
+          "id": "c",
+          "text": "`git tag --merged 'v2.*'`"
+        },
+        {
+          "id": "d",
+          "text": "`git tag --points-at 'v2.*'`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`git tag --list` takes a pattern and prints only the matching tags. `--sort` takes a sort key, and `--merged` and `--points-at` take a commit, so a tag pattern is not a valid value for them.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A release script takes the first line printed by `git tag --list 'v1.*' --sort=-version:refname`. The repository has tags `v1.2.0`, `v1.3.0`, `v1.9.0` and `v1.10.0`. Which tag does the script take?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`v1.9.0`"
+        },
+        {
+          "id": "b",
+          "text": "`v1.3.0`"
+        },
+        {
+          "id": "c",
+          "text": "`v1.2.0`"
+        },
+        {
+          "id": "d",
+          "text": "`v1.10.0`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Version sorting compares the numeric parts as numbers, so `v1.10.0` outranks `v1.9.0`, and the leading minus reverses the order so the newest comes first. A plain text sort would put `v1.9.0` first, and the other tags are older.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Tags `v2.0.0` and `v2.0.0-rc.1` exist. `git tag --sort=version:refname` lists `v2.0.0-rc.1` after `v2.0.0`. Which setting makes it list the release candidate first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git config tag.sort refname`"
+        },
+        {
+          "id": "b",
+          "text": "`git config core.ignoreCase true`"
+        },
+        {
+          "id": "c",
+          "text": "`git config versionsort.suffix -rc`"
+        },
+        {
+          "id": "d",
+          "text": "`git config tag.forceSignAnnotated true`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "By default Git sorts a tag with a suffix after the plain tag. `versionsort.suffix` names the suffixes that mark pre-releases, so `-rc` tags sort first. `tag.sort refname` is plain text order and keeps the problem, and the other two settings do not affect ordering.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Two developers work on login and billing in the same repository. Neither wants unfinished work to disturb the other before review. What should each do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Commit straight to `main` and push often so teammates see changes sooner"
+        },
+        {
+          "id": "b",
+          "text": "Share one branch so both sets of changes stay in sync"
+        },
+        {
+          "id": "c",
+          "text": "Work on a separate feature branch and merge it after review"
+        },
+        {
+          "id": "d",
+          "text": "Create a tag for each change instead of a branch"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A separate branch per change isolates unfinished work until review, and a merge then brings it in. Committing straight to `main` or sharing one branch mixes the changes, and a tag only marks a commit; it does not hold ongoing work.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "`release/3.2` was cut from `main` to stabilize version 3.2, and work on 3.3 has started. A bug is found in 3.2. Which approach keeps both lines correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fix it on `main`, abandon `release/3.2`, and ship 3.2 from `main`"
+        },
+        {
+          "id": "b",
+          "text": "Move the 3.3 work onto `release/3.2` and fix the bug there"
+        },
+        {
+          "id": "c",
+          "text": "Fix it on `release/3.2` and leave `main` without the fix"
+        },
+        {
+          "id": "d",
+          "text": "Fix it on `release/3.2`, merge that branch into `main`, and keep 3.3 work on `main`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The stabilizing fix belongs on `release/3.2`, and merging that branch into `main` carries it forward while 3.3 work continues on `main`. Abandoning the release branch, mixing 3.3 work into it, or leaving `main` without the fix each loses work or reintroduces the bug in the next version.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team's convention is `type/ticket-short-description`. Which branch name follows it for a bug fix on ticket 482 that corrects invoice rounding?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`bugfix/482-invoice-rounding`"
+        },
+        {
+          "id": "b",
+          "text": "`482/bugfix-invoice-rounding`"
+        },
+        {
+          "id": "c",
+          "text": "`invoice-rounding-bugfix-482`"
+        },
+        {
+          "id": "d",
+          "text": "`bugfix/482-invoice rounding`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The convention is a type, a slash, the ticket number and a short hyphenated description. The second and third names reorder or drop the parts, and the last one contains a space, which Git does not allow in a branch name.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team wants `git pull` to stop with an error, rather than create a merge commit, whenever local and remote history have diverged. Which option does this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git pull --no-commit`"
+        },
+        {
+          "id": "b",
+          "text": "`git pull --ff-only`"
+        },
+        {
+          "id": "c",
+          "text": "`git pull --squash`"
+        },
+        {
+          "id": "d",
+          "text": "`git pull --no-edit`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`--ff-only` makes the pull fail unless the branch can fast-forward, so diverged history stops it. `--no-commit` still merges but pauses before the commit, `--squash` combines the changes without a merge, and `--no-edit` only skips the message editor.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "After rebasing a feature branch that only she uses, a developer finds `git push` rejected. Which push overwrites the remote branch only if nobody has added commits to it since her last fetch?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git push --force`"
+        },
+        {
+          "id": "b",
+          "text": "`git push --force-with-lease`"
+        },
+        {
+          "id": "c",
+          "text": "`git push --no-verify`"
+        },
+        {
+          "id": "d",
+          "text": "`git push --set-upstream`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`--force-with-lease` overwrites the remote branch only if it still matches what the developer last fetched, so a teammate's newer commits are not lost. `--force` overwrites regardless, `--no-verify` skips hooks, and `--set-upstream` links the branch without overwriting anything.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer creates the tag `v1.4.0` and runs `git push origin main`. The tag does not appear on the remote. Why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tags stay in the working tree until the next commit includes them"
+        },
+        {
+          "id": "b",
+          "text": "A tag must be signed by a maintainer before a remote will accept the push"
+        },
+        {
+          "id": "c",
+          "text": "Branch pushes skip tags unless the tag is named or `--tags` is used"
+        },
+        {
+          "id": "d",
+          "text": "The remote accepts tags from release branches but not from `main`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A normal push sends branch commits, not tags, so a tag must be named in the push or sent with `--tags`. Tags are stored in the repository rather than the working tree, signing is optional, and remotes do not limit tags to release branches by default.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer ran `git add secrets.env` by mistake and has not committed. Which command unstages the file but keeps the edits in the working tree?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git restore --worktree secrets.env`"
+        },
+        {
+          "id": "b",
+          "text": "`git reset --hard HEAD`"
+        },
+        {
+          "id": "c",
+          "text": "`git rm --force secrets.env`"
+        },
+        {
+          "id": "d",
+          "text": "`git restore --staged secrets.env`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`git restore --staged` removes the file from the index and leaves the working copy alone. `git restore --worktree` discards the edits, `git reset --hard` discards all uncommitted work, and `git rm --force` removes the file.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A credentials file `.env` was committed last month. A developer now adds `.env` to `.gitignore` and commits that change. What happens to Git's tracking of the file?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It stays tracked, because ignore rules skip files Git already tracks"
+        },
+        {
+          "id": "b",
+          "text": "Git stops tracking it and deletes the file from every clone of the repository"
+        },
+        {
+          "id": "c",
+          "text": "Git keeps tracking it but hides its changes from `git status` output"
+        },
+        {
+          "id": "d",
+          "text": "Git stops tracking it and removes it from every earlier commit in history"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Ignore rules affect untracked files, so a tracked `.env` stays tracked and earlier commits still hold the credentials. Stopping tracking takes `git rm --cached .env`, and the credentials should be rotated. Git does not delete files from other clones, and `git status` still reports changes to a tracked file.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO tasks suit a `pre-commit` hook?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run a linter on the staged files"
+        },
+        {
+          "id": "b",
+          "text": "Scan the staged changes for credentials"
+        },
+        {
+          "id": "c",
+          "text": "Publish the finished build to production"
+        },
+        {
+          "id": "d",
+          "text": "Mirror the repository to a backup remote"
+        },
+        {
+          "id": "e",
+          "text": "Delete branches that were merged last week"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Linting the staged files and scanning them for credentials are quick checks on what is about to be committed, which is the job of `pre-commit`. Publishing to production, mirroring to a backup remote and pruning merged branches are not checks on a commit and belong in other automation.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE statements about semantic versions are correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A pre-release version has lower precedence than its release"
+        },
+        {
+          "id": "b",
+          "text": "Build metadata after `+` is ignored when comparing precedence"
+        },
+        {
+          "id": "c",
+          "text": "`1.10.0` has lower precedence than `1.9.0`"
+        },
+        {
+          "id": "d",
+          "text": "Raising the major number resets minor and patch to zero"
+        },
+        {
+          "id": "e",
+          "text": "Leading zeros are allowed in numeric parts, as in `1.02.0`"
+        },
+        {
+          "id": "f",
+          "text": "A patch release may remove a public feature"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A pre-release sorts below its release, build metadata after `+` is ignored in precedence, and raising the major number resets minor and patch to zero. `1.10.0` outranks `1.9.0` because the numbers compare numerically, leading zeros are not allowed, and a patch release carries only compatible bug fixes.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-039",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO commands change the contents of the remote repository?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`git push origin main`"
+        },
+        {
+          "id": "b",
+          "text": "`git fetch origin`"
+        },
+        {
+          "id": "c",
+          "text": "`git push origin --delete old-branch`"
+        },
+        {
+          "id": "d",
+          "text": "`git commit -m 'Add docs'`"
+        },
+        {
+          "id": "e",
+          "text": "`git add .`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "`git push` sends commits to the remote, and `git push origin --delete old-branch` removes a branch there. `git fetch` only downloads, while `git commit` and `git add` change the local repository and index.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-040",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are valid branch names in Git?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`release/2.4`"
+        },
+        {
+          "id": "b",
+          "text": "`feature/oauth login`"
+        },
+        {
+          "id": "c",
+          "text": "`hotfix..2.4.1`"
+        },
+        {
+          "id": "d",
+          "text": "`feature/oauth-login`"
+        },
+        {
+          "id": "e",
+          "text": "`fix/login.lock`"
+        },
+        {
+          "id": "f",
+          "text": "`-urgent`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "`release/2.4` and `feature/oauth-login` follow Git's naming rules. A space, the `..` sequence, a name ending in `.lock` and a leading hyphen are all rejected.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-041",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO controls best keep credentials out of a repository?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A pre-commit scan of staged changes for key patterns"
+        },
+        {
+          "id": "b",
+          "text": "Base64 encoding passwords before committing them"
+        },
+        {
+          "id": "c",
+          "text": "Reading secrets from the environment or a secret store at run time"
+        },
+        {
+          "id": "d",
+          "text": "Keeping the repository private on the hosting service"
+        },
+        {
+          "id": "e",
+          "text": "Giving credential files an innocent-looking extension"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A pre-commit scan stops credentials before they enter history, and reading them at run time keeps them out of the code. Base64 is easily reversed, a private repository still exposes secrets to everyone with access and to every clone, and a harmless extension hides nothing from a reader.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-042",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE practices fit short-lived feature branching?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep each branch focused on one change"
+        },
+        {
+          "id": "b",
+          "text": "Merge or rebase `main` into the branch regularly"
+        },
+        {
+          "id": "c",
+          "text": "Keep a branch open for months to batch several releases"
+        },
+        {
+          "id": "d",
+          "text": "Delete the branch after it is merged"
+        },
+        {
+          "id": "e",
+          "text": "Commit to `main` directly to skip the review"
+        },
+        {
+          "id": "f",
+          "text": "Share one branch among unrelated tickets"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Focused branches, regular syncing with `main`, and deleting the branch after the merge keep feature branching short-lived. Months-long branches drift from `main`, committing straight to `main` skips review, and sharing one branch mixes unrelated work.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-mcq-043",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO belong on `release/2.4` while it is being stabilized?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A fix for a bug found in 2.4 testing"
+        },
+        {
+          "id": "b",
+          "text": "A new feature planned for 2.5"
+        },
+        {
+          "id": "c",
+          "text": "The version bump and changelog entry for 2.4.0"
+        },
+        {
+          "id": "d",
+          "text": "A large refactor of the storage layer"
+        },
+        {
+          "id": "e",
+          "text": "An experiment with a new build tool"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A stabilizing branch takes fixes and release chores such as the version bump and changelog. New features, large refactors and tool experiments belong on `main` or their own branches so they do not destabilize 2.4.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "You are on the feature/retry-backoff branch of the retry-lib repository. Review the terminal output, then complete each step. The commit message must be exactly: Add retry backoff.",
+    "payload": {
+      "output": [
+        "$ git status -sb",
+        "## feature/retry-backoff",
+        " M docs/notes.txt",
+        " M src/retry.py",
+        "?? src/scratch.py",
+        "$ git remote -v",
+        "origin  git@build01.example.internal:payments/retry-lib.git (fetch)",
+        "origin  git@build01.example.internal:payments/retry-lib.git (push)",
+        "$ git push -h",
+        "usage: git push [<options>] [<repository> [<refspec>...]]",
+        "    -u, --set-upstream    set upstream for git pull/status"
+      ],
+      "steps": [
+        {
+          "id": "add",
+          "label": "Type the command that stages only src/retry.py"
+        },
+        {
+          "id": "commit",
+          "label": "Type the command that commits the staged change with the message Add retry backoff"
+        },
+        {
+          "id": "push",
+          "label": "Type the command that pushes this branch to origin and sets it as the upstream"
+        },
+        {
+          "id": "fetch",
+          "label": "A teammate pushed to main. Type the command that downloads origin's new commits without changing any local branch or file"
+        },
+        {
+          "id": "view",
+          "label": "Choose the command that lists the commits on origin/main that local main lacks",
+          "options": [
+            {
+              "id": "o1",
+              "text": "git log origin/main..main"
+            },
+            {
+              "id": "o2",
+              "text": "git diff --staged"
+            },
+            {
+              "id": "o3",
+              "text": "git log main..origin/main"
+            },
+            {
+              "id": "o4",
+              "text": "git status --ignored"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "add": [
+          "git add src/retry.py",
+          "git add ./src/retry.py",
+          "git add -- src/retry.py"
+        ],
+        "commit": [
+          "git commit -m \"Add retry backoff\"",
+          "git commit -m 'Add retry backoff'",
+          "git commit --message \"Add retry backoff\"",
+          "git commit --message 'Add retry backoff'",
+          "git commit --message=\"Add retry backoff\"",
+          "git commit --message='Add retry backoff'"
+        ],
+        "push": [
+          "git push -u origin feature/retry-backoff",
+          "git push --set-upstream origin feature/retry-backoff",
+          "git push origin -u feature/retry-backoff",
+          "git push origin --set-upstream feature/retry-backoff",
+          "git push -u origin HEAD",
+          "git push --set-upstream origin HEAD"
+        ],
+        "fetch": [
+          "git fetch",
+          "git fetch origin",
+          "git fetch origin main",
+          "git fetch --all",
+          "git remote update",
+          "git remote update origin"
+        ],
+        "view": [
+          "o3"
+        ]
+      }
+    },
+    "explanation": "Stage the one file by name, commit with a quoted message, and use the upstream flag on the first push. A fetch downloads without touching local work, and a two-dot range from main to origin/main lists what the remote has that local main lacks.",
+    "partExplanations": {
+      "add": "Naming the file stages only src/retry.py; the untracked scratch file and the notes edit stay out.",
+      "commit": "The -m flag takes the message, and the quotes keep the three words together.",
+      "push": "The -u (or --set-upstream) flag links the branch to origin, so later pulls and pushes need no arguments.",
+      "fetch": "A fetch updates origin/main and the other remote-tracking branches but leaves local branches and files alone.",
+      "view": "The range main..origin/main lists commits reachable from origin/main but not from main."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Dana joins the payments team and is setting up Git on her laptop. Choose the setting that meets each need.",
+    "payload": {
+      "fields": [
+        {
+          "id": "email",
+          "label": "Store her work email so it applies only inside the payments-api repository",
+          "options": [
+            {
+              "id": "o1",
+              "text": "User config file (git config --global user.email)"
+            },
+            {
+              "id": "o2",
+              "text": "Repository config (git config --local user.email)"
+            },
+            {
+              "id": "o3",
+              "text": "Machine config file (git config --system user.email)"
+            }
+          ]
+        },
+        {
+          "id": "hooks",
+          "label": "Make Git run the tracked hook scripts in the .githooks folder",
+          "options": [
+            {
+              "id": "o1",
+              "text": "core.hooksPath = .git/hooks"
+            },
+            {
+              "id": "o2",
+              "text": "hooks.dir = .githooks"
+            },
+            {
+              "id": "o3",
+              "text": "core.hooksPath = .githooks"
+            }
+          ]
+        },
+        {
+          "id": "pull",
+          "label": "Refuse to create a merge commit when pulling diverged history",
+          "options": [
+            {
+              "id": "o1",
+              "text": "pull.ff = only"
+            },
+            {
+              "id": "o2",
+              "text": "pull.rebase = true"
+            },
+            {
+              "id": "o3",
+              "text": "pull.ff = false"
+            }
+          ]
+        },
+        {
+          "id": "push",
+          "label": "Link a new branch to its remote branch automatically on the first push",
+          "options": [
+            {
+              "id": "o1",
+              "text": "push.default = matching"
+            },
+            {
+              "id": "o2",
+              "text": "push.followTags = true"
+            },
+            {
+              "id": "o3",
+              "text": "push.autoSetupRemote = true"
+            }
+          ]
+        },
+        {
+          "id": "branch",
+          "label": "Name the first branch in every repository she creates main",
+          "options": [
+            {
+              "id": "o1",
+              "text": "core.mainBranch = main"
+            },
+            {
+              "id": "o2",
+              "text": "init.defaultBranch = main"
+            },
+            {
+              "id": "o3",
+              "text": "branch.default = main"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "email": "o2",
+        "hooks": "o3",
+        "pull": "o1",
+        "push": "o3",
+        "branch": "o2"
+      }
+    },
+    "explanation": "Repository config overrides her user config only for that repository. core.hooksPath points at a tracked folder, pull.ff = only fails instead of merging diverged history, push.autoSetupRemote links new branches, and init.defaultBranch names new repositories.",
+    "partExplanations": {
+      "email": "Local (repository) scope applies to one repository; global applies everywhere for her user.",
+      "hooks": "The default .git/hooks folder is not tracked, so a tracked folder must be named explicitly.",
+      "pull": "pull.ff = only aborts the pull unless it can fast-forward; rebase would rewrite her commits instead of refusing.",
+      "push": "push.autoSetupRemote creates the upstream link on the first push; matching and followTags do not.",
+      "branch": "init.defaultBranch is the real setting; the other keys do not exist in Git."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Put these events in the order they happen when a developer commits one change and then pushes it. Assume every hook passes. A commit can record only what is already staged. A hook runs after the command that triggers it starts. The pre-commit hook runs before the message is checked, and the commit exists only after the message check passes.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "The commit-msg hook checks the message format"
+        },
+        {
+          "id": "s1",
+          "text": "Stage the changed file with git add"
+        },
+        {
+          "id": "s6",
+          "text": "Run git push; the pre-push hook passes and the commits upload"
+        },
+        {
+          "id": "s3",
+          "text": "The pre-commit hook lints and scans the staged changes"
+        },
+        {
+          "id": "s5",
+          "text": "The new commit is recorded in the local repository"
+        },
+        {
+          "id": "s2",
+          "text": "Run git commit with a message"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "Staging comes first because a commit records only the index. git commit then triggers the pre-commit hook, the commit-msg hook checks the message, the commit is recorded, and a later git push runs pre-push before uploading.",
+    "partExplanations": {
+      "0": "A commit can record only what is staged, so git add comes first.",
+      "1": "Running git commit starts the commit process and triggers its hooks.",
+      "2": "The pre-commit hook checks the staged content before a message is accepted.",
+      "3": "The commit-msg hook validates the message after the staged content passes.",
+      "4": "Only after both hooks pass is the commit recorded locally.",
+      "5": "Pushing is a separate later command; its pre-push hook runs before anything uploads."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "pbqWeight": 5,
+    "stem": "A package registry lists the versions in the table, in the order they were uploaded. Compare them by semantic versioning precedence and answer each question.",
+    "payload": {
+      "caption": "Versions in the registry",
+      "columns": [
+        "Version",
+        "Channel"
+      ],
+      "rows": [
+        [
+          "1.9.0",
+          "stable"
+        ],
+        [
+          "1.10.0-rc.2",
+          "staging"
+        ],
+        [
+          "1.10.0-rc.11",
+          "staging"
+        ],
+        [
+          "1.10.0",
+          "stable"
+        ],
+        [
+          "1.10.0+build.5",
+          "stable"
+        ],
+        [
+          "2.0.0-beta.1",
+          "staging"
+        ],
+        [
+          "1.9.11",
+          "stable"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "high",
+          "label": "Version with the highest precedence",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1.10.0"
+            },
+            {
+              "id": "o2",
+              "text": "1.9.11"
+            },
+            {
+              "id": "o3",
+              "text": "2.0.0-beta.1"
+            }
+          ]
+        },
+        {
+          "id": "rc",
+          "label": "Lower precedence of the two release candidates",
+          "options": [
+            {
+              "id": "o1",
+              "text": "1.10.0-rc.11"
+            },
+            {
+              "id": "o2",
+              "text": "1.10.0-rc.2"
+            },
+            {
+              "id": "o3",
+              "text": "They are equal"
+            }
+          ]
+        },
+        {
+          "id": "pre",
+          "label": "Number of pre-release versions in the table",
+          "options": [
+            {
+              "id": "o1",
+              "text": "3"
+            },
+            {
+              "id": "o2",
+              "text": "4"
+            },
+            {
+              "id": "o3",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "id": "build",
+          "label": "How 1.10.0+build.5 compares with 1.10.0",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Lower precedence"
+            },
+            {
+              "id": "o2",
+              "text": "Equal precedence"
+            },
+            {
+              "id": "o3",
+              "text": "Higher precedence"
+            }
+          ]
+        },
+        {
+          "id": "range",
+          "label": "Stable versions from 1.9.0 up to, but not including, 1.10.0",
+          "options": [
+            {
+              "id": "o1",
+              "text": "3"
+            },
+            {
+              "id": "o2",
+              "text": "1"
+            },
+            {
+              "id": "o3",
+              "text": "2"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "high": "o3",
+        "rc": "o2",
+        "pre": "o1",
+        "build": "o2",
+        "range": "o3"
+      }
+    },
+    "explanation": "Compare major, then minor, then patch; a pre-release ranks below its release, numeric pre-release parts compare as numbers, and build metadata is ignored.",
+    "partExplanations": {
+      "high": "Major 2 beats major 1, so 2.0.0-beta.1 ranks above every 1.x version, even as a pre-release.",
+      "rc": "rc.2 and rc.11 compare as numbers, 2 < 11, so rc.2 is lower.",
+      "pre": "The pre-releases are 1.10.0-rc.2, 1.10.0-rc.11 and 2.0.0-beta.1, which is 3; build metadata is not a pre-release.",
+      "build": "Build metadata after the plus sign is ignored, so the two have equal precedence.",
+      "range": "Only 1.9.0 and 1.9.11 are stable and fall in that range; the 1.10.0 release candidates are pre-releases."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Place the best name for each part of this release flow in the box below it.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Develop"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Integrate"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Stabilize"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Release"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Short-lived branch for one ticket"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Branch that collects reviewed work from many tickets"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Branch that takes only fixes while 2.4 is stabilized"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Fixed marker on the exact commit that shipped"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "feature/retry-backoff"
+        },
+        {
+          "id": "l2",
+          "text": "main"
+        },
+        {
+          "id": "l3",
+          "text": "release/2.4"
+        },
+        {
+          "id": "l4",
+          "text": "Tag v2.4.0"
+        },
+        {
+          "id": "l5",
+          "text": "hotfix/2.3.1"
+        },
+        {
+          "id": "l6",
+          "text": "Stash entry"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "A feature branch holds one ticket, main collects reviewed work, a release branch stabilizes one version with fixes only, and a tag marks the shipped commit. A hotfix branch targets an older live release, and a stash entry is not a branch.",
+    "partExplanations": {
+      "z1": "One ticket gets its own short-lived feature branch.",
+      "z2": "Reviewed work from many tickets merges into main.",
+      "z3": "A release branch for 2.4 accepts only stabilizing fixes.",
+      "z4": "A tag is a fixed pointer to the commit that shipped."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "A developer ran git commit and Git aborted it. The output of the pre-commit hooks is shown. A hook that prints Failed exits with a non-zero status. Select each line that shows a hook that blocked the commit.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "np1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "trim trailing whitespace ..... Passed"
+        },
+        {
+          "id": "np2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "validate yaml syntax ......... Passed"
+        },
+        {
+          "id": "np3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "format code .................. Failed"
+        },
+        {
+          "id": "np4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "check large files .... Skipped"
+        },
+        {
+          "id": "np5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "scan for secrets ............. Passed"
+        },
+        {
+          "id": "np6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "lint code .................... Failed"
+        }
+      ],
+      "spots": [
+        {
+          "id": "p1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "trim trailing whitespace ..... Passed"
+        },
+        {
+          "id": "p2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "validate yaml syntax ......... Passed"
+        },
+        {
+          "id": "p3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "format code .................. Failed"
+        },
+        {
+          "id": "p4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "check large files .... Skipped"
+        },
+        {
+          "id": "p5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "scan for secrets ............. Passed"
+        },
+        {
+          "id": "p6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "lint code .................... Failed"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "p3",
+        "p6"
+      ]
+    },
+    "explanation": "A hook that exits non-zero aborts the commit. Only the two lines that print Failed did that; a passed hook and a skipped hook with no files to check do not block anything.",
+    "partExplanations": {
+      "p1": "Passed means exit status zero, so this hook did not block.",
+      "p2": "Passed means exit status zero, so this hook did not block.",
+      "p3": "The formatter failed with a non-zero status, which aborts the commit.",
+      "p4": "Skipped means the hook had no files to check, so it did not block.",
+      "p5": "The secret scan passed, so it did not block.",
+      "p6": "The linter failed with a non-zero status, which aborts the commit."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each Git command to its effect.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "git fetch origin"
+        },
+        {
+          "id": "p2",
+          "text": "git pull"
+        },
+        {
+          "id": "p3",
+          "text": "git push origin main"
+        },
+        {
+          "id": "p4",
+          "text": "git add -p"
+        },
+        {
+          "id": "p5",
+          "text": "git commit --amend"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Uploads local commits on main to the remote"
+        },
+        {
+          "id": "c2",
+          "text": "Replaces the latest commit with a new one that includes the staged changes"
+        },
+        {
+          "id": "c3",
+          "text": "Downloads new commits, then integrates them into the current branch"
+        },
+        {
+          "id": "c4",
+          "text": "Downloads new commits and updates remote-tracking branches, leaving local branches alone"
+        },
+        {
+          "id": "c5",
+          "text": "Asks about each chunk of change and stages the ones you approve"
+        },
+        {
+          "id": "c6",
+          "text": "Removes a branch from the remote repository"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c4",
+        "p2": "c3",
+        "p3": "c1",
+        "p4": "c5",
+        "p5": "c2"
+      }
+    },
+    "explanation": "Fetch only downloads, pull downloads and integrates, push uploads, add -p stages chunk by chunk, and amend replaces the latest commit. Deleting a remote branch needs a push with a delete option, so it matches none of these.",
+    "partExplanations": {
+      "p1": "Fetch updates remote-tracking branches and nothing else.",
+      "p2": "Pull is a fetch followed by a merge into the current branch.",
+      "p3": "Push uploads the local main commits to origin.",
+      "p4": "The -p (patch) option lets you choose chunks to stage.",
+      "p5": "Amend rewrites the latest commit to include what is staged."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-2-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "Sort each change to a public API into the kind of release it requires under semantic versioning.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "maj",
+          "text": "Major release (x.0.0)"
+        },
+        {
+          "id": "min",
+          "text": "Minor release (x.y.0)"
+        },
+        {
+          "id": "pat",
+          "text": "Patch release (x.y.z)"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Removing an endpoint that clients still call"
+        },
+        {
+          "id": "i2",
+          "text": "Making a previously optional request field required"
+        },
+        {
+          "id": "i3",
+          "text": "Adding a new optional query parameter"
+        },
+        {
+          "id": "i4",
+          "text": "Marking an endpoint as deprecated while it still works"
+        },
+        {
+          "id": "i5",
+          "text": "Fixing an off-by-one error in pagination"
+        },
+        {
+          "id": "i6",
+          "text": "Fixing a crash on empty input with no interface change"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "maj",
+        "i2": "maj",
+        "i3": "min",
+        "i4": "min",
+        "i5": "pat",
+        "i6": "pat"
+      }
+    },
+    "explanation": "Incompatible changes need a major release, compatible additions and deprecations need a minor release, and compatible bug fixes need a patch release.",
+    "partExplanations": {
+      "i1": "Removing something clients use is an incompatible change.",
+      "i2": "Requiring a previously optional field breaks existing callers.",
+      "i3": "An optional addition is compatible new functionality.",
+      "i4": "Semantic versioning asks for a minor release when functionality is deprecated.",
+      "i5": "A compatible bug fix is a patch.",
+      "i6": "A compatible bug fix is a patch."
+    },
+    "acronyms": [
+      "API"
+    ]
+  }
+]

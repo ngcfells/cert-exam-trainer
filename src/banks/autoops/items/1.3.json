@@ -1,0 +1,2558 @@
+[
+  {
+    "id": "at1-1-3-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team pastes the same network definition into five projects and edits each copy by hand. Which IaC practice keeps that definition in one place?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A longer comment block above each copy"
+        },
+        {
+          "id": "b",
+          "text": "A separate branch for each project"
+        },
+        {
+          "id": "c",
+          "text": "A shared module that takes inputs"
+        },
+        {
+          "id": "d",
+          "text": "A bigger variable file inside each copy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A module holds the definition once, and each caller passes its own inputs, so a fix is made in one spot. Comments, extra branches and larger variable files all leave five copies that still drift apart.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team calls a shared definition like this:\n```hcl\nmodule \"web\" {\n  source    = \"./modules/web-tier\"\n  env_name  = \"staging\"\n  instances = 2\n}\n```\nWhat does this block let the team do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reuse one module with inputs for each environment"
+        },
+        {
+          "id": "b",
+          "text": "Copy the tier into a separate folder for each environment"
+        },
+        {
+          "id": "c",
+          "text": "Lock the tier so its inputs cannot be changed by callers"
+        },
+        {
+          "id": "d",
+          "text": "Run the tier on a timed schedule"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The block calls the same module and supplies values such as the name and count, so another environment can call it with other values. It does not copy files, freeze inputs, or schedule anything.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A reusable template must create two instances in test and six in production. Where should the instance count come from?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A literal typed into the template for each run"
+        },
+        {
+          "id": "b",
+          "text": "A comment that names the intended count"
+        },
+        {
+          "id": "c",
+          "text": "A second copy of the template per environment"
+        },
+        {
+          "id": "d",
+          "text": "A variable supplied at apply time"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Inputs let one template serve both environments with different values. Editing a literal, relying on a comment, or keeping a second copy brings back manual edits and drift.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Two teams want to share a tested database definition, but one of them needs more capacity. Which design supports both?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fork the definition and hard-code the bigger size"
+        },
+        {
+          "id": "b",
+          "text": "Expose the size as an input with a default"
+        },
+        {
+          "id": "c",
+          "text": "Ask the second team to accept the standard size"
+        },
+        {
+          "id": "d",
+          "text": "Delete the size setting from the definition"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An input with a default gives the first team the tested size and lets the second team override it. A fork creates two diverging copies, refusing the request blocks a legitimate need, and deleting the setting removes control for both teams.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A module is published as version 1 and used by twelve repositories. Its owners plan to rename one input. How should they protect consumers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Edit the shared copy in place so all consumers update together"
+        },
+        {
+          "id": "b",
+          "text": "Publish a new release that consumers pin once tested"
+        },
+        {
+          "id": "c",
+          "text": "Ask each consumer to copy the module into its own repository"
+        },
+        {
+          "id": "d",
+          "text": "Rename the input and announce it in the team chat"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Versioned releases let consumers move on their own schedule, and a pinned version means a rename does not break an untested apply. An in-place edit breaks everyone at once, local copies lose sharing, and a chat message is not a control.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An immutable server fleet needs one setting changed. Where should the change be made?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "On each live server, using an administrator login"
+        },
+        {
+          "id": "b",
+          "text": "In a script that operators run on each server"
+        },
+        {
+          "id": "c",
+          "text": "In the monitoring dashboard for the fleet"
+        },
+        {
+          "id": "d",
+          "text": "In the build definition, then a new rollout"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Immutable servers are never edited after launch, so a setting changes in the build definition and reaches the fleet through a new rollout. Logging in to servers or running per-server scripts edits live systems, and a monitoring dashboard only observes them.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A fleet of web hosts has drifted because administrators patch them by hand. Which change moves the team toward immutability?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Build a new image per release and replace the hosts"
+        },
+        {
+          "id": "b",
+          "text": "Give administrators a runbook for patching hosts by hand"
+        },
+        {
+          "id": "c",
+          "text": "Hold manual patch windows more frequently"
+        },
+        {
+          "id": "d",
+          "text": "Add a monitor that reports which hosts were patched by hand"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Replacing hosts from a freshly built image stops hand edits from accumulating. A runbook and more patch windows keep the in-place model, and a monitor only reports drift after it exists.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A release rolled out by replacing hosts breaks checkout, and the last good package is still stored. What is the quickest rollback in an immutable model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Log in to each new host and undo the changed files"
+        },
+        {
+          "id": "b",
+          "text": "Patch the faulty release in place while it serves traffic"
+        },
+        {
+          "id": "c",
+          "text": "Launch fresh hosts from the previous image"
+        },
+        {
+          "id": "d",
+          "text": "Rebuild the old package from source before doing anything"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Because the older artifact is stored, rollback is just another replacement. Undoing files by hand reintroduces in-place edits, hot-patching the live hosts risks more breakage, and rebuilding first delays recovery.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Why does an immutable approach reduce configuration drift?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Running systems go unedited, so they match their image"
+        },
+        {
+          "id": "b",
+          "text": "Systems are monitored more closely for unexpected edits"
+        },
+        {
+          "id": "c",
+          "text": "Changes are applied faster than operators can react"
+        },
+        {
+          "id": "d",
+          "text": "Servers are upgraded in place on a tighter schedule"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Drift comes from changes made after deployment, and an immutable system receives none. Closer monitoring only detects drift, faster changes do not prevent it, and in-place upgrades are the source of drift.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A deployment pulls the container image `shop-api:latest`, which is rebuilt each day. Two restarts a week apart behave differently. Which practice supports immutability?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Pull the same moving tag again on each restart of the service"
+        },
+        {
+          "id": "b",
+          "text": "Mount a writable volume to hot-patch the image in place"
+        },
+        {
+          "id": "c",
+          "text": "Deploy a unique version tag or digest for each build"
+        },
+        {
+          "id": "d",
+          "text": "Rebuild the image on the host at start-up"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A fixed tag or digest always points at the same bytes, so a restart reproduces the tested artifact. A moving tag changes under you, hot-patching a mounted volume edits a running container, and building on the host produces unreviewed results.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An administrator uses `ssh` to hotfix a configuration file on one of thirty instances launched from the same image. What is the main problem with this change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The other twenty-nine instances stop accepting traffic"
+        },
+        {
+          "id": "b",
+          "text": "The hotfix is a one-off that vanishes on replacement"
+        },
+        {
+          "id": "c",
+          "text": "The next image build will fail its validation checks"
+        },
+        {
+          "id": "d",
+          "text": "The load balancer removes the edited instance's address"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Instances are expected to match their image, so a hand edit creates a one-off that disappears the next time it is replaced. The edit does not affect the other instances, image builds, or load balancer membership.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which question does a declarative IaC definition answer?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Which command should run at step three?"
+        },
+        {
+          "id": "b",
+          "text": "Who gets notified after each step?"
+        },
+        {
+          "id": "c",
+          "text": "How long should each step wait?"
+        },
+        {
+          "id": "d",
+          "text": "What should exist when the run finishes?"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A declarative definition answers what should exist at the end and leaves the method to the tool. Which command comes next, who is notified, and how long to wait are details of procedure, which belong to an imperative script or a pipeline.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which statement describes an imperative script?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It declares the final state and lets the tool plan"
+        },
+        {
+          "id": "b",
+          "text": "It describes a model that is reconciled automatically"
+        },
+        {
+          "id": "c",
+          "text": "It hides its steps inside a managed service"
+        },
+        {
+          "id": "d",
+          "text": "It lists the actions to perform in the order given"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An imperative script is a sequence of actions the author spells out. Declaring an end state and automatic reconciliation are declarative traits, and where the steps run does not make a script imperative.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A file in a repository contains these lines:\n```\ncreate_vm web01 --cpu 2\ncreate_vm web02 --cpu 2\ninstall_pkg web01 web-server\ninstall_pkg web02 web-server\n```\nWhich approach does the file follow, and why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Declarative, because it names the hosts it creates"
+        },
+        {
+          "id": "b",
+          "text": "Imperative, because it lists actions in sequence"
+        },
+        {
+          "id": "c",
+          "text": "Declarative, because it has no conditional logic"
+        },
+        {
+          "id": "d",
+          "text": "Imperative, because it is run from a command line"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Each line is an action to perform, and the order matters because a package cannot install before its VM exists. Naming hosts and lacking conditions do not make a file declarative, and either style can be launched from a command line, so how a file is started says nothing about whether it lists steps or states a result.",
+    "acronyms": [
+      "VM"
+    ]
+  },
+  {
+    "id": "at1-1-3-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A declarative file defines a server with an `owner` attribute and has already been applied. A teammate changes only the `owner` value, which the platform can update in place, and applies the file again. What does a declarative tool do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Runs every creation step again from the top of the file"
+        },
+        {
+          "id": "b",
+          "text": "Refuses to run until the old server is deleted by hand"
+        },
+        {
+          "id": "c",
+          "text": "Compares state to the file and updates one attribute"
+        },
+        {
+          "id": "d",
+          "text": "Adds a second server beside the existing one"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A declarative tool reads the current state, finds the difference, and changes only what differs. It does not replay creation steps, require manual cleanup, or duplicate a server that already matches the rest of the file.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A team converts an imperative provisioning script into a declarative definition. What do they gain?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The tool computes changes instead of replaying steps"
+        },
+        {
+          "id": "b",
+          "text": "Steps now run in a guaranteed human-readable order"
+        },
+        {
+          "id": "c",
+          "text": "Rollback is no longer needed for failed changes"
+        },
+        {
+          "id": "d",
+          "text": "Provider credentials no longer need protection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Declaring the end state lets the tool diff against reality and act only on the gap. Execution order is the tool's concern rather than a guarantee to the author, failed changes can still need recovery, and credentials remain sensitive.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Thirty hosts are sometimes resized by hand. The team wants each automation run to pull the fleet back to the intended shape. Which style fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Imperative, because scripts compare and repair on their own"
+        },
+        {
+          "id": "b",
+          "text": "Imperative, because the same steps run again each time"
+        },
+        {
+          "id": "c",
+          "text": "Declarative, because the tool reconciles toward the target"
+        },
+        {
+          "id": "d",
+          "text": "Declarative, because the author lists the repair steps"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A declarative tool compares live state to the target and closes the gap, which undoes manual resizing. A fixed script replays the same steps and does not detect differences by itself, and a declarative definition does not contain repair steps because the tool derives them.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A declarative file lists `count = 3` web servers. Someone deletes one by hand in the console. What does the next apply do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Treats two servers as the new desired state"
+        },
+        {
+          "id": "b",
+          "text": "Fails because the state record cannot be changed"
+        },
+        {
+          "id": "c",
+          "text": "Does nothing until the file version is incremented"
+        },
+        {
+          "id": "d",
+          "text": "Finds two servers and creates one more"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The file is the source of truth, so the tool sees a gap of one and closes it. It does not adopt the manual change as intent, fail because of the deletion, or wait for a version bump.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which statement best defines an idempotent automation run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Each repeat adds more resources than the one before it"
+        },
+        {
+          "id": "b",
+          "text": "Repeating it leaves the same end state as the first pass"
+        },
+        {
+          "id": "c",
+          "text": "It is restricted to a single host or one environment"
+        },
+        {
+          "id": "d",
+          "text": "It records a log entry for each step"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Idempotency means that extra runs do not change the result after the first. Growing resources on each run is the opposite, host count is unrelated, and logging says nothing about the end state.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A deploy script runs on each release in a shell that continues after errors, and contains these lines:\n```bash\necho \"port=8080\" >> app.conf\nuseradd deploy\n```\nWhat happens from the second run onward?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The user step errors and the port line is duplicated"
+        },
+        {
+          "id": "b",
+          "text": "The port line is replaced with the same value"
+        },
+        {
+          "id": "c",
+          "text": "Both steps are skipped because they match the earlier run"
+        },
+        {
+          "id": "d",
+          "text": "The config file is recreated empty and the user is kept"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The `>>` operator appends a new line each time rather than replacing one, so the port line is duplicated, and `useradd` fails when the account exists. Shell commands do not compare against previous runs, and neither one recreates the file.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A deploy step runs `mkdir /srv/app` and errors when the directory already exists. Which edit makes the step safe to repeat?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add the `-p` flag"
+        },
+        {
+          "id": "b",
+          "text": "Add the `-v` option"
+        },
+        {
+          "id": "c",
+          "text": "Add the `-m 755` flag"
+        },
+        {
+          "id": "d",
+          "text": "Prefix it with `time`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`mkdir -p` succeeds quietly when the directory is already there, which is what an idempotent step needs. `-v` only prints a message, `-m` sets permissions but still errors on an existing directory, and `time` just measures the command.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which task gives the same result however many times it is run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Appending a timestamp line to a log file each time"
+        },
+        {
+          "id": "b",
+          "text": "Setting a file's permission mode to `0640`"
+        },
+        {
+          "id": "c",
+          "text": "Incrementing a release counter"
+        },
+        {
+          "id": "d",
+          "text": "Creating a backup copy under a fresh unique name"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Setting a value to a fixed target converges on one state no matter how often it runs. Appending, incrementing and creating uniquely named copies each change the system again on every run.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A pipeline reruns an apply after a timeout stopped the first run partway through. The tool is idempotent. What should the team expect?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Finished resources are deleted and rebuilt from scratch"
+        },
+        {
+          "id": "b",
+          "text": "The run fails until the state record is wiped"
+        },
+        {
+          "id": "c",
+          "text": "Duplicates of the finished resources are created"
+        },
+        {
+          "id": "d",
+          "text": "Finished resources stay and the missing ones get created"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An idempotent tool compares the world to the definition and acts only on the difference, so a partial run is resumed. It does not rebuild what already matches, require wiping state, or duplicate resources.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A setup script creates resources with fixed names and fails with \"already exists\" errors when rerun after a partial failure. Which fix makes it safely re-runnable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a long pause between each of the create calls"
+        },
+        {
+          "id": "b",
+          "text": "Run the whole script again under a different account"
+        },
+        {
+          "id": "c",
+          "text": "Test for each resource, then create missing ones"
+        },
+        {
+          "id": "d",
+          "text": "Append a random suffix to each name"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A check-then-create guard lets finished steps pass and missing steps run. A pause or another account does not change the collision, and random suffixes build a fresh set of duplicates on each rerun instead of converging on one end state.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An engineer previews a change and the tool reports `0 to add, 0 to change, 0 to destroy`. What does this tell them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The definition file was left empty by mistake"
+        },
+        {
+          "id": "b",
+          "text": "The live system already matches the definition"
+        },
+        {
+          "id": "c",
+          "text": "The tool could not reach the cloud provider"
+        },
+        {
+          "id": "d",
+          "text": "A previous run was rolled back before this preview"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A zero-change preview means the desired and actual states agree. An empty file would normally plan to remove things, an unreachable provider produces an error rather than a clean summary, and a rollback is not reported this way.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A preview marks one resource for replacement after a change to its machine image setting. What does that indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The platform cannot change that setting in place"
+        },
+        {
+          "id": "b",
+          "text": "The resource will be modified without any downtime"
+        },
+        {
+          "id": "c",
+          "text": "The tool has lost track of the resource"
+        },
+        {
+          "id": "d",
+          "text": "Another team has locked the resource"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Replacement means the platform cannot alter that attribute on a live resource, so it is destroyed and recreated. An in-place update would be shown as a change, a lost resource would be an error or new addition, and a lock would block the run.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Someone resizes a VM in the console, but the IaC file still says it has two CPU cores. What is this mismatch called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Template inheritance"
+        },
+        {
+          "id": "b",
+          "text": "Module versioning"
+        },
+        {
+          "id": "c",
+          "text": "Configuration drift"
+        },
+        {
+          "id": "d",
+          "text": "State locking"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Drift is the gap that opens when the live system is changed outside the definition. Inheritance, versioning and locking are separate IaC ideas that do not describe an out-of-band change.",
+    "acronyms": [
+      "CPU",
+      "VM"
+    ]
+  },
+  {
+    "id": "at1-1-3-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A scheduled preview reports that a firewall setting differs from the definition. What is the best way to handle it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Edit the live system a second time to hide the report"
+        },
+        {
+          "id": "b",
+          "text": "Delete the stored state data so no difference appears"
+        },
+        {
+          "id": "c",
+          "text": "Disable the scheduled preview"
+        },
+        {
+          "id": "d",
+          "text": "Reapply the committed version, or record the wanted change"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The repository is the source of truth: either converge reality back to it, or record the intended change there. Hiding the report, erasing state, and turning off the check all leave the real mismatch in place.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is a golden image?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A nightly backup of a single server's data volume"
+        },
+        {
+          "id": "b",
+          "text": "A snapshot retained for later forensic review"
+        },
+        {
+          "id": "c",
+          "text": "The newest image in a registry by upload time"
+        },
+        {
+          "id": "d",
+          "text": "A vetted base image that new systems are built from"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A golden image is the vetted starting point for new systems, so they begin identical. Backups, forensic snapshots, and simply the latest upload do not carry that tested, intentional meaning.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Scale-out is delayed whenever a package mirror is down, because each new host installs its packages at start-up. Which change removes that dependency?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a longer timeout to the install step"
+        },
+        {
+          "id": "b",
+          "text": "Retry the install until the mirror answers"
+        },
+        {
+          "id": "c",
+          "text": "Bake the packages into the machine build"
+        },
+        {
+          "id": "d",
+          "text": "Cache the packages on each host after start-up"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Building the packages into the machine image means new hosts need no download at start-up, so a mirror outage cannot delay scale-out. A longer timeout and retries still wait on the mirror, and caching after start-up needs a first successful download.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Immutable servers are replaced from a golden image. What fills that role for containers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A versioned container build artifact"
+        },
+        {
+          "id": "b",
+          "text": "The orchestrator's log stream"
+        },
+        {
+          "id": "c",
+          "text": "A volume mounted into the container"
+        },
+        {
+          "id": "d",
+          "text": "The host's package cache"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A container image is the build artifact that new containers start from, just as a machine image is for servers. Logs, mounted volumes and a package cache do not define what a container starts as.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team stores network segment and firewall definitions in a repository and applies them with a tool. Which benefit follows most directly?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Packets travel faster between remote sites"
+        },
+        {
+          "id": "b",
+          "text": "Their changes are versioned and repeatable"
+        },
+        {
+          "id": "c",
+          "text": "Switch hardware needs no physical cabling at all"
+        },
+        {
+          "id": "d",
+          "text": "Firewall rules no longer need any testing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Treating network settings as code brings review history and repeatable applies. It does not speed up traffic, remove cabling, or make testing unnecessary.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A declarative tool manages the entire firewall rule set of a device from one file. A rule is deleted from the file and the file is applied. What should the device hold afterward?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The rule, because applies add items but never remove them"
+        },
+        {
+          "id": "b",
+          "text": "The rule, but marked disabled"
+        },
+        {
+          "id": "c",
+          "text": "No such rule, because the end state no longer lists it"
+        },
+        {
+          "id": "d",
+          "text": "A copy of the rule saved in the state record"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "For managed objects the file is the whole truth, so something absent from it is removed on apply. Leaving the rule behind, disabling it, or archiving it would contradict the declared end state.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Why do teams keep environment-specific values in separate variable files?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Variable files are executed before the template is read"
+        },
+        {
+          "id": "b",
+          "text": "One template can then serve each stage without edits"
+        },
+        {
+          "id": "c",
+          "text": "Templates are not allowed to contain any default values"
+        },
+        {
+          "id": "d",
+          "text": "The state record would grow too large otherwise"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Separating values from structure keeps one template and many small input sets. Variable files are data rather than executed code, templates routinely contain defaults, and state size is not the reason.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A reusable template contains a database password written as a literal. Which change is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Pass it in at apply time from a secrets store"
+        },
+        {
+          "id": "b",
+          "text": "Base64-encode the literal inside the template file"
+        },
+        {
+          "id": "c",
+          "text": "Move the literal into a comment above the line"
+        },
+        {
+          "id": "d",
+          "text": "Shorten the password to reduce exposure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Supplying the secret at run time keeps it out of the repository and out of every reuse of the template. Encoding is not protection, a comment is still readable text, and a shorter password is weaker.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Declarative tools often keep a state record. What is its main purpose?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Caching module downloads to speed up later runs"
+        },
+        {
+          "id": "b",
+          "text": "Holding the credentials used to reach the provider"
+        },
+        {
+          "id": "c",
+          "text": "Storing each operator's run history and approvals"
+        },
+        {
+          "id": "d",
+          "text": "Linking each definition block to a real resource"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The state record ties each block in the definition to an actual resource so the next run can compute the difference. Caching, credentials and run history are handled elsewhere.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO changes make a template reusable across environments?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Copy the template into a folder per environment"
+        },
+        {
+          "id": "b",
+          "text": "Replace hard-coded names with input variables"
+        },
+        {
+          "id": "c",
+          "text": "Embed the production credentials in the template"
+        },
+        {
+          "id": "d",
+          "text": "Keep environment values in separate variable files"
+        },
+        {
+          "id": "e",
+          "text": "Pin the region as a literal in each resource"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Inputs and separate value files let one template serve each environment. Copying creates divergent versions, embedded credentials leak secrets into every reuse, and literal regions make the template fixed to one place.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO practices fit an immutable deployment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Build a new image for each release"
+        },
+        {
+          "id": "b",
+          "text": "Patch packages over a remote shell"
+        },
+        {
+          "id": "c",
+          "text": "Replace instances rather than upgrading them"
+        },
+        {
+          "id": "d",
+          "text": "Edit configuration files on running hosts"
+        },
+        {
+          "id": "e",
+          "text": "Keep long-lived hosts and rebuild them yearly"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Immutable deployments ship new images and swap instances. Remote patching and live edits are in-place changes, and rebuilding yearly leaves hosts changing for the rest of the time.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-039",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE are characteristics of declarative IaC?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It describes the desired end state"
+        },
+        {
+          "id": "b",
+          "text": "Steps run in the order the author lists them"
+        },
+        {
+          "id": "c",
+          "text": "The tool works out the changes needed"
+        },
+        {
+          "id": "d",
+          "text": "The author writes the existence checks for each step"
+        },
+        {
+          "id": "e",
+          "text": "The tool can preview the differences before acting"
+        },
+        {
+          "id": "f",
+          "text": "A person must run each action by hand"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "A declarative definition states the goal, lets the tool compute the difference, and can show that difference before acting. Author-ordered steps, hand-written existence checks and manual actions describe imperative scripts.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-040",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO operations are idempotent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Appending a line to a configuration file"
+        },
+        {
+          "id": "b",
+          "text": "Setting a DNS record to a given address"
+        },
+        {
+          "id": "c",
+          "text": "Creating a new numbered backup"
+        },
+        {
+          "id": "d",
+          "text": "Ensuring a service is in the running state"
+        },
+        {
+          "id": "e",
+          "text": "Adding one to a retry counter"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Both keys set a target and stop once it is met. Appending, creating numbered copies and incrementing each change the result on every run.",
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "at1-1-3-mcq-041",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO actions detect configuration drift?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Diff live settings against the committed definition"
+        },
+        {
+          "id": "b",
+          "text": "Count the commits made to the repository each week"
+        },
+        {
+          "id": "c",
+          "text": "Check that the pipeline run from last week passed"
+        },
+        {
+          "id": "d",
+          "text": "Restart the hosts and then read their boot logs"
+        },
+        {
+          "id": "e",
+          "text": "Preview live infrastructure and review the differences"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "Drift is a mismatch between live settings and the definition, so only a comparison reveals it. Commit counts, an old passing run and a restart log do not compare the two states.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-042",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE benefits come from building hosts from a golden image?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rolling back means redeploying an earlier version"
+        },
+        {
+          "id": "b",
+          "text": "Hosts can be hot-patched without a rebuild"
+        },
+        {
+          "id": "c",
+          "text": "New hosts boot faster and need no installs"
+        },
+        {
+          "id": "d",
+          "text": "Testing before release is no longer required"
+        },
+        {
+          "id": "e",
+          "text": "Secrets can be baked in safely"
+        },
+        {
+          "id": "f",
+          "text": "New hosts start from the same configuration"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "f"
+      ]
+    },
+    "explanation": "A shared tested image makes hosts consistent, shortens provisioning, and turns rollback into redeploying an older image. Hot-patching and skipping tests work against the model, and baked-in secrets spread to every host.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-mcq-043",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO situations favor an imperative script over a declarative definition?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keeping a fleet at a stated size"
+        },
+        {
+          "id": "b",
+          "text": "Holding a firewall to a stated rule set"
+        },
+        {
+          "id": "c",
+          "text": "A one-time cleanup that deletes old snapshots"
+        },
+        {
+          "id": "d",
+          "text": "Ensuring users exist on new hosts"
+        },
+        {
+          "id": "e",
+          "text": "A multi-step data repair run in a fixed sequence"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "One-off, order-dependent work is naturally a list of actions. Maintaining a fleet size, a rule set, or user accounts are lasting end states that declarative tools keep true.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "An engineer applies a definition twice and then previews an edit. Read the session, then complete each step.",
+    "payload": {
+      "output": [
+        "$ iacctl --help",
+        "Usage: iacctl <command> -f <file>",
+        "  plan   -f, --file <file>   show the changes, make none",
+        "  apply  -f, --file <file>   make the changes",
+        "$ iacctl apply -f web.cfg",
+        "Plan: 2 to add, 0 to change, 0 to destroy",
+        "Apply complete: 2 added, 0 changed, 0 destroyed",
+        "$ iacctl apply -f web.cfg",
+        "Plan: 0 to add, 0 to change, 0 to destroy",
+        "Apply complete: 0 added, 0 changed, 0 destroyed",
+        "$ iacctl plan -f web.cfg      # after web02 size was edited from 2 to 4",
+        "Plan: 0 to add, 1 to change, 0 to destroy",
+        "  ~ server.web02: size 2 -> 4"
+      ],
+      "steps": [
+        {
+          "id": "second",
+          "label": "What does the second apply show about the tool?",
+          "options": [
+            {
+              "id": "dupes",
+              "text": "It created duplicates that must be removed"
+            },
+            {
+              "id": "failed",
+              "text": "It failed because the servers already existed"
+            },
+            {
+              "id": "idem",
+              "text": "It is idempotent: the rerun changed nothing"
+            },
+            {
+              "id": "reset",
+              "text": "It destroyed and rebuilt both servers"
+            }
+          ]
+        },
+        {
+          "id": "preview",
+          "label": "Type the command that previews the changes for web.cfg without making them"
+        },
+        {
+          "id": "edit",
+          "label": "What will an apply of the edited file do?",
+          "options": [
+            {
+              "id": "inplace",
+              "text": "Change web02 in place and leave web01 alone"
+            },
+            {
+              "id": "both",
+              "text": "Recreate both servers from scratch"
+            },
+            {
+              "id": "extra",
+              "text": "Create two additional servers"
+            },
+            {
+              "id": "refuse",
+              "text": "Refuse to run because state already exists"
+            }
+          ]
+        },
+        {
+          "id": "apply",
+          "label": "Type the command that applies a second definition, db.cfg"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "second": [
+          "idem"
+        ],
+        "preview": [
+          "iacctl plan -f web.cfg",
+          "iacctl plan -f ./web.cfg",
+          "iacctl plan --file web.cfg",
+          "iacctl plan --file ./web.cfg",
+          "iacctl plan --file=web.cfg",
+          "iacctl plan --file=./web.cfg"
+        ],
+        "edit": [
+          "inplace"
+        ],
+        "apply": [
+          "iacctl apply -f db.cfg",
+          "iacctl apply --file db.cfg",
+          "iacctl apply --file=db.cfg",
+          "iacctl apply -f ./db.cfg",
+          "iacctl apply --file ./db.cfg",
+          "iacctl apply --file=./db.cfg"
+        ]
+      }
+    },
+    "explanation": "A declarative tool compares the file to reality, so a rerun with no edits changes nothing and an edit produces only the needed change. The `plan` command shows changes without making them, and `apply` makes them.",
+    "partExplanations": {
+      "second": "Zero additions, changes and destructions on the rerun is the sign of an idempotent run.",
+      "preview": "The plan command with -f web.cfg reports what would change and makes no changes.",
+      "edit": "The preview lists one in-place change to web02 and nothing for web01.",
+      "apply": "The apply command with -f and the file name, here db.cfg, makes the changes that file describes."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A team turns a one-off web tier definition into a reusable template. For each setting, choose how it should be written.",
+    "payload": {
+      "fields": [
+        {
+          "id": "count",
+          "label": "Instance count (test needs 2, production needs 6)",
+          "options": [
+            {
+              "id": "literal",
+              "text": "A literal 6 typed into the template"
+            },
+            {
+              "id": "var",
+              "text": "An input variable with a default of 2"
+            },
+            {
+              "id": "comment",
+              "text": "A comment asking operators to edit it"
+            }
+          ]
+        },
+        {
+          "id": "env",
+          "label": "Environment name used in resource names",
+          "options": [
+            {
+              "id": "prod",
+              "text": "Hard-coded as prod in each name"
+            },
+            {
+              "id": "copy",
+              "text": "A new copy of the template per environment"
+            },
+            {
+              "id": "input",
+              "text": "An input variable set for each environment"
+            }
+          ]
+        },
+        {
+          "id": "secret",
+          "label": "Database password",
+          "options": [
+            {
+              "id": "store",
+              "text": "A reference to a secrets store resolved at apply time"
+            },
+            {
+              "id": "literal",
+              "text": "A literal in the template, shared by all callers"
+            },
+            {
+              "id": "default",
+              "text": "A default value in the variable file"
+            }
+          ]
+        },
+        {
+          "id": "network",
+          "label": "Shared network layout used by other teams",
+          "options": [
+            {
+              "id": "paste",
+              "text": "Pasted into each team repository"
+            },
+            {
+              "id": "email",
+              "text": "Emailed as a file with setup instructions"
+            },
+            {
+              "id": "module",
+              "text": "Published as a versioned module that teams call"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "count": "var",
+        "env": "input",
+        "secret": "store",
+        "network": "module"
+      }
+    },
+    "explanation": "Reusable templates take values as inputs, keep secrets out of the repository, and share common pieces as versioned modules. Literals, copies and pasted blocks each create a version that must be edited by hand.",
+    "partExplanations": {
+      "count": "An input variable lets test and production pass different counts to one template.",
+      "env": "An input for the environment name avoids hard-coded names and copied templates.",
+      "secret": "A secrets-store reference keeps the password out of the template and variable files.",
+      "network": "A versioned module is maintained once and pinned by each calling team."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "Put the steps of an immutable rollout in order. Old instances keep serving until the new ones pass health checks, and they are removed only after traffic has moved.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s1",
+          "text": "Terminate the old instances"
+        },
+        {
+          "id": "s2",
+          "text": "Launch new instances from the new image next to the old ones"
+        },
+        {
+          "id": "s3",
+          "text": "Commit the change to the image definition"
+        },
+        {
+          "id": "s4",
+          "text": "Shift traffic to the new instances"
+        },
+        {
+          "id": "s5",
+          "text": "Run health checks against the new instances"
+        },
+        {
+          "id": "s6",
+          "text": "Build and tag a new image from the definition"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s3",
+        "s6",
+        "s2",
+        "s5",
+        "s4",
+        "s1"
+      ]
+    },
+    "explanation": "An immutable rollout changes the definition, builds a new image, brings up replacements beside the old instances, proves them healthy, moves traffic, and only then retires the old ones.",
+    "partExplanations": {
+      "0": "The change starts in the versioned image definition.",
+      "1": "The image is built from the committed definition and tagged.",
+      "2": "New instances launch from the image while the old ones keep serving.",
+      "3": "Health checks must pass before any traffic moves.",
+      "4": "Traffic shifts once the new instances are healthy.",
+      "5": "Old instances are terminated last, after traffic has moved."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A preview-and-apply tool reported these counts over five runs of one definition. Use the table to answer each question.",
+    "payload": {
+      "caption": "Resources added, changed in place and destroyed per run",
+      "columns": [
+        "Run",
+        "Added",
+        "Changed",
+        "Destroyed"
+      ],
+      "rows": [
+        [
+          "Run 1",
+          "6",
+          "0",
+          "0"
+        ],
+        [
+          "Run 2",
+          "0",
+          "0",
+          "0"
+        ],
+        [
+          "Run 3",
+          "0",
+          "2",
+          "0"
+        ],
+        [
+          "Run 4",
+          "1",
+          "0",
+          "1"
+        ],
+        [
+          "Run 5",
+          "0",
+          "0",
+          "0"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "first",
+          "label": "First run that shows live state already matched the definition",
+          "options": [
+            {
+              "id": "r2",
+              "text": "Run 2"
+            },
+            {
+              "id": "r3",
+              "text": "Run 3"
+            },
+            {
+              "id": "r4",
+              "text": "Run 4"
+            }
+          ]
+        },
+        {
+          "id": "created",
+          "label": "Total resources created across the five runs",
+          "options": [
+            {
+              "id": "6",
+              "text": "6"
+            },
+            {
+              "id": "7",
+              "text": "7"
+            },
+            {
+              "id": "8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "modified",
+          "label": "Total resources modified in place",
+          "options": [
+            {
+              "id": "3",
+              "text": "3"
+            },
+            {
+              "id": "0",
+              "text": "0"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "id": "net",
+          "label": "Resources existing after Run 5",
+          "options": [
+            {
+              "id": "6",
+              "text": "6"
+            },
+            {
+              "id": "5",
+              "text": "5"
+            },
+            {
+              "id": "7",
+              "text": "7"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "first": "r2",
+        "created": "7",
+        "modified": "2",
+        "net": "6"
+      }
+    },
+    "explanation": "Run 2 is the first with all zeros. Added: 6 + 0 + 0 + 1 + 0 = 7. Changed in place: 0 + 0 + 2 + 0 + 0 = 2. Existing resources are 7 added minus 1 destroyed = 6. Run 4 is a replacement, counted as one add and one destroy, not as a change in place.",
+    "partExplanations": {
+      "first": "Run 2 has 0 added, 0 changed and 0 destroyed, so the rerun found nothing to do.",
+      "created": "Added column: 6 + 0 + 0 + 1 + 0 = 7.",
+      "modified": "Changed column: 0 + 0 + 2 + 0 + 0 = 2; the Run 4 replacement is an add and a destroy, not a change.",
+      "net": "Total added 7 minus total destroyed 1 leaves 6 resources."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "One web module is reused by two environments. Label each numbered part of the diagram.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "repo",
+          "x": 230,
+          "y": 10,
+          "w": 140,
+          "h": 50
+        },
+        {
+          "id": "dev",
+          "x": 20,
+          "y": 110,
+          "w": 140,
+          "h": 50,
+          "text": "Test environment"
+        },
+        {
+          "id": "prod",
+          "x": 440,
+          "y": 110,
+          "w": 140,
+          "h": 50,
+          "text": "Production environment"
+        }
+      ],
+      "edges": [
+        {
+          "from": "repo",
+          "to": "dev"
+        },
+        {
+          "from": "repo",
+          "to": "prod"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-repo",
+          "x": 230,
+          "y": 70,
+          "name": "Top box"
+        },
+        {
+          "id": "z-dev",
+          "x": 20,
+          "y": 170,
+          "name": "Left box"
+        },
+        {
+          "id": "z-prod",
+          "x": 440,
+          "y": 170,
+          "name": "Right box"
+        }
+      ],
+      "labels": [
+        {
+          "id": "mod",
+          "text": "Versioned shared module"
+        },
+        {
+          "id": "devin",
+          "text": "Test inputs: 2 small instances"
+        },
+        {
+          "id": "prodin",
+          "text": "Prod inputs: 6 large instances"
+        },
+        {
+          "id": "copy",
+          "text": "Copy of the module edited for prod"
+        },
+        {
+          "id": "script",
+          "text": "Manual setup script"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-repo": "mod",
+        "z-dev": "devin",
+        "z-prod": "prodin"
+      }
+    },
+    "explanation": "One versioned module is the single source, and each environment calls it with its own inputs. A copy edited for production or a manual script would break the reuse.",
+    "partExplanations": {
+      "z-repo": "The box that both environments draw from is the shared, versioned module.",
+      "z-dev": "The test caller supplies the smaller input values.",
+      "z-prod": "The production caller supplies the larger input values."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "This mostly declarative file also contains some lines that only make sense when executed in sequence. Select every imperative line.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "instances = 3"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "run: sed -i s/80/8080/ app.conf"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "image = web-base-1.4"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "service app = running"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "run: echo port=80 >> app.conf"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "port 443 is open to clients"
+        }
+      ],
+      "spots": [
+        {
+          "id": "count",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "instances = 3"
+        },
+        {
+          "id": "sed",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "run: sed -i s/80/8080/ app.conf"
+        },
+        {
+          "id": "image",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "image = web-base-1.4"
+        },
+        {
+          "id": "service",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "service app = running"
+        },
+        {
+          "id": "echo",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "run: echo port=80 >> app.conf"
+        },
+        {
+          "id": "firewall",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "port 443 is open to clients"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "sed",
+        "echo"
+      ]
+    },
+    "explanation": "The two run lines are shell commands that change a file each time they execute, which is imperative. The other four lines state a count, an image, a service state and a firewall rule that a tool can reconcile.",
+    "partExplanations": {
+      "count": "A count of three instances states a target, so it is declarative.",
+      "sed": "A sed command edits the file when run, so it is an imperative step.",
+      "image": "Naming the image to use describes the desired result.",
+      "service": "A service that should be running is a stated end state.",
+      "echo": "Appending a line is an action that repeats its effect on each run, so it is imperative.",
+      "firewall": "An open port states the rule set that should hold."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "Match each situation to the IaC concept it illustrates.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Running the same apply twice leaves the environment unchanged"
+        },
+        {
+          "id": "p2",
+          "text": "Servers are not patched; a new image replaces them"
+        },
+        {
+          "id": "p3",
+          "text": "Three projects call one network definition with their own inputs"
+        },
+        {
+          "id": "p4",
+          "text": "A file says three servers should exist and the tool decides how"
+        },
+        {
+          "id": "p5",
+          "text": "A file lists create, install and restart commands in sequence"
+        },
+        {
+          "id": "p6",
+          "text": "A live setting no longer matches the committed definition after a console edit"
+        }
+      ],
+      "choices": [
+        {
+          "id": "idem",
+          "text": "Idempotency"
+        },
+        {
+          "id": "immut",
+          "text": "Immutability"
+        },
+        {
+          "id": "reuse",
+          "text": "Reusability"
+        },
+        {
+          "id": "decl",
+          "text": "Declarative"
+        },
+        {
+          "id": "imp",
+          "text": "Imperative"
+        },
+        {
+          "id": "drift",
+          "text": "Configuration drift"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "idem",
+        "p2": "immut",
+        "p3": "reuse",
+        "p4": "decl",
+        "p5": "imp",
+        "p6": "drift"
+      }
+    },
+    "explanation": "Each situation shows one idea: repeat runs that change nothing, replacement instead of patching, one definition shared by callers, a stated end state, an ordered list of actions, and live state that moved away from the definition.",
+    "partExplanations": {
+      "p1": "A rerun that changes nothing is idempotent.",
+      "p2": "Replacing instead of patching is immutability.",
+      "p3": "One definition used by several callers with inputs is reusability.",
+      "p4": "Stating what should exist and leaving the how to the tool is declarative.",
+      "p5": "An ordered list of actions is imperative.",
+      "p6": "A live setting that diverged from the definition is configuration drift."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-1-3-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "Sort each statement into the approach it follows.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "decl",
+          "text": "Declarative (states the end result)"
+        },
+        {
+          "id": "imp",
+          "text": "Imperative (lists the actions)"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Three web servers must exist"
+        },
+        {
+          "id": "i2",
+          "text": "Create the server, then install the package"
+        },
+        {
+          "id": "i3",
+          "text": "The web-server package is present"
+        },
+        {
+          "id": "i4",
+          "text": "Run the migration script before restarting"
+        },
+        {
+          "id": "i5",
+          "text": "The service app is running"
+        },
+        {
+          "id": "i6",
+          "text": "Loop over the hosts and restart each one"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "decl",
+        "i2": "imp",
+        "i3": "decl",
+        "i4": "imp",
+        "i5": "decl",
+        "i6": "imp"
+      }
+    },
+    "explanation": "Declarative statements describe what should be true and leave the method to the tool. Imperative statements describe what to do and in what order.",
+    "partExplanations": {
+      "i1": "A required count of servers is a stated end result.",
+      "i2": "Create-then-install is an ordered sequence of actions.",
+      "i3": "A package that must be present is a desired state.",
+      "i4": "Running one thing before another is an ordered action.",
+      "i5": "A service that should be running is a desired state.",
+      "i6": "Looping over hosts to restart each one is an explicit procedure."
+    },
+    "acronyms": []
+  }
+]

@@ -16,6 +16,7 @@ This brief is given word for word to every drafter and reviewer of bundled quest
   | --- | --- | --- |
   | DA0-002 (Data+) | `dataplus` | `da2` |
   | CY0-001 (SecAI+) | `secai` | `cy1` |
+  | AT0-001 (AutoOps+) | `autoops` | `at1` |
 
 - Ids: `<prefix>-<objective with the dot as a dash>-<type>-<nnn>`, where `<type>` is `mcq` for both MCQ kinds, `num` for numeric items, or the PBQ short name (`match`, `order`, `config`, `diagram`, `terminal`, `data`, `hotspot`, `buckets`). Examples: `da2-2-3-mcq-007`, `da2-4-1-hotspot-002`, `cy1-2-6-mcq-014`, `cy1-2-2-config-003`. Numbers are three digits and never reused. `itemIdPrefix` builds the prefix, and `npm run check-drafts -- --exam <code> <files>` checks it.
 - Every item has `exam`, `source: "ours"`, `objectiveIds` (first one is the objective the file is for), `difficulty` 1–3, `stem`, `payload`, `answer`, `explanation`, `acronyms` and `status`. New drafts are `status: "draft"`.
@@ -92,3 +93,28 @@ Each template needs at least 10 approved items across the exam. Adjust per slice
 | buckets | 1.1 AI types, 3.2 attack vectors, 4.2 risks |
 | match | 2.1 framework to purpose, 4.1 roles, 4.3 regulations |
 | order | 1.3 AI life cycle, 3.1 incident workflow |
+
+## AT0-001 rules (AutoOps+)
+
+- **Code is code.** Every command, file name, key or identifier goes in backticks; every snippet of two or more lines (YAML, JSON, Bash, Python, PowerShell, HCL, Dockerfile) goes in a fenced block in the stem or explanation. Keep snippets short (about 12 lines at most) so they stay readable on a phone. PBQ part texts stay plain.
+- **Tool and vendor neutrality.** The exam tests generic concepts. Never key one product (Jenkins, GitHub Actions, GitLab, Ansible, Terraform, Puppet, Chef) as "the" answer unless the stem names it. A stem may name a tool when the question is about that tool's syntax; the answer must still follow from the snippet shown.
+- **Git accuracy.** `reset`, `revert`, `restore` and `checkout` differ; so do `fetch` and `pull`, and `rebase` and `merge`. Every git item must be answerable from git's documented behavior with current defaults, not from one team's convention. Say which branch is checked out when it matters.
+- **Semantic versioning** follows semver.org: `MAJOR.MINOR.PATCH`; a pre-release after a hyphen (`2.0.0-rc.1`) sorts before its release; build metadata after `+` is ignored for precedence.
+- **HTTP** follows RFC 9110: GET, HEAD, PUT and DELETE are idempotent; POST and PATCH are not by default. Status codes mean what the RFC says (401: missing or bad credentials; 403: authenticated but not allowed). In the AT0-001 acronym list `POST` means "Power-on Self-test", so do not tag `POST` in `acronyms` when it means the HTTP method; write the method in backticks.
+- **Command-line tools** (`grep`, `awk`, `sed`, `jq`, cmdlets): use behavior common to GNU tools and current PowerShell, and avoid flags that differ between GNU and BSD unless the stem says which. Show the input text when the answer depends on it.
+- Use invented hosts, repos and file names (`build01.example.internal`, `payments-api`).
+
+### AT0-001 PBQ plan
+
+Each template needs at least 10 approved items across the exam (the quotas allow 87 PBQs). Natural fits:
+
+| Template | Suits |
+| --- | --- |
+| terminal | 1.2 git commands, 1.4 git errors, 2.3 `curl`, 2.4 service checks |
+| config | 1.1 scripts and Dockerfiles, 1.3 IaC, 3.3 pipeline YAML |
+| order | 1.2 commit life cycle, 3.2 pipeline stages, 4.1 rollout steps |
+| data | 1.1 log counts, 4.2 SLO and error-budget tables |
+| diagram | 1.2 branching flows, 3.1 environments, 4.3 provider connections |
+| hotspot | 1.4 a failing log or file, 2.4 a config file |
+| match | concept to definition, status code to meaning |
+| buckets | concept sorting (declarative vs imperative, local vs remote) |

@@ -341,8 +341,21 @@
     - The Data+ and SecAI+ changes reach the live site only when this branch is merged and deployed.
   - Deck notes: `_WorkingData/AutoOpsPlus/notes/` (6 decks + `index.md` objective map). The decks are thin topic lists; drafters should work from the objectives PDF sub-bullets. Text extracts were in session 10's scratchpad (`2b5018bd-…/scratchpad/src/`); regenerate with `scratchpad/tools/extract.py` if gone.
   - e2e: AT0-001 card and exam page (`home.spec.ts`), official terms CI/CD, FaaS, WinRM, IaC (`acronyms.spec.ts`), and the Review Focus 1 check in `study.spec.ts` (practice on domain 3 alone at 360 px: `.code-block` visible, no sideways scroll, axe clean).
-- **Next: session 2 = Task 3 for domain 1** (fresh quota window; see the plan's budget note).
-- **Next: chunk 12, AutoOps+ (AT0-001); resume at Task 3, domain 1 (see "Chunk 12 session 1" above).** Plan: `docs/superpowers/plans/2026-11-01-chunk12-autoops.md`. Start with Session 1 (Tasks 1–2) on branch `chunk12-autoops`, then one domain per session. Owner rule: an unknown passing score is assumed to be 750 of 900, marked `VERIFY`.
+
+## Chunk 12 session 2 (2026-11-01, session 12): domain 1 drafted, review half done (PAUSED: weekly quota ran out)
+
+- **START HERE (next session, fresh quota).** Branch `chunk12-autoops`. Domain 1 items are committed as `status: "draft"`, so they do not show in the app (`registry.ts` serves approved items only).
+- **Drafted:** 1.1, 1.2, 1.3 and 1.4 each hold 51 items: 36 single + 7 multi MCQ and 8 PBQs (one of each template), against a quota of 39 + 7. Keys a/b/c/d are 9 each per objective; key longest about 19% and shortest 17–25%. `check-drafts --ref` is clean on all four. 1.1 keeps the approved `mcq-001` (its code is now in backticks).
+- **Round 1 review done for all four.** The blind Sonnet reviewer matched every key in all 204 items. Flags still to fix:
+  - 1.1: 3 subject flags (`buckets-001`: booleans and numbers are also valid JSON; `mcq-037` hedge; `terminal-001` accept list). The copy review result (`copy1-1.1.json`) may be missing; rerun the Haiku copy review if so.
+  - 1.2: 21 items (9 subject, 19 copy) in `work1-1.2.json`.
+  - 1.4: 36 items (12 subject, 31 copy) in `work1-1.4.json`.
+  - 1.3: round 1 fixes are DONE (31 items changed, check clean). Next is a blind-only round 2 on those 31: `ids2-1.3.json`, brief `sub-r2-1.3.md` (already rendered). `terminal-001`'s key changed (apply step now `-f db.cfg`); check its accept list by hand with `term.mjs`.
+- **Where the files are:** `.superpowers/sdd/2026-11-01-chunk12-autoops/d1/` (git-ignored; keep). It holds the briefs (`drafter-at.md`, `subject-brief.md`, `copy-at.md`), objective text (`obj-1.x.txt`), deck notes (`ref/`, the `--ref` folder), the round 1 snapshots (`full1-`, `blind1-`, `sub1-`, `copy1-`, `work1-`), and the tools: `rr.mjs` (renders round-N inputs and briefs), `changed.mjs` (changed ids between rounds), `compare.mjs`, `term.mjs`, `approve.mjs`. **`rr.mjs` and `changed.mjs` hard-code session 12's scratchpad path in `D`;** point `D` (and the brief paths) at the new scratchpad or at the workspace folder before you use them.
+- **To finish domain 1:** send each objective's `work1` list to a Sonnet fixer (do not rerun the drafters' generators in `d1/`; the JSON has hand edits). Then a blind-only round 2 on the changed ids, fix the last few flags by hand, check terminal accept lists with `term.mjs`, `approve.mjs`, `npm run check`, commit `content(autoops): domain 1`. Then domain 2 in its own session.
+- **Added this session:** an "AT0-001 rules" section and PBQ plan in `docs/content-drafting.md`, plus the AT0-001 row in its bank table.
+- **Note for later:** Dockerfile keywords (`RUN`, `COPY`, `CMD`) in PBQ part text are read as unlisted acronyms, so the 1.1 config PBQ uses plain-English options. If later config PBQs need literal lines, add these keywords to `NOT_ACRONYMS`.
+- Plan: `docs/superpowers/plans/2026-11-01-chunk12-autoops.md`. One domain per session. Owner rule: an unknown passing score is assumed to be 750 of 900, marked `VERIFY`.
 
 ## Standing rules
 
