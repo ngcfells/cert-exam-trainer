@@ -396,7 +396,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "The code below calls a function and prints its result. What does the last line print?\n\n```python\ndef clean(path):\n    removed = 3\n    print(\"cleaned\", path)\n\nresult = clean(\"/tmp\")\nprint(result)\n```",
@@ -435,7 +435,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "An application writes `DEBUG`, `INFO`, `WARN`, `ERROR` and `FATAL` entries, and its log level is set to `WARN`. Which entries are written?",
@@ -464,7 +464,7 @@
         "c"
       ]
     },
-    "explanation": "A log level is a threshold: the service writes entries at that severity and at every more severe level. `DEBUG` and `INFO` rank below `WARN` and are dropped. Setting the level to `ERROR` would leave just `ERROR` and `FATAL`.",
+    "explanation": "A log level is a threshold: the service writes entries at that severity and at every more severe level. `DEBUG` and `INFO` rank below `WARN` and are dropped. The same rule keeps `ERROR` and `FATAL`, so `WARN` entries alone is too narrow. Setting the level to `ERROR` would leave just `ERROR` and `FATAL`.",
     "acronyms": []
   },
   {
@@ -474,7 +474,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team changes a service to write each log entry as one JSON object per line instead of free text. What is the main benefit for the scripts that read the logs?",
@@ -486,7 +486,7 @@
         },
         {
           "id": "b",
-          "text": "Fields such as the level can be read by name"
+          "text": "Scripts can read fields such as the level by name"
         },
         {
           "id": "c",
@@ -515,7 +515,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A login handler writes `user=ana password=Spring9!` to the application log when a sign-in fails. Which change fixes the problem?",
@@ -554,7 +554,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which `grep -E` pattern matches only lines that consist of exactly three digits and nothing else?",
