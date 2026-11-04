@@ -999,7 +999,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Requests to a service range from milliseconds to several minutes, and a round-robin balancer leaves some instances overloaded. Which algorithm helps most?",
@@ -1007,7 +1007,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Least connections"
+          "text": "Fewest active connections first"
         },
         {
           "id": "b",
@@ -1028,7 +1028,7 @@
         "a"
       ]
     },
-    "explanation": "Least connections sends each new request to the instance with the fewest active ones, which evens out uneven request lengths. Source hashing pins clients to instances, alphabetical rotation is just another fixed cycle, and hourly random selection does not track load.",
+    "explanation": "The least-connections algorithm sends each new request to the instance with the fewest active ones, which evens out uneven request lengths. Source hashing pins clients to instances, alphabetical rotation is just another fixed cycle, and hourly random selection does not track load.",
     "acronyms": []
   },
   {
@@ -1038,7 +1038,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Administrators should reach app servers over `ssh` only through the bastion host at `10.9.0.5`. Which firewall rule on the app subnet fits?",
@@ -1079,7 +1079,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which DNS record type maps a host name to an IPv6 address?",
@@ -1120,10 +1120,10 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "An engineer changed the `A` record for `app.example.internal` an hour ago. The authoritative server already returns the new address, yet a caching name server still returns the old one. The record's time to live is one day. What explains this?",
+    "stem": "An engineer changed the `A` record for `app.example.internal` an hour ago. The authoritative server returns the new address, but a caching name server still returns the old one, and the record's time to live is one day. What explains this?",
     "payload": {
       "options": [
         {
@@ -1159,10 +1159,10 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "After a migration, `dig app.example.internal` shows the new address, but `curl http://app.example.internal` on one workstation still reaches the old server. What is the most likely cause?",
+    "stem": "After a migration, `dig app.example.internal` shows the new address, but `curl http://app.example.internal` on one workstation still reaches the old server, even after its resolver cache was flushed. What is the most likely cause?",
     "payload": {
       "options": [
         {
@@ -1179,7 +1179,7 @@
         },
         {
           "id": "d",
-          "text": "A local hosts file entry overrides DNS"
+          "text": "A stale entry in the local `hosts` file overrides DNS"
         }
       ]
     },
@@ -1188,7 +1188,7 @@
         "d"
       ]
     },
-    "explanation": "`dig` queries a name server directly and ignores the local hosts file, while `curl` uses the system resolver, which reads that file first. An old entry there pins the name to the old server on that workstation alone. A low lifetime would speed up changes, a wrong mask breaks local reachability, and a failing health check affects balancer targets rather than one machine's lookup.",
+    "explanation": "`dig` queries a name server directly and ignores the local `hosts` file, while `curl` uses the system resolver, which reads that file first. An old entry there pins the name to the old server on that workstation alone. A low lifetime would speed up changes, a wrong mask breaks local reachability, and a failing health check affects balancer targets rather than one machine's lookup.",
     "acronyms": [
       "DNS"
     ]
@@ -1200,7 +1200,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE checks does a client make when it validates a server certificate?",
@@ -1251,7 +1251,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO practices help protect a state file that holds sensitive attribute values?",
@@ -1295,7 +1295,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are valid ways to resolve a confirmed configuration drift?",
@@ -1315,7 +1315,7 @@
         },
         {
           "id": "d",
-          "text": "Turn off the comparison job for the affected systems"
+          "text": "Turn off the configuration comparison job for the affected systems"
         },
         {
           "id": "e",
@@ -1343,10 +1343,10 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
-    "stem": "A database tier accepts TCP 5432 from the app subnet `10.0.2.0/24` and nothing else. Which TWO firewall rules implement least privilege?",
+    "stem": "The database tier runs PostgreSQL on port 5432, and its only clients are the app servers in `10.0.2.0/24`. Which TWO firewall rules implement least privilege?",
     "payload": {
       "options": [
         {
@@ -1389,7 +1389,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO changes make a load balancer health check more reliable?",
@@ -1437,7 +1437,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are reasons to place web servers and database servers in separate subnets?",
@@ -1445,7 +1445,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Each tier can have its own route table, so only the web tier needs an internet route"
+          "text": "Each tier can have its own route table"
         },
         {
           "id": "b",
@@ -1481,10 +1481,10 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
-    "stem": "The team moved `app.example.internal` to a new server yesterday and changed its record. Two resolvers now give different answers, and the authoritative server is `ns1.example.internal`. Review the output, then complete each step.",
+    "stem": "The team moved `app.example.internal` to a new server yesterday and changed its record to the new address `10.1.4.20`. Two resolvers now give different answers, and the authoritative server is `ns1.example.internal`. Review the output, then complete each step.",
     "payload": {
       "output": [
         "$ dig -h",
@@ -1505,7 +1505,7 @@
           "options": [
             {
               "id": "o1",
-              "text": "10.0.0.9 has a stale zone file"
+              "text": "10.0.0.9 has a stale zone file from before the move"
             },
             {
               "id": "o2",
@@ -1513,11 +1513,11 @@
             },
             {
               "id": "o3",
-              "text": "Both resolvers returned the same address"
+              "text": "Both resolvers returned the same address for the record"
             },
             {
               "id": "o4",
-              "text": "10.0.0.2 failed to answer the query"
+              "text": "10.0.0.2 failed to answer the query and returned no record"
             }
           ]
         },
@@ -1527,7 +1527,7 @@
         },
         {
           "id": "s3",
-          "label": "Choose the step that lets clients pick up the next move fastest",
+          "label": "Choose the step that, before a future move, lets clients get the new address fastest",
           "options": [
             {
               "id": "o1",
@@ -1597,9 +1597,9 @@
     "pbqWeight": 4,
     "partExplanations": {
       "s1": "86102 seconds left on a one-day lifetime shows a cached copy; the other resolver has already fetched the new record.",
-      "s2": "Asking the authoritative server directly bypasses caches, and +short prints only the answer data.",
+      "s2": "Asking the authoritative server directly bypasses caches, and `+short` prints only the answer data.",
       "s3": "A short lifetime set ahead of the move means caches expire quickly when the record changes.",
-      "s4": "The -x option turns an address into a reverse lookup, and +short trims the output."
+      "s4": "The `-x` option turns an address into a reverse lookup, and `+short` trims the output."
     },
     "acronyms": []
   },
@@ -1610,7 +1610,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "stem": "A three-tier application uses subnets `10.0.1.0/24` (web), `10.0.2.0/24` (app) and `10.0.3.0/24` (data). Customers reach the web tier over HTTPS, the web tier calls the app tier on port 8080, and the app tier uses the database on port 5432. The scanner range `203.0.113.0/24` must be blocked while the rest of the internet stays allowed. Rules are checked from the top and the first match wins. Configure the rules.",
@@ -1720,9 +1720,9 @@
     "explanation": "Customers come from anywhere, so the web tier allows 443 from `0.0.0.0/0`, but each inner tier admits only the tier in front of it. The scanner deny has to sit above the broad allow, or the first match would let it in, and a default deny protects everything that no rule names.",
     "pbqWeight": 5,
     "partExplanations": {
-      "web_src": "Customers are on the internet, so only 0.0.0.0/0 serves them on port 443.",
-      "app_src": "Only the web subnet calls the app tier, so 10.0.1.0/24 is the narrowest source.",
-      "db_src": "Only the app subnet uses the database, so 10.0.2.0/24 is the narrowest source.",
+      "web_src": "Customers are on the internet, so only `0.0.0.0/0` serves them on port 443.",
+      "app_src": "Only the web subnet calls the app tier, so `10.0.1.0/24` is the narrowest source.",
+      "db_src": "Only the app subnet uses the database, so `10.0.2.0/24` is the narrowest source.",
       "block": "The first match wins, so the deny must come before the broader allow it would otherwise hit.",
       "default": "A default deny means anything not named by a rule is dropped."
     },
@@ -1737,10 +1737,10 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
-    "stem": "A certificate on a busy service expires soon and must be replaced with no downtime. The new key is created before anything is sent to the CA, the chain is checked before any file is installed, and the old key is retired only after a client confirms the new certificate. Put the steps in order.",
+    "stem": "A certificate on a busy service expires soon and must be replaced with no downtime. The chain is checked before any file is installed, and the old key is retired only after a client confirms the new certificate. Put the steps in order.",
     "payload": {
       "steps": [
         {
@@ -1800,7 +1800,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 2,
     "stem": "A nightly check compared the declared configuration with the live settings. Use the drift report to answer each question.",
@@ -1939,12 +1939,12 @@
         "fix": "reapply"
       }
     },
-    "explanation": "Four rows differ between Desired and Actual: web-02 size, web-02 owner tag, lb-01 idle timeout and fw-app source. They belong to three resources, because web-02 appears twice. The firewall now accepts port 8080 from anywhere instead of the web subnet, which is the largest exposure, so restoring the declared source closes it.",
+    "explanation": "Four rows differ between Desired and Actual: `web-02` size, `web-02` owner tag, `lb-01` idle timeout and `fw-app` source. They belong to three resources, because `web-02` appears twice. The firewall now accepts port 8080 from anywhere instead of the web subnet, which is the largest exposure, so restoring the declared source closes it.",
     "pbqWeight": 4,
     "partExplanations": {
-      "resources": "web-02, lb-01 and fw-app differ, so 3 resources have drift.",
-      "settings": "web-02 has two drifted settings plus one each on lb-01 and fw-app, giving 2 + 1 + 1 = 4.",
-      "risk": "Opening the app tier port to 0.0.0.0/0 exposes it beyond the web subnet.",
+      "resources": "`web-02`, `lb-01` and `fw-app` differ, so 3 resources have drift.",
+      "settings": "`web-02` has two drifted settings plus one each on `lb-01` and `fw-app`, giving 2 + 1 + 1 = 4.",
+      "risk": "Opening the app tier port to `0.0.0.0/0` exposes it beyond the web subnet.",
       "fix": "The declared source is the intended one, so reapplying it removes the exposure."
     },
     "acronyms": []
@@ -1956,19 +1956,19 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
-    "stem": "Place the component that meets each need named below the network.",
+    "stem": "In this two-tier network, place each label in the zone whose description it matches. Two labels are not used.",
     "payload": {
       "width": 600,
-      "height": 220,
+      "height": 280,
       "nodes": [
         {
           "id": "n1",
           "x": 10,
           "y": 20,
-          "w": 130,
+          "w": 120,
           "h": 50,
           "text": "Internet"
         },
@@ -1976,7 +1976,7 @@
           "id": "n2",
           "x": 160,
           "y": 20,
-          "w": 130,
+          "w": 120,
           "h": 50,
           "text": "Gateway"
         },
@@ -1984,14 +1984,28 @@
           "id": "n3",
           "x": 310,
           "y": 20,
-          "w": 130,
-          "h": 50,
-          "text": "Web servers"
+          "w": 120,
+          "h": 50
         },
         {
           "id": "n4",
           "x": 460,
           "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Web servers"
+        },
+        {
+          "id": "n5",
+          "x": 310,
+          "y": 140,
+          "w": 120,
+          "h": 50
+        },
+        {
+          "id": "n6",
+          "x": 460,
+          "y": 140,
           "w": 130,
           "h": 50,
           "text": "Database"
@@ -2009,32 +2023,40 @@
         {
           "from": "n3",
           "to": "n4"
+        },
+        {
+          "from": "n4",
+          "to": "n5"
+        },
+        {
+          "from": "n5",
+          "to": "n6"
         }
       ],
       "zones": [
         {
           "id": "z1",
-          "x": 10,
-          "y": 120,
+          "x": 310,
+          "y": 80,
           "name": "Spreads requests across healthy servers"
         },
         {
           "id": "z2",
-          "x": 160,
-          "y": 120,
-          "name": "Subnet with a default route to the gateway"
+          "x": 460,
+          "y": 80,
+          "name": "Web servers’ subnet: default route to the gateway"
         },
         {
           "id": "z3",
-          "x": 310,
-          "y": 120,
-          "name": "Subnet with no route to the gateway"
+          "x": 460,
+          "y": 200,
+          "name": "Database subnet: no route to the gateway"
         },
         {
           "id": "z4",
-          "x": 460,
-          "y": 120,
-          "name": "Forwards packets between subnets"
+          "x": 310,
+          "y": 200,
+          "name": "Forwards packets between the two subnets"
         }
       ],
       "labels": [
@@ -2091,10 +2113,10 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 3,
-    "stem": "Host `10.4.7.9` cannot open a TCP connection to port 8443 on a server. The ACL below is checked from the lowest rule number up, and the first match decides. Select the rule that blocks the connection.",
+    "stem": "Rule 30 was added to stop host `10.6.3.21` from reaching port 8443 on a server, yet the host still opens TCP connections to that port. The ACL is checked from the lowest rule number up, and the first match decides; the rules appear in shuffled positions, so go by their numbers. Select the rule that lets the connection through.",
     "payload": {
       "width": 480,
       "height": 220,
@@ -2113,7 +2135,7 @@
           "y": 10,
           "w": 220,
           "h": 40,
-          "text": "10 allow tcp 10.4.0.0/16 to any port 443"
+          "text": "10 allow tcp 10.6.0.0/16 to any port 443"
         },
         {
           "id": "n3",
@@ -2121,7 +2143,7 @@
           "y": 90,
           "w": 220,
           "h": 40,
-          "text": "20 deny tcp 10.4.7.0/24 to any port 8443"
+          "text": "20 allow tcp 10.6.0.0/16 to any port 8443"
         },
         {
           "id": "n4",
@@ -2129,7 +2151,7 @@
           "y": 90,
           "w": 220,
           "h": 40,
-          "text": "30 allow tcp 10.4.0.0/16 to any port 8443"
+          "text": "30 deny tcp 10.6.3.21/32 to any port 8443"
         },
         {
           "id": "n5",
@@ -2163,7 +2185,7 @@
           "y": 10,
           "w": 220,
           "h": 40,
-          "name": "10 allow tcp 10.4.0.0/16 to any port 443"
+          "name": "10 allow tcp 10.6.0.0/16 to any port 443"
         },
         {
           "id": "r20",
@@ -2171,7 +2193,7 @@
           "y": 90,
           "w": 220,
           "h": 40,
-          "name": "20 deny tcp 10.4.7.0/24 to any port 8443"
+          "name": "20 allow tcp 10.6.0.0/16 to any port 8443"
         },
         {
           "id": "r30",
@@ -2179,7 +2201,7 @@
           "y": 90,
           "w": 220,
           "h": 40,
-          "name": "30 allow tcp 10.4.0.0/16 to any port 8443"
+          "name": "30 deny tcp 10.6.3.21/32 to any port 8443"
         },
         {
           "id": "r40",
@@ -2204,13 +2226,13 @@
         "r20"
       ]
     },
-    "explanation": "The packet is TCP from 10.4.7.9 to port 8443. Rule 05 needs a source in 10.8.0.0/16 and rule 10 needs port 443, so neither matches. Rule 20 matches the source and port first and denies, so rules 30 and 50 are never reached; rule 40 covers UDP only.",
-    "pbqWeight": 6,
+    "explanation": "The packet is TCP from `10.6.3.21` to port 8443. Rule 05 needs a source in `10.8.0.0/16` and rule 10 needs port 443, so neither matches. Rule 20 allows the whole `10.6.0.0/16` range on port 8443 and matches first, so the deny in rule 30 is never reached. Rule 40 covers UDP only, and rule 50 comes later still. Moving the deny above rule 20 would block the host.",
+    "pbqWeight": 2,
     "partExplanations": {
-      "r05": "The source must be in 10.8.0.0/16, so it does not match this host.",
+      "r05": "The source must be in `10.8.0.0/16`, so it does not match this host.",
       "r10": "It allows port 443 only, so it does not match port 8443.",
-      "r20": "10.4.7.9 is inside 10.4.7.0/24 and the port matches, so this is the first match and it denies.",
-      "r30": "It would allow the traffic, but rule 20 matches earlier, so it is never reached.",
+      "r20": "`10.6.3.21` is inside `10.6.0.0/16` and the port matches, so this broad allow is the first match and lets the connection through.",
+      "r30": "It would deny the host, but rule 20 matches earlier, so it is never reached.",
       "r40": "It covers UDP, and this connection is TCP.",
       "r50": "It would match, but only if nothing earlier did, and rule 20 already did."
     },
@@ -2227,7 +2249,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 1,
     "stem": "Match each purpose to the DNS record type that serves it.",
@@ -2317,7 +2339,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 1,
     "stem": "A virtual network has an internet-facing web tier and a protected database tier. Sort each trait into the subnet type it describes.",
@@ -2351,7 +2373,7 @@
         },
         {
           "id": "i5",
-          "text": "Instances can hold addresses reachable from the internet"
+          "text": "Hosts the bastion that administrators reach from outside"
         },
         {
           "id": "i6",
@@ -2369,14 +2391,14 @@
         "i6": "priv"
       }
     },
-    "explanation": "A public subnet has a route to an internet gateway, so internet-facing components such as the load balancer and instances with reachable addresses live there. A private subnet has no such route, so protected tiers sit there and reach the internet only through a translation gateway.",
+    "explanation": "A public subnet has a route to an internet gateway, so internet-facing components such as the load balancer and the bastion host live there. A private subnet has no such route, so protected tiers sit there and reach the internet only through a translation gateway.",
     "pbqWeight": 6,
     "partExplanations": {
       "i1": "A default route to an internet gateway is what defines a public subnet.",
       "i2": "Database servers shielded from the internet belong in a private subnet.",
       "i3": "An internet-facing load balancer needs the public path.",
       "i4": "No route to an internet gateway means the subnet is private.",
-      "i5": "Addresses reachable from the internet need the public routing.",
+      "i5": "Administrators reach the bastion from outside, so it needs the public routing.",
       "i6": "Private hosts go out through a translation gateway instead of a direct route."
     },
     "acronyms": []
