@@ -54,7 +54,7 @@ This brief is given word for word to every drafter and reviewer of bundled quest
 
 ## Text stays in bounds (standing rule, issues #4 and #7)
 
-- All text stays inside its box, and no word is ever cut between two letters ("Re|sult"). Lines may break at spaces, hyphens, slashes and other punctuation. Anything that cannot fit (a wide table, a long code token, terminal output) scrolls sideways inside its own keyboard-focusable box; the page itself never scrolls sideways.
+- All text stays inside its box, and no word is ever cut between two letters ("Re|sult"). Lines may break at spaces, hyphens, slashes and other punctuation. Anything that cannot fit (a wide table, a long code token, terminal output) scrolls sideways inside its own keyboard-focusable box; the page itself never scrolls sideways. Inline code offers a line break after each `/` (not inside `//`), so a URL or path wraps at its slashes; keep each slash-free piece of inline code under about 25 characters so it fits a 360 px option.
 - Diagram and hotspot box labels wrap inside their box. A label needs room: at the 14-unit font, a 130-wide box fits about 16 characters a line, and a 60-tall box fits 3 lines. Make the box taller (or the label shorter) if it needs more.
 - **Before shipping any batch, run the Playwright bounds check for that exam:** `BOUNDS_EXAM=<code> npm run check-bounds` (`tests/e2e/bounds.spec.ts`). It opens every approved question and its review at 360 and 1280 px and fails on any split word, overflowing label, text off screen, SVG text outside its picture, or unfocusable scroll box. `npx playwright show-report` shows a screenshot of each failing item. `npm run check` runs it for every exam, plus every other screen.
 

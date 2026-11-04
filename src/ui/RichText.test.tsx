@@ -20,4 +20,18 @@ describe('RichText', () => {
     expect(container.querySelector('pre')).toBeNull();
     expect(container.textContent).toBe('Run ls:ls -la\n  cd /tmpThen?');
   });
+
+  it('lets inline code break after each slash, so a long URL wraps instead of overflowing', () => {
+    const { container } = render(<p><RichText text="Call `https://api.example.internal/v1/ping` now." /></p>);
+    const code = container.querySelector('code')!;
+    expect(code.textContent).toBe('https://api.example.internal/v1/ping');
+    expect(code.innerHTML).toBe('https://<wbr>api.example.internal/<wbr>v1/<wbr>ping');
+  });
+
+  it('adds no break point to inline code without a slash, or after a final slash', () => {
+    const { container } = render(<p><RichText text="`ls` and `/tmp/`" /></p>);
+    const codes = container.querySelectorAll('code');
+    expect(codes[0].innerHTML).toBe('ls');
+    expect(codes[1].innerHTML).toBe('/<wbr>tmp/');
+  });
 });
