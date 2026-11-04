@@ -6,7 +6,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A control node must run PowerShell commands on 40 Windows servers through the management channel that Windows provides for this purpose. Which technology is it?",
@@ -26,7 +26,7 @@
         },
         {
           "id": "d",
-          "text": "A remote desktop session, opened to every server"
+          "text": "A Windows remote desktop session, opened to every server"
         }
       ]
     },
@@ -47,7 +47,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Linux fleet has no automation software installed. The control node signs in to each server with a key pair, runs the commands, and disconnects. How is this approach best described?",
@@ -88,7 +88,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "What does this command do?\n```bash\nssh deploy@web01.example.internal 'systemctl is-active payments-api'\n```",
@@ -96,19 +96,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Opens an interactive login shell on web01 and ignores the quoted text"
+          "text": "Opens an interactive login shell on `web01` and ignores the quoted text"
         },
         {
           "id": "b",
-          "text": "Runs the quoted command on this machine, then connects to web01"
+          "text": "Runs the quoted command on this machine, then connects to `web01`"
         },
         {
           "id": "c",
-          "text": "Runs the quoted command on web01 as `deploy`, showing output here"
+          "text": "Runs the quoted command on `web01` as `deploy`, showing output here"
         },
         {
           "id": "d",
-          "text": "Copies a file named in the quotes to web01 as `deploy`"
+          "text": "Copies a file named in the quotes to `web01` as `deploy`"
         }
       ]
     },
@@ -127,7 +127,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Linux control node must reach Windows servers through the HTTPS listener of WinRM. Which port does that listener use by default?",
@@ -171,7 +171,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Several thousand branch laptops sit behind firewalls that allow only outbound connections, and many stay offline for days. The team wants each laptop to receive its settings whenever it reconnects. Which design fits best?",
@@ -212,7 +212,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which statement is a real drawback of agent-based management compared with agentless management?",
@@ -228,7 +228,7 @@
         },
         {
           "id": "c",
-          "text": "An agent must be installed, updated and secured on every host"
+          "text": "Extra software must be installed, updated and secured on every host"
         },
         {
           "id": "d",
@@ -251,7 +251,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO are common transports for remote execution by automation tools?",
@@ -259,23 +259,23 @@
       "options": [
         {
           "id": "a",
-          "text": "SSH"
+          "text": "SSH, the Secure Shell protocol"
         },
         {
           "id": "b",
-          "text": "A DNS zone transfer"
+          "text": "A DNS zone transfer between servers"
         },
         {
           "id": "c",
-          "text": "WinRM"
+          "text": "WinRM, the Windows Remote Management service"
         },
         {
           "id": "d",
-          "text": "A syslog stream"
+          "text": "A syslog stream to a collector"
         },
         {
           "id": "e",
-          "text": "A local `cron` entry"
+          "text": "A local `cron` entry on one host"
         }
       ]
     },
@@ -299,7 +299,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An engineer started `./build.sh` in the foreground and then pressed Ctrl+Z to suspend it. Which command resumes the build in the background and returns the prompt?",
@@ -338,7 +338,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A shell session shows this history. What does the final `jobs` command list?\n```\n$ sleep 300 &\n[1] 4821\n$ sleep 200\n^Z\n[2]+  Stopped                 sleep 200\n$ jobs\n```",
@@ -377,10 +377,10 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "An engineer starts `./reindex.sh &` in an SSH session and closes the terminal window. The reindex stops partway. Which change lets the job keep running after the session ends?",
+    "stem": "An engineer starts `./reindex.sh &` from a Bash prompt in an SSH session and closes the terminal window. The reindex stops partway. Which change lets the job keep running after the session ends?",
     "payload": {
       "options": [
         {
@@ -418,7 +418,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "In PowerShell, which cmdlet starts a command as a background job so the prompt returns immediately?",
@@ -457,7 +457,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are advantages of agent-based management for a large, mixed fleet?",
@@ -465,19 +465,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Hosts behind firewalls can check in using outbound connections"
+          "text": "The server needs no login credential for each managed host"
         },
         {
           "id": "b",
-          "text": "No software is installed on any managed host"
+          "text": "No extra software is installed on any of the managed hosts"
         },
         {
           "id": "c",
-          "text": "Each host can keep reporting whether it matches its desired state"
+          "text": "Each host can report whether it matches its desired state"
         },
         {
           "id": "d",
-          "text": "Credentials for every host are stored on the control node"
+          "text": "Each host's settings are kept only on that host itself"
         },
         {
           "id": "e",
@@ -491,7 +491,7 @@
         "c"
       ]
     },
-    "explanation": "An agent opens its own outbound connection, which works behind firewalls, and it can keep reporting state back to the server. Agent-based management does require installed software, hosts check in on their own schedule rather than all at once, and holding every host credential on a control node is a trait of agentless push.",
+    "explanation": "An agent proves its identity to the server with its own key or certificate, so the server never signs in to the hosts, and the agent can keep reporting whether its host matches the desired state. Agent-based management does require installed software, the server keeps every host's settings centrally, and hosts check in on their own schedule rather than all at once.",
     "acronyms": []
   },
   {
@@ -501,7 +501,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which statement describes a declarative approach to configuration?",
@@ -521,7 +521,7 @@
         },
         {
           "id": "d",
-          "text": "It states the desired end state, and the tool works out the steps"
+          "text": "It states the end state and the tool works out the steps"
         }
       ]
     },
@@ -540,10 +540,10 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A deployment script contains this line and runs on every release.\n```bash\necho \"max_conn=200\" >> /etc/app/app.conf\n```\nAfter three releases, what does the file contain?",
+    "stem": "A deployment script contains this line and runs on every release.\n```bash\necho \"max_conn=200\" >> /etc/app/app.conf\n```\nAfter the third release, what does the file contain?",
     "payload": {
       "options": [
         {
@@ -579,7 +579,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "This script runs on every release, and the second run stops at the first line.\n```bash\nmkdir /var/app/cache\nchown app:app /var/app/cache\n```\nWhich replacement for the first line makes the script safe to rerun?",
@@ -608,7 +608,7 @@
         "a"
       ]
     },
-    "explanation": "The `-p` option creates the directory only if needed and succeeds when it already exists, which makes the step idempotent. `-m` sets a mode and `-v` prints a message, but both still fail on an existing directory, and `-f` is not a `mkdir` option.",
+    "explanation": "The `-p` option creates the directory only if needed and succeeds when it already exists, which makes the step idempotent. `-m` sets a mode and `--verbose` prints a message, but both still fail on an existing directory, and `-f` is not a `mkdir` option.",
     "acronyms": []
   },
   {
@@ -618,10 +618,10 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A declarative tool applied this definition and three web servers now exist.\n```yaml\nweb:\n  count: 3\n  size: small\n```\nAn operator deletes one server by hand and reruns the tool without changing the file. What happens?",
+    "stem": "A declarative tool checks the live servers against its definition on every run. It applied this definition, and three web servers now exist.\n```yaml\nweb:\n  count: 3\n  size: small\n```\nAn operator deletes one server by hand and reruns the tool without changing the file. What happens?",
     "payload": {
       "options": [
         {
@@ -657,7 +657,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team stores numbered database change scripts such as `001_create_orders.sql` and `002_add_index.sql`. A tool applies, in number order, only the scripts not yet recorded in the database. Which approach is this?",
@@ -696,7 +696,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "The script `003_add_status.sql` has already run in production. A developer edits that file to add one more column, and the tool now reports a checksum mismatch. What is the correct way to add the column?",
@@ -716,7 +716,7 @@
         },
         {
           "id": "d",
-          "text": "Add a new numbered migration that holds the extra column"
+          "text": "Add a new, higher-numbered migration for the change"
         }
       ]
     },
@@ -735,7 +735,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO statements describe declarative definitions?",
@@ -743,7 +743,7 @@
       "options": [
         {
           "id": "a",
-          "text": "They converge on the same state, so applying them again is safe"
+          "text": "They converge on one state, so reapplying is safe"
         },
         {
           "id": "b",
@@ -751,7 +751,7 @@
         },
         {
           "id": "c",
-          "text": "The tool compares actual state with the desired state to plan changes"
+          "text": "The tool compares actual and desired state to plan changes"
         },
         {
           "id": "d",
@@ -779,7 +779,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE are characteristics of ephemeral environments?",
@@ -824,27 +824,27 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "Which environment is created for one pull request, used for its tests, and destroyed after the merge?",
+    "stem": "A team builds a full test environment for each pull request, but nothing removes it after the merge. Which problem is most likely to grow over time?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "An ephemeral environment"
+          "text": "Idle environments pile up and keep adding to the cost"
         },
         {
           "id": "b",
-          "text": "A persistent shared environment"
+          "text": "Each new environment starts from a drifted baseline"
         },
         {
           "id": "c",
-          "text": "A long-lived staging environment"
+          "text": "The production database loses the data it stores"
         },
         {
           "id": "d",
-          "text": "A live production environment"
+          "text": "Merged code is rolled back on the next release"
         }
       ]
     },
@@ -853,7 +853,7 @@
         "a"
       ]
     },
-    "explanation": "A short-lived environment built for one change and deleted afterward is ephemeral. Persistent, staging and production environments stay in place across many releases.",
+    "explanation": "An environment built for one change is meant to be ephemeral, so it should be destroyed when the change is done. Without that cleanup, unused environments keep running and keep costing money. Each new environment is still built fresh from code, so its baseline has not drifted; separate test environments do not touch production data; and leftover environments do not undo merged code.",
     "acronyms": []
   },
   {
@@ -863,7 +863,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A long-lived staging environment passes the tests, but the same release fails on hosts that were freshly built from code. What is the most likely cause?",
@@ -902,7 +902,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A release manager runs one command on a control node, which then connects to 20 hosts and applies the update. Which provisioning technique is this?",
@@ -914,7 +914,7 @@
         },
         {
           "id": "b",
-          "text": "Push, started by the control node"
+          "text": "Push, started by the central controller"
         },
         {
           "id": "c",
@@ -931,7 +931,7 @@
         "b"
       ]
     },
-    "explanation": "In a push model the control node initiates the connection and sends the change when told to. Pull has each host initiate, event-driven work starts from a message, and local work happens on one machine.",
+    "explanation": "In a push model the central controller initiates the connection and sends the change when told to. Pull has each host initiate, event-driven work starts from a message, and local work happens on one machine.",
     "acronyms": []
   },
   {
@@ -941,7 +941,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Each server runs a service that asks a central server for its configuration every 30 minutes and corrects any difference it finds. What is a benefit of this pull model?",
@@ -961,7 +961,7 @@
         },
         {
           "id": "d",
-          "text": "Manual changes on a host are corrected without anyone starting a run"
+          "text": "Drift is corrected without anyone starting a run"
         }
       ]
     },
@@ -980,7 +980,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A vendor must keep 3,000 devices at customer sites in line with its settings. The devices sit behind customer firewalls that block inbound connections. Which provisioning technique is practical?",
