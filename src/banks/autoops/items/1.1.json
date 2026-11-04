@@ -593,7 +593,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "The pattern `10.0.0.5` also matches the text `10x0y0z5` in `grep`. Why?",
@@ -632,7 +632,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which line is selected by `grep -E '^(WARN|ERROR):'`?",
@@ -671,7 +671,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A script reads a port from a config file as the text `\"8080\"` and then runs the Python below. What happens?\n\n```python\nport = \"8080\"\nprint(port + 1)\n```",
@@ -691,7 +691,7 @@
         },
         {
           "id": "d",
-          "text": "It raises a `TypeError`"
+          "text": "It raises `TypeError`"
         }
       ]
     },
@@ -700,7 +700,7 @@
         "d"
       ]
     },
-    "explanation": "Python does not add a string and an integer, so the call raises `TypeError`. Converting first, as in `int(port) + 1`, gives `8081`. The outputs `80801` and `8080 1` are what some other languages or shells produce, not Python.",
+    "explanation": "Python does not add a string and an integer, so the call raises `TypeError`. Converting first, as in `int(port) + 1`, gives `8081`. JavaScript would join the two into `80801`, and `8080 1` is what `print(port, 1)` prints; Python's `+` does neither.",
     "acronyms": []
   },
   {
@@ -710,7 +710,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which snippet is valid JSON?",
@@ -751,7 +751,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "In this YAML, what is the value of `servers`?\n\n```yaml\nservers:\n  - name: web01\n    port: 80\n  - name: web02\n    port: 80\n```",
@@ -780,7 +780,7 @@
         "c"
       ]
     },
-    "explanation": "Each leading dash starts one list item, and each item holds the keys `name` and `port`, so `servers` is a list of two mappings. It is not a mapping of two keys because the items are dash-prefixed, and the values under `name` and `port` stay inside their items rather than forming a flat list of strings.",
+    "explanation": "Each leading dash starts one list item, and each item holds the keys `name` and `port`, so `servers` is a list of two mappings. It is not a mapping of two keys because the items are dash-prefixed, and the values under `name` and `port` stay inside their items rather than forming a flat list of strings. Nor is it a single string: `servers` holds a sequence of items.",
     "acronyms": [
       "YAML"
     ]
