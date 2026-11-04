@@ -6,7 +6,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A Bash script ends with the lines below, and Bash reports an unexpected end of file. What is missing?\n```bash\ncount=9\nif [ \"$count\" -gt 5 ]; then\n  echo \"high\"\n```",
@@ -22,7 +22,7 @@
         },
         {
           "id": "c",
-          "text": "A closing `fi`"
+          "text": "A closing `fi` line after the block"
         },
         {
           "id": "d",
@@ -45,10 +45,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "A Python script fails to start with `SyntaxError: '(' was never closed`. Which change fixes it?\n```python\ndef total(items):\n    return sum(items\nprint(total([1, 2]))\n```",
+    "stem": "On Python 3.12, a script fails to start with `SyntaxError: '(' was never closed`. Which change fixes it?\n```python\ndef total(items):\n    return sum(items\nprint(total([1, 2]))\n```",
     "payload": {
       "options": [
         {
@@ -84,7 +84,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A job runs this Python file, and `status` is never assigned anywhere in it. Which error does Python report first?\n```python\nif status == \"ok\":\nprint(\"deployed\")\n```",
@@ -100,7 +100,7 @@
         },
         {
           "id": "c",
-          "text": "`IndentationError`, because Python parses the whole file before any line runs"
+          "text": "`IndentationError`, since the `if` body is not indented"
         },
         {
           "id": "d",
@@ -123,7 +123,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "PowerShell refuses to run this script and reports a parse error before the first line executes. What is the cause?\n```powershell\n$names = @(\"web01\", \"web02\"\nforeach ($n in $names) { Write-Host $n }\n```",
@@ -131,7 +131,7 @@
       "options": [
         {
           "id": "a",
-          "text": "The `@(` array on line 1 is never closed"
+          "text": "The `@(` array on line 1 has no closing `)`"
         },
         {
           "id": "b",
@@ -162,10 +162,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A deploy tool rejects `settings.json` with the message `Expecting property name enclosed in double quotes`. Which flaw in the file causes it?\n```json\n{\n  \"region\": \"east\",\n  \"retries\": 3,\n}\n```",
+    "stem": "A deploy tool written in Python rejects `settings.json` with the message `Expecting property name enclosed in double quotes`. Which flaw in the file causes it?\n```json\n{\n  \"region\": \"east\",\n  \"retries\": 3,\n}\n```",
     "payload": {
       "options": [
         {
@@ -203,15 +203,15 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A script contains the line `build = \"web01\"`, and Bash prints `build: command not found`. Why?",
+    "stem": "A script contains the line `build = \"web01\"`, and Bash prints `build: command not found`. Why does Bash print this?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Spaces around `=` turn `build` into a command"
+          "text": "Spaces around `=` make the line run as a command"
         },
         {
           "id": "b",
@@ -242,10 +242,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "Python reports `SyntaxError: invalid syntax` on the first line of this snippet. Which change fixes it?\n```python\nif env = \"prod\":\n    print(\"locked\")\n```",
+    "stem": "Python reports a `SyntaxError` on the first line of this snippet. Which change fixes it?\n```python\nif env = \"prod\":\n    print(\"locked\")\n```",
     "payload": {
       "options": [
         {
@@ -281,7 +281,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Bash script starts with `set -u` and then runs `echo \"Deploying to $TARGET_ENV\"`, but `TARGET_ENV` was never set. What happens?",
@@ -320,7 +320,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A cleanup script runs the line below, and `BUILD_DIR` is sometimes unset. Which version stops the script with an error instead of expanding to the filesystem root?\n```bash\nrm -rf \"$BUILD_DIR\"/*\n```",
@@ -359,7 +359,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Python raises `NameError: name 'count' is not defined` on the last line below. Why?\n```python\ndef report():\n    count = 3\nreport()\nprint(count)\n```",
@@ -367,7 +367,7 @@
       "options": [
         {
           "id": "a",
-          "text": "`count` exists only inside `report`, so module-level code cannot see it"
+          "text": "`count` is local to the `report` function"
         },
         {
           "id": "b",
@@ -398,10 +398,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A PowerShell script prints `Backup to ` with a blank where a path should appear, because `$dest` was misspelled `$dst` and never assigned. Which setting would turn that mistake into an error?",
+    "stem": "A PowerShell script prints `Backup to ` with a blank where a path should appear, because the script assigns `$dst` but reads `$dest`. Which setting would turn that mistake into an error?",
     "payload": {
       "options": [
         {
@@ -437,7 +437,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A deploy script works on a developer laptop but fails in a CI job with `DEPLOY_TOKEN: unbound variable`. The laptop exports the variable in `~/.bashrc`. What is the best fix?",
@@ -478,7 +478,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "What does this Python snippet do when it runs?\n```python\nattempts = 0\ndef retry():\n    attempts += 1\n    return attempts\nprint(retry())\n```",
@@ -494,7 +494,7 @@
         },
         {
           "id": "c",
-          "text": "It raises `UnboundLocalError`, because `+=` makes `attempts` local to the function"
+          "text": "It raises `UnboundLocalError`, because `+=` makes it local"
         },
         {
           "id": "d",
@@ -517,7 +517,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A deploy script runs `make build`, which fails, but the script keeps going and prints `Done`. Which line near the top makes Bash stop at the first failing command?",
@@ -556,7 +556,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which exception does Python raise when this snippet runs?\n```python\nconfig = {\"host\": \"db01\", \"port\": 5432}\nprint(config[\"user\"])\n```",
@@ -595,7 +595,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A traceback ends as shown. Which line of `deploy.py` raised the exception?\n```text\nTraceback (most recent call last):\n  File \"deploy.py\", line 14, in <module>\n    run(cfg)\n  File \"deploy.py\", line 8, in run\n    return cfg[\"image\"].split(\":\")[1]\nIndexError: list index out of range\n```",
@@ -634,7 +634,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "After a fresh clone, running `./deploy.sh` prints `Permission denied`, although the file exists and is readable. Which command fixes it?",
@@ -673,7 +673,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A script uses `set -e` and then runs `build_all | tee build.log`. The build fails, yet the script carries on because the pipeline takes its status from `tee`. Which setting makes a failure in any stage fail the pipeline?",
@@ -712,7 +712,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "In this PowerShell script the copy fails because the file is missing, but the script still prints `copied`. Which change makes the script stop at the failed copy?\n```powershell\nCopy-Item C:\\missing\\app.zip D:\\drop\nWrite-Host \"copied\"\n```",
@@ -751,7 +751,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Unit tests pass on a developer's machine, but the CI job fails with `ModuleNotFoundError: No module named 'requests'`. What is the most likely fix?",
@@ -759,7 +759,7 @@
       "options": [
         {
           "id": "a",
-          "text": "List `requests` in the file the job installs"
+          "text": "Declare the library in the file the job installs from"
         },
         {
           "id": "b",
@@ -792,7 +792,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "After running a command, Git prints a long warning about a detached state. What does that mean?",
@@ -821,7 +821,7 @@
         "d"
       ]
     },
-    "explanation": "A detached state means `HEAD` refers to a commit directly, so new commits are not tracked by any branch. Staged merge files, being behind an upstream and a deleted remote branch are different situations with different messages.",
+    "explanation": "A detached state means `HEAD` refers to a commit directly, so new commits are not tracked by any branch. Staged merge files, a branch behind its upstream and a deleted remote branch each give a different message.",
     "acronyms": []
   },
   {
@@ -831,7 +831,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer is in a detached `HEAD` state after `git checkout 3f9a2c1`, and then makes two commits. Which command, run before leaving, keeps those commits on a branch?",
@@ -870,7 +870,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Running `git status` in `/srv/jobs/export` prints `fatal: not a git repository (or any of the parent directories): .git`. What is the cause?",
@@ -882,7 +882,7 @@
         },
         {
           "id": "b",
-          "text": "No `.git` folder exists here or in a parent folder"
+          "text": "The `.git` directory is missing here and in every parent"
         },
         {
           "id": "c",
@@ -909,10 +909,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A push to `main` is rejected with `! [rejected] main -> main (fetch first)` because a colleague pushed after the last pull. What is the best next step?",
+    "stem": "A push to `main` is rejected with `! [rejected] main -> main (fetch first)` because a colleague pushed new commits a few minutes earlier. What is the best next step?",
     "payload": {
       "options": [
         {
@@ -921,7 +921,7 @@
         },
         {
           "id": "b",
-          "text": "Run `git pull`, resolve conflicts, then push again"
+          "text": "Run `git pull`, resolve any conflicts, then push again"
         },
         {
           "id": "c",
@@ -948,7 +948,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "`git switch release/2.4` fails with `Your local changes to the following files would be overwritten by checkout: app.conf`. What should the developer do?",
@@ -977,7 +977,7 @@
         "d"
       ]
     },
-    "explanation": "The target branch differs in `app.conf`, so Git protects the uncommitted edits until they are committed or stashed. `git clean` removes only untracked files, a fetch changes no local files, and deleting the index corrupts the repository state.",
+    "explanation": "The target branch differs in `app.conf`, so Git protects the uncommitted edits until they are committed or stashed. `git clean` removes only untracked files, a fetch changes no local files, and deleting the index wipes the staging area while leaving the edits in the way.",
     "acronyms": []
   },
   {
