@@ -6,7 +6,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does the term configuration drift describe?",
@@ -45,7 +45,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "During an incident an engineer hand-edited a connection limit on a production proxy, and the team agrees the edit should stay. A drift report now flags the proxy. What is the best remediation?",
@@ -84,7 +84,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does an infrastructure state file mainly record?",
@@ -123,7 +123,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Two engineers start an apply against the same environment at the same moment, and the shared record of resources ends up corrupted. Which feature prevents this?",
@@ -162,7 +162,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An audit finds that the state file for a database module holds the administrator password in readable text. What is the best response?",
@@ -201,7 +201,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An apply job crashed halfway, and every new run now stops with an error saying the state is locked by a run that began three hours ago. What should the engineer do first?",
@@ -240,7 +240,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A scheduled check prints this comparison:\n```\nresource  setting       desired  actual\nweb-01    size          medium   medium\nweb-02    size          medium   large\nlb-01     idle_timeout  60       60\ndb-01     retention     14       7\n```\nWhat does reapplying the declared configuration do?",
@@ -269,7 +269,7 @@
         "b"
       ]
     },
-    "explanation": "Reapplying makes the live values equal the desired column: web-02 goes from large back to medium, and db-01 retention goes from 7 to 14. web-01 and lb-01 already match, so they are untouched, and db-01 also drifted, so leaving it alone would keep the gap.",
+    "explanation": "Reapplying makes the live values equal the desired column: `web-02` goes from large back to medium, and `db-01` retention goes from 7 to 14. Option a moves both the wrong way, toward the drifted values. `web-01` and `lb-01` already match, so they are untouched, and `db-01` also drifted, so leaving it alone would keep the gap.",
     "acronyms": []
   },
   {
@@ -279,7 +279,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Browsers report an unknown issuer for `portal.example.internal`, although the certificate is within its validity dates and the name matches. The server sends only its own certificate. Which fix is best?",
@@ -318,7 +318,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A payments API went offline at midnight because its certificate expired unnoticed. Which change best prevents a repeat?",
@@ -359,7 +359,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A build server was compromised, and the private key for a production certificate may have been copied. What should the team do?",
@@ -375,7 +375,7 @@
         },
         {
           "id": "c",
-          "text": "Have the CA revoke the certificate, then issue one on a new key pair"
+          "text": "Revoke the certificate and reissue it on a new key pair"
         },
         {
           "id": "d",
@@ -400,7 +400,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does a certificate signing request contain?",
@@ -441,7 +441,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Internal clients reject a service whose certificate was issued by the company's own CA, although the certificate is valid and the name matches. What is missing?",
@@ -482,7 +482,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Clients connect to `shop.example.internal`, but the certificate lists only `www.shop.example.internal`, and they report a name mismatch. Which reissued certificate fixes this?",
@@ -521,7 +521,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Where should the private key for a server certificate be kept?",
@@ -537,7 +537,7 @@
         },
         {
           "id": "c",
-          "text": "In a secrets store or a file only the service can read"
+          "text": "In a secrets store or a file with tight permissions"
         },
         {
           "id": "d",
@@ -560,7 +560,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An ACL checks rules from the lowest number up, and the first match decides:\n```\n10 deny   10.4.0.0/16 -> any  tcp 443\n20 permit 10.0.0.0/8  -> any  tcp 443\n```\nA host at `10.4.7.9` opens a connection to port 443. What happens?",
@@ -601,7 +601,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A stateless ACL on a web subnet allows inbound TCP 443. Requests reach the web servers, but clients never receive replies, and the only outbound rule allows TCP 443. Which rule fixes this?",
@@ -644,7 +644,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A subnet must hold 50 hosts. Using classic addressing, where the network and broadcast addresses are unusable, which is the smallest subnet that fits?",
@@ -683,7 +683,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Two virtual networks must be connected, which requires address ranges that do not overlap. Which pair works?",
@@ -722,7 +722,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What most clearly makes a subnet public rather than private?",
@@ -742,7 +742,7 @@
         },
         {
           "id": "d",
-          "text": "A default route to an internet gateway"
+          "text": "It has a default route to an internet gateway"
         }
       ]
     },
@@ -761,7 +761,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which subnet contains the address `10.20.5.77`?",
@@ -800,7 +800,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A router has these routes:\n```\n10.0.0.0/8     via gw-core\n10.20.0.0/16   via gw-branch\n0.0.0.0/0      via gw-edge\n```\nWhere does the router send a packet for `10.20.3.4`?",
@@ -839,7 +839,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Servers in a private subnet cannot download operating system updates from the internet, although they reach other subnets normally. Which change is needed?",
@@ -859,7 +859,7 @@
         },
         {
           "id": "d",
-          "text": "Add a default route to a gateway that translates addresses"
+          "text": "Add a default route to an address-translating gateway"
         }
       ]
     },
@@ -880,10 +880,10 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "Two virtual networks are peered, but a server in network A cannot reach a server in network B. Firewall rules allow the traffic, and the address ranges do not overlap. What is the most likely missing piece?",
+    "stem": "Two virtual networks are peered on a cloud platform where route tables are managed by hand, but a server in network A cannot reach a server in network B. Firewall rules allow the traffic, and the address ranges do not overlap. What is the most likely missing piece?",
     "payload": {
       "options": [
         {
@@ -921,7 +921,7 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A load balancer's health check requests `/healthz`, which returns 200 whenever the web process is running. The database fails, and users see errors although every instance still passes the check. What change is best?",
@@ -937,7 +937,7 @@
         },
         {
           "id": "c",
-          "text": "Have `/healthz` also test the database connection"
+          "text": "Have the endpoint also test the database connection"
         },
         {
           "id": "d",
@@ -960,10 +960,10 @@
     "objectiveIds": [
       "2.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A load balancer probes each instance every 10 seconds and marks it unhealthy after 3 consecutive failed probes. After an instance stops responding, roughly how long until it is removed from rotation?",
+    "stem": "A load balancer probes each instance every 10 seconds and marks it unhealthy after 3 consecutive failed probes. After an instance stops responding, about how long at most until it is removed from rotation?",
     "payload": {
       "options": [
         {
@@ -989,7 +989,7 @@
         "c"
       ]
     },
-    "explanation": "Three consecutive failures at 10-second intervals take 20 to 30 seconds, depending on where the failure falls between probes. A single probe or the interval alone would remove the instance too early, and 60 seconds would need six failures.",
+    "explanation": "Three consecutive failures at 10-second intervals take at most about 30 seconds (as little as 20, depending on where the failure falls between probes). A single probe or the interval alone would remove the instance too early, and 60 seconds would need six failures.",
     "acronyms": []
   },
   {
