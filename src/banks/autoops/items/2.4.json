@@ -1,0 +1,2472 @@
+[
+  {
+    "id": "at1-2-4-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A management server rejects check-ins from the agent on `web07` with `request timestamp outside the allowed window`. The server's log shows the request was signed eleven minutes in the future. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A firewall rule that drops the agent's outbound port"
+        },
+        {
+          "id": "b",
+          "text": "The agent host's clock has drifted ahead of the server's"
+        },
+        {
+          "id": "c",
+          "text": "A revoked certificate on the management server"
+        },
+        {
+          "id": "d",
+          "text": "A missing environment variable in the agent's service file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Signed requests carry a timestamp, and the server rejects any outside a tolerance window, so a drifted host clock causes this exact error; fixing time synchronization on the host clears it. A dropped port would time out before the server read any request, a revoked certificate would fail the handshake, and a missing environment variable would stop the agent from starting.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "An agent on `db03` logs `dial tcp 10.4.8.20:8443: i/o timeout` when it checks in. A laptop on another subnet reaches the same address and port without trouble. Which cause fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An expired certificate presented by the management server"
+        },
+        {
+          "id": "b",
+          "text": "A syntax error in the agent's YAML configuration file"
+        },
+        {
+          "id": "c",
+          "text": "A request header carrying the wrong content type"
+        },
+        {
+          "id": "d",
+          "text": "A firewall rule on the db subnet that drops its traffic"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A timeout means packets are silently dropped, and only the db subnet is affected, which points to a filtering rule on that path. An expired server certificate would fail a handshake after connecting, a YAML error would stop the agent before it tried to connect, and a wrong content type would draw an error response from the server.",
+    "acronyms": [
+      "YAML"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "After a long outage, every agent at one site logs `tls: certificate has expired` when it checks in. The management server's own certificate is valid. Which fix addresses the failure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reissue the agents' client certificates from the issuing CA and restart the agents"
+        },
+        {
+          "id": "b",
+          "text": "Turn off certificate validation on the management server"
+        },
+        {
+          "id": "c",
+          "text": "Move the management server to a different port"
+        },
+        {
+          "id": "d",
+          "text": "Shorten the interval between agent check-ins"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The expired certificates are the ones the agents present, so they must be reissued by the CA that signs them. Turning validation off removes the authentication the certificates provide, a new port changes nothing about validity, and more frequent check-ins would only repeat the same rejected handshake.",
+    "acronyms": [
+      "CA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "A script calls an internal API and receives `401 Unauthorized`. What does this status most directly indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The caller is authenticated but not permitted to do this"
+        },
+        {
+          "id": "b",
+          "text": "The resource does not exist at that path"
+        },
+        {
+          "id": "c",
+          "text": "The request lacked valid credentials"
+        },
+        {
+          "id": "d",
+          "text": "The server failed while handling a well-formed request"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Status 401 means the credentials are missing or invalid. An authenticated caller who lacks permission gets 403, a missing path gets 404, and a server-side failure on a valid request gets a 500-class status.",
+    "acronyms": [
+      "API"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Clients of `orders-api` receive `504 Gateway Timeout` from the reverse proxy, while the proxy's own status page loads instantly. What does the status indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The upstream replied with data the proxy could not parse"
+        },
+        {
+          "id": "b",
+          "text": "The proxy waited too long for the upstream service to reply"
+        },
+        {
+          "id": "c",
+          "text": "The client sent a request body larger than the proxy will accept"
+        },
+        {
+          "id": "d",
+          "text": "The proxy rejected the client's credentials"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A 504 is returned by a gateway that received no timely response from the upstream, so the next place to look is the `orders-api` service. An unusable upstream reply is a 502, an oversized body is a 413, and rejected credentials are a 401 or 407.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "A fleet of agents polls an API once per second, and the server begins answering `429 Too Many Requests` with a `Retry-After` header. Which change best fixes the problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Retry each failed call at once in a tight loop until it succeeds"
+        },
+        {
+          "id": "b",
+          "text": "Switch the agents from HTTP to HTTPS"
+        },
+        {
+          "id": "c",
+          "text": "Send each request with a different content type"
+        },
+        {
+          "id": "d",
+          "text": "Lengthen the polling interval and add random jitter to retries"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A 429 means the callers exceed the allowed rate, so they should poll less often and spread retries out instead of arriving together. A tight retry loop makes the overload worse, HTTPS changes how traffic is protected rather than how much is sent, and the content type has no bearing on rate limits.",
+    "acronyms": [
+      "API",
+      "HTTP",
+      "HTTPS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "An agent on `cache02` logs `lookup mgmt.example.internal: no such host`, yet the server is running and a colleague's laptop resolves the name. Which cause fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The agent host's resolver has no answer for that name"
+        },
+        {
+          "id": "b",
+          "text": "The management server's certificate lacks an intermediate"
+        },
+        {
+          "id": "c",
+          "text": "The agent's check-in interval is set too low"
+        },
+        {
+          "id": "d",
+          "text": "The reverse proxy returned an upstream error status"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A failed name lookup happens before any connection, so the agent host's DNS settings or search domain are at fault, which is why another machine succeeds. Certificate chains, polling frequency and proxy status codes all come into play only after a name has been resolved.",
+    "acronyms": [
+      "DNS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "A web service fails to start and logs `bind: address already in use` for port 8080. What does this message indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Another process already listens on that port"
+        },
+        {
+          "id": "b",
+          "text": "A firewall rule is blocking the port for outbound traffic"
+        },
+        {
+          "id": "c",
+          "text": "The service lacks permission to read its configuration file"
+        },
+        {
+          "id": "d",
+          "text": "The host has run out of memory for new processes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Binding fails when a listening socket already holds the port, so the new service cannot start until the owner stops or the port changes. Firewall rules, file permissions and memory shortages produce different messages.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which command lists the TCP ports a Linux host is listening on, along with the owning processes?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`ip route show`"
+        },
+        {
+          "id": "b",
+          "text": "`df -h /var`"
+        },
+        {
+          "id": "c",
+          "text": "`ss -tlnp`"
+        },
+        {
+          "id": "d",
+          "text": "`free -m`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "In `ss -tlnp` the flags select TCP sockets, listening state, numeric output and the owning process. The other commands show the routing table, disk usage and memory use.",
+    "acronyms": [
+      "TCP"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A team starts a daemon with `appd --config /etc/appd/app.yaml`. It exits at once and logs `open /etc/appd/app.yaml: no such file or directory`. A directory listing shows `/etc/appd/app.yml`. Which change fixes the failure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add execute permission to `app.yml` with `chmod +x` and retry the start"
+        },
+        {
+          "id": "b",
+          "text": "Pass `--config /etc/appd/app.yml`, the path that exists on disk"
+        },
+        {
+          "id": "c",
+          "text": "Rename the `/etc/appd` directory to `/etc/appd.d`"
+        },
+        {
+          "id": "d",
+          "text": "Restart the daemon with a larger memory limit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The error names a path that does not exist, and the real file ends in `.yml`, so the flag must point at that file. Execute permission is irrelevant to a data file, renaming the directory breaks the path further, and memory is not the problem.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A container exits at start and logs `fatal: DATABASE_URL is not set`. Its Compose file reads:\n```yaml\nservices:\n  api:\n    image: payments-api:2.3.1\n    environment:\n      - LOG_LEVEL=info\n```\nWhich change fixes the failure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Change the image tag from `2.3.1` to `latest`"
+        },
+        {
+          "id": "b",
+          "text": "Set `LOG_LEVEL` to `debug` so the variable is printed"
+        },
+        {
+          "id": "c",
+          "text": "Publish port 5432 from the container to the host"
+        },
+        {
+          "id": "d",
+          "text": "Add a `DATABASE_URL` entry with the connection string under `environment`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The application reads its connection string from an environment variable that the file never defines, so the entry must be added. A different image tag, more logging and a published port leave the variable unset.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "A systemd service named `ledger` fails to start. Which command shows that unit's recent log messages?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`systemctl enable ledger`"
+        },
+        {
+          "id": "b",
+          "text": "`systemctl mask ledger`"
+        },
+        {
+          "id": "c",
+          "text": "`systemctl reset-failed ledger`"
+        },
+        {
+          "id": "d",
+          "text": "`journalctl -u ledger`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`journalctl -u` filters the journal to one unit. `enable` only links the unit to start at boot, `mask` blocks the unit from starting, and `reset-failed` clears the failed state without printing logs.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "A service logs `connection refused` to the local database when the host boots, but it starts normally when restarted by hand ten minutes later. Which change to its unit file best addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Set the service to run as the root user"
+        },
+        {
+          "id": "b",
+          "text": "Change the port the service listens on"
+        },
+        {
+          "id": "c",
+          "text": "Add `After=` and `Requires=` lines that name the database unit"
+        },
+        {
+          "id": "d",
+          "text": "Raise the log level to `debug`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The service wins a race at boot, starting before the database accepts connections, so an ordering dependency makes systemd start the database first. Running as root, changing the listening port and adding log detail do not change the start order.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "A backup script runs fine from a login shell but fails under the scheduler with `rsync-wrap: command not found`. The tool lives in `/opt/tools/bin`. Why does it fail?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The scheduler runs jobs with a shorter `PATH` than a login shell"
+        },
+        {
+          "id": "b",
+          "text": "Interactive shells skip the interpreter line at the top of a script"
+        },
+        {
+          "id": "c",
+          "text": "Scheduled jobs cannot read directories under `/opt`"
+        },
+        {
+          "id": "d",
+          "text": "The tool runs only while a terminal is attached"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Schedulers start jobs with a minimal environment, so a directory added to `PATH` in a login profile is missing; use the full path or set `PATH` in the job. The other statements describe behavior that does not exist.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "A browser warns that a site's certificate is invalid. The certificate's end date was two days ago. Which issue is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Name mismatch"
+        },
+        {
+          "id": "b",
+          "text": "Incomplete certificate chain"
+        },
+        {
+          "id": "c",
+          "text": "Lapsed validity period"
+        },
+        {
+          "id": "d",
+          "text": "Untrusted issuer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A certificate is valid only between its start and end dates, and this one is past the end date. A name mismatch concerns the host name, a missing intermediate concerns the chain the server sends, and an untrusted issuer concerns the root.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A `curl` call prints the output below. What is the problem?\n```\n$ curl -v https://api.example.internal/health\n* Server certificate:\n*  subject: CN=billing.example.internal\n*  subjectAltName: billing.example.internal\n* no alternative certificate subject name matches 'api.example.internal'\ncurl: (60) SSL: certificate subject name does not match target host name\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The certificate has passed its end date"
+        },
+        {
+          "id": "b",
+          "text": "The certificate was issued for a different host name"
+        },
+        {
+          "id": "c",
+          "text": "The issuing CA is missing from the client's trust store"
+        },
+        {
+          "id": "d",
+          "text": "The server sent no intermediate certificate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The certificate names `billing.example.internal` but the request was for `api.example.internal`, so name verification fails. Expiry, an unknown CA and a missing intermediate each produce a different message.",
+    "acronyms": [
+      "CA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "Browsers open `https://pay.example.internal` without warnings, but `curl` on a build host fails with `unable to get local issuer certificate`. The server sends only its own certificate. Which fix is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Install a second root certificate for the browser on the build host"
+        },
+        {
+          "id": "b",
+          "text": "Skip verification with `curl -k` in the build script"
+        },
+        {
+          "id": "c",
+          "text": "Reissue the certificate with a lifetime under ninety days"
+        },
+        {
+          "id": "d",
+          "text": "Configure the server to send its certificate followed by the intermediate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Many browsers fetch or cache a missing intermediate, but command-line clients do not, so the server should send the full chain. Another root does not supply the missing link, `-k` turns verification off, and a shorter lifetime has no effect on the chain.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A new build agent calls an internal service whose certificate was signed by the company's private CA, and the call fails with `certificate signed by unknown authority`. Older agents work. What should the team do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Install the private CA's root certificate in the new agent's trust store"
+        },
+        {
+          "id": "b",
+          "text": "Replace the service's certificate with a self-signed one"
+        },
+        {
+          "id": "c",
+          "text": "Generate the service's key pair again with a longer key"
+        },
+        {
+          "id": "d",
+          "text": "Add the new agent's address to the service's allow list"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Older agents already trust the private CA, so the new agent lacks its root in the trust store. A self-signed certificate would be trusted by even fewer clients, a longer key does not change who signed it, and an allow list governs traffic rather than trust.",
+    "acronyms": [
+      "CA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which command prints the start and end dates of the certificate in `server.crt`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`openssl x509 -in server.crt -noout -subject`"
+        },
+        {
+          "id": "b",
+          "text": "`openssl x509 -in server.crt -noout -serial`"
+        },
+        {
+          "id": "c",
+          "text": "`openssl x509 -in server.crt -noout -dates`"
+        },
+        {
+          "id": "d",
+          "text": "`openssl x509 -in server.crt -noout -fingerprint`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The `-dates` option prints the not-before and not-after times. `-subject` prints the holder's name, `-serial` prints the serial number, and `-fingerprint` prints a digest of the certificate.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "Three internal services lost their certificates' validity last quarter because renewals were done by hand and forgotten. Which change best prevents a repeat?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Issue certificates with ten-year lifetimes so renewals are rare"
+        },
+        {
+          "id": "b",
+          "text": "Monitor the days remaining and automate renewal before expiry"
+        },
+        {
+          "id": "c",
+          "text": "Pin each certificate in every client so any change is visible"
+        },
+        {
+          "id": "d",
+          "text": "Restart the services nightly to refresh their certificates"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Alerting on days remaining and renewing automatically removes the human step that failed. Very long lifetimes weaken security and still expire one day, pinning makes each renewal break clients, and a restart reloads the same expired certificate.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "A restored VM logs `certificate is not yet valid` for a certificate issued this morning. The VM reports a date from last week. What explains the error?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The certificate's end date passed before the VM was restored"
+        },
+        {
+          "id": "b",
+          "text": "The issuing CA was removed from the trust store"
+        },
+        {
+          "id": "c",
+          "text": "The host name in the certificate has a typo"
+        },
+        {
+          "id": "d",
+          "text": "The VM's clock is behind the certificate's start date"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A certificate cannot be used before its start date, and the VM believes it is still last week, so the clock must be corrected. An expired certificate gives a different message, a removed CA gives an unknown-authority error, and a typo gives a name mismatch.",
+    "acronyms": [
+      "CA",
+      "VM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A YAML parser reports `found character '\\t' that cannot start any token` for the file below, where each indent is a tab character:\n```yaml\nserver:\n\thost: 0.0.0.0\n\tport: 8080\n```\nWhich change fixes the parse error?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace each tab character with spaces"
+        },
+        {
+          "id": "b",
+          "text": "Wrap `0.0.0.0` in double quotes"
+        },
+        {
+          "id": "c",
+          "text": "Add a comma after each value in the file"
+        },
+        {
+          "id": "d",
+          "text": "Change each colon to an equals sign"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "YAML forbids tabs for indentation, so spaces must be used. Quoting the address, adding commas and using equals signs would leave the tabs, and the last two are not YAML syntax at all.",
+    "acronyms": [
+      "YAML"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A parser rejects the file below. What is wrong?\n```yaml\ndatabase:\n  host: db01\n   port: 5432\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`host` must be quoted because it names a machine"
+        },
+        {
+          "id": "b",
+          "text": "A list marker is missing before `port` here"
+        },
+        {
+          "id": "c",
+          "text": "`port` has three spaces of indent; `host` has two"
+        },
+        {
+          "id": "d",
+          "text": "The top-level key needs a closing semicolon"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Sibling keys must share one indentation, and the extra space makes `port: 5432` read as a continuation of the `host` value, which is an error. Hosts need no quotes, list markers apply only to sequences, and YAML has no semicolons.",
+    "acronyms": [
+      "YAML"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A JSON parser rejects the file below. Why?\n```json\n{\n  \"region\": \"eu-west\",\n  \"retries\": 3,\n}\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Numbers must be written as strings"
+        },
+        {
+          "id": "b",
+          "text": "A trailing comma follows the final member"
+        },
+        {
+          "id": "c",
+          "text": "Member names must use single quotes"
+        },
+        {
+          "id": "d",
+          "text": "A semicolon is missing after the closing brace"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Standard JSON allows a comma only between members, not after the last one. Numbers are written bare, member names use double quotes, and JSON has no statement terminator.",
+    "acronyms": [
+      "JSON"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which line is valid JSON?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`{\"name\": \"web\", \"port\": 80}`"
+        },
+        {
+          "id": "b",
+          "text": "`{'name': 'web', 'port': 80}`"
+        },
+        {
+          "id": "c",
+          "text": "`{name: \"web\", port: 80}`"
+        },
+        {
+          "id": "d",
+          "text": "`{\"name\": \"web\", \"port\": 80,}`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "JSON requires double-quoted member names and no trailing comma. Single quotes, unquoted names and a comma after the last member are each rejected by a conforming parser.",
+    "acronyms": [
+      "JSON"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "A parser reports a bad section header on the first line of this `.ini` file:\n```ini\n[database\nhost = db01\nport = 5432\n```\nWhich change fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace the equals signs with semicolons"
+        },
+        {
+          "id": "b",
+          "text": "Put quotes around the host value `db01`"
+        },
+        {
+          "id": "c",
+          "text": "Close the section name with `]`"
+        },
+        {
+          "id": "d",
+          "text": "Add a blank line above the header"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A section header must be enclosed in square brackets, and this one lacks the closing bracket. Semicolons would break the settings, quotes do not repair the header, and a blank line is irrelevant.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A strict `.ini` parser rejects the file below with a message about a missing section header:\n```ini\ntimeout = 30\n\n[service]\nname = billing\n```\nWhich change fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the blank line that follows `timeout = 30`"
+        },
+        {
+          "id": "b",
+          "text": "Put quotes around `billing`"
+        },
+        {
+          "id": "c",
+          "text": "Rename `[service]` to `[Service]`"
+        },
+        {
+          "id": "d",
+          "text": "Move `timeout = 30` beneath a section header"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "In a strict `.ini` file every setting belongs to a section, and the first line sits above any header. The blank line, the quotes and the header's capitalization do not change that.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "A deploy tool pulls image tag `3.1` even though the file below says `3.10`. Why, and what fixes it?\n```yaml\napp:\n  name: billing\n  image_tag: 3.10\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "YAML limits tags to one digit after the dot, so use `3.1`"
+        },
+        {
+          "id": "b",
+          "text": "YAML reads the unquoted `3.10` as a number, so quote it as `\"3.10\"`"
+        },
+        {
+          "id": "c",
+          "text": "The parser drops the last character, so add a trailing period"
+        },
+        {
+          "id": "d",
+          "text": "The indentation is off by one, so add a space before `3.10`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An unquoted scalar that looks like a number is parsed as one, and the trailing zero is lost; quoting keeps it as text. YAML has no such digit limit, the parser does not drop characters, and the indentation here is correct.",
+    "acronyms": [
+      "YAML"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which command checks that `config.json` is valid JSON without changing it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`jq empty config.json`"
+        },
+        {
+          "id": "b",
+          "text": "`wc --lines config.json`"
+        },
+        {
+          "id": "c",
+          "text": "`sha256sum config.json`"
+        },
+        {
+          "id": "d",
+          "text": "`stat --terse config.json`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`jq empty` parses the whole file, prints nothing, and exits with an error if the syntax is invalid. The other commands count lines, compute a hash and show file metadata without parsing JSON.",
+    "acronyms": [
+      "JSON"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which pipeline step catches a syntax error in a YAML or JSON configuration file before the file is deployed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A load test against the production service"
+        },
+        {
+          "id": "b",
+          "text": "A nightly restart of the target hosts"
+        },
+        {
+          "id": "c",
+          "text": "A parse or lint check run on each commit"
+        },
+        {
+          "id": "d",
+          "text": "A disk usage report for the build agent"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Parsing or linting the file at commit time fails fast on a syntax error. A load test, a host restart and a disk report all run too late or measure something unrelated.",
+    "acronyms": [
+      "JSON",
+      "YAML"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "An agent has stopped checking in with a central server. Which TWO checks help find the cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Review the branch protection rules on the code repository"
+        },
+        {
+          "id": "b",
+          "text": "Compare the agent host's clock with the server's time"
+        },
+        {
+          "id": "c",
+          "text": "Lower the verbosity of the build logs"
+        },
+        {
+          "id": "d",
+          "text": "Confirm the agent can reach the server's check-in port"
+        },
+        {
+          "id": "e",
+          "text": "Compare staging and production database schemas"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Clock drift and an unreachable port are the usual reasons an agent is rejected or cannot connect. Branch protection, log verbosity and database schemas have no bearing on agent communication.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE are common reasons a service fails to start right after a deployment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An environment variable the code needs is unset"
+        },
+        {
+          "id": "b",
+          "text": "The release notes were published a day late"
+        },
+        {
+          "id": "c",
+          "text": "The configuration path in the start command is wrong"
+        },
+        {
+          "id": "d",
+          "text": "The commit message did not follow the team's template"
+        },
+        {
+          "id": "e",
+          "text": "Another process already holds the listening port"
+        },
+        {
+          "id": "f",
+          "text": "The service's dashboard uses an older color scheme"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "A missing variable, a wrong configuration path and a port already in use each stop a process during start-up. Release note timing, commit message style and dashboard colors do not affect whether the process runs.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO conditions make a client reject a server's certificate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The certificate's end date has passed"
+        },
+        {
+          "id": "b",
+          "text": "The server listens on the standard secure port"
+        },
+        {
+          "id": "c",
+          "text": "The name in the certificate does not match the requested host name"
+        },
+        {
+          "id": "d",
+          "text": "The certificate file is named `server.crt`"
+        },
+        {
+          "id": "e",
+          "text": "The server keeps connections open between requests"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Clients check validity dates and that the name matches the host they asked for. The port number, the file name on the server and connection reuse are not part of certificate validation.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO of these are invalid JSON?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`{\"retries\": [1, 2]}`"
+        },
+        {
+          "id": "b",
+          "text": "`{\"retries\": 3,}`"
+        },
+        {
+          "id": "c",
+          "text": "`{\"retries\": null}`"
+        },
+        {
+          "id": "d",
+          "text": "`{\"retries\": true}`"
+        },
+        {
+          "id": "e",
+          "text": "`{retries: 3}`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "A comma after the last member and an unquoted member name both break the JSON grammar. Arrays, `null` and `true` are valid values.",
+    "acronyms": [
+      "JSON"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO mistakes cause a YAML parse error?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Putting a `#` comment after a value"
+        },
+        {
+          "id": "b",
+          "text": "Quoting a string value with double quotes"
+        },
+        {
+          "id": "c",
+          "text": "Indenting a nested key with a tab character"
+        },
+        {
+          "id": "d",
+          "text": "Indenting two sibling keys by different amounts"
+        },
+        {
+          "id": "e",
+          "text": "Starting list items with a dash and a space"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "YAML does not allow tabs for indentation, and siblings must line up. Trailing comments, quoted strings and dash-prefixed list items are all ordinary YAML.",
+    "acronyms": [
+      "YAML"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO status codes show that the failure lies on the server side or upstream, not in the client's request?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`404 Not Found`"
+        },
+        {
+          "id": "b",
+          "text": "`502 Bad Gateway`"
+        },
+        {
+          "id": "c",
+          "text": "`401 Unauthorized`"
+        },
+        {
+          "id": "d",
+          "text": "`503 Service Unavailable`"
+        },
+        {
+          "id": "e",
+          "text": "`422 Unprocessable Content`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A 502 and a 503 come from a gateway or service that cannot serve a valid request. A 404, a 401 and a 422 describe a missing resource, missing credentials and unusable content sent by the client.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "The invoice-api service on app04 will not start. A colleague pasted the session below. Review it, then complete each step.",
+    "payload": {
+      "output": [
+        "$ systemctl status invoice-api",
+        "● invoice-api.service - Invoice API",
+        "     Loaded: loaded (/etc/systemd/system/invoice-api.service; enabled)",
+        "     Active: failed (Result: exit-code) since Mon 09:12:40; 2min ago",
+        "    Process: 2210 ExecStart=/opt/invoice/bin/invoice-api (code=exited, status=1)",
+        "$ journalctl -u invoice-api -n 2",
+        "Nov 03 09:12:40 app04 invoice-api[2210]: listen tcp 0.0.0.0:8080: bind: address already in use",
+        "Nov 03 09:12:40 app04 systemd[1]: invoice-api.service: Failed with result 'exit-code'.",
+        "$ fuser 8080/tcp",
+        "8080/tcp:             1544",
+        "$ ps -p 1544 -o comm=",
+        "legacy-report",
+        "$ curl --help all | grep -E '` +-(i|I|s|v),'",
+        " -i, --include       Include protocol response headers in the output",
+        " -I, --head          Show document info only",
+        " -s, --silent        Silent mode",
+        " -v, --verbose       Make the operation more talkative"
+      ],
+      "steps": [
+        {
+          "id": "cause",
+          "label": "What does the journal say is the cause of the failed start?",
+          "options": [
+            {
+              "id": "env",
+              "text": "A required environment variable is not set"
+            },
+            {
+              "id": "path",
+              "text": "The configuration file path does not exist"
+            },
+            {
+              "id": "port",
+              "text": "The listening port is already in use"
+            },
+            {
+              "id": "cert",
+              "text": "The service certificate has expired"
+            }
+          ]
+        },
+        {
+          "id": "holder",
+          "label": "Which process currently holds port 8080?",
+          "options": [
+            {
+              "id": "legacy",
+              "text": "legacy-report (pid 1544)"
+            },
+            {
+              "id": "sshd",
+              "text": "sshd (pid 801)"
+            },
+            {
+              "id": "inv",
+              "text": "invoice-api (pid 2210)"
+            },
+            {
+              "id": "init",
+              "text": "systemd (pid 1)"
+            }
+          ]
+        },
+        {
+          "id": "start",
+          "label": "Once legacy-report has been stopped, type a systemctl command that starts the unit invoice-api again"
+        },
+        {
+          "id": "check",
+          "label": "Type a curl command that uses the include flag to print the response headers and body from http://localhost:8080/health"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "cause": [
+          "port"
+        ],
+        "holder": [
+          "legacy"
+        ],
+        "start": [
+          "systemctl start invoice-api",
+          "systemctl start invoice-api.service",
+          "systemctl restart invoice-api",
+          "systemctl restart invoice-api.service",
+          "sudo systemctl start invoice-api",
+          "sudo systemctl start invoice-api.service",
+          "sudo systemctl restart invoice-api",
+          "sudo systemctl restart invoice-api.service"
+        ],
+        "check": [
+          "curl -i localhost:8080/health",
+          "curl localhost:8080/health -i",
+          "curl -i \"localhost:8080/health\"",
+          "curl \"localhost:8080/health\" -i",
+          "curl -i 'localhost:8080/health'",
+          "curl 'localhost:8080/health' -i",
+          "curl -i http://localhost:8080/health",
+          "curl http://localhost:8080/health -i",
+          "curl -i \"http://localhost:8080/health\"",
+          "curl \"http://localhost:8080/health\" -i",
+          "curl -i 'http://localhost:8080/health'",
+          "curl 'http://localhost:8080/health' -i",
+          "curl -i 127.0.0.1:8080/health",
+          "curl 127.0.0.1:8080/health -i",
+          "curl -i \"127.0.0.1:8080/health\"",
+          "curl \"127.0.0.1:8080/health\" -i",
+          "curl -i '127.0.0.1:8080/health'",
+          "curl '127.0.0.1:8080/health' -i",
+          "curl -i http://127.0.0.1:8080/health",
+          "curl http://127.0.0.1:8080/health -i",
+          "curl -i \"http://127.0.0.1:8080/health\"",
+          "curl \"http://127.0.0.1:8080/health\" -i",
+          "curl -i 'http://127.0.0.1:8080/health'",
+          "curl 'http://127.0.0.1:8080/health' -i",
+          "curl --include localhost:8080/health",
+          "curl localhost:8080/health --include",
+          "curl --include \"localhost:8080/health\"",
+          "curl \"localhost:8080/health\" --include",
+          "curl --include 'localhost:8080/health'",
+          "curl 'localhost:8080/health' --include",
+          "curl --include http://localhost:8080/health",
+          "curl http://localhost:8080/health --include",
+          "curl --include \"http://localhost:8080/health\"",
+          "curl \"http://localhost:8080/health\" --include",
+          "curl --include 'http://localhost:8080/health'",
+          "curl 'http://localhost:8080/health' --include",
+          "curl --include 127.0.0.1:8080/health",
+          "curl 127.0.0.1:8080/health --include",
+          "curl --include \"127.0.0.1:8080/health\"",
+          "curl \"127.0.0.1:8080/health\" --include",
+          "curl --include '127.0.0.1:8080/health'",
+          "curl '127.0.0.1:8080/health' --include",
+          "curl --include http://127.0.0.1:8080/health",
+          "curl http://127.0.0.1:8080/health --include",
+          "curl --include \"http://127.0.0.1:8080/health\"",
+          "curl \"http://127.0.0.1:8080/health\" --include",
+          "curl --include 'http://127.0.0.1:8080/health'",
+          "curl 'http://127.0.0.1:8080/health' --include"
+        ]
+      }
+    },
+    "explanation": "The journal line says the address is already in use, and the process lookup for the port shows legacy-report rather than invoice-api. After that process is stopped, starting the unit again and probing the health path with the include flag confirms the service is up.",
+    "partExplanations": {
+      "cause": "bind: address already in use means another process owns the port.",
+      "holder": "fuser reports pid 1544 on port 8080, and ps names that process legacy-report.",
+      "start": "systemctl start or restart on the unit name, with or without .service or sudo, runs the service again.",
+      "check": "The include flag (-i or --include) prints the status line and headers before the body."
+    },
+    "acronyms": [
+      "API"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "The file below fails to parse. Line numbers run from 1 at the top, and labels.env is meant to hold the text production: eu. Choose the fix for each broken line.\n```yaml\nagent:\n  server: https://mgmt.example.internal:8443\n  check_in: 30s\n   jitter: 5\n  tags: [web, prod\nlabels:\n  env: production: eu\nchecks:\n  - name: disk\n  -name: memory\n```",
+    "payload": {
+      "fields": [
+        {
+          "id": "indent",
+          "label": "Line 4: jitter is indented three spaces",
+          "options": [
+            {
+              "id": "tabs",
+              "text": "Indent it with tab characters"
+            },
+            {
+              "id": "level",
+              "text": "Indent it two spaces, level with check_in"
+            },
+            {
+              "id": "under",
+              "text": "Indent it four spaces, below check_in"
+            },
+            {
+              "id": "colon",
+              "text": "Remove the colon after jitter"
+            }
+          ]
+        },
+        {
+          "id": "bracket",
+          "label": "Line 5: the tags list is not closed",
+          "options": [
+            {
+              "id": "close",
+              "text": "Add a closing square bracket after prod"
+            },
+            {
+              "id": "paren",
+              "text": "Replace the square brackets with parentheses"
+            },
+            {
+              "id": "comma",
+              "text": "Add a trailing comma after prod"
+            }
+          ]
+        },
+        {
+          "id": "quote",
+          "label": "Line 7: the value contains a second colon",
+          "options": [
+            {
+              "id": "tabline",
+              "text": "Move the value to the next line with a tab"
+            },
+            {
+              "id": "dropkey",
+              "text": "Remove the key name env"
+            },
+            {
+              "id": "comma2",
+              "text": "Add a comma after env"
+            },
+            {
+              "id": "quoted",
+              "text": "Wrap the value in double quotes"
+            }
+          ]
+        },
+        {
+          "id": "dash",
+          "label": "Line 10: the last list item has no space after the dash",
+          "options": [
+            {
+              "id": "plus",
+              "text": "Replace the dash with a plus sign"
+            },
+            {
+              "id": "nodash",
+              "text": "Remove the dash and keep the indent"
+            },
+            {
+              "id": "space",
+              "text": "Add a space after the dash"
+            },
+            {
+              "id": "sq",
+              "text": "Wrap the whole line in single quotes"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "indent": "level",
+        "bracket": "close",
+        "quote": "quoted",
+        "dash": "space"
+      }
+    },
+    "explanation": "Siblings must share one indentation, a flow list needs its closing bracket, a value holding a colon and a space must be quoted to stay text, and a list item needs a space after the dash.",
+    "partExplanations": {
+      "indent": "Sibling keys line up at the same indentation, here two spaces.",
+      "bracket": "A flow sequence opened with a square bracket must be closed with one.",
+      "quote": "Quoting makes the second colon part of the text instead of a new mapping.",
+      "dash": "Without the space, the dash is part of a key name and the sequence is broken."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "An agent on one host has stopped checking in with the management server. Put the troubleshooting steps in order. Runbook: confirm the scope on the console first; check the service on the host before reading its log; read the log before any network test; test the network path before comparing clocks, because the server's time can be read only over a working connection; confirm the fresh check-in last.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Test that the host can reach the server's check-in port"
+        },
+        {
+          "id": "s1",
+          "text": "Confirm on the console that only this host's last check-in is stale"
+        },
+        {
+          "id": "s6",
+          "text": "Confirm that a fresh check-in appears on the console"
+        },
+        {
+          "id": "s3",
+          "text": "Read the agent's log for the error from its latest attempt"
+        },
+        {
+          "id": "s5",
+          "text": "Compare the host's clock with the server's time and correct any drift"
+        },
+        {
+          "id": "s2",
+          "text": "Check on the host that the agent service is running"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "Scope the problem on the console, check the local service, read its log, test the network path, correct clock drift once a connection can be made, and finish by confirming a new check-in.",
+    "partExplanations": {
+      "0": "The console shows whether one host or many are affected.",
+      "1": "A stopped service is the cheapest local cause to rule out.",
+      "2": "The log names the error from the latest attempt, which guides the network test.",
+      "3": "A reachable check-in port is needed before any clock comparison with the server.",
+      "4": "Time drift is corrected once the connection works and the server's time can be read.",
+      "5": "A fresh check-in on the console proves the fix."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 5,
+    "stem": "The management server accepts a check-in only when the agent's clock is within 300 seconds of the server's in either direction, the agent version is 3.2.0 or newer, and the client certificate has not expired (days left of 0 or more). Use the table to answer each question.",
+    "payload": {
+      "caption": "Agent status by host",
+      "columns": [
+        "Host",
+        "Agent version",
+        "Clock offset (seconds)",
+        "Minutes since last check-in",
+        "Certificate days left"
+      ],
+      "rows": [
+        [
+          "web01",
+          "3.4.1",
+          "+2",
+          "4",
+          "210"
+        ],
+        [
+          "web02",
+          "3.4.1",
+          "+412",
+          "95",
+          "210"
+        ],
+        [
+          "db01",
+          "3.1.9",
+          "+1",
+          "130",
+          "300"
+        ],
+        [
+          "db02",
+          "3.4.0",
+          "-3",
+          "2880",
+          "-2"
+        ],
+        [
+          "cache01",
+          "3.4.1",
+          "-300",
+          "7",
+          "190"
+        ],
+        [
+          "job01",
+          "3.10.0",
+          "-5",
+          "3",
+          "45"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "web02",
+          "label": "Why is web02 rejected?",
+          "options": [
+            {
+              "id": "cert",
+              "text": "Expired client certificate"
+            },
+            {
+              "id": "clock",
+              "text": "Clock offset beyond 300 seconds"
+            },
+            {
+              "id": "version",
+              "text": "Agent version below 3.2.0"
+            },
+            {
+              "id": "none",
+              "text": "It is not rejected"
+            }
+          ]
+        },
+        {
+          "id": "db01",
+          "label": "Why is db01 rejected?",
+          "options": [
+            {
+              "id": "none",
+              "text": "It is not rejected"
+            },
+            {
+              "id": "clock",
+              "text": "Clock offset beyond 300 seconds"
+            },
+            {
+              "id": "cert",
+              "text": "Expired client certificate"
+            },
+            {
+              "id": "version",
+              "text": "Agent version below 3.2.0"
+            }
+          ]
+        },
+        {
+          "id": "db02",
+          "label": "Why is db02 rejected?",
+          "options": [
+            {
+              "id": "version",
+              "text": "Agent version below 3.2.0"
+            },
+            {
+              "id": "cert",
+              "text": "Expired client certificate"
+            },
+            {
+              "id": "clock",
+              "text": "Clock offset beyond 300 seconds"
+            },
+            {
+              "id": "none",
+              "text": "It is not rejected"
+            }
+          ]
+        },
+        {
+          "id": "count",
+          "label": "How many hosts are rejected?",
+          "options": [
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "3",
+              "text": "3"
+            },
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "edge",
+          "label": "Which host sits exactly on the clock limit but is still accepted?",
+          "options": [
+            {
+              "id": "web01",
+              "text": "web01"
+            },
+            {
+              "id": "job01",
+              "text": "job01"
+            },
+            {
+              "id": "db02",
+              "text": "db02"
+            },
+            {
+              "id": "cache01",
+              "text": "cache01"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "web02": "clock",
+        "db01": "version",
+        "db02": "cert",
+        "count": "3",
+        "edge": "cache01"
+      }
+    },
+    "explanation": "Three hosts fail one rule each: web02 on clock offset, db01 on version, and db02 on certificate days left. The remaining hosts pass all three rules.",
+    "partExplanations": {
+      "web02": "An offset of +412 seconds exceeds 300, while its version and certificate are fine.",
+      "db01": "Version 3.1.9 is below 3.2.0, and its clock and certificate pass.",
+      "db02": "Certificate days left is -2, so the certificate expired; its clock and version pass.",
+      "count": "web02, db01 and db02 fail; web01, cache01 and job01 pass, which gives 3.",
+      "edge": "An offset of -300 seconds is within the limit of 300, so cache01 is accepted."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A client reaches an application server through a proxy, and both hops use TLS. Place the cause that best explains each symptom named below the path.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Client"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Proxy"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "App server"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Issuing CA"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Client: unable to get issuer certificate"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Proxy log: upstream certificate expired"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Client: name does not match certificate"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Client: certificate is not yet valid"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Proxy sends its own certificate without the intermediate"
+        },
+        {
+          "id": "l2",
+          "text": "App server certificate passed its end date"
+        },
+        {
+          "id": "l3",
+          "text": "Proxy certificate names a different host"
+        },
+        {
+          "id": "l4",
+          "text": "Client clock is behind the start date"
+        },
+        {
+          "id": "l5",
+          "text": "Proxy listens on the wrong port"
+        },
+        {
+          "id": "l6",
+          "text": "The CA public web site is offline"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "An incomplete chain, an expired upstream certificate, a certificate for another name and a clock set too early each produce a distinct TLS error. A wrong proxy port and a CA web site outage do not cause these messages.",
+    "partExplanations": {
+      "z1": "The client cannot link the proxy certificate to a trusted root without the intermediate.",
+      "z2": "The proxy checks the application server and finds its end date in the past.",
+      "z3": "The certificate the proxy presents is for another host than the client asked for.",
+      "z4": "A client clock set before the start date makes a fresh certificate look premature."
+    },
+    "acronyms": [
+      "CA",
+      "TLS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "A strict `.ini` parser accepts section headers in square brackets and settings written as key = value. It rejects the file whose lines are shown. Select every line that breaks parsing.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "[database]"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "host = db01.example.internal"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "[cache"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "ttl_seconds = 300"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "retry_limit 5"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "user = svc_billing"
+        }
+      ],
+      "spots": [
+        {
+          "id": "sp1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "[database]"
+        },
+        {
+          "id": "sp2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "host = db01.example.internal"
+        },
+        {
+          "id": "sp3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "[cache"
+        },
+        {
+          "id": "sp4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "ttl_seconds = 300"
+        },
+        {
+          "id": "sp5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "retry_limit 5"
+        },
+        {
+          "id": "sp6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "user = svc_billing"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "sp3",
+        "sp5"
+      ]
+    },
+    "explanation": "The line [cache has no closing bracket, so it is not a valid section header, and retry_limit 5 has no equals sign joining a key to a value. The other four lines are well formed.",
+    "partExplanations": {
+      "sp1": "A name in square brackets is a valid section header.",
+      "sp2": "A key, an equals sign and a value form a valid setting.",
+      "sp3": "The header is missing its closing square bracket.",
+      "sp4": "A key, an equals sign and a value form a valid setting.",
+      "sp5": "No equals sign joins the key to its value, so the parser cannot split the line.",
+      "sp6": "A key, an equals sign and a value form a valid setting."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Match each error message to the cause it points to.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "bind: address already in use"
+        },
+        {
+          "id": "p2",
+          "text": "open /etc/svc/app.conf: no such file or directory"
+        },
+        {
+          "id": "p3",
+          "text": "certificate signed by unknown authority"
+        },
+        {
+          "id": "p4",
+          "text": "mapping values are not allowed here"
+        },
+        {
+          "id": "p5",
+          "text": "Expecting property name enclosed in double quotes"
+        },
+        {
+          "id": "p6",
+          "text": "File contains no section headers"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Another process already holds the listening port"
+        },
+        {
+          "id": "c2",
+          "text": "The start command names the wrong configuration path"
+        },
+        {
+          "id": "c3",
+          "text": "The issuing CA is missing from the client trust store"
+        },
+        {
+          "id": "c4",
+          "text": "A YAML syntax error in the configuration file"
+        },
+        {
+          "id": "c5",
+          "text": "A JSON syntax error in the configuration file"
+        },
+        {
+          "id": "c6",
+          "text": "Settings placed before any section header"
+        },
+        {
+          "id": "c7",
+          "text": "The account has used up its API quota"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5",
+        "p6": "c6"
+      }
+    },
+    "explanation": "Each message names the failing layer: a port already bound, a path that does not exist, a certificate from an unknown issuer, and the parser complaints of YAML, JSON and sectioned settings files. An exhausted quota would produce a rate-limit status instead.",
+    "partExplanations": {
+      "p1": "A listening socket already holds the port the service tried to bind.",
+      "p2": "The file the start command names does not exist at that path.",
+      "p3": "The client does not trust the CA that signed the certificate.",
+      "p4": "This is the YAML parser complaining about a stray colon or bad indentation.",
+      "p5": "This is the JSON parser complaining about a trailing comma or unquoted name.",
+      "p6": "The parser found a setting before any bracketed section name."
+    },
+    "acronyms": [
+      "API",
+      "CA",
+      "JSON",
+      "YAML"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "at1-2-4-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "Sort each failure into the category it belongs to.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "syntax",
+          "text": "Syntax error in a configuration file"
+        },
+        {
+          "id": "cert",
+          "text": "Certificate issue"
+        },
+        {
+          "id": "api",
+          "text": "API communication failure"
+        },
+        {
+          "id": "app",
+          "text": "Application failure"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "A trailing comma after the last member of a JSON object"
+        },
+        {
+          "id": "i2",
+          "text": "The server sends its certificate without the intermediate"
+        },
+        {
+          "id": "i3",
+          "text": "An agent's check-in is blocked by a firewall rule on its outbound port"
+        },
+        {
+          "id": "i4",
+          "text": "A service exits because a required environment variable is unset"
+        },
+        {
+          "id": "i5",
+          "text": "A tab character used to indent a YAML file"
+        },
+        {
+          "id": "i6",
+          "text": "The certificate names a different host than the one requested"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "syntax",
+        "i2": "cert",
+        "i3": "api",
+        "i4": "app",
+        "i5": "syntax",
+        "i6": "cert"
+      }
+    },
+    "explanation": "File grammar mistakes are syntax errors, chain and name problems are certificate issues, a blocked agent connection is a communication failure, and a service that cannot start for lack of a variable is an application failure.",
+    "partExplanations": {
+      "i1": "JSON allows commas only between members, so this is a syntax error.",
+      "i2": "A missing intermediate leaves the chain incomplete, which is a certificate issue.",
+      "i3": "A blocked outbound port stops the agent from reaching the server, a communication failure.",
+      "i4": "The service cannot start without the variable, an application failure.",
+      "i5": "YAML forbids tab indentation, so this is a syntax error.",
+      "i6": "A name that does not match the request is a certificate issue."
+    },
+    "acronyms": [
+      "API",
+      "JSON",
+      "YAML"
+    ],
+    "status": "draft"
+  }
+]

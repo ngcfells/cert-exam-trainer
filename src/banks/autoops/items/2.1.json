@@ -1,0 +1,2384 @@
+[
+  {
+    "id": "at1-2-1-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does the term configuration drift describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Running systems that have diverged from their intended settings"
+        },
+        {
+          "id": "b",
+          "text": "A configuration file that has grown too large to read"
+        },
+        {
+          "id": "c",
+          "text": "A change that is released to a few servers at a time"
+        },
+        {
+          "id": "d",
+          "text": "A backup of settings kept in a second location"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Drift is the gap that opens when live systems are changed outside their declared configuration, for example by a manual edit. An oversized file is a readability problem, a change released to a few servers at a time is a staged rollout, and a backup of settings is a recovery copy.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "During an incident an engineer hand-edited a connection limit on a production proxy, and the team agrees the edit should stay. A drift report now flags the proxy. What is the best remediation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reapply the declared configuration so the old value returns"
+        },
+        {
+          "id": "b",
+          "text": "Edit the state file by hand and leave the proxy as it is"
+        },
+        {
+          "id": "c",
+          "text": "Record the new value in the declared configuration"
+        },
+        {
+          "id": "d",
+          "text": "Turn off drift reports for this proxy until the next release"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The live edit is now the intended value, so the declared configuration must change to match; otherwise the next reapply would undo a correct fix. Reapplying the old declaration discards the fix, editing the state file changes neither the proxy nor the declaration, and silencing the report only hides the gap.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does an infrastructure state file mainly record?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The passwords that users type into deployed applications"
+        },
+        {
+          "id": "b",
+          "text": "A history of every commit made to the repository"
+        },
+        {
+          "id": "c",
+          "text": "The order in which engineers approved each change"
+        },
+        {
+          "id": "d",
+          "text": "The real resources created for each declared definition"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "State maps each declared definition to the real object that was created, with its identifiers and attributes, so the tool knows what to update or delete. User passwords are application data, commit history lives in source control, and approvals belong to the change process.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Two engineers start an apply against the same environment at the same moment, and the shared record of resources ends up corrupted. Which feature prevents this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A lock held while each run is in progress"
+        },
+        {
+          "id": "b",
+          "text": "Tags that name the team owning each resource"
+        },
+        {
+          "id": "c",
+          "text": "A preview step that lists the planned changes"
+        },
+        {
+          "id": "d",
+          "text": "Output values that a module exports to others"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A lock stops a second run from touching the shared record while the first is still working, so two runs cannot overwrite each other. Tags only label resources, a preview step shows planned changes without blocking overlap, and module outputs just pass values on.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An audit finds that the state file for a database module holds the administrator password in readable text. What is the best response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Commit the state file next to the code so reviewers can see it"
+        },
+        {
+          "id": "b",
+          "text": "Delete the state file after each apply to keep it empty"
+        },
+        {
+          "id": "c",
+          "text": "Rename the file so that the password is harder to find"
+        },
+        {
+          "id": "d",
+          "text": "Encrypt the state storage and limit who can read it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "State often contains secret attributes as a side effect of tracking resources, so the storage should be encrypted and readable only by people and jobs that need it. Committing the file widens the audience, deleting it after each apply loses the record of what exists, and renaming it is obscurity, not protection.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An apply job crashed halfway, and every new run now stops with an error saying the state is locked by a run that began three hours ago. What should the engineer do first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Confirm the locking run is gone, then release that lock"
+        },
+        {
+          "id": "b",
+          "text": "Delete the state file so a fresh one is created"
+        },
+        {
+          "id": "c",
+          "text": "Wait for the lock to expire after a full day"
+        },
+        {
+          "id": "d",
+          "text": "Rerun the apply with locking turned off"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A crashed run can leave a stale lock, but releasing it while another run is live could let two applies collide, so the engineer checks first and then releases only that lock. Deleting the state loses track of real resources, many backends never expire a lock on their own, and disabling locking removes the protection when it matters most.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A scheduled check prints this comparison:\n```\nresource  setting       desired  actual\nweb-01    size          medium   medium\nweb-02    size          medium   large\nlb-01     idle_timeout  60       60\ndb-01     retention     14       7\n```\nWhat does reapplying the declared configuration do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Changes web-02 to large and sets db-01 retention to 7"
+        },
+        {
+          "id": "b",
+          "text": "Changes web-02 to medium and sets db-01 retention to 14"
+        },
+        {
+          "id": "c",
+          "text": "Changes web-01 to large and sets lb-01 timeout to 60"
+        },
+        {
+          "id": "d",
+          "text": "Changes only web-02 to medium and leaves db-01 retention at 7"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Reapplying makes the live values equal the desired column: web-02 goes from large back to medium, and db-01 retention goes from 7 to 14. web-01 and lb-01 already match, so they are untouched, and db-01 also drifted, so leaving it alone would keep the gap.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Browsers report an unknown issuer for `portal.example.internal`, although the certificate is within its validity dates and the name matches. The server sends only its own certificate. Which fix is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Extend the validity period of the server certificate"
+        },
+        {
+          "id": "b",
+          "text": "Move the private key to a different directory"
+        },
+        {
+          "id": "c",
+          "text": "Add the host name to each browser's allow list"
+        },
+        {
+          "id": "d",
+          "text": "Send the intermediate certificate along with the server one"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Browsers can build a path to a trusted root only if the server also presents the intermediate that signed its certificate. The dates are already valid, so a longer validity does not help; the key's directory has no effect on chain building; and allow lists would hide the problem on only a few clients.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A payments API went offline at midnight because its certificate expired unnoticed. Which change best prevents a repeat?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Automate renewal and alert when expiry is close"
+        },
+        {
+          "id": "b",
+          "text": "Restart the API each night to reload certificates"
+        },
+        {
+          "id": "c",
+          "text": "Pin the old certificate in every client"
+        },
+        {
+          "id": "d",
+          "text": "Store the certificate on a shared network drive"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Automated renewal removes the manual step that was missed, and an expiry alert catches renewals that fail. Restarting nightly only reloads a certificate that is itself expired, pinning the old certificate makes clients fail harder after a change, and a shared drive does not change the expiry date.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A build server was compromised, and the private key for a production certificate may have been copied. What should the team do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Renew the certificate with the same key pair before it expires"
+        },
+        {
+          "id": "b",
+          "text": "Delete the certificate file and keep using the same key pair"
+        },
+        {
+          "id": "c",
+          "text": "Have the CA revoke the certificate, then issue one on a new key pair"
+        },
+        {
+          "id": "d",
+          "text": "Change the permissions on the key and keep the certificate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A copied key can impersonate the service until its certificate stops being trusted, so the CA revokes it (it appears on the revocation list) and a replacement is issued on a fresh key pair. Renewing with the same key keeps the exposed key alive, deleting the file does not stop existing copies, and tightening permissions cannot undo a copy already taken.",
+    "acronyms": [
+      "CA"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does a certificate signing request contain?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The private key and the name of the issuing CA"
+        },
+        {
+          "id": "b",
+          "text": "A public key and the requested identity"
+        },
+        {
+          "id": "c",
+          "text": "The finished certificate and its full chain"
+        },
+        {
+          "id": "d",
+          "text": "The revocation status of the requesting host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The request carries the public key and the identity details, and it is signed with the matching private key to prove possession; the private key itself stays with its owner. The issuing CA's name, the finished chain and revocation status all come from the CA later.",
+    "acronyms": [
+      "CA"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Internal clients reject a service whose certificate was issued by the company's own CA, although the certificate is valid and the name matches. What is missing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A longer key on the certificate"
+        },
+        {
+          "id": "b",
+          "text": "A second certificate for the same service name"
+        },
+        {
+          "id": "c",
+          "text": "A newer revocation list published by the CA"
+        },
+        {
+          "id": "d",
+          "text": "The CA root in each client trust store"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Clients trust only the roots in their trust store, so a certificate from a private CA fails until that CA's root is installed on each client. A longer key and a second certificate do not create trust, and a revocation list only matters after trust is established.",
+    "acronyms": [
+      "CA"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Clients connect to `shop.example.internal`, but the certificate lists only `www.shop.example.internal`, and they report a name mismatch. Which reissued certificate fixes this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A certificate listing both host names"
+        },
+        {
+          "id": "b",
+          "text": "A certificate signed by a different intermediate"
+        },
+        {
+          "id": "c",
+          "text": "A certificate with a longer validity period"
+        },
+        {
+          "id": "d",
+          "text": "A certificate with a bigger key"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Clients compare the host name they used with the names inside the certificate, so the reissued certificate must list `shop.example.internal` as well. A different signer, a longer validity period or a bigger key leaves the list of names unchanged.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Where should the private key for a server certificate be kept?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "In the repository beside the deployment script"
+        },
+        {
+          "id": "b",
+          "text": "In the public bundle that clients download"
+        },
+        {
+          "id": "c",
+          "text": "In a secrets store or a file only the service can read"
+        },
+        {
+          "id": "d",
+          "text": "On a status page that the load balancer serves"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A private key has to stay confidential, so a secrets store or a file with tight permissions limits who can read it. A repository copy is exposed to everyone with access, the client bundle holds public certificates only, and a status page would publish the key.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An ACL checks rules from the lowest number up, and the first match decides:\n```\n10 deny   10.4.0.0/16 -> any  tcp 443\n20 permit 10.0.0.0/8  -> any  tcp 443\n```\nA host at `10.4.7.9` opens a connection to port 443. What happens?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is permitted by rule 20"
+        },
+        {
+          "id": "b",
+          "text": "It is denied by rule 10"
+        },
+        {
+          "id": "c",
+          "text": "It is denied after both rules match"
+        },
+        {
+          "id": "d",
+          "text": "It is held until an operator decides"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Rules are checked from the lowest number up and stop at the first match. The address `10.4.7.9` falls inside `10.4.0.0/16`, so rule 10 denies it before the broader permit is reached. Rule 20 never gets a say, the rules are not both applied, and no ACL holds packets for an operator.",
+    "acronyms": [
+      "ACL"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A stateless ACL on a web subnet allows inbound TCP 443. Requests reach the web servers, but clients never receive replies, and the only outbound rule allows TCP 443. Which rule fixes this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Allow inbound TCP on port 80 from any source"
+        },
+        {
+          "id": "b",
+          "text": "Allow outbound TCP on port 22 to any destination"
+        },
+        {
+          "id": "c",
+          "text": "Allow outbound TCP replies on high-numbered client ports"
+        },
+        {
+          "id": "d",
+          "text": "Allow inbound UDP on port 53 from the subnet"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A stateless filter does not remember connections, so replies need their own outbound rule covering the ephemeral ports that the client chose. Inbound port 80 or inbound UDP 53 change how requests arrive, not how replies leave, and outbound port 22 is unrelated to web responses.",
+    "acronyms": [
+      "ACL",
+      "TCP",
+      "UDP"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A subnet must hold 50 hosts. Using classic addressing, where the network and broadcast addresses are unusable, which is the smallest subnet that fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`/25`"
+        },
+        {
+          "id": "b",
+          "text": "`/26`"
+        },
+        {
+          "id": "c",
+          "text": "`/27`"
+        },
+        {
+          "id": "d",
+          "text": "`/28`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A `/26` has 64 addresses, 62 of them usable once the network and broadcast addresses are set aside, which covers 50 hosts. A `/27` gives only 30 usable and a `/28` gives 14. A `/25` gives 126, which fits but is larger than the smallest fit.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Two virtual networks must be connected, which requires address ranges that do not overlap. Which pair works?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`10.1.0.0/16` and `10.1.128.0/17`"
+        },
+        {
+          "id": "b",
+          "text": "`10.0.0.0/8` and `10.9.0.0/16`"
+        },
+        {
+          "id": "c",
+          "text": "`10.1.0.0/16` and `10.2.0.0/16`"
+        },
+        {
+          "id": "d",
+          "text": "`192.168.0.0/24` and `192.168.0.128/25`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The ranges `10.1.0.0/16` and `10.2.0.0/16` share no addresses. The range `10.1.128.0/17` lies inside `10.1.0.0/16`, `10.9.0.0/16` lies inside `10.0.0.0/8`, and `192.168.0.128/25` is the top half of `192.168.0.0/24`, so each of those pairs overlaps and routing between them would be ambiguous.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What most clearly makes a subnet public rather than private?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It uses a larger address range"
+        },
+        {
+          "id": "b",
+          "text": "Its hosts all carry a public domain name"
+        },
+        {
+          "id": "c",
+          "text": "It has a firewall rule that allows port 443"
+        },
+        {
+          "id": "d",
+          "text": "A default route to an internet gateway"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A subnet is public when its route table sends internet-bound traffic to an internet gateway; without that route it is private. Address range size, host names and one open port do not decide whether the subnet can reach the internet.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which subnet contains the address `10.20.5.77`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`10.20.5.0/26`"
+        },
+        {
+          "id": "b",
+          "text": "`10.20.5.64/26`"
+        },
+        {
+          "id": "c",
+          "text": "`10.20.5.128/26`"
+        },
+        {
+          "id": "d",
+          "text": "`10.20.6.0/24`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A `/26` holds 64 addresses, so `10.20.5.64/26` covers `.64` to `.127` and includes `.77`. The block `10.20.5.0/26` ends at `.63`, `10.20.5.128/26` starts at `.128`, and `10.20.6.0/24` has a different third octet.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A router has these routes:\n```\n10.0.0.0/8     via gw-core\n10.20.0.0/16   via gw-branch\n0.0.0.0/0      via gw-edge\n```\nWhere does the router send a packet for `10.20.3.4`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`gw-branch`, the most specific match"
+        },
+        {
+          "id": "b",
+          "text": "`gw-core`, the first route listed"
+        },
+        {
+          "id": "c",
+          "text": "`gw-edge`, the default route"
+        },
+        {
+          "id": "d",
+          "text": "`gw-core`, because it covers the most addresses"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Routers choose the longest matching prefix, and `10.20.0.0/16` is more specific than `10.0.0.0/8` or the default route. List order and breadth of coverage do not decide, and the default route is used only when nothing more specific matches.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Servers in a private subnet cannot download operating system updates from the internet, although they reach other subnets normally. Which change is needed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Open inbound port 22 on the subnet firewall"
+        },
+        {
+          "id": "b",
+          "text": "Move the database tier into the public subnet"
+        },
+        {
+          "id": "c",
+          "text": "Raise the time to live on the subnet's DNS records"
+        },
+        {
+          "id": "d",
+          "text": "Add a default route to a gateway that translates addresses"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Outbound-only access from private hosts needs a default route toward a gateway that translates their private addresses (network address translation), because they have no direct internet route. Inbound port 22 is for remote login, moving the database tier would expose it, and the lifetime of DNS records does not affect routing.",
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Two virtual networks are peered, but a server in network A cannot reach a server in network B. Firewall rules allow the traffic, and the address ranges do not overlap. What is the most likely missing piece?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A second internet gateway attached to network A"
+        },
+        {
+          "id": "b",
+          "text": "Routes to the peer's range in both route tables"
+        },
+        {
+          "id": "c",
+          "text": "A larger address range for the server in network B"
+        },
+        {
+          "id": "d",
+          "text": "A zone transfer between the two networks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Peering joins the networks, but packets still follow route tables, so each side needs an entry that sends the other side's range over the peering link. A second internet gateway or a bigger range changes nothing about this path, and a zone transfer copies DNS data, not packets.",
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A load balancer's health check requests `/healthz`, which returns 200 whenever the web process is running. The database fails, and users see errors although every instance still passes the check. What change is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Shorten the interval between checks to one second"
+        },
+        {
+          "id": "b",
+          "text": "Add more instances behind the same load balancer"
+        },
+        {
+          "id": "c",
+          "text": "Have `/healthz` also test the database connection"
+        },
+        {
+          "id": "d",
+          "text": "Switch the check to a plain open-port probe"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The check passes while the application cannot do its job, so it should exercise the dependencies the service needs and report failure when they are down. Faster checks, more instances and a port probe all still treat a running process as healthy.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A load balancer probes each instance every 10 seconds and marks it unhealthy after 3 consecutive failed probes. After an instance stops responding, roughly how long until it is removed from rotation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "About 3 seconds"
+        },
+        {
+          "id": "b",
+          "text": "About 10 seconds"
+        },
+        {
+          "id": "c",
+          "text": "About 30 seconds"
+        },
+        {
+          "id": "d",
+          "text": "About 60 seconds"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Three consecutive failures at 10-second intervals take 20 to 30 seconds, depending on where the failure falls between probes. A single probe or the interval alone would remove the instance too early, and 60 seconds would need six failures.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Requests to a service range from milliseconds to several minutes, and a round-robin balancer leaves some instances overloaded. Which algorithm helps most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Least connections"
+        },
+        {
+          "id": "b",
+          "text": "Source address hashing"
+        },
+        {
+          "id": "c",
+          "text": "Rotation in alphabetical order"
+        },
+        {
+          "id": "d",
+          "text": "Random selection once per hour"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Least connections sends each new request to the instance with the fewest active ones, which evens out uneven request lengths. Source hashing pins clients to instances, alphabetical rotation is just another fixed cycle, and hourly random selection does not track load.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Administrators should reach app servers over `ssh` only through the bastion host at `10.9.0.5`. Which firewall rule on the app subnet fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Allow TCP 22 from `0.0.0.0/0`"
+        },
+        {
+          "id": "b",
+          "text": "Allow TCP 22 from `10.9.0.5/32`"
+        },
+        {
+          "id": "c",
+          "text": "Allow TCP 22 from `10.9.0.0/16`"
+        },
+        {
+          "id": "d",
+          "text": "Allow TCP 3389 from `10.9.0.5/32`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A `/32` names exactly one host and port 22 is `ssh`, so the rule admits only the bastion. The range `0.0.0.0/0` admits everyone, a `/16` admits 65,536 addresses, and port 3389 is remote desktop, not `ssh`.",
+    "acronyms": [
+      "TCP"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which DNS record type maps a host name to an IPv6 address?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`A`"
+        },
+        {
+          "id": "b",
+          "text": "`MX`"
+        },
+        {
+          "id": "c",
+          "text": "`CNAME`"
+        },
+        {
+          "id": "d",
+          "text": "`AAAA`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`AAAA` records hold IPv6 addresses. An `A` record holds an IPv4 address, `MX` names the mail server for a domain, and `CNAME` makes one name an alias of another.",
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An engineer changed the `A` record for `app.example.internal` an hour ago. The authoritative server already returns the new address, yet a caching name server still returns the old one. The record's time to live is one day. What explains this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It serves a stored copy that has not aged out"
+        },
+        {
+          "id": "b",
+          "text": "The new address is blocked by a firewall"
+        },
+        {
+          "id": "c",
+          "text": "The `A` record cannot change once created"
+        },
+        {
+          "id": "d",
+          "text": "The change needs a matching `PTR` record first"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A caching server may keep an answer until its time to live runs out, so with a one-day lifetime it can serve the old address for hours after the change. A firewall would not alter the answer it gives, records can be edited at any time, and a `PTR` record belongs to reverse lookups and is not needed for a forward change.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "After a migration, `dig app.example.internal` shows the new address, but `curl http://app.example.internal` on one workstation still reaches the old server. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The record's time to live was set far too low"
+        },
+        {
+          "id": "b",
+          "text": "The workstation is using the wrong subnet mask"
+        },
+        {
+          "id": "c",
+          "text": "The load balancer health check is now failing"
+        },
+        {
+          "id": "d",
+          "text": "A local hosts file entry overrides DNS"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`dig` queries a name server directly and ignores the local hosts file, while `curl` uses the system resolver, which reads that file first. An old entry there pins the name to the old server on that workstation alone. A low lifetime would speed up changes, a wrong mask breaks local reachability, and a failing health check affects balancer targets rather than one machine's lookup.",
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE checks does a client make when it validates a server certificate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The server answers within one millisecond"
+        },
+        {
+          "id": "b",
+          "text": "The requested host name appears in the certificate"
+        },
+        {
+          "id": "c",
+          "text": "The certificate was issued in the client's own country"
+        },
+        {
+          "id": "d",
+          "text": "The chain leads to a CA that the client trusts"
+        },
+        {
+          "id": "e",
+          "text": "The current date falls inside the validity period"
+        },
+        {
+          "id": "f",
+          "text": "The server's private key is sent to the client for comparison"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "A client confirms that the certificate covers the host name it requested, that the chain ends at a CA in its trust store, and that today falls inside the validity dates. Response time and the issuing country play no part, and a private key is never sent to a client.",
+    "acronyms": [
+      "CA"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO practices help protect a state file that holds sensitive attribute values?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Store it in a shared backend with encryption at rest"
+        },
+        {
+          "id": "b",
+          "text": "Commit it to the same public repository as the code"
+        },
+        {
+          "id": "c",
+          "text": "Email a copy to each reviewer before every apply"
+        },
+        {
+          "id": "d",
+          "text": "Limit read access to the people and jobs that run applies"
+        },
+        {
+          "id": "e",
+          "text": "Delete it after each run so that no copy remains"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Encrypted shared storage and tight read access keep secrets in the state away from people who do not need them. A public repository and emailed copies spread them, and deleting the state after each run loses the record of which real resources exist.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are valid ways to resolve a confirmed configuration drift?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the report and wait for the next scheduled check"
+        },
+        {
+          "id": "b",
+          "text": "Reapply the declared configuration to restore the intended values"
+        },
+        {
+          "id": "c",
+          "text": "Rename the drifted resources so they no longer match"
+        },
+        {
+          "id": "d",
+          "text": "Turn off the comparison job for the affected systems"
+        },
+        {
+          "id": "e",
+          "text": "Change the declared configuration to adopt the live values"
+        },
+        {
+          "id": "f",
+          "text": "Restart the affected systems to clear the difference"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Drift is closed either by pushing the declared values back onto the system or by accepting the live values into the declaration. Deleting the report, renaming resources, disabling the comparison and restarting systems all leave the live settings and the declaration different.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "A database tier accepts TCP 5432 from the app subnet `10.0.2.0/24` and nothing else. Which TWO firewall rules implement least privilege?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Allow TCP 5432 from `10.0.2.0/24`"
+        },
+        {
+          "id": "b",
+          "text": "Allow TCP 5432 from `0.0.0.0/0`"
+        },
+        {
+          "id": "c",
+          "text": "Allow all TCP ports from `10.0.2.0/24`"
+        },
+        {
+          "id": "d",
+          "text": "Deny all other inbound traffic by default"
+        },
+        {
+          "id": "e",
+          "text": "Allow TCP 22 from `0.0.0.0/0`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Least privilege here means one source, one port, and a default deny for the rest. Opening 5432 to every address, opening every port to the app subnet, and allowing remote login from anywhere each grant more than the application needs.",
+    "acronyms": [
+      "TCP"
+    ]
+  },
+  {
+    "id": "at1-2-1-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO changes make a load balancer health check more reliable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mark an instance healthy as soon as its port opens"
+        },
+        {
+          "id": "b",
+          "text": "Probe once a day to limit traffic"
+        },
+        {
+          "id": "c",
+          "text": "Probe a lightweight path that exercises the service's dependencies"
+        },
+        {
+          "id": "d",
+          "text": "Check a static page served from a cache"
+        },
+        {
+          "id": "e",
+          "text": "Remove an instance after a single slow reply"
+        },
+        {
+          "id": "f",
+          "text": "Require several consecutive failures before removal"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "f"
+      ]
+    },
+    "explanation": "A path that exercises dependencies reports real health, and requiring consecutive failures avoids removing instances over one blip. An open port, a cached static page and a daily probe say little about current health, and removing an instance after one slow reply makes the pool flap.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are reasons to place web servers and database servers in separate subnets?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Each tier can have its own route table, so only the web tier needs an internet route"
+        },
+        {
+          "id": "b",
+          "text": "Subnets double the number of usable addresses in the network"
+        },
+        {
+          "id": "c",
+          "text": "Traffic between subnets no longer needs a router"
+        },
+        {
+          "id": "d",
+          "text": "Tiers in separate subnets automatically encrypt their traffic"
+        },
+        {
+          "id": "e",
+          "text": "Firewall rules and access control lists can be set differently for each tier"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "Separate subnets allow different routes and different filtering per tier, which keeps the database off the internet path. Splitting a network does not add addresses, traffic between subnets still crosses a router, and encryption has to be configured separately.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "The team moved `app.example.internal` to a new server yesterday and changed its record. Two resolvers now give different answers, and the authoritative server is `ns1.example.internal`. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ dig -h",
+        "Usage: dig [@server] name [type] [options]",
+        "  @server     name server to ask; default is the system resolver",
+        "  type        record type to request; default is A",
+        "  +short      print only the answer data",
+        "  -x address  reverse lookup of an address",
+        "$ dig @10.0.0.2 app.example.internal",
+        "app.example.internal.   86102   IN   A   10.1.2.20",
+        "$ dig @10.0.0.9 app.example.internal",
+        "app.example.internal.   300     IN   A   10.1.4.20"
+      ],
+      "steps": [
+        {
+          "id": "s1",
+          "label": "Choose what the two answers show",
+          "options": [
+            {
+              "id": "o1",
+              "text": "10.0.0.9 has a stale zone file"
+            },
+            {
+              "id": "o2",
+              "text": "10.0.0.2 is serving a cached answer with most of its lifetime left"
+            },
+            {
+              "id": "o3",
+              "text": "Both resolvers returned the same address"
+            },
+            {
+              "id": "o4",
+              "text": "10.0.0.2 failed to answer the query"
+            }
+          ]
+        },
+        {
+          "id": "s2",
+          "label": "Type a command that asks ns1.example.internal for app.example.internal and prints only the answer data"
+        },
+        {
+          "id": "s3",
+          "label": "Choose the step that lets clients pick up the next move fastest",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Raise the record lifetime to one week"
+            },
+            {
+              "id": "o2",
+              "text": "Delete the record and recreate it on cutover day"
+            },
+            {
+              "id": "o3",
+              "text": "Restart every client workstation after the cutover"
+            },
+            {
+              "id": "o4",
+              "text": "Lower the record lifetime well before the move"
+            }
+          ]
+        },
+        {
+          "id": "s4",
+          "label": "Type a command that does a reverse lookup of 10.1.4.20 and prints only the answer data"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "s1": [
+          "o2"
+        ],
+        "s2": [
+          "dig +short @ns1.example.internal app.example.internal",
+          "dig +short @ns1.example.internal app.example.internal A",
+          "dig +short @ns1.example.internal app.example.internal.",
+          "dig +short @ns1.example.internal app.example.internal. A",
+          "dig +short app.example.internal @ns1.example.internal",
+          "dig +short app.example.internal A @ns1.example.internal",
+          "dig +short app.example.internal. @ns1.example.internal",
+          "dig +short app.example.internal. A @ns1.example.internal",
+          "dig @ns1.example.internal +short app.example.internal",
+          "dig @ns1.example.internal +short app.example.internal A",
+          "dig @ns1.example.internal +short app.example.internal.",
+          "dig @ns1.example.internal +short app.example.internal. A",
+          "dig @ns1.example.internal app.example.internal +short",
+          "dig @ns1.example.internal app.example.internal A +short",
+          "dig @ns1.example.internal app.example.internal. +short",
+          "dig @ns1.example.internal app.example.internal. A +short",
+          "dig app.example.internal +short @ns1.example.internal",
+          "dig app.example.internal @ns1.example.internal +short",
+          "dig app.example.internal A +short @ns1.example.internal",
+          "dig app.example.internal A @ns1.example.internal +short",
+          "dig app.example.internal. +short @ns1.example.internal",
+          "dig app.example.internal. @ns1.example.internal +short",
+          "dig app.example.internal. A +short @ns1.example.internal",
+          "dig app.example.internal. A @ns1.example.internal +short"
+        ],
+        "s3": [
+          "o4"
+        ],
+        "s4": [
+          "dig -x 10.1.4.20 +short",
+          "dig +short -x 10.1.4.20"
+        ]
+      }
+    },
+    "explanation": "A record that was changed a day ago can still sit in a resolver cache until its time to live runs out, so the two answers differ while the authoritative data is already right. Querying the authoritative server with `+short` shows the real current value, lowering the lifetime ahead of a move shortens how long caches hold the old answer, and `-x` performs the reverse lookup.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "s1": "86102 seconds left on a one-day lifetime shows a cached copy; the other resolver has already fetched the new record.",
+      "s2": "Asking the authoritative server directly bypasses caches, and +short prints only the answer data.",
+      "s3": "A short lifetime set ahead of the move means caches expire quickly when the record changes.",
+      "s4": "The -x option turns an address into a reverse lookup, and +short trims the output."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "stem": "A three-tier application uses subnets `10.0.1.0/24` (web), `10.0.2.0/24` (app) and `10.0.3.0/24` (data). Customers reach the web tier over HTTPS, the web tier calls the app tier on port 8080, and the app tier uses the database on port 5432. The scanner range `203.0.113.0/24` must be blocked while the rest of the internet stays allowed. Rules are checked from the top and the first match wins. Configure the rules.",
+    "payload": {
+      "fields": [
+        {
+          "id": "web_src",
+          "label": "Source for the web tier rule that allows port 443",
+          "options": [
+            {
+              "id": "web",
+              "text": "10.0.1.0/24"
+            },
+            {
+              "id": "any",
+              "text": "0.0.0.0/0"
+            },
+            {
+              "id": "app",
+              "text": "10.0.2.0/24"
+            }
+          ]
+        },
+        {
+          "id": "app_src",
+          "label": "Source for the app tier rule that allows port 8080",
+          "options": [
+            {
+              "id": "web",
+              "text": "10.0.1.0/24"
+            },
+            {
+              "id": "any",
+              "text": "0.0.0.0/0"
+            },
+            {
+              "id": "data",
+              "text": "10.0.3.0/24"
+            }
+          ]
+        },
+        {
+          "id": "db_src",
+          "label": "Source for the data tier rule that allows port 5432",
+          "options": [
+            {
+              "id": "any",
+              "text": "0.0.0.0/0"
+            },
+            {
+              "id": "web",
+              "text": "10.0.1.0/24"
+            },
+            {
+              "id": "app",
+              "text": "10.0.2.0/24"
+            }
+          ]
+        },
+        {
+          "id": "block",
+          "label": "Position of the rule that denies 203.0.113.0/24 on the web tier",
+          "options": [
+            {
+              "id": "below",
+              "text": "Below the rule that allows port 443"
+            },
+            {
+              "id": "above",
+              "text": "Above the rule that allows port 443"
+            },
+            {
+              "id": "end",
+              "text": "After the final deny-all rule"
+            }
+          ]
+        },
+        {
+          "id": "default",
+          "label": "Action for traffic that matches no rule",
+          "options": [
+            {
+              "id": "deny",
+              "text": "Deny"
+            },
+            {
+              "id": "allow",
+              "text": "Allow"
+            },
+            {
+              "id": "log",
+              "text": "Allow and log"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "web_src": "any",
+        "app_src": "web",
+        "db_src": "app",
+        "block": "above",
+        "default": "deny"
+      }
+    },
+    "explanation": "Customers come from anywhere, so the web tier allows 443 from `0.0.0.0/0`, but each inner tier admits only the tier in front of it. The scanner deny has to sit above the broad allow, or the first match would let it in, and a default deny protects everything that no rule names.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "web_src": "Customers are on the internet, so only 0.0.0.0/0 serves them on port 443.",
+      "app_src": "Only the web subnet calls the app tier, so 10.0.1.0/24 is the narrowest source.",
+      "db_src": "Only the app subnet uses the database, so 10.0.2.0/24 is the narrowest source.",
+      "block": "The first match wins, so the deny must come before the broader allow it would otherwise hit.",
+      "default": "A default deny means anything not named by a rule is dropped."
+    },
+    "acronyms": [
+      "HTTPS"
+    ]
+  },
+  {
+    "id": "at1-2-1-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "A certificate on a busy service expires soon and must be replaced with no downtime. The new key is created before anything is sent to the CA, the chain is checked before any file is installed, and the old key is retired only after a client confirms the new certificate. Put the steps in order.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Install the new key and chain files next to the current ones"
+        },
+        {
+          "id": "s1",
+          "text": "Generate a new key pair and create a certificate signing request"
+        },
+        {
+          "id": "s6",
+          "text": "Confirm from a client that the new certificate is served, then retire the old key"
+        },
+        {
+          "id": "s3",
+          "text": "Check that the chain validates and that the certificate matches the new key"
+        },
+        {
+          "id": "s2",
+          "text": "Submit the request to the CA and receive the signed certificate and intermediate"
+        },
+        {
+          "id": "s5",
+          "text": "Reload the service gracefully so that new connections use the new certificate"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The key pair and request come first, the CA signs it, the chain and key match are verified, the files are placed beside the live ones, a graceful reload switches new connections over, and only a successful client check allows the old key to be retired. The service keeps answering throughout because the old files stay in place until the end.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "0": "The request is built from a fresh key pair, so it must exist before the CA is contacted.",
+      "1": "The CA signs the request and returns the certificate with its intermediate.",
+      "2": "Verification happens before any file is installed.",
+      "3": "Files go in beside the current ones so the live service is not touched yet.",
+      "4": "A graceful reload moves new connections to the new certificate without dropping existing ones.",
+      "5": "Retiring the old key waits until a client confirms the new certificate is served."
+    },
+    "acronyms": [
+      "CA"
+    ]
+  },
+  {
+    "id": "at1-2-1-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "stem": "A nightly check compared the declared configuration with the live settings. Use the drift report to answer each question.",
+    "payload": {
+      "caption": "Drift report: declared and live settings",
+      "columns": [
+        "Resource",
+        "Setting",
+        "Desired",
+        "Actual"
+      ],
+      "rows": [
+        [
+          "web-01",
+          "instance size",
+          "medium",
+          "medium"
+        ],
+        [
+          "web-02",
+          "instance size",
+          "medium",
+          "large"
+        ],
+        [
+          "web-02",
+          "owner tag",
+          "payments",
+          "none"
+        ],
+        [
+          "lb-01",
+          "health check path",
+          "/healthz",
+          "/healthz"
+        ],
+        [
+          "lb-01",
+          "idle timeout (s)",
+          "60",
+          "120"
+        ],
+        [
+          "fw-app",
+          "source for port 8080",
+          "10.0.1.0/24",
+          "0.0.0.0/0"
+        ],
+        [
+          "db-01",
+          "backup retention (days)",
+          "14",
+          "14"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "resources",
+          "label": "Resources with at least one drifted setting",
+          "options": [
+            {
+              "id": "r2",
+              "text": "2"
+            },
+            {
+              "id": "r3",
+              "text": "3"
+            },
+            {
+              "id": "r4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "settings",
+          "label": "Drifted settings in total",
+          "options": [
+            {
+              "id": "s4",
+              "text": "4"
+            },
+            {
+              "id": "s5",
+              "text": "5"
+            },
+            {
+              "id": "s3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "risk",
+          "label": "Drift with the greatest security risk",
+          "options": [
+            {
+              "id": "size",
+              "text": "web-02 instance size"
+            },
+            {
+              "id": "idle",
+              "text": "lb-01 idle timeout"
+            },
+            {
+              "id": "src",
+              "text": "fw-app source for port 8080"
+            }
+          ]
+        },
+        {
+          "id": "fix",
+          "label": "Best remediation for that drift",
+          "options": [
+            {
+              "id": "reapply",
+              "text": "Reapply the declared source 10.0.1.0/24"
+            },
+            {
+              "id": "adopt",
+              "text": "Declare 0.0.0.0/0 as the new source"
+            },
+            {
+              "id": "ignore",
+              "text": "Leave it and note it in the report"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "resources": "r3",
+        "settings": "s4",
+        "risk": "src",
+        "fix": "reapply"
+      }
+    },
+    "explanation": "Four rows differ between Desired and Actual: web-02 size, web-02 owner tag, lb-01 idle timeout and fw-app source. They belong to three resources, because web-02 appears twice. The firewall now accepts port 8080 from anywhere instead of the web subnet, which is the largest exposure, so restoring the declared source closes it.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "resources": "web-02, lb-01 and fw-app differ, so 3 resources have drift.",
+      "settings": "web-02 has two drifted settings plus one each on lb-01 and fw-app, giving 2 + 1 + 1 = 4.",
+      "risk": "Opening the app tier port to 0.0.0.0/0 exposes it beyond the web subnet.",
+      "fix": "The declared source is the intended one, so reapplying it removes the exposure."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-1-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "Place the component that meets each need named below the network.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Internet"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Gateway"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Web servers"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Database"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Spreads requests across healthy servers"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Subnet with a default route to the gateway"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Subnet with no route to the gateway"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Forwards packets between subnets"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Private subnet"
+        },
+        {
+          "id": "l2",
+          "text": "Zone file"
+        },
+        {
+          "id": "l3",
+          "text": "Load balancer"
+        },
+        {
+          "id": "l4",
+          "text": "Router"
+        },
+        {
+          "id": "l5",
+          "text": "Public subnet"
+        },
+        {
+          "id": "l6",
+          "text": "Drift report"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l3",
+        "z2": "l5",
+        "z3": "l1",
+        "z4": "l4"
+      }
+    },
+    "explanation": "A load balancer spreads traffic over healthy servers, a subnet whose default route reaches the gateway is public, one without that route is private, and a router moves packets between subnets by route entries. A zone file holds DNS data and a drift report compares settings, so neither is part of this path.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "z1": "The load balancer distributes requests and drops instances that fail health checks.",
+      "z2": "A default route to the gateway is what makes a subnet public.",
+      "z3": "With no route to the gateway the subnet is private, a good home for the database.",
+      "z4": "A router forwards packets between subnets using its route table."
+    },
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "at1-2-1-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 3,
+    "stem": "Host `10.4.7.9` cannot open a TCP connection to port 8443 on a server. The ACL below is checked from the lowest rule number up, and the first match decides. Select the rule that blocks the connection.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "05 allow tcp 10.8.0.0/16 to any port 8443"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "10 allow tcp 10.4.0.0/16 to any port 443"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "20 deny tcp 10.4.7.0/24 to any port 8443"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "30 allow tcp 10.4.0.0/16 to any port 8443"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "40 deny udp any to any"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "50 deny ip any to any"
+        }
+      ],
+      "spots": [
+        {
+          "id": "r05",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "05 allow tcp 10.8.0.0/16 to any port 8443"
+        },
+        {
+          "id": "r10",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "10 allow tcp 10.4.0.0/16 to any port 443"
+        },
+        {
+          "id": "r20",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "20 deny tcp 10.4.7.0/24 to any port 8443"
+        },
+        {
+          "id": "r30",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "30 allow tcp 10.4.0.0/16 to any port 8443"
+        },
+        {
+          "id": "r40",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "40 deny udp any to any"
+        },
+        {
+          "id": "r50",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "50 deny ip any to any"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "r20"
+      ]
+    },
+    "explanation": "The packet is TCP from 10.4.7.9 to port 8443. Rule 05 needs a source in 10.8.0.0/16 and rule 10 needs port 443, so neither matches. Rule 20 matches the source and port first and denies, so rules 30 and 50 are never reached; rule 40 covers UDP only.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "r05": "The source must be in 10.8.0.0/16, so it does not match this host.",
+      "r10": "It allows port 443 only, so it does not match port 8443.",
+      "r20": "10.4.7.9 is inside 10.4.7.0/24 and the port matches, so this is the first match and it denies.",
+      "r30": "It would allow the traffic, but rule 20 matches earlier, so it is never reached.",
+      "r40": "It covers UDP, and this connection is TCP.",
+      "r50": "It would match, but only if nothing earlier did, and rule 20 already did."
+    },
+    "acronyms": [
+      "ACL",
+      "TCP",
+      "UDP"
+    ]
+  },
+  {
+    "id": "at1-2-1-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 1,
+    "stem": "Match each purpose to the DNS record type that serves it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Maps a host name to an IPv4 address"
+        },
+        {
+          "id": "p2",
+          "text": "Makes one host name an alias of another"
+        },
+        {
+          "id": "p3",
+          "text": "Names the server that accepts mail for a domain"
+        },
+        {
+          "id": "p4",
+          "text": "Maps an IP address back to a host name"
+        },
+        {
+          "id": "p5",
+          "text": "Holds free-form text such as an ownership token"
+        },
+        {
+          "id": "p6",
+          "text": "Delegates a zone to its authoritative name servers"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Mail exchange record"
+        },
+        {
+          "id": "c2",
+          "text": "Pointer record"
+        },
+        {
+          "id": "c3",
+          "text": "Address record"
+        },
+        {
+          "id": "c4",
+          "text": "Name server record"
+        },
+        {
+          "id": "c5",
+          "text": "Canonical name record"
+        },
+        {
+          "id": "c6",
+          "text": "Text record"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c3",
+        "p2": "c5",
+        "p3": "c1",
+        "p4": "c2",
+        "p5": "c6",
+        "p6": "c4"
+      }
+    },
+    "explanation": "Each record type has one job: an address record answers forward lookups, an alias record points to another name, a mail record names the mail server, a pointer record answers reverse lookups, a text record carries arbitrary strings, and a name server record delegates the zone.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "p1": "An `A` record holds an IPv4 address for a name.",
+      "p2": "A `CNAME` record points one name at another name.",
+      "p3": "An `MX` record names the host that handles mail for the domain.",
+      "p4": "A `PTR` record supports reverse lookups from address to name.",
+      "p5": "A `TXT` record carries free-form strings such as verification tokens.",
+      "p6": "An `NS` record lists the name servers that are authoritative for the zone."
+    },
+    "acronyms": [
+      "DNS",
+      "IP"
+    ]
+  },
+  {
+    "id": "at1-2-1-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "stem": "A virtual network has an internet-facing web tier and a protected database tier. Sort each trait into the subnet type it describes.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "pub",
+          "text": "Public subnet"
+        },
+        {
+          "id": "priv",
+          "text": "Private subnet"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Its default route points to an internet gateway"
+        },
+        {
+          "id": "i2",
+          "text": "Hosts database servers that only the app tier may reach"
+        },
+        {
+          "id": "i3",
+          "text": "Hosts the internet-facing load balancer"
+        },
+        {
+          "id": "i4",
+          "text": "Has no route entry to an internet gateway"
+        },
+        {
+          "id": "i5",
+          "text": "Instances can hold addresses reachable from the internet"
+        },
+        {
+          "id": "i6",
+          "text": "Outbound updates pass through an address translation gateway"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "pub",
+        "i2": "priv",
+        "i3": "pub",
+        "i4": "priv",
+        "i5": "pub",
+        "i6": "priv"
+      }
+    },
+    "explanation": "A public subnet has a route to an internet gateway, so internet-facing components such as the load balancer and instances with reachable addresses live there. A private subnet has no such route, so protected tiers sit there and reach the internet only through a translation gateway.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "i1": "A default route to an internet gateway is what defines a public subnet.",
+      "i2": "Database servers shielded from the internet belong in a private subnet.",
+      "i3": "An internet-facing load balancer needs the public path.",
+      "i4": "No route to an internet gateway means the subnet is private.",
+      "i5": "Addresses reachable from the internet need the public routing.",
+      "i6": "Private hosts go out through a translation gateway instead of a direct route."
+    },
+    "acronyms": []
+  }
+]

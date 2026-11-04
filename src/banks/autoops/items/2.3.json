@@ -1,0 +1,2618 @@
+[
+  {
+    "id": "at1-2-3-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "After `POST /v1/orders` creates an order, which response header gives the address of the new order?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`Content-Type`"
+        },
+        {
+          "id": "b",
+          "text": "`Retry-After`"
+        },
+        {
+          "id": "c",
+          "text": "`Location`"
+        },
+        {
+          "id": "d",
+          "text": "`Authorization`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A `201 Created` reply carries `Location` with the address of the new resource. `Content-Type` names the format of a body, `Authorization` carries credentials, and `Retry-After` tells a client how long to wait before trying again.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A `POST /v1/reports` starts a long export. The service replies `202 Accepted` and a `Location` header that points to a status page. What does the reply tell the client?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It was accepted but is not finished yet"
+        },
+        {
+          "id": "b",
+          "text": "It finished and its file is in the reply body"
+        },
+        {
+          "id": "c",
+          "text": "It was refused because the report already exists"
+        },
+        {
+          "id": "d",
+          "text": "It will be repeated automatically after a short delay"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`202 Accepted` means the work was queued, and the status page is where the client checks progress. A finished export would be a `200` or `201` with the result, a duplicate would be a `409`, and the server does not schedule repeats on its own.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A script sends `GET /v1/orders/9981` and receives `404 Not Found`. What does this mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The token in the request has expired"
+        },
+        {
+          "id": "b",
+          "text": "The server ran out of memory while handling it"
+        },
+        {
+          "id": "c",
+          "text": "The `GET` method is not supported on that path"
+        },
+        {
+          "id": "d",
+          "text": "The server has no resource at that path"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`404` says nothing exists at the requested path. An expired token gives `401`, a server fault gives a `5XX` code, and an unsupported method gives `405`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A deployment script runs this command and the service replies `415 Unsupported Media Type`.\n```bash\ncurl -X POST https://api.example.internal/v1/tickets \\\n  -H \"Content-Type: text/plain\" \\\n  -d '{\"title\":\"disk full\"}'\n```\nWhich change fixes the request?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Change `-X POST` to `-X PUT`"
+        },
+        {
+          "id": "b",
+          "text": "Change the header to `Content-Type: application/json`"
+        },
+        {
+          "id": "c",
+          "text": "Add a header `Accept: application/json`"
+        },
+        {
+          "id": "d",
+          "text": "Add a header `Retry-After: 5`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The body is JSON but the `Content-Type` header says plain text, so the service refuses the media type. Changing the method or adding `Accept` leaves the mismatch in place, and `Retry-After` is a response header.",
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "at1-2-3-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A client times out and sends the identical `PUT /v1/users/42` request three times. What is the state of user 42 afterwards?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The same as after the first request that arrived"
+        },
+        {
+          "id": "b",
+          "text": "Three copies of the user exist under new addresses"
+        },
+        {
+          "id": "c",
+          "text": "The second request undoes the first one"
+        },
+        {
+          "id": "d",
+          "text": "The user is locked until an administrator resets it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`PUT` is idempotent: it replaces the resource at one address with the supplied body, so repeats leave the same state. It does not create copies, toggle the result, or lock anything.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A script calls a protected endpoint without any `Authorization` header. Which status does a well-built service return?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`403 Forbidden`"
+        },
+        {
+          "id": "b",
+          "text": "`404 Not Found`"
+        },
+        {
+          "id": "c",
+          "text": "`401 Unauthorized`"
+        },
+        {
+          "id": "d",
+          "text": "`405 Method Not Allowed`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`401` means credentials are missing or not valid. `403` is for a known identity that lacks permission, `404` means no such resource, and `405` says the method is not supported on that path.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A service account with a read-only scope sends a valid token on `DELETE /v1/orders/1042` and gets `403 Forbidden`. Which statement is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The token is missing or has expired"
+        },
+        {
+          "id": "b",
+          "text": "The identity is known but is not permitted to delete"
+        },
+        {
+          "id": "c",
+          "text": "The order does not exist on the server"
+        },
+        {
+          "id": "d",
+          "text": "The server cannot reach its order database"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`403` means the request was understood and the caller was identified, but the action is not allowed. A missing or expired token gives `401`, a missing order gives `404`, and an unreachable database gives a `5XX` code.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A monitoring script receives `502`, `503` and `504` replies from an API. Which status class do all three belong to?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "2XX, success with a body"
+        },
+        {
+          "id": "b",
+          "text": "3XX, redirect to elsewhere"
+        },
+        {
+          "id": "c",
+          "text": "4XX, request was wrong"
+        },
+        {
+          "id": "d",
+          "text": "5XX, server error"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Codes from 500 to 599 are server errors. 2XX is success, 3XX tells the client to look elsewhere, and 4XX blames the request.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-2-3-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A script posts a JSON body that is missing its closing brace. Which status best reports the problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`400 Bad Request`"
+        },
+        {
+          "id": "b",
+          "text": "`413 Content Too Large`"
+        },
+        {
+          "id": "c",
+          "text": "`405 Method Not Allowed`"
+        },
+        {
+          "id": "d",
+          "text": "`503 Service Unavailable`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A body that cannot be parsed is a malformed request, which is `400`. `413` is for a body over the size limit, `405` means the method is not supported on the path, and `503` means the service cannot take requests right now.",
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "at1-2-3-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A `POST /v1/users` tries to register an email address that already belongs to another user. Which status best reports the problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`401 Unauthorized`"
+        },
+        {
+          "id": "b",
+          "text": "`405 Method Not Allowed`"
+        },
+        {
+          "id": "c",
+          "text": "`409 Conflict`"
+        },
+        {
+          "id": "d",
+          "text": "`503 Service Unavailable`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`409` signals that the request clashes with the current state of the resource set. `401` is about credentials, `405` would mean `POST` is not supported on the path, and `503` is a temporary service fault.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "`DELETE /v1/reports` returns `405 Method Not Allowed` with the header `Allow: GET, POST`. What should the client conclude?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The path does not exist on this server"
+        },
+        {
+          "id": "b",
+          "text": "The path exists but does not support `DELETE`"
+        },
+        {
+          "id": "c",
+          "text": "The token lacks permission for that path"
+        },
+        {
+          "id": "d",
+          "text": "The server is busy and will accept `DELETE` later"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`405` plus `Allow` lists the methods the path does support. A missing path is `404`, a permission problem is `403`, and a busy server returns `503`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An automation job gets `429 Too Many Requests` with `Retry-After: 30`. What should the job do next?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Repeat the request at once with a fresh token"
+        },
+        {
+          "id": "b",
+          "text": "Change the method to `PUT` to bypass the limit"
+        },
+        {
+          "id": "c",
+          "text": "Stop and mark the order as permanently invalid"
+        },
+        {
+          "id": "d",
+          "text": "Wait about 30 seconds, then repeat the request"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`Retry-After` states how long to pause before another attempt, so the job waits and retries. Hammering the endpoint or changing method does not lift a rate limit, and the order itself is not at fault.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A gateway returns `504 Gateway Timeout` for `GET /v1/orders`. Which statement fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The client sent a body that is too large"
+        },
+        {
+          "id": "b",
+          "text": "The token was accepted but lacks the needed scope"
+        },
+        {
+          "id": "c",
+          "text": "The gateway got no timely answer from the service behind it"
+        },
+        {
+          "id": "d",
+          "text": "The path was moved to a new address"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`504` comes from an intermediary that waited too long for an upstream reply. An oversized body gives `413`, a scope problem gives `403`, and a moved path gives a `3XX` code.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "```bash\n$ curl http://api.example.internal/v1/orders/7\n$ curl -i http://api.example.internal/v1/orders/7\nHTTP/1.1 301 Moved Permanently\nLocation: https://api.example.internal/v1/orders/7\n```\nThe first command prints nothing. Which change makes `curl` print the order?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add `-L` so `curl` follows the `Location` header"
+        },
+        {
+          "id": "b",
+          "text": "Add `-X GET` to force the method"
+        },
+        {
+          "id": "c",
+          "text": "Add `-I` so only headers are requested"
+        },
+        {
+          "id": "d",
+          "text": "Add `-k` to skip certificate checks on the connection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "By default `curl` does not follow a `301`, so it shows the empty redirect body. `-L` follows `Location` to the new address. The method is already `GET`, `-I` asks for headers only, and `-k` concerns certificates, not redirects.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A client sends `GET /v1/config` with `If-None-Match: \"v7\"` and receives `304 Not Modified`. What should the client do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Retry with `If-Match` to force a refresh"
+        },
+        {
+          "id": "b",
+          "text": "Keep using its cached copy, because no new body was sent"
+        },
+        {
+          "id": "c",
+          "text": "Follow the `Location` header to a new address"
+        },
+        {
+          "id": "d",
+          "text": "Treat the configuration as deleted"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`304` tells the client its stored version still matches the server's `ETag`, so it reuses the cache. It does not mean the resource moved or was removed, and `If-Match` is for conditional writes.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Two engineers read a ticket and both get `ETag: \"a1\"`. The first sends `PUT /v1/tickets/55` with `If-Match: \"a1\"` and succeeds, so the ticket now has the tag `\"a2\"`. The second sends the same request with `If-Match: \"a1\"`. Which status does the service return?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`428 Precondition Required`"
+        },
+        {
+          "id": "b",
+          "text": "`304 Not Modified`"
+        },
+        {
+          "id": "c",
+          "text": "`401 Unauthorized`"
+        },
+        {
+          "id": "d",
+          "text": "`412 Precondition Failed`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The second `If-Match` no longer matches the current tag, so the condition fails and the service refuses the write with `412`. `428` applies when a client omits the condition, `304` answers conditional reads, and the credentials were never the problem.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A client sends `DELETE /v1/sessions/ab12` and gets `204 No Content`. What does the reply contain besides headers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "No content at all"
+        },
+        {
+          "id": "b",
+          "text": "A JSON copy of the deleted session"
+        },
+        {
+          "id": "c",
+          "text": "A plain-text confirmation message"
+        },
+        {
+          "id": "d",
+          "text": "A link to the next page of sessions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`204` means success with no body, so there is nothing to parse after the headers. A reply that returns the deleted record or a message would use a `200` instead.",
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "at1-2-3-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A script runs `DELETE /v1/sessions/abc` twice. The first call returns `204` and the second returns `404`. Is `DELETE` still idempotent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "No, because the second status proves the call changed state"
+        },
+        {
+          "id": "b",
+          "text": "No, because the RFC lists `DELETE` as not idempotent"
+        },
+        {
+          "id": "c",
+          "text": "Yes, because the server ends in the same state either way"
+        },
+        {
+          "id": "d",
+          "text": "Yes, because the server must return `204` again on the repeat"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Idempotency is about the effect on the server, not the status code: after one or many calls the session is gone. The RFC lists `DELETE` as idempotent, and nothing requires the repeat to return the same code.",
+    "acronyms": [
+      "RFC"
+    ]
+  },
+  {
+    "id": "at1-2-3-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Where should a script place a bearer token when it calls `GET /v1/orders`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "In the `Content-Type` header of the request"
+        },
+        {
+          "id": "b",
+          "text": "In the `Accept` request header"
+        },
+        {
+          "id": "c",
+          "text": "In the `Location` response header"
+        },
+        {
+          "id": "d",
+          "text": "In the `Authorization` request header"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Bearer tokens travel in `Authorization: Bearer <token>`. `Content-Type` and `Accept` describe formats, and `Location` is a response header that a client cannot send.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A script must call an endpoint that expects a username and password. Which `curl` option supplies them as `user:password`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`-d svc-deploy:secret`"
+        },
+        {
+          "id": "b",
+          "text": "`-u svc-deploy:secret`"
+        },
+        {
+          "id": "c",
+          "text": "`-o svc-deploy:secret`"
+        },
+        {
+          "id": "d",
+          "text": "`-X svc-deploy:secret`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`-u` builds a `Basic` `Authorization` header from the pair. `-d` sets a request body, `-o` names an output file, and `-X` sets the method.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An engineer wants only the response headers of `https://api.example.internal/v1/ping`, without downloading the body. Which command does that?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`curl -I https://api.example.internal/v1/ping`"
+        },
+        {
+          "id": "b",
+          "text": "`curl -i https://api.example.internal/v1/ping`"
+        },
+        {
+          "id": "c",
+          "text": "`curl -s https://api.example.internal/v1/ping`"
+        },
+        {
+          "id": "d",
+          "text": "`curl -L https://api.example.internal/v1/ping`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`-I` sends a `HEAD` request, so only headers come back. `-i` prints headers followed by the body, `-s` hides the progress meter but still prints the body, and `-L` follows redirects.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A pipeline step runs `curl -s https://api.example.internal/v1/health`. The service returns `503`, yet the step passes. Which option makes `curl` exit with an error on a 4XX or 5XX reply?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add `--include`"
+        },
+        {
+          "id": "b",
+          "text": "Add `--location`"
+        },
+        {
+          "id": "c",
+          "text": "Add `--insecure`"
+        },
+        {
+          "id": "d",
+          "text": "Add `--fail`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`curl` exits with success whenever it receives any reply unless `--fail` (`-f`) turns 400 and above into a failing exit code. `--include` only prints headers, `--location` follows redirects, and `--insecure` skips certificate checks.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which command saves the reply from `https://api.example.internal/v1/report` to a file named `report.json`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`wget -o report.json https://api.example.internal/v1/report`"
+        },
+        {
+          "id": "b",
+          "text": "`wget -P report.json https://api.example.internal/v1/report`"
+        },
+        {
+          "id": "c",
+          "text": "`wget -O report.json https://api.example.internal/v1/report`"
+        },
+        {
+          "id": "d",
+          "text": "`wget -q report.json https://api.example.internal/v1/report`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A capital `-O` names the output document. A lowercase `-o` writes the progress log to that file, `-P` sets a directory prefix, and `-q` just silences output while treating the name as another address.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Which `wget` option adds a custom request header such as `Accept: application/json`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`-H \"Accept: application/json\"`"
+        },
+        {
+          "id": "b",
+          "text": "`--header=\"Accept: application/json\"`"
+        },
+        {
+          "id": "c",
+          "text": "`-A \"Accept: application/json\"`"
+        },
+        {
+          "id": "d",
+          "text": "`--post-data=\"Accept: application/json\"`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`--header` sends an extra header with the request. In `wget`, `-H` means span hosts when recursing, `-A` sets a list of accepted file suffixes, and `--post-data` sends the text as a request body.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team keeps one Postman collection and wants to run its requests against both the staging and production hosts by switching a selection. What should hold the host name?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A fixed host typed into every request"
+        },
+        {
+          "id": "b",
+          "text": "A separate collection for each host"
+        },
+        {
+          "id": "c",
+          "text": "A header named `Host-Name` on each request"
+        },
+        {
+          "id": "d",
+          "text": "A variable such as `{{base_url}}` defined in each environment"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Environments store named variables, so one collection can use `{{base_url}}` and pick staging or production at run time. Hard-coded hosts and duplicate collections must be edited together, and a custom header does not change where the request goes.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In Postman, what is a collection?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A saved group of related requests that can be run together"
+        },
+        {
+          "id": "b",
+          "text": "A named set of variables for one deployment target"
+        },
+        {
+          "id": "c",
+          "text": "A history of the status codes that a server has returned to the app"
+        },
+        {
+          "id": "d",
+          "text": "A server that stores responses for later replay"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A collection bundles saved requests, optionally with folders and tests. The set of variables for a target is an environment, and Postman is a client tool that does not store server responses for replay.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An API retired `POST /v1/orders` in favor of a new address and wants every client to resend the same method and body there. Which status fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`301 Moved Permanently`"
+        },
+        {
+          "id": "b",
+          "text": "`308 Permanent Redirect`"
+        },
+        {
+          "id": "c",
+          "text": "`302 Found`"
+        },
+        {
+          "id": "d",
+          "text": "`307 Temporary Redirect`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`308` is permanent and requires the client to repeat the same method and body. `301` and `302` allow a client to switch `POST` to `GET`, and `307` keeps the method but is temporary.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-2-3-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A payment client retries `POST /v1/charges` after a timeout, and a customer is charged twice. Which design makes the retry safe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Resend the request as `GET` so repeats are harmless"
+        },
+        {
+          "id": "b",
+          "text": "Add a `Retry-After` header to the request"
+        },
+        {
+          "id": "c",
+          "text": "Send a unique idempotency key the service uses to detect repeats"
+        },
+        {
+          "id": "d",
+          "text": "Compress the body so the request finishes sooner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`POST` is not idempotent by default, so the client attaches a unique key and the service returns the first result for any repeat. `GET` cannot create a charge, `Retry-After` is a response header, and compression does not stop duplicates.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Only the `email` field of profile 7 must change, and the other fields must stay as they are. Which request fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`PATCH /v1/profiles/7` with a body that holds just `email`"
+        },
+        {
+          "id": "b",
+          "text": "`PUT /v1/profiles/7` with a body that holds just the `email` field"
+        },
+        {
+          "id": "c",
+          "text": "`POST /v1/profiles` with a body that holds just `email`"
+        },
+        {
+          "id": "d",
+          "text": "`DELETE /v1/profiles/7` followed by a body with `email`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`PATCH` applies a partial change to the resource. `PUT` replaces the whole resource, so omitted fields would be lost, `POST` to the collection creates a new profile, and `DELETE` removes the profile.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A script must add a new order to the collection and let the server choose the order number. Which request fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`PUT /v1/orders` with the order in the body"
+        },
+        {
+          "id": "b",
+          "text": "`POST /v1/orders` with the order in the body"
+        },
+        {
+          "id": "c",
+          "text": "`GET /v1/orders` with the order in the query"
+        },
+        {
+          "id": "d",
+          "text": "`DELETE /v1/orders` with the order in the body"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`POST` to a collection creates a new member and lets the server assign its address. `PUT` needs the full address of the target, `GET` only reads, and `DELETE` removes.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A retry wrapper may resend a request after a network timeout. Which THREE methods are idempotent, so resending is safe by definition?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`GET`"
+        },
+        {
+          "id": "b",
+          "text": "`POST`"
+        },
+        {
+          "id": "c",
+          "text": "`PUT`"
+        },
+        {
+          "id": "d",
+          "text": "`PATCH`"
+        },
+        {
+          "id": "e",
+          "text": "`DELETE`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "`GET`, `PUT` and `DELETE` are idempotent, so repeating them leaves the server in the same state. `POST` and `PATCH` are not idempotent by default, because each call can create or change something again.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A script sends a JSON body and wants JSON back. Which TWO request headers does it set?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`Content-Type: application/json`"
+        },
+        {
+          "id": "b",
+          "text": "`Location: /v1/orders`"
+        },
+        {
+          "id": "c",
+          "text": "`Accept: application/json`"
+        },
+        {
+          "id": "d",
+          "text": "`Retry-After: 10`"
+        },
+        {
+          "id": "e",
+          "text": "`ETag: \"v3\"`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "`Content-Type` describes the body being sent and `Accept` states the reply format the client wants. `Location`, `Retry-After` and `ETag` are headers that a server sends in replies.",
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "at1-2-3-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO replies are client errors (4XX)?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`502 Bad Gateway`"
+        },
+        {
+          "id": "b",
+          "text": "`304 Not Modified`"
+        },
+        {
+          "id": "c",
+          "text": "`404 Not Found`"
+        },
+        {
+          "id": "d",
+          "text": "`503 Service Unavailable`"
+        },
+        {
+          "id": "e",
+          "text": "`409 Conflict`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "`404` and `409` both fall in the 400 range, which blames the request. `502` and `503` are server-side errors, and `304` is a redirection-class code that means the cached copy is still valid.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "An update must be applied only if the resource is unchanged since the client read it. Which TWO headers make that check possible?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`Accept`"
+        },
+        {
+          "id": "b",
+          "text": "`ETag`"
+        },
+        {
+          "id": "c",
+          "text": "`Retry-After`"
+        },
+        {
+          "id": "d",
+          "text": "`If-Match`"
+        },
+        {
+          "id": "e",
+          "text": "`Location`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "The server labels each version with `ETag`, and the client sends that label back in `If-Match` so a stale write is refused. `Accept` picks a format, `Retry-After` sets a delay, and `Location` gives an address.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO Postman features support running the same requests against different hosts without editing each request?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A collection that groups the saved requests"
+        },
+        {
+          "id": "b",
+          "text": "A host name hard-coded in each request address"
+        },
+        {
+          "id": "c",
+          "text": "An environment that holds variables such as a base URL"
+        },
+        {
+          "id": "d",
+          "text": "A duplicate of each request for every host"
+        },
+        {
+          "id": "e",
+          "text": "Saved response examples attached to a request"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A collection keeps the requests together, and an environment supplies variables such as the base URL. Hard-coded hosts and duplicated requests must be edited one by one, and response examples document replies but do not change the target.",
+    "acronyms": [
+      "URL"
+    ]
+  },
+  {
+    "id": "at1-2-3-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO status codes are temporary redirects?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`301 Moved Permanently`"
+        },
+        {
+          "id": "b",
+          "text": "`302 Found`"
+        },
+        {
+          "id": "c",
+          "text": "`307 Temporary Redirect`"
+        },
+        {
+          "id": "d",
+          "text": "`308 Permanent Redirect`"
+        },
+        {
+          "id": "e",
+          "text": "`304 Not Modified`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "`302` and `307` tell a client to use another address this time while keeping the original address valid. `301` and `308` are permanent, and `304` is not a redirect at all.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "Manage order records on the orders API. Use the notes and help text shown, then type each command. Replies are not shown because nothing is run.",
+    "payload": {
+      "output": [
+        "$ cat api-notes.txt",
+        "Collection:  https://api.example.internal/v1/orders",
+        "One order:   https://api.example.internal/v1/orders/<n>",
+        "Bodies are JSON. A request with a body must say so in a Content-Type header.",
+        "The server picks the number of a new order. PATCH changes only the fields sent.",
+        "$ curl --help",
+        "Usage: curl [options] <url>",
+        " -X, --request <method>   method to send",
+        " -H, --header <header>    extra header, written \"Name: value\"",
+        " -d, --data <data>        request body, sent as given",
+        " -i, --include            print response headers before the body"
+      ],
+      "steps": [
+        {
+          "id": "create",
+          "label": "Type the command that creates an order with the body {\"sku\":\"A-100\",\"qty\":2}"
+        },
+        {
+          "id": "read",
+          "label": "Type the command that reads order 1042; no body or extra header is needed"
+        },
+        {
+          "id": "update",
+          "label": "Type the command that changes only the quantity of order 1042 to 5, with the body {\"qty\":5}"
+        },
+        {
+          "id": "delete",
+          "label": "Type the command that removes order 1042"
+        },
+        {
+          "id": "after",
+          "label": "Order 1042 is now deleted. Choose the status a later read of it returns",
+          "options": [
+            {
+              "id": "o1",
+              "text": "204 No Content, because the order is empty"
+            },
+            {
+              "id": "o2",
+              "text": "301 Moved Permanently, to an archive address"
+            },
+            {
+              "id": "o3",
+              "text": "404 Not Found, because the order is gone"
+            },
+            {
+              "id": "o4",
+              "text": "401 Unauthorized, because the owner is gone"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "create": [
+          "curl -X POST -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" -X POST https://api.example.internal/v1/orders",
+          "curl -X POST -H \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" -X POST https://api.example.internal/v1/orders",
+          "curl -X POST --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" -X POST https://api.example.internal/v1/orders",
+          "curl -X POST --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" -X POST https://api.example.internal/v1/orders",
+          "curl -X POST -H 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' -X POST https://api.example.internal/v1/orders",
+          "curl -X POST -H 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' -X POST https://api.example.internal/v1/orders",
+          "curl --request POST -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" --request POST https://api.example.internal/v1/orders",
+          "curl --request POST -H \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" --request POST https://api.example.internal/v1/orders",
+          "curl --request POST --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" --request POST https://api.example.internal/v1/orders",
+          "curl --request POST --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" --request POST https://api.example.internal/v1/orders",
+          "curl --request POST -H 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' --request POST https://api.example.internal/v1/orders",
+          "curl --request POST -H 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' --request POST https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl https://api.example.internal/v1/orders -X POST -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}'",
+          "curl https://api.example.internal/v1/orders -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\"",
+          "curl https://api.example.internal/v1/orders -H \"Content-Type: application/json\" -X POST -d '{\"sku\":\"A-100\",\"qty\":2}'",
+          "curl https://api.example.internal/v1/orders -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST",
+          "curl https://api.example.internal/v1/orders -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST -H \"Content-Type: application/json\"",
+          "curl https://api.example.internal/v1/orders -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" -X POST",
+          "curl https://api.example.internal/v1/orders --request POST --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}'",
+          "curl https://api.example.internal/v1/orders --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\"",
+          "curl https://api.example.internal/v1/orders --header \"Content-Type: application/json\" --request POST --data '{\"sku\":\"A-100\",\"qty\":2}'",
+          "curl https://api.example.internal/v1/orders --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST",
+          "curl https://api.example.internal/v1/orders --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header \"Content-Type: application/json\"",
+          "curl https://api.example.internal/v1/orders --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" --request POST"
+        ],
+        "read": [
+          "curl -X GET -i https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -X GET -i",
+          "curl -i -X GET https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -i -X GET",
+          "curl -X GET --include https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -X GET --include",
+          "curl --include -X GET https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --include -X GET",
+          "curl -X GET https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -X GET",
+          "curl --request GET -i https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --request GET -i",
+          "curl -i --request GET https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -i --request GET",
+          "curl --request GET --include https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --request GET --include",
+          "curl --include --request GET https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --include --request GET",
+          "curl --request GET https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --request GET",
+          "curl -i https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -i",
+          "curl --include https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --include",
+          "curl https://api.example.internal/v1/orders/1042"
+        ],
+        "update": [
+          "curl -X PATCH -H \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH -d '{\"qty\":5}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -H \"Content-Type: application/json\" -X PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -H \"Content-Type: application/json\" -d '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' -X PATCH -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' -H \"Content-Type: application/json\" -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH -H \"Content-Type: application/json\" --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --data '{\"qty\":5}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -H \"Content-Type: application/json\" -X PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -H \"Content-Type: application/json\" --data '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' -X PATCH -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' -H \"Content-Type: application/json\" -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --header \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH -d '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" -X PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" -d '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' -X PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --header \"Content-Type: application/json\" -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --header \"Content-Type: application/json\" --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --data '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" -X PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" --data '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' -X PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --header \"Content-Type: application/json\" -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH -H 'Content-Type: application/json' -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH -d '{\"qty\":5}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl -H 'Content-Type: application/json' -X PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -H 'Content-Type: application/json' -d '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' -X PATCH -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' -H 'Content-Type: application/json' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH -H 'Content-Type: application/json' --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --data '{\"qty\":5}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl -H 'Content-Type: application/json' -X PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -H 'Content-Type: application/json' --data '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' -X PATCH -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' -H 'Content-Type: application/json' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH -H \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH -d '{\"qty\":5}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -H \"Content-Type: application/json\" --request PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -H \"Content-Type: application/json\" -d '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --request PATCH -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' -H \"Content-Type: application/json\" --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH -H \"Content-Type: application/json\" --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --data '{\"qty\":5}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -H \"Content-Type: application/json\" --request PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -H \"Content-Type: application/json\" --data '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --request PATCH -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' -H \"Content-Type: application/json\" --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --header \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH -d '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" --request PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" -d '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --request PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --header \"Content-Type: application/json\" --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --header \"Content-Type: application/json\" --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --data '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" --request PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" --data '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --request PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --header \"Content-Type: application/json\" --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH -H 'Content-Type: application/json' -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH -d '{\"qty\":5}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl -H 'Content-Type: application/json' --request PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -H 'Content-Type: application/json' -d '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --request PATCH -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' -H 'Content-Type: application/json' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH -H 'Content-Type: application/json' --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --data '{\"qty\":5}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl -H 'Content-Type: application/json' --request PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -H 'Content-Type: application/json' --data '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --request PATCH -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' -H 'Content-Type: application/json' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -X PATCH -H \"Content-Type: application/json\" -d '{\"qty\":5}'",
+          "curl https://api.example.internal/v1/orders/1042 -X PATCH -d '{\"qty\":5}' -H \"Content-Type: application/json\"",
+          "curl https://api.example.internal/v1/orders/1042 -H \"Content-Type: application/json\" -X PATCH -d '{\"qty\":5}'",
+          "curl https://api.example.internal/v1/orders/1042 -H \"Content-Type: application/json\" -d '{\"qty\":5}' -X PATCH",
+          "curl https://api.example.internal/v1/orders/1042 -d '{\"qty\":5}' -X PATCH -H \"Content-Type: application/json\"",
+          "curl https://api.example.internal/v1/orders/1042 -d '{\"qty\":5}' -H \"Content-Type: application/json\" -X PATCH",
+          "curl https://api.example.internal/v1/orders/1042 --request PATCH --header \"Content-Type: application/json\" --data '{\"qty\":5}'",
+          "curl https://api.example.internal/v1/orders/1042 --request PATCH --data '{\"qty\":5}' --header \"Content-Type: application/json\"",
+          "curl https://api.example.internal/v1/orders/1042 --header \"Content-Type: application/json\" --request PATCH --data '{\"qty\":5}'",
+          "curl https://api.example.internal/v1/orders/1042 --header \"Content-Type: application/json\" --data '{\"qty\":5}' --request PATCH",
+          "curl https://api.example.internal/v1/orders/1042 --data '{\"qty\":5}' --request PATCH --header \"Content-Type: application/json\"",
+          "curl https://api.example.internal/v1/orders/1042 --data '{\"qty\":5}' --header \"Content-Type: application/json\" --request PATCH"
+        ],
+        "delete": [
+          "curl -X DELETE -i https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -X DELETE -i",
+          "curl -i -X DELETE https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -i -X DELETE",
+          "curl -X DELETE --include https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -X DELETE --include",
+          "curl --include -X DELETE https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --include -X DELETE",
+          "curl -X DELETE https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -X DELETE",
+          "curl --request DELETE -i https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --request DELETE -i",
+          "curl -i --request DELETE https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 -i --request DELETE",
+          "curl --request DELETE --include https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --request DELETE --include",
+          "curl --include --request DELETE https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --include --request DELETE",
+          "curl --request DELETE https://api.example.internal/v1/orders/1042",
+          "curl https://api.example.internal/v1/orders/1042 --request DELETE"
+        ],
+        "after": [
+          "o3"
+        ]
+      }
+    },
+    "explanation": "A new order is created with a POST to the collection and a JSON body that carries a Content-Type header. A read needs only the address, a PATCH changes just the fields it sends, and a DELETE targets the single order. A later read of a deleted order finds nothing at that address.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "create": "POST to the collection with the JSON header and body; curl also infers POST from the body.",
+      "read": "A plain curl with the order address performs a GET.",
+      "update": "PATCH to the single order with just the quantity, so other fields stay as they are.",
+      "delete": "DELETE to the single order address.",
+      "after": "Nothing exists at the address any more, so the service answers 404."
+    },
+    "acronyms": [
+      "API",
+      "JSON",
+      "POST"
+    ]
+  },
+  {
+    "id": "at1-2-3-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "stem": "Complete the requests that manage orders on the orders API. New orders get their number from the server, bodies are JSON, and a delete reply carries no body.",
+    "payload": {
+      "fields": [
+        {
+          "id": "create",
+          "label": "Method that adds a new order to the collection",
+          "options": [
+            {
+              "id": "o1",
+              "text": "PUT"
+            },
+            {
+              "id": "o2",
+              "text": "POST"
+            },
+            {
+              "id": "o3",
+              "text": "GET"
+            }
+          ]
+        },
+        {
+          "id": "ctype",
+          "label": "Header that tells the server the create body is JSON",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Content-Type: application/json"
+            },
+            {
+              "id": "o2",
+              "text": "Accept: application/json"
+            },
+            {
+              "id": "o3",
+              "text": "Retry-After: 30"
+            }
+          ]
+        },
+        {
+          "id": "update",
+          "label": "Method that changes only the quantity of order 1042",
+          "options": [
+            {
+              "id": "o1",
+              "text": "POST"
+            },
+            {
+              "id": "o2",
+              "text": "DELETE"
+            },
+            {
+              "id": "o3",
+              "text": "PATCH"
+            }
+          ]
+        },
+        {
+          "id": "guard",
+          "label": "Header that makes the update fail if another client changed the order after it was read",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Authorization: Bearer token"
+            },
+            {
+              "id": "o2",
+              "text": "If-Match: \"v3\""
+            },
+            {
+              "id": "o3",
+              "text": "Location: /v1/orders/1042"
+            }
+          ]
+        },
+        {
+          "id": "delete",
+          "label": "Status of a successful delete with no reply body",
+          "options": [
+            {
+              "id": "o1",
+              "text": "204 No Content"
+            },
+            {
+              "id": "o2",
+              "text": "201 Created"
+            },
+            {
+              "id": "o3",
+              "text": "304 Not Modified"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "create": "o2",
+        "ctype": "o1",
+        "update": "o3",
+        "guard": "o2",
+        "delete": "o1"
+      }
+    },
+    "explanation": "A POST to the collection lets the server choose the number, and Content-Type declares the JSON body. PATCH changes part of an order, If-Match carries the tag from the earlier read so a stale write fails, and a delete with nothing to return uses 204.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "create": "POST creates a member of the collection; PUT needs the full address and GET only reads.",
+      "ctype": "Content-Type describes the request body; Accept describes the reply wanted.",
+      "update": "PATCH sends a partial change, while POST creates and DELETE removes.",
+      "guard": "If-Match makes the write conditional on the tag read earlier.",
+      "delete": "204 means success with no body; 201 is for creation and 304 for cached reads."
+    },
+    "acronyms": [
+      "API",
+      "JSON",
+      "POST"
+    ]
+  },
+  {
+    "id": "at1-2-3-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "A client creates a support ticket, revises it, and removes it. Put the requests in the order the client sends them. Rules: the client needs the address from the create reply before it can touch the ticket; the tag from a read must be in hand before a conditional update is sent; the revised content is confirmed before the ticket is removed; the check for a missing ticket comes after the removal.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "Send a DELETE to the ticket address; the service replies 204 No Content"
+        },
+        {
+          "id": "s2",
+          "text": "Send a GET to the ticket address and note the ETag in the reply"
+        },
+        {
+          "id": "s6",
+          "text": "Send a GET to the ticket address and receive 404 Not Found"
+        },
+        {
+          "id": "s4",
+          "text": "Send a GET to the ticket address to confirm the revised content is stored"
+        },
+        {
+          "id": "s1",
+          "text": "Send a POST with the ticket as JSON; the service replies 201 Created with a Location header"
+        },
+        {
+          "id": "s3",
+          "text": "Send a PUT to the ticket address with the revised ticket and an If-Match header holding that tag"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The create reply supplies the address, a read supplies the tag, the conditional update uses it, a second read confirms the new content, the delete removes the ticket, and a final read shows it is gone.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "0": "The create comes first because its Location header gives the ticket address.",
+      "1": "The first read returns the ETag that the update needs.",
+      "2": "The conditional update sends that ETag in If-Match.",
+      "3": "The confirming read follows the update and precedes the removal.",
+      "4": "The delete removes the ticket after the content was confirmed.",
+      "5": "The closing read shows 404 because the ticket no longer exists."
+    },
+    "acronyms": [
+      "JSON",
+      "POST"
+    ]
+  },
+  {
+    "id": "at1-2-3-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "stem": "A script logged these ten calls against the orders API. Use the table to answer each question.",
+    "payload": {
+      "caption": "API call log",
+      "columns": [
+        "Row",
+        "Method",
+        "Path",
+        "Status",
+        "Note"
+      ],
+      "rows": [
+        [
+          "1",
+          "GET",
+          "/v1/orders/1042",
+          "200",
+          "ETag: \"v3\""
+        ],
+        [
+          "2",
+          "POST",
+          "/v1/orders",
+          "415",
+          "Content-Type: text/plain"
+        ],
+        [
+          "3",
+          "PATCH",
+          "/v1/orders/1042",
+          "200",
+          "If-Match: \"v3\""
+        ],
+        [
+          "4",
+          "DELETE",
+          "/v1/orders/1043",
+          "502",
+          "upstream reset"
+        ],
+        [
+          "5",
+          "GET",
+          "/v1/customers",
+          "301",
+          "Location: /v2/customers"
+        ],
+        [
+          "6",
+          "POST",
+          "/v1/orders",
+          "201",
+          "Location: /v1/orders/1044"
+        ],
+        [
+          "7",
+          "GET",
+          "/v1/orders",
+          "429",
+          "Retry-After: 30"
+        ],
+        [
+          "8",
+          "PUT",
+          "/v1/orders/1042",
+          "503",
+          "maintenance window"
+        ],
+        [
+          "9",
+          "GET",
+          "/v1/reports",
+          "404",
+          "no such report"
+        ],
+        [
+          "10",
+          "POST",
+          "/v1/orders",
+          "201",
+          "Location: /v1/orders/1045"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "ok",
+          "label": "How many calls succeeded (2XX)?",
+          "options": [
+            {
+              "id": "n3",
+              "text": "3"
+            },
+            {
+              "id": "n4",
+              "text": "4"
+            },
+            {
+              "id": "n5",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "client",
+          "label": "How many calls failed with a client error (4XX)?",
+          "options": [
+            {
+              "id": "n1",
+              "text": "2"
+            },
+            {
+              "id": "n2",
+              "text": "4"
+            },
+            {
+              "id": "n3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "server",
+          "label": "How many calls failed with a server error (5XX)?",
+          "options": [
+            {
+              "id": "n2",
+              "text": "2"
+            },
+            {
+              "id": "n3",
+              "text": "3"
+            },
+            {
+              "id": "n4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "redirect",
+          "label": "Which row is the redirect?",
+          "options": [
+            {
+              "id": "r1",
+              "text": "Row 1"
+            },
+            {
+              "id": "r5",
+              "text": "Row 5"
+            },
+            {
+              "id": "r7",
+              "text": "Row 7"
+            },
+            {
+              "id": "r9",
+              "text": "Row 9"
+            }
+          ]
+        },
+        {
+          "id": "wait",
+          "label": "Which call tells the client how long to wait before trying again?",
+          "options": [
+            {
+              "id": "r4",
+              "text": "Row 4"
+            },
+            {
+              "id": "r8",
+              "text": "Row 8"
+            },
+            {
+              "id": "r7",
+              "text": "Row 7"
+            },
+            {
+              "id": "r2",
+              "text": "Row 2"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "ok": "n4",
+        "client": "n3",
+        "server": "n2",
+        "redirect": "r5",
+        "wait": "r7"
+      }
+    },
+    "explanation": "Rows 1, 3, 6 and 10 returned a 2XX code, which makes four. Rows 2, 7 and 9 returned 415, 429 and 404, which makes three client errors. Rows 4 and 8 returned 502 and 503, which makes two server errors. Row 5 is the only 3XX reply, and row 7 carries the Retry-After note.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "ok": "Statuses 200, 200, 201 and 201 in rows 1, 3, 6 and 10 give 4.",
+      "client": "Rows 2 (415), 7 (429) and 9 (404) give 3.",
+      "server": "Rows 4 (502) and 8 (503) give 2.",
+      "redirect": "Row 5 returned 301, the only 3XX code in the log.",
+      "wait": "Row 7 has Retry-After: 30, which gives the delay."
+    },
+    "acronyms": [
+      "API",
+      "POST"
+    ]
+  },
+  {
+    "id": "at1-2-3-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "In this design the gateway checks tokens and the orders service owns the order data. Place the best element for each need named below the request path.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Caller"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Entry point"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Business logic"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Storage"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Sends Accept and reads Location after a 201"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Rejects a request with no token using 401"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Returns 404 for an order number that does not exist"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Holds the order record that a 201 reports"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Orders database"
+        },
+        {
+          "id": "l2",
+          "text": "Client script"
+        },
+        {
+          "id": "l3",
+          "text": "Static file server"
+        },
+        {
+          "id": "l4",
+          "text": "Orders service"
+        },
+        {
+          "id": "l5",
+          "text": "API gateway"
+        },
+        {
+          "id": "l6",
+          "text": "Message queue"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l2",
+        "z2": "l5",
+        "z3": "l4",
+        "z4": "l1"
+      }
+    },
+    "explanation": "The client script builds the request and reads the reply headers. The gateway authenticates and returns 401 before the service sees the call, the orders service knows which orders exist and returns 404, and the database holds the stored order. A static file server and a message queue play no part in this request path.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "z1": "The client sends Accept and uses the Location header from the reply.",
+      "z2": "The gateway checks tokens, so a missing token ends there with 401.",
+      "z3": "The service owns the order data, so it decides that an order does not exist.",
+      "z4": "The database stores the order record behind the service."
+    },
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-2-3-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "stem": "A script sent a request to create an order and it failed. The raw reply is shown line by line. Select the two lines that explain why the call failed and when the client may try again.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "HTTP/1.1 429 Too Many Requests"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Content-Type: application/json"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Content-Length: 61"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Retry-After: 30"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Server: gateway-edge-2"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "X-Request-Id: 8f21c4"
+        }
+      ],
+      "spots": [
+        {
+          "id": "status",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Status line"
+        },
+        {
+          "id": "ctype",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Content-Type header"
+        },
+        {
+          "id": "clen",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Content-Length header"
+        },
+        {
+          "id": "retry",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Retry-After header"
+        },
+        {
+          "id": "server",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Server header"
+        },
+        {
+          "id": "reqid",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "X-Request-Id header"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "status",
+        "retry"
+      ]
+    },
+    "explanation": "The status line shows 429, so the service refused the call because of the request rate, and Retry-After says to wait 30 seconds. The format, length, server name and request tag describe the reply but do not explain the failure.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "status": "The 429 status explains why the call failed.",
+      "ctype": "Content-Type only names the reply format.",
+      "clen": "Content-Length only gives the size of the reply body.",
+      "retry": "Retry-After gives the number of seconds to wait before another attempt.",
+      "server": "The Server header names the machine that replied and says nothing about the failure.",
+      "reqid": "The request tag helps support find the call in logs but does not explain it."
+    },
+    "acronyms": [
+      "HTTP"
+    ]
+  },
+  {
+    "id": "at1-2-3-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each status code to the meaning a client should take from it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "201 Created"
+        },
+        {
+          "id": "p2",
+          "text": "204 No Content"
+        },
+        {
+          "id": "p3",
+          "text": "304 Not Modified"
+        },
+        {
+          "id": "p4",
+          "text": "401 Unauthorized"
+        },
+        {
+          "id": "p5",
+          "text": "409 Conflict"
+        },
+        {
+          "id": "p6",
+          "text": "503 Service Unavailable"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "A new resource exists and its address is in the Location header"
+        },
+        {
+          "id": "c2",
+          "text": "The cached copy is still current, so no body was sent"
+        },
+        {
+          "id": "c3",
+          "text": "The request clashes with the current state of the resource"
+        },
+        {
+          "id": "c4",
+          "text": "The call worked and there is nothing to return"
+        },
+        {
+          "id": "c5",
+          "text": "The service cannot take requests right now"
+        },
+        {
+          "id": "c6",
+          "text": "The credentials are missing or were not accepted"
+        },
+        {
+          "id": "c7",
+          "text": "The resource moved permanently to a new address"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c4",
+        "p3": "c2",
+        "p4": "c6",
+        "p5": "c3",
+        "p6": "c5"
+      }
+    },
+    "explanation": "Each code carries a distinct meaning: 201 reports a creation, 204 a success with no body, 304 a still-valid cache, 401 a credentials problem, 409 a state clash and 503 a temporary service fault. The permanent move belongs to 301 and 308.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "p1": "201 reports a creation and points to the new resource with Location.",
+      "p2": "204 is success with an empty body.",
+      "p3": "304 answers a conditional read when the stored copy still matches.",
+      "p4": "401 means credentials are missing or not valid.",
+      "p5": "409 means the request clashes with the current state.",
+      "p6": "503 means the service cannot handle requests at the moment."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-3-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "stem": "Sort each request into the bucket that describes how repeating it behaves under the HTTP rules.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "idem",
+          "text": "Idempotent"
+        },
+        {
+          "id": "not",
+          "text": "Not idempotent by default"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "GET a list of orders"
+        },
+        {
+          "id": "i2",
+          "text": "PUT a full replacement of order 1042"
+        },
+        {
+          "id": "i3",
+          "text": "DELETE order 1042"
+        },
+        {
+          "id": "i4",
+          "text": "POST a new order to the orders collection"
+        },
+        {
+          "id": "i5",
+          "text": "PATCH that appends a note to order 1042"
+        },
+        {
+          "id": "i6",
+          "text": "POST that starts a new export job"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "idem",
+        "i2": "idem",
+        "i3": "idem",
+        "i4": "not",
+        "i5": "not",
+        "i6": "not"
+      }
+    },
+    "explanation": "GET, PUT and DELETE are idempotent, so repeating them leaves the same state. POST normally creates something new on every call, and a PATCH that appends adds another note each time.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "i1": "A read does not change state, so repeats are harmless.",
+      "i2": "Replacing a resource with the same content gives the same result every time.",
+      "i3": "After the first delete the order is gone, and repeats leave that state.",
+      "i4": "Each POST to a collection creates another order.",
+      "i5": "Appending adds one more note on each repeat.",
+      "i6": "Each POST starts another job run."
+    },
+    "acronyms": [
+      "HTTP",
+      "POST"
+    ]
+  }
+]

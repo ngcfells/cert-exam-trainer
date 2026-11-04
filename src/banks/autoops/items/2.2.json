@@ -1,0 +1,2314 @@
+[
+  {
+    "id": "at1-2-2-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A control node must run PowerShell commands on 40 Windows servers through the management channel that Windows provides for this purpose. Which technology is it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "WinRM, the Windows Remote Management service"
+        },
+        {
+          "id": "b",
+          "text": "Syslog, which forwards log lines to a collector"
+        },
+        {
+          "id": "c",
+          "text": "A message queue, which holds commands for each server"
+        },
+        {
+          "id": "d",
+          "text": "A remote desktop session, opened to every server"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "WinRM is the service Windows exposes for remote PowerShell sessions and automation. Syslog moves log messages rather than running commands, a message queue only stores messages for consumers, and a remote desktop session is interactive, so it does not suit an unattended run across 40 servers.",
+    "acronyms": [
+      "WinRM"
+    ]
+  },
+  {
+    "id": "at1-2-2-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Linux fleet has no automation software installed. The control node signs in to each server with a key pair, runs the commands, and disconnects. How is this approach best described?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Agent-based pull from a central server"
+        },
+        {
+          "id": "b",
+          "text": "Agentless remote execution over SSH"
+        },
+        {
+          "id": "c",
+          "text": "A local script run at each server prompt"
+        },
+        {
+          "id": "d",
+          "text": "A function started by a queue message"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Signing in with keys and running commands from a control node is remote execution, and SSH needs nothing beyond the SSH server Linux hosts already run, so it is agentless. Agent-based pull needs resident software on each host, a local script runs only on the machine where it is typed, and a queue-triggered function reacts to messages instead of connecting out.",
+    "acronyms": [
+      "SSH"
+    ]
+  },
+  {
+    "id": "at1-2-2-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What does this command do?\n```bash\nssh deploy@web01.example.internal 'systemctl is-active payments-api'\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Opens an interactive login shell on web01 and ignores the quoted text"
+        },
+        {
+          "id": "b",
+          "text": "Runs the quoted command on this machine, then connects to web01"
+        },
+        {
+          "id": "c",
+          "text": "Runs the quoted command on web01 as `deploy`, showing output here"
+        },
+        {
+          "id": "d",
+          "text": "Copies a file named in the quotes to web01 as `deploy`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "When a command follows the host, `ssh` runs it on the remote host under the named user and returns the output to the local terminal. Without a command it would open a login shell, the command is not run locally first, and copying files is the job of `scp` or `sftp`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Linux control node must reach Windows servers through the HTTPS listener of WinRM. Which port does that listener use by default?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Port 5985"
+        },
+        {
+          "id": "b",
+          "text": "Port 22"
+        },
+        {
+          "id": "c",
+          "text": "Port 3389"
+        },
+        {
+          "id": "d",
+          "text": "Port 5986"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The WinRM HTTPS listener defaults to port 5986. Port 5985 is the HTTP listener, port 22 is used by SSH, and port 3389 carries remote desktop sessions.",
+    "acronyms": [
+      "HTTP",
+      "HTTPS",
+      "SSH",
+      "WinRM"
+    ]
+  },
+  {
+    "id": "at1-2-2-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Several thousand branch laptops sit behind firewalls that allow only outbound connections, and many stay offline for days. The team wants each laptop to receive its settings whenever it reconnects. Which design fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A resident agent that checks in with a central server"
+        },
+        {
+          "id": "b",
+          "text": "A control node that opens inbound SSH sessions to each laptop"
+        },
+        {
+          "id": "c",
+          "text": "A nightly script that the control node runs against a host list"
+        },
+        {
+          "id": "d",
+          "text": "A shared folder of scripts that staff run when they choose"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An agent on each laptop starts the connection itself, so outbound-only firewalls are no obstacle and the laptop applies its settings the moment it is online. Inbound SSH sessions are blocked, a nightly push misses laptops that are offline, and a folder of scripts depends on staff remembering to run it.",
+    "acronyms": [
+      "SSH"
+    ]
+  },
+  {
+    "id": "at1-2-2-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which statement is a real drawback of agent-based management compared with agentless management?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Commands can run only while an operator is signed in to the host"
+        },
+        {
+          "id": "b",
+          "text": "A host cannot report whether it matches its desired state"
+        },
+        {
+          "id": "c",
+          "text": "An agent must be installed, updated and secured on every host"
+        },
+        {
+          "id": "d",
+          "text": "It cannot manage a fleet larger than a few dozen hosts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Resident agents add software to every managed host that must be installed, patched and protected. Agents run unattended, they usually report the host state back, and they are commonly used for very large fleets.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO are common transports for remote execution by automation tools?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "SSH"
+        },
+        {
+          "id": "b",
+          "text": "A DNS zone transfer"
+        },
+        {
+          "id": "c",
+          "text": "WinRM"
+        },
+        {
+          "id": "d",
+          "text": "A syslog stream"
+        },
+        {
+          "id": "e",
+          "text": "A local `cron` entry"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "SSH reaches Linux hosts and WinRM reaches Windows hosts, and both let a control node run commands remotely. A zone transfer copies name records, a syslog stream carries log lines, and a `cron` entry is local scheduling on one machine.",
+    "acronyms": [
+      "DNS",
+      "SSH",
+      "WinRM"
+    ]
+  },
+  {
+    "id": "at1-2-2-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An engineer started `./build.sh` in the foreground and then pressed Ctrl+Z to suspend it. Which command resumes the build in the background and returns the prompt?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`fg`"
+        },
+        {
+          "id": "b",
+          "text": "`bg`"
+        },
+        {
+          "id": "c",
+          "text": "`jobs`"
+        },
+        {
+          "id": "d",
+          "text": "`wait`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`bg` resumes the suspended job in the background so the prompt is free. `fg` would bring it back to the foreground, `jobs` only lists jobs, and `wait` blocks the prompt until the job finishes.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A shell session shows this history. What does the final `jobs` command list?\n```\n$ sleep 300 &\n[1] 4821\n$ sleep 200\n^Z\n[2]+  Stopped                 sleep 200\n$ jobs\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Job 1 stopped and job 2 running in the background"
+        },
+        {
+          "id": "b",
+          "text": "Both jobs running in the foreground"
+        },
+        {
+          "id": "c",
+          "text": "Both jobs stopped until `fg` is typed"
+        },
+        {
+          "id": "d",
+          "text": "Job 1 running in the background and job 2 stopped"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The trailing `&` started job 1 in the background, where it keeps running. Ctrl+Z suspended job 2, which `jobs` lists as stopped. Neither job is in the foreground, and job 1 was never suspended.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An engineer starts `./reindex.sh &` in an SSH session and closes the terminal window. The reindex stops partway. Which change lets the job keep running after the session ends?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`nohup ./reindex.sh &`"
+        },
+        {
+          "id": "b",
+          "text": "`./reindex.sh & fg %1`"
+        },
+        {
+          "id": "c",
+          "text": "`bg ./reindex.sh > /dev/null`"
+        },
+        {
+          "id": "d",
+          "text": "`jobs -l ./reindex.sh`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "When a terminal closes, the shell sends a hangup signal to its jobs, and `nohup` makes the command ignore it. Running `fg` returns the job to the foreground where it is still tied to the session, and `bg` and `jobs` take job numbers rather than a command to start.",
+    "acronyms": [
+      "SSH"
+    ]
+  },
+  {
+    "id": "at1-2-2-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In PowerShell, which cmdlet starts a command as a background job so the prompt returns immediately?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`Get-Job`"
+        },
+        {
+          "id": "b",
+          "text": "`Wait-Job`"
+        },
+        {
+          "id": "c",
+          "text": "`Start-Job`"
+        },
+        {
+          "id": "d",
+          "text": "`Receive-Job`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`Start-Job` launches the work as a background job. `Get-Job` lists existing jobs, `Wait-Job` blocks until a job finishes, and `Receive-Job` collects the output of a job.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are advantages of agent-based management for a large, mixed fleet?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Hosts behind firewalls can check in using outbound connections"
+        },
+        {
+          "id": "b",
+          "text": "No software is installed on any managed host"
+        },
+        {
+          "id": "c",
+          "text": "Each host can keep reporting whether it matches its desired state"
+        },
+        {
+          "id": "d",
+          "text": "Credentials for every host are stored on the control node"
+        },
+        {
+          "id": "e",
+          "text": "Changes reach every host at the same instant"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "An agent opens its own outbound connection, which works behind firewalls, and it can keep reporting state back to the server. Agent-based management does require installed software, hosts check in on their own schedule rather than all at once, and holding every host credential on a control node is a trait of agentless push.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which statement describes a declarative approach to configuration?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It lists every command in the exact order it must run"
+        },
+        {
+          "id": "b",
+          "text": "It records each change as a numbered script to apply"
+        },
+        {
+          "id": "c",
+          "text": "It runs only when an operator types it at a prompt"
+        },
+        {
+          "id": "d",
+          "text": "It states the desired end state, and the tool works out the steps"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A declarative definition describes the result and leaves the steps to the tool. Listing commands in order is imperative, numbered change scripts describe migrations, and running only on demand says nothing about how the configuration is written.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A deployment script contains this line and runs on every release.\n```bash\necho \"max_conn=200\" >> /etc/app/app.conf\n```\nAfter three releases, what does the file contain?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "One copy of the line, because the shell skips duplicates"
+        },
+        {
+          "id": "b",
+          "text": "Three copies of the line, because `>>` appends each time"
+        },
+        {
+          "id": "c",
+          "text": "One copy of the line, because `>>` replaces the file"
+        },
+        {
+          "id": "d",
+          "text": "No copy of the line, because the second run fails"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The append operator `>>` adds the line on every run, so an imperative step like this one is not safe to repeat. The shell does not detect duplicates, `>` rather than `>>` would replace the file, and appending to an existing file does not raise an error.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "This script runs on every release, and the second run stops at the first line.\n```bash\nmkdir /var/app/cache\nchown app:app /var/app/cache\n```\nWhich replacement for the first line makes the script safe to rerun?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`mkdir -p /var/app/cache`"
+        },
+        {
+          "id": "b",
+          "text": "`mkdir -f /var/app/cache`"
+        },
+        {
+          "id": "c",
+          "text": "`mkdir -m 755 /var/app/cache`"
+        },
+        {
+          "id": "d",
+          "text": "`mkdir --verbose /var/app/cache`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The `-p` option creates the directory only if needed and succeeds when it already exists, which makes the step idempotent. `-m` sets a mode and `-v` prints a message, but both still fail on an existing directory, and `-f` is not a `mkdir` option.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A declarative tool applied this definition and three web servers now exist.\n```yaml\nweb:\n  count: 3\n  size: small\n```\nAn operator deletes one server by hand and reruns the tool without changing the file. What happens?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The tool creates three new servers, for a total of five"
+        },
+        {
+          "id": "b",
+          "text": "The tool reports success and leaves two servers running as they are"
+        },
+        {
+          "id": "c",
+          "text": "The tool creates one server to bring the count back to three"
+        },
+        {
+          "id": "d",
+          "text": "The tool fails because the definition was already applied"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A declarative tool compares the real state with the stated end state and closes only the gap, which is one missing server. It does not add the full count again, it does not ignore the difference, and reapplying an unchanged definition is a normal, safe action.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team stores numbered database change scripts such as `001_create_orders.sql` and `002_add_index.sql`. A tool applies, in number order, only the scripts not yet recorded in the database. Which approach is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A full schema snapshot that replaces the database each release"
+        },
+        {
+          "id": "b",
+          "text": "Versioned migrations that are applied in order and tracked"
+        },
+        {
+          "id": "c",
+          "text": "A pull agent that reads the live schema and rewrites it"
+        },
+        {
+          "id": "d",
+          "text": "An ephemeral environment rebuilt for every commit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Ordered change scripts plus a record of what has run are the core of versioned migrations. A snapshot replacement would discard existing data, a pull agent reads a desired state rather than numbered scripts, and an ephemeral environment is about short-lived infrastructure.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "The script `003_add_status.sql` has already run in production. A developer edits that file to add one more column, and the tool now reports a checksum mismatch. What is the correct way to add the column?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rewrite the applied migration and update its stored checksum by hand"
+        },
+        {
+          "id": "b",
+          "text": "Delete the history row for 003 so the tool runs it again"
+        },
+        {
+          "id": "c",
+          "text": "Turn off checksum validation in the production tool"
+        },
+        {
+          "id": "d",
+          "text": "Add a new numbered migration that holds the extra column"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Applied migrations are treated as history, so new changes go into a new, higher-numbered migration. Editing the old file, deleting its history row or disabling validation would let production and the migration record disagree, and could rerun statements that already ran.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO statements describe declarative definitions?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "They converge on the same state, so applying them again is safe"
+        },
+        {
+          "id": "b",
+          "text": "Their steps run in the written order, from top to bottom"
+        },
+        {
+          "id": "c",
+          "text": "The tool compares actual state with the desired state to plan changes"
+        },
+        {
+          "id": "d",
+          "text": "A failed step must be guarded by an `if` check in the file"
+        },
+        {
+          "id": "e",
+          "text": "Each run adds to the changes made by the previous run"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A declarative definition states the end state, so the tool can compare it with reality, change only the difference and be rerun safely. Steps in a fixed order, guard checks written by hand and changes that pile up from run to run are traits of imperative scripts.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE are characteristics of ephemeral environments?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "They are built from code on demand"
+        },
+        {
+          "id": "b",
+          "text": "They are destroyed after the test run or branch ends"
+        },
+        {
+          "id": "c",
+          "text": "They keep long-lived data that staff patch by hand"
+        },
+        {
+          "id": "d",
+          "text": "They start from a known baseline each time"
+        },
+        {
+          "id": "e",
+          "text": "They are shared by every team for months"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Ephemeral environments are created from code, start from a known baseline and are removed when their purpose is done. Long-lived data patched by hand and months of shared use describe persistent environments.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which environment is created for one pull request, used for its tests, and destroyed after the merge?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An ephemeral environment"
+        },
+        {
+          "id": "b",
+          "text": "A persistent shared environment"
+        },
+        {
+          "id": "c",
+          "text": "A long-lived staging environment"
+        },
+        {
+          "id": "d",
+          "text": "A live production environment"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A short-lived environment built for one change and deleted afterward is ephemeral. Persistent, staging and production environments stay in place across many releases.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A long-lived staging environment passes the tests, but the same release fails on hosts that were freshly built from code. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The tests ran as foreground jobs instead of background jobs"
+        },
+        {
+          "id": "b",
+          "text": "Declarative definitions cannot describe a staging environment"
+        },
+        {
+          "id": "c",
+          "text": "Hand-made changes over time left staging out of line"
+        },
+        {
+          "id": "d",
+          "text": "Staging has fewer users than production does"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Persistent environments collect hand-made changes, so they drift away from what the code would build, and fresh hosts expose the difference. Foreground versus background has no bearing on test results, declarative definitions can describe staging, and user counts do not explain a failure on freshly built hosts.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A release manager runs one command on a control node, which then connects to 20 hosts and applies the update. Which provisioning technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Pull, started by each host"
+        },
+        {
+          "id": "b",
+          "text": "Push, started by the control node"
+        },
+        {
+          "id": "c",
+          "text": "Event-driven, started by a queue message"
+        },
+        {
+          "id": "d",
+          "text": "Local, started by a user at each host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "In a push model the control node initiates the connection and sends the change when told to. Pull has each host initiate, event-driven work starts from a message, and local work happens on one machine.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Each server runs a service that asks a central server for its configuration every 30 minutes and corrects any difference it finds. What is a benefit of this pull model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Changes reach every host at the same instant"
+        },
+        {
+          "id": "b",
+          "text": "No software has to be installed on any host"
+        },
+        {
+          "id": "c",
+          "text": "The central server needs inbound access to each host"
+        },
+        {
+          "id": "d",
+          "text": "Manual changes on a host are corrected without anyone starting a run"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Because each host checks in on a schedule and converges, drift is repaired without an operator starting anything. Hosts check in at different moments, a pull model needs a resident service, and hosts initiate the connection so the server needs no inbound access.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A vendor must keep 3,000 devices at customer sites in line with its settings. The devices sit behind customer firewalls that block inbound connections. Which provisioning technique is practical?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Pull, with each device contacting the vendor server"
+        },
+        {
+          "id": "b",
+          "text": "Push, with the vendor control node opening SSH to each device"
+        },
+        {
+          "id": "c",
+          "text": "Push, with the vendor control node using WinRM on each device"
+        },
+        {
+          "id": "d",
+          "text": "Local, with a technician running a script on each device"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A device that reaches out on its own works through firewalls that block inbound traffic. Both push options need an inbound path to every device, and sending technicians to 3,000 sites does not scale.",
+    "acronyms": [
+      "SSH",
+      "WinRM"
+    ]
+  },
+  {
+    "id": "at1-2-2-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are benefits of placing a message queue between a producer and its consumers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Consumers can fall behind or restart without the producer losing messages"
+        },
+        {
+          "id": "b",
+          "text": "The producer waits for the consumer reply before it continues"
+        },
+        {
+          "id": "c",
+          "text": "More workers can be added to share the load"
+        },
+        {
+          "id": "d",
+          "text": "The producer must know the address of each consumer"
+        },
+        {
+          "id": "e",
+          "text": "Messages are never delayed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A queue stores messages until they are handled, so consumers can restart or lag, and several workers can read from it to share the work. Waiting for a reply, tracking consumer addresses and zero delay are not what a queue provides; it decouples the two sides, which allows delay.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A control node pushed a patch to 500 hosts, but 40 were powered off during the run. In a pure push model, what is the result?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The 40 hosts apply the patch themselves when they boot"
+        },
+        {
+          "id": "b",
+          "text": "The control node holds the patch and delivers it with no extra setup"
+        },
+        {
+          "id": "c",
+          "text": "The 40 hosts stay unpatched until another push reaches them"
+        },
+        {
+          "id": "d",
+          "text": "The 460 reachable hosts roll the patch back"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Push changes only the hosts that are reachable when the run happens, so missed hosts wait for a later run. Hosts do not fetch the patch on their own in a pure push model, redelivery needs additional logic, and the patched hosts keep their patch.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Whenever a file lands in storage, a message is published to a topic and each subscriber of that topic gets a copy. What is this pattern called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A timer-based poll"
+        },
+        {
+          "id": "b",
+          "text": "A notification-based event"
+        },
+        {
+          "id": "c",
+          "text": "A nightly batch export of the files"
+        },
+        {
+          "id": "d",
+          "text": "A manual review step by a person"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Publishing to a topic that notifies every subscriber is a notification-based event. A poll checks on a timer, a batch export runs at set times, and a manual review needs a person.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Billing, search and audit services must each react to every new-order event. Which mechanism delivers a copy of each event to all three?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A queue read by three competing consumers"
+        },
+        {
+          "id": "b",
+          "text": "A function that checks the order table every hour"
+        },
+        {
+          "id": "c",
+          "text": "A `cron` job on the billing server"
+        },
+        {
+          "id": "d",
+          "text": "A notification topic with three subscribers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A topic copies each event to every subscriber. With competing consumers each message goes to just one of them, and an hourly check or a `cron` job is polling rather than event delivery.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Order spikes arrive faster than a back-end can process them. A team places each order in a message queue that workers read at their own pace. What does the queue provide?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A buffer that decouples the senders from the workers"
+        },
+        {
+          "id": "b",
+          "text": "An immediate reply with the final result to each web request"
+        },
+        {
+          "id": "c",
+          "text": "A lower processing time for every order in the backlog"
+        },
+        {
+          "id": "d",
+          "text": "A replacement for the workers that read the messages"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A queue absorbs bursts and lets senders and workers run at different speeds. It does not return the final result to the sender, it does not shorten each order's processing, and workers are still needed to read the messages.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A queue hides a message from other consumers for 60 seconds after it is received. This worker crashes inside `process`.\n```python\nmsg = queue.receive()\nprocess(msg)\nqueue.delete(msg)\n```\nWhat happens to the message?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is lost, because it was already received"
+        },
+        {
+          "id": "b",
+          "text": "It is deleted by the queue the moment it is received"
+        },
+        {
+          "id": "c",
+          "text": "It becomes visible again after the timeout and can be retried"
+        },
+        {
+          "id": "d",
+          "text": "It is copied to every subscriber as a notification"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The message is removed only by the explicit delete call, so after the visibility timeout it returns to the queue for another attempt. Receiving does not delete it, and a queue hands messages to consumers rather than notifying subscribers.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO are typical triggers for a function in an event-driven design?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A file upload to object storage"
+        },
+        {
+          "id": "b",
+          "text": "A message arriving on a queue"
+        },
+        {
+          "id": "c",
+          "text": "A developer saving a file in an editor on a laptop"
+        },
+        {
+          "id": "d",
+          "text": "A foreground job finishing in an interactive shell"
+        },
+        {
+          "id": "e",
+          "text": "A local policy cache refreshing on a pull agent"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Functions are started by events such as an upload or a queued message. Saving a file in an editor, a shell job ending and an agent refreshing its cache are local happenings that do not raise a cloud event.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A message fails processing five times in a row. The team wants the queue to keep moving but wants the message kept for inspection. What should be configured?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Unlimited immediate retries"
+        },
+        {
+          "id": "b",
+          "text": "A dead-letter queue after a maximum number of receives"
+        },
+        {
+          "id": "c",
+          "text": "Deletion of the message after the first failure"
+        },
+        {
+          "id": "d",
+          "text": "A larger limit on the total size of the queue"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "After a set number of failed receives, a dead-letter queue takes the message out of the main flow and keeps it for study. Endless retries keep blocking progress, deleting the message loses the evidence, and a larger size limit does not isolate the bad message.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Code that resizes each uploaded image runs only when a file arrives, scales out under load, is billed per invocation and needs no server management by the team. Which cloud model is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A persistent virtual machine"
+        },
+        {
+          "id": "b",
+          "text": "A pull-based agent"
+        },
+        {
+          "id": "c",
+          "text": "A versioned migration"
+        },
+        {
+          "id": "d",
+          "text": "Function as a service (FaaS)"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Event-triggered code that scales automatically and bills per invocation is function as a service. A persistent virtual machine runs and bills all the time and must be managed, an agent is software installed on a host, and a migration is an ordered database change.",
+    "acronyms": [
+      "FaaS"
+    ]
+  },
+  {
+    "id": "at1-2-2-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A function platform starts and stops instances as demand changes.\n```python\ncounter = 0\ndef handler(event):\n    global counter\n    counter += 1\n    return counter\n```\nWhy can't `counter` be trusted as a total count of invocations?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Each instance keeps its own copy, and instances start and stop"
+        },
+        {
+          "id": "b",
+          "text": "A function cannot change a global variable"
+        },
+        {
+          "id": "c",
+          "text": "The handler runs only once for the whole deployment"
+        },
+        {
+          "id": "d",
+          "text": "The platform discards the returned value"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Every instance has its own memory, and an instance that stops takes its count with it, so function code should be treated as stateless and keep totals in external storage. Python allows the global update, the handler runs once per event, and the returned value is passed back to the caller.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which statement correctly contrasts a notification topic with a message queue?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A topic holds each message for one consumer; a queue copies it to all"
+        },
+        {
+          "id": "b",
+          "text": "A topic copies each message to every subscriber; a queue gives each to one consumer"
+        },
+        {
+          "id": "c",
+          "text": "A topic needs an agent on each host; a queue needs a control node"
+        },
+        {
+          "id": "d",
+          "text": "A topic is read by polling; a queue pushes to subscribers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Fan-out to all subscribers is how a topic works, while a queue hands each message to a single consumer. The first alternative reverses them, neither one requires an agent or a control node, and consumers typically poll a queue while a topic pushes to subscribers.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "An engineer works in a Bash shell on build01.example.internal with two background jobs running. Review the session, then complete each step.",
+    "payload": {
+      "output": [
+        "$ ./nightly-report.sh > report.log 2>&1 &",
+        "[1] 5102",
+        "$ ./sync-assets.sh &",
+        "[2] 5107",
+        "$ jobs",
+        "[1]-  Running                 ./nightly-report.sh > report.log 2>&1 &",
+        "[2]+  Running                 ./sync-assets.sh &"
+      ],
+      "steps": [
+        {
+          "id": "fg",
+          "label": "Type the command that brings job 2 to the foreground"
+        },
+        {
+          "id": "ctrlz",
+          "label": "You press Ctrl+Z while job 2 is in the foreground. Choose what happens",
+          "options": [
+            {
+              "id": "kill",
+              "text": "Job 2 is killed and its output is lost"
+            },
+            {
+              "id": "stop",
+              "text": "Job 2 is suspended and the prompt returns"
+            },
+            {
+              "id": "bg",
+              "text": "Job 2 keeps running in the background"
+            },
+            {
+              "id": "exit",
+              "text": "The shell exits and ends both jobs"
+            }
+          ]
+        },
+        {
+          "id": "bg",
+          "label": "Type the command that resumes the suspended job 2 in the background"
+        },
+        {
+          "id": "nohup",
+          "label": "Type the command that starts ./prune-cache.sh in the background and keeps it running after the terminal closes, using nohup and no output redirection"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "fg": [
+          "fg %2",
+          "fg 2",
+          "fg",
+          "fg %+",
+          "fg %%"
+        ],
+        "ctrlz": [
+          "stop"
+        ],
+        "bg": [
+          "bg %2",
+          "bg 2",
+          "bg",
+          "bg %+",
+          "bg %%"
+        ],
+        "nohup": [
+          "nohup ./prune-cache.sh &",
+          "nohup ./prune-cache.sh&"
+        ]
+      }
+    },
+    "explanation": "The `fg` command takes a job number with a percent sign, and with no number it acts on the current job, which is job 2 (marked with a plus). Ctrl+Z suspends a foreground job, `bg` resumes it in the background, and `nohup` with a trailing ampersand starts a command that ignores the hangup signal when the terminal closes.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "fg": "The `fg` command with %2, or alone because job 2 is the current job, returns it to the foreground.",
+      "ctrlz": "Ctrl+Z suspends the foreground job and gives the prompt back; it does not kill the job or move it to the background.",
+      "bg": "After the suspend, the `bg` command resumes job 2 in the background.",
+      "nohup": "The `nohup` prefix makes the script ignore the hangup signal and the trailing ampersand backgrounds it."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "stem": "A company runs five different workloads. Choose the best automation approach for each one.",
+    "payload": {
+      "fields": [
+        {
+          "id": "web",
+          "label": "120 Linux web servers in one data center, updated only in a change window set by the release manager",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Pull: an agent on each server checks in every hour"
+            },
+            {
+              "id": "o2",
+              "text": "Push: the control node connects over SSH when the window opens"
+            },
+            {
+              "id": "o3",
+              "text": "Event: a function runs when a queue message arrives"
+            }
+          ]
+        },
+        {
+          "id": "win",
+          "label": "40 Windows servers in the same data center, where no extra software may be installed",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Pull: an agent installed on each server"
+            },
+            {
+              "id": "o2",
+              "text": "Local: an administrator runs a script at each console"
+            },
+            {
+              "id": "o3",
+              "text": "Push: the control node connects over WinRM"
+            }
+          ]
+        },
+        {
+          "id": "laptop",
+          "label": "3,000 roaming laptops that are often offline and sit behind home routers",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Pull: an agent applies settings when the laptop reconnects"
+            },
+            {
+              "id": "o2",
+              "text": "Push: the control node connects over SSH to each laptop"
+            },
+            {
+              "id": "o3",
+              "text": "Push: the control node connects over WinRM to each laptop"
+            }
+          ]
+        },
+        {
+          "id": "tmp",
+          "label": "A build server that needs a nightly cleanup of its own temporary folder",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Push: the control node connects over SSH each night"
+            },
+            {
+              "id": "o2",
+              "text": "Event: a function runs for each deleted file"
+            },
+            {
+              "id": "o3",
+              "text": "Local: a command-line script on the build server"
+            }
+          ]
+        },
+        {
+          "id": "thumb",
+          "label": "A thumbnail must be created each time a user uploads a photo, with no server to manage",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Pull: an agent polls storage for new photos"
+            },
+            {
+              "id": "o2",
+              "text": "Event: a function runs when the upload event occurs"
+            },
+            {
+              "id": "o3",
+              "text": "Push: the control node connects over SSH every hour"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "web": "o2",
+        "win": "o3",
+        "laptop": "o1",
+        "tmp": "o3",
+        "thumb": "o2"
+      }
+    },
+    "explanation": "A scheduled, controlled change to a reachable fleet suits push, Windows servers that cannot take new software suit agentless WinRM, roaming offline laptops suit an agent that pulls, work on one machine suits a local script, and work triggered by an upload suits a function.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "web": "Reachable hosts and a fixed change window fit push over SSH from the control node.",
+      "win": "WinRM is built into Windows, so nothing has to be installed.",
+      "laptop": "Laptops that are offline or behind routers need an agent that starts the connection when it can.",
+      "tmp": "A task confined to one machine needs only a local command-line script.",
+      "thumb": "An upload event can trigger a function directly, with no server to manage."
+    },
+    "acronyms": [
+      "SSH",
+      "WinRM"
+    ]
+  },
+  {
+    "id": "at1-2-2-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "A photo upload must produce a thumbnail through an event-driven flow. Put the steps in the order they happen. Rule: a message is deleted from the queue only after the result has been written.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "The function writes the thumbnail back to storage"
+        },
+        {
+          "id": "s3",
+          "text": "The topic delivers a copy of the event to a queue as a message"
+        },
+        {
+          "id": "s6",
+          "text": "The function deletes the message from the queue"
+        },
+        {
+          "id": "s1",
+          "text": "A user uploads a photo to storage"
+        },
+        {
+          "id": "s4",
+          "text": "A function is triggered by the queued message and reads the photo"
+        },
+        {
+          "id": "s2",
+          "text": "Storage publishes a notification of the upload to a topic"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The upload raises a notification on a topic, the topic puts a copy on a queue, the message triggers the function, the function writes its result, and only then is the message removed so that a failure would let it be retried.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "0": "The upload is the event that starts the flow.",
+      "1": "Storage announces the upload by publishing to a topic.",
+      "2": "The topic fans the notification out, here into a queue message.",
+      "3": "The queued message triggers the function, which reads the photo.",
+      "4": "The function writes the thumbnail before it finishes.",
+      "5": "Deleting the message comes last, by the stated rule, so a failed run can be retried."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "stem": "Five fleets are managed as shown. Use the table to answer each question.",
+    "payload": {
+      "caption": "Fleets, methods and latest check-ins",
+      "columns": [
+        "Fleet",
+        "Method",
+        "Hosts",
+        "Check-in interval (min)",
+        "Hosts checked in on time"
+      ],
+      "rows": [
+        [
+          "orion",
+          "Pull",
+          "240",
+          "30",
+          "228"
+        ],
+        [
+          "lyra",
+          "Pull",
+          "160",
+          "60",
+          "136"
+        ],
+        [
+          "sirius",
+          "Pull",
+          "100",
+          "15",
+          "90"
+        ],
+        [
+          "vega",
+          "Push",
+          "90",
+          "n/a",
+          "n/a"
+        ],
+        [
+          "draco",
+          "Push",
+          "120",
+          "n/a",
+          "n/a"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "pullcount",
+          "label": "How many fleets use the pull method?",
+          "options": [
+            {
+              "id": "o1",
+              "text": "2"
+            },
+            {
+              "id": "o2",
+              "text": "3"
+            },
+            {
+              "id": "o3",
+              "text": "5"
+            }
+          ]
+        },
+        {
+          "id": "missed",
+          "label": "How many hosts across the pull fleets missed their latest check-in?",
+          "options": [
+            {
+              "id": "o1",
+              "text": "46"
+            },
+            {
+              "id": "o2",
+              "text": "34"
+            },
+            {
+              "id": "o3",
+              "text": "56"
+            }
+          ]
+        },
+        {
+          "id": "worst",
+          "label": "Which pull fleet has the highest percentage of hosts that missed their latest check-in?",
+          "options": [
+            {
+              "id": "o1",
+              "text": "orion"
+            },
+            {
+              "id": "o2",
+              "text": "sirius"
+            },
+            {
+              "id": "o3",
+              "text": "lyra"
+            }
+          ]
+        },
+        {
+          "id": "pushhosts",
+          "label": "How many hosts must a push run reach to update every push fleet?",
+          "options": [
+            {
+              "id": "o1",
+              "text": "500"
+            },
+            {
+              "id": "o2",
+              "text": "210"
+            },
+            {
+              "id": "o3",
+              "text": "710"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "pullcount": "o2",
+        "missed": "o1",
+        "worst": "o3",
+        "pushhosts": "o2"
+      }
+    },
+    "explanation": "Three fleets use pull. Their missed check-ins are 12, 24 and 10, which total 46, and lyra has the highest share. The two push fleets hold 90 and 120 hosts.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "pullcount": "Orion, lyra and sirius use pull, so 3 fleets.",
+      "missed": "Orion missed 240 - 228 = 12, lyra 160 - 136 = 24, sirius 100 - 90 = 10, and 12 + 24 + 10 = 46.",
+      "worst": "Orion is 12 / 240 = 5 percent, sirius 10 / 100 = 10 percent, lyra 24 / 160 = 15 percent.",
+      "pushhosts": "Vega has 90 hosts and draco has 120, so 90 + 120 = 210; 500 is the pull hosts and 710 is every host."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "A finished build must lead to an update on managed hosts. Place the best component for each need named below the flow.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Build finished"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Event raised"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Work started"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Hosts updated"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Holds each message until a worker is ready"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Starts short code per message, then ends"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Starts the run and connects out to hosts"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Sits on a host and checks in for settings"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Control node"
+        },
+        {
+          "id": "l2",
+          "text": "Message queue"
+        },
+        {
+          "id": "l3",
+          "text": "Agent on the host"
+        },
+        {
+          "id": "l4",
+          "text": "Function"
+        },
+        {
+          "id": "l5",
+          "text": "Backup tape library"
+        },
+        {
+          "id": "l6",
+          "text": "Remote desktop session"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l2",
+        "z2": "l4",
+        "z3": "l1",
+        "z4": "l3"
+      }
+    },
+    "explanation": "A queue stores messages until a worker takes them, a function runs short event-triggered code, a control node reaches out to hosts in a push, and an agent on a host asks for its settings in a pull. A tape library and a remote desktop session play none of these roles.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "z1": "A message queue buffers each message until a worker is ready.",
+      "z2": "A function is started per message, does its work and ends.",
+      "z3": "A control node starts a push run and connects out to the hosts.",
+      "z4": "An agent runs on the host and checks in, which is pull."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "stem": "This deploy script runs again on every release. Select every line that fails or adds a duplicate on the second run.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "mkdir /srv/app/logs"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "mkdir -p /srv/app/cache"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "echo \"retries=5\" >> app.conf"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "systemctl restart payments-api"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "useradd deploysvc"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "chmod 640 /srv/app/app.conf"
+        }
+      ],
+      "spots": [
+        {
+          "id": "logs",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "mkdir /srv/app/logs"
+        },
+        {
+          "id": "cache",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "mkdir -p /srv/app/cache"
+        },
+        {
+          "id": "retries",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "echo \"retries=5\" >> app.conf"
+        },
+        {
+          "id": "restart",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "systemctl restart payments-api"
+        },
+        {
+          "id": "user",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "useradd deploysvc"
+        },
+        {
+          "id": "perms",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "chmod 640 /srv/app/app.conf"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "logs",
+        "retries",
+        "user"
+      ]
+    },
+    "explanation": "Plain `mkdir` fails when the directory exists, `>>` appends another copy of the line each run, and `useradd` fails when the account exists. The `-p` form, a restart and a mode change reach the same end state however often they run.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "logs": "Plain mkdir fails on the second run because the directory exists.",
+      "cache": "The -p option makes the directory step safe to repeat.",
+      "retries": "The append operator adds another copy of the line on every run.",
+      "restart": "Restarting a service gives the same result on each run.",
+      "user": "The useradd command fails when the account already exists.",
+      "perms": "Setting the same mode again changes nothing."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-2-2-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each scenario to the automation approach it describes.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A script saved on a server is run by hand at its prompt"
+        },
+        {
+          "id": "p2",
+          "text": "A control node signs in to Linux hosts with keys and runs commands, with nothing installed on them"
+        },
+        {
+          "id": "p3",
+          "text": "A control node manages Windows servers through PowerShell remoting"
+        },
+        {
+          "id": "p4",
+          "text": "A service on each host asks a server for its settings on a schedule"
+        },
+        {
+          "id": "p5",
+          "text": "An upload creates a message that starts a short piece of code"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Agent-based pull"
+        },
+        {
+          "id": "c2",
+          "text": "Remote execution over WinRM"
+        },
+        {
+          "id": "c3",
+          "text": "Event-driven function (FaaS)"
+        },
+        {
+          "id": "c4",
+          "text": "Local command-line script"
+        },
+        {
+          "id": "c5",
+          "text": "Remote execution over SSH"
+        },
+        {
+          "id": "c6",
+          "text": "Ephemeral environment"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c4",
+        "p2": "c5",
+        "p3": "c2",
+        "p4": "c1",
+        "p5": "c3"
+      }
+    },
+    "explanation": "Work run on the machine itself is a local script. A control node reaching Linux hosts with keys uses SSH, and reaching Windows servers uses WinRM. A service that asks for settings is an agent that pulls, and an upload that starts code through a message is an event-driven function. An ephemeral environment is a different idea and matches no scenario.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "p1": "Running a script at the prompt of the same server is local execution.",
+      "p2": "Keys, commands from a control node and no installed software describe agentless SSH.",
+      "p3": "PowerShell remoting on Windows runs over WinRM.",
+      "p4": "A resident service that checks in with a server is an agent that pulls.",
+      "p5": "A message that starts short code is an event-driven function."
+    },
+    "acronyms": [
+      "FaaS",
+      "SSH",
+      "WinRM"
+    ]
+  },
+  {
+    "id": "at1-2-2-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "stem": "Sort each environment into the lifespan style it follows.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "eph",
+          "text": "Ephemeral environment"
+        },
+        {
+          "id": "per",
+          "text": "Persistent environment"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "A test stack created for one pull request and deleted at merge"
+        },
+        {
+          "id": "i2",
+          "text": "A production database server patched in place for years"
+        },
+        {
+          "id": "i3",
+          "text": "A per-commit integration cluster rebuilt from code"
+        },
+        {
+          "id": "i4",
+          "text": "A shared staging server with hand-tuned settings"
+        },
+        {
+          "id": "i5",
+          "text": "A load-test setup torn down once the report is written"
+        },
+        {
+          "id": "i6",
+          "text": "A long-running file server whose data users rely on"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "eph",
+        "i2": "per",
+        "i3": "eph",
+        "i4": "per",
+        "i5": "eph",
+        "i6": "per"
+      }
+    },
+    "explanation": "Environments built from code for a single purpose and then removed are ephemeral. Servers that hold data or settings across many releases and are changed in place are persistent.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "i1": "Created per pull request and deleted at merge is ephemeral.",
+      "i2": "A production database patched in place for years is persistent.",
+      "i3": "A cluster rebuilt from code for each commit is ephemeral.",
+      "i4": "A shared staging server with hand-tuned settings is persistent.",
+      "i5": "A setup torn down after one report is ephemeral.",
+      "i6": "A file server holding user data long term is persistent."
+    },
+    "acronyms": []
+  }
+]
