@@ -6,7 +6,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A developer wants to see what teammates pushed to `origin` without changing any local branch or file in the working tree. Which command does this?",
@@ -45,7 +45,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does `git pull` do with default settings?",
@@ -84,7 +84,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Priya runs `git push origin main` and Git reports `! [rejected] main -> main (non-fast-forward)`. What does this mean?",
@@ -123,7 +123,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer creates `feature/ledger-export` locally. The first push should also link it to `origin/feature/ledger-export`, so later `git pull` and `git push` need no arguments. Which command does this?",
@@ -162,7 +162,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A repository has a modified `app.py` and a modified `notes.txt`. Which command stages only `app.py` for the next commit?",
@@ -201,10 +201,10 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A developer runs `git add parser.py`, then edits `parser.py` again. Which command shows only the changes that are already staged?",
+    "stem": "A developer runs `git add parser.py`, then edits `parser.py` again. Which command shows only the changes that are already in the index?",
     "payload": {
       "options": [
         {
@@ -240,7 +240,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer made a local commit, has not pushed it, and spots a typo in its message. Which command rewrites the message?",
@@ -279,7 +279,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Dana's laptop has two `user.email` values:\n```ini\n# ~/.gitconfig\n[user]\n    email = dana@home.example\n\n# payments-api/.git/config\n[user]\n    email = dana@payments.example.internal\n```\nWhich address does Git record as the author of a commit made inside `payments-api`?",
@@ -287,7 +287,7 @@
       "options": [
         {
           "id": "a",
-          "text": "dana@payments.example.internal, because repository settings override user settings"
+          "text": "dana@payments.example.internal, as the repository setting wins"
         },
         {
           "id": "b",
@@ -295,7 +295,7 @@
         },
         {
           "id": "c",
-          "text": "Both addresses, saved as co-authors of the same commit"
+          "text": "Both addresses, saved together as co-authors of the same commit"
         },
         {
           "id": "d",
@@ -318,7 +318,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team keeps shared hook scripts in a tracked folder named `.githooks`. Which setting makes Git run them in each developer's clone?",
@@ -357,7 +357,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "This executable file is saved as `.git/hooks/pre-commit`:\n```sh\n#!/bin/sh\n./scripts/lint.sh\necho \"lint finished\"\n```\nThe linter finds a problem and exits with status 1. What happens when a developer runs `git commit`?",
@@ -396,7 +396,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A broken linter hook blocks an urgent fix. Which option skips the `pre-commit` and `commit-msg` hooks for this one commit?",
@@ -435,7 +435,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which hook receives the path of the file that holds the commit message, so it can reject a badly formatted message?",
@@ -474,7 +474,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team wants unit tests to run on the developer's machine before any commit is uploaded to the shared remote. Which hook fits?",
@@ -513,7 +513,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A security team wants the central repository to refuse any push that contains a private key, even from a developer who skipped local hooks. Where must the check run?",
@@ -552,7 +552,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A `pre-commit` hook runs this line, yet commits still contain unformatted code even though the working tree files look formatted:\n```sh\n#!/bin/sh\n./scripts/format.sh $(git diff --cached --name-only)\n```\nWhat is the most likely cause?",
@@ -572,7 +572,7 @@
         },
         {
           "id": "d",
-          "text": "The hook never stages the files it reformatted"
+          "text": "The hook does not stage the files it reformatted, so their edits are left out"
         }
       ]
     },
@@ -591,10 +591,10 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "What does a linter do when it runs as part of a pre-commit check?",
+    "stem": "By default, what does a linter do when it runs as part of a `pre-commit` check?",
     "payload": {
       "options": [
         {
@@ -630,15 +630,15 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A pre-commit secret scan blocks a commit because `deploy.sh` contains a cloud access key. Nothing has been committed yet. What is the best fix?",
+    "stem": "A `pre-commit` secret scan blocks a commit because `deploy.sh` contains a cloud access key. Nothing has been committed yet. What is the best fix?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Delete the key from the script, read it from the environment, and stage the file again"
+          "text": "Move the key into the environment and stage the corrected file"
         },
         {
           "id": "b",
@@ -669,7 +669,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer pushed a commit that contains a live database password. Beyond cleaning up the history, which action is required first?",
@@ -708,7 +708,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "In the editor that opens for a commit message, lines that start with `#` are guidance for the author. What does Git do with them by default?",
@@ -747,7 +747,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which commit subject line follows common conventions for a concise summary?",
@@ -786,7 +786,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "`orders-sdk` is at `3.4.2`. The next release removes a method that client code calls. Under semantic versioning, which version number should it carry?",
@@ -825,7 +825,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "`report-cli` is at `1.8.3`. A release adds a new optional `--format` flag and keeps every existing flag working. What is the next version?",
@@ -864,7 +864,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which list shows these versions in ascending order of precedence under semantic versioning?",
@@ -893,7 +893,7 @@
         "c"
       ]
     },
-    "explanation": "A pre-release sorts below its release, and its identifiers compare in ASCII order: alpha, beta, rc.1, then the release itself. The other lists put the release too early or reverse the pre-release order.",
+    "explanation": "A pre-release sorts below its release, and its identifiers compare in ASCII order: `alpha`, `beta`, `rc.1`, then the release itself. The other lists put the release too early or reverse the pre-release order.",
     "acronyms": [
       "ASCII"
     ]
@@ -905,7 +905,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A script must pick the newest of these tags under semantic versioning rules: `2.1.0-rc.2`, `2.1.0-rc.11`, `2.1.0-rc.9` and `2.0.9`. Which one does it pick?",
@@ -934,7 +934,7 @@
         "a"
       ]
     },
-    "explanation": "With the same major, minor and patch numbers, numeric pre-release identifiers compare as numbers, so rc.11 outranks rc.9 and rc.2. All three outrank 2.0.9 because 2.1.0 has a higher minor number. Comparing as text would wrongly rank rc.9 highest.",
+    "explanation": "With the same major, minor and patch numbers, numeric pre-release identifiers compare as numbers, so `rc.11` outranks `rc.9` and `rc.2`. All three outrank `2.0.9` because `2.1.0` has a higher minor number. Comparing as text would wrongly rank `rc.9` highest.",
     "acronyms": []
   },
   {
@@ -944,7 +944,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Under semantic versioning, how do `1.8.0+build.5` and `1.8.0+build.9` compare in precedence?",
