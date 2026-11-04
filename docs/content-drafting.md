@@ -50,7 +50,13 @@ This brief is given word for word to every drafter and reviewer of bundled quest
 - US English. Product names spelled as their vendors do (Power BI, Tableau, pandas, tidyverse).
 - Invented company and person names only; no real customers or data.
 - No two items in the bank may test the same fact the same way.
-- Code: wrap a command or identifier in single backticks (`` `git revert` ``) in a stem, an MCQ option, an explanation or a part explanation. Put a snippet of more than one line in a fenced block (a line with ```` ``` ```` or ```` ```yaml ````, the lines, then a closing ```` ``` ````) in a stem or explanation; it keeps its indentation and wraps long lines on phones. PBQ part texts stay plain. Code is skipped by the acronym check, so `$HOME` or `PATH` in code needs no expansion.
+- Code: wrap a command or identifier in single backticks (`` `git revert` ``) in a stem, an MCQ option, an explanation or a part explanation. Put a snippet of more than one line in a fenced block (a line with ```` ``` ```` or ```` ```yaml ````, the lines, then a closing ```` ``` ````) in a stem or explanation; it keeps its indentation and wraps at spaces on phones, and a single token longer than the line scrolls sideways inside the block. PBQ part texts stay plain. Code is skipped by the acronym check, so `$HOME` or `PATH` in code needs no expansion.
+
+## Text stays in bounds (standing rule, issues #4 and #7)
+
+- All text stays inside its box, and no word is ever cut between two letters ("Re|sult"). Lines may break at spaces, hyphens, slashes and other punctuation. Anything that cannot fit (a wide table, a long code token, terminal output) scrolls sideways inside its own keyboard-focusable box; the page itself never scrolls sideways.
+- Diagram and hotspot box labels wrap inside their box. A label needs room: at the 14-unit font, a 130-wide box fits about 16 characters a line, and a 60-tall box fits 3 lines. Make the box taller (or the label shorter) if it needs more.
+- **Before shipping any batch, run the Playwright bounds check for that exam:** `BOUNDS_EXAM=<code> npm run check-bounds` (`tests/e2e/bounds.spec.ts`). It opens every approved question and its review at 360 and 1280 px and fails on any split word, overflowing label, text off screen, SVG text outside its picture, or unfocusable scroll box. `npx playwright show-report` shows a screenshot of each failing item. `npm run check` runs it for every exam, plus every other screen.
 
 ## Review (two independent reviewers)
 

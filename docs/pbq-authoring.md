@@ -34,7 +34,11 @@ Each PBQ is a template plus data. `questionSchema` (`src/domain/schema.ts`) chec
 - Spots are shuffled into each other's boxes on every attempt, so the layout never gives the answer away. For that to work:
   - Every spot has the same `w` and `h`.
   - A node either matches a spot's box exactly (it moves with that spot and its `text` becomes the label drawn in the box) or overlaps no spot at all (it stays where you put it, such as a legend).
-- Labels wrap inside the box. Keep them to about 45 characters for a 220 × 40 box; the bank e2e test fails if a label overflows.
+- Labels wrap inside the box. Keep them to about 45 characters for a 220 × 40 box; the bounds check (`npm run check-bounds`) fails if a label overflows.
+
+## Diagram (`pbq-diagram`)
+
+- Node labels wrap inside their box (issue #7) at 14 image units. A 130-wide box fits about 16 characters a line and a 60-tall box 3 lines; make the box taller if the label needs a fourth line. The bounds check (`npm run check-bounds`) fails if a label overflows.
 
 ## Buckets (`pbq-buckets`)
 

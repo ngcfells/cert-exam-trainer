@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "test:e2e-dev": "playwright test -c playwright.dev.config.ts",
+    "check-bounds": "npm run build:single && playwright test --project=bounds",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run build && npm run build:single && cross-env CHECK=1 npm run test && npm run build:e2e && npm run test:e2e",

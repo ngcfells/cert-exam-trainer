@@ -45,15 +45,18 @@ export function PartSelects({ parts, value, onChange, drop = false }: { parts: {
   );
 }
 
-/** Labelled boxes drawn behind a diagram or hotspot image. */
+/**
+ * Labelled boxes drawn behind a diagram or hotspot image. Labels are HTML inside the SVG so they
+ * wrap within the box (issue #7); the font is in image units, so it scales with the box.
+ */
 export function Boxes({ nodes }: { nodes: { id: string; x: number; y: number; w: number; h: number; text?: string }[] }) {
   return nodes.map((n) => (
     <g key={n.id}>
       <rect x={n.x} y={n.y} width={n.w} height={n.h} strokeWidth={2} />
       {n.text && (
-        <text x={n.x + n.w / 2} y={n.y + n.h / 2} textAnchor="middle" dominantBaseline="middle" fontSize={14}>
-          {n.text}
-        </text>
+        <foreignObject x={n.x} y={n.y} width={n.w} height={n.h}>
+          <div className="box-label">{n.text}</div>
+        </foreignObject>
       )}
     </g>
   ));

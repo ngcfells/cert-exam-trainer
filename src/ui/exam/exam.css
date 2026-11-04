@@ -53,7 +53,6 @@ dialog { max-width: 30rem; }
 .terminal { background: var(--surface-2); color: var(--fg); border: 1px solid var(--border-strong); padding: 0.75rem; overflow: auto; max-height: 20rem; font-family: ui-monospace, Consolas, monospace; white-space: pre; }
 .command input { font-family: ui-monospace, Consolas, monospace; min-width: 16rem; max-width: 100%; }
 .prompt-line { display: inline-flex; gap: 0.25rem; align-items: center; font-family: ui-monospace, Consolas, monospace; }
-.data-table { overflow-x: auto; }
 .data-table table { border-collapse: collapse; }
 .data-table th, .data-table td { border: 1px solid var(--border-strong); padding: 0.25rem 0.5rem; text-align: left; }
 .chart { display: block; width: 100%; max-width: 30rem; margin: 0.75rem 0; }
@@ -73,11 +72,13 @@ dialog { max-width: 30rem; }
 .hotspot .spot rect { fill: var(--bg); stroke: var(--chart); }
 .hotspot .spot.on rect { fill: color-mix(in srgb, var(--chart) 18%, var(--bg)); }
 /* Labels wrap inside their spot; the right padding keeps the tick clear of the text. */
-.hotspot .spot-label {
+.hotspot .spot-label, .diagram .box-label {
   box-sizing: border-box; width: 100%; height: 100%; overflow: hidden;
   display: flex; align-items: center; justify-content: center; text-align: center;
-  padding: 2px 18px 2px 6px; line-height: 1.15; overflow-wrap: anywhere; color: var(--fg);
+  padding: 2px 18px 2px 6px; line-height: 1.15; overflow-wrap: break-word; color: var(--fg);
 }
+/* Box labels: 14 image units, as the old SVG text was; no tick, so even padding. */
+.diagram .box-label { font-size: 14px; padding: 2px 6px; }
 .hotspot .spot text { fill: var(--chart); }
 .chart text { fill: var(--fg); }
 .chart rect { fill: var(--chart); }
