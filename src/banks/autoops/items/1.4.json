@@ -987,10 +987,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A freshly initialized local repository runs `git pull` from an existing remote and gets `fatal: refusing to merge unrelated histories`. If the histories are meant to be joined, which option lets the merge proceed?",
+    "stem": "A freshly initialized local repository runs `git pull` from an existing remote, and Git refuses because the two sets of commits share no common ancestor. If they are meant to be joined, which option lets the merge proceed?",
     "payload": {
       "options": [
         {
@@ -1007,7 +1007,7 @@
         },
         {
           "id": "d",
-          "text": "`--allow-unrelated-histories`"
+          "text": "`--allow-unrelated-histories` to permit the join"
         }
       ]
     },
@@ -1026,7 +1026,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "During `git merge feature/retry` on `main`, a file contains the block below. What does the line `timeout: 30` represent?\n```text\n<<<<<<< HEAD\ntimeout: 30\n=======\ntimeout: 60\n>>>>>>> feature/retry\n```",
@@ -1038,7 +1038,7 @@
         },
         {
           "id": "b",
-          "text": "The version on the branch checked out for the merge"
+          "text": "The version on the current branch, `main`"
         },
         {
           "id": "c",
@@ -1065,7 +1065,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer has edited a conflicted file by hand to its final content and removed the markers. Which sequence completes the merge?",
@@ -1104,7 +1104,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A merge of the wrong branch has produced conflicts in eight files, and no merge commit exists yet. Which command returns the repository to its state before the merge?",
@@ -1116,7 +1116,7 @@
         },
         {
           "id": "b",
-          "text": "`git rebase --abort`"
+          "text": "`git merge --continue`"
         },
         {
           "id": "c",
@@ -1133,7 +1133,7 @@
         "d"
       ]
     },
-    "explanation": "`git merge --abort` restores the pre-merge state while a merge is in progress. `revert HEAD` would undo the previous commit, and the other two abort operations that are not running.",
+    "explanation": "`git merge --abort` restores the pre-merge state while a merge is in progress. `revert HEAD` would undo the previous commit, `merge --continue` finishes the merge instead of abandoning it, and `cherry-pick --abort` stops an operation that is not running.",
     "acronyms": []
   },
   {
@@ -1143,7 +1143,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "While `main` is checked out and `git merge release/2.4` is stopped on a conflict in `app.conf`, which command takes the version from `release/2.4` for that file?",
@@ -1182,7 +1182,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A nightly job that clones over HTTPS with a personal access token starts failing with `Authentication failed`. The token was created with a 90-day lifetime three months ago. What is the likely cause?",
@@ -1202,7 +1202,7 @@
         },
         {
           "id": "d",
-          "text": "The credential passed its expiry date and must be reissued"
+          "text": "The token expired and must be reissued"
         }
       ]
     },
@@ -1224,7 +1224,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer's `git push` over SSH prints `Permission denied (publickey)`. What does the message mean?",
@@ -1232,11 +1232,11 @@
       "options": [
         {
           "id": "a",
-          "text": "The server's host key has changed"
+          "text": "The server's host key changed since the last connection"
         },
         {
           "id": "b",
-          "text": "The server found no registered public key that matches a key the client offered"
+          "text": "No offered key matches one registered on the server"
         },
         {
           "id": "c",
@@ -1244,7 +1244,7 @@
         },
         {
           "id": "d",
-          "text": "The key passphrase has expired"
+          "text": "The key's passphrase expired and must be reset"
         }
       ]
     },
@@ -1265,7 +1265,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "`ssh` refuses to use a private key and prints `UNPROTECTED PRIVATE KEY FILE! Permissions 0644 for 'id_ed25519' are too open.` Which command fixes it?",
@@ -1304,7 +1304,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A developer clones over HTTPS with a token and succeeds, but `git push` then fails with `The requested URL returned error: 403`. What is the most likely cause?",
@@ -1312,7 +1312,7 @@
       "options": [
         {
           "id": "a",
-          "text": "The token expired between the clone and the push"
+          "text": "The local branch is behind the remote branch"
         },
         {
           "id": "b",
@@ -1333,7 +1333,7 @@
         "c"
       ]
     },
-    "explanation": "A 403 means the server knows who the caller is and refuses the action, which fits a read-only token. An expired token would be rejected as unauthenticated, SSH keys play no part over HTTPS, and a lookup failure would have blocked the clone.",
+    "explanation": "A 403 means the server knows who the caller is and refuses the action, which fits a read-only token. A branch that is behind is rejected as non-fast-forward, SSH keys play no part over HTTPS, and a lookup failure would have blocked the clone.",
     "acronyms": [
       "HTTPS",
       "SSH"
@@ -1346,7 +1346,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "After the Git server `git.example.internal` was rebuilt, `git clone` over SSH fails with `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`. What is the right response?",
@@ -1358,7 +1358,7 @@
         },
         {
           "id": "b",
-          "text": "Verify the new fingerprint with the administrator, then update the `known_hosts` entry"
+          "text": "Verify the new fingerprint, then update `known_hosts`"
         },
         {
           "id": "c",
@@ -1375,7 +1375,7 @@
         "b"
       ]
     },
-    "explanation": "The stored host key no longer matches, which is expected after a rebuild but could also signal interception, so the new fingerprint is verified out of band before updating the entry. Replacing the user's key does not address the host key, and disabling checks removes the protection.",
+    "explanation": "The stored host key no longer matches, which is expected after a rebuild but could also signal interception, so the new fingerprint is verified out of band, such as with the administrator, before updating the entry. Replacing the user's key does not address the host key, and disabling checks removes the protection.",
     "acronyms": [
       "HTTPS",
       "SSH"
@@ -1388,7 +1388,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A CI job holds an SSH deploy key, yet `git push` fails with `fatal: could not read Username for 'https://git.example.internal': No such device or address`. What is wrong?",
@@ -1408,7 +1408,7 @@
         },
         {
           "id": "d",
-          "text": "The remote uses an HTTPS URL, so the deploy key is never used"
+          "text": "The remote is an HTTPS URL, not an SSH one"
         }
       ]
     },
@@ -1432,7 +1432,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO problems does Python report before it runs any line of the script?",
@@ -1448,7 +1448,7 @@
         },
         {
           "id": "c",
-          "text": "An opening bracket that is never closed"
+          "text": "An opening bracket with no matching closing bracket"
         },
         {
           "id": "d",
@@ -1480,7 +1480,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE of these problems are runtime errors?",
@@ -1488,7 +1488,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A `ZeroDivisionError` from `10 / count` when `count` is `0`"
+          "text": "A `ZeroDivisionError` when `count` is `0`"
         },
         {
           "id": "b",
@@ -1500,7 +1500,7 @@
         },
         {
           "id": "d",
-          "text": "A `KeyError` from a dictionary key that does not exist"
+          "text": "A `KeyError` for a missing dictionary key"
         },
         {
           "id": "e",
@@ -1529,7 +1529,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO actions are part of resolving a merge conflict in `app.yml` before the merge commit?",
@@ -1537,7 +1537,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Edit the file to its final content and remove the conflict markers"
+          "text": "Edit the file and remove the conflict markers"
         },
         {
           "id": "b",
@@ -1573,7 +1573,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO checks help diagnose `Permission denied (publickey)` on a Git push over SSH?",
@@ -1585,7 +1585,7 @@
         },
         {
           "id": "b",
-          "text": "Compare the key fingerprint with the keys registered on the server account"
+          "text": "Compare the key fingerprint with the server account's keys"
         },
         {
           "id": "c",
@@ -1593,7 +1593,7 @@
         },
         {
           "id": "d",
-          "text": "Turn off certificate verification in Git"
+          "text": "Turn off TLS certificate verification in Git"
         },
         {
           "id": "e",
@@ -1621,7 +1621,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO settings turn the use of an unset variable into an error?",
@@ -1665,7 +1665,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "A developer is in a detached `HEAD` state. Which TWO commands put `HEAD` back on a branch?",
@@ -1685,11 +1685,11 @@
         },
         {
           "id": "d",
-          "text": "`git diff HEAD`"
+          "text": "`git restore --staged .`"
         },
         {
           "id": "e",
-          "text": "`git show 3f9a2c1`"
+          "text": "`git checkout 3f9a2c1`"
         }
       ]
     },
@@ -1699,7 +1699,7 @@
         "b"
       ]
     },
-    "explanation": "Switching to an existing branch or creating a new one at the current commit attaches `HEAD` to a branch. Viewing the log, a diff or a commit only reads data.",
+    "explanation": "Switching to an existing branch or creating a new one at the current commit attaches `HEAD` to a branch. Viewing the log only reads data, `restore --staged` only unstages files, and checking out a commit hash leaves `HEAD` detached.",
     "acronyms": []
   },
   {
@@ -1709,7 +1709,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE can cause `Authentication failed` on a `git clone` over HTTPS?",
@@ -1725,7 +1725,7 @@
         },
         {
           "id": "c",
-          "text": "A cached credential for an older token is still being sent"
+          "text": "An old cached token is still being sent"
         },
         {
           "id": "d",
@@ -1756,7 +1756,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "stem": "A developer checked out a commit by its hash and made a commit on top of it. Review the output and the help lines, then complete each step.",
@@ -1781,7 +1781,7 @@
           "options": [
             {
               "id": "o1",
-              "text": "A commit hash was checked out instead of a branch name"
+              "text": "A commit hash was checked out, not a branch"
             },
             {
               "id": "o2",
@@ -1844,7 +1844,9 @@
           "git switch --create retry-fix 7be41d0",
           "git checkout -b retry-fix",
           "git checkout -b retry-fix HEAD",
-          "git checkout -b retry-fix 7be41d0"
+          "git checkout -b retry-fix 7be41d0",
+          "git switch -c retry-fix @",
+          "git checkout -b retry-fix @"
         ],
         "push": [
           "git push -u origin retry-fix",
@@ -1858,20 +1860,24 @@
           "git push -u origin retry-fix:retry-fix",
           "git push --set-upstream origin retry-fix:retry-fix",
           "git push -u origin HEAD:retry-fix",
-          "git push --set-upstream origin HEAD:retry-fix"
+          "git push --set-upstream origin HEAD:retry-fix",
+          "git push origin -u HEAD",
+          "git push origin --set-upstream HEAD",
+          "git push origin HEAD -u",
+          "git push origin HEAD --set-upstream"
         ],
         "verify": [
           "o3"
         ]
       }
     },
-    "explanation": "The status line reads HEAD detached because a commit hash was checked out, and the new commit belongs to no branch. Creating and switching to a branch at that commit keeps the work, pushing with the upstream flag publishes it, and status then names the branch.",
+    "explanation": "The status line reads `HEAD detached` because a commit hash was checked out, and the new commit belongs to no branch. Creating and switching to a branch at that commit keeps the work, pushing with the upstream flag publishes it, and `git status` then names the branch.",
     "pbqWeight": 4,
     "partExplanations": {
-      "cause": "Checking out a hash rather than a branch name detaches HEAD, so the new commit has no branch.",
-      "create": "git switch -c names a new branch at the current commit and moves HEAD onto it.",
-      "push": "The -u flag publishes the branch and records origin/retry-fix as its upstream.",
-      "verify": "Once HEAD is attached to retry-fix, status begins with On branch retry-fix."
+      "cause": "Checking out a hash rather than a branch name detaches `HEAD`, so the new commit has no branch.",
+      "create": "`git switch -c` names a new branch at the current commit and moves `HEAD` onto it.",
+      "push": "The `-u` (or `--set-upstream`) flag publishes the branch and records `origin/retry-fix` as its upstream.",
+      "verify": "Once `HEAD` is attached to `retry-fix`, `git status` begins with `On branch retry-fix`."
     },
     "acronyms": []
   },
@@ -1882,10 +1888,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 3,
-    "stem": "This packaging script stops with an error. Choose the fix for each problem so that it runs with `set -u` still in place.\n```bash\n#!/bin/bash\nset -u\nAPP_NAME=\"orders-api\"\nRELEASE_DIR=\"/srv/releases/$APP_NAME\"\necho \"Packaging $APP_NMAE\"\ntar -czf \"$RELEASE_DIR/$PKG_VER.tar.gz\" build/\necho \"Packaged $PKG_VER to $RELEASE_DIR\"\n```\nThe run prints `package.sh: line 5: APP_NMAE: unbound variable`. The pipeline supplies the release number only as `RELEASE_VERSION`.",
+    "stem": "This packaging script stops with an error. Choose the fix for each problem, keeping `set -u` in place, and the command that checks the edited script before the next run.\n```bash\n#!/bin/bash\nset -u\nAPP_NAME=\"orders-api\"\nRELEASE_DIR=\"/srv/releases/$APP_NAME\"\necho \"Packaging $APP_NMAE\"\ntar -czf \"$RELEASE_DIR/$PKG_VER.tar.gz\" build/\necho \"Packaged $PKG_VER to $RELEASE_DIR\"\n```\nThe run prints `package.sh: line 5: APP_NMAE: unbound variable`. The pipeline supplies the release number only as `RELEASE_VERSION`.",
     "payload": {
       "fields": [
         {
@@ -1916,11 +1922,11 @@
             },
             {
               "id": "o2",
-              "text": "PKG_VER=\"${RELEASE_VERSION:-}\""
+              "text": "PKG_VER=\"${RELEASE_VERSION:-RELEASE_VERSION is not set}\""
             },
             {
               "id": "o3",
-              "text": "PKG_VER=\"${RELEASE_VERSION:=}\""
+              "text": "PKG_VER=\"${RELEASE_VERSION:=RELEASE_VERSION is not set}\""
             }
           ]
         },
@@ -1930,7 +1936,7 @@
           "options": [
             {
               "id": "o1",
-              "text": "After the tar line"
+              "text": "Directly after the tar line"
             },
             {
               "id": "o2",
@@ -1938,25 +1944,25 @@
             },
             {
               "id": "o3",
-              "text": "Before the tar line"
+              "text": "Anywhere before the tar line"
             }
           ]
         },
         {
-          "id": "keep",
-          "label": "What to do with set -u",
+          "id": "check",
+          "label": "Command that checks the script for syntax errors without running it",
           "options": [
             {
               "id": "o1",
-              "text": "Remove it so typos no longer stop the run"
+              "text": "bash -x package.sh"
             },
             {
               "id": "o2",
-              "text": "Keep it so unset variables fail loudly"
+              "text": "bash -n package.sh"
             },
             {
               "id": "o3",
-              "text": "Move it to the last line of the script"
+              "text": "bash -u package.sh"
             }
           ]
         }
@@ -1967,16 +1973,16 @@
         "typo": "o2",
         "version": "o1",
         "place": "o3",
-        "keep": "o2"
+        "check": "o2"
       }
     },
-    "explanation": "Line 5 misspells the variable, so correcting the name fixes it. PKG_VER must be set from RELEASE_VERSION with the error form of expansion before tar uses it, and set -u stays because it is what exposed the typo.",
+    "explanation": "Line 5 misspells the variable, so correcting the name fixes it. `PKG_VER` must be set from `RELEASE_VERSION` with the error form of expansion before `tar` reads it, and `bash -n` parses the script without running any of it.",
     "pbqWeight": 4,
     "partExplanations": {
-      "typo": "APP_NMAE is a misspelling of APP_NAME; assigning it an empty value would hide the typo.",
-      "version": "The :? form aborts with the given message when the variable is unset or empty; :- and := substitute an empty value.",
-      "place": "A variable must be assigned before the first line that reads it, and tar reads it on line 6.",
-      "keep": "set -u is what turned the misspelling into a clear error, so it stays at the top."
+      "typo": "`APP_NMAE` is a misspelling of `APP_NAME`; assigning it an empty value or removing `set -u` would hide the typo.",
+      "version": "The `:?` form aborts with the given message when the variable is unset or empty; `:-` and `:=` would use the message text as the version instead of stopping.",
+      "place": "A variable must be assigned before the first line that reads it, and `tar` reads it on line 6.",
+      "check": "The `-n` option reads and parses the commands without executing them; `-x` traces a real run, and `-u` runs the script with unset variables treated as errors."
     },
     "acronyms": []
   },
@@ -1987,10 +1993,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
-    "stem": "A developer merges `feature/limits` into `main` and Git stops on conflicts. Put the steps in the order they happen. The team lists the conflicted files before editing anything, and tests the edited files before staging them.",
+    "stem": "A developer merges `feature/limits` into `main` and Git stops on conflicts. Put the steps in the order they happen. The team lists the conflicted files before editing anything, and checks for leftover markers before staging.",
     "payload": {
       "steps": [
         {
@@ -2015,7 +2021,7 @@
         },
         {
           "id": "s4",
-          "text": "Run the unit tests against the edited files before staging anything"
+          "text": "Run git diff --check on the edited files"
         }
       ]
     },
@@ -2029,13 +2035,13 @@
         "s6"
       ]
     },
-    "explanation": "The merge is attempted first and reports the conflicts, status lists the files, they are edited and tested, and only then are they staged and committed.",
+    "explanation": "The merge is attempted first and reports the conflicts, `git status` lists the files, they are edited and checked for leftover markers, and only then are they staged and committed.",
     "pbqWeight": 6,
     "partExplanations": {
       "0": "The conflict only exists once the merge has been attempted.",
-      "1": "Status lists the files marked as unmerged before any editing starts.",
+      "1": "`git status` lists the files marked as unmerged before any editing starts.",
       "2": "Each file is edited to its intended content and the markers are removed.",
-      "3": "The team rule is to test the edited files before staging them.",
+      "3": "`git diff --check` flags conflict markers left in the unstaged edits, so it runs before staging.",
       "4": "Staging tells Git each conflict is resolved.",
       "5": "The commit records the merge once every path is staged."
     },
@@ -2048,10 +2054,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 2,
-    "stem": "A scheduler logged these failures overnight. Classify each one as a syntax error, which is found before the script runs, or a runtime error, which occurs while it runs, and then count the runtime errors.",
+    "stem": "A scheduler logged these failures overnight. Classify each one as a syntax error, where the parser rejects the code, a runtime error, where valid code fails while it runs, or an authentication failure, and then count the runtime errors.",
     "payload": {
       "caption": "Overnight script failures",
       "columns": [
@@ -2226,7 +2232,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 3,
     "stem": "A developer checked out commit c3 by its hash and made two commits, c4 and c5. `main` and its remote copy are both still at c3. Place the label that fits each description under the graph.",
@@ -2354,13 +2360,13 @@
         "z4": "l4"
       }
     },
-    "explanation": "The local and remote branch names both stay at c3, HEAD follows the new commits to c5 without a branch, and a new branch at c5 is what keeps c4 and c5 reachable once HEAD moves. A stash is not a commit pointer, and HEAD is not on main.",
+    "explanation": "The local and remote branch names both stay at `c3`, `HEAD` follows the new commits to `c5` without a branch, and a new branch at `c5` is what keeps `c4` and `c5` reachable once `HEAD` moves. A stash is not a commit pointer, and `HEAD` is not on `main`.",
     "pbqWeight": 4,
     "partExplanations": {
-      "z1": "The local main branch did not move, so it still points at c3.",
-      "z2": "The remote-tracking copy origin/main also stays at c3 until someone pushes.",
-      "z3": "A detached HEAD moves with each new commit and points at c5.",
-      "z4": "A branch created at c5 gives c4 and c5 a name so they stay reachable."
+      "z1": "The local `main` branch did not move, so it still points at c3.",
+      "z2": "The remote-tracking copy `origin/main` also stays at c3 until someone pushes.",
+      "z3": "A detached `HEAD` moves with each new commit and points at `c5`.",
+      "z4": "A branch created at `c5` gives c4 and c5 a name so they stay reachable."
     },
     "acronyms": []
   },
@@ -2371,10 +2377,10 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
-    "stem": "A scheduled sync job printed the traceback below. Select the line of source code that raised the error and the line that names the exception.",
+    "stem": "A scheduled sync job printed the traceback below. The lines are shown in shuffled order. Select the line of source code that raised the error, which is the one that reads the missing key, and the line that names the exception.",
     "payload": {
       "width": 480,
       "height": 220,
@@ -2485,10 +2491,10 @@
         "err"
       ]
     },
-    "explanation": "The last frame holds the statement that failed, and the final line names the exception and the missing key. The file and line references only locate the frames, and the call to main is just how the program got there.",
+    "explanation": "The statement that indexes `cfg[\"db\"]` is the one that failed, since `'db'` is the missing key, and the `KeyError` line names the exception and that key. The file and line references only locate the frames, and the call to `main` reads no key; it is just how the program got there.",
     "pbqWeight": 2,
     "partExplanations": {
-      "src": "The source line under the last file reference is the statement that raised the error.",
+      "src": "This source line reads `cfg[\"db\"]`, the key the error names, so it is the statement that raised the error.",
       "err": "The final line gives the exception type and the key that was not found."
     },
     "acronyms": []
@@ -2500,7 +2506,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
     "stem": "Match each error message or Git state to its most likely cause.",
@@ -2576,11 +2582,11 @@
     "pbqWeight": 6,
     "partExplanations": {
       "p1": "The parser reports an opening bracket that never closes.",
-      "p2": "Python raises NameError when a name is used before it is assigned.",
+      "p2": "Python raises `NameError` when a name is used before it is assigned.",
       "p3": "Division by a zero value is detected only while the code runs.",
       "p4": "The server accepted the connection but knows none of the offered public keys.",
       "p5": "A content conflict means both branches edited the same lines in different ways.",
-      "p6": "A detached HEAD message means a commit was checked out directly."
+      "p6": "A detached `HEAD` message means a commit was checked out directly."
     },
     "acronyms": [
       "HTTPS",
@@ -2594,7 +2600,7 @@
     "objectiveIds": [
       "1.4"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 1,
     "stem": "Sort each failure into the kind of problem it is.",
@@ -2650,10 +2656,10 @@
         "i6": "git"
       }
     },
-    "explanation": "A missing fi and an unclosed parenthesis stop the script from being parsed. A missing key and a deleted file fail while the code runs. Unrelated histories and a rejected push are errors reported by Git itself.",
+    "explanation": "A missing `fi` and an unclosed parenthesis are rejected by the parser. A missing key and a deleted file fail while the code runs. Unrelated histories and a rejected push are errors reported by Git itself.",
     "pbqWeight": 6,
     "partExplanations": {
-      "i1": "An unclosed if block cannot be parsed, so it is a syntax error.",
+      "i1": "An `if` block with no closing `fi` cannot be parsed, so it is a syntax error.",
       "i2": "A missing key is found only when the lookup executes.",
       "i3": "Git itself refuses to join histories that share no commit.",
       "i4": "The parser rejects the unclosed parenthesis before anything runs.",
