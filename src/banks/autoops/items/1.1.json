@@ -1189,7 +1189,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "An engineer is new to a PowerShell cmdlet and wants its parameters and usage examples without leaving the console. Which cmdlet shows them?",
@@ -1228,7 +1228,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Every small source edit makes this image build reinstall all packages, which is slow. Which change fixes it?\n\n```dockerfile\nFROM python:3.12-slim\nWORKDIR /app\nCOPY . .\nRUN pip install -r requirements.txt\nCMD [\"python\", \"main.py\"]\n```",
@@ -1244,11 +1244,11 @@
         },
         {
           "id": "c",
-          "text": "Copy `requirements.txt` and run the install before `COPY . .`"
+          "text": "Copy and install `requirements.txt` before `COPY . .`"
         },
         {
           "id": "d",
-          "text": "Run `pip install` inside the `CMD` instruction"
+          "text": "Run `pip install -r requirements.txt` in `CMD`"
         }
       ]
     },
@@ -1267,7 +1267,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which Dockerfile instruction runs a command while the image is being built and saves the result as a new layer?",
@@ -1306,7 +1306,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Dockerfile starts with `FROM python:latest`, and builds a month apart behave differently even though the code did not change. Which fix targets the cause?",
@@ -1318,7 +1318,7 @@
         },
         {
           "id": "b",
-          "text": "Copy the source files before installing packages"
+          "text": "Copy source before installing packages"
         },
         {
           "id": "c",
@@ -1326,7 +1326,7 @@
         },
         {
           "id": "d",
-          "text": "Pin the base image to a version tag"
+          "text": "Pin the base image to an exact version tag"
         }
       ]
     },
@@ -1345,7 +1345,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A `requirements.txt` file contains the line `flask~=2.3.1`. Which version can `pip` install for it?",
@@ -1384,7 +1384,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer wants to record the exact versions installed in a working virtual environment as a file that `pip` can reinstall from. Which command does it?",
@@ -1423,10 +1423,10 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
-    "stem": "In most languages, which TWO of these values are primitives rather than collections?",
+    "stem": "Which TWO of these values are primitives rather than collections?",
     "payload": {
       "options": [
         {
@@ -1435,11 +1435,11 @@
         },
         {
           "id": "b",
-          "text": "`[\"web01\", \"web02\"]`"
+          "text": "`[\"web01\", \"web02\", \"web03\"]`"
         },
         {
           "id": "c",
-          "text": "`{\"host\": \"web01\"}`"
+          "text": "`{\"host\": \"web01\", \"port\": 443}`"
         },
         {
           "id": "d",
@@ -1447,7 +1447,7 @@
         },
         {
           "id": "e",
-          "text": "`(\"a\", \"b\")`"
+          "text": "`(\"a\", \"b\", \"c\")`"
         }
       ]
     },
@@ -1467,7 +1467,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO practices make Python package installs in an image repeatable?",
@@ -1491,7 +1491,7 @@
         },
         {
           "id": "e",
-          "text": "Record the exact versions of indirect dependencies, for example in a lock file"
+          "text": "Lock indirect dependencies to exact versions"
         }
       ]
     },
@@ -1511,7 +1511,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE items belong in an application log entry so that on-call staff can troubleshoot a failure?",
@@ -1535,7 +1535,7 @@
         },
         {
           "id": "e",
-          "text": "The name of the component that reported the event"
+          "text": "The reporting component's name"
         },
         {
           "id": "f",
@@ -1560,7 +1560,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "A Bash script must test, without printing anything, whether `app.log` contains `fatal` in any letter case. Which TWO `grep` options achieve that when combined?",
@@ -1604,7 +1604,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "A Python function is defined as `def deploy(app, env=\"dev\"):`. Which THREE calls are valid?",
@@ -1653,7 +1653,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO lines does `grep -E '^v[0-9]+\\.[0-9]+$'` select?",
@@ -1687,7 +1687,7 @@
         "e"
       ]
     },
-    "explanation": "The pattern needs a leading `v`, one or more digits, a literal dot and one or more digits, with nothing after them. `v2` has no dot part, `v2.10.1` has extra text before the end, and `2.10` lacks the `v`.",
+    "explanation": "The pattern needs a leading `v`, one or more digits, a literal dot and one or more digits, with nothing after them. `v2` has no dot part, `v2.10.1` has an extra `.1` after the match, and `2.10` lacks the `v`.",
     "acronyms": []
   },
   {
@@ -1697,7 +1697,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "A team keeps each project's packages in its own virtual environment. Which TWO benefits does that give?",
@@ -1741,7 +1741,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -1779,7 +1779,7 @@
             },
             {
               "id": "gateway",
-              "text": "Check the connection to the payment gateway and its timeout setting"
+              "text": "Check the gateway connection and its timeout setting"
             },
             {
               "id": "delete",
@@ -1841,7 +1841,17 @@
           "cat payments.log | grep -c timeout",
           "cat payments.log | grep reason=timeout | wc -l",
           "cat payments.log | grep timeout | wc -l",
-          "grep -c reason=timeout < payments.log"
+          "grep -c reason=timeout < payments.log",
+          "grep -c -e reason=timeout payments.log",
+          "grep -c -e \"reason=timeout\" payments.log",
+          "grep -c -e 'reason=timeout' payments.log",
+          "grep -ce reason=timeout payments.log",
+          "grep -c -e timeout payments.log",
+          "grep -e reason=timeout payments.log | wc -l",
+          "grep -c \"reason=timeout\" ./payments.log",
+          "grep -c 'reason=timeout' ./payments.log",
+          "grep --count \"reason=timeout\" payments.log",
+          "grep --count 'reason=timeout' payments.log"
         ],
         "field": [
           "awk '{print $2}' payments.log",
@@ -1861,11 +1871,11 @@
         ]
       }
     },
-    "explanation": "grep selects matching lines and its -c option counts them, awk prints chosen fields, and two of the three failures share the cause reason=timeout, which points at the connection to the gateway rather than at the data.",
+    "explanation": "`grep` selects matching lines and its `-c` option counts them, `awk` prints chosen fields, and two of the three failures share the cause `reason=timeout`, which points at the connection to the gateway rather than at the data.",
     "partExplanations": {
-      "find": "grep ERROR payments.log prints the three lines that contain ERROR.",
-      "count": "grep -c reason=timeout payments.log prints 2, the number of matching lines.",
-      "field": "awk '{print $2}' payments.log prints the level column: INFO, ERROR, INFO, ERROR, WARN, ERROR.",
+      "find": "`grep ERROR payments.log` prints the three lines that contain `ERROR`.",
+      "count": "`grep -c reason=timeout payments.log` prints 2, the number of matching lines.",
+      "field": "`awk '{print $2}' payments.log` prints the level column: `INFO`, `ERROR`, `INFO`, `ERROR`, `WARN`, `ERROR`.",
       "next": "Repeated timeouts point to the gateway connection or its timeout setting; blind retries, deleting the log or hiding errors do not fix the cause."
     },
     "acronyms": []
@@ -1877,7 +1887,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -1948,7 +1958,7 @@
             },
             {
               "id": "cmdstart",
-              "text": "Set python main.py as the default start command"
+              "text": "Set main.py as the default start command"
             },
             {
               "id": "copystart",
@@ -1968,9 +1978,9 @@
     },
     "explanation": "A version tag keeps the starting image stable, copying the dependency list first lets the install layer stay cached, a build-time step bakes the packages into the image, and a default start command runs when a container starts.",
     "partExplanations": {
-      "base": "A specific version tag stops the base image from changing between builds, which latest or a bare name does not.",
-      "deps": "Copying only requirements.txt first keeps the install layer cached until the list changes.",
-      "install": "Running pip install -r requirements.txt at build time installs into the image; the -r flag tells pip to read the file, and a start-time install repeats the work.",
+      "base": "A specific version tag stops the base image from changing between builds, which `latest` or a bare name does not.",
+      "deps": "Copying only `requirements.txt` first keeps the install layer cached until the list changes.",
+      "install": "Running `pip install -r requirements.txt` at build time installs into the image; the `-r` flag tells `pip` to read the file, and a start-time install repeats the work.",
       "start": "A default start command runs when a container starts; running it at build time would execute it once during the build instead."
     },
     "acronyms": []
@@ -1982,7 +1992,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -2043,7 +2053,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -2222,7 +2232,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 3,
     "pbqWeight": 4,
@@ -2307,7 +2317,7 @@
         },
         {
           "id": "l4",
-          "text": "Raises a NameError"
+          "text": "Not readable there: raises NameError"
         },
         {
           "id": "l5",
@@ -2315,7 +2325,7 @@
         },
         {
           "id": "l6",
-          "text": "Readable in build() alone"
+          "text": "Not readable there: raises TypeError"
         }
       ]
     },
@@ -2327,12 +2337,12 @@
         "z4": "l4"
       }
     },
-    "explanation": "Names are looked up from the inner scope outward. A module-level name is visible everywhere below it, a name in build() is visible in build() and in functions nested inside it, a name in check() stays inside check(), and reading an inner name from outside fails with a NameError.",
+    "explanation": "Names are looked up from the inner scope outward. A module-level name is visible everywhere below it, a name in `build()` is visible in `build()` and in functions nested inside it, a name in `check()` stays inside `check()`, and reading an inner name from outside fails with a `NameError`, not a `TypeError`.",
     "partExplanations": {
       "z1": "A module-level name can be read from every function in the file.",
       "z2": "A nested function can read the names of the function that encloses it.",
-      "z3": "A name created in check() ends when check() returns and is invisible outside it.",
-      "z4": "tmp_dir exists only inside build(), so reading it at module level raises a NameError."
+      "z3": "A name created in `check()` ends when `check()` returns and is invisible outside it.",
+      "z4": "`tmp_dir` exists only inside `build()`, so reading it at module level raises a `NameError`."
     },
     "acronyms": []
   },
@@ -2343,7 +2353,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -2458,14 +2468,14 @@
         "l3"
       ]
     },
-    "explanation": "Line 2 has spaces around the equals sign, so Bash runs count as a command, and line 3 uses a redirection operator instead of a numeric comparison. The other lines are correct.",
+    "explanation": "Line 2 has spaces around the `=` sign, so Bash runs `count` as a command, and line 3 uses the `>` redirection operator instead of a numeric comparison. The other lines are correct.",
     "partExplanations": {
-      "l1": "The loop header correctly walks every file that ends in .log.",
-      "l2": "Spaces around = make Bash run count as a command instead of assigning the result.",
-      "l3": "The > sign redirects output to a file named 5 and does not compare numbers; -gt does.",
-      "l4": "The echo line is valid and prints the file name and the count.",
-      "l5": "fi correctly closes the if block.",
-      "l6": "done correctly closes the loop."
+      "l1": "The loop header correctly walks every file that ends in `.log`.",
+      "l2": "Spaces around `=` make Bash run `count` as a command instead of assigning the result.",
+      "l3": "The `>` sign redirects output to a file named `5` and does not compare numbers; `-gt` does.",
+      "l4": "The `echo` line is valid and prints the file name and the count.",
+      "l5": "`fi` correctly closes the `if` block.",
+      "l6": "`done` correctly closes the loop."
     },
     "acronyms": []
   },
@@ -2476,7 +2486,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 1,
     "pbqWeight": 5,
@@ -2540,11 +2550,11 @@
         "p5": "c5"
       }
     },
-    "explanation": "Quotes make a value a string even when it looks numeric, a bare decimal is a number, true and false are booleans, square brackets hold an ordered array, and curly braces hold an object of named members. No value here is null.",
+    "explanation": "Quotes make a value a string even when it looks numeric, a bare decimal is a number, `true` and `false` are booleans, square brackets hold an ordered array, and curly braces hold an object of named members. No value here is null.",
     "partExplanations": {
       "p1": "Double quotes make it a string, even though the characters are digits.",
       "p2": "A decimal without quotes is a number.",
-      "p3": "false is a boolean literal.",
+      "p3": "`false` is a boolean literal.",
       "p4": "Square brackets enclose an ordered array of values.",
       "p5": "Curly braces enclose an object of named members."
     },
@@ -2559,11 +2569,11 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "Sort each statement into the data format or data type it describes.",
+    "stem": "Sort each statement into the data format it describes, or into the general idea of a primitive data type.",
     "payload": {
       "buckets": [
         {
@@ -2590,7 +2600,7 @@
         },
         {
           "id": "i3",
-          "text": "Shows nesting by indenting with spaces"
+          "text": "Uses the indentation itself to show nesting"
         },
         {
           "id": "i4",
@@ -2598,11 +2608,11 @@
         },
         {
           "id": "i5",
-          "text": "A boolean value such as false"
+          "text": "Holds one single value and no nested values"
         },
         {
           "id": "i6",
-          "text": "A number such as 3.14"
+          "text": "A category that covers booleans, integers and floats"
         }
       ]
     },
@@ -2616,14 +2626,14 @@
         "i6": "prim"
       }
     },
-    "explanation": "YAML relies on indentation and permits # comments. JSON has no comments and fixes its key syntax with double quotes. Booleans and numbers are single primitive values rather than a file format.",
+    "explanation": "YAML relies on indentation and permits `#` comments. JSON has no comments and fixes its key syntax with double quotes. A primitive type holds a single value, and booleans, integers and floats are all primitives; this is a general idea, not a rule of one file format.",
     "partExplanations": {
-      "i1": "A # starts a comment in YAML.",
+      "i1": "A `#` starts a comment in YAML.",
       "i2": "Standard JSON has no comment syntax.",
-      "i3": "YAML marks nesting with leading spaces.",
+      "i3": "YAML marks nesting with leading spaces; JSON may be indented, but its brackets show the nesting.",
       "i4": "JSON object keys are always double-quoted strings.",
-      "i5": "A boolean is a single primitive value.",
-      "i6": "A number is a single primitive value."
+      "i5": "Holding one value, with nothing nested inside, is what makes a type primitive.",
+      "i6": "Booleans, integers and floats are all primitive types in general, not features of one format."
     },
     "acronyms": [
       "JSON",
