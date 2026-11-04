@@ -141,6 +141,13 @@
 
 ## Next session
 
+- **FIRST, EVERY SESSION (owner rule, 2026-11-03): check GitHub issues before any other work** (`gh issue list --state open`). **Open bugs take priority over every other task, content batches included:** fix what we have before adding new things that could break. Also review the open enhancement requests, so the owner can weigh them against adding more questions. See "Standing rules".
+- **Open issues as of 2026-11-03:**
+  - **Bugs (do these first, before batch 24):**
+    - #4 Data+ Practice: a table does not grow to fit its content, so single words wrap. Owner: columns must fit and no word may ever break; treat it as an accessibility issue, held to the strictest axe/a11y standard as if legally required.
+    - #7 Text escapes its box. Owner: fix it everywhere (one case was fixed before), make "all text stays inside its bounds" a rule, check it with Playwright, and add a Playwright visual check of each question during generation as a standing step from now on.
+  - **Enhancements (owner to prioritize against more questions):** #3 test-taking tips pop-up in practice/cram (a random tip every 10–20 questions); #5 Bash and PowerShell primer for exams with typed commands (assume no experience; links to safe practice tools); #6 a link per question to an in-depth explanation from a reputable source (a "ponder" style icon); #8 better question shuffling (seen and missed questions weighted, owner gives the percentages in the issue); #10 a visual right/wrong marker with at least five styles chosen in Settings; #11 SHA-512/256 hashes of questions and answers on a locked-down `Security` branch, with a Settings button to verify content and check for the latest release.
+
 - **START HERE (2026-10-31, latest): the exam-cards UI (part 1) is done, merged to `main` and deployed live** (last code commit d2467f4; gh-pages 88e73a5). Spec: `docs/superpowers/specs/2026-10-31-exam-cards-and-acronym-table-design.md`; plan: `docs/superpowers/plans/2026-10-31-exam-cards-layout.md`.
   - **Verified:** `npm run check` green (567 unit, 73 e2e), `npm run test:e2e-dev` green (2). The Opus whole-branch review's findings are all fixed, minors included.
   - **What shipped:**
@@ -384,6 +391,7 @@
 
 ## Standing rules
 
+- **Check GitHub issues at the start of every session (owner rule, 2026-11-03).** Run `gh issue list --state open` before any other work. Bugs always come first: fix open bugs before content batches or new features. List the open enhancement requests too, so the owner can decide whether they beat adding more questions. Update the open-issues list under "Next session".
 - Do not use GitHub Actions workflows or Git LFS; the owner's quota is low. Deploy to Pages locally from a branch.
 - Bundled content must be original. Never ingest dump questions. The acronym harvester keeps only acronym tokens.
 - Accessibility is enforced: axe must show no serious or critical violations, and every drag interaction needs a keyboard and tap alternative.
