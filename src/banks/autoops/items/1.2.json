@@ -983,10 +983,10 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "Which command lists only the tags whose names start with `v2.`?",
+    "stem": "Which command prints only the tags whose names start with `v2.`?",
     "payload": {
       "options": [
         {
@@ -1022,7 +1022,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A release script takes the first line printed by `git tag --list 'v1.*' --sort=-version:refname`. The repository has tags `v1.2.0`, `v1.3.0`, `v1.9.0` and `v1.10.0`. Which tag does the script take?",
@@ -1061,7 +1061,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Tags `v2.0.0` and `v2.0.0-rc.1` exist. `git tag --sort=version:refname` lists `v2.0.0-rc.1` after `v2.0.0`. Which setting makes it list the release candidate first?",
@@ -1100,7 +1100,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Two developers work on login and billing in the same repository. Neither wants unfinished work to disturb the other before review. What should each do?",
@@ -1139,7 +1139,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "`release/3.2` was cut from `main` to stabilize version 3.2, and work on 3.3 has started. A bug is found in 3.2. Which approach keeps both lines correct?",
@@ -1159,7 +1159,7 @@
         },
         {
           "id": "d",
-          "text": "Fix it on `release/3.2`, merge that branch into `main`, and keep 3.3 work on `main`"
+          "text": "Fix it on `release/3.2`, then port the fix to `main` as well"
         }
       ]
     },
@@ -1168,7 +1168,7 @@
         "d"
       ]
     },
-    "explanation": "The stabilizing fix belongs on `release/3.2`, and merging that branch into `main` carries it forward while 3.3 work continues on `main`. Abandoning the release branch, mixing 3.3 work into it, or leaving `main` without the fix each loses work or reintroduces the bug in the next version.",
+    "explanation": "The stabilizing fix belongs on `release/3.2`, and porting it to `main` (by merging the release branch or cherry-picking the fix) carries it into 3.3 while that work continues on `main`. Abandoning the release branch, mixing 3.3 work into it, or leaving `main` without the fix each loses work or reintroduces the bug in the next version.",
     "acronyms": []
   },
   {
@@ -1178,7 +1178,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A team's convention is `type/ticket-short-description`. Which branch name follows it for a bug fix on ticket 482 that corrects invoice rounding?",
@@ -1207,7 +1207,7 @@
         "a"
       ]
     },
-    "explanation": "The convention is a type, a slash, the ticket number and a short hyphenated description. The second and third names reorder or drop the parts, and the last one contains a space, which Git does not allow in a branch name.",
+    "explanation": "The convention is a type, a slash, the ticket number and a short hyphenated description. The second puts the ticket before the type, the third puts the type last, and the fourth contains a space, which Git does not allow in a branch name.",
     "acronyms": []
   },
   {
@@ -1217,7 +1217,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team wants `git pull` to stop with an error, rather than create a merge commit, whenever local and remote history have diverged. Which option does this?",
@@ -1256,10 +1256,10 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "After rebasing a feature branch that only she uses, a developer finds `git push` rejected. Which push overwrites the remote branch only if nobody has added commits to it since her last fetch?",
+    "stem": "After she rebases a feature branch that only she uses, her `git push` is rejected. Which push overwrites the remote branch only if nobody has added commits to it since her last fetch?",
     "payload": {
       "options": [
         {
@@ -1295,7 +1295,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer creates the tag `v1.4.0` and runs `git push origin main`. The tag does not appear on the remote. Why?",
@@ -1334,7 +1334,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer ran `git add secrets.env` by mistake and has not committed. Which command unstages the file but keeps the edits in the working tree?",
@@ -1373,7 +1373,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A credentials file `.env` was committed last month. A developer now adds `.env` to `.gitignore` and commits that change. What happens to Git's tracking of the file?",
@@ -1412,7 +1412,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO tasks suit a `pre-commit` hook?",
@@ -1456,7 +1456,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE statements about semantic versions are correct?",
@@ -1505,7 +1505,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO commands change the contents of the remote repository?",
@@ -1549,7 +1549,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are valid branch names in Git?",
@@ -1597,7 +1597,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO controls best keep credentials out of a repository?",
@@ -1605,7 +1605,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A pre-commit scan of staged changes for key patterns"
+          "text": "A `pre-commit` scan of staged changes for key patterns"
         },
         {
           "id": "b",
@@ -1617,7 +1617,7 @@
         },
         {
           "id": "d",
-          "text": "Keeping the repository private on the hosting service"
+          "text": "A note in the `README` asking contributors not to commit secrets"
         },
         {
           "id": "e",
@@ -1631,7 +1631,7 @@
         "c"
       ]
     },
-    "explanation": "A pre-commit scan stops credentials before they enter history, and reading them at run time keeps them out of the code. Base64 is easily reversed, a private repository still exposes secrets to everyone with access and to every clone, and a harmless extension hides nothing from a reader.",
+    "explanation": "A `pre-commit` scan stops credentials before they enter history, and reading them at run time keeps them out of the code. Base64 is easily reversed, a `README` note relies on everyone remembering it and enforces nothing, and a harmless extension hides nothing from a reader.",
     "acronyms": []
   },
   {
@@ -1641,7 +1641,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE practices fit short-lived feature branching?",
@@ -1690,7 +1690,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO belong on `release/2.4` while it is being stabilized?",
@@ -1734,11 +1734,11 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "pbqWeight": 5,
-    "stem": "You are on the feature/retry-backoff branch of the retry-lib repository. Review the terminal output, then complete each step. The commit message must be exactly: Add retry backoff.",
+    "stem": "You are on the `feature/retry-backoff` branch of the `retry-lib` repository. Review the terminal output, then complete each step. The commit message must be exactly `Add retry backoff`, with no final period.",
     "payload": {
       "output": [
         "$ git status -sb",
@@ -1815,7 +1815,9 @@
           "git push origin -u feature/retry-backoff",
           "git push origin --set-upstream feature/retry-backoff",
           "git push -u origin HEAD",
-          "git push --set-upstream origin HEAD"
+          "git push --set-upstream origin HEAD",
+          "git push origin -u HEAD",
+          "git push origin --set-upstream HEAD"
         ],
         "fetch": [
           "git fetch",
@@ -1830,13 +1832,13 @@
         ]
       }
     },
-    "explanation": "Stage the one file by name, commit with a quoted message, and use the upstream flag on the first push. A fetch downloads without touching local work, and a two-dot range from main to origin/main lists what the remote has that local main lacks.",
+    "explanation": "Stage the one file by name, commit with a quoted message, and use the upstream flag on the first push. A fetch downloads without touching local work, and a two-dot range from `main` to `origin/main` lists what the remote has that local `main` lacks.",
     "partExplanations": {
-      "add": "Naming the file stages only src/retry.py; the untracked scratch file and the notes edit stay out.",
-      "commit": "The -m flag takes the message, and the quotes keep the three words together.",
-      "push": "The -u (or --set-upstream) flag links the branch to origin, so later pulls and pushes need no arguments.",
-      "fetch": "A fetch updates origin/main and the other remote-tracking branches but leaves local branches and files alone.",
-      "view": "The range main..origin/main lists commits reachable from origin/main but not from main."
+      "add": "Naming the file stages only `src/retry.py`; the untracked scratch file and the notes edit stay out.",
+      "commit": "The `-m` flag takes the message, and the quotes keep the three words together.",
+      "push": "The `-u` (or `--set-upstream`) flag links the branch to origin, so later pulls and pushes need no arguments.",
+      "fetch": "A fetch updates `origin/main` and the other remote-tracking branches but leaves local branches and files alone.",
+      "view": "The range `main..origin/main` lists commits reachable from `origin/main` but not from `main`."
     },
     "acronyms": []
   },
@@ -1847,11 +1849,11 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "pbqWeight": 5,
-    "stem": "Dana joins the payments team and is setting up Git on her laptop. Choose the setting that meets each need.",
+    "stem": "Dana joins the payments team and is setting up a current Git release on her laptop. Choose the setting that meets each need.",
     "payload": {
       "fields": [
         {
@@ -1892,7 +1894,7 @@
         },
         {
           "id": "pull",
-          "label": "Refuse to create a merge commit when pulling diverged history",
+          "label": "Make a pull of diverged history fail, rather than merge or rebase",
           "options": [
             {
               "id": "o1",
@@ -1955,13 +1957,13 @@
         "branch": "o2"
       }
     },
-    "explanation": "Repository config overrides her user config only for that repository. core.hooksPath points at a tracked folder, pull.ff = only fails instead of merging diverged history, push.autoSetupRemote links new branches, and init.defaultBranch names new repositories.",
+    "explanation": "Repository config overrides her user config only for that repository. `core.hooksPath` points at a tracked folder, `pull.ff = only` fails instead of merging diverged history, `push.autoSetupRemote` links new branches, and `init.defaultBranch` names new repositories.",
     "partExplanations": {
       "email": "Local (repository) scope applies to one repository; global applies everywhere for her user.",
-      "hooks": "The default .git/hooks folder is not tracked, so a tracked folder must be named explicitly.",
-      "pull": "pull.ff = only aborts the pull unless it can fast-forward; rebase would rewrite her commits instead of refusing.",
-      "push": "push.autoSetupRemote creates the upstream link on the first push; matching and followTags do not.",
-      "branch": "init.defaultBranch is the real setting; the other keys do not exist in Git."
+      "hooks": "The default `.git/hooks` folder is not tracked, so a tracked folder must be named explicitly.",
+      "pull": "`pull.ff = only` aborts the pull unless it can fast-forward; `pull.rebase = true` would rewrite her commits instead of refusing.",
+      "push": "`push.autoSetupRemote` (Git 2.37 or later) creates the upstream link on the first push; `matching` and `followTags` do not.",
+      "branch": "`init.defaultBranch` is the real setting; the other keys do not exist in Git."
     },
     "acronyms": []
   },
@@ -1972,11 +1974,11 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "Put these events in the order they happen when a developer commits one change and then pushes it. Assume every hook passes. A commit can record only what is already staged. A hook runs after the command that triggers it starts. The pre-commit hook runs before the message is checked, and the commit exists only after the message check passes.",
+    "stem": "Put these events in the order they happen when a developer commits one change and then pushes it. Assume every hook passes. A commit can record only what is already staged. A hook runs after the command that triggers it starts. The `pre-commit` hook runs before the message is checked, and the commit exists only after the message check passes.",
     "payload": {
       "steps": [
         {
@@ -2015,14 +2017,14 @@
         "s6"
       ]
     },
-    "explanation": "Staging comes first because a commit records only the index. git commit then triggers the pre-commit hook, the commit-msg hook checks the message, the commit is recorded, and a later git push runs pre-push before uploading.",
+    "explanation": "Staging comes first because a commit records only the index. `git commit` then triggers the `pre-commit` hook, the `commit-msg` hook checks the message, the commit is recorded, and a later `git push` runs `pre-push` before uploading.",
     "partExplanations": {
-      "0": "A commit can record only what is staged, so git add comes first.",
-      "1": "Running git commit starts the commit process and triggers its hooks.",
-      "2": "The pre-commit hook checks the staged content before a message is accepted.",
-      "3": "The commit-msg hook validates the message after the staged content passes.",
+      "0": "A commit can record only what is staged, so `git add` comes first.",
+      "1": "Running `git commit` starts the commit process and triggers its hooks.",
+      "2": "The `pre-commit` hook checks the staged content before a message is accepted.",
+      "3": "The `commit-msg` hook validates the message after the staged content passes.",
       "4": "Only after both hooks pass is the commit recorded locally.",
-      "5": "Pushing is a separate later command; its pre-push hook runs before anything uploads."
+      "5": "Pushing is a separate later command; its `pre-push` hook runs before anything uploads."
     },
     "acronyms": []
   },
@@ -2033,7 +2035,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 3,
     "pbqWeight": 5,
@@ -2178,11 +2180,11 @@
     },
     "explanation": "Compare major, then minor, then patch; a pre-release ranks below its release, numeric pre-release parts compare as numbers, and build metadata is ignored.",
     "partExplanations": {
-      "high": "Major 2 beats major 1, so 2.0.0-beta.1 ranks above every 1.x version, even as a pre-release.",
-      "rc": "rc.2 and rc.11 compare as numbers, 2 < 11, so rc.2 is lower.",
-      "pre": "The pre-releases are 1.10.0-rc.2, 1.10.0-rc.11 and 2.0.0-beta.1, which is 3; build metadata is not a pre-release.",
+      "high": "Major 2 beats major 1, so `2.0.0-beta.1` ranks above every 1.x version, even as a pre-release.",
+      "rc": "`rc.2` and `rc.11` compare as numbers, 2 < 11, so `rc.2` is lower.",
+      "pre": "The pre-releases are `1.10.0-rc.2`, `1.10.0-rc.11` and `2.0.0-beta.1`, which is 3; build metadata is not a pre-release.",
       "build": "Build metadata after the plus sign is ignored, so the two have equal precedence.",
-      "range": "Only 1.9.0 and 1.9.11 are stable and fall in that range; the 1.10.0 release candidates are pre-releases."
+      "range": "Only `1.9.0` and `1.9.11` are stable and fall in that range; the `1.10.0` release candidates are pre-releases."
     },
     "acronyms": []
   },
@@ -2193,11 +2195,11 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
     "pbqWeight": 4,
-    "stem": "Place the best name for each part of this release flow in the box below it.",
+    "stem": "Place the best name for each part of this team's release flow in the box below it.",
     "payload": {
       "width": 600,
       "height": 220,
@@ -2254,7 +2256,7 @@
           "id": "z1",
           "x": 10,
           "y": 120,
-          "name": "Short-lived branch for one ticket"
+          "name": "Short-lived branch for one planned ticket in the next version"
         },
         {
           "id": "z2",
@@ -2310,10 +2312,10 @@
         "z4": "l4"
       }
     },
-    "explanation": "A feature branch holds one ticket, main collects reviewed work, a release branch stabilizes one version with fixes only, and a tag marks the shipped commit. A hotfix branch targets an older live release, and a stash entry is not a branch.",
+    "explanation": "A feature branch holds one planned ticket, `main` collects reviewed work, a release branch stabilizes one version with fixes only, and a tag marks the shipped commit. A hotfix branch targets an older live release, and a stash entry is not a branch.",
     "partExplanations": {
-      "z1": "One ticket gets its own short-lived feature branch.",
-      "z2": "Reviewed work from many tickets merges into main.",
+      "z1": "One planned ticket for the next version gets its own short-lived feature branch.",
+      "z2": "Reviewed work from many tickets merges into `main`.",
       "z3": "A release branch for 2.4 accepts only stabilizing fixes.",
       "z4": "A tag is a fixed pointer to the commit that shipped."
     },
@@ -2326,11 +2328,11 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "A developer ran git commit and Git aborted it. The output of the pre-commit hooks is shown. A hook that prints Failed exits with a non-zero status. Select each line that shows a hook that blocked the commit.",
+    "stem": "A developer ran `git commit` and Git aborted it. The output of the `pre-commit` hooks is shown. A hook that prints Failed exits with a non-zero status. Select each line that shows a hook that blocked the commit.",
     "payload": {
       "width": 480,
       "height": 220,
@@ -2459,7 +2461,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
     "pbqWeight": 5,
@@ -2523,12 +2525,12 @@
         "p5": "c2"
       }
     },
-    "explanation": "Fetch only downloads, pull downloads and integrates, push uploads, add -p stages chunk by chunk, and amend replaces the latest commit. Deleting a remote branch needs a push with a delete option, so it matches none of these.",
+    "explanation": "Fetch only downloads, pull downloads and integrates, push uploads, `add -p` stages chunk by chunk, and amend replaces the latest commit. Deleting a remote branch needs a push with a delete option, so it matches none of these.",
     "partExplanations": {
       "p1": "Fetch updates remote-tracking branches and nothing else.",
       "p2": "Pull is a fetch followed by a merge into the current branch.",
-      "p3": "Push uploads the local main commits to origin.",
-      "p4": "The -p (patch) option lets you choose chunks to stage.",
+      "p3": "Push uploads the local `main` commits to `origin`.",
+      "p4": "The `-p` (patch) option lets you choose chunks to stage.",
       "p5": "Amend rewrites the latest commit to include what is staged."
     },
     "acronyms": []
@@ -2540,7 +2542,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 1,
     "pbqWeight": 6,
@@ -2579,7 +2581,7 @@
         },
         {
           "id": "i5",
-          "text": "Fixing an off-by-one error in pagination"
+          "text": "Fixing an off-by-one error in pagination to match the documented behavior"
         },
         {
           "id": "i6",
