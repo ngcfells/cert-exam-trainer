@@ -6,7 +6,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "After `POST /v1/orders` creates an order, which response header gives the address of the new order?",
@@ -45,7 +45,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A `POST /v1/reports` starts a long export. The service replies `202 Accepted` and a `Location` header that points to a status page. What does the reply tell the client?",
@@ -84,7 +84,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A script sends `GET /v1/orders/9981` and receives `404 Not Found`. What does this mean?",
@@ -123,7 +123,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A deployment script runs this command and the service replies `415 Unsupported Media Type`.\n```bash\ncurl -X POST https://api.example.internal/v1/tickets \\\n  -H \"Content-Type: text/plain\" \\\n  -d '{\"title\":\"disk full\"}'\n```\nWhich change fixes the request?",
@@ -135,7 +135,7 @@
         },
         {
           "id": "b",
-          "text": "Change the header to `Content-Type: application/json`"
+          "text": "Set `Content-Type: application/json`"
         },
         {
           "id": "c",
@@ -164,7 +164,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A client times out and sends the identical `PUT /v1/users/42` request three times. What is the state of user 42 afterwards?",
@@ -203,7 +203,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A script calls a protected endpoint without any `Authorization` header. Which status does a well-built service return?",
@@ -242,7 +242,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A service account with a read-only scope sends a valid token on `DELETE /v1/orders/1042` and gets `403 Forbidden`. Which statement is correct?",
@@ -254,7 +254,7 @@
         },
         {
           "id": "b",
-          "text": "The identity is known but is not permitted to delete"
+          "text": "The caller is known but lacks permission"
         },
         {
           "id": "c",
@@ -281,7 +281,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A monitoring script receives `502`, `503` and `504` replies from an API. Which status class do all three belong to?",
@@ -289,19 +289,19 @@
       "options": [
         {
           "id": "a",
-          "text": "2XX, success with a body"
+          "text": "`2XX`, success with a body"
         },
         {
           "id": "b",
-          "text": "3XX, redirect to elsewhere"
+          "text": "`3XX`, redirect to elsewhere"
         },
         {
           "id": "c",
-          "text": "4XX, request was wrong"
+          "text": "`4XX`, request was wrong"
         },
         {
           "id": "d",
-          "text": "5XX, server error"
+          "text": "`5XX`, error on the server side"
         }
       ]
     },
@@ -310,7 +310,7 @@
         "d"
       ]
     },
-    "explanation": "Codes from 500 to 599 are server errors. 2XX is success, 3XX tells the client to look elsewhere, and 4XX blames the request.",
+    "explanation": "Codes from `500` to `599` are server errors. `2XX` is success, `3XX` tells the client to look elsewhere, and `4XX` blames the request.",
     "acronyms": [
       "API"
     ]
@@ -322,7 +322,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A script posts a JSON body that is missing its closing brace. Which status best reports the problem?",
@@ -363,7 +363,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A `POST /v1/users` tries to register an email address that already belongs to another user. Which status best reports the problem?",
@@ -402,7 +402,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "`DELETE /v1/reports` returns `405 Method Not Allowed` with the header `Allow: GET, POST`. What should the client conclude?",
@@ -441,7 +441,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An automation job gets `429 Too Many Requests` with `Retry-After: 30`. What should the job do next?",
@@ -470,7 +470,7 @@
         "d"
       ]
     },
-    "explanation": "`Retry-After` states how long to pause before another attempt, so the job waits and retries. Hammering the endpoint or changing method does not lift a rate limit, and the order itself is not at fault.",
+    "explanation": "`Retry-After` states how long to pause before another attempt, so the job waits and retries. Hammering the endpoint or changing method does not lift a rate limit, and the order itself is not at fault. A fresh token does not lift a rate limit either.",
     "acronyms": []
   },
   {
@@ -480,7 +480,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A gateway returns `504 Gateway Timeout` for `GET /v1/orders`. Which statement fits?",
@@ -496,7 +496,7 @@
         },
         {
           "id": "c",
-          "text": "The gateway got no timely answer from the service behind it"
+          "text": "The upstream service did not reply in time"
         },
         {
           "id": "d",
@@ -519,10 +519,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "```bash\n$ curl http://api.example.internal/v1/orders/7\n$ curl -i http://api.example.internal/v1/orders/7\nHTTP/1.1 301 Moved Permanently\nLocation: https://api.example.internal/v1/orders/7\n```\nThe first command prints nothing. Which change makes `curl` print the order?",
+    "stem": "```bash\n$ curl http://api.example.internal/v1/orders/7\n$ curl -i http://api.example.internal/v1/orders/7\nHTTP/1.1 301 Moved Permanently\nLocation: https://api.example.internal/v1/orders/7\n```\nThe first command prints nothing, because the redirect reply has an empty body. Which change makes `curl` print the order?",
     "payload": {
       "options": [
         {
@@ -558,7 +558,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A client sends `GET /v1/config` with `If-None-Match: \"v7\"` and receives `304 Not Modified`. What should the client do?",
@@ -570,7 +570,7 @@
         },
         {
           "id": "b",
-          "text": "Keep using its cached copy, because no new body was sent"
+          "text": "Keep its cached copy, as no body was sent"
         },
         {
           "id": "c",
@@ -597,10 +597,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "Two engineers read a ticket and both get `ETag: \"a1\"`. The first sends `PUT /v1/tickets/55` with `If-Match: \"a1\"` and succeeds, so the ticket now has the tag `\"a2\"`. The second sends the same request with `If-Match: \"a1\"`. Which status does the service return?",
+    "stem": "Two engineers read a ticket and both get `ETag: \"a1\"`; the first sends `PUT /v1/tickets/55` with `If-Match: \"a1\"` and succeeds, so the ticket now has the tag `\"a2\"`. The second sends the same request with `If-Match: \"a1\"`. Which status does the service return?",
     "payload": {
       "options": [
         {
@@ -636,7 +636,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A client sends `DELETE /v1/sessions/ab12` and gets `204 No Content`. What does the reply contain besides headers?",
@@ -644,7 +644,7 @@
       "options": [
         {
           "id": "a",
-          "text": "No content at all"
+          "text": "Nothing, because the body is empty"
         },
         {
           "id": "b",
@@ -665,7 +665,7 @@
         "a"
       ]
     },
-    "explanation": "`204` means success with no body, so there is nothing to parse after the headers. A reply that returns the deleted record or a message would use a `200` instead.",
+    "explanation": "`204` means success with no body, so there is nothing to parse after the headers. A reply that returns the deleted record or a message would use a `200` instead, and a link to a next page belongs to a list reply.",
     "acronyms": [
       "JSON"
     ]
@@ -677,7 +677,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A script runs `DELETE /v1/sessions/abc` twice. The first call returns `204` and the second returns `404`. Is `DELETE` still idempotent?",
@@ -718,7 +718,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Where should a script place a bearer token when it calls `GET /v1/orders`?",
@@ -726,7 +726,7 @@
       "options": [
         {
           "id": "a",
-          "text": "In the `Content-Type` header of the request"
+          "text": "In the `Content-Type` request header"
         },
         {
           "id": "b",
@@ -757,7 +757,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A script must call an endpoint that expects a username and password. Which `curl` option supplies them as `user:password`?",
@@ -796,7 +796,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An engineer wants only the response headers of `https://api.example.internal/v1/ping`, without downloading the body. Which command does that?",
@@ -835,10 +835,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A pipeline step runs `curl -s https://api.example.internal/v1/health`. The service returns `503`, yet the step passes. Which option makes `curl` exit with an error on a 4XX or 5XX reply?",
+    "stem": "A pipeline step runs `curl -s https://api.example.internal/v1/health`. The service returns `503`, yet the step passes. Which option makes `curl` exit with an error on a `4XX` or `5XX` reply?",
     "payload": {
       "options": [
         {
@@ -864,7 +864,7 @@
         "d"
       ]
     },
-    "explanation": "`curl` exits with success whenever it receives any reply unless `--fail` (`-f`) turns 400 and above into a failing exit code. `--include` only prints headers, `--location` follows redirects, and `--insecure` skips certificate checks.",
+    "explanation": "`curl` exits with success whenever it receives any reply unless `--fail` (`-f`) turns `400` and above into a failing exit code. `--include` only adds the headers to the output, `--location` follows redirects, and `--insecure` skips certificate checks.",
     "acronyms": []
   },
   {
@@ -874,7 +874,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which command saves the reply from `https://api.example.internal/v1/report` to a file named `report.json`?",
@@ -913,10 +913,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "Which `wget` option adds a custom request header such as `Accept: application/json`?",
+    "stem": "In the standard `wget` on most Linux hosts, which option adds a custom request header such as `Accept: application/json`?",
     "payload": {
       "options": [
         {
@@ -952,10 +952,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A team keeps one Postman collection and wants to run its requests against both the staging and production hosts by switching a selection. What should hold the host name?",
+    "stem": "A team keeps one Postman collection and wants to run its requests against both the staging and production hosts by changing one setting at run time. What should hold the host name?",
     "payload": {
       "options": [
         {
@@ -972,7 +972,7 @@
         },
         {
           "id": "d",
-          "text": "A variable such as `{{base_url}}` defined in each environment"
+          "text": "A `{{base_url}}` variable set per environment"
         }
       ]
     },
