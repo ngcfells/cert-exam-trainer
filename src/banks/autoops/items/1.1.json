@@ -992,7 +992,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "What does `echo 'mode=debug;level=debug' | sed 's/debug/info/'` print?",
@@ -1021,7 +1021,7 @@
         "d"
       ]
     },
-    "explanation": "Without the `g` flag, the `s` command replaces only the first match on each line, so only the first `debug` changes. Adding `g` would change both. The last option would mean no substitution happened, and the second option would change the wrong occurrence.",
+    "explanation": "Without the `g` flag, the `s` command replaces only the first match on each line, so only the first `debug` changes. Adding `g` would change both. The third option would mean no substitution happened, and the second option would change the wrong occurrence.",
     "acronyms": []
   },
   {
@@ -1031,7 +1031,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which command prints only lines 5 through 8 of `app.log`?",
@@ -1070,7 +1070,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "The file `status.json` holds the content below. Which filter, run as `jq -r FILTER status.json`, prints only `b1`?\n\n```json\n{\"service\": \"billing\", \"replicas\": [\n  {\"host\": \"b1\", \"up\": true},\n  {\"host\": \"b2\", \"up\": false}\n]}\n```",
@@ -1109,7 +1109,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A script runs `host=$(jq .name config.json)` and the variable holds the value with surrounding double quotes. Which change gives the bare text?",
@@ -1150,7 +1150,7 @@
     "objectiveIds": [
       "1.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which cmdlet completes this pipeline so it lists only stopped services?\n\n```powershell\nGet-Service | ____ { $_.Status -eq 'Stopped' }\n```",
