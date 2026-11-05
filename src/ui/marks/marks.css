@@ -43,14 +43,19 @@
 .mark-small-thumbs .mark-icon, .mark-small-edge .mark-icon { color: var(--m); }
 .mark-small-plain { color: inherit; font-weight: inherit; }
 
-/* Pop-in; the global Reduce motion rules switch it off. */
+/* Pop-in by scale only: a fade would dip the colours below AA mid-animation.
+   The global Reduce motion rules switch it off. */
 .mark-pop { animation: mark-pop 200ms ease-out; }
 .mark-stamp.mark-pop { animation-name: mark-thunk; animation-duration: 240ms; }
-@keyframes mark-pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: none; } }
-@keyframes mark-thunk { from { opacity: 0; transform: rotate(-4deg) scale(1.35); } 70% { opacity: 1; transform: rotate(-4deg) scale(0.96); } to { transform: rotate(-4deg); } }
+@keyframes mark-pop { from { transform: scale(0.92); } to { transform: none; } }
+@keyframes mark-thunk { from { transform: rotate(-4deg) scale(1.35); } 70% { transform: rotate(-4deg) scale(0.96); } to { transform: rotate(-4deg); } }
 
-/* Settings: one choice per line, each with a preview that never animates. */
-.display-settings.mark-settings fieldset { flex-direction: column; align-items: flex-start; }
-.display-settings.mark-settings fieldset label { flex-wrap: wrap; }
+/* Settings: compact choices (two columns when there is room), previews never animate. */
+.display-settings.mark-settings fieldset { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: 0.25rem 1.5rem; }
+.display-settings.mark-settings fieldset label { flex-wrap: wrap; column-gap: 0.75rem; row-gap: 0.25rem; }
 .mark-preview { display: inline-flex; max-width: 100%; }
-.mark-preview .mark { animation: none; margin: 0; font-size: 1rem; }
+.mark-preview .mark { animation: none; margin: 0; font-size: 0.875rem; gap: 0.4rem; }
+.mark-preview .mark-banner, .mark-preview .mark-thumbs { padding: 0.15rem 0.5rem; }
+.mark-preview .mark-stamp { padding: 0.05rem 0.5rem; }
+.mark-preview .mark-icon, .mark-preview .mark-smiley .mark-icon, .mark-preview .mark-shapes .mark-icon { width: 1.4rem; height: 1.4rem; }
+.mark-preview .mark-smiley { flex-direction: row; align-items: center; }

@@ -55,6 +55,12 @@ describe('answer mark tokens', () => {
     expect(ratio(t[`--mark-on-${x}`], t[`--mark-${x}`])).toBeGreaterThanOrEqual(4.5);
   });
 
+  it('the pop-in never fades, so a mark is never below AA mid-animation', () => {
+    const marks = readFileSync('src/ui/marks/marks.css', 'utf8');
+    expect(marks).toMatch(/@keyframes mark-pop/);
+    expect(marks).not.toMatch(/opacity|filter/);
+  });
+
   it.each(Object.keys(THEMES))('%s smiley face features', (theme) => {
     const t: Record<string, string> = THEMES[theme as keyof typeof THEMES];
     expect(ratio(t['--mark-face-fg'], t['--mark-face'])).toBeGreaterThanOrEqual(3);
