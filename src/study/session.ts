@@ -1,7 +1,8 @@
 import { meaningText, type AcronymEntry } from '../acronyms/list';
 import { isUnitItem } from '../domain/numeric';
 import type { ExamMeta, Question, QuestionType } from '../domain/types';
-import { freshFirst, itemFor, type AssembledExam } from '../exam/assemble';
+import { drawByDomain, itemFor, type AssembledExam } from '../exam/assemble';
+import { chanceOf, weightedOrder, type Chances } from '../exam/chance';
 import { mulberry32, shuffle, type Rng } from '../exam/rng';
 import { weakestObjectives, type Mastery } from './mastery';
 import { isDue, parseSrsRecords } from './srs';
@@ -30,23 +31,26 @@ export function matchingPool(pool: Question[], o: Omit<PracticeOptions, 'count'>
   return pool.filter((q) => o.objectiveIds.includes(q.objectiveIds[0]) && o.types.includes(q.type));
 }
 
-/** Up to `count` matching questions, fresh ones first, PBQs before MCQs. */
+/**
+ * Up to `count` matching questions, split across the chosen domains by exam weight, drawn by chance
+ * within each domain, then shuffled together so no domain or question type is bunched.
+ */
 export function assemblePractice({
   meta,
   pool,
   seed,
-  recentIds,
+  chances,
   options,
 }: {
   meta: ExamMeta;
   pool: Question[];
   seed: number;
-  recentIds: ReadonlySet<string>;
+  chances: Chances;
   options: PracticeOptions;
 }): AssembledExam {
   const rng = mulberry32(seed);
-  const picked = freshFirst(matchingPool(pool, options), recentIds, rng).slice(0, Math.max(0, options.count));
-  return toExam(meta, seed, [...picked.filter((q) => !isMcq(q)), ...picked.filter(isMcq)], rng);
+  const picked = drawByDomain(meta, matchingPool(pool, options), Math.max(0, options.count), chances, rng);
+  return toExam(meta, seed, shuffle(picked, rng), rng);
 }
 
 /** The session cut down to the questions the user reached, so unreached ones are neither scored nor recorded. */
@@ -73,7 +77,8 @@ const CRAM_WEAK_OBJECTIVES = 3;
 
 /**
  * A short MCQ-only session: due questions (most overdue first), then the
- * weakest objectives in order, then anything else; plus due or new acronyms.
+ * weakest objectives in order, then anything else, each list drawn by chance;
+ * plus due or new acronyms.
  */
 export function assembleCram({
   meta,
@@ -83,6 +88,7 @@ export function assembleCram({
   srs,
   mastery,
   now,
+  chances,
 }: {
   meta: ExamMeta;
   /** The merged list from `loadAcronyms`. */
@@ -92,6 +98,7 @@ export function assembleCram({
   srs: unknown[];
   mastery: Mastery;
   now: Date;
+  chances: Chances;
 }): CramSession {
   const rng = mulberry32(seed);
   const records = parseSrsRecords(srs).filter((r) => r.exam === meta.code);
@@ -109,10 +116,11 @@ export function assembleCram({
 
   const mcqs = pool.filter(isMcq);
   const byId = new Map(mcqs.map((q) => [q.id, q]));
+  const byChance = (qs: Question[]) => weightedOrder(qs, (q) => chanceOf(chances, q.id), rng);
   const ordered = [
     ...dueFirst.filter((r) => r.kind === 'question').flatMap((r) => byId.get(r.itemId) ?? []),
-    ...weakestObjectives(mastery, CRAM_WEAK_OBJECTIVES).flatMap((o) => shuffle(mcqs.filter((q) => q.objectiveIds[0] === o), rng)),
-    ...shuffle(mcqs, rng),
+    ...weakestObjectives(mastery, CRAM_WEAK_OBJECTIVES).flatMap((o) => byChance(mcqs.filter((q) => q.objectiveIds[0] === o))),
+    ...byChance(mcqs),
   ];
   const chosen = [...new Set(ordered)].slice(0, CRAM_SIZE - acronyms.length);
   return { exam: toExam(meta, seed, chosen, rng), acronyms };

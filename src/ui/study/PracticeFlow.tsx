@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PBQ_TEMPLATES } from '../../domain/pbq';
 import type { AssembledExam } from '../../exam/assemble';
-import { recentQuestionIds } from '../../exam/result';
+import { buildChances } from '../../exam/chance';
 import { newSeed } from '../../exam/rng';
 import type { Repo } from '../../storage';
 import { assemblePractice, onlySeen } from '../../study/session';
@@ -31,7 +31,7 @@ export function PracticeFlow({
   const meta = metaFor(examCode);
   const [data] = useLoad(async () => {
     const { pool, results } = await loadStudy(repo, examCode);
-    return { pool, recent: recentQuestionIds(results, examCode) };
+    return { pool, chances: buildChances(results, pool, examCode, new Date()) };
   }, [repo, examCode]);
   const [choices, setChoices] = useState<PracticeChoices>(() => ({
     objectiveIds: presetObjectiveIds ?? meta.objectives.map((o) => o.id),
@@ -46,7 +46,7 @@ export function PracticeFlow({
   if (data === null) return <LoadError />;
   if (done) return <ResultsScreen meta={meta} {...done} mode="practice" onDrill={onDrill} />;
   if (!run) {
-    const start = () => setRun({ exam: assemblePractice({ meta, pool: data.pool, seed: seed ?? newSeed(), recentIds: data.recent, options: choices }), startedAt: new Date() });
+    const start = () => setRun({ exam: assemblePractice({ meta, pool: data.pool, seed: seed ?? newSeed(), chances: data.chances, options: choices }), startedAt: new Date() });
     return <PracticeSetup meta={meta} pool={data.pool} value={choices} onChange={setChoices} onStart={start} />;
   }
   return (
