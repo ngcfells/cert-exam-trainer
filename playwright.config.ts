@@ -1,10 +1,11 @@
 import { defineConfig, devices } from '@playwright/test';
+import { serverPort } from './scripts/port';
 
 const responsive = /responsive\.spec\.ts$/;
 const pwa = /pwa\.spec\.ts$/;
 const bounds = /bounds\.spec\.ts$/;
-// Set PWA_PORT when another app holds 4173.
-const port = Number(process.env.PWA_PORT ?? 4173);
+// Port 4173, or a free one when 4173 is taken (set PWA_PORT to choose). tests/e2e/util.ts reads PWA_PORT.
+const port = serverPort('PWA_PORT', 4173);
 
 export default defineConfig({
   testDir: 'tests/e2e',
