@@ -342,7 +342,7 @@
   - **Ruling (not applied):** the reviewer asked to drop the `POST` tag on 2.3 config/order/data/buckets-001. `check-drafts` then reports the bare `POST` in plain PBQ text as untagged (batch 27 found the same), so the tags stay. `docs/content-drafting.md` now states this rule. Tags are never shown to learners.
   - `npm run check`: lint, typecheck, builds, 725 unit and 83 e2e pass. `check-drafts --ref` over all 14 files: no problems.
   - Review files: `.superpowers/sdd/2026-11-01-chunk12-autoops/final/` (`opus-review.md`, `opus-answers.json`, `blind.json`/`keyed.json` from `sample.mjs`, `ref/` with all decks and notes, `fix-final.mjs`, `longest.mjs`, `dump.mjs`). Keep, per the ledger rule.
-- **Task 6:** `chunk12-autoops` fast-forwarded into `main` and deployed (see the commit after this one for the gh-pages hash).
+- **Task 6:** `chunk12-autoops` fast-forwarded into `main` (f9c742e) and deployed (gh-pages f6a3d24). The live bundle `assets/index-94V42cHS.js` matches gh-pages and serves the new 2.3 accept forms.
 
 ## Chunk 12 session 1 (2026-11-01, sessions 10–11): Tasks 1 and 2 done
 
