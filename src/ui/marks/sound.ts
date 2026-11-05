@@ -12,7 +12,8 @@ const PEAK = 0.15;
 let ctx: AudioContext | null = null;
 
 function context(): AudioContext | null {
-  if (ctx) return ctx;
+  // A closed context never plays again: build a new one.
+  if (ctx && ctx.state !== 'closed') return ctx;
   const Ctor = globalThis.AudioContext ?? (globalThis as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
   if (!Ctor) return null;
   ctx = new Ctor();
@@ -25,7 +26,8 @@ export function playMark(level: MarkLevel): void {
   try {
     const c = context();
     if (!c) return;
-    if (c.state === 'suspended') void c.resume().catch(() => undefined);
+    // Suspended, or "interrupted" on iOS after a call: ask it to run again.
+    if (c.state !== 'running') void c.resume().catch(() => undefined);
     let t = c.currentTime;
     for (const [type, freq, dur] of TONES[level]) {
       const osc = c.createOscillator();

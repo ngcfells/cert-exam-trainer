@@ -196,7 +196,7 @@ export function ReviewScreen({
               <QuestionView item={{ question: q }} response={preview} onChange={setPreview} />
               <section aria-label="Answer key">
                 <h3>Answer key</h3>
-                <ItemReview q={q} response={undefined} showStem={false} />
+                <ItemReview q={q} response={undefined} showStem={false} marks={false} />
               </section>
               <p>
                 <button type="button" className="primary" disabled={busy} onClick={() => void save({ ...q, status: 'approved' }, { advance: true })}>

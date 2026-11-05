@@ -1,7 +1,7 @@
 import { useEffect, useId, useState } from 'react';
 import type { Repo } from '../../storage';
 import { AnswerMark } from './AnswerMark';
-import { applyMarks, loadMarks, MARK_NAMES, MARK_STYLES, MARKS_SETTING, SOUND_SETTING, type MarkPrefs } from './prefs';
+import { applyMarks, DEFAULT_MARKS, loadMarks, MARK_NAMES, MARK_STYLES, MARKS_SETTING, SOUND_SETTING, type MarkPrefs } from './prefs';
 
 /** Settings: the answer mark style (with a static preview of each) and the sound switch. */
 export function MarkSettings({ repo }: { repo: Repo }) {
@@ -10,7 +10,8 @@ export function MarkSettings({ repo }: { repo: Repo }) {
   const name = useId();
 
   useEffect(() => {
-    void loadMarks(repo).then(setState);
+    // A failed read still shows the choices, starting from the defaults.
+    void loadMarks(repo).then(setState, () => setState(DEFAULT_MARKS));
   }, [repo]);
 
   async function save(next: MarkPrefs) {

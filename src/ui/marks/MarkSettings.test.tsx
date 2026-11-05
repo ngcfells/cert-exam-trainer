@@ -26,6 +26,13 @@ describe('MarkSettings', () => {
     expect(await repo.getSetting(MARKS_SETTING)).toBe('stamp');
   });
 
+  it('still shows the choices when the saved settings cannot be read', async () => {
+    const repo = createMemoryRepo();
+    repo.getSetting = () => Promise.reject(new Error('read failed'));
+    render(<MarkSettings repo={repo} />);
+    expect(await screen.findByRole('radio', { name: 'Check and X banner' })).toBeChecked();
+  });
+
   it('the sound checkbox saves true', async () => {
     const repo = createMemoryRepo();
     render(<MarkSettings repo={repo} />);

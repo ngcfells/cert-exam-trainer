@@ -39,24 +39,26 @@ test('the Settings mark previews fit and are axe clean', async ({ page }) => {
 });
 
 for (const style of STYLES) {
-  test(`${style}: a checked answer fits and is axe clean`, async ({ page }) => {
+  test(`${style}: a partly right check and the results review fit and are axe clean`, async ({ page }) => {
     await page.goto(singleUrl);
     await chooseStyle(page, style);
-    await startPractice(page, 1);
-    await page.locator('.mcq input').first().check();
+    // The fixture bank's two MCQs: a single-answer one and "Which TWO … central tendency?" (Median and Mode).
+    await startPractice(page, 2);
+    const median = page.getByLabel('Median', { exact: true });
+    if (!(await median.isVisible())) await page.getByRole('button', { name: 'Next' }).click();
+    await median.check();
     await page.getByRole('button', { name: 'Check answer' }).click();
-    await expect(page.getByRole('status')).toHaveText(/^(Correct|Partly correct|Incorrect)/);
+    await expect(page.getByRole('status')).toHaveText(/^Partly correct/);
     await fitsAndAxeClean(page, `${style} check`);
+
+    // The other question is reached but left unanswered (unreached ones are left out of the result),
+    // so the review shows a partly mark and a "Not answered" mark.
+    if (await page.getByRole('heading', { name: 'Item 1 of 2' }).isVisible()) await page.getByRole('button', { name: 'Next' }).click();
+    await page.getByRole('button', { name: 'Finish', exact: true }).click();
+    await page.getByRole('dialog', { name: 'Finish now?' }).getByRole('button', { name: 'Finish', exact: true }).click();
+    await expect(page.getByRole('heading', { name: /^Practice complete/ })).toBeVisible();
+    await expect(page.locator('.mark.mark-partly')).toHaveCount(1);
+    await expect(page.locator('.mark.mark-wrong')).toHaveText('Incorrect. Not answered');
+    await fitsAndAxeClean(page, `${style} results review`);
   });
 }
-
-test('the results review marks an unanswered question', async ({ page }) => {
-  await page.goto(singleUrl);
-  await chooseStyle(page, 'Smiley and frowny');
-  await startPractice(page, 1);
-  await page.getByRole('button', { name: 'Finish', exact: true }).click();
-  await page.getByRole('dialog', { name: 'Finish now?' }).getByRole('button', { name: 'Finish', exact: true }).click();
-  await expect(page.getByRole('heading', { name: /^Practice complete/ })).toBeVisible();
-  await expect(page.locator('.mark.mark-wrong').first()).toHaveText('Incorrect. Not answered');
-  await fitsAndAxeClean(page, 'results review');
-});

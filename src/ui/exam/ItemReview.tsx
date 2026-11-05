@@ -12,7 +12,7 @@ function optionTexts(q: Question, ids: string[]): string {
   return ids.map((id) => opts.find((o) => o.id === id)?.text ?? id).join('; ');
 }
 
-function PartsReview({ q, given }: { q: Question; given: PartMap }) {
+function PartsReview({ q, given, marks }: { q: Question; given: PartMap; marks: boolean }) {
   const notes = partIds(q).filter((id) => q.partExplanations?.[id]);
   return (
     <>
@@ -24,7 +24,7 @@ function PartsReview({ q, given }: { q: Question; given: PartMap }) {
           partLabel(q, id),
           given[id] ? valueText(q, id, given[id]) : q.type === 'pbq-hotspot' ? 'Not selected' : 'Not answered',
           acceptedText(q, id),
-          <AnswerMark key="r" size="small" level={partCorrect(q, id, given) ? 'right' : 'wrong'} />,
+          marks ? <AnswerMark size="small" level={partCorrect(q, id, given) ? 'right' : 'wrong'} /> : partCorrect(q, id, given) ? 'Correct' : 'Incorrect',
         ])}
       />
       {notes.length > 0 && (
@@ -39,7 +39,18 @@ function PartsReview({ q, given }: { q: Question; given: PartMap }) {
 }
 
 /** The user's answer next to the correct one, plus the explanation. */
-export function ItemReview({ q, response, showStem = true }: { q: Question; response: ItemResponse | undefined; showStem?: boolean }) {
+export function ItemReview({
+  q,
+  response,
+  showStem = true,
+  marks = true,
+}: {
+  q: Question;
+  response: ItemResponse | undefined;
+  showStem?: boolean;
+  /** Small right/wrong marks in the Parts table; the dev bank review turns them off. */
+  marks?: boolean;
+}) {
   const mcqType = q.type === 'mcq-single' || q.type === 'mcq-multi';
   const picked = Array.isArray(response) ? response : [];
   return (
@@ -65,7 +76,7 @@ export function ItemReview({ q, response, showStem = true }: { q: Question; resp
           <dd><RichText text={optionTexts(q, (q.answer as McqAnswer).correct)} /></dd>
         </dl>
       ) : (
-        <PartsReview q={q} given={response && !Array.isArray(response) ? response : {}} />
+        <PartsReview q={q} given={response && !Array.isArray(response) ? response : {}} marks={marks} />
       )}
       <p><RichText text={q.explanation} /></p>
     </>

@@ -1,11 +1,11 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { formatTime } from './formatTime';
 import { McqView } from './McqView';
 import { TopBar } from './TopBar';
 import { ReviewGrid } from './ReviewGrid';
-import { mcq, numeric } from '../../exam/testFixtures';
+import { mcq, numeric, pbq } from '../../exam/testFixtures';
 import { NumericView } from './NumericView';
 import { ItemReview } from './ItemReview';
 
@@ -165,5 +165,20 @@ describe('ReviewGrid', () => {
     expect(screen.getByRole('button', { name: 'Question 1, answered' })).toBeInTheDocument();
     await userEvent.click(screen.getByRole('button', { name: 'Question 2, unanswered, flagged' }));
     expect(onJump).toHaveBeenCalledWith(1);
+  });
+});
+
+describe('ItemReview Parts marks', () => {
+  const rows = () => within(screen.getByRole('table', { name: 'Parts' })).getAllByRole('row').slice(1).map((r) => r.lastElementChild!);
+
+  it('shows a small mark per part by default', () => {
+    render(<ItemReview q={pbq('P1', 2)} response={{ p1: 'c1', p2: 'c3' }} />);
+    expect(rows().map((c) => c.querySelector('.mark-small') !== null)).toEqual([true, true]);
+  });
+
+  it('marks={false} keeps plain words (the dev bank review)', () => {
+    render(<ItemReview q={pbq('P1', 2)} response={undefined} marks={false} />);
+    expect(rows().map((c) => c.textContent)).toEqual(['Incorrect', 'Incorrect']);
+    expect(document.querySelector('.mark-small')).toBeNull();
   });
 });

@@ -36,11 +36,28 @@ describe('playMark', () => {
     expect(log.created).toBe(1);
   });
 
-  it('resumes a suspended context', () => {
-    const log = fakeAudio('suspended');
+  it('routes every tone through a gain to the speakers', () => {
+    const log = fakeAudio();
+    applyMarks({ style: 'banner', sound: true });
+    playMark('right');
+    expect(log.links).toEqual(['osc->gain', 'gain->destination', 'osc->gain', 'gain->destination']);
+  });
+
+  it.each(['suspended', 'interrupted'] as const)('resumes a %s context', (state) => {
+    const log = fakeAudio(state);
     applyMarks({ style: 'banner', sound: true });
     playMark('right');
     expect(log.resumed).toBe(1);
+  });
+
+  it('replaces a closed context so sound comes back', () => {
+    const log = fakeAudio();
+    applyMarks({ style: 'banner', sound: true });
+    playMark('right');
+    log.contexts[0].state = 'closed';
+    playMark('wrong');
+    expect(log.created).toBe(2);
+    expect(log.freqs).toEqual([660, 880, 220]);
   });
 
   it('is silent with no Web Audio', () => {
