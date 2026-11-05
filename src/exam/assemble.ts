@@ -1,6 +1,7 @@
 import { isUnitItem } from '../domain/numeric';
 import { correctParts, elementIds, optionLists, partIds } from '../domain/pbq';
 import type { ExamMeta, McqPayload, Question, QuestionType } from '../domain/types';
+import { chanceOf, weightedOrder, type Chances } from './chance';
 import { mulberry32, shuffle, weightedPick, type Rng } from './rng';
 
 export interface ExamItem {
@@ -26,7 +27,7 @@ export interface AssembleInput {
   meta: ExamMeta;
   pool: Question[];
   seed: number;
-  recentIds: ReadonlySet<string>;
+  chances: Chances;
   pbqTypes: readonly QuestionType[];
 }
 
@@ -82,39 +83,45 @@ export function itemFor(question: Question, rng: Rng): ExamItem {
   return item;
 }
 
-/** Shuffled fresh questions, then shuffled recent ones. */
-export function freshFirst(qs: Question[], recent: ReadonlySet<string>, rng: Rng): Question[] {
-  return [...shuffle(qs.filter((q) => !recent.has(q.id)), rng), ...shuffle(qs.filter((q) => recent.has(q.id)), rng)];
+/**
+ * Splits `total` across domains by weight, never giving a domain more than it has. Domains with none get none,
+ * and any shortfall moves to the domains with spares, by weight.
+ */
+export function splitByDomain(total: number, weights: readonly number[], available: readonly number[]): number[] {
+  const live = weights.map((w, i) => (available[i] > 0 ? w : 0));
+  const quota = allocateByWeight(Math.min(total, available.reduce((s, n) => s + n, 0)), live);
+  for (;;) {
+    const short = quota.reduce((s, n, i) => s + Math.max(0, n - available[i]), 0);
+    if (short === 0) return quota;
+    quota.forEach((n, i) => (quota[i] = Math.min(n, available[i])));
+    const extra = allocateByWeight(short, live.map((w, i) => (quota[i] < available[i] ? w : 0)));
+    extra.forEach((n, i) => (quota[i] += n));
+  }
 }
 
-export function assembleExam({ meta, pool, seed, recentIds, pbqTypes }: AssembleInput): AssembledExam {
+/** Up to `total` of `qs`, split across the exam's domains by weight and drawn by chance within each domain. */
+export function drawByDomain(meta: ExamMeta, qs: readonly Question[], total: number, chances: Chances, rng: Rng): Question[] {
+  const byDomain = meta.domains.map((d) => qs.filter((q) => domainOf(meta, q) === d.id));
+  const quota = splitByDomain(total, meta.domains.map((d) => d.weight), byDomain.map((g) => g.length));
+  return byDomain.flatMap((g, i) => weightedOrder(g, (q) => chanceOf(chances, q.id), rng).slice(0, quota[i]));
+}
+
+export function assembleExam({ meta, pool, seed, chances, pbqTypes }: AssembleInput): AssembledExam {
   const rng = mulberry32(seed);
 
   const pbqPool = pool.filter((q) => pbqTypes.includes(q.type));
   const pbqs: Question[] = [];
   if (pbqPool.length > 0) {
-    const want = Math.min(weightedPick(PBQ_COUNT_WEIGHTS, rng) + 1, pbqPool.length);
-    pbqs.push(...freshFirst(pbqPool, recentIds, rng).slice(0, want));
+    const want = weightedPick(PBQ_COUNT_WEIGHTS, rng) + 1;
+    pbqs.push(...shuffle(drawByDomain(meta, pbqPool, want, chances, rng), rng));
     while (pbqs.length && pbqs.reduce((s, q) => s + (q.pbqWeight ?? 1), 0) > meta.maxQuestions - 1) pbqs.pop();
   }
   const pbqWeightSum = pbqs.reduce((s, q) => s + (q.pbqWeight ?? 1), 0);
   const pbqItems = pbqs.map((q) => itemFor(q, rng));
 
-  const byDomain = meta.domains.map((d) =>
-    freshFirst(pool.filter((q) => isUnitItem(q) && domainOf(meta, q) === d.id), recentIds, rng),
-  );
-  const target = Math.min(meta.maxQuestions - pbqWeightSum, byDomain.reduce((s, qs) => s + qs.length, 0));
-  const quota = allocateByWeight(target, meta.domains.map((d) => d.weight));
-  // Move any shortfall to domains with spare questions, by weight.
-  for (;;) {
-    const short = quota.reduce((s, n, i) => s + Math.max(0, n - byDomain[i].length), 0);
-    if (short === 0) break;
-    quota.forEach((n, i) => (quota[i] = Math.min(n, byDomain[i].length)));
-    const extra = allocateByWeight(short, meta.domains.map((d, i) => (quota[i] < byDomain[i].length ? d.weight : 0)));
-    extra.forEach((n, i) => (quota[i] += n));
-  }
-  const mcqs = shuffle(byDomain.flatMap((qs, i) => qs.slice(0, quota[i])), rng);
+  const mcqs = shuffle(drawByDomain(meta, pool.filter(isUnitItem), meta.maxQuestions - pbqWeightSum, chances, rng), rng);
 
   const items: ExamItem[] = [...pbqItems, ...mcqs.map((q) => itemFor(q, rng))];
   return { exam: meta.code, seed, items, mcqCount: mcqs.length, pbqWeightSum };
 }
+

@@ -2,8 +2,6 @@ import { z } from 'zod';
 import type { AssembledExam } from './assemble';
 import type { Responses, ScoreReport } from './scoring';
 
-export const RECENT_ATTEMPTS = 3;
-
 export const examResultSchema = z.object({
   id: z.string().min(1),
   exam: z.string().min(1),
@@ -66,11 +64,4 @@ export function parseResults(results: unknown[], exam: string): ExamResult[] {
     const p = examResultSchema.safeParse(r);
     return p.success && p.data.exam === exam ? [p.data] : [];
   });
-}
-
-/** Question ids from the newest `n` valid mock results for `exam`. */
-export function recentQuestionIds(results: unknown[], exam: string, n = RECENT_ATTEMPTS): Set<string> {
-  const valid = parseResults(results, exam).filter((r) => resultMode(r) === 'mock');
-  valid.sort((a, b) => b.finishedAt.localeCompare(a.finishedAt));
-  return new Set(valid.slice(0, n).flatMap((r) => r.questionIds));
 }

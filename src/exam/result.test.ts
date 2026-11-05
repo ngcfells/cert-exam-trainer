@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
-import { buildResult, examResultSchema, recentQuestionIds, resultMode, type ExamResult } from './result';
+import { buildResult, examResultSchema, resultMode, type ExamResult } from './result';
 import { assembleExam } from './assemble';
 import { scoreExam } from './scoring';
 import { bank, meta3 } from './testFixtures';
 
 function sample(): ExamResult {
-  const exam = assembleExam({ meta: meta3, pool: bank({ A: 5, B: 5, C: 5 }), seed: 3, recentIds: new Set(), pbqTypes: [] });
+  const exam = assembleExam({ meta: meta3, pool: bank({ A: 5, B: 5, C: 5 }), seed: 3, chances: new Map(), pbqTypes: [] });
   const responses = { [exam.items[0].question.id]: ['a'] };
   return buildResult({
     exam,
@@ -41,18 +41,6 @@ describe('result', () => {
     expect(examResultSchema.safeParse(rest).success).toBe(false);
   });
 
-  it('returns ids from the 3 newest results for the exam', () => {
-    const results = [
-      fake('r1', 'T-001', 1, ['old']),
-      fake('r2', 'T-001', 2, ['q2']),
-      fake('r3', 'T-001', 3, ['q3']),
-      fake('r4', 'T-001', 4, ['q4']),
-      fake('x', 'OTHER', 5, ['other']),
-      { id: 'garbage' },
-    ];
-    expect(recentQuestionIds(results, 'T-001')).toEqual(new Set(['q2', 'q3', 'q4']));
-  });
-
   it('an old result without mode parses and reads as mock', () => {
     const r = sample();
     expect(r.mode).toBeUndefined();
@@ -60,7 +48,7 @@ describe('result', () => {
   });
 
   it('buildResult stores a practice mode', () => {
-    const exam = assembleExam({ meta: meta3, pool: bank({ A: 2 }), seed: 1, recentIds: new Set(), pbqTypes: [] });
+    const exam = assembleExam({ meta: meta3, pool: bank({ A: 2 }), seed: 1, chances: new Map(), pbqTypes: [] });
     const r = buildResult({
       exam,
       responses: {},
@@ -75,14 +63,7 @@ describe('result', () => {
     expect(resultMode(r)).toBe('practice');
   });
 
-  it('recentQuestionIds ignores practice and cram results', () => {
-    const results = [
-      fake('r1', 'T-001', 1, ['mock']),
-      { ...fake('r2', 'T-001', 2, ['practice']), mode: 'practice' },
-      { ...fake('r3', 'T-001', 3, ['cram']), mode: 'cram' },
-      { ...fake('r4', 'T-001', 4, ['lesson']), mode: 'lesson' },
-    ];
-    expect(examResultSchema.safeParse(results[3]).success).toBe(true);
-    expect(recentQuestionIds(results, 'T-001')).toEqual(new Set(['mock']));
+  it('accepts a lesson result', () => {
+    expect(examResultSchema.safeParse({ ...fake('r4', 'T-001', 4, ['lesson']), mode: 'lesson' }).success).toBe(true);
   });
 });

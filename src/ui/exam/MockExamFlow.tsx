@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { loadPool } from '../../banks/pool';
 import { PBQ_TEMPLATES } from '../../domain/pbq';
 import { assembleExam } from '../../exam/assemble';
-import { recentQuestionIds } from '../../exam/result';
+import { buildChances } from '../../exam/chance';
 import { newSeed } from '../../exam/rng';
 import type { Repo } from '../../storage';
 import { Loading, metaFor, useLoad } from '../kit';
@@ -16,7 +16,7 @@ export function MockExamFlow({ repo, examCode, onDrill, seed }: { repo: Repo; ex
   const meta = metaFor(examCode);
   const [exam] = useLoad(async () => {
     const [pool, history] = await Promise.all([loadPool(repo, examCode), repo.listRecords('results')]);
-    return assembleExam({ meta, pool, seed: seed ?? newSeed(), recentIds: recentQuestionIds(history, examCode), pbqTypes: PBQ_TEMPLATES });
+    return assembleExam({ meta, pool, seed: seed ?? newSeed(), chances: buildChances(history, pool, examCode, new Date()), pbqTypes: PBQ_TEMPLATES });
   }, [repo, examCode, seed]);
   const [startedAt, setStartedAt] = useState<Date | null>(null);
   const [done, setDone] = useState<Finished | null>(null);
