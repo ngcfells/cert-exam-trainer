@@ -995,7 +995,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A `.gitlab-ci.yml` file contains this job:\n```yaml\nrelease:\n  script: ./release.sh\n  rules:\n    - if: $CI_COMMIT_BRANCH == \"main\"\n```\nA developer pushes the tag `v2.0.0`, which points at the current tip of `main`. Is `release` part of the tag pipeline?",
@@ -1011,7 +1011,7 @@
         },
         {
           "id": "c",
-          "text": "Yes, because tag pipelines set `CI_COMMIT_BRANCH` to the tag name"
+          "text": "Yes, because tag pipelines set it to the tag name"
         },
         {
           "id": "d",
@@ -1034,7 +1034,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Jenkinsfile in a multibranch project contains this stage:\n```groovy\nstage('Publish') {\n  when { tag 'v*' }\n  steps { sh './publish.sh' }\n}\n```\nA build runs for the branch `main`. What happens to Publish?",
@@ -1050,7 +1050,7 @@
         },
         {
           "id": "c",
-          "text": "It runs, because the pattern matches any name that starts with a letter"
+          "text": "It runs, because `v*` matches any name"
         },
         {
           "id": "d",
@@ -1073,7 +1073,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "In a `.gitlab-ci.yml` pipeline created by pushing the tag `v1.9.0`, what does the variable `CI_COMMIT_REF_NAME` contain?",
@@ -1112,7 +1112,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A workflow sets an environment variable like this:\n```yaml\nenv:\n  TARGET: ${{ github.ref_name == 'main' && 'prod' || 'dev' }}\n```\nA developer pushes the branch `hotfix/pay-12`. What is the value of `TARGET`?",
@@ -1151,10 +1151,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A `.gitlab-ci.yml` job runs `docker build -t registry.example.internal/payments-api:$CI_COMMIT_SHORT_SHA .` for the commit `9f3c2ab41d07e6b5`. Which image tag does the build get?",
+    "stem": "A `.gitlab-ci.yml` job runs `docker build -t registry.example.internal/payments-api:$CI_COMMIT_SHORT_SHA .` for a commit whose hash starts `9f3c2ab41d07e6b5`. Which image tag does the build get?",
     "payload": {
       "options": [
         {
@@ -1190,7 +1190,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "In a declarative Jenkinsfile, which section lists the named phases that run in order?",
@@ -1229,7 +1229,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Jenkinsfile ends with this block:\n```groovy\npost {\n  always  { sh 'make clean' }\n  failure { echo 'Build failed' }\n}\n```\nWhen does the `failure` block run?",
@@ -1241,7 +1241,7 @@
         },
         {
           "id": "b",
-          "text": "After the stages, when the run ends as failed"
+          "text": "After the stages, when the run ends in error"
         },
         {
           "id": "c",
@@ -1268,7 +1268,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Jenkins rejects this declarative Jenkinsfile:\n```groovy\npipeline {\n  agent any\n  steps {\n    sh 'make test'\n  }\n}\n```\nWhich change fixes it?",
@@ -1276,7 +1276,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Move `agent any` below the `steps` block, at the end of the file"
+          "text": "Move `agent any` below the `steps` block"
         },
         {
           "id": "b",
@@ -1307,7 +1307,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A `.gitlab-ci.yml` file contains these jobs:\n```yaml\nstages: [build, test, deploy]\ncompile:\n  stage: build\n  script: make\nunit:\n  stage: test\n  script: make test\nship:\n  stage: deploy\n  script: ./ship.sh\n```\nThe `unit` job fails. What happens to `ship`?",
@@ -1327,7 +1327,7 @@
         },
         {
           "id": "d",
-          "text": "It does not run, because the deploy stage waits for the test stage to succeed"
+          "text": "It does not run, because `deploy` waits for `test` to succeed"
         }
       ]
     },
@@ -1346,7 +1346,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "GitLab rejects this `.gitlab-ci.yml` file:\n```yaml\nstages: [build, test, deploy]\nlint:\n  stage: verify\n  script: make lint\n```\nThe team wants `verify` to be a new phase between `build` and `test`. Which change fixes it?",
@@ -1354,11 +1354,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Add `verify` between `build` and `test` in `stages`"
+          "text": "Insert `verify` into the `stages` list at that point"
         },
         {
           "id": "b",
-          "text": "Rename the job `lint` to `verify` and keep the stages list"
+          "text": "Rename the job `lint` to `verify` and keep the `stages` list"
         },
         {
           "id": "c",
@@ -1385,7 +1385,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "In a GitHub Actions workflow, what does `runs-on: ubuntu-latest` choose?",
@@ -1397,7 +1397,7 @@
         },
         {
           "id": "b",
-          "text": "The container registry that the job pushes its image to"
+          "text": "The registry that receives the job's image"
         },
         {
           "id": "c",
@@ -1424,7 +1424,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team wants builds on every branch except those whose names start with `wip/`. Which trigger setting fits?",
@@ -1432,7 +1432,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A tag filter with the pattern `wip/*`"
+          "text": "A tag filter that lists the pattern `wip/*`"
         },
         {
           "id": "b",
@@ -1444,7 +1444,7 @@
         },
         {
           "id": "d",
-          "text": "A manual trigger on the `wip/*` branches"
+          "text": "A manual trigger set only on the `wip/*` branches"
         }
       ]
     },
@@ -1463,7 +1463,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE pipeline values come from git itself rather than from the CI server?",
@@ -1514,10 +1514,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
-    "stem": "Which TWO of these start a pipeline without anyone pushing new code?",
+    "stem": "Which TWO of these start a pipeline without any push to the repository?",
     "payload": {
       "options": [
         {
@@ -1526,11 +1526,11 @@
         },
         {
           "id": "b",
-          "text": "A push to a release branch"
+          "text": "A push to a release branch that changes only a docs file"
         },
         {
           "id": "c",
-          "text": "A push of a new tag"
+          "text": "A push of a new tag to the shared remote"
         },
         {
           "id": "d",
@@ -1538,7 +1538,7 @@
         },
         {
           "id": "e",
-          "text": "A merge of a pull request"
+          "text": "A merge of a reviewed pull request into `main`"
         }
       ]
     },
@@ -1548,7 +1548,7 @@
         "d"
       ]
     },
-    "explanation": "A manual start and a schedule need no pushed code. A branch push, a tag push and a merge are all repository updates that act as push triggers.",
+    "explanation": "A manual start and a schedule need no push. A branch push, a tag push and a merge all update the repository, and each acts as a push trigger, even when the tag adds no new commit.",
     "acronyms": [
       "CI"
     ]
@@ -1560,7 +1560,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are benefits of keeping the pipeline definition in a file stored with the application code?",
@@ -1568,23 +1568,23 @@
       "options": [
         {
           "id": "a",
-          "text": "Changes to it are reviewed in pull requests like any other change"
+          "text": "Changes to it are reviewed in pull requests"
         },
         {
           "id": "b",
-          "text": "The pipeline can no longer fail"
+          "text": "Pipeline runs can no longer fail once the file is committed"
         },
         {
           "id": "c",
-          "text": "Older commits can be built with the pipeline version that matched them"
+          "text": "Older commits build with the pipeline version that matched them"
         },
         {
           "id": "d",
-          "text": "The CI server no longer needs runners"
+          "text": "The CI server no longer needs runners to execute its jobs"
         },
         {
           "id": "e",
-          "text": "Secrets can be written in the file without risk"
+          "text": "Secrets can be written in plain text in the file without risk"
         }
       ]
     },
@@ -1606,7 +1606,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE pairings of definition file and the tool that reads it are correct?",
@@ -1645,7 +1645,7 @@
         "d"
       ]
     },
-    "explanation": "Jenkins reads a `Jenkinsfile`, GitLab reads `.gitlab-ci.yml` in the repository root, and GitHub Actions reads workflow files in `.github/workflows/`. The other three pairings mix up the tools.",
+    "explanation": "Jenkins reads a `Jenkinsfile`, GitLab reads `.gitlab-ci.yml` in the repository root, and GitHub Actions reads workflow files in `.github/workflows/`. GitHub Actions does not read `.gitlab-ci.yml`, GitLab does not read files in `.github/workflows/`, and GitHub Actions does not read a `Jenkinsfile`.",
     "acronyms": []
   },
   {
@@ -1655,7 +1655,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO practices protect the secret used to sign webhook payloads?",
@@ -1699,10 +1699,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
-    "stem": "Which TWO details should the audit trail for a `ChatOps` deploy command record?",
+    "stem": "Which TWO details should the audit trail for a ChatOps deploy command record?",
     "payload": {
       "options": [
         {
@@ -1711,7 +1711,7 @@
         },
         {
           "id": "b",
-          "text": "The access token the bot uses"
+          "text": "The access token the bot uses to post its replies"
         },
         {
           "id": "c",
@@ -1719,11 +1719,11 @@
         },
         {
           "id": "d",
-          "text": "The emoji reactions to the bot reply"
+          "text": "The emoji reactions other people add to the bot reply"
         },
         {
           "id": "e",
-          "text": "The color theme of the chat client"
+          "text": "The color theme of the person's chat client"
         }
       ]
     },
@@ -1743,7 +1743,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "A push did not start any pipeline. Which TWO checks help show whether the fault lies with the sender or the receiver of the webhook?",
@@ -1751,11 +1751,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Read the delivery log on the git server for the request and its response status"
+          "text": "Check the webhook delivery log for the request and its response status"
         },
         {
           "id": "b",
-          "text": "Delete the repository and add it again"
+          "text": "Delete the repository and add it again with the same settings"
         },
         {
           "id": "c",
@@ -1763,11 +1763,11 @@
         },
         {
           "id": "d",
-          "text": "Raise the CPU count of the runners"
+          "text": "Raise the CPU count of the runners that pick up pipeline jobs"
         },
         {
           "id": "e",
-          "text": "Rotate the passwords of all developers"
+          "text": "Rotate the passwords of all developers who can push to the repository"
         }
       ]
     },
@@ -1790,7 +1790,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "stem": "The invoicing service is ready for release 2.3.0. Use the repository state and release rule shown, then complete each step.",
@@ -1845,98 +1845,362 @@
           "git tag -a -m release v2.3.0",
           "git tag -m release -a v2.3.0",
           "git tag -m release v2.3.0 -a",
-          "git tag -a v2.3.0 HEAD -m release",
+          "git tag v2.3.0 -a -m release",
+          "git tag v2.3.0 -m release -a",
           "git tag -a -m release v2.3.0 HEAD",
-          "git tag -a v2.3.0 -m 'release'",
-          "git tag -a -m 'release' v2.3.0",
-          "git tag -m 'release' -a v2.3.0",
-          "git tag -m 'release' v2.3.0 -a",
-          "git tag -a v2.3.0 HEAD -m 'release'",
-          "git tag -a -m 'release' v2.3.0 HEAD",
-          "git tag -a v2.3.0 -m \"release\"",
-          "git tag -a -m \"release\" v2.3.0",
-          "git tag -m \"release\" -a v2.3.0",
-          "git tag -m \"release\" v2.3.0 -a",
-          "git tag -a v2.3.0 HEAD -m \"release\"",
-          "git tag -a -m \"release\" v2.3.0 HEAD",
-          "git tag -a v2.3.0 --message release",
+          "git tag -a v2.3.0 HEAD -m release",
+          "git tag -m release -a v2.3.0 HEAD",
+          "git tag -m release v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a -m release",
+          "git tag v2.3.0 HEAD -m release -a",
+          "git tag -a -mrelease v2.3.0",
+          "git tag -a v2.3.0 -mrelease",
+          "git tag -mrelease -a v2.3.0",
+          "git tag -mrelease v2.3.0 -a",
+          "git tag v2.3.0 -a -mrelease",
+          "git tag v2.3.0 -mrelease -a",
+          "git tag -a -mrelease v2.3.0 HEAD",
+          "git tag -a v2.3.0 HEAD -mrelease",
+          "git tag -mrelease -a v2.3.0 HEAD",
+          "git tag -mrelease v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a -mrelease",
+          "git tag v2.3.0 HEAD -mrelease -a",
           "git tag -a --message release v2.3.0",
+          "git tag -a v2.3.0 --message release",
           "git tag --message release -a v2.3.0",
           "git tag --message release v2.3.0 -a",
-          "git tag -a v2.3.0 HEAD --message release",
+          "git tag v2.3.0 -a --message release",
+          "git tag v2.3.0 --message release -a",
           "git tag -a --message release v2.3.0 HEAD",
-          "git tag -a v2.3.0 --message=release",
+          "git tag -a v2.3.0 HEAD --message release",
+          "git tag --message release -a v2.3.0 HEAD",
+          "git tag --message release v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a --message release",
+          "git tag v2.3.0 HEAD --message release -a",
           "git tag -a --message=release v2.3.0",
+          "git tag -a v2.3.0 --message=release",
           "git tag --message=release -a v2.3.0",
           "git tag --message=release v2.3.0 -a",
-          "git tag -a v2.3.0 HEAD --message=release",
+          "git tag v2.3.0 -a --message=release",
+          "git tag v2.3.0 --message=release -a",
           "git tag -a --message=release v2.3.0 HEAD",
-          "git tag -a v2.3.0 --message='release'",
+          "git tag -a v2.3.0 HEAD --message=release",
+          "git tag --message=release -a v2.3.0 HEAD",
+          "git tag --message=release v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a --message=release",
+          "git tag v2.3.0 HEAD --message=release -a",
+          "git tag -a -m 'release' v2.3.0",
+          "git tag -a v2.3.0 -m 'release'",
+          "git tag -m 'release' -a v2.3.0",
+          "git tag -m 'release' v2.3.0 -a",
+          "git tag v2.3.0 -a -m 'release'",
+          "git tag v2.3.0 -m 'release' -a",
+          "git tag -a -m 'release' v2.3.0 HEAD",
+          "git tag -a v2.3.0 HEAD -m 'release'",
+          "git tag -m 'release' -a v2.3.0 HEAD",
+          "git tag -m 'release' v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a -m 'release'",
+          "git tag v2.3.0 HEAD -m 'release' -a",
+          "git tag -a -m'release' v2.3.0",
+          "git tag -a v2.3.0 -m'release'",
+          "git tag -m'release' -a v2.3.0",
+          "git tag -m'release' v2.3.0 -a",
+          "git tag v2.3.0 -a -m'release'",
+          "git tag v2.3.0 -m'release' -a",
+          "git tag -a -m'release' v2.3.0 HEAD",
+          "git tag -a v2.3.0 HEAD -m'release'",
+          "git tag -m'release' -a v2.3.0 HEAD",
+          "git tag -m'release' v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a -m'release'",
+          "git tag v2.3.0 HEAD -m'release' -a",
+          "git tag -a --message 'release' v2.3.0",
+          "git tag -a v2.3.0 --message 'release'",
+          "git tag --message 'release' -a v2.3.0",
+          "git tag --message 'release' v2.3.0 -a",
+          "git tag v2.3.0 -a --message 'release'",
+          "git tag v2.3.0 --message 'release' -a",
+          "git tag -a --message 'release' v2.3.0 HEAD",
+          "git tag -a v2.3.0 HEAD --message 'release'",
+          "git tag --message 'release' -a v2.3.0 HEAD",
+          "git tag --message 'release' v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a --message 'release'",
+          "git tag v2.3.0 HEAD --message 'release' -a",
           "git tag -a --message='release' v2.3.0",
+          "git tag -a v2.3.0 --message='release'",
           "git tag --message='release' -a v2.3.0",
           "git tag --message='release' v2.3.0 -a",
-          "git tag -a v2.3.0 HEAD --message='release'",
+          "git tag v2.3.0 -a --message='release'",
+          "git tag v2.3.0 --message='release' -a",
           "git tag -a --message='release' v2.3.0 HEAD",
-          "git tag -a v2.3.0 --message=\"release\"",
+          "git tag -a v2.3.0 HEAD --message='release'",
+          "git tag --message='release' -a v2.3.0 HEAD",
+          "git tag --message='release' v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a --message='release'",
+          "git tag v2.3.0 HEAD --message='release' -a",
+          "git tag -a -m \"release\" v2.3.0",
+          "git tag -a v2.3.0 -m \"release\"",
+          "git tag -m \"release\" -a v2.3.0",
+          "git tag -m \"release\" v2.3.0 -a",
+          "git tag v2.3.0 -a -m \"release\"",
+          "git tag v2.3.0 -m \"release\" -a",
+          "git tag -a -m \"release\" v2.3.0 HEAD",
+          "git tag -a v2.3.0 HEAD -m \"release\"",
+          "git tag -m \"release\" -a v2.3.0 HEAD",
+          "git tag -m \"release\" v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a -m \"release\"",
+          "git tag v2.3.0 HEAD -m \"release\" -a",
+          "git tag -a -m\"release\" v2.3.0",
+          "git tag -a v2.3.0 -m\"release\"",
+          "git tag -m\"release\" -a v2.3.0",
+          "git tag -m\"release\" v2.3.0 -a",
+          "git tag v2.3.0 -a -m\"release\"",
+          "git tag v2.3.0 -m\"release\" -a",
+          "git tag -a -m\"release\" v2.3.0 HEAD",
+          "git tag -a v2.3.0 HEAD -m\"release\"",
+          "git tag -m\"release\" -a v2.3.0 HEAD",
+          "git tag -m\"release\" v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a -m\"release\"",
+          "git tag v2.3.0 HEAD -m\"release\" -a",
+          "git tag -a --message \"release\" v2.3.0",
+          "git tag -a v2.3.0 --message \"release\"",
+          "git tag --message \"release\" -a v2.3.0",
+          "git tag --message \"release\" v2.3.0 -a",
+          "git tag v2.3.0 -a --message \"release\"",
+          "git tag v2.3.0 --message \"release\" -a",
+          "git tag -a --message \"release\" v2.3.0 HEAD",
+          "git tag -a v2.3.0 HEAD --message \"release\"",
+          "git tag --message \"release\" -a v2.3.0 HEAD",
+          "git tag --message \"release\" v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a --message \"release\"",
+          "git tag v2.3.0 HEAD --message \"release\" -a",
           "git tag -a --message=\"release\" v2.3.0",
+          "git tag -a v2.3.0 --message=\"release\"",
           "git tag --message=\"release\" -a v2.3.0",
           "git tag --message=\"release\" v2.3.0 -a",
-          "git tag -a v2.3.0 HEAD --message=\"release\"",
+          "git tag v2.3.0 -a --message=\"release\"",
+          "git tag v2.3.0 --message=\"release\" -a",
           "git tag -a --message=\"release\" v2.3.0 HEAD",
-          "git tag --annotate v2.3.0 -m release",
+          "git tag -a v2.3.0 HEAD --message=\"release\"",
+          "git tag --message=\"release\" -a v2.3.0 HEAD",
+          "git tag --message=\"release\" v2.3.0 HEAD -a",
+          "git tag v2.3.0 HEAD -a --message=\"release\"",
+          "git tag v2.3.0 HEAD --message=\"release\" -a",
           "git tag --annotate -m release v2.3.0",
+          "git tag --annotate v2.3.0 -m release",
           "git tag -m release --annotate v2.3.0",
           "git tag -m release v2.3.0 --annotate",
-          "git tag --annotate v2.3.0 HEAD -m release",
+          "git tag v2.3.0 --annotate -m release",
+          "git tag v2.3.0 -m release --annotate",
           "git tag --annotate -m release v2.3.0 HEAD",
-          "git tag --annotate v2.3.0 -m 'release'",
-          "git tag --annotate -m 'release' v2.3.0",
-          "git tag -m 'release' --annotate v2.3.0",
-          "git tag -m 'release' v2.3.0 --annotate",
-          "git tag --annotate v2.3.0 HEAD -m 'release'",
-          "git tag --annotate -m 'release' v2.3.0 HEAD",
-          "git tag --annotate v2.3.0 -m \"release\"",
-          "git tag --annotate -m \"release\" v2.3.0",
-          "git tag -m \"release\" --annotate v2.3.0",
-          "git tag -m \"release\" v2.3.0 --annotate",
-          "git tag --annotate v2.3.0 HEAD -m \"release\"",
-          "git tag --annotate -m \"release\" v2.3.0 HEAD",
-          "git tag --annotate v2.3.0 --message release",
+          "git tag --annotate v2.3.0 HEAD -m release",
+          "git tag -m release --annotate v2.3.0 HEAD",
+          "git tag -m release v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate -m release",
+          "git tag v2.3.0 HEAD -m release --annotate",
+          "git tag --annotate -mrelease v2.3.0",
+          "git tag --annotate v2.3.0 -mrelease",
+          "git tag -mrelease --annotate v2.3.0",
+          "git tag -mrelease v2.3.0 --annotate",
+          "git tag v2.3.0 --annotate -mrelease",
+          "git tag v2.3.0 -mrelease --annotate",
+          "git tag --annotate -mrelease v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 HEAD -mrelease",
+          "git tag -mrelease --annotate v2.3.0 HEAD",
+          "git tag -mrelease v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate -mrelease",
+          "git tag v2.3.0 HEAD -mrelease --annotate",
           "git tag --annotate --message release v2.3.0",
+          "git tag --annotate v2.3.0 --message release",
           "git tag --message release --annotate v2.3.0",
           "git tag --message release v2.3.0 --annotate",
-          "git tag --annotate v2.3.0 HEAD --message release",
+          "git tag v2.3.0 --annotate --message release",
+          "git tag v2.3.0 --message release --annotate",
           "git tag --annotate --message release v2.3.0 HEAD",
-          "git tag --annotate v2.3.0 --message=release",
+          "git tag --annotate v2.3.0 HEAD --message release",
+          "git tag --message release --annotate v2.3.0 HEAD",
+          "git tag --message release v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate --message release",
+          "git tag v2.3.0 HEAD --message release --annotate",
           "git tag --annotate --message=release v2.3.0",
+          "git tag --annotate v2.3.0 --message=release",
           "git tag --message=release --annotate v2.3.0",
           "git tag --message=release v2.3.0 --annotate",
-          "git tag --annotate v2.3.0 HEAD --message=release",
+          "git tag v2.3.0 --annotate --message=release",
+          "git tag v2.3.0 --message=release --annotate",
           "git tag --annotate --message=release v2.3.0 HEAD",
-          "git tag --annotate v2.3.0 --message='release'",
+          "git tag --annotate v2.3.0 HEAD --message=release",
+          "git tag --message=release --annotate v2.3.0 HEAD",
+          "git tag --message=release v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate --message=release",
+          "git tag v2.3.0 HEAD --message=release --annotate",
+          "git tag --annotate -m 'release' v2.3.0",
+          "git tag --annotate v2.3.0 -m 'release'",
+          "git tag -m 'release' --annotate v2.3.0",
+          "git tag -m 'release' v2.3.0 --annotate",
+          "git tag v2.3.0 --annotate -m 'release'",
+          "git tag v2.3.0 -m 'release' --annotate",
+          "git tag --annotate -m 'release' v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 HEAD -m 'release'",
+          "git tag -m 'release' --annotate v2.3.0 HEAD",
+          "git tag -m 'release' v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate -m 'release'",
+          "git tag v2.3.0 HEAD -m 'release' --annotate",
+          "git tag --annotate -m'release' v2.3.0",
+          "git tag --annotate v2.3.0 -m'release'",
+          "git tag -m'release' --annotate v2.3.0",
+          "git tag -m'release' v2.3.0 --annotate",
+          "git tag v2.3.0 --annotate -m'release'",
+          "git tag v2.3.0 -m'release' --annotate",
+          "git tag --annotate -m'release' v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 HEAD -m'release'",
+          "git tag -m'release' --annotate v2.3.0 HEAD",
+          "git tag -m'release' v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate -m'release'",
+          "git tag v2.3.0 HEAD -m'release' --annotate",
+          "git tag --annotate --message 'release' v2.3.0",
+          "git tag --annotate v2.3.0 --message 'release'",
+          "git tag --message 'release' --annotate v2.3.0",
+          "git tag --message 'release' v2.3.0 --annotate",
+          "git tag v2.3.0 --annotate --message 'release'",
+          "git tag v2.3.0 --message 'release' --annotate",
+          "git tag --annotate --message 'release' v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 HEAD --message 'release'",
+          "git tag --message 'release' --annotate v2.3.0 HEAD",
+          "git tag --message 'release' v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate --message 'release'",
+          "git tag v2.3.0 HEAD --message 'release' --annotate",
           "git tag --annotate --message='release' v2.3.0",
+          "git tag --annotate v2.3.0 --message='release'",
           "git tag --message='release' --annotate v2.3.0",
           "git tag --message='release' v2.3.0 --annotate",
-          "git tag --annotate v2.3.0 HEAD --message='release'",
+          "git tag v2.3.0 --annotate --message='release'",
+          "git tag v2.3.0 --message='release' --annotate",
           "git tag --annotate --message='release' v2.3.0 HEAD",
-          "git tag --annotate v2.3.0 --message=\"release\"",
+          "git tag --annotate v2.3.0 HEAD --message='release'",
+          "git tag --message='release' --annotate v2.3.0 HEAD",
+          "git tag --message='release' v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate --message='release'",
+          "git tag v2.3.0 HEAD --message='release' --annotate",
+          "git tag --annotate -m \"release\" v2.3.0",
+          "git tag --annotate v2.3.0 -m \"release\"",
+          "git tag -m \"release\" --annotate v2.3.0",
+          "git tag -m \"release\" v2.3.0 --annotate",
+          "git tag v2.3.0 --annotate -m \"release\"",
+          "git tag v2.3.0 -m \"release\" --annotate",
+          "git tag --annotate -m \"release\" v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 HEAD -m \"release\"",
+          "git tag -m \"release\" --annotate v2.3.0 HEAD",
+          "git tag -m \"release\" v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate -m \"release\"",
+          "git tag v2.3.0 HEAD -m \"release\" --annotate",
+          "git tag --annotate -m\"release\" v2.3.0",
+          "git tag --annotate v2.3.0 -m\"release\"",
+          "git tag -m\"release\" --annotate v2.3.0",
+          "git tag -m\"release\" v2.3.0 --annotate",
+          "git tag v2.3.0 --annotate -m\"release\"",
+          "git tag v2.3.0 -m\"release\" --annotate",
+          "git tag --annotate -m\"release\" v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 HEAD -m\"release\"",
+          "git tag -m\"release\" --annotate v2.3.0 HEAD",
+          "git tag -m\"release\" v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate -m\"release\"",
+          "git tag v2.3.0 HEAD -m\"release\" --annotate",
+          "git tag --annotate --message \"release\" v2.3.0",
+          "git tag --annotate v2.3.0 --message \"release\"",
+          "git tag --message \"release\" --annotate v2.3.0",
+          "git tag --message \"release\" v2.3.0 --annotate",
+          "git tag v2.3.0 --annotate --message \"release\"",
+          "git tag v2.3.0 --message \"release\" --annotate",
+          "git tag --annotate --message \"release\" v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 HEAD --message \"release\"",
+          "git tag --message \"release\" --annotate v2.3.0 HEAD",
+          "git tag --message \"release\" v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate --message \"release\"",
+          "git tag v2.3.0 HEAD --message \"release\" --annotate",
           "git tag --annotate --message=\"release\" v2.3.0",
+          "git tag --annotate v2.3.0 --message=\"release\"",
           "git tag --message=\"release\" --annotate v2.3.0",
           "git tag --message=\"release\" v2.3.0 --annotate",
-          "git tag --annotate v2.3.0 HEAD --message=\"release\"",
+          "git tag v2.3.0 --annotate --message=\"release\"",
+          "git tag v2.3.0 --message=\"release\" --annotate",
           "git tag --annotate --message=\"release\" v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 HEAD --message=\"release\"",
+          "git tag --message=\"release\" --annotate v2.3.0 HEAD",
+          "git tag --message=\"release\" v2.3.0 HEAD --annotate",
+          "git tag v2.3.0 HEAD --annotate --message=\"release\"",
+          "git tag v2.3.0 HEAD --message=\"release\" --annotate",
+          "git tag -m release v2.3.0",
+          "git tag v2.3.0 -m release",
+          "git tag -m release v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -m release",
+          "git tag -mrelease v2.3.0",
+          "git tag v2.3.0 -mrelease",
+          "git tag -mrelease v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -mrelease",
+          "git tag --message release v2.3.0",
+          "git tag v2.3.0 --message release",
+          "git tag --message release v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD --message release",
+          "git tag --message=release v2.3.0",
+          "git tag v2.3.0 --message=release",
+          "git tag --message=release v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD --message=release",
+          "git tag -m 'release' v2.3.0",
+          "git tag v2.3.0 -m 'release'",
+          "git tag -m 'release' v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -m 'release'",
+          "git tag -m'release' v2.3.0",
+          "git tag v2.3.0 -m'release'",
+          "git tag -m'release' v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -m'release'",
+          "git tag --message 'release' v2.3.0",
+          "git tag v2.3.0 --message 'release'",
+          "git tag --message 'release' v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD --message 'release'",
+          "git tag --message='release' v2.3.0",
+          "git tag v2.3.0 --message='release'",
+          "git tag --message='release' v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD --message='release'",
+          "git tag -m \"release\" v2.3.0",
+          "git tag v2.3.0 -m \"release\"",
+          "git tag -m \"release\" v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -m \"release\"",
+          "git tag -m\"release\" v2.3.0",
+          "git tag v2.3.0 -m\"release\"",
+          "git tag -m\"release\" v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -m\"release\"",
+          "git tag --message \"release\" v2.3.0",
+          "git tag v2.3.0 --message \"release\"",
+          "git tag --message \"release\" v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD --message \"release\"",
+          "git tag --message=\"release\" v2.3.0",
+          "git tag v2.3.0 --message=\"release\"",
+          "git tag --message=\"release\" v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD --message=\"release\"",
           "git tag -am release v2.3.0",
+          "git tag v2.3.0 -am release",
+          "git tag -am release v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -am release",
           "git tag -amrelease v2.3.0",
-          "git tag -a v2.3.0 -mrelease",
-          "git tag -a -mrelease v2.3.0",
+          "git tag v2.3.0 -amrelease",
+          "git tag -amrelease v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -amrelease",
           "git tag -am 'release' v2.3.0",
+          "git tag v2.3.0 -am 'release'",
+          "git tag -am 'release' v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -am 'release'",
           "git tag -am'release' v2.3.0",
-          "git tag -a v2.3.0 -m'release'",
-          "git tag -a -m'release' v2.3.0",
+          "git tag v2.3.0 -am'release'",
+          "git tag -am'release' v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -am'release'",
           "git tag -am \"release\" v2.3.0",
+          "git tag v2.3.0 -am \"release\"",
+          "git tag -am \"release\" v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -am \"release\"",
           "git tag -am\"release\" v2.3.0",
-          "git tag -a v2.3.0 -m\"release\"",
-          "git tag -a -m\"release\" v2.3.0"
+          "git tag v2.3.0 -am\"release\"",
+          "git tag -am\"release\" v2.3.0 HEAD",
+          "git tag v2.3.0 HEAD -am\"release\""
         ],
         "push": [
           "git push origin v2.3.0",
@@ -1951,12 +2215,12 @@
         ]
       }
     },
-    "explanation": "An annotated tag is created with `-a` and a message, and a plain `git push` does not send tags, so the tag is named in the push. The rule needs a leading v and three dot-separated numbers with nothing after them, so only a plain version such as v2.4.0 matches.",
+    "explanation": "An annotated tag carries a message, set with `-m` (`-a` makes the intent explicit), and a plain `git push` does not send tags, so the tag is named in the push. The rule needs a leading v and three dot-separated numbers with nothing after them, so only a plain version such as `v2.4.0` matches.",
     "pbqWeight": 3,
     "partExplanations": {
-      "tag": "git tag with -a and -m creates an annotated tag with the message on the current commit.",
+      "tag": "`git tag` with `-a` and `-m` creates an annotated tag with the message on the current commit; `-m` alone also makes it annotated.",
       "push": "Naming the tag after the remote sends just that tag, which is what starts the tag pipeline.",
-      "next": "The pattern is anchored at the end, so the -rc.1 suffix, a missing v and the word release-2.4.0 do not match."
+      "next": "The pattern is anchored at the end, so the `-rc.1` suffix, a missing v and the word in `release-2.4.0` do not match."
     },
     "acronyms": []
   },
@@ -1967,10 +2231,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
-    "stem": "Set the triggers for the invoicing pipeline. Requirements: build pushes to main and to branches under release/ only; start the release job from version tags such as v1.4.0; run a weekly scan on Sunday at 03:00 universal time; deploy to production only after an approver starts it; when a newer push arrives on a branch, stop the older run of that branch.",
+    "stem": "Set the triggers for the invoicing pipeline. Build on pushes to `main` and to branches under `release/`, and on no other branch. Start the release job from version tags such as `v1.4.0`. Run a weekly scan on Sunday at 03:00 universal time. Deploy to production only when a person starts it by hand. When a newer push arrives on a branch, end the superseded run of that branch.",
     "payload": {
       "fields": [
         {
@@ -2094,11 +2358,11 @@
         "concur": "o2"
       }
     },
-    "explanation": "A branch filter lists exactly main and release/*, a tag pattern starting with v matches version tags, the cron fields are minute, hour, day of month, month and day of week, a manual start gives the approver control, and cancelling the older run saves capacity.",
+    "explanation": "A branch filter lists exactly `main` and `release/*`, a tag pattern starting with `v` matches version tags, the cron fields are minute, hour, day of month, month and day of week, a manual start gives the approver control, and cancelling the older run saves capacity.",
     "pbqWeight": 5,
     "partExplanations": {
-      "push": "The filter must name main and the release/ branches and nothing else.",
-      "tag": "A pattern of v* matches version tags such as v1.4.0 and skips names like latest.",
+      "push": "The filter must name `main` and the `release/` branches and nothing else.",
+      "tag": "A pattern of `v*` matches version tags such as `v1.4.0` and skips names like `latest`.",
       "sched": "Minute 0, hour 3, any day of month, any month, day of week 0 is Sunday at 03:00.",
       "deploy": "A manual start puts a person in control of when production changes.",
       "concur": "Cancelling the older run keeps only the result for the newest commit."
@@ -2112,10 +2376,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
-    "stem": "A push to main must end in a deployment to staging through a webhook. Policy: the CI server verifies a webhook signature before it reads the branch filter, a package is published to the registry only after the tests pass, and the deploy job takes its package from the registry. Put the steps in the order they happen.",
+    "stem": "A push to `main` must end in a deployment to staging through a webhook. Policy: the CI server verifies a webhook signature before it reads the branch filter, a package is published to the registry only after the tests pass, and the deploy job takes its package from the registry. Put the steps in the order they happen.",
     "payload": {
       "steps": [
         {
@@ -2175,10 +2439,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 2,
-    "stem": "These six events happened in the invoicing repository. The trigger rules are: the build pipeline starts on a push to the branch main or to a branch whose name starts with release/; the release pipeline starts when a tag named v followed by digits and dots is pushed; the nightly pipeline starts from the schedule at 02:00 universal time on main. Choose what each event started.",
+    "stem": "These six events happened in the invoicing repository. The build pipeline starts on a push to the branch `main` or to a branch whose name starts with `release/`. The release pipeline starts when a tag named `v` followed by digits and dots is pushed. The nightly pipeline starts from the schedule at 02:00 universal time on `main`. Choose what each event started.",
     "payload": {
       "caption": "Repository events",
       "columns": [
@@ -2370,15 +2634,15 @@
         "r6": "dx"
       }
     },
-    "explanation": "Branch pushes to main and release/ start the build pipeline, a version tag starts the release pipeline, the 02:00 schedule starts the nightly pipeline, and a push to another branch or a tag without the v and digits pattern starts nothing.",
+    "explanation": "Branch pushes to `main` and `release/` start the build pipeline, a version tag starts the release pipeline, the 02:00 schedule starts the nightly pipeline, and a push to another branch or a tag without the `v` and digits pattern starts nothing.",
     "pbqWeight": 6,
     "partExplanations": {
-      "r1": "A push to main matches the build rule.",
-      "r2": "feature/search is neither main nor under release/, so nothing starts.",
-      "r3": "The tag v3.1.0 matches the version pattern, so the release pipeline starts.",
-      "r4": "The 02:00 universal time schedule on main starts the nightly pipeline.",
-      "r5": "A push to release/3.1 matches the release/ prefix, so the build pipeline starts.",
-      "r6": "The tag demo-2 does not start with v and digits, and a tag is not a branch, so nothing starts."
+      "r1": "A push to `main` matches the build rule.",
+      "r2": "`feature/search` is neither `main` nor under `release/`, so nothing starts.",
+      "r3": "The tag `v3.1.0` matches the version pattern, so the release pipeline starts.",
+      "r4": "The 02:00 universal time schedule on `main` starts the nightly pipeline.",
+      "r5": "A push to `release/3.1` matches the `release/` prefix, so the build pipeline starts.",
+      "r6": "The tag `demo-2` does not start with `v` and digits, and a tag is not a branch, so nothing starts."
     },
     "acronyms": []
   },
@@ -2389,10 +2653,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
-    "stem": "Place the best component for each role named below the trigger flow.",
+    "stem": "Place each component in the zone below the trigger flow whose role it fills.",
     "payload": {
       "width": 600,
       "height": 220,
@@ -2524,10 +2788,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 3,
-    "stem": "A GitHub Actions release workflow must publish when a tag such as v1.4.0 is pushed, but a tag push never produces a release. The lines of the workflow file are shown in shuffled positions. Select every line that stops a tag push from running the publish job.",
+    "stem": "A GitHub Actions release workflow must publish when a tag such as `v1.4.0` is pushed, but a tag push never produces a release. The lines of the workflow file are shown in shuffled positions. Select every line that stops a tag push from running the publish job.",
     "payload": {
       "width": 480,
       "height": 220,
@@ -2562,7 +2826,7 @@
           "y": 90,
           "w": 220,
           "h": 40,
-          "text": "branches: [main]"
+          "text": "on: { push: { branches: [main] } }"
         },
         {
           "id": "n5",
@@ -2612,7 +2876,7 @@
           "y": 90,
           "w": 220,
           "h": 40,
-          "name": "branches: [main]"
+          "name": "on: { push: { branches: [main] } }"
         },
         {
           "id": "conc",
@@ -2638,13 +2902,13 @@
         "branches"
       ]
     },
-    "explanation": "A push filter that lists only branches leaves tags undefined, so a tag push does not start the workflow, and a job condition that requires the ref type to be a branch skips the job on a tag. The runner label, the timeout, the concurrency group and the publish command do not look at the ref.",
+    "explanation": "A push trigger that lists only branches leaves tags undefined, so a tag push does not start the workflow, and a job condition that requires the ref type to be a branch skips the job on a tag. The runner label, the timeout, the concurrency group and the publish command do not look at the ref.",
     "pbqWeight": 2,
     "partExplanations": {
       "runs": "The runner label only picks the machine.",
       "iftype": "The condition is false when the ref type is a tag, so the job is skipped.",
       "timeout": "A timeout limits run time and does not depend on the ref.",
-      "branches": "With only a branch filter, a tag push does not start the workflow.",
+      "branches": "The push trigger lists only a branch filter, so a tag push does not start the workflow.",
       "conc": "A concurrency group serializes runs and does not filter refs.",
       "publish": "The command uses the ref name, which is the tag name in a tag run."
     },
@@ -2657,10 +2921,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
-    "stem": "A push of the tag v2.1.0 starts a GitHub Actions workflow. Match each context value to what it holds in that run.",
+    "stem": "A push of the tag `v2.1.0` starts a GitHub Actions workflow. Match each context value to what it holds in that run.",
     "payload": {
       "prompts": [
         {
@@ -2724,14 +2988,14 @@
         "p5": "c7"
       }
     },
-    "explanation": "The full ref carries the refs/tags/ prefix, the short name drops it, the type says whether the ref is a branch or a tag, the sha is the commit, and the event name is push because a tag push is a push event.",
+    "explanation": "The full ref carries the `refs/tags/` prefix, the short name drops it, the type says whether the ref is a `branch` or a `tag`, the `sha` is the commit, and the event name is `push` because a tag push is a push event.",
     "pbqWeight": 5,
     "partExplanations": {
-      "p1": "The full ref for a tag begins with refs/tags/.",
+      "p1": "The full ref for a tag begins with `refs/tags/`.",
       "p2": "The short ref name is the tag name without the prefix.",
-      "p3": "The ref type is tag in a tag run.",
-      "p4": "The sha is the hash of the commit the run builds.",
-      "p5": "A tag push is reported as a push event."
+      "p3": "The ref type is `tag` in a tag run.",
+      "p4": "The `sha` is the hash of the commit the run builds.",
+      "p5": "A tag push is reported as a `push` event."
     },
     "acronyms": []
   },
@@ -2742,7 +3006,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 1,
     "stem": "Sort each scenario into the trigger that starts the pipeline.",
@@ -2801,7 +3065,7 @@
     "explanation": "Commits arriving on a branch are push triggers, a person choosing the moment is a manual trigger, and a clock time is a scheduled trigger.",
     "pbqWeight": 6,
     "partExplanations": {
-      "i1": "A merge adds commits to main, which is a push event.",
+      "i1": "A merge adds commits to `main`, which is a push event.",
       "i2": "A person presses a button to choose the moment.",
       "i3": "A fixed clock time is a schedule.",
       "i4": "A commit sent to a branch is a push event.",
