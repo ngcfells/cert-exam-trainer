@@ -6,7 +6,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A pipeline runs lint, a docs build and a unit-test job one after another, and none of them uses another job's output. What change shortens the run the most without dropping any check?",
@@ -45,7 +45,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Four independent jobs of 3 minutes each are queued, but the project has only two runners free at once. About how long does the stage take?",
@@ -84,7 +84,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Two parallel integration-test jobs reset the same shared test database, and each one makes the other fail at random. What is the best fix?",
@@ -104,7 +104,7 @@
         },
         {
           "id": "d",
-          "text": "Give each job its own database copy"
+          "text": "Give each job its own copy of the test data"
         }
       ]
     },
@@ -123,9 +123,9 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
-    "difficulty": 3,
+    "difficulty": 2,
     "stem": "A job is configured with a matrix of 3 operating system images and 2 language versions, and every combination is tested. How many jobs does the matrix create?",
     "payload": {
       "options": [
@@ -162,7 +162,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "In a CI definition, job `package` lists job `build` as a dependency, for example with `needs`. What does that mean?",
@@ -174,7 +174,7 @@
         },
         {
           "id": "b",
-          "text": "`package` starts only after `build` has finished successfully"
+          "text": "`package` starts after `build` has finished successfully"
         },
         {
           "id": "c",
@@ -203,7 +203,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A `deploy` job depends on a `build` job, and the build job fails. What does the deploy job do by default?",
@@ -242,7 +242,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Job `package` declares a dependency on `compile` and starts only after it succeeds, yet it cannot find `app.bin`, which `compile` produced on another runner. What explains this?",
@@ -258,7 +258,7 @@
         },
         {
           "id": "c",
-          "text": "The runner deletes files whose names end in .bin after each job"
+          "text": "The runner deletes files whose names end in `.bin` after each job"
         },
         {
           "id": "d",
@@ -281,7 +281,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A team submits this pipeline definition:\n\n```yaml\njobs:\n  alpha:\n    needs: [gamma]\n  beta:\n    needs: [alpha]\n  gamma:\n    needs: [beta]\n```\n\nWhat happens?",
@@ -320,7 +320,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What is conditional execution in a pipeline?",
@@ -340,7 +340,7 @@
         },
         {
           "id": "d",
-          "text": "Running a job only when a rule matches, like a branch"
+          "text": "Running a job when a rule matches, such as a branch name"
         }
       ]
     },
@@ -359,7 +359,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A change touches only files under `docs/`. The team wants to skip the 20-minute integration suite for such changes but keep it for source changes. What should they configure?",
@@ -371,7 +371,7 @@
         },
         {
           "id": "b",
-          "text": "A path rule that skips the job for docs-only changes"
+          "text": "A path filter that skips the job when no code files changed"
         },
         {
           "id": "c",
@@ -379,7 +379,7 @@
         },
         {
           "id": "d",
-          "text": "A nightly schedule in place of the push trigger on all branches"
+          "text": "A nightly schedule in place of the push trigger"
         }
       ]
     },
@@ -388,7 +388,7 @@
         "b"
       ]
     },
-    "explanation": "A path rule evaluates the changed files and skips the job when none are source files. A timeout and retries do not stop the job from running, and moving it to a nightly schedule removes feedback on source changes.",
+    "explanation": "A path filter evaluates the changed files and skips the job when none are source files. A timeout and retries do not stop the job from running, and moving it to a nightly schedule removes feedback on source changes.",
     "acronyms": []
   },
   {
@@ -398,7 +398,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "This workflow file belongs to a repository on GitHub Actions:\n\n```yaml\non: push\njobs:\n  publish:\n    runs-on: ubuntu-latest\n    if: startsWith(github.ref, 'refs/heads/release/')\n    steps:\n      - run: ./publish.sh\n```\n\nA developer pushes the tag `v1.4.0`. Does `publish` run?",
@@ -414,7 +414,7 @@
         },
         {
           "id": "c",
-          "text": "No; for a tag push `github.ref` starts with `refs/tags/`, so the condition is false"
+          "text": "No; `refs/tags/v1.4.0` does not start with `refs/heads/release/`"
         },
         {
           "id": "d",
@@ -437,10 +437,10 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "A production deploy job is defined as a manual job. What happens when the pipeline reaches it?",
+    "stem": "A production deploy job is defined as a required manual job. What happens when the pipeline reaches it?",
     "payload": {
       "options": [
         {
@@ -466,7 +466,7 @@
         "a"
       ]
     },
-    "explanation": "A manual job is a gate: the run pauses at that point until someone triggers it. It does not run automatically, vanish, or depend on a failure.",
+    "explanation": "A required manual job is a gate: the run pauses at that point until someone triggers it. (Some tools, such as GitLab, let the pipeline carry on past a manual job that is marked as optional.) It does not run automatically, vanish, or depend on a failure.",
     "acronyms": []
   },
   {
@@ -476,7 +476,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which event typically triggers an automated rollback after a release?",
@@ -484,7 +484,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A failed post-release health check"
+          "text": "A health check that fails on the running service"
         },
         {
           "id": "b",
@@ -515,7 +515,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Release 5.2.0 of `ledger-api` replaced 5.1.3 and fails its health check. An automated rollback starts. What should it deploy?",
@@ -554,7 +554,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Release 7.0 of an app dropped a database column. After a failed health check, the automated rollback restores release 6.9, which still reads that column, and errors continue. What practice would have prevented this?",
@@ -570,7 +570,7 @@
         },
         {
           "id": "c",
-          "text": "Make schema changes backward compatible so the previous release still works"
+          "text": "Make schema changes backward compatible with the older release"
         },
         {
           "id": "d",
@@ -593,7 +593,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A release passes its health check 30 seconds after deployment, so the pipeline marks it healthy. Ten minutes later a memory leak crashes the service and no rollback fires. What would help most?",
@@ -605,7 +605,7 @@
         },
         {
           "id": "b",
-          "text": "Judge health over a longer window of error and memory metrics"
+          "text": "Judge health over a longer window of error and resource metrics"
         },
         {
           "id": "c",
@@ -632,7 +632,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Developers push three commits to one branch within a minute, and three full pipelines run although only the newest commit matters. Which setting saves runner time?",
@@ -671,7 +671,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team wants a chat message sent only when a pipeline job fails. How should the notification job be configured?",
@@ -687,7 +687,7 @@
         },
         {
           "id": "c",
-          "text": "To run when an earlier job has failed"
+          "text": "To run only when an earlier job has failed"
         },
         {
           "id": "d",
@@ -710,7 +710,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A team enables automatic retries on the job that publishes a release to a package registry. What must be true of that job for retries to be safe?",
@@ -718,7 +718,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A repeat run must leave the same end state"
+          "text": "A repeat run must leave the target in the same end state"
         },
         {
           "id": "b",
@@ -749,7 +749,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A test matrix has 12 combinations and takes 40 minutes. When one combination fails, the team has no use for the other results and wants to free the runners. Which setting does this?",
@@ -788,7 +788,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A job runs this script with `sh ci.sh`, and the runner marks the job by the script's exit status:\n\n```sh\n#!/bin/sh\n./run-tests.sh\necho \"tests finished\"\n```\n\nThe shell is not set to stop on errors, and `run-tests.sh` exits with status 1. What is the result?",
@@ -827,7 +827,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A job occasionally hangs while waiting on a lock and holds a runner for hours. Which setting limits the damage?",
@@ -866,7 +866,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team wants developers to see static analysis findings before code reaches the main branch. Where should the scan run?",
@@ -905,7 +905,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A scanner reports 3 critical, 12 medium and 40 low findings on a legacy service. The team can fix only the critical ones this sprint but wants no new serious issues. Which gate fits?",
@@ -925,7 +925,7 @@
         },
         {
           "id": "d",
-          "text": "Fail on new critical findings, report others"
+          "text": "Fail on new top-severity findings and report the rest"
         }
       ]
     },
@@ -944,7 +944,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A scan finds a cloud access key in a commit from last week. The developer deletes the key in a new commit. What must the team still do?",
@@ -964,7 +964,7 @@
         },
         {
           "id": "d",
-          "text": "Revoke and replace the key, as history still holds it"
+          "text": "Revoke and replace the credential, because old commits keep it"
         }
       ]
     },
