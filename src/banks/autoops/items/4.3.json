@@ -1020,15 +1020,15 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A job caches an access token and, an hour later, a call returns HTTP 401. Which is the best fix?",
+    "stem": "A job stores an access token and, an hour later, a call returns HTTP 401. Which is the best fix?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Raise the retry count and keep resending the same token"
+          "text": "Raise the retry count and resend the same token"
         },
         {
           "id": "b",
@@ -1061,7 +1061,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A reporting job must read invoices from a billing provider. Which scope choice follows least privilege when requesting its token?",
@@ -1069,19 +1069,19 @@
       "options": [
         {
           "id": "a",
-          "text": "A scope for reading and writing all billing data"
+          "text": "A scope for reading and writing all billing data, including invoices"
         },
         {
           "id": "b",
-          "text": "The provider's full administrator scope"
+          "text": "The provider's full administrator scope for the whole billing account"
         },
         {
           "id": "c",
-          "text": "Every scope the client is registered for"
+          "text": "Every scope the client application is registered for, including write access"
         },
         {
           "id": "d",
-          "text": "A scope for reading invoices"
+          "text": "A scope that allows reading the invoices the job needs and nothing more"
         }
       ]
     },
@@ -1100,7 +1100,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A colleague silenced a certificate error by adding `verify=False` to the call below. What is the problem, and what is the right fix?\n\n```python\nresp = session.get(\n    \"https://api.partner.example.internal/v1/orders\",\n    verify=False,\n)\n```",
@@ -1112,15 +1112,15 @@
         },
         {
           "id": "b",
-          "text": "The URL should use HTTP, since verification is optional"
+          "text": "The URL should switch to plain HTTP, as internal hosts need no certificate check"
         },
         {
           "id": "c",
-          "text": "The call needs a longer timeout so verification can finish"
+          "text": "The call needs a longer timeout so the certificate check has time to finish"
         },
         {
           "id": "d",
-          "text": "The path needs a trailing slash so the certificate matches"
+          "text": "The path needs a trailing slash so the certificate matches the requested path"
         }
       ]
     },
@@ -1143,7 +1143,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A payments provider must know which of the customer's machines is calling at connection time, before any request is read, and will refuse unknown clients. Which method fits?",
@@ -1151,11 +1151,11 @@
       "options": [
         {
           "id": "a",
-          "text": "An API key sent in a request header"
+          "text": "An API key sent in a request header with every call to the endpoint"
         },
         {
           "id": "b",
-          "text": "One-way TLS with a verified server certificate"
+          "text": "One-way TLS with a verified server certificate and no client identity check"
         },
         {
           "id": "c",
@@ -1163,7 +1163,7 @@
         },
         {
           "id": "d",
-          "text": "A bearer token placed in the query string"
+          "text": "A bearer token placed in the query string of every request URL"
         }
       ]
     },
@@ -1176,7 +1176,8 @@
     "acronyms": [
       "API",
       "CA",
-      "TLS"
+      "TLS",
+      "URL"
     ]
   },
   {
@@ -1186,10 +1187,10 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "A developer sets up SSH access to a code hosting provider. Which file is uploaded to the provider's account settings?",
+    "stem": "A developer sets up SSH access to a code hosting provider. What is uploaded to the provider's account settings?",
     "payload": {
       "options": [
         {
@@ -1227,7 +1228,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Calls to a provider that requires mutual TLS began failing at midnight, and the provider's log says the client certificate has expired. What fixes it?",
@@ -1243,7 +1244,7 @@
         },
         {
           "id": "c",
-          "text": "Disable certificate checking in the client"
+          "text": "Disable certificate checks in the client"
         },
         {
           "id": "d",
@@ -1270,10 +1271,10 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "In the client credentials flow, which of these values must be kept secret?",
+    "stem": "In the client credentials flow, which of these values must be protected?",
     "payload": {
       "options": [
         {
@@ -1309,7 +1310,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO measures keep an API key out of a repository?",
@@ -1317,7 +1318,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Add the local credentials file to the ignore file"
+          "text": "Add the local credentials file to `.gitignore`"
         },
         {
           "id": "b",
@@ -1343,7 +1344,7 @@
         "c"
       ]
     },
-    "explanation": "An ignore entry stops the file from being staged, and a secret scanner catches keys that slip through. Renaming a variable hides nothing, a committed key stays in history after deletion, and the `README` is part of the repository.",
+    "explanation": "A `.gitignore` entry stops the file from being staged, and a secret scanner catches keys that slip through. Renaming a variable hides nothing, a committed key stays in history after deletion, and the `README` is part of the repository.",
     "acronyms": [
       "API"
     ]
@@ -1355,7 +1356,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "A client holds a valid, unexpired access token and receives HTTP 403 from an API. Which TWO explanations fit?",
@@ -1402,7 +1403,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which THREE sources does the AWS SDK default credential chain consult?",
@@ -1410,11 +1411,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Environment variables"
+          "text": "Environment variables set for the current process"
         },
         {
           "id": "b",
-          "text": "The shared credentials and config files"
+          "text": "The shared credentials and config files in the user's home folder"
         },
         {
           "id": "c",
@@ -1422,11 +1423,11 @@
         },
         {
           "id": "d",
-          "text": "The name of the current git branch"
+          "text": "The name of the current `git` branch checked out in the repository"
         },
         {
           "id": "e",
-          "text": "Text typed into the application log"
+          "text": "Text typed into the application log by each user session"
         }
       ]
     },
@@ -1450,10 +1451,10 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
-    "stem": "A client checks a server's TLS certificate before sending data. Which THREE checks must pass?",
+    "stem": "A client checks a server's TLS certificate before sending data. Which THREE of these checks must pass?",
     "payload": {
       "options": [
         {
@@ -1498,7 +1499,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO ways of handling an API key expose it most?",
@@ -1546,7 +1547,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO actions risk printing a token in CI job logs?",
@@ -1593,7 +1594,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "stem": "A deployer must work in the staging account through the provider's CLI, `cloudctl`. Read the help text and the current profile list, then complete each step.",
@@ -1646,14 +1647,436 @@
           "cloudctl profile add --role deployer --account staging stage-deploy",
           "cloudctl profile add --role=deployer --account staging stage-deploy",
           "cloudctl profile add --role deployer --account=staging stage-deploy",
-          "cloudctl profile add --role=deployer --account=staging stage-deploy"
+          "cloudctl profile add --role=deployer --account=staging stage-deploy",
+          "cloudctl profile add stage-deploy --account staging --role 'deployer'",
+          "cloudctl profile add --account staging --role 'deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role 'deployer' --account staging",
+          "cloudctl profile add --role 'deployer' --account staging stage-deploy",
+          "cloudctl profile add stage-deploy --account staging --role='deployer'",
+          "cloudctl profile add --account staging --role='deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role='deployer' --account staging",
+          "cloudctl profile add --role='deployer' --account staging stage-deploy",
+          "cloudctl profile add stage-deploy --account staging --role \"deployer\"",
+          "cloudctl profile add --account staging --role \"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role \"deployer\" --account staging",
+          "cloudctl profile add --role \"deployer\" --account staging stage-deploy",
+          "cloudctl profile add stage-deploy --account staging --role=\"deployer\"",
+          "cloudctl profile add --account staging --role=\"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role=\"deployer\" --account staging",
+          "cloudctl profile add --role=\"deployer\" --account staging stage-deploy",
+          "cloudctl profile add stage-deploy --account=staging --role 'deployer'",
+          "cloudctl profile add --account=staging --role 'deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role 'deployer' --account=staging",
+          "cloudctl profile add --role 'deployer' --account=staging stage-deploy",
+          "cloudctl profile add stage-deploy --account=staging --role='deployer'",
+          "cloudctl profile add --account=staging --role='deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role='deployer' --account=staging",
+          "cloudctl profile add --role='deployer' --account=staging stage-deploy",
+          "cloudctl profile add stage-deploy --account=staging --role \"deployer\"",
+          "cloudctl profile add --account=staging --role \"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role \"deployer\" --account=staging",
+          "cloudctl profile add --role \"deployer\" --account=staging stage-deploy",
+          "cloudctl profile add stage-deploy --account=staging --role=\"deployer\"",
+          "cloudctl profile add --account=staging --role=\"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role=\"deployer\" --account=staging",
+          "cloudctl profile add --role=\"deployer\" --account=staging stage-deploy",
+          "cloudctl profile add stage-deploy --account 'staging' --role deployer",
+          "cloudctl profile add --account 'staging' --role deployer stage-deploy",
+          "cloudctl profile add stage-deploy --role deployer --account 'staging'",
+          "cloudctl profile add --role deployer --account 'staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account 'staging' --role=deployer",
+          "cloudctl profile add --account 'staging' --role=deployer stage-deploy",
+          "cloudctl profile add stage-deploy --role=deployer --account 'staging'",
+          "cloudctl profile add --role=deployer --account 'staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account 'staging' --role 'deployer'",
+          "cloudctl profile add --account 'staging' --role 'deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role 'deployer' --account 'staging'",
+          "cloudctl profile add --role 'deployer' --account 'staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account 'staging' --role='deployer'",
+          "cloudctl profile add --account 'staging' --role='deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role='deployer' --account 'staging'",
+          "cloudctl profile add --role='deployer' --account 'staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account 'staging' --role \"deployer\"",
+          "cloudctl profile add --account 'staging' --role \"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role \"deployer\" --account 'staging'",
+          "cloudctl profile add --role \"deployer\" --account 'staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account 'staging' --role=\"deployer\"",
+          "cloudctl profile add --account 'staging' --role=\"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role=\"deployer\" --account 'staging'",
+          "cloudctl profile add --role=\"deployer\" --account 'staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account='staging' --role deployer",
+          "cloudctl profile add --account='staging' --role deployer stage-deploy",
+          "cloudctl profile add stage-deploy --role deployer --account='staging'",
+          "cloudctl profile add --role deployer --account='staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account='staging' --role=deployer",
+          "cloudctl profile add --account='staging' --role=deployer stage-deploy",
+          "cloudctl profile add stage-deploy --role=deployer --account='staging'",
+          "cloudctl profile add --role=deployer --account='staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account='staging' --role 'deployer'",
+          "cloudctl profile add --account='staging' --role 'deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role 'deployer' --account='staging'",
+          "cloudctl profile add --role 'deployer' --account='staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account='staging' --role='deployer'",
+          "cloudctl profile add --account='staging' --role='deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role='deployer' --account='staging'",
+          "cloudctl profile add --role='deployer' --account='staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account='staging' --role \"deployer\"",
+          "cloudctl profile add --account='staging' --role \"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role \"deployer\" --account='staging'",
+          "cloudctl profile add --role \"deployer\" --account='staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account='staging' --role=\"deployer\"",
+          "cloudctl profile add --account='staging' --role=\"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role=\"deployer\" --account='staging'",
+          "cloudctl profile add --role=\"deployer\" --account='staging' stage-deploy",
+          "cloudctl profile add stage-deploy --account \"staging\" --role deployer",
+          "cloudctl profile add --account \"staging\" --role deployer stage-deploy",
+          "cloudctl profile add stage-deploy --role deployer --account \"staging\"",
+          "cloudctl profile add --role deployer --account \"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account \"staging\" --role=deployer",
+          "cloudctl profile add --account \"staging\" --role=deployer stage-deploy",
+          "cloudctl profile add stage-deploy --role=deployer --account \"staging\"",
+          "cloudctl profile add --role=deployer --account \"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account \"staging\" --role 'deployer'",
+          "cloudctl profile add --account \"staging\" --role 'deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role 'deployer' --account \"staging\"",
+          "cloudctl profile add --role 'deployer' --account \"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account \"staging\" --role='deployer'",
+          "cloudctl profile add --account \"staging\" --role='deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role='deployer' --account \"staging\"",
+          "cloudctl profile add --role='deployer' --account \"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account \"staging\" --role \"deployer\"",
+          "cloudctl profile add --account \"staging\" --role \"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role \"deployer\" --account \"staging\"",
+          "cloudctl profile add --role \"deployer\" --account \"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account \"staging\" --role=\"deployer\"",
+          "cloudctl profile add --account \"staging\" --role=\"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role=\"deployer\" --account \"staging\"",
+          "cloudctl profile add --role=\"deployer\" --account \"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account=\"staging\" --role deployer",
+          "cloudctl profile add --account=\"staging\" --role deployer stage-deploy",
+          "cloudctl profile add stage-deploy --role deployer --account=\"staging\"",
+          "cloudctl profile add --role deployer --account=\"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account=\"staging\" --role=deployer",
+          "cloudctl profile add --account=\"staging\" --role=deployer stage-deploy",
+          "cloudctl profile add stage-deploy --role=deployer --account=\"staging\"",
+          "cloudctl profile add --role=deployer --account=\"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account=\"staging\" --role 'deployer'",
+          "cloudctl profile add --account=\"staging\" --role 'deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role 'deployer' --account=\"staging\"",
+          "cloudctl profile add --role 'deployer' --account=\"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account=\"staging\" --role='deployer'",
+          "cloudctl profile add --account=\"staging\" --role='deployer' stage-deploy",
+          "cloudctl profile add stage-deploy --role='deployer' --account=\"staging\"",
+          "cloudctl profile add --role='deployer' --account=\"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account=\"staging\" --role \"deployer\"",
+          "cloudctl profile add --account=\"staging\" --role \"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role \"deployer\" --account=\"staging\"",
+          "cloudctl profile add --role \"deployer\" --account=\"staging\" stage-deploy",
+          "cloudctl profile add stage-deploy --account=\"staging\" --role=\"deployer\"",
+          "cloudctl profile add --account=\"staging\" --role=\"deployer\" stage-deploy",
+          "cloudctl profile add stage-deploy --role=\"deployer\" --account=\"staging\"",
+          "cloudctl profile add --role=\"deployer\" --account=\"staging\" stage-deploy",
+          "cloudctl profile add 'stage-deploy' --account staging --role deployer",
+          "cloudctl profile add --account staging --role deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role deployer --account staging",
+          "cloudctl profile add --role deployer --account staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account staging --role=deployer",
+          "cloudctl profile add --account staging --role=deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=deployer --account staging",
+          "cloudctl profile add --role=deployer --account staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account staging --role 'deployer'",
+          "cloudctl profile add --account staging --role 'deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role 'deployer' --account staging",
+          "cloudctl profile add --role 'deployer' --account staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account staging --role='deployer'",
+          "cloudctl profile add --account staging --role='deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role='deployer' --account staging",
+          "cloudctl profile add --role='deployer' --account staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account staging --role \"deployer\"",
+          "cloudctl profile add --account staging --role \"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role \"deployer\" --account staging",
+          "cloudctl profile add --role \"deployer\" --account staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account staging --role=\"deployer\"",
+          "cloudctl profile add --account staging --role=\"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=\"deployer\" --account staging",
+          "cloudctl profile add --role=\"deployer\" --account staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=staging --role deployer",
+          "cloudctl profile add --account=staging --role deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role deployer --account=staging",
+          "cloudctl profile add --role deployer --account=staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=staging --role=deployer",
+          "cloudctl profile add --account=staging --role=deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=deployer --account=staging",
+          "cloudctl profile add --role=deployer --account=staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=staging --role 'deployer'",
+          "cloudctl profile add --account=staging --role 'deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role 'deployer' --account=staging",
+          "cloudctl profile add --role 'deployer' --account=staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=staging --role='deployer'",
+          "cloudctl profile add --account=staging --role='deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role='deployer' --account=staging",
+          "cloudctl profile add --role='deployer' --account=staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=staging --role \"deployer\"",
+          "cloudctl profile add --account=staging --role \"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role \"deployer\" --account=staging",
+          "cloudctl profile add --role \"deployer\" --account=staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=staging --role=\"deployer\"",
+          "cloudctl profile add --account=staging --role=\"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=\"deployer\" --account=staging",
+          "cloudctl profile add --role=\"deployer\" --account=staging 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account 'staging' --role deployer",
+          "cloudctl profile add --account 'staging' --role deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role deployer --account 'staging'",
+          "cloudctl profile add --role deployer --account 'staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account 'staging' --role=deployer",
+          "cloudctl profile add --account 'staging' --role=deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=deployer --account 'staging'",
+          "cloudctl profile add --role=deployer --account 'staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account 'staging' --role 'deployer'",
+          "cloudctl profile add --account 'staging' --role 'deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role 'deployer' --account 'staging'",
+          "cloudctl profile add --role 'deployer' --account 'staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account 'staging' --role='deployer'",
+          "cloudctl profile add --account 'staging' --role='deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role='deployer' --account 'staging'",
+          "cloudctl profile add --role='deployer' --account 'staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account 'staging' --role \"deployer\"",
+          "cloudctl profile add --account 'staging' --role \"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role \"deployer\" --account 'staging'",
+          "cloudctl profile add --role \"deployer\" --account 'staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account 'staging' --role=\"deployer\"",
+          "cloudctl profile add --account 'staging' --role=\"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=\"deployer\" --account 'staging'",
+          "cloudctl profile add --role=\"deployer\" --account 'staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account='staging' --role deployer",
+          "cloudctl profile add --account='staging' --role deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role deployer --account='staging'",
+          "cloudctl profile add --role deployer --account='staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account='staging' --role=deployer",
+          "cloudctl profile add --account='staging' --role=deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=deployer --account='staging'",
+          "cloudctl profile add --role=deployer --account='staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account='staging' --role 'deployer'",
+          "cloudctl profile add --account='staging' --role 'deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role 'deployer' --account='staging'",
+          "cloudctl profile add --role 'deployer' --account='staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account='staging' --role='deployer'",
+          "cloudctl profile add --account='staging' --role='deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role='deployer' --account='staging'",
+          "cloudctl profile add --role='deployer' --account='staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account='staging' --role \"deployer\"",
+          "cloudctl profile add --account='staging' --role \"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role \"deployer\" --account='staging'",
+          "cloudctl profile add --role \"deployer\" --account='staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account='staging' --role=\"deployer\"",
+          "cloudctl profile add --account='staging' --role=\"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=\"deployer\" --account='staging'",
+          "cloudctl profile add --role=\"deployer\" --account='staging' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account \"staging\" --role deployer",
+          "cloudctl profile add --account \"staging\" --role deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role deployer --account \"staging\"",
+          "cloudctl profile add --role deployer --account \"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account \"staging\" --role=deployer",
+          "cloudctl profile add --account \"staging\" --role=deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=deployer --account \"staging\"",
+          "cloudctl profile add --role=deployer --account \"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account \"staging\" --role 'deployer'",
+          "cloudctl profile add --account \"staging\" --role 'deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role 'deployer' --account \"staging\"",
+          "cloudctl profile add --role 'deployer' --account \"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account \"staging\" --role='deployer'",
+          "cloudctl profile add --account \"staging\" --role='deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role='deployer' --account \"staging\"",
+          "cloudctl profile add --role='deployer' --account \"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account \"staging\" --role \"deployer\"",
+          "cloudctl profile add --account \"staging\" --role \"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role \"deployer\" --account \"staging\"",
+          "cloudctl profile add --role \"deployer\" --account \"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account \"staging\" --role=\"deployer\"",
+          "cloudctl profile add --account \"staging\" --role=\"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=\"deployer\" --account \"staging\"",
+          "cloudctl profile add --role=\"deployer\" --account \"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=\"staging\" --role deployer",
+          "cloudctl profile add --account=\"staging\" --role deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role deployer --account=\"staging\"",
+          "cloudctl profile add --role deployer --account=\"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=\"staging\" --role=deployer",
+          "cloudctl profile add --account=\"staging\" --role=deployer 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=deployer --account=\"staging\"",
+          "cloudctl profile add --role=deployer --account=\"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=\"staging\" --role 'deployer'",
+          "cloudctl profile add --account=\"staging\" --role 'deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role 'deployer' --account=\"staging\"",
+          "cloudctl profile add --role 'deployer' --account=\"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=\"staging\" --role='deployer'",
+          "cloudctl profile add --account=\"staging\" --role='deployer' 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role='deployer' --account=\"staging\"",
+          "cloudctl profile add --role='deployer' --account=\"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=\"staging\" --role \"deployer\"",
+          "cloudctl profile add --account=\"staging\" --role \"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role \"deployer\" --account=\"staging\"",
+          "cloudctl profile add --role \"deployer\" --account=\"staging\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --account=\"staging\" --role=\"deployer\"",
+          "cloudctl profile add --account=\"staging\" --role=\"deployer\" 'stage-deploy'",
+          "cloudctl profile add 'stage-deploy' --role=\"deployer\" --account=\"staging\"",
+          "cloudctl profile add --role=\"deployer\" --account=\"staging\" 'stage-deploy'",
+          "cloudctl profile add \"stage-deploy\" --account staging --role deployer",
+          "cloudctl profile add --account staging --role deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role deployer --account staging",
+          "cloudctl profile add --role deployer --account staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account staging --role=deployer",
+          "cloudctl profile add --account staging --role=deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=deployer --account staging",
+          "cloudctl profile add --role=deployer --account staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account staging --role 'deployer'",
+          "cloudctl profile add --account staging --role 'deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role 'deployer' --account staging",
+          "cloudctl profile add --role 'deployer' --account staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account staging --role='deployer'",
+          "cloudctl profile add --account staging --role='deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role='deployer' --account staging",
+          "cloudctl profile add --role='deployer' --account staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account staging --role \"deployer\"",
+          "cloudctl profile add --account staging --role \"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role \"deployer\" --account staging",
+          "cloudctl profile add --role \"deployer\" --account staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account staging --role=\"deployer\"",
+          "cloudctl profile add --account staging --role=\"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=\"deployer\" --account staging",
+          "cloudctl profile add --role=\"deployer\" --account staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=staging --role deployer",
+          "cloudctl profile add --account=staging --role deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role deployer --account=staging",
+          "cloudctl profile add --role deployer --account=staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=staging --role=deployer",
+          "cloudctl profile add --account=staging --role=deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=deployer --account=staging",
+          "cloudctl profile add --role=deployer --account=staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=staging --role 'deployer'",
+          "cloudctl profile add --account=staging --role 'deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role 'deployer' --account=staging",
+          "cloudctl profile add --role 'deployer' --account=staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=staging --role='deployer'",
+          "cloudctl profile add --account=staging --role='deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role='deployer' --account=staging",
+          "cloudctl profile add --role='deployer' --account=staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=staging --role \"deployer\"",
+          "cloudctl profile add --account=staging --role \"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role \"deployer\" --account=staging",
+          "cloudctl profile add --role \"deployer\" --account=staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=staging --role=\"deployer\"",
+          "cloudctl profile add --account=staging --role=\"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=\"deployer\" --account=staging",
+          "cloudctl profile add --role=\"deployer\" --account=staging \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account 'staging' --role deployer",
+          "cloudctl profile add --account 'staging' --role deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role deployer --account 'staging'",
+          "cloudctl profile add --role deployer --account 'staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account 'staging' --role=deployer",
+          "cloudctl profile add --account 'staging' --role=deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=deployer --account 'staging'",
+          "cloudctl profile add --role=deployer --account 'staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account 'staging' --role 'deployer'",
+          "cloudctl profile add --account 'staging' --role 'deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role 'deployer' --account 'staging'",
+          "cloudctl profile add --role 'deployer' --account 'staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account 'staging' --role='deployer'",
+          "cloudctl profile add --account 'staging' --role='deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role='deployer' --account 'staging'",
+          "cloudctl profile add --role='deployer' --account 'staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account 'staging' --role \"deployer\"",
+          "cloudctl profile add --account 'staging' --role \"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role \"deployer\" --account 'staging'",
+          "cloudctl profile add --role \"deployer\" --account 'staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account 'staging' --role=\"deployer\"",
+          "cloudctl profile add --account 'staging' --role=\"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=\"deployer\" --account 'staging'",
+          "cloudctl profile add --role=\"deployer\" --account 'staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account='staging' --role deployer",
+          "cloudctl profile add --account='staging' --role deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role deployer --account='staging'",
+          "cloudctl profile add --role deployer --account='staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account='staging' --role=deployer",
+          "cloudctl profile add --account='staging' --role=deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=deployer --account='staging'",
+          "cloudctl profile add --role=deployer --account='staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account='staging' --role 'deployer'",
+          "cloudctl profile add --account='staging' --role 'deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role 'deployer' --account='staging'",
+          "cloudctl profile add --role 'deployer' --account='staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account='staging' --role='deployer'",
+          "cloudctl profile add --account='staging' --role='deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role='deployer' --account='staging'",
+          "cloudctl profile add --role='deployer' --account='staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account='staging' --role \"deployer\"",
+          "cloudctl profile add --account='staging' --role \"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role \"deployer\" --account='staging'",
+          "cloudctl profile add --role \"deployer\" --account='staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account='staging' --role=\"deployer\"",
+          "cloudctl profile add --account='staging' --role=\"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=\"deployer\" --account='staging'",
+          "cloudctl profile add --role=\"deployer\" --account='staging' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account \"staging\" --role deployer",
+          "cloudctl profile add --account \"staging\" --role deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role deployer --account \"staging\"",
+          "cloudctl profile add --role deployer --account \"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account \"staging\" --role=deployer",
+          "cloudctl profile add --account \"staging\" --role=deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=deployer --account \"staging\"",
+          "cloudctl profile add --role=deployer --account \"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account \"staging\" --role 'deployer'",
+          "cloudctl profile add --account \"staging\" --role 'deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role 'deployer' --account \"staging\"",
+          "cloudctl profile add --role 'deployer' --account \"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account \"staging\" --role='deployer'",
+          "cloudctl profile add --account \"staging\" --role='deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role='deployer' --account \"staging\"",
+          "cloudctl profile add --role='deployer' --account \"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account \"staging\" --role \"deployer\"",
+          "cloudctl profile add --account \"staging\" --role \"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role \"deployer\" --account \"staging\"",
+          "cloudctl profile add --role \"deployer\" --account \"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account \"staging\" --role=\"deployer\"",
+          "cloudctl profile add --account \"staging\" --role=\"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=\"deployer\" --account \"staging\"",
+          "cloudctl profile add --role=\"deployer\" --account \"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=\"staging\" --role deployer",
+          "cloudctl profile add --account=\"staging\" --role deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role deployer --account=\"staging\"",
+          "cloudctl profile add --role deployer --account=\"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=\"staging\" --role=deployer",
+          "cloudctl profile add --account=\"staging\" --role=deployer \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=deployer --account=\"staging\"",
+          "cloudctl profile add --role=deployer --account=\"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=\"staging\" --role 'deployer'",
+          "cloudctl profile add --account=\"staging\" --role 'deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role 'deployer' --account=\"staging\"",
+          "cloudctl profile add --role 'deployer' --account=\"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=\"staging\" --role='deployer'",
+          "cloudctl profile add --account=\"staging\" --role='deployer' \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role='deployer' --account=\"staging\"",
+          "cloudctl profile add --role='deployer' --account=\"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=\"staging\" --role \"deployer\"",
+          "cloudctl profile add --account=\"staging\" --role \"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role \"deployer\" --account=\"staging\"",
+          "cloudctl profile add --role \"deployer\" --account=\"staging\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --account=\"staging\" --role=\"deployer\"",
+          "cloudctl profile add --account=\"staging\" --role=\"deployer\" \"stage-deploy\"",
+          "cloudctl profile add \"stage-deploy\" --role=\"deployer\" --account=\"staging\"",
+          "cloudctl profile add --role=\"deployer\" --account=\"staging\" \"stage-deploy\""
         ],
         "use": [
-          "cloudctl profile use stage-deploy"
+          "cloudctl profile use stage-deploy",
+          "cloudctl profile use 'stage-deploy'",
+          "cloudctl profile use \"stage-deploy\""
         ],
         "login": [
           "cloudctl login --profile stage-deploy",
-          "cloudctl login --profile=stage-deploy"
+          "cloudctl login --profile=stage-deploy",
+          "cloudctl login --profile 'stage-deploy'",
+          "cloudctl login --profile='stage-deploy'",
+          "cloudctl login --profile \"stage-deploy\"",
+          "cloudctl login --profile=\"stage-deploy\""
         ],
         "who": [
           "cloudctl whoami"
@@ -1663,10 +2086,10 @@
     "explanation": "The help text gives the exact form of each command: a profile is created with its account and role, selected with `profile use`, given short-lived credentials by `login`, and checked with `whoami`. Confirming the identity before deploying proves the work will run in the intended account.",
     "pbqWeight": 4,
     "partExplanations": {
-      "add": "profile add takes the name first, then the account and role flags, as the help shows.",
-      "use": "profile use switches the active profile, which the list marks with a star.",
-      "login": "login with the profile flag fetches short-lived credentials for that profile.",
-      "who": "whoami reports the identity and expiry, confirming where commands will run."
+      "add": "The `profile add` command takes the name first, then the account and role flags, as the help shows.",
+      "use": "`profile use` switches the active profile, which the list marks with a star.",
+      "login": "`login` with the `--profile` flag fetches short-lived credentials for that profile.",
+      "who": "`whoami` reports the identity and expiry, confirming where commands will run."
     },
     "acronyms": [
       "CLI"
@@ -1679,10 +2102,10 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
-    "stem": "A CI job in the payments-api repository must deploy one service in a cloud account. The CI system can issue every job a signed identity token. Configure the connection.",
+    "stem": "A CI job in the `payments-api` repository must deploy one service in a cloud account. The CI system can issue every job a signed identity token. Configure the connection.",
     "payload": {
       "fields": [
         {
@@ -1763,11 +2186,11 @@
           "options": [
             {
               "id": "o1",
-              "text": "In a file committed beside the pipeline definition"
+              "text": "In a config file committed beside the pipeline definition"
             },
             {
               "id": "o2",
-              "text": "In the runner image shared by every job"
+              "text": "Baked into the runner image that every job starts from"
             },
             {
               "id": "o3",
@@ -1789,11 +2212,11 @@
     "explanation": "Workload identity federation lets the job prove who it is with a signed token and receive short-lived, narrowly scoped credentials, but only if the role trusts that one repository and branch. Nothing long-lived has to be stored anywhere.",
     "pbqWeight": 5,
     "partExplanations": {
-      "cred": "A signed job token avoids storing any key, and the provider swaps it for temporary credentials.",
-      "life": "Credentials that last minutes expire shortly after the run ends, so a leak is nearly useless.",
-      "scope": "Deploy actions on one service give the job what it needs and nothing else.",
-      "trust": "Limiting the role to this repository and branch stops other pipelines from assuming it.",
-      "store": "Credentials requested at run time and kept in memory leave nothing on disk to steal."
+      "cred": "A signed job token avoids storing any key, and the provider swaps it for temporary credentials. A long-lived key can leak from the repository settings, and a personal login ties the job to one person.",
+      "life": "Credentials that last minutes expire shortly after the run ends, so a leak is nearly useless. A 90-day key or one with no expiry stays usable long after a leak.",
+      "scope": "Deploy actions on one service give the job what it needs and nothing else. Administrator rights and read access to every secret grant far more than a deploy needs.",
+      "trust": "Limiting the role to this repository and branch stops other pipelines from assuming it. Any repository in the organization, or any caller that knows the name, could assume it otherwise.",
+      "store": "Credentials requested at run time and kept in memory leave nothing on disk to steal. A committed file or a shared runner image exposes them to anyone who can read the repository or the image."
     },
     "acronyms": [
       "CI"
@@ -1806,7 +2229,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
     "stem": "A nightly export service must call a partner's API using the client credentials grant. Put the steps in order, from setting up the client to the scoped call. Each step uses something an earlier step produced, and the secret is stored before the job reads it.",
@@ -1869,7 +2292,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 3,
     "stem": "A team reviews its provider keys against this policy. Rotate any key older than 90 days. Disable any key idle for 60 days or more. Narrow any key with administrator or wildcard permissions. Move any key owned by a person's account but used by a workload to a service account. Each key breaks at most one rule; otherwise keep it. Choose the action for each key.",
@@ -1878,6 +2301,7 @@
       "columns": [
         "Key name",
         "Owner",
+        "Used by",
         "Age (days)",
         "Idle (days)",
         "Permissions"
@@ -1886,6 +2310,7 @@
         [
           "ci-deploy-key",
           "Service account deploy-bot",
+          "Deploy pipeline",
           "40",
           "1",
           "Deploy actions on one service"
@@ -1893,6 +2318,7 @@
         [
           "backup-job-key",
           "Service account backup-bot",
+          "Backup job",
           "200",
           "2",
           "Write to one backup bucket"
@@ -1900,6 +2326,7 @@
         [
           "old-report-key",
           "Service account report-bot",
+          "Monthly report job",
           "70",
           "75",
           "Read the reports bucket"
@@ -1907,6 +2334,7 @@
         [
           "sync-tool-key",
           "Service account sync-bot",
+          "Sync tool",
           "30",
           "3",
           "Administrator on all resources"
@@ -1914,6 +2342,7 @@
         [
           "nightly-export-key",
           "Personal account of a named engineer",
+          "Scheduled export job",
           "15",
           "1",
           "Read one table"
@@ -2068,7 +2497,7 @@
       "r2": "Age 200 is over 90 days, so it is rotated; idle 2 and the narrow scope break nothing.",
       "r3": "Age 70 is under 90, but idle 75 is over 60 days, so it is disabled.",
       "r4": "Age 30 and idle 3 are fine, but administrator on all resources is too broad, so its permissions are narrowed.",
-      "r5": "Age 15 and idle 1 are fine and the scope is narrow, but a person's account owns a workload key, so it moves to a service account."
+      "r5": "Age 15 and idle 1 are fine and the scope is narrow, but a person's account owns a key that a scheduled job uses, so it moves to a service account."
     },
     "acronyms": []
   },
@@ -2079,7 +2508,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
     "stem": "A CI job obtains short-lived provider credentials without any stored key. The flow runs left to right. Place each component under the role it plays.",
@@ -2135,7 +2564,7 @@
           "id": "z1",
           "x": 10,
           "y": 100,
-          "name": "Signs a token for repo and branch"
+          "name": "Signs a token for the repository and branch"
         },
         {
           "id": "z2",
@@ -2211,10 +2640,10 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
-    "stem": "The policy lines for a deploy role are shown in shuffled positions. The role serves only the payments-api CI job, which deploys a single service. Select every line that is too broad.",
+    "stem": "The lines of a deploy role's trust policy and permission policy are shown together, in shuffled positions. The role serves only the `payments-api` CI job, which deploys a single service. Select every line that is too broad.",
     "payload": {
       "width": 600,
       "height": 225,
@@ -2361,13 +2790,13 @@
     "explanation": "Three lines grant far more than the job needs: any principal could assume the role, any action is allowed, and every resource is covered. The condition, short session, TLS requirement, allow effect and call logging are sound settings for this role.",
     "pbqWeight": 3,
     "partExplanations": {
-      "L4": "Too broad: this wildcard opens the role beyond the one job.",
+      "L4": "Too broad: it covers every resource in the account, not the one service.",
       "L1": "Reasonable for this role; it does not widen access.",
       "L7": "Reasonable for this role; it does not widen access.",
       "L6": "Reasonable for this role; it does not widen access.",
-      "L2": "Too broad: this wildcard opens the role beyond the one job.",
+      "L2": "Too broad: any identity could assume the role, not just the one CI job.",
       "L8": "Reasonable for this role; it does not widen access.",
-      "L3": "Too broad: this wildcard opens the role beyond the one job.",
+      "L3": "Too broad: every action is allowed, not just the deploy actions the job needs.",
       "L5": "Reasonable for this role; it does not widen access."
     },
     "acronyms": [
@@ -2382,7 +2811,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
     "stem": "Match each situation to the connection method that fits it best.",
@@ -2394,15 +2823,15 @@
         },
         {
           "id": "p2",
-          "text": "A throwaway container is handed credentials by its launcher for one run, passed to the process without saving them to a file"
+          "text": "A shell script exports three credential values, then starts a one-off tool that reads them when it launches"
         },
         {
           "id": "p3",
-          "text": "One service must run unchanged on a laptop, a build server and a production VM, each supplying its own credentials"
+          "text": "The same code must work on laptops, build servers and VMs, and the code must not name where its credentials come from"
         },
         {
           "id": "p4",
-          "text": "A web service on a VM gets short-lived credentials from the platform it runs on, with nothing configured by hand"
+          "text": "An administrator attaches an identity to a VM so the platform issues it short-lived credentials for one role"
         },
         {
           "id": "p5",
@@ -2445,13 +2874,13 @@
         "p5": "c5"
       }
     },
-    "explanation": "Each method has its natural setting: profiles for switching accounts, variables for credentials passed to a process for one run, the credential chain for code that runs in many places, an assumed role for platform-issued credentials, and an API key for simple access to a public service. A shared personal login suits none of them.",
+    "explanation": "Each method has its natural setting: profiles for switching accounts, exported variables for a one-off process, the credential chain for code that must not name its source, an assumed role for an identity attached to a machine, and an API key for simple access to a public service. A shared personal login suits none of them.",
     "pbqWeight": 5,
     "partExplanations": {
       "p1": "Named profiles keep several accounts ready and are chosen with a flag or variable.",
-      "p2": "Variables carry credentials into one process without writing a file.",
-      "p3": "The default chain lets the same code find whatever credentials each host supplies.",
-      "p4": "A role assumed by the workload needs no stored secret, because the platform issues credentials.",
+      "p2": "Exported variables reach the tool when it starts, and nothing is written to a file.",
+      "p3": "The default chain looks in each known place in turn, so the code never names a source.",
+      "p4": "An identity attached to the machine lets the platform issue role credentials, so no secret is stored.",
       "p5": "A single static value in a header is the simple fit for open read-only access."
     },
     "acronyms": [
@@ -2468,7 +2897,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 2,
     "stem": "Sort each practice under the area where it is configured or applied.",
@@ -2476,7 +2905,7 @@
       "buckets": [
         {
           "id": "cli",
-          "text": "CLI configuration"
+          "text": "CLI use and configuration"
         },
         {
           "id": "sdk",
@@ -2498,7 +2927,7 @@
         },
         {
           "id": "i3",
-          "text": "Set a connect timeout and retry limit on the client"
+          "text": "Set a connect timeout and retry limit when building the client in code"
         },
         {
           "id": "i4",
