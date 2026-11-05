@@ -4,6 +4,7 @@ import { BackupControls } from './BackupControls';
 import { applyDisplay, loadDisplay } from './display';
 import { DisplaySettings } from './DisplaySettings';
 import { useFocusHeading } from './kit';
+import { MarkSettings } from './marks/MarkSettings';
 import { applyMarks, loadMarks } from './marks/prefs';
 
 /** App-wide settings: display and backups. */
@@ -21,6 +22,7 @@ export function SettingsScreen({ repo }: { repo: Repo }) {
     <section aria-labelledby="settings-h">
       <h2 id="settings-h" ref={headingRef} tabIndex={-1}>Settings</h2>
       <DisplaySettings key={imports} repo={repo} />
+      <MarkSettings key={`marks-${imports}`} repo={repo} />
       <BackupControls repo={repo} onImported={() => void onImported()} />
     </section>
   );

@@ -5,9 +5,11 @@ import { SettingsScreen } from './SettingsScreen';
 import { createMemoryRepo } from '../storage/memoryRepo';
 import { exportBackup } from '../storage/backup';
 import { THEME_SETTING } from './display';
+import { applyMarks, DEFAULT_MARKS, getMarks, MARKS_SETTING } from './marks/prefs';
 
 afterEach(() => {
   delete document.documentElement.dataset.theme;
+  applyMarks(DEFAULT_MARKS);
 });
 
 describe('SettingsScreen', () => {
@@ -28,5 +30,16 @@ describe('SettingsScreen', () => {
     await userEvent.upload(screen.getByLabelText(/import backup/i, { selector: 'input[type=file]' }), new File([json], 'b.json'));
     await waitFor(() => expect(document.documentElement.dataset.theme).toBe('dark'));
     expect(await screen.findByLabelText('Dark')).toBeChecked();
+  });
+
+  it('applies answer marks from an imported backup at once', async () => {
+    const source = createMemoryRepo();
+    await source.setSetting(MARKS_SETTING, 'edge');
+    const json = JSON.stringify(await exportBackup(source));
+    render(<SettingsScreen repo={createMemoryRepo()} />);
+    expect(await screen.findByRole('radio', { name: 'Check and X banner' })).toBeChecked();
+    await userEvent.upload(screen.getByLabelText(/import backup/i, { selector: 'input[type=file]' }), new File([json], 'b.json'));
+    await waitFor(() => expect(getMarks().style).toBe('edge'));
+    expect(await screen.findByRole('radio', { name: 'Quiet edge' })).toBeChecked();
   });
 });
