@@ -36,7 +36,7 @@
     },
     "explanation": "Signed requests carry a timestamp, and the server rejects any outside a tolerance window, so a drifted host clock causes this exact error; fixing time synchronization on the host clears it. A dropped port would time out before the server read any request, a revoked certificate would fail the handshake, and a missing environment variable would stop the agent from starting.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-002",
@@ -47,7 +47,7 @@
       "2.4"
     ],
     "difficulty": 3,
-    "stem": "An agent on `db03` logs `dial tcp 10.4.8.20:8443: i/o timeout` when it checks in. A laptop on another subnet reaches the same address and port without trouble. Which cause fits best?",
+    "stem": "An agent on `db03`, a Go program, logs `dial tcp 10.4.8.20:8443: i/o timeout` when it checks in. A laptop on another subnet reaches the same address and port without trouble. Which cause fits best?",
     "payload": {
       "options": [
         {
@@ -64,7 +64,7 @@
         },
         {
           "id": "d",
-          "text": "A firewall rule on the db subnet that drops its traffic"
+          "text": "A firewall rule on the host's network path that drops its traffic"
         }
       ]
     },
@@ -73,11 +73,11 @@
         "d"
       ]
     },
-    "explanation": "A timeout means packets are silently dropped, and only the db subnet is affected, which points to a filtering rule on that path. An expired server certificate would fail a handshake after connecting, a YAML error would stop the agent before it tried to connect, and a wrong content type would draw an error response from the server.",
+    "explanation": "A timeout means packets are silently dropped, and only the path from `db03` is affected, which points to a filtering rule there. An expired server certificate would fail a handshake after connecting, a YAML error would stop the agent before it tried to connect, and a wrong content type would draw an error response from the server.",
     "acronyms": [
       "YAML"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-003",
@@ -93,7 +93,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Reissue the agents' client certificates from the issuing CA and restart the agents"
+          "text": "Reissue the agents' client certificates and restart them"
         },
         {
           "id": "b",
@@ -118,7 +118,7 @@
     "acronyms": [
       "CA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-004",
@@ -159,7 +159,7 @@
     "acronyms": [
       "API"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-005",
@@ -198,7 +198,7 @@
     },
     "explanation": "A 504 is returned by a gateway that received no timely response from the upstream, so the next place to look is the `orders-api` service. An unusable upstream reply is a 502, an oversized body is a 413, and rejected credentials are a 401 or 407.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-006",
@@ -218,7 +218,7 @@
         },
         {
           "id": "b",
-          "text": "Switch the agents from HTTP to HTTPS"
+          "text": "Split each agent's calls across several parallel connections"
         },
         {
           "id": "c",
@@ -226,7 +226,7 @@
         },
         {
           "id": "d",
-          "text": "Lengthen the polling interval and add random jitter to retries"
+          "text": "Wait the `Retry-After` delay, then poll less often with jitter"
         }
       ]
     },
@@ -235,13 +235,11 @@
         "d"
       ]
     },
-    "explanation": "A 429 means the callers exceed the allowed rate, so they should poll less often and spread retries out instead of arriving together. A tight retry loop makes the overload worse, HTTPS changes how traffic is protected rather than how much is sent, and the content type has no bearing on rate limits.",
+    "explanation": "A 429 means the callers exceed the allowed rate, so they should wait the delay the server names, poll less often and spread retries out instead of arriving together. A tight retry loop makes the overload worse, parallel connections send the same number of calls (or more), which is what the limit counts, and the content type has no bearing on rate limits.",
     "acronyms": [
-      "API",
-      "HTTP",
-      "HTTPS"
+      "API"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-007",
@@ -252,7 +250,7 @@
       "2.4"
     ],
     "difficulty": 2,
-    "stem": "An agent on `cache02` logs `lookup mgmt.example.internal: no such host`, yet the server is running and a colleague's laptop resolves the name. Which cause fits best?",
+    "stem": "An agent on `cache02`, a Go program, logs `lookup mgmt.example.internal: no such host`, yet the server is running and a colleague's laptop resolves the name. Which cause fits best?",
     "payload": {
       "options": [
         {
@@ -282,7 +280,7 @@
     "acronyms": [
       "DNS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-008",
@@ -321,7 +319,7 @@
     },
     "explanation": "Binding fails when a listening socket already holds the port, so the new service cannot start until the owner stops or the port changes. Firewall rules, file permissions and memory shortages produce different messages.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-009",
@@ -332,7 +330,7 @@
       "2.4"
     ],
     "difficulty": 1,
-    "stem": "Which command lists the TCP ports a Linux host is listening on, along with the owning processes?",
+    "stem": "Run as root, which command lists the TCP ports a Linux host is listening on, along with the owning processes?",
     "payload": {
       "options": [
         {
@@ -362,7 +360,7 @@
     "acronyms": [
       "TCP"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-010",
@@ -382,7 +380,7 @@
         },
         {
           "id": "b",
-          "text": "Pass `--config /etc/appd/app.yml`, the path that exists on disk"
+          "text": "Use `/etc/appd/app.yml`, the file that exists on disk"
         },
         {
           "id": "c",
@@ -401,7 +399,7 @@
     },
     "explanation": "The error names a path that does not exist, and the real file ends in `.yml`, so the flag must point at that file. Execute permission is irrelevant to a data file, renaming the directory breaks the path further, and memory is not the problem.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-011",
@@ -425,11 +423,11 @@
         },
         {
           "id": "c",
-          "text": "Publish port 5432 from the container to the host"
+          "text": "Add a `DATABASE_HOST=db` entry under `environment`"
         },
         {
           "id": "d",
-          "text": "Add a `DATABASE_URL` entry with the connection string under `environment`"
+          "text": "Add a `DATABASE_URL` entry under `environment`"
         }
       ]
     },
@@ -438,9 +436,9 @@
         "d"
       ]
     },
-    "explanation": "The application reads its connection string from an environment variable that the file never defines, so the entry must be added. A different image tag, more logging and a published port leave the variable unset.",
+    "explanation": "The application reads its connection string from an environment variable that the file never defines, so the entry must be added. A different image tag and more logging leave the variable unset, and `DATABASE_HOST` is a different name from the one the application asks for.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-012",
@@ -479,7 +477,7 @@
     },
     "explanation": "`journalctl -u` filters the journal to one unit. `enable` only links the unit to start at boot, `mask` blocks the unit from starting, and `reset-failed` clears the failed state without printing logs.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-013",
@@ -495,19 +493,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Set the service to run as the root user"
+          "text": "Set the service to run as root for full rights"
         },
         {
           "id": "b",
-          "text": "Change the port the service listens on"
+          "text": "Change the port the service listens on to a free one"
         },
         {
           "id": "c",
-          "text": "Add `After=` and `Requires=` lines that name the database unit"
+          "text": "Add `After=` and `Requires=` lines for the dependency"
         },
         {
           "id": "d",
-          "text": "Raise the log level to `debug`"
+          "text": "Raise the service's log level to `debug` for detail"
         }
       ]
     },
@@ -518,7 +516,7 @@
     },
     "explanation": "The service wins a race at boot, starting before the database accepts connections, so an ordering dependency makes systemd start the database first. Running as root, changing the listening port and adding log detail do not change the start order.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-014",
@@ -529,12 +527,12 @@
       "2.4"
     ],
     "difficulty": 3,
-    "stem": "A backup script runs fine from a login shell but fails under the scheduler with `rsync-wrap: command not found`. The tool lives in `/opt/tools/bin`. Why does it fail?",
+    "stem": "A backup script runs fine from a login shell but fails under cron with `rsync-wrap: command not found`. The tool lives in `/opt/tools/bin`. Why does it fail?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "The scheduler runs jobs with a shorter `PATH` than a login shell"
+          "text": "Jobs get a shorter `PATH` than a user's terminal session has"
         },
         {
           "id": "b",
@@ -555,9 +553,9 @@
         "a"
       ]
     },
-    "explanation": "Schedulers start jobs with a minimal environment, so a directory added to `PATH` in a login profile is missing; use the full path or set `PATH` in the job. The other statements describe behavior that does not exist.",
+    "explanation": "Cron starts jobs with a minimal environment, so a directory added to `PATH` in a login profile is missing; use the full path or set `PATH` in the job. The interpreter line applies however a script is started, scheduled jobs can read `/opt` like any other directory their user may read, and the tool does not need a terminal.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-015",
@@ -596,7 +594,7 @@
     },
     "explanation": "A certificate is valid only between its start and end dates, and this one is past the end date. A name mismatch concerns the host name, a missing intermediate concerns the chain the server sends, and an untrusted issuer concerns the root.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-016",
@@ -607,7 +605,7 @@
       "2.4"
     ],
     "difficulty": 2,
-    "stem": "A `curl` call prints the output below. What is the problem?\n```\n$ curl -v https://api.example.internal/health\n* Server certificate:\n*  subject: CN=billing.example.internal\n*  subjectAltName: billing.example.internal\n* no alternative certificate subject name matches 'api.example.internal'\ncurl: (60) SSL: certificate subject name does not match target host name\n```",
+    "stem": "A `curl` call prints the output below (trimmed; exact wording varies by version). What is the problem?\n```\n$ curl -v https://api.example.internal/health\n* Server certificate:\n*  subject: CN=billing.example.internal\n*  subjectAltName: billing.example.internal\ncurl: (60) SSL: no alternative certificate subject name matches target host name 'api.example.internal'\n```",
     "payload": {
       "options": [
         {
@@ -637,7 +635,7 @@
     "acronyms": [
       "CA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-017",
@@ -665,7 +663,7 @@
         },
         {
           "id": "d",
-          "text": "Configure the server to send its certificate followed by the intermediate"
+          "text": "Have the server send the intermediate with its certificate"
         }
       ]
     },
@@ -676,7 +674,7 @@
     },
     "explanation": "Many browsers fetch or cache a missing intermediate, but command-line clients do not, so the server should send the full chain. Another root does not supply the missing link, `-k` turns verification off, and a shorter lifetime has no effect on the chain.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-018",
@@ -692,7 +690,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Install the private CA's root certificate in the new agent's trust store"
+          "text": "Install the signing authority's root certificate on the new agent"
         },
         {
           "id": "b",
@@ -717,7 +715,7 @@
     "acronyms": [
       "CA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-019",
@@ -728,7 +726,7 @@
       "2.4"
     ],
     "difficulty": 2,
-    "stem": "Which command prints the start and end dates of the certificate in `server.crt`?",
+    "stem": "Which command shows when the certificate in `server.crt` becomes valid and when it expires?",
     "payload": {
       "options": [
         {
@@ -756,7 +754,7 @@
     },
     "explanation": "The `-dates` option prints the not-before and not-after times. `-subject` prints the holder's name, `-serial` prints the serial number, and `-fingerprint` prints a digest of the certificate.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-020",
@@ -795,7 +793,7 @@
     },
     "explanation": "Alerting on days remaining and renewing automatically removes the human step that failed. Very long lifetimes weaken security and still expire one day, pinning makes each renewal break clients, and a restart reloads the same expired certificate.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-021",
@@ -837,7 +835,7 @@
       "CA",
       "VM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-022",
@@ -848,12 +846,12 @@
       "2.4"
     ],
     "difficulty": 2,
-    "stem": "A YAML parser reports `found character '\\t' that cannot start any token` for the file below, where each indent is a tab character:\n```yaml\nserver:\n\thost: 0.0.0.0\n\tport: 8080\n```\nWhich change fixes the parse error?",
+    "stem": "PyYAML reports `found character '\\t' that cannot start any token` for the file below, where each indent is a tab character:\n```yaml\nserver:\n\thost: 0.0.0.0\n\tport: 8080\n```\nWhich change fixes the parse error?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Replace each tab character with spaces"
+          "text": "Indent the lines with spaces instead"
         },
         {
           "id": "b",
@@ -878,7 +876,7 @@
     "acronyms": [
       "YAML"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-023",
@@ -906,7 +904,7 @@
         },
         {
           "id": "d",
-          "text": "The top-level key needs a closing semicolon"
+          "text": "`5432` must be quoted because a port is a string"
         }
       ]
     },
@@ -915,11 +913,11 @@
         "c"
       ]
     },
-    "explanation": "Sibling keys must share one indentation, and the extra space makes `port: 5432` read as a continuation of the `host` value, which is an error. Hosts need no quotes, list markers apply only to sequences, and YAML has no semicolons.",
+    "explanation": "Sibling keys must share one indentation, and the extra space makes `port: 5432` read as a continuation of the `host` value, which is an error. Hosts need no quotes, list markers apply only to sequences, and a bare number is a valid value.",
     "acronyms": [
       "YAML"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-024",
@@ -960,7 +958,7 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-025",
@@ -1001,7 +999,7 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-026",
