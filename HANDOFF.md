@@ -141,7 +141,7 @@
 
 ## Next session
 
-- **PIVOT (owner, 2026-11-05): the next session works on the BattleTech tools, not this repo.** First Scott/mordel, then the library LFS sort. Start from `C:\repo\JBTToolsSupportFiles\handoff.md` ("START HERE"). AutoOps+ is parked at a clean point: domains 1 to 3 are approved and deployed (batch 35, b3ac5c7), and domain 4 is next whenever the owner returns to it ("Batch progress" below). Still check this repo's GitHub issues at the start of a session here.
+- **BACK TO CERT TESTING (owner, 2026-11-05, late): the next session works in this repo again.** Check GitHub issues first (rule below), then resume AutoOps+ at domain 4 ("Batch progress" below). Domains 1 to 3 are approved and deployed (batch 35, b3ac5c7). The BattleTech work is parked: Scott's mordel reply is recorded and a reply drafted for the owner to send, and the Solaris7 review is partly done (see `C:\repo\JBTToolsSupportFiles\handoff.md`, "START HERE").
 
 - **FIRST, EVERY SESSION (owner rule, 2026-11-03): check GitHub issues before any other work** (`gh issue list --state open`). **Open bugs take priority over every other task, content batches included:** fix what we have before adding new things that could break. Also review the open enhancement requests, so the owner can weigh them against adding more questions. See "Standing rules".
 - **Bugs #12, #13 and enhancement #8: FIXED, merged to `main` and deployed (2026-11-04); issues closed.** Spec: `docs/superpowers/specs/2026-11-04-question-selection-design.md`; plan: `docs/superpowers/plans/2026-11-04-question-selection.md`; ledger with every ruling: `.superpowers/sdd/2026-11-04-question-selection/progress.md` (keep).
