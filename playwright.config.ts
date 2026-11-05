@@ -3,14 +3,16 @@ import { defineConfig, devices } from '@playwright/test';
 const responsive = /responsive\.spec\.ts$/;
 const pwa = /pwa\.spec\.ts$/;
 const bounds = /bounds\.spec\.ts$/;
+// Set PWA_PORT when another app holds 4173.
+const port = Number(process.env.PWA_PORT ?? 4173);
 
 export default defineConfig({
   testDir: 'tests/e2e',
   use: { browserName: 'chromium' },
   // Serves the hosted build (dist/, from `npm run build`) under the GitHub Pages subpath for the pwa project.
   webServer: {
-    command: 'npx vite preview --port 4173 --strictPort --base /cert-exam-trainer/',
-    url: 'http://localhost:4173/cert-exam-trainer/',
+    command: `npx vite preview --port ${port} --strictPort --base /cert-exam-trainer/`,
+    url: `http://localhost:${port}/cert-exam-trainer/`,
     reuseExistingServer: true,
   },
   projects: [
