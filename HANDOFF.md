@@ -141,7 +141,11 @@
 
 ## Next session
 
-- **NEXT (2026-11-05): CHUNK 12 (AUTOOPS+) IS DONE, MERGED AND DEPLOYED** (see "Chunk 12 close-out" below). Next session: check GitHub issues first (bugs still beat everything).
+- **START HERE (2026-11-05, latest): #10 answer marks: DESIGN APPROVED by the owner.** Spec: `docs/superpowers/specs/2026-11-05-answer-marks-design.md` (commit cca1de5, on `chunk12-autoops`, not yet on `main`).
+  - **Next step:** check issues, then write the plan with superpowers:writing-plans (`docs/superpowers/plans/2026-11-05-answer-marks.md`). Build on a new branch `answer-marks` from `chunk12-autoops` (it has the spec; it is `main` plus docs). Then build, Opus whole-branch review, fix every finding, merge to `main`, deploy, close #10. Then #3 (tips) gets its own brainstorm.
+  - **Summary:** six mark styles plus "Plain text" in Settings (default: check and X banner); right / partly right / wrong; shown in practice, cram, lesson checks, the acronym quiz and the results review. An optional synthesised sound (Web Audio, off by default). New mark-only colour tokens, contrast tested in light and dark, icons by shape so colour is never the only signal, and the pop-in animation is off under Reduce motion. The spec's "Builder's calls" list has 7 calls; the owner approved the spec with them.
+  - The style mockup the owner saw is `.superpowers/brainstorm/9794-1793916734/content/mark-styles.html` (git-ignored; useful as the visual reference for SVG shapes).
+- **CHUNK 12 (AUTOOPS+) IS DONE, MERGED AND DEPLOYED** (see "Chunk 12 close-out" below). Next session: check GitHub issues first (bugs still beat everything).
 - **Owner decision (2026-11-05): all five enhancements will be done, in order of biggest gain for least work.** Each one gets its own design (superpowers:brainstorming), then a plan, then the build, merged and deployed before the next one starts. Order:
   1. **#10 right/wrong markers:** a visual right/wrong mark after answering, with at least 5 styles chosen in Settings (check and X, smiley and frowny, and so on). Each style needs a text alternative for screen readers and must meet the theme contrast rules. Small to medium code.
   2. **#3 test-taking tips:** a pop-up above the question in practice and cram, with a random tip once every 10 to 20 questions, from a large list of original tips. Small code plus writing the list.
