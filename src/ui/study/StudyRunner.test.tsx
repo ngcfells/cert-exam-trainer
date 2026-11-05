@@ -3,6 +3,9 @@ import { act, fireEvent, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { StudyRunner, type StudyItem } from './StudyRunner';
 import { mcq, numeric, pbq } from '../../exam/testFixtures';
+import { applyMarks, DEFAULT_MARKS } from '../marks/prefs';
+import { fakeAudio } from '../marks/fakeAudio';
+import { resetSoundForTests } from '../marks/sound';
 
 const T0 = new Date('2026-01-01T00:00:00Z');
 const order = ['a', 'b', 'c', 'd'];
@@ -190,5 +193,44 @@ describe('StudyRunner Finish warning', () => {
     act(() => vi.advanceTimersByTime(3_000));
     expect(screen.queryByRole('dialog')).toBeNull();
     expect(onFinish).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe('StudyRunner answer marks', () => {
+  afterEach(() => {
+    applyMarks(DEFAULT_MARKS);
+    vi.unstubAllGlobals();
+    resetSoundForTests();
+  });
+
+  it('a checked right answer shows the banner mark', async () => {
+    const { user } = setup();
+    await user.click(screen.getByLabelText('A0-a'));
+    await user.click(screen.getByRole('button', { name: 'Check answer' }));
+    const status = screen.getByRole('status');
+    expect(status.tagName).toBe('DIV');
+    expect(status.querySelector('.mark-banner.mark-right')).not.toBeNull();
+    expect(status).toHaveTextContent('Correct');
+  });
+
+  it('plays once on Check and never on a revisit', async () => {
+    const log = fakeAudio();
+    act(() => applyMarks({ style: 'smiley', sound: true }));
+    const { user } = setup();
+    await user.click(screen.getByLabelText('A0-b'));
+    await user.click(screen.getByRole('button', { name: 'Check answer' }));
+    expect(log.freqs).toEqual([220]);
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    await user.click(screen.getByRole('button', { name: 'Previous' }));
+    expect(screen.getByRole('status').querySelector('.mark-smiley.mark-wrong')).not.toBeNull();
+    expect(log.freqs).toEqual([220]);
+  });
+
+  it('a graded acronym card gets words, not a mark', async () => {
+    const { user } = setup({ items: [items[2]] });
+    await user.click(screen.getByRole('button', { name: 'Show answer' }));
+    await user.click(screen.getByRole('button', { name: 'I knew it' }));
+    expect(screen.getByRole('status')).toHaveTextContent('Marked as known');
+    expect(screen.getByRole('status').querySelector('.mark')).toBeNull();
   });
 });

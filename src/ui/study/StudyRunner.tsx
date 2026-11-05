@@ -6,6 +6,8 @@ import type { AcronymCard } from '../../study/session';
 import { ItemReview } from '../exam/ItemReview';
 import { AcronymFlip, knownStatus, QuestionView, RunnerFrame, useCountdown, useFocusLater } from '../kit';
 import { useLeaveGuard } from '../nav';
+import { AnswerMark, levelOf } from '../marks/AnswerMark';
+import { playMark } from '../marks/sound';
 import '../exam/exam.css';
 import './study.css';
 
@@ -23,7 +25,6 @@ export interface StudyOutcome {
 }
 
 const keyOf = (s: StudyItem) => (s.kind === 'question' ? s.item.question.id : `acronym:${s.card.term}`);
-const verdict = (f: number) => (f >= 1 ? 'Correct' : f > 0 ? 'Partly correct' : 'Incorrect');
 
 export function StudyRunner({
   items,
@@ -70,7 +71,7 @@ export function StudyRunner({
   state.current = { responses, checked, grades };
   const onFinishRef = useRef(onFinish);
   onFinishRef.current = onFinish;
-  const [statusRef, focusStatus] = useFocusLater<HTMLParagraphElement>();
+  const [statusRef, focusStatus] = useFocusLater<HTMLDivElement>();
 
   const finish = useCallback(
     (timedOut: boolean) => {
@@ -96,9 +97,10 @@ export function StudyRunner({
   const key = keyOf(current);
   const unfinished = items.filter((s) => s.kind === 'question' && !isComplete(s.item.question, responses[s.item.question.id])).length;
   const isChecked = checked.includes(key);
+  const level = current.kind === 'question' ? levelOf(itemFraction(current.item.question, responses[key])) : undefined;
   const status =
     current.kind === 'question'
-      ? isChecked ? verdict(itemFraction(current.item.question, responses[key])) : ''
+      ? isChecked && level ? <AnswerMark key={key} level={level} /> : ''
       : knownStatus(grades[current.card.term]);
 
   return (
@@ -124,7 +126,7 @@ export function StudyRunner({
             <QuestionView item={current.item} response={responses[key]} onChange={(v: ItemResponse) => !isChecked && setResponses((r) => ({ ...r, [key]: v }))} />
           </fieldset>
           {feedback === 'instant' && !isChecked && (
-            <button type="button" className="primary" disabled={!hasAnswer(current.item.question, responses[key])} onClick={() => { setChecked((c) => [...c, key]); focusStatus(); }}>
+            <button type="button" className="primary" disabled={!hasAnswer(current.item.question, responses[key])} onClick={() => { setChecked((c) => [...c, key]); if (level) playMark(level); focusStatus(); }}>
               Check answer
             </button>
           )}
@@ -138,9 +140,9 @@ export function StudyRunner({
           onGrade={(knew) => setGrades((g) => ({ ...g, [current.card.term]: knew }))}
         />
       )}
-      <p role="status" className="study-status" ref={statusRef} tabIndex={-1}>
+      <div role="status" className="study-status" ref={statusRef} tabIndex={-1}>
         {status}
-      </p>
+      </div>
       {current.kind === 'question' && isChecked && <ItemReview q={current.item.question} response={responses[key]} showStem={false} />}
       <dialog ref={dialogRef} aria-labelledby="study-confirm-heading" onClose={() => setConfirming(false)}>
         {confirming && (
