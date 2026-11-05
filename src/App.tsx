@@ -4,6 +4,7 @@ import { About } from './ui/About';
 import { AcronymFlow } from './ui/acronyms/AcronymFlow';
 import { LearnFlow } from './ui/learn/LearnFlow';
 import { applyDisplay, loadDisplay } from './ui/display';
+import { applyMarks, loadMarks } from './ui/marks/prefs';
 import { APP_NAME } from './ui/legal';
 import { Disclaimer } from './ui/Disclaimer';
 import { ExamPage } from './ui/ExamPage';
@@ -45,6 +46,7 @@ export default function App() {
       try {
         const d = await loadDisplay(s.repo);
         applyDisplay(d.theme, d.reducedMotion);
+        applyMarks(await loadMarks(s.repo));
       } catch {
         /* defaults stay */
       }

@@ -4,6 +4,7 @@ import { BackupControls } from './BackupControls';
 import { applyDisplay, loadDisplay } from './display';
 import { DisplaySettings } from './DisplaySettings';
 import { useFocusHeading } from './kit';
+import { applyMarks, loadMarks } from './marks/prefs';
 
 /** App-wide settings: display and backups. */
 export function SettingsScreen({ repo }: { repo: Repo }) {
@@ -13,6 +14,7 @@ export function SettingsScreen({ repo }: { repo: Repo }) {
   async function onImported() {
     const d = await loadDisplay(repo);
     applyDisplay(d.theme, d.reducedMotion);
+    applyMarks(await loadMarks(repo));
     setImports((n) => n + 1);
   }
   return (
