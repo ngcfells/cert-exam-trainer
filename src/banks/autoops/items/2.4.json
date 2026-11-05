@@ -1009,25 +1009,25 @@
     "objectiveIds": [
       "2.4"
     ],
-    "difficulty": 1,
-    "stem": "A parser reports a bad section header on the first line of this `.ini` file:\n```ini\n[database\nhost = db01\nport = 5432\n```\nWhich change fixes it?",
+    "difficulty": 2,
+    "stem": "A strict `.ini` parser rejects the file below. What is wrong?\n```ini\n[database]\nhost = db01\nport = 5432\nhost = db02\n```",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Replace the equals signs with semicolons"
+          "text": "Port numbers must be wrapped in quotes"
         },
         {
           "id": "b",
-          "text": "Put quotes around the host value `db01`"
+          "text": "Section names must be written in capitals"
         },
         {
           "id": "c",
-          "text": "Close the section name with `]`"
+          "text": "`host` is set twice in the same section"
         },
         {
           "id": "d",
-          "text": "Add a blank line above the header"
+          "text": "The file must end with a blank line"
         }
       ]
     },
@@ -1036,9 +1036,9 @@
         "c"
       ]
     },
-    "explanation": "A section header must be enclosed in square brackets, and this one lacks the closing bracket. Semicolons would break the settings, quotes do not repair the header, and a blank line is irrelevant.",
+    "explanation": "A strict parser allows each key only once per section, and `host` appears twice under `[database]`. Unquoted numbers, lowercase section names and a missing final blank line are all accepted.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-027",
@@ -1066,7 +1066,7 @@
         },
         {
           "id": "d",
-          "text": "Move `timeout = 30` beneath a section header"
+          "text": "Move `timeout = 30` under the `[service]` line"
         }
       ]
     },
@@ -1077,7 +1077,7 @@
     },
     "explanation": "In a strict `.ini` file every setting belongs to a section, and the first line sits above any header. The blank line, the quotes and the header's capitalization do not change that.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-028",
@@ -1118,7 +1118,7 @@
     "acronyms": [
       "YAML"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-029",
@@ -1138,7 +1138,7 @@
         },
         {
           "id": "b",
-          "text": "`wc --lines config.json`"
+          "text": "`wc -l config.json`"
         },
         {
           "id": "c",
@@ -1146,7 +1146,7 @@
         },
         {
           "id": "d",
-          "text": "`stat --terse config.json`"
+          "text": "`ls -l config.json`"
         }
       ]
     },
@@ -1155,11 +1155,11 @@
         "a"
       ]
     },
-    "explanation": "`jq empty` parses the whole file, prints nothing, and exits with an error if the syntax is invalid. The other commands count lines, compute a hash and show file metadata without parsing JSON.",
+    "explanation": "`jq empty` parses the whole file, prints nothing, and exits with an error if the syntax is invalid. The other commands count lines, compute a hash and list file details without parsing the JSON.",
     "acronyms": [
       "JSON"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-030",
@@ -1175,11 +1175,11 @@
       "options": [
         {
           "id": "a",
-          "text": "A load test against the production service"
+          "text": "A smoke test run once the release reaches production"
         },
         {
           "id": "b",
-          "text": "A nightly restart of the target hosts"
+          "text": "An alert on the service error rate after rollout"
         },
         {
           "id": "c",
@@ -1187,7 +1187,7 @@
         },
         {
           "id": "d",
-          "text": "A disk usage report for the build agent"
+          "text": "A weekly review of the deployment logs"
         }
       ]
     },
@@ -1196,12 +1196,12 @@
         "c"
       ]
     },
-    "explanation": "Parsing or linting the file at commit time fails fast on a syntax error. A load test, a host restart and a disk report all run too late or measure something unrelated.",
+    "explanation": "Parsing or linting the file at commit time fails fast on a syntax error. A smoke test, an error-rate alert and a log review all run after the broken file is already live.",
     "acronyms": [
       "JSON",
       "YAML"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-031",
@@ -1225,7 +1225,7 @@
         },
         {
           "id": "c",
-          "text": "Lower the verbosity of the build logs"
+          "text": "Lower the verbosity of the server’s build logs"
         },
         {
           "id": "d",
@@ -1243,9 +1243,9 @@
         "d"
       ]
     },
-    "explanation": "Clock drift and an unreachable port are the usual reasons an agent is rejected or cannot connect. Branch protection, log verbosity and database schemas have no bearing on agent communication.",
+    "explanation": "Clock drift can make the server reject signed requests or certificates, and an unreachable port stops the connection. Branch protection, build log verbosity and database schemas have no bearing on agent communication.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-032",
@@ -1265,15 +1265,15 @@
         },
         {
           "id": "b",
-          "text": "The release notes were published a day late"
+          "text": "The log level in the configuration is set to debug"
         },
         {
           "id": "c",
-          "text": "The configuration path in the start command is wrong"
+          "text": "The configuration path passed at launch is wrong"
         },
         {
           "id": "d",
-          "text": "The commit message did not follow the team's template"
+          "text": "Old log files from the last release remain on disk"
         },
         {
           "id": "e",
@@ -1281,7 +1281,7 @@
         },
         {
           "id": "f",
-          "text": "The service's dashboard uses an older color scheme"
+          "text": "The deployment ran outside business hours"
         }
       ]
     },
@@ -1292,9 +1292,9 @@
         "e"
       ]
     },
-    "explanation": "A missing variable, a wrong configuration path and a port already in use each stop a process during start-up. Release note timing, commit message style and dashboard colors do not affect whether the process runs.",
+    "explanation": "A missing variable, a wrong configuration path and a port already in use each stop a process during start-up. A debug log level, old log files and the time of the deployment do not stop the process from running.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-033",
@@ -1314,19 +1314,19 @@
         },
         {
           "id": "b",
-          "text": "The server listens on the standard secure port"
+          "text": "The certificate was issued less than a day ago"
         },
         {
           "id": "c",
-          "text": "The name in the certificate does not match the requested host name"
+          "text": "The certificate name does not match the requested host"
         },
         {
           "id": "d",
-          "text": "The certificate file is named `server.crt`"
+          "text": "The certificate covers several host names"
         },
         {
           "id": "e",
-          "text": "The server keeps connections open between requests"
+          "text": "The server key is 2048 bits long"
         }
       ]
     },
@@ -1336,9 +1336,9 @@
         "c"
       ]
     },
-    "explanation": "Clients check validity dates and that the name matches the host they asked for. The port number, the file name on the server and connection reuse are not part of certificate validation.",
+    "explanation": "Clients check the validity dates and that a name in the certificate matches the host they asked for. A certificate issued hours ago is already valid, one certificate may cover several names, and a 2048-bit key is a normal size.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-034",
@@ -1384,7 +1384,7 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-035",
@@ -1400,7 +1400,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Putting a `#` comment after a value"
+          "text": "Ending a line with a space and a `#` comment"
         },
         {
           "id": "b",
@@ -1430,7 +1430,7 @@
     "acronyms": [
       "YAML"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-mcq-036",
@@ -1474,7 +1474,7 @@
     },
     "explanation": "A 502 and a 503 come from a gateway or service that cannot serve a valid request. A 404, a 401 and a 422 describe a missing resource, missing credentials and unusable content sent by the client.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-terminal-001",
@@ -1486,22 +1486,22 @@
     ],
     "difficulty": 2,
     "pbqWeight": 4,
-    "stem": "The invoice-api service on app04 will not start. A colleague pasted the session below. Review it, then complete each step.",
+    "stem": "The `invoice-api` service on `app04` will not start. A colleague pasted the session below. Review it, then complete each step.",
     "payload": {
       "output": [
         "$ systemctl status invoice-api",
         "● invoice-api.service - Invoice API",
         "     Loaded: loaded (/etc/systemd/system/invoice-api.service; enabled)",
-        "     Active: failed (Result: exit-code) since Mon 09:12:40; 2min ago",
+        "     Active: failed (Result: exit-code) since Mon 2026-11-02 09:12:40; 2min ago",
         "    Process: 2210 ExecStart=/opt/invoice/bin/invoice-api (code=exited, status=1)",
         "$ journalctl -u invoice-api -n 2",
-        "Nov 03 09:12:40 app04 invoice-api[2210]: listen tcp 0.0.0.0:8080: bind: address already in use",
-        "Nov 03 09:12:40 app04 systemd[1]: invoice-api.service: Failed with result 'exit-code'.",
+        "Nov 02 09:12:40 app04 invoice-api[2210]: listen tcp 0.0.0.0:8080: bind: address already in use",
+        "Nov 02 09:12:40 app04 systemd[1]: invoice-api.service: Failed with result 'exit-code'.",
         "$ fuser 8080/tcp",
         "8080/tcp:             1544",
         "$ ps -p 1544 -o comm=",
         "legacy-report",
-        "$ curl --help all | grep -E '` +-(i|I|s|v),'",
+        "$ curl --help all | grep -E ' +-(i|I|s|v),'",
         " -i, --include       Include protocol response headers in the output",
         " -I, --head          Show document info only",
         " -s, --silent        Silent mode",
@@ -1558,7 +1558,7 @@
         },
         {
           "id": "check",
-          "label": "Type a curl command that uses the include flag to print the response headers and body from http://localhost:8080/health"
+          "label": "Type a curl command that uses only the include flag to print the response headers and body from http://localhost:8080/health"
         }
       ]
     },
@@ -1632,17 +1632,17 @@
         ]
       }
     },
-    "explanation": "The journal line says the address is already in use, and the process lookup for the port shows legacy-report rather than invoice-api. After that process is stopped, starting the unit again and probing the health path with the include flag confirms the service is up.",
+    "explanation": "The journal line says the address is already in use, and the process lookup for the port shows `legacy-report` rather than `invoice-api`. After that process is stopped, starting the unit again and probing the health path with the include flag confirms the service is up.",
     "partExplanations": {
-      "cause": "bind: address already in use means another process owns the port.",
-      "holder": "fuser reports pid 1544 on port 8080, and ps names that process legacy-report.",
-      "start": "systemctl start or restart on the unit name, with or without .service or sudo, runs the service again.",
-      "check": "The include flag (-i or --include) prints the status line and headers before the body."
+      "cause": "`bind: address already in use` means another process owns the port.",
+      "holder": "`fuser` reports pid 1544 on port 8080, and `ps` names that process `legacy-report`.",
+      "start": "`systemctl start` or `restart` on the unit name, with or without `.service` or `sudo`, runs the service again.",
+      "check": "The include flag (`-i` or `--include`) prints the status line and headers before the body."
     },
     "acronyms": [
       "API"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-config-001",
@@ -1654,7 +1654,7 @@
     ],
     "difficulty": 2,
     "pbqWeight": 4,
-    "stem": "The file below fails to parse. Line numbers run from 1 at the top, and labels.env is meant to hold the text production: eu. Choose the fix for each broken line.\n```yaml\nagent:\n  server: https://mgmt.example.internal:8443\n  check_in: 30s\n   jitter: 5\n  tags: [web, prod\nlabels:\n  env: production: eu\nchecks:\n  - name: disk\n  -name: memory\n```",
+    "stem": "The file below fails to parse. Line numbers run from 1 at the top, and `labels.env` is meant to hold the text `production: eu`. Choose the fix for each broken line.\n```yaml\nagent:\n  server: https://mgmt.example.internal:8443\n  check_in: 30s\n   jitter: 5\n  tags: [web, prod\nlabels:\n  env: production: eu\nchecks:\n  - name: disk\n  -name: memory\n```",
     "payload": {
       "fields": [
         {
@@ -1759,7 +1759,7 @@
       "dash": "Without the space, the dash is part of a key name and the sequence is broken."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-order-001",
@@ -1771,7 +1771,7 @@
     ],
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "An agent on one host has stopped checking in with the management server. Put the troubleshooting steps in order. Runbook: confirm the scope on the console first; check the service on the host before reading its log; read the log before any network test; test the network path before comparing clocks, because the server's time can be read only over a working connection; confirm the fresh check-in last.",
+    "stem": "An agent on one host has stopped checking in with the management server. Put the troubleshooting steps in order. The team’s runbook checks that the service is running before reading its log, and tests the network path before changing the clock.",
     "payload": {
       "steps": [
         {
@@ -1810,17 +1810,17 @@
         "s6"
       ]
     },
-    "explanation": "Scope the problem on the console, check the local service, read its log, test the network path, correct clock drift once a connection can be made, and finish by confirming a new check-in.",
+    "explanation": "Scope the problem on the console, check the local service, read its log, test the network path, then correct any clock drift, and finish by confirming a new check-in.",
     "partExplanations": {
       "0": "The console shows whether one host or many are affected.",
       "1": "A stopped service is the cheapest local cause to rule out.",
       "2": "The log names the error from the latest attempt, which guides the network test.",
-      "3": "A reachable check-in port is needed before any clock comparison with the server.",
-      "4": "Time drift is corrected once the connection works and the server's time can be read.",
+      "3": "A reachable check-in port rules out the network before the clock is touched.",
+      "4": "With the path proven, clock drift is the next cause to rule out and fix.",
       "5": "A fresh check-in on the console proves the fix."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-data-001",
@@ -1832,7 +1832,7 @@
     ],
     "difficulty": 3,
     "pbqWeight": 5,
-    "stem": "The management server accepts a check-in only when the agent's clock is within 300 seconds of the server's in either direction, the agent version is 3.2.0 or newer, and the client certificate has not expired (days left of 0 or more). Use the table to answer each question.",
+    "stem": "The management server accepts a check-in only when the agent’s clock is no more than 300 seconds from the server’s in either direction, the agent version is 3.2.0 or newer (versions compare part by part as numbers), and the client certificate has not expired (days left of 0 or more). Use the table to answer each question.",
     "payload": {
       "caption": "Agent status by host",
       "columns": [
@@ -2017,7 +2017,7 @@
       "edge": "An offset of -300 seconds is within the limit of 300, so cache01 is accepted."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-diagram-001",
@@ -2029,42 +2029,34 @@
     ],
     "difficulty": 3,
     "pbqWeight": 4,
-    "stem": "A client reaches an application server through a proxy, and both hops use TLS. Place the cause that best explains each symptom named below the path.",
+    "stem": "A client reaches an application server through a proxy, and both hops use TLS. Each box below the path names a symptom. Place the cause that best explains each one.",
     "payload": {
       "width": 600,
-      "height": 220,
+      "height": 260,
       "nodes": [
         {
           "id": "n1",
-          "x": 10,
+          "x": 20,
           "y": 20,
-          "w": 130,
+          "w": 150,
           "h": 50,
           "text": "Client"
         },
         {
           "id": "n2",
-          "x": 160,
+          "x": 225,
           "y": 20,
-          "w": 130,
+          "w": 150,
           "h": 50,
           "text": "Proxy"
         },
         {
           "id": "n3",
-          "x": 310,
+          "x": 430,
           "y": 20,
-          "w": 130,
+          "w": 150,
           "h": 50,
           "text": "App server"
-        },
-        {
-          "id": "n4",
-          "x": 460,
-          "y": 20,
-          "w": 130,
-          "h": 50,
-          "text": "Issuing CA"
         }
       ],
       "edges": [
@@ -2075,35 +2067,31 @@
         {
           "from": "n2",
           "to": "n3"
-        },
-        {
-          "from": "n3",
-          "to": "n4"
         }
       ],
       "zones": [
         {
           "id": "z1",
           "x": 10,
-          "y": 120,
+          "y": 170,
           "name": "Client: unable to get issuer certificate"
         },
         {
           "id": "z2",
           "x": 160,
-          "y": 120,
+          "y": 170,
           "name": "Proxy log: upstream certificate expired"
         },
         {
           "id": "z3",
           "x": 310,
-          "y": 120,
+          "y": 170,
           "name": "Client: name does not match certificate"
         },
         {
           "id": "z4",
           "x": 460,
-          "y": 120,
+          "y": 170,
           "name": "Client: certificate is not yet valid"
         }
       ],
@@ -2130,7 +2118,7 @@
         },
         {
           "id": "l6",
-          "text": "The CA public web site is offline"
+          "text": "The CA’s public web site is offline"
         }
       ]
     },
@@ -2153,7 +2141,7 @@
       "CA",
       "TLS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-hotspot-001",
@@ -2164,8 +2152,8 @@
       "2.4"
     ],
     "difficulty": 2,
-    "pbqWeight": 6,
-    "stem": "A strict `.ini` parser accepts section headers in square brackets and settings written as key = value. It rejects the file whose lines are shown. Select every line that breaks parsing.",
+    "pbqWeight": 2,
+    "stem": "A strict `.ini` parser accepts section headers in square brackets and settings written as key = value. It rejects the file whose lines are shown here in shuffled positions. Select every line that breaks parsing.",
     "payload": {
       "width": 480,
       "height": 220,
@@ -2276,7 +2264,7 @@
         "sp5"
       ]
     },
-    "explanation": "The line [cache has no closing bracket, so it is not a valid section header, and retry_limit 5 has no equals sign joining a key to a value. The other four lines are well formed.",
+    "explanation": "The line `[cache` has no closing bracket, so it is not a valid section header, and `retry_limit 5` has no equals sign joining a key to a value. The other four lines are well formed.",
     "partExplanations": {
       "sp1": "A name in square brackets is a valid section header.",
       "sp2": "A key, an equals sign and a value form a valid setting.",
@@ -2286,7 +2274,7 @@
       "sp6": "A key, an equals sign and a value form a valid setting."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-match-001",
@@ -2298,62 +2286,66 @@
     ],
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "Match each error message to the cause it points to.",
+    "stem": "Match each error message to the cause it points to. The first three come from a Go service; the rest name the library that printed them.",
     "payload": {
       "prompts": [
         {
           "id": "p1",
-          "text": "bind: address already in use"
+          "text": "listen tcp :443: bind: permission denied"
         },
         {
           "id": "p2",
-          "text": "open /etc/svc/app.conf: no such file or directory"
+          "text": "dial tcp 10.6.2.15:8443: connect: connection refused"
         },
         {
           "id": "p3",
-          "text": "certificate signed by unknown authority"
+          "text": "x509: certificate signed by unknown authority"
         },
         {
           "id": "p4",
-          "text": "mapping values are not allowed here"
+          "text": "PyYAML: mapping values are not allowed here"
         },
         {
           "id": "p5",
-          "text": "Expecting property name enclosed in double quotes"
+          "text": "Python json module: Expecting property name enclosed in double quotes"
         },
         {
           "id": "p6",
-          "text": "File contains no section headers"
+          "text": "Python configparser: File contains no section headers"
         }
       ],
       "choices": [
         {
           "id": "c1",
-          "text": "Another process already holds the listening port"
+          "text": "A non-root process asked for a port below 1024"
         },
         {
           "id": "c2",
-          "text": "The start command names the wrong configuration path"
+          "text": "No process is listening on that port on the server"
         },
         {
           "id": "c3",
-          "text": "The issuing CA is missing from the client trust store"
+          "text": "The client does not trust the CA that signed the certificate"
         },
         {
           "id": "c4",
-          "text": "A YAML syntax error in the configuration file"
+          "text": "An unquoted value that holds a colon and a space"
         },
         {
           "id": "c5",
-          "text": "A JSON syntax error in the configuration file"
+          "text": "A trailing comma or an unquoted member name"
         },
         {
           "id": "c6",
-          "text": "Settings placed before any section header"
+          "text": "A setting placed above the first bracketed name"
         },
         {
           "id": "c7",
           "text": "The account has used up its API quota"
+        },
+        {
+          "id": "c8",
+          "text": "A firewall silently drops the traffic on the way"
         }
       ]
     },
@@ -2367,14 +2359,14 @@
         "p6": "c6"
       }
     },
-    "explanation": "Each message names the failing layer: a port already bound, a path that does not exist, a certificate from an unknown issuer, and the parser complaints of YAML, JSON and sectioned settings files. An exhausted quota would produce a rate-limit status instead.",
+    "explanation": "Each message points to one cause: a privileged port, a port with no listener, a certificate from an untrusted issuer, and the parser complaints of YAML, JSON and sectioned settings files. A dropped packet gives a timeout rather than a refusal, and an exhausted quota gives a rate-limit status.",
     "partExplanations": {
-      "p1": "A listening socket already holds the port the service tried to bind.",
-      "p2": "The file the start command names does not exist at that path.",
+      "p1": "On Linux, only root (or a process granted the right) may bind a port below 1024.",
+      "p2": "A refusal means the host answered but nothing listens there; a firewall that drops traffic gives a timeout instead.",
       "p3": "The client does not trust the CA that signed the certificate.",
-      "p4": "This is the YAML parser complaining about a stray colon or bad indentation.",
-      "p5": "This is the JSON parser complaining about a trailing comma or unquoted name.",
-      "p6": "The parser found a setting before any bracketed section name."
+      "p4": "A second colon and space inside an unquoted value makes PyYAML read a new mapping.",
+      "p5": "Python’s parser expects a quoted name after each comma, so a trailing comma or a bare name fails here.",
+      "p6": "configparser found a setting before any bracketed section name."
     },
     "acronyms": [
       "API",
@@ -2382,7 +2374,7 @@
       "JSON",
       "YAML"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "at1-2-4-buckets-001",
@@ -2407,7 +2399,7 @@
         },
         {
           "id": "api",
-          "text": "API communication failure"
+          "text": "API or agent communication failure"
         },
         {
           "id": "app",
@@ -2465,6 +2457,6 @@
       "JSON",
       "YAML"
     ],
-    "status": "draft"
+    "status": "approved"
   }
 ]
