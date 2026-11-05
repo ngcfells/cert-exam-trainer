@@ -1,0 +1,2543 @@
+[
+  {
+    "id": "at1-4-3-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An engineer runs `aws s3 ls --profile audit` while the default profile points at the production account. What does `--profile audit` do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Uses the audit profile for that single command"
+        },
+        {
+          "id": "b",
+          "text": "Rewrites the default profile so it points at audit"
+        },
+        {
+          "id": "c",
+          "text": "Switches every later command in the shell to audit"
+        },
+        {
+          "id": "d",
+          "text": "Creates a new profile called audit if none exists"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The option applies to a single invocation, so the default profile is unchanged. It does not rewrite the default, and it does not carry over to later commands; an exported `AWS_PROFILE` would do that. The CLI does not create a missing profile; it reports an error.",
+    "acronyms": [
+      "CLI"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A shell has `AWS_PROFILE=dev` exported. A script then runs `aws s3 ls --profile prod`. Which profile does the AWS CLI use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "dev, because the exported variable was set before the command ran"
+        },
+        {
+          "id": "b",
+          "text": "dev, because the profile listed first in the config file wins"
+        },
+        {
+          "id": "c",
+          "text": "prod, because a command-line option beats an environment variable"
+        },
+        {
+          "id": "d",
+          "text": "Neither; the CLI reports a conflict between prod and dev and stops"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The CLI applies command-line options first, then environment variables, then configuration files, so `prod` is used. Set-up order and the order of entries in the file do not decide it, and the CLI does not treat an option and a variable as a conflict.",
+    "acronyms": [
+      "AWS",
+      "CLI"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "On a build agent, an engineer wants access keys kept apart from non-secret settings such as the default region. Which layout follows the AWS CLI's documented convention?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keys in `~/.aws/config`, region in `~/.aws/credentials`"
+        },
+        {
+          "id": "b",
+          "text": "Keys and region together in `~/.aws/config`"
+        },
+        {
+          "id": "c",
+          "text": "Keys in `~/.aws/keys`, region in `~/.aws/region`"
+        },
+        {
+          "id": "d",
+          "text": "Keys in `~/.aws/credentials`, region in `~/.aws/config`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The convention puts secrets in `~/.aws/credentials` and settings such as region and output format in `~/.aws/config`. Swapping them reverses the convention, one file for both keeps nothing apart, and `~/.aws/keys` and `~/.aws/region` are not files the CLI reads.",
+    "acronyms": [
+      "AWS",
+      "CLI"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A script on a shared jump host runs `providerctl login --token demo-token-value`. What is the main risk of passing the token this way?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The provider rejects tokens that are passed as arguments"
+        },
+        {
+          "id": "b",
+          "text": "The token is saved in shell history and visible in process listings"
+        },
+        {
+          "id": "c",
+          "text": "The token is cut off at the first dash inside its value"
+        },
+        {
+          "id": "d",
+          "text": "The login has to be repeated for every terminal tab"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A secret typed as an argument lands in shell history and can be seen by other users in the process list. Reading it from standard input, a prompt or a protected variable avoids both. Providers do not reject arguments, and neither truncation nor per-tab logins is the concern.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A developer committed `.deploy-keys.env` containing a live key, deleted the file in the next commit, and pushed both. What must happen next?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing more, because the latest commit no longer contains the file"
+        },
+        {
+          "id": "b",
+          "text": "Add the file name to the ignore file so it stays untracked from now on"
+        },
+        {
+          "id": "c",
+          "text": "Rewrite the branch history and keep using the same key"
+        },
+        {
+          "id": "d",
+          "text": "Revoke the key and issue a new one, because history still holds the old file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Every earlier commit still contains the key, and clones or caches may already have copied it, so the key counts as exposed and must be revoked and replaced. Deleting the file, ignoring it later, or tidying history without replacing the key leaves a usable secret in the wild.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A job exchanges its identity for temporary credentials from the provider. Which statement describes them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "They carry a session token and expire after a set time"
+        },
+        {
+          "id": "b",
+          "text": "They are a permanent key pair with an extra label attached"
+        },
+        {
+          "id": "c",
+          "text": "They work only in the CLI, not in SDK calls"
+        },
+        {
+          "id": "d",
+          "text": "They stay valid until the account password is next changed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Temporary credentials add a session token to the usual key and secret, and they expire on their own. They are not permanent, SDKs accept them as well as the CLI, and a password change is not what ends them.",
+    "acronyms": [
+      "CLI",
+      "SDK"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "On Monday an engineer ran `export AWS_PROFILE=prod`. On Tuesday, in the same terminal tab, a cleanup command changes production resources. Why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The CLI saved the last used profile in its config file overnight"
+        },
+        {
+          "id": "b",
+          "text": "Exported variables reset only when the working directory changes"
+        },
+        {
+          "id": "c",
+          "text": "The variable stays set for the whole shell session until it is unset"
+        },
+        {
+          "id": "d",
+          "text": "The export command overwrote the default profile in the credentials file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An exported variable lives as long as that shell session, so every later command in the tab used the production profile. Unsetting it, or using `--profile` per command, prevents the surprise. The CLI does not persist the choice, directory changes do not reset variables, and `export` does not edit files.",
+    "acronyms": [
+      "CLI"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A credentials file on a shared build host can be read by every local user. Which change fixes the problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rename the file so its name looks unimportant"
+        },
+        {
+          "id": "b",
+          "text": "Limit read access on the file to its owner"
+        },
+        {
+          "id": "c",
+          "text": "Encode the keys inside the file with Base64"
+        },
+        {
+          "id": "d",
+          "text": "Move the file into a world-readable temporary folder"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "File permissions are what control who can read a credentials file, so limiting it to the owner closes the exposure. A new name hides nothing, Base64 is an encoding that anyone can reverse, and a world-readable folder makes things worse.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An engineer is about to run a destructive AWS CLI command. Which step confirms the identity and account the CLI will act as?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Open `~/.aws/credentials` and read the first profile name"
+        },
+        {
+          "id": "b",
+          "text": "Check that the terminal title mentions the account"
+        },
+        {
+          "id": "c",
+          "text": "Run the command again with a `--region` flag set"
+        },
+        {
+          "id": "d",
+          "text": "Run `aws sts get-caller-identity` with the same profile"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Asking the provider who the current credentials belong to returns the real account and identity. The first profile in a file, a terminal title and a region flag say nothing about which credentials will actually be used.",
+    "acronyms": [
+      "AWS",
+      "CLI"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A service on a VM with an attached role runs in a shell where an old `AWS_ACCESS_KEY_ID` and secret are still exported. It uses the SDK default chain. Which credentials does it use?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The exported keys, because the chain checks environment variables before the instance role"
+        },
+        {
+          "id": "b",
+          "text": "The attached role, because platform credentials outrank every other source"
+        },
+        {
+          "id": "c",
+          "text": "Both, merged into a single session with combined permissions"
+        },
+        {
+          "id": "d",
+          "text": "None, because the SDK refuses to start when exported keys and a role both exist"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The default chain tries environment variables first and stops at the first source that supplies credentials, so the stale keys win over the instance role. Platform credentials do not outrank the chain order, sources are not merged, and the SDK does not refuse to start.",
+    "acronyms": [
+      "SDK",
+      "VM"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What is wrong with the second line of this script?\n\n```python\nimport os\nkey = os.environ.get(\"PARTNER_KEY\", \"demo-key-0000\")\nclient = PartnerClient(api_key=key)\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The `get` call raises an error whenever the variable is unset"
+        },
+        {
+          "id": "b",
+          "text": "The key is read after the client has already been created"
+        },
+        {
+          "id": "c",
+          "text": "The fallback string is a hard-coded credential in the source"
+        },
+        {
+          "id": "d",
+          "text": "Environment variables are not allowed to hold API keys"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The default value passed to `get` is a literal key sitting in the source and in version history. Without it the code would fail clearly when the variable is missing. The order of the lines is fine, and environment variables are a normal place to supply a key at run time.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A nightly SDK script sometimes hangs for an hour when the provider endpoint stops answering. Which client setting addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A higher retry count on the client"
+        },
+        {
+          "id": "b",
+          "text": "A connect and read timeout"
+        },
+        {
+          "id": "c",
+          "text": "A longer-lived credential for the job"
+        },
+        {
+          "id": "d",
+          "text": "A larger page size on list calls"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A timeout makes the client give up on an unresponsive endpoint so the script can fail or retry. More retries multiply the waiting, credential lifetime does not affect an unanswered call, and page size changes how much each list call returns.",
+    "acronyms": [
+      "SDK"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Dozens of workers retry a failed provider call at the same instant, over and over, and keep overloading it. Which retry design reduces this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A fixed one-second delay between each pair of attempts"
+        },
+        {
+          "id": "b",
+          "text": "Immediate retries until a call finally succeeds"
+        },
+        {
+          "id": "c",
+          "text": "A single shared retry counter used by every worker"
+        },
+        {
+          "id": "d",
+          "text": "Exponential backoff with jitter between attempts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Backoff spreads attempts out over longer gaps and jitter keeps workers from retrying in step. A fixed delay keeps them synchronized, immediate retries increase load, and a shared counter does not change when each worker retries.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A build that passed on Friday fails on Monday because the newest SDK release changed a method signature. Which practice prevents this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Pin the SDK version in a lock file and upgrade it on purpose"
+        },
+        {
+          "id": "b",
+          "text": "Install the latest SDK release on every build to stay current"
+        },
+        {
+          "id": "c",
+          "text": "Copy the SDK documentation into the repository"
+        },
+        {
+          "id": "d",
+          "text": "Catch every exception raised by the SDK and carry on"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Pinning makes builds reproducible, and upgrades become a deliberate, tested change. Always taking the latest is what caused the break, documentation does not change behavior, and swallowing exceptions hides failures.",
+    "acronyms": [
+      "SDK"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "One team runs a single provider command from a shell script during manual maintenance. Another team embeds provider calls in a long-running service. Which pairing fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "SDK for the script, CLI for the long-running service"
+        },
+        {
+          "id": "b",
+          "text": "CLI for both, since it needs no code at all"
+        },
+        {
+          "id": "c",
+          "text": "CLI for the script, SDK for the service"
+        },
+        {
+          "id": "d",
+          "text": "SDK for both, since the CLI cannot be scripted"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The CLI suits one-off commands and shell scripts, while an SDK gives application code typed calls, error handling and retries. The reverse pairing fits poorly, and the CLI can be scripted.",
+    "acronyms": [
+      "CLI",
+      "SDK"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An SDK client has a 5-second timeout and makes 1 initial attempt plus 2 retries. The provider never answers. Ignoring any backoff delay, how long can the call take before it fails?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "5 seconds"
+        },
+        {
+          "id": "b",
+          "text": "10 seconds"
+        },
+        {
+          "id": "c",
+          "text": "30 seconds"
+        },
+        {
+          "id": "d",
+          "text": "15 seconds"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "There are 3 attempts in total (1 initial + 2 retries), each waiting up to 5 seconds: 3 x 5 = 15 seconds. Five seconds counts one attempt, ten counts two, and thirty counts six attempts.",
+    "acronyms": [
+      "SDK"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A three-hour export fails at the one-hour mark when started with temporary keys copied into environment variables that expire after one hour. The same code works on a VM with an attached role. Why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Environment variables can hold a credential for one hour at most"
+        },
+        {
+          "id": "b",
+          "text": "The SDK's role provider renews credentials before expiry"
+        },
+        {
+          "id": "c",
+          "text": "An attached role carries credentials that have no expiry"
+        },
+        {
+          "id": "d",
+          "text": "The SDK keeps retrying the expired keys until they work"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Copied temporary keys are fixed values and stop working at their expiry. A role credential provider fetches new credentials ahead of expiry, so long jobs keep running. The variables have no one-hour limit of their own, role credentials do expire, and retrying expired keys cannot succeed.",
+    "acronyms": [
+      "SDK",
+      "VM"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A pipeline authenticates as an engineer's personal account. The engineer leaves and the account is disabled. What happens, and what would have avoided it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The pipeline keeps running because tokens outlive their accounts"
+        },
+        {
+          "id": "b",
+          "text": "The pipeline breaks; a team-owned service account avoids it"
+        },
+        {
+          "id": "c",
+          "text": "The pipeline breaks; a longer password on the account avoids it"
+        },
+        {
+          "id": "d",
+          "text": "The pipeline breaks; a shared team login avoids it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A person's account is tied to their employment, so disabling it cuts off everything that used it. A machine identity such as a service account belongs to the team and the workload. Password length does not matter once the account is disabled, and a shared login is still a user account.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A laptop was stolen two hours ago. It held a long-lived access key and a session token that expires after 15 minutes. Which statement is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Both still work until the user next changes a password"
+        },
+        {
+          "id": "b",
+          "text": "The token is more dangerous because it is newer"
+        },
+        {
+          "id": "c",
+          "text": "Neither works, because stolen credentials are blocked automatically"
+        },
+        {
+          "id": "d",
+          "text": "The key works until revoked, while the token has already expired"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A short-lived token limits the blast radius because it dies on its own, while a long-lived key keeps working until someone revokes it. Passwords do not govern either one, age does not make a token riskier, and nothing blocks stolen credentials automatically.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A legacy system cannot use temporary credentials, so its access key has to be rotated. Which sequence avoids an outage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Create a second key, deploy it, confirm it works, then disable the old key"
+        },
+        {
+          "id": "b",
+          "text": "Delete the old key, then create and deploy a new one"
+        },
+        {
+          "id": "c",
+          "text": "Change the secret of the existing key in place at the provider"
+        },
+        {
+          "id": "d",
+          "text": "Create a second key and disable it until the old one fails"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Running two keys side by side lets the system switch over with no gap, and the old key is disabled only after the new one is proven. Deleting first causes an outage, an in-place change breaks the running system at once, and a disabled new key cannot take over.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team uses one service account for both the staging and production deployers. After an unexpected production change, the audit log shows only that account. Which change best fixes this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a longer, more detailed description to the shared account"
+        },
+        {
+          "id": "b",
+          "text": "Rotate the shared account's key on a weekly schedule"
+        },
+        {
+          "id": "c",
+          "text": "Give each workload and each environment its own identity"
+        },
+        {
+          "id": "d",
+          "text": "Copy the shared key into a second location"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Separate identities make each log entry point to one workload and one environment, and a compromise can be revoked in isolation. A description, rotation or a copy of the key leaves the actions of both deployers indistinguishable.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A CI pipeline also runs for pull requests opened from outside contributors' forks, and every run receives the deploy credentials. What should change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mask the credentials in the logs and keep passing them to every run"
+        },
+        {
+          "id": "b",
+          "text": "Withhold deploy credentials from runs triggered by untrusted forks"
+        },
+        {
+          "id": "c",
+          "text": "Give outside contributors read access to the secret store"
+        },
+        {
+          "id": "d",
+          "text": "Shorten the run timeout so the credentials expire sooner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Code from an untrusted fork can read or send out anything the run holds, so such runs must not receive deploy credentials. Log masking does not stop a script from sending a secret elsewhere, opening the store is worse, and a shorter timeout still leaves a window.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A reporting job only reads objects, while a release job writes them. Both use one role that can read and write. Which change best applies least privilege?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep one role and add a comment that describes its intent"
+        },
+        {
+          "id": "b",
+          "text": "Add the delete action so the role is complete"
+        },
+        {
+          "id": "c",
+          "text": "Give the reporting job a second copy of the same role"
+        },
+        {
+          "id": "d",
+          "text": "Split it into a read-only role and a separate write role"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Least privilege gives each job only the access it needs, so the reader gets a read-only role and the releaser gets a write role. A comment changes nothing, deletion adds power, and a copy of the same role keeps the same permissions.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A mapping provider issues a static key to a company's backend service. Which control most limits the damage if the key leaks?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Restrict the key to known server IP addresses and methods"
+        },
+        {
+          "id": "b",
+          "text": "Embed the key in the page source so that it is easy to replace"
+        },
+        {
+          "id": "c",
+          "text": "Reuse the same key in every environment"
+        },
+        {
+          "id": "d",
+          "text": "Remove the key's label so it is harder to identify"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Restricting a key by source address and by allowed methods makes a stolen copy far less useful. Publishing it, sharing it across environments or removing its label increase exposure or only make it harder for the owners to track.",
+    "acronyms": [
+      "IP"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A nightly batch job calls a partner's API when no user is present. Which grant type fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Authorization code grant, with a user approving each night run"
+        },
+        {
+          "id": "b",
+          "text": "Password grant, using an engineer's login"
+        },
+        {
+          "id": "c",
+          "text": "Client credentials grant, using the job's own id and secret"
+        },
+        {
+          "id": "d",
+          "text": "Implicit grant, returning the token in a browser redirect"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The client credentials grant lets a service authenticate as itself, which suits unattended, machine-to-machine calls. The authorization code and implicit grants need a user and a browser, and the password grant would tie the job to a person's login.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A job caches an access token and, an hour later, a call returns HTTP 401. Which is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raise the retry count and keep resending the same token"
+        },
+        {
+          "id": "b",
+          "text": "Request a new token, retry once and cache its expiry"
+        },
+        {
+          "id": "c",
+          "text": "Switch the job to a longer-lived static key"
+        },
+        {
+          "id": "d",
+          "text": "Treat the 401 as a success and just log a warning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A 401 after a long gap points to an expired token, so the client should get a fresh one and retry once, remembering when it expires. Resending the same token repeats the failure, a static key trades away short lifetimes, and a 401 is a failure.",
+    "acronyms": [
+      "HTTP"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A reporting job must read invoices from a billing provider. Which scope choice follows least privilege when requesting its token?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A scope for reading and writing all billing data"
+        },
+        {
+          "id": "b",
+          "text": "The provider's full administrator scope"
+        },
+        {
+          "id": "c",
+          "text": "Every scope the client is registered for"
+        },
+        {
+          "id": "d",
+          "text": "A scope for reading invoices"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A token should carry just the scope the job needs, here reading invoices, so a leaked token can do little. Write access, administrator scope and every registered scope all grant more than reporting requires.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A colleague silenced a certificate error by adding `verify=False` to the call below. What is the problem, and what is the right fix?\n\n```python\nresp = session.get(\n    \"https://api.partner.example.internal/v1/orders\",\n    verify=False,\n)\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Verification is off; make the client trust the internal certificate authority instead"
+        },
+        {
+          "id": "b",
+          "text": "The URL should use HTTP, since verification is optional"
+        },
+        {
+          "id": "c",
+          "text": "The call needs a longer timeout so verification can finish"
+        },
+        {
+          "id": "d",
+          "text": "The path needs a trailing slash so the certificate matches"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Turning verification off removes protection against impersonation, so the real fix is to install the internal CA certificate in the client's trust store. Switching to HTTP removes encryption, a timeout does not repair trust, and the certificate is matched to the host name, not the path.",
+    "acronyms": [
+      "CA",
+      "HTTP",
+      "URL"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A payments provider must know which of the customer's machines is calling at connection time, before any request is read, and will refuse unknown clients. Which method fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An API key sent in a request header"
+        },
+        {
+          "id": "b",
+          "text": "One-way TLS with a verified server certificate"
+        },
+        {
+          "id": "c",
+          "text": "Mutual TLS, with a client certificate issued by a trusted CA"
+        },
+        {
+          "id": "d",
+          "text": "A bearer token placed in the query string"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Mutual TLS makes the client present a certificate during the handshake, so the provider can refuse unknown machines before reading any request. A key or token is only seen once a request arrives, and one-way TLS proves the server's identity, not the client's.",
+    "acronyms": [
+      "API",
+      "CA",
+      "TLS"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A developer sets up SSH access to a code hosting provider. Which file is uploaded to the provider's account settings?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The public half of the key pair"
+        },
+        {
+          "id": "b",
+          "text": "The private half of the key pair"
+        },
+        {
+          "id": "c",
+          "text": "The local known-hosts file for the server"
+        },
+        {
+          "id": "d",
+          "text": "The passphrase protecting the key"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The provider needs the public key to verify signatures, while the private key must stay on the developer's machine. The known-hosts file records servers the client has met, and the passphrase only unlocks the local private key.",
+    "acronyms": [
+      "SSH"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Calls to a provider that requires mutual TLS began failing at midnight, and the provider's log says the client certificate has expired. What fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Renew the provider's server certificate"
+        },
+        {
+          "id": "b",
+          "text": "Install a newly issued client certificate"
+        },
+        {
+          "id": "c",
+          "text": "Disable certificate checking in the client"
+        },
+        {
+          "id": "d",
+          "text": "Switch the calls from HTTPS to HTTP"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The provider is rejecting the client's own certificate, so the client needs a newly issued one. Renewing the server certificate fixes a different failure, disabling checks does not supply the missing client certificate, and HTTP would drop the encryption and the client identity.",
+    "acronyms": [
+      "HTTP",
+      "HTTPS",
+      "TLS"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In the client credentials flow, which of these values must be kept secret?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The client identifier"
+        },
+        {
+          "id": "b",
+          "text": "The token endpoint address"
+        },
+        {
+          "id": "c",
+          "text": "The client secret"
+        },
+        {
+          "id": "d",
+          "text": "The requested scope names"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The client secret proves the client's identity and must be protected. The client id, the token endpoint address and the scope names are identifiers that a client sends or that the provider publishes.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO measures keep an API key out of a repository?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add the local credentials file to the ignore file"
+        },
+        {
+          "id": "b",
+          "text": "Rename the key variable to something less obvious"
+        },
+        {
+          "id": "c",
+          "text": "Run a secret scanner before commits are accepted"
+        },
+        {
+          "id": "d",
+          "text": "Commit the key and delete it after the release"
+        },
+        {
+          "id": "e",
+          "text": "Store the key in the `README` for the team"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "An ignore entry stops the file from being staged, and a secret scanner catches keys that slip through. Renaming a variable hides nothing, a committed key stays in history after deletion, and the `README` is part of the repository.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "A client holds a valid, unexpired access token and receives HTTP 403 from an API. Which TWO explanations fit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The token lacks the scope the endpoint requires"
+        },
+        {
+          "id": "b",
+          "text": "The token expired a minute ago"
+        },
+        {
+          "id": "c",
+          "text": "The client secret was entered wrongly"
+        },
+        {
+          "id": "d",
+          "text": "The identity's policy denies that action on that resource"
+        },
+        {
+          "id": "e",
+          "text": "The request carried no authorization header"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "A 403 means the caller is authenticated but not allowed, which fits a missing scope or a policy that denies the action. An expired token, a wrong secret and a missing header are authentication failures that produce a 401.",
+    "acronyms": [
+      "API",
+      "HTTP"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE sources does the AWS SDK default credential chain consult?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Environment variables"
+        },
+        {
+          "id": "b",
+          "text": "The shared credentials and config files"
+        },
+        {
+          "id": "c",
+          "text": "Role credentials supplied by the container or instance metadata"
+        },
+        {
+          "id": "d",
+          "text": "The name of the current git branch"
+        },
+        {
+          "id": "e",
+          "text": "Text typed into the application log"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "The chain reads environment variables, the shared files and the role credentials a host or container provides. A branch name and a log file are not credential sources.",
+    "acronyms": [
+      "AWS",
+      "SDK"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A client checks a server's TLS certificate before sending data. Which THREE checks must pass?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It chains to a certificate authority the client trusts"
+        },
+        {
+          "id": "b",
+          "text": "Its name matches the host being called"
+        },
+        {
+          "id": "c",
+          "text": "It is within its validity dates"
+        },
+        {
+          "id": "d",
+          "text": "It was issued by the same CA as the client's own certificate"
+        },
+        {
+          "id": "e",
+          "text": "It is listed in the client's credentials file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "The client verifies the chain of trust, the host name and the validity period. The server certificate does not have to share an issuer with the client's certificate, and a credentials file plays no part in validation.",
+    "acronyms": [
+      "CA",
+      "TLS"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO ways of handling an API key expose it most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Putting it in the query string of the URL"
+        },
+        {
+          "id": "b",
+          "text": "Sending it in a request header over HTTPS"
+        },
+        {
+          "id": "c",
+          "text": "Embedding it in page source delivered to browsers"
+        },
+        {
+          "id": "d",
+          "text": "Reading it from a secret store on the server at run time"
+        },
+        {
+          "id": "e",
+          "text": "Sending it in the body of a token request over HTTPS"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "URLs are written to proxy logs, browser history and referrer headers, and page source is visible to every visitor. A header or body sent over HTTPS and a server-side secret store keep the key out of those places.",
+    "acronyms": [
+      "API",
+      "HTTPS",
+      "URL"
+    ]
+  },
+  {
+    "id": "at1-4-3-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO actions risk printing a token in CI job logs?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Turning on verbose debug output for the CLI"
+        },
+        {
+          "id": "b",
+          "text": "Reading the token from a masked secret"
+        },
+        {
+          "id": "c",
+          "text": "Echoing the variable to check it was set"
+        },
+        {
+          "id": "d",
+          "text": "Passing the token to the CLI through an environment variable"
+        },
+        {
+          "id": "e",
+          "text": "Requesting a token with a short lifetime"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Debug output often includes request headers, and echoing a variable writes its value straight to the log. A masked secret, an environment variable and a short lifetime reduce exposure or do not print the value.",
+    "acronyms": [
+      "CI",
+      "CLI"
+    ]
+  },
+  {
+    "id": "at1-4-3-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "A deployer must work in the staging account through the provider's CLI, `cloudctl`. Read the help text and the current profile list, then complete each step.",
+    "payload": {
+      "output": [
+        "$ cloudctl help",
+        "usage: cloudctl <command>",
+        "  profile add <name> --account <account> --role <role>   create a named profile",
+        "  profile use <name>                                     make a profile the active one",
+        "  profile list                                           list profiles; the active one has a star",
+        "  login --profile <name>                                 get short-lived credentials for a profile",
+        "  whoami                                                 show the active identity and its expiry",
+        "$ cloudctl profile list",
+        "* sandbox-reader   account=sandbox   role=reader"
+      ],
+      "steps": [
+        {
+          "id": "add",
+          "label": "Type the command that creates a profile named stage-deploy for account staging and role deployer"
+        },
+        {
+          "id": "use",
+          "label": "Type the command that makes stage-deploy the active profile"
+        },
+        {
+          "id": "login",
+          "label": "Type the command that gets short-lived credentials for stage-deploy"
+        },
+        {
+          "id": "who",
+          "label": "Type the command that shows the active identity and its expiry"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "add": [
+          "cloudctl profile add stage-deploy --account staging --role deployer",
+          "cloudctl profile add stage-deploy --account staging --role=deployer",
+          "cloudctl profile add stage-deploy --account=staging --role deployer",
+          "cloudctl profile add stage-deploy --account=staging --role=deployer",
+          "cloudctl profile add stage-deploy --role deployer --account staging",
+          "cloudctl profile add stage-deploy --role=deployer --account staging",
+          "cloudctl profile add stage-deploy --role deployer --account=staging",
+          "cloudctl profile add stage-deploy --role=deployer --account=staging",
+          "cloudctl profile add --account staging --role deployer stage-deploy",
+          "cloudctl profile add --account staging --role=deployer stage-deploy",
+          "cloudctl profile add --account=staging --role deployer stage-deploy",
+          "cloudctl profile add --account=staging --role=deployer stage-deploy",
+          "cloudctl profile add --role deployer --account staging stage-deploy",
+          "cloudctl profile add --role=deployer --account staging stage-deploy",
+          "cloudctl profile add --role deployer --account=staging stage-deploy",
+          "cloudctl profile add --role=deployer --account=staging stage-deploy"
+        ],
+        "use": [
+          "cloudctl profile use stage-deploy"
+        ],
+        "login": [
+          "cloudctl login --profile stage-deploy",
+          "cloudctl login --profile=stage-deploy"
+        ],
+        "who": [
+          "cloudctl whoami"
+        ]
+      }
+    },
+    "explanation": "The help text gives the exact form of each command: a profile is created with its account and role, selected with `profile use`, given short-lived credentials by `login`, and checked with `whoami`. Confirming the identity before deploying proves the work will run in the intended account.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "add": "profile add takes the name first, then the account and role flags, as the help shows.",
+      "use": "profile use switches the active profile, which the list marks with a star.",
+      "login": "login with the profile flag fetches short-lived credentials for that profile.",
+      "who": "whoami reports the identity and expiry, confirming where commands will run."
+    },
+    "acronyms": [
+      "CLI"
+    ]
+  },
+  {
+    "id": "at1-4-3-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "stem": "A CI job in the payments-api repository must deploy one service in a cloud account. The CI system can issue every job a signed identity token. Configure the connection.",
+    "payload": {
+      "fields": [
+        {
+          "id": "cred",
+          "label": "Credential the job uses to reach the provider",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Long-lived access key saved as a repository variable"
+            },
+            {
+              "id": "o2",
+              "text": "Signed job token exchanged for short-lived credentials"
+            },
+            {
+              "id": "o3",
+              "text": "A developer's personal login saved in the job"
+            }
+          ]
+        },
+        {
+          "id": "life",
+          "label": "Lifetime of the credentials the job receives",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Minutes, covering a single run"
+            },
+            {
+              "id": "o2",
+              "text": "90 days, rotated each quarter"
+            },
+            {
+              "id": "o3",
+              "text": "No expiry, revoked by hand"
+            }
+          ]
+        },
+        {
+          "id": "scope",
+          "label": "Permissions on the role the job assumes",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Administrator on the whole account"
+            },
+            {
+              "id": "o2",
+              "text": "Read access to every secret in the account"
+            },
+            {
+              "id": "o3",
+              "text": "Deploy actions on the one service"
+            }
+          ]
+        },
+        {
+          "id": "trust",
+          "label": "Condition on who may assume the role",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Tokens from any repository in the organization"
+            },
+            {
+              "id": "o2",
+              "text": "Tokens from this repository and branch"
+            },
+            {
+              "id": "o3",
+              "text": "Any caller that knows the role name"
+            }
+          ]
+        },
+        {
+          "id": "store",
+          "label": "Where the job keeps the provider credentials",
+          "options": [
+            {
+              "id": "o1",
+              "text": "In a file committed beside the pipeline definition"
+            },
+            {
+              "id": "o2",
+              "text": "In the runner image shared by every job"
+            },
+            {
+              "id": "o3",
+              "text": "Nowhere on disk; requested at run time and held in memory"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "cred": "o2",
+        "life": "o1",
+        "scope": "o3",
+        "trust": "o2",
+        "store": "o3"
+      }
+    },
+    "explanation": "Workload identity federation lets the job prove who it is with a signed token and receive short-lived, narrowly scoped credentials, but only if the role trusts that one repository and branch. Nothing long-lived has to be stored anywhere.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "cred": "A signed job token avoids storing any key, and the provider swaps it for temporary credentials.",
+      "life": "Credentials that last minutes expire shortly after the run ends, so a leak is nearly useless.",
+      "scope": "Deploy actions on one service give the job what it needs and nothing else.",
+      "trust": "Limiting the role to this repository and branch stops other pipelines from assuming it.",
+      "store": "Credentials requested at run time and kept in memory leave nothing on disk to steal."
+    },
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-4-3-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "A nightly export service must call a partner's API using the client credentials grant. Put the steps in order, from setting up the client to the scoped call. Each step uses something an earlier step produced, and the secret is stored before the job reads it.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "The job sends its client id, secret and requested scope to the token endpoint"
+        },
+        {
+          "id": "s1",
+          "text": "Register the service as a client with the partner and receive a client id and secret"
+        },
+        {
+          "id": "s6",
+          "text": "The job calls the API with the token in the authorization header"
+        },
+        {
+          "id": "s3",
+          "text": "At run time the job reads the secret from the secrets vault"
+        },
+        {
+          "id": "s2",
+          "text": "Place the client secret in the secrets vault instead of the repository"
+        },
+        {
+          "id": "s5",
+          "text": "The partner returns a short-lived access token limited to that scope"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The client is registered first because registration produces the id and secret. The secret is stored, then read at run time, then sent with a scope to the token endpoint. The short-lived token that comes back is the credential for the API call.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "0": "Registration produces the client id and secret that every later step needs.",
+      "1": "The secret goes into the vault straight after it is issued, not into the repository.",
+      "2": "The job reads the stored secret only when it runs.",
+      "3": "The id, secret and scope go to the token endpoint to ask for a token.",
+      "4": "The partner answers with a short-lived token limited to the requested scope.",
+      "5": "The call to the API uses that token and nothing else."
+    },
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-4-3-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "stem": "A team reviews its provider keys against this policy. Rotate any key older than 90 days. Disable any key idle for 60 days or more. Narrow any key with administrator or wildcard permissions. Move any key owned by a person's account but used by a workload to a service account. Each key breaks at most one rule; otherwise keep it. Choose the action for each key.",
+    "payload": {
+      "caption": "Provider key inventory",
+      "columns": [
+        "Key name",
+        "Owner",
+        "Age (days)",
+        "Idle (days)",
+        "Permissions"
+      ],
+      "rows": [
+        [
+          "ci-deploy-key",
+          "Service account deploy-bot",
+          "40",
+          "1",
+          "Deploy actions on one service"
+        ],
+        [
+          "backup-job-key",
+          "Service account backup-bot",
+          "200",
+          "2",
+          "Write to one backup bucket"
+        ],
+        [
+          "old-report-key",
+          "Service account report-bot",
+          "70",
+          "75",
+          "Read the reports bucket"
+        ],
+        [
+          "sync-tool-key",
+          "Service account sync-bot",
+          "30",
+          "3",
+          "Administrator on all resources"
+        ],
+        [
+          "nightly-export-key",
+          "Personal account of a named engineer",
+          "15",
+          "1",
+          "Read one table"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "r1",
+          "label": "Action for ci-deploy-key",
+          "options": [
+            {
+              "id": "rotate",
+              "text": "Rotate the key"
+            },
+            {
+              "id": "keep",
+              "text": "Keep as is"
+            },
+            {
+              "id": "disable",
+              "text": "Disable the key"
+            },
+            {
+              "id": "narrow",
+              "text": "Narrow its permissions"
+            },
+            {
+              "id": "move",
+              "text": "Move to a service account"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "label": "Action for backup-job-key",
+          "options": [
+            {
+              "id": "keep",
+              "text": "Keep as is"
+            },
+            {
+              "id": "disable",
+              "text": "Disable the key"
+            },
+            {
+              "id": "narrow",
+              "text": "Narrow its permissions"
+            },
+            {
+              "id": "rotate",
+              "text": "Rotate the key"
+            },
+            {
+              "id": "move",
+              "text": "Move to a service account"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "label": "Action for old-report-key",
+          "options": [
+            {
+              "id": "narrow",
+              "text": "Narrow its permissions"
+            },
+            {
+              "id": "move",
+              "text": "Move to a service account"
+            },
+            {
+              "id": "disable",
+              "text": "Disable the key"
+            },
+            {
+              "id": "keep",
+              "text": "Keep as is"
+            },
+            {
+              "id": "rotate",
+              "text": "Rotate the key"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "label": "Action for sync-tool-key",
+          "options": [
+            {
+              "id": "move",
+              "text": "Move to a service account"
+            },
+            {
+              "id": "keep",
+              "text": "Keep as is"
+            },
+            {
+              "id": "rotate",
+              "text": "Rotate the key"
+            },
+            {
+              "id": "disable",
+              "text": "Disable the key"
+            },
+            {
+              "id": "narrow",
+              "text": "Narrow its permissions"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "label": "Action for nightly-export-key",
+          "options": [
+            {
+              "id": "disable",
+              "text": "Disable the key"
+            },
+            {
+              "id": "rotate",
+              "text": "Rotate the key"
+            },
+            {
+              "id": "narrow",
+              "text": "Narrow its permissions"
+            },
+            {
+              "id": "keep",
+              "text": "Keep as is"
+            },
+            {
+              "id": "move",
+              "text": "Move to a service account"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "r1": "keep",
+        "r2": "rotate",
+        "r3": "disable",
+        "r4": "narrow",
+        "r5": "move"
+      }
+    },
+    "explanation": "Check each key against the four rules in turn. Only one key trips each rule, and the first key trips none.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "r1": "Age 40 is under 90, idle 1 is under 60, the permissions are narrow and a service account owns it, so it is kept.",
+      "r2": "Age 200 is over 90 days, so it is rotated; idle 2 and the narrow scope break nothing.",
+      "r3": "Age 70 is under 90, but idle 75 is over 60 days, so it is disabled.",
+      "r4": "Age 30 and idle 3 are fine, but administrator on all resources is too broad, so its permissions are narrowed.",
+      "r5": "Age 15 and idle 1 are fine and the scope is narrow, but a person's account owns a workload key, so it moves to a service account."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-3-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "A CI job obtains short-lived provider credentials without any stored key. The flow runs left to right. Place each component under the role it plays.",
+    "payload": {
+      "width": 600,
+      "height": 170,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 60
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 60
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 60
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 60
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 100,
+          "name": "Signs a token for repo and branch"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 100,
+          "name": "Runs the job, carries the token"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 100,
+          "name": "Checks the token, returns credentials"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 100,
+          "name": "Accepts the short-lived credentials"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Identity provider"
+        },
+        {
+          "id": "l2",
+          "text": "CI runner"
+        },
+        {
+          "id": "l3",
+          "text": "Token exchange service"
+        },
+        {
+          "id": "l4",
+          "text": "Provider API"
+        },
+        {
+          "id": "l5",
+          "text": "Artifact registry"
+        },
+        {
+          "id": "l6",
+          "text": "Monitoring dashboard"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "The identity provider signs a token that names the repository and branch, the runner carries it, the exchange service validates it against the trust rule and returns short-lived credentials, and the provider API accepts those credentials. An artifact registry and a monitoring dashboard play no part in the exchange.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "z1": "The identity provider vouches for the job by signing a token.",
+      "z2": "The runner executes the job and presents the signed token.",
+      "z3": "The exchange service checks the token against its trust rule before issuing credentials.",
+      "z4": "The provider API serves calls made with the temporary credentials."
+    },
+    "acronyms": [
+      "API",
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-4-3-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "stem": "The policy lines for a deploy role are shown in shuffled positions. The role serves only the payments-api CI job, which deploys a single service. Select every line that is too broad.",
+    "payload": {
+      "width": 600,
+      "height": 225,
+      "nodes": [
+        {
+          "id": "n4",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "text": "\"resource\": \"*\""
+        },
+        {
+          "id": "n1",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "text": "\"effect\": \"allow\""
+        },
+        {
+          "id": "n7",
+          "x": 10,
+          "y": 65,
+          "w": 280,
+          "h": 40,
+          "text": "\"require_tls\": true"
+        },
+        {
+          "id": "n6",
+          "x": 310,
+          "y": 65,
+          "w": 280,
+          "h": 40,
+          "text": "\"session_minutes\": 15"
+        },
+        {
+          "id": "n2",
+          "x": 10,
+          "y": 120,
+          "w": 280,
+          "h": 40,
+          "text": "\"principal\": \"*\""
+        },
+        {
+          "id": "n8",
+          "x": 310,
+          "y": 120,
+          "w": 280,
+          "h": 40,
+          "text": "\"log_calls\": true"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 175,
+          "w": 280,
+          "h": 40,
+          "text": "\"action\": \"*\""
+        },
+        {
+          "id": "n5",
+          "x": 310,
+          "y": 175,
+          "w": 280,
+          "h": 40,
+          "text": "\"condition\": \"repo = payments-api\""
+        }
+      ],
+      "spots": [
+        {
+          "id": "L4",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "name": "\"resource\": \"*\""
+        },
+        {
+          "id": "L1",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 40,
+          "name": "\"effect\": \"allow\""
+        },
+        {
+          "id": "L7",
+          "x": 10,
+          "y": 65,
+          "w": 280,
+          "h": 40,
+          "name": "\"require_tls\": true"
+        },
+        {
+          "id": "L6",
+          "x": 310,
+          "y": 65,
+          "w": 280,
+          "h": 40,
+          "name": "\"session_minutes\": 15"
+        },
+        {
+          "id": "L2",
+          "x": 10,
+          "y": 120,
+          "w": 280,
+          "h": 40,
+          "name": "\"principal\": \"*\""
+        },
+        {
+          "id": "L8",
+          "x": 310,
+          "y": 120,
+          "w": 280,
+          "h": 40,
+          "name": "\"log_calls\": true"
+        },
+        {
+          "id": "L3",
+          "x": 10,
+          "y": 175,
+          "w": 280,
+          "h": 40,
+          "name": "\"action\": \"*\""
+        },
+        {
+          "id": "L5",
+          "x": 310,
+          "y": 175,
+          "w": 280,
+          "h": 40,
+          "name": "\"condition\": \"repo = payments-api\""
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "L2",
+        "L3",
+        "L4"
+      ]
+    },
+    "explanation": "Three lines grant far more than the job needs: any principal could assume the role, any action is allowed, and every resource is covered. The condition, short session, TLS requirement, allow effect and call logging are sound settings for this role.",
+    "pbqWeight": 3,
+    "partExplanations": {
+      "L4": "Too broad: this wildcard opens the role beyond the one job.",
+      "L1": "Reasonable for this role; it does not widen access.",
+      "L7": "Reasonable for this role; it does not widen access.",
+      "L6": "Reasonable for this role; it does not widen access.",
+      "L2": "Too broad: this wildcard opens the role beyond the one job.",
+      "L8": "Reasonable for this role; it does not widen access.",
+      "L3": "Too broad: this wildcard opens the role beyond the one job.",
+      "L5": "Reasonable for this role; it does not widen access."
+    },
+    "acronyms": [
+      "CI",
+      "TLS"
+    ]
+  },
+  {
+    "id": "at1-4-3-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each situation to the connection method that fits it best.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "An engineer switches between three accounts many times a day on a laptop"
+        },
+        {
+          "id": "p2",
+          "text": "A throwaway container is handed credentials by its launcher for one run, passed to the process without saving them to a file"
+        },
+        {
+          "id": "p3",
+          "text": "One service must run unchanged on a laptop, a build server and a production VM, each supplying its own credentials"
+        },
+        {
+          "id": "p4",
+          "text": "A web service on a VM gets short-lived credentials from the platform it runs on, with nothing configured by hand"
+        },
+        {
+          "id": "p5",
+          "text": "A public data provider lets any registered developer call read-only endpoints with one static value in a header"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Named CLI profile"
+        },
+        {
+          "id": "c2",
+          "text": "Environment variables"
+        },
+        {
+          "id": "c3",
+          "text": "SDK default credential chain"
+        },
+        {
+          "id": "c4",
+          "text": "Machine identity with an assumed role"
+        },
+        {
+          "id": "c5",
+          "text": "API key"
+        },
+        {
+          "id": "c6",
+          "text": "Shared personal login"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5"
+      }
+    },
+    "explanation": "Each method has its natural setting: profiles for switching accounts, variables for credentials passed to a process for one run, the credential chain for code that runs in many places, an assumed role for platform-issued credentials, and an API key for simple access to a public service. A shared personal login suits none of them.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "p1": "Named profiles keep several accounts ready and are chosen with a flag or variable.",
+      "p2": "Variables carry credentials into one process without writing a file.",
+      "p3": "The default chain lets the same code find whatever credentials each host supplies.",
+      "p4": "A role assumed by the workload needs no stored secret, because the platform issues credentials.",
+      "p5": "A single static value in a header is the simple fit for open read-only access."
+    },
+    "acronyms": [
+      "API",
+      "CLI",
+      "SDK",
+      "VM"
+    ]
+  },
+  {
+    "id": "at1-4-3-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.3"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "stem": "Sort each practice under the area where it is configured or applied.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "cli",
+          "text": "CLI configuration"
+        },
+        {
+          "id": "sdk",
+          "text": "SDK use"
+        },
+        {
+          "id": "iam",
+          "text": "IAM"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Select a named profile with the CLI profile flag"
+        },
+        {
+          "id": "i2",
+          "text": "Set a default region in the CLI config file"
+        },
+        {
+          "id": "i3",
+          "text": "Set a connect timeout and retry limit on the client"
+        },
+        {
+          "id": "i4",
+          "text": "Build the client without keys so the credential chain supplies them"
+        },
+        {
+          "id": "i5",
+          "text": "Give each workload its own service account"
+        },
+        {
+          "id": "i6",
+          "text": "Grant a role only the actions the job needs"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "cli",
+        "i2": "cli",
+        "i3": "sdk",
+        "i4": "sdk",
+        "i5": "iam",
+        "i6": "iam"
+      }
+    },
+    "explanation": "The CLI items change how the command-line tool picks a profile or default. The SDK items change how application code builds and runs its client. The IAM items decide which identities exist and what each is allowed to do.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "i1": "The profile flag is a CLI option.",
+      "i2": "The CLI config file holds defaults such as region.",
+      "i3": "Timeouts and retry limits are client settings in code.",
+      "i4": "A client built with no keys leaves credential lookup to the SDK chain.",
+      "i5": "Which identities exist is an IAM decision.",
+      "i6": "What a role may do is set in IAM permissions."
+    },
+    "acronyms": [
+      "CLI",
+      "IAM",
+      "SDK"
+    ]
+  }
+]

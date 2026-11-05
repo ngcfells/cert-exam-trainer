@@ -1,0 +1,2458 @@
+[
+  {
+    "id": "at1-4-1-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A shop wants a small share of real shoppers to try the new checkout build first, with more shoppers added as the metrics stay healthy. Which delivery method is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Blue-green deployment"
+        },
+        {
+          "id": "b",
+          "text": "Canary release"
+        },
+        {
+          "id": "c",
+          "text": "Rolling replacement"
+        },
+        {
+          "id": "d",
+          "text": "In-place upgrade"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A canary release sends a small, growing share of live traffic to the new build while the metrics are watched. Blue-green moves all users in one switch, a rolling update replaces instances in batches with no user share involved, and an in-place upgrade overwrites the running copy.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A bank must test a release on a full production-sized copy before any customer sees it, then move all customers over in a single switch. Which delivery method fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Canary release"
+        },
+        {
+          "id": "b",
+          "text": "Rolling update"
+        },
+        {
+          "id": "c",
+          "text": "In-place upgrade"
+        },
+        {
+          "id": "d",
+          "text": "Blue-green deployment"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Blue-green keeps a complete second environment that can be tested in private and then receives all traffic at once. A canary puts real customers on the new build from the start, a rolling update has no full spare copy, and an in-place upgrade changes the live system directly.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A retailer runs 12 identical web instances behind a balancer and cannot pay for a duplicate environment. The team plans to replace a few instances at a time until all run the new build, with no traffic percentages to tune. Which method is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rolling update"
+        },
+        {
+          "id": "b",
+          "text": "Blue-green deployment"
+        },
+        {
+          "id": "c",
+          "text": "Canary deployment"
+        },
+        {
+          "id": "d",
+          "text": "In-place upgrade"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A rolling update swaps instances in batches while the rest keep serving, so it needs no spare environment. Blue-green needs a full second pool, a canary depends on a traffic percentage, and an in-place upgrade on one host stops the service.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An internal wiki runs on a single server. The admin announces a Sunday maintenance window, stops the service, installs the new version over the old one and restarts it. Which delivery method is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rolling update"
+        },
+        {
+          "id": "b",
+          "text": "Blue-green deployment"
+        },
+        {
+          "id": "c",
+          "text": "In-place upgrade"
+        },
+        {
+          "id": "d",
+          "text": "Canary release"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "In-place means the new version replaces the old one on the same host, which causes a short outage. A rolling update needs several instances, blue-green needs a second environment, and a canary needs a traffic split.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A team runs a live pool and an idle pool that share one database. The idle pool receives a release whose migration drops the `legacy_phone` column, which the live code still reads. What happens when the migration runs before the cutover?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The idle pool fails to start because the column is missing"
+        },
+        {
+          "id": "b",
+          "text": "Both pools stay healthy because each keeps its own schema"
+        },
+        {
+          "id": "c",
+          "text": "The live pool fails on queries that use the column"
+        },
+        {
+          "id": "d",
+          "text": "The balancer blocks the migration until the cutover is done"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The database is shared, so dropping the column breaks the version that is still serving users. The new code does not read the column, the pools do not have separate schemas, and a balancer does not control migrations. The safe order is to add first and remove the old column only after the old pool is retired.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A canary rollout moves from 1 to 10 to 50 to 100 percent of traffic, with an error-rate and latency check between steps. What is the main benefit of ramping in steps?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A faulty build reaches few users before a check catches it"
+        },
+        {
+          "id": "b",
+          "text": "Each step builds and tests a separate copy of the application"
+        },
+        {
+          "id": "c",
+          "text": "The database no longer has to support two versions"
+        },
+        {
+          "id": "d",
+          "text": "Smoke tests are unnecessary once the ramp finishes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Small steps with a gate between them limit how many users a bad build can affect. The ramp does not build new copies, the database still sees two versions while it runs, and smoke tests remain useful after the last step.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A canary shows a p95 latency of 310 ms. Last week the service averaged 240 ms, so someone concludes the canary is slower. Which comparison is the most reliable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The canary against last week's daily average"
+        },
+        {
+          "id": "b",
+          "text": "The canary against the best latency ever recorded"
+        },
+        {
+          "id": "c",
+          "text": "The canary against yesterday's staging results"
+        },
+        {
+          "id": "d",
+          "text": "The canary against baseline instances serving traffic right now"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Load and traffic mix change by the hour, so the canary is judged against baseline instances handling the same traffic at the same time. Last week's average, a record best and a staging run all reflect different conditions.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After a blue-green cutover the metrics look healthy, and an engineer wants to delete the old pool at once to save money. What is the safer practice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete it now, since a rollback can rebuild it from scratch"
+        },
+        {
+          "id": "b",
+          "text": "Keep the old pool intact for a rollback window, then retire it"
+        },
+        {
+          "id": "c",
+          "text": "Upgrade it to the new release so both pools match"
+        },
+        {
+          "id": "d",
+          "text": "Route half of the traffic back to it so it stays warm and ready"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The untouched old pool is what makes the switch back instant, so it stays until the new release has proved itself. Deleting it removes that option, upgrading it removes the old version, and splitting traffic turns the cutover into a different method.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "During a rolling update of web instances, some users see dropped connections each time an instance is replaced. Which setting reduces this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raise the batch size so the whole update ends much sooner"
+        },
+        {
+          "id": "b",
+          "text": "Turn off the health check so new instances join faster"
+        },
+        {
+          "id": "c",
+          "text": "Replace the instance in place before taking it out of the rotation"
+        },
+        {
+          "id": "d",
+          "text": "Drain each instance so in-flight requests finish before it stops"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Draining stops new requests from reaching an instance and lets current ones complete before the stop. A larger batch removes more capacity at once, removing the health check lets unready instances take traffic, and replacing an instance still in rotation cuts live connections.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "During a rolling update an API changes its response field `total` to `amount`. The same client request sometimes returns `total` and sometimes `amount`. What explains this, and what avoids it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The cache is stale, so flush it after each request"
+        },
+        {
+          "id": "b",
+          "text": "Both versions answer during the rollout, so return both fields until it ends"
+        },
+        {
+          "id": "c",
+          "text": "The balancer is faulty, so restart it between batches"
+        },
+        {
+          "id": "d",
+          "text": "The clients are outdated, so force an upgrade before deploying"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "While the batches roll, old and new instances answer at the same time, so the change must work for both. Cache flushes and balancer restarts do not address mixed versions, and forcing clients to upgrade first does not help requests that arrive during the rollout.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-4-1-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A ticket seller expects ten times its normal traffic when a concert goes on sale. Which test shows whether the service holds up under that volume?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Regression testing"
+        },
+        {
+          "id": "b",
+          "text": "Integration testing"
+        },
+        {
+          "id": "c",
+          "text": "Load testing"
+        },
+        {
+          "id": "d",
+          "text": "Smoke testing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Load testing applies realistic or peak traffic and measures response time, throughput and errors. Regression tests check old behavior, integration tests check how components work together, and smoke tests are a short post-deploy check.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A developer changes the shared tax function. Which tests confirm that invoices, refunds and quotes that worked before still give the same results?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Regression tests"
+        },
+        {
+          "id": "b",
+          "text": "Load tests at peak traffic"
+        },
+        {
+          "id": "c",
+          "text": "Smoke tests after deploy"
+        },
+        {
+          "id": "d",
+          "text": "Penetration tests"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Regression tests rerun checks for behavior that already worked, to catch side effects of a change. Load tests measure capacity, smoke tests check the basics after a deploy, and penetration tests probe security rather than known results.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A service passes all its unit tests, which replace the database with a mock. In the shared test environment it cannot log in to the real database because the connection settings are wrong. Which test type finds this class of problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Integration testing"
+        },
+        {
+          "id": "b",
+          "text": "Load testing"
+        },
+        {
+          "id": "c",
+          "text": "Linting"
+        },
+        {
+          "id": "d",
+          "text": "Static analysis"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Integration tests run the service with its real dependencies, so wrong connection settings show up. Load tests look at capacity, and linting and static analysis read the code without running it against a database.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team runs its load test on a developer laptop against a database holding 200 rows. The results look excellent, yet production slows at peak. What should change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Lower the number of simulated users until the errors disappear from the report"
+        },
+        {
+          "id": "b",
+          "text": "Skip load tests and rely on unit test coverage"
+        },
+        {
+          "id": "c",
+          "text": "Run the test in a production-like environment with realistic data volume"
+        },
+        {
+          "id": "d",
+          "text": "Test only the login page because it is the simplest"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Load results only predict production when the hardware, configuration and data size resemble it. Lowering the users hides the problem, unit tests do not measure capacity, and one page does not represent the whole service.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An integration stage prints this result:\n```\nunit-tests ........ passed (214)\nintegration-tests:\n  test_create_order ..... passed\n  test_reserve_stock .... FAILED\n    inventory-svc answered 404 for /v1/stock/reserve\n```\nThe inventory team renamed the route to `/v2/stock/reserve` this week. What does the result most likely show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The order service has a logic error in its unit tests"
+        },
+        {
+          "id": "b",
+          "text": "The two services disagree on the path of the endpoint"
+        },
+        {
+          "id": "c",
+          "text": "The inventory server is overloaded by too many requests"
+        },
+        {
+          "id": "d",
+          "text": "The test database is missing its seed data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A 404 from the called service, together with a renamed route, points at an interface mismatch between the services, which is what integration tests exist to find. The unit tests passed, an overloaded server would answer with timeouts or 5xx codes, and missing seed data would not change the route.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A rounding bug in invoices was fixed in March and returned in June after a refactor. Which practice would have stopped it from coming back unnoticed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Running a full load test in staging after every refactor"
+        },
+        {
+          "id": "b",
+          "text": "Documenting the cause and the fix in the team wiki page"
+        },
+        {
+          "id": "c",
+          "text": "Adding a smoke test that loads the invoice page after deploy"
+        },
+        {
+          "id": "d",
+          "text": "Adding a test that reproduces the bug as part of the fix"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A test written with the fix fails if the bug returns, and the regression suite runs it on every change. A load test measures capacity, a wiki note does not run, and a smoke test checks that the page loads rather than that the rounding is right.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A load test of a search API reports:\n```\nusers  rps  p95_ms  errors\n50     100  120     0.0%\n100    200  140     0.1%\n150    290  210     0.2%\n200    310  1900    6.5%\n```\nWhere does the service pass its saturation point?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Between 50 and 100 users, where the first errors appear in the results table"
+        },
+        {
+          "id": "b",
+          "text": "Between 150 and 200 users, where throughput stalls and latency jumps"
+        },
+        {
+          "id": "c",
+          "text": "At 100 users, where the latency starts to rise above 120 ms"
+        },
+        {
+          "id": "d",
+          "text": "It does not saturate because throughput keeps growing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Throughput rises only from 290 to 310 requests per second while p95 latency leaps from 210 to 1900 ms and errors reach 6.5 percent, so the limit lies between 150 and 200 users. The earlier steps scale almost linearly, and throughput growth alone does not rule out saturation.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-4-1-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Integration tests pass when run alone but fail at random when two pipeline runs execute at the same time, because both write test orders to one shared database. Which fix is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Give each run its own disposable environment and database"
+        },
+        {
+          "id": "b",
+          "text": "Retry the failed job until it passes"
+        },
+        {
+          "id": "c",
+          "text": "Add a longer sleep before each test starts"
+        },
+        {
+          "id": "d",
+          "text": "Move the tests ahead of the unit tests"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Isolated, throwaway environments remove the interference between runs. Retrying hides the flaw, a sleep only changes the timing, and test order does not affect a shared database.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team wants the pipeline to fail automatically when a release makes the service slower under load. What must the load-test stage contain?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A reviewer who studies the load graph by hand after each release"
+        },
+        {
+          "id": "b",
+          "text": "A count of how many requests the tool sent"
+        },
+        {
+          "id": "c",
+          "text": "A timeout that marks the stage passed when it ends"
+        },
+        {
+          "id": "d",
+          "text": "A threshold on p95 latency that fails the stage when exceeded"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An explicit pass or fail threshold turns the measurement into a gate. Manual graph review is not automatic, a request count says nothing about speed, and marking the stage passed at a timeout would let slow releases through.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Right after a release deploys, the pipeline runs a short script that loads the home page, signs in with a test account and calls the health endpoint. What is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Load testing"
+        },
+        {
+          "id": "b",
+          "text": "Unit testing"
+        },
+        {
+          "id": "c",
+          "text": "Smoke testing"
+        },
+        {
+          "id": "d",
+          "text": "Regression testing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A smoke test is a quick check that the deployed build starts and its main paths work. Load testing measures capacity, unit tests exercise single functions before deployment, and regression testing is a broad check of earlier behavior.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "In a blue-green release the smoke tests against the idle pool return HTTP 503 from the new build. What should happen next?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Switch the traffic anyway and watch the dashboards for errors"
+        },
+        {
+          "id": "b",
+          "text": "Delete the live pool and rebuild it"
+        },
+        {
+          "id": "c",
+          "text": "Keep traffic on the live pool and investigate the new build"
+        },
+        {
+          "id": "d",
+          "text": "Mark the release as passed because the pool started"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The idle pool exists to be tested before users arrive, so a failed smoke test means the cutover does not happen. Switching anyway exposes users, deleting the live pool destroys the working version, and a running pool that returns 503 has not passed.",
+    "acronyms": [
+      "HTTP"
+    ]
+  },
+  {
+    "id": "at1-4-1-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A pipeline step runs this:\n```\ncurl --fail --silent --show-error https://shop.example.internal/health\necho \"exit code: $?\"\n```\nThe health endpoint answers with HTTP status 503. Which line does the step print last?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "exit code: 0"
+        },
+        {
+          "id": "b",
+          "text": "exit code: 6"
+        },
+        {
+          "id": "c",
+          "text": "exit code: 28"
+        },
+        {
+          "id": "d",
+          "text": "exit code: 22"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "With `--fail`, curl exits with code 22 when the server returns a status of 400 or higher. Without the flag the exit code would be 0, code 6 means the host name could not be resolved, and 28 means the operation timed out.",
+    "acronyms": [
+      "HTTP"
+    ]
+  },
+  {
+    "id": "at1-4-1-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Smoke tests passed at 14:05. By 15:30 the new release shows a slow rise in checkout errors, but only for customers who pay with saved cards. Which activity finds this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Post-deployment testing and monitoring in production"
+        },
+        {
+          "id": "b",
+          "text": "A second run of the same smoke test"
+        },
+        {
+          "id": "c",
+          "text": "The unit tests in the build stage"
+        },
+        {
+          "id": "d",
+          "text": "A load test run in staging last week"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Problems that appear under real usage over time are found by watching production after the release. The smoke test already passed and covers only a few paths, unit tests run before deployment, and an old staging load test does not see saved-card behavior.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "To check checkout continuously after a release, an SRE team schedules a script that buys a test item with a dedicated test account every five minutes and alerts on failure. What does this give the team that dashboards of real traffic alone do not?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A full replacement for all of the testing that happens before release"
+        },
+        {
+          "id": "b",
+          "text": "A signal that checkout is broken even when no real customer tries it"
+        },
+        {
+          "id": "c",
+          "text": "A measurement of how many users the service can hold"
+        },
+        {
+          "id": "d",
+          "text": "Proof that the code has no regressions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A scripted transaction exercises the path on a schedule, so quiet hours cannot hide a failure. It does not replace pre-release testing, it is not a capacity measurement, and a single path cannot prove the absence of regressions.",
+    "acronyms": [
+      "SRE"
+    ]
+  },
+  {
+    "id": "at1-4-1-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A critical payment bug is live on release 3.8.0. While the hotfix is in progress, a colleague proposes adding two small interface tweaks that are already merged to main. What is the better approach?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Include the tweaks too since the pipeline will run anyway for the fix"
+        },
+        {
+          "id": "b",
+          "text": "Delay the fix until the tweaks are reviewed"
+        },
+        {
+          "id": "c",
+          "text": "Include the tweaks if they pass the build"
+        },
+        {
+          "id": "d",
+          "text": "Ship only the fix and leave the tweaks for the normal release"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A hotfix carries the smallest possible change so that the risk and the testing needed stay small. Extra changes widen the risk, waiting leaves the bug live, and passing the build does not make the tweaks necessary for the fix.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Production has a security bug, and a manager asks an engineer to copy the patched file straight to the servers, skipping the pipeline to save time. What is the better hotfix practice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Copy the file now and add the tests next week"
+        },
+        {
+          "id": "b",
+          "text": "Copy the file to the servers and tag the repository afterward"
+        },
+        {
+          "id": "c",
+          "text": "Use an expedited pipeline run with only the essential checks"
+        },
+        {
+          "id": "d",
+          "text": "Wait for the next scheduled release window in two weeks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A hotfix is a fast path through the pipeline, not a way around it, so the change is still built, checked and recorded. Copying by hand loses that traceability, tagging afterward does not test anything, and waiting leaves the bug in production.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Production runs `2.4.0`, and main already holds `2.5.0-rc.1`. A critical bug fix is built from the production tag. Which version number should the hotfix release get under semantic versioning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`2.5.0`"
+        },
+        {
+          "id": "b",
+          "text": "`2.4.1`"
+        },
+        {
+          "id": "c",
+          "text": "`2.5.1`"
+        },
+        {
+          "id": "d",
+          "text": "`2.4.0-hotfix`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A backward-compatible bug fix on the line that is in production bumps the patch number, giving `2.4.1`. Versions `2.5.0` and `2.5.1` belong to the minor line still being prepared, and a hyphenated suffix marks a pre-release that sorts before `2.4.0`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A release deployed 20 minutes ago doubled the checkout error rate. The cause is unknown, the previous release is known to be good, and the release made no database changes. What is the fastest safe remediation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Roll back to the previous release, then investigate"
+        },
+        {
+          "id": "b",
+          "text": "Write a hotfix and deploy it once the cause is found"
+        },
+        {
+          "id": "c",
+          "text": "Add servers until the error rate falls"
+        },
+        {
+          "id": "d",
+          "text": "Wait for more data before taking action"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "With a known-good release and no schema change, a rollback restores service fastest, and the investigation can happen afterward. A hotfix needs a diagnosis first, extra servers do not fix errors from faulty code, and waiting prolongs the impact.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A production deploy fails its smoke test, and the pipeline must roll back automatically. Which approach gives the most dependable rollback?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Redeploy the previously built and tested artifact"
+        },
+        {
+          "id": "b",
+          "text": "Rebuild the previous commit from source and deploy that"
+        },
+        {
+          "id": "c",
+          "text": "Edit the files on the servers to undo the change"
+        },
+        {
+          "id": "d",
+          "text": "Redeploy the failed artifact with debug logging on"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The earlier artifact was already built and tested, so redeploying it restores exactly what ran before. A fresh build can differ through changed dependencies, hand edits on servers are untracked, and the failed artifact is still the faulty one.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A smoke test only checks that `/health` returns status 200. That endpoint answers `ok` as soon as the web process starts, and after a release users get errors because the app cannot reach its database. What change lets the smoke test catch this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increase the timeout on the existing check so it waits for the app"
+        },
+        {
+          "id": "b",
+          "text": "Make the health check query the database and fail when it cannot"
+        },
+        {
+          "id": "c",
+          "text": "Run the same check twice in a row before accepting the release"
+        },
+        {
+          "id": "d",
+          "text": "Check the process list on the server instead"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A check that exercises a real dependency fails when that dependency is unreachable. A longer timeout and a repeat run still pass against a process that has simply started, and a process list shows the same fact as before.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A smoke suite has grown to 45 minutes, and the team has started skipping it for hotfixes. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run it once per week instead of after each deployment"
+        },
+        {
+          "id": "b",
+          "text": "Move the full regression suite into it so coverage improves"
+        },
+        {
+          "id": "c",
+          "text": "Keep a few critical-path checks that finish in minutes"
+        },
+        {
+          "id": "d",
+          "text": "Merge it into the load-test stage so one run covers both"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A smoke test is valuable because it is quick, so it keeps only the few checks that show the release is basically alive and the deeper checks live elsewhere. A weekly run no longer follows deployments, adding regression tests makes it slower, and the load stage has a different purpose.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After a release, a dashboard shows latency rising, but nobody can tell whether the release caused it. Which monitoring practice helps most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Lower the alert thresholds so the alerts fire sooner after a release"
+        },
+        {
+          "id": "b",
+          "text": "Replace the live dashboards with a weekly spreadsheet report"
+        },
+        {
+          "id": "c",
+          "text": "Remove older metrics so the graph is clearer"
+        },
+        {
+          "id": "d",
+          "text": "Mark each deployment on the dashboards and compare before and after"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A marker for each deployment lets the team line up a change in the metrics with a release. Lower thresholds only create more alerts, a weekly sheet is slower, and deleting history removes the baseline needed for comparison.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are costs or risks of blue-green deployment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Paying for two full pools while both exist"
+        },
+        {
+          "id": "b",
+          "text": "Users running mixed versions for hours during the switch"
+        },
+        {
+          "id": "c",
+          "text": "The idle pool drifting from the live one if they are built differently"
+        },
+        {
+          "id": "d",
+          "text": "Downtime while the pool is stopped for the update"
+        },
+        {
+          "id": "e",
+          "text": "A rollback that needs a full reinstall of the old build"
+        },
+        {
+          "id": "f",
+          "text": "Traffic weights that must be tuned at each step"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Blue-green needs duplicate capacity and two pools that stay equivalent. The switch is a single step, so there is no long mixed-version window, there is no stop-and-update outage, rollback is a switch back, and traffic weights belong to a canary release.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO test types need the release candidate running in a production-like environment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Linting"
+        },
+        {
+          "id": "b",
+          "text": "Integration tests"
+        },
+        {
+          "id": "c",
+          "text": "Static code analysis"
+        },
+        {
+          "id": "d",
+          "text": "Load tests"
+        },
+        {
+          "id": "e",
+          "text": "Unit tests"
+        },
+        {
+          "id": "f",
+          "text": "A commit message check"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Integration tests need real dependencies and load tests need realistic hardware and data, so both run against a deployed candidate. Linting, static analysis and the commit message check read files, and unit tests exercise functions without the deployed system.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "A rolling update is replacing instances in batches. Which TWO observations justify halting before the next batch?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The updated instances fail the health check"
+        },
+        {
+          "id": "b",
+          "text": "Some requests are still served by old instances"
+        },
+        {
+          "id": "c",
+          "text": "Errors on updated instances are higher than on old ones"
+        },
+        {
+          "id": "d",
+          "text": "Each batch takes about as long as the previous one"
+        },
+        {
+          "id": "e",
+          "text": "The balancer lists both versions in rotation"
+        },
+        {
+          "id": "f",
+          "text": "Fewer instances are in service than a minute ago"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Failing health checks and a higher error rate on the new instances are signs the release is faulty. Old instances still serving, both versions in rotation, steady batch times and a temporary dip in capacity are all normal during a rolling update.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO changes call for running the regression suite before release?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A fix to the discount calculation"
+        },
+        {
+          "id": "b",
+          "text": "An update to the on-call rota"
+        },
+        {
+          "id": "c",
+          "text": "A new major version of a library the code depends on"
+        },
+        {
+          "id": "d",
+          "text": "A new dashboard added to monitoring"
+        },
+        {
+          "id": "e",
+          "text": "An edit to an office wiki page"
+        },
+        {
+          "id": "f",
+          "text": "A rename of a team chat channel"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Code and dependency changes can break behavior that worked before, so the regression suite reruns it. A rota, a dashboard, a wiki page and a channel name do not change the behavior of the application.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO measurements does a load test report?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Response-time percentiles such as p95"
+        },
+        {
+          "id": "b",
+          "text": "The number of unit tests that passed"
+        },
+        {
+          "id": "c",
+          "text": "Requests handled per second"
+        },
+        {
+          "id": "d",
+          "text": "Branch coverage of the code"
+        },
+        {
+          "id": "e",
+          "text": "Days since the last commit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Load tests measure how the running service responds under traffic, which shows up as latency percentiles and throughput. Unit test counts, coverage and commit age describe the code base rather than its behavior under load.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE methods can update a service with several instances behind a balancer without taking it offline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Blue-green deployment"
+        },
+        {
+          "id": "b",
+          "text": "Stopping every instance, replacing them, then starting them together"
+        },
+        {
+          "id": "c",
+          "text": "Canary release"
+        },
+        {
+          "id": "d",
+          "text": "Updating the only host after stopping its service"
+        },
+        {
+          "id": "e",
+          "text": "Rolling update"
+        },
+        {
+          "id": "f",
+          "text": "Unplugging the balancer during the update"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Blue-green, canary and rolling updates always leave part of the capacity serving while the new version arrives. Stopping everything, updating a single host in place and removing the balancer all leave users without service.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A team manages canary releases with the rollout tool whose help and status output are shown. Read the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ rolloutctl --help",
+        "usage: rolloutctl <command> [options]",
+        "commands:",
+        "  canary start <service> --version <ver> --weight <pct>",
+        "      send pct percent of traffic to ver, the rest stays on stable",
+        "  canary promote <service>",
+        "      move all traffic to the canary and make it the stable version",
+        "  canary abort <service>",
+        "      remove the canary and send all traffic back to stable",
+        "  status <service>",
+        "      show each version and its weight",
+        "$ rolloutctl status cart-api",
+        "service: cart-api",
+        "  stable v3.1.0  weight 90  errors 0.3 pct",
+        "  canary v3.2.0  weight 10  errors 4.8 pct",
+        "$ rolloutctl status search-api",
+        "service: search-api",
+        "  stable v7.0.2  weight 95  errors 0.4 pct",
+        "  canary v7.1.0  weight 5   errors 0.3 pct"
+      ],
+      "steps": [
+        {
+          "id": "start",
+          "label": "Type the command that starts a canary of version v1.9.0 for billing-api with 5 percent of traffic"
+        },
+        {
+          "id": "abort",
+          "label": "The cart-api canary has a far higher error rate than stable. Type the command that removes it and returns its traffic to stable"
+        },
+        {
+          "id": "promote",
+          "label": "The search-api canary matches stable and has served enough traffic. Type the command that makes v7.1.0 the stable version"
+        },
+        {
+          "id": "after",
+          "label": "Once the cart-api canary is removed, what will the status command show for cart-api?",
+          "options": [
+            {
+              "id": "o1",
+              "text": "stable v3.1.0 at weight 90 and canary v3.2.0 at weight 10"
+            },
+            {
+              "id": "o2",
+              "text": "stable v3.1.0 at weight 100 and no canary"
+            },
+            {
+              "id": "o3",
+              "text": "stable v3.2.0 at weight 100 and no canary"
+            },
+            {
+              "id": "o4",
+              "text": "stable v3.1.0 at weight 0 and canary v3.2.0 at weight 100"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "start": [
+          "rolloutctl canary start billing-api --version v1.9.0 --weight 5",
+          "rolloutctl canary start billing-api --weight 5 --version v1.9.0",
+          "rolloutctl canary start billing-api --version v1.9.0 --weight=5",
+          "rolloutctl canary start billing-api --weight=5 --version v1.9.0",
+          "rolloutctl canary start billing-api --version=v1.9.0 --weight 5",
+          "rolloutctl canary start billing-api --weight 5 --version=v1.9.0",
+          "rolloutctl canary start billing-api --version=v1.9.0 --weight=5",
+          "rolloutctl canary start billing-api --weight=5 --version=v1.9.0"
+        ],
+        "abort": [
+          "rolloutctl canary abort cart-api"
+        ],
+        "promote": [
+          "rolloutctl canary promote search-api"
+        ],
+        "after": [
+          "o2"
+        ]
+      }
+    },
+    "explanation": "The help text gives the exact forms: `canary start` takes a version and a weight, `canary abort` drops a canary and returns its traffic to stable, and `canary promote` makes the canary the stable version. cart-api shows 4.8 percent errors on the canary against 0.3 percent on stable, so it is aborted, while search-api is healthy and is promoted.",
+    "partExplanations": {
+      "start": "The start command takes the service, then --version and --weight with the values 1.9.0 and 5.",
+      "abort": "A canary with 4.8 percent errors against 0.3 percent on stable is removed with canary abort.",
+      "promote": "A healthy canary becomes the stable version with canary promote.",
+      "after": "Abort sends all traffic back to the unchanged stable version v3.1.0 and leaves no canary."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "The `orders-web` tier has 20 identical instances behind a balancer. The team cannot pay for a second environment, has no traffic-splitting rules, and requires at least 18 instances to keep serving during the update, which should finish as fast as that limit allows. Configure the rollout.",
+    "payload": {
+      "fields": [
+        {
+          "id": "strategy",
+          "label": "Delivery strategy",
+          "options": [
+            {
+              "id": "bg",
+              "text": "Blue-green"
+            },
+            {
+              "id": "rolling",
+              "text": "Rolling"
+            },
+            {
+              "id": "inplace",
+              "text": "In-place on all instances"
+            },
+            {
+              "id": "canary",
+              "text": "Canary"
+            }
+          ]
+        },
+        {
+          "id": "batch",
+          "label": "Instances replaced at once",
+          "options": [
+            {
+              "id": "10",
+              "text": "10"
+            },
+            {
+              "id": "5",
+              "text": "5"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "1",
+              "text": "1"
+            }
+          ]
+        },
+        {
+          "id": "gate",
+          "label": "Condition for starting the next batch",
+          "options": [
+            {
+              "id": "started",
+              "text": "The process has started on the new instance"
+            },
+            {
+              "id": "delay",
+              "text": "A fixed ten-second delay has passed"
+            },
+            {
+              "id": "none",
+              "text": "No condition, start the next batch at once"
+            },
+            {
+              "id": "health",
+              "text": "The health endpoint succeeds after warm-up"
+            }
+          ]
+        },
+        {
+          "id": "rollback",
+          "label": "Automatic rollback trigger",
+          "options": [
+            {
+              "id": "gatefail",
+              "text": "A batch fails its health condition"
+            },
+            {
+              "id": "lowtraffic",
+              "text": "Traffic is lower than yesterday"
+            },
+            {
+              "id": "hour",
+              "text": "The update has run for one hour"
+            },
+            {
+              "id": "ticket",
+              "text": "A user opens a support ticket"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "strategy": "rolling",
+        "batch": "2",
+        "gate": "health",
+        "rollback": "gatefail"
+      }
+    },
+    "explanation": "A rolling strategy fits a single pool with no spare environment and no traffic weights. Replacing 2 of 20 at a time keeps 18 serving, a health check gates each batch, and a failed gate triggers the rollback.",
+    "partExplanations": {
+      "strategy": "Rolling replaces instances in the existing pool; blue-green needs a second pool, canary needs traffic weights, and in-place on all instances causes downtime.",
+      "batch": "With 20 instances and at least 18 serving, 2 can be replaced at once; 5 and 10 break the limit and 1 works but is slower than the limit allows.",
+      "gate": "A successful health endpoint after warm-up shows the instance can serve; a started process, a delay or no condition do not.",
+      "rollback": "A failed health gate is a direct sign of a faulty build; traffic comparisons, elapsed time and tickets are not reliable triggers."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Put the steps of a hotfix for a bug in production into the order they happen. Rules: the fix is committed on the new branch; the pipeline builds only committed work; only a build that passed is tagged and deployed; the smoke tests check the deployed build; the merge into main comes last, once production is confirmed healthy.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Tag the passing build as the next patch version and deploy it to production"
+        },
+        {
+          "id": "s1",
+          "text": "Create a branch from the tag of the release running in production"
+        },
+        {
+          "id": "s6",
+          "text": "Merge the hotfix branch into main"
+        },
+        {
+          "id": "s3",
+          "text": "Run the expedited pipeline: build and the critical tests"
+        },
+        {
+          "id": "s2",
+          "text": "Commit the fix together with a test that reproduces the bug"
+        },
+        {
+          "id": "s5",
+          "text": "Run the smoke tests against production"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The hotfix starts from the code that runs in production, goes through a shortened pipeline, ships as a patch release, is verified in production and is merged back into main so the fix is not lost in the next release.",
+    "partExplanations": {
+      "0": "Branching from the production tag keeps unreleased work on main out of the fix.",
+      "1": "The fix and its test are committed on the hotfix branch, so the branch must exist first.",
+      "2": "The pipeline builds the committed work, so it runs after the commit.",
+      "3": "Only a build that passed its checks is tagged as a patch release and deployed.",
+      "4": "Smoke tests check the deployed build, so they follow the deployment.",
+      "5": "The merge back waits until production is confirmed healthy, as the rules state."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "pbqWeight": 5,
+    "stem": "Canary results are compared with the stable instances over the same period. Rules: roll back when the canary error rate is more than 1.0 point above stable or its p95 latency is more than 25 percent above stable; otherwise hold if the canary has served fewer than 1,000 requests; otherwise promote. Choose a decision for each release.",
+    "payload": {
+      "caption": "Canary against stable for five releases",
+      "columns": [
+        "Release",
+        "Requests",
+        "Errors stable (%)",
+        "Errors canary (%)",
+        "p95 stable (ms)",
+        "p95 canary (ms)"
+      ],
+      "rows": [
+        [
+          "cart-api v3.2.0",
+          "4200",
+          "0.4",
+          "0.5",
+          "180",
+          "190"
+        ],
+        [
+          "search-api v7.1.0",
+          "5000",
+          "0.3",
+          "1.6",
+          "220",
+          "230"
+        ],
+        [
+          "pay-api v2.0.0",
+          "600",
+          "0.2",
+          "0.2",
+          "150",
+          "155"
+        ],
+        [
+          "inventory-api v1.4.0",
+          "3000",
+          "0.5",
+          "0.9",
+          "100",
+          "130"
+        ],
+        [
+          "notify-api v5.0.1",
+          "2400",
+          "0.6",
+          "1.5",
+          "200",
+          "245"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "r1",
+          "label": "Decision for cart-api v3.2.0",
+          "options": [
+            {
+              "id": "hold",
+              "text": "Hold"
+            },
+            {
+              "id": "promote",
+              "text": "Promote"
+            },
+            {
+              "id": "rollback",
+              "text": "Roll back"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "label": "Decision for search-api v7.1.0",
+          "options": [
+            {
+              "id": "rollback",
+              "text": "Roll back"
+            },
+            {
+              "id": "hold",
+              "text": "Hold"
+            },
+            {
+              "id": "promote",
+              "text": "Promote"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "label": "Decision for pay-api v2.0.0",
+          "options": [
+            {
+              "id": "promote",
+              "text": "Promote"
+            },
+            {
+              "id": "rollback",
+              "text": "Roll back"
+            },
+            {
+              "id": "hold",
+              "text": "Hold"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "label": "Decision for inventory-api v1.4.0",
+          "options": [
+            {
+              "id": "hold",
+              "text": "Hold"
+            },
+            {
+              "id": "rollback",
+              "text": "Roll back"
+            },
+            {
+              "id": "promote",
+              "text": "Promote"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "label": "Decision for notify-api v5.0.1",
+          "options": [
+            {
+              "id": "promote",
+              "text": "Promote"
+            },
+            {
+              "id": "hold",
+              "text": "Hold"
+            },
+            {
+              "id": "rollback",
+              "text": "Roll back"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "r1": "promote",
+        "r2": "rollback",
+        "r3": "hold",
+        "r4": "rollback",
+        "r5": "promote"
+      }
+    },
+    "explanation": "Apply the rollback limits first, then the sample-size rule, then promote. Only search-api and inventory-api cross a limit.",
+    "partExplanations": {
+      "r1": "Errors are up 0.1 point and p95 is up 5.6 percent (190 against 180), both inside the limits, with 4,200 requests: promote.",
+      "r2": "Errors are up 1.3 points (1.6 against 0.3), above the 1.0 limit: roll back.",
+      "r3": "No limit is crossed, but 600 requests is under 1,000: hold.",
+      "r4": "Errors are up only 0.4 point, but p95 is up 30 percent (130 against 100), above the 25 percent limit: roll back.",
+      "r5": "Errors are up 0.9 point and p95 is up 22.5 percent (245 against 200), both inside the limits, with 2,400 requests: promote."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "This blue-green layout is ready for a cutover. Users reach the pools through one box, and both pools use the same data store. Place each component in the target area under its box.",
+    "payload": {
+      "width": 600,
+      "height": 270,
+      "nodes": [
+        {
+          "id": "n0",
+          "x": 10,
+          "y": 10,
+          "w": 130,
+          "h": 50,
+          "text": "Users"
+        },
+        {
+          "id": "n1",
+          "x": 235,
+          "y": 10,
+          "w": 130,
+          "h": 50
+        },
+        {
+          "id": "n2",
+          "x": 460,
+          "y": 10,
+          "w": 130,
+          "h": 50
+        },
+        {
+          "id": "n3",
+          "x": 20,
+          "y": 150,
+          "w": 130,
+          "h": 50
+        },
+        {
+          "id": "n4",
+          "x": 235,
+          "y": 150,
+          "w": 130,
+          "h": 50
+        },
+        {
+          "id": "n5",
+          "x": 450,
+          "y": 150,
+          "w": 130,
+          "h": 50
+        }
+      ],
+      "edges": [
+        {
+          "from": "n0",
+          "to": "n1"
+        },
+        {
+          "from": "n1",
+          "to": "n3"
+        },
+        {
+          "from": "n1",
+          "to": "n4"
+        },
+        {
+          "from": "n3",
+          "to": "n5"
+        },
+        {
+          "from": "n4",
+          "to": "n5"
+        },
+        {
+          "from": "n2",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-lb",
+          "x": 240,
+          "y": 70,
+          "name": "Switches traffic between pools"
+        },
+        {
+          "id": "z-runner",
+          "x": 465,
+          "y": 70,
+          "name": "Verifies the idle pool before the switch"
+        },
+        {
+          "id": "z-live",
+          "x": 25,
+          "y": 210,
+          "name": "Serves users right now"
+        },
+        {
+          "id": "z-idle",
+          "x": 240,
+          "y": 210,
+          "name": "Holds the new version, unseen by users"
+        },
+        {
+          "id": "z-db",
+          "x": 455,
+          "y": 210,
+          "name": "Used by both pools"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l-lb",
+          "text": "Load balancer"
+        },
+        {
+          "id": "l-runner",
+          "text": "Smoke test runner"
+        },
+        {
+          "id": "l-live",
+          "text": "Live pool"
+        },
+        {
+          "id": "l-idle",
+          "text": "Idle pool with new version"
+        },
+        {
+          "id": "l-db",
+          "text": "Shared database"
+        },
+        {
+          "id": "l-canary",
+          "text": "Canary pool"
+        },
+        {
+          "id": "l-load",
+          "text": "Load generator"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-lb": "l-lb",
+        "z-runner": "l-runner",
+        "z-live": "l-live",
+        "z-idle": "l-idle",
+        "z-db": "l-db"
+      }
+    },
+    "explanation": "Users reach a load balancer that points at one of two identical pools; both pools share a database, and a smoke test runner checks the idle pool before traffic is switched.",
+    "partExplanations": {
+      "z-lb": "The load balancer receives the users and decides which pool serves them, so it is the one box that connects to both pools.",
+      "z-runner": "The smoke test runner connects only to the idle pool, because it checks the new version before the switch.",
+      "z-live": "The live pool is the one serving users today.",
+      "z-idle": "The idle pool holds the new version and is unseen by users until the switch.",
+      "z-db": "Both pools read and write the shared database, which is why schema changes must suit both versions."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "A rollout file for a 12-instance service is shown with its lines in shuffled positions. Select every setting that lets a faulty release reach all instances and stay there.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "strategy: rolling"
+        },
+        {
+          "id": "n2",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "batch_size: 100%"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "health_check: none"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "drain_seconds: 30"
+        },
+        {
+          "id": "n5",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "rollback_on_failure: false"
+        },
+        {
+          "id": "n6",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "warmup_seconds: 60"
+        }
+      ],
+      "spots": [
+        {
+          "id": "strategy",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "strategy: rolling"
+        },
+        {
+          "id": "batch",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "batch_size: 100%"
+        },
+        {
+          "id": "health",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "health_check: none"
+        },
+        {
+          "id": "drain",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "drain_seconds: 30"
+        },
+        {
+          "id": "rollback",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "rollback_on_failure: false"
+        },
+        {
+          "id": "warm",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "warmup_seconds: 60"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "batch",
+        "health",
+        "rollback"
+      ]
+    },
+    "explanation": "A faulty release spreads when every instance is replaced together, when nothing checks the new instances and when a failure does not trigger a revert. Rolling, draining and warm-up are safe settings.",
+    "partExplanations": {
+      "batch": "A batch of 100 percent replaces every instance at once, so no healthy copy is left.",
+      "health": "With no health check, nothing stops the rollout from continuing past a broken build.",
+      "rollback": "With rollback off, a failed rollout stays in place until someone intervenes.",
+      "strategy": "A rolling strategy replaces instances in stages and is not the cause.",
+      "drain": "Draining lets in-flight requests finish and protects users.",
+      "warm": "A warm-up period keeps new instances out of rotation until they are ready."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Match each way of undoing a release to the delivery method it belongs to.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Undo it by setting the new version's traffic weight back to zero"
+        },
+        {
+          "id": "p2",
+          "text": "Undo it by pointing the router back at the previous pool"
+        },
+        {
+          "id": "p3",
+          "text": "Undo it by replacing the new instances with the old build, batch by batch"
+        },
+        {
+          "id": "p4",
+          "text": "Undo it by reinstalling the previous build over the one on the host"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Rolling update"
+        },
+        {
+          "id": "c2",
+          "text": "Canary release"
+        },
+        {
+          "id": "c3",
+          "text": "In-place upgrade"
+        },
+        {
+          "id": "c4",
+          "text": "Blue-green deployment"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c2",
+        "p2": "c4",
+        "p3": "c1",
+        "p4": "c3"
+      }
+    },
+    "explanation": "The rollback step follows from how each method moves traffic and versions, and it also shows how fast the undo is.",
+    "partExplanations": {
+      "p1": "A canary has a traffic weight, and setting it to zero removes the new version from the request path.",
+      "p2": "Blue-green keeps the old pool intact, so the router can simply point back at it.",
+      "p3": "A rolling update has no spare copy, so the old build is rolled out again across the instances.",
+      "p4": "An in-place upgrade overwrote the old build on the host, so it is reinstalled."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-1-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each finding by the kind of test that is designed to find it.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "load",
+          "text": "Load testing"
+        },
+        {
+          "id": "reg",
+          "text": "Regression testing"
+        },
+        {
+          "id": "int",
+          "text": "Integration testing"
+        },
+        {
+          "id": "smoke",
+          "text": "Smoke testing"
+        },
+        {
+          "id": "post",
+          "text": "Post-deployment testing"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Response times pass two seconds once 800 simulated users are active"
+        },
+        {
+          "id": "i2",
+          "text": "The discount field stopped working after an unrelated pricing change"
+        },
+        {
+          "id": "i3",
+          "text": "The orders service sends a date format that the billing service rejects"
+        },
+        {
+          "id": "i4",
+          "text": "Minutes after the deploy finished, the scripted sign-in on the new build fails"
+        },
+        {
+          "id": "i5",
+          "text": "Memory use on the new release climbs for two days in production until restart"
+        },
+        {
+          "id": "i6",
+          "text": "Database connections run out at 1,200 requests per second in the test environment"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "load",
+        "i2": "reg",
+        "i3": "int",
+        "i4": "smoke",
+        "i5": "post",
+        "i6": "load"
+      }
+    },
+    "explanation": "Each test type has a purpose: load tests find capacity limits, regression tests find broken old behavior, integration tests find mismatches between components, smoke tests give a quick verdict on a fresh deploy and post-deployment testing watches production over time.",
+    "partExplanations": {
+      "i1": "Slow responses at a given number of users are a capacity finding from load testing.",
+      "i2": "Something that worked before and broke after an unrelated change is a regression.",
+      "i3": "A format that one service sends and another rejects is an integration mismatch.",
+      "i4": "A scripted check that fails minutes after a deploy is a smoke test result.",
+      "i5": "A slow leak that only shows over days of real use is found by monitoring production.",
+      "i6": "Running out of connections at a request rate is a capacity limit from load testing."
+    },
+    "acronyms": []
+  }
+]

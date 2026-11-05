@@ -1,0 +1,2403 @@
+[
+  {
+    "id": "at1-4-2-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A status report says the customer portal had 99.95% uptime in September. What does that figure describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The share of requests that finished within the latency target"
+        },
+        {
+          "id": "b",
+          "text": "The share of the month that the portal was available to users"
+        },
+        {
+          "id": "c",
+          "text": "The average time taken to restore the portal after a failure"
+        },
+        {
+          "id": "d",
+          "text": "The share of the error budget that the team has not yet spent"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Uptime is the share of a period during which the service was available, so 99.95% for September means the portal was available for that share of the month. A latency result describes an indicator, the average time to restore describes mean time to repair, and the unspent share of the allowance is the error budget.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An SLO definition file contains the lines below, where the target is a percentage of time the service is available.\n```yaml\nname: portal-availability\ntarget: 99.9\nwindow: 30d\n```\nHow much downtime does this SLO allow in one window?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "4.32 minutes"
+        },
+        {
+          "id": "b",
+          "text": "7.2 hours"
+        },
+        {
+          "id": "c",
+          "text": "86.4 minutes"
+        },
+        {
+          "id": "d",
+          "text": "43.2 minutes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A 30-day window has 43,200 minutes, and the allowed share is 100% - 99.9% = 0.1%, so 0.1% of 43,200 is 43.2 minutes. 4.32 minutes would fit a 99.99% target, 7.2 hours would fit 99.0%, and 86.4 minutes would fit 99.8%.",
+    "acronyms": [
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team raises its availability target from 99.9% to 99.99% over the same period. How does the allowed downtime change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It drops to one tenth of the old allowance"
+        },
+        {
+          "id": "b",
+          "text": "It is cut in half"
+        },
+        {
+          "id": "c",
+          "text": "It drops by one percent"
+        },
+        {
+          "id": "d",
+          "text": "It drops to one hundredth of the old allowance"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Allowed downtime is 100% minus the target, so 0.1% becomes 0.01%, which is one tenth as much. Halving, a one-percent reduction and a hundredfold reduction do not match that change.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A provider's contract leaves announced maintenance out of its availability figure. A database upgrade runs in a 30-minute window that was announced a week earlier. How is that time treated?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "As unplanned downtime, because users could not reach the service"
+        },
+        {
+          "id": "b",
+          "text": "As a breach of the contract, which earns the customer a credit"
+        },
+        {
+          "id": "c",
+          "text": "As planned downtime, which the contract does not count against availability"
+        },
+        {
+          "id": "d",
+          "text": "As an incident, which starts an emergency review of the cause"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Announced maintenance is planned downtime, and this contract leaves it out of the availability figure. Calling it unplanned ignores the exclusion, a credit needs a miss of the figure that did not happen, and an announced window is not an incident that needs an emergency review.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A monitor checks a service once every 10 minutes and records the service as down only when a check fails. What is the main limit of measuring uptime this way?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Each failed check is counted twice, so uptime may be understated"
+        },
+        {
+          "id": "b",
+          "text": "Outages shorter than the interval can go unnoticed, so uptime may be overstated"
+        },
+        {
+          "id": "c",
+          "text": "The monitor cannot tell planned downtime from unplanned downtime"
+        },
+        {
+          "id": "d",
+          "text": "The monitor can measure host power but not whether pages load"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Checking every 10 minutes samples the service, so an outage that starts and ends between two checks is never recorded and uptime looks better than it was. Failed checks are counted once, planned work is classified from the maintenance calendar, and a check that requests a page tests the service, not host power.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team counts a minute as up when its health endpoint returns HTTP 200 within two seconds. For 15 minutes the host stays powered on but the endpoint returns HTTP 503. How are those minutes counted?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "As downtime, because requests failed"
+        },
+        {
+          "id": "b",
+          "text": "As uptime, because the host stayed powered on"
+        },
+        {
+          "id": "c",
+          "text": "As planned downtime, because the team already knew of the fault"
+        },
+        {
+          "id": "d",
+          "text": "As half uptime, because the process was still running"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The team defines an up minute by a correct, timely answer from the endpoint, so 15 minutes of HTTP 503 are downtime even though the host had power. Power state is not the test, nobody announced maintenance, and the rule gives no partial credit for a running process.",
+    "acronyms": [
+      "HTTP"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which statement best describes an SLO?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A signed promise to customers, with credits owed when it is missed"
+        },
+        {
+          "id": "b",
+          "text": "The raw measurement itself, such as the ratio of successful requests"
+        },
+        {
+          "id": "c",
+          "text": "The average time it takes to restore a service after a failure"
+        },
+        {
+          "id": "d",
+          "text": "An internal target for a measured indicator over a stated period"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An SLO is an internal target set on a measured indicator for a stated period. The signed promise with credits is an SLA, the raw measurement is the indicator itself, and the average restore time is mean time to repair.",
+    "acronyms": [
+      "SLA",
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team records the fraction of requests answered without error in each five-minute interval. It is only a measurement, with no target attached. What is it called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A service-level objective"
+        },
+        {
+          "id": "b",
+          "text": "A service-level agreement"
+        },
+        {
+          "id": "c",
+          "text": "A service-level indicator"
+        },
+        {
+          "id": "d",
+          "text": "An error budget"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A measurement of service behavior with no target attached is a service-level indicator. An objective adds a target to an indicator, an agreement is the contract with the customer, and an error budget is the allowed amount of failure that the target leaves.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A service has a 99.9% SLO over a 30-day window, which gives an error budget of 43.2 minutes. So far 28.8 minutes of downtime have counted. How much budget remains?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "14.4 minutes"
+        },
+        {
+          "id": "b",
+          "text": "28.8 minutes"
+        },
+        {
+          "id": "c",
+          "text": "72 minutes"
+        },
+        {
+          "id": "d",
+          "text": "4.32 minutes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Remaining budget is the allowance minus what has been used: 43.2 - 28.8 = 14.4 minutes. 28.8 is the amount already used, 72 adds the two figures instead of subtracting, and 4.32 is the allowance for a 99.99% target.",
+    "acronyms": [
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An API handles 2,000,000 requests in a window and has an SLO of 99.5% successful responses. What is the largest number of failed requests that still meets the SLO?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "100,000"
+        },
+        {
+          "id": "b",
+          "text": "1,990,000"
+        },
+        {
+          "id": "c",
+          "text": "200,000"
+        },
+        {
+          "id": "d",
+          "text": "10,000"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The allowed failure share is 100% - 99.5% = 0.5%, and 0.5% of 2,000,000 requests is 10,000. 100,000 uses 5%, 200,000 uses 10%, and 1,990,000 is the number of successful requests the target requires.",
+    "acronyms": [
+      "API",
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The error budget for the current window is fully spent, and the team's written policy covers this case. Which action does a typical policy call for?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raise the SLO target so that the budget resets at once"
+        },
+        {
+          "id": "b",
+          "text": "Pause risky releases and put reliability fixes first"
+        },
+        {
+          "id": "c",
+          "text": "Issue service credits to the customers on every plan"
+        },
+        {
+          "id": "d",
+          "text": "Stop measuring the indicator until the next window starts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A spent budget means reliability is below target, so a typical policy slows risky change and moves reliability work to the front. Raising the target does not restore the budget, credits belong to the SLA, and pausing measurement hides the problem.",
+    "acronyms": [
+      "SLA",
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A team has a 30-day window. At the current error rate, the whole error budget would be spent in 5 days. A burn rate of 1 would spend the budget exactly at the end of the window. What is the current burn rate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "5.0"
+        },
+        {
+          "id": "b",
+          "text": "25"
+        },
+        {
+          "id": "c",
+          "text": "6"
+        },
+        {
+          "id": "d",
+          "text": "150"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Burn rate compares the current pace with the sustainable pace, so spending 30 days of budget in 5 days is 30 / 5 = 6 times as fast. 5 is the number of days, 25 is the days left over, and 150 multiplies instead of dividing.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An on-call engineer is paged each time host CPU passes 80%, though customers see no problem. Which alert fits the team's SLO better?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Page when the error budget is burning fast enough to run out before the window ends"
+        },
+        {
+          "id": "b",
+          "text": "Page when a single request returns an error"
+        },
+        {
+          "id": "c",
+          "text": "Page when disk usage passes 50 percent"
+        },
+        {
+          "id": "d",
+          "text": "Page when the nightly backup takes longer than usual"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An alert on budget burn pages when users are being harmed fast enough to threaten the SLO. One failed request, a half-full disk and a slow backup say little about the objective, so those pages add noise.",
+    "acronyms": [
+      "CPU",
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which document gives a customer a formal, enforceable promise about service levels, with remedies when it is missed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An internal service-level objective"
+        },
+        {
+          "id": "b",
+          "text": "A service-level agreement"
+        },
+        {
+          "id": "c",
+          "text": "An error budget policy document"
+        },
+        {
+          "id": "d",
+          "text": "A post-incident review report"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A service-level agreement is the contract with the customer and names the remedies. An objective is an internal target, an error budget policy is an internal rule for using the budget, and a review is a learning exercise after an incident.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A provider's contract promises 99.9% monthly availability, while its engineers hold themselves to 99.95%. Why is the internal target set higher?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It lets the provider charge customers a higher price"
+        },
+        {
+          "id": "b",
+          "text": "It replaces the contract wherever the two figures differ"
+        },
+        {
+          "id": "c",
+          "text": "It removes the need to measure availability"
+        },
+        {
+          "id": "d",
+          "text": "It gives the team time to react to a slide before the contract is breached"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A stricter internal target raises a warning while the service is still inside the contractual figure, which leaves time to act. It has no effect on price, it does not replace the contract, and measurement is still needed to know where the service stands.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An SLA gives a 5% credit on the monthly fee for any month below 99.95% availability. The fee is $8,000 and the month measured 99.9%. What credit is owed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "$4,000"
+        },
+        {
+          "id": "b",
+          "text": "$1,600"
+        },
+        {
+          "id": "c",
+          "text": "$400"
+        },
+        {
+          "id": "d",
+          "text": "$7,600"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The month measured 99.9%, which is below 99.95%, so the credit applies: 5% of $8,000 is $400. $4,000 is 50% of the fee, $1,600 is 20%, and $7,600 is the fee left after the credit rather than the credit.",
+    "acronyms": [
+      "SLA"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An SLA excludes outages caused by the customer's own configuration. A customer's firewall rule blocks the service for two hours. How does the provider treat that time?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is excluded from the provider's downtime"
+        },
+        {
+          "id": "b",
+          "text": "It counts as downtime and earns a credit"
+        },
+        {
+          "id": "c",
+          "text": "It is split evenly between provider and customer"
+        },
+        {
+          "id": "d",
+          "text": "It counts as planned downtime on the status page"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The contract excludes outages the customer causes, so the two hours do not count as provider downtime. Counting them with a credit ignores the exclusion, no clause splits the time, and the outage was not announced maintenance.",
+    "acronyms": [
+      "SLA"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A provider's SLO is 99.95% and its SLA is 99.9%, both over a 30-day month. The month measures 99.93%. Which outcome is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Both were met"
+        },
+        {
+          "id": "b",
+          "text": "The SLO was missed, but the SLA was met"
+        },
+        {
+          "id": "c",
+          "text": "Both were missed"
+        },
+        {
+          "id": "d",
+          "text": "The SLA was missed, but the SLO was met"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The measured 99.93% is below the 99.95% objective but above the 99.9% contractual figure, so only the SLO was missed. Because the SLO is stricter than the SLA, the reverse outcome cannot occur, and neither \"both met\" nor \"both missed\" fits the numbers.",
+    "acronyms": [
+      "SLA",
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In incident reporting, what does MTTR, mean time to repair, measure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The average time that passes between one failure and the next"
+        },
+        {
+          "id": "b",
+          "text": "The share of the month the service was available"
+        },
+        {
+          "id": "c",
+          "text": "The share of the error budget that a failure consumed"
+        },
+        {
+          "id": "d",
+          "text": "Average time to restore service after a failure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Mean time to repair is the average time from the start of a failure to restored service. The average gap between failures is mean time between failures, the available share of the month is uptime, and the consumed share of the allowance is error budget burn.",
+    "acronyms": [
+      "MTTR"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Three outages in a month lasted 12, 30 and 18 minutes. What is the mean time to repair for the month?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "60 minutes"
+        },
+        {
+          "id": "b",
+          "text": "30 minutes"
+        },
+        {
+          "id": "c",
+          "text": "20 minutes"
+        },
+        {
+          "id": "d",
+          "text": "15 minutes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The mean is the total repair time divided by the number of outages: (12 + 30 + 18) / 3 = 60 / 3 = 20 minutes. 60 is the total, 30 is the longest outage, and 15 is not the mean of these figures.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team wants to cut its mean time to repair after failed releases. Which change does that most directly?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A one-step rollback the on-call engineer can run"
+        },
+        {
+          "id": "b",
+          "text": "More unit tests that must pass before each merge"
+        },
+        {
+          "id": "c",
+          "text": "Stricter review of every change before it merges"
+        },
+        {
+          "id": "d",
+          "text": "A longer retention period for the old build logs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A quick, documented rollback shortens the time from failure to restored service, which is what the mean time to repair measures. Tests and reviews aim to prevent failures, which raises the time between failures, and longer log retention does not speed up recovery.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does mean time between failures (MTBF) measure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The average time needed to fix a failure once it starts"
+        },
+        {
+          "id": "b",
+          "text": "The average operating time between two failures"
+        },
+        {
+          "id": "c",
+          "text": "The longest outage seen in the reporting period"
+        },
+        {
+          "id": "d",
+          "text": "The share of requests that fail in a window"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "MTBF is the average operating time between failures, so a higher value means failures are rarer. The time to fix a failure is mean time to repair, the longest outage is a single worst case, and the share of failed requests is an error rate.",
+    "acronyms": [
+      "MTBF"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A batch service ran 720 hours of operating time in a month and failed 3 times. Using operating time divided by failures, what is its MTBF?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "180 hours"
+        },
+        {
+          "id": "b",
+          "text": "720 hours"
+        },
+        {
+          "id": "c",
+          "text": "240 hours"
+        },
+        {
+          "id": "d",
+          "text": "2,160 hours"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "MTBF is operating time divided by the number of failures: 720 / 3 = 240 hours. 180 divides by 4, 720 ignores the failures, and 2,160 multiplies instead of dividing.",
+    "acronyms": [
+      "MTBF"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team adds a redundant component. Failures drop from six per quarter to two, and each failure still takes one hour to fix. Which statement is correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "MTBF fell and the mean time to repair fell"
+        },
+        {
+          "id": "b",
+          "text": "MTBF stayed the same and the mean time to repair fell"
+        },
+        {
+          "id": "c",
+          "text": "MTBF rose and the mean time to repair rose"
+        },
+        {
+          "id": "d",
+          "text": "MTBF rose and the mean time to repair stayed the same"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Fewer failures in the same period mean more operating time between them, so MTBF rose. Each fix still takes an hour, so the mean time to repair is unchanged; the other combinations contradict one of those two facts.",
+    "acronyms": [
+      "MTBF"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A service has an MTBF of 99 hours and a mean time to repair of 1 hour. Using availability = MTBF / (MTBF + MTTR), what availability does it have?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "98.5%"
+        },
+        {
+          "id": "b",
+          "text": "99%"
+        },
+        {
+          "id": "c",
+          "text": "99.9%"
+        },
+        {
+          "id": "d",
+          "text": "99.99%"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Availability is 99 / (99 + 1) = 99 / 100 = 99%. 99.9% and 99.99% would need an MTBF of 999 and 9,999 hours with the same repair time, and 98.5% does not follow from this formula.",
+    "acronyms": [
+      "MTBF",
+      "MTTR"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A checkout flow needs both a payment service and an inventory service to be up. Each is 99.9% available, and they fail independently. To the nearest tenth of a percent, what availability does the flow have?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "99.8%"
+        },
+        {
+          "id": "b",
+          "text": "99.9%"
+        },
+        {
+          "id": "c",
+          "text": "99.99%"
+        },
+        {
+          "id": "d",
+          "text": "99.0%"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "When both must be up, the availabilities multiply: 0.999 x 0.999 = 0.998001, which rounds to 99.8%. The flow cannot be as available as one part alone, 99.99% would need redundancy, and 99.0% is far lower than the product.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which description matches a feedback loop in service operations?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A single report sent to customers each month after the invoice"
+        },
+        {
+          "id": "b",
+          "text": "A test that runs once before a release and then stops"
+        },
+        {
+          "id": "c",
+          "text": "Monitoring and incident findings are turned into fixes that change the system and its checks"
+        },
+        {
+          "id": "d",
+          "text": "A contract clause that sets credits for missed targets"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A feedback loop sends what monitoring and incident reviews learn back into the backlog, the pipeline and the monitoring itself. A one-way customer report, a one-time test and a credit clause do not change the system.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An incident review ends with three agreed follow-ups: add a health check, tighten a timeout and update a runbook. Where should the team record them so they are tracked to completion?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "In the review notes on the wiki, with no further tracking"
+        },
+        {
+          "id": "b",
+          "text": "In the SLA, as new commitments to customers"
+        },
+        {
+          "id": "c",
+          "text": "In the alert rules, as comments beside each rule"
+        },
+        {
+          "id": "d",
+          "text": "In the team's backlog, each with an owner and a priority"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Follow-ups become work only when they are in the backlog with an owner and a priority, where they are planned and closed. Notes with no tracking get forgotten, the SLA is a customer contract, and comments in alert rules are not a work queue.",
+    "acronyms": [
+      "SLA"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The on-call rota reports that one alert fired 40 times last month and led to no action each time. What does a working feedback loop do with that information?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tunes or retires the alert to keep pages meaningful"
+        },
+        {
+          "id": "b",
+          "text": "Adds a second copy of the alert for the next on-call shift"
+        },
+        {
+          "id": "c",
+          "text": "Raises the alert volume so it gets noticed"
+        },
+        {
+          "id": "d",
+          "text": "Moves the alert into the customer contract"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Monitoring is part of the loop, so an alert that never leads to action is tuned or retired to protect the signal. Duplicating or amplifying it adds noise, and the contract has no place for internal alert rules.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A service has a 99.9% SLO over 30 days. With a week left, only 10% of the error budget has been used. Which use of the remaining budget fits the policy?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Freeze all releases until the next window starts"
+        },
+        {
+          "id": "b",
+          "text": "Ship the planned risky change, accepting a small chance of spending budget"
+        },
+        {
+          "id": "c",
+          "text": "Lower the SLO to the level the service actually reached"
+        },
+        {
+          "id": "d",
+          "text": "Raise the SLO now to match the unspent budget"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Unspent budget is room to take planned risk, so shipping the change is what the budget is for. Freezing releases is the response to a spent budget, and changing the target mid-window to match results defeats the purpose of having one.",
+    "acronyms": [
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An SLO uses a rolling 28-day window. A bad outage happened 29 days ago. How does it affect the error budget today?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It still counts until the end of the calendar month"
+        },
+        {
+          "id": "b",
+          "text": "It counts at half weight for a further 28 days"
+        },
+        {
+          "id": "c",
+          "text": "It no longer counts, since it fell outside the window"
+        },
+        {
+          "id": "d",
+          "text": "It counts until the SLA is renegotiated with customers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A rolling window always covers the most recent 28 days, so an outage 29 days old has aged out. Calendar-month accounting would keep it until month end, but this window does not, and neither half weighting nor contract renegotiation is part of the rule.",
+    "acronyms": [
+      "SLA",
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A search API averages 120 ms, yet some users wait several seconds. Which indicator reveals that problem?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mean latency across all requests in the window"
+        },
+        {
+          "id": "b",
+          "text": "Mean CPU use measured across all of the API hosts"
+        },
+        {
+          "id": "c",
+          "text": "The number of requests per second the API serves"
+        },
+        {
+          "id": "d",
+          "text": "The share of requests answered within 500 ms"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A ratio of requests that meet a latency threshold exposes the slow tail that an average hides. Mean latency is the figure that looks fine, CPU use describes the hosts rather than the users, and request volume says nothing about speed.",
+    "acronyms": [
+      "API",
+      "CPU"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO events count as unplanned downtime?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A memory leak crashes the application during business hours"
+        },
+        {
+          "id": "b",
+          "text": "A database upgrade runs in a maintenance window announced a week earlier"
+        },
+        {
+          "id": "c",
+          "text": "An expired certificate makes the site unreachable"
+        },
+        {
+          "id": "d",
+          "text": "A scheduled restart happens in the agreed overnight window"
+        },
+        {
+          "id": "e",
+          "text": "A release is paused while the team reviews the change"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A crash and an expired certificate both take the service away without notice, so they are unplanned downtime. The announced upgrade and the scheduled restart are planned downtime, and a paused release leaves the service running, so it is not downtime at all.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are valid ways to express an error budget?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Minutes of downtime allowed in the window"
+        },
+        {
+          "id": "b",
+          "text": "Failed requests allowed in the window"
+        },
+        {
+          "id": "c",
+          "text": "Percentage of fees credited to customers"
+        },
+        {
+          "id": "d",
+          "text": "Number of on-call shifts each engineer covers"
+        },
+        {
+          "id": "e",
+          "text": "Hours that pass between two failures"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "An error budget is the failure an SLO allows, which can be stated as minutes of downtime or as a count of failed requests. A fee credit belongs to an SLA, on-call shifts are staffing, and the time between failures is MTBF.",
+    "acronyms": [
+      "MTBF",
+      "SLA",
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO are reasons an incident review is blameless?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "People describe what happened candidly when they do not fear punishment"
+        },
+        {
+          "id": "b",
+          "text": "Most causes sit in the system and the process, which can be fixed"
+        },
+        {
+          "id": "c",
+          "text": "Nobody outside the team needs to hear the outcome"
+        },
+        {
+          "id": "d",
+          "text": "Follow-up actions become optional for the team"
+        },
+        {
+          "id": "e",
+          "text": "The timeline of events is left unrecorded"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "A blameless review gets honest accounts and points at causes in the system and process that the team can change. Keeping the outcome private, making actions optional and skipping the timeline would weaken what the review is for.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO measurement choices can make reported uptime look better than what customers experience?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Probing only from inside the provider's own network"
+        },
+        {
+          "id": "b",
+          "text": "Probing from several regions every minute"
+        },
+        {
+          "id": "c",
+          "text": "Counting a slow or error response as a failed check"
+        },
+        {
+          "id": "d",
+          "text": "Counting only a full outage, and not partial errors, as downtime"
+        },
+        {
+          "id": "e",
+          "text": "Publishing the method and the exclusions with the figure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Probes inside the provider network miss routing and access problems that customers see, and ignoring partial errors leaves real harm out of the figure. Multi-region probes, strict failure rules and a published method make the figure more honest, not better looking.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are reasons a 100% availability target is a poor choice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It leaves no error budget, so any failure or risky release breaks it"
+        },
+        {
+          "id": "b",
+          "text": "Hardware and dependencies can fail, so it cannot be guaranteed"
+        },
+        {
+          "id": "c",
+          "text": "It makes the SLA cheaper for the provider to run"
+        },
+        {
+          "id": "d",
+          "text": "It cannot be measured with a probe"
+        },
+        {
+          "id": "e",
+          "text": "It sets the mean time between failures to zero"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "A 100% target leaves no allowance for failure or change, and real hardware and dependencies do fail. It does not lower cost, a probe can check it, and it does not set MTBF to zero.",
+    "acronyms": [
+      "MTBF",
+      "SLA"
+    ]
+  },
+  {
+    "id": "at1-4-2-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Outages in a month lasted 8, 10, 12 and 270 minutes. Which TWO statements are correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The 270-minute outage pulls the mean time to repair up to 75 minutes"
+        },
+        {
+          "id": "b",
+          "text": "The median of 11 minutes shows a typical repair better than the mean"
+        },
+        {
+          "id": "c",
+          "text": "Each outage took about 75 minutes to repair"
+        },
+        {
+          "id": "d",
+          "text": "The long outage should be quietly removed from the report"
+        },
+        {
+          "id": "e",
+          "text": "The mean and the median must agree"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "The mean is (8 + 10 + 12 + 270) / 4 = 75 minutes, pulled up by one long outage, while the median is (10 + 12) / 2 = 11 minutes and describes a typical repair. No outage took about 75 minutes, deleting data hides the problem, and the two measures do not have to agree.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "The `svcstat` tool reports incidents and SLO status for services. Review the help text and the earlier report, then complete each step.",
+    "pbqWeight": 3,
+    "payload": {
+      "output": [
+        "$ svcstat --help",
+        "Usage: svcstat <command> <service> [--window <days>]",
+        "commands:",
+        "  incidents   list the incidents for a service",
+        "  slo         show the objective, the budget and what is left",
+        "options:",
+        "  --window <days>   look back this many days (default 30)",
+        "                    may also be written --window=<days>",
+        "$ svcstat slo ledger-api",
+        "service: ledger-api   window: 30 days   objective: 99.9% available",
+        "budget:  43.2 min     used: 51.0 min    left: -7.8 min"
+      ],
+      "steps": [
+        {
+          "id": "list",
+          "label": "Type the command that lists the incidents for payments-api over the last 7 days"
+        },
+        {
+          "id": "report",
+          "label": "Type the command that shows the objective report for cart-api over the default window"
+        },
+        {
+          "id": "meaning",
+          "label": "Choose what the earlier ledger-api report means",
+          "options": [
+            {
+              "id": "o1",
+              "text": "The objective was met, with 7.8 minutes of budget to spare"
+            },
+            {
+              "id": "o2",
+              "text": "The report is invalid, because a budget cannot be negative"
+            },
+            {
+              "id": "o3",
+              "text": "The objective was missed, because downtime ran 7.8 minutes past the budget"
+            },
+            {
+              "id": "o4",
+              "text": "The objective was met, because 51.0 minutes is below 99.9 minutes"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "list": [
+          "svcstat incidents payments-api --window 7",
+          "svcstat incidents payments-api --window=7",
+          "svcstat incidents --window 7 payments-api",
+          "svcstat incidents --window=7 payments-api"
+        ],
+        "report": [
+          "svcstat slo cart-api",
+          "svcstat slo cart-api --window 30",
+          "svcstat slo cart-api --window=30",
+          "svcstat slo --window 30 cart-api",
+          "svcstat slo --window=30 cart-api"
+        ],
+        "meaning": [
+          "o3"
+        ]
+      }
+    },
+    "explanation": "The tool takes a command, then the service, with an optional window in days. A 30-day window at 99.9% gives 43,200 x 0.1% = 43.2 minutes of budget, and 51.0 minutes of downtime overspends it by 7.8 minutes, so the objective was missed.",
+    "partExplanations": {
+      "list": "The incidents command takes the service and a window, so `svcstat incidents payments-api --window 7` lists the last 7 days.",
+      "report": "With no window given the default of 30 days applies, so `svcstat slo cart-api` is enough.",
+      "meaning": "A negative amount left means the budget was overspent by 7.8 minutes, so the objective was missed for this window."
+    },
+    "acronyms": [
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 3,
+    "stem": "The `orders-api` team sells a contract that promises 99.5% availability each month. Define its internal SLO: the indicator is the share of good requests, the target is tighter than the contract yet leaves room for releases, the window matches the contract month of 30 days, and the fast-burn page fires when the budget would be spent within two days.",
+    "pbqWeight": 4,
+    "payload": {
+      "fields": [
+        {
+          "id": "indicator",
+          "label": "Service-level indicator",
+          "options": [
+            {
+              "id": "cpu",
+              "text": "Average processor use across the API hosts"
+            },
+            {
+              "id": "good",
+              "text": "Share of requests answered without a server error"
+            },
+            {
+              "id": "releases",
+              "text": "Number of releases shipped each week"
+            }
+          ]
+        },
+        {
+          "id": "target",
+          "label": "Target for the indicator",
+          "options": [
+            {
+              "id": "t990",
+              "text": "99.0%"
+            },
+            {
+              "id": "t995",
+              "text": "99.5%"
+            },
+            {
+              "id": "t999",
+              "text": "99.9%"
+            },
+            {
+              "id": "t100",
+              "text": "100%"
+            }
+          ]
+        },
+        {
+          "id": "window",
+          "label": "Window for the budget",
+          "options": [
+            {
+              "id": "w30",
+              "text": "30 days"
+            },
+            {
+              "id": "w1",
+              "text": "1 day"
+            },
+            {
+              "id": "w90",
+              "text": "90 days"
+            }
+          ]
+        },
+        {
+          "id": "burn",
+          "label": "Page when the burn rate exceeds",
+          "options": [
+            {
+              "id": "b2",
+              "text": "2 times the sustainable rate"
+            },
+            {
+              "id": "b75",
+              "text": "7.5 times the sustainable rate"
+            },
+            {
+              "id": "b15",
+              "text": "15 times the sustainable rate"
+            },
+            {
+              "id": "b30",
+              "text": "30 times the sustainable rate"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "indicator": "good",
+        "target": "t999",
+        "window": "w30",
+        "burn": "b15"
+      }
+    },
+    "explanation": "The indicator counts good requests, the target sits above the 99.5% contract but below 100%, the window matches the contract month, and spending a 30-day budget in two days is a burn rate of 30 / 2 = 15.",
+    "partExplanations": {
+      "indicator": "Processor use and release counts do not measure what users receive; the share of good requests does.",
+      "target": "99.9% is tighter than the 99.5% contract and leaves a budget, while 99.0% is looser than the contract, 99.5% leaves no margin and 100% leaves no budget.",
+      "window": "The contract is monthly, so a 30-day window lines the budget up with it.",
+      "burn": "A 30-day budget spent in 2 days is 30 / 2 = 15 times the sustainable rate; 7.5 would take 4 days and 30 would take 1."
+    },
+    "acronyms": [
+      "API",
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "Put the steps that close the feedback loop after an incident into the order they happen. Rules: the service is restored before anyone starts the review; the review comes after recovery and before any work is planned; work is added to the backlog before it is built; and the fix is closed only after monitoring shows it working in production.",
+    "pbqWeight": 6,
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Add the agreed follow-up work to the backlog with an owner"
+        },
+        {
+          "id": "s6",
+          "text": "Close the item once monitoring shows the indicator healthy after release"
+        },
+        {
+          "id": "s2",
+          "text": "The on-call engineer restores service by rolling back the change"
+        },
+        {
+          "id": "s5",
+          "text": "Build the fix with a new automated check and release it through the pipeline"
+        },
+        {
+          "id": "s1",
+          "text": "Monitoring detects the burn and pages the on-call engineer"
+        },
+        {
+          "id": "s3",
+          "text": "The team holds a blameless review and finds the causes"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "Detection comes first, then restoration, then the review, then the backlog, then the pipeline release, and finally verification by monitoring. The rules fix each adjacent pair: restore before review, review before planning, plan before building, and verify before closing.",
+    "partExplanations": {
+      "0": "Nothing can be handled until monitoring detects the problem and pages someone.",
+      "1": "Restoring service comes before the review, as the rules say.",
+      "2": "The review follows recovery and comes before any work is planned.",
+      "3": "Follow-up work is added to the backlog before it is built.",
+      "4": "The fix and its new automated check go out through the pipeline.",
+      "5": "The item closes only after monitoring shows the fix working in production."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "stem": "Use the incident log for a 30-day month (720 hours, 43,200 minutes) to answer each question. MTBF here is the time the service was up divided by the number of failures, and the objective for the month is 99.5%.",
+    "pbqWeight": 4,
+    "payload": {
+      "caption": "Incidents for `orders-api` in one 30-day month (same-day start and end times)",
+      "columns": [
+        "Incident",
+        "Day",
+        "Start",
+        "End"
+      ],
+      "rows": [
+        [
+          "Incident 1",
+          "4",
+          "03:00",
+          "04:30"
+        ],
+        [
+          "Incident 2",
+          "13",
+          "13:15",
+          "15:45"
+        ],
+        [
+          "Incident 3",
+          "22",
+          "20:00",
+          "22:00"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "mttr",
+          "label": "Mean time to repair",
+          "options": [
+            {
+              "id": "m60",
+              "text": "60 minutes"
+            },
+            {
+              "id": "m360",
+              "text": "360 minutes"
+            },
+            {
+              "id": "m120",
+              "text": "120 minutes"
+            }
+          ]
+        },
+        {
+          "id": "mtbf",
+          "label": "Mean time between failures",
+          "options": [
+            {
+              "id": "f240",
+              "text": "240 hours"
+            },
+            {
+              "id": "f238",
+              "text": "238 hours"
+            },
+            {
+              "id": "f714",
+              "text": "714 hours"
+            }
+          ]
+        },
+        {
+          "id": "avail",
+          "label": "Availability for the month",
+          "options": [
+            {
+              "id": "a9917",
+              "text": "99.17%"
+            },
+            {
+              "id": "a9833",
+              "text": "98.33%"
+            },
+            {
+              "id": "a995",
+              "text": "99.50%"
+            }
+          ]
+        },
+        {
+          "id": "budget",
+          "label": "Share of the 99.5% error budget spent",
+          "options": [
+            {
+              "id": "p83",
+              "text": "83%"
+            },
+            {
+              "id": "p167",
+              "text": "167%"
+            },
+            {
+              "id": "p60",
+              "text": "60%"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "mttr": "m120",
+        "mtbf": "f238",
+        "avail": "a9917",
+        "budget": "p167"
+      }
+    },
+    "explanation": "The three outages lasted 90, 150 and 120 minutes, 360 minutes in all, so the service was up for 720 - 6 = 714 hours.",
+    "partExplanations": {
+      "mttr": "Mean time to repair is 360 minutes / 3 outages = 120 minutes.",
+      "mtbf": "MTBF is 714 hours up / 3 failures = 238 hours; 240 would wrongly divide the whole 720 hours.",
+      "avail": "Availability is 714 / 720 = 0.99167, or 99.17%.",
+      "budget": "A 99.5% objective allows 0.5% x 43,200 = 216 minutes, and 360 / 216 = 1.667, so about 167% of the budget is spent."
+    },
+    "acronyms": [
+      "MTBF"
+    ]
+  },
+  {
+    "id": "at1-4-2-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "A reliability loop runs left to right as drawn. Monitoring feeds step 1, and step 4 feeds new work back into the pipeline and then into monitoring. Place the item that fits each description in the target area under its step.",
+    "pbqWeight": 4,
+    "payload": {
+      "width": 600,
+      "height": 210,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Step 1"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Step 2"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Step 3"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Step 4"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Pages a human when budget burns fast"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Restores service and keeps a timeline"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Seeks causes without blame after recovery"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Holds ranked fixes for the pipeline"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Backlog"
+        },
+        {
+          "id": "l2",
+          "text": "Capacity purchase"
+        },
+        {
+          "id": "l3",
+          "text": "Alerting"
+        },
+        {
+          "id": "l4",
+          "text": "Incident review"
+        },
+        {
+          "id": "l5",
+          "text": "Contract renewal"
+        },
+        {
+          "id": "l6",
+          "text": "On-call response"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l3",
+        "z2": "l6",
+        "z3": "l4",
+        "z4": "l1"
+      }
+    },
+    "explanation": "Alerting turns monitoring data into a page, the on-call response restores service, the incident review finds causes after recovery, and the backlog holds the ranked fixes that go through the pipeline. A capacity purchase and a contract renewal are not steps of this loop.",
+    "partExplanations": {
+      "z1": "Alerting pages a person when the budget burns fast.",
+      "z2": "The on-call response restores service and records what happened.",
+      "z3": "The incident review looks for causes without blame once service is back.",
+      "z4": "The backlog holds the ranked fixes that flow into the pipeline."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-4-2-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "stem": "The clauses of a customer SLA are shown in shuffled positions. Select every clause that sets a service credit for the customer.",
+    "pbqWeight": 3,
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Below 99.5% monthly uptime: 10% fee credit"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Uptime is counted from one-minute probes"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Below 98.0% monthly uptime: 25% fee credit"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Announced maintenance does not count"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Below 95.0% monthly uptime: 50% fee credit"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Severity 1 tickets get a reply in 30 minutes"
+        }
+      ],
+      "spots": [
+        {
+          "id": "c1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Below 99.5% monthly uptime: 10% fee credit"
+        },
+        {
+          "id": "m1",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Uptime is counted from one-minute probes"
+        },
+        {
+          "id": "c2",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Below 98.0% monthly uptime: 25% fee credit"
+        },
+        {
+          "id": "m2",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Announced maintenance does not count"
+        },
+        {
+          "id": "c3",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Below 95.0% monthly uptime: 50% fee credit"
+        },
+        {
+          "id": "m3",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Severity 1 tickets get a reply in 30 minutes"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "c1",
+        "c2",
+        "c3"
+      ]
+    },
+    "explanation": "The three tiered clauses each name an availability level and the fee credit the customer receives. The other lines define how uptime is measured, what is excluded, and how fast support replies, none of which sets a credit.",
+    "partExplanations": {
+      "c1": "This tier names an uptime level and a 10% fee credit.",
+      "c2": "This tier names an uptime level and a 25% fee credit.",
+      "c3": "This tier names an uptime level and a 50% fee credit.",
+      "m1": "This line describes how uptime is measured, not a credit.",
+      "m2": "This line is an exclusion from the uptime figure, not a credit.",
+      "m3": "This line is a support response commitment, not a credit."
+    },
+    "acronyms": [
+      "SLA"
+    ]
+  },
+  {
+    "id": "at1-4-2-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each scenario to the service-level term it describes.",
+    "pbqWeight": 6,
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "The share of the month that customers could use the service, shown as a percentage"
+        },
+        {
+          "id": "p2",
+          "text": "An internal target of 99.95% that triggers a team review when missed"
+        },
+        {
+          "id": "p3",
+          "text": "A signed commitment to a customer that includes fee credits for a miss"
+        },
+        {
+          "id": "p4",
+          "text": "Average minutes from the start of an outage until service is restored"
+        },
+        {
+          "id": "p5",
+          "text": "Average hours of operation between one failure and the next"
+        },
+        {
+          "id": "p6",
+          "text": "Review findings that become backlog items and new pipeline checks"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "SLA"
+        },
+        {
+          "id": "c2",
+          "text": "Feedback loop"
+        },
+        {
+          "id": "c3",
+          "text": "MTBF"
+        },
+        {
+          "id": "c4",
+          "text": "Uptime"
+        },
+        {
+          "id": "c5",
+          "text": "MTTR"
+        },
+        {
+          "id": "c6",
+          "text": "SLO"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c4",
+        "p2": "c6",
+        "p3": "c1",
+        "p4": "c5",
+        "p5": "c3",
+        "p6": "c2"
+      }
+    },
+    "explanation": "Uptime is the available share of a period, an SLO is the internal target, an SLA is the customer contract with remedies, MTTR is the average repair time, MTBF is the average time between failures, and a feedback loop turns findings into fixes.",
+    "partExplanations": {
+      "p1": "The available share of a period, as a percentage, is uptime.",
+      "p2": "An internal target that prompts a team review is an SLO.",
+      "p3": "A signed commitment with fee credits is an SLA.",
+      "p4": "The average time from the start of an outage to restoration is MTTR, mean time to repair.",
+      "p5": "The average operating time between failures is MTBF.",
+      "p6": "Findings that flow back into the backlog and the pipeline form a feedback loop."
+    },
+    "acronyms": [
+      "MTBF",
+      "MTTR",
+      "SLA",
+      "SLO"
+    ]
+  },
+  {
+    "id": "at1-4-2-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "4.2"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "stem": "Sort each statement into the service-level term it describes.",
+    "pbqWeight": 6,
+    "payload": {
+      "buckets": [
+        {
+          "id": "sli",
+          "text": "Service-level indicator"
+        },
+        {
+          "id": "slo",
+          "text": "Service-level objective"
+        },
+        {
+          "id": "sla",
+          "text": "Service-level agreement"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Clause that credits 10% of fees below 99.9% uptime"
+        },
+        {
+          "id": "i2",
+          "text": "Share of probes answered within 300 ms in the last hour"
+        },
+        {
+          "id": "i3",
+          "text": "Team target that 99.95% of requests succeed over 30 days"
+        },
+        {
+          "id": "i4",
+          "text": "Failed requests divided by all valid requests in a window"
+        },
+        {
+          "id": "i5",
+          "text": "Written promise to the customer that the provider can be held to"
+        },
+        {
+          "id": "i6",
+          "text": "Internal line whose budget burn pages the on-call engineer"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "sla",
+        "i2": "sli",
+        "i3": "slo",
+        "i4": "sli",
+        "i5": "sla",
+        "i6": "slo"
+      }
+    },
+    "explanation": "An indicator is a measurement, an objective is an internal target set on an indicator, and an agreement is the customer contract with consequences.",
+    "partExplanations": {
+      "i1": "A fee credit in a clause is a contract remedy, so it belongs to the agreement.",
+      "i2": "A share of probes in the last hour is a measurement, with no target.",
+      "i3": "A team target for a share of requests over 30 days is an objective.",
+      "i4": "A ratio of failed to valid requests is a measurement.",
+      "i5": "A promise the provider can be held to by the customer is the agreement.",
+      "i6": "An internal line tied to budget burn and paging is an objective."
+    },
+    "acronyms": []
+  }
+]
