@@ -1017,7 +1017,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A checkout flow needs both a payment service and an inventory service to be up. Each is 99.9% available, and they fail independently. To the nearest tenth of a percent, what availability does the flow have?",
@@ -1056,7 +1056,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which description matches a feedback loop in service operations?",
@@ -1064,11 +1064,11 @@
       "options": [
         {
           "id": "a",
-          "text": "A single report sent to customers each month after the invoice"
+          "text": "A single report sent to customers each month, after the invoice is issued"
         },
         {
           "id": "b",
-          "text": "A test that runs once before a release and then stops"
+          "text": "A test that runs once before a release and then stops running for good"
         },
         {
           "id": "c",
@@ -1076,7 +1076,7 @@
         },
         {
           "id": "d",
-          "text": "A contract clause that sets credits for missed targets"
+          "text": "A contract clause that sets service credits for each missed target in a month"
         }
       ]
     },
@@ -1095,7 +1095,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An incident review ends with three agreed follow-ups: add a health check, tighten a timeout and update a runbook. Where should the team record them so they are tracked to completion?",
@@ -1136,10 +1136,10 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "The on-call rota reports that one alert fired 40 times last month and led to no action each time. What does a working feedback loop do with that information?",
+    "stem": "The on-call team reports that one alert fired 40 times last month and led to no action each time. What does a working feedback loop do with that information?",
     "payload": {
       "options": [
         {
@@ -1175,15 +1175,15 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A service has a 99.9% SLO over 30 days. With a week left, only 10% of the error budget has been used. Which use of the remaining budget fits the policy?",
+    "stem": "A service has a 99.9% SLO over 30 days. With a week left, only 10% of the error budget has been used. Which use of the remaining budget fits a typical error-budget policy?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Freeze all releases until the next window starts"
+          "text": "Freeze all releases until the next window starts, to protect the budget"
         },
         {
           "id": "b",
@@ -1191,11 +1191,11 @@
         },
         {
           "id": "c",
-          "text": "Lower the SLO to the level the service actually reached"
+          "text": "Lower the SLO to the level the service actually reached this window"
         },
         {
           "id": "d",
-          "text": "Raise the SLO now to match the unspent budget"
+          "text": "Raise the SLO now so that it matches the budget still unspent"
         }
       ]
     },
@@ -1216,7 +1216,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An SLO uses a rolling 28-day window. A bad outage happened 29 days ago. How does it affect the error budget today?",
@@ -1232,7 +1232,7 @@
         },
         {
           "id": "c",
-          "text": "It no longer counts, since it fell outside the window"
+          "text": "It no longer counts, since it has aged out of the measurement period"
         },
         {
           "id": "d",
@@ -1258,7 +1258,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A search API averages 120 ms, yet some users wait several seconds. Which indicator reveals that problem?",
@@ -1300,7 +1300,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO events count as unplanned downtime?",
@@ -1344,7 +1344,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are valid ways to express an error budget?",
@@ -1356,11 +1356,11 @@
         },
         {
           "id": "b",
-          "text": "Failed requests allowed in the window"
+          "text": "A number of failed requests the target tolerates"
         },
         {
           "id": "c",
-          "text": "Percentage of fees credited to customers"
+          "text": "Percentage of monthly fees credited to customers in the window"
         },
         {
           "id": "d",
@@ -1392,10 +1392,10 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
-    "stem": "Which TWO are reasons an incident review is blameless?",
+    "stem": "Which TWO are reasons to keep incident reviews blameless?",
     "payload": {
       "options": [
         {
@@ -1408,15 +1408,15 @@
         },
         {
           "id": "c",
-          "text": "Nobody outside the team needs to hear the outcome"
+          "text": "Nobody outside the team needs to hear the outcome of the review"
         },
         {
           "id": "d",
-          "text": "Follow-up actions become optional for the team"
+          "text": "Follow-up actions become optional once the review report is closed"
         },
         {
           "id": "e",
-          "text": "The timeline of events is left unrecorded"
+          "text": "The timeline of events is left out of the written record entirely"
         }
       ]
     },
@@ -1436,7 +1436,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO measurement choices can make reported uptime look better than what customers experience?",
@@ -1444,7 +1444,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Probing only from inside the provider's own network"
+          "text": "Probing from inside the provider's own network"
         },
         {
           "id": "b",
@@ -1456,7 +1456,7 @@
         },
         {
           "id": "d",
-          "text": "Counting only a full outage, and not partial errors, as downtime"
+          "text": "Counting full outages as downtime and ignoring partial errors"
         },
         {
           "id": "e",
@@ -1480,7 +1480,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are reasons a 100% availability target is a poor choice?",
@@ -1527,7 +1527,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Outages in a month lasted 8, 10, 12 and 270 minutes. Which TWO statements are correct?",
@@ -1571,7 +1571,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "stem": "The `svcstat` tool reports incidents and SLO status for services. Review the help text and the earlier report, then complete each step.",
@@ -1647,7 +1647,7 @@
     "partExplanations": {
       "list": "The incidents command takes the service and a window, so `svcstat incidents payments-api --window 7` lists the last 7 days.",
       "report": "With no window given the default of 30 days applies, so `svcstat slo cart-api` is enough.",
-      "meaning": "A negative amount left means the budget was overspent by 7.8 minutes, so the objective was missed for this window."
+      "meaning": "A negative amount left means the budget was overspent by 7.8 minutes, so the objective was missed for this window. Reading it as 7.8 minutes to spare misses the minus sign, a negative figure is a real overspend rather than a bad report, and 99.9 is a percentage, not a number of minutes."
     },
     "acronyms": [
       "SLO"
@@ -1660,10 +1660,10 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 3,
-    "stem": "The `orders-api` team sells a contract that promises 99.5% availability each month. Define its internal SLO: the indicator is the share of good requests, the target is tighter than the contract yet leaves room for releases, the window matches the contract month of 30 days, and the fast-burn page fires when the budget would be spent within two days.",
+    "stem": "The `orders-api` team sells a contract that promises 99.5% availability each month. Define its internal SLO. The indicator must reflect what users receive, and the target is tighter than the contract yet leaves room for releases. The budget window lines up with the contract's monthly period, and the fast-burn page fires when the budget would be spent within two days.",
     "pbqWeight": 4,
     "payload": {
       "fields": [
@@ -1761,8 +1761,8 @@
     "partExplanations": {
       "indicator": "Processor use and release counts do not measure what users receive; the share of good requests does.",
       "target": "99.9% is tighter than the 99.5% contract and leaves a budget, while 99.0% is looser than the contract, 99.5% leaves no margin and 100% leaves no budget.",
-      "window": "The contract is monthly, so a 30-day window lines the budget up with it.",
-      "burn": "A 30-day budget spent in 2 days is 30 / 2 = 15 times the sustainable rate; 7.5 would take 4 days and 30 would take 1."
+      "window": "The contract is monthly, so a 30-day window lines the budget up with it. A 1-day window does not match the contract, and 90 days spans three contract months.",
+      "burn": "A 30-day budget spent in 2 days is 30 / 2 = 15 times the sustainable rate; 7.5 would take 4 days, 30 would take 1, and 2 would take 15 days, far too slow to page within two days."
     },
     "acronyms": [
       "API",
@@ -1776,10 +1776,10 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
-    "stem": "Put the steps that close the feedback loop after an incident into the order they happen. Rules: the service is restored before anyone starts the review; the review comes after recovery and before any work is planned; work is added to the backlog before it is built; and the fix is closed only after monitoring shows it working in production.",
+    "stem": "Put the steps that close the feedback loop after an incident into the order they happen. Rules: the on-call engineer is paged before anyone restores service; the service is restored before anyone starts the review; the review comes after recovery and before any work is planned; work is added to the backlog before it is built; and the fix is closed only after monitoring shows it working in production.",
     "pbqWeight": 6,
     "payload": {
       "steps": [
@@ -1819,9 +1819,9 @@
         "s6"
       ]
     },
-    "explanation": "Detection comes first, then restoration, then the review, then the backlog, then the pipeline release, and finally verification by monitoring. The rules fix each adjacent pair: restore before review, review before planning, plan before building, and verify before closing.",
+    "explanation": "Detection comes first, then restoration, then the review, then the backlog, then the pipeline release, and finally verification by monitoring. The rules fix each adjacent pair: page before restore, restore before review, review before planning, plan before building, and verify before closing.",
     "partExplanations": {
-      "0": "Nothing can be handled until monitoring detects the problem and pages someone.",
+      "0": "Monitoring detects the problem and pages the on-call engineer before anyone can restore service, as the rules say.",
       "1": "Restoring service comes before the review, as the rules say.",
       "2": "The review follows recovery and comes before any work is planned.",
       "3": "Follow-up work is added to the backlog before it is built.",
@@ -1837,13 +1837,13 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 3,
     "stem": "Use the incident log for a 30-day month (720 hours, 43,200 minutes) to answer each question. MTBF here is the time the service was up divided by the number of failures, and the objective for the month is 99.5%.",
     "pbqWeight": 4,
     "payload": {
-      "caption": "Incidents for `orders-api` in one 30-day month (same-day start and end times)",
+      "caption": "Incidents for orders-api in one 30-day month (same-day start and end times)",
       "columns": [
         "Incident",
         "Day",
@@ -1955,10 +1955,10 @@
     },
     "explanation": "The three outages lasted 90, 150 and 120 minutes, 360 minutes in all, so the service was up for 720 - 6 = 714 hours.",
     "partExplanations": {
-      "mttr": "Mean time to repair is 360 minutes / 3 outages = 120 minutes.",
-      "mtbf": "MTBF is 714 hours up / 3 failures = 238 hours; 240 would wrongly divide the whole 720 hours.",
-      "avail": "Availability is 714 / 720 = 0.99167, or 99.17%.",
-      "budget": "A 99.5% objective allows 0.5% x 43,200 = 216 minutes, and 360 / 216 = 1.667, so about 167% of the budget is spent."
+      "mttr": "Mean time to repair is 360 minutes / 3 outages = 120 minutes. 360 is the total outage time, not the mean, and no outage was as short as 60 minutes.",
+      "mtbf": "MTBF is 714 hours up / 3 failures = 238 hours; 240 would wrongly divide the whole 720 hours, and 714 is the total time up, not the time between failures.",
+      "avail": "Availability is 714 / 720 = 0.99167, or 99.17%. 99.50% is the objective, not the measured figure, and 98.33% would need 12 hours of downtime, not 6.",
+      "budget": "A 99.5% objective allows 0.5% x 43,200 = 216 minutes, and 360 / 216 = 1.667, so about 167% of the budget is spent. 60% turns the ratio upside down (216 / 360), and 83% would fit the 432-minute budget of a 99.0% objective."
     },
     "acronyms": [
       "MTBF"
@@ -1971,10 +1971,10 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
-    "stem": "A reliability loop runs left to right as drawn. Monitoring feeds step 1, and step 4 feeds new work back into the pipeline and then into monitoring. Place the item that fits each description in the target area under its step.",
+    "stem": "A reliability loop runs left to right through four steps. Step 1 takes in monitoring data, and step 4 sends new work back toward the pipeline. Place the item that fits each description in the target area under its step.",
     "pbqWeight": 4,
     "payload": {
       "width": 600,
@@ -2104,7 +2104,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
     "stem": "The clauses of a customer SLA are shown in shuffled positions. Select every clause that sets a service credit for the customer.",
@@ -2240,10 +2240,10 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
-    "stem": "Match each scenario to the service-level term it describes.",
+    "stem": "Match each description to the term it defines.",
     "pbqWeight": 6,
     "payload": {
       "prompts": [
@@ -2332,7 +2332,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 2,
     "stem": "Sort each statement into the service-level term it describes.",
@@ -2375,7 +2375,7 @@
         },
         {
           "id": "i6",
-          "text": "Internal line whose budget burn pages the on-call engineer"
+          "text": "Internal target that pages on-call when its budget burns fast"
         }
       ]
     },
@@ -2396,7 +2396,7 @@
       "i3": "A team target for a share of requests over 30 days is an objective.",
       "i4": "A ratio of failed to valid requests is a measurement.",
       "i5": "A promise the provider can be held to by the customer is the agreement.",
-      "i6": "An internal line tied to budget burn and paging is an objective."
+      "i6": "An internal target whose budget burn pages the on-call engineer is an objective."
     },
     "acronyms": []
   }
