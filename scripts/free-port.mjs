@@ -5,18 +5,38 @@ import process from 'node:process';
 
 const preferred = Number(process.argv[2] ?? 0);
 
-function tryListen(port) {
+// Resolves to the bound port, or null if `host` cannot take `port` (in use, or no such address here).
+function tryListen(port, host) {
   return new Promise((resolve) => {
     const srv = net.createServer();
-    srv.once('error', () => resolve(null));
-    // No host: listen on all addresses, as vite preview does, so a server on any of them counts as taken.
-    srv.listen(port, () => {
+    srv.once('error', (err) => resolve(err.code === 'EADDRNOTAVAIL' || err.code === 'EAFNOSUPPORT' ? 'none' : null));
+    srv.listen(port, host, () => {
       const { port: got } = srv.address();
       srv.close(() => resolve(got));
     });
   });
 }
 
-const port = (preferred && (await tryListen(preferred))) || (await tryListen(0));
+// A port is free only if every address can take it. On Windows a listen on all addresses
+// succeeds beside another app's listen on one loopback address, and vite preview listens on
+// `localhost` (either loopback address), so each one is checked on its own.
+const HOSTS = ['127.0.0.1', '::1', '0.0.0.0', '::'];
+
+async function isFree(port) {
+  for (const host of HOSTS) if ((await tryListen(port, host)) === null) return false;
+  return true;
+}
+
+async function pick() {
+  if (preferred && (await isFree(preferred))) return preferred;
+  for (let i = 0; i < 20; i++) {
+    const port = await tryListen(0, '::');
+    const got = typeof port === 'number' ? port : await tryListen(0, '0.0.0.0');
+    if (typeof got === 'number' && (await isFree(got))) return got;
+  }
+  return null;
+}
+
+const port = await pick();
 if (!port) process.exit(1);
 process.stdout.write(String(port));
