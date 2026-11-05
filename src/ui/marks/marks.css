@@ -1,0 +1,53 @@
+/* Answer marks (issue #10). Colours are the --mark-* tokens in src/index.css. */
+.mark-right { --m: var(--mark-ok); --m-bg: var(--mark-ok-bg); --m-on: var(--mark-on-ok); }
+.mark-partly { --m: var(--mark-warn); --m-bg: var(--mark-warn-bg); --m-on: var(--mark-on-warn); }
+.mark-wrong { --m: var(--mark-bad); --m-bg: var(--mark-bad-bg); --m-on: var(--mark-on-bad); }
+
+.mark { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; max-width: 100%; box-sizing: border-box; margin: 0.25rem 0 0.75rem; font-weight: 700; font-size: 1.125rem; color: var(--m); }
+.mark-word { min-width: 0; }
+.mark-icon { flex: none; width: 2rem; height: 2rem; }
+.mark-glyph { fill: none; stroke: var(--m-on); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; }
+.mark-stroke { fill: none; stroke: currentColor; stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
+
+/* 1. Check and X banner */
+.mark-banner { padding: 0.6rem 0.9rem; background: var(--m-bg); border: 2px solid var(--m); border-radius: 0.5rem; }
+
+/* 2. Smiley and frowny: the face above friendly words */
+.mark-smiley { flex-direction: column; align-items: flex-start; gap: 0.25rem; }
+.mark-smiley .mark-icon { width: 2.75rem; height: 2.75rem; }
+.mark-face { fill: var(--mark-face); stroke: currentColor; stroke-width: 3; }
+.mark-face-dot { fill: var(--mark-face-fg); }
+.mark-face-line { fill: none; stroke: var(--mark-face-fg); stroke-width: 3; stroke-linecap: round; }
+
+/* 3. Thumbs: a solid block */
+.mark-thumbs { padding: 0.6rem 0.9rem; background: var(--m); color: var(--m-on); border-radius: 0.5rem; }
+.mark-thumbs .mark-icon { width: 1.75rem; height: 1.75rem; }
+
+/* 4. Grader's stamp */
+.mark-stamp { display: inline-flex; padding: 0.3rem 0.8rem; border: 3px double var(--m); border-radius: 0.3rem; font-family: Georgia, 'Times New Roman', serif; text-transform: uppercase; letter-spacing: 0.08em; transform: rotate(-4deg); transform-origin: left center; margin-left: 0.25rem; }
+
+/* 5. Circle, triangle, cross */
+.mark-shapes .mark-icon { width: 2.5rem; height: 2.5rem; }
+
+/* 6. Quiet edge */
+.mark-edge { padding: 0.25rem 0 0.25rem 0.75rem; border-left: 6px solid var(--m); gap: 0.4rem; }
+.mark-edge .mark-icon { width: 1.25rem; height: 1.25rem; }
+.mark-edge .mark-stroke { stroke-width: 2.5; }
+
+/* 7. Plain text: today's look */
+.mark-plain { color: var(--fg); font-size: 1rem; }
+
+/* Small marks in table cells: icon at text size plus the plain word. */
+.mark-small { display: inline-flex; align-items: center; gap: 0.3em; color: var(--m); font-weight: 700; }
+.mark-small .mark-icon { width: 1em; height: 1em; }
+.mark-small-thumbs .mark-icon, .mark-small-edge .mark-icon { color: var(--m); }
+.mark-small-plain { color: inherit; font-weight: inherit; }
+
+/* Pop-in; the global Reduce motion rules switch it off. */
+.mark-pop { animation: mark-pop 200ms ease-out; }
+.mark-stamp.mark-pop { animation-name: mark-thunk; animation-duration: 240ms; }
+@keyframes mark-pop { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: none; } }
+@keyframes mark-thunk { from { opacity: 0; transform: rotate(-4deg) scale(1.35); } 70% { opacity: 1; transform: rotate(-4deg) scale(0.96); } to { transform: rotate(-4deg); } }
+
+/* Settings previews never animate. */
+.mark-preview .mark { animation: none; margin: 0; font-size: 1rem; }
