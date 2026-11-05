@@ -23,6 +23,18 @@
   --flag-on-fg: #1f2d3d;
   --kofi: #72a4f2;
   --kofi-fg: #0b1a33;
+  /* Answer marks (issue #10): text/icon, banner tint, text on a solid block; smiley face. */
+  --mark-ok: #1b5e20;
+  --mark-ok-bg: #e8f5e9;
+  --mark-on-ok: #ffffff;
+  --mark-warn: #7a4f00;
+  --mark-warn-bg: #fff4e0;
+  --mark-on-warn: #ffffff;
+  --mark-bad: #b71c1c;
+  --mark-bad-bg: #fdecea;
+  --mark-on-bad: #ffffff;
+  --mark-face: #fdd835;
+  --mark-face-fg: #1a1a1a;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -45,6 +57,17 @@
     --bar: #81c995;
     --chart: #8ab4f8;
     --topbar-bg: #0b1520;
+    --mark-ok: #81c995;
+    --mark-ok-bg: #12301c;
+    --mark-on-ok: #0b1a33;
+    --mark-warn: #e0a030;
+    --mark-warn-bg: #33250a;
+    --mark-on-warn: #0b1a33;
+    --mark-bad: #f28b82;
+    --mark-bad-bg: #3d1715;
+    --mark-on-bad: #0b1a33;
+    --mark-face: #fdd835;
+    --mark-face-fg: #1a1a1a;
   }
 }
 
@@ -67,6 +90,17 @@
   --bar: #81c995;
   --chart: #8ab4f8;
   --topbar-bg: #0b1520;
+  --mark-ok: #81c995;
+  --mark-ok-bg: #12301c;
+  --mark-on-ok: #0b1a33;
+  --mark-warn: #e0a030;
+  --mark-warn-bg: #33250a;
+  --mark-on-warn: #0b1a33;
+  --mark-bad: #f28b82;
+  --mark-bad-bg: #3d1715;
+  --mark-on-bad: #0b1a33;
+  --mark-face: #fdd835;
+  --mark-face-fg: #1a1a1a;
 }
 
 /* Reduced motion: the OS setting or the in-app option. */
