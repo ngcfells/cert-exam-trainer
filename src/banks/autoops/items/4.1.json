@@ -398,7 +398,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A ticket seller expects ten times its normal traffic when a concert goes on sale. Which test shows whether the service holds up under that volume?",
@@ -437,7 +437,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A developer changes the shared tax function. Which tests confirm that invoices, refunds and quotes that worked before still give the same results?",
@@ -476,7 +476,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A service passes all its unit tests, which replace the database with a mock. In the shared test environment it cannot log in to the real database because the connection settings are wrong. Which test type finds this class of problem?",
@@ -515,7 +515,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team runs its load test on a developer laptop against a database holding 200 rows. The results look excellent, yet production slows at peak. What should change?",
@@ -535,7 +535,7 @@
         },
         {
           "id": "d",
-          "text": "Test only the login page because it is the simplest"
+          "text": "Test only the login page of the production site because it is the simplest"
         }
       ]
     },
@@ -554,7 +554,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An integration stage prints this result:\n```\nunit-tests ........ passed (214)\nintegration-tests:\n  test_create_order ..... passed\n  test_reserve_stock .... FAILED\n    inventory-svc answered 404 for /v1/stock/reserve\n```\nThe inventory team renamed the route to `/v2/stock/reserve` this week. What does the result most likely show?",
@@ -593,7 +593,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A rounding bug in invoices was fixed in March and returned in June after a refactor. Which practice would have stopped it from coming back unnoticed?",
@@ -613,7 +613,7 @@
         },
         {
           "id": "d",
-          "text": "Adding a test that reproduces the bug as part of the fix"
+          "text": "Adding a test that reproduces the failure as part of the fix"
         }
       ]
     },
@@ -632,7 +632,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A load test of a search API reports:\n```\nusers  rps  p95_ms  errors\n50     100  120     0.0%\n100    200  140     0.1%\n150    290  210     0.2%\n200    310  1900    6.5%\n```\nWhere does the service pass its saturation point?",
@@ -661,7 +661,7 @@
         "b"
       ]
     },
-    "explanation": "Throughput rises only from 290 to 310 requests per second while p95 latency leaps from 210 to 1900 ms and errors reach 6.5 percent, so the limit lies between 150 and 200 users. The earlier steps scale almost linearly, and throughput growth alone does not rule out saturation.",
+    "explanation": "Throughput rises only from 290 to 310 requests per second while p95 latency leaps from 210 to 1900 ms and errors reach 6.5 percent, so the limit lies between 150 and 200 users. The earlier steps scale almost linearly: errors first appear at 100 users at only 0.1 percent, and latency at 100 users (140 ms) still follows the trend, so neither marks saturation. Throughput growth alone does not rule it out.",
     "acronyms": [
       "API"
     ]
@@ -673,7 +673,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Integration tests pass when run alone but fail at random when two pipeline runs execute at the same time, because both write test orders to one shared database. Which fix is best?",
@@ -681,19 +681,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Give each run its own disposable environment and database"
+          "text": "Give each run its own disposable test environment"
         },
         {
           "id": "b",
-          "text": "Retry the failed job until it passes"
+          "text": "Retry the failed job automatically until it passes"
         },
         {
           "id": "c",
-          "text": "Add a longer sleep before each test starts"
+          "text": "Add a longer sleep before each test so runs overlap less"
         },
         {
           "id": "d",
-          "text": "Move the tests ahead of the unit tests"
+          "text": "Move the integration tests ahead of the unit tests"
         }
       ]
     },
@@ -702,7 +702,7 @@
         "a"
       ]
     },
-    "explanation": "Isolated, throwaway environments remove the interference between runs. Retrying hides the flaw, a sleep only changes the timing, and test order does not affect a shared database.",
+    "explanation": "Isolated, throwaway environments, each with its own database, remove the interference between runs. Retrying hides the flaw, a sleep only changes the timing, and test order does not affect a shared database.",
     "acronyms": []
   },
   {
@@ -712,7 +712,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team wants the pipeline to fail automatically when a release makes the service slower under load. What must the load-test stage contain?",
@@ -751,7 +751,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Right after a release deploys, the pipeline runs a short script that loads the home page, signs in with a test account and calls the health endpoint. What is this?",
@@ -790,7 +790,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "In a blue-green release the smoke tests against the idle pool return HTTP 503 from the new build. What should happen next?",
@@ -831,7 +831,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A pipeline step runs this:\n```\ncurl --fail --silent --show-error https://shop.example.internal/health\necho \"exit code: $?\"\n```\nThe health endpoint answers with HTTP status 503. Which line does the step print last?",
@@ -872,7 +872,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Smoke tests passed at 14:05. By 15:30 the new release shows a slow rise in checkout errors, but only for customers who pay with saved cards. Which activity finds this?",
@@ -911,7 +911,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "To check checkout continuously after a release, an SRE team schedules a script that buys a test item with a dedicated test account every five minutes and alerts on failure. What does this give the team that dashboards of real traffic alone do not?",
@@ -952,10 +952,10 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A critical payment bug is live on release 3.8.0. While the hotfix is in progress, a colleague proposes adding two small interface tweaks that are already merged to main. What is the better approach?",
+    "stem": "A critical payment bug is live on release `3.8.0`. While the hotfix is in progress, a colleague proposes adding two small interface tweaks that are already merged to main. What is the better approach?",
     "payload": {
       "options": [
         {
@@ -972,7 +972,7 @@
         },
         {
           "id": "d",
-          "text": "Ship only the fix and leave the tweaks for the normal release"
+          "text": "Ship the fix alone and leave the tweaks for the normal release"
         }
       ]
     },
@@ -991,7 +991,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Production has a security bug, and a manager asks an engineer to copy the patched file straight to the servers, skipping the pipeline to save time. What is the better hotfix practice?",
@@ -1007,7 +1007,7 @@
         },
         {
           "id": "c",
-          "text": "Use an expedited pipeline run with only the essential checks"
+          "text": "Use an expedited pipeline run that keeps the essential checks"
         },
         {
           "id": "d",
@@ -1030,7 +1030,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Production runs `2.4.0`, and main already holds `2.5.0-rc.1`. A critical bug fix is built from the production tag. Which version number should the hotfix release get under semantic versioning?",
@@ -1069,7 +1069,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A release deployed 20 minutes ago doubled the checkout error rate. The cause is unknown, the previous release is known to be good, and the release made no database changes. What is the fastest safe remediation?",
@@ -1077,7 +1077,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Roll back to the previous release, then investigate"
+          "text": "Roll back to the earlier build, then investigate"
         },
         {
           "id": "b",
@@ -1108,7 +1108,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A production deploy fails its smoke test, and the pipeline must roll back automatically. Which approach gives the most dependable rollback?",
@@ -1147,7 +1147,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A smoke test only checks that `/health` returns status 200. That endpoint answers `ok` as soon as the web process starts, and after a release users get errors because the app cannot reach its database. What change lets the smoke test catch this?",
@@ -1167,7 +1167,7 @@
         },
         {
           "id": "d",
-          "text": "Check the process list on the server instead"
+          "text": "Check the process list on the database host instead"
         }
       ]
     },
