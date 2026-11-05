@@ -9,8 +9,16 @@ import { TestNav } from '../testNav';
 import { AcronymFlow } from './AcronymFlow';
 import { AcronymResults } from './AcronymResults';
 import { QuizRunner } from './QuizRunner';
+import { applyMarks, DEFAULT_MARKS } from '../marks/prefs';
+import { fakeAudio } from '../marks/fakeAudio';
+import { resetSoundForTests } from '../marks/sound';
 
-afterEach(() => vi.useRealTimers());
+afterEach(() => {
+  vi.useRealTimers();
+  vi.unstubAllGlobals();
+  applyMarks(DEFAULT_MARKS);
+  resetSoundForTests();
+});
 
 const e = (term: string, expansion: string): AcronymEntry => ({ term, expansion, source: 'community' });
 const deck = [e('ETL', 'Extract, Transform, Load'), e('SQL', 'Structured Query Language'), e('CSV', 'Comma-Separated Values')];
@@ -101,7 +109,8 @@ describe('QuizRunner', () => {
     unmount();
     render(<QuizRunner deck={[mttr]} entries={[mttr, ...deck]} show="term" answer="type" minutes={0} seed={1} onFinish={vi.fn()} />);
     await user.type(screen.getByRole('textbox', { name: 'Your answer' }), 'mean time to respond{Enter}');
-    expect(screen.getByRole('status')).toHaveTextContent('Not quite: Mean Time to Recovery (also: Mean Time to Repair)');
+    expect(screen.getByRole('status')).toHaveTextContent(/^Incorrect\s*The answer is: Mean Time to Recovery \(also: Mean Time to Repair\)$/);
+    expect(screen.getByRole('status').querySelector('.mark-wrong')).not.toBeNull();
   });
 
   it('count as correct flips a miss', async () => {
@@ -110,9 +119,13 @@ describe('QuizRunner', () => {
     render(<QuizRunner deck={deck.slice(0, 1)} entries={deck} show="term" answer="type" minutes={0} seed={1} onFinish={onFinish} />);
     await user.type(screen.getByRole('textbox', { name: 'Your answer' }), 'extract transfrom load');
     await user.click(screen.getByRole('button', { name: 'Check' }));
-    expect(screen.getByRole('status')).toHaveTextContent('Not quite: Extract, Transform, Load');
+    expect(screen.getByRole('status')).toHaveTextContent(/Incorrect\s*The answer is: Extract, Transform, Load/);
+    const log = fakeAudio();
+    act(() => applyMarks({ style: 'banner', sound: true }));
     await user.click(screen.getByRole('button', { name: 'Count as correct' }));
-    expect(screen.getByRole('status')).toHaveTextContent('Correct');
+    expect(screen.getByRole('status')).toHaveTextContent(/^Correct$/);
+    expect(screen.getByRole('status').querySelector('.mark-right')).not.toBeNull();
+    expect(log.freqs).toEqual([660, 880]);
     expect(screen.getByRole('status')).toHaveFocus();
     await user.click(screen.getByRole('button', { name: 'Finish' }));
     expect(onFinish.mock.calls[0][0][0].correct).toBe(true);

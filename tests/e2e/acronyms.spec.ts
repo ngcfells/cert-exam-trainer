@@ -109,7 +109,7 @@ test('choice quiz works with the keyboard alone', async ({ page }) => {
   await page.keyboard.press('ArrowDown');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Enter');
-  await expect(page.getByRole('status')).toHaveText(/^(Correct|Not quite: .+)$/);
+  await expect(page.getByRole('status')).toHaveText(/^(Correct|Incorrect\s*The answer is: .+)$/);
   await expect(page.getByRole('status')).toBeFocused();
   await expectNoSeriousAxe(page);
   await page.keyboard.press('Tab');

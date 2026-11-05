@@ -4,6 +4,8 @@ import { buildChoices, isCorrect, type Direction } from '../../acronyms/quiz';
 import { mulberry32 } from '../../exam/rng';
 import { RunnerFrame, useCountdown, useFocusLater } from '../kit';
 import { useLeaveGuard } from '../nav';
+import { AnswerMark } from '../marks/AnswerMark';
+import { playMark } from '../marks/sound';
 import { back, backText, front, type AcronymGrade } from './FlashcardRunner';
 
 export function QuizRunner({
@@ -38,7 +40,7 @@ export function QuizRunner({
     const rng = mulberry32(seed);
     return deck.map((a) => buildChoices(a, entries, show, rng));
   }, [deck, entries, show, seed]);
-  const [statusRef, focusStatus] = useFocusLater<HTMLParagraphElement>();
+  const [statusRef, focusStatus] = useFocusLater<HTMLDivElement>();
   const finished = useRef(false);
   const gradedRef = useRef(graded);
   gradedRef.current = graded;
@@ -63,6 +65,7 @@ export function QuizRunner({
   const prompt = show === 'term' ? `What does ${card.term} stand for?` : `Which acronym stands for ${card.expansion}?`;
   const grade = (g: AcronymGrade) => {
     setGraded((all) => ({ ...all, [card.term]: g }));
+    playMark(g.correct ? 'right' : 'wrong');
     focusStatus();
   };
 
@@ -119,9 +122,10 @@ export function QuizRunner({
           )}
         </form>
       </div>
-      <p role="status" className="study-status" ref={statusRef} tabIndex={-1}>
-        {result ? (result.correct ? 'Correct' : `Not quite: ${backText(card, show)}`) : ''}
-      </p>
+      <div role="status" className="study-status" ref={statusRef} tabIndex={-1}>
+        {result && <AnswerMark key={`${card.term}:${result.correct}`} level={result.correct ? 'right' : 'wrong'} />}
+        {result && !result.correct && <p className="quiz-answer-text">{`The answer is: ${backText(card, show)}`}</p>}
+      </div>
       {result && !result.correct && answer === 'type' && (
         <button type="button" onClick={() => grade({ ...result, correct: true })}>
           Count as correct
