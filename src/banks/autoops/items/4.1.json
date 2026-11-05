@@ -201,7 +201,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A canary rollout moves from 1 to 10 to 50 to 100 percent of traffic, with an error-rate and latency check between steps. What is the main benefit of ramping in steps?",
@@ -209,7 +209,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A faulty build reaches few users before a check catches it"
+          "text": "A faulty build reaches few users before monitoring flags it"
         },
         {
           "id": "b",
@@ -240,7 +240,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A canary shows a p95 latency of 310 ms. Last week the service averaged 240 ms, so someone concludes the canary is slower. Which comparison is the most reliable?",
@@ -248,15 +248,15 @@
       "options": [
         {
           "id": "a",
-          "text": "The canary against last week's daily average"
+          "text": "The canary against last week's daily average for the same service"
         },
         {
           "id": "b",
-          "text": "The canary against the best latency ever recorded"
+          "text": "The canary against the best latency the service has ever recorded"
         },
         {
           "id": "c",
-          "text": "The canary against yesterday's staging results"
+          "text": "The canary against yesterday's results from the staging environment"
         },
         {
           "id": "d",
@@ -279,7 +279,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "After a blue-green cutover the metrics look healthy, and an engineer wants to delete the old pool at once to save money. What is the safer practice?",
@@ -318,7 +318,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "During a rolling update of web instances, some users see dropped connections each time an instance is replaced. Which setting reduces this?",
@@ -357,7 +357,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "During a rolling update an API changes its response field `total` to `amount`. The same client request sometimes returns `total` and sometimes `amount`. What explains this, and what avoids it?",
