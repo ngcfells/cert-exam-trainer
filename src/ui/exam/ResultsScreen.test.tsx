@@ -1,4 +1,7 @@
-import { describe, it, expect, vi } from 'vitest';
+import { afterEach, describe, it, expect, vi } from 'vitest';
+import { applyMarks, DEFAULT_MARKS } from '../marks/prefs';
+import { fakeAudio } from '../marks/fakeAudio';
+import { resetSoundForTests } from '../marks/sound';
 import userEvent from '@testing-library/user-event';
 import { cleanup, render, screen, within } from '@testing-library/react';
 import { dataPlusQuestions } from '../../banks/dataplus/questions';
@@ -81,5 +84,42 @@ describe('ResultsScreen', () => {
     expect(rows[0]).toHaveTextContent('Web serverSelectedSelectedCorrect');
     expect(rows[1]).toHaveTextContent('CacheNot selectedNot selectedCorrect');
     expect(rows[2]).toHaveTextContent('DatabaseNot selectedSelectedIncorrect');
+  });
+});
+
+describe('ResultsScreen answer marks', () => {
+  afterEach(() => {
+    applyMarks(DEFAULT_MARKS);
+    vi.unstubAllGlobals();
+    resetSoundForTests();
+  });
+
+  function review(responses: Record<string, string[] | PartMap>) {
+    const exam: AssembledExam = { exam: 'T-001', seed: 1, items: [{ question: pbq('P1', 2) }, { question: mcq('A0', 'A') }], mcqCount: 1, pbqWeightSum: 2 };
+    const report = scoreExam(exam, responses, meta3);
+    const result = buildResult({ exam, responses, flagged: [], report, startedAt: new Date(0), finishedAt: new Date(1), autoSubmitted: false });
+    render(<ResultsScreen meta={meta3} exam={exam} result={result} report={report} saveError={null} mode="practice" />);
+    return screen.getAllByRole('listitem').filter((li) => li.querySelector('.mark'));
+  }
+
+  it('marks a partly right item and an unanswered one, with no sound', () => {
+    const log = fakeAudio();
+    applyMarks({ style: 'banner', sound: true });
+    const [partly, unanswered] = review({ P1: { p1: 'c1', p2: 'c3' } });
+    expect(partly.querySelector('.mark.mark-partly')).not.toBeNull();
+    expect(partly.firstElementChild).toHaveClass('mark');
+    expect(partly).toHaveTextContent(/^Partly correct/);
+    expect(unanswered.querySelector('.mark.mark-wrong')).toHaveTextContent('Incorrect. Not answered');
+    expect(log.created).toBe(0);
+  });
+
+  it('the Parts table shows a small mark with an icon per part', () => {
+    const [partly] = review({ P1: { p1: 'c1', p2: 'c3' } });
+    const cells = within(within(partly).getByRole('table', { name: 'Parts' })).getAllByRole('row').slice(1).map((r) => r.lastElementChild!);
+    expect(cells.map((c) => c.textContent)).toEqual(['Correct', 'Incorrect']);
+    for (const c of cells) {
+      expect(c.querySelector('.mark-small')).not.toBeNull();
+      expect(c.querySelectorAll('svg[aria-hidden="true"]')).toHaveLength(1);
+    }
   });
 });

@@ -3,8 +3,9 @@ import { pct, Table, useFocusHeading } from '../kit';
 import type { ExamMeta } from '../../domain/types';
 import type { AssembledExam } from '../../exam/assemble';
 import type { ExamResult, ResultMode } from '../../exam/result';
-import { MAX_SCORE, type ScoreReport } from '../../exam/scoring';
+import { hasAnswer, MAX_SCORE, type ScoreReport } from '../../exam/scoring';
 import { ItemReview } from './ItemReview';
+import { AnswerMark, levelOf } from '../marks/AnswerMark';
 
 export function ResultsScreen({
   meta,
@@ -29,7 +30,7 @@ export function ResultsScreen({
   /** Extra summary lines, shown under the score. */
   children?: React.ReactNode;
 }) {
-  const missed = exam.items.filter((_, i) => report.items[i].fraction < 1);
+  const missed = exam.items.flatMap((item, i) => (report.items[i].fraction < 1 ? [{ item, fraction: report.items[i].fraction }] : []));
   const headingRef = useFocusHeading();
   // The alert region is mounted empty and filled after mount, so screen readers announce it.
   const [alertText, setAlertText] = useState('');
@@ -86,8 +87,9 @@ export function ResultsScreen({
         <>
           <h3>Review</h3>
           <ol>
-            {missed.map(({ question: q }) => (
+            {missed.map(({ item: { question: q }, fraction }) => (
               <li key={q.id}>
+                <AnswerMark level={levelOf(fraction)} unanswered={!hasAnswer(q, result.responses[q.id])} />
                 <ItemReview q={q} response={result.responses[q.id]} />
               </li>
             ))}

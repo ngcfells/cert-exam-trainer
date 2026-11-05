@@ -5,6 +5,7 @@ import type { McqAnswer, McqPayload, Question } from '../../domain/types';
 import type { ItemResponse } from '../../exam/scoring';
 import { Table } from '../Table';
 import { RichText } from '../RichText';
+import { AnswerMark } from '../marks/AnswerMark';
 
 function optionTexts(q: Question, ids: string[]): string {
   const opts = (q.payload as McqPayload).options;
@@ -23,7 +24,7 @@ function PartsReview({ q, given }: { q: Question; given: PartMap }) {
           partLabel(q, id),
           given[id] ? valueText(q, id, given[id]) : q.type === 'pbq-hotspot' ? 'Not selected' : 'Not answered',
           acceptedText(q, id),
-          partCorrect(q, id, given) ? 'Correct' : 'Incorrect',
+          <AnswerMark key="r" size="small" level={partCorrect(q, id, given) ? 'right' : 'wrong'} />,
         ])}
       />
       {notes.length > 0 && (
