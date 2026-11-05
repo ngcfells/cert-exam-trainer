@@ -38,6 +38,10 @@ describe('chanceFromViews', () => {
     expect(chanceFromViews([W(400)], now)).toBeCloseTo(0.75);
   });
 
+  it('ignores the time rule for a view with a garbled date', () => {
+    expect(chanceFromViews([{ right: true, at: 'garbage' }], now)).toBeCloseTo(0.5);
+  });
+
   it('gives no time rise for a view dated in the future', () => {
     expect(chanceFromViews([...times(4, () => R(-4)), R(-5)], now)).toBeCloseTo(0.01);
   });
@@ -90,6 +94,15 @@ describe('weightedOrder', () => {
     const a = weightedOrder(items, weight, mulberry32(7));
     expect([...a].sort((x, y) => x - y)).toEqual(items);
     expect(weightedOrder(items, weight, mulberry32(7))).toEqual(a);
+  });
+
+  it('puts zero and non-finite weights last, still as a permutation', () => {
+    const odd = (i: number) => (i === 0 ? 0 : i === 1 ? NaN : 1);
+    for (let s = 0; s < 50; s++) {
+      const o = weightedOrder([0, 1, 2, 3, 4], odd, mulberry32(s));
+      expect([...o].sort()).toEqual([0, 1, 2, 3, 4]);
+      expect(o.slice(3).sort()).toEqual([0, 1]);
+    }
   });
 
   it('draws in proportion to weight', () => {

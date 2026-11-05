@@ -83,26 +83,54 @@ export function itemFor(question: Question, rng: Rng): ExamItem {
   return item;
 }
 
+const sum = (xs: readonly number[]) => xs.reduce((s, n) => s + n, 0);
+
 /**
  * Splits `total` across domains by weight, never giving a domain more than it has. Domains with none get none,
- * and any shortfall moves to the domains with spares, by weight.
+ * and any shortfall moves to the domains with spares, by weight; a zero-weight domain is used only as a last
+ * resort. Without `rng`, the split is largest remainder (the same every time). With `rng`, each slot goes to a
+ * domain picked at random by weight, so a few slots (mock PBQs) still follow the weights over many exams
+ * instead of always going to the biggest domains.
  */
-export function splitByDomain(total: number, weights: readonly number[], available: readonly number[]): number[] {
-  const live = weights.map((w, i) => (available[i] > 0 ? w : 0));
-  const quota = allocateByWeight(Math.min(total, available.reduce((s, n) => s + n, 0)), live);
-  for (;;) {
-    const short = quota.reduce((s, n, i) => s + Math.max(0, n - available[i]), 0);
-    if (short === 0) return quota;
-    quota.forEach((n, i) => (quota[i] = Math.min(n, available[i])));
-    const extra = allocateByWeight(short, live.map((w, i) => (quota[i] < available[i] ? w : 0)));
-    extra.forEach((n, i) => (quota[i] += n));
+export function splitByDomain(total: number, weights: readonly number[], available: readonly number[], rng?: Rng): number[] {
+  const want = Math.min(Math.max(0, total), sum(available));
+  const live = weights.map((w, i) => (available[i] > 0 ? Math.max(0, w) : 0));
+  let quota: number[];
+  if (rng) {
+    quota = available.map(() => 0);
+    for (let k = 0; k < want; k++) {
+      const open = live.map((w, i) => (quota[i] < available[i] ? w : 0));
+      if (open.every((w) => w <= 0)) break;
+      quota[weightedPick(open, rng)]++;
+    }
+  } else {
+    quota = allocateByWeight(want, live);
+    for (;;) {
+      const short = sum(quota.map((n, i) => Math.max(0, n - available[i])));
+      if (short === 0) break;
+      quota = quota.map((n, i) => Math.min(n, available[i]));
+      const extra = allocateByWeight(short, live.map((w, i) => (quota[i] < available[i] ? w : 0)));
+      if (sum(extra) === 0) break;
+      quota = quota.map((n, i) => n + extra[i]);
+    }
   }
+  // Last resort: fill from any domain with spares, in order, so a run is never left short.
+  let left = want - sum(quota);
+  for (let i = 0; i < quota.length && left > 0; i++) {
+    const add = Math.min(left, available[i] - quota[i]);
+    quota[i] += add;
+    left -= add;
+  }
+  return quota;
 }
 
-/** Up to `total` of `qs`, split across the exam's domains by weight and drawn by chance within each domain. */
-export function drawByDomain(meta: ExamMeta, qs: readonly Question[], total: number, chances: Chances, rng: Rng): Question[] {
+/**
+ * Up to `total` of `qs`, split across the exam's domains by weight and drawn by chance within each domain.
+ * `randomSplit` picks each slot's domain at random by weight (see `splitByDomain`).
+ */
+export function drawByDomain(meta: ExamMeta, qs: readonly Question[], total: number, chances: Chances, rng: Rng, randomSplit = false): Question[] {
   const byDomain = meta.domains.map((d) => qs.filter((q) => domainOf(meta, q) === d.id));
-  const quota = splitByDomain(total, meta.domains.map((d) => d.weight), byDomain.map((g) => g.length));
+  const quota = splitByDomain(total, meta.domains.map((d) => d.weight), byDomain.map((g) => g.length), randomSplit ? rng : undefined);
   return byDomain.flatMap((g, i) => weightedOrder(g, (q) => chanceOf(chances, q.id), rng).slice(0, quota[i]));
 }
 
@@ -113,7 +141,7 @@ export function assembleExam({ meta, pool, seed, chances, pbqTypes }: AssembleIn
   const pbqs: Question[] = [];
   if (pbqPool.length > 0) {
     const want = weightedPick(PBQ_COUNT_WEIGHTS, rng) + 1;
-    pbqs.push(...shuffle(drawByDomain(meta, pbqPool, want, chances, rng), rng));
+    pbqs.push(...shuffle(drawByDomain(meta, pbqPool, want, chances, rng, true), rng));
     while (pbqs.length && pbqs.reduce((s, q) => s + (q.pbqWeight ?? 1), 0) > meta.maxQuestions - 1) pbqs.pop();
   }
   const pbqWeightSum = pbqs.reduce((s, q) => s + (q.pbqWeight ?? 1), 0);

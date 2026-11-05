@@ -33,6 +33,22 @@ describe('splitByDomain', () => {
     expect(splitByDomain(10, [50, 30, 20], [0, 30, 30])).toEqual([0, 6, 4]);
     expect(splitByDomain(5, [50, 30, 20], [1, 1, 1])).toEqual([1, 1, 1]);
   });
+
+  it('fills from a zero-weight domain as a last resort instead of hanging', () => {
+    expect(splitByDomain(5, [0, 50], [10, 2])).toEqual([3, 2]);
+  });
+
+  it('with an rng, gives each slot to a domain at random by weight', () => {
+    const w = [20, 22, 24, 20, 14];
+    const totals = [0, 0, 0, 0, 0];
+    for (let s = 0; s < 4000; s++) {
+      const got = splitByDomain(2, w, [6, 6, 6, 6, 6], mulberry32(s));
+      expect(got.reduce((a, n) => a + n, 0)).toBe(2);
+      got.forEach((n, i) => (totals[i] += n));
+    }
+    totals.forEach((t, i) => expect(Math.abs(t / 8000 - w[i] / 100)).toBeLessThan(0.02));
+    expect(splitByDomain(6, w, [6, 0, 1, 0, 0], mulberry32(1))).toEqual([5, 0, 1, 0, 0]);
+  });
 });
 
 describe('assembleExam', () => {
@@ -92,8 +108,9 @@ describe('assembleExam', () => {
       a += ids.filter((id) => id.startsWith('PA')).length;
       all += ids.length;
     }
-    expect(a / all).toBeGreaterThan(0.6);
-    expect(a / all).toBeLessThan(0.8);
+    // A:C weights 50:20, so A should hold about 0.71 of the PBQs.
+    expect(a / all).toBeGreaterThan(0.66);
+    expect(a / all).toBeLessThan(0.76);
   });
 
   it('fills every PBQ slot from the one domain that has PBQs', () => {

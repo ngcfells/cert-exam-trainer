@@ -46,7 +46,8 @@ export function chanceFromViews(views: readonly View[], now: Date): number {
   const last = views[views.length - 1];
   if (!last.right) return chance;
   const days = Math.floor((now.getTime() - Date.parse(last.at)) / DAY_MS);
-  if (days < TIME_START_DAYS) return chance;
+  // A garbled date (NaN) or one in the future gives no time rise.
+  if (!Number.isFinite(days) || days < TIME_START_DAYS) return chance;
   return Math.max(chance, Math.min(1, TIME_START_CHANCE + TIME_PER_DAY * (days - TIME_START_DAYS)));
 }
 
@@ -78,10 +79,15 @@ export function chanceOf(chances: Chances, id: string): number {
 
 /**
  * All of `xs`, in a weighted random order (Efraimidis–Spirakis): any first k are a draw of k without
- * replacement, each pick in proportion to its weight.
+ * replacement, each pick in proportion to its weight. Items whose weight is 0 or not a number come last.
  */
 export function weightedOrder<T>(xs: readonly T[], weight: (x: T) => number, rng: Rng): T[] {
   // log(u) / w is a monotone transform of u^(1/w); 1 - rng() keeps u in (0, 1].
-  const keyed = xs.map((x) => ({ x, key: Math.log(1 - rng()) / Math.max(weight(x), Number.MIN_VALUE) }));
-  return keyed.sort((a, b) => b.key - a.key).map((k) => k.x);
+  const keyed = xs.map((x) => {
+    const w = weight(x);
+    const u = 1 - rng();
+    return { x, key: Number.isFinite(w) && w > 0 ? Math.log(u) / w : -Infinity };
+  });
+  // Compare without subtracting, so two -Infinity keys tie (stable) instead of giving NaN.
+  return keyed.sort((a, b) => (a.key === b.key ? 0 : a.key < b.key ? 1 : -1)).map((k) => k.x);
 }
