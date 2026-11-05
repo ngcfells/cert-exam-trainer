@@ -3,7 +3,8 @@ import path from 'node:path';
 import { expect, type Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
-export const PWA_PORT = 4173;
+// Set PWA_PORT when another app holds 4173 (playwright.config.ts reads the same variable).
+export const PWA_PORT = Number(process.env.PWA_PORT ?? 4173);
 export const PWA_URL = `http://localhost:${PWA_PORT}/cert-exam-trainer/`;
 
 export const singleUrl =pathToFileURL(path.resolve('dist-e2e/index.html')).href;

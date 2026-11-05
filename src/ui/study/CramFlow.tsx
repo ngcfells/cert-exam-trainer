@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { loadAcronyms } from '../../acronyms/userList';
+import { buildChances } from '../../exam/chance';
 import { newSeed } from '../../exam/rng';
 import type { Repo } from '../../storage';
 import { computeMastery } from '../../study/mastery';
@@ -17,8 +18,9 @@ export const DEFAULT_CRAM_MINUTES = 10;
 export function CramFlow({ repo, examCode, seed }: { repo: Repo; examCode: string; seed?: number }) {
   const meta = metaFor(examCode);
   const [session] = useLoad(async () => {
+    const now = new Date();
     const [{ pool, results, srs }, acronyms] = await Promise.all([loadStudy(repo, examCode), loadAcronyms(repo, examCode)]);
-    return assembleCram({ meta, acronyms, pool, seed: seed ?? newSeed(), srs, mastery: computeMastery(meta, results, pool), now: new Date() });
+    return assembleCram({ meta, acronyms, pool, seed: seed ?? newSeed(), srs, mastery: computeMastery(meta, results, pool), now, chances: buildChances(results, pool, examCode, now) });
   }, [repo, examCode, seed]);
   const [timed, setTimed] = useState(false);
   const [minutes, setMinutes] = useState(DEFAULT_CRAM_MINUTES);

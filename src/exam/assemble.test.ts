@@ -1,16 +1,19 @@
 import { describe, it, expect } from 'vitest';
-import { allocateByWeight, assembleExam, itemFor, type AssembleInput } from './assemble';
+import { allocateByWeight, assembleExam, itemFor, splitByDomain, type AssembleInput } from './assemble';
 import { bank, mcq, meta3, numeric, pbq } from './testFixtures';
 import type { McqPayload } from '../domain/types';
 import type { Question } from '../domain/types';
 import { pbqFixture } from '../domain/pbqFixtures';
 import { mulberry32 } from './rng';
+import { dataPlusFixtureQuestions } from '../banks/dataplus/fixture';
+import { dataPlusMeta } from '../banks/dataplus/meta';
+import { PBQ_TEMPLATES } from '../domain/pbq';
 
 const input = (over: Partial<AssembleInput> = {}): AssembleInput => ({
   meta: meta3,
   pool: bank({ A: 30, B: 30, C: 30 }),
   seed: 1,
-  recentIds: new Set(),
+  chances: new Map(),
   pbqTypes: [],
   ...over,
 });
@@ -21,6 +24,33 @@ describe('allocateByWeight', () => {
   it('uses largest remainder', () => {
     expect(allocateByWeight(10, [50, 30, 20])).toEqual([5, 3, 2]);
     expect(allocateByWeight(7, [50, 30, 20])).toEqual([4, 2, 1]);
+  });
+});
+
+describe('splitByDomain', () => {
+  it('splits by weight, capped by what each domain has', () => {
+    expect(splitByDomain(10, [50, 30, 20], [30, 30, 30])).toEqual([5, 3, 2]);
+    const short = splitByDomain(10, [50, 30, 20], [30, 30, 1]);
+    expect(short.reduce((s, n) => s + n, 0)).toBe(10);
+    expect(short[2]).toBe(1);
+    expect(splitByDomain(10, [50, 30, 20], [0, 30, 30])).toEqual([0, 6, 4]);
+    expect(splitByDomain(5, [50, 30, 20], [1, 1, 1])).toEqual([1, 1, 1]);
+  });
+
+  it('fills from a zero-weight domain as a last resort instead of hanging', () => {
+    expect(splitByDomain(5, [0, 50], [10, 2])).toEqual([3, 2]);
+  });
+
+  it('with an rng, gives each slot to a domain at random by weight', () => {
+    const w = [20, 22, 24, 20, 14];
+    const totals = [0, 0, 0, 0, 0];
+    for (let s = 0; s < 4000; s++) {
+      const got = splitByDomain(2, w, [6, 6, 6, 6, 6], mulberry32(s));
+      expect(got.reduce((a, n) => a + n, 0)).toBe(2);
+      got.forEach((n, i) => (totals[i] += n));
+    }
+    totals.forEach((t, i) => expect(Math.abs(t / 8000 - w[i] / 100)).toBeLessThan(0.02));
+    expect(splitByDomain(6, w, [6, 0, 1, 0, 0], mulberry32(1))).toEqual([5, 0, 1, 0, 0]);
   });
 });
 
@@ -55,12 +85,49 @@ describe('assembleExam', () => {
     expect(ex.mcqCount).toBe(2);
   });
 
-  it('prefers fresh questions over recent ones', () => {
+  it('draws by chance within a domain', () => {
     const pool = bank({ A: 6, B: 30, C: 30 });
-    const recentIds = new Set(['A0', 'A1', 'A2', 'A3', 'A4']);
+    const chances = new Map(['A0', 'A1', 'A2', 'A3', 'A4'].map((id) => [id, 0.01]));
     for (let seed = 0; seed < 20; seed++) {
-      const ids = assembleExam(input({ pool, recentIds, seed })).items.map((i) => i.question.id);
+      const ids = assembleExam(input({ pool, chances, seed })).items.map((i) => i.question.id);
       expect(ids).toContain('A5');
+    }
+  });
+
+  it('still fills the exam when every question is at the lowest chance', () => {
+    const pool = bank({ A: 30, B: 30, C: 30 });
+    const chances = new Map(pool.map((q) => [q.id, 0.01]));
+    expect(assembleExam(input({ pool, chances })).items).toHaveLength(10);
+  });
+
+  it('splits PBQs across domains by weight', () => {
+    const inC = (q: Question): Question => ({ ...q, objectiveIds: ['C.1'] });
+    const pbqs = [...Array.from({ length: 6 }, (_, i) => pbq(`PA${i}`, 1)), ...Array.from({ length: 6 }, (_, i) => inC(pbq(`PC${i}`, 1)))];
+    let a = 0;
+    let all = 0;
+    for (let seed = 0; seed < 200; seed++) {
+      const ex = assembleExam(input({ seed, pool: [...bank({ A: 30, B: 30, C: 30 }), ...pbqs], pbqTypes: ['pbq-match'] }));
+      const ids = ex.items.filter((i) => i.question.type === 'pbq-match').map((i) => i.question.id);
+      a += ids.filter((id) => id.startsWith('PA')).length;
+      all += ids.length;
+    }
+    // A:C weights 50:20, so A should hold about 0.71 of the PBQs.
+    expect(a / all).toBeGreaterThan(0.66);
+    expect(a / all).toBeLessThan(0.76);
+  });
+
+  it('fills every PBQ slot from the one domain that has PBQs', () => {
+    const six = (d: string) => Array.from({ length: 6 }, (_, i) => ({ ...pbq(`P${d}${i}`, 1), objectiveIds: [`${d}.1`] }));
+    const pbqsOf = (d: string, seed: number) =>
+      assembleExam(input({ seed, pool: [...bank({ A: 30, B: 30, C: 30 }), ...six(d)], pbqTypes: ['pbq-match'] }))
+        .items.filter((i) => i.question.type === 'pbq-match')
+        .map((i) => i.question.id);
+    for (let seed = 0; seed < 30; seed++) {
+      const inC = pbqsOf('C', seed);
+      expect(inC.length).toBeGreaterThanOrEqual(1);
+      expect(inC.every((id) => id.startsWith('PC'))).toBe(true);
+      // The count is drawn before the split, so it does not depend on where the PBQs sit.
+      expect(inC.length).toBe(pbqsOf('A', seed).length);
     }
   });
 
@@ -127,6 +194,20 @@ describe('assembleExam', () => {
     const ex = assembleExam(input({ meta: { ...meta3, maxQuestions: 6 }, pool: [...bank({ A: 9 }), pbq('P1', 6)], pbqTypes: ['pbq-match'] }));
     expect(ex.pbqWeightSum).toBe(0);
     expect(ex.items.every((i) => i.question.type.startsWith('mcq'))).toBe(true);
+  });
+});
+
+describe('e2e seeds', () => {
+  // tests/e2e/exam.spec.ts and responsive.spec.ts rely on these draws from the DA0-002 fixture bank.
+  const types = (seed: number) =>
+    assembleExam({ meta: dataPlusMeta, pool: dataPlusFixtureQuestions.filter((q) => q.status === 'approved'), seed, chances: new Map(), pbqTypes: PBQ_TEMPLATES })
+      .items.map((i) => i.question.type);
+
+  it('seeds 4 and 67 draw all 8 PBQ templates in 9 items, and 67 has selects and a hotspot', () => {
+    expect(types(4)).toHaveLength(9);
+    expect(types(67)).toHaveLength(9);
+    expect(new Set([...types(4), ...types(67)].filter((t) => t.startsWith('pbq-')))).toEqual(new Set(PBQ_TEMPLATES));
+    expect(types(67)).toEqual(expect.arrayContaining(['pbq-config', 'pbq-hotspot']));
   });
 });
 
