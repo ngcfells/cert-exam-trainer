@@ -987,10 +987,10 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A company publishes an internal package `acme-billing-utils` at version `1.2.0`. An attacker uploads a package with the same name and version `99.0.0` to a public index, and the next build runs the attacker's code. The resolver searched both sources and picked the highest version. Which change prevents this?",
+    "stem": "A company publishes an internal package `acme-billing-utils` at version `1.2.0`. An attacker uploads a package with the same name and a higher version, `99.0.0`, to a public index; the resolver searches both sources, picks the highest version, and the next build runs the attacker's code. Which change prevents this?",
     "payload": {
       "options": [
         {
@@ -1007,7 +1007,7 @@
         },
         {
           "id": "d",
-          "text": "Resolve internal package names from the internal registry alone"
+          "text": "Resolve internal package names from the internal registry"
         }
       ]
     },
@@ -1026,10 +1026,10 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A serious flaw is announced in version `4.1.2` of a logging library. Which item helps the team find which released applications contain that version without opening each one?",
+    "stem": "A serious flaw is announced in version `4.1.2` of a logging library. Which item lets the team find the released applications that contain that version without opening each one?",
     "payload": {
       "options": [
         {
@@ -1067,7 +1067,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "When should the SBOM for a release artifact be generated so that it matches what ships?",
@@ -1079,7 +1079,7 @@
         },
         {
           "id": "b",
-          "text": "At build time, from the same dependency resolution, and published with that version"
+          "text": "At build time, from the same dependency resolution"
         },
         {
           "id": "c",
@@ -1108,7 +1108,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A project declares three direct dependencies, but the built artifact contains forty libraries. Which SBOM content lets security staff assess an exposure in a library nobody chose directly?",
@@ -1149,10 +1149,10 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "A repository has a file that defines named tasks such as `build`, `test` and `lint`, which developers and the pipeline both run by name. What kind of tool reads that file?",
+    "stem": "A repository has a file that defines named tasks such as `build`, `test` and `lint`, which developers and the pipeline both call by name. What kind of tool reads that file?",
     "payload": {
       "options": [
         {
@@ -1188,7 +1188,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A pipeline step runs `npm run verify` with the `package.json` below. The `lint` script reports an error and exits with a non-zero status. What happens?\n```json\n{\n  \"scripts\": {\n    \"lint\": \"node tools/lint.js\",\n    \"test\": \"node tools/test.js\",\n    \"verify\": \"npm run lint && npm run test\"\n  }\n}\n```",
@@ -1227,7 +1227,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A repository's `Makefile` contains the rules below, and a developer runs `make bundle`. What is printed?\n```make\n.PHONY: compile verify bundle\nbundle: verify\n\t@echo packing\nverify: compile\n\t@echo checking\ncompile:\n\t@echo compiling\n```",
@@ -1266,7 +1266,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A pipeline step runs `./scripts/run-tests.sh`. Two tests fail, but the script prints a summary and its last command is `exit 0`. What does the pipeline report for the step?",
@@ -1278,7 +1278,7 @@
         },
         {
           "id": "b",
-          "text": "Success, because the step result follows the exit status of zero"
+          "text": "Success, because the step result follows the script's return code of zero"
         },
         {
           "id": "c",
@@ -1305,7 +1305,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A team creates a fresh machine in a known state for each build or test run and discards it afterward, instead of reusing a long-lived server. What is this practice called?",
@@ -1344,15 +1344,15 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A test suite passes on the team's long-lived build server but fails on a newly set up laptop. Investigation finds files left behind by earlier builds on the server. Which approach prevents this?",
+    "stem": "A test suite passes on the team's long-lived build server but fails on a newly set up laptop. Investigation finds files left behind by earlier builds on the server. Which approach prevents the stale-file failure?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Run each job in a fresh container or VM that is discarded afterward"
+          "text": "Run each job in a fresh, disposable container"
         },
         {
           "id": "b",
@@ -1374,9 +1374,7 @@
       ]
     },
     "explanation": "A fresh, disposable environment contains nothing from earlier runs, so passing depends only on the code. More memory, a second run on the same machine and copying files in all leave stale state in place.",
-    "acronyms": [
-      "VM"
-    ]
+    "acronyms": []
   },
   {
     "id": "at1-3-1-mcq-036",
@@ -1385,7 +1383,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A pipeline creates a temporary test environment for each run. Failed runs leave their environments running, and costs climb. How should tear-down be configured?",
@@ -1424,7 +1422,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Two pipeline runs share one test database. Their integration tests overwrite each other's rows and fail at random. What is the best fix?",
@@ -1444,7 +1442,7 @@
         },
         {
           "id": "d",
-          "text": "Provision a separate database instance or schema for each run"
+          "text": "Give each run its own isolated instance or schema"
         }
       ]
     },
@@ -1463,7 +1461,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "A developer pushes a deploy token to a public repository and notices within minutes. Which TWO actions belong in the response?",
@@ -1507,7 +1505,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO checks let a deploy job detect that a downloaded artifact differs from what the build produced?",
@@ -1551,7 +1549,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO practices make a build environment reproducible from one run to the next?",
@@ -1567,7 +1565,7 @@
         },
         {
           "id": "c",
-          "text": "Define the environment in a versioned image or template"
+          "text": "Define the build machine in a versioned image or template"
         },
         {
           "id": "d",
@@ -1595,15 +1593,15 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
-    "stem": "A job runs `npm run build` with default npm settings and the `package.json` below. Which TWO other scripts run automatically as part of that command?\n```json\n{\n  \"scripts\": {\n    \"prebuild\": \"node tools/check-env.js\",\n    \"build\": \"node tools/compile.js\",\n    \"postbuild\": \"node tools/copy-assets.js\",\n    \"test\": \"node tools/test.js\",\n    \"lint\": \"node tools/lint.js\"\n  }\n}\n```",
+    "stem": "A job runs `npm run build` with default npm settings and the `package.json` below. Which TWO other scripts run automatically as part of that command?\n```json\n{\n  \"scripts\": {\n    \"prebuild\": \"node tools/check-env.js\",\n    \"build\": \"node tools/compile.js\",\n    \"postbuild\": \"node tools/copy-assets.js\",\n    \"test\": \"node tools/test.js\",\n    \"preinstall\": \"node tools/check-node.js\",\n    \"postinstall\": \"node tools/patch-deps.js\"\n  }\n}\n```",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "`test`"
+          "text": "`preinstall`"
         },
         {
           "id": "b",
@@ -1611,7 +1609,7 @@
         },
         {
           "id": "c",
-          "text": "`lint`"
+          "text": "`postinstall`"
         },
         {
           "id": "d",
@@ -1619,7 +1617,7 @@
         },
         {
           "id": "e",
-          "text": "`start`"
+          "text": "`test`"
         }
       ]
     },
@@ -1629,7 +1627,7 @@
         "d"
       ]
     },
-    "explanation": "npm runs a script named `pre` plus the script name before it and one named `post` plus the name after it, so `prebuild` and `postbuild` surround `build`. The `test` and `lint` scripts run only when called, and no `start` script is defined.",
+    "explanation": "npm runs a script named `pre` plus the script name before it and one named `post` plus the name after it, so `prebuild` and `postbuild` surround `build`. The install hooks run during `npm install`, not during a build, and `test` runs only when called.",
     "acronyms": []
   },
   {
@@ -1639,7 +1637,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO practices reduce supply-chain risk when a build pulls libraries from an external repository?",
@@ -1683,7 +1681,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "A QA team copies production data into a test environment. Which TWO fields are the best candidates for tokenization?",
@@ -1691,11 +1689,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Pipeline run counts"
+          "text": "Pipeline run counts for each project"
         },
         {
           "id": "b",
-          "text": "Build timestamps"
+          "text": "Build timestamps for each stage"
         },
         {
           "id": "c",
@@ -1703,7 +1701,7 @@
         },
         {
           "id": "d",
-          "text": "Product category names"
+          "text": "Product category names in the catalog"
         },
         {
           "id": "e",
@@ -1729,7 +1727,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO items does an SBOM record?",
@@ -1775,7 +1773,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "pbqWeight": 3,
@@ -1841,10 +1839,10 @@
         ]
       }
     },
-    "explanation": "The list shows ls-7b02 is held by runner-31, so revoking that lease ends its credential at once. The lease for runner-12 is ls-7a31, and the help shows the lease id followed by the extension in minutes. A compromised machine is replaced with a fresh one rather than trusted again.",
+    "explanation": "The list shows `ls-7b02` is held by `runner-31`, so revoking that lease ends its credential at once. The lease for `runner-12` is `ls-7a31`, and the help shows the lease id followed by the extension in minutes. A compromised machine is replaced with a fresh one rather than trusted again.",
     "partExplanations": {
-      "revoke": "The holder column ties runner-31 to ls-7b02, and `lease revoke` takes the lease id.",
-      "renew": "runner-12 holds ls-7a31, and the help gives the form `lease renew <lease-id> --extend <minutes>`.",
+      "revoke": "The holder column ties `runner-31` to `ls-7b02`, and `lease revoke` takes the lease id.",
+      "renew": "`runner-12` holds `ls-7a31`, and the help gives the form `lease renew <lease-id> --extend <minutes>`.",
       "after": "A machine that an attacker controlled cannot be trusted again, so it is discarded and replaced by a clean runner."
     },
     "acronyms": [
@@ -1858,11 +1856,11 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "pbqWeight": 5,
-    "stem": "Configure how the deploy job for `ledger-api` gets its database credential. The longest deploy takes 12 minutes.",
+    "stem": "Configure how the deploy job for `ledger-api` gets its database credential. The longest deploy takes 12 minutes, and the job cannot renew a lease once it starts.",
     "payload": {
       "fields": [
         {
@@ -1875,7 +1873,7 @@
             },
             {
               "id": "o2",
-              "text": "An encrypted key vault with an access policy for the deploy job"
+              "text": "An encrypted key vault with job-level access"
             },
             {
               "id": "o3",
@@ -1897,7 +1895,7 @@
             },
             {
               "id": "o3",
-              "text": "Fetched at job start with the job's own identity, and masked in logs"
+              "text": "Fetched at job start with the job's own identity"
             }
           ]
         },
@@ -1907,7 +1905,7 @@
           "options": [
             {
               "id": "o1",
-              "text": "30 minutes, a little longer than the job"
+              "text": "30 minutes, longer than the job"
             },
             {
               "id": "o2",
@@ -1970,9 +1968,9 @@
     "partExplanations": {
       "store": "A vault encrypts the credential and limits which identities can read it; repositories and wiki pages offer neither.",
       "delivery": "Fetching at start with the job's identity keeps the value out of images and out of human hands.",
-      "lease": "30 minutes covers the 12-minute job with margin; 5 minutes would expire mid-run and 12 months leaves a huge window.",
-      "rotation": "A fresh credential per run means nothing long-lived needs a rotation calendar.",
-      "jobend": "Revoking the lease right away shortens the window of use to the length of the job."
+      "lease": "30 minutes covers the 12-minute job with margin; 5 minutes would expire mid-run with no way to renew, and 12 months leaves a huge window.",
+      "rotation": "A fresh credential per run means nothing long-lived needs a rotation calendar. A yearly change by hand leaves one value in use for months, and a lease limits each grant but not how long a reused value stays the same.",
+      "jobend": "Revoking the lease right away shortens the window of use to the length of the job. A cached credential stays on the runner for reuse, and waiting for cleanup leaves it usable until the lease runs out."
     },
     "acronyms": []
   },
@@ -1983,7 +1981,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -2046,7 +2044,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 3,
     "pbqWeight": 5,
@@ -2199,13 +2197,13 @@
         "stale": "v181"
       }
     },
-    "explanation": "Precedence compares major, then minor, then patch as numbers, and a pre-release sorts below its release but above any lower major, so 2.0.0-rc.1 is highest. Counting the table gives three versions without an SBOM and two changed versions, and only 1.10.0 is both immutable and documented.",
+    "explanation": "Precedence compares major, then minor, then patch as numbers. A pre-release sorts below its own release (`2.0.0`, not in this list) but above every `1.x` version, so `2.0.0-rc.1` is highest. Counting the table gives three versions without an SBOM and two changed versions, and only `1.10.0` is both immutable and documented.",
     "partExplanations": {
-      "newest": "Major 2 beats major 1, even for a release candidate, and 1.10.0 is above 1.9.1 because 10 is greater than 9.",
-      "nosbom": "No SBOM: 1.9.0, 1.9.1 and 2.0.0-rc.1, which is 3.",
-      "changed": "Changed: 1.8.1 and 1.9.0, which is 2.",
-      "policy": "Immutable is yes for 1.9.1 and 1.10.0, and only 1.10.0 also has an SBOM.",
-      "stale": "An SBOM is attached to 1.8.0, 1.8.1 and 1.10.0, and of these only 1.8.1 changed after publishing."
+      "newest": "Major 2 beats major 1, even for a release candidate, and `1.10.0` is above `1.9.1` because 10 is greater than 9.",
+      "nosbom": "No SBOM: `1.9.0`, `1.9.1` and `2.0.0-rc.1`, which is 3.",
+      "changed": "Changed: `1.8.1` and `1.9.0`, which is 2.",
+      "policy": "Immutable is yes for `1.9.1` and `1.10.0`, and only `1.10.0` also has an SBOM.",
+      "stale": "An SBOM is attached to `1.8.0`, `1.8.1` and `1.10.0`, and of these only `1.8.1` changed after publishing."
     },
     "acronyms": [
       "SBOM"
@@ -2218,42 +2216,42 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
     "pbqWeight": 4,
-    "stem": "Place the component that fills each role in this build flow. Each box is named by its role.",
+    "stem": "Place the component that fills each role in this build flow. Each target area sits under the box it names and gives that box's role.",
     "payload": {
       "width": 600,
-      "height": 260,
+      "height": 280,
       "nodes": [
         {
           "id": "n1",
           "x": 20,
-          "y": 120,
+          "y": 150,
           "w": 140,
-          "h": 60
+          "h": 50
         },
         {
           "id": "n2",
           "x": 230,
-          "y": 120,
+          "y": 150,
           "w": 140,
-          "h": 60
+          "h": 50
         },
         {
           "id": "n3",
           "x": 440,
-          "y": 120,
+          "y": 150,
           "w": 140,
-          "h": 60
+          "h": 50
         },
         {
           "id": "n4",
           "x": 230,
-          "y": 8,
+          "y": 20,
           "w": 140,
-          "h": 60
+          "h": 50
         }
       ],
       "edges": [
@@ -2274,26 +2272,26 @@
         {
           "id": "z1",
           "x": 20,
-          "y": 190,
-          "name": "Source of third-party packages the build downloads"
+          "y": 210,
+          "name": "Source of third-party packages"
         },
         {
           "id": "z2",
           "x": 230,
-          "y": 190,
-          "name": "Disposable machine that runs the job"
+          "y": 210,
+          "name": "Disposable machine running the job"
         },
         {
           "id": "z3",
           "x": 440,
-          "y": 190,
-          "name": "Store for each build as an immutable version"
+          "y": 210,
+          "name": "Keeps builds as immutable versions"
         },
         {
           "id": "z4",
           "x": 230,
-          "y": 74,
-          "name": "Issues the job a short-lived credential"
+          "y": 80,
+          "name": "Issues short-lived job credentials"
         }
       ],
       "labels": [
@@ -2347,11 +2345,11 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
     "pbqWeight": 3,
-    "stem": "A deploy script for `ledger-api` is shown with its lines in shuffled positions. Select every line that hard-codes a credential or prints one to the job log.",
+    "stem": "A deploy script for `ledger-api` is shown with its lines in shuffled positions. Select every line that hard-codes a secret value, such as a password, or prints one to the job log.",
     "payload": {
       "width": 480,
       "height": 220,
@@ -2463,7 +2461,7 @@
         "sp5"
       ]
     },
-    "explanation": "A literal password in an export line and a literal login in a command are hard-coded credentials, and the echo line prints the password into the job log. The fetch line obtains the value at run time, and the user name and region are not secrets.",
+    "explanation": "A literal password in an `export` line and a literal password in a `curl` login are hard-coded secrets, and the `echo` line prints the password into the job log. The fetch line obtains the value at run time, and the user name and region are not secrets.",
     "partExplanations": {
       "sp1": "A service user name is an identifier, not a secret.",
       "sp2": "The password is written into the script as a literal.",
@@ -2481,66 +2479,66 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "Match each situation to the secrets practice that addresses it.",
+    "stem": "Match each situation with the artifact registry to the practice that addresses it.",
     "payload": {
       "prompts": [
         {
           "id": "p1",
-          "text": "A laptop with a cached access token was stolen yesterday"
+          "text": "Anonymous pulls must stop, so every client has to prove who it is first"
         },
         {
           "id": "p2",
-          "text": "A shared service password has not changed in two years"
+          "text": "The test team may pull release images but must never push to the releases repository"
         },
         {
           "id": "p3",
-          "text": "Each run needs a credential created for it alone, on request"
+          "text": "A contractor's push token still works a week after the contract ended"
         },
         {
           "id": "p4",
-          "text": "A test export keeps realistic card-like values while the real ones stay in a separate store"
+          "text": "Version 5.2.0 must never hold different bytes from the ones first published"
         },
         {
           "id": "p5",
-          "text": "Requests from inside the office network get no automatic trust"
+          "text": "Consumers want to tell from the number alone whether an upgrade can break them"
         },
         {
           "id": "p6",
-          "text": "A credential may be used for 30 minutes and ends unless its holder renews it"
+          "text": "A customer asks for every open-source component and its version in the product"
         }
       ],
       "choices": [
         {
           "id": "c1",
-          "text": "Revocation"
+          "text": "Authentication"
         },
         {
           "id": "c2",
-          "text": "Rotation"
+          "text": "Authorization"
         },
         {
           "id": "c3",
-          "text": "Dynamic secret"
+          "text": "Revocation"
         },
         {
           "id": "c4",
-          "text": "Tokenization"
+          "text": "Immutability"
         },
         {
           "id": "c5",
-          "text": "Zero Trust"
+          "text": "Semantic versioning"
         },
         {
           "id": "c6",
-          "text": "Lease"
+          "text": "SBOM"
         },
         {
           "id": "c7",
-          "text": "Base64 encoding"
+          "text": "Tokenization"
         }
       ]
     },
@@ -2554,16 +2552,18 @@
         "p6": "c6"
       }
     },
-    "explanation": "Revocation ends a credential that is known to be exposed, rotation replaces an old shared value, a dynamic secret is created for one requester, tokenization swaps real values for stand-ins, Zero Trust verifies every request, and a lease bounds how long a credential may be used. Base64 encoding hides nothing.",
+    "explanation": "Authentication proves who a client is, authorization decides what that client may do, revocation ends a credential that should no longer work, immutability stops a published version from changing, semantic versioning signals breaking changes in the number, and an SBOM lists the components inside a release. Tokenization replaces sensitive data values and fits none of these situations.",
     "partExplanations": {
-      "p1": "A stolen token should be invalidated now, which is revocation.",
-      "p2": "Replacing a long-unchanged shared value with a new one is rotation.",
-      "p3": "A credential created on request for one consumer is a dynamic secret.",
-      "p4": "Stand-in values with the real ones kept in a separate store is tokenization.",
-      "p5": "No automatic trust from network location is the Zero Trust principle.",
-      "p6": "A limited period of use that ends unless renewed is a lease."
+      "p1": "Making every client prove its identity before any pull is authentication.",
+      "p2": "Allowing pulls but refusing pushes for a known team is authorization.",
+      "p3": "A token that should be dead but still works must be revoked.",
+      "p4": "A version whose contents can never be replaced is immutable.",
+      "p5": "Under semantic versioning a new major number marks a breaking change.",
+      "p6": "A list of components and versions in a release is an SBOM."
     },
-    "acronyms": []
+    "acronyms": [
+      "SBOM"
+    ]
   },
   {
     "id": "at1-3-1-buckets-001",
@@ -2572,7 +2572,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 1,
     "pbqWeight": 6,
@@ -2603,7 +2603,7 @@
         },
         {
           "id": "i3",
-          "text": "Scaling the number of runners with the job queue"
+          "text": "Scaling the number of build agents with the job queue"
         },
         {
           "id": "i4",
@@ -2629,11 +2629,11 @@
         "i6": "env"
       }
     },
-    "explanation": "Masking and revoking tokens protect credentials. Retention rules and publish permissions govern how the registry holds and shares builds. Scaling runners and starting clean images create the machines that jobs run on.",
+    "explanation": "Masking and revoking tokens protect credentials. Retention rules and publish permissions govern how the registry holds and shares builds. Scaling build agents and starting clean images create the machines that jobs run on.",
     "partExplanations": {
       "i1": "Hiding secret values in logs protects credentials.",
       "i2": "A retention rule decides which stored builds are kept.",
-      "i3": "Adjusting runner capacity to demand is provisioning.",
+      "i3": "Adjusting build agent capacity to demand is provisioning.",
       "i4": "Ending tokens that should no longer work is a secrets task.",
       "i5": "Publish permission is an authorization control on the registry.",
       "i6": "A clean image per job gives each run a fresh, known environment."
