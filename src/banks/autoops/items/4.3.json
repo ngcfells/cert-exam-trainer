@@ -6,7 +6,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "An engineer runs `aws s3 ls --profile audit` while the default profile points at the production account. What does `--profile audit` do?",
@@ -47,7 +47,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A shell has `AWS_PROFILE=dev` exported. A script then runs `aws s3 ls --profile prod`. Which profile does the AWS CLI use?",
@@ -89,7 +89,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "On a build agent, an engineer wants access keys kept apart from non-secret settings such as the default region. Which layout follows the AWS CLI's documented convention?",
@@ -131,7 +131,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A script on a shared jump host runs `providerctl login --token demo-token-value`. What is the main risk of passing the token this way?",
@@ -170,7 +170,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A developer committed `.deploy-keys.env` containing a live key, deleted the file in the next commit, and pushed both. What must happen next?",
@@ -209,7 +209,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A job exchanges its identity for temporary credentials from the provider. Which statement describes them?",
@@ -251,7 +251,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "On Monday an engineer ran `export AWS_PROFILE=prod`. On Tuesday, in the same terminal tab, a cleanup command changes production resources. Why?",
@@ -271,7 +271,7 @@
         },
         {
           "id": "d",
-          "text": "The export command overwrote the default profile in the credentials file"
+          "text": "The `export` command overwrote the default profile in the credentials file"
         }
       ]
     },
@@ -292,7 +292,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A credentials file on a shared build host can be read by every local user. Which change fixes the problem?",
@@ -331,7 +331,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "An engineer is about to run a destructive AWS CLI command. Which step confirms the identity and account the CLI will act as?",
@@ -373,7 +373,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A service on a VM with an attached role runs in a shell where an old `AWS_ACCESS_KEY_ID` and secret are still exported. It uses the SDK default chain. Which credentials does it use?",
@@ -415,10 +415,10 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "What is wrong with the second line of this script?\n\n```python\nimport os\nkey = os.environ.get(\"PARTNER_KEY\", \"demo-key-0000\")\nclient = PartnerClient(api_key=key)\n```",
+    "stem": "What is wrong with the line that sets `key` in this script?\n\n```python\nimport os\nfrom partner_sdk import PartnerClient\nkey = os.environ.get(\"PARTNER_KEY\", \"demo-key-0000\")\nclient = PartnerClient(api_key=key)\n```",
     "payload": {
       "options": [
         {
@@ -456,7 +456,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A nightly SDK script sometimes hangs for an hour when the provider endpoint stops answering. Which client setting addresses this?",
@@ -497,7 +497,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Dozens of workers retry a failed provider call at the same instant, over and over, and keep overloading it. Which retry design reduces this?",
@@ -536,7 +536,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A build that passed on Friday fails on Monday because the newest SDK release changed a method signature. Which practice prevents this?",
@@ -577,7 +577,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "One team runs a single provider command from a shell script during manual maintenance. Another team embeds provider calls in a long-running service. Which pairing fits?",
@@ -606,7 +606,7 @@
         "c"
       ]
     },
-    "explanation": "The CLI suits one-off commands and shell scripts, while an SDK gives application code typed calls, error handling and retries. The reverse pairing fits poorly, and the CLI can be scripted.",
+    "explanation": "The CLI suits one-off commands and shell scripts, while an SDK gives application code typed calls, error handling and retries. The reverse pairing fits poorly. A long-running service needs the SDK's typed errors and retries, so the CLI alone does not suit both jobs, and the CLI can be scripted.",
     "acronyms": [
       "CLI",
       "SDK"
@@ -619,10 +619,10 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "An SDK client has a 5-second timeout and makes 1 initial attempt plus 2 retries. The provider never answers. Ignoring any backoff delay, how long can the call take before it fails?",
+    "stem": "An SDK client waits at most 5 seconds per attempt and makes 1 initial attempt plus 2 retries. The provider never answers. Ignoring any backoff delay, how long can the call take before it fails?",
     "payload": {
       "options": [
         {
@@ -660,7 +660,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A three-hour export fails at the one-hour mark when started with temporary keys copied into environment variables that expire after one hour. The same code works on a VM with an attached role. Why?",
@@ -702,7 +702,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A pipeline authenticates as an engineer's personal account. The engineer leaves and the account is disabled. What happens, and what would have avoided it?",
@@ -722,7 +722,7 @@
         },
         {
           "id": "d",
-          "text": "The pipeline breaks; a shared team login avoids it"
+          "text": "The pipeline breaks; a shared login owned by one engineer avoids it"
         }
       ]
     },
@@ -731,7 +731,7 @@
         "b"
       ]
     },
-    "explanation": "A person's account is tied to their employment, so disabling it cuts off everything that used it. A machine identity such as a service account belongs to the team and the workload. Password length does not matter once the account is disabled, and a shared login is still a user account.",
+    "explanation": "A person's account is tied to their employment, so disabling it cuts off everything that used it. A machine identity such as a service account belongs to the team and the workload. Password length does not matter once the account is disabled, and a login owned by one engineer still depends on that person.",
     "acronyms": []
   },
   {
@@ -741,7 +741,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A laptop was stolen two hours ago. It held a long-lived access key and a session token that expires after 15 minutes. Which statement is correct?",
@@ -780,7 +780,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A legacy system cannot use temporary credentials, so its access key has to be rotated. Which sequence avoids an outage?",
@@ -792,15 +792,15 @@
         },
         {
           "id": "b",
-          "text": "Delete the old key, then create and deploy a new one"
+          "text": "Delete the old key, then create a new one and deploy it to the systems"
         },
         {
           "id": "c",
-          "text": "Change the secret of the existing key in place at the provider"
+          "text": "Change the existing key's secret in place at the provider, then redeploy"
         },
         {
           "id": "d",
-          "text": "Create a second key and disable it until the old one fails"
+          "text": "Create a second key, keep it disabled, and enable it once the old one fails"
         }
       ]
     },
@@ -809,7 +809,7 @@
         "a"
       ]
     },
-    "explanation": "Running two keys side by side lets the system switch over with no gap, and the old key is disabled only after the new one is proven. Deleting first causes an outage, an in-place change breaks the running system at once, and a disabled new key cannot take over.",
+    "explanation": "Running two keys side by side lets the system switch over with no gap, and the old key is disabled only after the new one is proven. Deleting first causes an outage, an in-place change breaks the running system before the redeploy lands, and waiting for the old key to fail before enabling the new one leaves a gap.",
     "acronyms": []
   },
   {
@@ -819,7 +819,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team uses one service account for both the staging and production deployers. After an unexpected production change, the audit log shows only that account. Which change best fixes this?",
@@ -858,7 +858,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A CI pipeline also runs for pull requests opened from outside contributors' forks, and every run receives the deploy credentials. What should change?",
@@ -866,7 +866,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Mask the credentials in the logs and keep passing them to every run"
+          "text": "Mask the deploy credentials in the logs and keep passing them to every run"
         },
         {
           "id": "b",
@@ -878,7 +878,7 @@
         },
         {
           "id": "d",
-          "text": "Shorten the run timeout so the credentials expire sooner"
+          "text": "Shorten the run timeout so the deploy credentials expire sooner"
         }
       ]
     },
@@ -899,7 +899,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A reporting job only reads objects, while a release job writes them. Both use one role that can read and write. Which change best applies least privilege?",
@@ -907,7 +907,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Keep one role and add a comment that describes its intent"
+          "text": "Keep the read and write role and add a comment that describes its intent"
         },
         {
           "id": "b",
@@ -915,7 +915,7 @@
         },
         {
           "id": "c",
-          "text": "Give the reporting job a second copy of the same role"
+          "text": "Give the reporting job a second copy of the read and write role"
         },
         {
           "id": "d",
@@ -938,7 +938,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A mapping provider issues a static key to a company's backend service. Which control most limits the damage if the key leaks?",
@@ -979,7 +979,7 @@
     "objectiveIds": [
       "4.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A nightly batch job calls a partner's API when no user is present. Which grant type fits?",
