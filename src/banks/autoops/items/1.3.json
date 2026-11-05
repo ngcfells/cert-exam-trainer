@@ -437,25 +437,25 @@
     ],
     "status": "approved",
     "type": "mcq-single",
-    "difficulty": 1,
-    "stem": "Which question does a declarative IaC definition answer?",
+    "difficulty": 2,
+    "stem": "A teammate changes `count = 3` to `count = 5` in a declarative definition for web servers, then runs a preview. All three servers exist and match the file. What should the preview list?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Which command should run at step three?"
+          "text": "Five servers to create from scratch"
         },
         {
           "id": "b",
-          "text": "Who gets notified after each step?"
+          "text": "The steps to create two servers, in order"
         },
         {
           "id": "c",
-          "text": "How long should each step wait?"
+          "text": "Three servers to destroy and five to create"
         },
         {
           "id": "d",
-          "text": "What should exist when the run finishes?"
+          "text": "Two servers to add and no other changes"
         }
       ]
     },
@@ -464,7 +464,7 @@
         "d"
       ]
     },
-    "explanation": "A declarative definition answers what should exist at the end and leaves the method to the tool. Which command comes next, who is notified, and how long to wait are details of procedure, which belong to an imperative script or a pipeline.",
+    "explanation": "The tool compares the desired five with the three that already exist and plans only the difference, two additions. It does not rebuild all five or replace the existing three, and it lists changes to resources rather than ordered steps: working out the steps is the tool's job.",
     "acronyms": []
   },
   {
@@ -1840,9 +1840,9 @@
     "explanation": "A declarative tool compares the file to reality, so a rerun with no edits changes nothing and an edit produces only the needed change. The `plan` command shows changes without making them, and `apply` makes them.",
     "partExplanations": {
       "second": "Zero additions, changes and destructions on the rerun is the sign of an idempotent run.",
-      "preview": "The plan command with -f web.cfg reports what would change and makes no changes.",
+      "preview": "The `plan` command with `-f web.cfg` reports what would change and makes no changes.",
       "edit": "The preview lists one in-place change to web02 and nothing for web01.",
-      "apply": "The apply command with -f and the file name, here db.cfg, makes the changes that file describes."
+      "apply": "The `apply` command with `-f` and the file name, here `db.cfg`, makes the changes that file describes."
     },
     "acronyms": []
   },

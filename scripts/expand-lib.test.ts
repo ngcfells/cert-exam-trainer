@@ -29,6 +29,8 @@ describe('parseExpandArgs', () => {
   it('--terms takes a comma list, trimmed and de-duplicated, case kept', () => {
     expect(parseExpandArgs(['--report', 'r', '--terms', 'MTTR, SHA,,MTTR,FaaS']).terms).toEqual(['MTTR', 'SHA', 'FaaS']);
     expect(() => parseExpandArgs(['--report', 'r', '--terms', ' , '])).toThrow(/--terms/);
+    // An empty list must not silently mean "every acronym".
+    expect(() => parseAlternateArgs(['--exam', 'X', '--terms', ' , '])).toThrow(/--terms/);
   });
   it('rejects bad input', () => {
     expect(() => parseExpandArgs(['--report', 'r', '--min-count', 'abc'])).toThrow(/min-count/);

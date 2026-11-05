@@ -13,15 +13,15 @@ export const autoOpsFixtureQuestions: Question[] = [
     stem: 'A developer wants to undo a commit that is already pushed to a shared branch, without rewriting its history. Which Git command fits?',
     payload: {
       options: [
-        { id: 'a', text: 'git reset --hard' },
-        { id: 'b', text: 'git revert' },
-        { id: 'c', text: 'git stash' },
-        { id: 'd', text: 'git rebase' },
+        { id: 'a', text: '`git reset --hard`' },
+        { id: 'b', text: '`git revert`' },
+        { id: 'c', text: '`git stash`' },
+        { id: 'd', text: '`git rebase`' },
       ],
     },
     answer: { correct: ['b'] },
     explanation:
-      'git revert adds a new commit that undoes the old one, so shared history stays intact. A hard reset and a rebase rewrite history that others already have, and stash only shelves uncommitted changes.',
+      '`git revert` adds a new commit that undoes the old one, so shared history stays intact. `git reset --hard` and `git rebase` rewrite history that others already have, and `git stash` only shelves uncommitted changes.',
     acronyms: [],
     status: 'approved',
   },
@@ -58,15 +58,15 @@ export const autoOpsFixtureQuestions: Question[] = [
     stem: 'Which two HTTP methods are idempotent by definition, so repeating the same request leaves the server in the same state?',
     payload: {
       options: [
-        { id: 'a', text: 'PUT' },
-        { id: 'b', text: 'POST' },
-        { id: 'c', text: 'DELETE' },
-        { id: 'd', text: 'PATCH' },
+        { id: 'a', text: '`PUT`' },
+        { id: 'b', text: '`POST`' },
+        { id: 'c', text: '`DELETE`' },
+        { id: 'd', text: '`PATCH`' },
       ],
     },
     answer: { correct: ['a', 'c'] },
     explanation:
-      'PUT replaces a resource with the same content each time, and DELETE leaves it deleted however often it is sent. POST usually creates a new resource per call, and PATCH is not idempotent by definition.',
+      '`PUT` replaces a resource with the same content each time, and `DELETE` leaves it deleted however often it is sent. `POST` usually creates a new resource per call, and `PATCH` is not idempotent by definition.',
     acronyms: ['HTTP'],
     status: 'approved',
   },

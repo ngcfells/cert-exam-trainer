@@ -1817,7 +1817,19 @@
           "git push -u origin HEAD",
           "git push --set-upstream origin HEAD",
           "git push origin -u HEAD",
-          "git push origin --set-upstream HEAD"
+          "git push origin --set-upstream HEAD",
+          "git push origin feature/retry-backoff -u",
+          "git push origin HEAD -u",
+          "git push -u origin feature/retry-backoff:feature/retry-backoff",
+          "git push -u origin HEAD:feature/retry-backoff",
+          "git push origin -u feature/retry-backoff:feature/retry-backoff",
+          "git push origin -u HEAD:feature/retry-backoff",
+          "git push origin feature/retry-backoff --set-upstream",
+          "git push origin HEAD --set-upstream",
+          "git push --set-upstream origin feature/retry-backoff:feature/retry-backoff",
+          "git push --set-upstream origin HEAD:feature/retry-backoff",
+          "git push origin --set-upstream feature/retry-backoff:feature/retry-backoff",
+          "git push origin --set-upstream HEAD:feature/retry-backoff"
         ],
         "fetch": [
           "git fetch",

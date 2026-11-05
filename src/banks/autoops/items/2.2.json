@@ -1108,7 +1108,7 @@
     "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "Whenever a file lands in storage, a message is published to a topic and each subscriber of that topic gets a copy. What is this pattern called?",
+    "stem": "Whenever a file lands in storage, the storage service announces it and three separate services react. What is this pattern called?",
     "payload": {
       "options": [
         {
@@ -1134,7 +1134,7 @@
         "b"
       ]
     },
-    "explanation": "Publishing to a topic that notifies every subscriber is a notification-based event. A poll checks on a timer, a batch export runs at set times, and a manual review needs a person.",
+    "explanation": "A service that announces each change so that interested services react is a notification-based event. A poll checks on a timer, a batch export runs at set times, and a manual review needs a person.",
     "acronyms": []
   },
   {

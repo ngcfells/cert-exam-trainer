@@ -279,7 +279,10 @@ export function parseAlternateArgs(argv: string[]): AlternateArgs {
     else if (flag === '--out') a.out = value;
     else if (flag === '--model') a.model = value;
     else if (flag === '--suggest') a.suggest = value;
-    else a.terms = [...new Set(value.split(',').map((t) => t.trim()).filter(Boolean))];
+    else {
+      a.terms = [...new Set(value.split(',').map((t) => t.trim()).filter(Boolean))];
+      if (!a.terms.length) throw new Error('--terms needs at least one term');
+    }
   }
   if (!a.exam) throw new Error('--exam is required');
   return a;

@@ -2422,7 +2422,7 @@
         },
         {
           "id": "i4",
-          "text": "The two-minute critical-path check that runs as the deploy finishes fails at sign-in"
+          "text": "A two-minute check of sign-in and checkout, run before traffic is switched to the new release, fails at sign-in"
         },
         {
           "id": "i5",
@@ -2449,7 +2449,7 @@
       "i1": "Slow responses at a given number of users are a capacity finding from load testing.",
       "i2": "Something that worked before and broke after an unrelated change is a regression.",
       "i3": "A format that one service sends and another rejects is an integration mismatch.",
-      "i4": "A short critical-path check run as the deploy finishes is a smoke test.",
+      "i4": "A quick check of the critical paths on a fresh release, before it takes traffic, is a smoke test.",
       "i5": "A slow leak that only shows over days of real use is found by monitoring production.",
       "i6": "Running out of connections at a request rate is a capacity limit from load testing."
     },
