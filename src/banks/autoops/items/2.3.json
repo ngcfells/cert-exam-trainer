@@ -991,7 +991,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "In Postman, what is a collection?",
@@ -1020,7 +1020,7 @@
         "a"
       ]
     },
-    "explanation": "A collection bundles saved requests, optionally with folders and tests. The set of variables for a target is an environment, and Postman is a client tool that does not store server responses for replay.",
+    "explanation": "A collection bundles saved requests, optionally with folders and tests. The set of variables for a target is an environment, and Postman is a client tool that does not store server responses for replay. The list of status codes seen is the app's history log, a separate feature from collections.",
     "acronyms": []
   },
   {
@@ -1030,7 +1030,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An API retired `POST /v1/orders` in favor of a new address and wants every client to resend the same method and body there. Which status fits best?",
@@ -1071,7 +1071,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A payment client retries `POST /v1/charges` after a timeout, and a customer is charged twice. Which design makes the retry safe?",
@@ -1087,7 +1087,7 @@
         },
         {
           "id": "c",
-          "text": "Send a unique idempotency key the service uses to detect repeats"
+          "text": "Send a unique idempotency key with each call"
         },
         {
           "id": "d",
@@ -1110,7 +1110,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Only the `email` field of profile 7 must change, and the other fields must stay as they are. Which request fits best?",
@@ -1122,7 +1122,7 @@
         },
         {
           "id": "b",
-          "text": "`PUT /v1/profiles/7` with a body that holds just the `email` field"
+          "text": "`PUT /v1/profiles/7` with a body that holds just `email`"
         },
         {
           "id": "c",
@@ -1149,7 +1149,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A script must add a new order to the collection and let the server choose the order number. Which request fits?",
@@ -1188,10 +1188,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
-    "stem": "A retry wrapper may resend a request after a network timeout. Which THREE methods are idempotent, so resending is safe by definition?",
+    "stem": "A retry wrapper may resend a request after a network timeout. Which THREE methods are idempotent, so a repeat cannot change the outcome beyond the first call?",
     "payload": {
       "options": [
         {
@@ -1233,7 +1233,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "A script sends a JSON body and wants JSON back. Which TWO request headers does it set?",
@@ -1245,7 +1245,7 @@
         },
         {
           "id": "b",
-          "text": "`Location: /v1/orders`"
+          "text": "`Location: /v1/orders/981`"
         },
         {
           "id": "c",
@@ -1253,11 +1253,11 @@
         },
         {
           "id": "d",
-          "text": "`Retry-After: 10`"
+          "text": "`Retry-After: 86400`"
         },
         {
           "id": "e",
-          "text": "`ETag: \"v3\"`"
+          "text": "`ETag: \"33a64df551425fcc\"`"
         }
       ]
     },
@@ -1279,10 +1279,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
-    "stem": "Which TWO replies are client errors (4XX)?",
+    "stem": "Which TWO replies are client errors (`4XX`)?",
     "payload": {
       "options": [
         {
@@ -1313,7 +1313,7 @@
         "e"
       ]
     },
-    "explanation": "`404` and `409` both fall in the 400 range, which blames the request. `502` and `503` are server-side errors, and `304` is a redirection-class code that means the cached copy is still valid.",
+    "explanation": "`404` and `409` both fall in the `4XX` range, which blames the request. `502` and `503` are server-side errors, and `304` is a redirection-class code that means the cached copy is still valid.",
     "acronyms": []
   },
   {
@@ -1323,7 +1323,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "An update must be applied only if the resource is unchanged since the client read it. Which TWO headers make that check possible?",
@@ -1367,31 +1367,31 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
-    "stem": "Which TWO Postman features support running the same requests against different hosts without editing each request?",
+    "stem": "A nightly job must send every saved request in a Postman project and fail when a reply has the wrong status. Which TWO Postman features does it rely on?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "A collection that groups the saved requests"
+          "text": "A collection that groups the requests so they run in one pass"
         },
         {
           "id": "b",
-          "text": "A host name hard-coded in each request address"
+          "text": "A mock server that returns example replies for each request"
         },
         {
           "id": "c",
-          "text": "An environment that holds variables such as a base URL"
+          "text": "Test scripts that check each reply after it arrives"
         },
         {
           "id": "d",
-          "text": "A duplicate of each request for every host"
+          "text": "The history list of requests sent by hand from the app"
         },
         {
           "id": "e",
-          "text": "Saved response examples attached to a request"
+          "text": "An environment that stores a base address for each host"
         }
       ]
     },
@@ -1401,10 +1401,8 @@
         "c"
       ]
     },
-    "explanation": "A collection keeps the requests together, and an environment supplies variables such as the base URL. Hard-coded hosts and duplicated requests must be edited one by one, and response examples document replies but do not change the target.",
-    "acronyms": [
-      "URL"
-    ]
+    "explanation": "A collection holds the requests so a runner can send them in one pass, and test scripts check each reply's status and fail the run when it is wrong. A mock server fakes replies instead of checking real ones, the history only logs requests sent by hand, and an environment supplies variables but checks nothing.",
+    "acronyms": []
   },
   {
     "id": "at1-2-3-mcq-036",
@@ -1413,10 +1411,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
-    "stem": "Which TWO status codes are temporary redirects?",
+    "stem": "Which TWO status codes send the client elsewhere for this request only, leaving the original address in place?",
     "payload": {
       "options": [
         {
@@ -1457,7 +1455,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "stem": "Manage order records on the orders API. Use the notes and help text shown, then type each command. Replies are not shown because nothing is run.",
@@ -1466,8 +1464,9 @@
         "$ cat api-notes.txt",
         "Collection:  https://api.example.internal/v1/orders",
         "One order:   https://api.example.internal/v1/orders/<n>",
-        "Bodies are JSON. A request with a body must say so in a Content-Type header.",
+        "Bodies are JSON. A request with a body must send the header Content-Type: application/json.",
         "The server picks the number of a new order. PATCH changes only the fields sent.",
+        "Write the address last, and add no option a step does not need.",
         "$ curl --help",
         "Usage: curl [options] <url>",
         " -X, --request <method>   method to send",
@@ -1519,6 +1518,22 @@
     "answer": {
       "accept": {
         "create": [
+          "curl -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -H \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -H 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
           "curl -X POST -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
           "curl -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
           "curl -H \"Content-Type: application/json\" -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
@@ -1531,18 +1546,6 @@
           "curl -H \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
           "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
           "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" -X POST https://api.example.internal/v1/orders",
-          "curl -X POST --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
-          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" -X POST https://api.example.internal/v1/orders",
-          "curl -X POST --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
-          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" -X POST https://api.example.internal/v1/orders",
           "curl -X POST -H 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
           "curl -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
           "curl -H 'Content-Type: application/json' -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
@@ -1555,6 +1558,30 @@
           "curl -H 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
           "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
           "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' -X POST https://api.example.internal/v1/orders",
+          "curl -X POST --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" -X POST https://api.example.internal/v1/orders",
+          "curl -X POST --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" -X POST https://api.example.internal/v1/orders",
+          "curl -X POST --header 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' -X POST https://api.example.internal/v1/orders",
+          "curl -X POST --header 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' -X POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -X POST --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' -X POST https://api.example.internal/v1/orders",
           "curl --request POST -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
           "curl --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
           "curl -H \"Content-Type: application/json\" --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
@@ -1567,18 +1594,6 @@
           "curl -H \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
           "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
           "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" --request POST https://api.example.internal/v1/orders",
-          "curl --request POST --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
-          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" --request POST https://api.example.internal/v1/orders",
-          "curl --request POST --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
-          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" --request POST https://api.example.internal/v1/orders",
           "curl --request POST -H 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
           "curl --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
           "curl -H 'Content-Type: application/json' --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
@@ -1591,57 +1606,35 @@
           "curl -H 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
           "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
           "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' --request POST https://api.example.internal/v1/orders",
-          "curl -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl -H \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
-          "curl -H 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
-          "curl -H 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
-          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders",
-          "curl https://api.example.internal/v1/orders -X POST -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}'",
-          "curl https://api.example.internal/v1/orders -X POST -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\"",
-          "curl https://api.example.internal/v1/orders -H \"Content-Type: application/json\" -X POST -d '{\"sku\":\"A-100\",\"qty\":2}'",
-          "curl https://api.example.internal/v1/orders -H \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST",
-          "curl https://api.example.internal/v1/orders -d '{\"sku\":\"A-100\",\"qty\":2}' -X POST -H \"Content-Type: application/json\"",
-          "curl https://api.example.internal/v1/orders -d '{\"sku\":\"A-100\",\"qty\":2}' -H \"Content-Type: application/json\" -X POST",
-          "curl https://api.example.internal/v1/orders --request POST --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}'",
-          "curl https://api.example.internal/v1/orders --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\"",
-          "curl https://api.example.internal/v1/orders --header \"Content-Type: application/json\" --request POST --data '{\"sku\":\"A-100\",\"qty\":2}'",
-          "curl https://api.example.internal/v1/orders --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST",
-          "curl https://api.example.internal/v1/orders --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header \"Content-Type: application/json\"",
-          "curl https://api.example.internal/v1/orders --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" --request POST"
+          "curl --request POST --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" --request POST https://api.example.internal/v1/orders",
+          "curl --request POST --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header \"Content-Type: application/json\" --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header \"Content-Type: application/json\" https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header \"Content-Type: application/json\" --request POST https://api.example.internal/v1/orders",
+          "curl --request POST --header 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' --request POST -d '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl -d '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' --request POST https://api.example.internal/v1/orders",
+          "curl --request POST --header 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' --request POST --data '{\"sku\":\"A-100\",\"qty\":2}' https://api.example.internal/v1/orders",
+          "curl --header 'Content-Type: application/json' --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --request POST --header 'Content-Type: application/json' https://api.example.internal/v1/orders",
+          "curl --data '{\"sku\":\"A-100\",\"qty\":2}' --header 'Content-Type: application/json' --request POST https://api.example.internal/v1/orders"
         ],
         "read": [
-          "curl -X GET -i https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -X GET -i",
-          "curl -i -X GET https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -i -X GET",
-          "curl -X GET --include https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -X GET --include",
-          "curl --include -X GET https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --include -X GET",
+          "curl https://api.example.internal/v1/orders/1042",
           "curl -X GET https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -X GET",
-          "curl --request GET -i https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --request GET -i",
-          "curl -i --request GET https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -i --request GET",
-          "curl --request GET --include https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --request GET --include",
-          "curl --include --request GET https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --include --request GET",
-          "curl --request GET https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --request GET",
-          "curl -i https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -i",
-          "curl --include https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --include",
-          "curl https://api.example.internal/v1/orders/1042"
+          "curl --request GET https://api.example.internal/v1/orders/1042"
         ],
         "update": [
           "curl -X PATCH -H \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
@@ -1656,18 +1649,6 @@
           "curl -H \"Content-Type: application/json\" --data '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
           "curl --data '{\"qty\":5}' -X PATCH -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
           "curl --data '{\"qty\":5}' -H \"Content-Type: application/json\" -X PATCH https://api.example.internal/v1/orders/1042",
-          "curl -X PATCH --header \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
-          "curl -X PATCH -d '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
-          "curl --header \"Content-Type: application/json\" -X PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
-          "curl --header \"Content-Type: application/json\" -d '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
-          "curl -d '{\"qty\":5}' -X PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
-          "curl -d '{\"qty\":5}' --header \"Content-Type: application/json\" -X PATCH https://api.example.internal/v1/orders/1042",
-          "curl -X PATCH --header \"Content-Type: application/json\" --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
-          "curl -X PATCH --data '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
-          "curl --header \"Content-Type: application/json\" -X PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
-          "curl --header \"Content-Type: application/json\" --data '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
-          "curl --data '{\"qty\":5}' -X PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
-          "curl --data '{\"qty\":5}' --header \"Content-Type: application/json\" -X PATCH https://api.example.internal/v1/orders/1042",
           "curl -X PATCH -H 'Content-Type: application/json' -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
           "curl -X PATCH -d '{\"qty\":5}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
           "curl -H 'Content-Type: application/json' -X PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
@@ -1680,6 +1661,30 @@
           "curl -H 'Content-Type: application/json' --data '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
           "curl --data '{\"qty\":5}' -X PATCH -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
           "curl --data '{\"qty\":5}' -H 'Content-Type: application/json' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --header \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH -d '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" -X PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" -d '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' -X PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --header \"Content-Type: application/json\" -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --header \"Content-Type: application/json\" --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --data '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" -X PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" --data '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' -X PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --header \"Content-Type: application/json\" -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --header 'Content-Type: application/json' -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH -d '{\"qty\":5}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl --header 'Content-Type: application/json' -X PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header 'Content-Type: application/json' -d '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' -X PATCH --header 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --header 'Content-Type: application/json' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --header 'Content-Type: application/json' --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl -X PATCH --data '{\"qty\":5}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl --header 'Content-Type: application/json' -X PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header 'Content-Type: application/json' --data '{\"qty\":5}' -X PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' -X PATCH --header 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --header 'Content-Type: application/json' -X PATCH https://api.example.internal/v1/orders/1042",
           "curl --request PATCH -H \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
           "curl --request PATCH -d '{\"qty\":5}' -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
           "curl -H \"Content-Type: application/json\" --request PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
@@ -1692,18 +1697,6 @@
           "curl -H \"Content-Type: application/json\" --data '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
           "curl --data '{\"qty\":5}' --request PATCH -H \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
           "curl --data '{\"qty\":5}' -H \"Content-Type: application/json\" --request PATCH https://api.example.internal/v1/orders/1042",
-          "curl --request PATCH --header \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
-          "curl --request PATCH -d '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
-          "curl --header \"Content-Type: application/json\" --request PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
-          "curl --header \"Content-Type: application/json\" -d '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
-          "curl -d '{\"qty\":5}' --request PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
-          "curl -d '{\"qty\":5}' --header \"Content-Type: application/json\" --request PATCH https://api.example.internal/v1/orders/1042",
-          "curl --request PATCH --header \"Content-Type: application/json\" --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
-          "curl --request PATCH --data '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
-          "curl --header \"Content-Type: application/json\" --request PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
-          "curl --header \"Content-Type: application/json\" --data '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
-          "curl --data '{\"qty\":5}' --request PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
-          "curl --data '{\"qty\":5}' --header \"Content-Type: application/json\" --request PATCH https://api.example.internal/v1/orders/1042",
           "curl --request PATCH -H 'Content-Type: application/json' -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
           "curl --request PATCH -d '{\"qty\":5}' -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
           "curl -H 'Content-Type: application/json' --request PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
@@ -1716,59 +1709,52 @@
           "curl -H 'Content-Type: application/json' --data '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
           "curl --data '{\"qty\":5}' --request PATCH -H 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
           "curl --data '{\"qty\":5}' -H 'Content-Type: application/json' --request PATCH https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -X PATCH -H \"Content-Type: application/json\" -d '{\"qty\":5}'",
-          "curl https://api.example.internal/v1/orders/1042 -X PATCH -d '{\"qty\":5}' -H \"Content-Type: application/json\"",
-          "curl https://api.example.internal/v1/orders/1042 -H \"Content-Type: application/json\" -X PATCH -d '{\"qty\":5}'",
-          "curl https://api.example.internal/v1/orders/1042 -H \"Content-Type: application/json\" -d '{\"qty\":5}' -X PATCH",
-          "curl https://api.example.internal/v1/orders/1042 -d '{\"qty\":5}' -X PATCH -H \"Content-Type: application/json\"",
-          "curl https://api.example.internal/v1/orders/1042 -d '{\"qty\":5}' -H \"Content-Type: application/json\" -X PATCH",
-          "curl https://api.example.internal/v1/orders/1042 --request PATCH --header \"Content-Type: application/json\" --data '{\"qty\":5}'",
-          "curl https://api.example.internal/v1/orders/1042 --request PATCH --data '{\"qty\":5}' --header \"Content-Type: application/json\"",
-          "curl https://api.example.internal/v1/orders/1042 --header \"Content-Type: application/json\" --request PATCH --data '{\"qty\":5}'",
-          "curl https://api.example.internal/v1/orders/1042 --header \"Content-Type: application/json\" --data '{\"qty\":5}' --request PATCH",
-          "curl https://api.example.internal/v1/orders/1042 --data '{\"qty\":5}' --request PATCH --header \"Content-Type: application/json\"",
-          "curl https://api.example.internal/v1/orders/1042 --data '{\"qty\":5}' --header \"Content-Type: application/json\" --request PATCH"
+          "curl --request PATCH --header \"Content-Type: application/json\" -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH -d '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" --request PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" -d '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --request PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --header \"Content-Type: application/json\" --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --header \"Content-Type: application/json\" --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --data '{\"qty\":5}' --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" --request PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header \"Content-Type: application/json\" --data '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --request PATCH --header \"Content-Type: application/json\" https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --header \"Content-Type: application/json\" --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --header 'Content-Type: application/json' -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH -d '{\"qty\":5}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl --header 'Content-Type: application/json' --request PATCH -d '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header 'Content-Type: application/json' -d '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --request PATCH --header 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl -d '{\"qty\":5}' --header 'Content-Type: application/json' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --header 'Content-Type: application/json' --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --request PATCH --data '{\"qty\":5}' --header 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl --header 'Content-Type: application/json' --request PATCH --data '{\"qty\":5}' https://api.example.internal/v1/orders/1042",
+          "curl --header 'Content-Type: application/json' --data '{\"qty\":5}' --request PATCH https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --request PATCH --header 'Content-Type: application/json' https://api.example.internal/v1/orders/1042",
+          "curl --data '{\"qty\":5}' --header 'Content-Type: application/json' --request PATCH https://api.example.internal/v1/orders/1042"
         ],
         "delete": [
-          "curl -X DELETE -i https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -X DELETE -i",
-          "curl -i -X DELETE https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -i -X DELETE",
-          "curl -X DELETE --include https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -X DELETE --include",
-          "curl --include -X DELETE https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --include -X DELETE",
           "curl -X DELETE https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -X DELETE",
-          "curl --request DELETE -i https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --request DELETE -i",
-          "curl -i --request DELETE https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 -i --request DELETE",
-          "curl --request DELETE --include https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --request DELETE --include",
-          "curl --include --request DELETE https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --include --request DELETE",
-          "curl --request DELETE https://api.example.internal/v1/orders/1042",
-          "curl https://api.example.internal/v1/orders/1042 --request DELETE"
+          "curl --request DELETE https://api.example.internal/v1/orders/1042"
         ],
         "after": [
           "o3"
         ]
       }
     },
-    "explanation": "A new order is created with a POST to the collection and a JSON body that carries a Content-Type header. A read needs only the address, a PATCH changes just the fields it sends, and a DELETE targets the single order. A later read of a deleted order finds nothing at that address.",
+    "explanation": "A new order is created with a `POST` to the collection and a JSON body that carries the `Content-Type` header. A read needs only the address, a `PATCH` changes just the fields it sends, and a `DELETE` targets the single order. A later read of a deleted order finds nothing at that address.",
     "pbqWeight": 5,
     "partExplanations": {
-      "create": "POST to the collection with the JSON header and body; curl also infers POST from the body.",
-      "read": "A plain curl with the order address performs a GET.",
-      "update": "PATCH to the single order with just the quantity, so other fields stay as they are.",
-      "delete": "DELETE to the single order address.",
-      "after": "Nothing exists at the address any more, so the service answers 404."
+      "create": "`POST` to the collection with the JSON header and body; `curl` also infers `POST` from the body, so `-X POST` is optional.",
+      "read": "A plain `curl` with the order address performs a `GET`.",
+      "update": "`PATCH` to the single order with just the quantity, so other fields stay as they are.",
+      "delete": "`DELETE` to the single order address.",
+      "after": "Nothing exists at the address any more, so the service answers `404`."
     },
     "acronyms": [
       "API",
-      "JSON",
-      "POST"
+      "JSON"
     ]
   },
   {
@@ -1778,7 +1764,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "stem": "Complete the requests that manage orders on the orders API. New orders get their number from the server, bodies are JSON, and a delete reply carries no body.",
@@ -1885,14 +1871,14 @@
         "delete": "o1"
       }
     },
-    "explanation": "A POST to the collection lets the server choose the number, and Content-Type declares the JSON body. PATCH changes part of an order, If-Match carries the tag from the earlier read so a stale write fails, and a delete with nothing to return uses 204.",
+    "explanation": "A `POST` to the collection lets the server choose the number, and `Content-Type` declares the JSON body. `PATCH` changes part of an order, `If-Match` carries the tag from the earlier read so a stale write fails, and a delete with nothing to return uses `204`.",
     "pbqWeight": 5,
     "partExplanations": {
-      "create": "POST creates a member of the collection; PUT needs the full address and GET only reads.",
-      "ctype": "Content-Type describes the request body; Accept describes the reply wanted.",
-      "update": "PATCH sends a partial change, while POST creates and DELETE removes.",
-      "guard": "If-Match makes the write conditional on the tag read earlier.",
-      "delete": "204 means success with no body; 201 is for creation and 304 for cached reads."
+      "create": "`POST` creates a member of the collection; `PUT` needs the full address and `GET` only reads.",
+      "ctype": "`Content-Type` describes the request body; `Accept` describes the reply wanted.",
+      "update": "`PATCH` sends a partial change, while `POST` creates and `DELETE` removes.",
+      "guard": "`If-Match` makes the write conditional on the tag read earlier.",
+      "delete": "`204` means success with no body; `201` is for creation and `304` for cached reads."
     },
     "acronyms": [
       "API",
@@ -1907,7 +1893,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
     "stem": "A client creates a support ticket, revises it, and removes it. Put the requests in the order the client sends them. Rules: the client needs the address from the create reply before it can touch the ticket; the tag from a read must be in hand before a conditional update is sent; the revised content is confirmed before the ticket is removed; the check for a missing ticket comes after the removal.",
@@ -1952,12 +1938,12 @@
     "explanation": "The create reply supplies the address, a read supplies the tag, the conditional update uses it, a second read confirms the new content, the delete removes the ticket, and a final read shows it is gone.",
     "pbqWeight": 6,
     "partExplanations": {
-      "0": "The create comes first because its Location header gives the ticket address.",
-      "1": "The first read returns the ETag that the update needs.",
-      "2": "The conditional update sends that ETag in If-Match.",
+      "0": "The create comes first because its `Location` header gives the ticket address.",
+      "1": "The first read returns the `ETag` that the update needs.",
+      "2": "The conditional update sends that `ETag` in `If-Match`.",
       "3": "The confirming read follows the update and precedes the removal.",
       "4": "The delete removes the ticket after the content was confirmed.",
-      "5": "The closing read shows 404 because the ticket no longer exists."
+      "5": "The closing read shows `404` because the ticket no longer exists."
     },
     "acronyms": [
       "JSON",
@@ -1971,7 +1957,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 2,
     "stem": "A script logged these ten calls against the orders API. Use the table to answer each question.",
@@ -2062,15 +2048,15 @@
           "label": "How many calls succeeded (2XX)?",
           "options": [
             {
-              "id": "n3",
+              "id": "k3",
               "text": "3"
             },
             {
-              "id": "n4",
+              "id": "k4",
               "text": "4"
             },
             {
-              "id": "n5",
+              "id": "k5",
               "text": "5"
             }
           ]
@@ -2080,15 +2066,15 @@
           "label": "How many calls failed with a client error (4XX)?",
           "options": [
             {
-              "id": "n1",
+              "id": "c2",
               "text": "2"
             },
             {
-              "id": "n2",
+              "id": "c4",
               "text": "4"
             },
             {
-              "id": "n3",
+              "id": "c3",
               "text": "3"
             }
           ]
@@ -2098,15 +2084,15 @@
           "label": "How many calls failed with a server error (5XX)?",
           "options": [
             {
-              "id": "n2",
+              "id": "s2",
               "text": "2"
             },
             {
-              "id": "n3",
+              "id": "s3",
               "text": "3"
             },
             {
-              "id": "n4",
+              "id": "s4",
               "text": "4"
             }
           ]
@@ -2159,21 +2145,21 @@
     },
     "answer": {
       "values": {
-        "ok": "n4",
-        "client": "n3",
-        "server": "n2",
+        "ok": "k4",
+        "client": "c3",
+        "server": "s2",
         "redirect": "r5",
         "wait": "r7"
       }
     },
-    "explanation": "Rows 1, 3, 6 and 10 returned a 2XX code, which makes four. Rows 2, 7 and 9 returned 415, 429 and 404, which makes three client errors. Rows 4 and 8 returned 502 and 503, which makes two server errors. Row 5 is the only 3XX reply, and row 7 carries the Retry-After note.",
+    "explanation": "Rows 1, 3, 6 and 10 returned a `2XX` code, which makes four. Rows 2, 7 and 9 returned `415`, `429` and `404`, which makes three client errors. Rows 4 and 8 returned `502` and `503`, which makes two server errors. Row 5 is the only `3XX` reply, and row 7 carries the `Retry-After` note.",
     "pbqWeight": 5,
     "partExplanations": {
-      "ok": "Statuses 200, 200, 201 and 201 in rows 1, 3, 6 and 10 give 4.",
-      "client": "Rows 2 (415), 7 (429) and 9 (404) give 3.",
-      "server": "Rows 4 (502) and 8 (503) give 2.",
-      "redirect": "Row 5 returned 301, the only 3XX code in the log.",
-      "wait": "Row 7 has Retry-After: 30, which gives the delay."
+      "ok": "Statuses `200`, `200`, `201` and `201` in rows 1, 3, 6 and 10 give 4.",
+      "client": "Rows 2 (`415`), 7 (`429`) and 9 (`404`) give 3.",
+      "server": "Rows 4 (`502`) and 8 (`503`) give 2.",
+      "redirect": "Row 5 returned `301`, the only `3XX` code in the log.",
+      "wait": "Row 7 has `Retry-After: 30`, which gives the delay."
     },
     "acronyms": [
       "API",
@@ -2187,10 +2173,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
-    "stem": "In this design the gateway checks tokens and the orders service owns the order data. Place the best element for each need named below the request path.",
+    "stem": "In this design the gateway checks tokens, the orders service decides which orders exist, and a database behind the service stores them. Place the best element for each need named below the request path.",
     "payload": {
       "width": 600,
       "height": 220,
@@ -2265,7 +2251,7 @@
           "id": "z4",
           "x": 460,
           "y": 120,
-          "name": "Holds the order record that a 201 reports"
+          "name": "Stores the order record on disk after a 201"
         }
       ],
       "labels": [
@@ -2303,11 +2289,11 @@
         "z4": "l1"
       }
     },
-    "explanation": "The client script builds the request and reads the reply headers. The gateway authenticates and returns 401 before the service sees the call, the orders service knows which orders exist and returns 404, and the database holds the stored order. A static file server and a message queue play no part in this request path.",
+    "explanation": "The client script builds the request and reads the reply headers. The gateway authenticates and returns `401` before the service sees the call, the orders service knows which orders exist and returns `404`, and the database holds the stored order. A static file server and a message queue play no part in this request path.",
     "pbqWeight": 4,
     "partExplanations": {
-      "z1": "The client sends Accept and uses the Location header from the reply.",
-      "z2": "The gateway checks tokens, so a missing token ends there with 401.",
+      "z1": "The client sends `Accept` and uses the `Location` header from the reply.",
+      "z2": "The gateway checks tokens, so a missing token ends there with `401`.",
       "z3": "The service owns the order data, so it decides that an order does not exist.",
       "z4": "The database stores the order record behind the service."
     },
@@ -2322,10 +2308,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
-    "stem": "A script sent a request to create an order and it failed. The raw reply is shown line by line. Select the two lines that explain why the call failed and when the client may try again.",
+    "stem": "A script sent a request to create an order and it failed. The raw reply is shown line by line, in shuffled positions. Select the two lines that explain why the call failed and when the client may try again.",
     "payload": {
       "width": 480,
       "height": 220,
@@ -2436,14 +2422,14 @@
         "retry"
       ]
     },
-    "explanation": "The status line shows 429, so the service refused the call because of the request rate, and Retry-After says to wait 30 seconds. The format, length, server name and request tag describe the reply but do not explain the failure.",
-    "pbqWeight": 6,
+    "explanation": "The status line shows `429`, so the service refused the call because of the request rate, and `Retry-After` says to wait 30 seconds. The format, length, server name and request tag describe the reply but do not explain the failure.",
+    "pbqWeight": 2,
     "partExplanations": {
-      "status": "The 429 status explains why the call failed.",
-      "ctype": "Content-Type only names the reply format.",
-      "clen": "Content-Length only gives the size of the reply body.",
-      "retry": "Retry-After gives the number of seconds to wait before another attempt.",
-      "server": "The Server header names the machine that replied and says nothing about the failure.",
+      "status": "The `429` status explains why the call failed.",
+      "ctype": "`Content-Type` only names the reply format.",
+      "clen": "`Content-Length` only gives the size of the reply body.",
+      "retry": "`Retry-After` gives the number of seconds to wait before another attempt.",
+      "server": "The `Server` header names the machine that replied and says nothing about the failure.",
       "reqid": "The request tag helps support find the call in logs but does not explain it."
     },
     "acronyms": [
@@ -2457,7 +2443,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
     "stem": "Match each status code to the meaning a client should take from it.",
@@ -2529,15 +2515,15 @@
         "p6": "c5"
       }
     },
-    "explanation": "Each code carries a distinct meaning: 201 reports a creation, 204 a success with no body, 304 a still-valid cache, 401 a credentials problem, 409 a state clash and 503 a temporary service fault. The permanent move belongs to 301 and 308.",
+    "explanation": "Each code carries a distinct meaning: `201` reports a creation, `204` a success with no body, `304` a still-valid cache, `401` a credentials problem, `409` a state clash and `503` a temporary service fault. The permanent move belongs to `301` and `308`.",
     "pbqWeight": 6,
     "partExplanations": {
-      "p1": "201 reports a creation and points to the new resource with Location.",
-      "p2": "204 is success with an empty body.",
-      "p3": "304 answers a conditional read when the stored copy still matches.",
-      "p4": "401 means credentials are missing or not valid.",
-      "p5": "409 means the request clashes with the current state.",
-      "p6": "503 means the service cannot handle requests at the moment."
+      "p1": "`201` reports a creation and points to the new resource with `Location`.",
+      "p2": "`204` is success with an empty body.",
+      "p3": "`304` answers a conditional read when the stored copy still matches.",
+      "p4": "`401` means credentials are missing or not valid.",
+      "p5": "`409` means the request clashes with the current state.",
+      "p6": "`503` means the service cannot handle requests at the moment."
     },
     "acronyms": []
   },
@@ -2548,10 +2534,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 2,
-    "stem": "Sort each request into the bucket that describes how repeating it behaves under the HTTP rules.",
+    "stem": "Sort each request into the bucket that describes how repeating it behaves under the HTTP rules, with no extra safeguard such as an idempotency key.",
     "payload": {
       "buckets": [
         {
@@ -2600,15 +2586,15 @@
         "i6": "not"
       }
     },
-    "explanation": "GET, PUT and DELETE are idempotent, so repeating them leaves the same state. POST normally creates something new on every call, and a PATCH that appends adds another note each time.",
+    "explanation": "`GET`, `PUT` and `DELETE` are idempotent, so repeating them leaves the same state. `POST` normally creates something new on every call, and a `PATCH` that appends adds another note each time.",
     "pbqWeight": 6,
     "partExplanations": {
       "i1": "A read does not change state, so repeats are harmless.",
       "i2": "Replacing a resource with the same content gives the same result every time.",
       "i3": "After the first delete the order is gone, and repeats leave that state.",
-      "i4": "Each POST to a collection creates another order.",
+      "i4": "Each `POST` to a collection creates another order.",
       "i5": "Appending adds one more note on each repeat.",
-      "i6": "Each POST starts another job run."
+      "i6": "Each `POST` starts another job run."
     },
     "acronyms": [
       "HTTP",
