@@ -1186,7 +1186,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A smoke suite has grown to 45 minutes, and the team has started skipping it for hotfixes. What is the best fix?",
@@ -1225,7 +1225,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "After a release, a dashboard shows latency rising, but nobody can tell whether the release caused it. Which monitoring practice helps most?",
@@ -1264,7 +1264,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are costs or risks of blue-green deployment?",
@@ -1312,10 +1312,10 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
-    "stem": "Which TWO test types need the release candidate running in a production-like environment?",
+    "stem": "A team keeps a staging environment that mirrors production, with real databases, partner services and production-sized hardware. Which TWO test types need the release candidate deployed there?",
     "payload": {
       "options": [
         {
@@ -1350,7 +1350,7 @@
         "d"
       ]
     },
-    "explanation": "Integration tests need real dependencies and load tests need realistic hardware and data, so both run against a deployed candidate. Linting, static analysis and the commit message check read files, and unit tests exercise functions without the deployed system.",
+    "explanation": "Integration tests check the candidate against its real dependencies and load tests need realistic hardware and data, so both run against the deployed candidate. Linting, static analysis and the commit message check read files, and unit tests exercise functions without the deployed system.",
     "acronyms": []
   },
   {
@@ -1360,7 +1360,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "A rolling update is replacing instances in batches. Which TWO observations justify halting before the next batch?",
@@ -1388,7 +1388,7 @@
         },
         {
           "id": "f",
-          "text": "Fewer instances are in service than a minute ago"
+          "text": "Each batch briefly takes a few instances out of rotation while they drain"
         }
       ]
     },
@@ -1398,7 +1398,7 @@
         "c"
       ]
     },
-    "explanation": "Failing health checks and a higher error rate on the new instances are signs the release is faulty. Old instances still serving, both versions in rotation, steady batch times and a temporary dip in capacity are all normal during a rolling update.",
+    "explanation": "Failing health checks and a higher error rate on the new instances are signs the release is faulty. Old instances still serving, both versions in rotation, steady batch times and instances draining out of rotation are all normal during a rolling update.",
     "acronyms": []
   },
   {
@@ -1408,7 +1408,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO changes call for running the regression suite before release?",
@@ -1420,7 +1420,7 @@
         },
         {
           "id": "b",
-          "text": "An update to the on-call rota"
+          "text": "An update to the on-call rota for the support team"
         },
         {
           "id": "c",
@@ -1428,15 +1428,15 @@
         },
         {
           "id": "d",
-          "text": "A new dashboard added to monitoring"
+          "text": "A new dashboard added to the monitoring system"
         },
         {
           "id": "e",
-          "text": "An edit to an office wiki page"
+          "text": "An edit to the office wiki page about travel expenses"
         },
         {
           "id": "f",
-          "text": "A rename of a team chat channel"
+          "text": "A rename of the team chat channel used for standups"
         }
       ]
     },
@@ -1456,7 +1456,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO measurements does a load test report?",
@@ -1500,7 +1500,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE methods can update a service with several instances behind a balancer without taking it offline?",
@@ -1549,7 +1549,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -1636,12 +1636,12 @@
         ]
       }
     },
-    "explanation": "The help text gives the exact forms: `canary start` takes a version and a weight, `canary abort` drops a canary and returns its traffic to stable, and `canary promote` makes the canary the stable version. cart-api shows 4.8 percent errors on the canary against 0.3 percent on stable, so it is aborted, while search-api is healthy and is promoted.",
+    "explanation": "The help text gives the exact forms: `canary start` takes a version and a weight, `canary abort` drops a canary and returns its traffic to stable, and `canary promote` makes the canary the stable version. `cart-api` shows 4.8 percent errors on the canary against 0.3 percent on stable, so it is aborted, while `search-api` is healthy and is promoted.",
     "partExplanations": {
-      "start": "The start command takes the service, then --version and --weight with the values 1.9.0 and 5.",
-      "abort": "A canary with 4.8 percent errors against 0.3 percent on stable is removed with canary abort.",
-      "promote": "A healthy canary becomes the stable version with canary promote.",
-      "after": "Abort sends all traffic back to the unchanged stable version v3.1.0 and leaves no canary."
+      "start": "The start command takes the service, then `--version` and `--weight` with the values `v1.9.0` and `5`.",
+      "abort": "A canary with 4.8 percent errors against 0.3 percent on stable is removed with `canary abort`.",
+      "promote": "A healthy canary becomes the stable version with `canary promote`.",
+      "after": "Abort sends all traffic back to the unchanged stable version `v3.1.0` and leaves no canary."
     },
     "acronyms": []
   },
@@ -1652,7 +1652,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -1773,7 +1773,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -1834,7 +1834,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 3,
     "pbqWeight": 5,
@@ -1993,7 +1993,7 @@
         "r5": "promote"
       }
     },
-    "explanation": "Apply the rollback limits first, then the sample-size rule, then promote. Only search-api and inventory-api cross a limit.",
+    "explanation": "Apply the rollback limits first, then the sample-size rule, then promote. Only `search-api` and `inventory-api` cross a limit.",
     "partExplanations": {
       "r1": "Errors are up 0.1 point and p95 is up 5.6 percent (190 against 180), both inside the limits, with 4,200 requests: promote.",
       "r2": "Errors are up 1.3 points (1.6 against 0.3), above the 1.0 limit: roll back.",
@@ -2010,11 +2010,11 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
     "pbqWeight": 5,
-    "stem": "This blue-green layout is ready for a cutover. Users reach the pools through one box, and both pools use the same data store. Place each component in the target area under its box.",
+    "stem": "This blue-green layout is ready for a cutover. Users reach the pools through one box, and both pools use the same data store. Place each label in the zone it belongs to. Some labels are not used.",
     "payload": {
       "width": 600,
       "height": 270,
@@ -2178,7 +2178,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
     "pbqWeight": 3,
@@ -2312,7 +2312,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -2363,7 +2363,7 @@
         "p4": "c3"
       }
     },
-    "explanation": "The rollback step follows from how each method moves traffic and versions, and it also shows how fast the undo is.",
+    "explanation": "Each undo follows from how that method moves traffic and whether the old version is still kept.",
     "partExplanations": {
       "p1": "A canary has a traffic weight, and setting it to zero removes the new version from the request path.",
       "p2": "Blue-green keeps the old pool intact, so the router can simply point back at it.",
@@ -2379,7 +2379,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -2422,7 +2422,7 @@
         },
         {
           "id": "i4",
-          "text": "Minutes after the deploy finished, the scripted sign-in on the new build fails"
+          "text": "The two-minute critical-path check that runs as the deploy finishes fails at sign-in"
         },
         {
           "id": "i5",
@@ -2430,7 +2430,7 @@
         },
         {
           "id": "i6",
-          "text": "Database connections run out at 1,200 requests per second in the test environment"
+          "text": "Database connections run out at 1,200 simulated requests per second in the test environment"
         }
       ]
     },
@@ -2449,7 +2449,7 @@
       "i1": "Slow responses at a given number of users are a capacity finding from load testing.",
       "i2": "Something that worked before and broke after an unrelated change is a regression.",
       "i3": "A format that one service sends and another rejects is an integration mismatch.",
-      "i4": "A scripted check that fails minutes after a deploy is a smoke test result.",
+      "i4": "A short critical-path check run as the deploy finishes is a smoke test.",
       "i5": "A slow leak that only shows over days of real use is found by monitoring production.",
       "i6": "Running out of connections at a request rate is a capacity limit from load testing."
     },
