@@ -81,7 +81,8 @@ for (const seed of SEEDS) test(`every exam item fits and is axe clean (seed ${se
 });
 
 test('tap path works on selects and hotspot checkboxes', async ({ page }) => {
-  await startExam(page, 4);
+  // Seed 67 draws config and data (selects) and a hotspot.
+  await startExam(page, 67);
   let tappedSelect = false;
   let tappedCheck = false;
   for (let i = 1; i <= TOTAL && !(tappedSelect && tappedCheck); i++) {

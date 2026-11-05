@@ -108,7 +108,7 @@ Every part is scored independently to give **partial credit**. The same template
 4. **PBQs come first, then MCQs.**
 4a. **Randomness (owner requirement):**
    - Each mock exam draws a *different random set* of questions from the bank, not just a reshuffled order, while still honouring the domain weighting.
-   - Questions seen in the user's recent exams are deprioritized, so repeat attempts see fresh items until the bank is exhausted.
+   - Questions are drawn by a chance built from every saved answer in every mode: right answers lower it most, misses less, and time slowly raises a question last answered right. PBQs also follow the domain weighting. See `2026-11-04-question-selection-design.md` (replaces the earlier "recent exams go last" rule).
    - The order of MCQ answer options and of PBQ elements (draggable items, steps, buckets) is shuffled per attempt.
    - The random generator is seedable, so tests are deterministic. The seed is stored with each result so the attempt can be reproduced.
 5. The user can **flag for review**, use a review screen to jump back, and submit at any time. The exam submits automatically when the timer hits zero.

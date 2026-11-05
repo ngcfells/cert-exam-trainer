@@ -5,6 +5,9 @@ import type { McqPayload } from '../domain/types';
 import type { Question } from '../domain/types';
 import { pbqFixture } from '../domain/pbqFixtures';
 import { mulberry32 } from './rng';
+import { dataPlusFixtureQuestions } from '../banks/dataplus/fixture';
+import { dataPlusMeta } from '../banks/dataplus/meta';
+import { PBQ_TEMPLATES } from '../domain/pbq';
 
 const input = (over: Partial<AssembleInput> = {}): AssembleInput => ({
   meta: meta3,
@@ -191,6 +194,20 @@ describe('assembleExam', () => {
     const ex = assembleExam(input({ meta: { ...meta3, maxQuestions: 6 }, pool: [...bank({ A: 9 }), pbq('P1', 6)], pbqTypes: ['pbq-match'] }));
     expect(ex.pbqWeightSum).toBe(0);
     expect(ex.items.every((i) => i.question.type.startsWith('mcq'))).toBe(true);
+  });
+});
+
+describe('e2e seeds', () => {
+  // tests/e2e/exam.spec.ts and responsive.spec.ts rely on these draws from the DA0-002 fixture bank.
+  const types = (seed: number) =>
+    assembleExam({ meta: dataPlusMeta, pool: dataPlusFixtureQuestions.filter((q) => q.status === 'approved'), seed, chances: new Map(), pbqTypes: PBQ_TEMPLATES })
+      .items.map((i) => i.question.type);
+
+  it('seeds 4 and 67 draw all 8 PBQ templates in 9 items, and 67 has selects and a hotspot', () => {
+    expect(types(4)).toHaveLength(9);
+    expect(types(67)).toHaveLength(9);
+    expect(new Set([...types(4), ...types(67)].filter((t) => t.startsWith('pbq-')))).toEqual(new Set(PBQ_TEMPLATES));
+    expect(types(67)).toEqual(expect.arrayContaining(['pbq-config', 'pbq-hotspot']));
   });
 });
 

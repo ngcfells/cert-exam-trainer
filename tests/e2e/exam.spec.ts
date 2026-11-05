@@ -2,7 +2,8 @@ import { test, expect, type Page } from '@playwright/test';
 import { expectNoSeriousAxe, singleUrl, openExam } from './util';
 
 // Each seed draws 6 PBQs, then the 2 approved MCQs. Together they cover all 8 templates:
-// seed 4: diagram, terminal, data, buckets, hotspot, match; seed 67 adds order and config.
+// seed 4: diagram, terminal, config, buckets, match, order; seed 67 adds data and hotspot.
+// src/exam/assemble.test.ts ("e2e seeds") checks this.
 const SEEDS = [4, 67];
 const seeded = `${singleUrl}?seed=${SEEDS[0]}`;
 const TOTAL = 9;
