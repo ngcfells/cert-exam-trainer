@@ -6,7 +6,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A status report says the customer portal had 99.95% uptime in September. What does that figure describe?",
@@ -45,7 +45,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An SLO definition file contains the lines below, where the target is a percentage of time the service is available.\n```yaml\nname: portal-availability\ntarget: 99.9\nwindow: 30d\n```\nHow much downtime does this SLO allow in one window?",
@@ -86,7 +86,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team raises its availability target from 99.9% to 99.99% over the same period. How does the allowed downtime change?",
@@ -125,27 +125,27 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A provider's contract leaves announced maintenance out of its availability figure. A database upgrade runs in a 30-minute window that was announced a week earlier. How is that time treated?",
+    "stem": "A provider's contract leaves announced maintenance out of its availability figure. In March, a database upgrade runs in a 30-minute maintenance window announced in advance, and a failed deploy later causes a 20-minute outage. How many minutes count against availability?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "As unplanned downtime, because users could not reach the service"
+          "text": "50 minutes, since users could reach the service in neither period"
         },
         {
           "id": "b",
-          "text": "As a breach of the contract, which earns the customer a credit"
+          "text": "30 minutes, since the maintenance window was the longer of the two"
         },
         {
           "id": "c",
-          "text": "As planned downtime, which the contract does not count against availability"
+          "text": "20 minutes, since only the failed deploy was unplanned downtime"
         },
         {
           "id": "d",
-          "text": "As an incident, which starts an emergency review of the cause"
+          "text": "None, since both outages came from changes the team chose to make"
         }
       ]
     },
@@ -154,7 +154,7 @@
         "c"
       ]
     },
-    "explanation": "Announced maintenance is planned downtime, and this contract leaves it out of the availability figure. Calling it unplanned ignores the exclusion, a credit needs a miss of the figure that did not happen, and an announced window is not an incident that needs an emergency review.",
+    "explanation": "The contract leaves announced maintenance out, so only the 20-minute outage from the failed deploy counts against availability. Counting all 50 minutes ignores the exclusion, counting the 30-minute window counts the excluded time instead of the outage, and a failed deploy is unplanned downtime even though the team started the change.",
     "acronyms": []
   },
   {
@@ -164,7 +164,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A monitor checks a service once every 10 minutes and records the service as down only when a check fails. What is the main limit of measuring uptime this way?",
@@ -203,7 +203,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team counts a minute as up when its health endpoint returns HTTP 200 within two seconds. For 15 minutes the host stays powered on but the endpoint returns HTTP 503. How are those minutes counted?",
@@ -215,7 +215,7 @@
         },
         {
           "id": "b",
-          "text": "As uptime, because the host stayed powered on"
+          "text": "As uptime, because the host stayed powered on and the network stayed up"
         },
         {
           "id": "c",
@@ -223,7 +223,7 @@
         },
         {
           "id": "d",
-          "text": "As half uptime, because the process was still running"
+          "text": "As half uptime, because the process kept running and holding its port"
         }
       ]
     },
@@ -244,27 +244,27 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
-    "difficulty": 1,
-    "stem": "Which statement best describes an SLO?",
+    "difficulty": 2,
+    "stem": "A team misses its internal 99.95% SLO for the month, but availability stays above the 99.9% promised in the customer SLA. What normally follows?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "A signed promise to customers, with credits owed when it is missed"
+          "text": "Customers receive the service credits that the contract sets out"
         },
         {
           "id": "b",
-          "text": "The raw measurement itself, such as the ratio of successful requests"
+          "text": "The SLA figure is lowered to match the result the team achieved"
         },
         {
           "id": "c",
-          "text": "The average time it takes to restore a service after a failure"
+          "text": "Nothing, because an SLO is reported but never acted on by anyone"
         },
         {
           "id": "d",
-          "text": "An internal target for a measured indicator over a stated period"
+          "text": "The team reviews the miss and moves reliability work up, with no credits owed"
         }
       ]
     },
@@ -273,7 +273,7 @@
         "d"
       ]
     },
-    "explanation": "An SLO is an internal target set on a measured indicator for a stated period. The signed promise with credits is an SLA, the raw measurement is the indicator itself, and the average restore time is mean time to repair.",
+    "explanation": "An SLO miss is an internal signal: the team reviews it and gives reliability work more priority, but no credits are owed because the SLA, the customer contract, was still met. Credits follow only an SLA miss, the contract figure is not changed to fit one month's result, and an SLO that nobody acts on would serve no purpose.",
     "acronyms": [
       "SLA",
       "SLO"
@@ -286,10 +286,10 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "A team records the fraction of requests answered without error in each five-minute interval. It is only a measurement, with no target attached. What is it called?",
+    "stem": "A team records the fraction of requests answered without error in each five-minute interval. What is that measure called?",
     "payload": {
       "options": [
         {
@@ -325,7 +325,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A service has a 99.9% SLO over a 30-day window, which gives an error budget of 43.2 minutes. So far 28.8 minutes of downtime have counted. How much budget remains?",
@@ -366,7 +366,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An API handles 2,000,000 requests in a window and has an SLO of 99.5% successful responses. What is the largest number of failed requests that still meets the SLO?",
@@ -408,10 +408,10 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "The error budget for the current window is fully spent, and the team's written policy covers this case. Which action does a typical policy call for?",
+    "stem": "The error budget for the current window is fully spent. Which action does a typical error-budget policy call for?",
     "payload": {
       "options": [
         {
@@ -450,7 +450,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A team has a 30-day window. At the current error rate, the whole error budget would be spent in 5 days. A burn rate of 1 would spend the budget exactly at the end of the window. What is the current burn rate?",
@@ -462,15 +462,15 @@
         },
         {
           "id": "b",
-          "text": "25"
+          "text": "25.0"
         },
         {
           "id": "c",
-          "text": "6"
+          "text": "6.0"
         },
         {
           "id": "d",
-          "text": "150"
+          "text": "150.0"
         }
       ]
     },
@@ -489,7 +489,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An on-call engineer is paged each time host CPU passes 80%, though customers see no problem. Which alert fits the team's SLO better?",
@@ -501,15 +501,15 @@
         },
         {
           "id": "b",
-          "text": "Page when a single request returns an error"
+          "text": "Page when a single request returns an error, even if most requests succeed"
         },
         {
           "id": "c",
-          "text": "Page when disk usage passes 50 percent"
+          "text": "Page when disk usage on a database host passes 50%"
         },
         {
           "id": "d",
-          "text": "Page when the nightly backup takes longer than usual"
+          "text": "Page when the nightly backup takes longer than usual to finish"
         }
       ]
     },
@@ -531,7 +531,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which document gives a customer a formal, enforceable promise about service levels, with remedies when it is missed?",
@@ -570,7 +570,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A provider's contract promises 99.9% monthly availability, while its engineers hold themselves to 99.95%. Why is the internal target set higher?",
@@ -578,19 +578,19 @@
       "options": [
         {
           "id": "a",
-          "text": "It lets the provider charge customers a higher price"
+          "text": "It lets the provider charge customers a higher price for the same service"
         },
         {
           "id": "b",
-          "text": "It replaces the contract wherever the two figures differ"
+          "text": "It replaces the contract wherever the two published figures differ"
         },
         {
           "id": "c",
-          "text": "It removes the need to measure availability"
+          "text": "It removes the need to measure availability at all"
         },
         {
           "id": "d",
-          "text": "It gives the team time to react to a slide before the contract is breached"
+          "text": "It gives the team time to react before the contract is breached"
         }
       ]
     },
@@ -609,7 +609,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An SLA gives a 5% credit on the monthly fee for any month below 99.95% availability. The fee is $8,000 and the month measured 99.9%. What credit is owed?",
@@ -650,7 +650,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An SLA excludes outages caused by the customer's own configuration. A customer's firewall rule blocks the service for two hours. How does the provider treat that time?",
@@ -658,7 +658,7 @@
       "options": [
         {
           "id": "a",
-          "text": "It is excluded from the provider's downtime"
+          "text": "It does not count as provider downtime"
         },
         {
           "id": "b",
@@ -691,7 +691,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A provider's SLO is 99.95% and its SLA is 99.9%, both over a 30-day month. The month measures 99.93%. Which outcome is correct?",
@@ -733,7 +733,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "In incident reporting, what does MTTR, mean time to repair, measure?",
@@ -753,7 +753,7 @@
         },
         {
           "id": "d",
-          "text": "Average time to restore service after a failure"
+          "text": "The average time it takes to repair a failure and bring service back"
         }
       ]
     },
@@ -762,7 +762,7 @@
         "d"
       ]
     },
-    "explanation": "Mean time to repair is the average time from the start of a failure to restored service. The average gap between failures is mean time between failures, the available share of the month is uptime, and the consumed share of the allowance is error budget burn.",
+    "explanation": "Mean time to repair is the average time from the start of a failure until the repair is done and service is back. The average gap between failures is mean time between failures, the available share of the month is uptime, and the consumed share of the allowance is error budget burn.",
     "acronyms": [
       "MTTR"
     ]
@@ -774,7 +774,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Three outages in a month lasted 12, 30 and 18 minutes. What is the mean time to repair for the month?",
@@ -803,7 +803,7 @@
         "c"
       ]
     },
-    "explanation": "The mean is the total repair time divided by the number of outages: (12 + 30 + 18) / 3 = 60 / 3 = 20 minutes. 60 is the total, 30 is the longest outage, and 15 is not the mean of these figures.",
+    "explanation": "The mean is the total repair time divided by the number of outages: (12 + 30 + 18) / 3 = 60 / 3 = 20 minutes. 60 is the total, 30 is the longest outage, and 15 divides the total by four instead of three.",
     "acronyms": []
   },
   {
@@ -813,7 +813,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team wants to cut its mean time to repair after failed releases. Which change does that most directly?",
@@ -852,7 +852,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does mean time between failures (MTBF) measure?",
@@ -893,7 +893,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A batch service ran 720 hours of operating time in a month and failed 3 times. Using operating time divided by failures, what is its MTBF?",
@@ -934,7 +934,7 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team adds a redundant component. Failures drop from six per quarter to two, and each failure still takes one hour to fix. Which statement is correct?",
@@ -963,7 +963,7 @@
         "d"
       ]
     },
-    "explanation": "Fewer failures in the same period mean more operating time between them, so MTBF rose. Each fix still takes an hour, so the mean time to repair is unchanged; the other combinations contradict one of those two facts.",
+    "explanation": "Fewer failures in the same period mean more operating time between them, so MTBF rose, and each fix still takes an hour, so the mean time to repair is unchanged. Option a is wrong because MTBF did not fall, b because MTBF did not stay the same, and a and c are both wrong about repair time, which neither fell nor rose.",
     "acronyms": [
       "MTBF"
     ]
@@ -975,10 +975,10 @@
     "objectiveIds": [
       "4.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A service has an MTBF of 99 hours and a mean time to repair of 1 hour. Using availability = MTBF / (MTBF + MTTR), what availability does it have?",
+    "stem": "A service has an MTBF of 99 hours and a mean time to repair of 1 hour. Using `availability = MTBF / (MTBF + MTTR)`, what availability does it have?",
     "payload": {
       "options": [
         {
@@ -1004,7 +1004,7 @@
         "b"
       ]
     },
-    "explanation": "Availability is 99 / (99 + 1) = 99 / 100 = 99%. 99.9% and 99.99% would need an MTBF of 999 and 9,999 hours with the same repair time, and 98.5% does not follow from this formula.",
+    "explanation": "Availability is 99 / (99 + 1) = 99 / 100 = 99%. 99.9% and 99.99% would need an MTBF of 999 and 9,999 hours with the same repair time, and 98.5% would need an MTBF of only about 66 hours.",
     "acronyms": [
       "MTBF",
       "MTTR"
