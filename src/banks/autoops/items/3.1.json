@@ -6,7 +6,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A platform team wants one central place where pipeline credentials are kept in protected form, released only to authenticated jobs, and logged on each read. Which component fits?",
@@ -22,11 +22,11 @@
         },
         {
           "id": "c",
-          "text": "A build log archive kept for audits"
+          "text": "A build log archive kept for later audits"
         },
         {
           "id": "d",
-          "text": "An encrypted key vault"
+          "text": "An encrypted vault with per-caller access rules"
         }
       ]
     },
@@ -45,10 +45,10 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A Dockerfile copies `deploy.key` into an image in one layer and deletes it in a later layer. Someone pulls the published image. Can they recover the key?",
+    "stem": "A Dockerfile copies `deploy.key` into an image in one layer and deletes it in a later layer. Someone pulls the published image. Can they recover the contents of `deploy.key`?",
     "payload": {
       "options": [
         {
@@ -65,7 +65,7 @@
         },
         {
           "id": "d",
-          "text": "Yes, but only while a container is running"
+          "text": "Yes, but just while a container is running"
         }
       ]
     },
@@ -84,7 +84,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A vault protects each secret with its own data key, and those data keys are protected by a separate master key. What benefit does this envelope design give when the master key is rotated?",
@@ -100,7 +100,7 @@
         },
         {
           "id": "c",
-          "text": "Only the data keys are re-protected, not each stored secret"
+          "text": "A small set of keys is re-wrapped; stored secrets stay as they are"
         },
         {
           "id": "d",
@@ -123,7 +123,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An autoscaled build runner is found to be compromised after it fetched several database credentials from the vault. What should the team do first to cut off the attacker's use of those credentials?",
@@ -162,7 +162,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A service validates signed access tokens by checking the signature and expiry itself, without calling the issuer. A token is stolen with eight hours left. Which approach lets the service reject it early?",
@@ -174,7 +174,7 @@
         },
         {
           "id": "b",
-          "text": "Accept the token only from a known network range"
+          "text": "Accept the token from a known network range"
         },
         {
           "id": "c",
@@ -201,7 +201,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A vault hands a deploy job a database password that stops working after 30 minutes unless the job asks to extend it. What is this time-limited right to use the secret called?",
@@ -209,19 +209,19 @@
       "options": [
         {
           "id": "a",
-          "text": "A rotation schedule"
+          "text": "A rotation schedule for the secret"
         },
         {
           "id": "b",
-          "text": "A lease"
+          "text": "A lease on the secret"
         },
         {
           "id": "c",
-          "text": "A revocation list"
+          "text": "A revocation list of bad secrets"
         },
         {
           "id": "d",
-          "text": "A signing request"
+          "text": "A signing request for the secret"
         }
       ]
     },
@@ -240,7 +240,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A job's database credential came from a lease that has now expired, and the job's next query is rejected. What should the job do?",
@@ -279,7 +279,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which technique replaces a sensitive value, such as an account number, with a surrogate that is useless outside a separate protected mapping?",
@@ -287,7 +287,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Tokenization"
+          "text": "Tokenization of the value"
         },
         {
           "id": "b",
@@ -318,10 +318,10 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A test database holds tokens in place of real account numbers, and the token store stays in a separate protected system. Why can an intruder who copies the test database not compute the real numbers?",
+    "stem": "A test database holds tokens in place of real account numbers, and the token store stays in a separate protected system. Why can't an intruder who copies the test database compute the real numbers?",
     "payload": {
       "options": [
         {
@@ -330,7 +330,7 @@
         },
         {
           "id": "b",
-          "text": "The tokens have no mathematical link to the original values"
+          "text": "The tokens are not mathematically linked to the original values"
         },
         {
           "id": "c",
@@ -357,7 +357,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which statement best describes the Zero Trust approach to pipeline access?",
@@ -365,19 +365,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Verify each request's identity and permission, wherever it comes from"
+          "text": "Every request is checked for identity and permission, wherever it comes from"
         },
         {
           "id": "b",
-          "text": "Trust requests that come from inside the build subnet behind the firewall"
+          "text": "Requests from inside the build subnet behind the firewall are trusted"
         },
         {
           "id": "c",
-          "text": "Trust a runner for its whole lifetime once it has signed in at startup"
+          "text": "A runner is trusted for its whole lifetime once it signs in at startup"
         },
         {
           "id": "d",
-          "text": "Trust requests that carry a certificate issued by the internal authority"
+          "text": "Requests that carry a certificate from the internal authority are trusted"
         }
       ]
     },
@@ -396,7 +396,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team replaces one shared token used by all of its pipelines with a separate identity for each pipeline job, each allowed to read only its own secrets. Why is this safer?",
@@ -435,7 +435,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A CI platform can give each job a short-lived signed identity token. A deploy job presents it to the vault instead of using a stored password. What risk does this remove?",
@@ -455,7 +455,7 @@
         },
         {
           "id": "d",
-          "text": "A long-lived static credential that could leak from stored settings"
+          "text": "A static password kept in pipeline settings"
         }
       ]
     },
@@ -476,7 +476,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A database engine creates a new user and password each time a job asks, and removes that user when the lease ends. What are such credentials called?",
@@ -515,7 +515,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A shared API key for the `ledger-api` service must be replaced without causing an outage for the clients that use it. Which rotation approach avoids downtime?",
@@ -556,7 +556,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A service reads its database password from the vault once at startup. After the vault rotates the password, the service fails with authentication errors until it is restarted. Which change fixes the design?",
@@ -576,7 +576,7 @@
         },
         {
           "id": "d",
-          "text": "Re-read the secret from the vault when authentication fails"
+          "text": "Re-read the password from the vault when authentication fails"
         }
       ]
     },
@@ -595,7 +595,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A pipeline builds a container image once and needs a place where later stages can fetch exactly that build. Which component provides this?",
@@ -634,7 +634,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team rebuilds the application separately for staging and for production from the same commit. A defect appears only in production. Which practice reduces this risk?",
@@ -673,7 +673,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A release job signs in to the artifact registry successfully, but its push to the `releases` repository is refused with HTTP status `403`. What is the most likely cause?",
@@ -685,7 +685,7 @@
         },
         {
           "id": "b",
-          "text": "The job's identity lacks write permission on that repository"
+          "text": "The job's identity lacks write permission on that target"
         },
         {
           "id": "c",
@@ -714,7 +714,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A pipeline pushes to the artifact registry using a developer's personal credentials. When that developer leaves, all of the pipelines fail. What is the better practice?",
@@ -734,7 +734,7 @@
         },
         {
           "id": "d",
-          "text": "Use a dedicated machine identity with its own limited credentials"
+          "text": "Use a dedicated machine identity with limited rights"
         }
       ]
     },
@@ -753,7 +753,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "The library `ledger-lib` is at version `2.7.4`. The next release removes a public function that other teams call. Which version number follows semantic versioning?",
@@ -792,7 +792,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A registry setting prevents anyone from replacing the contents of a version once it is published. What property does this give the artifact?",
@@ -831,7 +831,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Version `2.3.1` of `ledger-lib` is published in an immutable repository and contains a defect. How should the team ship the fix?",
@@ -870,7 +870,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Two servers pulled `ledger-api:stable` a week apart and now run different code, although both deployed \"the same tag\". Which change prevents this?",
@@ -909,7 +909,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A build downloads open-source libraries from a package index run by a third party outside the company. What is this kind of source called?",
@@ -948,7 +948,7 @@
     "objectiveIds": [
       "3.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Builds fail whenever the public package index has an outage, and the team also wants the same package bytes on each run. What helps most?",
@@ -960,11 +960,11 @@
         },
         {
           "id": "b",
-          "text": "Copy the dependencies into the source tree by hand"
+          "text": "Copy the dependencies by hand onto each runner machine"
         },
         {
           "id": "c",
-          "text": "Route downloads through an internal registry that caches packages"
+          "text": "Route downloads through a caching internal registry"
         },
         {
           "id": "d",
@@ -977,7 +977,7 @@
         "c"
       ]
     },
-    "explanation": "A caching proxy keeps copies of packages already fetched, so outages do not stop builds and repeated runs receive identical content. Retry loops still depend on the index, hand-copied dependencies are hard to maintain, and newest versions change what the build receives.",
+    "explanation": "A caching proxy keeps copies of packages already fetched, so outages do not stop builds and repeated runs receive identical content. Retry loops still depend on the index, copies made by hand on each runner drift apart and are hard to maintain, and newest versions change what the build receives.",
     "acronyms": []
   },
   {
