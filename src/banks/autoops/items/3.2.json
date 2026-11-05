@@ -1,0 +1,2626 @@
+[
+  {
+    "id": "at1-3-2-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A pipeline runs lint, a docs build and a unit-test job one after another, and none of them uses another job's output. What change shortens the run the most without dropping any check?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Merge the three jobs into one longer sequential script"
+        },
+        {
+          "id": "b",
+          "text": "Run the slowest job first and the others after it, one by one"
+        },
+        {
+          "id": "c",
+          "text": "Run the three jobs at the same time on separate runners"
+        },
+        {
+          "id": "d",
+          "text": "Remove the docs build job from the pipeline entirely"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Jobs that share no inputs can run in parallel, so the run takes about as long as the slowest one. Merging them keeps the work sequential, reordering does not change the total, and removing the docs build drops a check.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Four independent jobs of 3 minutes each are queued, but the project has only two runners free at once. About how long does the stage take?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "6 minutes"
+        },
+        {
+          "id": "b",
+          "text": "3 minutes"
+        },
+        {
+          "id": "c",
+          "text": "9 minutes"
+        },
+        {
+          "id": "d",
+          "text": "12 minutes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Two jobs run together for 3 minutes and the other two follow for 3 more, so 6 minutes. Three minutes would need four runners, 12 would mean running them strictly one at a time, and 9 matches no schedule.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Two parallel integration-test jobs reset the same shared test database, and each one makes the other fail at random. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run both jobs again until one of them passes"
+        },
+        {
+          "id": "b",
+          "text": "Raise the timeout of both integration jobs"
+        },
+        {
+          "id": "c",
+          "text": "Mark both of the jobs as allowed to fail"
+        },
+        {
+          "id": "d",
+          "text": "Give each job its own database copy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Parallel jobs that touch one mutable resource interfere, so each should get its own copy. Rerunning, longer timeouts and allowing failure hide the clash instead of removing it.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A job is configured with a matrix of 3 operating system images and 2 language versions, and every combination is tested. How many jobs does the matrix create?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "5 jobs"
+        },
+        {
+          "id": "b",
+          "text": "6 jobs"
+        },
+        {
+          "id": "c",
+          "text": "3 jobs"
+        },
+        {
+          "id": "d",
+          "text": "9 jobs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A matrix expands to the product of its axes, so 3 times 2 gives 6 jobs that can run in parallel. Adding the axes gives 5, using one axis gives 3, and 9 has no basis in these values.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In a CI definition, job `package` lists job `build` as a dependency, for example with `needs`. What does that mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`package` runs at the same moment as `build` on the same runner"
+        },
+        {
+          "id": "b",
+          "text": "`package` starts only after `build` has finished successfully"
+        },
+        {
+          "id": "c",
+          "text": "`build` restarts every time `package` finishes"
+        },
+        {
+          "id": "d",
+          "text": "`package` copies the secrets that `build` used"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A dependency makes the later job wait for the listed job and require its success. It does not request simultaneous execution, restart the earlier job, or share secrets.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-2-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A `deploy` job depends on a `build` job, and the build job fails. What does the deploy job do by default?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It runs and deploys the previous build's output"
+        },
+        {
+          "id": "b",
+          "text": "It runs anyway and only reports a warning"
+        },
+        {
+          "id": "c",
+          "text": "It waits for someone to retry the build by hand"
+        },
+        {
+          "id": "d",
+          "text": "It is skipped, as its dependency failed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A job whose required dependency failed does not start, and it is shown as skipped. It does not fall back to older output, run with a warning, or hold its place waiting for a manual retry.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Job `package` declares a dependency on `compile` and starts only after it succeeds, yet it cannot find `app.bin`, which `compile` produced on another runner. What explains this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Each job starts in a clean workspace, so output must be saved as an artifact"
+        },
+        {
+          "id": "b",
+          "text": "The dependency is ignored when jobs use different runners"
+        },
+        {
+          "id": "c",
+          "text": "The runner deletes files whose names end in .bin after each job"
+        },
+        {
+          "id": "d",
+          "text": "Artifacts can be used only when both jobs share one runner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A dependency controls order, not files: a new job gets a fresh workspace, so output has to be published as an artifact and downloaded. Dependencies are honored across runners, no runner deletes files by extension, and artifacts exist precisely to move files between runners.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A team submits this pipeline definition:\n\n```yaml\njobs:\n  alpha:\n    needs: [gamma]\n  beta:\n    needs: [alpha]\n  gamma:\n    needs: [beta]\n```\n\nWhat happens?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The jobs run in file order and ignore the dependencies"
+        },
+        {
+          "id": "b",
+          "text": "`alpha` runs first because it is listed first"
+        },
+        {
+          "id": "c",
+          "text": "It is rejected because the dependencies form a cycle"
+        },
+        {
+          "id": "d",
+          "text": "Only `gamma` runs, since it closes the loop"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Each job waits for another in a loop, so none could ever start; a pipeline must be a directed acyclic graph, and the definition fails validation. Tools do not ignore dependencies, pick the first listed job, or run only the last one.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is conditional execution in a pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Running the same job twice to confirm that its result holds"
+        },
+        {
+          "id": "b",
+          "text": "Running every job on the same shared runner"
+        },
+        {
+          "id": "c",
+          "text": "Delaying a job until the next scheduled nightly run"
+        },
+        {
+          "id": "d",
+          "text": "Running a job only when a rule matches, like a branch"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Conditional execution evaluates a rule, such as the branch name or the files changed, to decide whether a job runs at all. Running twice, sharing a runner and delaying to a schedule are different ideas.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A change touches only files under `docs/`. The team wants to skip the 20-minute integration suite for such changes but keep it for source changes. What should they configure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A longer timeout on the integration job"
+        },
+        {
+          "id": "b",
+          "text": "A path rule that skips the job for docs-only changes"
+        },
+        {
+          "id": "c",
+          "text": "A higher retry count on the integration job"
+        },
+        {
+          "id": "d",
+          "text": "A nightly schedule in place of the push trigger on all branches"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A path rule evaluates the changed files and skips the job when none are source files. A timeout and retries do not stop the job from running, and moving it to a nightly schedule removes feedback on source changes.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "This workflow file belongs to a repository on GitHub Actions:\n\n```yaml\non: push\njobs:\n  publish:\n    runs-on: ubuntu-latest\n    if: startsWith(github.ref, 'refs/heads/release/')\n    steps:\n      - run: ./publish.sh\n```\n\nA developer pushes the tag `v1.4.0`. Does `publish` run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes; the tag name contains a version, which satisfies the condition"
+        },
+        {
+          "id": "b",
+          "text": "Yes; any ref that starts with `refs/` passes the condition"
+        },
+        {
+          "id": "c",
+          "text": "No; for a tag push `github.ref` starts with `refs/tags/`, so the condition is false"
+        },
+        {
+          "id": "d",
+          "text": "No; the push event does not start workflows for tags"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The push event does fire for tags, but the ref is `refs/tags/v1.4.0`, which does not start with `refs/heads/release/`, so the job is skipped. Tag names are not matched against branch prefixes, the condition tests a specific prefix rather than `refs/`, and tag pushes do trigger the event.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A production deploy job is defined as a manual job. What happens when the pipeline reaches it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The pipeline waits until a person starts the job"
+        },
+        {
+          "id": "b",
+          "text": "The job runs at once and a person is told afterwards"
+        },
+        {
+          "id": "c",
+          "text": "The job is skipped and removed from the pipeline"
+        },
+        {
+          "id": "d",
+          "text": "The job runs only if the previous job failed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A manual job is a gate: the run pauses at that point until someone triggers it. It does not run automatically, vanish, or depend on a failure.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which event typically triggers an automated rollback after a release?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A failed post-release health check"
+        },
+        {
+          "id": "b",
+          "text": "A developer opens a new pull request for review"
+        },
+        {
+          "id": "c",
+          "text": "The linter reports a new style warning in a file"
+        },
+        {
+          "id": "d",
+          "text": "The nightly security scan finishes without errors"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Automated rollback reacts to evidence that the running release is unhealthy, such as failed probes or a high error rate. A new pull request, a lint warning and a finished scan say nothing about the live service.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Release 5.2.0 of `ledger-api` replaced 5.1.3 and fails its health check. An automated rollback starts. What should it deploy?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A fresh build from the tip of the main branch"
+        },
+        {
+          "id": "b",
+          "text": "Release 5.2.0 again with its configuration reverted by hand"
+        },
+        {
+          "id": "c",
+          "text": "The newest image tag in the registry"
+        },
+        {
+          "id": "d",
+          "text": "The previous release's stored, already tested artifact"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Rollback is fast and predictable because it redeploys a known-good artifact that already exists. A new build from main may contain more untested changes, re-deploying the failing release is not a rollback, and the newest tag is the release that failed.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Release 7.0 of an app dropped a database column. After a failed health check, the automated rollback restores release 6.9, which still reads that column, and errors continue. What practice would have prevented this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rebuild release 6.9 from source just before the rollback"
+        },
+        {
+          "id": "b",
+          "text": "Delete older artifacts so only the newest release can run"
+        },
+        {
+          "id": "c",
+          "text": "Make schema changes backward compatible so the previous release still works"
+        },
+        {
+          "id": "d",
+          "text": "Disable health checks until the migration finishes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Rolling back code does not undo a schema change, so changes must be staged to keep the old release working. Rebuilding does not restore the column, deleting artifacts removes the rollback target, and turning off health checks removes the trigger.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A release passes its health check 30 seconds after deployment, so the pipeline marks it healthy. Ten minutes later a memory leak crashes the service and no rollback fires. What would help most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run the health check every second during the first 30 seconds"
+        },
+        {
+          "id": "b",
+          "text": "Judge health over a longer window of error and memory metrics"
+        },
+        {
+          "id": "c",
+          "text": "Deploy to all servers at once so that problems show sooner"
+        },
+        {
+          "id": "d",
+          "text": "Remove the health check and rely on user reports"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Some faults appear only after a delay, so the observation window must be long enough to catch them. A faster check inside the same 30 seconds sees the same healthy state, a full simultaneous deployment raises the impact, and user reports are slower than metrics.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Developers push three commits to one branch within a minute, and three full pipelines run although only the newest commit matters. Which setting saves runner time?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Turn the pipeline off for that branch entirely"
+        },
+        {
+          "id": "b",
+          "text": "Auto-cancel runs made obsolete by a newer commit"
+        },
+        {
+          "id": "c",
+          "text": "Run the three pipelines one at a time in order"
+        },
+        {
+          "id": "d",
+          "text": "Retry the oldest pipeline until it finally passes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Cancelling superseded runs frees runners while still testing the newest commit. Disabling the pipeline removes checks, queueing the runs wastes the same work later, and retrying the oldest run tests an outdated commit.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team wants a chat message sent only when a pipeline job fails. How should the notification job be configured?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To run only when every earlier job succeeded"
+        },
+        {
+          "id": "b",
+          "text": "To run before the earlier jobs start"
+        },
+        {
+          "id": "c",
+          "text": "To run when an earlier job has failed"
+        },
+        {
+          "id": "d",
+          "text": "To run on a nightly schedule only"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Failure-triggered jobs run on the condition that a previous job failed, so the message appears exactly then. A success condition would stay silent on failures, running first has no result to report, and a nightly schedule is not tied to the failure.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A team enables automatic retries on the job that publishes a release to a package registry. What must be true of that job for retries to be safe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A repeat run must leave the same end state"
+        },
+        {
+          "id": "b",
+          "text": "It must run on a different runner for each attempt"
+        },
+        {
+          "id": "c",
+          "text": "It must finish in under one second of run time"
+        },
+        {
+          "id": "d",
+          "text": "It must avoid writing anything to its own log file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A retried job may run twice against the same target, so it has to be idempotent. The runner choice, the speed and the logging do not affect whether a second run causes harm.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A test matrix has 12 combinations and takes 40 minutes. When one combination fails, the team has no use for the other results and wants to free the runners. Which setting does this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Allowed failure, which lets the failing job be ignored"
+        },
+        {
+          "id": "b",
+          "text": "Retry, which reruns the failed job automatically"
+        },
+        {
+          "id": "c",
+          "text": "Timeout, which stops the pipeline after a fixed time"
+        },
+        {
+          "id": "d",
+          "text": "Fail-fast, which cancels the remaining jobs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Fail-fast ends the rest of the group as soon as one member fails. Allowed failure keeps everything running, retry adds more work, and a timeout cuts jobs by elapsed time rather than by a failure.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A job runs this script with `sh ci.sh`, and the runner marks the job by the script's exit status:\n\n```sh\n#!/bin/sh\n./run-tests.sh\necho \"tests finished\"\n```\n\nThe shell is not set to stop on errors, and `run-tests.sh` exits with status 1. What is the result?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The job fails, because any non-zero status stops a script"
+        },
+        {
+          "id": "b",
+          "text": "The job fails, because the shell reports the first non-zero status"
+        },
+        {
+          "id": "c",
+          "text": "The job passes, as the status is that of the last `echo`"
+        },
+        {
+          "id": "d",
+          "text": "The job is skipped, because the script printed output"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A shell script ends with the status of its last command, and `echo` returns 0, so the earlier failure is lost. Nothing stops the script at the failing line without a stop-on-error setting, the shell does not report the first non-zero status, and printing output does not skip a job.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A job occasionally hangs while waiting on a lock and holds a runner for hours. Which setting limits the damage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A job timeout that frees the runner after a set time"
+        },
+        {
+          "id": "b",
+          "text": "A higher retry count on the hanging job itself"
+        },
+        {
+          "id": "c",
+          "text": "A larger runner with a lot more memory"
+        },
+        {
+          "id": "d",
+          "text": "An allowed-failure flag on the hanging job"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A timeout ends a hung job and returns the runner to the pool. Retries repeat the hang, more memory does not release a lock, and allowing failure does not stop the job from holding the runner.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team wants developers to see static analysis findings before code reaches the main branch. Where should the scan run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Once a week against the main branch, in a scheduled run"
+        },
+        {
+          "id": "b",
+          "text": "On each pull request, as a check required to merge"
+        },
+        {
+          "id": "c",
+          "text": "After the production deployment has finished"
+        },
+        {
+          "id": "d",
+          "text": "Only on tags that mark a release"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Running the scan on each pull request returns findings while the change is still cheap to fix. Weekly, post-deployment and tag-only scans find problems after the code has merged or shipped.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A scanner reports 3 critical, 12 medium and 40 low findings on a legacy service. The team can fix only the critical ones this sprint but wants no new serious issues. Which gate fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fail the pipeline on a finding of any severity"
+        },
+        {
+          "id": "b",
+          "text": "Disable the scanner until all findings are fixed"
+        },
+        {
+          "id": "c",
+          "text": "Pass every run and hide the scan report completely"
+        },
+        {
+          "id": "d",
+          "text": "Fail on new critical findings, report others"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A severity threshold blocks the worst new problems while keeping the remaining findings visible for later work. Failing on every severity blocks all changes, disabling the scanner stops the protection, and hiding the report removes the visibility.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A scan finds a cloud access key in a commit from last week. The developer deletes the key in a new commit. What must the team still do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Nothing more, because the latest commit no longer holds it"
+        },
+        {
+          "id": "b",
+          "text": "Rename the file that contained the key and commit"
+        },
+        {
+          "id": "c",
+          "text": "Rerun the scan until it stops reporting the key"
+        },
+        {
+          "id": "d",
+          "text": "Revoke and replace the key, as history still holds it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Anyone who cloned the repository or can read its history already has the key, so it must be revoked and replaced. Deleting it from the newest commit, renaming the file or rescanning does not make the old value safe.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A security team asks why builds should produce a software bill of materials (SBOM). What is the main benefit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Shipped components can be searched when a new flaw is announced"
+        },
+        {
+          "id": "b",
+          "text": "Build artifacts are encrypted while they are stored"
+        },
+        {
+          "id": "c",
+          "text": "Proof is recorded that all unit tests passed"
+        },
+        {
+          "id": "d",
+          "text": "Unused dependencies are removed from the project automatically"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An SBOM lists the components inside a build, so an announcement can be matched to affected releases quickly. It does not encrypt artifacts, report test results, or change dependencies.",
+    "acronyms": [
+      "SBOM"
+    ]
+  },
+  {
+    "id": "at1-3-2-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A container image built and scanned clean in March is still running in production in June. Why should the team scan it again on a schedule?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Scan results expire if they are not renewed on time"
+        },
+        {
+          "id": "b",
+          "text": "Images slowly change their contents while sitting in a registry"
+        },
+        {
+          "id": "c",
+          "text": "New flaws are published for components already in the image"
+        },
+        {
+          "id": "d",
+          "text": "Scanners work only on images younger than a month"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The image has not changed, but knowledge about its components has, so a later scan can find flaws that did not exist in the data in March. Results are a snapshot rather than a license that lapses, images are immutable by digest, and scanners do not have an age limit.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is the main benefit of running a CI build step inside a container image?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The build no longer needs any network access"
+        },
+        {
+          "id": "b",
+          "text": "Identical pinned tools on any runner"
+        },
+        {
+          "id": "c",
+          "text": "The step runs faster than on a physical machine"
+        },
+        {
+          "id": "d",
+          "text": "The step is allowed to skip its own tests"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A container image fixes the toolchain, so results do not depend on what is installed on the runner. Containers do not remove network needs, are not inherently faster, and do not change which tests run.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-2-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A job uses the image `builder:latest`. Builds start failing although the repository did not change. What is the likely cause and fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The runner cache grew too large; clear it each day"
+        },
+        {
+          "id": "b",
+          "text": "The repository changed silently; lock the main branch"
+        },
+        {
+          "id": "c",
+          "text": "The tag moved; pin the image to a version or digest"
+        },
+        {
+          "id": "d",
+          "text": "The image is too old; pull a newer tag instead"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A floating tag points to different images over time, so pinning restores repeatability. Cache size, a silent repository change and image age do not explain a failure that started with no change to the code.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Integration tests need a database. The team wants a clean one for each job, with no leftovers after the job ends. What approach fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Share one long-running database among all jobs in the project"
+        },
+        {
+          "id": "b",
+          "text": "Install the database on each runner by hand"
+        },
+        {
+          "id": "c",
+          "text": "Point the tests at the production database, read-only"
+        },
+        {
+          "id": "d",
+          "text": "Start a disposable database container, then discard it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A throwaway container gives each job a fresh database and leaves nothing behind. A shared instance carries state between jobs, manual installs drift, and production data should not be used for tests.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A team's image build reinstalls all dependencies after every small source edit:\n\n```dockerfile\nFROM node:20\nCOPY . /app\nWORKDIR /app\nRUN npm install\n```\n\nWhat change restores layer caching?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Copy the dependency manifest, install, then copy the source"
+        },
+        {
+          "id": "b",
+          "text": "Move the `FROM` line below the `RUN` line"
+        },
+        {
+          "id": "c",
+          "text": "Add a second `RUN npm install` after the copy"
+        },
+        {
+          "id": "d",
+          "text": "Replace `COPY . /app` with `ADD . /app`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A layer is reused only if everything before it is unchanged, so the slow install must come before the frequently edited source. `FROM` must be first, a second install adds work, and `ADD` invalidates the cache the same way as `COPY`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does a linter do in a CI pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It runs the program against sample data and compares results"
+        },
+        {
+          "id": "b",
+          "text": "It checks source against style and pattern rules without running it"
+        },
+        {
+          "id": "c",
+          "text": "It measures how long the program takes to run"
+        },
+        {
+          "id": "d",
+          "text": "It scans built images for vulnerable packages"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A linter is a static check of the code against a rule set. Running the program is testing, timing it is benchmarking, and image scanning is a security check.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-2-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A project reaches 95% line coverage, yet defects keep reaching production. Which statement best explains this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Coverage figures above 90% are rounded upward by most tools"
+        },
+        {
+          "id": "b",
+          "text": "Coverage counts only the lines found in configuration files"
+        },
+        {
+          "id": "c",
+          "text": "Coverage gates cannot be used together with unit tests"
+        },
+        {
+          "id": "d",
+          "text": "Coverage shows lines that ran, not whether tests check results"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A line can execute without any assertion on its output, so high coverage can sit beside weak tests. Tools do not inflate figures that way, they count source lines, and gates work alongside unit tests.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A quality scan reports a function with cyclomatic complexity 38. What does that number describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "How many lines of code the function contains in total"
+        },
+        {
+          "id": "b",
+          "text": "How many other modules in the system call the function"
+        },
+        {
+          "id": "c",
+          "text": "How many independent paths run through the function"
+        },
+        {
+          "id": "d",
+          "text": "How long the function takes to execute on average"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Cyclomatic complexity counts decision points, which is the number of independent paths and a guide to how many tests the function needs. Line count, callers and run time are different measures.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A legacy service has 40% test coverage. The team wants quality to improve without blocking every change. Which gate fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Require a minimum coverage for new and changed code"
+        },
+        {
+          "id": "b",
+          "text": "Require 80% coverage on the whole codebase from now on"
+        },
+        {
+          "id": "c",
+          "text": "Remove the coverage report from the pipeline"
+        },
+        {
+          "id": "d",
+          "text": "Check coverage at release time, not on pull requests"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A gate on new and changed code stops the problem growing and lets old code improve gradually. A whole-codebase threshold would fail every change at once, removing the report loses the signal, and checking only at release time is too late.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is a common benefit of AI-based log analysis in a CI system?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It removes the need to keep the original log files"
+        },
+        {
+          "id": "b",
+          "text": "It summarizes logs and suggests likely causes"
+        },
+        {
+          "id": "c",
+          "text": "It rewrites failing tests automatically with no review"
+        },
+        {
+          "id": "d",
+          "text": "It makes build runs finish sooner by skipping jobs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Summarizing long output and suggesting probable causes saves engineers time. It does not replace stored logs, change tests unsupervised, or alter which jobs run.",
+    "acronyms": [
+      "AI",
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-2-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A fixed keyword alert never fired, yet an AI-based analyzer flagged a log pattern in the build jobs that no one had seen before. What does this show about the analyzer?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It showed that alert rules are no longer needed"
+        },
+        {
+          "id": "b",
+          "text": "It read the source code in place of the logs"
+        },
+        {
+          "id": "c",
+          "text": "It can flag unusual patterns that no rule covers"
+        },
+        {
+          "id": "d",
+          "text": "It guessed the pattern from the names of the jobs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Anomaly detection learns what normal output looks like and highlights departures, which a keyword rule cannot do. It still complements rules rather than replacing them, it worked from log data, and job names do not carry the pattern.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "at1-3-2-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO job failures are the best candidates for automatic retry?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A dependency download timed out while the package mirror was briefly unreachable"
+        },
+        {
+          "id": "b",
+          "text": "A runner lost its network connection partway through the job"
+        },
+        {
+          "id": "c",
+          "text": "A unit test fails because the code now returns a different value"
+        },
+        {
+          "id": "d",
+          "text": "The linter found an unused variable"
+        },
+        {
+          "id": "e",
+          "text": "The compiler reported a missing semicolon"
+        },
+        {
+          "id": "f",
+          "text": "A security scan found a critical vulnerability"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Transient infrastructure faults often disappear on a second attempt, so a mirror timeout and a lost connection suit retries. A failing assertion, a lint finding, a compile error and a scan finding are deterministic and will fail again until the code changes.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-039",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are valid reasons to run two jobs sequentially rather than in parallel?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The second job consumes a file that the first job produces"
+        },
+        {
+          "id": "b",
+          "text": "The result of the first job decides whether the second should run at all"
+        },
+        {
+          "id": "c",
+          "text": "The two jobs run on different operating systems"
+        },
+        {
+          "id": "d",
+          "text": "Both jobs only read the same source files"
+        },
+        {
+          "id": "e",
+          "text": "The second job is shorter than the first"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Sequencing is needed when one job needs the other's output or when its outcome gates the next. Different operating systems, shared read-only inputs and different durations do not create a dependency.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-040",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO actions reduce false-positive noise from a code scanner without hiding real issues?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tune the rules to match the frameworks the project uses"
+        },
+        {
+          "id": "b",
+          "text": "Record a suppression with a reason and review date for each confirmed false positive"
+        },
+        {
+          "id": "c",
+          "text": "Exclude the whole source directory from scanning"
+        },
+        {
+          "id": "d",
+          "text": "Lower every rule to informational severity"
+        },
+        {
+          "id": "e",
+          "text": "Stop publishing scan reports to developers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Tuning rules and documenting reviewed suppressions remove noise while keeping an audit trail. Excluding the source, lowering all severities and hiding reports would also hide genuine findings.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-041",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO practices keep a secret out of the layers of a container image?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Pass credentials to the container at run time from a secrets vault"
+        },
+        {
+          "id": "b",
+          "text": "Mount a build secret for one step so it is never written to a layer"
+        },
+        {
+          "id": "c",
+          "text": "Add the token early in the build and delete it in a later layer"
+        },
+        {
+          "id": "d",
+          "text": "Store the token in an `ENV` line so tools can find it"
+        },
+        {
+          "id": "e",
+          "text": "Copy the repository's `.env` file into the image"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Run-time injection and a build-time secret mount both keep the value out of the stored layers. A deleted token stays in the earlier layer, and `ENV` lines and a copied `.env` file are stored in the image.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-042",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A team defines quality gates for pull requests. Which TWO conditions are sound?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "No new function exceeds the agreed complexity limit"
+        },
+        {
+          "id": "b",
+          "text": "Duplicated code in the changed files stays below a set percentage"
+        },
+        {
+          "id": "c",
+          "text": "The number of commits per day stays above a minimum"
+        },
+        {
+          "id": "d",
+          "text": "The repository stays under a fixed number of total lines"
+        },
+        {
+          "id": "e",
+          "text": "Each file begins with a header comment"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Complexity and duplication in changed code are direct quality measures. Commit frequency, total size and header comments say little about the quality of a change.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-mcq-043",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are limitations teams should plan for when using AI-based log analysis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It can give a confident explanation that does not match the real cause"
+        },
+        {
+          "id": "b",
+          "text": "Logs sent to an external service may expose secrets or personal data unless redacted first"
+        },
+        {
+          "id": "c",
+          "text": "It cannot read text-based log files"
+        },
+        {
+          "id": "d",
+          "text": "It must have the original source code deleted first"
+        },
+        {
+          "id": "e",
+          "text": "It can analyze only logs from successful runs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Plausible but wrong explanations need human verification, and sensitive content in logs needs redaction before leaving the organization. The other statements are not true of these tools.",
+    "acronyms": [
+      "AI"
+    ]
+  },
+  {
+    "id": "at1-3-2-mcq-044",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE job pairs need an explicit dependency?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A package job and the compile job whose output it bundles"
+        },
+        {
+          "id": "b",
+          "text": "A smoke test and the staging deployment it checks"
+        },
+        {
+          "id": "c",
+          "text": "A registry publish job and the signing job that creates the signature it uploads"
+        },
+        {
+          "id": "d",
+          "text": "A lint job and a docs-site build"
+        },
+        {
+          "id": "e",
+          "text": "Two unit-test suites for different services"
+        },
+        {
+          "id": "f",
+          "text": "A license report job and a spell-check job"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Each of the first three pairs has a later job that needs something the earlier job creates. The lint and docs build, the two separate suites and the license and spell checks share nothing and can run side by side.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "The `payments-api` pipeline runs its linter inside a container. Review the notes below, then complete each step.",
+    "pbqWeight": 3,
+    "payload": {
+      "output": [
+        "$ docker run --help | head -n 4",
+        "Usage:  docker run [options] image [command]",
+        "      --rm              Automatically remove the container when it exits",
+        "  -v, --volume list     Bind mount a volume (src:dest, src an absolute path)",
+        "$ cat .ci/lint-job.txt",
+        "image:    registry.example.internal/ci/lint:2.3",
+        "command:  lintcheck src/",
+        "mount:    /home/ci/payments-api  ->  /work",
+        "$ lintcheck --help | tail -n 4",
+        "Exit status:",
+        "  0  no findings",
+        "  1  one or more findings reported",
+        "  2  usage error or internal failure"
+      ],
+      "steps": [
+        {
+          "id": "run",
+          "label": "Type the docker command that runs lintcheck src/ in the job image, with the host directory from the job file mounted at /work and the container removed when it exits"
+        },
+        {
+          "id": "status",
+          "label": "The run has finished. Type a command that prints its exit status"
+        },
+        {
+          "id": "meaning",
+          "label": "The status printed is 1. Choose what that means for the lint job",
+          "options": [
+            {
+              "id": "o1",
+              "text": "The job passes, because the container started and stopped cleanly"
+            },
+            {
+              "id": "o2",
+              "text": "The job is retried, because the tool crashed"
+            },
+            {
+              "id": "o3",
+              "text": "The job fails, because the tool ran and reported findings"
+            },
+            {
+              "id": "o4",
+              "text": "The job fails, because the image could not be pulled"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "run": [
+          "docker run --rm -v /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume=/home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=/home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/"
+        ],
+        "status": [
+          "echo $?",
+          "echo \"$?\"",
+          "printf '%s\\n' \"$?\"",
+          "printf \"%s\\n\" \"$?\""
+        ],
+        "meaning": [
+          "o3"
+        ]
+      }
+    },
+    "explanation": "The `--rm` flag removes the container afterwards and a bind mount maps the host path to /work. The shell variable `$?` holds the previous exit status, and for this tool status 1 means it ran and found issues, which a CI runner treats as a failed job.",
+    "partExplanations": {
+      "run": "docker run with --rm and a -v host:/work mount, then the image and the lintcheck command.",
+      "status": "echo $? prints the exit status of the last command.",
+      "meaning": "Per the tool help, status 1 means findings were reported, so the job fails; a crash would be status 2."
+    },
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-2-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "stem": "Configure the pipeline for `inventory-service`. The `compile` job runs first, and `unit-tests` use its output. `lint` reads only repository files. `link-check` tests external web links and is unreliable, so its result is informational. `deploy-preview` may run only when the tests pass. `destroy-preview` must remove the preview environment whatever happened.",
+    "pbqWeight": 5,
+    "payload": {
+      "fields": [
+        {
+          "id": "unit",
+          "label": "unit-tests: how it is scheduled",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Needs compile"
+            },
+            {
+              "id": "o2",
+              "text": "Needs lint"
+            },
+            {
+              "id": "o3",
+              "text": "No needs; starts at once"
+            }
+          ]
+        },
+        {
+          "id": "lint",
+          "label": "lint: how it is scheduled",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Needs compile"
+            },
+            {
+              "id": "o2",
+              "text": "No needs; starts at once"
+            },
+            {
+              "id": "o3",
+              "text": "Needs unit-tests"
+            }
+          ]
+        },
+        {
+          "id": "link",
+          "label": "link-check: failure policy",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Fails the pipeline"
+            },
+            {
+              "id": "o2",
+              "text": "Retried until it passes"
+            },
+            {
+              "id": "o3",
+              "text": "Allowed to fail and reported"
+            }
+          ]
+        },
+        {
+          "id": "preview",
+          "label": "deploy-preview: run condition",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Runs when any earlier job ends, pass or fail"
+            },
+            {
+              "id": "o2",
+              "text": "Runs after unit-tests succeed"
+            },
+            {
+              "id": "o3",
+              "text": "Runs only when unit-tests fail"
+            }
+          ]
+        },
+        {
+          "id": "destroy",
+          "label": "destroy-preview: run condition",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Runs only if deploy-preview succeeds"
+            },
+            {
+              "id": "o2",
+              "text": "Runs only if deploy-preview fails"
+            },
+            {
+              "id": "o3",
+              "text": "Runs after deploy-preview, whatever its result"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "unit": "o1",
+        "lint": "o2",
+        "link": "o3",
+        "preview": "o2",
+        "destroy": "o3"
+      }
+    },
+    "explanation": "The tests need compiled output, so they wait for compile, while lint needs only source and starts at once in parallel. An unreliable informational check is allowed to fail, deployment is gated on passing tests, and cleanup runs regardless of the outcome so no environment is left behind.",
+    "partExplanations": {
+      "unit": "unit-tests consume compile output, so they must wait for it.",
+      "lint": "lint reads only repository files, so it has no reason to wait.",
+      "link": "An informational, unreliable check should be reported without blocking the pipeline.",
+      "preview": "The preview deploys only after the tests it depends on have passed.",
+      "destroy": "Cleanup must run on success and on failure, or environments leak."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "Put the stages of this CI pipeline in the order they run. Rules: cheap checks on source run before anything is built; the tests run inside the built image; the slower image scan runs only after the tests pass; the push happens only after every gate has passed.",
+    "pbqWeight": 6,
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "Scan the built image for vulnerable packages"
+        },
+        {
+          "id": "s2",
+          "text": "Run the linter and static analysis on the checked-out source"
+        },
+        {
+          "id": "s6",
+          "text": "Push the image to the registry"
+        },
+        {
+          "id": "s1",
+          "text": "Check out the source at the commit that triggered the run"
+        },
+        {
+          "id": "s4",
+          "text": "Run the unit tests inside the built image"
+        },
+        {
+          "id": "s3",
+          "text": "Build the container image from the source"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The source is checked out first, cheap source checks follow, then the image is built, tested, scanned and finally pushed. Each later stage depends on the one before it or on a rule that puts cheaper gates first.",
+    "partExplanations": {
+      "0": "Every other stage needs the source at the triggering commit.",
+      "1": "Cheap source checks run before the expensive build, so a style or pattern failure stops the run early.",
+      "2": "The image is built after the source checks pass.",
+      "3": "Tests run inside the built image, so the image must exist first.",
+      "4": "The slower scan runs only after the tests pass, as the rules say.",
+      "5": "The push waits for every gate to pass."
+    },
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-2-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "stem": "Use the pipeline run table to answer each question. Assume enough runners that any job whose dependencies are done starts at once.",
+    "pbqWeight": 4,
+    "payload": {
+      "caption": "One run of the `ledger-api` pipeline (durations in minutes)",
+      "columns": [
+        "Job",
+        "Needs",
+        "Minutes"
+      ],
+      "rows": [
+        [
+          "checkout",
+          "none",
+          "1"
+        ],
+        [
+          "lint",
+          "checkout",
+          "2"
+        ],
+        [
+          "compile",
+          "checkout",
+          "4"
+        ],
+        [
+          "unit-tests",
+          "compile",
+          "5"
+        ],
+        [
+          "image-scan",
+          "compile",
+          "3"
+        ],
+        [
+          "package",
+          "unit-tests, image-scan",
+          "2"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 2
+      },
+      "fields": [
+        {
+          "id": "wall",
+          "label": "Shortest wall-clock time for the whole run, in minutes",
+          "options": [
+            {
+              "id": "12",
+              "text": "12"
+            },
+            {
+              "id": "14",
+              "text": "14"
+            },
+            {
+              "id": "17",
+              "text": "17"
+            }
+          ]
+        },
+        {
+          "id": "par",
+          "label": "Jobs that can start the moment compile finishes",
+          "options": [
+            {
+              "id": "1",
+              "text": "1"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "3",
+              "text": "3"
+            }
+          ]
+        },
+        {
+          "id": "slack",
+          "label": "Extra minutes image-scan could take before it delays the run",
+          "options": [
+            {
+              "id": "5",
+              "text": "5"
+            },
+            {
+              "id": "3",
+              "text": "3"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            }
+          ]
+        },
+        {
+          "id": "skip",
+          "label": "Job skipped if image-scan fails",
+          "options": [
+            {
+              "id": "lint",
+              "text": "lint"
+            },
+            {
+              "id": "package",
+              "text": "package"
+            },
+            {
+              "id": "unit",
+              "text": "unit-tests"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "wall": "12",
+        "par": "2",
+        "slack": "2",
+        "skip": "package"
+      }
+    },
+    "explanation": "The longest chain is checkout, compile, unit-tests and package. Lint and the image scan run beside that chain and finish earlier.",
+    "partExplanations": {
+      "wall": "Critical path: checkout 1 + compile 4 + unit-tests 5 + package 2 = 12 minutes; the sum of all jobs, 17, is the sequential time.",
+      "par": "Both unit-tests and image-scan need only compile, so two jobs start at minute 5.",
+      "slack": "Unit-tests end at minute 10 and image-scan starts at 5, so it can take 5 minutes instead of 3: 2 extra minutes.",
+      "skip": "Package needs image-scan, so it is skipped; lint and unit-tests do not depend on it."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "The pipeline stages run left to right as drawn. Place the best job for each description under its stage.",
+    "pbqWeight": 4,
+    "payload": {
+      "width": 600,
+      "height": 210,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Checkout"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Compile"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Test stage"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Release"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Needs only source; starts beside compile"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Needs the compiled output"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Bundle that needs passing tests"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Sends the bundle onward"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Package"
+        },
+        {
+          "id": "l2",
+          "text": "Rollback"
+        },
+        {
+          "id": "l3",
+          "text": "Lint"
+        },
+        {
+          "id": "l4",
+          "text": "Registry push"
+        },
+        {
+          "id": "l5",
+          "text": "Cache cleanup"
+        },
+        {
+          "id": "l6",
+          "text": "Unit tests"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l3",
+        "z2": "l6",
+        "z3": "l1",
+        "z4": "l4"
+      }
+    },
+    "explanation": "Lint reads only source and can start as soon as checkout ends, unit tests need the compiled output, packaging waits for passing tests, and the push comes last. Rollback and cache cleanup do not fit any of these dependency descriptions.",
+    "partExplanations": {
+      "z1": "Lint has no dependency on compile, so it runs in parallel with it.",
+      "z2": "Unit tests use what compile produced.",
+      "z3": "Packaging bundles the build only after the tests pass.",
+      "z4": "A registry push sends the finished package onward and runs last."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 3,
+    "stem": "A pipeline has the jobs shown, with their needs lines in shuffled positions. The `build-api` job compiles the code. The `unit-tests` and `package` jobs use its compiled output, and `package` also needs the tests to pass. The `lint`, `docs-site` and `license-check` jobs read only repository files. Select every job whose needs line makes it wait for no reason.",
+    "pbqWeight": 3,
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "unit-tests: needs build-api"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "lint: needs build-api"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "license-check: needs package"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "build-api: no needs"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "docs-site: needs unit-tests"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "package: needs build-api, unit-tests"
+        }
+      ],
+      "spots": [
+        {
+          "id": "unit",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "unit-tests: needs build-api"
+        },
+        {
+          "id": "lint",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "lint: needs build-api"
+        },
+        {
+          "id": "license",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "license-check: needs package"
+        },
+        {
+          "id": "build",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "build-api: no needs"
+        },
+        {
+          "id": "docs",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "docs-site: needs unit-tests"
+        },
+        {
+          "id": "package",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "package: needs build-api, unit-tests"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "lint",
+        "license",
+        "docs"
+      ]
+    },
+    "explanation": "Needs lines should exist only where a job uses another job's output or must wait for its verdict. The three jobs that read only repository files gain nothing from waiting, and each wait makes the run longer.",
+    "partExplanations": {
+      "lint": "Lint reads only source, so waiting for build-api only delays it.",
+      "license": "The license check reads only repository files, so waiting for package adds time.",
+      "docs": "The docs site needs no test result, so waiting for unit-tests delays it.",
+      "unit": "Unit tests use the compiled output, so this wait is real.",
+      "build": "build-api has no needs line and starts at once.",
+      "package": "Package uses the compiled output and needs passing tests, so both waits are real."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-2-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each pipeline scan to what it finds.",
+    "pbqWeight": 5,
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Static application security testing (SAST)"
+        },
+        {
+          "id": "p2",
+          "text": "Dependency scanning"
+        },
+        {
+          "id": "p3",
+          "text": "Container image scanning"
+        },
+        {
+          "id": "p4",
+          "text": "Secret scanning"
+        },
+        {
+          "id": "p5",
+          "text": "Linting"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Passwords, tokens and keys committed to the repository"
+        },
+        {
+          "id": "c2",
+          "text": "Known flaws in the third-party libraries the project declares"
+        },
+        {
+          "id": "c3",
+          "text": "Style breaks and unused code that are not security flaws"
+        },
+        {
+          "id": "c4",
+          "text": "Vulnerable operating system packages inside a built image"
+        },
+        {
+          "id": "c5",
+          "text": "Insecure patterns in the team's own source files"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c5",
+        "p2": "c2",
+        "p3": "c4",
+        "p4": "c1",
+        "p5": "c3"
+      }
+    },
+    "explanation": "Each scan looks at a different target: first-party code, declared libraries, a built image, committed credentials, or style and maintainability.",
+    "partExplanations": {
+      "p1": "SAST reads the team's own source for insecure patterns without running it.",
+      "p2": "Dependency scanning compares declared library versions with known vulnerabilities.",
+      "p3": "Image scanning inspects the packages inside the built image layers.",
+      "p4": "Secret scanning looks for credentials in committed files.",
+      "p5": "A linter reports style and maintainability issues rather than security flaws."
+    },
+    "acronyms": [
+      "SAST"
+    ]
+  },
+  {
+    "id": "at1-3-2-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "stem": "Sort each pipeline setting by the kind of workflow control it provides.",
+    "pbqWeight": 6,
+    "payload": {
+      "buckets": [
+        {
+          "id": "order",
+          "text": "Order and waiting"
+        },
+        {
+          "id": "runs",
+          "text": "Whether a job runs"
+        },
+        {
+          "id": "fail",
+          "text": "What happens after a failure"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Cleanup step runs even though a test failed"
+        },
+        {
+          "id": "i2",
+          "text": "Skipped on a draft pull request"
+        },
+        {
+          "id": "i3",
+          "text": "Two independent suites start at the same moment"
+        },
+        {
+          "id": "i4",
+          "text": "Runner released after 20 minutes of silence"
+        },
+        {
+          "id": "i5",
+          "text": "Runs only when the commit touches the schema folder"
+        },
+        {
+          "id": "i6",
+          "text": "Package waits for the compiled output"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "fail",
+        "i2": "runs",
+        "i3": "order",
+        "i4": "fail",
+        "i5": "runs",
+        "i6": "order"
+      }
+    },
+    "explanation": "Order settings decide what waits and what overlaps, run conditions decide whether a job starts at all, and failure settings decide what happens when something goes wrong.",
+    "partExplanations": {
+      "i1": "An always-run cleanup is a failure-handling setting.",
+      "i2": "A rule that skips a job on draft pull requests decides whether it runs.",
+      "i3": "Starting independent suites together is parallel scheduling.",
+      "i4": "A timeout is a failure-handling limit on a stuck job.",
+      "i5": "A path filter decides whether the job runs for a change.",
+      "i6": "Waiting for output is a dependency on another job."
+    },
+    "acronyms": []
+  }
+]

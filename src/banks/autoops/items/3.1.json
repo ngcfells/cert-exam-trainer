@@ -1,0 +1,2645 @@
+[
+  {
+    "id": "at1-3-1-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A platform team wants one central place where pipeline credentials are kept in protected form, released only to authenticated jobs, and logged on each read. Which component fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A shared network drive with restricted folders"
+        },
+        {
+          "id": "b",
+          "text": "A configuration file committed to the repository"
+        },
+        {
+          "id": "c",
+          "text": "A build log archive kept for audits"
+        },
+        {
+          "id": "d",
+          "text": "An encrypted key vault"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An encrypted key vault stores secrets protected at rest, checks the identity of each caller and records access. A shared drive and a committed file give no per-job control or read log, and a log archive holds history rather than credentials.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Dockerfile copies `deploy.key` into an image in one layer and deletes it in a later layer. Someone pulls the published image. Can they recover the key?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, because the earlier layer still contains the file"
+        },
+        {
+          "id": "b",
+          "text": "No, because the delete step removes it from the whole image"
+        },
+        {
+          "id": "c",
+          "text": "No, because the registry encrypts published images"
+        },
+        {
+          "id": "d",
+          "text": "Yes, but only while a container is running"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Image layers are stacked and each keeps its own contents, so a later delete only hides the file in the final view; the earlier layer can still be extracted. The delete does not erase it, registries do not encrypt layers in a way that protects them from a puller, and recovery does not depend on a running container.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A vault protects each secret with its own data key, and those data keys are protected by a separate master key. What benefit does this envelope design give when the master key is rotated?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Each stored secret must be decrypted and encrypted again"
+        },
+        {
+          "id": "b",
+          "text": "Existing secrets stay unreadable until clients reconnect"
+        },
+        {
+          "id": "c",
+          "text": "Only the data keys are re-protected, not each stored secret"
+        },
+        {
+          "id": "d",
+          "text": "Clients must request new secret values from their owners"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "With envelope encryption the master key only wraps the small data keys, so rotating it means re-wrapping those keys while the stored secrets stay as they are. Re-encrypting every secret is the cost the design avoids, and neither unreadable secrets nor new values from owners are needed.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An autoscaled build runner is found to be compromised after it fetched several database credentials from the vault. What should the team do first to cut off the attacker's use of those credentials?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait for the credentials to age out on their own schedule"
+        },
+        {
+          "id": "b",
+          "text": "Revoke all leases issued to that runner's identity"
+        },
+        {
+          "id": "c",
+          "text": "Rename the vault path so the old path no longer resolves"
+        },
+        {
+          "id": "d",
+          "text": "Restart the runner and keep the same identity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Revocation ends the credentials now, and revoking by identity covers every lease the runner holds. Waiting leaves the attacker a working login, renaming a path does not invalidate credentials already issued, and a restart with the same identity changes nothing about what was handed out.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A service validates signed access tokens by checking the signature and expiry itself, without calling the issuer. A token is stolen with eight hours left. Which approach lets the service reject it early?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Verify the signature with a longer key length"
+        },
+        {
+          "id": "b",
+          "text": "Accept the token only from a known network range"
+        },
+        {
+          "id": "c",
+          "text": "Consult a revocation list during validation"
+        },
+        {
+          "id": "d",
+          "text": "Ask the client to present the same token twice"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A self-contained token passes the signature and expiry checks until it ends, so early rejection needs extra state such as a revocation list. A longer verification key, a network filter and a repeated presentation do not make a stolen but valid token fail.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A vault hands a deploy job a database password that stops working after 30 minutes unless the job asks to extend it. What is this time-limited right to use the secret called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A rotation schedule"
+        },
+        {
+          "id": "b",
+          "text": "A lease"
+        },
+        {
+          "id": "c",
+          "text": "A revocation list"
+        },
+        {
+          "id": "d",
+          "text": "A signing request"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A lease gives a holder a secret for a limited time and ends it unless renewed. A rotation schedule replaces a secret value, a revocation list records invalid credentials, and a signing request asks for a signature.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A job's database credential came from a lease that has now expired, and the job's next query is rejected. What should the job do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Retry the expired credential after a short wait"
+        },
+        {
+          "id": "b",
+          "text": "Copy the expired credential into a file so that the next job can reuse it"
+        },
+        {
+          "id": "c",
+          "text": "Turn off the lease check in the vault policy"
+        },
+        {
+          "id": "d",
+          "text": "Request a new lease and use the fresh credential it returns"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Once a lease expires, the backing credential no longer works, so the job asks the vault for a new lease and gets a new credential. Retrying the old one cannot succeed, saving it spreads a dead secret, and a vault policy is not something a job should edit.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which technique replaces a sensitive value, such as an account number, with a surrogate that is useless outside a separate protected mapping?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tokenization"
+        },
+        {
+          "id": "b",
+          "text": "Base64 encoding of the field"
+        },
+        {
+          "id": "c",
+          "text": "Compression of the column"
+        },
+        {
+          "id": "d",
+          "text": "Checksumming of each record"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Tokenization swaps the real value for a surrogate and keeps the mapping in a protected store. Base64 encoding is trivially reversible, compression only shrinks data, and a checksum detects changes without hiding anything.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A test database holds tokens in place of real account numbers, and the token store stays in a separate protected system. Why can an intruder who copies the test database not compute the real numbers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The tokens are encrypted with a key that is stored alongside them in the database"
+        },
+        {
+          "id": "b",
+          "text": "The tokens have no mathematical link to the original values"
+        },
+        {
+          "id": "c",
+          "text": "The tokens are compressed and cannot be expanded again"
+        },
+        {
+          "id": "d",
+          "text": "The tokens are rewritten by the vault every hour"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A token is a stand-in chosen without any formula from the original, so only a lookup in the token store maps it back. Encryption would be reversible with its key, compression is reversible by design, and an hourly rewrite is not part of tokenization.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which statement best describes the Zero Trust approach to pipeline access?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Verify each request's identity and permission, wherever it comes from"
+        },
+        {
+          "id": "b",
+          "text": "Trust requests that come from inside the build subnet behind the firewall"
+        },
+        {
+          "id": "c",
+          "text": "Trust a runner for its whole lifetime once it has signed in at startup"
+        },
+        {
+          "id": "d",
+          "text": "Trust requests that carry a certificate issued by the internal authority"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Zero Trust gives no automatic trust based on location or earlier sign-in, so each request is authenticated and authorized on its own merits. The three other statements each grant trust on the basis of network position, a one-time login or a loosely checked certificate.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team replaces one shared token used by all of its pipelines with a separate identity for each pipeline job, each allowed to read only its own secrets. Why is this safer?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tokens last longer when fewer jobs use them"
+        },
+        {
+          "id": "b",
+          "text": "The vault no longer needs to keep a log of which job read which secret"
+        },
+        {
+          "id": "c",
+          "text": "A leak exposes less and each read can be traced to one job"
+        },
+        {
+          "id": "d",
+          "text": "Jobs run faster when they skip permission checks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Separate, narrowly scoped identities limit what one leak reveals and make the audit trail point to a single job. Token lifetime is unrelated to how many jobs use it, logging still matters, and permission checks are part of the control rather than a cost to drop.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A CI platform can give each job a short-lived signed identity token. A deploy job presents it to the vault instead of using a stored password. What risk does this remove?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Network delay between the runner and the vault"
+        },
+        {
+          "id": "b",
+          "text": "Expiry of the vault's own master key"
+        },
+        {
+          "id": "c",
+          "text": "Disk space used by the job's workspace"
+        },
+        {
+          "id": "d",
+          "text": "A long-lived static credential that could leak from stored settings"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The job proves who it is with a token that exists only for the run, so no durable password sits in pipeline settings waiting to leak. Latency, the vault's master key and workspace size are not changed by how the job authenticates.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-1-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A database engine creates a new user and password each time a job asks, and removes that user when the lease ends. What are such credentials called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Static secrets"
+        },
+        {
+          "id": "b",
+          "text": "Dynamic secrets"
+        },
+        {
+          "id": "c",
+          "text": "Cached secrets"
+        },
+        {
+          "id": "d",
+          "text": "Wrapped secrets"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Credentials created on request, with a lease that removes them, are dynamic secrets. Static secrets are fixed values, cached secrets are stored copies, and wrapped secrets are secrets enclosed in another layer for safe transport.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A shared API key for the `ledger-api` service must be replaced without causing an outage for the clients that use it. Which rotation approach avoids downtime?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept old and new keys during an overlap, then retire the old key"
+        },
+        {
+          "id": "b",
+          "text": "Replace the key in one step and restart all of the clients at the same time"
+        },
+        {
+          "id": "c",
+          "text": "Delete the old key first so that clients fail fast and the owners fix them"
+        },
+        {
+          "id": "d",
+          "text": "Replace the key during the next scheduled maintenance window for the service"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An overlap period lets clients move to the new key at their own pace while the old key still works, and only then is the old key removed. A one-step swap, an early deletion and a maintenance window each interrupt clients that have not yet switched.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-3-1-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A service reads its database password from the vault once at startup. After the vault rotates the password, the service fails with authentication errors until it is restarted. Which change fixes the design?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Stop rotating the password so the service keeps working"
+        },
+        {
+          "id": "b",
+          "text": "Store the password in the container image for faster startup"
+        },
+        {
+          "id": "c",
+          "text": "Give the service access to the vault's master key"
+        },
+        {
+          "id": "d",
+          "text": "Re-read the secret from the vault when authentication fails"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The service holds a stale copy, so it should fetch the current value again when a login is rejected or when the vault signals a change. Dropping rotation weakens security, baking the password into an image makes it harder to rotate, and a master key is far too much access.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A pipeline builds a container image once and needs a place where later stages can fetch exactly that build. Which component provides this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A source control branch"
+        },
+        {
+          "id": "b",
+          "text": "A task runner"
+        },
+        {
+          "id": "c",
+          "text": "An artifact registry"
+        },
+        {
+          "id": "d",
+          "text": "A secrets vault"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An artifact registry stores built outputs with their versions so later stages pull the same bits. A branch holds source, a task runner executes named tasks, and a vault stores credentials.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team rebuilds the application separately for staging and for production from the same commit. A defect appears only in production. Which practice reduces this risk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Build once and promote the same artifact through each environment"
+        },
+        {
+          "id": "b",
+          "text": "Rebuild production first so it gets the newest compiler"
+        },
+        {
+          "id": "c",
+          "text": "Run a longer test suite on the staging build before approving the release"
+        },
+        {
+          "id": "d",
+          "text": "Tag the commit again before each environment's build"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Promoting one artifact means the bits tested in staging are the bits that run in production. Separate rebuilds can differ through tool or dependency changes, a longer staging suite does not change what production receives, and retagging the commit does not make builds identical.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A release job signs in to the artifact registry successfully, but its push to the `releases` repository is refused with HTTP status `403`. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The job's token has expired and must be reissued by the registry owner"
+        },
+        {
+          "id": "b",
+          "text": "The job's identity lacks write permission on that repository"
+        },
+        {
+          "id": "c",
+          "text": "The registry cannot be reached from the runner"
+        },
+        {
+          "id": "d",
+          "text": "The artifact version already carries a signature"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A `403` means the caller was identified but is not allowed to do this, which is an authorization gap fixed by granting write access. Expired credentials would give `401`, an unreachable registry would give a connection error rather than a status, and a signature does not cause a refusal.",
+    "acronyms": [
+      "HTTP"
+    ]
+  },
+  {
+    "id": "at1-3-1-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A pipeline pushes to the artifact registry using a developer's personal credentials. When that developer leaves, all of the pipelines fail. What is the better practice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Share the developer's credentials with the whole team"
+        },
+        {
+          "id": "b",
+          "text": "Make the repository publicly writable"
+        },
+        {
+          "id": "c",
+          "text": "Store the developer's password in the pipeline file"
+        },
+        {
+          "id": "d",
+          "text": "Use a dedicated machine identity with its own limited credentials"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A machine identity owned by the team survives staff changes and can be limited to what the pipeline needs, which is sound authentication practice. Sharing a personal login, opening the repository to everyone and writing a password into a file each weaken control.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The library `ledger-lib` is at version `2.7.4`. The next release removes a public function that other teams call. Which version number follows semantic versioning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`2.8.0`, a new minor version"
+        },
+        {
+          "id": "b",
+          "text": "`2.7.5`, a new patch version"
+        },
+        {
+          "id": "c",
+          "text": "`3.0.0`, a new major version"
+        },
+        {
+          "id": "d",
+          "text": "`2.7.4+2`, new build metadata"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Removing public behavior is a breaking change, which raises the major number and resets the others. A minor bump is for compatible additions, a patch is for compatible fixes, and build metadata after a plus sign does not change precedence at all.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A registry setting prevents anyone from replacing the contents of a version once it is published. What property does this give the artifact?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Elasticity"
+        },
+        {
+          "id": "b",
+          "text": "Immutability"
+        },
+        {
+          "id": "c",
+          "text": "Idempotency"
+        },
+        {
+          "id": "d",
+          "text": "Redundancy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Immutability means a published version cannot be changed or overwritten. Elasticity is the ability to scale, idempotency is a property of repeatable operations, and redundancy is keeping extra copies.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Version `2.3.1` of `ledger-lib` is published in an immutable repository and contains a defect. How should the team ship the fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete `2.3.1` and publish the fix under the same number"
+        },
+        {
+          "id": "b",
+          "text": "Overwrite `2.3.1` once with the corrected files"
+        },
+        {
+          "id": "c",
+          "text": "Publish the fix as a new version such as `2.3.2`"
+        },
+        {
+          "id": "d",
+          "text": "Ask the registry admin to disable immutability for a day"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "In an immutable repository a number is used once, so fixes ship under a new number that consumers can tell apart. Reusing the number through deletion or overwrite breaks the guarantee, and suspending immutability invites exactly the confusion it prevents.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Two servers pulled `ledger-api:stable` a week apart and now run different code, although both deployed \"the same tag\". Which change prevents this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Deploy by an immutable version or by content digest"
+        },
+        {
+          "id": "b",
+          "text": "Refresh the tag on all of the hosts each night with a scheduled job"
+        },
+        {
+          "id": "c",
+          "text": "Use a longer tag name"
+        },
+        {
+          "id": "d",
+          "text": "Add more labels to the existing tag"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A tag such as `stable` can be moved to new content, so the same name gives different results over time; an exact version or digest always names the same bits. Nightly refreshes, longer names and extra labels leave the tag movable.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A build downloads open-source libraries from a package index run by a third party outside the company. What is this kind of source called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An internal artifact registry"
+        },
+        {
+          "id": "b",
+          "text": "A local build cache kept on each runner machine"
+        },
+        {
+          "id": "c",
+          "text": "A private source branch"
+        },
+        {
+          "id": "d",
+          "text": "An external artifact repository"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A repository hosted outside the organization is an external artifact repository. An internal registry is run by the company, a build cache lives on the build side, and a private branch holds source rather than packages.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Builds fail whenever the public package index has an outage, and the team also wants the same package bytes on each run. What helps most?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Retry the download in a loop until the index responds"
+        },
+        {
+          "id": "b",
+          "text": "Copy the dependencies into the source tree by hand"
+        },
+        {
+          "id": "c",
+          "text": "Route downloads through an internal registry that caches packages"
+        },
+        {
+          "id": "d",
+          "text": "Switch to the newest package versions at each build"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A caching proxy keeps copies of packages already fetched, so outages do not stop builds and repeated runs receive identical content. Retry loops still depend on the index, hand-copied dependencies are hard to maintain, and newest versions change what the build receives.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A company publishes an internal package `acme-billing-utils` at version `1.2.0`. An attacker uploads a package with the same name and version `99.0.0` to a public index, and the next build runs the attacker's code. The resolver searched both sources and picked the highest version. Which change prevents this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Make the public index the primary source and the internal one the fallback"
+        },
+        {
+          "id": "b",
+          "text": "Raise the internal package version above the attacker's, to `100.0.0`"
+        },
+        {
+          "id": "c",
+          "text": "Delete the internal package after each build"
+        },
+        {
+          "id": "d",
+          "text": "Resolve internal package names from the internal registry alone"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Pinning each internal name to the internal registry removes the public copy from consideration, which stops this dependency confusion attack. Prioritizing the public index makes it worse, a higher internal number only starts a numbers race, and deleting the package breaks the build.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A serious flaw is announced in version `4.1.2` of a logging library. Which item helps the team find which released applications contain that version without opening each one?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The SBOM stored with each release"
+        },
+        {
+          "id": "b",
+          "text": "The release notes of each application"
+        },
+        {
+          "id": "c",
+          "text": "The code coverage report from the pipeline"
+        },
+        {
+          "id": "d",
+          "text": "The download counts shown in the registry"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An SBOM lists the components and versions inside a release, so it can be searched for the affected library. Release notes describe features, coverage reports measure tests, and download counts show popularity rather than contents.",
+    "acronyms": [
+      "SBOM"
+    ]
+  },
+  {
+    "id": "at1-3-1-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "When should the SBOM for a release artifact be generated so that it matches what ships?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "After deployment, by scanning the running servers"
+        },
+        {
+          "id": "b",
+          "text": "At build time, from the same dependency resolution, and published with that version"
+        },
+        {
+          "id": "c",
+          "text": "Once a year, from the team's planning documents"
+        },
+        {
+          "id": "d",
+          "text": "On a developer laptop before the code is committed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Generating the SBOM during the build captures the exact components that went into the artifact, and publishing it with the version keeps the two together. Scanning servers, using planning documents or working from a laptop all describe something other than the shipped artifact.",
+    "acronyms": [
+      "SBOM"
+    ]
+  },
+  {
+    "id": "at1-3-1-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A project declares three direct dependencies, but the built artifact contains forty libraries. Which SBOM content lets security staff assess an exposure in a library nobody chose directly?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The three dependencies the team declared directly"
+        },
+        {
+          "id": "b",
+          "text": "A list of the developers who wrote the code"
+        },
+        {
+          "id": "c",
+          "text": "The credentials the build used to fetch libraries from the registry"
+        },
+        {
+          "id": "d",
+          "text": "Entries for transitive dependencies with their versions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Most components arrive indirectly, so a useful SBOM lists transitive dependencies and versions. A list of only the declared three would miss thirty-seven libraries, author names say nothing about components, and credentials do not belong in an SBOM at all.",
+    "acronyms": [
+      "SBOM"
+    ]
+  },
+  {
+    "id": "at1-3-1-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A repository has a file that defines named tasks such as `build`, `test` and `lint`, which developers and the pipeline both run by name. What kind of tool reads that file?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A task runner"
+        },
+        {
+          "id": "b",
+          "text": "A package index"
+        },
+        {
+          "id": "c",
+          "text": "A secrets vault"
+        },
+        {
+          "id": "d",
+          "text": "A load balancer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A task runner executes named, repeatable tasks defined in a file, so people and pipelines use the same commands. A package index serves libraries, a vault stores credentials, and a load balancer spreads traffic.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A pipeline step runs `npm run verify` with the `package.json` below. The `lint` script reports an error and exits with a non-zero status. What happens?\n```json\n{\n  \"scripts\": {\n    \"lint\": \"node tools/lint.js\",\n    \"test\": \"node tools/test.js\",\n    \"verify\": \"npm run lint && npm run test\"\n  }\n}\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The `test` script still runs, then the step fails"
+        },
+        {
+          "id": "b",
+          "text": "The `test` script is skipped and the step fails"
+        },
+        {
+          "id": "c",
+          "text": "The `test` script runs first, then `lint`"
+        },
+        {
+          "id": "d",
+          "text": "The step passes because `test` is a separate script"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "In the shell `&&` runs the second command only if the first succeeds, so a failing `lint` stops `verify` before `test` and the non-zero status fails the step. The other options assume the commands run regardless, run in another order, or ignore the failure.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A repository's `Makefile` contains the rules below, and a developer runs `make bundle`. What is printed?\n```make\n.PHONY: compile verify bundle\nbundle: verify\n\t@echo packing\nverify: compile\n\t@echo checking\ncompile:\n\t@echo compiling\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "packing, checking, compiling, in that order"
+        },
+        {
+          "id": "b",
+          "text": "packing only"
+        },
+        {
+          "id": "c",
+          "text": "compiling, checking, packing, in that order"
+        },
+        {
+          "id": "d",
+          "text": "compiling and packing, with checking skipped"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Make runs a target's prerequisites first, so `compile` runs, then `verify`, then `bundle`. Reversing the order, running only the named target, or skipping `verify` all ignore the dependency chain declared in the file.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A pipeline step runs `./scripts/run-tests.sh`. Two tests fail, but the script prints a summary and its last command is `exit 0`. What does the pipeline report for the step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Failure, because the printed summary lists the failed tests by name"
+        },
+        {
+          "id": "b",
+          "text": "Success, because the step result follows the exit status of zero"
+        },
+        {
+          "id": "c",
+          "text": "Failure, because the pipeline scans the log for errors"
+        },
+        {
+          "id": "d",
+          "text": "A warning, because some tests passed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Pipelines judge a command step by its exit status, and zero means success whatever was printed. They do not parse log text for failures, and a script that exits zero gives no partial-pass signal.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team creates a fresh machine in a known state for each build or test run and discards it afterward, instead of reusing a long-lived server. What is this practice called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Capacity planning for a fixed server pool"
+        },
+        {
+          "id": "b",
+          "text": "Manual patching of shared build servers"
+        },
+        {
+          "id": "c",
+          "text": "Mirroring production data into test"
+        },
+        {
+          "id": "d",
+          "text": "On-demand environment provisioning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Creating clean environments when a run needs them and removing them afterward is on-demand provisioning. Fixed-pool planning, hand-patching shared servers and copying production data each describe a different activity.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A test suite passes on the team's long-lived build server but fails on a newly set up laptop. Investigation finds files left behind by earlier builds on the server. Which approach prevents this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run each job in a fresh container or VM that is discarded afterward"
+        },
+        {
+          "id": "b",
+          "text": "Give the build server more memory"
+        },
+        {
+          "id": "c",
+          "text": "Run the suite twice on the same server"
+        },
+        {
+          "id": "d",
+          "text": "Copy the laptop's files into the server workspace"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A fresh, disposable environment contains nothing from earlier runs, so passing depends only on the code. More memory, a second run on the same machine and copying files in all leave stale state in place.",
+    "acronyms": [
+      "VM"
+    ]
+  },
+  {
+    "id": "at1-3-1-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A pipeline creates a temporary test environment for each run. Failed runs leave their environments running, and costs climb. How should tear-down be configured?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "As a step placed after the tests, so it runs once they pass"
+        },
+        {
+          "id": "b",
+          "text": "As a weekly manual review of running environments"
+        },
+        {
+          "id": "c",
+          "text": "As a cleanup step that runs whether the tests pass or fail"
+        },
+        {
+          "id": "d",
+          "text": "As a longer timeout on the test step"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Cleanup must run on failure as well as success, so it belongs in a step that is always executed. A step that depends on passing tests skips failed runs, a manual review lets cost build up for days, and a longer timeout does not remove anything.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Two pipeline runs share one test database. Their integration tests overwrite each other's rows and fail at random. What is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add retries so the failing tests run again"
+        },
+        {
+          "id": "b",
+          "text": "Run the two pipelines at the same speed"
+        },
+        {
+          "id": "c",
+          "text": "Give each test a longer timeout"
+        },
+        {
+          "id": "d",
+          "text": "Provision a separate database instance or schema for each run"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Isolating each run with its own database removes the shared state that causes the collisions. Retries hide a real defect in the setup, matching speeds cannot synchronize overlapping writes, and longer timeouts do not stop rows being overwritten.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A developer pushes a deploy token to a public repository and notices within minutes. Which TWO actions belong in the response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Revoke the token and issue a replacement"
+        },
+        {
+          "id": "b",
+          "text": "Make the repository private and stop there"
+        },
+        {
+          "id": "c",
+          "text": "Wait for the token to expire"
+        },
+        {
+          "id": "d",
+          "text": "Review service logs for any use of the token"
+        },
+        {
+          "id": "e",
+          "text": "Rename the token in the pipeline settings"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "A published token must be treated as exposed: revoke it so it stops working, replace it, and check logs for use. Making the repository private does not undo copies already taken, waiting leaves the token live, and renaming it does not change the secret.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-039",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO checks let a deploy job detect that a downloaded artifact differs from what the build produced?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Compare the file's modification time with the build time"
+        },
+        {
+          "id": "b",
+          "text": "Compare its content digest with the recorded digest"
+        },
+        {
+          "id": "c",
+          "text": "Confirm the file size is under the registry limit"
+        },
+        {
+          "id": "d",
+          "text": "Check that the file name ends with the expected extension"
+        },
+        {
+          "id": "e",
+          "text": "Verify its signature against the publisher's public key"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "A recorded digest and a verifiable signature both change if the content changes, and the signature also shows who published it. Timestamps, a size limit and a file extension can all stay the same while the contents are altered.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-040",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO practices make a build environment reproducible from one run to the next?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Install tools by hand on the runner after it starts"
+        },
+        {
+          "id": "b",
+          "text": "Share a single workspace among all jobs"
+        },
+        {
+          "id": "c",
+          "text": "Define the environment in a versioned image or template"
+        },
+        {
+          "id": "d",
+          "text": "Pin the base image and tool versions"
+        },
+        {
+          "id": "e",
+          "text": "Pull the newest release of each tool during the build"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "A versioned image or template, with pinned versions, gives the same environment each time. Manual installs differ between runs, a shared workspace carries over state, and the newest release of each tool changes underneath the build.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-041",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "A job runs `npm run build` with default npm settings and the `package.json` below. Which TWO other scripts run automatically as part of that command?\n```json\n{\n  \"scripts\": {\n    \"prebuild\": \"node tools/check-env.js\",\n    \"build\": \"node tools/compile.js\",\n    \"postbuild\": \"node tools/copy-assets.js\",\n    \"test\": \"node tools/test.js\",\n    \"lint\": \"node tools/lint.js\"\n  }\n}\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`test`"
+        },
+        {
+          "id": "b",
+          "text": "`prebuild`"
+        },
+        {
+          "id": "c",
+          "text": "`lint`"
+        },
+        {
+          "id": "d",
+          "text": "`postbuild`"
+        },
+        {
+          "id": "e",
+          "text": "`start`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "npm runs a script named `pre` plus the script name before it and one named `post` plus the name after it, so `prebuild` and `postbuild` surround `build`. The `test` and `lint` scripts run only when called, and no `start` script is defined.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-042",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO practices reduce supply-chain risk when a build pulls libraries from an external repository?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Commit a lockfile that pins exact versions with integrity hashes"
+        },
+        {
+          "id": "b",
+          "text": "Let the resolver take the newest version at each build"
+        },
+        {
+          "id": "c",
+          "text": "Review a new dependency before it joins the approved list"
+        },
+        {
+          "id": "d",
+          "text": "Turn off integrity checks to speed up downloads"
+        },
+        {
+          "id": "e",
+          "text": "Download from any mirror that responds first"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A lockfile with hashes makes each build fetch known content, and a review step keeps unvetted packages out. Floating to the newest version, skipping integrity checks and trusting the fastest mirror each widen what an attacker can slip in.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-mcq-043",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A QA team copies production data into a test environment. Which TWO fields are the best candidates for tokenization?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Pipeline run counts"
+        },
+        {
+          "id": "b",
+          "text": "Build timestamps"
+        },
+        {
+          "id": "c",
+          "text": "Customer payment card numbers"
+        },
+        {
+          "id": "d",
+          "text": "Product category names"
+        },
+        {
+          "id": "e",
+          "text": "National identification numbers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Card numbers and national identification numbers are regulated, high-value data that tests can handle as tokens. Run counts, timestamps and category names carry no sensitive identity or financial value.",
+    "acronyms": [
+      "QA"
+    ]
+  },
+  {
+    "id": "at1-3-1-mcq-044",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO items does an SBOM record?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Component names and versions"
+        },
+        {
+          "id": "b",
+          "text": "The passwords the build used"
+        },
+        {
+          "id": "c",
+          "text": "The supplier or origin of each component"
+        },
+        {
+          "id": "d",
+          "text": "Test pass rates for each release"
+        },
+        {
+          "id": "e",
+          "text": "Names of everyone who approved the merge"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "An SBOM is an inventory of the components in software, with their versions and where they come from. Build passwords, test results and approver names belong in other systems.",
+    "acronyms": [
+      "SBOM"
+    ]
+  },
+  {
+    "id": "at1-3-1-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Runner 31 of the `ledger-ci` pool is compromised. Read the secrets CLI help and the lease list shown, then complete each step.",
+    "payload": {
+      "output": [
+        "$ secretctl --help",
+        "secretctl lease list <path>                            list active leases under a path",
+        "secretctl lease renew <lease-id> --extend <minutes>    add minutes to a lease",
+        "secretctl lease revoke <lease-id>                      end a lease now; its credential stops working",
+        "$ secretctl lease list db/ledger-ci",
+        "lease    holder      expires-in",
+        "ls-7a31  runner-12   9m",
+        "ls-7b02  runner-31   42m",
+        "ls-7c18  runner-20   27m"
+      ],
+      "steps": [
+        {
+          "id": "revoke",
+          "label": "Type the command that ends the lease held by runner-31"
+        },
+        {
+          "id": "renew",
+          "label": "The job on runner-12 needs 15 more minutes than its lease has left. Type the command that adds 15 minutes to its lease"
+        },
+        {
+          "id": "after",
+          "label": "Choose the best follow-up for the compromised runner",
+          "options": [
+            {
+              "id": "reboot",
+              "text": "Reboot runner-31 and return it to the pool"
+            },
+            {
+              "id": "fresh",
+              "text": "Provision a fresh runner and discard runner-31"
+            },
+            {
+              "id": "limit",
+              "text": "Keep runner-31 in the pool with a lower job limit"
+            },
+            {
+              "id": "copy",
+              "text": "Copy the workspace of runner-31 to the other runners"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "revoke": [
+          "secretctl lease revoke ls-7b02"
+        ],
+        "renew": [
+          "secretctl lease renew ls-7a31 --extend 15",
+          "secretctl lease renew ls-7a31 --extend=15",
+          "secretctl lease renew --extend 15 ls-7a31",
+          "secretctl lease renew --extend=15 ls-7a31"
+        ],
+        "after": [
+          "fresh"
+        ]
+      }
+    },
+    "explanation": "The list shows ls-7b02 is held by runner-31, so revoking that lease ends its credential at once. The lease for runner-12 is ls-7a31, and the help shows the lease id followed by the extension in minutes. A compromised machine is replaced with a fresh one rather than trusted again.",
+    "partExplanations": {
+      "revoke": "The holder column ties runner-31 to ls-7b02, and `lease revoke` takes the lease id.",
+      "renew": "runner-12 holds ls-7a31, and the help gives the form `lease renew <lease-id> --extend <minutes>`.",
+      "after": "A machine that an attacker controlled cannot be trusted again, so it is discarded and replaced by a clean runner."
+    },
+    "acronyms": [
+      "CLI"
+    ]
+  },
+  {
+    "id": "at1-3-1-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Configure how the deploy job for `ledger-api` gets its database credential. The longest deploy takes 12 minutes.",
+    "payload": {
+      "fields": [
+        {
+          "id": "store",
+          "label": "Where the credential is stored",
+          "options": [
+            {
+              "id": "o1",
+              "text": "A text file in the repository, on a private branch"
+            },
+            {
+              "id": "o2",
+              "text": "An encrypted key vault with an access policy for the deploy job"
+            },
+            {
+              "id": "o3",
+              "text": "A wiki page limited to the platform team"
+            }
+          ]
+        },
+        {
+          "id": "delivery",
+          "label": "How the job receives it",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Copied into the container image during the build"
+            },
+            {
+              "id": "o2",
+              "text": "Typed in by an engineer at the start of each run"
+            },
+            {
+              "id": "o3",
+              "text": "Fetched at job start with the job's own identity, and masked in logs"
+            }
+          ]
+        },
+        {
+          "id": "lease",
+          "label": "Lease length",
+          "options": [
+            {
+              "id": "o1",
+              "text": "30 minutes, a little longer than the job"
+            },
+            {
+              "id": "o2",
+              "text": "5 minutes, shorter than the job"
+            },
+            {
+              "id": "o3",
+              "text": "12 months, so the job is not interrupted"
+            }
+          ]
+        },
+        {
+          "id": "rotation",
+          "label": "Rotation approach",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Changed by hand once a year"
+            },
+            {
+              "id": "o2",
+              "text": "Created fresh for each run, so no credential is reused"
+            },
+            {
+              "id": "o3",
+              "text": "Left unchanged, since the lease already limits it"
+            }
+          ]
+        },
+        {
+          "id": "jobend",
+          "label": "When the job finishes",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Keep the credential cached on the runner for the next run"
+            },
+            {
+              "id": "o2",
+              "text": "Wait for the nightly cleanup job to remove it"
+            },
+            {
+              "id": "o3",
+              "text": "Revoke the lease so the credential stops working at once"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "store": "o2",
+        "delivery": "o3",
+        "lease": "o1",
+        "rotation": "o2",
+        "jobend": "o3"
+      }
+    },
+    "explanation": "A vault with an access policy stores the credential, and the job fetches it with its own identity at run time. A lease slightly longer than the job avoids interruptions without leaving a long window, a per-run dynamic credential removes reuse, and revoking at the end closes the window early.",
+    "partExplanations": {
+      "store": "A vault encrypts the credential and limits which identities can read it; repositories and wiki pages offer neither.",
+      "delivery": "Fetching at start with the job's identity keeps the value out of images and out of human hands.",
+      "lease": "30 minutes covers the 12-minute job with margin; 5 minutes would expire mid-run and 12 months leaves a huge window.",
+      "rotation": "A fresh credential per run means nothing long-lived needs a rotation calendar.",
+      "jobend": "Revoking the lease right away shortens the window of use to the length of the job."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Put the steps of publishing release `3.4.0` of `ledger-lib` in the order they run. Team policy: tests run on the source before anything is built, the SBOM describes the built artifact, the signature covers both the artifact and the SBOM, and only signed files are published.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Sign the artifact and the SBOM"
+        },
+        {
+          "id": "s2",
+          "text": "Build the release artifact once from that commit"
+        },
+        {
+          "id": "s6",
+          "text": "Pull the published version and compare its digest with the build"
+        },
+        {
+          "id": "s1",
+          "text": "Run the test suite on the tagged commit"
+        },
+        {
+          "id": "s5",
+          "text": "Publish the artifact, SBOM and signature as one new version"
+        },
+        {
+          "id": "s3",
+          "text": "Generate the SBOM from the built artifact"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "Tests run on the source first, then the artifact is built once. The SBOM is produced from that build, both files are signed, the signed set is published as a new version, and a final pull confirms the published bits match the build.",
+    "partExplanations": {
+      "0": "Tests on the tagged source come before any build, by team policy.",
+      "1": "The artifact is built once so everything later refers to the same bits.",
+      "2": "The SBOM describes the built artifact, so it needs the build first.",
+      "3": "Signing covers the artifact and the SBOM, so both must exist first.",
+      "4": "Only signed files are published, so publishing follows signing.",
+      "5": "A pull of the published version checks that what is stored matches what was built."
+    },
+    "acronyms": [
+      "SBOM"
+    ]
+  },
+  {
+    "id": "at1-3-1-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "pbqWeight": 5,
+    "stem": "Read the registry listing for `ledger-lib` and answer each question. A version is \"changed\" if its content was replaced after it was first published; only a version that is not immutable can have changed.",
+    "payload": {
+      "caption": "Versions of ledger-lib in the artifact registry",
+      "columns": [
+        "Version",
+        "Immutable",
+        "SBOM attached",
+        "Changed after publishing"
+      ],
+      "rows": [
+        [
+          "1.8.0",
+          "no",
+          "yes",
+          "no"
+        ],
+        [
+          "1.8.1",
+          "no",
+          "yes",
+          "yes"
+        ],
+        [
+          "1.9.0",
+          "no",
+          "no",
+          "yes"
+        ],
+        [
+          "1.9.1",
+          "yes",
+          "no",
+          "no"
+        ],
+        [
+          "1.10.0",
+          "yes",
+          "yes",
+          "no"
+        ],
+        [
+          "2.0.0-rc.1",
+          "no",
+          "no",
+          "no"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "newest",
+          "label": "Version with the highest semantic precedence",
+          "options": [
+            {
+              "id": "v110",
+              "text": "1.10.0"
+            },
+            {
+              "id": "v191",
+              "text": "1.9.1"
+            },
+            {
+              "id": "v200",
+              "text": "2.0.0-rc.1"
+            }
+          ]
+        },
+        {
+          "id": "nosbom",
+          "label": "Number of versions with no SBOM attached",
+          "options": [
+            {
+              "id": "n2",
+              "text": "2"
+            },
+            {
+              "id": "n3",
+              "text": "3"
+            },
+            {
+              "id": "n4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "changed",
+          "label": "Number of versions changed after publishing",
+          "options": [
+            {
+              "id": "n2",
+              "text": "2"
+            },
+            {
+              "id": "n3",
+              "text": "3"
+            },
+            {
+              "id": "n1",
+              "text": "1"
+            }
+          ]
+        },
+        {
+          "id": "policy",
+          "label": "Only version that is immutable and has an SBOM attached",
+          "options": [
+            {
+              "id": "v110",
+              "text": "1.10.0"
+            },
+            {
+              "id": "v180",
+              "text": "1.8.0"
+            },
+            {
+              "id": "v191",
+              "text": "1.9.1"
+            }
+          ]
+        },
+        {
+          "id": "stale",
+          "label": "Version whose SBOM may no longer match because the content changed",
+          "options": [
+            {
+              "id": "v180",
+              "text": "1.8.0"
+            },
+            {
+              "id": "v181",
+              "text": "1.8.1"
+            },
+            {
+              "id": "v190",
+              "text": "1.9.0"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "newest": "v200",
+        "nosbom": "n3",
+        "changed": "n2",
+        "policy": "v110",
+        "stale": "v181"
+      }
+    },
+    "explanation": "Precedence compares major, then minor, then patch as numbers, and a pre-release sorts below its release but above any lower major, so 2.0.0-rc.1 is highest. Counting the table gives three versions without an SBOM and two changed versions, and only 1.10.0 is both immutable and documented.",
+    "partExplanations": {
+      "newest": "Major 2 beats major 1, even for a release candidate, and 1.10.0 is above 1.9.1 because 10 is greater than 9.",
+      "nosbom": "No SBOM: 1.9.0, 1.9.1 and 2.0.0-rc.1, which is 3.",
+      "changed": "Changed: 1.8.1 and 1.9.0, which is 2.",
+      "policy": "Immutable is yes for 1.9.1 and 1.10.0, and only 1.10.0 also has an SBOM.",
+      "stale": "An SBOM is attached to 1.8.0, 1.8.1 and 1.10.0, and of these only 1.8.1 changed after publishing."
+    },
+    "acronyms": [
+      "SBOM"
+    ]
+  },
+  {
+    "id": "at1-3-1-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Place the component that fills each role in this build flow. Each box is named by its role.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 20,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "n2",
+          "x": 230,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "n3",
+          "x": 440,
+          "y": 120,
+          "w": 140,
+          "h": 60
+        },
+        {
+          "id": "n4",
+          "x": 230,
+          "y": 8,
+          "w": 140,
+          "h": 60
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n4",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 20,
+          "y": 190,
+          "name": "Source of third-party packages the build downloads"
+        },
+        {
+          "id": "z2",
+          "x": 230,
+          "y": 190,
+          "name": "Disposable machine that runs the job"
+        },
+        {
+          "id": "z3",
+          "x": 440,
+          "y": 190,
+          "name": "Store for each build as an immutable version"
+        },
+        {
+          "id": "z4",
+          "x": 230,
+          "y": 74,
+          "name": "Issues the job a short-lived credential"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Runner"
+        },
+        {
+          "id": "l2",
+          "text": "Encrypted key vault"
+        },
+        {
+          "id": "l3",
+          "text": "Artifact registry"
+        },
+        {
+          "id": "l4",
+          "text": "External artifact repository"
+        },
+        {
+          "id": "l5",
+          "text": "Developer laptop"
+        },
+        {
+          "id": "l6",
+          "text": "Ticket tracker"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l4",
+        "z2": "l1",
+        "z3": "l3",
+        "z4": "l2"
+      }
+    },
+    "explanation": "Third-party packages come from an external artifact repository, the job runs on a disposable runner, built versions are kept in the artifact registry, and the vault issues the short-lived credential. A laptop and a ticket tracker are not part of this build flow.",
+    "partExplanations": {
+      "z1": "Packages hosted by outside parties live in an external artifact repository.",
+      "z2": "A runner is the disposable machine that executes the job.",
+      "z3": "The artifact registry keeps each build as an immutable, versioned item.",
+      "z4": "The encrypted key vault issues the job its short-lived credential."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "A deploy script for `ledger-api` is shown with its lines in shuffled positions. Select every line that hard-codes a credential or prints one to the job log.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "./migrate.sh --user svc_ledger"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "export LEDGER_PASS=s3cr3t-ledger-99"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "LEDGER_PASS=\"$(fetch_secret ledger/db)\""
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "echo \"using password $LEDGER_PASS\""
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "curl -u deploy:7hQ2xV9pLm $registry"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "export region=eu-west"
+        }
+      ],
+      "spots": [
+        {
+          "id": "sp1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "./migrate.sh --user svc_ledger"
+        },
+        {
+          "id": "sp2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "export LEDGER_PASS=s3cr3t-ledger-99"
+        },
+        {
+          "id": "sp3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "LEDGER_PASS=\"$(fetch_secret ledger/db)\""
+        },
+        {
+          "id": "sp4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "echo \"using password $LEDGER_PASS\""
+        },
+        {
+          "id": "sp5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "curl -u deploy:7hQ2xV9pLm $registry"
+        },
+        {
+          "id": "sp6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "export region=eu-west"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "sp2",
+        "sp4",
+        "sp5"
+      ]
+    },
+    "explanation": "A literal password in an export line and a literal login in a command are hard-coded credentials, and the echo line prints the password into the job log. The fetch line obtains the value at run time, and the user name and region are not secrets.",
+    "partExplanations": {
+      "sp1": "A service user name is an identifier, not a secret.",
+      "sp2": "The password is written into the script as a literal.",
+      "sp3": "The value is fetched at run time, so nothing is hard-coded.",
+      "sp4": "The echo prints the password into the job log.",
+      "sp5": "The password is typed into the command as a literal.",
+      "sp6": "A region name is configuration, not a credential."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Match each situation to the secrets practice that addresses it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A laptop with a cached access token was stolen yesterday"
+        },
+        {
+          "id": "p2",
+          "text": "A shared service password has not changed in two years"
+        },
+        {
+          "id": "p3",
+          "text": "Each run needs a credential created for it alone, on request"
+        },
+        {
+          "id": "p4",
+          "text": "A test export keeps realistic card-like values while the real ones stay in a separate store"
+        },
+        {
+          "id": "p5",
+          "text": "Requests from inside the office network get no automatic trust"
+        },
+        {
+          "id": "p6",
+          "text": "A credential may be used for 30 minutes and ends unless its holder renews it"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Revocation"
+        },
+        {
+          "id": "c2",
+          "text": "Rotation"
+        },
+        {
+          "id": "c3",
+          "text": "Dynamic secret"
+        },
+        {
+          "id": "c4",
+          "text": "Tokenization"
+        },
+        {
+          "id": "c5",
+          "text": "Zero Trust"
+        },
+        {
+          "id": "c6",
+          "text": "Lease"
+        },
+        {
+          "id": "c7",
+          "text": "Base64 encoding"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5",
+        "p6": "c6"
+      }
+    },
+    "explanation": "Revocation ends a credential that is known to be exposed, rotation replaces an old shared value, a dynamic secret is created for one requester, tokenization swaps real values for stand-ins, Zero Trust verifies every request, and a lease bounds how long a credential may be used. Base64 encoding hides nothing.",
+    "partExplanations": {
+      "p1": "A stolen token should be invalidated now, which is revocation.",
+      "p2": "Replacing a long-unchanged shared value with a new one is rotation.",
+      "p3": "A credential created on request for one consumer is a dynamic secret.",
+      "p4": "Stand-in values with the real ones kept in a separate store is tokenization.",
+      "p5": "No automatic trust from network location is the Zero Trust principle.",
+      "p6": "A limited period of use that ends unless renewed is a lease."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-1-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "Sort each task into the area of CI management it belongs to.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "sec",
+          "text": "Secrets management"
+        },
+        {
+          "id": "art",
+          "text": "Artifact management"
+        },
+        {
+          "id": "env",
+          "text": "Environment provisioning"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Masking secret values in job logs"
+        },
+        {
+          "id": "i2",
+          "text": "Deleting snapshot builds older than 60 days"
+        },
+        {
+          "id": "i3",
+          "text": "Scaling the number of runners with the job queue"
+        },
+        {
+          "id": "i4",
+          "text": "Revoking tokens issued to a retired service account"
+        },
+        {
+          "id": "i5",
+          "text": "Restricting which teams may publish to the release repository"
+        },
+        {
+          "id": "i6",
+          "text": "Starting a clean runner image for each job"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "sec",
+        "i2": "art",
+        "i3": "env",
+        "i4": "sec",
+        "i5": "art",
+        "i6": "env"
+      }
+    },
+    "explanation": "Masking and revoking tokens protect credentials. Retention rules and publish permissions govern how the registry holds and shares builds. Scaling runners and starting clean images create the machines that jobs run on.",
+    "partExplanations": {
+      "i1": "Hiding secret values in logs protects credentials.",
+      "i2": "A retention rule decides which stored builds are kept.",
+      "i3": "Adjusting runner capacity to demand is provisioning.",
+      "i4": "Ending tokens that should no longer work is a secrets task.",
+      "i5": "Publish permission is an authorization control on the registry.",
+      "i6": "A clean image per job gives each run a fresh, known environment."
+    },
+    "acronyms": [
+      "CI"
+    ]
+  }
+]

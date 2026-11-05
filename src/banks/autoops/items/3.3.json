@@ -1,0 +1,2813 @@
+[
+  {
+    "id": "at1-3-3-mcq-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is a webhook?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An HTTP request that one system sends to a URL when an event occurs"
+        },
+        {
+          "id": "b",
+          "text": "A scheduled job that checks a remote repository for new commits each minute"
+        },
+        {
+          "id": "c",
+          "text": "A stored token that lets a runner clone private repositories"
+        },
+        {
+          "id": "d",
+          "text": "A chat command that starts a pipeline from a team channel"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A webhook is an HTTP request that the source system sends to a chosen URL when an event such as a push occurs. Checking a repository on a timer is polling, a clone token is a credential, and a chat command is `ChatOps`.",
+    "acronyms": [
+      "HTTP",
+      "URL"
+    ]
+  },
+  {
+    "id": "at1-3-3-mcq-002",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A git server signs each webhook payload with a shared secret and sends the result in a request header. What does the receiver do with that header?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Decrypts the payload with the secret, because the body is sent encrypted"
+        },
+        {
+          "id": "b",
+          "text": "Recomputes the signature and compares it to confirm the sender and body"
+        },
+        {
+          "id": "c",
+          "text": "Uses it as the password for logging in to the runner"
+        },
+        {
+          "id": "d",
+          "text": "Stores it as the name of the pipeline run it starts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The receiver repeats the calculation with its own copy of the secret and compares the result with the header, which proves who sent the request and that the body was not changed. The signature does not encrypt anything, it is not a login password, and it does not name runs.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-003",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A webhook receiver builds and tests the code before it replies. The git server reports delivery timeouts, although the pipelines do start. Which change removes the reported failures?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raise the git server limit on payload size"
+        },
+        {
+          "id": "b",
+          "text": "Answer with a redirect status instead of a success status"
+        },
+        {
+          "id": "c",
+          "text": "Reply with a success status at once and do the work in the background"
+        },
+        {
+          "id": "d",
+          "text": "Shorten the shared secret so signing finishes sooner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Senders wait only a short time for a reply, so the receiver should acknowledge with a success status and hand the work to a background job. The payload size limit, the redirect status and the secret length have no effect on how long the reply takes.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-004",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "The git server resends a webhook after a timeout, and the receiver starts two deployments for one push. Each delivery carries its own unique delivery identifier. Which handler change prevents the duplicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Lengthen the secret so that retried requests fail signature verification"
+        },
+        {
+          "id": "b",
+          "text": "Delay each deployment by five minutes after a delivery arrives"
+        },
+        {
+          "id": "c",
+          "text": "Reply with an error status so the sender stops sending"
+        },
+        {
+          "id": "d",
+          "text": "Record each delivery identifier and skip any it has already handled"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Recording identifiers makes the handler idempotent, so a repeated delivery is acknowledged without starting a second deployment. A longer secret affects both sends alike, a delay still allows two deployments, and an error status makes senders retry more.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-005",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A receiver parses the JSON body, re-serializes it, and then computes the signature. The result never matches the signature header from the sender. Which change fixes the check?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Compute the signature over the parsed fields in alphabetical order"
+        },
+        {
+          "id": "b",
+          "text": "Compute the signature over the raw body bytes exactly as received"
+        },
+        {
+          "id": "c",
+          "text": "Compute the signature over the URL path instead of the body"
+        },
+        {
+          "id": "d",
+          "text": "Compute the signature twice and accept either result"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The sender signed the exact bytes it transmitted, and re-serializing can change spacing or key order, so the receiver must use the raw body. Sorting fields still changes the bytes, the URL path is not what was signed, and accepting either result would let forged requests through.",
+    "acronyms": [
+      "JSON",
+      "URL"
+    ]
+  },
+  {
+    "id": "at1-3-3-mcq-006",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team lets engineers type a command such as `/rollback orders-api` in a shared chat channel, and a bot runs the matching pipeline job. What is this practice called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`ChatOps`"
+        },
+        {
+          "id": "b",
+          "text": "Pipeline as code"
+        },
+        {
+          "id": "c",
+          "text": "A canary release"
+        },
+        {
+          "id": "d",
+          "text": "Drift detection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`ChatOps` runs operations from commands typed in a team chat. Pipeline as code stores the definition in a repository, a canary release exposes a change to a few users first, and drift detection compares live settings with a baseline.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-007",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A `ChatOps` bot runs `/deploy payments-api prod` for anyone who is a member of the channel. Which control should be added first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Hide the bot replies so that they cannot be copied elsewhere"
+        },
+        {
+          "id": "b",
+          "text": "Rename the command so that it is harder to guess"
+        },
+        {
+          "id": "c",
+          "text": "Rotate the channel name each quarter"
+        },
+        {
+          "id": "d",
+          "text": "Limit the command to approved roles and log who ran it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A command that changes production needs access control for who may run it and an audit trail of who did. Hiding replies, renaming the command and renaming the channel do not stop an unauthorized member from running it.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-008",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which event starts a push-triggered pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A person pressing a run button in the CI interface"
+        },
+        {
+          "id": "b",
+          "text": "A clock reaching a time set in a cron expression"
+        },
+        {
+          "id": "c",
+          "text": "Commits sent to a branch on the remote repository"
+        },
+        {
+          "id": "d",
+          "text": "A teammate typing a command in a chat channel"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A push trigger fires when commits arrive on the remote repository, subject to any branch or path filters. A button press is a manual trigger, a cron time is a scheduled trigger, and a chat command is `ChatOps`.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-3-mcq-009",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "This workflow file is in a repository:\n```yaml\non:\n  push:\n    branches: [main]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: make test\n```\nA developer pushes a commit to the branch `feature/login`. What happens?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The workflow starts but skips the test job"
+        },
+        {
+          "id": "b",
+          "text": "The workflow starts and the job checks out `main` instead"
+        },
+        {
+          "id": "c",
+          "text": "The workflow does not start, because the pushed branch fails the filter"
+        },
+        {
+          "id": "d",
+          "text": "The workflow starts after a maintainer approves it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The `branches` filter limits push runs to `main`, so a push to `feature/login` creates no run. A filtered-out push does not start a skipped job, switch branches or wait for approval.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-010",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A GitHub Actions workflow starts with this trigger:\n```yaml\non:\n  push:\n    paths:\n      - \"services/billing/**\"\n```\nA push changes only `README.md` and `services/search/app.py`. Does the workflow start?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, because any push to the repository starts the workflow"
+        },
+        {
+          "id": "b",
+          "text": "Yes, because `README.md` sits at the top of the repository"
+        },
+        {
+          "id": "c",
+          "text": "No, because path filters apply to tag pushes alone"
+        },
+        {
+          "id": "d",
+          "text": "No, because no changed file matches a listed path"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "With a `paths` filter, a push starts the workflow only if at least one changed file matches. Neither changed file is under `services/billing/`, a filter does not start runs for every push, and path filters are not limited to tags.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-011",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A push to `main` changes only a comment, and the commit message ends with `[skip ci]`. How do common hosted CI services treat this marker?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "They create no pipeline for that push"
+        },
+        {
+          "id": "b",
+          "text": "They run just the first stage of the pipeline"
+        },
+        {
+          "id": "c",
+          "text": "They run the pipeline with every job marked optional"
+        },
+        {
+          "id": "d",
+          "text": "They hold the pipeline until a person approves it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A skip marker in the message of a pushed commit tells hosted CI services not to create a pipeline for it. They do not run a partial pipeline, relabel jobs as optional or add an approval step.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-3-mcq-012",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Jenkinsfile contains this block:\n```groovy\npipeline {\n  agent any\n  triggers { pollSCM('H/5 * * * *') }\n  stages {\n    stage('Build') { steps { sh 'make' } }\n  }\n}\n```\nWhat does the trigger do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Waits for the git server to send a webhook every five minutes"
+        },
+        {
+          "id": "b",
+          "text": "Checks the repository about every five minutes and builds on new commits"
+        },
+        {
+          "id": "c",
+          "text": "Builds every five minutes, whether or not the code has changed since the last run"
+        },
+        {
+          "id": "d",
+          "text": "Builds when a person chooses Build Now"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`pollSCM` makes Jenkins look at the repository on the given schedule and start a build only if something changed. It does not wait for a webhook, it does not build without changes, and a person pressing a button is a manual build.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-013",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What makes a trigger a manual trigger?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A commit to a protected branch starts the run without anyone asking"
+        },
+        {
+          "id": "b",
+          "text": "A timer set in a cron expression starts the run"
+        },
+        {
+          "id": "c",
+          "text": "A new tag in the repository starts the run"
+        },
+        {
+          "id": "d",
+          "text": "A person starts the run on demand, for example with a button or an API call"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A manual trigger waits for a person or a person-driven call to start the run. Commits, timers and tags are push, scheduled and tag-based triggers that start runs without anyone choosing the moment.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "at1-3-3-mcq-014",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A GitHub Actions workflow has this trigger block:\n```yaml\non:\n  workflow_dispatch:\n    inputs:\n      target:\n        type: choice\n        options: [staging, production]\n```\nWhat does it provide?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A run started on each push, with the target taken from the branch"
+        },
+        {
+          "id": "b",
+          "text": "A nightly run that alternates between the two targets"
+        },
+        {
+          "id": "c",
+          "text": "A run started by a person, who picks the target when starting it"
+        },
+        {
+          "id": "d",
+          "text": "A run started by a webhook that carries the target in its payload"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`workflow_dispatch` is the manual trigger, and its `inputs` let the person choose a value at start time. It does not react to pushes, it has no schedule, and the choice comes from the person rather than from a webhook payload.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-015",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Jenkinsfile contains these stages:\n```groovy\nstage('Approve') {\n  steps { input message: 'Deploy to production?' }\n}\nstage('Deploy') {\n  steps { sh './deploy.sh prod' }\n}\n```\nWhat happens when the run reaches the Approve stage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It prints the message and goes straight on to the Deploy stage"
+        },
+        {
+          "id": "b",
+          "text": "It pauses until a person approves or aborts, and Deploy waits"
+        },
+        {
+          "id": "c",
+          "text": "It runs Deploy at the same time on another agent"
+        },
+        {
+          "id": "d",
+          "text": "It fails, because `input` is allowed only in a post block"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The `input` step pauses the run for a person, which turns the production deploy into a manual gate. It does not just print and continue, it does not start the next stage early, and it is valid inside the steps of a stage.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-016",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A `.gitlab-ci.yml` file defines this job:\n```yaml\ndeploy:\n  script: ./deploy.sh\n  rules:\n    - if: $CI_COMMIT_BRANCH == \"main\"\n      when: manual\n    - when: on_success\n```\nA push to `main` creates a pipeline. What happens to `deploy`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It waits for a person to start it, as the first matching rule applies"
+        },
+        {
+          "id": "b",
+          "text": "It runs automatically, because the last matching rule overrides the first"
+        },
+        {
+          "id": "c",
+          "text": "It runs twice, once for each rule that matches"
+        },
+        {
+          "id": "d",
+          "text": "It is left out, because the second rule has no condition"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "GitLab evaluates `rules` in order and uses the first one that matches, so on `main` the manual setting wins. A later matching rule does not override it, one job does not run once per rule, and a rule without a condition matches but is never reached here.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-017",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A team wants a pipeline to start at a set time each night, with or without new commits. Which trigger fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A push trigger on main"
+        },
+        {
+          "id": "b",
+          "text": "A scheduled trigger"
+        },
+        {
+          "id": "c",
+          "text": "A manual trigger with approval"
+        },
+        {
+          "id": "d",
+          "text": "A tag filter for releases"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A scheduled trigger starts a run at times set with a cron expression, so it needs no commit. A push trigger needs commits, a manual trigger needs a person, and a tag filter only narrows which tags start a run.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-018",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A pipeline schedule uses the five-field cron expression `30 2 * * 1-5` in universal time. When does it run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "At 02:30 universal time on the first five days of each month"
+        },
+        {
+          "id": "b",
+          "text": "Every 30 minutes from 02:00 to 02:59 universal time"
+        },
+        {
+          "id": "c",
+          "text": "At 02:30 universal time, Monday through Friday"
+        },
+        {
+          "id": "d",
+          "text": "At 02:30 universal time on Mondays and on the first of the month"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The fields are minute, hour, day of month, month and day of week, so `30 2 * * 1-5` means 02:30 on weekdays. The day-of-month field is `*`, the minute field is a fixed 30, and the weekday range is not combined with a day of month.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-019",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "What does the cron expression `*/20 8-17 * * *` mean in a pipeline schedule?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Once at 08:20 and once at 17:20"
+        },
+        {
+          "id": "b",
+          "text": "Every 20 hours between the 8th and 17th of the month"
+        },
+        {
+          "id": "c",
+          "text": "Every 20 seconds from 08:00 to 17:00"
+        },
+        {
+          "id": "d",
+          "text": "Every 20 minutes during the hours 08 through 17"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The minute field `*/20` steps through 0, 20 and 40, and the hour field `8-17` limits the runs to those hours. Cron has no seconds field here, and the hour and day-of-month fields are not swapped.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-020",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A hosted CI service evaluates cron schedules in universal time. A team in Tokyo (`UTC+9`, no daylight saving time) sets `0 22 * * *` for a nightly build. At what Tokyo local time does it start?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "07:00 the next morning"
+        },
+        {
+          "id": "b",
+          "text": "22:00 on the same evening"
+        },
+        {
+          "id": "c",
+          "text": "13:00 on the same afternoon"
+        },
+        {
+          "id": "d",
+          "text": "09:00 on the following morning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The schedule fires at 22:00 universal time, and adding nine hours gives 07:00 the next day in Tokyo. The other times either ignore the time zone or apply the offset in the wrong direction.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-3-mcq-021",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A developer adds this block to a workflow file, but only on the branch `feature/nightly`:\n```yaml\non:\n  schedule:\n    - cron: \"0 3 * * *\"\n```\nThe workflow never runs at 03:00 universal time. Why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Schedules are read from the file on the default branch"
+        },
+        {
+          "id": "b",
+          "text": "Cron schedules need a runner label before they can start"
+        },
+        {
+          "id": "c",
+          "text": "The expression runs at 03:00 local time, not universal time"
+        },
+        {
+          "id": "d",
+          "text": "Scheduled runs wait for an open pull request"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Scheduled workflows are read from the default branch, so a schedule that exists on a feature branch does not fire until it is merged there. A runner label, the time zone and pull requests are not the reason no run occurs.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-022",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A Jenkinsfile declares this trigger:\n```groovy\npipeline {\n  agent any\n  triggers { cron('H 2 * * *') }\n  stages { stage(\"Scan\") { steps { sh \"make scan\" } } }\n}\n```\nHow often does it run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Every hour, at a minute that Jenkins picks"
+        },
+        {
+          "id": "b",
+          "text": "Twice a day, at 02:00 and at a time that Jenkins picks"
+        },
+        {
+          "id": "c",
+          "text": "Once a day, at exactly 02:00 on the Jenkins server"
+        },
+        {
+          "id": "d",
+          "text": "Once a day, at a minute within the 02:00 hour that Jenkins picks for this job"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "In Jenkins the `H` symbol hashes the job name into a fixed value, which spreads jobs across the hour instead of starting them all at minute 0. With the hour fixed at 2, the job runs once a day within that hour.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-023",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A `.gitlab-ci.yml` file defines this job:\n```yaml\nnightly-scan:\n  script: ./scan.sh\n  rules:\n    - if: $CI_PIPELINE_SOURCE == \"schedule\"\n```\nA developer pushes a commit to `main`. Does `nightly-scan` run in that pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Yes, because a rule with one condition runs on any push"
+        },
+        {
+          "id": "b",
+          "text": "Yes, after a person starts it from the pipeline page"
+        },
+        {
+          "id": "c",
+          "text": "No, because the rule matches scheduled pipelines and this one came from a push"
+        },
+        {
+          "id": "d",
+          "text": "No, because schedules cannot be combined with rules"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`CI_PIPELINE_SOURCE` records what created the pipeline, which here is a push rather than a schedule, so the rule does not match and the job is left out. Rules can test the source, and the job is not made manual.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-024",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team builds on each commit, not just on releases, and needs to trace any artifact back to its exact source. Which git value belongs in the artifact name?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The branch name at build time"
+        },
+        {
+          "id": "b",
+          "text": "The commit hash of the build"
+        },
+        {
+          "id": "c",
+          "text": "The latest tag in the repository"
+        },
+        {
+          "id": "d",
+          "text": "The name of the repository"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A commit hash identifies one exact snapshot for every build. A branch name moves as new commits arrive, a tag exists only on commits that were tagged, and the repository name is the same for every build.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-025",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A `.gitlab-ci.yml` file contains this job:\n```yaml\npublish:\n  script:\n    - if [ -n \"$CI_COMMIT_TAG\" ]; then ./publish.sh \"$CI_COMMIT_TAG\"; fi\n```\nWhen does `./publish.sh` run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "In pipelines for the default branch, where it holds the branch name"
+        },
+        {
+          "id": "b",
+          "text": "In merge request pipelines, where it holds the request number"
+        },
+        {
+          "id": "c",
+          "text": "In pipelines created by pushing a tag, where the variable is set"
+        },
+        {
+          "id": "d",
+          "text": "In pipelines for any commit, where it holds the commit message"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`CI_COMMIT_TAG` is set only in tag pipelines, so the `-n` test succeeds only there. The variable never holds a branch name, a request number or a commit message.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-026",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A `.gitlab-ci.yml` file contains this job:\n```yaml\nrelease:\n  script: ./release.sh\n  rules:\n    - if: $CI_COMMIT_BRANCH == \"main\"\n```\nA developer pushes the tag `v2.0.0`, which points at the current tip of `main`. Is `release` part of the tag pipeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "No, because `CI_COMMIT_BRANCH` is not set in a tag pipeline"
+        },
+        {
+          "id": "b",
+          "text": "Yes, because the tag points at a commit on `main`"
+        },
+        {
+          "id": "c",
+          "text": "Yes, because tag pipelines set `CI_COMMIT_BRANCH` to the tag name"
+        },
+        {
+          "id": "d",
+          "text": "No, because tag pipelines cannot contain jobs with rules"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "In a tag pipeline `CI_COMMIT_BRANCH` is empty, so the comparison with `main` fails and the job is left out even though the commit is on `main`. The variable does not take the tag name, and tag pipelines can use rules.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-027",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Jenkinsfile in a multibranch project contains this stage:\n```groovy\nstage('Publish') {\n  when { tag 'v*' }\n  steps { sh './publish.sh' }\n}\n```\nA build runs for the branch `main`. What happens to Publish?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It runs, because `main` is the default branch"
+        },
+        {
+          "id": "b",
+          "text": "It is skipped, because the build is not for a tag that matches `v*`"
+        },
+        {
+          "id": "c",
+          "text": "It runs, because the pattern matches any name that starts with a letter"
+        },
+        {
+          "id": "d",
+          "text": "It fails the build, because `when` needs a branch condition"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The `tag` condition holds only when the build is for a tag whose name matches the pattern, and a branch build for `main` is not one. The default branch does not matter, `v*` needs a leading v, and a skipped stage does not fail the build.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-028",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "In a `.gitlab-ci.yml` pipeline created by pushing the tag `v1.9.0`, what does the variable `CI_COMMIT_REF_NAME` contain?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`refs/tags/v1.9.0`"
+        },
+        {
+          "id": "b",
+          "text": "`main`"
+        },
+        {
+          "id": "c",
+          "text": "`v1.9`"
+        },
+        {
+          "id": "d",
+          "text": "`v1.9.0`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "`CI_COMMIT_REF_NAME` holds the short name of the branch or tag being built, so for this pipeline it is `v1.9.0`. The full ref path with `refs/tags/` is not used, the branch name applies only to branch pipelines, and a truncated version is not produced.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-029",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A workflow sets an environment variable like this:\n```yaml\nenv:\n  TARGET: ${{ github.ref_name == 'main' && 'prod' || 'dev' }}\n```\nA developer pushes the branch `hotfix/pay-12`. What is the value of `TARGET`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`prod`"
+        },
+        {
+          "id": "b",
+          "text": "`hotfix/pay-12`"
+        },
+        {
+          "id": "c",
+          "text": "`main`"
+        },
+        {
+          "id": "d",
+          "text": "`dev`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The expression compares the short ref name with `main`. `hotfix/pay-12` is not equal, so the second value `dev` is used, and neither `prod`, the branch name nor `main` is produced.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-030",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A `.gitlab-ci.yml` job runs `docker build -t registry.example.internal/payments-api:$CI_COMMIT_SHORT_SHA .` for the commit `9f3c2ab41d07e6b5`. Which image tag does the build get?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`9f3c2ab4`"
+        },
+        {
+          "id": "b",
+          "text": "`9f3c2ab`"
+        },
+        {
+          "id": "c",
+          "text": "`9f3c2ab41d`"
+        },
+        {
+          "id": "d",
+          "text": "`latest`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`CI_COMMIT_SHORT_SHA` is the first eight characters of the commit hash, which gives `9f3c2ab4`. The seven-character form is git's usual abbreviation rather than this variable, ten characters are too many, and `latest` is a fixed name unrelated to the commit.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-031",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In a declarative Jenkinsfile, which section lists the named phases that run in order?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`agent`"
+        },
+        {
+          "id": "b",
+          "text": "`post`"
+        },
+        {
+          "id": "c",
+          "text": "`stages`"
+        },
+        {
+          "id": "d",
+          "text": "`environment`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The `stages` section holds the ordered `stage` blocks. The `agent` section says where the pipeline runs, `post` holds actions that depend on the result, and `environment` sets variables.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-032",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Jenkinsfile ends with this block:\n```groovy\npost {\n  always  { sh 'make clean' }\n  failure { echo 'Build failed' }\n}\n```\nWhen does the `failure` block run?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Before the first stage begins, as a setup step for the agent"
+        },
+        {
+          "id": "b",
+          "text": "After the stages, when the run ends as failed"
+        },
+        {
+          "id": "c",
+          "text": "After the stages, when the run succeeds"
+        },
+        {
+          "id": "d",
+          "text": "After the stages, whatever the result"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "In a `post` section each condition runs after the stages when its outcome applies, so `failure` runs when the run failed. It is not a setup step, a successful run uses `success`, and the block that runs for any result is `always`.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-033",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Jenkins rejects this declarative Jenkinsfile:\n```groovy\npipeline {\n  agent any\n  steps {\n    sh 'make test'\n  }\n}\n```\nWhich change fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Move `agent any` below the `steps` block, at the end of the file"
+        },
+        {
+          "id": "b",
+          "text": "Wrap the `steps` block in `stages` and a named `stage`"
+        },
+        {
+          "id": "c",
+          "text": "Replace `sh` with `bat` in the steps block"
+        },
+        {
+          "id": "d",
+          "text": "Add a `post` block above the `steps` block"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A declarative pipeline needs `steps` inside a `stage` that sits inside `stages`. The position of `agent`, the shell step name and an extra `post` block do not make the structure valid.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-034",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A `.gitlab-ci.yml` file contains these jobs:\n```yaml\nstages: [build, test, deploy]\ncompile:\n  stage: build\n  script: make\nunit:\n  stage: test\n  script: make test\nship:\n  stage: deploy\n  script: ./ship.sh\n```\nThe `unit` job fails. What happens to `ship`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It runs, because jobs in different stages are independent"
+        },
+        {
+          "id": "b",
+          "text": "It runs with the artifacts of the last passing pipeline"
+        },
+        {
+          "id": "c",
+          "text": "It runs after `compile` is retried"
+        },
+        {
+          "id": "d",
+          "text": "It does not run, because the deploy stage waits for the test stage to succeed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Stages run in the listed order, and a stage starts when the previous one succeeds, so a failed job in `test` blocks `deploy`. Stages are not independent, GitLab does not reuse the last passing pipeline, and retrying `compile` is unrelated.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-035",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "GitLab rejects this `.gitlab-ci.yml` file:\n```yaml\nstages: [build, test, deploy]\nlint:\n  stage: verify\n  script: make lint\n```\nThe team wants `verify` to be a new phase between `build` and `test`. Which change fixes it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add `verify` between `build` and `test` in `stages`"
+        },
+        {
+          "id": "b",
+          "text": "Rename the job `lint` to `verify` and keep the stages list"
+        },
+        {
+          "id": "c",
+          "text": "Move `stage: verify` below the `script` key"
+        },
+        {
+          "id": "d",
+          "text": "Add `needs: [build]` to the `lint` job"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A job may name only a stage that appears in `stages`, so the new phase must be added in the wanted position. Renaming the job, reordering keys within it and adding `needs` leave `verify` undefined.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-036",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In a GitHub Actions workflow, what does `runs-on: ubuntu-latest` choose?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The branch whose commits the job processes"
+        },
+        {
+          "id": "b",
+          "text": "The container registry that the job pushes its image to"
+        },
+        {
+          "id": "c",
+          "text": "The kind of runner machine that executes the job"
+        },
+        {
+          "id": "d",
+          "text": "The event that starts the job"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "`runs-on` selects the runner, meaning the machine type and operating system, for a job. Branches and events are set under `on`, and a registry is chosen in the steps that push to it.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-037",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team wants builds on every branch except those whose names start with `wip/`. Which trigger setting fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A tag filter with the pattern `wip/*`"
+        },
+        {
+          "id": "b",
+          "text": "A cron expression that skips the `wip` days"
+        },
+        {
+          "id": "c",
+          "text": "A branch filter with an exclude pattern for `wip/*`"
+        },
+        {
+          "id": "d",
+          "text": "A manual trigger on the `wip/*` branches"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Branch filters can list patterns to exclude, so all other branches still build on push. A tag filter looks at tags, cron works on times, and a manual trigger would stop the automatic builds that the other branches need.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-038",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE pipeline values come from git itself rather than from the CI server?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The build number"
+        },
+        {
+          "id": "b",
+          "text": "The commit hash"
+        },
+        {
+          "id": "c",
+          "text": "The runner host name"
+        },
+        {
+          "id": "d",
+          "text": "The tag name"
+        },
+        {
+          "id": "e",
+          "text": "The branch name"
+        },
+        {
+          "id": "f",
+          "text": "The run duration"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "The commit hash, the tag name and the branch name are all stored in the repository. The build number, the runner host name and the run duration are produced by the CI server during the run.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-3-mcq-039",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO of these start a pipeline without anyone pushing new code?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A manual start from the CI interface"
+        },
+        {
+          "id": "b",
+          "text": "A push to a release branch"
+        },
+        {
+          "id": "c",
+          "text": "A push of a new tag"
+        },
+        {
+          "id": "d",
+          "text": "A schedule set with a cron expression"
+        },
+        {
+          "id": "e",
+          "text": "A merge of a pull request"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "A manual start and a schedule need no pushed code. A branch push, a tag push and a merge are all repository updates that act as push triggers.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-3-mcq-040",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are benefits of keeping the pipeline definition in a file stored with the application code?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Changes to it are reviewed in pull requests like any other change"
+        },
+        {
+          "id": "b",
+          "text": "The pipeline can no longer fail"
+        },
+        {
+          "id": "c",
+          "text": "Older commits can be built with the pipeline version that matched them"
+        },
+        {
+          "id": "d",
+          "text": "The CI server no longer needs runners"
+        },
+        {
+          "id": "e",
+          "text": "Secrets can be written in the file without risk"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A versioned file is reviewed and traced like code, and each old commit carries the pipeline that fits it. A stored file does not prevent failures, still needs runners, and plain-text secrets in a repository are a risk.",
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-3-mcq-041",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE pairings of definition file and the tool that reads it are correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`Jenkinsfile` and Jenkins"
+        },
+        {
+          "id": "b",
+          "text": "`.gitlab-ci.yml` and GitHub Actions"
+        },
+        {
+          "id": "c",
+          "text": "`.github/workflows/release.yml` and GitHub Actions"
+        },
+        {
+          "id": "d",
+          "text": "`.gitlab-ci.yml` and GitLab"
+        },
+        {
+          "id": "e",
+          "text": "`.github/workflows/release.yml` and GitLab"
+        },
+        {
+          "id": "f",
+          "text": "`Jenkinsfile` and GitHub Actions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "Jenkins reads a `Jenkinsfile`, GitLab reads `.gitlab-ci.yml` in the repository root, and GitHub Actions reads workflow files in `.github/workflows/`. The other three pairings mix up the tools.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-042",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO practices protect the secret used to sign webhook payloads?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep it in the secrets vault and reference it by name"
+        },
+        {
+          "id": "b",
+          "text": "Paste it into the pipeline file so reviewers can see it"
+        },
+        {
+          "id": "c",
+          "text": "Give each receiving endpoint its own secret"
+        },
+        {
+          "id": "d",
+          "text": "Print it in the job log when a check fails"
+        },
+        {
+          "id": "e",
+          "text": "Share one secret across all repositories and teams"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A vault keeps the value out of files and logs, and separate secrets limit the damage if one leaks. Pasting it in a file, printing it in a log or sharing one value widely all expose it.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-043",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO details should the audit trail for a `ChatOps` deploy command record?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The identity of the person who typed the command"
+        },
+        {
+          "id": "b",
+          "text": "The access token the bot uses"
+        },
+        {
+          "id": "c",
+          "text": "The full command with its arguments and the time"
+        },
+        {
+          "id": "d",
+          "text": "The emoji reactions to the bot reply"
+        },
+        {
+          "id": "e",
+          "text": "The color theme of the chat client"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "An audit trail answers who ran what and when, so it needs the person, the command with arguments and the time. A token is a secret that must stay out of logs, and reactions and themes say nothing about the action.",
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-mcq-044",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "A push did not start any pipeline. Which TWO checks help show whether the fault lies with the sender or the receiver of the webhook?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Read the delivery log on the git server for the request and its response status"
+        },
+        {
+          "id": "b",
+          "text": "Delete the repository and add it again"
+        },
+        {
+          "id": "c",
+          "text": "Check that the receiver URL is reachable from the git server network"
+        },
+        {
+          "id": "d",
+          "text": "Raise the CPU count of the runners"
+        },
+        {
+          "id": "e",
+          "text": "Rotate the passwords of all developers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "The delivery log shows whether a request was sent and what came back, and a reachability test shows whether the sender can get to the receiver at all. Recreating the repository, adding CPU and rotating passwords change nothing about delivery.",
+    "acronyms": [
+      "CPU",
+      "URL"
+    ]
+  },
+  {
+    "id": "at1-3-3-terminal-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "The invoicing service is ready for release 2.3.0. Use the repository state and release rule shown, then complete each step.",
+    "payload": {
+      "output": [
+        "$ git log --oneline -2",
+        "4be19c2 (HEAD -> main, origin/main) Bump version to 2.3.0",
+        "a07d8e1 Fix rounding in invoice totals",
+        "$ git tag",
+        "v2.2.0",
+        "v2.2.1",
+        "$ cat release-rule.txt",
+        "release job starts when the pushed tag name matches: /^v[0-9]+[.][0-9]+[.][0-9]+$/"
+      ],
+      "steps": [
+        {
+          "id": "tag",
+          "label": "Type the command that creates an annotated tag named v2.3.0 on the current commit, with the message release"
+        },
+        {
+          "id": "push",
+          "label": "Type the command that sends only the new tag v2.3.0 to the remote named origin"
+        },
+        {
+          "id": "next",
+          "label": "The next release will be tagged later. Choose the tag name that would also start the release job",
+          "options": [
+            {
+              "id": "rc",
+              "text": "v2.4.0-rc.1"
+            },
+            {
+              "id": "ok",
+              "text": "v2.4.0"
+            },
+            {
+              "id": "word",
+              "text": "release-2.4.0"
+            },
+            {
+              "id": "bare",
+              "text": "2.4.0"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "tag": [
+          "git tag -a v2.3.0 -m release",
+          "git tag -a -m release v2.3.0",
+          "git tag -m release -a v2.3.0",
+          "git tag -m release v2.3.0 -a",
+          "git tag -a v2.3.0 HEAD -m release",
+          "git tag -a -m release v2.3.0 HEAD",
+          "git tag -a v2.3.0 -m 'release'",
+          "git tag -a -m 'release' v2.3.0",
+          "git tag -m 'release' -a v2.3.0",
+          "git tag -m 'release' v2.3.0 -a",
+          "git tag -a v2.3.0 HEAD -m 'release'",
+          "git tag -a -m 'release' v2.3.0 HEAD",
+          "git tag -a v2.3.0 -m \"release\"",
+          "git tag -a -m \"release\" v2.3.0",
+          "git tag -m \"release\" -a v2.3.0",
+          "git tag -m \"release\" v2.3.0 -a",
+          "git tag -a v2.3.0 HEAD -m \"release\"",
+          "git tag -a -m \"release\" v2.3.0 HEAD",
+          "git tag -a v2.3.0 --message release",
+          "git tag -a --message release v2.3.0",
+          "git tag --message release -a v2.3.0",
+          "git tag --message release v2.3.0 -a",
+          "git tag -a v2.3.0 HEAD --message release",
+          "git tag -a --message release v2.3.0 HEAD",
+          "git tag -a v2.3.0 --message=release",
+          "git tag -a --message=release v2.3.0",
+          "git tag --message=release -a v2.3.0",
+          "git tag --message=release v2.3.0 -a",
+          "git tag -a v2.3.0 HEAD --message=release",
+          "git tag -a --message=release v2.3.0 HEAD",
+          "git tag -a v2.3.0 --message='release'",
+          "git tag -a --message='release' v2.3.0",
+          "git tag --message='release' -a v2.3.0",
+          "git tag --message='release' v2.3.0 -a",
+          "git tag -a v2.3.0 HEAD --message='release'",
+          "git tag -a --message='release' v2.3.0 HEAD",
+          "git tag -a v2.3.0 --message=\"release\"",
+          "git tag -a --message=\"release\" v2.3.0",
+          "git tag --message=\"release\" -a v2.3.0",
+          "git tag --message=\"release\" v2.3.0 -a",
+          "git tag -a v2.3.0 HEAD --message=\"release\"",
+          "git tag -a --message=\"release\" v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 -m release",
+          "git tag --annotate -m release v2.3.0",
+          "git tag -m release --annotate v2.3.0",
+          "git tag -m release v2.3.0 --annotate",
+          "git tag --annotate v2.3.0 HEAD -m release",
+          "git tag --annotate -m release v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 -m 'release'",
+          "git tag --annotate -m 'release' v2.3.0",
+          "git tag -m 'release' --annotate v2.3.0",
+          "git tag -m 'release' v2.3.0 --annotate",
+          "git tag --annotate v2.3.0 HEAD -m 'release'",
+          "git tag --annotate -m 'release' v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 -m \"release\"",
+          "git tag --annotate -m \"release\" v2.3.0",
+          "git tag -m \"release\" --annotate v2.3.0",
+          "git tag -m \"release\" v2.3.0 --annotate",
+          "git tag --annotate v2.3.0 HEAD -m \"release\"",
+          "git tag --annotate -m \"release\" v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 --message release",
+          "git tag --annotate --message release v2.3.0",
+          "git tag --message release --annotate v2.3.0",
+          "git tag --message release v2.3.0 --annotate",
+          "git tag --annotate v2.3.0 HEAD --message release",
+          "git tag --annotate --message release v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 --message=release",
+          "git tag --annotate --message=release v2.3.0",
+          "git tag --message=release --annotate v2.3.0",
+          "git tag --message=release v2.3.0 --annotate",
+          "git tag --annotate v2.3.0 HEAD --message=release",
+          "git tag --annotate --message=release v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 --message='release'",
+          "git tag --annotate --message='release' v2.3.0",
+          "git tag --message='release' --annotate v2.3.0",
+          "git tag --message='release' v2.3.0 --annotate",
+          "git tag --annotate v2.3.0 HEAD --message='release'",
+          "git tag --annotate --message='release' v2.3.0 HEAD",
+          "git tag --annotate v2.3.0 --message=\"release\"",
+          "git tag --annotate --message=\"release\" v2.3.0",
+          "git tag --message=\"release\" --annotate v2.3.0",
+          "git tag --message=\"release\" v2.3.0 --annotate",
+          "git tag --annotate v2.3.0 HEAD --message=\"release\"",
+          "git tag --annotate --message=\"release\" v2.3.0 HEAD",
+          "git tag -am release v2.3.0",
+          "git tag -amrelease v2.3.0",
+          "git tag -a v2.3.0 -mrelease",
+          "git tag -a -mrelease v2.3.0",
+          "git tag -am 'release' v2.3.0",
+          "git tag -am'release' v2.3.0",
+          "git tag -a v2.3.0 -m'release'",
+          "git tag -a -m'release' v2.3.0",
+          "git tag -am \"release\" v2.3.0",
+          "git tag -am\"release\" v2.3.0",
+          "git tag -a v2.3.0 -m\"release\"",
+          "git tag -a -m\"release\" v2.3.0"
+        ],
+        "push": [
+          "git push origin v2.3.0",
+          "git push origin tag v2.3.0",
+          "git push origin refs/tags/v2.3.0",
+          "git push origin refs/tags/v2.3.0:refs/tags/v2.3.0",
+          "git push origin v2.3.0:v2.3.0",
+          "git push origin v2.3.0:refs/tags/v2.3.0"
+        ],
+        "next": [
+          "ok"
+        ]
+      }
+    },
+    "explanation": "An annotated tag is created with `-a` and a message, and a plain `git push` does not send tags, so the tag is named in the push. The rule needs a leading v and three dot-separated numbers with nothing after them, so only a plain version such as v2.4.0 matches.",
+    "pbqWeight": 3,
+    "partExplanations": {
+      "tag": "git tag with -a and -m creates an annotated tag with the message on the current commit.",
+      "push": "Naming the tag after the remote sends just that tag, which is what starts the tag pipeline.",
+      "next": "The pattern is anchored at the end, so the -rc.1 suffix, a missing v and the word release-2.4.0 do not match."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-config-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "stem": "Set the triggers for the invoicing pipeline. Requirements: build pushes to main and to branches under release/ only; start the release job from version tags such as v1.4.0; run a weekly scan on Sunday at 03:00 universal time; deploy to production only after an approver starts it; when a newer push arrives on a branch, stop the older run of that branch.",
+    "payload": {
+      "fields": [
+        {
+          "id": "push",
+          "label": "Branches that start a build on push",
+          "options": [
+            {
+              "id": "o1",
+              "text": "All branches"
+            },
+            {
+              "id": "o2",
+              "text": "main and release/*"
+            },
+            {
+              "id": "o3",
+              "text": "main only"
+            },
+            {
+              "id": "o4",
+              "text": "release/* only"
+            }
+          ]
+        },
+        {
+          "id": "tag",
+          "label": "Tag pattern that starts the release job",
+          "options": [
+            {
+              "id": "o1",
+              "text": "v*"
+            },
+            {
+              "id": "o2",
+              "text": "*"
+            },
+            {
+              "id": "o3",
+              "text": "latest"
+            },
+            {
+              "id": "o4",
+              "text": "main"
+            }
+          ]
+        },
+        {
+          "id": "sched",
+          "label": "Weekly scan schedule (universal time)",
+          "options": [
+            {
+              "id": "o1",
+              "text": "3 0 * * 0"
+            },
+            {
+              "id": "o2",
+              "text": "0 3 * * 1"
+            },
+            {
+              "id": "o3",
+              "text": "0 3 * * 0"
+            },
+            {
+              "id": "o4",
+              "text": "0 3 1 * *"
+            }
+          ]
+        },
+        {
+          "id": "deploy",
+          "label": "How the production deploy job starts",
+          "options": [
+            {
+              "id": "o1",
+              "text": "After every push to main"
+            },
+            {
+              "id": "o2",
+              "text": "With the weekly schedule"
+            },
+            {
+              "id": "o3",
+              "text": "When any tag is pushed"
+            },
+            {
+              "id": "o4",
+              "text": "Manual start by an approver"
+            }
+          ]
+        },
+        {
+          "id": "concur",
+          "label": "Handling of an older run when a newer push arrives",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Let both run in parallel"
+            },
+            {
+              "id": "o2",
+              "text": "Cancel the older run"
+            },
+            {
+              "id": "o3",
+              "text": "Queue the newer run behind it"
+            },
+            {
+              "id": "o4",
+              "text": "Delete the branch"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "push": "o2",
+        "tag": "o1",
+        "sched": "o3",
+        "deploy": "o4",
+        "concur": "o2"
+      }
+    },
+    "explanation": "A branch filter lists exactly main and release/*, a tag pattern starting with v matches version tags, the cron fields are minute, hour, day of month, month and day of week, a manual start gives the approver control, and cancelling the older run saves capacity.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "push": "The filter must name main and the release/ branches and nothing else.",
+      "tag": "A pattern of v* matches version tags such as v1.4.0 and skips names like latest.",
+      "sched": "Minute 0, hour 3, any day of month, any month, day of week 0 is Sunday at 03:00.",
+      "deploy": "A manual start puts a person in control of when production changes.",
+      "concur": "Cancelling the older run keeps only the result for the newest commit."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-order-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "A push to main must end in a deployment to staging through a webhook. Policy: the CI server verifies a webhook signature before it reads the branch filter, a package is published to the registry only after the tests pass, and the deploy job takes its package from the registry. Put the steps in the order they happen.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "A runner builds the code and runs the tests for that commit"
+        },
+        {
+          "id": "s6",
+          "text": "A deploy job pulls the package from the registry and updates staging"
+        },
+        {
+          "id": "s2",
+          "text": "The git server sends a signed webhook request to the CI server"
+        },
+        {
+          "id": "s5",
+          "text": "The pipeline publishes the package, named with the commit hash, to the registry"
+        },
+        {
+          "id": "s1",
+          "text": "A developer pushes a commit to main on the git server"
+        },
+        {
+          "id": "s3",
+          "text": "The CI server verifies the signature, then checks the branch filter"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The push creates the event, the git server reports it with a signed request, and the CI server verifies the signature before it applies the branch filter. The runner then builds and tests, the package is published after the tests pass, and the deploy job takes that package from the registry.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "0": "The push is the event that starts everything.",
+      "1": "The git server reports the push to the CI server with a signed request.",
+      "2": "Verification comes first, and only then is the branch filter checked.",
+      "3": "The runner builds and tests the commit.",
+      "4": "Publishing follows the passing tests and names the package with the commit hash.",
+      "5": "The deploy job needs the published package, so it comes last."
+    },
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-3-data-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "stem": "These six events happened in the invoicing repository. The trigger rules are: the build pipeline starts on a push to the branch main or to a branch whose name starts with release/; the release pipeline starts when a tag named v followed by digits and dots is pushed; the nightly pipeline starts from the schedule at 02:00 universal time on main. Choose what each event started.",
+    "payload": {
+      "caption": "Repository events",
+      "columns": [
+        "Event",
+        "Time (universal time)",
+        "Kind",
+        "Ref"
+      ],
+      "rows": [
+        [
+          "e1",
+          "09:12",
+          "Push",
+          "main"
+        ],
+        [
+          "e2",
+          "10:40",
+          "Push",
+          "feature/search"
+        ],
+        [
+          "e3",
+          "14:05",
+          "Tag push",
+          "v3.1.0"
+        ],
+        [
+          "e4",
+          "02:00",
+          "Schedule",
+          "main"
+        ],
+        [
+          "e5",
+          "11:30",
+          "Push",
+          "release/3.1"
+        ],
+        [
+          "e6",
+          "15:22",
+          "Tag push",
+          "demo-2"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "r1",
+          "label": "Started by event e1",
+          "options": [
+            {
+              "id": "db",
+              "text": "Build pipeline"
+            },
+            {
+              "id": "dx",
+              "text": "No pipeline"
+            },
+            {
+              "id": "dn",
+              "text": "Nightly pipeline"
+            },
+            {
+              "id": "dr",
+              "text": "Release pipeline"
+            }
+          ]
+        },
+        {
+          "id": "r2",
+          "label": "Started by event e2",
+          "options": [
+            {
+              "id": "db",
+              "text": "Build pipeline"
+            },
+            {
+              "id": "dx",
+              "text": "No pipeline"
+            },
+            {
+              "id": "dr",
+              "text": "Release pipeline"
+            },
+            {
+              "id": "dn",
+              "text": "Nightly pipeline"
+            }
+          ]
+        },
+        {
+          "id": "r3",
+          "label": "Started by event e3",
+          "options": [
+            {
+              "id": "dn",
+              "text": "Nightly pipeline"
+            },
+            {
+              "id": "dx",
+              "text": "No pipeline"
+            },
+            {
+              "id": "dr",
+              "text": "Release pipeline"
+            },
+            {
+              "id": "db",
+              "text": "Build pipeline"
+            }
+          ]
+        },
+        {
+          "id": "r4",
+          "label": "Started by event e4",
+          "options": [
+            {
+              "id": "db",
+              "text": "Build pipeline"
+            },
+            {
+              "id": "dx",
+              "text": "No pipeline"
+            },
+            {
+              "id": "dr",
+              "text": "Release pipeline"
+            },
+            {
+              "id": "dn",
+              "text": "Nightly pipeline"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "label": "Started by event e5",
+          "options": [
+            {
+              "id": "dx",
+              "text": "No pipeline"
+            },
+            {
+              "id": "db",
+              "text": "Build pipeline"
+            },
+            {
+              "id": "dn",
+              "text": "Nightly pipeline"
+            },
+            {
+              "id": "dr",
+              "text": "Release pipeline"
+            }
+          ]
+        },
+        {
+          "id": "r6",
+          "label": "Started by event e6",
+          "options": [
+            {
+              "id": "dx",
+              "text": "No pipeline"
+            },
+            {
+              "id": "dr",
+              "text": "Release pipeline"
+            },
+            {
+              "id": "dn",
+              "text": "Nightly pipeline"
+            },
+            {
+              "id": "db",
+              "text": "Build pipeline"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "r1": "db",
+        "r2": "dx",
+        "r3": "dr",
+        "r4": "dn",
+        "r5": "db",
+        "r6": "dx"
+      }
+    },
+    "explanation": "Branch pushes to main and release/ start the build pipeline, a version tag starts the release pipeline, the 02:00 schedule starts the nightly pipeline, and a push to another branch or a tag without the v and digits pattern starts nothing.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "r1": "A push to main matches the build rule.",
+      "r2": "feature/search is neither main nor under release/, so nothing starts.",
+      "r3": "The tag v3.1.0 matches the version pattern, so the release pipeline starts.",
+      "r4": "The 02:00 universal time schedule on main starts the nightly pipeline.",
+      "r5": "A push to release/3.1 matches the release/ prefix, so the build pipeline starts.",
+      "r6": "The tag demo-2 does not start with v and digits, and a tag is not a branch, so nothing starts."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-diagram-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "Place the best component for each role named below the trigger flow.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Push event"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Hook request"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Job run"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Package"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Receives the push and sends the event out"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Checks the signature and queues a run"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Executes the build and test steps"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Stores the versioned build output"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Artifact registry"
+        },
+        {
+          "id": "l2",
+          "text": "Chat bot"
+        },
+        {
+          "id": "l3",
+          "text": "Git server"
+        },
+        {
+          "id": "l4",
+          "text": "CI runner"
+        },
+        {
+          "id": "l5",
+          "text": "Webhook receiver"
+        },
+        {
+          "id": "l6",
+          "text": "Issue tracker"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l3",
+        "z2": "l5",
+        "z3": "l4",
+        "z4": "l1"
+      }
+    },
+    "explanation": "The git server holds the repository and sends the event, the webhook receiver verifies it and queues the run, the CI runner executes the steps, and the artifact registry stores the package. A chat bot starts or reports on actions from a channel, and an issue tracker holds tickets.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "z1": "The git server owns the repository and emits the push event.",
+      "z2": "The webhook receiver verifies the signature and queues a run.",
+      "z3": "The CI runner is the machine that executes the job steps.",
+      "z4": "The artifact registry keeps versioned build output."
+    },
+    "acronyms": [
+      "CI"
+    ]
+  },
+  {
+    "id": "at1-3-3-hotspot-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 3,
+    "stem": "A GitHub Actions release workflow must publish when a tag such as v1.4.0 is pushed, but a tag push never produces a release. The lines of the workflow file are shown in shuffled positions. Select every line that stops a tag push from running the publish job.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "runs-on: ubuntu-latest"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "if: github.ref_type == 'branch'"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "timeout-minutes: 20"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "branches: [main]"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "concurrency: release-lock"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "run: ./publish.sh ${{ github.ref_name }}"
+        }
+      ],
+      "spots": [
+        {
+          "id": "runs",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "runs-on: ubuntu-latest"
+        },
+        {
+          "id": "iftype",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "if: github.ref_type == 'branch'"
+        },
+        {
+          "id": "timeout",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "timeout-minutes: 20"
+        },
+        {
+          "id": "branches",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "branches: [main]"
+        },
+        {
+          "id": "conc",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "concurrency: release-lock"
+        },
+        {
+          "id": "publish",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "run: ./publish.sh ${{ github.ref_name }}"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "iftype",
+        "branches"
+      ]
+    },
+    "explanation": "A push filter that lists only branches leaves tags undefined, so a tag push does not start the workflow, and a job condition that requires the ref type to be a branch skips the job on a tag. The runner label, the timeout, the concurrency group and the publish command do not look at the ref.",
+    "pbqWeight": 2,
+    "partExplanations": {
+      "runs": "The runner label only picks the machine.",
+      "iftype": "The condition is false when the ref type is a tag, so the job is skipped.",
+      "timeout": "A timeout limits run time and does not depend on the ref.",
+      "branches": "With only a branch filter, a tag push does not start the workflow.",
+      "conc": "A concurrency group serializes runs and does not filter refs.",
+      "publish": "The command uses the ref name, which is the tag name in a tag run."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-match-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "A push of the tag v2.1.0 starts a GitHub Actions workflow. Match each context value to what it holds in that run.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "github.ref"
+        },
+        {
+          "id": "p2",
+          "text": "github.ref_name"
+        },
+        {
+          "id": "p3",
+          "text": "github.ref_type"
+        },
+        {
+          "id": "p4",
+          "text": "github.sha"
+        },
+        {
+          "id": "p5",
+          "text": "github.event_name"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "The full commit hash of the tagged commit"
+        },
+        {
+          "id": "c2",
+          "text": "refs/tags/v2.1.0"
+        },
+        {
+          "id": "c3",
+          "text": "branch"
+        },
+        {
+          "id": "c4",
+          "text": "v2.1.0"
+        },
+        {
+          "id": "c5",
+          "text": "main"
+        },
+        {
+          "id": "c6",
+          "text": "tag"
+        },
+        {
+          "id": "c7",
+          "text": "push"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c2",
+        "p2": "c4",
+        "p3": "c6",
+        "p4": "c1",
+        "p5": "c7"
+      }
+    },
+    "explanation": "The full ref carries the refs/tags/ prefix, the short name drops it, the type says whether the ref is a branch or a tag, the sha is the commit, and the event name is push because a tag push is a push event.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "p1": "The full ref for a tag begins with refs/tags/.",
+      "p2": "The short ref name is the tag name without the prefix.",
+      "p3": "The ref type is tag in a tag run.",
+      "p4": "The sha is the hash of the commit the run builds.",
+      "p5": "A tag push is reported as a push event."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "at1-3-3-buckets-001",
+    "exam": "AT0-001",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "stem": "Sort each scenario into the trigger that starts the pipeline.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "push",
+          "text": "Push trigger"
+        },
+        {
+          "id": "manual",
+          "text": "Manual trigger"
+        },
+        {
+          "id": "sched",
+          "text": "Scheduled trigger"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "A fix is merged into main and a build begins within seconds"
+        },
+        {
+          "id": "i2",
+          "text": "A release manager presses Run after sign-off to deploy to production"
+        },
+        {
+          "id": "i3",
+          "text": "A security scan starts at 03:00 universal time with nobody involved"
+        },
+        {
+          "id": "i4",
+          "text": "A developer sends a commit to release/2.0 and tests start"
+        },
+        {
+          "id": "i5",
+          "text": "A tester starts a one-off run and types a custom environment name"
+        },
+        {
+          "id": "i6",
+          "text": "A report job starts on the first day of each month"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "push",
+        "i2": "manual",
+        "i3": "sched",
+        "i4": "push",
+        "i5": "manual",
+        "i6": "sched"
+      }
+    },
+    "explanation": "Commits arriving on a branch are push triggers, a person choosing the moment is a manual trigger, and a clock time is a scheduled trigger.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "i1": "A merge adds commits to main, which is a push event.",
+      "i2": "A person presses a button to choose the moment.",
+      "i3": "A fixed clock time is a schedule.",
+      "i4": "A commit sent to a branch is a push event.",
+      "i5": "A person starts the run and supplies the input.",
+      "i6": "A calendar date is a schedule."
+    },
+    "acronyms": []
+  }
+]
