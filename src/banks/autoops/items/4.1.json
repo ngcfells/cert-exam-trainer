@@ -6,7 +6,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A shop wants a small share of real shoppers to try the new checkout build first, with more shoppers added as the metrics stay healthy. Which delivery method is this?",
@@ -22,7 +22,7 @@
         },
         {
           "id": "c",
-          "text": "Rolling replacement"
+          "text": "Rolling update"
         },
         {
           "id": "d",
@@ -45,7 +45,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A bank must test a release on a full production-sized copy before any customer sees it, then move all customers over in a single switch. Which delivery method fits best?",
@@ -84,7 +84,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A retailer runs 12 identical web instances behind a balancer and cannot pay for a duplicate environment. The team plans to replace a few instances at a time until all run the new build, with no traffic percentages to tune. Which method is this?",
@@ -100,7 +100,7 @@
         },
         {
           "id": "c",
-          "text": "Canary deployment"
+          "text": "Canary release"
         },
         {
           "id": "d",
@@ -123,7 +123,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "An internal wiki runs on a single server. The admin announces a Sunday maintenance window, stops the service, installs the new version over the old one and restarts it. Which delivery method is this?",
@@ -162,7 +162,7 @@
     "objectiveIds": [
       "4.1"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A team runs a live pool and an idle pool that share one database. The idle pool receives a release whose migration drops the `legacy_phone` column, which the live code still reads. What happens when the migration runs before the cutover?",
@@ -178,7 +178,7 @@
         },
         {
           "id": "c",
-          "text": "The live pool fails on queries that use the column"
+          "text": "The pool still in service fails on queries that use the column"
         },
         {
           "id": "d",
