@@ -983,7 +983,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A security team asks why builds should produce a software bill of materials (SBOM). What is the main benefit?",
@@ -1024,7 +1024,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A container image built and scanned clean in March is still running in production in June. Why should the team scan it again on a schedule?",
@@ -1063,7 +1063,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What is the main benefit of running a CI build step inside a container image?",
@@ -1075,7 +1075,7 @@
         },
         {
           "id": "b",
-          "text": "Identical pinned tools on any runner"
+          "text": "The step gets the same pinned tools on each runner"
         },
         {
           "id": "c",
@@ -1104,7 +1104,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A job uses the image `builder:latest`. Builds start failing although the repository did not change. What is the likely cause and fix?",
@@ -1143,7 +1143,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Integration tests need a database. The team wants a clean one for each job, with no leftovers after the job ends. What approach fits?",
@@ -1182,7 +1182,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A team's image build reinstalls all dependencies after every small source edit:\n\n```dockerfile\nFROM node:20\nCOPY . /app\nWORKDIR /app\nRUN npm install\n```\n\nWhat change restores layer caching?",
@@ -1190,19 +1190,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Copy the dependency manifest, install, then copy the source"
+          "text": "Copy `package.json`, install, then copy the source"
         },
         {
           "id": "b",
-          "text": "Move the `FROM` line below the `RUN` line"
+          "text": "Move the `FROM` line below the `RUN npm install` line"
         },
         {
           "id": "c",
-          "text": "Add a second `RUN npm install` after the copy"
+          "text": "Add a second `RUN npm install` after the `COPY` line"
         },
         {
           "id": "d",
-          "text": "Replace `COPY . /app` with `ADD . /app`"
+          "text": "Change the copy step from `COPY . /app` to `ADD . /app`"
         }
       ]
     },
@@ -1221,7 +1221,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does a linter do in a CI pipeline?",
@@ -1262,7 +1262,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A project reaches 95% line coverage, yet defects keep reaching production. Which statement best explains this?",
@@ -1301,7 +1301,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A quality scan reports a function with cyclomatic complexity 38. What does that number describe?",
@@ -1330,7 +1330,7 @@
         "c"
       ]
     },
-    "explanation": "Cyclomatic complexity counts decision points, which is the number of independent paths and a guide to how many tests the function needs. Line count, callers and run time are different measures.",
+    "explanation": "Cyclomatic complexity is the number of decision points plus one, which equals the number of independent paths and a guide to how many tests the function needs. Line count, callers and run time are different measures.",
     "acronyms": []
   },
   {
@@ -1340,7 +1340,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A legacy service has 40% test coverage. The team wants quality to improve without blocking every change. Which gate fits?",
@@ -1379,7 +1379,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What is a common benefit of AI-based log analysis in a CI system?",
@@ -1391,7 +1391,7 @@
         },
         {
           "id": "b",
-          "text": "It summarizes logs and suggests likely causes"
+          "text": "It summarizes long logs and suggests likely causes"
         },
         {
           "id": "c",
@@ -1421,7 +1421,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A fixed keyword alert never fired, yet an AI-based analyzer flagged a log pattern in the build jobs that no one had seen before. What does this show about the analyzer?",
@@ -1462,7 +1462,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO job failures are the best candidates for automatic retry?",
@@ -1470,7 +1470,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A dependency download timed out while the package mirror was briefly unreachable"
+          "text": "A dependency download timed out during a package mirror outage"
         },
         {
           "id": "b",
@@ -1510,7 +1510,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are valid reasons to run two jobs sequentially rather than in parallel?",
@@ -1522,19 +1522,19 @@
         },
         {
           "id": "b",
-          "text": "The result of the first job decides whether the second should run at all"
+          "text": "The first job's result decides whether the second runs"
         },
         {
           "id": "c",
-          "text": "The two jobs run on different operating systems"
+          "text": "The two jobs run on runners with different operating systems"
         },
         {
           "id": "d",
-          "text": "Both jobs only read the same source files"
+          "text": "Both jobs read the same source files and change nothing"
         },
         {
           "id": "e",
-          "text": "The second job is shorter than the first"
+          "text": "The second job takes less time to run than the first job"
         }
       ]
     },
@@ -1554,7 +1554,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO actions reduce false-positive noise from a code scanner without hiding real issues?",
@@ -1566,7 +1566,7 @@
         },
         {
           "id": "b",
-          "text": "Record a suppression with a reason and review date for each confirmed false positive"
+          "text": "Record each reviewed suppression with a reason and a date"
         },
         {
           "id": "c",
@@ -1598,7 +1598,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO practices keep a secret out of the layers of a container image?",
@@ -1606,11 +1606,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Pass credentials to the container at run time from a secrets vault"
+          "text": "Pass credentials into the container at run time from a vault"
         },
         {
           "id": "b",
-          "text": "Mount a build secret for one step so it is never written to a layer"
+          "text": "Mount the token for one build step so no layer stores it"
         },
         {
           "id": "c",
@@ -1642,7 +1642,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "A team defines quality gates for pull requests. Which TWO conditions are sound?",
@@ -1686,7 +1686,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are limitations teams should plan for when using AI-based log analysis?",
@@ -1698,7 +1698,7 @@
         },
         {
           "id": "b",
-          "text": "Logs sent to an external service may expose secrets or personal data unless redacted first"
+          "text": "Logs sent out may expose secrets or personal data if not redacted"
         },
         {
           "id": "c",
@@ -1720,7 +1720,7 @@
         "b"
       ]
     },
-    "explanation": "Plausible but wrong explanations need human verification, and sensitive content in logs needs redaction before leaving the organization. The other statements are not true of these tools.",
+    "explanation": "Plausible but wrong explanations need human verification, and sensitive content in logs needs redaction before leaving the organization. These tools are built to read text logs, need no change to the source code, and are most useful on failed runs.",
     "acronyms": [
       "AI"
     ]
@@ -1732,7 +1732,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which THREE job pairs need an explicit dependency?",
@@ -1748,19 +1748,19 @@
         },
         {
           "id": "c",
-          "text": "A registry publish job and the signing job that creates the signature it uploads"
+          "text": "A publish job and the signing job that makes its signature"
         },
         {
           "id": "d",
-          "text": "A lint job and a docs-site build"
+          "text": "A lint job and a build of the project's documentation site"
         },
         {
           "id": "e",
-          "text": "Two unit-test suites for different services"
+          "text": "Two unit-test suites that cover two separate services"
         },
         {
           "id": "f",
-          "text": "A license report job and a spell-check job"
+          "text": "A license report job and a spell check of the docs"
         }
       ]
     },
@@ -1771,7 +1771,7 @@
         "c"
       ]
     },
-    "explanation": "Each of the first three pairs has a later job that needs something the earlier job creates. The lint and docs build, the two separate suites and the license and spell checks share nothing and can run side by side.",
+    "explanation": "Each of the first three pairs has a later job that needs something the earlier job creates. The lint job and documentation build, the two separate suites and the license and spell checks share nothing and can run side by side.",
     "acronyms": []
   },
   {
@@ -1781,10 +1781,10 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
-    "stem": "The `payments-api` pipeline runs its linter inside a container. Review the notes below, then complete each step.",
+    "stem": "The `payments-api` pipeline runs its linter inside a container. Review the notes below, then complete each step in a Bash shell.",
     "pbqWeight": 3,
     "payload": {
       "output": [
@@ -1796,6 +1796,7 @@
         "image:    registry.example.internal/ci/lint:2.3",
         "command:  lintcheck src/",
         "mount:    /home/ci/payments-api  ->  /work",
+        "workdir:  /work  (already set in the image)",
         "$ lintcheck --help | tail -n 4",
         "Exit status:",
         "  0  no findings",
@@ -1809,7 +1810,7 @@
         },
         {
           "id": "status",
-          "label": "The run has finished. Type a command that prints its exit status"
+          "label": "The run has finished. Type a Bash command that prints its exit status"
         },
         {
           "id": "meaning",
@@ -1840,14 +1841,130 @@
         "run": [
           "docker run --rm -v /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
           "docker run -v /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -v /home/ci/payments-api:/work -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -w /work -v /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v /home/ci/payments-api:/work --rm -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v /home/ci/payments-api:/work -w /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --rm -v /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work -v /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -v /home/ci/payments-api:/work --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir /work -v /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v /home/ci/payments-api:/work --rm --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v /home/ci/payments-api:/work --workdir /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --rm -v /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work -v /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -v /home/ci/payments-api:/work --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir=/work -v /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v /home/ci/payments-api:/work --rm --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v /home/ci/payments-api:/work --workdir=/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --rm -v /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work -v /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
           "docker run --rm --volume /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
           "docker run --volume /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume /home/ci/payments-api:/work -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -w /work --volume /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume /home/ci/payments-api:/work --rm -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume /home/ci/payments-api:/work -w /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --rm --volume /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --volume /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume /home/ci/payments-api:/work --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir /work --volume /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume /home/ci/payments-api:/work --rm --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume /home/ci/payments-api:/work --workdir /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --rm --volume /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --volume /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume /home/ci/payments-api:/work --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir=/work --volume /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume /home/ci/payments-api:/work --rm --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume /home/ci/payments-api:/work --workdir=/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --rm --volume /home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --volume /home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
           "docker run --rm --volume=/home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
-          "docker run --volume=/home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/"
+          "docker run --volume=/home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume=/home/ci/payments-api:/work -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -w /work --volume=/home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=/home/ci/payments-api:/work --rm -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=/home/ci/payments-api:/work -w /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --rm --volume=/home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --volume=/home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume=/home/ci/payments-api:/work --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir /work --volume=/home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=/home/ci/payments-api:/work --rm --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=/home/ci/payments-api:/work --workdir /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --rm --volume=/home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --volume=/home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume=/home/ci/payments-api:/work --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir=/work --volume=/home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=/home/ci/payments-api:/work --rm --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=/home/ci/payments-api:/work --workdir=/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --rm --volume=/home/ci/payments-api:/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --volume=/home/ci/payments-api:/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -v \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v \"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -v \"/home/ci/payments-api:/work\" -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -w /work -v \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v \"/home/ci/payments-api:/work\" --rm -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v \"/home/ci/payments-api:/work\" -w /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --rm -v \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work -v \"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -v \"/home/ci/payments-api:/work\" --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir /work -v \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v \"/home/ci/payments-api:/work\" --rm --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v \"/home/ci/payments-api:/work\" --workdir /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --rm -v \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work -v \"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -v \"/home/ci/payments-api:/work\" --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir=/work -v \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v \"/home/ci/payments-api:/work\" --rm --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -v \"/home/ci/payments-api:/work\" --workdir=/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --rm -v \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work -v \"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume \"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume \"/home/ci/payments-api:/work\" -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -w /work --volume \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume \"/home/ci/payments-api:/work\" --rm -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume \"/home/ci/payments-api:/work\" -w /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --rm --volume \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --volume \"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume \"/home/ci/payments-api:/work\" --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir /work --volume \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume \"/home/ci/payments-api:/work\" --rm --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume \"/home/ci/payments-api:/work\" --workdir /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --rm --volume \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --volume \"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume \"/home/ci/payments-api:/work\" --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir=/work --volume \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume \"/home/ci/payments-api:/work\" --rm --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume \"/home/ci/payments-api:/work\" --workdir=/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --rm --volume \"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --volume \"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume=\"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=\"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume=\"/home/ci/payments-api:/work\" -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm -w /work --volume=\"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=\"/home/ci/payments-api:/work\" --rm -w /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=\"/home/ci/payments-api:/work\" -w /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --rm --volume=\"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run -w /work --volume=\"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume=\"/home/ci/payments-api:/work\" --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir /work --volume=\"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=\"/home/ci/payments-api:/work\" --rm --workdir /work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=\"/home/ci/payments-api:/work\" --workdir /work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --rm --volume=\"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir /work --volume=\"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --volume=\"/home/ci/payments-api:/work\" --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --rm --workdir=/work --volume=\"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=\"/home/ci/payments-api:/work\" --rm --workdir=/work registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --volume=\"/home/ci/payments-api:/work\" --workdir=/work --rm registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --rm --volume=\"/home/ci/payments-api:/work\" registry.example.internal/ci/lint:2.3 lintcheck src/",
+          "docker run --workdir=/work --volume=\"/home/ci/payments-api:/work\" --rm registry.example.internal/ci/lint:2.3 lintcheck src/"
         ],
         "status": [
           "echo $?",
           "echo \"$?\"",
+          "echo ${?}",
+          "echo \"${?}\"",
           "printf '%s\\n' \"$?\"",
           "printf \"%s\\n\" \"$?\""
         ],
@@ -1856,10 +1973,10 @@
         ]
       }
     },
-    "explanation": "The `--rm` flag removes the container afterwards and a bind mount maps the host path to /work. The shell variable `$?` holds the previous exit status, and for this tool status 1 means it ran and found issues, which a CI runner treats as a failed job.",
+    "explanation": "The `--rm` flag removes the container afterwards, and a bind mount maps the host path to `/work`, which the image already uses as its working directory. The Bash variable `$?` holds the previous exit status, and for this tool status 1 means it ran and found issues, which a CI runner treats as a failed job.",
     "partExplanations": {
-      "run": "docker run with --rm and a -v host:/work mount, then the image and the lintcheck command.",
-      "status": "echo $? prints the exit status of the last command.",
+      "run": "`docker run` with `--rm` and a `-v host:/work` mount, then the image and the `lintcheck src/` command. Adding `-w /work` is allowed but not needed, since the image already works in `/work`.",
+      "status": "`echo $?` prints the exit status of the last command in Bash.",
       "meaning": "Per the tool help, status 1 means findings were reported, so the job fails; a crash would be status 2."
     },
     "acronyms": [
@@ -1873,7 +1990,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "stem": "Configure the pipeline for `inventory-service`. The `compile` job runs first, and `unit-tests` use its output. `lint` reads only repository files. `link-check` tests external web links and is unreliable, so its result is informational. `deploy-preview` may run only when the tests pass. `destroy-preview` must remove the preview environment whatever happened.",
@@ -1886,15 +2003,15 @@
           "options": [
             {
               "id": "o1",
-              "text": "Needs compile"
+              "text": "Waits for compile to finish"
             },
             {
               "id": "o2",
-              "text": "Needs lint"
+              "text": "Waits for lint to finish"
             },
             {
               "id": "o3",
-              "text": "No needs; starts at once"
+              "text": "Starts at once; waits for no job"
             }
           ]
         },
@@ -1904,15 +2021,15 @@
           "options": [
             {
               "id": "o1",
-              "text": "Needs compile"
+              "text": "Waits for compile to finish"
             },
             {
               "id": "o2",
-              "text": "No needs; starts at once"
+              "text": "Starts at once; waits for no job"
             },
             {
               "id": "o3",
-              "text": "Needs unit-tests"
+              "text": "Waits for unit-tests to finish"
             }
           ]
         },
@@ -1981,13 +2098,13 @@
         "destroy": "o3"
       }
     },
-    "explanation": "The tests need compiled output, so they wait for compile, while lint needs only source and starts at once in parallel. An unreliable informational check is allowed to fail, deployment is gated on passing tests, and cleanup runs regardless of the outcome so no environment is left behind.",
+    "explanation": "The tests need compiled output, so `unit-tests` waits for `compile`, while `lint` needs only source and starts at once in parallel. An unreliable informational check is allowed to fail, deployment is gated on passing tests, and cleanup runs regardless of the outcome so no environment is left behind.",
     "partExplanations": {
-      "unit": "unit-tests consume compile output, so they must wait for it.",
-      "lint": "lint reads only repository files, so it has no reason to wait.",
-      "link": "An informational, unreliable check should be reported without blocking the pipeline.",
-      "preview": "The preview deploys only after the tests it depends on have passed.",
-      "destroy": "Cleanup must run on success and on failure, or environments leak."
+      "unit": "`unit-tests` use the output of `compile`, so they must wait for it.",
+      "lint": "`lint` reads only repository files, so it has no reason to wait.",
+      "link": "An informational, unreliable check such as `link-check` should be reported without blocking the pipeline.",
+      "preview": "`deploy-preview` runs only after the tests it depends on have passed.",
+      "destroy": "Cleanup must run on success and on failure, or preview environments are left behind."
     },
     "acronyms": []
   },
@@ -1998,7 +2115,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
     "stem": "Put the stages of this CI pipeline in the order they run. Rules: cheap checks on source run before anything is built; the tests run inside the built image; the slower image scan runs only after the tests pass; the push happens only after every gate has passed.",
@@ -2061,7 +2178,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 3,
     "stem": "Use the pipeline run table to answer each question. Assume enough runners that any job whose dependencies are done starts at once.",
@@ -2193,12 +2310,12 @@
         "skip": "package"
       }
     },
-    "explanation": "The longest chain is checkout, compile, unit-tests and package. Lint and the image scan run beside that chain and finish earlier.",
+    "explanation": "The longest chain is `checkout`, `compile`, `unit-tests` and `package`. `lint` and `image-scan` run beside that chain and finish earlier.",
     "partExplanations": {
-      "wall": "Critical path: checkout 1 + compile 4 + unit-tests 5 + package 2 = 12 minutes; the sum of all jobs, 17, is the sequential time.",
-      "par": "Both unit-tests and image-scan need only compile, so two jobs start at minute 5.",
-      "slack": "Unit-tests end at minute 10 and image-scan starts at 5, so it can take 5 minutes instead of 3: 2 extra minutes.",
-      "skip": "Package needs image-scan, so it is skipped; lint and unit-tests do not depend on it."
+      "wall": "Critical path: `checkout` 1 + `compile` 4 + `unit-tests` 5 + `package` 2 = 12 minutes; the sum of all jobs, 17, is the sequential time.",
+      "par": "Both `unit-tests` and `image-scan` need only `compile`, so two jobs start at minute 5.",
+      "slack": "`unit-tests` ends at minute 10 and `image-scan` starts at 5, so it can take 5 minutes instead of 3: 2 extra minutes.",
+      "skip": "`package` needs `image-scan`, so it is skipped; `lint` and `unit-tests` do not depend on it."
     },
     "acronyms": []
   },
@@ -2209,10 +2326,10 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
-    "stem": "The pipeline stages run left to right as drawn. Place the best job for each description under its stage.",
+    "stem": "The four pipeline stages run left to right as drawn. Place the job that fits each description in the target area under its stage.",
     "pbqWeight": 4,
     "payload": {
       "width": 600,
@@ -2224,7 +2341,7 @@
           "y": 20,
           "w": 130,
           "h": 50,
-          "text": "Checkout"
+          "text": "Stage 1"
         },
         {
           "id": "n2",
@@ -2232,7 +2349,7 @@
           "y": 20,
           "w": 130,
           "h": 50,
-          "text": "Compile"
+          "text": "Stage 2"
         },
         {
           "id": "n3",
@@ -2240,7 +2357,7 @@
           "y": 20,
           "w": 130,
           "h": 50,
-          "text": "Test stage"
+          "text": "Stage 3"
         },
         {
           "id": "n4",
@@ -2248,7 +2365,7 @@
           "y": 20,
           "w": 130,
           "h": 50,
-          "text": "Release"
+          "text": "Stage 4"
         }
       ],
       "edges": [
@@ -2270,25 +2387,25 @@
           "id": "z1",
           "x": 10,
           "y": 120,
-          "name": "Needs only source; starts beside compile"
+          "name": "Needs only source; runs beside compile"
         },
         {
           "id": "z2",
           "x": 160,
           "y": 120,
-          "name": "Needs the compiled output"
+          "name": "Checks how the compiled code behaves"
         },
         {
           "id": "z3",
           "x": 310,
           "y": 120,
-          "name": "Bundle that needs passing tests"
+          "name": "Bundles the build once tests pass"
         },
         {
           "id": "z4",
           "x": 460,
           "y": 120,
-          "name": "Sends the bundle onward"
+          "name": "Stores the bundle for later deploys"
         }
       ],
       "labels": [
@@ -2326,12 +2443,12 @@
         "z4": "l4"
       }
     },
-    "explanation": "Lint reads only source and can start as soon as checkout ends, unit tests need the compiled output, packaging waits for passing tests, and the push comes last. Rollback and cache cleanup do not fit any of these dependency descriptions.",
+    "explanation": "Lint reads only source and runs beside compile in the first stage, unit tests check the behavior of the compiled code, packaging waits for passing tests, and the registry push stores the finished bundle last. Rollback puts an older release back rather than storing a new one, and cache cleanup fits no description.",
     "partExplanations": {
-      "z1": "Lint has no dependency on compile, so it runs in parallel with it.",
-      "z2": "Unit tests use what compile produced.",
+      "z1": "Lint needs no compiled output, so it runs beside compile in the first stage.",
+      "z2": "Unit tests check the behavior of what compile produced; packaging also uses that output but checks nothing.",
       "z3": "Packaging bundles the build only after the tests pass.",
-      "z4": "A registry push sends the finished package onward and runs last."
+      "z4": "A registry push stores the finished bundle for deployments, so it runs last; a rollback puts an older release back instead."
     },
     "acronyms": []
   },
@@ -2342,7 +2459,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 3,
     "stem": "A pipeline has the jobs shown, with their needs lines in shuffled positions. The `build-api` job compiles the code. The `unit-tests` and `package` jobs use its compiled output, and `package` also needs the tests to pass. The `lint`, `docs-site` and `license-check` jobs read only repository files. Select every job whose needs line makes it wait for no reason.",
@@ -2460,12 +2577,12 @@
     },
     "explanation": "Needs lines should exist only where a job uses another job's output or must wait for its verdict. The three jobs that read only repository files gain nothing from waiting, and each wait makes the run longer.",
     "partExplanations": {
-      "lint": "Lint reads only source, so waiting for build-api only delays it.",
-      "license": "The license check reads only repository files, so waiting for package adds time.",
-      "docs": "The docs site needs no test result, so waiting for unit-tests delays it.",
-      "unit": "Unit tests use the compiled output, so this wait is real.",
-      "build": "build-api has no needs line and starts at once.",
-      "package": "Package uses the compiled output and needs passing tests, so both waits are real."
+      "lint": "`lint` reads only source, so waiting for `build-api` only delays it.",
+      "license": "`license-check` reads only repository files, so waiting for `package` adds time.",
+      "docs": "`docs-site` needs no test result, so waiting for `unit-tests` delays it.",
+      "unit": "`unit-tests` uses the compiled output, so this wait is real.",
+      "build": "`build-api` has no needs line and starts at once.",
+      "package": "`package` uses the compiled output and needs passing tests, so both waits are real."
     },
     "acronyms": []
   },
@@ -2476,7 +2593,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
     "stem": "Match each pipeline scan to what it finds.",
@@ -2519,7 +2636,7 @@
         },
         {
           "id": "c4",
-          "text": "Vulnerable operating system packages inside a built image"
+          "text": "Vulnerable packages baked into the built container image"
         },
         {
           "id": "c5",
@@ -2540,7 +2657,7 @@
     "partExplanations": {
       "p1": "SAST reads the team's own source for insecure patterns without running it.",
       "p2": "Dependency scanning compares declared library versions with known vulnerabilities.",
-      "p3": "Image scanning inspects the packages inside the built image layers.",
+      "p3": "Image scanning inspects every package baked into the built image layers, whether or not the project declared it.",
       "p4": "Secret scanning looks for credentials in committed files.",
       "p5": "A linter reports style and maintainability issues rather than security flaws."
     },
@@ -2555,7 +2672,7 @@
     "objectiveIds": [
       "3.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 2,
     "stem": "Sort each pipeline setting by the kind of workflow control it provides.",
@@ -2578,7 +2695,7 @@
       "items": [
         {
           "id": "i1",
-          "text": "Cleanup step runs even though a test failed"
+          "text": "A failed test is retried twice"
         },
         {
           "id": "i2",
@@ -2590,7 +2707,7 @@
         },
         {
           "id": "i4",
-          "text": "Runner released after 20 minutes of silence"
+          "text": "Pipeline carries on when the link checker fails"
         },
         {
           "id": "i5",
@@ -2614,10 +2731,10 @@
     },
     "explanation": "Order settings decide what waits and what overlaps, run conditions decide whether a job starts at all, and failure settings decide what happens when something goes wrong.",
     "partExplanations": {
-      "i1": "An always-run cleanup is a failure-handling setting.",
+      "i1": "A retry decides what happens once the test has failed.",
       "i2": "A rule that skips a job on draft pull requests decides whether it runs.",
       "i3": "Starting independent suites together is parallel scheduling.",
-      "i4": "A timeout is a failure-handling limit on a stuck job.",
+      "i4": "Allowing a job to fail lets the pipeline carry on after that failure.",
       "i5": "A path filter decides whether the job runs for a change.",
       "i6": "Waiting for output is a dependency on another job."
     },
