@@ -6,7 +6,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What is a webhook?",
@@ -35,7 +35,7 @@
         "a"
       ]
     },
-    "explanation": "A webhook is an HTTP request that the source system sends to a chosen URL when an event such as a push occurs. Checking a repository on a timer is polling, a clone token is a credential, and a chat command is `ChatOps`.",
+    "explanation": "A webhook is an HTTP request that the source system sends to a chosen URL when an event such as a push occurs. Checking a repository on a timer is polling, a clone token is a credential, and a chat command is ChatOps.",
     "acronyms": [
       "HTTP",
       "URL"
@@ -48,7 +48,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A git server signs each webhook payload with a shared secret and sends the result in a request header. What does the receiver do with that header?",
@@ -87,10 +87,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A webhook receiver builds and tests the code before it replies. The git server reports delivery timeouts, although the pipelines do start. Which change removes the reported failures?",
+    "stem": "A webhook receiver builds and tests the code before it responds. The git server reports delivery timeouts, although the pipelines do start. Which change removes the reported failures?",
     "payload": {
       "options": [
         {
@@ -103,7 +103,7 @@
         },
         {
           "id": "c",
-          "text": "Reply with a success status at once and do the work in the background"
+          "text": "Return a success status at once and run the build later"
         },
         {
           "id": "d",
@@ -126,7 +126,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "The git server resends a webhook after a timeout, and the receiver starts two deployments for one push. Each delivery carries its own unique delivery identifier. Which handler change prevents the duplicate?",
@@ -146,7 +146,7 @@
         },
         {
           "id": "d",
-          "text": "Record each delivery identifier and skip any it has already handled"
+          "text": "Remember which deliveries it has handled and skip repeats"
         }
       ]
     },
@@ -165,7 +165,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A receiver parses the JSON body, re-serializes it, and then computes the signature. The result never matches the signature header from the sender. Which change fixes the check?",
@@ -207,7 +207,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A team lets engineers type a command such as `/rollback orders-api` in a shared chat channel, and a bot runs the matching pipeline job. What is this practice called?",
@@ -215,15 +215,15 @@
       "options": [
         {
           "id": "a",
-          "text": "`ChatOps`"
+          "text": "ChatOps"
         },
         {
           "id": "b",
-          "text": "Pipeline as code"
+          "text": "GitOps"
         },
         {
           "id": "c",
-          "text": "A canary release"
+          "text": "Canary release"
         },
         {
           "id": "d",
@@ -236,7 +236,7 @@
         "a"
       ]
     },
-    "explanation": "`ChatOps` runs operations from commands typed in a team chat. Pipeline as code stores the definition in a repository, a canary release exposes a change to a few users first, and drift detection compares live settings with a baseline.",
+    "explanation": "ChatOps runs operations from commands typed in a team chat. GitOps applies changes by merging them into a repository that an agent syncs from, a canary release exposes a change to a few users first, and drift detection compares live settings with a baseline.",
     "acronyms": []
   },
   {
@@ -246,10 +246,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A `ChatOps` bot runs `/deploy payments-api prod` for anyone who is a member of the channel. Which control should be added first?",
+    "stem": "A ChatOps bot runs `/deploy payments-api prod` for anyone who is a member of the channel. Which control should be added first?",
     "payload": {
       "options": [
         {
@@ -285,7 +285,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which event starts a push-triggered pipeline?",
@@ -314,7 +314,7 @@
         "c"
       ]
     },
-    "explanation": "A push trigger fires when commits arrive on the remote repository, subject to any branch or path filters. A button press is a manual trigger, a cron time is a scheduled trigger, and a chat command is `ChatOps`.",
+    "explanation": "A push trigger fires when commits arrive on the remote repository, subject to any branch or path filters. A button press is a manual trigger, a cron time is a scheduled trigger, and a chat command is ChatOps.",
     "acronyms": [
       "CI"
     ]
@@ -326,7 +326,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "This workflow file is in a repository:\n```yaml\non:\n  push:\n    branches: [main]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - run: make test\n```\nA developer pushes a commit to the branch `feature/login`. What happens?",
@@ -342,7 +342,7 @@
         },
         {
           "id": "c",
-          "text": "The workflow does not start, because the pushed branch fails the filter"
+          "text": "No run starts, because `feature/login` is not `main`"
         },
         {
           "id": "d",
@@ -365,7 +365,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A GitHub Actions workflow starts with this trigger:\n```yaml\non:\n  push:\n    paths:\n      - \"services/billing/**\"\n```\nA push changes only `README.md` and `services/search/app.py`. Does the workflow start?",
@@ -404,7 +404,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A push to `main` changes only a comment, and the commit message ends with `[skip ci]`. How do common hosted CI services treat this marker?",
@@ -412,7 +412,7 @@
       "options": [
         {
           "id": "a",
-          "text": "They create no pipeline for that push"
+          "text": "They do not create a pipeline for that change at all"
         },
         {
           "id": "b",
@@ -445,7 +445,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Jenkinsfile contains this block:\n```groovy\npipeline {\n  agent any\n  triggers { pollSCM('H/5 * * * *') }\n  stages {\n    stage('Build') { steps { sh 'make' } }\n  }\n}\n```\nWhat does the trigger do?",
@@ -484,7 +484,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What makes a trigger a manual trigger?",
@@ -504,7 +504,7 @@
         },
         {
           "id": "d",
-          "text": "A person starts the run on demand, for example with a button or an API call"
+          "text": "A person starts the run on demand, such as with a button"
         }
       ]
     },
@@ -525,7 +525,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A GitHub Actions workflow has this trigger block:\n```yaml\non:\n  workflow_dispatch:\n    inputs:\n      target:\n        type: choice\n        options: [staging, production]\n```\nWhat does it provide?",
@@ -564,7 +564,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Jenkinsfile contains these stages:\n```groovy\nstage('Approve') {\n  steps { input message: 'Deploy to production?' }\n}\nstage('Deploy') {\n  steps { sh './deploy.sh prod' }\n}\n```\nWhat happens when the run reaches the Approve stage?",
@@ -576,7 +576,7 @@
         },
         {
           "id": "b",
-          "text": "It pauses until a person approves or aborts, and Deploy waits"
+          "text": "It pauses until someone confirms or aborts, and Deploy waits"
         },
         {
           "id": "c",
@@ -603,7 +603,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A `.gitlab-ci.yml` file defines this job:\n```yaml\ndeploy:\n  script: ./deploy.sh\n  rules:\n    - if: $CI_COMMIT_BRANCH == \"main\"\n      when: manual\n    - when: on_success\n```\nA push to `main` creates a pipeline. What happens to `deploy`?",
@@ -642,7 +642,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A team wants a pipeline to start at a set time each night, with or without new commits. Which trigger fits?",
@@ -650,11 +650,11 @@
       "options": [
         {
           "id": "a",
-          "text": "A push trigger on main"
+          "text": "A push trigger on `main`"
         },
         {
           "id": "b",
-          "text": "A scheduled trigger"
+          "text": "A scheduled (cron) trigger"
         },
         {
           "id": "c",
@@ -681,7 +681,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A pipeline schedule uses the five-field cron expression `30 2 * * 1-5` in universal time. When does it run?",
@@ -720,7 +720,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "What does the cron expression `*/20 8-17 * * *` mean in a pipeline schedule?",
@@ -759,7 +759,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A hosted CI service evaluates cron schedules in universal time. A team in Tokyo (`UTC+9`, no daylight saving time) sets `0 22 * * *` for a nightly build. At what Tokyo local time does it start?",
@@ -788,7 +788,7 @@
         "a"
       ]
     },
-    "explanation": "The schedule fires at 22:00 universal time, and adding nine hours gives 07:00 the next day in Tokyo. The other times either ignore the time zone or apply the offset in the wrong direction.",
+    "explanation": "The schedule fires at 22:00 universal time, and adding nine hours gives 07:00 the next day in Tokyo. 22:00 ignores the offset, 13:00 subtracts it instead of adding it, and 09:00 would need a start at midnight universal time.",
     "acronyms": [
       "CI"
     ]
@@ -800,15 +800,15 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A developer adds this block to a workflow file, but only on the branch `feature/nightly`:\n```yaml\non:\n  schedule:\n    - cron: \"0 3 * * *\"\n```\nThe workflow never runs at 03:00 universal time. Why?",
+    "stem": "A developer adds this block to a GitHub Actions workflow, but only on the branch `feature/nightly`:\n```yaml\non:\n  schedule:\n    - cron: \"0 3 * * *\"\n```\nThe workflow never runs at 03:00 universal time. Why?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Schedules are read from the file on the default branch"
+          "text": "Schedules take effect only on the default branch"
         },
         {
           "id": "b",
@@ -839,7 +839,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A Jenkinsfile declares this trigger:\n```groovy\npipeline {\n  agent any\n  triggers { cron('H 2 * * *') }\n  stages { stage(\"Scan\") { steps { sh \"make scan\" } } }\n}\n```\nHow often does it run?",
@@ -859,7 +859,7 @@
         },
         {
           "id": "d",
-          "text": "Once a day, at a minute within the 02:00 hour that Jenkins picks for this job"
+          "text": "Once a day, at a minute in the 02:00 hour"
         }
       ]
     },
@@ -868,7 +868,7 @@
         "d"
       ]
     },
-    "explanation": "In Jenkins the `H` symbol hashes the job name into a fixed value, which spreads jobs across the hour instead of starting them all at minute 0. With the hour fixed at 2, the job runs once a day within that hour.",
+    "explanation": "In Jenkins the `H` symbol hashes the job name into a fixed value, which spreads jobs across the hour instead of starting them all at minute 0. With the hour fixed at 2, the job runs once a day at the same minute within that hour.",
     "acronyms": []
   },
   {
@@ -878,7 +878,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A `.gitlab-ci.yml` file defines this job:\n```yaml\nnightly-scan:\n  script: ./scan.sh\n  rules:\n    - if: $CI_PIPELINE_SOURCE == \"schedule\"\n```\nA developer pushes a commit to `main`. Does `nightly-scan` run in that pipeline?",
@@ -894,7 +894,7 @@
         },
         {
           "id": "c",
-          "text": "No, because the rule matches scheduled pipelines and this one came from a push"
+          "text": "No, because the rule needs a scheduled pipeline"
         },
         {
           "id": "d",
@@ -917,7 +917,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team builds on each commit, not just on releases, and needs to trace any artifact back to its exact source. Which git value belongs in the artifact name?",
@@ -925,7 +925,7 @@
       "options": [
         {
           "id": "a",
-          "text": "The branch name at build time"
+          "text": "The branch the commit was on at build time"
         },
         {
           "id": "b",
@@ -956,7 +956,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A `.gitlab-ci.yml` file contains this job:\n```yaml\npublish:\n  script:\n    - if [ -n \"$CI_COMMIT_TAG\" ]; then ./publish.sh \"$CI_COMMIT_TAG\"; fi\n```\nWhen does `./publish.sh` run?",
@@ -972,7 +972,7 @@
         },
         {
           "id": "c",
-          "text": "In pipelines created by pushing a tag, where the variable is set"
+          "text": "In pipelines created by pushing a tag, where it holds the tag name"
         },
         {
           "id": "d",
