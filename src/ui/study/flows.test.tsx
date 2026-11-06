@@ -152,6 +152,24 @@ describe('study tips in practice and cram', () => {
   });
 });
 
+describe('tools in study runs', () => {
+  it('practice runs show Calculator and Whiteboard', async () => {
+    const user = userEvent.setup();
+    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} />);
+    await user.click(await screen.findByRole('button', { name: 'Start practice' }));
+    expect(await screen.findByRole('button', { name: 'Calculator' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Whiteboard' })).toBeInTheDocument();
+  });
+
+  it('cram runs show Calculator and Whiteboard', async () => {
+    const user = userEvent.setup();
+    render(<CramFlow repo={createMemoryRepo()} examCode="T-001" seed={1} />);
+    await user.click(await screen.findByRole('button', { name: 'Start cram' }));
+    expect(await screen.findByRole('button', { name: 'Calculator' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Whiteboard' })).toBeInTheDocument();
+  });
+});
+
 describe('CramFlow', () => {
   it('shows an error when loading fails', async () => {
     const repo = createMemoryRepo();

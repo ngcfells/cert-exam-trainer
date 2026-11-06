@@ -6,6 +6,7 @@ import { LEAVE_RUN, LeaveGuards } from '../nav';
 import { LeaveGuardProvider } from '../testNav';
 import type { AssembledExam } from '../../exam/assemble';
 import { mcq } from '../../exam/testFixtures';
+import { PanelProbe, WithPanels } from '../panels/testPanels';
 
 const exam: AssembledExam = {
   exam: 'T-001',
@@ -151,5 +152,69 @@ describe('ExamRunner', () => {
       vi.advanceTimersByTime(1000);
     });
     expect(screen.getByRole('timer')).toHaveTextContent('0:30');
+  });
+});
+
+describe('ExamRunner tools', () => {
+  function setupTools(timeLimitMs = 600_000) {
+    const onSubmit = vi.fn();
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    const r = render(
+      <WithPanels>
+        <ExamRunner exam={exam} timeLimitMs={timeLimitMs} startedAt={T0} onSubmit={onSubmit} />
+        <PanelProbe />
+      </WithPanels>,
+    );
+    return { onSubmit, user, ...r };
+  }
+  const probe = () => screen.getByTestId('panel-probe');
+
+  it('shows Calculator and Whiteboard in the top bar', () => {
+    setupTools();
+    const bar = screen.getByRole('banner');
+    expect(within(bar).getByRole('button', { name: 'Calculator' })).toBeInTheDocument();
+    expect(within(bar).getByRole('button', { name: 'Whiteboard' })).toBeInTheDocument();
+  });
+
+  it('keeps the timer counting with the calculator open, and shows time left in the panel', async () => {
+    const { user } = setupTools();
+    await user.click(screen.getByRole('button', { name: 'Calculator' }));
+    const panel = screen.getByRole('dialog', { name: 'Calculator' });
+    act(() => vi.advanceTimersByTime(5_000));
+    expect(screen.getByRole('timer')).toHaveTextContent('9:55');
+    expect(within(panel).getByText(/Time left: 9:5\d/)).toBeInTheDocument();
+  });
+
+  it('auto-submit closes an open panel', async () => {
+    const { user, onSubmit } = setupTools(10_000);
+    await user.click(screen.getByRole('button', { name: 'Whiteboard' }));
+    expect(screen.getByRole('dialog', { name: 'Whiteboard' })).toBeInTheDocument();
+    act(() => vi.advanceTimersByTime(11_000));
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit.mock.calls[0][0]).toMatchObject({ autoSubmitted: true });
+    expect(screen.queryByRole('dialog', { name: 'Whiteboard' })).not.toBeInTheDocument();
+    expect(probe()).toHaveAttribute('data-current', '');
+  });
+
+  it('sets the mock deadline while running and clears it on submit', () => {
+    setupTools(10_000);
+    expect(probe()).toHaveAttribute('data-deadline', String(T0.getTime() + 10_000));
+    act(() => vi.advanceTimersByTime(11_000));
+    expect(probe()).toHaveAttribute('data-deadline', '');
+  });
+
+  it('clears the mock deadline when the runner unmounts mid-exam', () => {
+    function Host({ show }: { show: boolean }) {
+      return (
+        <WithPanels>
+          {show && <ExamRunner exam={exam} timeLimitMs={600_000} startedAt={T0} onSubmit={() => {}} />}
+          <PanelProbe />
+        </WithPanels>
+      );
+    }
+    const { rerender } = render(<Host show />);
+    expect(probe()).not.toHaveAttribute('data-deadline', '');
+    rerender(<Host show={false} />);
+    expect(probe()).toHaveAttribute('data-deadline', '');
   });
 });

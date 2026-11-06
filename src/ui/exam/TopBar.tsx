@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { formatTime } from './formatTime';
 
 const MILESTONES = [10, 5, 1];
@@ -9,12 +9,15 @@ export function TopBar({
   remainingMs,
   flagged,
   onToggleFlag,
+  tools,
 }: {
   index: number;
   total: number;
   remainingMs: number;
   flagged: boolean;
   onToggleFlag: () => void;
+  /** The calculator and whiteboard buttons. */
+  tools?: ReactNode;
 }) {
   const [announcement, setAnnouncement] = useState('');
   const announced = useRef(new Set<number>());
@@ -33,6 +36,7 @@ export function TopBar({
       <span className="timer">
         <span aria-label="Time remaining" role="timer">{formatTime(remainingMs)}</span>
       </span>
+      {tools}
       <button type="button" aria-pressed={flagged} onClick={onToggleFlag}>
         <span aria-hidden="true">{flagged ? '⚑ ' : '⚐ '}</span>
         Flag for review

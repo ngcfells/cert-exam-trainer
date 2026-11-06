@@ -12,6 +12,8 @@ import type { ExamMeta } from '../../domain/types';
 import type { Tip } from '../../tips/types';
 import { nextTip, reachQuestion } from '../tips/prefs';
 import { tipAnnouncement, TipBox } from '../tips/TipBox';
+import { usePanels } from '../panels/PanelProvider';
+import { RunToolsProvider, ToolButtons, ToolPanels } from '../tools/RunTools';
 import '../exam/exam.css';
 import './study.css';
 
@@ -39,7 +41,10 @@ export function StudyRunner({
   onFinish,
   warnIncomplete = false,
   tipsFor,
+  tools = false,
 }: {
+  /** Practice and cram: Calculator and Whiteboard in the header. Lesson checks leave it out. */
+  tools?: boolean;
   /** Practice and cram: the exam whose study tips show every 10 to 20 new questions. Lesson checks leave it out. */
   tipsFor?: ExamMeta;
   items: StudyItem[];
@@ -59,15 +64,17 @@ export function StudyRunner({
   const [confirming, setConfirming] = useState(false);
   const dialogRef = useRef<HTMLDialogElement>(null);
   const keepRef = useRef<HTMLButtonElement>(null);
+  const { close: closePanel } = usePanels();
   useEffect(() => {
     const d = dialogRef.current;
     if (!d) return;
     if (confirming && !d.open) {
+      closePanel({ restoreFocus: false });
       d.showModal();
       keepRef.current?.focus();
     }
     if (!confirming && d.open) d.close();
-  }, [confirming]);
+  }, [confirming, closePanel]);
   const [done, setDone] = useState(false);
   const finished = useRef(false);
   // A timed run asks from the start; an untimed one once something is answered.
@@ -103,6 +110,7 @@ export function StudyRunner({
     (timedOut: boolean) => {
       if (finished.current) return;
       finished.current = true;
+      closePanel({ restoreFocus: false });
       const { responses: r, checked: c, grades: g } = state.current;
       setDone(true);
       onFinishRef.current({
@@ -114,7 +122,7 @@ export function StudyRunner({
         finishedAt: new Date(now()),
       });
     },
-    [feedback, now, items],
+    [feedback, now, items, closePanel],
   );
   const deadline = timeLimitMs === undefined ? undefined : startedAt.getTime() + timeLimitMs;
   const { remaining, announcement } = useCountdown(deadline, now, () => finish(true), true);
@@ -130,7 +138,9 @@ export function StudyRunner({
       : knownStatus(grades[current.card.term]);
 
   return (
+    <RunToolsProvider>
     <RunnerFrame
+      tools={tools ? <ToolButtons /> : undefined}
       replaced={done && <p role="status">Saving…</p>}
       label="Item"
       index={index}
@@ -201,6 +211,8 @@ export function StudyRunner({
           </>
         )}
       </dialog>
+      {tools && <ToolPanels />}
     </RunnerFrame>
+    </RunToolsProvider>
   );
 }

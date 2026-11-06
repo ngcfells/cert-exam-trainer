@@ -9,6 +9,7 @@ import { resetSoundForTests } from '../marks/sound';
 import { StrictMode } from 'react';
 import { dataPlusMeta } from '../../banks/dataplus/meta';
 import { applyTips, getTips, resetTipsForTests } from '../tips/prefs';
+import { WithPanels } from '../panels/testPanels';
 
 const T0 = new Date('2026-01-01T00:00:00Z');
 const order = ['a', 'b', 'c', 'd'];
@@ -356,5 +357,49 @@ describe('StudyRunner study tips', () => {
     await user.click(screen.getByLabelText('Q9-a'));
     await user.click(screen.getByRole('button', { name: 'Check answer' }));
     expect(screen.getByRole('status')).toHaveTextContent('Correct');
+  });
+});
+
+describe('StudyRunner tools', () => {
+  function setupTools(props: Partial<Parameters<typeof StudyRunner>[0]> = {}) {
+    const onFinish = vi.fn();
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    render(
+      <WithPanels>
+        <StudyRunner items={items} feedback="instant" startedAt={T0} onFinish={onFinish} {...props} />
+      </WithPanels>,
+    );
+    return { onFinish, user };
+  }
+
+  it('shows both tool buttons in the header with tools', () => {
+    setupTools({ tools: true });
+    const bar = screen.getByRole('banner');
+    expect(within(bar).getByRole('button', { name: 'Calculator' })).toBeInTheDocument();
+    expect(within(bar).getByRole('button', { name: 'Whiteboard' })).toBeInTheDocument();
+  });
+
+  it('shows neither without tools (lesson checks)', () => {
+    setupTools();
+    expect(screen.queryByRole('button', { name: 'Calculator' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Whiteboard' })).not.toBeInTheDocument();
+  });
+
+  it('a timeout closes an open panel', async () => {
+    const { user, onFinish } = setupTools({ tools: true, timeLimitMs: 10_000 });
+    await user.click(screen.getByRole('button', { name: 'Calculator' }));
+    expect(screen.getByRole('dialog', { name: 'Calculator' })).toBeInTheDocument();
+    act(() => vi.advanceTimersByTime(11_000));
+    expect(onFinish).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole('dialog', { name: 'Calculator' })).not.toBeInTheDocument();
+  });
+
+  it('Finish closes an open panel', async () => {
+    const { user, onFinish } = setupTools({ tools: true });
+    await user.click(screen.getByRole('button', { name: 'Whiteboard' }));
+    // The panel is modal in a browser; this stands in for a finish that arrives while it is open.
+    await user.click(screen.getByRole('button', { name: 'Finish now' }));
+    expect(onFinish).toHaveBeenCalledTimes(1);
+    expect(screen.queryByRole('dialog', { name: 'Whiteboard' })).not.toBeInTheDocument();
   });
 });

@@ -111,6 +111,7 @@ export function RunnerFrame({
   previous = true,
   nextPrimary = false,
   replaced,
+  tools,
   children,
 }: {
   /** Shown instead of the frame (e.g. "Saving…"), keeping the same announcer node. */
@@ -126,6 +127,8 @@ export function RunnerFrame({
   onFinish: () => void;
   previous?: boolean;
   nextPrimary?: boolean;
+  /** The calculator and whiteboard buttons, in the header. */
+  tools?: ReactNode;
   children: ReactNode;
 }) {
   const headingRef = useFocusHeading([index]);
@@ -150,6 +153,7 @@ export function RunnerFrame({
               <span aria-label="Time left" role="timer">{formatTime(remaining)}</span>
             </span>
           )}
+          {tools}
         </header>
       )}
       <section className="exam-body" aria-labelledby="runner-h">

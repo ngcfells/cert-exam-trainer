@@ -51,6 +51,7 @@ export function PracticeFlow({
   }
   return (
     <StudyRunner
+      tools
       warnIncomplete
       tipsFor={meta}
       items={run.exam.items.map((item) => ({ kind: 'question', item }))}

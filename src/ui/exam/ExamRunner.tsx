@@ -5,6 +5,8 @@ import { QuestionView, useCountdown, useFocusHeading } from '../kit';
 import { ReviewGrid } from './ReviewGrid';
 import { useLeaveGuard } from '../nav';
 import { TopBar } from './TopBar';
+import { usePanels } from '../panels/PanelProvider';
+import { RunToolsProvider, ToolButtons, ToolPanels } from '../tools/RunTools';
 import './exam.css';
 
 export interface SubmitPayload {
@@ -45,16 +47,25 @@ export function ExamRunner({
   const onSubmitRef = useRef(onSubmit);
   onSubmitRef.current = onSubmit;
 
+  const { close: closePanel, setMockDeadline } = usePanels();
+  // Panels show the time left while this mock runs; leaving the screen clears it.
+  useEffect(() => {
+    setMockDeadline(deadline);
+    return () => setMockDeadline(null);
+  }, [deadline, setMockDeadline]);
+
   const submit = useCallback(
     (autoSubmitted: boolean) => {
       if (submitted.current) return;
       submitted.current = true;
       setIsSubmitted(true);
+      closePanel({ restoreFocus: false });
+      setMockDeadline(null);
       dialogRef.current?.close();
       const { responses: r, flagged: f } = state.current;
       onSubmitRef.current({ responses: r, flagged: [...f], autoSubmitted, finishedAt: new Date(now()) });
     },
-    [now],
+    [now, closePanel, setMockDeadline],
   );
 
   /** True (and submits) once the deadline has passed, even between timer ticks. */
@@ -71,11 +82,12 @@ export function ExamRunner({
     const d = dialogRef.current;
     if (!d) return;
     if (confirming && !d.open) {
+      closePanel({ restoreFocus: false });
       d.showModal();
       cancelRef.current?.focus();
     }
     if (!confirming && d.open) d.close();
-  }, [confirming]);
+  }, [confirming, closePanel]);
 
   const item = exam.items[index];
   const total = exam.items.length;
@@ -93,6 +105,7 @@ export function ExamRunner({
   }
 
   return (
+    <RunToolsProvider>
     <div className="exam">
       <TopBar
         index={index}
@@ -100,6 +113,7 @@ export function ExamRunner({
         remainingMs={remaining}
         flagged={flagged.has(item.question.id)}
         onToggleFlag={toggleFlag}
+        tools={<ToolButtons />}
       />
       {view === 'question' ? (
         <>
@@ -159,6 +173,8 @@ export function ExamRunner({
           </>
         )}
       </dialog>
+      <ToolPanels />
     </div>
+    </RunToolsProvider>
   );
 }

@@ -66,6 +66,15 @@ describe('LearnFlow', () => {
     expect(within(await statusOf(LESSON)).getByText('In progress')).toBeInTheDocument();
   });
 
+  it('a lesson check has no calculator or whiteboard', async () => {
+    const { user } = setup();
+    await user.click(await screen.findByRole('button', { name: new RegExp(LESSON) }));
+    await user.click(await screen.findByRole('button', { name: 'Start the check (3 questions)' }));
+    expect(await screen.findByRole('heading', { name: /^Item 1 of/ })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Calculator' })).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Whiteboard' })).not.toBeInTheDocument();
+  });
+
   it('a full correct check saves a lesson result with reviews and marks the lesson done', async () => {
     const { repo, user } = setup();
     await user.click(await screen.findByRole('button', { name: new RegExp(LESSON) }));
