@@ -31,7 +31,7 @@ async function submitEmptyMock(page: Page) {
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
   await page.getByRole('button', { name: 'Start exam' }).click();
-  for (let i = 1; i < 9; i++) await page.getByRole('button', { name: 'Next' }).click();
+  for (let i = 1; i < 9; i++) await page.getByRole('button', { name: 'Next', exact: true }).click();
   await page.getByRole('button', { name: 'Review', exact: true }).click();
   await page.getByRole('button', { name: 'Submit exam' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Submit', exact: true }).click();
@@ -56,7 +56,7 @@ test('practice setup, a checked question and results pass axe', async ({ page })
   await expect(page.getByRole('status')).toHaveText(/^(Correct|Partly correct|Incorrect)$/);
   await expectNoSeriousAxe(page);
 
-  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByRole('button', { name: 'Next', exact: true }).click();
   await page.getByRole('button', { name: 'Finish' }).click();
   // Item 2 is unanswered, so practice asks first. Item 1 counts too if it is a select-two with one pick
   // (the run's order is random).
@@ -81,7 +81,7 @@ test('practice with every PBQ type passes axe on each item', async ({ page }) =>
   for (let i = 1; i <= 8; i++) {
     await expect(page.getByRole('heading', { name: `Item ${i} of 8` })).toBeVisible();
     await expectNoSeriousAxe(page);
-    if (i < 8) await page.getByRole('button', { name: 'Next' }).click();
+    if (i < 8) await page.getByRole('button', { name: 'Next', exact: true }).click();
   }
   await page.getByRole('button', { name: 'Finish' }).click();
   await finishAnyway(page);

@@ -6,6 +6,9 @@ import { mcq, numeric, pbq } from '../../exam/testFixtures';
 import { applyMarks, DEFAULT_MARKS } from '../marks/prefs';
 import { fakeAudio } from '../marks/fakeAudio';
 import { resetSoundForTests } from '../marks/sound';
+import { StrictMode } from 'react';
+import { dataPlusMeta } from '../../banks/dataplus/meta';
+import { applyTips, getTips, resetTipsForTests } from '../tips/prefs';
 
 const T0 = new Date('2026-01-01T00:00:00Z');
 const order = ['a', 'b', 'c', 'd'];
@@ -232,5 +235,126 @@ describe('StudyRunner answer marks', () => {
     await user.click(screen.getByRole('button', { name: 'I knew it' }));
     expect(screen.getByRole('status')).toHaveTextContent('Marked as known');
     expect(screen.getByRole('status').querySelector('.mark')).toBeNull();
+  });
+});
+
+describe('StudyRunner study tips', () => {
+  const qs = (n: number): StudyItem[] =>
+    Array.from({ length: n }, (_, i) => ({ kind: 'question', item: { question: mcq(`Q${i}`, 'A'), optionOrder: order } }));
+  const TIP = /^(Study|Test-room) tip$/;
+  const tipBox = () => screen.queryByRole('region', { name: TIP });
+
+  beforeEach(() => applyTips({ on: true, progress: { count: 0, gap: 10, seen: [] } }));
+  afterEach(() => resetTipsForTests());
+
+  async function next(user: ReturnType<typeof userEvent.setup>, times: number) {
+    for (let i = 0; i < times; i++) await user.click(screen.getByRole('button', { name: 'Next' }));
+  }
+
+  it('opens a tip above the question on the tenth new question', async () => {
+    const { user } = setup({ items: qs(12), tipsFor: dataPlusMeta });
+    await next(user, 8);
+    expect(tipBox()).toBeNull();
+    await next(user, 1);
+    const box = tipBox()!;
+    expect(box).not.toBeNull();
+    const fieldset = document.querySelector('fieldset.study-lock')!;
+    expect(box.compareDocumentPosition(fieldset) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(getTips().progress.count).toBe(0);
+  });
+
+  it('announces a new tip through a live region that is there from the start', async () => {
+    const { user } = setup({ items: qs(12), tipsFor: dataPlusMeta });
+    const live = screen.getByTestId('tip-announcer');
+    expect(live).toHaveAttribute('aria-live', 'polite');
+    expect(live).toHaveTextContent('');
+    await next(user, 9);
+    const box = tipBox()!;
+    expect(screen.getByTestId('tip-announcer')).toBe(live);
+    expect(live.textContent).toMatch(/^(Study|Test-room) tip: /);
+    expect(live.textContent).toContain(box.querySelector('.tip-text')!.textContent);
+    await user.click(screen.getByRole('button', { name: 'Close tip' }));
+    expect(live).toHaveTextContent('');
+  });
+
+  it('has no tip announcer without tipsFor', () => {
+    setup({ items: qs(3) });
+    expect(screen.queryByTestId('tip-announcer')).toBeNull();
+  });
+
+  it('does not count a question twice after going back', async () => {
+    const { user } = setup({ items: qs(12), tipsFor: dataPlusMeta });
+    await next(user, 4);
+    expect(getTips().progress.count).toBe(5);
+    for (let i = 0; i < 3; i++) await user.click(screen.getByRole('button', { name: 'Previous' }));
+    await next(user, 3);
+    expect(getTips().progress.count).toBe(5);
+  });
+
+  it('counts once per question under StrictMode', async () => {
+    const onFinish = vi.fn();
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    render(
+      <StrictMode>
+        <StudyRunner items={qs(12)} feedback="instant" startedAt={T0} onFinish={onFinish} tipsFor={dataPlusMeta} />
+      </StrictMode>,
+    );
+    expect(getTips().progress.count).toBe(1);
+    await next(user, 9);
+    expect(screen.getAllByRole('region', { name: TIP })).toHaveLength(1);
+    expect(getTips().progress.count).toBe(0);
+  });
+
+  it('Close tip removes the box and moves focus to the item heading', async () => {
+    const { user } = setup({ items: qs(12), tipsFor: dataPlusMeta });
+    await next(user, 9);
+    await user.click(screen.getByRole('button', { name: 'Close tip' }));
+    expect(tipBox()).toBeNull();
+    expect(screen.getByRole('heading', { name: 'Item 10 of 12' })).toHaveFocus();
+  });
+
+  it('keeps the box and its tip while moving, even when the next tip falls due', async () => {
+    const { user } = setup({ items: qs(25), tipsFor: dataPlusMeta });
+    await next(user, 9);
+    const text = tipBox()!.textContent;
+    await user.click(screen.getByRole('button', { name: 'Previous' }));
+    expect(tipBox()!.textContent).toBe(text);
+    await next(user, 1);
+    act(() => applyTips({ ...getTips(), progress: { ...getTips().progress, count: 0, gap: 10 } }));
+    await next(user, 10);
+    expect(tipBox()!.textContent).toBe(text);
+    expect(screen.getAllByRole('region', { name: TIP })).toHaveLength(1);
+    expect(getTips().progress.count).toBe(0);
+  });
+
+  it('shows no tip and counts nothing without tipsFor (lesson checks)', async () => {
+    const { user } = setup({ items: qs(12) });
+    await next(user, 9);
+    expect(tipBox()).toBeNull();
+    expect(getTips().progress.count).toBe(0);
+  });
+
+  it('shows no tip when tips are off', async () => {
+    act(() => applyTips({ on: false, progress: { count: 0, gap: 10, seen: [] } }));
+    const { user } = setup({ items: qs(12), tipsFor: dataPlusMeta });
+    await next(user, 9);
+    expect(tipBox()).toBeNull();
+  });
+
+  it('does not count acronym cards', async () => {
+    const cards: StudyItem[] = ['A', 'B', 'C', 'D', 'E'].map((t) => ({ kind: 'acronym', card: { term: t, expansion: `${t} x` } }));
+    const { user } = setup({ items: [...qs(9), ...cards], tipsFor: dataPlusMeta });
+    await next(user, 13);
+    expect(tipBox()).toBeNull();
+    expect(getTips().progress.count).toBe(9);
+  });
+
+  it('lets the question be answered and checked with the box open', async () => {
+    const { user } = setup({ items: qs(12), tipsFor: dataPlusMeta });
+    await next(user, 9);
+    expect(tipBox()).not.toBeNull();
+    await user.click(screen.getByLabelText('Q9-a'));
+    await user.click(screen.getByRole('button', { name: 'Check answer' }));
+    expect(screen.getByRole('status')).toHaveTextContent('Correct');
   });
 });

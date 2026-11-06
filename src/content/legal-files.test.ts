@@ -8,9 +8,10 @@ describe('license files', () => {
   it('LICENSE is MIT with the Commons Clause', () => {
     const text = read('LICENSE');
     expect(text).toContain('"Commons Clause" License Condition v1.0');
-    expect(text).toContain('Licensor: ngcfells');
+    // The owner's 2026-11-05 edit (890e917) names the licensor by full name.
+    expect(text).toContain('Licensor: Christopher Fells');
     expect(text).toContain('MIT License');
-    expect(text).toContain('Copyright (c) 2026 ngcfells');
+    expect(text).toContain('Copyright (c) 2026 Christopher Fells');
   });
 
   it('package.json points at LICENSE', () => {

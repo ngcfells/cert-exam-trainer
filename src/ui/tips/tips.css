@@ -1,0 +1,7 @@
+/* Study tips (issue #3): a box in the page flow above the question. Theme tokens only; no opacity animation. */
+.tip-box { box-sizing: border-box; max-width: 100%; margin: 0 0 1rem; padding: 0.75rem 1rem; background: var(--surface-2); color: var(--fg); border: 1px solid var(--border); border-left: 6px solid var(--accent); border-radius: 0.5rem; }
+.tip-head { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.tip-head h3 { margin: 0; font-size: 1.05rem; min-width: 0; }
+.tip-close { flex: none; min-width: 2.75rem; padding: 0.25rem 0.5rem; font-size: 1.1rem; line-height: 1; }
+.tip-text { margin: 0.5rem 0 0.75rem; overflow-wrap: break-word; }
+.tip-nav { display: flex; flex-wrap: wrap; gap: 0.5rem; }

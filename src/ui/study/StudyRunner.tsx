@@ -8,6 +8,10 @@ import { AcronymFlip, knownStatus, QuestionView, RunnerFrame, useCountdown, useF
 import { useLeaveGuard } from '../nav';
 import { AnswerMark, levelOf } from '../marks/AnswerMark';
 import { playMark } from '../marks/sound';
+import type { ExamMeta } from '../../domain/types';
+import type { Tip } from '../../tips/types';
+import { nextTip, reachQuestion } from '../tips/prefs';
+import { tipAnnouncement, TipBox } from '../tips/TipBox';
 import '../exam/exam.css';
 import './study.css';
 
@@ -34,7 +38,10 @@ export function StudyRunner({
   now = Date.now,
   onFinish,
   warnIncomplete = false,
+  tipsFor,
 }: {
+  /** Practice and cram: the exam whose study tips show every 10 to 20 new questions. Lesson checks leave it out. */
+  tipsFor?: ExamMeta;
   items: StudyItem[];
   /** Practice and cram: Finish asks first when questions are unanswered or partly answered. */
   warnIncomplete?: boolean;
@@ -72,6 +79,25 @@ export function StudyRunner({
   const onFinishRef = useRef(onFinish);
   onFinishRef.current = onFinish;
   const [statusRef, focusStatus] = useFocusLater<HTMLDivElement>();
+
+  // Study tips: count each new question reached (never on going back; a ref, so StrictMode's second effect run is a no-op).
+  const [tip, setTip] = useState<Tip | null>(null);
+  // Mounted for the whole run, so a screen reader reliably announces a tip's arrival.
+  const [tipNote, setTipNote] = useState('');
+  const tipOpen = useRef(false);
+  tipOpen.current = tip !== null;
+  const reached = useRef(-1);
+  useEffect(() => {
+    if (!tipsFor || index <= reached.current) return;
+    reached.current = index;
+    if (items[index].kind !== 'question') return;
+    // A tip due while one is open leaves the open tip alone; the count has already started again.
+    if (reachQuestion() && !tipOpen.current) {
+      const t = nextTip(tipsFor.code);
+      setTip(t);
+      setTipNote(tipAnnouncement(t, tipsFor));
+    }
+  }, [index, items, tipsFor]);
 
   const finish = useCallback(
     (timedOut: boolean) => {
@@ -119,6 +145,23 @@ export function StudyRunner({
       onIndex={setIndex}
       onFinish={() => (warnIncomplete && unfinished > 0 ? setConfirming(true) : finish(false))}
     >
+      {tipsFor && (
+        <span className="visually-hidden" aria-live="polite" data-testid="tip-announcer">
+          {tipNote}
+        </span>
+      )}
+      {tip && tipsFor && (
+        <TipBox
+          key={tip.id}
+          first={tip}
+          meta={tipsFor}
+          onClose={() => {
+            setTip(null);
+            setTipNote('');
+            document.getElementById('runner-h')?.focus();
+          }}
+        />
+      )}
       {current.kind === 'question' ? (
         <>
           <fieldset className="study-lock" disabled={isChecked}>

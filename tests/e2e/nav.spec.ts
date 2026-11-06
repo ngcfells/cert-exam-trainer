@@ -100,7 +100,7 @@ test('leaving a mock exam after an answer asks first; Cancel keeps the answer', 
     for (let i = 1; i <= 9; i++) {
       const choice = page.locator('.exam-body input[type="radio"], .exam-body input[type="checkbox"]').first();
       if (await choice.count()) return choice.check();
-      await page.getByRole('button', { name: 'Next' }).click();
+      await page.getByRole('button', { name: 'Next', exact: true }).click();
     }
     throw new Error('no item with a radio or checkbox');
   };

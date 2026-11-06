@@ -10,6 +10,7 @@ import type { ExamMeta } from '../../domain/types';
 import { TestNav } from '../testNav';
 import { PracticeFlow } from './PracticeFlow';
 import { CramFlow } from './CramFlow';
+import { applyTips, resetTipsForTests } from '../tips/prefs';
 
 /** Practice and cram ask before finishing with unfinished questions; say Finish. */
 async function finishAnyway(user: ReturnType<typeof userEvent.setup>) {
@@ -128,6 +129,26 @@ describe('PracticeFlow', () => {
     await user.click(await screen.findByRole('checkbox', { name: 'All of domain A' }));
     expect(screen.getByRole('checkbox', { name: 'A.1 Objective A1' })).not.toBeChecked();
     expect(screen.getByRole('status')).toHaveTextContent(/Only 3 questions match/);
+  });
+});
+
+describe('study tips in practice and cram', () => {
+  const TIP = /^(Study|Test-room) tip$/;
+  beforeEach(() => applyTips({ on: true, progress: { count: 9, gap: 10, seen: [] } }));
+  afterEach(() => resetTipsForTests());
+
+  it('practice shows a tip when one falls due', async () => {
+    const user = userEvent.setup();
+    render(<PracticeFlow repo={createMemoryRepo()} examCode="T-001" seed={1} />);
+    await user.click(await screen.findByRole('button', { name: 'Start practice' }));
+    expect(await screen.findByRole('region', { name: TIP })).toBeInTheDocument();
+  });
+
+  it('cram shows a tip when one falls due', async () => {
+    const user = userEvent.setup();
+    render(<CramFlow repo={createMemoryRepo()} examCode="T-001" seed={1} />);
+    await user.click(await screen.findByRole('button', { name: 'Start cram' }));
+    expect(await screen.findByRole('region', { name: TIP })).toBeInTheDocument();
   });
 });
 
