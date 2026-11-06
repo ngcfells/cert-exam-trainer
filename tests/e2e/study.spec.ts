@@ -30,6 +30,7 @@ async function submitEmptyMock(page: Page) {
   await page.goto(`${singleUrl}?seed=4`);
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
+  await page.getByRole('checkbox', { name: 'I understand' }).check();
   await page.getByRole('button', { name: 'Start exam' }).click();
   for (let i = 1; i < 9; i++) await page.getByRole('button', { name: 'Next', exact: true }).click();
   await page.getByRole('button', { name: 'Review', exact: true }).click();

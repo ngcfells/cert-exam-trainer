@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { LEAVE_RUN, LeaveGuards, navBack, useLeaveGuard, useNavUp } from './nav';
+import { LEAVE_MOCK, LEAVE_RUN, LeaveGuards, navBack, useLeaveGuard, useNavUp } from './nav';
 import { LeaveGuardProvider, TestNav } from './testNav';
 
 function Guarded({ active, message }: { active: boolean; message?: string }) {
@@ -61,6 +61,42 @@ describe('leave guards', () => {
     );
     guards.confirmLeave();
     expect(confirm).toHaveBeenCalledWith('Discard your changes?');
+  });
+
+  it('a guard with onLeave calls it on OK and still stays on the screen', () => {
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(true);
+    const guards = new LeaveGuards();
+    const onLeave = vi.fn();
+    guards.add({ message: LEAVE_MOCK, onLeave });
+    expect(guards.confirmLeave()).toBe(false);
+    expect(confirm).toHaveBeenCalledWith(LEAVE_MOCK);
+    expect(onLeave).toHaveBeenCalledTimes(1);
+  });
+
+  it('a guard with onLeave does nothing on Cancel', () => {
+    vi.spyOn(window, 'confirm').mockReturnValue(false);
+    const guards = new LeaveGuards();
+    const onLeave = vi.fn();
+    guards.add({ message: LEAVE_MOCK, onLeave });
+    expect(guards.confirmLeave()).toBe(false);
+    expect(onLeave).not.toHaveBeenCalled();
+  });
+
+  it('useLeaveGuard passes onLeave to its guard', () => {
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+    const guards = new LeaveGuards();
+    const onLeave = vi.fn();
+    function MockGuard() {
+      useLeaveGuard(true, LEAVE_MOCK, onLeave);
+      return null;
+    }
+    render(
+      <LeaveGuardProvider guards={guards}>
+        <MockGuard />
+      </LeaveGuardProvider>,
+    );
+    expect(guards.confirmLeave()).toBe(false);
+    expect(onLeave).toHaveBeenCalledTimes(1);
   });
 });
 

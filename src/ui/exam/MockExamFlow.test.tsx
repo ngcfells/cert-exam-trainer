@@ -73,7 +73,8 @@ async function answerCurrent(user: User, which: 'right' | 'wrong') {
 async function start(repo: Repo = createMemoryRepo()) {
   const user = userEvent.setup();
   render(<MockExamFlow repo={repo} examCode="DA0-002" seed={5} />);
-  await user.click(await screen.findByRole('button', { name: 'Start exam' }));
+  await user.click(await screen.findByRole('checkbox', { name: 'I understand' }));
+  await user.click(screen.getByRole('button', { name: 'Start exam' }));
   return { user, repo };
 }
 
@@ -188,6 +189,38 @@ describe('MockExamFlow', () => {
     render(<ExamSetup meta={meta} plannedCount={0} onStart={() => {}} />);
     expect(screen.getByRole('button', { name: 'Start exam' })).toBeDisabled();
     expect(screen.getByText('No questions available for this exam yet.')).toBeInTheDocument();
+  });
+
+  it('warns that leaving ends the exam, and Start waits for I understand', async () => {
+    const meta = listExams().find((m) => m.code === 'DA0-002')!;
+    const user = userEvent.setup();
+    const onStart = vi.fn();
+    const { unmount } = render(<ExamSetup meta={meta} plannedCount={5} onStart={onStart} />);
+    expect(
+      screen.getByText(
+        'Leaving the app ends this exam and scores it as it stands. That includes switching tabs or apps, locking your phone, and notifications or alarms that take over the screen. Silence notifications before you start.',
+      ),
+    ).toBeInTheDocument();
+    const start = screen.getByRole('button', { name: 'Start exam' });
+    expect(start).toBeDisabled();
+    await user.click(screen.getByRole('checkbox', { name: 'I understand' }));
+    expect(start).toBeEnabled();
+    await user.click(start);
+    expect(onStart).toHaveBeenCalledTimes(1);
+    unmount();
+    render(<ExamSetup meta={meta} plannedCount={5} onStart={onStart} />);
+    expect(screen.getByRole('checkbox', { name: 'I understand' })).not.toBeChecked();
+    expect(screen.getByRole('button', { name: 'Start exam' })).toBeDisabled();
+  });
+
+  it('leaving mid-exam saves the attempt and shows results with the left line', async () => {
+    const { repo } = await start();
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' });
+    document.dispatchEvent(new Event('visibilitychange'));
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'visible' });
+    expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
+    expect(screen.getByText('Ended because you left the exam.')).toBeInTheDocument();
+    expect(examResultSchema.parse((await repo.listRecords('results'))[0]).endedBy).toBe('left');
   });
 
   it('reads history to deprioritize recent questions', async () => {

@@ -12,6 +12,7 @@ async function startExam(page: Page) {
   await page.goto(seeded);
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
+  await page.getByRole('checkbox', { name: 'I understand' }).check();
   await page.getByRole('button', { name: 'Start exam' }).click();
   await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
 }
@@ -34,6 +35,7 @@ for (const seed of SEEDS) test(`mock exam screens (seed ${seed}) pass axe`, asyn
   await expect(page.getByRole('button', { name: 'Start exam' })).toBeVisible();
   await expectNoSeriousAxe(page);
 
+  await page.getByRole('checkbox', { name: 'I understand' }).check();
   await page.getByRole('button', { name: 'Start exam' }).click();
   let lockedChecked = false;
   for (let i = 1; i <= TOTAL; i++) {
@@ -70,6 +72,8 @@ for (const seed of SEEDS) test(`a mock exam with PBQs (seed ${seed}) can be comp
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).focus();
   await page.keyboard.press('Enter');
+  await page.getByRole('checkbox', { name: 'I understand' }).focus();
+  await page.keyboard.press('Space');
   await page.getByRole('button', { name: 'Start exam' }).focus();
   await page.keyboard.press('Enter');
   await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
@@ -124,4 +128,93 @@ test('home still loads after finishing an exam and reloading', async ({ page }) 
   await submit(page);
   await page.reload();
   await expect(page.getByText('CompTIA Data+ (DA0-002)')).toBeVisible();
+});
+
+const LEFT = 'Ended because you left the exam.';
+
+test('hiding the page ends and scores the mock', async ({ page }) => {
+  await startExam(page);
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await expect(page.getByRole('heading', { name: /your score/i })).toBeVisible();
+  await expect(page.getByText(LEFT)).toBeVisible();
+});
+
+test('Cancel on the leave prompt keeps the exam running; OK scores it', async ({ page }) => {
+  await startExam(page);
+  page.once('dialog', (d) => void d.dismiss());
+  await page.goBack();
+  await page.waitForTimeout(1000);
+  await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
+  await expect(page.getByText(LEFT)).toHaveCount(0);
+  const choice = page.locator('.exam-body input, .exam-body select').first();
+  await expect(choice).toBeEnabled();
+  page.once('dialog', (d) => void d.accept());
+  await page.goBack();
+  await expect(page.getByText(LEFT)).toBeVisible();
+});
+
+test('the calculator, whiteboard and Settings panels do not end the exam, and pass axe in light and dark', async ({ page }) => {
+  await startExam(page);
+  const still = async () => {
+    await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
+    await expect(page.getByText(LEFT)).toHaveCount(0);
+  };
+  const check = async (name: string) => {
+    const panel = page.getByRole('dialog', { name });
+    await expect(panel).toBeVisible();
+    await expect(panel.getByText(/^Time left: (\d+:)?\d+:\d\d$/)).toBeVisible();
+    for (const colorScheme of ['light', 'dark'] as const) {
+      await page.emulateMedia({ colorScheme });
+      await expectNoSeriousAxe(page);
+    }
+    return panel;
+  };
+
+  await page.getByRole('button', { name: 'Calculator' }).click();
+  const calc = await check('Calculator');
+  await page.keyboard.type('12*3');
+  await page.keyboard.press('Enter');
+  await expect(calc.getByLabel('Calculator display')).toHaveText('36');
+  await calc.getByRole('button', { name: 'Close' }).click();
+  await still();
+
+  await page.getByRole('button', { name: 'Whiteboard' }).click();
+  const board = await check('Whiteboard');
+  await board.getByRole('textbox', { name: 'Notes' }).fill('B then C');
+  const box = (await board.getByRole('img', { name: 'Drawing area' }).boundingBox())!;
+  await page.mouse.move(box.x + 10, box.y + 10);
+  await page.mouse.down();
+  await page.mouse.move(box.x + 60, box.y + 40);
+  await page.mouse.up();
+  await expect(board.getByRole('button', { name: 'Clear drawing' })).toBeEnabled();
+  await board.getByRole('button', { name: 'Close' }).click();
+  await still();
+
+  await page.getByRole('button', { name: 'Settings' }).click();
+  const settings = await check('Settings');
+  await settings.getByRole('button', { name: 'Close' }).click();
+  await still();
+
+  await page.waitForTimeout(1000);
+  await still();
+  await toReview(page);
+  await submit(page);
+  for (const colorScheme of ['light', 'dark'] as const) {
+    await page.emulateMedia({ colorScheme });
+    await expectNoSeriousAxe(page);
+  }
+});
+
+test('the setup warning passes axe in light and dark', async ({ page }) => {
+  await page.goto(seeded);
+  await openExam(page, 'DA0-002');
+  await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
+  await expect(page.getByRole('button', { name: 'Start exam' })).toBeDisabled();
+  for (const colorScheme of ['light', 'dark'] as const) {
+    await page.emulateMedia({ colorScheme });
+    await expectNoSeriousAxe(page);
+  }
 });

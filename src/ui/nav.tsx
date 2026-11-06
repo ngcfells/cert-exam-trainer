@@ -1,9 +1,13 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from 'react';
 
 export const LEAVE_RUN = 'Leave this exam? Your answers will be lost.';
+/** A mock exam: leaving ends and scores it, and the results show in place. */
+export const LEAVE_MOCK = 'Leave and score the exam now?';
 
 interface Guard {
   message: string;
+  /** Runs on OK instead of leaving; the app stays on the screen. */
+  onLeave?: () => void;
 }
 
 /** The guards raised by the mounted screen; the newest one speaks. */
@@ -20,7 +24,11 @@ export class LeaveGuards {
   /** True when there is nothing to lose, or the user agrees to leave. */
   confirmLeave(): boolean {
     const g = this.guards.at(-1);
-    return !g || window.confirm(g.message);
+    if (!g) return true;
+    const ok = window.confirm(g.message);
+    if (!g.onLeave) return ok;
+    if (ok) g.onLeave();
+    return false;
   }
 }
 
@@ -43,10 +51,16 @@ export function NavProvider({ api, children }: { api: NavApi; children: ReactNod
   return <NavContext.Provider value={api}>{children}</NavContext.Provider>;
 }
 
-/** While `active`, leaving by the nav bar or browser Back asks `message` first. */
-export function useLeaveGuard(active: boolean, message: string = LEAVE_RUN): void {
+/** While `active`, leaving by the nav bar or browser Back asks `message` first. With `onLeave`, OK calls it and stays. */
+export function useLeaveGuard(active: boolean, message: string = LEAVE_RUN, onLeave?: () => void): void {
   const { guards } = useContext(NavContext);
-  useEffect(() => (active ? guards.add({ message }) : undefined), [guards, active, message]);
+  const onLeaveRef = useRef(onLeave);
+  onLeaveRef.current = onLeave;
+  const hasLeave = onLeave !== undefined;
+  useEffect(
+    () => (active ? guards.add(hasLeave ? { message, onLeave: () => onLeaveRef.current?.() } : { message }) : undefined),
+    [guards, active, message, hasLeave],
+  );
 }
 
 /** Makes Back go to this tool's previous level, labelled `label`; `null` means the parent screen. */

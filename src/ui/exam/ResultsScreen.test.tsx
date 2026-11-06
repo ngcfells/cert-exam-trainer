@@ -123,3 +123,14 @@ describe('ResultsScreen answer marks', () => {
     }
   });
 });
+
+describe('ResultsScreen ended by leaving', () => {
+  it('says the exam ended because the user left, not that time ran out', () => {
+    const exam: AssembledExam = { exam: 'T-001', seed: 1, items: [{ question: mcq('A0', 'A'), optionOrder: ['a', 'b', 'c', 'd'] }], mcqCount: 1, pbqWeightSum: 0 };
+    const report = scoreExam(exam, {}, meta3);
+    const result = buildResult({ exam, responses: {}, flagged: [], report, startedAt: new Date(0), finishedAt: new Date(1), autoSubmitted: false, endedBy: 'left' });
+    render(<ResultsScreen meta={meta3} exam={exam} result={result} report={report} saveError={null} />);
+    expect(screen.getByText('Ended because you left the exam.')).toBeInTheDocument();
+    expect(screen.queryByText(/Time ran out/)).not.toBeInTheDocument();
+  });
+});

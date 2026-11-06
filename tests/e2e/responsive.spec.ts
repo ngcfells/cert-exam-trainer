@@ -25,6 +25,7 @@ async function startExam(page: Page, seed: number) {
   await page.goto(`${singleUrl}?seed=${seed}`);
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
+  await page.getByRole('checkbox', { name: 'I understand' }).check();
   await page.getByRole('button', { name: 'Start exam' }).click();
   await expect(page.getByText(`Question 1 of ${TOTAL}`)).toBeVisible();
 }

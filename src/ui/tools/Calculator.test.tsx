@@ -8,14 +8,14 @@ const NAMES = [
   'minus',
   'times',
   'divide',
-  'power',
+  'xʸ, power',
   'percent',
   'plus or minus',
   'square root',
-  'memory add',
-  'memory subtract',
-  'memory recall',
-  'memory clear',
+  'M+, memory add',
+  'M−, memory subtract',
+  'MR, memory recall',
+  'MC, memory clear',
   'clear',
   'equals',
 ];
@@ -42,6 +42,15 @@ describe('Calculator panel', () => {
     expect(out).toHaveAttribute('aria-live', 'polite');
   });
 
+  it('puts what each key shows in its spoken name, for voice control', async () => {
+    render(<ToolsHarness />);
+    const panel = await openCalc();
+    for (const b of within(panel).getAllByRole('button').filter((x) => x.closest('.calc-keys') && /\p{L}/u.test(x.textContent ?? ''))) {
+      const name = (b.getAttribute('aria-label') ?? b.textContent ?? '').toLowerCase();
+      expect(name).toContain((b.textContent ?? '').toLowerCase());
+    }
+  });
+
   it('works from the keyboard', async () => {
     render(<ToolsHarness />);
     const panel = await openCalc();
@@ -53,13 +62,13 @@ describe('Calculator panel', () => {
     render(<ToolsHarness />);
     let panel = await openCalc();
     await userEvent.click(within(panel).getByRole('button', { name: '5' }));
-    await userEvent.click(within(panel).getByRole('button', { name: 'memory add' }));
+    await userEvent.click(within(panel).getByRole('button', { name: 'M+, memory add' }));
     await userEvent.click(within(panel).getByRole('button', { name: 'Close' }));
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
 
     panel = await openCalc();
     await userEvent.click(within(panel).getByRole('button', { name: 'clear' }));
-    await userEvent.click(within(panel).getByRole('button', { name: 'memory recall' }));
+    await userEvent.click(within(panel).getByRole('button', { name: 'MR, memory recall' }));
     expect(within(panel).getByRole('status')).toHaveTextContent('5');
   });
 

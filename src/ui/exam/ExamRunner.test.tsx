@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ExamRunner } from './ExamRunner';
-import { LEAVE_RUN, LeaveGuards } from '../nav';
+import { LEAVE_MOCK, LeaveGuards } from '../nav';
 import { LeaveGuardProvider } from '../testNav';
 import type { AssembledExam } from '../../exam/assemble';
 import { mcq } from '../../exam/testFixtures';
@@ -45,7 +45,7 @@ describe('ExamRunner', () => {
       </LeaveGuardProvider>,
     );
     expect(guards.confirmLeave()).toBe(false);
-    expect(confirm).toHaveBeenCalledWith(LEAVE_RUN);
+    expect(confirm).toHaveBeenCalledWith(LEAVE_MOCK);
     confirm.mockClear();
     act(() => {
       vi.advanceTimersByTime(3_000);
@@ -152,6 +152,53 @@ describe('ExamRunner', () => {
       vi.advanceTimersByTime(1000);
     });
     expect(screen.getByRole('timer')).toHaveTextContent('0:30');
+  });
+});
+
+describe('ExamRunner leaving', () => {
+  function hide() {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' });
+    document.dispatchEvent(new Event('visibilitychange'));
+  }
+  afterEach(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'visible' });
+  });
+
+  it('hiding the page submits once, as left and not as a timeout', async () => {
+    const { user, onSubmit } = setup();
+    await user.click(screen.getByLabelText('A0-a'));
+    act(() => hide());
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit.mock.calls[0][0]).toMatchObject({ responses: { A0: ['a'] }, autoSubmitted: false, endedBy: 'left' });
+    act(() => hide());
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+  });
+
+  it('Back asks LEAVE_MOCK; OK scores the exam as left, Cancel keeps it running', () => {
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValue(false);
+    const guards = new LeaveGuards();
+    const onSubmit = vi.fn();
+    render(
+      <LeaveGuardProvider guards={guards}>
+        <ExamRunner exam={exam} timeLimitMs={600_000} startedAt={T0} onSubmit={onSubmit} />
+      </LeaveGuardProvider>,
+    );
+    expect(guards.confirmLeave()).toBe(false);
+    expect(confirm).toHaveBeenCalledWith(LEAVE_MOCK);
+    expect(onSubmit).not.toHaveBeenCalled();
+    confirm.mockReturnValue(true);
+    act(() => {
+      expect(guards.confirmLeave()).toBe(false);
+    });
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit.mock.calls[0][0]).toMatchObject({ endedBy: 'left', autoSubmitted: false });
+    confirm.mockRestore();
+  });
+
+  it('a normal submit and a timeout carry no endedBy', () => {
+    const { onSubmit } = setup(2_000);
+    act(() => vi.advanceTimersByTime(3_000));
+    expect(onSubmit.mock.calls[0][0].endedBy).toBeUndefined();
   });
 });
 

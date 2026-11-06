@@ -52,6 +52,7 @@ export function ResultsScreen({
             <strong>{report.passed ? 'PASS' : 'FAIL'}</strong>
           </p>
           <p>{`Passing score: ${meta.passingScore}.${result.autoSubmitted ? ' Time ran out, so the exam was submitted automatically.' : ''}`}</p>
+          {result.endedBy === 'left' && <p>Ended because you left the exam.</p>}
           <p>CompTIA reports a scaled score; this is an approximation.</p>
         </>
       )}

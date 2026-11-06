@@ -48,6 +48,7 @@ for (const width of WIDTHS) {
         if (tool === 'Acronyms') await page.getByText('Full list', { exact: true }).click();
         await check(`${code} ${tool}`);
         if (tool === 'Start mock exam') {
+          await page.getByRole('checkbox', { name: 'I understand' }).check();
           await page.getByRole('button', { name: 'Start exam' }).click();
           // Review shows on the last question.
           const review = page.getByRole('button', { name: 'Review', exact: true });

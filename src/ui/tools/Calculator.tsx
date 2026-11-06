@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useRef, type Dispatch, type SetStateAction } from 'react';
 import { keyFromKeyboard, press, type CalcKey, type CalcState } from './calc';
 
-/** Each key: what it shows, and its spoken name when that differs. */
+/** Each key: what it shows, and its spoken name when that differs. A spoken name starts with any letters the key shows, so voice control can say them. */
 const KEYS: [CalcKey, string, string?][] = [
-  ['MC', 'MC', 'memory clear'],
-  ['MR', 'MR', 'memory recall'],
-  ['M+', 'M+', 'memory add'],
-  ['M-', 'M−', 'memory subtract'],
+  ['MC', 'MC', 'MC, memory clear'],
+  ['MR', 'MR', 'MR, memory recall'],
+  ['M+', 'M+', 'M+, memory add'],
+  ['M-', 'M−', 'M−, memory subtract'],
   ['C', 'C', 'clear'],
   ['±', '±', 'plus or minus'],
   ['%', '%', 'percent'],
@@ -26,7 +26,7 @@ const KEYS: [CalcKey, string, string?][] = [
   ['0', '0'],
   ['.', '.', 'point'],
   ['√', '√', 'square root'],
-  ['^', 'xʸ', 'power'],
+  ['^', 'xʸ', 'xʸ, power'],
   ['=', '=', 'equals'],
 ];
 

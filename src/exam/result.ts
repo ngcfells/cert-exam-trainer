@@ -19,6 +19,8 @@ export const examResultSchema = z.object({
   passed: z.boolean(),
   /** Absent on mock exams (and on every result saved before chunk 5). */
   mode: z.enum(['mock', 'practice', 'cram', 'lesson']).optional(),
+  /** Set when a mock ended because the user left the app. */
+  endedBy: z.enum(['left']).optional(),
 }).strict();
 
 export type ExamResult = z.infer<typeof examResultSchema>;
@@ -37,6 +39,7 @@ export function buildResult(args: {
   finishedAt: Date;
   autoSubmitted: boolean;
   mode?: ResultMode;
+  endedBy?: 'left';
 }): ExamResult {
   const { exam, report } = args;
   return {
@@ -55,6 +58,7 @@ export function buildResult(args: {
     score: report.score,
     passed: report.passed,
     ...(args.mode && args.mode !== 'mock' ? { mode: args.mode } : {}),
+    ...(args.endedBy ? { endedBy: args.endedBy } : {}),
   };
 }
 

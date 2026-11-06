@@ -51,7 +51,7 @@ export async function finishAttempt(
   meta: ExamMeta,
   exam: AssembledExam,
   startedAt: Date,
-  p: { responses: Responses; finishedAt: Date; autoSubmitted: boolean; flagged?: string[]; mode?: ResultMode },
+  p: { responses: Responses; finishedAt: Date; autoSubmitted: boolean; flagged?: string[]; mode?: ResultMode; endedBy?: 'left' },
   reviewIds?: readonly string[],
   extra: Review[] = [],
 ): Promise<Finished> {

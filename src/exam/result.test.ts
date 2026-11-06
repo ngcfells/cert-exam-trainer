@@ -63,6 +63,17 @@ describe('result', () => {
     expect(resultMode(r)).toBe('practice');
   });
 
+  it('stores endedBy left only when set, and it round-trips', () => {
+    const exam = assembleExam({ meta: meta3, pool: bank({ A: 2 }), seed: 1, chances: new Map(), pbqTypes: [] });
+    const args = { exam, responses: {}, flagged: [], report: scoreExam(exam, {}, meta3), startedAt: new Date(0), finishedAt: new Date(1), autoSubmitted: false };
+    const left = buildResult({ ...args, endedBy: 'left' });
+    expect(left.endedBy).toBe('left');
+    expect(examResultSchema.parse(left)).toEqual(left);
+    const plain = buildResult(args);
+    expect('endedBy' in plain).toBe(false);
+    expect(examResultSchema.parse(plain)).toEqual(plain);
+  });
+
   it('accepts a lesson result', () => {
     expect(examResultSchema.safeParse({ ...fake('r4', 'T-001', 4, ['lesson']), mode: 'lesson' }).success).toBe(true);
   });

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { ExamMeta } from '../../domain/types';
 import { useFocusHeading } from '../kit';
 import { questions } from '../plural';
@@ -12,6 +13,7 @@ export function ExamSetup({
   onStart: () => void;
 }) {
   const headingRef = useFocusHeading();
+  const [understood, setUnderstood] = useState(false);
   return (
     <section aria-labelledby="setup-h">
       <h2 id="setup-h" ref={headingRef} tabIndex={-1}>{`Mock exam: ${meta.name} (${meta.code})`}</h2>
@@ -25,7 +27,13 @@ export function ExamSetup({
       )}
       {plannedCount === 0 && <p>No questions available for this exam yet.</p>}
       <p>The timer starts when you press Start exam. The exam submits automatically when time runs out.</p>
-      <button type="button" className="primary" disabled={plannedCount === 0} onClick={onStart}>
+      <p className="setup-warning">
+        Leaving the app ends this exam and scores it as it stands. That includes switching tabs or apps, locking your phone, and notifications or alarms that take over the screen. Silence notifications before you start.
+      </p>
+      <label className="setup-ack">
+        <input type="checkbox" checked={understood} onChange={(e) => setUnderstood(e.target.checked)} /> I understand
+      </label>
+      <button type="button" className="primary" disabled={plannedCount === 0 || !understood} onClick={onStart}>
         Start exam
       </button>
     </section>

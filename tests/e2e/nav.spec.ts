@@ -83,14 +83,15 @@ test('All exams from deep inside, then browser Back still leaves the app', async
   await expect(page).toHaveURL('about:blank');
 });
 
-test('leaving a mock exam after an answer asks first; Cancel keeps the answer', async ({ page }) => {
+test('leaving a mock exam asks first; Cancel keeps the answer, OK scores it in place', async ({ page }) => {
   await page.goto(`${singleUrl}?seed=4`);
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
+  await page.getByRole('checkbox', { name: 'I understand' }).check();
   await page.getByRole('button', { name: 'Start exam' }).click();
   await expect(page.getByText('Question 1 of 9')).toBeVisible();
 
-  // Dialogs 1 and 3 are dismissed (stay), 2 and 4 accepted (leave).
+  // Dialogs 1 and 3 are dismissed (stay), 2 and 4 accepted (end and score the exam; the results show here).
   const messages: string[] = [];
   page.on('dialog', (d) => {
     messages.push(d.message());
@@ -111,16 +112,21 @@ test('leaving a mock exam after an answer asks first; Cancel keeps the answer', 
   await expect(page.getByText(where!)).toBeVisible();
   await expect(page.locator('.exam-body input:checked').first()).toBeChecked();
   await page.goBack();
+  await expect(page.getByText('Ended because you left the exam.')).toBeVisible();
+  await page.goBack();
   await expect(examHeading(page)).toBeVisible();
 
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
+  await page.getByRole('checkbox', { name: 'I understand' }).check();
   await page.getByRole('button', { name: 'Start exam' }).click();
   await answerFirst();
   await allExams(page);
   await expect(page.getByText(/^Question \d+ of 9$/)).toBeVisible();
   await allExams(page);
+  await expect(page.getByText('Ended because you left the exam.')).toBeVisible();
+  await allExams(page);
   await expect(landing(page)).toBeVisible();
-  expect(messages).toEqual(Array(4).fill('Leave this exam? Your answers will be lost.'));
+  expect(messages).toEqual(Array(4).fill('Leave and score the exam now?'));
 });
 
 test('the source choice is kept per exam', async ({ page }) => {

@@ -31,6 +31,7 @@ test('a mock exam is filled from the bank', async ({ page }) => {
   await page.goto(`${bankUrl}?seed=1`);
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
+  await page.getByRole('checkbox', { name: 'I understand' }).check();
   await page.getByRole('button', { name: 'Start exam' }).click();
   const text = await page.getByText(/^Question 1 of \d+$/).textContent();
   const total = Number(text?.match(/\d+$/)?.[0]);
@@ -120,6 +121,7 @@ test.describe('CY0-001 shipped bank', () => {
     await page.goto(`${bankUrl}?seed=1`);
     await openExam(page, 'CY0-001');
     await page.getByRole('button', { name: 'Start mock exam: CY0-001' }).click();
+    await page.getByRole('checkbox', { name: 'I understand' }).check();
     await page.getByRole('button', { name: 'Start exam' }).click();
     const text = await page.getByText(/^Question 1 of \d+$/).textContent();
     const total = Number(text?.match(/\d+$/)?.[0]);

@@ -3,7 +3,8 @@ import type { AssembledExam } from '../../exam/assemble';
 import { isComplete, type Responses } from '../../exam/scoring';
 import { QuestionView, useCountdown, useFocusHeading } from '../kit';
 import { ReviewGrid } from './ReviewGrid';
-import { useLeaveGuard } from '../nav';
+import { LEAVE_MOCK, useLeaveGuard } from '../nav';
+import { useLeaveDetect } from './useLeaveDetect';
 import { TopBar } from './TopBar';
 import { usePanels } from '../panels/PanelProvider';
 import { RunToolsProvider, ToolButtons, ToolPanels } from '../tools/RunTools';
@@ -13,6 +14,8 @@ export interface SubmitPayload {
   responses: Responses;
   flagged: string[];
   autoSubmitted: boolean;
+  /** Set when the exam ended because the user left the app. */
+  endedBy?: 'left';
   finishedAt: Date;
 }
 
@@ -36,9 +39,7 @@ export function ExamRunner({
   const [flagged, setFlagged] = useState<Set<string>>(new Set());
   const [confirming, setConfirming] = useState(false);
   const submitted = useRef(false);
-  // A mock exam is always timed, so leaving asks from the start until it is submitted.
   const [isSubmitted, setIsSubmitted] = useState(false);
-  useLeaveGuard(!isSubmitted);
   const state = useRef({ responses, flagged });
   state.current = { responses, flagged };
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -55,7 +56,7 @@ export function ExamRunner({
   }, [deadline, setMockDeadline]);
 
   const submit = useCallback(
-    (autoSubmitted: boolean) => {
+    (reason: 'submit' | 'timeout' | 'left') => {
       if (submitted.current) return;
       submitted.current = true;
       setIsSubmitted(true);
@@ -63,19 +64,30 @@ export function ExamRunner({
       setMockDeadline(null);
       dialogRef.current?.close();
       const { responses: r, flagged: f } = state.current;
-      onSubmitRef.current({ responses: r, flagged: [...f], autoSubmitted, finishedAt: new Date(now()) });
+      onSubmitRef.current({
+        responses: r,
+        flagged: [...f],
+        autoSubmitted: reason === 'timeout',
+        ...(reason === 'left' ? { endedBy: 'left' as const } : {}),
+        finishedAt: new Date(now()),
+      });
     },
     [now, closePanel, setMockDeadline],
   );
 
+  // Leaving the app ends and scores the mock. Back asks first; OK scores it here and the results show.
+  const leave = useCallback(() => submit('left'), [submit]);
+  useLeaveDetect(!isSubmitted, leave);
+  useLeaveGuard(!isSubmitted, LEAVE_MOCK, leave);
+
   /** True (and submits) once the deadline has passed, even between timer ticks. */
   function expired(): boolean {
     if (deadline - now() > 0) return false;
-    submit(true);
+    submit('timeout');
     return true;
   }
 
-  const { remaining } = useCountdown(deadline, now, () => submit(true));
+  const { remaining } = useCountdown(deadline, now, () => submit('timeout'));
   const headingRef = useFocusHeading([index, view]);
 
   useEffect(() => {
@@ -164,7 +176,7 @@ export function ExamRunner({
           <>
             <h2 id="exam-confirm-heading">Submit exam?</h2>
             <p>You can&apos;t change your answers after you submit.</p>
-            <button type="button" onClick={() => submit(false)}>
+            <button type="button" onClick={() => submit('submit')}>
               Submit
             </button>
             <button type="button" ref={cancelRef} onClick={() => setConfirming(false)}>
