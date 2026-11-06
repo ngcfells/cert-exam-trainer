@@ -10,6 +10,7 @@ import { WithPanels, PanelProbe } from '../panels/testPanels';
 import { usePanels } from '../panels/PanelProvider';
 import { ReportButton, type ReportContext } from './ReportButton';
 import { ReportPanel } from './ReportPanel';
+import { OutboxBanner } from './OutboxBanner';
 
 vi.mock('../../report/config', () => ({
   reportConfig: vi.fn(() => ({ url: 'https://relay.test', siteKey: '0xKEY' })),
@@ -289,5 +290,107 @@ describe('ReportForm', () => {
     const dialog = await screen.findByRole('dialog', { name: 'Report a problem or request a feature' });
     await user.click(within(dialog).getByRole('button', { name: 'Close' }));
     await waitFor(() => expect(settings).toHaveFocus());
+  });
+});
+
+function waiting(i: number): OutboxReport {
+  return {
+    id: `3b241101-e2bb-4255-8caf-${String(i).padStart(12, '0')}`,
+    type: 'bug',
+    title: `Old ${i}`,
+    details: 'x',
+    version: '0.1.0',
+    savedAt: '2026-11-06T12:00:00.000Z',
+  };
+}
+
+function banner(repo: Repo, extra?: React.ReactNode) {
+  const user = userEvent.setup();
+  render(
+    <WithPanels>
+      {extra}
+      <OutboxBanner repo={repo} />
+      <Host repo={repo} />
+    </WithPanels>,
+  );
+  return user;
+}
+
+describe('OutboxBanner', () => {
+  it('shows the count of waiting reports', async () => {
+    const repo = createMemoryRepo();
+    await repo.putOutbox(waiting(1));
+    await repo.putOutbox(waiting(2));
+    banner(repo);
+    expect(await screen.findByRole('status')).toHaveTextContent('2 reports waiting to send');
+  });
+
+  it('says report for one', async () => {
+    const repo = createMemoryRepo();
+    await repo.putOutbox(waiting(1));
+    banner(repo);
+    expect(await screen.findByRole('status')).toHaveTextContent('1 report waiting to send');
+  });
+
+  it('shows nothing when the outbox is empty', async () => {
+    banner(createMemoryRepo());
+    await act(async () => {});
+    expect(screen.queryByText(/waiting to send/)).toBeNull();
+  });
+
+  it('is hidden during a mock', async () => {
+    const repo = createMemoryRepo();
+    await repo.putOutbox(waiting(1));
+    banner(repo, <MockRunning />);
+    await act(async () => {});
+    expect(screen.queryByText(/waiting to send/)).toBeNull();
+  });
+
+  it('is hidden when reports are off', async () => {
+    vi.mocked(reportConfig).mockReturnValue(null);
+    const repo = createMemoryRepo();
+    await repo.putOutbox(waiting(1));
+    banner(repo);
+    await act(async () => {});
+    expect(screen.queryByText(/waiting to send/)).toBeNull();
+  });
+
+  it('refreshes when the browser comes back online', async () => {
+    const repo = createMemoryRepo();
+    banner(repo);
+    await act(async () => {});
+    expect(screen.queryByText(/waiting to send/)).toBeNull();
+    await repo.putOutbox(waiting(1));
+    await act(async () => {
+      window.dispatchEvent(new Event('online'));
+    });
+    expect(await screen.findByText('1 report waiting to send')).toBeInTheDocument();
+    expect(posted).toHaveLength(0);
+  });
+
+  it('Open shows the waiting list; Discard asks first and removes the report', async () => {
+    const repo = createMemoryRepo();
+    await repo.putOutbox(waiting(1));
+    await repo.putOutbox(waiting(2));
+    const user = banner(repo);
+    const open = await screen.findByRole('button', { name: 'Open' });
+    expect(open).toHaveAttribute('aria-haspopup', 'dialog');
+    await user.click(open);
+    const dialog = await screen.findByRole('dialog', { name: 'Report a problem or request a feature' });
+    const list = within(dialog).getByRole('region', { name: 'Waiting to send' });
+
+    const confirm = vi.spyOn(window, 'confirm').mockReturnValueOnce(false);
+    await user.click(within(list).getByRole('button', { name: 'Discard Old 1' }));
+    expect(confirm).toHaveBeenCalledWith('Discard the report "Old 1"? This cannot be undone.');
+    expect(await repo.listOutbox()).toHaveLength(2);
+
+    confirm.mockReturnValueOnce(true);
+    await user.click(within(list).getByRole('button', { name: 'Discard Old 1' }));
+    await waitFor(() => expect(within(list).queryByRole('button', { name: 'Discard Old 1' })).toBeNull());
+    expect((await repo.listOutbox()).map((r) => r.title)).toEqual(['Old 2']);
+    expect(posted).toHaveLength(0);
+
+    await user.click(within(dialog).getByRole('button', { name: 'Close' }));
+    expect(await screen.findByText('1 report waiting to send')).toBeInTheDocument();
   });
 });

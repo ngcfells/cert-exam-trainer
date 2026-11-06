@@ -25,6 +25,7 @@ import { PanelProvider, usePanelState } from './ui/panels/PanelProvider';
 import { SettingsPanel } from './ui/panels/SettingsPanel';
 import { ReportButton } from './ui/report/ReportButton';
 import { ReportPanel } from './ui/report/ReportPanel';
+import { OutboxBanner } from './ui/report/OutboxBanner';
 import { ProgressScreen } from './ui/study/ProgressScreen';
 
 // Dev only: production builds drop this branch, so the review tool never ships.
@@ -189,6 +190,7 @@ export default function App() {
               )}
             </div>
           </header>
+          {storage && <OutboxBanner repo={storage.repo} />}
           {!onHome && bar('Page navigation')}
           <NavProvider api={nav}>{!storage ? <p>Loading…</p> : body(storage.repo, storage.persistent)}</NavProvider>
           {!onHome && tall && <div ref={bottomRef} className="bottom-nav">{bar('Page navigation (bottom)')}</div>}
