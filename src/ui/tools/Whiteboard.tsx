@@ -63,6 +63,18 @@ export function Whiteboard({ text, onText, strokes, onStrokes }: Props) {
     return () => ro.disconnect();
   }, [redraw]);
 
+  // The ink is read from the theme at paint time, so a theme change (the app's setting or the system's) repaints.
+  useEffect(() => {
+    const mo = new MutationObserver(() => redraw());
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    const mq = typeof window.matchMedia === 'function' ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    mq?.addEventListener?.('change', redraw);
+    return () => {
+      mo.disconnect();
+      mq?.removeEventListener?.('change', redraw);
+    };
+  }, [redraw]);
+
   function point(e: PointerEvent<HTMLCanvasElement>) {
     const r = e.currentTarget.getBoundingClientRect();
     const fx = ((e.clientX ?? 0) - r.left) / (r.width || 1);
@@ -83,11 +95,16 @@ export function Whiteboard({ text, onText, strokes, onStrokes }: Props) {
     d.stroke.push(point(e));
     redraw();
   }
+  // Also on lost capture (the browser took the pointer, say for a system gesture), which may carry no pointer id.
   function onEnd(e: PointerEvent<HTMLCanvasElement>) {
     const d = drawing.current;
-    if (!d || d.id !== e.pointerId) return;
+    if (!d || (e.type !== 'lostpointercapture' && d.id !== e.pointerId)) return;
     drawing.current = null;
-    e.currentTarget.releasePointerCapture?.(e.pointerId);
+    try {
+      e.currentTarget.releasePointerCapture?.(d.id);
+    } catch {
+      /* already released */
+    }
     onStrokes((s) => [...s, d.stroke]);
   }
 
@@ -105,6 +122,7 @@ export function Whiteboard({ text, onText, strokes, onStrokes }: Props) {
         onPointerMove={onMove}
         onPointerUp={onEnd}
         onPointerCancel={onEnd}
+        onLostPointerCapture={onEnd}
       />
       <button type="button" disabled={strokes.length === 0} onClick={() => onStrokes([])}>
         Clear drawing
