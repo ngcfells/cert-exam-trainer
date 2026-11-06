@@ -172,4 +172,21 @@ describe('backup', () => {
     expect(await target.getSetting(IN_PROGRESS_ANSWERS_SETTING)).toBeUndefined();
     expect(await target.getSetting('theme')).toBe('dark');
   });
+
+  it('export leaves out the outbox, and a replace import keeps waiting reports', async () => {
+    const waiting = {
+      id: '3b241101-e2bb-4255-8caf-000000000001',
+      type: 'bug' as const,
+      title: 'Timer stops',
+      details: 'It froze.',
+      version: '0.1.0',
+      savedAt: '2026-11-06T12:00:00.000Z',
+    };
+    await repo.putOutbox(waiting);
+    const file = await exportBackup(repo);
+    expect(JSON.stringify(file)).not.toContain(waiting.id);
+    expect(Object.keys(file)).not.toContain('outbox');
+    await importBackup(repo, JSON.stringify(file), 'replace');
+    expect(await repo.listOutbox()).toEqual([waiting]);
+  });
 });

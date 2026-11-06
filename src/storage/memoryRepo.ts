@@ -1,10 +1,12 @@
 import type { Question } from '../domain/types';
 import { assertUserQuestion, type RecordStore, type Repo } from './repo';
+import { MAX_OUTBOX, OutboxFullError, toOutboxReport, type OutboxReport } from '../report/outbox';
 
 export function createMemoryRepo(): Repo {
   const questions = new Map<string, Question>();
   const settings = new Map<string, unknown>();
   const records: Record<RecordStore, Map<string, unknown>> = { results: new Map(), srs: new Map() };
+  const outbox = new Map<string, OutboxReport>();
   const clone = <T>(v: T): T => structuredClone(v);
 
   return {
@@ -38,6 +40,16 @@ export function createMemoryRepo(): Repo {
       settings.clear();
       records.results.clear();
       records.srs.clear();
+    },
+    async listOutbox() {
+      return [...outbox.values()].map(clone);
+    },
+    async putOutbox(r) {
+      if (!outbox.has(r.id) && outbox.size >= MAX_OUTBOX) throw new OutboxFullError();
+      outbox.set(r.id, toOutboxReport(clone(r), new Date(r.savedAt)));
+    },
+    async deleteOutbox(id) {
+      outbox.delete(id);
     },
   };
 }

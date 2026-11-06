@@ -29,7 +29,7 @@ Then, from this folder:
    - `GITHUB_TOKEN`: a fine-grained token for `cert-exam-trainer` only, with Issues: Read and write and nothing else.
    - `TURNSTILE_SECRET`: the secret key of the "cert-trainer reports" Turnstile widget.
 4. `npx wrangler deploy`. Note the `https://cert-trainer-relay.<subdomain>.workers.dev` address it prints. It is
-   public, and goes in the app's `.env.production` as `VITE_REPORT_URL` (with `/report` on the end).
+   public, and goes in the app's `.env.production` as `VITE_REPORT_URL` (as printed; the app adds `/report`).
 5. The token expires. Note its expiry date in the handoff, and before then make a new token and repeat step 3 for
    `GITHUB_TOKEN` only. No redeploy is needed.
 
