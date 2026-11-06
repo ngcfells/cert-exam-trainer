@@ -4,10 +4,19 @@ import userEvent from '@testing-library/user-event';
 import { createMemoryRepo } from './storage/memoryRepo';
 import { LEAVE_MOCK } from './ui/nav';
 import App from './App';
+import type { Repo } from './storage';
+import { loadInProgress, saveInProgress } from './exam/inProgress';
+import { sampleMock } from './exam/testMock';
 
+// A test may set `next.repo` to open the app on data it prepared; otherwise each render gets an empty repo.
+const next = vi.hoisted(() => ({ repo: null as Repo | null }));
 vi.mock('./storage', async (orig) => ({
   ...(await orig<typeof import('./storage')>()),
-  openRepo: async () => ({ repo: createMemoryRepo(), persistent: true }),
+  openRepo: async () => {
+    const repo = next.repo ?? createMemoryRepo();
+    next.repo = null;
+    return { repo, persistent: true };
+  },
 }));
 
 afterEach(() => {
@@ -94,5 +103,18 @@ describe('App browser Back', () => {
     expect(screen.getByText('Ended because you left the exam.')).toBeInTheDocument();
     await userEvent.click(screen.getAllByRole('button', { name: '← Back to Data+' })[0]);
     expect(await screen.findByRole('heading', { level: 2, name: /\(DA0-002\)$/ })).toBeInTheDocument();
+  });
+});
+
+describe('App mock recovery', () => {
+  it('opens on the mock results when a mock was cut off by a refresh or close', async () => {
+    const repo = createMemoryRepo();
+    await saveInProgress(repo, sampleMock());
+    next.repo = repo;
+    render(<App />);
+    expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
+    expect(screen.getByText('Ended because you left the exam.')).toBeInTheDocument();
+    expect(await loadInProgress(repo)).toBeNull();
+    expect(await repo.listRecords('results')).toHaveLength(1);
   });
 });

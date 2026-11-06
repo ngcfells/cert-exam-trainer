@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, screen, within } from '@testing-library/react';
+import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MockExamFlow } from './MockExamFlow';
 import { ExamSetup } from './ExamSetup';
@@ -12,6 +12,9 @@ import { parseSrsRecords } from '../../study/srs';
 import { correctParts, partLabel, valueText } from '../../domain/pbq';
 import type { McqAnswer, McqPayload, NumericAnswer, Question } from '../../domain/types';
 import type { Repo } from '../../storage';
+import { loadInProgress, saveInProgress } from '../../exam/inProgress';
+import { sampleMock } from '../../exam/testMock';
+import { recoverMock } from './recover';
 
 beforeEach(() => vi.stubEnv('DEV', false));
 afterEach(() => vi.unstubAllEnvs());
@@ -221,6 +224,28 @@ describe('MockExamFlow', () => {
     expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
     expect(screen.getByText('Ended because you left the exam.')).toBeInTheDocument();
     expect(examResultSchema.parse((await repo.listRecords('results'))[0]).endedBy).toBe('left');
+  });
+
+  it('saves the mock as it goes, and clears the record once it is scored', async () => {
+    const { user, repo } = await start();
+    await waitFor(async () => expect((await loadInProgress(repo))?.exam.seed).toBe(5));
+    expect((await loadInProgress(repo))?.responses).toEqual({});
+    await answerCurrent(user, 'right');
+    await waitFor(async () => expect(Object.keys((await loadInProgress(repo))?.responses ?? {})).toHaveLength(1));
+    await answerAll(user, 'skip');
+    await submit(user);
+    expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
+    await waitFor(async () => expect(await loadInProgress(repo)).toBeNull());
+  });
+
+  it('opens on the results of a recovered mock', async () => {
+    const repo = createMemoryRepo();
+    await saveInProgress(repo, sampleMock());
+    const got = (await recoverMock(repo))!;
+    render(<MockExamFlow repo={repo} examCode="DA0-002" recovered={got.finished} />);
+    expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
+    expect(screen.getByText('Ended because you left the exam.')).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Start exam' })).not.toBeInTheDocument();
   });
 
   it('reads history to deprioritize recent questions', async () => {

@@ -14,6 +14,8 @@ import { SettingsScreen } from './ui/SettingsScreen';
 import { MyQuestions } from './ui/author/MyQuestions';
 import { QuestionEditor } from './ui/author/QuestionEditor';
 import { MockExamFlow } from './ui/exam/MockExamFlow';
+import { recoverMock } from './ui/exam/recover';
+import type { Finished } from './ui/exam/saveAttempt';
 import { armHistory } from './ui/history';
 import { navBack, NavBar, NavProvider, useNavState, useTallPage } from './ui/nav';
 import { backLabel, parentOf, type Screen } from './ui/screens';
@@ -43,6 +45,8 @@ export default function App() {
   const bottomRef = useRef<HTMLDivElement>(null);
   const tall = useTallPage(bottomRef);
   const panels = usePanelState();
+  // A mock that a refresh or close cut off, scored on open. The next navigation drops it.
+  const [recovered, setRecovered] = useState<Finished | null>(null);
 
   useEffect(() => {
     void openRepo().then(async (s) => {
@@ -60,6 +64,15 @@ export default function App() {
       } catch {
         applyTips(getTips(), s.repo);
       }
+      try {
+        const r = await recoverMock(s.repo);
+        if (r) {
+          setRecovered(r.finished);
+          setScreen({ name: 'mock', exam: r.examCode });
+        }
+      } catch {
+        /* nothing to show; the app opens as usual */
+      }
       setStorage(s);
     });
   }, []);
@@ -67,6 +80,7 @@ export default function App() {
   function go(s: Screen) {
     // A panel never outlives its screen; the new screen sets its own focus.
     panels.close({ restoreFocus: false });
+    setRecovered(null);
     setScreen(s);
     setVisit((v) => v + 1);
   }
@@ -119,7 +133,7 @@ export default function App() {
       case 'about':
         return <About key={key} />;
       case 'mock':
-        return <MockExamFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} onDrill={drill(screen.exam)} />;
+        return <MockExamFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} onDrill={drill(screen.exam)} recovered={recovered ?? undefined} />;
       case 'practice':
         return (
           <PracticeFlow

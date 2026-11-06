@@ -67,6 +67,24 @@ describe('ExamRunner', () => {
     expect(screen.getByText('Stem A0')).toBeInTheDocument();
   });
 
+  it('reports progress after each answer and flag, and not after submitting', async () => {
+    const onProgress = vi.fn();
+    const onSubmit = vi.fn();
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    render(<ExamRunner exam={exam} timeLimitMs={600_000} startedAt={T0} onSubmit={onSubmit} onProgress={onProgress} />);
+    await user.click(screen.getByLabelText('A0-a'));
+    expect(onProgress).toHaveBeenLastCalledWith({ responses: { A0: ['a'] }, flagged: [] });
+    await user.click(screen.getByRole('button', { name: /flag for review/i }));
+    expect(onProgress).toHaveBeenLastCalledWith({ responses: { A0: ['a'] }, flagged: ['A0'] });
+    const calls = onProgress.mock.calls.length;
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    await user.click(screen.getByRole('button', { name: 'Review' }));
+    await user.click(screen.getByRole('button', { name: 'Submit exam' }));
+    await user.click(within(screen.getByRole('dialog')).getByRole('button', { name: 'Submit' }));
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onProgress).toHaveBeenCalledTimes(calls);
+  });
+
   it('reflects answers and flags in the review grid and jumps', async () => {
     const { user } = setup();
     await user.click(screen.getByLabelText('A0-a'));

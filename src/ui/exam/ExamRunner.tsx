@@ -25,12 +25,15 @@ export function ExamRunner({
   startedAt,
   now = Date.now,
   onSubmit,
+  onProgress,
 }: {
   exam: AssembledExam;
   timeLimitMs: number;
   startedAt: Date;
   now?: () => number;
   onSubmit: (p: SubmitPayload) => void;
+  /** Called after each answer or flag change, so the attempt can be saved as it goes. */
+  onProgress?: (p: { responses: Responses; flagged: string[] }) => void;
 }) {
   const deadline = startedAt.getTime() + timeLimitMs;
   const [index, setIndex] = useState(0);
@@ -47,6 +50,17 @@ export function ExamRunner({
   // Kept in a ref so a new callback from the parent doesn't restart the timer.
   const onSubmitRef = useRef(onSubmit);
   onSubmitRef.current = onSubmit;
+  const onProgressRef = useRef(onProgress);
+  onProgressRef.current = onProgress;
+  const changed = useRef(false);
+  useEffect(() => {
+    // Skip the first render: nothing has changed yet.
+    if (!changed.current) {
+      changed.current = true;
+      return;
+    }
+    if (!submitted.current) onProgressRef.current?.({ responses, flagged: [...flagged] });
+  }, [responses, flagged]);
 
   const { close: closePanel, setMockDeadline } = usePanels();
   // Panels show the time left while this mock runs; leaving the screen clears it.

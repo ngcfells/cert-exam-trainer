@@ -142,6 +142,40 @@ test('hiding the page ends and scores the mock', async ({ page }) => {
   await expect(page.getByText(LEFT)).toBeVisible();
 });
 
+test('a refresh ends and scores the mock, keeping the answer given', async ({ page }) => {
+  await startExam(page);
+  // PBQs come first; answer the first item with a radio or checkbox.
+  for (let i = 1; i <= TOTAL; i++) {
+    const choice = page.locator('.exam-body input[type="radio"], .exam-body input[type="checkbox"]').first();
+    if (await choice.count()) {
+      await choice.check();
+      break;
+    }
+    await page.getByRole('button', { name: 'Next', exact: true }).click();
+  }
+  // The save is async; give it a moment before the reload cuts the page off.
+  await page.waitForTimeout(300);
+  await page.reload();
+  await expect(page.getByRole('heading', { name: /your score/i })).toBeVisible();
+  await expect(page.getByText(LEFT)).toBeVisible();
+  const saved = await page.evaluate(
+    () =>
+      new Promise<{ endedBy?: string; answered: number }[]>((resolve, reject) => {
+        const open = indexedDB.open('cert-exam-trainer');
+        open.onerror = () => reject(open.error);
+        open.onsuccess = () => {
+          const get = open.result.transaction('results').objectStore('results').getAll();
+          get.onsuccess = () => resolve(get.result.map((r) => ({ endedBy: r.endedBy, answered: Object.keys(r.responses).length })));
+          get.onerror = () => reject(get.error);
+        };
+      }),
+  );
+  expect(saved).toEqual([{ endedBy: 'left', answered: 1 }]);
+  // A second reload does not score it again.
+  await page.reload();
+  await expect(page.getByRole('heading', { name: 'Exams' })).toBeVisible();
+});
+
 test('Cancel on the leave prompt keeps the exam running; OK scores it', async ({ page }) => {
   await startExam(page);
   page.once('dialog', (d) => void d.dismiss());

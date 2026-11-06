@@ -3,6 +3,8 @@ import { createMemoryRepo } from './memoryRepo';
 import { exportBackup, importBackup, ImportError } from './backup';
 import type { Repo } from './repo';
 import { resultRec, srsRec, userQ } from './testFixtures';
+import { IN_PROGRESS_SETTING, saveInProgress } from '../exam/inProgress';
+import { sampleMock } from '../exam/testMock';
 
 async function seeded(): Promise<Repo> {
   const repo = createMemoryRepo();
@@ -152,5 +154,18 @@ describe('backup', () => {
     expect((await repo.getUserQuestions()).map((q) => q.id)).toEqual(['u2']);
     expect(await repo.getSetting('theme')).toBeUndefined();
     expect(await repo.listRecords('results')).toEqual([]);
+  });
+
+  it('never carries a mock in progress: export leaves it out, import does not write it', async () => {
+    await saveInProgress(repo, sampleMock());
+    const file = await exportBackup(repo);
+    expect(file.settings).not.toHaveProperty(IN_PROGRESS_SETTING);
+    expect(file.settings).toHaveProperty('theme', 'dark');
+
+    const target = createMemoryRepo();
+    const withRecord = { ...file, settings: { ...file.settings, [IN_PROGRESS_SETTING]: sampleMock() } };
+    await importBackup(target, JSON.stringify(withRecord), 'merge');
+    expect(await target.getSetting(IN_PROGRESS_SETTING)).toBeUndefined();
+    expect(await target.getSetting('theme')).toBe('dark');
   });
 });
