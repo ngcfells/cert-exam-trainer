@@ -34,7 +34,7 @@ Status (2026-11-06, about 12:15):
   - Calculator: full precision, Backspace, comma, and ± after an operator.
   - The whiteboard repaints on a theme change.
 - Close issue #14 if it is still open: `gh issue close 14`.
-- VERIFY by hand:
+- VERIFY by hand (the owner will test these later):
   - On a real Firefox and Safari, does opening a PBQ dropdown (native select) count as leaving the mock?
   - What do Android and iOS do when you pull down the notification shade?
   - Does the calculator key set match Pearson's?
@@ -65,8 +65,9 @@ Status (2026-11-06, about 12:15):
     sha256sum, systemctl, docker, fg/bg/nohup, conda, SQL SELECT, pandas), plus how to read a made-up tool's help
     text.
   - No bank accepts a PowerShell answer today.
-  - Still open: does the primer link show in mock exams? (The real exam has none.) Then the written design and the
-    builder check.
+  - Decided 2026-11-06: no primer link in mock exams. The primer shows in study and cram only, matching the real
+    exam, which has none.
+  - Next: the written design, then the builder check.
 
 ## B. Tools work (battletech-tools, JBTIICRework, ResourceLibrary, JBTToolsSupportFiles)
 
@@ -93,14 +94,20 @@ Steps, in order:
      hpgstation and scottsgameroom files.
    - 23 battletech.com and battletech-mercenaries.com files are not sorted yet.
    - Leave `_queue.lock` and `_queue.pid` alone.
-   - **Owner questions (sorter):**
-     1. The BattleSpace WizKids 2001 sheets: which publisher, and which folder?
-     2. Fan-made counters: do they go in `battleforce/`?
-     3. VERIFY years: the errata upload year 2025, the blank sheets "20138" read as 2013, and ForcePack Wave One
-        2021.
-     4. Fan-made names without a publisher: OK?
-     5. Two BattleMech Manual flowchart copies are in `errata/` (0.8 MB and 8.2 MB). Keep both?
-     6. Shrapnel names use the issue number, with no CAT numbers. And what do TRO3063 "PQ5" and "WQ7" mean?
+   - **Owner answers (2026-11-06) to the sorter's questions. Apply them (cheap subagent, working tree only, log
+     every change in `jbtiicrework-pending.md`, never delete):**
+     1. BattleSpace sheets marked WizKids 2001: the publisher is **FanPro**. Rename them to match, and file them by
+        content (record sheets go in `record-sheets/`).
+     2. Fan-made counters: a folder under `fan-made/`, not `battleforce/`.
+     3. Years: check each one online and fix the name if it is wrong. The owner thinks the errata 2025 is likely
+        right. The blank sheets "20138" are probably 2013. ForcePack Wave One is listed as 2021.
+     4. Fan-made publisher tag: the author when the author is known. Otherwise use `fan-made` as the publisher.
+        Never leave the tag empty.
+     5. The two BattleMech Manual flowchart copies in `errata/` (0.8 MB and 8.2 MB): compare them. If they show
+        the same thing, or the larger one includes everything in the smaller, set the smaller aside under
+        `unsorted/_duplicates/`. Never delete it. Otherwise keep both.
+     6. Shrapnel names by issue number, with no CAT number: OK as is. On the TRO3063 files, PQ means Print Quality
+        and WQ means Web Quality. Keep both versions, with the PQ or WQ marker as the edition.
    - Name format (memory `library-rename-project`): `Title(Publisher-ProductNo)[CopyrightYear]-Edition.ext`,
      CamelCase, ASCII, no spaces.
      - WizKids, Topps and Microsoft are never the publisher.
@@ -121,15 +128,27 @@ Steps, in order:
    - Product numbers taken only from the old name are marked "VERIFY number" in the log. Fan-made years taken only
      from the old name are marked "VERIFY year".
    - The per-file plan (`plan.tsv`) was in the session scratchpad, so it may be gone. The pending log is the record.
-   - **Owner questions (renamer):**
-     1. Fiction: should the novels be named `Title(Publisher)[Year]`, with the author dropped?
-     2. Translations and magazines: the 577 Spanish and German translations and fan zines have publishers such as
-        Devir or fan groups. What publisher tag should they take?
-     3. Editions come from the old name, so `Alpha Strike (Corrected 2nd Printing)` now shows `[2015]`. Is that
-        acceptable?
-     4. Fan-made files: a "fan, Author" note became `(Author)` in the publisher slot. Or should they have no tag?
-     5. 59 files have no copyright block but sit outside `fan-made/`. Move them there?
-     6. 85 files have no usable text (scan-only FASA PDFs), so their names are unchanged. Should they be re-OCRed?
+   - **Owner answers (2026-11-06) to the renamer's questions. Apply them (cheap subagents, working tree only, log
+     every change in `jbtiicrework-pending.md`, never delete):**
+     1. Fiction (637 files in `fiction/`): rename them. Novels keep the author name in the name, as well as the
+        publisher and year. Proposed form: `Title-Author(Publisher-ProductNo)[Year]`. Show the owner a sample of
+        about 5 names before the whole batch.
+     2. Translations and magazines (577 files in `languages/` and `magazines/`): rename them too.
+        - A real publication: the publisher is its real publisher (for example Devir) when it is known, and
+          `Unknown` when it is not.
+        - A fanzine: the publisher is the author, else the group, else `fan-made`.
+     3. Editions taken from the old name (`Alpha Strike (Corrected 2nd Printing)` showing `[2015]`): acceptable,
+        no change.
+     4. The fan-made author tag:
+        - Novels and fiction follow answer 1.
+        - Everything else follows the sourcebook and fanzine rules: the author if known, else the group, else
+          `fan-made`.
+     5. The 59 files with no copyright block outside `fan-made/`: move one into `fan-made/` only when you can show
+        it is fan-made, for example from its text, its source site or its author. Leave the rest, with a reason.
+     6. The 85 files with no usable text: OCR each one and write the result back into the PDF as a text layer (for
+        example `ocrmypdf`; check whether it or tesseract is installed, and install it if needed). Then rebuild its
+        `ResourceLibrary/text/` extract, rename it by the usual rules, and rebuild the INDEX and search. A changed
+        PDF is a modified file in JBTIICRework, so log it as a replace in the pending list.
    - **NEXT, for a cheap subagent: subsort JBTIICRework `sourcebooks/`.** The owner asked for this on 2026-11-06.
      Files loose at the top of `sourcebooks/` most likely belong in one of its existing subfolders. Same rules:
      working tree only, log every move in `jbtiicrework-pending.md`, never delete.
