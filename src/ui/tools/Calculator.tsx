@@ -27,6 +27,7 @@ const KEYS: [CalcKey, string, string?][] = [
   ['.', '.', 'point'],
   ['√', '√', 'square root'],
   ['^', 'xʸ', 'xʸ, power'],
+  ['⌫', '⌫', 'backspace'],
   ['=', '=', 'equals'],
 ];
 
@@ -63,7 +64,7 @@ export function Calculator({ state, onChange }: { state: CalcState; onChange: Di
           </button>
         ))}
       </div>
-      <p className="calc-help">Type numbers and + − * / ^ %, Enter for equals, Delete to clear.</p>
+      <p className="calc-help">Type numbers and + − * / ^ %, Enter for equals, Backspace to delete a digit, Delete to clear.</p>
     </div>
   );
 }

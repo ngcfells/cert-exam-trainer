@@ -17,6 +17,7 @@ const NAMES = [
   'MR, memory recall',
   'MC, memory clear',
   'clear',
+  'backspace',
   'equals',
 ];
 

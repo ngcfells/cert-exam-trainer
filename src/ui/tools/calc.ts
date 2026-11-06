@@ -2,10 +2,12 @@
 
 type Digit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
 export type CalcOp = '+' | '-' | '*' | '/' | '^';
-export type CalcKey = Digit | '.' | CalcOp | '=' | '%' | '±' | '√' | 'M+' | 'M-' | 'MR' | 'MC' | 'C';
+export type CalcKey = Digit | '.' | CalcOp | '=' | '%' | '±' | '√' | 'M+' | 'M-' | 'MR' | 'MC' | 'C' | '⌫';
 
 export interface CalcState {
   display: string;
+  /** The full value behind a computed display, which shows only 12 digits. Null once the user types. */
+  exact: number | null;
   acc: number | null;
   op: CalcOp | null;
   /** The next digit starts a new number. */
@@ -14,7 +16,7 @@ export interface CalcState {
   error: string | null;
 }
 
-export const CALC_START: CalcState = { display: '0', acc: null, op: null, fresh: true, memory: 0, error: null };
+export const CALC_START: CalcState = { display: '0', exact: null, acc: null, op: null, fresh: true, memory: 0, error: null };
 
 export const DIV_ZERO = "Can't divide by zero";
 export const NOT_A_NUMBER = 'Not a number';
@@ -49,11 +51,14 @@ const isDigit = (k: CalcKey): k is Digit => /^[0-9]$/.test(k);
 
 /** Shows a computed value, or the error it causes. */
 function show(s: CalcState, v: number | typeof DIV_ZERO, rest: Partial<CalcState> = {}): CalcState {
-  if (v === DIV_ZERO) return { ...s, ...rest, error: DIV_ZERO, display: '0', acc: null, op: null, fresh: true };
+  if (v === DIV_ZERO) return { ...s, ...rest, error: DIV_ZERO, display: '0', exact: null, acc: null, op: null, fresh: true };
   const text = format(v);
-  if (text === null) return { ...s, ...rest, error: NOT_A_NUMBER, display: '0', acc: null, op: null, fresh: true };
-  return { ...s, ...rest, display: text, fresh: true };
+  if (text === null) return { ...s, ...rest, error: NOT_A_NUMBER, display: '0', exact: null, acc: null, op: null, fresh: true };
+  return { ...s, ...rest, display: text, exact: v, fresh: true };
 }
+
+/** A typed change to the display: the full value behind a result no longer applies. */
+const typed = (s: CalcState, display: string): CalcState => ({ ...s, display, exact: null, fresh: false });
 
 export function press(state: CalcState, k: CalcKey): CalcState {
   let s = state;
@@ -61,20 +66,26 @@ export function press(state: CalcState, k: CalcKey): CalcState {
     s = { ...CALC_START, memory: s.memory };
     if (!isDigit(k) && k !== '.') return s;
   }
-  const cur = Number(s.display);
+  const cur = s.exact ?? Number(s.display);
 
   if (isDigit(k)) {
-    if (s.fresh) return { ...s, display: k, fresh: false };
+    if (s.fresh) return typed(s, k);
     if (s.display.replace(/[-.]/g, '').length >= MAX_DIGITS) return s;
-    if (s.display === '0') return { ...s, display: k };
-    if (s.display === '-0') return { ...s, display: `-${k}` };
-    return { ...s, display: s.display + k };
+    if (s.display === '0') return typed(s, k);
+    if (s.display === '-0') return typed(s, `-${k}`);
+    return typed(s, s.display + k);
   }
 
   switch (k) {
     case '.':
-      if (s.fresh) return { ...s, display: '0.', fresh: false };
-      return s.display.includes('.') ? s : { ...s, display: `${s.display}.` };
+      if (s.fresh) return typed(s, '0.');
+      return s.display.includes('.') ? s : typed(s, `${s.display}.`);
+    case '⌫': {
+      // Only a number being typed; a result stays as it is.
+      if (s.fresh) return s;
+      const rest = s.display.slice(0, -1);
+      return typed(s, rest === '' || rest === '-' || rest === '-0' ? '0' : rest);
+    }
     case '+':
     case '-':
     case '*':
@@ -82,7 +93,7 @@ export function press(state: CalcState, k: CalcKey): CalcState {
     case '^': {
       if (s.op !== null && s.acc !== null && !s.fresh) {
         const next = show(s, apply(s.acc, s.op, cur));
-        return next.error ? next : { ...next, acc: Number(next.display), op: k };
+        return next.error ? next : { ...next, acc: next.exact, op: k };
       }
       return { ...s, acc: s.op !== null && s.fresh && s.acc !== null ? s.acc : cur, op: k, fresh: true };
     }
@@ -92,8 +103,10 @@ export function press(state: CalcState, k: CalcKey): CalcState {
     case '%':
       return show(s, cur / 100);
     case '±':
+      // Right after an operator, ± starts a negative number (5 + ± 3 = 2) instead of flipping the shown value.
+      if (s.fresh && s.op !== null) return typed(s, '-0');
       if (s.display === '0') return s;
-      return { ...s, display: s.display.startsWith('-') ? s.display.slice(1) : `-${s.display}` };
+      return { ...s, display: s.display.startsWith('-') ? s.display.slice(1) : `-${s.display}`, exact: s.exact === null ? null : -s.exact };
     case '√':
       return show(s, Math.sqrt(cur));
     case 'M+':
@@ -115,7 +128,9 @@ const KEYBOARD: Record<string, CalcKey> = {
   '=': '=',
   Escape: 'C',
   Delete: 'C',
+  Backspace: '⌫',
   '.': '.',
+  ',': '.',
   '+': '+',
   '-': '-',
   '*': '*',

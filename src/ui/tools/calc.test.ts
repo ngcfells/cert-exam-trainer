@@ -50,7 +50,30 @@ describe('calculator engine', () => {
     expect(run(['0', '.', '1', '+', '0', '.', '2', '=']).display).toBe('0.3');
   });
 
+  it('keeps full precision behind the 12 digits it shows', () => {
+    expect(run(['1', '/', '3', '=', '*', '3', '=']).display).toBe('1');
+    expect(run(['1', '/', '3', '*', '3', '=']).display).toBe('1');
+    expect(run(['2', '√', '*', '2', '√', '=']).display).toBe('2');
+    // Typing over a result starts a new number.
+    expect(run(['1', '/', '3', '=', '5']).display).toBe('5');
+  });
+
+  it('backspace deletes the last typed digit, never a result', () => {
+    expect(run(['1', '2', '3', '⌫']).display).toBe('12');
+    expect(run(['7', '⌫']).display).toBe('0');
+    expect(run(['7', '±', '⌫']).display).toBe('0');
+    expect(run(['1', '.', '⌫']).display).toBe('1');
+    expect(run(['2', '+', '3', '=', '⌫']).display).toBe('5');
+  });
+
+  it('± right after an operator starts a negative number', () => {
+    expect(run(['5', '+', '±', '3', '=']).display).toBe('2');
+    expect(run(['5', '*', '±', '2', '=']).display).toBe('-10');
+  });
+
   it('maps keyboard keys', () => {
+    expect(keyFromKeyboard({ key: ',' })).toBe('.');
+    expect(keyFromKeyboard({ key: 'Backspace' })).toBe('⌫');
     expect(keyFromKeyboard({ key: 'Enter' })).toBe('=');
     expect(keyFromKeyboard({ key: 'Escape' })).toBe('C');
     expect(keyFromKeyboard({ key: '7' })).toBe('7');
