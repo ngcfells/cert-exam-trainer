@@ -19,6 +19,8 @@ import { navBack, NavBar, NavProvider, useNavState, useTallPage } from './ui/nav
 import { backLabel, parentOf, type Screen } from './ui/screens';
 import { CramFlow } from './ui/study/CramFlow';
 import { PracticeFlow } from './ui/study/PracticeFlow';
+import { PanelProvider, usePanelState } from './ui/panels/PanelProvider';
+import { SettingsPanel } from './ui/panels/SettingsPanel';
 import { ProgressScreen } from './ui/study/ProgressScreen';
 
 // Dev only: production builds drop this branch, so the review tool never ships.
@@ -40,6 +42,7 @@ export default function App() {
   const { api: nav, up } = useNavState();
   const bottomRef = useRef<HTMLDivElement>(null);
   const tall = useTallPage(bottomRef);
+  const panels = usePanelState();
 
   useEffect(() => {
     void openRepo().then(async (s) => {
@@ -62,6 +65,8 @@ export default function App() {
   }, []);
 
   function go(s: Screen) {
+    // A panel never outlives its screen; the new screen sets its own focus.
+    panels.close({ restoreFocus: false });
     setScreen(s);
     setVisit((v) => v + 1);
   }
@@ -154,15 +159,22 @@ export default function App() {
       <main>
         <header className="app-header">
           <h1>{APP_NAME}</h1>
-          {onHome && (
-            <button type="button" onClick={() => go({ name: 'settings' })}>
+          {screen.name !== 'settings' && (
+            <button
+              type="button"
+              aria-haspopup={onHome ? undefined : 'dialog'}
+              onClick={(e) => (onHome ? go({ name: 'settings' }) : panels.open('settings', e.currentTarget))}
+            >
               Settings
             </button>
           )}
         </header>
-        {!onHome && bar('Page navigation')}
-        <NavProvider api={nav}>{!storage ? <p>Loading…</p> : body(storage.repo, storage.persistent)}</NavProvider>
-        {!onHome && tall && <div ref={bottomRef} className="bottom-nav">{bar('Page navigation (bottom)')}</div>}
+        <PanelProvider api={panels}>
+          {!onHome && bar('Page navigation')}
+          <NavProvider api={nav}>{!storage ? <p>Loading…</p> : body(storage.repo, storage.persistent)}</NavProvider>
+          {!onHome && tall && <div ref={bottomRef} className="bottom-nav">{bar('Page navigation (bottom)')}</div>}
+          {storage && panels.current === 'settings' && <SettingsPanel repo={storage.repo} />}
+        </PanelProvider>
       </main>
       <Disclaimer />
     </>

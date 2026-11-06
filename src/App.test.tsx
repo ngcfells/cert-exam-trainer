@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from 'vitest';
-import { act, render, screen } from '@testing-library/react';
+import { act, render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRepo } from './storage/memoryRepo';
 import { LEAVE_RUN } from './ui/nav';
@@ -13,6 +13,40 @@ vi.mock('./storage', async (orig) => ({
 afterEach(() => {
   vi.restoreAllMocks();
   window.history.replaceState(null, '');
+});
+
+describe('App Settings panel', () => {
+  it('opens Settings over an exam page without losing what is underneath', async () => {
+    render(<App />);
+    await userEvent.click(await screen.findByRole('button', { name: /\(DA0-002\)/ }));
+    await userEvent.click(screen.getByRole('button', { name: 'Practice: DA0-002' }));
+    const count = await screen.findByRole('spinbutton', { name: 'Number of questions' });
+    await userEvent.clear(count);
+    await userEvent.type(count, '7');
+
+    await userEvent.click(screen.getByRole('button', { name: 'Settings' }));
+    const panel = screen.getByRole('dialog', { name: 'Settings' });
+    expect(within(panel).getByRole('group', { name: 'Theme' })).toBeInTheDocument();
+    expect(within(panel).queryByLabelText(/Import/)).not.toBeInTheDocument();
+
+    // Theme applies at once, while the panel is open.
+    await userEvent.click(within(panel).getByRole('radio', { name: /dark/i }));
+    expect(document.documentElement.dataset.theme).toBe('dark');
+
+    await userEvent.click(within(panel).getByRole('button', { name: 'Close' }));
+    expect(screen.queryByRole('dialog', { name: 'Settings' })).not.toBeInTheDocument();
+    expect(screen.getByRole('spinbutton', { name: 'Number of questions' })).toHaveValue(7);
+    expect(screen.getByRole('button', { name: 'Settings' })).toHaveFocus();
+  });
+
+  it('opens the full Settings page from Home, which has no Settings button of its own', async () => {
+    render(<App />);
+    await userEvent.click(await screen.findByRole('button', { name: 'Settings' }));
+    expect(await screen.findByRole('heading', { level: 2, name: 'Settings' })).toBeInTheDocument();
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(screen.getByLabelText(/Import backup/)).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Settings' })).not.toBeInTheDocument();
+  });
 });
 
 /** What the browser does on Back from our trap entry: fire popstate for the entry below it. */
