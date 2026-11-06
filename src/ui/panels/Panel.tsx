@@ -9,6 +9,8 @@ export function Panel({ kind, title, onClose, children }: { kind: PanelKind; tit
   useEffect(() => {
     const d = ref.current;
     if (d && !d.open) d.showModal();
+    // A panel can name where focus starts (the calculator display); otherwise the browser picks.
+    d?.querySelector<HTMLElement>('[data-autofocus]')?.focus();
     return () => {
       if (d?.open) d.close();
     };

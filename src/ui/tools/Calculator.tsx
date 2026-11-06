@@ -1,0 +1,59 @@
+import type { Dispatch, KeyboardEvent, SetStateAction } from 'react';
+import { keyFromKeyboard, press, type CalcKey, type CalcState } from './calc';
+
+/** Each key: what it shows, and its spoken name when that differs. */
+const KEYS: [CalcKey, string, string?][] = [
+  ['MC', 'MC', 'memory clear'],
+  ['MR', 'MR', 'memory recall'],
+  ['M+', 'M+', 'memory add'],
+  ['M-', 'M−', 'memory subtract'],
+  ['C', 'C', 'clear'],
+  ['±', '±', 'plus or minus'],
+  ['%', '%', 'percent'],
+  ['/', '÷', 'divide'],
+  ['7', '7'],
+  ['8', '8'],
+  ['9', '9'],
+  ['*', '×', 'times'],
+  ['4', '4'],
+  ['5', '5'],
+  ['6', '6'],
+  ['-', '−', 'minus'],
+  ['1', '1'],
+  ['2', '2'],
+  ['3', '3'],
+  ['+', '+', 'plus'],
+  ['0', '0'],
+  ['.', '.', 'point'],
+  ['√', '√', 'square root'],
+  ['^', 'xʸ', 'power'],
+  ['=', '=', 'equals'],
+];
+
+export function Calculator({ state, onChange }: { state: CalcState; onChange: Dispatch<SetStateAction<CalcState>> }) {
+  const hit = (k: CalcKey) => onChange((s) => press(s, k));
+  function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+    // Escape closes the panel, as in every panel. Enter on a focused key presses that key.
+    if (e.key === 'Escape' || e.ctrlKey || e.metaKey || e.altKey) return;
+    if (e.key === 'Enter' && e.target instanceof HTMLButtonElement) return;
+    const k = keyFromKeyboard(e);
+    if (!k) return;
+    e.preventDefault();
+    hit(k);
+  }
+  return (
+    <div className="calc" onKeyDown={onKeyDown}>
+      <output className="calc-display" role="status" aria-live="polite" aria-label="Calculator display" tabIndex={0} data-autofocus>
+        {state.error ?? state.display}
+      </output>
+      <div className="calc-keys">
+        {KEYS.map(([k, shown, spoken]) => (
+          <button key={k} type="button" className={k === '=' ? 'calc-equals' : undefined} aria-label={spoken} onClick={() => hit(k)}>
+            {shown}
+          </button>
+        ))}
+      </div>
+      <p className="calc-help">Type numbers and + − * / ^ %, Enter for equals, Delete to clear.</p>
+    </div>
+  );
+}

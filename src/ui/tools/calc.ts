@@ -114,6 +114,7 @@ const KEYBOARD: Record<string, CalcKey> = {
   Enter: '=',
   '=': '=',
   Escape: 'C',
+  Delete: 'C',
   '.': '.',
   '+': '+',
   '-': '-',
