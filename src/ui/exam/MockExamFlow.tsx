@@ -3,7 +3,7 @@ import { loadPool } from '../../banks/pool';
 import { PBQ_TEMPLATES } from '../../domain/pbq';
 import { assembleExam, type AssembledExam } from '../../exam/assemble';
 import { buildChances } from '../../exam/chance';
-import { clearInProgress, saveInProgress } from '../../exam/inProgress';
+import { clearInProgress, saveInProgress, saveProgress } from '../../exam/inProgress';
 import { newSeed } from '../../exam/rng';
 import type { Responses } from '../../exam/scoring';
 import type { Repo } from '../../storage';
@@ -39,9 +39,13 @@ export function MockExamFlow({
   const { close: closePanel } = usePanels();
 
   // Saved as it goes, so a refresh or close still scores the attempt; a failed save only loses that safety net.
-  function save(e: AssembledExam, start: Date, p: { responses: Responses; flagged: string[] }) {
-    const savedAt = new Date().toISOString();
-    saveInProgress(repo, { exam: e, startedAt: start.toISOString(), savedAt, ...p }).catch(() => {});
+  // The exam is written once at the start; each change after that writes only the answers.
+  function saveStart(e: AssembledExam, start: Date) {
+    const at = start.toISOString();
+    saveInProgress(repo, { exam: e, startedAt: at, savedAt: at, responses: {}, flagged: [] }).catch(() => {});
+  }
+  function save(start: Date, p: { responses: Responses; flagged: string[] }) {
+    saveProgress(repo, { startedAt: start.toISOString(), savedAt: new Date().toISOString(), ...p }).catch(() => {});
   }
 
   if (done) return <ResultsScreen meta={meta} {...done} onDrill={onDrill} />;
@@ -55,7 +59,7 @@ export function MockExamFlow({
         onStart={() => {
           const start = new Date();
           setStartedAt(start);
-          save(exam, start, { responses: {}, flagged: [] });
+          saveStart(exam, start);
         }}
       />
     );
@@ -64,7 +68,7 @@ export function MockExamFlow({
       exam={exam}
       timeLimitMs={meta.timeLimitMinutes * 60_000}
       startedAt={startedAt}
-      onProgress={(p) => save(exam, startedAt, p)}
+      onProgress={(p) => save(startedAt, p)}
       onSubmit={(p) =>
         void finishAttempt(repo, meta, exam, startedAt, p).then(async (f) => {
           await clearInProgress(repo).catch(() => {});

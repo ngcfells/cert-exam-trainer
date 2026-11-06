@@ -5,7 +5,7 @@ import type { Question } from '../domain/types';
 import type { Repo } from './repo';
 import { examResultSchema } from '../exam/result';
 import { srsRecordSchema } from '../study/srs';
-import { IN_PROGRESS_SETTING } from '../exam/inProgress';
+import { IN_PROGRESS_SETTINGS } from '../exam/inProgress';
 
 export const BACKUP_FORMAT = 'cert-exam-trainer-backup';
 
@@ -46,7 +46,7 @@ export async function exportBackup(repo: Repo, now: () => Date = () => new Date(
     repo.listRecords('srs'),
   ]);
   // A running mock stays on this device: restoring it elsewhere would score a stale exam.
-  delete settings[IN_PROGRESS_SETTING];
+  for (const k of IN_PROGRESS_SETTINGS) delete settings[k];
   return { format: BACKUP_FORMAT, version: 1, exportedAt: now().toISOString(), userQuestions, settings, results, srs };
 }
 
@@ -92,7 +92,7 @@ async function write(
 ): Promise<void> {
   if (mode === 'replace') await repo.clearAll();
   for (const q of questions) await repo.upsertUserQuestion(q);
-  for (const [k, v] of Object.entries(data.settings)) if (k !== IN_PROGRESS_SETTING) await repo.setSetting(k, v);
+  for (const [k, v] of Object.entries(data.settings)) if (!IN_PROGRESS_SETTINGS.includes(k)) await repo.setSetting(k, v);
   for (const rec of data.results) await repo.putRecord('results', rec as { id: string });
   for (const rec of data.srs) await repo.putRecord('srs', rec as { id: string });
 }

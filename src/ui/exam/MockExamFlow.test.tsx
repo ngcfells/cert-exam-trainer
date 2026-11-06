@@ -12,7 +12,7 @@ import { parseSrsRecords } from '../../study/srs';
 import { correctParts, partLabel, valueText } from '../../domain/pbq';
 import type { McqAnswer, McqPayload, NumericAnswer, Question } from '../../domain/types';
 import type { Repo } from '../../storage';
-import { loadInProgress, saveInProgress } from '../../exam/inProgress';
+import { IN_PROGRESS_SETTING, loadInProgress, saveInProgress } from '../../exam/inProgress';
 import { sampleMock } from '../../exam/testMock';
 import { recoverMock } from './recover';
 import { usePanels } from '../panels/PanelProvider';
@@ -234,6 +234,8 @@ describe('MockExamFlow', () => {
     expect((await loadInProgress(repo))?.responses).toEqual({});
     await answerCurrent(user, 'right');
     await waitFor(async () => expect(Object.keys((await loadInProgress(repo))?.responses ?? {})).toHaveLength(1));
+    // An answer writes only the answers record; the exam saved at the start is not rewritten.
+    expect(((await repo.getSetting(IN_PROGRESS_SETTING)) as { responses: object }).responses).toEqual({});
     await answerAll(user, 'skip');
     await submit(user);
     expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
