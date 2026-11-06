@@ -186,9 +186,15 @@ Steps, in order:
 - The mordel key is in `JBTToolsSupportFiles/.env.mordel` (git-ignored). Never print it or put it in a commit,
   memory note or handoff. Scripts read it by regex and scrub it from saved output.
 - The mordel mirror holds member designs and stays git-ignored: battletech-tools is public.
-- **No JBTIICRework commits or pushes until 2026-12-02.** Make every change there in the working tree only, and log
-  it in `ResourceLibrary/records/jbtiicrework-pending.md` (from, to, why). On 2026-12-02, commit and push them all,
-  then clear the list.
+- **JBTIICRework: anything that uploads LFS data waits until 2026-12-02.** Make every change in the working tree and
+  log it in `ResourceLibrary/records/jbtiicrework-pending.md` (from, to, why).
+  - Pure renames and moves may be committed and pushed any time (owner ruling 2026-11-06), because the content is
+    unchanged and no LFS object is uploaded. Stage only the `R100` pairs from
+    `git diff --cached -M100% -l0 --name-status`, using a temporary `GIT_INDEX_FILE` to sort them. Then check that
+    `git lfs push --dry-run origin main` prints nothing before you push.
+  - The first batch was 732 renames, pushed in `56d01ef2`.
+  - New files, changed content (OCR included) and replaced files wait. On 2026-12-02, commit and push them, then
+    clear the list.
 - ResourceLibrary is the user's private repo: commit and push freely.
 - `upstream/*` in battletech-tools is Jeff's repo: never touch it.
 - Use the cheapest subagent models; final reviews run on Opus. Bundled testingUtility content must be original.
