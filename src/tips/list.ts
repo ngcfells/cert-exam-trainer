@@ -53,7 +53,7 @@ export const TIPS: readonly Tip[] = [
   {
     id: 'tr-cover-options',
     group: 'test-room',
-    text: 'Cover the answer choices with your hand, read the question, and form your own answer first. Then see which option matches it.',
+    text: 'Before you read the answer choices, read the question and form your own answer in your head. Then see which option matches it.',
   },
   {
     id: 'tr-two-left',
@@ -98,7 +98,7 @@ export const TIPS: readonly Tip[] = [
   {
     id: 'tr-nerves-normal',
     group: 'test-room',
-    text: 'Nerves are normal and even useful. Name the feeling quietly, drop your shoulders, and go back to the sentence in front of you.',
+    text: 'Nerves are normal and even useful. Name the feeling silently, in your head, drop your shoulders, and go back to the sentence in front of you.',
   },
   {
     id: 'tr-blank-mind',
@@ -213,7 +213,7 @@ export const TIPS: readonly Tip[] = [
   {
     id: 'tr-rest-eyes',
     group: 'test-room',
-    text: 'Every so often, look away from the screen for a few seconds and relax your eyes. It costs almost no time and keeps you sharp.',
+    text: 'Every so often, blink slowly a few times and relax your eyes. It costs almost no time and keeps you sharp. Keep your eyes on the screen while you do it, as online proctors may flag looking away.',
   },
   {
     id: 'tr-loosen-up',
@@ -608,7 +608,7 @@ export const TIPS: readonly Tip[] = [
     id: 'cy-data-poisoning',
     group: 'study',
     exam: 'CY0-001',
-    text: 'Know that data poisoning slips bad examples into training data so the model learns the wrong thing. It happens before use, while prompt injection (sneaky instructions in the input) happens during use.',
+    text: 'Know that data poisoning slips bad examples into training data so the model learns the wrong thing. It usually happens during training or fine-tuning, while prompt injection (sneaky instructions in the input) happens during use.',
   },
   {
     id: 'cy-model-theft',
@@ -650,7 +650,7 @@ export const TIPS: readonly Tip[] = [
     id: 'at-git-cycle',
     group: 'study',
     exam: 'AT0-001',
-    text: 'Know the Git cycle: stage, commit, push, branch, merge. Be clear about what exists only on your machine and what has been shared with the remote copy.',
+    text: 'Know the Git workflow: branch, stage, commit, push, then merge. Be clear about what exists only on your machine and what has been shared with the remote copy.',
   },
   {
     id: 'at-pipeline-picture',
@@ -674,6 +674,6 @@ export const TIPS: readonly Tip[] = [
     id: 'at-pace-and-code',
     group: 'test-room',
     exam: 'AT0-001',
-    text: 'You have {minutes} minutes for up to {maxQuestions} questions, and a pass needs {passingScore}. Coding is the biggest domain, so make reading code a routine, not a struggle.',
+    text: 'You have {minutes} minutes for up to {maxQuestions} questions, and you need a scaled score of at least {passingScore} to pass. Coding is the biggest domain, so make reading code a routine, not a struggle.',
   },
 ];

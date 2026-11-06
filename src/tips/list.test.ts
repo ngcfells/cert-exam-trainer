@@ -38,6 +38,15 @@ describe('the tip list', () => {
     }
   });
 
+  it('gives no advice a proctor could flag, and no misleading wording (review)', () => {
+    const banned = [/look away from the screen/i, /with your hand/i, /feeling quietly/i, /stage, commit, push, branch/i, /it happens before use/i];
+    for (const t of TIPS) for (const re of banned) expect(t.text, t.id).not.toMatch(re);
+  });
+
+  it('calls the passing score a scaled score', () => {
+    for (const t of TIPS) if (t.text.includes('{passingScore}')) expect(t.text, t.id).toMatch(/scaled score/);
+  });
+
   it('uses only known placeholders, and every shipped exam fills them all', () => {
     for (const t of TIPS) {
       for (const [, name] of t.text.matchAll(/\{(\w*)\}/g)) expect(PLACEHOLDERS as readonly string[], t.id).toContain(name);

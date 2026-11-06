@@ -263,6 +263,25 @@ describe('StudyRunner study tips', () => {
     expect(getTips().progress.count).toBe(0);
   });
 
+  it('announces a new tip through a live region that is there from the start', async () => {
+    const { user } = setup({ items: qs(12), tipsFor: dataPlusMeta });
+    const live = screen.getByTestId('tip-announcer');
+    expect(live).toHaveAttribute('aria-live', 'polite');
+    expect(live).toHaveTextContent('');
+    await next(user, 9);
+    const box = tipBox()!;
+    expect(screen.getByTestId('tip-announcer')).toBe(live);
+    expect(live.textContent).toMatch(/^(Study|Test-room) tip: /);
+    expect(live.textContent).toContain(box.querySelector('.tip-text')!.textContent);
+    await user.click(screen.getByRole('button', { name: 'Close tip' }));
+    expect(live).toHaveTextContent('');
+  });
+
+  it('has no tip announcer without tipsFor', () => {
+    setup({ items: qs(3) });
+    expect(screen.queryByTestId('tip-announcer')).toBeNull();
+  });
+
   it('does not count a question twice after going back', async () => {
     const { user } = setup({ items: qs(12), tipsFor: dataPlusMeta });
     await next(user, 4);

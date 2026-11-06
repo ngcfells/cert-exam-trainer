@@ -70,6 +70,17 @@ describe('TipBox', () => {
     expect(getTips().progress.seen).toHaveLength(3);
   });
 
+  it('moves focus to Next tip when Previous tip reaches the first tip and disables itself', async () => {
+    const user = userEvent.setup();
+    const { box } = setup();
+    await user.click(within(box).getByRole('button', { name: 'Next tip' }));
+    const prev = within(box).getByRole('button', { name: 'Previous tip' });
+    prev.focus();
+    await user.keyboard('{Enter}');
+    expect(prev).toBeDisabled();
+    expect(document.activeElement).toBe(within(box).getByRole('button', { name: 'Next tip' }));
+  });
+
   it('Close tip calls onClose', async () => {
     const user = userEvent.setup();
     const { box, onClose } = setup();

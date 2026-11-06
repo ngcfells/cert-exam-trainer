@@ -11,7 +11,7 @@ import { playMark } from '../marks/sound';
 import type { ExamMeta } from '../../domain/types';
 import type { Tip } from '../../tips/types';
 import { nextTip, reachQuestion } from '../tips/prefs';
-import { TipBox } from '../tips/TipBox';
+import { tipAnnouncement, TipBox } from '../tips/TipBox';
 import '../exam/exam.css';
 import './study.css';
 
@@ -82,6 +82,8 @@ export function StudyRunner({
 
   // Study tips: count each new question reached (never on going back; a ref, so StrictMode's second effect run is a no-op).
   const [tip, setTip] = useState<Tip | null>(null);
+  // Mounted for the whole run, so a screen reader reliably announces a tip's arrival.
+  const [tipNote, setTipNote] = useState('');
   const tipOpen = useRef(false);
   tipOpen.current = tip !== null;
   const reached = useRef(-1);
@@ -90,7 +92,11 @@ export function StudyRunner({
     reached.current = index;
     if (items[index].kind !== 'question') return;
     // A tip due while one is open leaves the open tip alone; the count has already started again.
-    if (reachQuestion() && !tipOpen.current) setTip(nextTip(tipsFor.code));
+    if (reachQuestion() && !tipOpen.current) {
+      const t = nextTip(tipsFor.code);
+      setTip(t);
+      setTipNote(tipAnnouncement(t, tipsFor));
+    }
   }, [index, items, tipsFor]);
 
   const finish = useCallback(
@@ -139,6 +145,11 @@ export function StudyRunner({
       onIndex={setIndex}
       onFinish={() => (warnIncomplete && unfinished > 0 ? setConfirming(true) : finish(false))}
     >
+      {tipsFor && (
+        <span className="visually-hidden" aria-live="polite" data-testid="tip-announcer">
+          {tipNote}
+        </span>
+      )}
       {tip && tipsFor && (
         <TipBox
           key={tip.id}
@@ -146,6 +157,7 @@ export function StudyRunner({
           meta={tipsFor}
           onClose={() => {
             setTip(null);
+            setTipNote('');
             document.getElementById('runner-h')?.focus();
           }}
         />

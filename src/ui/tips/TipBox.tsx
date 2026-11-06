@@ -1,21 +1,33 @@
-import { useEffect, useId, useState } from 'react';
+import { useId, useRef, useState } from 'react';
 import type { ExamMeta } from '../../domain/types';
 import { fillTip } from '../../tips/picker';
 import type { Tip } from '../../tips/types';
 import { nextTip } from './prefs';
 import './tips.css';
 
-const HEADINGS = { 'test-room': 'Test-room tip', study: 'Study tip' } as const;
+export const HEADINGS = { 'test-room': 'Test-room tip', study: 'Study tip' } as const;
 
-/** A tip above the question (issue #3). It never takes focus; Previous/Next walk its own history before asking for a new tip. */
+/** What the runner's always-present live region says when a tip opens. */
+export function tipAnnouncement(tip: Tip, meta: ExamMeta): string {
+  return `${HEADINGS[tip.group]}: ${fillTip(tip.text, meta)}`;
+}
+
+/**
+ * A tip above the question (issue #3). It never takes focus; Previous/Next walk its own history before asking for a new tip.
+ * Its arrival is announced by the runner's live region; the box's own live text announces Previous/Next changes.
+ */
 export function TipBox({ first, meta, onClose }: { first: Tip; meta: ExamMeta; onClose: () => void }) {
   const headingId = useId();
+  const nextRef = useRef<HTMLButtonElement>(null);
   const [history, setHistory] = useState<Tip[]>([first]);
   const [at, setAt] = useState(0);
-  // The live text fills in after mount, so a screen reader announces the tip's arrival.
-  const [ready, setReady] = useState(false);
-  useEffect(() => setReady(true), []);
   const tip = history[at];
+
+  function previous() {
+    // Previous tip disables itself on the first tip; move focus on so it is not lost.
+    if (at - 1 === 0) nextRef.current?.focus();
+    setAt(at - 1);
+  }
 
   function next() {
     if (at < history.length - 1) {
@@ -35,13 +47,13 @@ export function TipBox({ first, meta, onClose }: { first: Tip; meta: ExamMeta; o
         </button>
       </div>
       <p className="tip-text" aria-live="polite">
-        {ready ? fillTip(tip.text, meta) : ''}
+        {fillTip(tip.text, meta)}
       </p>
       <div className="tip-nav">
-        <button type="button" disabled={at === 0} onClick={() => setAt(at - 1)}>
+        <button type="button" disabled={at === 0} onClick={previous}>
           Previous tip
         </button>
-        <button type="button" onClick={next}>
+        <button type="button" ref={nextRef} onClick={next}>
           Next tip
         </button>
       </div>
