@@ -45,7 +45,7 @@ for (const style of STYLES) {
     // The fixture bank's two MCQs: a single-answer one and "Which TWO … central tendency?" (Median and Mode).
     await startPractice(page, 2);
     const median = page.getByLabel('Median', { exact: true });
-    if (!(await median.isVisible())) await page.getByRole('button', { name: 'Next' }).click();
+    if (!(await median.isVisible())) await page.getByRole('button', { name: 'Next', exact: true }).click();
     await median.check();
     await page.getByRole('button', { name: 'Check answer' }).click();
     await expect(page.getByRole('status')).toHaveText(/^Partly correct/);
@@ -53,7 +53,7 @@ for (const style of STYLES) {
 
     // The other question is reached but left unanswered (unreached ones are left out of the result),
     // so the review shows a partly mark and a "Not answered" mark.
-    if (await page.getByRole('heading', { name: 'Item 1 of 2' }).isVisible()) await page.getByRole('button', { name: 'Next' }).click();
+    if (await page.getByRole('heading', { name: 'Item 1 of 2' }).isVisible()) await page.getByRole('button', { name: 'Next', exact: true }).click();
     await page.getByRole('button', { name: 'Finish', exact: true }).click();
     await page.getByRole('dialog', { name: 'Finish now?' }).getByRole('button', { name: 'Finish', exact: true }).click();
     await expect(page.getByRole('heading', { name: /^Practice complete/ })).toBeVisible();

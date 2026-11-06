@@ -32,10 +32,10 @@ test('a lesson by keyboard: read, check, and the status reaches Done; axe clean 
   await expect(page.locator('.study-status')).toHaveText('Correct');
   await expectNoSeriousAxe(page);
 
-  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByRole('button', { name: 'Next', exact: true }).click();
   await page.getByLabel('Primary key').check();
   await page.getByRole('button', { name: 'Check answer' }).click();
-  await page.getByRole('button', { name: 'Next' }).click();
+  await page.getByRole('button', { name: 'Next', exact: true }).click();
   await page.getByLabel('Median').check();
   await page.getByLabel('Mode').check();
   await page.getByRole('button', { name: 'Check answer' }).click();

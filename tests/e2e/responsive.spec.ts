@@ -69,7 +69,7 @@ for (const seed of SEEDS) test(`every exam item fits and is axe clean (seed ${se
   for (let i = 1; i <= TOTAL; i++) {
     await expect(page.getByText(`Question ${i} of ${TOTAL}`)).toBeVisible();
     await checkBothSchemes(page, `seed ${seed} item ${i}`);
-    if (i < TOTAL) await page.getByRole('button', { name: 'Next' }).click();
+    if (i < TOTAL) await page.getByRole('button', { name: 'Next', exact: true }).click();
   }
   await page.getByRole('button', { name: 'Review', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Review your answers' })).toBeVisible();
@@ -100,7 +100,7 @@ test('tap path works on selects and hotspot checkboxes', async ({ page }) => {
       await expect(check).toBeChecked();
       tappedCheck = true;
     }
-    if (i < TOTAL) await page.getByRole('button', { name: 'Next' }).click();
+    if (i < TOTAL) await page.getByRole('button', { name: 'Next', exact: true }).click();
   }
   expect(tappedSelect && tappedCheck).toBe(true);
 });

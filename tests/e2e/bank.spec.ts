@@ -83,7 +83,7 @@ for (const width of [360, 1280]) {
         els.filter((e) => e.scrollHeight > e.clientHeight + 1 || e.scrollWidth > e.clientWidth + 1).map((e) => e.textContent),
       );
       expect(overflow, `item ${i}`).toEqual([]);
-      if (i < total) await page.getByRole('button', { name: 'Next' }).click();
+      if (i < total) await page.getByRole('button', { name: 'Next', exact: true }).click();
     }
   });
 }

@@ -17,7 +17,7 @@ async function startExam(page: Page) {
 }
 
 async function toReview(page: Page) {
-  for (let i = 1; i < TOTAL; i++) await page.getByRole('button', { name: 'Next' }).click();
+  for (let i = 1; i < TOTAL; i++) await page.getByRole('button', { name: 'Next', exact: true }).click();
   await page.getByRole('button', { name: 'Review', exact: true }).click();
 }
 
@@ -48,7 +48,7 @@ for (const seed of SEEDS) test(`mock exam screens (seed ${seed}) pass axe`, asyn
       await expectNoSeriousAxe(page);
       lockedChecked = true;
     }
-    if (i < TOTAL) await page.getByRole('button', { name: 'Next' }).click();
+    if (i < TOTAL) await page.getByRole('button', { name: 'Next', exact: true }).click();
   }
   expect(lockedChecked).toBe(true);
   await page.getByRole('button', { name: 'Review', exact: true }).click();
