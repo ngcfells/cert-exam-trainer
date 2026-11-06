@@ -149,6 +149,16 @@ Steps, in order:
         example `ocrmypdf`; check whether it or tesseract is installed, and install it if needed). Then rebuild its
         `ResourceLibrary/text/` extract, rename it by the usual rules, and rebuild the INDEX and search. A changed
         PDF is a modified file in JBTIICRework, so log it as a replace in the pending list.
+        **DONE 2026-11-06.** ocrmypdf is not installed. Tesseract 5.4 + PyMuPDF do it: new tool
+        `ResourceLibrary/ocr_textlayer.py` (incremental save, so the original bytes stay a prefix; undo = truncate to
+        `origSize`; log `records/_ocr-textlayer.jsonl`). Of the 85: 46 PDFs got a text layer, 18 terrain maps had
+        no readable text (left unchanged), 1 cannot be opened by any reader (`sourcebooks/Scenarios and Campaigns/
+        BattleCorps Scenario - Birth of the King (CGL)[2012].pdf`: needs a fresh copy), and 20 were Word/RTF/text
+        documents. `extract_rulebooks.py` and `sync_library.py` now extract .txt/.doc/.docx/.rtf too (56 documents in
+        the library; a .doc Word will not open falls back to the text runs in the file). 74 files renamed (sources:
+        the OCR copyright lines and Sarna), `Map Set #3.pdf` set aside as a copy of the FASA Map Set 3 scan, a few
+        left with reasons; all in the pending list. Pushed: ResourceLibrary `3404476a9`, and the 33 pure renames
+        in JBTIICRework `d236f2ca`. The OCR'd files (changed content) wait for 2026-12-02.
    - **NEXT, for a cheap subagent: subsort JBTIICRework `sourcebooks/`.** The owner asked for this on 2026-11-06.
      Files loose at the top of `sourcebooks/` most likely belong in one of its existing subfolders. Same rules:
      working tree only, log every move in `jbtiicrework-pending.md`, never delete.
