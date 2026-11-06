@@ -12,11 +12,11 @@ The tests run with the app's tests (`npm test` at the repo root). `npm run check
 ## Owner setup (once)
 
 Before you start, run `npm install` at the repo root (the Worker shares the app's report contract and `zod`), and
-create the two labels the Worker uses:
+create the two labels the Worker uses (done 2026-11-06; only needed again for a new repo):
 
 ```sh
-gh label create content --repo ngcfells/cert-exam-trainer --description "Problem with a question" --color 5319e7
-gh label create from-app --repo ngcfells/cert-exam-trainer --description "Sent from the in-app report form" --color 0e8a16
+gh label create content --repo ngcfells/cert-exam-trainer --description "Problem with a bundled question" --color c5def5
+gh label create from-app --repo ngcfells/cert-exam-trainer --description "Sent from the in-app report form" --color ededed
 ```
 
 Then, from this folder:
