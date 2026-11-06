@@ -45,6 +45,6 @@ describe('About', () => {
 
   it('has no in-screen Back; the nav bar is the way out', () => {
     render(<About />);
-    expect(screen.queryByRole('button')).not.toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: /back/i })).not.toBeInTheDocument();
   });
 });

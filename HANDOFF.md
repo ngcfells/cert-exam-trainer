@@ -9,6 +9,24 @@ open issues were #14, #11, #6 and #5, all enhancements.
 The user's order (2026-11-06): build the testingUtility feature (A). Between its tasks, and while tests run, keep the
 tools work moving (B). Neither one waits on the other.
 
+## A0. testingUtility: in-app reports (bug, question problem, feature request). Branch `in-app-reports`
+
+- Spec: `docs/superpowers/specs/2026-11-06-in-app-reports-design.md`. Plan:
+  `docs/superpowers/plans/2026-11-06-in-app-reports.md`. Ledger (keep it):
+  `.superpowers/sdd/2026-11-06-in-app-reports/progress.md`.
+- Tasks 1 to 9 are built. Then: Opus whole-branch review, fix every finding, merge, push, `npm run deploy`.
+- Labels: bug → `bug, from-app`; question → `bug, content, from-app`; feature → `enhancement, from-app`.
+- WAITING ON THE OWNER (Task 3): deploy the relay (`relay/README.md`) and send the workers.dev URL, the KV
+  namespace id and the GitHub token expiry date. Never paste the token or the Turnstile secret in chat; they go only
+  into the `wrangler secret put` prompts.
+  - Then: put the KV id in `relay/wrangler.toml`, write the token expiry here, and commit `.env.production` with
+    `VITE_REPORT_URL=<url>` and `VITE_TURNSTILE_SITEKEY=0x4AAAAAAF2w670muVBVNqkR`. Deploy, send one live report
+    with the owner, and close that test issue.
+  - Relay URL: (not yet). Token expiry: (not yet). Renew the token before it expires.
+  - Until then the deployed app has reports off: the buttons are hidden.
+- The report e2e tests (`tests/e2e/report.pwa.spec.ts`) skip unless `VITE_REPORT_URL` is set or in
+  `.env.production`. They stub the relay and Turnstile, so they never send a real issue.
+
 ## A. testingUtility: in-app exam tools (issue #14). DONE: merged, pushed and deployed 2026-11-06
 
 Status (2026-11-06, about 12:15):

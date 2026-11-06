@@ -1,6 +1,6 @@
 # Cert Exam Trainer
 
-An offline practice-exam trainer for CompTIA certifications. CompTIA Data+ (DA0-002) comes first. The app runs from a single `index.html` that you can double-click, and it makes no network requests.
+An offline practice-exam trainer for CompTIA certifications. CompTIA Data+ (DA0-002) comes first. The app runs from a single `index.html` that you can double-click, and it makes no network requests. The one exception is the online app, where a learner can choose to send a report.
 
 ## Commands
 
@@ -12,6 +12,12 @@ npm run build          # normal build to dist/
 npm run build:single   # one self-contained file at dist-single/index.html
 npm run check          # lint, typecheck, unit tests, single build, e2e + axe
 ```
+
+## Reporting a problem
+
+In the online app, learners can report a bug, a problem with a question, or a feature request from the header, Settings, About, any practice, cram or lesson question, and the results of a mock. There is no button while a mock runs. Each report becomes a GitHub issue on this repo, labelled `from-app` plus `bug`, `bug` + `content`, or `enhancement`. Nobody signs in. The report goes through a small Cloudflare Worker in `relay/`, which checks a Turnstile token and keeps the GitHub token secret (setup in `relay/README.md`). Reports made offline wait on the device until the learner sends them. The build turns reporting on only when `VITE_REPORT_URL` and `VITE_TURNSTILE_SITEKEY` are set (in `.env.production`). The double-click file never sends anything.
+
+To run the report end-to-end tests before the relay exists, build with a stand-in URL: `VITE_REPORT_URL=https://relay.e2e.test VITE_TURNSTILE_SITEKEY=x npm run build && npx playwright test --project=pwa`. Without a URL they skip.
 
 ## Deploy (GitHub Pages)
 
