@@ -49,6 +49,7 @@ export function CramFlow({ repo, examCode, seed }: { repo: Repo; examCode: strin
   if (startedAt) {
     return (
       <StudyRunner
+        mode="cram"
         tools
         warnIncomplete
         tipsFor={meta}

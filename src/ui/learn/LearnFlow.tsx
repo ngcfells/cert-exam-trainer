@@ -77,6 +77,7 @@ export function LearnFlow({ repo, examCode, lessonId }: { repo: Repo; examCode: 
     const startedAt = view.startedAt;
     return (
       <StudyRunner
+        mode="lesson"
         items={exam.items.map((item) => ({ kind: 'question', item }))}
         feedback="instant"
         startedAt={startedAt}

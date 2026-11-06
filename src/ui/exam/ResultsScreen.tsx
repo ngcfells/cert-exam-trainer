@@ -6,6 +6,8 @@ import type { ExamResult, ResultMode } from '../../exam/result';
 import { hasAnswer, MAX_SCORE, type ScoreReport } from '../../exam/scoring';
 import { ItemReview } from './ItemReview';
 import { AnswerMark, levelOf } from '../marks/AnswerMark';
+import { ReportButton } from '../report/ReportButton';
+import { plural } from '../plural';
 
 export function ResultsScreen({
   meta,
@@ -30,12 +32,16 @@ export function ResultsScreen({
   /** Extra summary lines, shown under the score. */
   children?: React.ReactNode;
 }) {
-  const missed = exam.items.flatMap((item, i) => (report.items[i].fraction < 1 ? [{ item, fraction: report.items[i].fraction }] : []));
+  const missed = exam.items.flatMap((item, i) => (report.items[i].fraction < 1 ? [{ item, n: i + 1, fraction: report.items[i].fraction }] : []));
+  const reportOn = (questionId: string, n: number) => (
+    <ReportButton context={{ questionId, exam: meta.code, mode: 'results' }} ariaLabel={`Report a problem with question ${n}`} />
+  );
   const headingRef = useFocusHeading();
   // The alert region is mounted empty and filled after mount, so screen readers announce it.
   const [alertText, setAlertText] = useState('');
   useEffect(() => setAlertText(saveError ?? ''), [saveError]);
   const mock = mode === 'mock';
+  const flagged = mock ? exam.items.flatMap((item, i) => (result.flagged.includes(item.question.id) ? [{ id: item.question.id, n: i + 1 }] : [])) : [];
 
   return (
     <section className="exam results" aria-labelledby="results-h">
@@ -57,6 +63,19 @@ export function ResultsScreen({
         </>
       )}
       {!mock && result.autoSubmitted && <p>Time ran out, so the session ended.</p>}
+      {flagged.length > 0 && (
+        <section className="results-flagged" aria-labelledby="results-flagged-h">
+          <h3 id="results-flagged-h">Questions you flagged</h3>
+          <p>{`You flagged ${plural(flagged.length, 'question')} for your review. Is anything wrong with ${flagged.length === 1 ? 'it' : 'them'}?`}</p>
+          <ul>
+            {flagged.map(({ id, n }) => (
+              <li key={id}>
+                {`Question ${n}`} {reportOn(id, n)}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
       {children}
       <p role="alert">{alertText}</p>
 
@@ -88,10 +107,11 @@ export function ResultsScreen({
         <>
           <h3>Review</h3>
           <ol>
-            {missed.map(({ item: { question: q }, fraction }) => (
+            {missed.map(({ item: { question: q }, n, fraction }) => (
               <li key={q.id}>
                 <AnswerMark level={levelOf(fraction)} unanswered={!hasAnswer(q, result.responses[q.id])} />
                 <ItemReview q={q} response={result.responses[q.id]} />
+                {reportOn(q.id, n)}
               </li>
             ))}
           </ol>

@@ -51,6 +51,7 @@ export function PracticeFlow({
   }
   return (
     <StudyRunner
+      mode="practice"
       tools
       warnIncomplete
       tipsFor={meta}

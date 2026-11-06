@@ -14,6 +14,7 @@ import { nextTip, reachQuestion } from '../tips/prefs';
 import { tipAnnouncement, TipBox } from '../tips/TipBox';
 import { usePanels } from '../panels/PanelProvider';
 import { RunToolsProvider, ToolButtons, ToolPanels } from '../tools/RunTools';
+import { ReportButton } from '../report/ReportButton';
 import '../exam/exam.css';
 import './study.css';
 
@@ -42,7 +43,10 @@ export function StudyRunner({
   warnIncomplete = false,
   tipsFor,
   tools = false,
+  mode,
 }: {
+  /** Sent with a report from this run. */
+  mode?: 'practice' | 'cram' | 'lesson';
   /** Practice and cram: Calculator and Whiteboard in the header. Lesson checks leave it out. */
   tools?: boolean;
   /** Practice and cram: the exam whose study tips show every 10 to 20 new questions. Lesson checks leave it out. */
@@ -140,7 +144,16 @@ export function StudyRunner({
   return (
     <RunToolsProvider>
     <RunnerFrame
-      tools={tools ? <ToolButtons /> : undefined}
+      tools={
+        tools || current.kind === 'question' ? (
+          <>
+            {tools && <ToolButtons />}
+            {current.kind === 'question' && (
+              <ReportButton context={{ questionId: current.item.question.id, exam: current.item.question.exam, ...(mode ? { mode } : {}) }} />
+            )}
+          </>
+        ) : undefined
+      }
       replaced={done && <p role="status">Saving…</p>}
       label="Item"
       index={index}
