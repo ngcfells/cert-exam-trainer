@@ -10,6 +10,8 @@ interface Opts {
   appearance: string;
   callback: (t: string) => void;
   'error-callback': () => void;
+  'before-interactive-callback': () => void;
+  'after-interactive-callback': () => void;
 }
 
 function fakeTurnstile() {
@@ -35,11 +37,12 @@ let mod: Hook;
 let api: ReturnType<typeof fakeTurnstile>;
 
 function host(siteKey = '0xKEY') {
-  const out: { getToken?: () => Promise<string> } = {};
+  const out: { getToken?: () => Promise<string>; needsAction?: boolean } = {};
   function Host() {
-    const { boxRef, getToken } = mod.useTurnstile(siteKey);
+    const { boxRef, getToken, needsAction } = mod.useTurnstile(siteKey);
     useEffect(() => {
       out.getToken = getToken;
+      out.needsAction = needsAction;
     });
     return createElement('div', { ref: boxRef, 'data-testid': 'box' });
   }
@@ -133,5 +136,36 @@ describe('useTurnstile', () => {
     await p;
     unmount();
     expect(api.remove).toHaveBeenCalledWith('w0');
+  });
+
+  it('tries the script again when it loaded without Turnstile', async () => {
+    const { out } = host();
+    const p = out.getToken!();
+    const failed = expect(p).rejects.toThrow();
+    const first = document.querySelector<HTMLScriptElement>(`script[src="${SRC}"]`)!;
+    await act(async () => {
+      first.dispatchEvent(new Event('load'));
+    });
+    await failed;
+    expect(document.querySelector(`script[src="${SRC}"]`)).toBeNull();
+    const q = out.getToken!();
+    await loadScript();
+    api.succeed();
+    await expect(q).resolves.toBe('token-1');
+  });
+
+  it('says when the check needs the learner, until it is done', async () => {
+    const { out } = host();
+    const p = out.getToken!();
+    await loadScript();
+    expect(out.needsAction).toBe(false);
+    await act(async () => api.widgets[0]['before-interactive-callback']());
+    expect(out.needsAction).toBe(true);
+    await act(async () => api.widgets[0]['after-interactive-callback']());
+    expect(out.needsAction).toBe(false);
+    await act(async () => api.widgets[0]['before-interactive-callback']());
+    await act(async () => api.succeed());
+    await p;
+    expect(out.needsAction).toBe(false);
   });
 });

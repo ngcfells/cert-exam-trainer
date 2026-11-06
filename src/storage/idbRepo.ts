@@ -66,7 +66,8 @@ export async function openIdbRepo(name = DB_NAME): Promise<Repo> {
       ]);
     },
     async listOutbox() {
-      return db.getAll('outbox');
+      // Oldest first, so the waiting list reads in the order the reports were made.
+      return (await db.getAll('outbox')).sort((a, b) => a.savedAt.localeCompare(b.savedAt));
     },
     async putOutbox(r) {
       const tx = db.transaction('outbox', 'readwrite');

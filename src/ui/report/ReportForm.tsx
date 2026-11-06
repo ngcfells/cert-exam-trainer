@@ -1,5 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { EXAM_RE, LIMITS, QUESTION_ID_RE, type ReportDraft, type ReportType } from '../../report/contract';
+import { EXAM_RE, LIMITS, QUESTION_ID_RE, hasVisibleText, type ReportDraft, type ReportType } from '../../report/contract';
 import { OutboxFullError, toOutboxReport } from '../../report/outbox';
 import { sendReport } from '../../report/send';
 import { SPAM_CHECK_MESSAGE } from '../../report/turnstile';
@@ -8,6 +8,8 @@ import type { ReportContext } from '../panels/PanelProvider';
 import { plural } from '../plural';
 
 export const SAVED_MESSAGE = 'Saved on this device. You can send it when you are back online.';
+export const SERVICE_DOWN_SAVED =
+  'The report service is not working right now. Your report is saved on this device. Try again later.';
 
 const TYPE_LABELS: Record<ReportType, string> = {
   question: 'A problem with this question',
@@ -18,9 +20,9 @@ const TYPE_LABELS: Record<ReportType, string> = {
 type Status =
   | { kind: 'idle' }
   | { kind: 'busy' }
-  | { kind: 'error'; text: string }
+  | { kind: 'error'; text: string; canSave: boolean }
   | { kind: 'sent'; number: number; url: string }
-  | { kind: 'saved' };
+  | { kind: 'saved'; text: string };
 
 type Field = 'title' | 'details';
 
@@ -44,10 +46,15 @@ interface Props {
   getToken(): Promise<string>;
   /** Called after the outbox changes. */
   onChange(): void;
+  /** Which send is running in the panel, so only one runs at a time. */
+  sending: string | null;
+  setSending(key: string | null): void;
 }
 
+const FORM_KEY = 'form';
+
 /** One report. The id is made once per draft, so a retry reaches the relay as the same report. */
-export function ReportForm({ repo, context, url, getToken, onChange }: Props) {
+export function ReportForm({ repo, context, url, getToken, onChange, sending, setSending }: Props) {
   const uid = useId();
   const questionId = context.questionId && QUESTION_ID_RE.test(context.questionId) ? context.questionId : undefined;
   const types: ReportType[] = questionId ? ['question', 'bug', 'feature'] : ['bug', 'feature'];
@@ -63,18 +70,19 @@ export function ReportForm({ repo, context, url, getToken, onChange }: Props) {
   const [focusAt, setFocusAt] = useState(0);
   const summaryRef = useRef<HTMLDivElement>(null);
   const doneRef = useRef<HTMLDivElement>(null);
+  const errorRef = useRef<HTMLParagraphElement>(null);
 
   const exam = context.exam && EXAM_RE.test(context.exam) ? context.exam : undefined;
   const userAgent = navigator.userAgent.slice(0, 400);
   const errors: { field: Field; text: string }[] = [];
-  if (!title.trim()) errors.push({ field: 'title', text: 'Enter a title' });
-  if (!details.trim()) errors.push({ field: 'details', text: 'Enter the details' });
+  if (!hasVisibleText(title)) errors.push({ field: 'title', text: 'Enter a title' });
+  if (!hasVisibleText(details)) errors.push({ field: 'details', text: 'Enter the details' });
   const fieldId = (f: Field) => `${uid}-${f}`;
   const errorFor = (f: Field) => (showErrors ? errors.find((e) => e.field === f) : undefined);
 
   useEffect(() => {
     if (focusAt === 0) return;
-    (summaryRef.current ?? doneRef.current)?.focus();
+    (summaryRef.current ?? doneRef.current ?? errorRef.current)?.focus();
   }, [focusAt]);
 
   function draft(): ReportDraft {
@@ -91,15 +99,31 @@ export function ReportForm({ repo, context, url, getToken, onChange }: Props) {
     };
   }
 
-  async function save(d: ReportDraft) {
-    await repo.putOutbox(toOutboxReport(d));
-    onChange();
-    setStatus({ kind: 'saved' });
+  const busy = status.kind === 'busy';
+  const blocked = busy || (sending !== null && sending !== FORM_KEY);
+
+  function fail(text: string, canSave: boolean) {
+    setStatus({ kind: 'error', text, canSave });
     setFocusAt((n) => n + 1);
   }
 
+  async function save(d: ReportDraft, text = SAVED_MESSAGE) {
+    await repo.putOutbox(toOutboxReport(d));
+    onChange();
+    setStatus({ kind: 'saved', text });
+    setFocusAt((n) => n + 1);
+  }
+
+  async function saveForLater() {
+    try {
+      await save(draft());
+    } catch (e) {
+      fail(e instanceof OutboxFullError ? e.message : errorText(e), false);
+    }
+  }
+
   async function send() {
-    if (status.kind === 'busy') return;
+    if (blocked) return;
     if (errors.length > 0) {
       setShowErrors(true);
       setFocusAt((n) => n + 1);
@@ -108,6 +132,7 @@ export function ReportForm({ repo, context, url, getToken, onChange }: Props) {
     setShowErrors(false);
     const d = draft();
     setStatus({ kind: 'busy' });
+    setSending(FORM_KEY);
     try {
       if (!navigator.onLine) {
         await save(d);
@@ -117,7 +142,7 @@ export function ReportForm({ repo, context, url, getToken, onChange }: Props) {
       try {
         token = await getToken();
       } catch {
-        setStatus({ kind: 'error', text: SPAM_CHECK_MESSAGE });
+        fail(SPAM_CHECK_MESSAGE, true);
         return;
       }
       const out = await sendReport(url, { ...d, turnstileToken: token });
@@ -128,11 +153,15 @@ export function ReportForm({ repo, context, url, getToken, onChange }: Props) {
         setFocusAt((n) => n + 1);
       } else if (out.kind === 'offline') {
         await save(d);
+      } else if (out.kind === 'down') {
+        await save(d, SERVICE_DOWN_SAVED);
       } else {
-        setStatus({ kind: 'error', text: out.message });
+        fail(out.message, out.canSave);
       }
     } catch (e) {
-      setStatus({ kind: 'error', text: e instanceof OutboxFullError ? e.message : errorText(e) });
+      fail(e instanceof OutboxFullError ? e.message : errorText(e), false);
+    } finally {
+      setSending(null);
     }
   }
 
@@ -157,7 +186,7 @@ export function ReportForm({ repo, context, url, getToken, onChange }: Props) {
             </p>
           </>
         ) : (
-          <p>{SAVED_MESSAGE}</p>
+          <p>{status.text}</p>
         )}
         <button type="button" onClick={startAnother}>
           Start another report
@@ -258,23 +287,31 @@ export function ReportForm({ repo, context, url, getToken, onChange }: Props) {
           Include technical details
         </label>
         <ul id={`${uid}-tech`} className="hint report-tech">
-          <li>{`App version: ${__APP_VERSION__}`}</li>
           {exam && <li>{`Exam: ${exam}`}</li>}
           {context.mode && <li>{`Mode: ${context.mode}`}</li>}
-          {questionId && <li>{`Question: ${questionId}`}</li>}
+          {questionId && type !== 'question' && <li>{`Question: ${questionId}`}</li>}
           <li>{`Browser: ${userAgent}`}</li>
         </ul>
+        <p className="hint">
+          {`Always sent: app version ${__APP_VERSION__}${questionId && type === 'question' ? `, question ${questionId}` : ''}.`}
+        </p>
       </div>
 
       <p>Your report becomes a public issue on GitHub.</p>
       {status.kind === 'error' && (
-        <p role="alert" className="report-error">
+        <p ref={errorRef} tabIndex={-1} role="alert" className="report-error">
           {status.text}
         </p>
       )}
-      <button type="submit" disabled={status.kind === 'busy'}>
-        {status.kind === 'busy' ? 'Sending…' : 'Send'}
+      {/* aria-disabled, not disabled, so focus stays on the button while it sends. */}
+      <button type="submit" aria-disabled={blocked}>
+        {busy ? 'Sending…' : 'Send'}
       </button>
+      {status.kind === 'error' && status.canSave && (
+        <button type="button" onClick={() => void saveForLater()}>
+          Save to send later
+        </button>
+      )}
     </form>
   );
 }

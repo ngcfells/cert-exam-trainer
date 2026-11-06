@@ -14,7 +14,8 @@ tools work moving (B). Neither one waits on the other.
 - Spec: `docs/superpowers/specs/2026-11-06-in-app-reports-design.md`. Plan:
   `docs/superpowers/plans/2026-11-06-in-app-reports.md`. Ledger (keep it):
   `.superpowers/sdd/2026-11-06-in-app-reports/progress.md`.
-- Tasks 1 to 9 are built. Then: Opus whole-branch review, fix every finding, merge, push, `npm run deploy`.
+- Tasks 1 to 9 are built, the Opus whole-branch review is done and every finding is fixed (ledger `Final:` lines).
+  Next: merge, push, `npm run deploy`.
 - Labels: bug → `bug, from-app`; question → `bug, content, from-app`; feature → `enhancement, from-app`.
 - WAITING ON THE OWNER (Task 3): deploy the relay (`relay/README.md`) and send the workers.dev URL, the KV
   namespace id and the GitHub token expiry date. Never paste the token or the Turnstile secret in chat; they go only
@@ -22,10 +23,12 @@ tools work moving (B). Neither one waits on the other.
   - Then: put the KV id in `relay/wrangler.toml`, write the token expiry here, and commit `.env.production` with
     `VITE_REPORT_URL=<url>` and `VITE_TURNSTILE_SITEKEY=0x4AAAAAAF2w670muVBVNqkR`. Deploy, send one live report
     with the owner, and close that test issue.
-  - Relay URL: (not yet). Token expiry: (not yet). Renew the token before it expires.
+  - Relay URL: (not yet). GitHub token expiry: 2027-02-04. Renew it before then (`npx wrangler secret put
+    GITHUB_TOKEN` in `relay/`). The Worker logs "GitHub refused the issue 401" once it has expired.
+  - After the merge, the owner reruns `npx wrangler deploy` in `relay/` so the live Worker has the review fixes.
   - Until then the deployed app has reports off: the buttons are hidden.
-- The report e2e tests (`tests/e2e/report.pwa.spec.ts`) skip unless `VITE_REPORT_URL` is set or in
-  `.env.production`. They stub the relay and Turnstile, so they never send a real issue.
+- The report e2e tests (`tests/e2e/report.pwa.spec.ts`) run in `npm run check`, which builds with a stand-in relay
+  URL (`build:check`). They stub the relay and Turnstile, so they never send a real issue.
 
 ## A. testingUtility: in-app exam tools (issue #14). DONE: merged, pushed and deployed 2026-11-06
 

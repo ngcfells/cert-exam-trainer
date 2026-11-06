@@ -40,7 +40,8 @@ function json(status: number, body: unknown, origin: string | null): Response {
 async function takeSlot(kv: KvLike, key: string, limit: number, ttl: number): Promise<boolean> {
   const used = Number((await kv.get(key)) ?? '0');
   if (used >= limit) return false;
-  await kv.put(key, String(used + 1), { expirationTtl: ttl });
+  // Best effort: if the count cannot be stored (KV write limit), Turnstile still guards the repo.
+  await kv.put(key, String(used + 1), { expirationTtl: ttl }).catch(() => undefined);
   return true;
 }
 
@@ -70,7 +71,22 @@ export async function handle(
 ): Promise<Response> {
   const origin = req.headers.get('Origin');
   if (!allowedOrigin(origin)) return json(403, { error: 'Origin not allowed' }, null);
+  try {
+    return await handleAllowed(req, origin, env, fetchFn, now);
+  } catch (e) {
+    // A reply with CORS headers lets the app tell "service down" from "offline". Never log the request or env.
+    console.error('Relay error', e instanceof Error ? e.name : 'unknown');
+    return json(503, { error: 'The report service is not working right now' }, origin);
+  }
+}
 
+async function handleAllowed(
+  req: Request,
+  origin: string,
+  env: Env,
+  fetchFn: typeof fetch,
+  now: () => number,
+): Promise<Response> {
   if (req.method === 'OPTIONS') {
     return new Response(null, {
       status: 204,
@@ -103,11 +119,6 @@ export async function handle(
   if (seen) return json(200, JSON.parse(seen) as ReportReply, origin);
 
   const ip = req.headers.get('CF-Connecting-IP') ?? 'unknown';
-  const t = now();
-  const hourOk = await takeSlot(env.RELAY_KV, `rl:h:${ip}:${Math.floor(t / HOUR_MS)}`, PER_HOUR, 2 * 3600);
-  const dayOk = hourOk && (await takeSlot(env.RELAY_KV, `rl:d:${ip}:${Math.floor(t / DAY_MS)}`, PER_DAY, 2 * 86400));
-  if (!hourOk || !dayOk) return json(429, { error: 'Too many reports' }, origin);
-
   const form = new FormData();
   form.set('secret', env.TURNSTILE_SECRET);
   form.set('response', report.turnstileToken);
@@ -121,6 +132,15 @@ export async function handle(
   }
   if (!verified) return json(403, { error: 'The spam check failed' }, origin);
 
+  // Counted only after Turnstile passes, so bots with bad tokens cannot use up a learner's limit or KV writes.
+  const t = now();
+  if (!(await takeSlot(env.RELAY_KV, `rl:h:${ip}:${Math.floor(t / HOUR_MS)}`, PER_HOUR, 2 * 3600))) {
+    return json(429, { error: 'Too many reports', retry: 'hour' }, origin);
+  }
+  if (!(await takeSlot(env.RELAY_KV, `rl:d:${ip}:${Math.floor(t / DAY_MS)}`, PER_DAY, 2 * 86400))) {
+    return json(429, { error: 'Too many reports', retry: 'day' }, origin);
+  }
+
   const issue = formatIssue(report);
   let gh: Response;
   try {
@@ -129,10 +149,15 @@ export async function handle(
   } catch {
     return json(502, { error: 'GitHub could not be reached' }, origin);
   }
-  if (gh.status !== 201) return json(502, { error: `GitHub refused the issue (${gh.status})` }, origin);
+  if (gh.status !== 201) {
+    // Shows in the Worker logs, so an expired token is easy to spot. The status only, never the token.
+    console.error('GitHub refused the issue', gh.status);
+    return json(502, { error: `GitHub refused the issue (${gh.status})` }, origin);
+  }
 
   const created = (await gh.json()) as { number: number; html_url: string };
   const reply: ReportReply = { number: created.number, url: created.html_url };
-  await env.RELAY_KV.put(`id:${report.id}`, JSON.stringify(reply), { expirationTtl: DEDUPE_TTL });
+  // Best effort: the issue exists, so a failed write must not turn into an error the app would retry.
+  await env.RELAY_KV.put(`id:${report.id}`, JSON.stringify(reply), { expirationTtl: DEDUPE_TTL }).catch(() => undefined);
   return json(201, reply, origin);
 }

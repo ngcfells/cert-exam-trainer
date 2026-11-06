@@ -1,24 +1,20 @@
-import { readFileSync } from 'node:fs';
 import { test, expect, type Page, type BrowserContext } from '@playwright/test';
 import { expectNoSeriousAxe, openExam, PWA_URL } from './util';
 
-// The hosted build (dist/) has reports on when it was built with VITE_REPORT_URL: from the environment, or from
-// .env.production once the relay is deployed. Build with `VITE_REPORT_URL=https://relay.e2e.test npm run build` to
-// run these before that.
-function relayUrl(): string | undefined {
-  if (process.env.VITE_REPORT_URL) return process.env.VITE_REPORT_URL.trim().replace(/\/+$/, '');
-  try {
-    const line = readFileSync('.env.production', 'utf8')
-      .split(/\r?\n/)
-      .find((l) => l.startsWith('VITE_REPORT_URL='));
-    return line?.slice('VITE_REPORT_URL='.length).trim().replace(/\/+$/, '') || undefined;
-  } catch {
-    return undefined;
-  }
-}
+// `npm run check` builds dist/ with a stand-in relay URL (build:check), so these always run there. Whatever URL the
+// build has, any POST to /report off the app's own origin is answered here: no real issue is ever sent.
+const APP_ORIGIN = new URL(PWA_URL).origin;
 
-const RELAY = relayUrl();
-test.skip(!RELAY, 'Reports are off in this build: set VITE_REPORT_URL (see relay/README.md).');
+let posted: Record<string, unknown>[] = [];
+
+// Stub first, then load the app once; each test starts on the home screen.
+test.beforeEach(async ({ page, context }) => {
+  posted = await stubNetwork(context);
+  await page.goto(PWA_URL);
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  const reportsOn = (await page.getByRole('button', { name: 'Report', exact: true }).count()) > 0;
+  test.skip(!reportsOn, 'Reports are off in this build: run npm run build:check first (see README).');
+});
 
 const ISSUE = { number: 99, url: 'https://github.com/ngcfells/cert-exam-trainer/issues/99' };
 
@@ -36,9 +32,9 @@ async function stubNetwork(context: BrowserContext): Promise<Record<string, unkn
   await context.route('https://challenges.cloudflare.com/**', (route) =>
     route.fulfill({ status: 200, contentType: 'text/javascript', body: TURNSTILE_STUB }),
   );
-  await context.route(`${RELAY}/**`, async (route) => {
+  await context.route((url) => url.origin !== APP_ORIGIN && url.pathname.endsWith('/report'), async (route) => {
     const cors = {
-      'Access-Control-Allow-Origin': new URL(PWA_URL).origin,
+      'Access-Control-Allow-Origin': APP_ORIGIN,
       'Access-Control-Allow-Methods': 'POST, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
       Vary: 'Origin',
@@ -51,7 +47,6 @@ async function stubNetwork(context: BrowserContext): Promise<Record<string, unkn
 }
 
 async function startPractice(page: Page) {
-  await page.goto(PWA_URL);
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Practice: DA0-002' }).click();
   for (const name of ['Drag-and-drop match', 'Order the steps', 'Configure fields', 'Label a diagram', 'Logs and terminal', 'Data table or chart', 'Select-all hotspot', 'Sort into buckets', 'Type a number']) {
@@ -70,8 +65,7 @@ async function fillReport(page: Page, title: string) {
   return dialog;
 }
 
-test('reports a problem from a practice question and keeps the answer', async ({ page, context }) => {
-  const posted = await stubNetwork(context);
+test('reports a problem from a practice question and keeps the answer', async ({ page }) => {
   await startPractice(page);
   const first = page.locator('.mcq input').first();
   await first.check();
@@ -93,9 +87,7 @@ test('reports a problem from a practice question and keeps the answer', async ({
   expect(posted[0].context).toMatchObject({ exam: 'DA0-002', mode: 'practice' });
 });
 
-test('no Report button while a mock runs, and it is back on the results', async ({ page, context }) => {
-  await stubNetwork(context);
-  await page.goto(PWA_URL);
+test('no Report button while a mock runs, and it is back on the results', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Report', exact: true })).toBeVisible();
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Start mock exam: DA0-002' }).click();
@@ -122,8 +114,6 @@ test('no Report button while a mock runs, and it is back on the results', async 
 });
 
 test('an offline report waits and sends later', async ({ page, context }) => {
-  const posted = await stubNetwork(context);
-  await page.goto(PWA_URL);
   await context.setOffline(true);
   await page.getByRole('button', { name: 'Report', exact: true }).click();
   const dialog = await fillReport(page, 'Offline idea');
@@ -135,7 +125,7 @@ test('an offline report waits and sends later', async ({ page, context }) => {
   expect(posted).toHaveLength(0);
 
   await context.setOffline(false);
-  await page.getByRole('button', { name: 'Open' }).click();
+  await page.getByRole('button', { name: 'Send or discard' }).click();
   const waiting = page.getByRole('region', { name: 'Waiting to send' });
   await expectNoSeriousAxe(page);
   await waiting.getByRole('button', { name: 'Send Offline idea' }).click();

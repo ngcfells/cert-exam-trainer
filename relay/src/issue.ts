@@ -12,9 +12,19 @@ const TYPE_NAMES: Record<ReportType, string> = {
   feature: 'Feature request',
 };
 
-/** Stops @mentions and #references from pinging people or cross-linking issues. */
+const ZWSP = '\u200B';
+
+/**
+ * Stops learner text from pinging people, cross-linking issues or faking headings. GitHub decodes HTML entities
+ * before it looks for mentions, so a zero-width space is used instead: after every @ and #, inside github.com and
+ * GH-N, and before a line of only - or = (which would turn the line above into a heading).
+ */
 export function escapeText(s: string): string {
-  return s.replace(/[@#]/g, (c) => (c === '@' ? '&#64;' : '&#35;'));
+  return s
+    .replace(/[@#]/g, `$&${ZWSP}`)
+    .replace(/(github)(\.com)/gi, `$1${ZWSP}$2`)
+    .replace(/\b(gh)-/gi, `$1${ZWSP}-`)
+    .replace(/^(?=[ \t]*(?:-+|=+)[ \t]*$)/gm, ZWSP);
 }
 
 function cleanTitle(s: string): string {
@@ -33,7 +43,7 @@ export function formatIssue(r: ReportRequest): { title: string; body: string; la
 
   const parts = [escapeText(r.details), '', '### Context', '', ...context, ''];
   if (r.contact) parts.push('### Contact', '', escapeText(r.contact), '');
-  parts.push('---', `Sent from the app, version ${r.version}`);
+  parts.push('---', `Sent from the app, version ${r.version}`, `<!-- report-id: ${r.id} -->`);
 
   return { title, body: parts.join('\n'), labels: [...LABELS[r.type]] };
 }

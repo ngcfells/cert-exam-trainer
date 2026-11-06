@@ -22,7 +22,7 @@ describe('About', () => {
     render(<About />);
     expect(screen.getByText(REPORT_PRIVACY)).toBeInTheDocument();
     expect(REPORT_PRIVACY).toBe(
-      'A report sends what you type, plus the app version and, if you leave it ticked, the exam, mode and browser. Your answers and saved data are never sent.',
+      'A report sends what you type and the app version, and for a problem with a question, which question. If you leave technical details ticked, it also sends the exam, mode and browser. Your answers and saved data are never sent.',
     );
   });
 

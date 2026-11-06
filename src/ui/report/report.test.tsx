@@ -17,10 +17,17 @@ vi.mock('../../report/config', () => ({
 }));
 
 const getToken = vi.fn<() => Promise<string>>();
+let needsAction = false;
 vi.mock('../../report/turnstile', () => ({
   SPAM_CHECK_MESSAGE: 'The spam check could not finish. Check your connection and try again.',
-  useTurnstile: () => ({ boxRef: { current: null }, getToken }),
+  useTurnstile: () => ({ boxRef: { current: null }, getToken, needsAction }),
 }));
+
+function deferred() {
+  let resolve!: (t: string) => void;
+  const promise = new Promise<string>((r) => (resolve = r));
+  return { promise, resolve };
+}
 
 const QCTX: ReportContext = { questionId: 'da2-1-1-mcq-004', exam: 'DA0-002', mode: 'practice' };
 
@@ -78,6 +85,7 @@ async function openAndFill(user: ReturnType<typeof userEvent.setup>, title = 'Wr
 let online = true;
 beforeEach(() => {
   online = true;
+  needsAction = false;
   vi.spyOn(navigator, 'onLine', 'get').mockImplementation(() => online);
   getToken.mockReset();
   let n = 0;
@@ -207,13 +215,78 @@ describe('ReportForm', () => {
     expect(await repo.listOutbox()).toHaveLength(0);
   });
 
-  it('saves to the outbox when the relay cannot be reached', async () => {
+  it('saves to the outbox when the relay is down, and says so', async () => {
     const { user, repo } = setup();
     replies.push({ status: 503, body: {} });
     const dialog = await openAndFill(user);
     await user.click(within(dialog).getByRole('button', { name: 'Send' }));
+    await within(dialog).findByText('The report service is not working right now. Your report is saved on this device. Try again later.');
+    expect(await repo.listOutbox()).toHaveLength(1);
+  });
+
+  it('offers to save for later when the spam check cannot finish', async () => {
+    getToken.mockRejectedValueOnce(new Error('x'));
+    const { user, repo } = setup();
+    const dialog = await openAndFill(user);
+    await user.click(within(dialog).getByRole('button', { name: 'Send' }));
+    await user.click(await within(dialog).findByRole('button', { name: 'Save to send later' }));
     await within(dialog).findByText('Saved on this device. You can send it when you are back online.');
     expect(await repo.listOutbox()).toHaveLength(1);
+  });
+
+  it('offers to save for later when the daily limit is reached', async () => {
+    replies.push({ status: 429, body: { error: 'Too many reports', retry: 'day' } });
+    const { user } = setup();
+    const dialog = await openAndFill(user);
+    await user.click(within(dialog).getByRole('button', { name: 'Send' }));
+    await within(dialog).findByText('Too many reports from this connection today. Try again tomorrow.');
+    expect(within(dialog).getByRole('button', { name: 'Save to send later' })).toBeInTheDocument();
+  });
+
+  it('keeps Send focusable while sending, then moves focus to the error', async () => {
+    const d = deferred();
+    getToken.mockReturnValueOnce(d.promise);
+    replies.push({ status: 403, body: {} });
+    const { user } = setup();
+    const dialog = await openAndFill(user);
+    const send = within(dialog).getByRole('button', { name: 'Send' });
+    await user.click(send);
+    const busy = within(dialog).getByRole('button', { name: 'Sending…' });
+    expect(busy).not.toBeDisabled();
+    expect(busy).toHaveAttribute('aria-disabled', 'true');
+    await act(async () => d.resolve('tok'));
+    const alert = await within(dialog).findByRole('alert');
+    expect(alert).toHaveTextContent('The spam check did not pass. Try again.');
+    await waitFor(() => expect(alert).toHaveFocus());
+  });
+
+  it('a title with no visible text counts as empty', async () => {
+    const { user } = setup();
+    const dialog = await openAndFill(user, '\u200B');
+    await user.click(within(dialog).getByRole('button', { name: 'Send' }));
+    expect(within(dialog).getByRole('link', { name: 'Enter a title' })).toBeInTheDocument();
+    expect(posted).toHaveLength(0);
+  });
+
+  it('lists what is always sent apart from the technical details', async () => {
+    const { user } = setup();
+    const dialog = await openAndFill(user, '', '');
+    const always = within(dialog).getByText(/^Always sent:/);
+    expect(always).toHaveTextContent('Always sent: app version 0.1.0, question da2-1-1-mcq-004.');
+    const tech = within(dialog).getByRole('checkbox', { name: 'Include technical details' });
+    const list = document.getElementById(tech.getAttribute('aria-describedby')!)!;
+    expect(list).not.toHaveTextContent('App version');
+    expect(list).not.toHaveTextContent('Question:');
+    await user.click(within(dialog).getByRole('radio', { name: 'A bug in the app' }));
+    expect(within(dialog).getByText(/^Always sent:/)).toHaveTextContent('Always sent: app version 0.1.0.');
+    expect(list).toHaveTextContent('Question: da2-1-1-mcq-004');
+  });
+
+  it('tells the learner when the spam check needs them', async () => {
+    needsAction = true;
+    const { user } = setup();
+    const dialog = await openAndFill(user, '', '');
+    expect(within(dialog).getByRole('status')).toHaveTextContent('Complete the check below to send.');
   });
 
   it('keeps the same id and the text when retrying a failed send', async () => {
@@ -221,7 +294,9 @@ describe('ReportForm', () => {
     replies.push({ status: 400, body: { error: 'Something was wrong' } });
     const dialog = await openAndFill(user);
     await user.click(within(dialog).getByRole('button', { name: 'Send' }));
-    await within(dialog).findByText('Something was wrong');
+    await within(dialog).findByText('The report was not accepted. Check what you wrote and try again.');
+    expect(within(dialog).queryByText('Something was wrong')).toBeNull();
+    expect(within(dialog).queryByRole('button', { name: 'Save to send later' })).toBeNull();
     expect(within(dialog).getByLabelText(/^Title/)).toHaveValue('Wrong key');
     await user.click(within(dialog).getByRole('button', { name: 'Send' }));
     await within(dialog).findByText('Sent, thank you.');
@@ -373,7 +448,7 @@ describe('OutboxBanner', () => {
     await repo.putOutbox(waiting(1));
     await repo.putOutbox(waiting(2));
     const user = banner(repo);
-    const open = await screen.findByRole('button', { name: 'Open' });
+    const open = await screen.findByRole('button', { name: 'Send or discard' });
     expect(open).toHaveAttribute('aria-haspopup', 'dialog');
     await user.click(open);
     const dialog = await screen.findByRole('dialog', { name: 'Report a problem or request a feature' });
@@ -392,5 +467,53 @@ describe('OutboxBanner', () => {
 
     await user.click(within(dialog).getByRole('button', { name: 'Close' }));
     expect(await screen.findByText('1 report waiting to send')).toBeInTheDocument();
+  });
+
+  it('a sent waiting report moves focus to its result', async () => {
+    const repo = createMemoryRepo();
+    await repo.putOutbox(waiting(1));
+    const user = banner(repo);
+    await user.click(await screen.findByRole('button', { name: 'Send or discard' }));
+    const dialog = await screen.findByRole('dialog', { name: 'Report a problem or request a feature' });
+    await user.click(within(dialog).getByRole('button', { name: 'Send Old 1' }));
+    const done = await within(dialog).findByText(/^Sent, thank you\./);
+    await waitFor(() => expect(done).toHaveFocus());
+  });
+
+  it('sends one report at a time', async () => {
+    const repo = createMemoryRepo();
+    await repo.putOutbox(waiting(1));
+    await repo.putOutbox(waiting(2));
+    const d = deferred();
+    getToken.mockReturnValueOnce(d.promise);
+    const user = banner(repo);
+    await user.click(await screen.findByRole('button', { name: 'Send or discard' }));
+    const dialog = await screen.findByRole('dialog', { name: 'Report a problem or request a feature' });
+    await user.click(within(dialog).getByRole('button', { name: 'Send Old 1' }));
+    const other = within(dialog).getByRole('button', { name: 'Send Old 2' });
+    expect(other).toHaveAttribute('aria-disabled', 'true');
+    await user.click(other);
+    expect(getToken).toHaveBeenCalledTimes(1);
+    await act(async () => d.resolve('tok'));
+    await within(dialog).findByText(/^Sent, thank you\./);
+    expect(within(dialog).getByRole('button', { name: 'Send Old 2' })).toHaveAttribute('aria-disabled', 'false');
+  });
+
+  it('moves focus to the page heading once the last report has gone', async () => {
+    const repo = createMemoryRepo();
+    await repo.putOutbox(waiting(1));
+    const user = banner(
+      repo,
+      <main>
+        <h2 tabIndex={-1}>Home</h2>
+      </main>,
+    );
+    await user.click(await screen.findByRole('button', { name: 'Send or discard' }));
+    const dialog = await screen.findByRole('dialog', { name: 'Report a problem or request a feature' });
+    await user.click(within(dialog).getByRole('button', { name: 'Send Old 1' }));
+    await within(dialog).findByText(/^Sent, thank you\./);
+    await user.click(within(dialog).getByRole('button', { name: 'Close' }));
+    await waitFor(() => expect(screen.queryByText(/waiting to send/)).toBeNull());
+    await waitFor(() => expect(screen.getByRole('heading', { name: 'Home' })).toHaveFocus());
   });
 });

@@ -48,4 +48,9 @@ describe('reportRequestSchema', () => {
   it('rejects a blank title after trimming', () => {
     expect(reportRequestSchema.safeParse({ ...full, title: '   ' }).success).toBe(false);
   });
+
+  it('rejects a title or details with no visible text', () => {
+    expect(reportRequestSchema.safeParse({ ...full, title: '\u0007\u0001' }).success).toBe(false);
+    expect(reportRequestSchema.safeParse({ ...full, details: '\u0000' }).success).toBe(false);
+  });
 });

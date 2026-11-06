@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, type RefObject } from 'react';
+import { useCallback, useEffect, useRef, useState, type RefObject } from 'react';
 
 const SCRIPT_SRC = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
 const TIMEOUT_MS = 60_000;
@@ -15,6 +15,8 @@ interface TurnstileApi {
       callback: (token: string) => void;
       'error-callback': () => void;
       'expired-callback': () => void;
+      'before-interactive-callback': () => void;
+      'after-interactive-callback': () => void;
     },
   ): string;
   execute(widgetId: string): void;
@@ -44,8 +46,14 @@ function loadTurnstile(): Promise<TurnstileApi> {
       }
       const s = script;
       s.addEventListener('load', () => {
-        if (window.turnstile) resolve(window.turnstile);
-        else reject(new Error(SPAM_CHECK_MESSAGE));
+        if (window.turnstile) {
+          resolve(window.turnstile);
+          return;
+        }
+        // Loaded but broken (a proxy or blocker answered): forget it so the next try loads it again.
+        loading = null;
+        s.remove();
+        reject(new Error(SPAM_CHECK_MESSAGE));
       });
       s.addEventListener('error', () => {
         loading = null;
@@ -63,13 +71,22 @@ interface Pending {
   timer: ReturnType<typeof setTimeout>;
 }
 
-/** A fresh Turnstile token each time getToken is called. Tokens are never stored. */
-export function useTurnstile(siteKey: string): { boxRef: RefObject<HTMLDivElement>; getToken(): Promise<string> } {
+/**
+ * A fresh Turnstile token each time getToken is called. Tokens are never stored. needsAction is true while
+ * Cloudflare shows a challenge the learner has to complete.
+ */
+export function useTurnstile(siteKey: string): {
+  boxRef: RefObject<HTMLDivElement>;
+  getToken(): Promise<string>;
+  needsAction: boolean;
+} {
   const boxRef = useRef<HTMLDivElement>(null);
+  const [needsAction, setNeedsAction] = useState(false);
   const widgetId = useRef<string | null>(null);
   const pending = useRef<Pending | null>(null);
 
   const settle = useCallback((token: string | null) => {
+    setNeedsAction(false);
     const p = pending.current;
     if (!p) return;
     pending.current = null;
@@ -99,6 +116,8 @@ export function useTurnstile(siteKey: string): { boxRef: RefObject<HTMLDivElemen
             callback: (token) => settle(token),
             'error-callback': () => settle(null),
             'expired-callback': () => undefined,
+            'before-interactive-callback': () => setNeedsAction(true),
+            'after-interactive-callback': () => setNeedsAction(false),
           });
         } else {
           ts.reset(widgetId.current);
@@ -119,5 +138,5 @@ export function useTurnstile(siteKey: string): { boxRef: RefObject<HTMLDivElemen
     [settle],
   );
 
-  return { boxRef, getToken };
+  return { boxRef, getToken, needsAction };
 }

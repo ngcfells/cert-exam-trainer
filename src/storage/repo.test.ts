@@ -78,6 +78,13 @@ describe.each(impls)('Repo contract: %s', (_name, make) => {
     expect(await repo.listRecords('results')).toEqual([]);
   });
 
+  it('lists waiting reports oldest first', async () => {
+    await repo.putOutbox({ ...outboxRec(1), savedAt: '2026-11-06T12:00:00.000Z' });
+    await repo.putOutbox({ ...outboxRec(2), savedAt: '2026-11-05T12:00:00.000Z' });
+    await repo.putOutbox({ ...outboxRec(3), savedAt: '2026-11-07T12:00:00.000Z' });
+    expect((await repo.listOutbox()).map((r) => r.id)).toEqual([outboxRec(2).id, outboxRec(1).id, outboxRec(3).id]);
+  });
+
   it('puts, lists and deletes outbox reports', async () => {
     await repo.putOutbox(outboxRec(1));
     await repo.putOutbox(outboxRec(2));

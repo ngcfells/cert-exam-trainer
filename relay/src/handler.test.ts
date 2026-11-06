@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import type { ReportRequest } from '../../src/report/contract';
 import { handle, type Env, type KvLike } from './handler';
 import { formatIssue } from './issue';
@@ -195,6 +195,50 @@ describe('relay handle', () => {
     const res = await handle(post(report()), env(), f.fn, () => DAY_START);
     expect(res.status).toBe(502);
     expect(await res.text()).not.toContain(TOKEN);
+  });
+
+  it('logs the GitHub status for the owner, never the token', async () => {
+    const log = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    await handle(post(report()), env(), stubFetch({ github: [401] }).fn, () => DAY_START);
+    expect(log).toHaveBeenCalledWith('GitHub refused the issue', 401);
+    expect(JSON.stringify(log.mock.calls)).not.toContain(TOKEN);
+    log.mockRestore();
+  });
+
+  it('answers 503 with CORS when storage fails, so the app can save the report', async () => {
+    const log = vi.spyOn(console, 'error').mockImplementation(() => undefined);
+    const e = env();
+    e.RELAY_KV = { get: async () => { throw new Error('KV down'); }, put: async () => undefined };
+    const res = await handle(post(report()), e, stubFetch().fn, () => DAY_START);
+    expect(res.status).toBe(503);
+    expect(res.headers.get('Access-Control-Allow-Origin')).toBe('http://localhost:5173');
+    log.mockRestore();
+  });
+
+  it('still returns the issue when storing the id or a rate-limit count fails', async () => {
+    const e = env();
+    e.RELAY_KV = { get: async () => null, put: async () => { throw new Error('daily write limit'); } };
+    const f = stubFetch();
+    const res = await handle(post(report()), e, f.fn, () => DAY_START);
+    expect(res.status).toBe(201);
+    expect(f.github()).toHaveLength(1);
+  });
+
+  it('checks Turnstile before counting, so failed checks do not use up the limit', async () => {
+    const e = env();
+    for (let i = 0; i < 8; i++) {
+      expect((await handle(post(report()), e, stubFetch({ turnstile: false }).fn, () => DAY_START)).status).toBe(403);
+    }
+    expect((await handle(post(report()), e, stubFetch().fn, () => DAY_START)).status).toBe(201);
+  });
+
+  it('says which limit was hit', async () => {
+    const e = env();
+    const f = stubFetch();
+    for (let i = 0; i < 5; i++) await handle(post(report()), e, f.fn, () => DAY_START);
+    expect(await (await handle(post(report()), e, f.fn, () => DAY_START)).json()).toMatchObject({ retry: 'hour' });
+    for (let h = 1; h < 4; h++) for (let i = 0; i < 5; i++) await handle(post(report()), e, f.fn, () => DAY_START + h * HOUR);
+    expect(await (await handle(post(report()), e, f.fn, () => DAY_START + 4 * HOUR)).json()).toMatchObject({ retry: 'day' });
   });
 
   it('does not store the id when GitHub fails, so a retry can succeed', async () => {

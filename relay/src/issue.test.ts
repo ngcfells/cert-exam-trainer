@@ -3,6 +3,8 @@ import { describe, expect, it } from 'vitest';
 import type { ReportRequest } from '../../src/report/contract';
 import { escapeText, formatIssue } from './issue';
 
+const Z = '\u200B';
+
 const base: ReportRequest = {
   id: '3b241101-e2bb-4255-8caf-4136c566a962',
   type: 'question',
@@ -28,10 +30,26 @@ describe('formatIssue', () => {
 
   it('escapes mentions and references', () => {
     const { body } = formatIssue({ ...base, details: 'cc @octocat about #12\n# Heading', contact: '@me #1' });
-    expect(body).toContain('cc &#64;octocat about &#35;12\n&#35; Heading');
-    expect(body).toContain('&#64;me &#35;1');
-    const withoutHeadings = body.replace(/&#(64|35);/g, '').replace(/^### (Context|Contact)$/gm, '');
-    expect(withoutHeadings).not.toMatch(/[@#]/);
+    // GitHub decodes HTML entities before it looks for mentions, so a zero-width space is what breaks them.
+    expect(body).toContain(`cc @${Z}octocat about #${Z}12\n#${Z} Heading`);
+    expect(body).toContain(`@${Z}me #${Z}1`);
+    expect(body).not.toContain('&#');
+    const fixed = body.replace(/^### (Context|Contact)$/gm, '').replace(/<!-- report-id: [^>]+ -->/, '');
+    expect(fixed).not.toMatch(/[@#](?!\u200B)/);
+  });
+
+  it('stops text from faking a heading with a line of - or =', () => {
+    const { body } = formatIssue({ ...base, details: 'Context\n---\nAlso\n  ===  \nok - fine' });
+    expect(body).toContain(`Context\n${Z}---\nAlso\n${Z}  ===  \nok - fine`);
+  });
+
+  it('breaks links that would mention another GitHub issue', () => {
+    const { body } = formatIssue({ ...base, details: 'see https://github.com/x/y/issues/3 and GH-12 and gh-4' });
+    expect(body).toContain(`https://github${Z}.com/x/y/issues/3 and GH${Z}-12 and gh${Z}-4`);
+  });
+
+  it('puts the report id in a hidden comment so duplicates can be spotted', () => {
+    expect(formatIssue(base).body).toContain(`<!-- report-id: ${base.id} -->`);
   });
 
   it('strips control characters and newlines from the title', () => {
@@ -54,10 +72,11 @@ describe('formatIssue', () => {
         '',
         '### Contact',
         '',
-        'me&#64;example.com',
+        `me@${Z}example.com`,
         '',
         '---',
         'Sent from the app, version 0.1.0',
+        `<!-- report-id: ${base.id} -->`,
       ].join('\n'),
     );
   });
@@ -77,6 +96,7 @@ describe('formatIssue', () => {
         '',
         '---',
         'Sent from the app, version 0.1.0',
+        `<!-- report-id: ${base.id} -->`,
       ].join('\n'),
     );
     expect(body).not.toContain('### Contact');
@@ -84,7 +104,7 @@ describe('formatIssue', () => {
 });
 
 describe('escapeText', () => {
-  it('replaces every @ and #', () => {
-    expect(escapeText('a@b#c@@')).toBe('a&#64;b&#35;c&#64;&#64;');
+  it('puts a zero-width space after every @ and #', () => {
+    expect(escapeText('a@b#c@@')).toBe(`a@${Z}b#${Z}c@${Z}@${Z}`);
   });
 });

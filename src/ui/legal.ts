@@ -18,7 +18,7 @@ export const KOFI_URL = 'https://ko-fi.com/M5K429C47U';
 
 /** What a report sends, for About and the report form. */
 export const REPORT_PRIVACY =
-  'A report sends what you type, plus the app version and, if you leave it ticked, the exam, mode and browser. Your answers and saved data are never sent.';
+  'A report sends what you type and the app version, and for a problem with a question, which question. If you leave technical details ticked, it also sends the exam, mode and browser. Your answers and saved data are never sent.';
 
 /** The hosted app, where reports work. The single-file copy cannot send them. */
 export const ONLINE_APP_URL = 'https://ngcfells.github.io/cert-exam-trainer/';

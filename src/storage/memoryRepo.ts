@@ -42,7 +42,7 @@ export function createMemoryRepo(): Repo {
       records.srs.clear();
     },
     async listOutbox() {
-      return [...outbox.values()].map(clone);
+      return [...outbox.values()].map(clone).sort((a, b) => a.savedAt.localeCompare(b.savedAt));
     },
     async putOutbox(r) {
       if (!outbox.has(r.id) && outbox.size >= MAX_OUTBOX) throw new OutboxFullError();

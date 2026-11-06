@@ -13,6 +13,14 @@ export const LIMITS = { title: 120, details: 5000, contact: 200 } as const;
 export const EXAM_RE = /^[A-Z0-9-]{1,20}$/;
 export const QUESTION_ID_RE = /^[A-Za-z0-9._:-]{1,120}$/;
 
+// eslint-disable-next-line no-control-regex
+const VISIBLE_RE = /[^\s\u0000-\u001f\u007f\u200b-\u200d\ufeff]/;
+
+/** True when the text has at least one character a person can see. */
+export function hasVisibleText(s: string): boolean {
+  return VISIBLE_RE.test(s);
+}
+
 const contextSchema = z
   .object({
     exam: z.string().regex(EXAM_RE).optional(),
@@ -25,8 +33,8 @@ export const reportRequestSchema = z
   .object({
     id: z.string().uuid(),
     type: z.enum(REPORT_TYPES),
-    title: z.string().trim().min(1).max(LIMITS.title),
-    details: z.string().trim().min(1).max(LIMITS.details),
+    title: z.string().trim().min(1).max(LIMITS.title).regex(VISIBLE_RE),
+    details: z.string().trim().min(1).max(LIMITS.details).regex(VISIBLE_RE),
     contact: z.string().trim().max(LIMITS.contact).optional(),
     version: z.string().regex(/^[0-9A-Za-z.+-]{1,40}$/),
     questionId: z.string().regex(QUESTION_ID_RE).optional(),
