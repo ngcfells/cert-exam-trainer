@@ -1,7 +1,8 @@
 import { useEffect, useRef } from 'react';
-import { APP_NAME, DISCLAIMER_POINTS, KOFI_URL, LICENSE_SUMMARY } from './legal';
+import { APP_NAME, DISCLAIMER_POINTS, KOFI_URL, LICENSE_SUMMARY, ONLINE_APP_URL, REPORT_PRIVACY } from './legal';
+import { ReportButton } from './report/ReportButton';
 
-export function About() {
+export function About({ protocol = location.protocol }: { protocol?: string }) {
   const headingRef = useRef<HTMLHeadingElement>(null);
   useEffect(() => headingRef.current?.focus(), []);
 
@@ -24,8 +25,18 @@ export function About() {
       </ul>
 
       <h3>Your data</h3>
-      <p>Your progress and questions stay in this browser. The app sends nothing over the network.</p>
+      <p>Your progress and questions stay in this browser. The app sends nothing over the network unless you send a report.</p>
       <p>Questions you add or import are yours; do not add copyrighted exam content.</p>
+
+      <h3>Problems and ideas</h3>
+      <p>{REPORT_PRIVACY}</p>
+      {protocol === 'file:' ? (
+        <p>
+          To report a problem, use <a href={ONLINE_APP_URL}>the online app</a>.
+        </p>
+      ) : (
+        <ReportButton context={{}} label="Report a bug or request a feature" />
+      )}
 
       <div className="kofi-tip">
         <p>If you would like to help cover the costs of development, you can leave a tip on Ko-fi.</p>

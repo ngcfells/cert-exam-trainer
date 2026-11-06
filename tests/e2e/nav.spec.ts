@@ -35,10 +35,14 @@ test('home has Settings in the header, About at the bottom, and no nav bar', asy
 
 test('keyboard only: card, Practice, Back to Data+, All exams', async ({ page }) => {
   await page.goto(singleUrl);
+  // Tabbing before the app has loaded leaves focus on body, whose text would match once the list appears.
+  await expect(landing(page)).toBeVisible();
   const tabTo = async (name: string | RegExp) => {
     for (let i = 0; i < 40; i++) {
       await page.keyboard.press('Tab');
-      const text = await page.evaluate(() => document.activeElement?.textContent ?? '');
+      const text = await page.evaluate(() =>
+        document.activeElement && document.activeElement !== document.body ? (document.activeElement.textContent ?? '') : '',
+      );
       if (typeof name === 'string' ? text === name : name.test(text)) return page.keyboard.press('Enter');
     }
     throw new Error(`could not tab to ${name}`);

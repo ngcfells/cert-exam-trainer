@@ -1,4 +1,5 @@
 import type { Question } from '../domain/types';
+import type { OutboxReport } from '../report/outbox';
 
 export type RecordStore = 'results' | 'srs';
 
@@ -13,7 +14,12 @@ export interface Repo {
   listRecords(store: RecordStore): Promise<unknown[]>;
   /** Lists every setting; used by backup export. */
   listSettings(): Promise<Record<string, unknown>>;
+  /** Clears questions, settings and records. Waiting reports (the outbox) are kept: backup import calls this. */
   clearAll(): Promise<void>;
+  listOutbox(): Promise<OutboxReport[]>;
+  /** Drops any turnstileToken. Throws OutboxFullError when MAX_OUTBOX are waiting and r.id is new. */
+  putOutbox(r: OutboxReport): Promise<void>;
+  deleteOutbox(id: string): Promise<void>;
 }
 
 export function assertUserQuestion(q: Question): void {

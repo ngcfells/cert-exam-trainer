@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:check": "cross-env VITE_REPORT_URL=https://relay.e2e.test VITE_TURNSTILE_SITEKEY=e2e-sitekey vite build",
     "build:single": "cross-env SINGLE=1 vite build",
     "build:e2e": "cross-env SINGLE=1 VITE_BANK=fixture vite build",
     "test": "vitest run",
@@ -15,7 +16,7 @@
     "check-bounds": "npm run build:single && playwright test --project=bounds",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run build && npm run build:single && cross-env CHECK=1 npm run test && npm run build:e2e && npm run test:e2e",
+    "check": "npm run lint && npm run typecheck && npm run build:check && npm run build:single && cross-env CHECK=1 npm run test && npm run build:e2e && npm run test:e2e",
     "deploy": "vite-node scripts/deploy.ts --",
     "md-to-pack": "vite-node scripts/md-to-pack.ts --",
     "draft:ollama": "vite-node scripts/draft-ollama.ts --",

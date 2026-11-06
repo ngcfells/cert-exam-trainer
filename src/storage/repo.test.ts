@@ -5,6 +5,17 @@ import { createMemoryRepo } from './memoryRepo';
 import { openIdbRepo } from './idbRepo';
 import { openRepo } from './index';
 import { userQ } from './testFixtures';
+import { openDB } from 'idb';
+import { MAX_OUTBOX, OutboxFullError, type OutboxReport } from '../report/outbox';
+
+const outboxRec = (n: number): OutboxReport => ({
+  id: `3b241101-e2bb-4255-8caf-${String(n).padStart(12, '0')}`,
+  type: 'bug',
+  title: `Report ${n}`,
+  details: 'Details.',
+  version: '0.1.0',
+  savedAt: '2026-11-06T12:00:00.000Z',
+});
 
 let dbCounter = 0;
 const impls: [string, () => Promise<Repo>][] = [
@@ -65,6 +76,66 @@ describe.each(impls)('Repo contract: %s', (_name, make) => {
     expect(await repo.getUserQuestions()).toEqual([]);
     expect(await repo.getSetting('k')).toBeUndefined();
     expect(await repo.listRecords('results')).toEqual([]);
+  });
+
+  it('lists waiting reports oldest first', async () => {
+    await repo.putOutbox({ ...outboxRec(1), savedAt: '2026-11-06T12:00:00.000Z' });
+    await repo.putOutbox({ ...outboxRec(2), savedAt: '2026-11-05T12:00:00.000Z' });
+    await repo.putOutbox({ ...outboxRec(3), savedAt: '2026-11-07T12:00:00.000Z' });
+    expect((await repo.listOutbox()).map((r) => r.id)).toEqual([outboxRec(2).id, outboxRec(1).id, outboxRec(3).id]);
+  });
+
+  it('puts, lists and deletes outbox reports', async () => {
+    await repo.putOutbox(outboxRec(1));
+    await repo.putOutbox(outboxRec(2));
+    expect((await repo.listOutbox()).map((r) => r.id).sort()).toEqual([outboxRec(1).id, outboxRec(2).id]);
+    await repo.deleteOutbox(outboxRec(1).id);
+    expect((await repo.listOutbox()).map((r) => r.id)).toEqual([outboxRec(2).id]);
+  });
+
+  it('refuses an 11th new outbox report', async () => {
+    for (let i = 1; i <= MAX_OUTBOX; i++) await repo.putOutbox(outboxRec(i));
+    await expect(repo.putOutbox(outboxRec(11))).rejects.toBeInstanceOf(OutboxFullError);
+    expect(await repo.listOutbox()).toHaveLength(MAX_OUTBOX);
+  });
+
+  it('replaces an outbox report with the same id, even when full', async () => {
+    for (let i = 1; i <= MAX_OUTBOX; i++) await repo.putOutbox(outboxRec(i));
+    await repo.putOutbox({ ...outboxRec(3), title: 'Changed' });
+    const all = await repo.listOutbox();
+    expect(all).toHaveLength(MAX_OUTBOX);
+    expect(all.find((r) => r.id === outboxRec(3).id)?.title).toBe('Changed');
+  });
+
+  it('a stored outbox report has no turnstileToken', async () => {
+    await repo.putOutbox({ ...outboxRec(1), turnstileToken: 'tok' } as OutboxReport);
+    expect((await repo.listOutbox())[0]).not.toHaveProperty('turnstileToken');
+  });
+
+  it('clearAll keeps the outbox (only backup import calls it)', async () => {
+    await repo.putOutbox(outboxRec(1));
+    await repo.clearAll();
+    expect(await repo.listOutbox()).toHaveLength(1);
+  });
+});
+
+describe('idb upgrade', () => {
+  it('opens a version-1 database and keeps its results', async () => {
+    const name = `v1-db-${dbCounter++}`;
+    const v1 = await openDB(name, 1, {
+      upgrade(db) {
+        const qs = db.createObjectStore('userQuestions', { keyPath: 'id' });
+        qs.createIndex('exam', 'exam');
+        db.createObjectStore('settings');
+        db.createObjectStore('results', { keyPath: 'id' });
+        db.createObjectStore('srs', { keyPath: 'id' });
+      },
+    });
+    await v1.put('results', { id: 'r1', score: 700 });
+    v1.close();
+    const repo = await openIdbRepo(name);
+    expect(await repo.listRecords('results')).toEqual([{ id: 'r1', score: 700 }]);
+    expect(await repo.listOutbox()).toEqual([]);
   });
 });
 

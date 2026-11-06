@@ -1,6 +1,14 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import type { ReportMode } from '../../report/contract';
 
-export type PanelKind = 'settings' | 'calculator' | 'whiteboard';
+export type PanelKind = 'settings' | 'calculator' | 'whiteboard' | 'report';
+
+/** Where a report was started from. Empty for the general entry points. */
+export interface ReportContext {
+  questionId?: string;
+  exam?: string;
+  mode?: ReportMode;
+}
 
 export interface PanelApi {
   current: PanelKind | null;
@@ -11,19 +19,32 @@ export interface PanelApi {
   /** The running mock exam's deadline, for the clock in the Settings panel. */
   mockDeadline: number | null;
   setMockDeadline(ms: number | null): void;
+  /** What the report panel was opened for. */
+  reportContext: ReportContext;
+  /** Opens the report panel for `ctx`. */
+  openReport(ctx: ReportContext, opener: HTMLElement | null): void;
 }
 
 /** App-level panel state: one panel at a time. */
 export function usePanelState(): PanelApi {
   const [current, setCurrent] = useState<PanelKind | null>(null);
   const [mockDeadline, setMockDeadline] = useState<number | null>(null);
+  const [reportContext, setReportContext] = useState<ReportContext>({});
   const opener = useRef<HTMLElement | null>(null);
   const refocus = useRef<HTMLElement | null>(null);
 
   const open = useCallback((k: PanelKind, el: HTMLElement | null) => {
-    opener.current = el;
+    // Opened from inside a panel, which is about to close: focus goes back to that panel's opener.
+    if (!el?.closest('dialog.panel')) opener.current = el;
     setCurrent(k);
   }, []);
+  const openReport = useCallback(
+    (ctx: ReportContext, el: HTMLElement | null) => {
+      setReportContext(ctx);
+      open('report', el);
+    },
+    [open],
+  );
   const close = useCallback((opts?: { restoreFocus?: boolean }) => {
     refocus.current = opts?.restoreFocus === false ? null : opener.current;
     opener.current = null;
@@ -37,7 +58,10 @@ export function usePanelState(): PanelApi {
     if (el?.isConnected) el.focus();
   }, [current]);
 
-  return useMemo(() => ({ current, open, close, mockDeadline, setMockDeadline }), [current, open, close, mockDeadline]);
+  return useMemo(
+    () => ({ current, open, close, mockDeadline, setMockDeadline, reportContext, openReport }),
+    [current, open, close, mockDeadline, reportContext, openReport],
+  );
 }
 
 const PanelContext = createContext<PanelApi | null>(null);
@@ -52,6 +76,8 @@ const NO_PANELS: PanelApi = {
   close: () => {},
   mockDeadline: null,
   setMockDeadline: () => {},
+  reportContext: {},
+  openReport: () => {},
 };
 
 /** The app's panels. Outside a provider (screen tests) it is a no-op, so screens render alone. */

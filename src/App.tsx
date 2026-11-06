@@ -23,6 +23,9 @@ import { CramFlow } from './ui/study/CramFlow';
 import { PracticeFlow } from './ui/study/PracticeFlow';
 import { PanelProvider, usePanelState } from './ui/panels/PanelProvider';
 import { SettingsPanel } from './ui/panels/SettingsPanel';
+import { ReportButton } from './ui/report/ReportButton';
+import { ReportPanel } from './ui/report/ReportPanel';
+import { OutboxBanner } from './ui/report/OutboxBanner';
 import { ProgressScreen } from './ui/study/ProgressScreen';
 
 // Dev only: production builds drop this branch, so the review tool never ships.
@@ -171,23 +174,28 @@ export default function App() {
   return (
     <>
       <main>
-        <header className="app-header">
-          <h1>{APP_NAME}</h1>
-          {screen.name !== 'settings' && (
-            <button
-              type="button"
-              aria-haspopup={onHome ? undefined : 'dialog'}
-              onClick={(e) => (onHome ? go({ name: 'settings' }) : panels.open('settings', e.currentTarget))}
-            >
-              Settings
-            </button>
-          )}
-        </header>
         <PanelProvider api={panels}>
+          <header className="app-header">
+            <h1>{APP_NAME}</h1>
+            <div className="app-header-actions">
+              <ReportButton context={{}} label="Report" />
+              {screen.name !== 'settings' && (
+                <button
+                  type="button"
+                  aria-haspopup={onHome ? undefined : 'dialog'}
+                  onClick={(e) => (onHome ? go({ name: 'settings' }) : panels.open('settings', e.currentTarget))}
+                >
+                  Settings
+                </button>
+              )}
+            </div>
+          </header>
+          {storage && <OutboxBanner repo={storage.repo} />}
           {!onHome && bar('Page navigation')}
           <NavProvider api={nav}>{!storage ? <p>Loading…</p> : body(storage.repo, storage.persistent)}</NavProvider>
           {!onHome && tall && <div ref={bottomRef} className="bottom-nav">{bar('Page navigation (bottom)')}</div>}
           {storage && panels.current === 'settings' && <SettingsPanel repo={storage.repo} />}
+          {storage && panels.current === 'report' && <ReportPanel repo={storage.repo} />}
         </PanelProvider>
       </main>
       <Disclaimer />

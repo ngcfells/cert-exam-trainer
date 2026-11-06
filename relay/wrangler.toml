@@ -1,0 +1,10 @@
+# Cloudflare Worker that turns in-app reports into GitHub issues.
+# Secrets (GITHUB_TOKEN, TURNSTILE_SECRET) are set with `npx wrangler secret put`, never in this file.
+name = "cert-trainer-relay"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "RELAY_KV"
+id = "REPLACE_WITH_KV_ID"

@@ -1,6 +1,7 @@
 import { openDB, type DBSchema } from 'idb';
 import type { Question } from '../domain/types';
 import { assertUserQuestion, type Repo } from './repo';
+import { MAX_OUTBOX, OutboxFullError, toOutboxReport, type OutboxReport } from '../report/outbox';
 
 export const DB_NAME = 'cert-exam-trainer';
 
@@ -9,16 +10,20 @@ interface TrainerDB extends DBSchema {
   settings: { key: string; value: unknown };
   results: { key: string; value: { id: string } };
   srs: { key: string; value: { id: string } };
+  outbox: { key: string; value: OutboxReport };
 }
 
 export async function openIdbRepo(name = DB_NAME): Promise<Repo> {
-  const db = await openDB<TrainerDB>(name, 1, {
-    upgrade(db) {
-      const qs = db.createObjectStore('userQuestions', { keyPath: 'id' });
-      qs.createIndex('exam', 'exam');
-      db.createObjectStore('settings');
-      db.createObjectStore('results', { keyPath: 'id' });
-      db.createObjectStore('srs', { keyPath: 'id' });
+  const db = await openDB<TrainerDB>(name, 2, {
+    upgrade(db, oldVersion) {
+      if (oldVersion < 1) {
+        const qs = db.createObjectStore('userQuestions', { keyPath: 'id' });
+        qs.createIndex('exam', 'exam');
+        db.createObjectStore('settings');
+        db.createObjectStore('results', { keyPath: 'id' });
+        db.createObjectStore('srs', { keyPath: 'id' });
+      }
+      if (oldVersion < 2) db.createObjectStore('outbox', { keyPath: 'id' });
     },
   });
 
@@ -59,6 +64,24 @@ export async function openIdbRepo(name = DB_NAME): Promise<Repo> {
         tx.objectStore('srs').clear(),
         tx.done,
       ]);
+    },
+    async listOutbox() {
+      // Oldest first, so the waiting list reads in the order the reports were made.
+      return (await db.getAll('outbox')).sort((a, b) => a.savedAt.localeCompare(b.savedAt));
+    },
+    async putOutbox(r) {
+      const tx = db.transaction('outbox', 'readwrite');
+      const exists = (await tx.store.getKey(r.id)) !== undefined;
+      if (!exists && (await tx.store.count()) >= MAX_OUTBOX) {
+        tx.abort();
+        await tx.done.catch(() => undefined);
+        throw new OutboxFullError();
+      }
+      await tx.store.put(toOutboxReport(r, new Date(r.savedAt)));
+      await tx.done;
+    },
+    async deleteOutbox(id) {
+      await db.delete('outbox', id);
     },
   };
 }
