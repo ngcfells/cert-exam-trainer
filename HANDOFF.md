@@ -9,12 +9,36 @@ open issues were #14, #11, #6 and #5, all enhancements.
 The user's order (2026-11-06): build the testingUtility feature (A). Between its tasks, and while tests run, keep the
 tools work moving (B). Neither one waits on the other.
 
-## A. testingUtility: in-app exam tools (issue #14). Built on `exam-tools`; Opus review, merge and deploy next
+## A. testingUtility: in-app exam tools (issue #14). DONE: merged, pushed and deployed 2026-11-06
 
-Status (2026-11-06): all 7 tasks are done and committed on branch `exam-tools`. Ledger:
-`.superpowers/sdd/2026-11-06-in-app-exam-tools/progress.md` (rulings are its `Ruling:` lines). Calculator coverage:
-every approved Data+ numeric and data item needs only + − × ÷ % √ and xʸ, so no item needs a missing key. Next:
-the Opus whole-branch review, fix every finding, then merge, push and `npm run deploy`.
+Status (2026-11-06, about 12:15):
+
+- All 7 tasks are done, the Opus whole-branch review ran, and every finding is fixed, minors too.
+- Merged to main (fast-forward), pushed, and deployed to gh-pages (4518342). The `exam-tools` branch is deleted.
+  It was never pushed.
+- Ledger (keep it): `.superpowers/sdd/2026-11-06-in-app-exam-tools/progress.md`. The decisions are its `Ruling:`
+  lines.
+- Final check: lint, typecheck and builds pass, unit 942/942, e2e 109/109.
+  - Inside `npm run check`, the unit step twice hit a vitest worker timeout ("Timeout calling onTaskUpdate"), with
+    all 942 tests passing. Run alone, it exits 0.
+  - If it keeps happening, consider `--maxWorkers` in the check script.
+- Calculator coverage: every approved Data+ numeric and data item needs only + − × ÷ % √ and xʸ.
+- Fixes after the review:
+  - The Tab exemption is replaced by Tab wrapping inside the page.
+  - The app's own leave prompt no longer counts as leaving.
+  - No panel opens over the results.
+  - An answer given as the page hides still counts.
+  - One attempt keeps one result id (keyed on its start time).
+  - A bad saved record is cleared.
+  - Saves after the start write only the answers.
+  - Calculator: full precision, Backspace, comma, and ± after an operator.
+  - The whiteboard repaints on a theme change.
+- Close issue #14 if it is still open: `gh issue close 14`.
+- VERIFY by hand:
+  - On a real Firefox and Safari, does opening a PBQ dropdown (native select) count as leaving the mock?
+  - What do Android and iOS do when you pull down the notification shade?
+  - Does the calculator key set match Pearson's?
+- NEXT in testingUtility: primer issue #5 (below).
 
 - Spec (approved): `docs/superpowers/specs/2026-11-06-in-app-exam-tools-design.md` (f158a6a).
 - Plan (approved, "that sounds great"): `docs/superpowers/plans/2026-11-06-in-app-exam-tools.md`. Both are on
@@ -27,11 +51,8 @@ the Opus whole-branch review, fix every finding, then merge, push and `npm run d
   - An "I understand" warning gates Start.
   - Results say "Ended because you left the exam."
   - The timer never pauses.
-- How (the user's standing choice): native. Create a branch from main (for example `exam-tools`), then use
-  superpowers:executing-plans and work through the 7 tasks test-first in this session. After that, one Opus
-  whole-branch review, fix every finding (minors too), then merge to main, push and `npm run deploy`.
-- The plan's Review Focus lists 5 failure cases with their tests. Task 7 writes a ledger list of Data+ items the
-  calculator keys can't solve, for the owner. The calculator key set is marked VERIFY.
+- How it was built (the user's standing choice for features): natively, superpowers:executing-plans test-first,
+  then one Opus whole-branch review, fix every finding (minors too), then merge, push and `npm run deploy`.
 - Rules: keep `.superpowers/sdd` ledgers, no GitHub Actions, no LFS, and if a port is busy use a free one.
 - AFTER #14: primer issue #5 (Bash/PowerShell). The brainstorm is partly done. Agreed so far:
   - Assume zero experience.
@@ -56,8 +77,8 @@ CORS. Waiting on Scott's answer and his next sandbox update; after that update, 
 
 Steps, in order:
 
-1. **Mordel full pull (running).** At 09:22, batch 5 was done and 51,043 of 56,043 units were waiting. It does
-   about 1000 every 20 minutes, so it should finish around 03:00 on 2026-11-07. Log:
+1. **Mordel full pull (running).** At 12:05, batch 13 was done and 43,043 of 56,043 units were waiting. It does
+   about 1000 every 20 minutes, so it should finish around 02:30 on 2026-11-07. Log:
    `battletech-tools/tools/mordel-sync/.mirror/full-pull.log` (a "done" line at the end). If it stopped, restart
    it detached from battletech-tools with `bash tools/mordel-sync/.mirror/full-pull.sh` (it resumes). When it is
    done:
@@ -65,21 +86,21 @@ Steps, in order:
    - Write the user a memo with a recommendation on three options: (a) ship with the app, (b) an optional pack,
      (c) per-user keys (the user's favourite: we ship a unit list only, and each user fetches with their own key;
      it depends on Scott's answer on keys and CORS).
-2. **Sort the 296 files left in JBTIICRework `unsorted/scrapes/`.**
-   - Not started, apart from setting aside 74 duplicates on 2026-11-06: 54 hash-matched copies of library files and
-     20 podcast page copies. They went to `unsorted/_duplicates/scrapes/...` and are logged.
+2. **Sort JBTIICRework `unsorted/scrapes/`: DONE 2026-11-06 (cheap subagent), working tree only, logged.**
+   - 262 of the 296 are sorted: 239 moved and 23 duplicates set aside. That is on top of the 74 duplicates set aside
+     earlier.
+   - 34 are left in place: 10 podcasts, 4 Solaris Sentinel files, 4 ironwind files, and 16 ourbattletech,
+     hpgstation and scottsgameroom files.
+   - 23 battletech.com and battletech-mercenaries.com files are not sorted yet.
    - Leave `_queue.lock` and `_queue.pid` alone.
-   - Draft homes:
-     - chaosmarch `3dmodels` (146 zips): a new `fan-made/3d-models/`.
-     - chaosmarch dboard, mechworks, hvmtl and vehicle zips (design software): likely `fan-made/software/`.
-     - chaosmarch `records` (20 PDFs): run the fan-made test first.
-     - Shrapnel and ForcePack sheets: `record-sheets/`.
-     - Errata (Alpha Strike Companion heat, BattleMech Manual damage flowchart, Hot Spots Hinterlands v2.41):
-       `errata/`.
-     - Quick-start rules: `rulebooks/`.
-     - BattleForce counters: `battleforce/`.
-     - ourbattletech Army Reports, Fanbooks, Gotterdammerung and Operation Rat: `fan-made/` subfolders.
-     - Still undecided: the 10 podcasts (m4a), the Solaris Sentinel doc and PDF, and the ironwind record sheets.
+   - **Owner questions (sorter):**
+     1. The BattleSpace WizKids 2001 sheets: which publisher, and which folder?
+     2. Fan-made counters: do they go in `battleforce/`?
+     3. VERIFY years: the errata upload year 2025, the blank sheets "20138" read as 2013, and ForcePack Wave One
+        2021.
+     4. Fan-made names without a publisher: OK?
+     5. Two BattleMech Manual flowchart copies are in `errata/` (0.8 MB and 8.2 MB). Keep both?
+     6. Shrapnel names use the issue number, with no CAT numbers. And what do TRO3063 "PQ5" and "WQ7" mean?
    - Name format (memory `library-rename-project`): `Title(Publisher-ProductNo)[CopyrightYear]-Edition.ext`,
      CamelCase, ASCII, no spaces.
      - WizKids, Topps and Microsoft are never the publisher.
@@ -89,9 +110,31 @@ Steps, in order:
    - Tools: `ResourceLibrary/rename_library.py` (CLUES, RIGHTS, `camel()`, `target()`, `actual_publisher()`) and
      `sort_batch.py`. `pdftotext` is in /ucrt64/bin; pypdf is not installed. The 2026-11-06 helper scripts were in
      the old session scratchpad (dupcheck.sh, movedups.sh, poddups.sh) and may be gone; they are easy to rewrite.
-3. **Rename the whole library to the format.** As you check each file, read its `ResourceLibrary/text/` extract. If
-   the text is garbled, fix it (re-OCR, then rebuild the INDEX and search). Commit and push ResourceLibrary in
-   batches.
+3. **Rename the whole library to the format: DONE 2026-11-06 (cheap subagent), working tree only.**
+   - Results:
+     - 794 renamed, 929 already correct, 4,887 left in place, each with a reason.
+     - Most of the files left are not documents: images, epub, zip and similar.
+     - Also left alone: fiction, languages and magazines; ambiguous names; files with no text; protected CITE slugs;
+       15 names cited by other repos; 5 would-be collisions.
+   - Every rename is in `ResourceLibrary/records/jbtiicrework-pending.md`.
+   - The INDEX and the search index are rebuilt. ResourceLibrary is pushed (7e795b605).
+   - Product numbers taken only from the old name are marked "VERIFY number" in the log. Fan-made years taken only
+     from the old name are marked "VERIFY year".
+   - The per-file plan (`plan.tsv`) was in the session scratchpad, so it may be gone. The pending log is the record.
+   - **Owner questions (renamer):**
+     1. Fiction: should the novels be named `Title(Publisher)[Year]`, with the author dropped?
+     2. Translations and magazines: the 577 Spanish and German translations and fan zines have publishers such as
+        Devir or fan groups. What publisher tag should they take?
+     3. Editions come from the old name, so `Alpha Strike (Corrected 2nd Printing)` now shows `[2015]`. Is that
+        acceptable?
+     4. Fan-made files: a "fan, Author" note became `(Author)` in the publisher slot. Or should they have no tag?
+     5. 59 files have no copyright block but sit outside `fan-made/`. Move them there?
+     6. 85 files have no usable text (scan-only FASA PDFs), so their names are unchanged. Should they be re-OCRed?
+   - **NEXT, for a cheap subagent: subsort JBTIICRework `sourcebooks/`.** The owner asked for this on 2026-11-06.
+     Files loose at the top of `sourcebooks/` most likely belong in one of its existing subfolders. Same rules:
+     working tree only, log every move in `jbtiicrework-pending.md`, never delete.
+   - Still to do: as you check each file, read its `ResourceLibrary/text/` extract. If the text is garbled, fix it
+     (re-OCR, then rebuild the INDEX and search). Commit and push ResourceLibrary in batches.
 4. **Cleanup** (the full inventory is in the older START HERE block of `JBTToolsSupportFiles/handoff.md`, step 5):
    - Push battletech-tools master (ahead 2: the mordel-sync fast-forward and 9b0d70f36). Check the deploy rules
      first.
