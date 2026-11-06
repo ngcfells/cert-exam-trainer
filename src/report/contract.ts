@@ -10,9 +10,12 @@ export type ReportMode = (typeof REPORT_MODES)[number];
 
 export const LIMITS = { title: 120, details: 5000, contact: 200 } as const;
 
+export const EXAM_RE = /^[A-Z0-9-]{1,20}$/;
+export const QUESTION_ID_RE = /^[A-Za-z0-9._:-]{1,120}$/;
+
 const contextSchema = z
   .object({
-    exam: z.string().regex(/^[A-Z0-9-]{1,20}$/).optional(),
+    exam: z.string().regex(EXAM_RE).optional(),
     mode: z.enum(REPORT_MODES).optional(),
     userAgent: z.string().max(400).optional(),
   })
@@ -26,7 +29,7 @@ export const reportRequestSchema = z
     details: z.string().trim().min(1).max(LIMITS.details),
     contact: z.string().trim().max(LIMITS.contact).optional(),
     version: z.string().regex(/^[0-9A-Za-z.+-]{1,40}$/),
-    questionId: z.string().regex(/^[A-Za-z0-9._:-]{1,120}$/).optional(),
+    questionId: z.string().regex(QUESTION_ID_RE).optional(),
     context: contextSchema.optional(),
     turnstileToken: z.string().min(1).max(2048),
   })

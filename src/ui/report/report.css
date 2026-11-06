@@ -1,0 +1,16 @@
+.report-form fieldset { border: 0; padding: 0; margin: 0 0 1rem; }
+.report-form legend { font-weight: 600; margin-bottom: 0.25rem; }
+.report-choice { display: flex; gap: 0.5rem; align-items: center; margin: 0.25rem 0; }
+.report-form input[type='text'],
+.report-form textarea { width: 100%; box-sizing: border-box; }
+.report-form .hint { margin: 0.25rem 0 0; }
+.report-tech { padding-left: 1.25rem; overflow-wrap: anywhere; }
+.report-field-error,
+.report-error { color: var(--bad); }
+.report-done:focus { outline: 2px solid var(--border-strong); outline-offset: 4px; }
+.report-waiting { margin-top: 1.5rem; }
+.report-waiting ul { padding-left: 0; list-style: none; }
+.report-waiting-item { padding: 0.5rem 0; border-top: 1px solid var(--border); }
+.report-waiting-title { font-weight: 600; overflow-wrap: anywhere; }
+.report-waiting-actions { display: inline-flex; gap: 0.5rem; margin-left: 0.5rem; }
+.app-header-actions { display: flex; gap: 0.5rem; }
