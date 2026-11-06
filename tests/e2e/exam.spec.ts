@@ -190,6 +190,37 @@ test('Cancel on the leave prompt keeps the exam running; OK scores it', async ({
   await expect(page.getByText(LEFT)).toBeVisible();
 });
 
+test('Tab wraps at the ends of the exam page and of a panel, so the keyboard never tabs out', async ({ page }) => {
+  await startExam(page);
+  // The first or last visible control in the open panel, or else the page: focus it, or check it has focus.
+  const end = (which: 'first' | 'last', focus: boolean) =>
+    page.evaluate(
+      ([w, f]) => {
+        const scope = document.querySelector('dialog[open]') ?? document.body;
+        const els = [...scope.querySelectorAll<HTMLElement>('button:not([disabled]), input, select, textarea, a[href]')].filter((e) => e.offsetParent !== null);
+        const el = w === 'first' ? els[0] : els[els.length - 1];
+        if (f) el.focus();
+        return document.activeElement === el;
+      },
+      [which, focus] as const,
+    );
+  // Tab from the last control on the page comes round to the first, and Shift+Tab goes back.
+  await end('last', true);
+  await page.keyboard.press('Tab');
+  expect(await end('first', false)).toBe(true);
+  await page.keyboard.press('Shift+Tab');
+  expect(await end('last', false)).toBe(true);
+  // The same inside a panel.
+  await page.getByRole('button', { name: 'Calculator' }).click();
+  await expect(page.getByRole('dialog', { name: 'Calculator' })).toBeVisible();
+  await end('first', true);
+  await page.keyboard.press('Shift+Tab');
+  expect(await end('last', false)).toBe(true);
+  await page.keyboard.press('Tab');
+  expect(await end('first', false)).toBe(true);
+  await expect(page.getByText(LEFT)).toHaveCount(0);
+});
+
 test('the calculator, whiteboard and Settings panels do not end the exam, and pass axe in light and dark', async ({ page }) => {
   await startExam(page);
   const still = async () => {

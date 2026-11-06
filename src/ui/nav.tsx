@@ -4,6 +4,27 @@ export const LEAVE_RUN = 'Leave this exam? Your answers will be lost.';
 /** A mock exam: leaving ends and scores it, and the results show in place. */
 export const LEAVE_MOCK = 'Leave and score the exam now?';
 
+/** How long after the app's own leave prompt a window blur is still put down to the prompt. */
+export const PROMPT_GRACE_MS = 500;
+
+let prompting = false;
+let promptTimer: ReturnType<typeof setTimeout> | undefined;
+
+/** True while the app's own leave prompt is up, and for a moment after: browsers blur the window for it. */
+export function isPrompting(): boolean {
+  return prompting;
+}
+
+function askLeave(message: string): boolean {
+  prompting = true;
+  clearTimeout(promptTimer);
+  try {
+    return window.confirm(message);
+  } finally {
+    promptTimer = setTimeout(() => (prompting = false), PROMPT_GRACE_MS);
+  }
+}
+
 interface Guard {
   message: string;
   /** Runs on OK instead of leaving; the app stays on the screen. */
@@ -25,7 +46,7 @@ export class LeaveGuards {
   confirmLeave(): boolean {
     const g = this.guards.at(-1);
     if (!g) return true;
-    const ok = window.confirm(g.message);
+    const ok = askLeave(g.message);
     if (!g.onLeave) return ok;
     if (ok) g.onLeave();
     return false;
