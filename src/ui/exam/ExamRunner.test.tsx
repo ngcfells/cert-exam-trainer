@@ -74,7 +74,7 @@ describe('ExamRunner', () => {
     render(<ExamRunner exam={exam} timeLimitMs={600_000} startedAt={T0} onSubmit={onSubmit} onProgress={onProgress} />);
     await user.click(screen.getByLabelText('A0-a'));
     expect(onProgress).toHaveBeenLastCalledWith({ responses: { A0: ['a'] }, flagged: [] });
-    await user.click(screen.getByRole('button', { name: /flag for review/i }));
+    await user.click(screen.getByRole('button', { name: /flag for my review/i }));
     expect(onProgress).toHaveBeenLastCalledWith({ responses: { A0: ['a'] }, flagged: ['A0'] });
     const calls = onProgress.mock.calls.length;
     await user.click(screen.getByRole('button', { name: 'Next' }));
@@ -89,7 +89,7 @@ describe('ExamRunner', () => {
     const { user } = setup();
     await user.click(screen.getByLabelText('A0-a'));
     await user.click(screen.getByRole('button', { name: 'Next' }));
-    await user.click(screen.getByRole('button', { name: /flag for review/i }));
+    await user.click(screen.getByRole('button', { name: /flag for my review/i }));
     await user.click(screen.getByRole('button', { name: 'Review' }));
     expect(screen.getByRole('button', { name: 'Question 1, answered' })).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: 'Question 2, unanswered, flagged' }));

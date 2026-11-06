@@ -39,7 +39,7 @@ export function TopBar({
       {tools}
       <button type="button" aria-pressed={flagged} onClick={onToggleFlag}>
         <span aria-hidden="true">{flagged ? '⚑ ' : '⚐ '}</span>
-        Flag for review
+        Flag for my review
       </button>
       <span className="visually-hidden" aria-live="polite" data-testid="timer-announcer">
         {announcement}
