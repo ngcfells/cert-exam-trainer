@@ -1,4 +1,4 @@
-import type { Dispatch, KeyboardEvent, SetStateAction } from 'react';
+import { useCallback, useEffect, useRef, type Dispatch, type SetStateAction } from 'react';
 import { keyFromKeyboard, press, type CalcKey, type CalcState } from './calc';
 
 /** Each key: what it shows, and its spoken name when that differs. */
@@ -31,19 +31,29 @@ const KEYS: [CalcKey, string, string?][] = [
 ];
 
 export function Calculator({ state, onChange }: { state: CalcState; onChange: Dispatch<SetStateAction<CalcState>> }) {
-  const hit = (k: CalcKey) => onChange((s) => press(s, k));
-  function onKeyDown(e: KeyboardEvent<HTMLDivElement>) {
-    // Escape closes the panel, as in every panel. Enter on a focused key presses that key.
-    if (e.key === 'Escape' || e.ctrlKey || e.metaKey || e.altKey) return;
-    if (e.key === 'Enter' && e.target instanceof HTMLButtonElement) return;
-    const k = keyFromKeyboard(e);
-    if (!k) return;
-    e.preventDefault();
-    hit(k);
-  }
+  const hit = useCallback((k: CalcKey) => onChange((s) => press(s, k)), [onChange]);
+  const ref = useRef<HTMLDivElement>(null);
+  // Typed keys anywhere in the calculator; the keys themselves are the native, tappable path.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    function onKeyDown(e: KeyboardEvent) {
+      // Escape closes the panel, as in every panel. Enter on a focused key presses that key.
+      if (e.key === 'Escape' || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === 'Enter' && e.target instanceof HTMLButtonElement) return;
+      const k = keyFromKeyboard(e);
+      if (!k) return;
+      e.preventDefault();
+      hit(k);
+    }
+    el.addEventListener('keydown', onKeyDown);
+    return () => el.removeEventListener('keydown', onKeyDown);
+  }, [hit]);
   return (
-    <div className="calc" onKeyDown={onKeyDown}>
-      <output className="calc-display" role="status" aria-live="polite" aria-label="Calculator display" tabIndex={0} data-autofocus>
+    <div className="calc" ref={ref}>
+      {/* Focusable so typing has a place to land when the panel opens. */}
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex */}
+      <output className="calc-display" aria-live="polite" aria-label="Calculator display" tabIndex={0} data-autofocus>
         {state.error ?? state.display}
       </output>
       <div className="calc-keys">
