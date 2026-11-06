@@ -8,7 +8,20 @@ import { finishAttempt, type Finished } from './saveAttempt';
  * Scores a mock that a refresh or close cut off, as if the user left at the last save, and clears the record.
  * Null when there is nothing to recover, the exam is not in this build, or the attempt is already in history.
  */
-export async function recoverMock(repo: Repo): Promise<{ examCode: string; finished: Finished } | null> {
+type Recovered = { examCode: string; finished: Finished } | null;
+
+// Calls that overlap (StrictMode runs the startup effect twice) share one run, so the attempt scores once.
+const running = new WeakMap<Repo, Promise<Recovered>>();
+
+export function recoverMock(repo: Repo): Promise<Recovered> {
+  const inFlight = running.get(repo);
+  if (inFlight) return inFlight;
+  const run = recover(repo).finally(() => running.delete(repo));
+  running.set(repo, run);
+  return run;
+}
+
+async function recover(repo: Repo): Promise<Recovered> {
   const p = await loadInProgress(repo);
   if (!p) return null;
   const meta = metaFor(p.exam.exam);

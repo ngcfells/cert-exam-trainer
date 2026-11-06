@@ -43,7 +43,8 @@ export function buildResult(args: {
 }): ExamResult {
   const { exam, report } = args;
   return {
-    id: `${exam.exam}-${args.finishedAt.getTime()}-${exam.seed}`,
+    // Keyed on the start: scoring one attempt twice (two tabs, a recovery) overwrites instead of adding a second result.
+    id: `${exam.exam}-${args.startedAt.getTime()}-${exam.seed}`,
     exam: exam.exam,
     seed: exam.seed,
     startedAt: args.startedAt.toISOString(),

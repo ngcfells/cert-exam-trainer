@@ -23,7 +23,8 @@ const fake = (id: string, exam: string, t: number, qs: string[]): ExamResult => 
 describe('result', () => {
   it('builds a record that passes the schema', () => {
     const r = sample();
-    expect(r.id).toBe('T-001-2000-3');
+    // Keyed on the start, so scoring one attempt twice (two tabs, a recovery) overwrites, never duplicates.
+    expect(r.id).toBe('T-001-1000-3');
     expect(r.seed).toBe(3);
     expect(examResultSchema.parse(r)).toEqual(r);
   });
