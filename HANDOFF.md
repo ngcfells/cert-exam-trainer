@@ -1,3 +1,132 @@
+# START HERE (2026-11-06, after /clear): all repos in one place
+
+The same block is at the top of `C:/repo/testingUtility/HANDOFF.md` and `C:/repo/JBTToolsSupportFiles/handoff.md`.
+Older history is below it in each file.
+
+Every session: run `gh issue list` in testingUtility first. Bugs come before everything else. On 2026-11-06 the
+open issues were #14, #11, #6 and #5, all enhancements.
+
+The user's order (2026-11-06): build the testingUtility feature (A). Between its tasks, and while tests run, keep the
+tools work moving (B). Neither one waits on the other.
+
+## A. testingUtility: in-app exam tools (issue #14). Plan approved, build next
+
+- Spec (approved): `docs/superpowers/specs/2026-11-06-in-app-exam-tools-design.md` (f158a6a).
+- Plan (approved, "that sounds great"): `docs/superpowers/plans/2026-11-06-in-app-exam-tools.md`. Both are on
+  origin/main.
+- What it builds:
+  - Settings opens as a panel from any screen.
+  - Calculator and Whiteboard buttons sit side by side in mock, practice and cram.
+  - In a mock, leaving ends and scores the exam. Leaving means a hidden page, window blur, a refresh or close, or
+    the app's own Back and All exams buttons ("Leave and score the exam now?").
+  - An "I understand" warning gates Start.
+  - Results say "Ended because you left the exam."
+  - The timer never pauses.
+- How (the user's standing choice): native. Create a branch from main (for example `exam-tools`), then use
+  superpowers:executing-plans and work through the 7 tasks test-first in this session. After that, one Opus
+  whole-branch review, fix every finding (minors too), then merge to main, push and `npm run deploy`.
+- The plan's Review Focus lists 5 failure cases with their tests. Task 7 writes a ledger list of Data+ items the
+  calculator keys can't solve, for the owner. The calculator key set is marked VERIFY.
+- Rules: keep `.superpowers/sdd` ledgers, no GitHub Actions, no LFS, and if a port is busy use a free one.
+- AFTER #14: primer issue #5 (Bash/PowerShell). The brainstorm is partly done. Agreed so far:
+  - Assume zero experience.
+  - Show Bash and PowerShell side by side for every command.
+  - An exam-level layer, plus a "Learn more" button for depth.
+  - Include SQL and pandas where learners type them.
+  - It opens directly from the question.
+  - Link to safe practice sites and beginner training. No emulator.
+  - The topics come from the commands the banks accept (git, curl, grep, sort, head, wc, sed, awk, dig, ping, chmod,
+    sha256sum, systemctl, docker, fg/bg/nohup, conda, SQL SELECT, pandas), plus how to read a made-up tool's help
+    text.
+  - No bank accepts a PowerShell answer today.
+  - Still open: does the primer link show in mock exams? (The real exam has none.) Then the written design and the
+    builder check.
+
+## B. Tools work (battletech-tools, JBTIICRework, ResourceLibrary, JBTToolsSupportFiles)
+
+Done 2026-11-06: the reply to Scott was approved and sent by the user. It is saved in section 4 of
+`battletech-tools/docs/superpowers/plans/2026-11-06-mordel-api-mapping.md`. It asks about per-user API keys and
+CORS. Waiting on Scott's answer and his next sandbox update; after that update, recheck the three mismatches
+(HMR-5M bm 98087, cv 5001 leading space, `/units/bm/474/`). That doc and the pipeline doc are committed as 9b0d70f36.
+
+Steps, in order:
+
+1. **Mordel full pull (running).** At 09:22, batch 5 was done and 51,043 of 56,043 units were waiting. It does
+   about 1000 every 20 minutes, so it should finish around 03:00 on 2026-11-07. Log:
+   `battletech-tools/tools/mordel-sync/.mirror/full-pull.log` (a "done" line at the end). If it stopped, restart
+   it detached from battletech-tools with `bash tools/mordel-sync/.mirror/full-pull.sh` (it resumes). When it is
+   done:
+   - Measure total size (`du -sh`), gzip size, count per type and size per type.
+   - Write the user a memo with a recommendation on three options: (a) ship with the app, (b) an optional pack,
+     (c) per-user keys (the user's favourite: we ship a unit list only, and each user fetches with their own key;
+     it depends on Scott's answer on keys and CORS).
+2. **Sort the 296 files left in JBTIICRework `unsorted/scrapes/`.**
+   - Not started, apart from setting aside 74 duplicates on 2026-11-06: 54 hash-matched copies of library files and
+     20 podcast page copies. They went to `unsorted/_duplicates/scrapes/...` and are logged.
+   - Leave `_queue.lock` and `_queue.pid` alone.
+   - Draft homes:
+     - chaosmarch `3dmodels` (146 zips): a new `fan-made/3d-models/`.
+     - chaosmarch dboard, mechworks, hvmtl and vehicle zips (design software): likely `fan-made/software/`.
+     - chaosmarch `records` (20 PDFs): run the fan-made test first.
+     - Shrapnel and ForcePack sheets: `record-sheets/`.
+     - Errata (Alpha Strike Companion heat, BattleMech Manual damage flowchart, Hot Spots Hinterlands v2.41):
+       `errata/`.
+     - Quick-start rules: `rulebooks/`.
+     - BattleForce counters: `battleforce/`.
+     - ourbattletech Army Reports, Fanbooks, Gotterdammerung and Operation Rat: `fan-made/` subfolders.
+     - Still undecided: the 10 podcasts (m4a), the Solaris Sentinel doc and PDF, and the ironwind record sheets.
+   - Name format (memory `library-rename-project`): `Title(Publisher-ProductNo)[CopyrightYear]-Edition.ext`,
+     CamelCase, ASCII, no spaces.
+     - WizKids, Topps and Microsoft are never the publisher.
+     - No copyright block means fan-made.
+     - Never delete: set copies aside under `unsorted/_duplicates/`.
+     - Never rename the slugs in `CITE` in `library_search.py`.
+   - Tools: `ResourceLibrary/rename_library.py` (CLUES, RIGHTS, `camel()`, `target()`, `actual_publisher()`) and
+     `sort_batch.py`. `pdftotext` is in /ucrt64/bin; pypdf is not installed. The 2026-11-06 helper scripts were in
+     the old session scratchpad (dupcheck.sh, movedups.sh, poddups.sh) and may be gone; they are easy to rewrite.
+3. **Rename the whole library to the format.** As you check each file, read its `ResourceLibrary/text/` extract. If
+   the text is garbled, fix it (re-OCR, then rebuild the INDEX and search). Commit and push ResourceLibrary in
+   batches.
+4. **Cleanup** (the full inventory is in the older START HERE block of `JBTToolsSupportFiles/handoff.md`, step 5):
+   - Push battletech-tools master (ahead 2: the mordel-sync fast-forward and 9b0d70f36). Check the deploy rules
+     first.
+   - Remove the `battletech-tools-mordel-sync` worktree and the `mordel-sync` branch.
+   - Check `layers`.
+   - Delete testingUtility branches merged into main, locally and on origin. `chunk11-secai` has 34 unpushed
+     commits, so check it first.
+   - Delete the stale SDD workspaces outside testingUtility, after copying `scrapes_native.tsv` into ResourceLibrary
+     `records/`.
+   - Delete the old scratchpad leftovers.
+   - Ask first before deleting any unmerged remote branch or `backup/pre-lfs-strip`.
+5. **Update both handoffs and push** testingUtility and JBTToolsSupportFiles.
+
+## Open items found at the clear (2026-11-06)
+
+- JBTIICRework shows 3 tracked PDFs as modified, and this session did not touch them:
+  - `battleforce/BattleForce (FASA).pdf`
+  - `rpg/A Time of War Companion.pdf`
+  - `rulebooks-legacy/Tactical Handbook (FASA 8630)[1994] - Corrected 4th Printing.pdf`
+
+  Find out what changed (size, hash against HEAD). Do not commit or revert without the user.
+- battletech-tools has an untracked `docs/superpowers/plans/battletech-tools.code-workspace`, and
+  JBTToolsSupportFiles has an untracked `arrayPlan.md`. Both belong to the user; leave them.
+
+## Standing rules (all repos)
+
+- The mordel key is in `JBTToolsSupportFiles/.env.mordel` (git-ignored). Never print it or put it in a commit,
+  memory note or handoff. Scripts read it by regex and scrub it from saved output.
+- The mordel mirror holds member designs and stays git-ignored: battletech-tools is public.
+- **No JBTIICRework commits or pushes until 2026-12-02.** Make every change there in the working tree only, and log
+  it in `ResourceLibrary/records/jbtiicrework-pending.md` (from, to, why). On 2026-12-02, commit and push them all,
+  then clear the list.
+- ResourceLibrary is the user's private repo: commit and push freely.
+- `upstream/*` in battletech-tools is Jeff's repo: never touch it.
+- Use the cheapest subagent models; final reviews run on Opus. Bundled testingUtility content must be original.
+- Bash tool: a heredoc whose body contains an apostrophe is blocked by a hook. Write the script with the Write tool
+  and run the file instead.
+
+---
+
 # Handoff
 
 **Repo:** <https://github.com/ngcfells/cert-exam-trainer> (public)
