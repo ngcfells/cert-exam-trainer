@@ -1,3 +1,4 @@
+// @vitest-environment node
 import { describe, expect, it } from 'vitest';
 import type { ReportRequest } from '../../src/report/contract';
 import { escapeText, formatIssue } from './issue';
