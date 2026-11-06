@@ -46,7 +46,7 @@ export default defineConfig(({ command }) => ({
   test: {
     environment: 'jsdom',
     setupFiles: ['./src/test-setup.ts'],
-    include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts'],
+    include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts', 'relay/src/**/*.test.ts'],
     passWithNoTests: true,
     env: { VITE_BANK: 'fixture' },
   },
