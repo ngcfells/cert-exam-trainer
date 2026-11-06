@@ -124,6 +124,8 @@ the learner's own reminder, not a report. This design keeps the two separate.
 1. The fine-grained token (done or in progress, 2026-11-06): cert-exam-trainer only, Issues: Read and write. Note its
    expiry date in the handoff.
 2. Create a Turnstile widget in the Cloudflare dashboard for the Pages domain and localhost, and note the site key.
+   Done 2026-11-06: widget "cert-trainer reports", managed mode, site key `0x4AAAAAAF2w670muVBVNqkR` (public). The
+   secret key stays with the owner.
 3. `npx wrangler login`, then `npx wrangler secret put GITHUB_TOKEN` and `npx wrangler secret put TURNSTILE_SECRET`
    (the owner pastes these values; Claude never sees them), then `npx wrangler deploy`.
 4. Give Claude the `workers.dev` URL and the site key (both public) for the build settings.
