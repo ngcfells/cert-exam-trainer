@@ -6,10 +6,12 @@ import { createMemoryRepo } from '../storage/memoryRepo';
 import { exportBackup } from '../storage/backup';
 import { THEME_SETTING } from './display';
 import { applyMarks, DEFAULT_MARKS, getMarks, MARKS_SETTING } from './marks/prefs';
+import { getTips, resetTipsForTests, TIPS_SETTING } from './tips/prefs';
 
 afterEach(() => {
   delete document.documentElement.dataset.theme;
   applyMarks(DEFAULT_MARKS);
+  resetTipsForTests();
 });
 
 describe('SettingsScreen', () => {
@@ -41,5 +43,16 @@ describe('SettingsScreen', () => {
     await userEvent.upload(screen.getByLabelText(/import backup/i, { selector: 'input[type=file]' }), new File([json], 'b.json'));
     await waitFor(() => expect(getMarks().style).toBe('edge'));
     expect(await screen.findByRole('radio', { name: 'Quiet edge' })).toBeChecked();
+  });
+
+  it('applies study tips off from an imported backup at once', async () => {
+    const source = createMemoryRepo();
+    await source.setSetting(TIPS_SETTING, false);
+    const json = JSON.stringify(await exportBackup(source));
+    render(<SettingsScreen repo={createMemoryRepo()} />);
+    expect(await screen.findByRole('checkbox', { name: 'Show study tips in practice and cram' })).toBeChecked();
+    await userEvent.upload(screen.getByLabelText(/import backup/i, { selector: 'input[type=file]' }), new File([json], 'b.json'));
+    await waitFor(() => expect(getTips().on).toBe(false));
+    expect(await screen.findByRole('checkbox', { name: 'Show study tips in practice and cram' })).not.toBeChecked();
   });
 });

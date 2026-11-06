@@ -7,6 +7,7 @@ import { useFocusHeading } from './kit';
 import { MarkSettings } from './marks/MarkSettings';
 import { applyMarks, loadMarks } from './marks/prefs';
 import { applyTips, loadTips } from './tips/prefs';
+import { TipSettings } from './tips/TipSettings';
 
 /** App-wide settings: display and backups. */
 export function SettingsScreen({ repo }: { repo: Repo }) {
@@ -25,6 +26,7 @@ export function SettingsScreen({ repo }: { repo: Repo }) {
       <h2 id="settings-h" ref={headingRef} tabIndex={-1}>Settings</h2>
       <DisplaySettings key={imports} repo={repo} />
       <MarkSettings key={`marks-${imports}`} repo={repo} />
+      <TipSettings key={`tips-${imports}`} repo={repo} />
       <BackupControls repo={repo} onImported={() => void onImported()} />
     </section>
   );
