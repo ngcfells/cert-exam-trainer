@@ -102,12 +102,15 @@ Steps, in order:
 
 ## Open items found at the clear (2026-11-06)
 
-- JBTIICRework shows 3 tracked PDFs as modified, and this session did not touch them:
-  - `battleforce/BattleForce (FASA).pdf`
-  - `rpg/A Time of War Companion.pdf`
-  - `rulebooks-legacy/Tactical Handbook (FASA 8630)[1994] - Corrected 4th Printing.pdf`
-
-  Find out what changed (size, hash against HEAD). Do not commit or revert without the user.
+- JBTIICRework shows 3 tracked PDFs as modified. Explained 2026-11-06: the 2026-11-04 rulebook sort deliberately
+  replaced each one with a better Calibre copy (record: `ResourceLibrary/records/_rulebook-sort-2026-11-04.json`,
+  `op: replace`). The old copies are kept, hash-checked, under `unsorted/_duplicates/rulebooks-2026-11-04/`. They
+  were never committed. They are now on the pending list for 2026-12-02. Nothing to do until then.
+  - `battleforce/BattleForce (FASA).pdf`: same 82 pages, now with a text layer, 150 dpi against 100.
+  - `rpg/A Time of War Companion.pdf`: same printing, later file (Oct 2012), restores text cut off on pages 30,
+    182 and 223.
+  - `rulebooks-legacy/Tactical Handbook (FASA 8630)[1994] - Corrected 4th Printing.pdf`: same printing and pages,
+    now with a text layer.
 - battletech-tools has an untracked `docs/superpowers/plans/battletech-tools.code-workspace`, and
   JBTToolsSupportFiles has an untracked `arrayPlan.md`. Both belong to the user; leave them.
 
