@@ -5,6 +5,7 @@ import { AcronymFlow } from './ui/acronyms/AcronymFlow';
 import { LearnFlow } from './ui/learn/LearnFlow';
 import { applyDisplay, loadDisplay } from './ui/display';
 import { applyMarks, loadMarks } from './ui/marks/prefs';
+import { applyTips, getTips, loadTips } from './ui/tips/prefs';
 import { APP_NAME } from './ui/legal';
 import { Disclaimer } from './ui/Disclaimer';
 import { ExamPage } from './ui/ExamPage';
@@ -49,6 +50,12 @@ export default function App() {
         applyMarks(await loadMarks(s.repo));
       } catch {
         /* defaults stay */
+      }
+      // Tip progress is written through to this repo; a read failure keeps the defaults.
+      try {
+        applyTips(await loadTips(s.repo), s.repo);
+      } catch {
+        applyTips(getTips(), s.repo);
       }
       setStorage(s);
     });

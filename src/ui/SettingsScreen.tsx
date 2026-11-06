@@ -6,6 +6,7 @@ import { DisplaySettings } from './DisplaySettings';
 import { useFocusHeading } from './kit';
 import { MarkSettings } from './marks/MarkSettings';
 import { applyMarks, loadMarks } from './marks/prefs';
+import { applyTips, loadTips } from './tips/prefs';
 
 /** App-wide settings: display and backups. */
 export function SettingsScreen({ repo }: { repo: Repo }) {
@@ -16,6 +17,7 @@ export function SettingsScreen({ repo }: { repo: Repo }) {
     const d = await loadDisplay(repo);
     applyDisplay(d.theme, d.reducedMotion);
     applyMarks(await loadMarks(repo));
+    applyTips(await loadTips(repo), repo);
     setImports((n) => n + 1);
   }
   return (
