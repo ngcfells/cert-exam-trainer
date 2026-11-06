@@ -121,13 +121,19 @@ export function ExamRunner({
   // A PBQ counts as answered only once every part is filled.
   const answered = (id: string) => isComplete(byId.get(id)!, responses[id]);
 
+  // Both write the ref at once, so a leave in the same task (before React re-renders) still scores them.
   function toggleFlag() {
-    setFlagged((f) => {
-      const next = new Set(f);
-      if (next.has(item.question.id)) next.delete(item.question.id);
-      else next.add(item.question.id);
-      return next;
-    });
+    const next = new Set(state.current.flagged);
+    if (next.has(item.question.id)) next.delete(item.question.id);
+    else next.add(item.question.id);
+    state.current = { ...state.current, flagged: next };
+    setFlagged(next);
+  }
+  function answer(id: string, v: Responses[string]) {
+    if (expired()) return;
+    const next = { ...state.current.responses, [id]: v };
+    state.current = { ...state.current, responses: next };
+    setResponses(next);
   }
 
   return (
@@ -139,13 +145,13 @@ export function ExamRunner({
         remainingMs={remaining}
         flagged={flagged.has(item.question.id)}
         onToggleFlag={toggleFlag}
-        tools={<ToolButtons />}
+        tools={<ToolButtons disabled={isSubmitted} />}
       />
       {view === 'question' ? (
         <>
           <section className="exam-body" aria-labelledby="exam-q-heading">
             <h2 id="exam-q-heading" ref={headingRef} tabIndex={-1}>{`Question ${index + 1}`}</h2>
-            <QuestionView item={item} response={responses[item.question.id]} onChange={(v) => !expired() && setResponses((r) => ({ ...r, [item.question.id]: v }))} />
+            <QuestionView item={item} response={responses[item.question.id]} onChange={(v) => answer(item.question.id, v)} />
 
           </section>
           <nav className="exam-nav" aria-label="Exam navigation">

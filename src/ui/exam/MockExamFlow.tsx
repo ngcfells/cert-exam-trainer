@@ -8,6 +8,7 @@ import { newSeed } from '../../exam/rng';
 import type { Responses } from '../../exam/scoring';
 import type { Repo } from '../../storage';
 import { Loading, metaFor, useLoad } from '../kit';
+import { usePanels } from '../panels/PanelProvider';
 import { LoadError } from '../study/LoadError';
 import { ExamRunner } from './ExamRunner';
 import { ExamSetup } from './ExamSetup';
@@ -35,6 +36,7 @@ export function MockExamFlow({
   }, [repo, examCode, seed]);
   const [startedAt, setStartedAt] = useState<Date | null>(null);
   const [done, setDone] = useState<Finished | null>(recovered ?? null);
+  const { close: closePanel } = usePanels();
 
   // Saved as it goes, so a refresh or close still scores the attempt; a failed save only loses that safety net.
   function save(e: AssembledExam, start: Date, p: { responses: Responses; flagged: string[] }) {
@@ -66,6 +68,8 @@ export function MockExamFlow({
       onSubmit={(p) =>
         void finishAttempt(repo, meta, exam, startedAt, p).then(async (f) => {
           await clearInProgress(repo).catch(() => {});
+          // A panel opened while saving (the app's Settings) must not cover the results.
+          closePanel({ restoreFocus: false });
           setDone(f);
         })
       }

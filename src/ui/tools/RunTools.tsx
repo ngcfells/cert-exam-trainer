@@ -32,15 +32,15 @@ function useRunTools(): RunTools {
   return t;
 }
 
-/** Calculator and Whiteboard, side by side. */
-export function ToolButtons() {
+/** Calculator and Whiteboard, side by side. `disabled` once the run has ended. */
+export function ToolButtons({ disabled = false }: { disabled?: boolean }) {
   const { open } = usePanels();
   return (
     <div className="tool-buttons">
-      <button type="button" aria-haspopup="dialog" onClick={(e) => open('calculator', e.currentTarget)}>
+      <button type="button" aria-haspopup="dialog" disabled={disabled} onClick={(e) => open('calculator', e.currentTarget)}>
         Calculator
       </button>
-      <button type="button" aria-haspopup="dialog" onClick={(e) => open('whiteboard', e.currentTarget)}>
+      <button type="button" aria-haspopup="dialog" disabled={disabled} onClick={(e) => open('whiteboard', e.currentTarget)}>
         Whiteboard
       </button>
     </div>

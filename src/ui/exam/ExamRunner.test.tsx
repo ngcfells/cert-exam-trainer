@@ -192,6 +192,20 @@ describe('ExamRunner leaving', () => {
     expect(onSubmit).toHaveBeenCalledTimes(1);
   });
 
+  it('keeps an answer and a flag given in the same moment the page is hidden', () => {
+    const { onSubmit } = setup();
+    // One task: the click and the leave both land before React re-renders.
+    act(() => {
+      screen.getByLabelText('A0-b').click();
+      screen.getByRole('button', { pressed: false }).click();
+      Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' });
+      document.dispatchEvent(new Event('visibilitychange'));
+    });
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'visible' });
+    expect(onSubmit).toHaveBeenCalledTimes(1);
+    expect(onSubmit.mock.calls[0][0]).toMatchObject({ responses: { A0: ['b'] }, flagged: ['A0'], endedBy: 'left' });
+  });
+
   it('Back asks LEAVE_MOCK; OK scores the exam as left, Cancel keeps it running', () => {
     const confirm = vi.spyOn(window, 'confirm').mockReturnValue(false);
     const guards = new LeaveGuards();
@@ -259,6 +273,13 @@ describe('ExamRunner tools', () => {
     expect(onSubmit.mock.calls[0][0]).toMatchObject({ autoSubmitted: true });
     expect(screen.queryByRole('dialog', { name: 'Whiteboard' })).not.toBeInTheDocument();
     expect(probe()).toHaveAttribute('data-current', '');
+  });
+
+  it('disables Calculator and Whiteboard once the exam is submitted, while the result saves', () => {
+    setupTools(10_000);
+    act(() => vi.advanceTimersByTime(11_000));
+    expect(screen.getByRole('button', { name: 'Calculator' })).toBeDisabled();
+    expect(screen.getByRole('button', { name: 'Whiteboard' })).toBeDisabled();
   });
 
   it('sets the mock deadline while running and clears it on submit', () => {

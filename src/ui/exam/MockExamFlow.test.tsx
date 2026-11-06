@@ -15,6 +15,8 @@ import type { Repo } from '../../storage';
 import { loadInProgress, saveInProgress } from '../../exam/inProgress';
 import { sampleMock } from '../../exam/testMock';
 import { recoverMock } from './recover';
+import { usePanels } from '../panels/PanelProvider';
+import { PanelProbe, WithPanels } from '../panels/testPanels';
 
 beforeEach(() => vi.stubEnv('DEV', false));
 afterEach(() => vi.unstubAllEnvs());
@@ -236,6 +238,36 @@ describe('MockExamFlow', () => {
     await submit(user);
     expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
     await waitFor(async () => expect(await loadInProgress(repo)).toBeNull());
+  });
+
+  it('closes a panel opened while the result was saving, so results never sit under a dialog', async () => {
+    const repo = createMemoryRepo();
+    let release = () => {};
+    const put = repo.putRecord.bind(repo);
+    repo.putRecord = (store, rec) =>
+      store === 'results' ? new Promise<void>((ok) => (release = () => void put(store, rec).then(ok))) : put(store, rec);
+    function OpenSettings() {
+      const { open } = usePanels();
+      return <button onClick={() => open('settings', null)}>open settings</button>;
+    }
+    const user = userEvent.setup();
+    render(
+      <WithPanels>
+        <MockExamFlow repo={repo} examCode="DA0-002" seed={5} />
+        <OpenSettings />
+        <PanelProbe />
+      </WithPanels>,
+    );
+    await user.click(await screen.findByRole('checkbox', { name: 'I understand' }));
+    await user.click(screen.getByRole('button', { name: 'Start exam' }));
+    await answerAll(user, 'skip');
+    await submit(user);
+    // The save is still running: the app header's Settings is live. Open it now.
+    await user.click(screen.getByRole('button', { name: 'open settings' }));
+    expect(screen.getByTestId('panel-probe')).toHaveAttribute('data-current', 'settings');
+    release();
+    expect(await screen.findByRole('heading', { name: /your score/i })).toBeInTheDocument();
+    expect(screen.getByTestId('panel-probe')).toHaveAttribute('data-current', '');
   });
 
   it('opens on the results of a recovered mock', async () => {
