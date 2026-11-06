@@ -9,7 +9,12 @@ open issues were #14, #11, #6 and #5, all enhancements.
 The user's order (2026-11-06): build the testingUtility feature (A). Between its tasks, and while tests run, keep the
 tools work moving (B). Neither one waits on the other.
 
-## A. testingUtility: in-app exam tools (issue #14). Plan approved, build next
+## A. testingUtility: in-app exam tools (issue #14). Built on `exam-tools`; Opus review, merge and deploy next
+
+Status (2026-11-06): all 7 tasks are done and committed on branch `exam-tools`. Ledger:
+`.superpowers/sdd/2026-11-06-in-app-exam-tools/progress.md` (rulings are its `Ruling:` lines). Calculator coverage:
+every approved Data+ numeric and data item needs only + − × ÷ % √ and xʸ, so no item needs a missing key. Next:
+the Opus whole-branch review, fix every finding, then merge, push and `npm run deploy`.
 
 - Spec (approved): `docs/superpowers/specs/2026-11-06-in-app-exam-tools-design.md` (f158a6a).
 - Plan (approved, "that sounds great"): `docs/superpowers/plans/2026-11-06-in-app-exam-tools.md`. Both are on

@@ -48,8 +48,17 @@ for (const width of WIDTHS) {
         if (tool === 'Acronyms') await page.getByText('Full list', { exact: true }).click();
         await check(`${code} ${tool}`);
         if (tool === 'Start mock exam') {
+          await expect(page.getByText(/^Leaving the app ends this exam/)).toBeVisible();
           await page.getByRole('checkbox', { name: 'I understand' }).check();
           await page.getByRole('button', { name: 'Start exam' }).click();
+          // The tool and Settings panels, over the first question.
+          for (const name of ['Calculator', 'Whiteboard', 'Settings']) {
+            await page.getByRole('button', { name, exact: true }).click();
+            const panel = page.getByRole('dialog', { name });
+            await expect(panel).toBeVisible();
+            await check(`${code} mock exam ${name} panel`);
+            await panel.getByRole('button', { name: 'Close' }).click();
+          }
           // Review shows on the last question.
           const review = page.getByRole('button', { name: 'Review', exact: true });
           while (!(await review.isVisible())) await page.getByRole('button', { name: 'Next', exact: true }).click();
@@ -59,6 +68,18 @@ for (const width of WIDTHS) {
           await page.getByRole('dialog').getByRole('button', { name: 'Submit', exact: true }).click();
           await expect(page.getByRole('heading', { name: 'Review', exact: true })).toBeVisible();
           await check(`${code} mock exam results`);
+          // A second mock that ends because the page was hidden: its results add the "left" line.
+          await examPage(page, code);
+          await page.getByRole('button', { name: `Start mock exam: ${code}` }).click();
+          await page.getByRole('checkbox', { name: 'I understand' }).check();
+          await page.getByRole('button', { name: 'Start exam' }).click();
+          await page.evaluate(() => {
+            Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' });
+            document.dispatchEvent(new Event('visibilitychange'));
+            Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'visible' });
+          });
+          await expect(page.getByText('Ended because you left the exam.')).toBeVisible();
+          await check(`${code} mock exam results after leaving`);
         }
         await examPage(page, code);
       }
