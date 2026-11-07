@@ -1,7 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import type { ReportMode } from '../../report/contract';
 
-export type PanelKind = 'settings' | 'calculator' | 'whiteboard' | 'report';
+export type PanelKind = 'settings' | 'calculator' | 'whiteboard' | 'report' | 'command-help';
 
 /** Where a report was started from. Empty for the general entry points. */
 export interface ReportContext {
@@ -23,6 +23,10 @@ export interface PanelApi {
   reportContext: ReportContext;
   /** Opens the report panel for `ctx`. */
   openReport(ctx: ReportContext, opener: HTMLElement | null): void;
+  /** The primer topic ids the Command help panel was opened for, most relevant first. */
+  helpTopics: string[];
+  /** Opens the Command help panel for these topic ids. */
+  openCommandHelp(topicIds: string[], opener: HTMLElement | null): void;
 }
 
 /** App-level panel state: one panel at a time. */
@@ -45,6 +49,14 @@ export function usePanelState(): PanelApi {
     },
     [open],
   );
+  const [helpTopics, setHelpTopics] = useState<string[]>([]);
+  const openCommandHelp = useCallback(
+    (ids: string[], el: HTMLElement | null) => {
+      setHelpTopics(ids);
+      open('command-help', el);
+    },
+    [open],
+  );
   const close = useCallback((opts?: { restoreFocus?: boolean }) => {
     refocus.current = opts?.restoreFocus === false ? null : opener.current;
     opener.current = null;
@@ -59,8 +71,8 @@ export function usePanelState(): PanelApi {
   }, [current]);
 
   return useMemo(
-    () => ({ current, open, close, mockDeadline, setMockDeadline, reportContext, openReport }),
-    [current, open, close, mockDeadline, reportContext, openReport],
+    () => ({ current, open, close, mockDeadline, setMockDeadline, reportContext, openReport, helpTopics, openCommandHelp }),
+    [current, open, close, mockDeadline, reportContext, openReport, helpTopics, openCommandHelp],
   );
 }
 
@@ -78,6 +90,8 @@ const NO_PANELS: PanelApi = {
   setMockDeadline: () => {},
   reportContext: {},
   openReport: () => {},
+  helpTopics: [],
+  openCommandHelp: () => {},
 };
 
 /** The app's panels. Outside a provider (screen tests) it is a no-op, so screens render alone. */

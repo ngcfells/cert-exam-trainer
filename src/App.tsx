@@ -25,6 +25,7 @@ import { PanelProvider, usePanelState } from './ui/panels/PanelProvider';
 import { SettingsPanel } from './ui/panels/SettingsPanel';
 import { ReportButton } from './ui/report/ReportButton';
 import { ReportPanel } from './ui/report/ReportPanel';
+import { CommandHelpPanel } from './ui/primer/CommandHelpPanel';
 import { OutboxBanner } from './ui/report/OutboxBanner';
 import { ProgressScreen } from './ui/study/ProgressScreen';
 
@@ -196,6 +197,7 @@ export default function App() {
           {!onHome && tall && <div ref={bottomRef} className="bottom-nav">{bar('Page navigation (bottom)')}</div>}
           {storage && panels.current === 'settings' && <SettingsPanel repo={storage.repo} />}
           {storage && panels.current === 'report' && <ReportPanel repo={storage.repo} />}
+          {panels.current === 'command-help' && <CommandHelpPanel />}
         </PanelProvider>
       </main>
       <Disclaimer />

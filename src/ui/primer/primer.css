@@ -1,0 +1,18 @@
+.primer-topic code { overflow-wrap: anywhere; }
+.primer-forms { border-collapse: collapse; width: 100%; margin: 0.75rem 0; }
+.primer-forms caption { text-align: start; font-weight: bold; padding-bottom: 0.25rem; }
+.primer-forms th, .primer-forms td { border: 1px solid var(--border, currentColor); padding: 0.4rem 0.5rem; text-align: start; vertical-align: top; }
+.primer-example { padding-inline-start: 1.25rem; }
+.primer-example p { margin: 0.25rem 0 0.75rem; }
+.primer-choices { list-style: none; padding: 0; margin: 0.5rem 0 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.primer-choices button[aria-pressed='true'] { font-weight: bold; outline: 2px solid currentColor; outline-offset: 1px; }
+.primer-links { padding-inline-start: 1.25rem; }
+
+/* Narrow screens: each row becomes a block of "label: value" lines. */
+@media (max-width: 40rem) {
+  .primer-forms thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .primer-forms tr, .primer-forms td { display: block; }
+  .primer-forms tr { border: 1px solid var(--border, currentColor); margin-bottom: 0.5rem; }
+  .primer-forms td { border: 0; }
+  .primer-forms td::before { content: attr(data-label); display: block; font-weight: bold; }
+}
