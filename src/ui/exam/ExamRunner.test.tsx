@@ -8,6 +8,8 @@ import type { AssembledExam } from '../../exam/assemble';
 import { mcq } from '../../exam/testFixtures';
 import { PanelProbe, WithPanels } from '../panels/testPanels';
 
+vi.mock('../../primer/topics', async () => (await import('../../primer/testTopics')).mockTopicsModule());
+
 const exam: AssembledExam = {
   exam: 'T-001',
   seed: 1,
@@ -247,6 +249,17 @@ describe('ExamRunner tools', () => {
     return { onSubmit, user, ...r };
   }
   const probe = () => screen.getByTestId('panel-probe');
+
+  it('never shows Command help, even on a command question', () => {
+    const cmdExam: AssembledExam = { ...exam, items: [{ question: { ...mcq('C0', 'A'), stem: 'Run `grep ERROR app.log`.' }, optionOrder: ['a', 'b', 'c', 'd'] }] };
+    render(
+      <WithPanels>
+        <ExamRunner exam={cmdExam} timeLimitMs={600_000} startedAt={T0} onSubmit={() => {}} />
+      </WithPanels>,
+    );
+    expect(screen.getByText('Run', { exact: false })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Command help' })).not.toBeInTheDocument();
+  });
 
   it('shows Calculator and Whiteboard in the top bar', () => {
     setupTools();
