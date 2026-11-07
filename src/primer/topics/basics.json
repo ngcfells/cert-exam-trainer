@@ -3,12 +3,532 @@
     "id": "terminal",
     "group": "basics",
     "title": "What a terminal is",
-    "purpose": "Placeholder until the Shell basics content lands.",
+    "purpose": "Explains the window where you type commands, and the `$ ` you see in exam output.",
     "aliases": [],
-    "what": ["Placeholder."],
-    "forms": [{ "bash": "`pwd`", "powershell": "`Get-Location`", "does": "Placeholder." }],
-    "example": { "intro": "Placeholder.", "lines": [{ "line": "pwd", "note": "Placeholder." }] },
-    "trap": { "wrong": "Placeholder.", "why": "Placeholder." },
-    "more": [{ "heading": "Placeholder", "paragraphs": ["Placeholder."] }]
+    "what": [
+      "A terminal is a window where you type a line of text, press Enter, and the computer answers with text. There are no buttons. You type a command, and it does the job.",
+      "Inside the window runs a program called a shell. The shell reads what you type and starts the right program. Linux uses a shell called Bash. macOS uses zsh by default, which works the same as Bash for everything in this primer. Windows uses PowerShell.",
+      "The prompt is the short piece of text the shell prints before your cursor to say it is ready. In exam output a line that starts with `$ ` is a command somebody typed. The `$ ` is the prompt. You do not type it. Lines without it are what the command printed."
+    ],
+    "forms": [
+      { "bash": "`whoami`", "powershell": "Same command", "does": "Prints the name of the account you are using." },
+      { "bash": "`echo hello`", "powershell": "Same command", "does": "Prints the word `hello` back to you." },
+      { "bash": "`clear`", "powershell": "`Clear-Host`", "does": "Empties the window. In PowerShell `clear` also works because it is a short name for `Clear-Host`." },
+      { "bash": "`bash --version`", "powershell": "`$PSVersionTable.PSVersion`", "does": "Shows which version of the shell you have." },
+      { "bash": "`exit`", "powershell": "Same command", "does": "Closes the shell session." }
+    ],
+    "example": {
+      "intro": "A tiny session. Read it as: what was typed, then what came back.",
+      "lines": [
+        { "line": "$ whoami", "note": "A command. The `$ ` is the prompt, so you would type only `whoami`." },
+        { "line": "sam", "note": "Output. There is no `$ ` here, so this is the answer, not something you type." },
+        { "line": "$ echo hello", "note": "A second command. `echo` prints whatever words follow it." },
+        { "line": "hello", "note": "Output from `echo`." }
+      ]
+    },
+    "trap": {
+      "wrong": "Typing `$ pwd` with the dollar sign included.",
+      "why": "The `$ ` is the prompt, which the shell prints for you. If you type it, Bash answers that `$` is not a command. Type only `pwd`."
+    },
+    "more": [
+      {
+        "heading": "Terminal, shell and prompt",
+        "paragraphs": [
+          "The terminal is the window. The shell is the program inside it that understands your commands. The prompt is the text that shows the shell is waiting. People often mix the three words up, but exam questions only need you to know that you type commands after the prompt.",
+          "A Bash prompt often looks like `sam@build01:~$`. It names the account, the machine and the current folder, and it ends in `$`. A prompt that ends in `#` means you are working as `root`, the main administrator account (see Running as administrator). A PowerShell prompt looks like `PS C:\\Users\\sam>`, and the part before the `>` is the current folder."
+        ]
+      },
+      {
+        "heading": "How to open one",
+        "paragraphs": [
+          "macOS: open the Terminal app. Press Command and Space, type `Terminal`, and press Enter. It is also in Applications, inside the Utilities folder.",
+          "Linux: open the terminal app from your applications menu. On many desktops the keys `Ctrl+Alt+T` open it.",
+          "Windows: open the Start menu, type `Terminal` or `PowerShell`, and press Enter. Windows Terminal is a window that can hold several tabs, and by default its tab runs PowerShell."
+        ]
+      },
+      {
+        "heading": "Two keys worth knowing",
+        "paragraphs": [
+          "`Ctrl+C` stops the command that is running now. Use it when something is stuck or you started the wrong thing. Typing `exit` ends the shell session itself.",
+          "The Up arrow brings back the last command you typed, so you can fix a typo without retyping the whole line."
+        ]
+      }
+    ],
+    "links": [
+      { "label": "Windows Terminal documentation", "url": "https://learn.microsoft.com/en-us/windows/terminal/" }
+    ]
+  },
+  {
+    "id": "command-line",
+    "group": "basics",
+    "title": "Reading a command line",
+    "purpose": "Shows how to split a command line into its parts: command, subcommand, options and arguments.",
+    "aliases": [],
+    "what": [
+      "A command line is one line of text. Spaces split it into parts, and each part has a job.",
+      "The first part is the command: the program to run. Some programs then take a subcommand, a second word that picks one of the things the program can do. In `git push`, `git` is the command and `push` is the subcommand.",
+      "Options change how the command behaves. A short option is a dash and one letter, such as `-n`. A long option is two dashes and a word, such as `--name`. Some options take a value, written as `--name value` or `--name=value`. Arguments are the things the command works on, such as a file name.",
+      "In Bash, capital and small letters are different. `ls` works and `LS` does not. `-l` and `-L` are different options."
+    ],
+    "forms": [
+      { "bash": "`ls -l reports`", "powershell": "`Get-ChildItem -Path reports`", "does": "Command `ls`, short option `-l`, argument `reports`. PowerShell options are words that start with one dash." },
+      { "bash": "`git push origin main`", "powershell": "Same command", "does": "Command `git`, subcommand `push`, then two arguments: the remote name and the branch name." },
+      { "bash": "`systemctl start invoice-api`", "powershell": "`Start-Service invoice-api`", "does": "Command, subcommand `start`, then the service name as the argument. PowerShell puts the action in the command name instead." },
+      { "bash": "`ls -la`", "powershell": "`Get-ChildItem -Force`", "does": "Two short options joined behind one dash. This is the same as `ls -l -a`." },
+      { "bash": "`ls --all`", "powershell": "`Get-ChildItem -Force`", "does": "A long option on the Linux version of `ls`. It means the same as `-a`." }
+    ],
+    "example": {
+      "intro": "One command with a short option and one argument.",
+      "lines": [
+        { "line": "$ ls -l reports", "note": "Command `ls`, short option `-l` (long listing), argument `reports` (the folder to list)." },
+        { "line": "total 8", "note": "A summary line the long listing prints first." },
+        { "line": "-rw-r--r-- 1 sam sam 1204 Nov  2 09:10 q3.txt", "note": "One file per line. The last column is the file name `q3.txt`." },
+        { "line": "-rw-r--r-- 1 sam sam  860 Nov  2 09:12 q4.txt", "note": "A second file, `q4.txt`." }
+      ]
+    },
+    "trap": {
+      "wrong": "Treating `ls -L` and `ls -l` as the same option.",
+      "why": "Bash cares about letter case. `-l` asks for a long listing and `-L` means something else (it follows links to other files). Copy the case exactly as the question shows it."
+    },
+    "more": [
+      {
+        "heading": "Options that take a value",
+        "paragraphs": [
+          "Many options need a value after them. Tools usually accept `--name value` and `--name=value` as the same thing. The tool's own help says if only one form works.",
+          "Short options can be joined: `-la` means `-l -a`. A short option that takes a value is written with a space, for example `-n 5`.",
+          "Order matters less than people expect. Options can usually come in any order, but the subcommand stays right after the command, and arguments keep the order the help shows."
+        ],
+        "forms": [
+          { "bash": "`tail -n 5 proxy.log`", "powershell": "`Get-Content proxy.log -Tail 5`", "does": "Short option `-n` with the value `5`, then the file to read." },
+          { "bash": "`tail --lines=5 proxy.log`", "powershell": "`Get-Content proxy.log -Tail 5`", "does": "The long form of the same option, written with an equals sign." }
+        ]
+      },
+      {
+        "heading": "Spaces and PowerShell differences",
+        "paragraphs": [
+          "A space always ends a part. A file named `my notes.txt` therefore looks like two arguments unless you put it in quotes. The quoting topic covers this.",
+          "PowerShell commands are called cmdlets. Each name is an action word, a dash and a thing, such as `Get-ChildItem` (get the items in a folder). Their options are called parameters. They start with one dash and a word, and capital letters do not matter. A parameter that switches something on takes no value, as with `-Force`."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "paths",
+    "group": "basics",
+    "title": "Folders and paths",
+    "purpose": "Shows how to see where you are, list files, move between folders and run a script in the current folder.",
+    "aliases": ["cd", "pwd", "ls", "Set-Location", "Get-Location", "Get-ChildItem"],
+    "what": [
+      "A terminal is always sitting in one folder, called the current folder or working folder. Commands that name a file without a full address look for it there.",
+      "A path is the address of a file or folder. An absolute path starts at the very top of the computer's folders, such as `/home/sam/reports` on Linux or `C:\\Users\\sam\\reports` on Windows. A relative path starts from the current folder, such as `reports/q3.txt`.",
+      "Three short names are worth knowing. `~` means your home folder. `.` means the current folder. `..` means the folder above the current one.",
+      "To run a script that sits in the current folder, write `./` in front of its name, as in `./sync-assets.sh`. The shell does not look in the current folder on its own."
+    ],
+    "forms": [
+      { "bash": "`pwd`", "powershell": "`Get-Location`", "does": "Prints the current folder." },
+      { "bash": "`ls`", "powershell": "`Get-ChildItem`", "does": "Lists the files and folders in the current folder. In PowerShell `ls` also works, as a short name for `Get-ChildItem`." },
+      { "bash": "`cd reports`", "powershell": "`Set-Location reports`", "does": "Moves into the folder `reports`. In PowerShell `cd` also works." },
+      { "bash": "`cd ..`", "powershell": "`Set-Location ..`", "does": "Moves up one folder." },
+      { "bash": "`cd ~`", "powershell": "`Set-Location ~`", "does": "Moves to your home folder." },
+      { "bash": "`./sync-assets.sh`", "powershell": "`./sync-assets.ps1`", "does": "Runs a script that sits in the current folder. PowerShell scripts end in `.ps1`." }
+    ],
+    "example": {
+      "intro": "Check where you are, look around, go down a folder and come back up.",
+      "lines": [
+        { "line": "$ pwd", "note": "Asks which folder the terminal is in." },
+        { "line": "/home/sam", "note": "The answer is an absolute path, because it starts with `/`." },
+        { "line": "$ ls", "note": "Lists what is in `/home/sam`." },
+        { "line": "notes.txt  reports  tools", "note": "A file and two folders. `ls` alone does not show which names are folders." },
+        { "line": "$ cd reports", "note": "A relative path: the folder `reports` inside the current folder. A successful `cd` prints nothing." },
+        { "line": "$ pwd", "note": "Check again after moving." },
+        { "line": "/home/sam/reports", "note": "The current folder is now one level down." },
+        { "line": "$ cd ..", "note": "`..` is the folder above, so this goes back to `/home/sam`." }
+      ]
+    },
+    "trap": {
+      "wrong": "Running a script in the current folder by typing `sync-assets.sh`.",
+      "why": "The shell only looks for programs in a list of folders kept in a setting called `PATH`, and the current folder is normally not on that list. Bash answers `command not found`. Write `./sync-assets.sh` so the shell knows to look right here."
+    },
+    "more": [
+      {
+        "heading": "Absolute and relative paths",
+        "paragraphs": [
+          "An absolute path works from anywhere, because it starts at the top. On Linux and macOS it begins with `/`. On Windows it begins with a drive letter, such as `C:\\`. A relative path depends on where you are, so the same relative path can point to different files from different folders.",
+          "PowerShell accepts both `/` and `\\` between folder names, so `reports/q3.txt` works on Windows too. Bash accepts only `/`."
+        ]
+      },
+      {
+        "heading": "Handy variations",
+        "paragraphs": [
+          "`ls -a` also shows hidden files. Their names start with a dot. In PowerShell the same job is done with `Get-ChildItem -Force`.",
+          "`cd -` jumps back to the folder you were in before. It works in Bash and in PowerShell 7. A plain `cd` with nothing after it in Bash goes to your home folder.",
+          "On Windows, PowerShell may refuse to run a `.ps1` script because of a Windows safety rule called the execution policy. The rule belongs to the computer, so the error is not a mistake in your command."
+        ],
+        "forms": [
+          { "bash": "`ls -a`", "powershell": "`Get-ChildItem -Force`", "does": "Includes hidden files." },
+          { "bash": "`cd -`", "powershell": "`Set-Location -`", "does": "Returns to the previous folder (PowerShell 7 and later)." }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "pipes",
+    "group": "basics",
+    "title": "Pipes and redirection",
+    "purpose": "Shows how to send one command's output into another command or into a file.",
+    "aliases": ["tee"],
+    "what": [
+      "Most commands print their answer on the screen. A pipe, written `|`, takes that output and hands it to the next command as its input. Small commands then work like building blocks: `ls | wc -l` hands the file list to a counter, which prints only the number of lines.",
+      "Redirection sends output to a file instead of the screen. `>` writes the output to a file and replaces whatever the file held. `>>` adds the output to the end of the file.",
+      "Commands print two kinds of text: normal output and error messages. `2>&1` sends the error messages to the same place as the normal output. That is why `> report.log 2>&1` captures everything in one file.",
+      "`tee` sends its text to two places at once: the screen and a file. It is the way to save output and still watch it."
+    ],
+    "forms": [
+      { "bash": "`ls | wc -l`", "powershell": "`Get-ChildItem | Measure-Object`", "does": "Pipes a list into a counter. PowerShell passes whole items with named details, not lines of text." },
+      { "bash": "`echo hello > note.txt`", "powershell": "Same command", "does": "Writes the output to `note.txt`, replacing what was there." },
+      { "bash": "`echo again >> note.txt`", "powershell": "Same command", "does": "Adds the output to the end of `note.txt`." },
+      { "bash": "`./run.sh > run.log 2>&1`", "powershell": "`./run.ps1 > run.log 2>&1`", "does": "Sends normal output and error messages to `run.log`." },
+      { "bash": "`echo hello | tee copy.txt`", "powershell": "`echo hello | Tee-Object -FilePath copy.txt`", "does": "Shows the output and also saves it to `copy.txt`." }
+    ],
+    "example": {
+      "intro": "Write to a file, add to it, then read it back.",
+      "lines": [
+        { "line": "$ echo hello > note.txt", "note": "`>` sends the output into `note.txt`. Nothing prints, because the output went to the file." },
+        { "line": "$ echo again >> note.txt", "note": "`>>` adds a second line instead of replacing the first." },
+        { "line": "$ cat note.txt", "note": "`cat` prints the content of a file." },
+        { "line": "hello", "note": "The first line, written by `>`." },
+        { "line": "again", "note": "The second line, added by `>>`." },
+        { "line": "$ echo hello | tee copy.txt", "note": "`tee` passes the text on and also saves it into `copy.txt`." },
+        { "line": "hello", "note": "The text still appears on the screen." }
+      ]
+    },
+    "trap": {
+      "wrong": "Using `>` to add another line to a log file.",
+      "why": "`>` replaces the whole file, so earlier lines are lost. Use `>>` to append."
+    },
+    "more": [
+      {
+        "heading": "Order matters with 2>&1",
+        "paragraphs": [
+          "`./run.sh > run.log 2>&1` first points normal output at the file, then points errors at the same place. That captures both.",
+          "Written the other way round, `./run.sh 2>&1 > run.log`, the errors go to the screen and only the normal output goes to the file. Read redirections from left to right."
+        ]
+      },
+      {
+        "heading": "Pipes in PowerShell carry objects",
+        "paragraphs": [
+          "In Bash a pipe carries plain text, and each command cuts the text up again. In PowerShell a pipe carries objects, which are items that already have named properties such as a file's name and size. The next command can use those properties directly, so there is little text cutting.",
+          "`Get-ChildItem | Sort-Object Length` sorts files by their size property. The `>`, `>>` and `2>&1` signs also work in PowerShell. Older Windows PowerShell (version 5.1) stores the letters in files saved with `>` in a different format from Linux. That can cause trouble when you share the file."
+        ],
+        "forms": [
+          { "bash": "`ls -l | sort -k5 -n`", "powershell": "`Get-ChildItem | Sort-Object Length`", "does": "Sorts files by size. Bash must pick the size column out of text. PowerShell names the property." }
+        ]
+      }
+    ],
+    "links": [
+      { "label": "PowerShell about_Redirection", "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_redirection" }
+    ]
+  },
+  {
+    "id": "quoting",
+    "group": "basics",
+    "title": "Quotes, spaces and wildcards",
+    "purpose": "Shows what single quotes, double quotes, `$` and the wildcards `*` and `?` do.",
+    "aliases": [],
+    "what": [
+      "The shell reads your line before the command does, and it changes some characters on the way. Quotes tell the shell what to leave alone.",
+      "A space normally splits one part from the next. Quotes keep a name with a space in it together: `\"my notes.txt\"` is one argument.",
+      "A variable is a name that holds a value, and `$` in front of the name asks for that value. Single quotes keep everything exactly as typed. Double quotes keep spaces together but still replace a `$` variable with its value. If `name` holds `Sam`, then `\"Hello $name\"` becomes `Hello Sam` and `'Hello $name'` stays as typed.",
+      "Wildcards stand in for other characters. `*` matches any number of characters, including none, and `?` matches exactly one character. `*.txt` means every name ending in `.txt`. In Bash the shell swaps the wildcard for the matching file names before the command runs."
+    ],
+    "forms": [
+      { "bash": "`name=Sam`", "powershell": "`$name = 'Sam'`", "does": "Stores a value in a variable. Bash has no spaces around the equals sign. PowerShell variable names start with `$` everywhere." },
+      { "bash": "`echo \"Hello $name\"`", "powershell": "`echo \"Hello $name\"`", "does": "Double quotes replace the variable with its value in both shells." },
+      { "bash": "`echo 'Hello $name'`", "powershell": "`echo 'Hello $name'`", "does": "Single quotes print the text exactly as typed in both shells." },
+      { "bash": "`ls \"my notes.txt\"`", "powershell": "`Get-ChildItem \"my notes.txt\"`", "does": "Quotes keep a name with a space as one argument." },
+      { "bash": "`ls *.txt`", "powershell": "`Get-ChildItem *.txt`", "does": "Matches every file ending in `.txt`. In PowerShell the command, not the shell, expands the wildcard." }
+    ],
+    "example": {
+      "intro": "Same words, different quotes.",
+      "lines": [
+        { "line": "$ name=Sam", "note": "Stores `Sam` in a variable called `name`. Nothing prints." },
+        { "line": "$ echo \"Hello $name\"", "note": "Double quotes: the shell swaps `$name` for its value." },
+        { "line": "Hello Sam", "note": "The variable was replaced." },
+        { "line": "$ echo 'Hello $name'", "note": "Single quotes: the shell leaves the text alone." },
+        { "line": "Hello $name", "note": "Printed literally, dollar sign and all." }
+      ]
+    },
+    "trap": {
+      "wrong": "Putting a value in single quotes and expecting `$name` to turn into its value.",
+      "why": "Single quotes switch variable replacement off, so the tool receives the text `$name` itself. Use double quotes when you want the value."
+    },
+    "more": [
+      {
+        "heading": "Quotes around plain values",
+        "paragraphs": [
+          "The shell removes the quotes before the command sees the text. So `--severity critical`, `--severity \"critical\"` and `--severity 'critical'` hand the tool exactly the same value. Quotes only matter when the value holds a space or a special character.",
+          "The same goes for `--name=value`: `--name=\"two words\"` gives the tool `--name=two words`."
+        ]
+      },
+      {
+        "heading": "Wildcards and escaping",
+        "paragraphs": [
+          "To stop a wildcard from expanding, put it in quotes: `grep 'a*' file` hands the tool the literal text `a*`. A tool such as `find` often wants its own pattern unexpanded.",
+          "To use a special character as plain text, put a backslash in front of it in Bash, as in `\\$`. PowerShell uses a different marker, the backtick key (usually left of the 1 key), so `$` is written as a backtick then `$`. Single quotes are usually the easier way in both shells.",
+          "`?` matches one character, so `q?.txt` matches `q3.txt` and `q4.txt` but not `q10.txt`."
+        ]
+      }
+    ],
+    "links": [
+      { "label": "PowerShell about_Quoting_Rules", "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_quoting_rules" }
+    ]
+  },
+  {
+    "id": "admin",
+    "group": "basics",
+    "title": "Running as administrator",
+    "purpose": "Explains `sudo` on Linux and macOS, Run as administrator on Windows, and why to use extra power sparingly.",
+    "aliases": ["sudo"],
+    "what": [
+      "Some jobs, such as starting a system service or changing protected files, are blocked for an ordinary account. An administrator account can do them.",
+      "On Linux and macOS you put `sudo` in front of a single command. The command then runs with the powers of the `root` account, the all-powerful administrator. `sudo` asks for your own password, not a separate one, and the extra power ends when that one command ends.",
+      "Windows works differently. You open the whole PowerShell window as an administrator, using Run as administrator on the right-click menu. Every command in that window then has the extra power.",
+      "Least privilege means giving a task only the power it needs. Use `sudo` only when a command fails because you lack permission."
+    ],
+    "forms": [
+      { "bash": "`sudo systemctl start invoice-api`", "powershell": "No close equivalent. Windows usually raises a whole window to administrator, and the newer `sudo` for Windows 11 is off unless someone turns it on.", "does": "Runs just this one command with administrator power." },
+      { "bash": "`sudo -i`", "powershell": "`Start-Process powershell -Verb RunAs`", "does": "Gives you an administrator session. The PowerShell command opens a new window that has administrator power." },
+      { "bash": "`sudo -l`", "powershell": "No close equivalent. Windows has no command that lists which commands your account may raise.", "does": "Lists what your account is allowed to run with `sudo`." },
+      { "bash": "`whoami`", "powershell": "Same command", "does": "Shows the account you are using right now." }
+    ],
+    "example": {
+      "intro": "The same command with and without `sudo`.",
+      "lines": [
+        { "line": "$ whoami", "note": "Which account am I?" },
+        { "line": "sam", "note": "An ordinary account." },
+        { "line": "$ sudo whoami", "note": "Run `whoami` with administrator power." },
+        { "line": "[sudo] password for sam:", "note": "`sudo` asks for Sam's own password. You type it and nothing shows on screen." },
+        { "line": "root", "note": "While the command ran, the account was `root`. After it ends you are back to `sam`." }
+      ]
+    },
+    "trap": {
+      "wrong": "Putting `sudo` in front of every command to be safe.",
+      "why": "It is the opposite of safe. A typo run with administrator power can damage the whole system. Start without `sudo`, and add it only when the error says you lack permission."
+    },
+    "more": [
+      {
+        "heading": "Where sudo stops",
+        "paragraphs": [
+          "`sudo` covers only the command right after it. In `sudo echo hi > /etc/motd`, the `>` that saves to the file runs in your own shell. Your shell has no administrator power, so saving can still fail. Pipe into `tee` instead: `echo hi | sudo tee /etc/motd`.",
+          "Only accounts that the system administrator allowed can use `sudo`, and each use is written to a log."
+        ]
+      },
+      {
+        "heading": "Windows elevation",
+        "paragraphs": [
+          "On Windows, a window opened as administrator shows a confirmation box called the User Account Control prompt. An elevated window is easy to forget about, so close it when the task is done.",
+          "Recent versions of Windows 11 include an optional `sudo` command that works much like the Linux one. It is switched off by default, so most Windows machines still use an administrator window.",
+          "In this app's questions, a command such as `sudo systemctl start invoice-api` is usually also marked correct without `sudo`. The command is the same. `sudo` only supplies the permission."
+        ]
+      }
+    ],
+    "links": [
+      { "label": "sudo manual", "url": "https://www.sudo.ws/docs/man/sudo.man/" }
+    ]
+  },
+  {
+    "id": "help",
+    "group": "basics",
+    "title": "Getting help in the terminal",
+    "purpose": "Shows how to read a command's built-in help with `man`, `--help` and `Get-Help`.",
+    "aliases": ["man", "Get-Help"],
+    "what": [
+      "Almost every command can describe itself, so you do not have to remember every option.",
+      "`man` followed by a command name opens its manual page. A manual page is a long help document. Press the space bar for the next page and `q` to leave.",
+      "`--help` after a command prints a short summary straight into the terminal. It is faster than `man`, and it is the text most exam questions show.",
+      "PowerShell has `Get-Help` followed by a command name. Add `-Examples` for short worked examples."
+    ],
+    "forms": [
+      { "bash": "`man ls`", "powershell": "`Get-Help Get-ChildItem -Full`", "does": "Opens the full manual for a command. On Windows, PowerShell also lets you type `man` as a short name for `Get-Help`." },
+      { "bash": "`ls --help`", "powershell": "`Get-Help Get-ChildItem`", "does": "Prints a short summary of the command's options." },
+      { "bash": "`git push --help`", "powershell": "Same command", "does": "Asks a subcommand for its own help. `git` is the same program on both systems." },
+      { "bash": "`help cd`", "powershell": "`Get-Help Set-Location`", "does": "Shows help for a command that is built into the shell itself." }
+    ],
+    "example": {
+      "intro": "Ask a command what it can do, showing only the first lines.",
+      "lines": [
+        { "line": "$ ls --help | head -n 3", "note": "`--help` prints the summary. The pipe passes it to `head -n 3`, which keeps only the first three lines." },
+        { "line": "Usage: ls [OPTION]... [FILE]...", "note": "The usage line shows the pattern to follow. Square brackets mean optional." },
+        { "line": "List information about the FILEs (the current directory by default).", "note": "A one-sentence description of the command." },
+        { "line": "Sort entries alphabetically if none of -cftuvSUX nor --sort is specified.", "note": "Option descriptions begin here and run for many lines." }
+      ]
+    },
+    "trap": {
+      "wrong": "Assuming `-h` means help for every command.",
+      "why": "The meaning of `-h` depends on the tool. For `ls` and `df` it asks for human-readable sizes. `--help` is the safer request, and the manual page shows what each option does."
+    },
+    "more": [
+      {
+        "heading": "Using a manual page",
+        "paragraphs": [
+          "Inside `man` the space bar goes forward a page, `b` goes back, `/word` searches for a word, `n` jumps to the next match and `q` quits. The top of the page holds a one-line summary and a short usage line that shows the pattern.",
+          "Windows has no manual pages. In PowerShell on Windows, `man` is just a short name for `Get-Help`."
+        ]
+      },
+      {
+        "heading": "More PowerShell help",
+        "paragraphs": [
+          "`Get-Help Get-ChildItem -Examples` shows only worked examples. `Get-Help Get-ChildItem -Full` shows everything, including each parameter.",
+          "PowerShell may say it has only partial help for a command. `Update-Help` downloads the full text.",
+          "To find a command when you only know part of its name, try `Get-Command *service*` in PowerShell or `man -k service` in Bash."
+        ],
+        "forms": [
+          { "bash": "`man -k service`", "powershell": "`Get-Command *service*`", "does": "Searches for commands related to a word." }
+        ]
+      }
+    ],
+    "links": [
+      { "label": "Get-Help reference", "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/get-help" }
+    ]
+  },
+  {
+    "id": "made-up-tools",
+    "group": "basics",
+    "title": "Reading help for a tool you have never seen",
+    "purpose": "Teaches how to build a correct command from an unfamiliar tool's usage text.",
+    "aliases": [],
+    "what": [
+      "Exam questions often show a tool you cannot have met, together with its help text. You do not need to know the tool. You need to read the help as a recipe and copy the pattern.",
+      "The usage line names the tool, then what may follow. The conventions are the same almost everywhere. Square brackets `[ ]` mean optional. Angle brackets `<value>` mark a blank to fill in. Replace the whole thing, angle brackets too, with a real value. A vertical bar `|` between choices, as in `<daily|weekly>`, means pick one of them. Three dots `...` mean the part before them can repeat.",
+      "Subcommands are words that follow the tool name and pick an action. Type them exactly as shown and in the order shown. Options can usually come in any order. `--flag value` and `--flag=value` mean the same thing."
+    ],
+    "forms": [
+      { "bash": "`cratectl list [--status <state>]`", "powershell": "Same command", "does": "Square brackets mean `--status` is optional. If you use it, replace `<state>` with a real state such as `open`." },
+      { "bash": "`cratectl report <daily|weekly>`", "powershell": "Same command", "does": "Pick exactly one of the choices, and leave out the bar and the angle brackets." },
+      { "bash": "`cratectl ship cr-204 --to Lisbon`", "powershell": "Same command", "does": "From the help line `ship <crate-id> --to <port>`: `<crate-id>` becomes `cr-204` and `<port>` becomes `Lisbon`. The words `ship` and `--to` stay exactly as written." },
+      { "bash": "`cratectl ship cr-204 --to=Lisbon`", "powershell": "Same command", "does": "Writing the value after an equals sign instead of a space is the same request." },
+      { "bash": "`cratectl tag cr-204 cr-205 --label fragile`", "powershell": "Same command", "does": "From the help line `tag <crate-id>... --label <text>`: the `...` means you may give several crate ids." }
+    ],
+    "example": {
+      "intro": "Here is an invented tool, `cratectl`, and its help. The tool does not exist, but you can still build commands from it.",
+      "lines": [
+        { "line": "$ cratectl --help", "note": "Asking the tool to describe itself." },
+        { "line": "usage: cratectl <command> [options]", "note": "A command word is required. Options are optional." },
+        { "line": "commands:", "note": "A list of subcommands follows." },
+        { "line": "  list [--status <state>] [-n <count>]", "note": "Subcommand `list` with two optional parts. `-n` is a short option that takes a count." },
+        { "line": "      show crates; state is open, held or shipped", "note": "The description lists the allowed values for `<state>`." },
+        { "line": "  ship <crate-id> --to <port> [--rush]", "note": "`<crate-id>` is a required value. `--to <port>` is required too. `[--rush]` is optional and takes no value." },
+        { "line": "      send one crate to a port", "note": "What `ship` does." },
+        { "line": "  tag <crate-id>... --label <text>", "note": "The `...` means one or more crate ids may come before `--label`." },
+        { "line": "      add a label to one or more crates", "note": "What `tag` does." },
+        { "line": "$ cratectl ship cr-204 --to Lisbon --rush", "note": "Built from the `ship` line: subcommand, crate id, required option, optional flag." },
+        { "line": "crate cr-204 queued for Lisbon (rush)", "note": "Invented output, showing that the command worked." }
+      ]
+    },
+    "trap": {
+      "wrong": "Typing the placeholders literally, as in `cratectl ship <crate-id> --to <port>`.",
+      "why": "The angle brackets and square brackets are only symbols that describe the pattern. In a shell, `<` and `>` even mean redirection, so the line fails. Replace the whole placeholder, brackets and all, with a real value."
+    },
+    "more": [
+      {
+        "heading": "Walk through it line by line",
+        "paragraphs": [
+          "Start from the goal. To label two crates, find the line whose description matches: `tag`. Copy its words in order: `cratectl tag`. Fill in the required values: `cr-204 cr-205`. Add the required option: `--label fragile`. The finished line is `cratectl tag cr-204 cr-205 --label fragile`.",
+          "Next, leave out everything optional that the question did not ask for. Do not add `--rush` or `-n` unless the question wants them.",
+          "Check the tool's own list of allowed values. If the help says the state is `open`, `held` or `shipped`, a different word will not work.",
+          "Some help text writes a placeholder as a plain word with no brackets, as in `--target address`. The word `address` still means: put a real address here."
+        ]
+      },
+      {
+        "heading": "What may move and what may not",
+        "paragraphs": [
+          "Options such as `--to Lisbon` and `--rush` can switch places: `cratectl ship cr-204 --rush --to Lisbon` is the same request. The subcommand cannot move, because it must come right after the tool name. Plain values such as the crate id keep their order when there are several.",
+          "Both the short and the long form of an option are fine when the help lists them both. Use only options that the help text shows. Do not guess extra ones."
+        ],
+        "forms": [
+          { "bash": "`cratectl list --status held -n 5`", "powershell": "Same command", "does": "Lists up to five held crates." },
+          { "bash": "`cratectl list -n 5 --status=held`", "powershell": "Same command", "does": "The same request with the options in the other order and the equals form." }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "jobs",
+    "group": "basics",
+    "title": "Background jobs",
+    "purpose": "Shows how to run a command in the background and move it between background and foreground.",
+    "aliases": ["%", "fg", "bg", "jobs", "nohup", "Start-Job", "Get-Job", "Receive-Job", "Wait-Job"],
+    "what": [
+      "A command that takes a long time keeps your terminal busy, and you cannot type anything else until it finishes. A job is a command that the shell is running for you. A background job runs while you keep typing. A foreground job holds the prompt.",
+      "Put `&` at the very end of a line to start a command in the background. The shell prints the job number in brackets, then an id number the system gave the running command, and gives the prompt back. `jobs` lists your jobs.",
+      "`fg` brings a job to the foreground. `bg` lets a stopped job continue in the background. `Ctrl+Z` stops the foreground job without ending it, so you can then use `bg` or `fg`.",
+      "A job is named with a percent sign and its number: `%1`, `%2`. `fg %2` and `bg %2` act on job 2. The current job is the one marked `+` in the `jobs` list. `fg` with no number takes the current job.",
+      "`nohup` in front of a command keeps it running after you close the terminal. PowerShell works differently: `Start-Job` runs a command as a separate hidden program and keeps its output until you ask for it."
+    ],
+    "forms": [
+      { "bash": "`./sync-assets.sh &`", "powershell": "`Start-Job -FilePath ./sync-assets.ps1`", "does": "Starts a script in the background. A PowerShell job runs as a separate program, so it works differently." },
+      { "bash": "`jobs`", "powershell": "`Get-Job`", "does": "Lists the background jobs." },
+      { "bash": "`fg %2`", "powershell": "No close equivalent. A PowerShell job cannot be brought to the foreground.", "does": "Brings job 2 to the foreground." },
+      { "bash": "`bg %2`", "powershell": "No close equivalent. PowerShell jobs have no stopped state to resume.", "does": "Lets the stopped job 2 continue in the background." },
+      { "bash": "`Ctrl+Z`", "powershell": "No close equivalent. A running PowerShell command cannot be suspended into a job.", "does": "Stops the foreground job and returns the prompt." },
+      { "bash": "`nohup ./prune-cache.sh &`", "powershell": "No close equivalent. `Start-Job` is tied to the PowerShell session and ends when it closes.", "does": "Keeps the command running after the terminal closes." },
+      { "bash": "`wait %2`", "powershell": "`Wait-Job -Id 2`", "does": "Waits until job 2 has finished." }
+    ],
+    "example": {
+      "intro": "Two background jobs, then bring one forward, stop it and send it back.",
+      "lines": [
+        { "line": "$ ./nightly-report.sh > report.log 2>&1 &", "note": "The `&` at the end starts it in the background. Its output goes to `report.log`." },
+        { "line": "[1] 5102", "note": "Job number 1 in brackets, then its process number." },
+        { "line": "$ ./sync-assets.sh &", "note": "A second job." },
+        { "line": "[2] 5107", "note": "Job number 2." },
+        { "line": "$ jobs", "note": "List the jobs." },
+        { "line": "[1]-  Running                 ./nightly-report.sh > report.log 2>&1 &", "note": "`-` marks the previous job." },
+        { "line": "[2]+  Running                 ./sync-assets.sh &", "note": "`+` marks the current job, the one `fg` or `bg` takes when you give no number." },
+        { "line": "$ fg %2", "note": "Bring job 2 to the foreground." },
+        { "line": "./sync-assets.sh", "note": "The shell prints the command it just brought forward. You cannot type a new command while it runs here, so press `Ctrl+Z` to pause it and get the prompt back." },
+        { "line": "^Z", "note": "You pressed `Ctrl+Z`. The terminal shows it as `^Z`." },
+        { "line": "[2]+  Stopped                 ./sync-assets.sh", "note": "Job 2 is paused, not ended." },
+        { "line": "$ bg %2", "note": "Let it carry on in the background." },
+        { "line": "[2]+ ./sync-assets.sh &", "note": "Job 2 is running in the background again." }
+      ]
+    },
+    "trap": {
+      "wrong": "Starting `./prune-cache.sh &` and expecting it to survive closing the terminal.",
+      "why": "A background job still belongs to the shell. When the terminal closes, the system sends the job a message called hangup, and the job stops. `nohup` means \"no hangup\": `nohup ./prune-cache.sh &` tells the command to ignore that message."
+    },
+    "more": [
+      {
+        "heading": "Job names you can type",
+        "paragraphs": [
+          "`%2` means job 2. `%+` and `%%` both mean the current job, the one marked `+`. `%-` means the previous job, marked `-`. After a job stops or you bring another one forward, the `+` and `-` marks move.",
+          "A job name on its own acts as `fg`, so `%2` brings job 2 to the foreground. With `&` after it, `%2 &` acts as `bg`. These forms are all equal: `fg %2`, `fg 2`, `%2`, and, when job 2 is the current job, plain `fg`, `fg %+` and `%%`.",
+          "`kill %2` ends job 2. `jobs -l` also shows the process numbers."
+        ]
+      },
+      {
+        "heading": "nohup",
+        "paragraphs": [
+          "Without redirection, `nohup` writes the command's output into a file called `nohup.out` and prints `nohup: ignoring input and appending output to 'nohup.out'`. Redirect the output yourself if you want it in another file, as in `nohup ./prune-cache.sh > prune.log 2>&1 &`.",
+          "The `&` at the end still matters. Without it, `nohup` runs the command in the foreground."
+        ]
+      },
+      {
+        "heading": "Jobs in PowerShell",
+        "paragraphs": [
+          "`Start-Job` starts a command in a separate process and returns at once. `Get-Job` lists the jobs with their state. `Wait-Job` waits until they finish. `Receive-Job` collects the output and shows it, and `Remove-Job` cleans up. Output is held in the job until you receive it, instead of appearing on screen.",
+          "Because the job runs as a separate program, it cannot see your variables and you cannot bring it to the front. So `fg`, `bg` and `%` have no PowerShell equivalent.",
+          "In PowerShell 7 and later, ending a line with `&` also starts a job, the same as `Start-Job`. You still manage it with `Get-Job` and `Receive-Job`, not `fg`."
+        ],
+        "forms": [
+          { "bash": "`cat run.log`", "powershell": "`Receive-Job -Id 1`", "does": "Reads what the background work printed. Bash jobs write to the screen or a file you chose." },
+          { "bash": "`kill %1`", "powershell": "`Stop-Job -Id 1`", "does": "Ends job 1." },
+          { "bash": "`jobs`", "powershell": "`Get-Job`", "does": "Lists jobs and their state." }
+        ]
+      }
+    ],
+    "links": [
+      { "label": "Bash manual: job control basics", "url": "https://www.gnu.org/software/bash/manual/html_node/Job-Control-Basics.html" },
+      { "label": "PowerShell about_Jobs", "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_jobs" }
+    ]
   }
 ]

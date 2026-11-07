@@ -15,6 +15,8 @@ export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
   'COUNTIF', 'COUNTIFS', 'SUMIF', 'SUMIFS', 'AVERAGEIF', 'DATEDIFF', 'DATEADD', 'STDEV', 'MEDIAN', 'MODE', 'LEN', 'MID', 'SUBSTR', 'NOW', 'TODAY',
   'IFERROR', 'VLOOKUP', 'XLOOKUP', 'AVERAGE', 'REPLACE', 'NULLIF', 'GETDATE', 'DATEPART', 'VAR',
   'DEBUG', 'INFO', 'WARN', 'ERROR', 'FATAL',
+  // Placeholders in real help text, as in "Usage: ls [OPTION]... [FILE]...".
+  'OPTION', 'FILE',
   // HTTP methods (DELETE is above). POST stays a token: AT0-001 lists it as an acronym.
   'GET', 'PUT', 'PATCH', 'HEAD', 'OPTIONS',
   'TWO', 'THREE', 'FOUR', 'NO', 'YES',

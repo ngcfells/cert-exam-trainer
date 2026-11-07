@@ -16,9 +16,6 @@ const NOT_COMMANDS = new Map([
 
 // Words whose topic is not written yet. Each content task removes its words. Empty at release.
 const PENDING: string[] = [
-  // basics (Task 8)
-  '%', 'bg', 'fg', 'nohup', 'sudo',
-  'agentctl', 'cloudctl', 'gr-suite', 'gwctl', 'iacctl', 'logscrub', 'netpol', 'pipectl', 'proxyq', 'rolloutctl', 'secretctl', 'svcstat', 'vulnai', 'weblog',
   // text (Task 9)
   'awk', 'cat', 'echo', 'grep', 'head', 'printf', 'sed', 'sort', 'tr', 'uniq', 'wc',
   // network (Task 10)
