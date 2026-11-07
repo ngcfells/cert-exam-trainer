@@ -7,14 +7,20 @@ Every session: run `gh issue list` in testingUtility first. Bugs come before eve
 file issues from the app (label `from-app`), so check for those too. At the end of 2026-11-06 the open issues were
 #11, #6 and #5, all enhancements.
 
-NEXT SESSION (written 2026-11-06, end of day):
+NEXT SESSION (written 2026-11-06, evening):
 
 1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
-2. testingUtility: the command primer, issue #5 (Bash and PowerShell side by side, assume zero experience). The spec
-   is approved and committed: `docs/superpowers/specs/2026-11-06-command-primer-design.md`. There is no plan yet.
-   Write it with superpowers:writing-plans, get the owner to review it, then build it the standing way: native,
-   test-first with a ledger, one Opus whole-branch review, fix every finding (minors too), merge, push,
-   `npm run deploy`.
+2. testingUtility: the command primer, issue #5, branch `command-primer` (not merged). The plan is approved:
+   `docs/superpowers/plans/2026-11-06-command-primer.md`. Ledger: `.superpowers/sdd/2026-11-06-command-primer/progress.md`
+   (keep it). Tasks 1 to 7 (all the code) are done and green. Next is **Task 8, the basics content**. It also writes
+   `src/primer/links.json` and replaces the placeholder `terminal` topic. Run it with superpowers:executing-plans and
+   resume from the ledger. The content tasks (8 to 14) go one group per session: a Sonnet drafter, a Haiku copy
+   check, an accuracy review in the main session, then shrink `PENDING` in `src/primer/coverage.test.ts`, commit,
+   update this block, and `/clear`.
+   - Task 9 (text) also writes three e2e checks that were moved there (see the ledger rulings): practice Command help
+     keeps a half-typed answer, the primer screen opens from the exam page with axe, and `primer.responsive.spec.ts`.
+   - Task 15: release. Empty `PENDING`, get the owner to approve the links, `npm run check`, one Opus whole-branch
+     review, fix every finding (minors too), merge, push, `npm run deploy`, close #5.
 3. Between primer tasks and while tests run: the tools work (section B in
    `C:/repo/JBTToolsSupportFiles/handoff.md`).
 
