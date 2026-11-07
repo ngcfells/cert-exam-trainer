@@ -12,19 +12,26 @@ NEXT SESSION (written 2026-11-06, evening):
 1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
 2. testingUtility: the command primer, issue #5, branch `command-primer` (not merged). The plan is approved:
    `docs/superpowers/plans/2026-11-06-command-primer.md`. Ledger: `.superpowers/sdd/2026-11-06-command-primer/progress.md`
-   (keep it). Tasks 1 to 8 are done and green (Task 8, basics content and the 5 practice links, is f9715bf). Next is
-   **Task 9, the text group**. Run it with superpowers:executing-plans and resume from the ledger. The content tasks
-   (9 to 14) go one group per session: a Sonnet drafter, a Haiku copy check, an accuracy review in the main session,
-   then shrink `PENDING` in `src/primer/coverage.test.ts`, commit, update this block, and `/clear`.
+   (keep it). Tasks 1 to 9 are done and green (Task 9, the text group and the three moved e2e checks, is the
+   `content(primer): text topics` commit). Next is **Task 10, the network group** (ping, dig, curl). Run it with
+   superpowers:executing-plans and resume from the ledger. The content tasks (10 to 14) go one group per session: a
+   Sonnet drafter, a Haiku copy check, an accuracy review in the main session, then shrink `PENDING` in
+   `src/primer/coverage.test.ts`, commit, update this block, and `/clear`.
    - The skill's task-start/task-done scripts cannot find content tasks (the plan heading is "Tasks 8 to 14"). Read
      the plan section "Tasks 8 to 14" and ledger by hand in the same format.
    - Listing the bank steps for a group: a throwaway vitest file in `src/primer/` that imports the three bank item
-     files and `commandWords` and writes matching steps to the ledger folder (Task 8 wrote `t8-steps.md`). Delete it
+     files and `commandWords` and writes matching steps to the ledger folder (Task 9 wrote `t9-steps.md`). Delete it
      after.
-   - Bank tests (`npx vitest run src/banks`) hold the primer acronym check. Real help text placeholders in capitals
-     (`FILE`, `OPTION`) go in `NOT_ACRONYMS`; more will appear in Task 9 (`PATTERNS` and similar).
-   - Task 9 (text) also writes three e2e checks that were moved there (see the ledger rulings): practice Command help
-     keeps a half-typed answer, the primer screen opens from the exam page with axe, and `primer.responsive.spec.ts`.
+   - Bank tests (`npx vitest run src/banks`) hold the primer acronym check. It also reads example `line` fields, so
+     capital words in sample output (`PANIC`, `NR`) trip it; the drafter picked other samples.
+   - Accuracy review that paid off in Task 9: run every Bash example in Git Bash and every PowerShell form in pwsh
+     (both are on this machine). It caught a PowerShell `-replace` paired with a first-match-only `sed`, a false
+     "No close equivalent." (`Measure-Object -Sum`), and a Bash `&&` line offered as the PowerShell form.
+   - The copy checker (Haiku) tends to re-define "PowerShell" and "Bash" in every topic and can garble cross-reference
+     titles; check every "see <title>" against the real topic titles.
+   - Primer e2e: `tests/e2e/primer.spec.ts` (fixture) and `primer.responsive.spec.ts` (phone, tablet), helper in
+     `tests/e2e/primerUtil.ts`. Run: `npm run build:e2e`, then `npx playwright test tests/e2e/primer.spec.ts
+     tests/e2e/primer.responsive.spec.ts --project=fixture --project=phone --project=tablet` (7 tests).
    - Task 15: release. Empty `PENDING`, get the owner to approve the links, `npm run check`, one Opus whole-branch
      review, fix every finding (minors too), merge, push, `npm run deploy`, close #5.
 3. Between primer tasks and while tests run: the tools work (section B in
