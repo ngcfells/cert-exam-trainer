@@ -15,10 +15,7 @@ const NOT_COMMANDS = new Map([
 ]);
 
 // Words whose topic is not written yet. Each content task removes its words. Empty at release.
-const PENDING: string[] = [
-  // data (Task 14)
-  'ON', 'On', 'on', 'SELECT', 'select', 'USING', 'USING(', 'Using', 'Using(', 'using', 'using(', 'df.', 'df[',
-];
+const PENDING: string[] = [];
 
 const key = (w: CommandWord) => (w.sub ? `${w.word} ${w.sub}` : w.word);
 

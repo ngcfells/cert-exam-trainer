@@ -1,0 +1,341 @@
+[
+  {
+    "id": "sql",
+    "group": "data",
+    "title": "Ask a database a question: SQL",
+    "purpose": "Reads, filters, counts and combines the tables in a database by typing short questions called queries.",
+    "aliases": ["select", "on", "using", "using("],
+    "anyCase": true,
+    "where": "In a SQL client (a program where you type queries) or query window that is connected to a database. It is not in Bash or PowerShell. Typical prompts look like `library=>` in psql (the PostgreSQL command-line client) or `sqlite>` in SQLite. Type the statement, end it with a semicolon, and press Enter.",
+    "what": [
+      "A database is an organised store of data. Most databases keep their data in tables. A table is a grid. Each row is one record, such as one book. Each column is one kind of fact about every record, such as the title or the page count. Structured Query Language (SQL) is the language you use to ask a database for data. A query is one request, and a statement is one complete instruction. Every statement ends with a semicolon `;`. In a command-line client such as psql or sqlite3, pressing Enter before the semicolon just starts a new line, and the program waits for the rest.",
+      "A query is built from clauses. A clause is one part of a statement. Each clause starts with a keyword, a word that SQL reserves for itself. `SELECT` says which columns you want. `FROM` says which table. `WHERE` keeps only the rows that pass a test. `ORDER BY` sorts the rows. `LIMIT` stops after a set number of rows. Keywords can be typed in any case, so `select` and `SELECT` are the same. People write them in capitals so they stand out. Write table and column names exactly as they are stored. In this topic they are all lower-case.",
+      "A null means \"no value is stored here\". It is not zero, and it is not an empty piece of text. It means the fact is missing or unknown. Because a null is unknown, asking whether it equals something gives neither yes nor no. So `= NULL` never matches any row, even a null one. The tests that do work are `IS NULL` and `IS NOT NULL`. Counting follows the same idea. `COUNT(*)` counts rows. `COUNT(column)` counts only the rows where that column is not null. If the two numbers differ, the gap is the number of nulls.",
+      "Real databases split data across several tables, so nothing has to be typed twice. A key is a column that identifies a row, such as an author number. A foreign key is a column in one table that holds the key of a row in another table. A join puts two tables side by side, matching rows by those columns. `INNER JOIN` keeps only rows that have a match on both sides. `LEFT JOIN` keeps every row of the left table. The left table is the one named first, after `FROM`. When there is no match, it fills the right-hand columns with nulls. The matching rule follows the word `ON`, for example `ON a.author_id = b.author_id`.",
+      "An alias is a short nickname. `FROM authors a` lets you write `a.name` instead of `authors.name`. Put the table name or alias in front of a column, with a dot. This says which table you mean. You need it when two tables have a column with the same name. Text values go in single quotes, such as `'iron roads'`. Double quotes are for names, not values. PostgreSQL reads `\"iron roads\"` as a column name and stops with an error. SQLite lets it pass, so a habit that works there can fail elsewhere. `GROUP BY` combines rows that share a value into one row. That lets `COUNT` and `SUM` give one answer per group. The examples work the same in PostgreSQL and in SQLite. Other databases can differ in small ways."
+    ],
+    "forms": [
+      {
+        "bash": "`SELECT title, pages FROM books;`",
+        "does": "Shows two chosen columns from every row of the table `books`. A comma separates the column names. The semicolon ends the statement."
+      },
+      {
+        "bash": "`SELECT * FROM books;`",
+        "does": "The star means \"every column\". Good for a first look at a table. On a large table, add `LIMIT` so that you do not print thousands of rows."
+      },
+      {
+        "bash": "`SELECT title FROM books WHERE pages > 250;`",
+        "does": "Keeps only the rows that pass the test. The tests are `=` (equal), `<>` (not equal), `>` (more than), `<` (less than), `>=` and `<=`. Note the single `=`. It compares two values. There is no `==` in SQL."
+      },
+      {
+        "bash": "`SELECT title FROM books WHERE title = 'iron roads' OR pages < 200;`",
+        "does": "`AND` needs both tests to pass. `OR` needs at least one. Text goes in single quotes and is compared letter for letter, including capitals. In many databases `'Iron Roads'` would not match `'iron roads'`."
+      },
+      {
+        "bash": "`SELECT title FROM books WHERE shelf IS NULL;`",
+        "does": "Finds the rows where `shelf` has no value. `IS NOT NULL` finds the rows where it has one. `WHERE shelf = NULL` is a mistake that returns no rows at all."
+      },
+      {
+        "bash": "`SELECT COUNT(*) AS total, COUNT(shelf) AS shelved FROM books;`",
+        "does": "`COUNT(*)` counts every row. `COUNT(shelf)` counts only rows where `shelf` is not null. `AS` gives a column a name in the result. You choose the name. An empty piece of text, `''`, is not null. So `COUNT(column)` counts it."
+      },
+      {
+        "bash": "`SELECT COUNT(DISTINCT author_id) FROM books;`",
+        "does": "Counts the different values in a column. A value that appears many times counts only once. Nulls are not counted."
+      },
+      {
+        "bash": "`SELECT title, pages FROM books ORDER BY pages DESC;`",
+        "does": "Sorts the result. The default is smallest first (`ASC`). `DESC` puts the largest first. Without `ORDER BY`, the database does not promise any order."
+      },
+      {
+        "bash": "`SELECT title FROM books ORDER BY pages DESC LIMIT 3;`",
+        "does": "Keeps only the first 3 rows of the sorted result: the three longest books. `LIMIT` comes last."
+      },
+      {
+        "bash": "`SELECT author_id, COUNT(*) AS n, SUM(pages) AS total_pages FROM books GROUP BY author_id;`",
+        "does": "One result row per author number. `COUNT(*)` counts the books in each group, and `SUM(pages)` adds up their pages. Each column in `SELECT` must either be named in `GROUP BY`, or be wrapped in an aggregate function. That is a built-in calculation that turns a whole group into one value, such as `COUNT`, `SUM` or `AVG`. PostgreSQL stops with an error if you forget. SQLite does not, and quietly picks a value from one row."
+      },
+      {
+        "bash": "`SELECT a.name, b.title FROM authors a INNER JOIN books b ON a.author_id = b.author_id;`",
+        "does": "Pairs each author with their books. `a` and `b` are table aliases. An author with no book has no match, so that author does not appear. A book with no match disappears too."
+      },
+      {
+        "bash": "`SELECT a.name, b.title FROM authors a LEFT JOIN books b ON a.author_id = b.author_id;`",
+        "does": "Keeps every author, from the left table. Authors with no book show a null in `title`. `LEFT JOIN` and `LEFT OUTER JOIN` mean the same thing."
+      },
+      {
+        "bash": "`SELECT a.name, b.title FROM authors a LEFT JOIN books b USING (author_id);`",
+        "does": "A shorter way to write the same join, when the matching column has the same name in both tables. `USING (author_id)` means the same as `ON a.author_id = b.author_id`. It works for `INNER JOIN` too. If the names differ, you must use `ON`."
+      }
+    ],
+    "example": {
+      "intro": "A small library database called `library` with two tables: `authors` (4 rows) and `books` (5 rows). In the `books` table, the `shelf` column is null for any book not yet on a shelf. We connect with psql, so the prompt is `library=>`. We ran the same statements on this data in SQLite to get the results. The table layout is drawn the way psql draws it. SQLite's own layout is a little different, but the rows are the same.",
+      "lines": [
+        { "line": "library=> SELECT title, pages FROM books WHERE pages > 250 ORDER BY pages DESC;", "note": "Keep the longer books and put the longest first." },
+        { "line": "    title     | pages", "note": "The column names. Text is lined up on the left, and numbers on the right." },
+        { "line": "--------------+-------", "note": "A line between the names and the data." },
+        { "line": " iron roads   |   512", "note": "The longest book." },
+        { "line": " quiet fields |   340", "note": "Next longest." },
+        { "line": " salt and sky |   295", "note": "The last one over 250." },
+        { "line": "(3 rows)", "note": "psql counts the rows for you. Two books are shorter, so they are not shown." },
+        { "line": "library=> SELECT COUNT(*) AS total, COUNT(shelf) AS shelved FROM books;", "note": "Count all rows, then only the rows where `shelf` has a value." },
+        { "line": " total | shelved", "note": "The names we chose with `AS`." },
+        { "line": "-------+---------", "note": "The dividing line under the column names." },
+        { "line": "     5 |       3", "note": "5 books, but only 3 have a shelf. The other 2 have a null." },
+        { "line": "(1 row)", "note": "A count gives a single row." },
+        { "line": "library=> SELECT title FROM books WHERE shelf = NULL;", "note": "A tempting way to find the 2 books. It is wrong." },
+        { "line": " title", "note": "The column name is shown, but there is no data under it." },
+        { "line": "-------", "note": "The dividing line under the column name." },
+        { "line": "(0 rows)", "note": "No error and no rows. A null is never equal to anything, even another null." },
+        { "line": "library=> SELECT title FROM books WHERE shelf IS NULL;", "note": "The right test." },
+        { "line": "    title", "note": "The column name for this result." },
+        { "line": "--------------", "note": "The dividing line under the name." },
+        { "line": " quiet fields", "note": "The first book with no shelf." },
+        { "line": " salt and sky", "note": "The second book with no shelf." },
+        { "line": "(2 rows)", "note": "These 2 are the gap between 5 and 3 above." },
+        { "line": "library=> SELECT a.name, b.title FROM authors a LEFT JOIN books b ON a.author_id = b.author_id ORDER BY a.name, b.title;", "note": "List every author with their books. `a` and `b` are aliases. `ORDER BY` keeps the rows in the same order each time." },
+        { "line": " name  |    title", "note": "The column names for the joined result." },
+        { "line": "-------+--------------", "note": "The line between the names and the data." },
+        { "line": " ames  | quiet fields", "note": "An author with two books gets two rows." },
+        { "line": " ames  | tide tables", "note": "The second book by ames." },
+        { "line": " brook | iron roads", "note": "The one book by brook." },
+        { "line": " cole  | north light", "note": "The first of two books by cole." },
+        { "line": " cole  | salt and sky", "note": "The second book by cole." },
+        { "line": " dunn  |", "note": "No book matched `dunn`. The row is kept, and `title` is null. psql shows a null as a blank. An `INNER JOIN` would have dropped the row." },
+        { "line": "(6 rows)", "note": "5 matches plus the one author with none." },
+        { "line": "library=> SELECT a.name, COUNT(b.book_id) AS books FROM authors a LEFT JOIN books b USING (author_id) GROUP BY a.name ORDER BY a.name;", "note": "One row per author, with a count of books. `USING (author_id)` replaces the longer `ON` rule, because both tables use the same column name. We count `b.book_id`, not `*`. That way a missing book counts as 0." },
+        { "line": " name  | books", "note": "The column names for the counts." },
+        { "line": "-------+-------", "note": "The line between the names and the counts." },
+        { "line": " ames  |     2", "note": "ames wrote 2 books." },
+        { "line": " brook |     1", "note": "brook wrote 1 book." },
+        { "line": " cole  |     2", "note": "cole wrote 2 books." },
+        { "line": " dunn  |     0", "note": "`COUNT(b.book_id)` skips nulls, so `dunn` gets 0. `COUNT(*)` would have said 1, for the one row the join made." },
+        { "line": "(4 rows)", "note": "psql's row count: one line for each author." }
+      ]
+    },
+    "trap": {
+      "wrong": "Writing `WHERE shelf = NULL` (or `<> NULL`) to find missing values, getting back no rows, and deciding that nothing is missing.",
+      "why": "A null means \"unknown\", and a test against an unknown is neither true nor false. `WHERE` keeps only the rows where the test is true. Here none are, so every row is dropped, with no error. Use `IS NULL` or `IS NOT NULL`. A second trap works in the same quiet way. An `INNER JOIN` drops rows with no match. So a table can seem to have fewer records than it really has. Compare counts before and after a join, or use `LEFT JOIN` to see the unmatched rows as nulls."
+    },
+    "more": [
+      {
+        "heading": "Counting and nulls",
+        "paragraphs": [
+          "To count the rows that are missing a value, filter for them and count the rows. To count the rows that have a value, use `COUNT(column)`. A blank piece of text is a value, not a null. So a column can look empty and still be counted. To find those, test for the empty text as well: `WHERE shelf = ''`.",
+          "`SUM` and `AVG` (average) also skip nulls. The average of 10, 20 and a null is 15. The null is not counted in the division."
+        ],
+        "forms": [
+          {
+            "bash": "`SELECT COUNT(*) FROM books WHERE shelf IS NULL;`",
+            "does": "Counts the rows with no shelf. The `WHERE` clause runs first, and then `COUNT` counts what is left."
+          },
+          {
+            "bash": "`SELECT title FROM books WHERE shelf = '';`",
+            "does": "Finds rows where the text is empty. This is a different problem from a null, and it needs its own test."
+          }
+        ]
+      },
+      {
+        "heading": "Which join to use",
+        "paragraphs": [
+          "Ask which table must keep all of its rows. If you want every author, even those with no books, put authors on the left of a `LEFT JOIN`. If you only want authors who have books, use `INNER JOIN`. Swapping the two tables in a `LEFT JOIN` changes the answer.",
+          "To find rows with no match, use a `LEFT JOIN`. Then keep only the rows where a column from the right table is null, for example `WHERE b.book_id IS NULL`."
+        ],
+        "forms": [
+          {
+            "bash": "`SELECT a.name FROM authors a LEFT JOIN books b USING (author_id) WHERE b.book_id IS NULL;`",
+            "does": "Lists the authors who have no book. Here `IS NULL` is the right test. It asks which rows found no match."
+          }
+        ]
+      },
+      {
+        "heading": "Small habits that save time",
+        "paragraphs": [
+          "If a column name exists in both tables and you do not say which table, the database stops with an error. The error says the name is ambiguous, which means it could belong to either table. Put the alias in front of it. With `USING`, the joined column is shared, so some databases do not want an alias in front of it. When in doubt, write `ON`.",
+          "Text in single quotes can hold a single quote if you type it twice. In SQL, a word with no quotes is a name. So `WHERE shelf = a3` looks for a column called `a3`, and fails. Write `'a3'`."
+        ]
+      }
+    ],
+    "links": [
+      { "label": "PostgreSQL tutorial: querying a table", "url": "https://www.postgresql.org/docs/current/tutorial-select.html" },
+      { "label": "PostgreSQL tutorial: joins between tables", "url": "https://www.postgresql.org/docs/current/tutorial-join.html" },
+      { "label": "SQLite: the SELECT statement", "url": "https://www.sqlite.org/lang_select.html" }
+    ]
+  },
+  {
+    "id": "pandas",
+    "group": "data",
+    "title": "Work with tables in Python: pandas",
+    "purpose": "Loads a table of data into Python (a programming language), checks and cleans its columns, and works out totals and averages.",
+    "aliases": ["df[", "df.", "pd."],
+    "where": "In a Python session (the prompt is `>>>`), in a Python script, or in a cell of a Jupyter notebook, after `import pandas as pd`. A notebook is a web page where you type a few lines of Python in a cell. You see the result right under it. `df` is the usual name for a DataFrame, a table you made yourself. `pd` is the short name for the library, which you set with `import pandas as pd`. Neither is a command in Bash or PowerShell.",
+    "what": [
+      "Python is a programming language. A library is a bundle of code written by other people that you load and use. pandas is a Python library for tables of data. You load it with `import pandas as pd`. The `as pd` part is only a short name, so you can write `pd.read_csv` instead of `pandas.read_csv`. Lines that start with `>>>` are what you type at the Python prompt. The line under it, with no `>>>`, is what Python prints back.",
+      "A DataFrame is pandas' word for a table. It has rows and columns. By convention people name it `df`, but you can use any name. `pd.read_csv(\"file.csv\")` reads a comma-separated values (CSV) file. A CSV file is plain text, with one row per line and commas between the cells. The result is a DataFrame. A single column pulled out of a DataFrame is called a Series. It is a list of values with a label for each row.",
+      "Every column has a data type, shown by `df.dtypes`. A data type, or dtype, says what kind of thing the column holds. Whole numbers are `int64`. Numbers with decimals are `float64`. Dates and times are `datetime64`. Text is `object` in older pandas and `str` in pandas 3. Your version may print either one, and both mean text. The type matters. You can only add up numbers, and only compare dates as dates. A column that looks like numbers but holds text will not add up.",
+      "A common cause is a thousands separator. That is the comma that splits large numbers into groups of three. pandas sees `\"1,040.5\"` as text because of the comma. The fix has two steps. First, remove the commas with `.str.replace(\",\", \"\")`. Then change the type with `.astype(float)`. A datetime is a real date and time that Python understands. So you can sort it and subtract two of them. `pd.to_datetime(...)` turns date text into datetimes.",
+      "Missing values show as `NaN` (not a number) in number and text columns, and as `NaT` (not a time) in date columns. These are skipped by `.sum()`, `.mean()` and `.median()`. `.isna()` marks each missing value. The median is the middle value when the numbers are in order. For skewed data (a few very large values), the median is a better fill than the mean. Large values pull the mean upwards. Most of these methods return a new result and leave `df` as it was. To keep a change, store the result back with an equals sign, for example `df[\"col\"] = ...`."
+    ],
+    "forms": [
+      {
+        "bash": "`import pandas as pd`",
+        "does": "Loads the library under the short name `pd`. Do this once, before any other line. Without it, `pd` is not defined and Python says so."
+      },
+      {
+        "bash": "`df = pd.read_csv(\"shipments.csv\")`",
+        "does": "Reads a CSV file into a DataFrame and stores it under the name `df`. Python looks for the file in the folder where Python was started."
+      },
+      {
+        "bash": "`df.head()`",
+        "does": "Shows the first 5 rows (use `df.head(10)` for 10). The numbers on the left are the row labels, called the index. Counting starts at 0."
+      },
+      {
+        "bash": "`df.shape`",
+        "does": "Gives the size as `(rows, columns)`. There are no round brackets after `shape`, because it is a fact about the table, not an action."
+      },
+      {
+        "bash": "`df.dtypes`",
+        "does": "Lists each column with its data type. Check this before you calculate anything."
+      },
+      {
+        "bash": "`df.info()`",
+        "does": "A fuller summary. It shows each column, how many of its values are not missing, and its data type. A column with fewer of these than the others has gaps."
+      },
+      {
+        "bash": "`df[\"zone\"]`",
+        "does": "Picks out one column, as a Series. This form always works. `df.zone` is a shortcut for the same thing."
+      },
+      {
+        "bash": "`df.zone`",
+        "does": "The shortcut. It fails when the column name has a space (`ship date`), starts with a digit, or matches a name pandas already uses. Examples of those names are `shape`, `count` and `size`. In that case you get the pandas feature, not your column. When in doubt, use the bracket form."
+      },
+      {
+        "bash": "`df[[\"parcel\", \"zone\"]]`",
+        "does": "Picks several columns. The double square brackets hold a list of names. The result is a smaller DataFrame."
+      },
+      {
+        "bash": "`df[df[\"weight_kg\"] > 100]`",
+        "does": "Keeps only the rows where the test is true. The inner part gives true or false for each row. The outer brackets keep the rows marked true. Combine tests with `&` (and) and `|` (or). Put each test in round brackets."
+      },
+      {
+        "bash": "`df[\"weight_kg\"].isna().sum()`",
+        "does": "Counts the missing values in a column. `.isna()` gives true for each missing cell. `.sum()` counts the trues."
+      },
+      {
+        "bash": "`df[\"zone\"].value_counts()`",
+        "does": "Counts how often each value appears in a column, largest first. Missing values are left out unless you add `dropna=False`."
+      },
+      {
+        "bash": "`df[\"ship_date\"] = pd.to_datetime(df[\"ship_date\"])`",
+        "does": "Turns date text into datetimes, and puts the result back in the same column. The `df[\"ship_date\"] =` part is what keeps the change. A date it cannot read stops with an error. Add `errors=\"coerce\"` to turn such dates into `NaT` instead."
+      },
+      {
+        "bash": "`df[\"weight_kg\"] = df[\"weight_kg\"].str.replace(\",\", \"\")`",
+        "does": "Removes the commas from text. `.str` means \"apply this to the text inside each cell\". The result is still text, so the next step changes the type."
+      },
+      {
+        "bash": "`df[\"weight_kg\"] = df[\"weight_kg\"].astype(float)`",
+        "does": "Changes the data type. This stops with an error if some text is not a number. A missing value is fine and stays `NaN`."
+      },
+      {
+        "bash": "`df[\"weight_kg\"].median()`",
+        "does": "The middle value, ignoring missing ones. `.mean()` is the average. For skewed data, the median is the safer summary."
+      },
+      {
+        "bash": "`df[\"weight_kg\"] = df[\"weight_kg\"].fillna(df[\"weight_kg\"].median())`",
+        "does": "Replaces each missing value with the median. This is called imputing. The result is put back into the column. Fill only after the column is a number type."
+      },
+      {
+        "bash": "`df.groupby(\"zone\")[\"weight_kg\"].sum()`",
+        "does": "Splits the rows into groups by the values in `zone`. It adds up `weight_kg` within each group. The result is a Series with one row per zone. To change the total, swap `.sum()` for `.mean()`, `.count()` or `.median()`."
+      }
+    ],
+    "example": {
+      "intro": "A file `shipments.csv` has four parcels. The weights use commas to group thousands, and one weight is missing. We load it, look at the types, clean two columns, fill the gap and total the weights by zone. This ran in pandas 3.0.1. In pandas 2 and older, text shows as `object`, not `str`. Dates show as `datetime64[ns]`, not `datetime64[us]`. Single numbers show as `np.int64(1)` or `np.float64(1040.5)` with NumPy 2 and later, in a notebook too. NumPy is the number library pandas is built on. `print(...)` shows just the number.",
+      "lines": [
+        { "line": ">>> import pandas as pd", "note": "Load the library. Nothing prints." },
+        { "line": ">>> df = pd.read_csv(\"shipments.csv\")", "note": "Read the file into a DataFrame called `df`. Nothing prints." },
+        { "line": ">>> df.head()", "note": "Look at the first rows." },
+        { "line": "  parcel   ship_date weight_kg   zone", "note": "The column names. The numbers on the left are the row labels." },
+        { "line": "0     p1  2026-03-02   1,040.5  north", "note": "This weight has a comma in it." },
+        { "line": "1     p2  2026-03-04      87.0  south", "note": "Row 1. Its weight has no comma." },
+        { "line": "2     p3  2026-03-09   2,310.0  north", "note": "Row 2. Its weight has a comma too." },
+        { "line": "3     p4  2026-03-11       NaN   east", "note": "`NaN` marks the missing weight." },
+        { "line": ">>> df.shape", "note": "How big is it?" },
+        { "line": "(4, 4)", "note": "4 rows and 4 columns." },
+        { "line": ">>> df.dtypes", "note": "What kind of data is in each column?" },
+        { "line": "parcel       str", "note": "Text. Older pandas prints `object` for text." },
+        { "line": "ship_date    str", "note": "The dates are still only text." },
+        { "line": "weight_kg    str", "note": "The weights are text too, because of the commas. This column cannot be added up yet." },
+        { "line": "zone         str", "note": "Text." },
+        { "line": "dtype: object", "note": "This last line describes the whole list, not one column. It always says `object`." },
+        { "line": ">>> df[\"weight_kg\"].isna().sum()", "note": "Count the missing weights." },
+        { "line": "np.int64(1)", "note": "One is missing. The `np.int64(...)` wrapper is only how NumPy 2 displays a number. The value is 1." },
+        { "line": ">>> df[\"ship_date\"] = pd.to_datetime(df[\"ship_date\"])", "note": "Convert the dates and store them back in the same column." },
+        { "line": ">>> df[\"weight_kg\"] = df[\"weight_kg\"].str.replace(\",\", \"\")", "note": "Strip the commas. The weights are still text." },
+        { "line": ">>> df[\"weight_kg\"] = df[\"weight_kg\"].astype(float)", "note": "Now turn the text into numbers. The missing one stays missing." },
+        { "line": ">>> df.dtypes", "note": "Check that both changes worked." },
+        { "line": "parcel                  str", "note": "The parcel names are still text, as expected." },
+        { "line": "ship_date    datetime64[us]", "note": "A real date type now." },
+        { "line": "weight_kg           float64", "note": "A number type now." },
+        { "line": "zone                    str", "note": "Zones are still text, as expected." },
+        { "line": "dtype: object", "note": "Footer line again." },
+        { "line": ">>> df[\"weight_kg\"].median()", "note": "The middle of the three known weights: 87.0, 1040.5, 2310.0." },
+        { "line": "np.float64(1040.5)", "note": "The mean would be about 1145.8. The median is less pulled upward by the one big weight." },
+        { "line": ">>> df[\"weight_kg\"] = df[\"weight_kg\"].fillna(df[\"weight_kg\"].median())", "note": "Fill the gap with the median and keep the result." },
+        { "line": ">>> df.groupby(\"zone\")[\"weight_kg\"].sum()", "note": "Total weight per zone." },
+        { "line": "zone", "note": "The name of the grouping column. The groups below are sorted by zone name." },
+        { "line": "east     1040.5", "note": "This is the filled-in weight." },
+        { "line": "north    3350.5", "note": "1040.5 + 2310.0." },
+        { "line": "south      87.0", "note": "South has one parcel, so its total is its own weight." },
+        { "line": "Name: weight_kg, dtype: float64", "note": "A footer that names the column and its type." },
+        { "line": ">>> df[df[\"weight_kg\"] > 100]", "note": "Keep only the heavy parcels." },
+        { "line": "  parcel  ship_date  weight_kg   zone", "note": "The column names for the filtered rows." },
+        { "line": "0     p1 2026-03-02     1040.5  north", "note": "The dates are real dates now, and the weights are numbers without commas." },
+        { "line": "2     p3 2026-03-09     2310.0  north", "note": "Row 1 (87.0) is gone, and the row labels keep their old numbers." },
+        { "line": "3     p4 2026-03-11     1040.5   east", "note": "Row 3. Its filled-in weight is 1040.5." }
+      ]
+    },
+    "trap": {
+      "wrong": "Typing `pd.to_datetime(df[\"ship_date\"])` on its own, seeing converted dates print, and then running `df.dtypes` to find that `ship_date` is still `str` (or `object`).",
+      "why": "Most pandas methods give back a new result and leave `df` alone. The converted dates were only printed, then thrown away. To keep them, store the result back: `df[\"ship_date\"] = pd.to_datetime(df[\"ship_date\"])`. The same is true of `.str.replace(...)`, `.astype(...)` and `.fillna(...)`. A second trap is `df.ship date`. The space makes it a syntax error, which means Python cannot read the line at all. Use `df[\"ship date\"]` for any name with a space."
+    },
+    "more": [
+      {
+        "heading": "Clean in the right order",
+        "paragraphs": [
+          "For a number column stored as text, work in this order. First remove the separators. Then change it to a number type. Then fill the gaps. Running `.fillna(0)` before `.astype(float)` gives a column that mixes text and numbers, shown as `object`, and it still will not add up. `.median()` on a text column stops with an error that says it cannot work on string data. Run `df.dtypes` after each step to see what changed.",
+          "`.astype(\"datetime64[ns]\")` is another way to convert text dates. `pd.to_datetime` is usually the better tool. It is clearer, and it has the `errors=\"coerce\"` option for dates that cannot be read."
+        ],
+        "forms": [
+          {
+            "bash": "`df[\"ship_date\"] = df[\"ship_date\"].astype(\"datetime64[ns]\")`",
+            "does": "Converts the column to dates. The type is named in quotes. It works for dates already written in the standard year-month-day form, such as 2026-03-02."
+          },
+          {
+            "bash": "`df[\"weight_kg\"] = pd.to_numeric(df[\"weight_kg\"].str.replace(\",\", \"\"))`",
+            "does": "This is another way to make numbers from text. Remove the commas, then use `pd.to_numeric`. Add `errors=\"coerce\"` to turn text that is not a number into `NaN`, instead of stopping."
+          }
+        ]
+      },
+      {
+        "heading": "Mean or median to fill gaps",
+        "paragraphs": [
+          "The mean adds everything and divides. A few huge values drag it up. The median is the middle value. So a huge value counts as just one more value at the top. For skewed data, such as prices or weights, fill gaps with the median. For data spread evenly around the middle, the mean is fine.",
+          "Dropping rows is another option. `df.dropna()` removes every row with a gap. Unless you assign the result back, only the printed result changes."
+        ]
+      },
+      {
+        "heading": "Reading the types in pandas 3",
+        "paragraphs": [
+          "pandas 3 changed how text and dates are labelled. Text columns show `str`, where pandas 2 showed `object`. Dates read from text may show `datetime64[us]` or `datetime64[ns]`, depending on the version. These differences are only in the labels. The steps in this topic work in both."
+        ]
+      }
+    ],
+    "links": [
+      { "label": "pandas: 10 minutes to pandas", "url": "https://pandas.pydata.org/docs/user_guide/10min.html" },
+      { "label": "pandas: how to select a subset of a table", "url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/03_subset_data.html" },
+      { "label": "pandas: to_datetime reference", "url": "https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html" }
+    ]
+  }
+]
