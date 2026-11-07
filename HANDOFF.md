@@ -156,10 +156,17 @@ Status (2026-11-06, about 12:15):
 
 ## B. Tools work (battletech-tools, JBTIICRework, ResourceLibrary, JBTToolsSupportFiles)
 
-Done 2026-11-06: the reply to Scott was approved and sent by the user. It is saved in section 4 of
-`battletech-tools/docs/superpowers/plans/2026-11-06-mordel-api-mapping.md`. It asks about per-user API keys and
-CORS. Waiting on Scott's answer and his next sandbox update; after that update, recheck the three mismatches
-(HMR-5M bm 98087, cv 5001 leading space, `/units/bm/474/`). That doc and the pipeline doc are committed as 9b0d70f36.
+Scott answered (2026-11-06 evening), and the user sent two replies. Both are saved in sections 5 and 6 of
+`battletech-tools/docs/superpowers/plans/2026-11-06-mordel-api-mapping.md`, with the follow-ups at the end.
+- Per-user keys are agreed in principle, so option (c) leads. We asked for CORS (three origins: jeffs-bt-tools,
+  heysporky and ngcfells .github.io), a "my units" list with private units, name_parts, mul_id and role in the list,
+  and a removals feed. Waiting on his answer.
+- The three mismatches are fixed in production. Recheck them after his next production-to-sandbox copy.
+- Archive designs: build them as real designs under an archivist account with credit in the notes. We asked about
+  an original-designer field, moving designs to their creators, file import, and a push API.
+- Sizes measured from a sample at 21:15: all details about 530 MB (87 MB gzipped); the list about 25 MB (3.5 MB
+  gzipped).
+- The user is away at a conference in Utah the week of 2026-11-09 and may be fully offline.
 
 Steps, in order:
 
