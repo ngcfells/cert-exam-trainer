@@ -15,9 +15,9 @@ tools work moving (B). Neither one waits on the other.
   `docs/superpowers/plans/2026-11-06-in-app-reports.md`. Ledger (keep it):
   `.superpowers/sdd/2026-11-06-in-app-reports/progress.md`.
 - Tasks 1 to 9 are built, the Opus whole-branch review is done and every finding is fixed (ledger `Final:` lines).
-  Next: merge, push, `npm run deploy`.
+  DONE 2026-11-06: merged, deployed, relay live, test report #15 sent from the live app and closed.
 - Labels: bug → `bug, from-app`; question → `bug, content, from-app`; feature → `enhancement, from-app`.
-- WAITING ON THE OWNER (Task 3): deploy the relay (`relay/README.md`) and send the workers.dev URL, the KV
+- Relay setup (done; kept for a rebuild): deploy the relay (`relay/README.md`) and send the workers.dev URL, the KV
   namespace id and the GitHub token expiry date. Never paste the token or the Turnstile secret in chat; they go only
   into the `wrangler secret put` prompts.
   - Then: put the KV id in `relay/wrangler.toml`, write the token expiry here, and commit `.env.production` with
