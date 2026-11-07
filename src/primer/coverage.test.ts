@@ -16,8 +16,6 @@ const NOT_COMMANDS = new Map([
 
 // Words whose topic is not written yet. Each content task removes its words. Empty at release.
 const PENDING: string[] = [
-  // network (Task 10)
-  'curl', 'dig', 'ping',
   // files (Task 11)
   'chmod', 'openssl', 'sha256sum', 'shasum',
   // services (Task 12)

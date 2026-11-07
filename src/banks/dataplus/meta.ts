@@ -100,6 +100,9 @@ export const dataPlusMeta: ExamMeta = {
     { term: 'SKU', expansion: 'Stock Keeping Unit', source: 'community' },
     { term: 'SSL', expansion: 'Secure Sockets Layer', source: 'community' },
     { term: 'TCP', expansion: 'Transmission Control Protocol', source: 'community' },
+    // Command primer (network topics).
+    { term: 'ICMP', expansion: 'Internet Control Message Protocol', source: 'community' },
+    { term: 'IP', expansion: 'Internet Protocol', source: 'community' },
     { term: 'WAN', expansion: 'Wide Area Network', source: 'community' },
     // Math module terms.
     { term: 'CAGR', expansion: 'Compound Annual Growth Rate', source: 'community' },

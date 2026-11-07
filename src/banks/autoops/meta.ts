@@ -104,6 +104,7 @@ export const autoOpsMeta: ExamMeta = {
     { term: 'SRE', expansion: 'Site Reliability Engineering', source: 'community' },
     { term: 'TCP', expansion: 'Transmission Control Protocol', source: 'community' },
     { term: 'TLS', expansion: 'Transport Layer Security', source: 'community' },
+    { term: 'TTL', expansion: 'Time to Live', source: 'community' },
     { term: 'UA', expansion: 'User Agent', source: 'community' },
     { term: 'UDP', expansion: 'User Datagram Protocol', source: 'community' },
     { term: 'URI', expansion: 'Uniform Resource Identifier', source: 'community' },
