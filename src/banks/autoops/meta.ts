@@ -108,6 +108,10 @@ export const autoOpsMeta: ExamMeta = {
     // Command primer (files topics).
     { term: 'CN', expansion: 'Common Name', source: 'community' },
     { term: 'GMT', expansion: 'Greenwich Mean Time', source: 'community' },
+    // Command primer (services topic).
+    { term: 'ID', expansion: 'Identifier', alternates: ['Identification'], source: 'community' },
+    { term: 'PID', expansion: 'Process Identifier', alternates: ['Process ID'], source: 'community' },
+    { term: 'UTC', expansion: 'Coordinated Universal Time', source: 'community' },
     { term: 'UA', expansion: 'User Agent', source: 'community' },
     { term: 'UDP', expansion: 'User Datagram Protocol', source: 'community' },
     { term: 'URI', expansion: 'Uniform Resource Identifier', source: 'community' },

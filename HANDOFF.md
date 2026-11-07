@@ -12,10 +12,11 @@ NEXT SESSION (written 2026-11-06, evening):
 1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
 2. testingUtility: the command primer, issue #5, branch `command-primer` (not merged). The plan is approved:
    `docs/superpowers/plans/2026-11-06-command-primer.md`. Ledger: `.superpowers/sdd/2026-11-06-command-primer/progress.md`
-   (keep it). Tasks 1 to 11 are done and green (Task 11, the files group, is the
-   `content(primer): files topics` commit). Next is **Task 12, the services group** (`systemctl` topic: aliases
-   systemctl, journalctl, Get-Service, Start-Service, Stop-Service, Restart-Service; bank words `systemctl start`,
-   `systemctl restart`). Run it with
+   (keep it). Tasks 1 to 12 are done and green (Task 12, the services group, is the
+   `content(primer): services topics` commit). Next is **Task 13, the dev group** (`git`, `docker`, `conda` topics;
+   aliases git, docker, conda; bank words `git add`, `git checkout`, `git commit`, `git fetch`, `git push`,
+   `git remote`, `git switch`, `git tag`, `docker run`, `conda activate`, `conda install`; PowerShell cells are
+   mostly `Same command`). Run it with
    superpowers:executing-plans and resume from the ledger. The content tasks (10 to 14) go one group per session: a
    Sonnet drafter, a Haiku copy check, an accuracy review in the main session, then shrink `PENDING` in
    `src/primer/coverage.test.ts`, commit, update this block, and `/clear`.
@@ -44,6 +45,11 @@ NEXT SESSION (written 2026-11-06, evening):
    - From Task 11: www.gnu.org did not answer from this machine at commit time (it gave 200 earlier that
      session); the Task 15 link check must confirm the three coreutils links. `NET` (as in .NET) is now on
      NOT_ACRONYMS in `src/acronyms/extract.ts` as a product name.
+   - From Task 12: WSL Ubuntu runs systemd (255), so services can be checked for real with a throwaway unit in
+     `/run/systemd/system` (gone on reboot); clean up any `enable` symlink in `/etc/systemd/system/*.wants` and any
+     test user. It caught: failed units print `×` not `●`; `systemctl start` is silent with exit 0 even when the
+     program dies at once; `journalctl` as a plain user shows `-- No entries --` for system units. `FAILURE` is now
+     on NOT_ACRONYMS; ID, PID, UTC are AutoOps+ community entries. gnu.org still did not answer at Task 12.
    - Task 15: release. Empty `PENDING`, get the owner to approve the links, `npm run check`, one Opus whole-branch
      review, fix every finding (minors too), merge, push, `npm run deploy`, close #5.
 3. Between primer tasks and while tests run: the tools work (section B in

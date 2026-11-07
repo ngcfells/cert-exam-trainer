@@ -16,8 +16,6 @@ const NOT_COMMANDS = new Map([
 
 // Words whose topic is not written yet. Each content task removes its words. Empty at release.
 const PENDING: string[] = [
-  // services (Task 12)
-  'systemctl restart', 'systemctl start',
   // dev (Task 13)
   'conda activate', 'conda install', 'docker run',
   'git add', 'git checkout', 'git commit', 'git fetch', 'git push', 'git remote', 'git switch', 'git tag',

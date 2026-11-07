@@ -21,6 +21,8 @@ export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
   'GET', 'PUT', 'PATCH', 'HEAD', 'OPTIONS',
   // Product name, as in ".NET".
   'NET',
+  // Exit status word in real systemd output, as in "status=1/FAILURE".
+  'FAILURE',
   'TWO', 'THREE', 'FOUR', 'NO', 'YES',
 ]);
 
