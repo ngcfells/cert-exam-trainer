@@ -1,0 +1,462 @@
+[
+  {
+    "id": "chmod",
+    "group": "files",
+    "title": "chmod: file permissions",
+    "purpose": "Shows how to decide who can read, change or run a file. It also shows how to read the permission letters that `ls -l` prints.",
+    "aliases": [
+      "chmod",
+      "icacls"
+    ],
+    "what": [
+      "Every file on Linux and macOS has permissions. They say who can do what with the file. There are three kinds of people. The owner is the account that owns the file. The group is a named set of accounts that share the file. Others is everyone else. There are three actions. Read (`r`) means look at the contents. Write (`w`) means change them. Execute (`x`) means run the file as a program. On a folder, execute means you can open it and go inside. Those nine choices together, three actions for each of three kinds of people, make up the mode of the file.",
+      "`chmod` stands for change mode. It sets the mode of a file or folder. You can write the mode as numbers. Each action has a value: read is 4, write is 2, execute is 1. Add up the values you want to allow. So 6 is read and write, 5 is read and execute, 7 is all three, and 0 is nothing. A mode has three digits: first the owner, then the group, then others. For example, `750` means the owner can do everything, the group can read and run, and others get nothing. A zero at the front, as in `0750`, means the same thing.",
+      "You can also write the mode as letters. Pick who: `u` for the owner (short for user), `g` for the group, `o` for others, or `a` for all three. Then pick `+` to add, `-` to remove, or `=` to set exactly. Then list the actions. So `g+w` adds write for the group, and `o-rwx` takes everything away from others. Only the owner of a file, or an administrator, can change its mode.",
+      "Windows does not use this model. It keeps an access control list on each file. That is a list that names accounts one by one, each with its own rights. PowerShell has no `chmod`. The Windows program `icacls` shows and edits those lists, but it works in a different way (see Learn more). So most rows below say \"No close equivalent\" on the PowerShell side."
+    ],
+    "forms": [
+      {
+        "bash": "`chmod +x backup.sh`",
+        "powershell": "No close equivalent. Windows has no execute bit; a script runs because of its file type, such as `.ps1`.",
+        "does": "Adds the execute permission, so `./backup.sh` can run. This is the fix when a script says `Permission denied` but you can read it."
+      },
+      {
+        "bash": "`chmod 600 notes.txt`",
+        "powershell": "No close equivalent. Numeric modes belong to the Linux and macOS permission model.",
+        "does": "Sets the mode with numbers. Owner gets read and write (6). Group and others each get 0, which means nothing."
+      },
+      {
+        "bash": "`chmod 750 tool.sh`",
+        "powershell": "No close equivalent. Windows lists accounts one by one instead of using owner, group and others.",
+        "does": "Owner gets 7 (read, write, execute). Group gets 5 (read, execute). Others get 0."
+      },
+      {
+        "bash": "`chmod u=rwx,g=rx,o= tool.sh`",
+        "powershell": "No close equivalent. There is no letter form in PowerShell.",
+        "does": "The same result as `750`, written in letters. A comma separates the parts, with no spaces. `o=` with nothing after it sets others to no access."
+      },
+      {
+        "bash": "`chmod g+w,o-r notes.txt`",
+        "powershell": "No close equivalent. `+` and `-` change single bits of a mode, and Windows has no mode.",
+        "does": "Changes only what you name. Adds write for the group and removes read from others. Everything else stays as it was."
+      },
+      {
+        "bash": "`chmod o-rwx notes.txt`",
+        "powershell": "No close equivalent. There is no \"others\" group to strip in the Windows model.",
+        "does": "Takes every permission away from others, and leaves the owner and group alone."
+      },
+      {
+        "bash": "`ls -l notes.txt`",
+        "powershell": "`icacls notes.txt`",
+        "does": "Shows the current permissions so you can check your work. `icacls` prints access list entries, not a mode. It is a way to look, not an exact swap."
+      }
+    ],
+    "example": {
+      "intro": "A script cannot be run, so we give it the execute permission and look again. Names and times on your own computer will differ. The permission string is the part to read.",
+      "lines": [
+        {
+          "line": "$ ls -l backup.sh",
+          "note": "`ls -l` lists a file in the long form, with its permissions at the left."
+        },
+        {
+          "line": "-rw-r--r-- 1 root root 8 Nov  6 19:18 backup.sh",
+          "note": "The first character, `-`, means a plain file (a folder shows `d`). The next nine are three groups of three. `rw-` is the owner: read and write, no execute. `r--` is the group: read only. `r--` is others: read only. After that come a link count (how many names point to the file), the owner name, the group name, the size in bytes, the date, and the file name."
+        },
+        {
+          "line": "$ ./backup.sh",
+          "note": "Try to run it. The `./` means the file in this folder."
+        },
+        {
+          "line": "bash: ./backup.sh: Permission denied",
+          "note": "Nobody has execute permission, so the shell refuses to run it. Reading is allowed, but running is not."
+        },
+        {
+          "line": "$ chmod +x backup.sh",
+          "note": "Add execute permission. When it works, `chmod` prints nothing."
+        },
+        {
+          "line": "$ ls -l backup.sh",
+          "note": "Look again."
+        },
+        {
+          "line": "-rwxr-xr-x 1 root root 8 Nov  6 19:18 backup.sh",
+          "note": "An `x` now sits in all three groups: `rwx`, `r-x`, `r-x`. Write is unchanged, so only the owner can still edit the file. This is mode 755 in numbers."
+        },
+        {
+          "line": "$ ./backup.sh",
+          "note": "Run it again."
+        },
+        {
+          "line": "hi",
+          "note": "It ran and printed its one line of output."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Making a private key file work with `chmod 644 key` or `chmod 777 key`, or with `chmod +x key`.",
+      "why": "A private key is a secret file. It proves who you are, so only its owner should be able to read it. The tool `ssh` (Secure Shell, a program for logging in to another computer) refuses a key that other people can read. It says the permissions are \"too open\". The usual mode is `600`: the owner reads and writes, and everyone else gets nothing. `644` still lets the group and others read it. `777` gives everyone everything. `+x` adds a run permission that a key never needs. When the goal is \"only the owner\", the group and others digits must both be 0."
+    },
+    "more": [
+      {
+        "heading": "Folders, the -R option and the zero at the front",
+        "paragraphs": [
+          "A folder needs execute permission before anyone can go into it. A folder shown as `drwx------` is open to its owner only. The `-R` option (recursive, meaning \"and everything inside\") applies the change to a folder and all it holds. Be careful, because it gives files and folders the same mode. Files then often get execute permission they never needed.",
+          "A zero at the front is allowed and ignored: `chmod 0600 notes.txt` and `chmod 600 notes.txt` do the same thing. You may see the four-digit form in messages. For example, `ssh` prints `0644` for the mode 644."
+        ],
+        "forms": [
+          {
+            "bash": "`chmod 700 reports`",
+            "powershell": "No close equivalent. Windows controls who may enter a folder through its access list.",
+            "does": "Only the owner can open the folder, add files or remove files."
+          },
+          {
+            "bash": "`chmod -R go= reports`",
+            "powershell": "No close equivalent. Windows does not have group and others bits to clear.",
+            "does": "Removes all access for the group and others, on the folder and everything inside it. `go=` means \"group and others, set to nothing\"."
+          },
+          {
+            "bash": "`chmod a-x backup.sh`",
+            "powershell": "No close equivalent. Windows has no execute bit to remove.",
+            "does": "Removes the execute permission from all three kinds of people."
+          }
+        ]
+      },
+      {
+        "heading": "Mode digits at a glance",
+        "paragraphs": [
+          "Work out each digit on its own. Read is 4, write is 2, execute is 1. For read and execute you add 4 and 1 to get 5. For read and write you add 4 and 2 to get 6. The letters in `ls -l` line up the same way: `rw-` is 6, `r-x` is 5, `r--` is 4, `---` is 0.",
+          "Common modes: `644` for a normal file others can read, `755` for a program or a shared folder, `600` for a secret file such as a private key, and `700` for a private folder."
+        ]
+      },
+      {
+        "heading": "icacls: the Windows way to look at access",
+        "paragraphs": [
+          "Windows lets you give each account its own rights on a file. `icacls` is a Windows program. You can run it from PowerShell, and it also works from the old Command Prompt. Run `icacls notes.txt` and it lists each account with letters for its rights, such as `F` for full control and `R` for read. That is a list of accounts, not a three-digit mode.",
+          "To give one account a right, write `icacls notes.txt /grant Users:R`. That adds read for the built-in group named Users. It does not mean \"others\". Changing access on a file you do not own may need an administrator window (see Running as administrator). `icacls` can also remove entries and reset the list, so read its help before changing anything important. A mistake can lock you out of your own file."
+        ],
+        "forms": [
+          {
+            "bash": "`ls -l notes.txt`",
+            "powershell": "`icacls notes.txt`",
+            "does": "Shows who can do what. The two outputs look quite different, because the two systems store permissions differently."
+          },
+          {
+            "bash": "`chmod g+r notes.txt`",
+            "powershell": "No close equivalent. `icacls notes.txt /grant Users:R` adds read for one named account or group, which is a different idea.",
+            "does": "Adds read for the group. On Windows you must name the account yourself."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "chmod manual (coreutils)",
+        "url": "https://www.gnu.org/software/coreutils/manual/html_node/chmod-invocation.html"
+      },
+      {
+        "label": "File permissions explained (coreutils manual)",
+        "url": "https://www.gnu.org/software/coreutils/manual/html_node/File-permissions.html"
+      },
+      {
+        "label": "icacls reference",
+        "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/icacls"
+      }
+    ]
+  },
+  {
+    "id": "hashing",
+    "group": "files",
+    "title": "Hashing a file: sha256sum, shasum and Get-FileHash",
+    "purpose": "Shows how to turn a file into a short fingerprint of its contents. You can then check that two copies of a file are exactly the same.",
+    "aliases": [
+      "sha256sum",
+      "shasum",
+      "Get-FileHash"
+    ],
+    "what": [
+      "A hash is a short string of letters and digits worked out from the contents of a file. It is also called a checksum or a digest. Two rules make it useful. The same contents always give the same hash. And if even one character changes, the hash changes completely. A hash cannot be turned back into the file. It is a fingerprint, not a copy.",
+      "People use hashes to check a download or a transfer. The sender publishes the hash of the file. You work out the hash of the copy you received. If the two strings are the same, the copy is exact. If they differ, the file was cut short, damaged or changed on the way. Do not use a hash to hide secrets. A hash is not a lock: it cannot be undone, so you cannot read the data back later.",
+      "The commands are named after the method they use. Secure Hash Algorithm (SHA) is a family of methods. `sha256sum` uses the 256-bit one, called SHA-256. It is the one to use today. The older SHA-1 is shorter and weaker. On macOS the tool is `shasum`, and you choose the method with `-a 256`. In PowerShell the command is `Get-FileHash`, which uses SHA-256 unless you ask for another."
+    ],
+    "forms": [
+      {
+        "bash": "`sha256sum orders.txt`",
+        "powershell": "`Get-FileHash orders.txt`",
+        "does": "Works out the SHA-256 hash of the file. `sha256sum` prints the hash in lower-case letters, then two spaces, then the file name. `Get-FileHash` prints a small table with the hash in upper case."
+      },
+      {
+        "bash": "`shasum -a 256 orders.txt`",
+        "powershell": "`Get-FileHash -Algorithm SHA256 orders.txt`",
+        "does": "The macOS form. `-a 256` picks the method, and the output looks just like `sha256sum`. The PowerShell form names the method in full, which is also the default."
+      },
+      {
+        "bash": "`openssl dgst -sha256 orders.txt`",
+        "powershell": "Same command",
+        "does": "The `openssl` tool can hash a file too, where it is installed. On Windows, Git Bash has one; PowerShell finds it only if it is on the path. It prints `SHA2-256(orders.txt)= ` and then the hash."
+      },
+      {
+        "bash": "`openssl sha256 orders.txt`",
+        "powershell": "Same command",
+        "does": "A shorter spelling of the line above. The method name takes the place of `dgst`."
+      },
+      {
+        "bash": "`cat orders.txt | sha256sum`",
+        "powershell": "`Get-FileHash orders.txt` gives the same hash. PowerShell pipes objects, not the bytes of a file, so the pipe form does not carry over.",
+        "does": "Sends the file through a pipe (a link that passes one command's output to the next). The result is the same hash. There is no file name to print, so the output shows a `-` where the name would be."
+      },
+      {
+        "bash": "`sha256sum < orders.txt`",
+        "powershell": "`Get-FileHash orders.txt` gives the same hash. PowerShell has no `<` to feed in a file.",
+        "does": "The shell sends the file to `sha256sum` as input. The result is the same hash, again with a `-` for the name."
+      }
+    ],
+    "example": {
+      "intro": "A file arrives with a published hash saved in `orders.sha`. We work out the hash of the copy and compare. Then we change one character in another copy and see what happens.",
+      "lines": [
+        {
+          "line": "$ sha256sum orders.txt",
+          "note": "Work out the hash of the received copy."
+        },
+        {
+          "line": "2c738cc131d8ce5f83022df8b6225dd9ba543483058e0d889ad62d5494396434  orders.txt",
+          "note": "The hash is 64 characters of hexadecimal (digits and the letters a to f). Then come two spaces and the file name."
+        },
+        {
+          "line": "$ cat orders.sha",
+          "note": "Show the hash the sender published."
+        },
+        {
+          "line": "2c738cc131d8ce5f83022df8b6225dd9ba543483058e0d889ad62d5494396434",
+          "note": "Every character is the same. The copy is exact. Check all of it, not just the first few characters."
+        },
+        {
+          "line": "$ sha256sum orders_edit.txt",
+          "note": "Now hash a copy where one digit in the data was changed from 4 to 5."
+        },
+        {
+          "line": "c0898e28c321ddb576451612417bf07fe23cfceeef789ad4b0da1bcad902ae7a  orders_edit.txt",
+          "note": "A tiny change gave a completely different hash. This copy does not match the published one."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Running plain `shasum orders.txt` and comparing it with a published SHA-256 hash.",
+      "why": "Without `-a 256`, `shasum` uses the older SHA-1 method. For our file it prints `50177a76a0e1062c79b31776cc031762710ccad7`, only 40 characters, where SHA-256 gives 64. The two methods never give the same hash, so the check fails even when the file is perfect. Count the characters if you are unsure which method you used. Write `shasum -a 256`, or use `sha256sum`."
+    },
+    "more": [
+      {
+        "heading": "Checking against a list of hashes",
+        "paragraphs": [
+          "You can save the output of `sha256sum` in a file, and later ask it to check. With `-c` (check), `sha256sum` reads each line, works out the hash again, and prints `OK` or `FAILED` after each file name. That saves comparing long strings by eye.",
+          "PowerShell has no `-c`. Compare the two strings with `-eq`. In PowerShell, `-eq` ignores upper and lower case, so the upper-case output of `Get-FileHash` can be compared with a lower-case published hash."
+        ],
+        "forms": [
+          {
+            "bash": "`sha256sum orders.txt > orders.sum`",
+            "powershell": "`(Get-FileHash orders.txt).Hash > orders.sum`",
+            "does": "Saves the result in a file. The Bash version saves hash and name. The PowerShell version saves only the hash."
+          },
+          {
+            "bash": "`sha256sum -c orders.sum`",
+            "powershell": "No close equivalent. `Get-FileHash` only works out hashes and does not check a list.",
+            "does": "Reads the saved lines and checks every file. Each line ends in `OK` or `FAILED`."
+          },
+          {
+            "bash": "`echo \"2c738cc131d8ce5f83022df8b6225dd9ba543483058e0d889ad62d5494396434  orders.txt\" | sha256sum -c`",
+            "powershell": "`(Get-FileHash orders.txt).Hash -eq '2c738cc131d8ce5f83022df8b6225dd9ba543483058e0d889ad62d5494396434'`",
+            "does": "Checks a hash you were given. The Bash form needs two spaces between hash and name. PowerShell answers `True` or `False`."
+          }
+        ]
+      },
+      {
+        "heading": "Reading the output on each system",
+        "paragraphs": [
+          "Linux prints the hash, two spaces, then the name. Git Bash on Windows prints one space and a `*` before the name instead, to show the file was read in binary mode (its exact bytes, not text). The hash is the same either way. On macOS, `shasum` also separates the hash and the name by two spaces.",
+          "`Get-FileHash` prints the hash in capitals. To see only the hash, take its `Hash` part. To see the method name and the path on separate lines, send the result to `Format-List`."
+        ],
+        "forms": [
+          {
+            "bash": "`sha256sum orders.txt | cut -d ' ' -f 1`",
+            "powershell": "`(Get-FileHash orders.txt).Hash`",
+            "does": "Prints only the hash. `cut` keeps the first word of the line, up to the first space."
+          },
+          {
+            "bash": "`sha256sum orders.txt`",
+            "powershell": "`(Get-FileHash orders.txt).Hash.ToLower()`",
+            "does": "`sha256sum` already prints lower case. `.ToLower()` turns the PowerShell hash into lower case too. Letter case does not change what a hash means, but write both the same way before you compare by eye."
+          }
+        ]
+      },
+      {
+        "heading": "Other methods and what a hash proves",
+        "paragraphs": [
+          "`Get-FileHash -Algorithm SHA1 orders.txt` and `sha1sum` give the older SHA-1 hash. Use them only when a vendor (the company that made the file) publishes a SHA-1 hash and no other kind.",
+          "A matching hash proves the two copies are the same. It does not prove the file is safe or that it came from the right person. If an attacker (someone who tries to cause harm) can change the file, they can change the published hash beside it. For that reason, get the hash from a different place you trust, not from the same place as the file."
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "sha256sum and other tools (coreutils manual)",
+        "url": "https://www.gnu.org/software/coreutils/manual/html_node/sha2-utilities.html"
+      },
+      {
+        "label": "Get-FileHash reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/get-filehash"
+      },
+      {
+        "label": "shasum on macOS",
+        "url": "https://ss64.com/mac/shasum.html"
+      }
+    ]
+  },
+  {
+    "id": "openssl",
+    "group": "files",
+    "title": "openssl: certificates and digests",
+    "purpose": "Shows how to read the details of a certificate file, such as who it belongs to and when it expires. It also shows how to work out a file hash with the same tool.",
+    "aliases": [
+      "openssl"
+    ],
+    "what": [
+      "A certificate is a file that a server (a computer that offers a service, such as a website) uses to prove who it is. It holds the name of the owner, which is called the subject. It holds the name of whoever vouched for it, called the issuer. It holds a serial number, and two dates: the time it becomes valid and the time it expires. An expired certificate makes browsers and programs refuse to connect, so checking the dates is a very common job.",
+      "`openssl` is a toolbox of encryption jobs (scrambling data so only the right people can read it). It works through smaller commands called subcommands. The one for reading a certificate is `x509`. You give it the file with `-in`. You then add an option (a flag that picks what to show) for the part you want. `-dates` shows when it starts and ends. `-subject` shows the owner. `-issuer` shows the issuer. `-serial` shows the serial number. `-fingerprint` shows a hash of the whole certificate, a way to tell one certificate from another.",
+      "Add `-noout` to nearly all of these. Without it, `openssl` prints the certificate in coded form after your answer, which is a block of random-looking text between lines of dashes. On Windows, `openssl` is not part of the system. Git for Windows includes one, but by default only Git Bash can find it. Other tools, such as conda, may add one that PowerShell can find. If PowerShell says the command cannot be found, use Git Bash or the PowerShell way in Learn more. See Learn more for a PowerShell way to read a certificate."
+    ],
+    "forms": [
+      {
+        "bash": "`openssl x509 -in shop.pem -noout -dates`",
+        "powershell": "Same command",
+        "does": "Prints two lines: `notBefore` (when the certificate becomes valid) and `notAfter` (when it expires). Only works on Windows if `openssl` is installed."
+      },
+      {
+        "bash": "`openssl x509 -in shop.pem -noout -subject`",
+        "powershell": "Same command",
+        "does": "Prints the subject, the name of the owner. For a web server, that is usually the server's name."
+      },
+      {
+        "bash": "`openssl x509 -in shop.pem -noout -serial`",
+        "powershell": "Same command",
+        "does": "Prints the serial number the issuer gave this certificate."
+      },
+      {
+        "bash": "`openssl x509 -in shop.pem -noout -fingerprint`",
+        "powershell": "Same command",
+        "does": "Prints a hash of the certificate as pairs of hexadecimal digits with colons between. It identifies the certificate. It does not show dates."
+      },
+      {
+        "bash": "`openssl x509 -in shop.pem -noout -issuer`",
+        "powershell": "Same command",
+        "does": "Prints who issued the certificate. For a certificate someone made for themselves, it is the same as the subject."
+      },
+      {
+        "bash": "`openssl dgst -sha256 orders.txt`",
+        "powershell": "`Get-FileHash orders.txt`",
+        "does": "Works out the hash of any file. PowerShell has its own command for this. See Hashing a file: sha256sum, shasum and Get-FileHash."
+      }
+    ],
+    "example": {
+      "intro": "Read three facts from a certificate file named `shop.pem`. We made it ourselves for this page, so the owner and the issuer are the same. Your own file will show other values.",
+      "lines": [
+        {
+          "line": "$ openssl x509 -in shop.pem -noout -dates",
+          "note": "Ask for the validity dates only."
+        },
+        {
+          "line": "notBefore=Nov  7 02:18:06 2026 GMT",
+          "note": "The start. The certificate is not valid before this moment. `GMT` means Greenwich Mean Time, the standard clock that other time zones are measured from."
+        },
+        {
+          "line": "notAfter=Dec  7 02:18:06 2026 GMT",
+          "note": "The end. After this moment the certificate has expired. Here that is 30 days after the start."
+        },
+        {
+          "line": "$ openssl x509 -in shop.pem -noout -subject",
+          "note": "Ask who the certificate is for."
+        },
+        {
+          "line": "subject=CN = shop.example.internal",
+          "note": "`CN` means Common Name, the main name on the certificate. Here it is a server name. Newer versions of `openssl` print it with no spaces: `subject=CN=shop.example.internal`."
+        },
+        {
+          "line": "$ openssl x509 -in shop.pem -noout -serial",
+          "note": "Ask for the serial number."
+        },
+        {
+          "line": "serial=390277B5F1545A701920D78CF618B823616AC55A",
+          "note": "A long number in hexadecimal (digits 0 to 9 and letters A to F). It tells one of the issuer's certificates from another. It says nothing about time."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Using `-fingerprint`, `-serial` or `-subject` to learn when a certificate expires.",
+      "why": "Each option prints one thing. Only `-dates` (or `-enddate`) prints times. `-fingerprint` prints a digest (another word for a hash) of the whole certificate. It identifies the certificate and has no dates in it. `-serial` is a number and `-subject` is a name. Also keep `-noout` in the command, or the answer is buried under the coded certificate text."
+    },
+    "more": [
+      {
+        "heading": "More ways to read a certificate",
+        "paragraphs": [
+          "`-enddate` prints only the expiry line. `-checkend` takes a number of seconds and asks, \"Will it have expired by then?\". It prints a short sentence, and it also sets the exit status, a hidden result code the shell can check. The status is 0 if the certificate is still valid and 1 if it will have expired. With 86400 seconds (one day), a script can use it as a warning.",
+          "`-fingerprint -sha256` chooses a stronger method for the hash. `-text` prints everything in readable form. It is long, so send it to `less` (a viewer that shows one screen at a time) or to a file."
+        ],
+        "forms": [
+          {
+            "bash": "`openssl x509 -in shop.pem -noout -enddate`",
+            "powershell": "Same command",
+            "does": "Prints only the line that starts `notAfter=`."
+          },
+          {
+            "bash": "`openssl x509 -in shop.pem -noout -checkend 86400`",
+            "powershell": "Same command",
+            "does": "Answers whether the certificate will still be valid in 86400 seconds, which is one day. It prints `Certificate will not expire` or `Certificate will expire`."
+          },
+          {
+            "bash": "`openssl x509 -in shop.pem -noout -fingerprint -sha256`",
+            "powershell": "Same command",
+            "does": "The fingerprint made with a stronger 256-bit method instead of the older default one."
+          },
+          {
+            "bash": "`openssl x509 -in shop.pem -noout -text`",
+            "powershell": "Same command",
+            "does": "Prints every field of the certificate in a readable layout."
+          }
+        ]
+      },
+      {
+        "heading": "Reading a certificate in PowerShell without openssl",
+        "paragraphs": [
+          "PowerShell can use a part of .NET, the programming kit that Windows tools are built on, to open a certificate file. Write the path in full, as in the lines below, because .NET does not know which folder PowerShell is in. The answer holds the dates as properties (named values) called `NotBefore` and `NotAfter`. These are printed in your local time, not GMT.",
+          "The `Thumbprint` property is the same fingerprint that `openssl -fingerprint` prints, but with no colons."
+        ],
+        "forms": [
+          {
+            "bash": "`openssl x509 -in shop.pem -noout -dates`",
+            "powershell": "`([System.Security.Cryptography.X509Certificates.X509Certificate2]::new((Resolve-Path shop.pem).Path)).NotAfter`",
+            "does": "Opens the file and prints the expiry time. Change `NotAfter` to `NotBefore`, `Subject`, `SerialNumber` or `Thumbprint` for the other facts."
+          }
+        ]
+      },
+      {
+        "heading": "Hashing files and private keys",
+        "paragraphs": [
+          "`openssl dgst -sha256 file` works out a file hash. In newer versions the output starts `SHA2-256(file)= `. Older versions print `SHA256(file)= `. The hash after it is what you compare. See Hashing a file: sha256sum, shasum and Get-FileHash.",
+          "A certificate is public. Anyone can read it. The private key that goes with it is secret, and its file should be readable only by its owner. See chmod: file permissions."
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "openssl x509 reference",
+        "url": "https://docs.openssl.org/master/man1/openssl-x509/"
+      },
+      {
+        "label": "openssl dgst reference",
+        "url": "https://docs.openssl.org/master/man1/openssl-dgst/"
+      },
+      {
+        "label": "X509Certificate2 reference",
+        "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.x509certificates.x509certificate2"
+      }
+    ]
+  }
+]

@@ -104,5 +104,9 @@ export const secAiMeta: ExamMeta = {
     { term: 'CUI', expansion: 'Controlled Unclassified Information', source: 'community' },
     { term: 'DMCA', expansion: 'Digital Millennium Copyright Act', source: 'community' },
     { term: 'SSL', expansion: 'Secure Sockets Layer', source: 'community' },
+    // Command primer (files topics).
+    { term: 'CN', expansion: 'Common Name', source: 'community' },
+    { term: 'GMT', expansion: 'Greenwich Mean Time', source: 'community' },
+    { term: 'SHA', expansion: 'Secure Hash Algorithm', source: 'community' },
   ],
 };

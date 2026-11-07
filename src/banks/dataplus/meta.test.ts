@@ -30,6 +30,6 @@ describe('Data+ metadata', () => {
     const terms = meta.acronyms.map((a) => a.term);
     expect(new Set(terms).size).toBe(terms.length);
     expect(meta.acronyms.filter((a) => a.source === 'official')).toHaveLength(41);
-    expect(meta.acronyms.filter((a) => a.source === 'community')).toHaveLength(26);
+    expect(meta.acronyms.filter((a) => a.source === 'community')).toHaveLength(27);
   });
 });

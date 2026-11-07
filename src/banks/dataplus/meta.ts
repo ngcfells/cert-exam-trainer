@@ -104,6 +104,8 @@ export const dataPlusMeta: ExamMeta = {
     { term: 'ICMP', expansion: 'Internet Control Message Protocol', source: 'community' },
     { term: 'IP', expansion: 'Internet Protocol', source: 'community' },
     { term: 'WAN', expansion: 'Wide Area Network', source: 'community' },
+    // Command primer (files topics).
+    { term: 'SHA', expansion: 'Secure Hash Algorithm', source: 'community' },
     // Math module terms.
     { term: 'CAGR', expansion: 'Compound Annual Growth Rate', source: 'community' },
     { term: 'IQR', expansion: 'Interquartile Range', source: 'community' },

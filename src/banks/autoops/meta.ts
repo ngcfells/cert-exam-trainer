@@ -105,6 +105,9 @@ export const autoOpsMeta: ExamMeta = {
     { term: 'TCP', expansion: 'Transmission Control Protocol', source: 'community' },
     { term: 'TLS', expansion: 'Transport Layer Security', source: 'community' },
     { term: 'TTL', expansion: 'Time to Live', source: 'community' },
+    // Command primer (files topics).
+    { term: 'CN', expansion: 'Common Name', source: 'community' },
+    { term: 'GMT', expansion: 'Greenwich Mean Time', source: 'community' },
     { term: 'UA', expansion: 'User Agent', source: 'community' },
     { term: 'UDP', expansion: 'User Datagram Protocol', source: 'community' },
     { term: 'URI', expansion: 'Uniform Resource Identifier', source: 'community' },

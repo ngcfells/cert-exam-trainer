@@ -19,6 +19,8 @@ export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
   'OPTION', 'FILE',
   // HTTP methods (DELETE is above). POST stays a token: AT0-001 lists it as an acronym.
   'GET', 'PUT', 'PATCH', 'HEAD', 'OPTIONS',
+  // Product name, as in ".NET".
+  'NET',
   'TWO', 'THREE', 'FOUR', 'NO', 'YES',
 ]);
 

@@ -12,9 +12,10 @@ NEXT SESSION (written 2026-11-06, evening):
 1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
 2. testingUtility: the command primer, issue #5, branch `command-primer` (not merged). The plan is approved:
    `docs/superpowers/plans/2026-11-06-command-primer.md`. Ledger: `.superpowers/sdd/2026-11-06-command-primer/progress.md`
-   (keep it). Tasks 1 to 10 are done and green (Task 10, the network group, is the
-   `content(primer): network topics` commit). Next is **Task 11, the files group** (chmod with icacls, hashing with
-   sha256sum, shasum and Get-FileHash, openssl). Run it with
+   (keep it). Tasks 1 to 11 are done and green (Task 11, the files group, is the
+   `content(primer): files topics` commit). Next is **Task 12, the services group** (`systemctl` topic: aliases
+   systemctl, journalctl, Get-Service, Start-Service, Stop-Service, Restart-Service; bank words `systemctl start`,
+   `systemctl restart`). Run it with
    superpowers:executing-plans and resume from the ledger. The content tasks (10 to 14) go one group per session: a
    Sonnet drafter, a Haiku copy check, an accuracy review in the main session, then shrink `PENDING` in
    `src/primer/coverage.test.ts`, commit, update this block, and `/clear`.
@@ -34,12 +35,15 @@ NEXT SESSION (written 2026-11-06, evening):
      ISC.Bind). Put a `timeout` on anything that may not stop (Task 10 hung on Linux `ping -n`).
    - Drafters copy the bank's own scenario (Task 10: the same TTL, addresses and JSON bodies). Swap in new values.
    - A new acronym in a topic must go in the acronym list of every exam the topic shows for (`meta.ts`); the Data+
-     meta test pins its community count (now 26).
+     meta test pins its community count (now 27).
    - The copy checker (Haiku) tends to re-define "PowerShell" and "Bash" in every topic and can garble cross-reference
      titles; check every "see <title>" against the real topic titles.
    - Primer e2e: `tests/e2e/primer.spec.ts` (fixture) and `primer.responsive.spec.ts` (phone, tablet), helper in
      `tests/e2e/primerUtil.ts`. Run: `npm run build:e2e`, then `npx playwright test tests/e2e/primer.spec.ts
      tests/e2e/primer.responsive.spec.ts --project=fixture --project=phone --project=tablet` (7 tests).
+   - From Task 11: www.gnu.org did not answer from this machine at commit time (it gave 200 earlier that
+     session); the Task 15 link check must confirm the three coreutils links. `NET` (as in .NET) is now on
+     NOT_ACRONYMS in `src/acronyms/extract.ts` as a product name.
    - Task 15: release. Empty `PENDING`, get the owner to approve the links, `npm run check`, one Opus whole-branch
      review, fix every finding (minors too), merge, push, `npm run deploy`, close #5.
 3. Between primer tasks and while tests run: the tools work (section B in
