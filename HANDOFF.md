@@ -1,3 +1,20 @@
+# CLOUD (2026-11-07): the home machine is off, possibly for a week or more
+
+Work continues in Claude Code cloud sessions. Everything that was only on the home machine (unpushed branches,
+git-ignored working data, Claude memory, the mordel.net mirror) is in the private repo `NGCFells2/ResourceLibrary`,
+folder `Custom/cloud-handoff/`. Start with `Custom/cloud-handoff/CLOUD-START.md` there. Windows paths below
+(`C:/repo/...`) mean the same repo cloned in the cloud.
+
+What was in progress when the machine went off:
+
+1. battletech-tools, branch `mordel-user-key` (not pushed, not merged): mordel.net user keys are built and reviewed.
+   Next: `docs/superpowers/plans/2026-11-07-mordel-next.md` on that branch (alt names and tags, every unit kind,
+   missing catalog items, Battle Value root causes, the report for Scott). The owner chose: assume our BV is wrong
+   until the rules and errata show otherwise.
+2. testingUtility, branch `command-primer`: Task 15, release (see the block below).
+
+Both branches are in the bundles under `Custom/cloud-handoff/`. Nothing is pushed to the public repos.
+
 # START HERE (2026-11-06, after /clear): all repos in one place
 
 The same block is at the top of `C:/repo/testingUtility/HANDOFF.md` and `C:/repo/JBTToolsSupportFiles/handoff.md`.
