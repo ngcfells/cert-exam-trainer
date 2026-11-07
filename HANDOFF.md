@@ -23,10 +23,10 @@ tools work moving (B). Neither one waits on the other.
   - Then: put the KV id in `relay/wrangler.toml`, write the token expiry here, and commit `.env.production` with
     `VITE_REPORT_URL=<url>` and `VITE_TURNSTILE_SITEKEY=0x4AAAAAAF2w670muVBVNqkR`. Deploy, send one live report
     with the owner, and close that test issue.
-  - Relay URL: (not yet). GitHub token expiry: 2027-02-04. Renew it before then (`npx wrangler secret put
+  - Relay URL: https://cert-trainer-relay.cert-trainer-relay.workers.dev (KV id in wrangler.toml). GitHub token expiry: 2027-02-04. Renew it before then (`npx wrangler secret put
     GITHUB_TOKEN` in `relay/`). The Worker logs "GitHub refused the issue 401" once it has expired.
   - After the merge, the owner reruns `npx wrangler deploy` in `relay/` so the live Worker has the review fixes.
-  - Until then the deployed app has reports off: the buttons are hidden.
+  - `.env.production` holds the relay URL and site key, so `npm run deploy` builds with reports on.
 - The report e2e tests (`tests/e2e/report.pwa.spec.ts`) run in `npm run check`, which builds with a stand-in relay
   URL (`build:check`). They stub the relay and Turnstile, so they never send a real issue.
 
