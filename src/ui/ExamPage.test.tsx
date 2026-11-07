@@ -6,6 +6,8 @@ import { getBundledQuestions } from '../banks';
 import { createMemoryRepo } from '../storage/memoryRepo';
 import { questions } from './plural';
 
+vi.mock('../primer/topics', async () => (await import('../primer/testTopics')).mockTopicsModule());
+
 describe('ExamPage', () => {
   it('focuses the heading, shows the counts and the source choice, and opens tools', async () => {
     const onNavigate = vi.fn();
@@ -27,6 +29,17 @@ describe('ExamPage', () => {
     render(<ExamPage repo={createMemoryRepo()} examCode="CY0-001" onNavigate={vi.fn()} />);
     expect(screen.getByRole('button', { name: 'Practice: CY0-001' })).toBeInTheDocument();
     expect(screen.queryByRole('button', { name: 'Learn: CY0-001' })).not.toBeInTheDocument();
+  });
+
+  it('shows Command primer only when the bank uses a topic', async () => {
+    const onNavigate = vi.fn();
+    const { unmount } = render(<ExamPage repo={createMemoryRepo()} examCode="DA0-002" onNavigate={onNavigate} />);
+    await userEvent.click(screen.getByRole('button', { name: 'Command primer: DA0-002' }));
+    expect(onNavigate).toHaveBeenLastCalledWith({ name: 'primer', exam: 'DA0-002' });
+    unmount();
+    render(<ExamPage repo={createMemoryRepo()} examCode="CY0-001" onNavigate={vi.fn()} />);
+    expect(screen.getByRole('button', { name: 'Practice: CY0-001' })).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Command primer: CY0-001' })).not.toBeInTheDocument();
   });
 
   it('says so for an unknown exam', () => {

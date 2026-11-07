@@ -8,6 +8,7 @@ import { PanelProvider, usePanels, usePanelState } from '../panels/PanelProvider
 import { CommandHelpButton } from './CommandHelpButton';
 import { CommandHelpPanel } from './CommandHelpPanel';
 import { TopicView } from './TopicView';
+import { PrimerScreen } from './PrimerScreen';
 
 vi.mock('../../primer/topics', async () => (await import('../../primer/testTopics')).mockTopicsModule());
 
@@ -126,5 +127,45 @@ describe('Command help', () => {
     expect(within(dialog).getByRole('heading', { name: 'Shell basics' })).toBeInTheDocument();
     await userEvent.click(within(dialog).getByRole('button', { name: 'paths' }));
     expect(within(dialog).getByRole('heading', { level: 3, name: 'paths' })).toBeInTheDocument();
+  });
+});
+
+describe('PrimerScreen', () => {
+  it('lists Shell basics first, then the exam groups', () => {
+    render(<PrimerScreen examCode="DA0-002" />);
+    expect(screen.getByRole('heading', { level: 2, name: 'Command primer: DA0-002' })).toHaveFocus();
+    const h3 = screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent);
+    expect(h3).toEqual(['Practice safely', 'Shell basics', 'Working with text']);
+    expect(screen.getByRole('heading', { level: 4, name: 'terminal' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 4, name: 'grep' })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { level: 4, name: 'sed' })).not.toBeInTheDocument();
+  });
+
+  it('Show all topics adds topics this exam does not use', async () => {
+    render(<PrimerScreen examCode="DA0-002" />);
+    const toggle = screen.getByRole('button', { name: 'Show all topics' });
+    expect(toggle).toHaveAttribute('aria-pressed', 'false');
+    await userEvent.click(toggle);
+    expect(toggle).toHaveAttribute('aria-pressed', 'true');
+    expect(screen.getByRole('heading', { level: 4, name: 'sed' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: 'Data (SQL and pandas)' })).toBeInTheDocument();
+    await userEvent.click(toggle);
+    expect(screen.queryByRole('heading', { level: 4, name: 'sed' })).not.toBeInTheDocument();
+  });
+
+  it('a contents button moves focus to the topic heading', async () => {
+    render(<PrimerScreen examCode="DA0-002" />);
+    const contents = screen.getByRole('navigation', { name: 'Topics on this page' });
+    await userEvent.click(within(contents).getByRole('button', { name: 'grep' }));
+    expect(screen.getByRole('heading', { level: 4, name: 'grep' })).toHaveFocus();
+  });
+
+  it('practice links are external', () => {
+    render(<PrimerScreen examCode="DA0-002" />);
+    const link = screen.getByRole('link', { name: /Try Linux/ });
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    expect(screen.getByText('A whole system in your browser.', { exact: false })).toBeInTheDocument();
+    expect(screen.getByText('Links open in a new tab and need an internet connection.')).toBeInTheDocument();
   });
 });

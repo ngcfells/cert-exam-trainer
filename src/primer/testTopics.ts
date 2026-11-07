@@ -31,7 +31,9 @@ export const TEST_TOPICS: PrimerTopic[] = parseTopics([
   },
 ]);
 
+export const TEST_LINKS = [{ label: 'Try Linux', url: 'https://example.com/linux', what: 'A whole system in your browser.' }];
+
 export function mockTopicsModule() {
   const byId = new Map(TEST_TOPICS.map((t) => [t.id, t]));
-  return { PRIMER_TOPICS: TEST_TOPICS, topicById: (id: string) => byId.get(id) };
+  return { PRIMER_TOPICS: TEST_TOPICS, topicById: (id: string) => byId.get(id), PRACTICE_LINKS: TEST_LINKS };
 }
