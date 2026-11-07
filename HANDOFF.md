@@ -12,15 +12,11 @@ NEXT SESSION (written 2026-11-06, late evening):
 1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
 2. testingUtility: the command primer, issue #5, branch `command-primer` (not merged). The plan is approved:
    `docs/superpowers/plans/2026-11-06-command-primer.md`. Ledger: `.superpowers/sdd/2026-11-06-command-primer/progress.md`
-   (keep it). Tasks 1 to 13 are done and green (Task 13, the dev group, is the `content(primer): dev topics`
-   commit 854c9cf). Next is **Task 14, the data group**, the last content task: single-column topics with `where`
-   set, `sql` (anyCase; aliases `select`, `on`, `using`, `using(`) and `pandas` (aliases `df[`, `df.`, `pd.`); the
-   bank words left in `PENDING` are `ON`, `On`, `on`, `SELECT`, `select`, `USING`, `USING(`, `Using`, `Using(`,
-   `using`, `using(`, `df.`, `df[`. Check the plan's Task 1 schema and the spec for what a single-column topic looks
-   like (no PowerShell cell). Run it with
-   superpowers:executing-plans and resume from the ledger. The content tasks (10 to 14) go one group per session: a
-   Sonnet drafter, a Haiku copy check, an accuracy review in the main session, then shrink `PENDING` in
-   `src/primer/coverage.test.ts`, commit, update this block, and `/clear`.
+   (keep it). Tasks 1 to 14 are done and green. Task 14, the data group (SQL and pandas), is commit b167620, and
+   `PENDING` is now empty. Next is **Task 15, release** (last bullet below). It starts with the owner approving the
+   link list (Practice safely in `src/primer/links.json`, plus each topic's `links`). gnu.org still gave no answer
+   at 20:30 on 2026-11-06, so recheck the three coreutils links first. Run it with superpowers:executing-plans and
+   resume from the ledger.
    - The skill's task-start/task-done scripts cannot find content tasks (the plan heading is "Tasks 8 to 14"). Read
      the plan section "Tasks 8 to 14" and ledger by hand in the same format.
    - Listing the bank steps for a group: a throwaway vitest file in `src/primer/` that imports the three bank item
@@ -55,6 +51,9 @@ NEXT SESSION (written 2026-11-06, late evening):
      every-topic responsive e2e is marked `test.slow()` (axe over all open topics in two schemes passed 30 s); if it
      times out again after Task 14, raise its budget, do not drop the check.
      Python (miniconda, conda 25.11) is on Windows for checking pandas examples; sqlite3 may need checking for SQL.
+   - From Task 14: miniconda's Python has pandas 3.0.1 (text dtype prints `str`, not `object`) and the sqlite3
+     module (3.51). psql is not installed, so the SQL example's psql layout is hand-drawn from real sqlite rows. The
+     Task 14 e2e passed in 31 s with no timeout.
    - Task 15: release. Empty `PENDING`, get the owner to approve the links, `npm run check`, one Opus whole-branch
      review, fix every finding (minors too), merge, push, `npm run deploy`, close #5.
 3. Between primer tasks and while tests run: the tools work (section B in
