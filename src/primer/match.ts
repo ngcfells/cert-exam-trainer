@@ -151,10 +151,21 @@ export function topicsFor(q: Question, topics: PrimerTopic[] = PRIMER_TOPICS): P
   return topics.filter((t) => hit.has(t));
 }
 
-/** The topics any of an exam's bundled questions use, in topic order. */
-export function examTopics(exam: string, topics: PrimerTopic[] = PRIMER_TOPICS): PrimerTopic[] {
-  const hit = new Set(getBundledQuestions(exam).flatMap((q) => topicsFor(q, topics)));
+/** The topics any of these questions use, in topic order. */
+export function questionsTopics(qs: Question[], topics: PrimerTopic[] = PRIMER_TOPICS): PrimerTopic[] {
+  const hit = new Set(qs.flatMap((q) => topicsFor(q, topics)));
   return topics.filter((t) => hit.has(t));
+}
+
+/** The topics an exam's bundled questions use, in topic order. */
+export function examTopics(exam: string, topics: PrimerTopic[] = PRIMER_TOPICS): PrimerTopic[] {
+  return questionsTopics(getBundledQuestions(exam), topics);
+}
+
+/** Every topic the primer shows for a bank: Shell basics plus the bank's own topics, or none if it uses none. */
+export function shownTopics(qs: Question[], topics: PrimerTopic[] = PRIMER_TOPICS): PrimerTopic[] {
+  const used = questionsTopics(qs, topics);
+  return used.length ? [...basicsTopics(topics), ...used.filter((t) => t.group !== 'basics')] : [];
 }
 
 export function basicsTopics(topics: PrimerTopic[] = PRIMER_TOPICS): PrimerTopic[] {

@@ -2,6 +2,8 @@ import { describe, it, expect } from 'vitest';
 import { isPbqTemplate } from '../../domain/pbq';
 import type { NumericAnswer } from '../../domain/types';
 import { lessonText } from '../../domain/lesson';
+import { primerText } from '../../domain/primer';
+import { shownTopics } from '../../primer/match';
 import { shippedLessons } from '../lessons';
 import { describeBankTargets, describeShippedBank } from '../shippedChecks';
 import { NUMERIC_CHECKS } from './numericChecks';
@@ -15,7 +17,7 @@ const byIdType = (id: string) => items.find((q) => q.id === id)?.type;
 // Ids written before the <prefix>-<objective>-<type>-nnn scheme. Saved results and reviews refer to them, so they stay.
 const legacyIds = /^da2-(seed|pbq-[a-z]+)-\d{3}$|^da2-\d-\d-(math|pct)-mcq-\d{3}$/;
 
-describeShippedBank(dataPlusMeta, items, { extraText: shippedLessons.map(lessonText), legacyIds });
+describeShippedBank(dataPlusMeta, items, { extraText: [...shippedLessons.map(lessonText), ...shownTopics(items).map(primerText)], legacyIds });
 describeBankTargets(dataPlusMeta, items);
 
 describe('shipped Data+ bank', () => {

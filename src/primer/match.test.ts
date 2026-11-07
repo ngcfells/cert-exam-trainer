@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { Question } from '../domain/types';
 import { parseTopics, type PrimerTopic } from '../domain/primer';
-import { commandWords, topicsFor, wordTopic } from './match';
+import { commandWords, shownTopics, topicsFor, wordTopic } from './match';
 
 const topic = (id: string, aliases: string[], extra: Record<string, unknown> = {}): unknown => ({
   id,
@@ -83,6 +83,15 @@ const q = (over: Partial<Question>): Question => ({
 });
 
 const terminal = (payload: unknown, answer: unknown, stem = 'Use the terminal.') => q({ type: 'pbq-terminal', payload, answer, stem });
+
+describe('shownTopics', () => {
+  it('is Shell basics plus the topics the bank uses, or nothing when it uses none', () => {
+    const grepQ = q({ stem: 'Run `grep x f`.' });
+    const madeUp = terminal({ output: ['$ weblog'], steps: [] }, { accept: {} });
+    expect(ids(shownTopics([grepQ, madeUp], TOPICS))).toEqual(['made-up-tools', 'grep']);
+    expect(shownTopics([q({})], TOPICS)).toEqual([]);
+  });
+});
 
 describe('topicsFor', () => {
   it('reads typed answers and code in the stem, in topic order', () => {
