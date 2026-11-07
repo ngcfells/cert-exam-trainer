@@ -12,8 +12,9 @@ NEXT SESSION (written 2026-11-06, evening):
 1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
 2. testingUtility: the command primer, issue #5, branch `command-primer` (not merged). The plan is approved:
    `docs/superpowers/plans/2026-11-06-command-primer.md`. Ledger: `.superpowers/sdd/2026-11-06-command-primer/progress.md`
-   (keep it). Tasks 1 to 9 are done and green (Task 9, the text group and the three moved e2e checks, is the
-   `content(primer): text topics` commit). Next is **Task 10, the network group** (ping, dig, curl). Run it with
+   (keep it). Tasks 1 to 10 are done and green (Task 10, the network group, is the
+   `content(primer): network topics` commit). Next is **Task 11, the files group** (chmod with icacls, hashing with
+   sha256sum, shasum and Get-FileHash, openssl). Run it with
    superpowers:executing-plans and resume from the ledger. The content tasks (10 to 14) go one group per session: a
    Sonnet drafter, a Haiku copy check, an accuracy review in the main session, then shrink `PENDING` in
    `src/primer/coverage.test.ts`, commit, update this block, and `/clear`.
@@ -27,6 +28,13 @@ NEXT SESSION (written 2026-11-06, evening):
    - Accuracy review that paid off in Task 9: run every Bash example in Git Bash and every PowerShell form in pwsh
      (both are on this machine). It caught a PowerShell `-replace` paired with a first-match-only `sed`, a false
      "No close equivalent." (`Measure-Object -Sum`), and a Bash `&&` line offered as the PowerShell form.
+   - Linux tools for that review (set up 2026-11-06 at the owner's request): WSL Ubuntu now runs (its Windows
+     service was Disabled; now Manual), with dnsutils and netcat added. Run a Bash file there with
+     `wsl -d Ubuntu -u root -- bash -c "tr -d '\r' < /mnt/c/<path>.sh | bash"`. dig is also on Windows (winget
+     ISC.Bind). Put a `timeout` on anything that may not stop (Task 10 hung on Linux `ping -n`).
+   - Drafters copy the bank's own scenario (Task 10: the same TTL, addresses and JSON bodies). Swap in new values.
+   - A new acronym in a topic must go in the acronym list of every exam the topic shows for (`meta.ts`); the Data+
+     meta test pins its community count (now 26).
    - The copy checker (Haiku) tends to re-define "PowerShell" and "Bash" in every topic and can garble cross-reference
      titles; check every "see <title>" against the real topic titles.
    - Primer e2e: `tests/e2e/primer.spec.ts` (fixture) and `primer.responsive.spec.ts` (phone, tablet), helper in
