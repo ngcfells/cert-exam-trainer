@@ -12,11 +12,17 @@ NEXT SESSION (written 2026-11-06, evening):
 1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
 2. testingUtility: the command primer, issue #5, branch `command-primer` (not merged). The plan is approved:
    `docs/superpowers/plans/2026-11-06-command-primer.md`. Ledger: `.superpowers/sdd/2026-11-06-command-primer/progress.md`
-   (keep it). Tasks 1 to 7 (all the code) are done and green. Next is **Task 8, the basics content**. It also writes
-   `src/primer/links.json` and replaces the placeholder `terminal` topic. Run it with superpowers:executing-plans and
-   resume from the ledger. The content tasks (8 to 14) go one group per session: a Sonnet drafter, a Haiku copy
-   check, an accuracy review in the main session, then shrink `PENDING` in `src/primer/coverage.test.ts`, commit,
-   update this block, and `/clear`.
+   (keep it). Tasks 1 to 8 are done and green (Task 8, basics content and the 5 practice links, is f9715bf). Next is
+   **Task 9, the text group**. Run it with superpowers:executing-plans and resume from the ledger. The content tasks
+   (9 to 14) go one group per session: a Sonnet drafter, a Haiku copy check, an accuracy review in the main session,
+   then shrink `PENDING` in `src/primer/coverage.test.ts`, commit, update this block, and `/clear`.
+   - The skill's task-start/task-done scripts cannot find content tasks (the plan heading is "Tasks 8 to 14"). Read
+     the plan section "Tasks 8 to 14" and ledger by hand in the same format.
+   - Listing the bank steps for a group: a throwaway vitest file in `src/primer/` that imports the three bank item
+     files and `commandWords` and writes matching steps to the ledger folder (Task 8 wrote `t8-steps.md`). Delete it
+     after.
+   - Bank tests (`npx vitest run src/banks`) hold the primer acronym check. Real help text placeholders in capitals
+     (`FILE`, `OPTION`) go in `NOT_ACRONYMS`; more will appear in Task 9 (`PATTERNS` and similar).
    - Task 9 (text) also writes three e2e checks that were moved there (see the ledger rulings): practice Command help
      keeps a half-typed answer, the primer screen opens from the exam page with axe, and `primer.responsive.spec.ts`.
    - Task 15: release. Empty `PENDING`, get the owner to approve the links, `npm run check`, one Opus whole-branch
