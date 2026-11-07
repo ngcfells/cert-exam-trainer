@@ -3,11 +3,34 @@
 The same block is at the top of `C:/repo/testingUtility/HANDOFF.md` and `C:/repo/JBTToolsSupportFiles/handoff.md`.
 Older history is below it in each file.
 
-Every session: run `gh issue list` in testingUtility first. Bugs come before everything else. On 2026-11-06 the
-open issues were #14, #11, #6 and #5, all enhancements.
+Every session: run `gh issue list` in testingUtility first. Bugs come before everything else. Learners can now
+file issues from the app (label `from-app`), so check for those too. At the end of 2026-11-06 the open issues were
+#11, #6 and #5, all enhancements.
 
-The user's order (2026-11-06): build the testingUtility feature (A). Between its tasks, and while tests run, keep the
-tools work moving (B). Neither one waits on the other.
+NEXT SESSION (written 2026-11-06, end of day):
+
+1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
+2. testingUtility: the command primer, issue #5 (Bash and PowerShell side by side, assume zero experience). The spec
+   is approved and committed: `docs/superpowers/specs/2026-11-06-command-primer-design.md`. There is no plan yet.
+   Write it with superpowers:writing-plans, get the owner to review it, then build it the standing way: native,
+   test-first with a ledger, one Opus whole-branch review, fix every finding (minors too), merge, push,
+   `npm run deploy`.
+3. Between primer tasks and while tests run: the tools work (section B in
+   `C:/repo/JBTToolsSupportFiles/handoff.md`).
+
+Both testingUtility features from 2026-11-06 are DONE and live: in-app exam tools (#14, section A) and in-app
+reports (section A0 in testingUtility/HANDOFF.md).
+
+Open items for the owner (none blocks the primer):
+
+- Confirm one ruling from the reports review: the "reports waiting to send" banner has one "Send or discard" button
+  that opens the report panel, not separate Send and Discard buttons.
+- The relay GitHub token expires 2027-02-04. Renew before then: in `testingUtility/relay/` run
+  `npx wrangler secret put GITHUB_TOKEN` and paste the new token only into that prompt, never in chat.
+- `relay/README.md` says "Then, from this folder:" just before step 1, which is `cd relay`. Reword it if the owner
+  wants.
+- The local `in-app-reports` branch is merged into main and can be deleted (`git branch -d in-app-reports`).
+- The hand checks listed under section A are still open.
 
 ## A0. testingUtility: in-app reports (bug, question problem, feature request). Branch `in-app-reports`
 
