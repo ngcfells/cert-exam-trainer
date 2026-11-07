@@ -49,7 +49,7 @@ NEXT SESSION (written 2026-11-06, evening):
      `/run/systemd/system` (gone on reboot); clean up any `enable` symlink in `/etc/systemd/system/*.wants` and any
      test user. It caught: failed units print `×` not `●`; `systemctl start` is silent with exit 0 even when the
      program dies at once; `journalctl` as a plain user shows `-- No entries --` for system units. `FAILURE` is now
-     on NOT_ACRONYMS; ID, PID, UTC are AutoOps+ community entries. gnu.org still did not answer at Task 12.
+     on NOT_ACRONYMS; ID, PID, UTC are AutoOps+ community entries. gnu.org was down for everyone at Task 12 (owner, 2026-11-06); recheck the three coreutils links later.
    - Task 15: release. Empty `PENDING`, get the owner to approve the links, `npm run check`, one Opus whole-branch
      review, fix every finding (minors too), merge, push, `npm run deploy`, close #5.
 3. Between primer tasks and while tests run: the tools work (section B in
