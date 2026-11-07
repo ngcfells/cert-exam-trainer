@@ -7,16 +7,17 @@ Every session: run `gh issue list` in testingUtility first. Bugs come before eve
 file issues from the app (label `from-app`), so check for those too. At the end of 2026-11-06 the open issues were
 #11, #6 and #5, all enhancements.
 
-NEXT SESSION (written 2026-11-06, evening):
+NEXT SESSION (written 2026-11-06, late evening):
 
 1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
 2. testingUtility: the command primer, issue #5, branch `command-primer` (not merged). The plan is approved:
    `docs/superpowers/plans/2026-11-06-command-primer.md`. Ledger: `.superpowers/sdd/2026-11-06-command-primer/progress.md`
-   (keep it). Tasks 1 to 12 are done and green (Task 12, the services group, is the
-   `content(primer): services topics` commit). Next is **Task 13, the dev group** (`git`, `docker`, `conda` topics;
-   aliases git, docker, conda; bank words `git add`, `git checkout`, `git commit`, `git fetch`, `git push`,
-   `git remote`, `git switch`, `git tag`, `docker run`, `conda activate`, `conda install`; PowerShell cells are
-   mostly `Same command`). Run it with
+   (keep it). Tasks 1 to 13 are done and green (Task 13, the dev group, is the `content(primer): dev topics`
+   commit 854c9cf). Next is **Task 14, the data group**, the last content task: single-column topics with `where`
+   set, `sql` (anyCase; aliases `select`, `on`, `using`, `using(`) and `pandas` (aliases `df[`, `df.`, `pd.`); the
+   bank words left in `PENDING` are `ON`, `On`, `on`, `SELECT`, `select`, `USING`, `USING(`, `Using`, `Using(`,
+   `using`, `using(`, `df.`, `df[`. Check the plan's Task 1 schema and the spec for what a single-column topic looks
+   like (no PowerShell cell). Run it with
    superpowers:executing-plans and resume from the ledger. The content tasks (10 to 14) go one group per session: a
    Sonnet drafter, a Haiku copy check, an accuracy review in the main session, then shrink `PENDING` in
    `src/primer/coverage.test.ts`, commit, update this block, and `/clear`.
@@ -50,6 +51,10 @@ NEXT SESSION (written 2026-11-06, evening):
      test user. It caught: failed units print `×` not `●`; `systemctl start` is silent with exit 0 even when the
      program dies at once; `journalctl` as a plain user shows `-- No entries --` for system units. `FAILURE` is now
      on NOT_ACRONYMS; ID, PID, UTC are AutoOps+ community entries. gnu.org was down for everyone at Task 12 (owner, 2026-11-06); recheck the three coreutils links later.
+   - From Task 13: Docker Engine 29 now runs in WSL Ubuntu (apt `docker.io`, installed 2026-11-06). The
+     every-topic responsive e2e is marked `test.slow()` (axe over all open topics in two schemes passed 30 s); if it
+     times out again after Task 14, raise its budget, do not drop the check.
+     Python (miniconda, conda 25.11) is on Windows for checking pandas examples; sqlite3 may need checking for SQL.
    - Task 15: release. Empty `PENDING`, get the owner to approve the links, `npm run check`, one Opus whole-branch
      review, fix every finding (minors too), merge, push, `npm run deploy`, close #5.
 3. Between primer tasks and while tests run: the tools work (section B in
