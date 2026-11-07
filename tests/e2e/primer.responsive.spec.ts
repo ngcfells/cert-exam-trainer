@@ -21,6 +21,8 @@ async function checkBothSchemes(page: Page, where: string) {
 }
 
 test('the primer screen with every Learn more open fits and is axe clean', async ({ page }) => {
+  // Every topic open, scanned twice: axe needs more than the default 30 s once all groups are written.
+  test.slow();
   await page.goto(singleUrl);
   await openExam(page, 'DA0-002');
   await page.getByRole('button', { name: 'Command primer: DA0-002' }).click();
