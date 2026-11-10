@@ -1,3 +1,13 @@
+# 2026-11-10 (night): #17 done and live. Nothing outstanding in testingUtility
+
+Next session model: **Sonnet**. #17 (install as an app) is built, pushed (main f4e68a4), deployed (gh-pages f9f8d75) and
+closed. Check: lint, typecheck, builds, unit, e2e 120 passed. Not tried on a real Android phone: the reporter was asked to
+check Settings > Install as an app. Code: `src/install.ts`, `src/ui/InstallApp.tsx`, PNG icons in `public/`.
+
+Next: `gh issue list` first (bugs and `from-app` first). Open enhancements: #11 (hashing of content), #6 (links to in-depth
+explanations). Then the tools work: top block of `C:/repo/JBTToolsSupportFiles/handoff.md` (owner decisions pending on
+`mordel-user-key`: sandbox default, reply to Scott, optional features, merge).
+
 # 2026-11-10 (late): tools work is next. Read this first
 
 Next session model: **Sonnet**. The full block is at the top of `C:/repo/JBTToolsSupportFiles/handoff.md` (review patch
