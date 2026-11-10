@@ -31,9 +31,14 @@ Both branches are in the bundles under `Custom/cloud-handoff/`. Nothing is pushe
 
 All 66 primer links checked from the home machine: the 51 that are not on gnu.org return 200. The 15 gnu.org manual
 links time out in the TLS handshake (gnu.org has been up and down since August, per the owner); cat and printf
-answered once, and the Wayback Machine has a 200 copy of all 15 (most from Oct 2026), so the pages exist. Kept as
-they are. The GNU download mirror the owner gave (mirror.team-cymru.com/gnu/) carries tarballs only, not the HTML
-manuals. Task 15 still needs the owner to approve the link list.
+answered once, and the Wayback Machine has a 200 copy of all 15 (most from Oct 2026), so the pages exist. The GNU
+download mirror the owner gave (mirror.team-cymru.com/gnu/) carries tarballs only, not the HTML manuals, so on the
+owner's call all 15 now point at the man7.org man pages (bash job control, chmod, inode for permission bits,
+sha256sum, cat, grep, sort, uniq, head, tail, wc, sed, gawk, tr, printf), each checked 200. All 66 links now answer.
+Task 15 still needs the owner to approve the link list.
+
+Next session model: Sonnet. Task 15 is `npm run check`, merge, push, deploy; only its one whole-branch review runs
+on Opus, as a subagent.
 
 # 2026-11-09 (cloud): link list sent, waiting on the owner
 
