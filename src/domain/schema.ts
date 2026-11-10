@@ -1,5 +1,6 @@
 import { z } from 'zod';
 import { isPbqTemplate, pbqIssues } from './pbq';
+import { isValidSearchTerm } from '../learn/phrase';
 import type { ExamMeta, Question } from './types';
 
 const PBQ_TYPES = [
@@ -18,6 +19,7 @@ const base = {
   stem: z.string().min(1),
   explanation: z.string(),
   partExplanations: z.record(z.string()).optional(),
+  searchTerm: z.string().refine(isValidSearchTerm, 'search term: 2 to 6 words, at most 50 characters, letters, digits, spaces, hyphens, periods').optional(),
   acronyms: z.array(z.string()),
   status: z.enum(['draft', 'reviewed', 'approved']),
 };

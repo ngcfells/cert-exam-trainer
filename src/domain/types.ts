@@ -18,6 +18,8 @@ export interface Question {
   answer: unknown;
   explanation: string;
   partExplanations?: Record<string, string>;
+  /** Short phrase for the Learn more search links (see src/learn/phrase.ts). */
+  searchTerm?: string;
   acronyms: string[];
   status: 'draft' | 'reviewed' | 'approved';
 }

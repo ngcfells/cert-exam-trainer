@@ -134,3 +134,13 @@ describe('mcq-multi pick', () => {
     expect(() => parseQuestion({ ...mcq, pick: 2 })).toThrow();
   });
 });
+
+describe('searchTerm', () => {
+  it('accepts a valid search term and still parses without one', () => {
+    expect(parseQuestion({ ...mcq, searchTerm: 'DNS TTL' }).searchTerm).toBe('DNS TTL');
+    expect(parseQuestion(mcq).searchTerm).toBeUndefined();
+  });
+  it('rejects a search term with URL characters', () => {
+    expect(() => parseQuestion({ ...mcq, searchTerm: 'x&y z' })).toThrow();
+  });
+});
