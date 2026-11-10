@@ -67,6 +67,11 @@
     "objectiveIds": [
       "3.2"
     ],
+    "diagram": {
+      "kind": "tail-curve",
+      "caption": "One-tailed and two-tailed tests",
+      "description": "Three bell curves. In a left-tailed test only the far left tail is shaded, in a right-tailed test only the far right tail, and in a two-tailed test both tails. The shaded tails are the results extreme enough to reject the null hypothesis."
+    },
     "meaning": [
       "A hypothesis test starts with two opposite statements: the null hypothesis, which says nothing has changed, and the alternative, which is the claim you want evidence for.",
       "Analysts care because the exam often gives a scenario and asks which pair of hypotheses fits it."
@@ -104,6 +109,11 @@
     "objectiveIds": [
       "3.2"
     ],
+    "diagram": {
+      "kind": "error-matrix",
+      "caption": "The four outcomes of a hypothesis test",
+      "description": "A two-by-two grid. Rejecting a true null hypothesis is a Type I error, a false positive. Rejecting a false null hypothesis is correct, a true positive. Keeping a true null hypothesis is correct, a true negative. Keeping a false null hypothesis is a Type II error, a false negative."
+    },
     "meaning": [
       "A hypothesis test can be wrong in two ways: it can find an effect that is not there (Type I), or miss one that is (Type II).",
       "Analysts care because the two mistakes have different costs, and the exam asks which one a scenario describes."
@@ -161,6 +171,11 @@
     "objectiveIds": [
       "3.2"
     ],
+    "diagram": {
+      "kind": "tail-curve",
+      "caption": "The p-value is a tail area",
+      "description": "Three bell curves for left-tailed, right-tailed and two-tailed tests, each with its extreme tails shaded. The shaded area is the chance of a result at least as extreme as the one observed if the null hypothesis were true. The smaller it is, the stronger the evidence against the null hypothesis."
+    },
     "meaning": [
       "A p-value says how surprising the data would be if the null hypothesis were true. A small p-value means the data would be unusual under H₀, which is evidence against it.",
       "Analysts care because \"statistically significant\" in a report means the p-value fell below the chosen significance level."

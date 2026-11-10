@@ -68,6 +68,11 @@
     "objectiveIds": [
       "2.3"
     ],
+    "diagram": {
+      "kind": "join-venn",
+      "caption": "What each join keeps",
+      "description": "Four pairs of overlapping circles, A for the left table and B for the right table. An inner join shades only the overlap. A left join shades all of A. A right join shades all of B. A full outer join shades both circles entirely."
+    },
     "meaning": [
       "A join puts two tables side by side, pairing rows whose keys match. The join types differ only in what happens to rows that have no match.",
       "Analysts care because the join type decides which rows reach the report: the wrong one quietly drops customers or adds orphan rows."

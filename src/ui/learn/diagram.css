@@ -1,0 +1,20 @@
+.diagram { margin: 0.75rem 0 1rem; }
+.diagram svg { display: block; width: 100%; max-width: 34rem; height: auto; color: var(--fg); }
+.diagram figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 0.25rem; }
+.diagram .d-text { fill: currentColor; font-size: 12px; }
+.diagram .d-strong { font-weight: bold; }
+.diagram .d-line { fill: none; stroke: currentColor; stroke-width: 2; }
+.diagram .d-axis { stroke: var(--border); stroke-width: 1.5; }
+.diagram .d-resid { stroke: var(--bad); stroke-width: 2; stroke-dasharray: 4 3; }
+.diagram .d-dot { fill: var(--chart); stroke: var(--bg); stroke-width: 1; }
+.diagram .d-fill { fill: var(--chart); stroke: none; }
+.diagram .d-fill-3 { fill-opacity: 0.2; }
+.diagram .d-fill-2 { fill-opacity: 0.3; }
+.diagram .d-fill-1 { fill-opacity: 0.45; }
+.diagram .d-fill-reject { fill: var(--bad); fill-opacity: 0.45; }
+.diagram .d-fill-sel { fill-opacity: 0.5; }
+.diagram .d-cell { stroke-width: 1.5; }
+.diagram .d-cell-err { fill: var(--mark-bad-bg); stroke: var(--mark-bad); }
+.diagram .d-cell-ok { fill: var(--mark-ok-bg); stroke: var(--mark-ok); }
+.diagram .d-t-err { fill: var(--mark-bad); }
+.diagram .d-t-ok { fill: var(--mark-ok); }

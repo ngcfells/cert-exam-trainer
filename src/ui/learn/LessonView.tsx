@@ -1,6 +1,7 @@
 import type { Lesson } from '../../domain/lesson';
 import { plural, Table, useFocusHeading } from '../kit';
 import { Formula } from './Formula';
+import { LessonDiagram } from './LessonDiagram';
 
 export function LessonView({ lesson, checkCount, onCheck }: { lesson: Lesson; checkCount: number; onCheck: () => void }) {
   const headingRef = useFocusHeading([lesson.id]);
@@ -11,6 +12,7 @@ export function LessonView({ lesson, checkCount, onCheck }: { lesson: Lesson; ch
 
       <h3>What it means</h3>
       {lesson.meaning.map((p, i) => <p key={i}>{p}</p>)}
+      {lesson.diagram && <LessonDiagram diagram={lesson.diagram} />}
 
       {formula ? (
         <>

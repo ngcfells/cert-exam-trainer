@@ -14,6 +14,19 @@ describe('getLessons', () => {
     expect(getLessons('NOPE')).toEqual([]);
   });
 
+  it('gives the lessons that a picture clarifies their diagram', () => {
+    const kinds = Object.fromEntries(shippedLessons.filter((l) => l.diagram).map((l) => [l.id, l.diagram!.kind]));
+    expect(kinds).toEqual({
+      'b-distribution-shape': 'bell-rule',
+      'c-hypotheses': 'tail-curve',
+      'c-type-errors': 'error-matrix',
+      'c-p-values': 'tail-curve',
+      'd-linear-regression': 'regression-fit',
+      'd-logistic-regression': 'sigmoid-curve',
+      'f-join-types': 'join-venn',
+    });
+  });
+
   it('exposes the shipped lessons for the bank checks', () => {
     expect(shippedLessons.map((l) => l.id)).toContain('a-percent-change');
   });

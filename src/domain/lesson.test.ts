@@ -31,6 +31,21 @@ describe('lessonSchema', () => {
     expect(issues(lesson).join('\n')).toMatch(msg);
   });
 
+  it('accepts a diagram with a caption and a description', () => {
+    const diagram = { kind: 'join-venn', caption: 'Four joins.', description: 'Two circles, A and B.' };
+    expect(issues({ ...sampleLesson, diagram })).toEqual([]);
+    expect(lessonText(lessonSchema.parse({ ...sampleLesson, diagram }))).toContain('Two circles, A and B.');
+    expect(lessonText(lessonSchema.parse({ ...sampleLesson, diagram }))).toContain('Four joins.');
+  });
+
+  it.each([
+    ['an unknown diagram kind', { kind: 'pie', caption: 'c', description: 'd' }],
+    ['a diagram with no description', { kind: 'join-venn', caption: 'c' }],
+    ['a diagram with an extra key', { kind: 'join-venn', caption: 'c', description: 'd', x: 1 }],
+  ])('rejects %s', (_n, diagram) => {
+    expect(issues({ ...sampleLesson, diagram })).not.toEqual([]);
+  });
+
   it('lessonText includes every prose field', () => {
     const t = lessonText(lessonSchema.parse(sampleLesson));
     for (const s of ['What it means.', 'x squared', 'a value', 'Take 3.', 'Steps', '3 times 3 is 9.', 'Doubling gives 6.', 'Squaring']) expect(t).toContain(s);

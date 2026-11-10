@@ -13,6 +13,9 @@ export const AREA_TITLES: Record<(typeof LESSON_AREAS)[number], string> = {
 
 const text = z.string().min(1);
 
+/** The pictures a lesson can show; each is drawn in code by src/ui/learn/LessonDiagram.tsx. */
+export const DIAGRAM_KINDS = ['join-venn', 'bell-rule', 'tail-curve', 'error-matrix', 'regression-fit', 'sigmoid-curve'] as const;
+
 export const lessonSchema = z
   .object({
     id: z.string().regex(/^[a-z0-9-]+$/, 'use lowercase letters, digits and hyphens'),
@@ -21,6 +24,8 @@ export const lessonSchema = z
     title: text,
     objectiveIds: z.array(text).min(1),
     meaning: z.array(text).min(1).max(2),
+    /** A picture for the lesson: the caption is shown, the description is read by screen readers. */
+    diagram: z.object({ kind: z.enum(DIAGRAM_KINDS), caption: text, description: text }).strict().optional(),
     /** `text` may use `^{...}` for superscript and `_{...}` for subscript; `spoken` reads it in words. */
     formula: z.object({ text, spoken: text, symbols: z.array(z.object({ symbol: text, meaning: text }).strict()).min(1) }).strict().optional(),
     /** For lessons without a formula: the rule, one paragraph per entry. */
@@ -53,6 +58,7 @@ export function lessonText(l: Lesson): string {
   return [
     l.title,
     ...l.meaning,
+    ...(l.diagram ? [l.diagram.caption, l.diagram.description] : []),
     ...(l.formula ? [l.formula.text, l.formula.spoken, ...l.formula.symbols.flatMap((s) => [s.symbol, s.meaning])] : []),
     ...(l.rule ?? []),
     l.example.intro,

@@ -75,6 +75,11 @@
     "objectiveIds": [
       "3.2"
     ],
+    "diagram": {
+      "kind": "regression-fit",
+      "caption": "A fitted line and its errors",
+      "description": "A scatter plot with a straight line fitted through the points. Dashed vertical gaps join each point to the line. Each gap is the error, written with the Greek letter epsilon: the part of y that the line does not explain."
+    },
     "meaning": [
       "Linear regression draws the straight line that best fits a set of points, so you can predict one number from another.",
       "Analysts care because the exam gives an equation such as sales = 50 + 4x and asks what the numbers mean or what it predicts."
@@ -160,6 +165,11 @@
       "1.5",
       "3.2"
     ],
+    "diagram": {
+      "kind": "sigmoid-curve",
+      "caption": "The S-shaped curve of logistic regression",
+      "description": "An S-shaped curve that rises from near 0 on the left to near 1 on the right, so any input becomes a probability between 0 and 1. A dashed line marks the 0.5 cutoff: predictions above it are yes, and predictions below it are no."
+    },
     "meaning": [
       "Logistic regression predicts the chance of a yes/no outcome, such as whether a customer will cancel, as a probability between 0 and 1.",
       "Analysts care because the exam asks which model fits a question, and a yes/no outcome points to logistic, not linear, regression."
