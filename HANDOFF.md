@@ -1,3 +1,10 @@
+# 2026-11-10 (late): tools work is next. Read this first
+
+Next session model: **Sonnet**. The full block is at the top of `C:/repo/JBTToolsSupportFiles/handoff.md` (review patch
+applied and pushed, beta deployed, Scott's API v1 docs done, sandbox key in `.env.mordel`). Start there: `gh issue list`,
+then check the `mordel-user-key` branch against Scott's docs. testingUtility itself has nothing outstanding; its next
+issues are #16 and #17.
+
 # 2026-11-10 (local): #630, #18 and the primer are all DONE and live
 
 Next session model: **Sonnet**. Everything below ran on Claude only (no astech, no Ollama), as the owner asked.
