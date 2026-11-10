@@ -39,7 +39,8 @@
     "acronyms": [
       "AI",
       "IDE"
-    ]
+    ],
+    "searchTerm": "AI generated code security review"
   },
   {
     "id": "cy1-3-1-mcq-002",
@@ -81,7 +82,8 @@
     "acronyms": [
       "AI",
       "IDE"
-    ]
+    ],
+    "searchTerm": "AI code suggestions vulnerable dependencies"
   },
   {
     "id": "cy1-3-1-mcq-003",
@@ -120,7 +122,8 @@
       ]
     },
     "explanation": "Page text submitted to an external model can include internal tickets and customer data, so sending it out is a data exposure risk. Load speed, certificate checks, and cookies are not changed by sending text to a model.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "browser plugin data privacy risk"
   },
   {
     "id": "cy1-3-1-mcq-004",
@@ -161,7 +164,8 @@
     "explanation": "Narrow site access and a pre-deployment review keep the plug-in from seeing unrelated pages. Free choice of versions, a late fix, and weaker inspection all widen the exposure.",
     "acronyms": [
       "HTTPS"
-    ]
+    ],
+    "searchTerm": "browser extension permissions least privilege"
   },
   {
     "id": "cy1-3-1-mcq-005",
@@ -202,7 +206,8 @@
     "explanation": "Generated commands can change or delete data, so a human reads them and tries them somewhere harmless. Elevated rights, piping into the shell, and regenerating until it looks right remove the chance to catch a mistake.",
     "acronyms": [
       "CLI"
-    ]
+    ],
+    "searchTerm": "AI generated shell commands risk"
   },
   {
     "id": "cy1-3-1-mcq-006",
@@ -241,7 +246,8 @@
       ]
     },
     "explanation": "A chatbot that is not grounded in current, approved material can state invented or outdated steps with confidence, so its answers need monitoring. Cost, injection, and transport encryption are separate concerns that the scenario does not describe.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "LLM hallucination in chatbot answers"
   },
   {
     "id": "cy1-3-1-mcq-007",
@@ -282,7 +288,8 @@
     "explanation": "Confirmation for actions taken on a person's behalf puts a human between a tricked instruction and its effect. Full credentials, unreviewed learning, and speed all increase the damage a hostile message can do.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI assistant human confirmation actions"
   },
   {
     "id": "cy1-3-1-mcq-008",
@@ -321,7 +328,8 @@
       ]
     },
     "explanation": "A personal assistant works on behalf of a particular user and can reach that user's mail, calendar, and files, which is why its permissions matter. The other options describe scripted menus, generic training, and a tool-less model.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "personal AI assistant versus chatbot"
   },
   {
     "id": "cy1-3-1-mcq-009",
@@ -363,7 +371,8 @@
     "acronyms": [
       "AI",
       "MCP"
-    ]
+    ],
+    "searchTerm": "Model Context Protocol overview"
   },
   {
     "id": "cy1-3-1-mcq-010",
@@ -404,7 +413,8 @@
     "explanation": "Every connected server adds another place where sensitive records can be exposed and shared context can be misused, so access must be scoped per server. Latency, invented tool names, and library drift are operational nuisances that do not grow into a data-exposure risk.",
     "acronyms": [
       "MCP"
-    ]
+    ],
+    "searchTerm": "MCP server security risks"
   },
   {
     "id": "cy1-3-1-mcq-011",
@@ -445,7 +455,8 @@
     "explanation": "Limiting the tool and the credential to lookups enforces the boundary technically. A prompt instruction can be bypassed, a shared administrator token is excessive, and open client access removes control over who calls.",
     "acronyms": [
       "MCP"
-    ]
+    ],
+    "searchTerm": "least privilege for MCP tools"
   },
   {
     "id": "cy1-3-1-mcq-012",
@@ -486,7 +497,8 @@
     "explanation": "An MCP server brings in tools and text the assistant will trust, so an unvetted server is a supply-chain risk and needs review and approval before connection. Testing in production, broad scopes, and informal forum opinions do not vet it.",
     "acronyms": [
       "MCP"
-    ]
+    ],
+    "searchTerm": "vetting third party MCP servers"
   },
   {
     "id": "cy1-3-1-mcq-013",
@@ -525,7 +537,8 @@
       ]
     },
     "explanation": "Signature matching checks events against known indicators such as hashes and command patterns. Baselining is anomaly detection, predicting next steps is pattern-based analysis, and condensing alerts is summarization.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "signature based detection explained"
   },
   {
     "id": "cy1-3-1-mcq-014",
@@ -564,7 +577,8 @@
       ]
     },
     "explanation": "Signature matching compares activity with fixed known patterns, so a changed string falls outside the rule. Flag counts, encryption of command lines, and the account used are not how pattern rules work.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "signature detection evasion variants"
   },
   {
     "id": "cy1-3-1-mcq-015",
@@ -603,7 +617,8 @@
       ]
     },
     "explanation": "Linting looks at style, readability, and logic problems. Weakness mapping, exploitability scoring, and dependency checks are vulnerability analysis tasks.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "code linting versus vulnerability analysis"
   },
   {
     "id": "cy1-3-1-mcq-016",
@@ -644,7 +659,8 @@
     "explanation": "CLI plug-ins can draft commands from a plain-language request, and the engineer reviews the draft before running it. They cannot certify safety or grant permissions, and output should not be stored with the vendor.",
     "acronyms": [
       "CLI"
-    ]
+    ],
+    "searchTerm": "CLI plugin natural language commands"
   },
   {
     "id": "cy1-3-1-mcq-017",
@@ -685,7 +701,8 @@
     "explanation": "AI helps interpret and prioritize large result sets, with people deciding what to fix. Risk acceptance, proving absence, and unapproved patching are decisions or actions that need humans and process.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI scanner findings prioritization"
   },
   {
     "id": "cy1-3-1-mcq-018",
@@ -728,7 +745,8 @@
       "AI",
       "CVE",
       "CWE"
-    ]
+    ],
+    "searchTerm": "CVE and CWE vulnerability sources"
   },
   {
     "id": "cy1-3-1-mcq-019",
@@ -769,7 +787,8 @@
     "explanation": "Testing is limited to the authorized scope, so the tester stops, documents what was seen, and gets written approval before going further. Testing it, exploiting it, or hiding it all break the engagement terms.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "penetration testing scope authorization"
   },
   {
     "id": "cy1-3-1-mcq-020",
@@ -811,7 +830,8 @@
     "acronyms": [
       "AI",
       "SOC"
-    ]
+    ],
+    "searchTerm": "validating automated penetration test results"
   },
   {
     "id": "cy1-3-1-mcq-021",
@@ -850,7 +870,8 @@
       ]
     },
     "explanation": "Anomaly detection compares activity with an expected baseline and flags large departures. A server that normally talks to a few internal hosts contacting many external ones is such a departure; the other events are routine.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "anomaly detection baseline deviation"
   },
   {
     "id": "cy1-3-1-mcq-022",
@@ -889,7 +910,8 @@
       ]
     },
     "explanation": "The baseline does not represent legitimate seasonal change, so it needs retraining or tuning. Downgrading alerts hides real ones, switching off removes coverage, and automatic blocking would harm legitimate users.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "anomaly detection false positives tuning"
   },
   {
     "id": "cy1-3-1-mcq-023",
@@ -928,7 +950,8 @@
       ]
     },
     "explanation": "Finding recurring combinations of events in data is pattern recognition. Signature matching uses predefined indicators, translation converts language, and linting reviews code.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pattern recognition in security logs"
   },
   {
     "id": "cy1-3-1-mcq-024",
@@ -967,7 +990,8 @@
       ]
     },
     "explanation": "The two are related, since recognized patterns help define what is expected, but one finds repeated structure and the other finds deviation. The other statements wrongly describe rules, data types, and the roles of known indicators.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pattern recognition versus anomaly detection"
   },
   {
     "id": "cy1-3-1-mcq-025",
@@ -1009,7 +1033,8 @@
     "acronyms": [
       "AI",
       "SIEM"
-    ]
+    ],
+    "searchTerm": "alert correlation incident grouping"
   },
   {
     "id": "cy1-3-1-mcq-026",
@@ -1051,7 +1076,8 @@
     "acronyms": [
       "AI",
       "SOC"
-    ]
+    ],
+    "searchTerm": "post incident review AI"
   },
   {
     "id": "cy1-3-1-mcq-027",
@@ -1092,7 +1118,8 @@
     "explanation": "Threat modeling identifies threats while the design can still change. Fraud detection, signature matching, and translation apply to running systems or other tasks.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI threat modeling design phase"
   },
   {
     "id": "cy1-3-1-mcq-028",
@@ -1133,7 +1160,8 @@
     "explanation": "The list is a starting point that people check against the actual design and extend. Treating it as complete, publishing it, or dropping lower-rated items skips that judgment.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "threat modeling human review"
   },
   {
     "id": "cy1-3-1-mcq-029",
@@ -1172,7 +1200,8 @@
       ]
     },
     "explanation": "A high score is a reason to verify, which stops possible fraud while keeping legitimate customers. Closing accounts, deleting records, and raising limits are unjustified reactions.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "fraud risk scoring transactions"
   },
   {
     "id": "cy1-3-1-mcq-030",
@@ -1211,7 +1240,8 @@
       ]
     },
     "explanation": "Flagging legitimate activity is a false positive, and it burdens customers and analysts. False negatives are missed fraud, and true negatives and positives are correct results.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "false positive versus false negative"
   },
   {
     "id": "cy1-3-1-mcq-031",
@@ -1253,7 +1283,8 @@
     "acronyms": [
       "AI",
       "SOC"
-    ]
+    ],
+    "searchTerm": "AI translation for phishing analysis"
   },
   {
     "id": "cy1-3-1-mcq-032",
@@ -1294,7 +1325,8 @@
     "explanation": "Translation errors in dates, names, and amounts can mislead response, so critical details get human confirmation. Fluency is no proof of accuracy, repeating the request does not verify it, and ignoring the message loses useful intelligence.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "machine translation accuracy risks"
   },
   {
     "id": "cy1-3-1-mcq-033",
@@ -1333,7 +1365,8 @@
       ]
     },
     "explanation": "Summarization turns large volumes of text into a short, readable account. Spotting a traffic spike is anomaly detection, matching a command line to a rule is signature matching, and writing a firewall rule is authoring, not condensing.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "summarization in incident handling"
   },
   {
     "id": "cy1-3-1-mcq-034",
@@ -1374,7 +1407,8 @@
     "explanation": "Summaries can drop critical details, so a person checks them against the source before they are used. A shorter summary loses more, deleting the report removes evidence, and more creativity increases error.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI summary omissions human review"
   },
   {
     "id": "cy1-3-1-mcq-035",
@@ -1413,7 +1447,8 @@
       ]
     },
     "explanation": "Feedback loops let analyst decisions improve detection quality. Muting, an extreme threshold, and removing review reduce coverage or visibility instead of improving accuracy.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "feedback loops for alert triage"
   },
   {
     "id": "cy1-3-1-mcq-036",
@@ -1454,7 +1489,8 @@
     "explanation": "Exposure and exploit availability raise real risk beyond the base score, which is the context AI can use to prioritize. A disconnected machine, description length, and detection date say little about likelihood of attack.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "vulnerability prioritization exploitability"
   },
   {
     "id": "cy1-3-1-mcq-037",
@@ -1501,7 +1537,8 @@
     "acronyms": [
       "IDE",
       "IP"
-    ]
+    ],
+    "searchTerm": "security risks of cloud code assistants"
   },
   {
     "id": "cy1-3-1-mcq-038",
@@ -1545,7 +1582,8 @@
       ]
     },
     "explanation": "Grounding in approved material and reviewing sampled replies catch and correct wrong answers. Learning from unverified chat, hiding sources, and removing feedback make errors harder to find.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "retrieval grounding for chatbots"
   },
   {
     "id": "cy1-3-1-mcq-039",
@@ -1589,7 +1627,8 @@
       ]
     },
     "explanation": "Signatures catch what is already known and miss changed or novel threats. Baselining and flagging unseen activity belong to anomaly detection, and signatures need regular updates.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "signature matching limitations"
   },
   {
     "id": "cy1-3-1-mcq-040",
@@ -1640,7 +1679,8 @@
     "explanation": "AI can assemble context, draft communications, and suggest relevant playbooks while people decide. Unreviewed isolation, deleting logs, and self-closing incidents remove oversight and evidence.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI uses in incident management"
   },
   {
     "id": "cy1-3-1-mcq-041",
@@ -1684,7 +1724,8 @@
       ]
     },
     "explanation": "A device sending data somewhere new and an account reaching beyond its usual work depart from the baseline. The payroll file, backup, and patch window are routine and scheduled.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "behavioral baseline anomaly examples"
   },
   {
     "id": "cy1-3-1-mcq-042",
@@ -1730,7 +1771,8 @@
     "explanation": "Throttling and agreed windows with a stop contact limit disruption. Default intensity during working hours, unplanned scope expansion, and switched-off alerting raise the chance of outages and leave defenders blind.",
     "acronyms": [
       "SOC"
-    ]
+    ],
+    "searchTerm": "safe automated penetration testing"
   },
   {
     "id": "cy1-3-1-mcq-043",
@@ -1782,7 +1824,8 @@
     "acronyms": [
       "AI",
       "SOC"
-    ]
+    ],
+    "searchTerm": "AI translation summarization SOC"
   },
   {
     "id": "cy1-3-1-mcq-044",
@@ -1828,7 +1871,8 @@
     "explanation": "A suggested fix is verified by re-scanning and by regression tests that show nothing else broke. Compiling, hurried deployment, and the model's confidence do not show that the fix is secure.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "verifying AI suggested vulnerability fixes"
   },
   {
     "id": "cy1-3-1-terminal-001",
@@ -1933,7 +1977,8 @@
       "AI",
       "CLI",
       "TLS"
-    ]
+    ],
+    "searchTerm": "vulnai CLI triage commands"
   },
   {
     "id": "cy1-3-1-config-001",
@@ -2061,7 +2106,8 @@
     "acronyms": [
       "AI",
       "MCP"
-    ]
+    ],
+    "searchTerm": "MCP connection security settings"
   },
   {
     "id": "cy1-3-1-data-001",
@@ -2225,7 +2271,8 @@
       "t4": "0.30 is the bottom of the hold band, so it is held rather than approved.",
       "t5": "0.80 meets the decline threshold, so it is declined and escalated."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "fraud score threshold policy"
   },
   {
     "id": "cy1-3-1-hotspot-001",
@@ -2362,7 +2409,8 @@
     "acronyms": [
       "AI",
       "MFA"
-    ]
+    ],
+    "searchTerm": "browser plugin security settings"
   },
   {
     "id": "cy1-3-1-match-001",
@@ -2445,7 +2493,8 @@
     },
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "security tasks AI use cases"
   },
   {
     "id": "cy1-3-1-match-002",
@@ -2537,7 +2586,8 @@
       "CLI",
       "IDE",
       "MCP"
-    ]
+    ],
+    "searchTerm": "AI security tool risks"
   },
   {
     "id": "cy1-3-1-order-001",
@@ -2601,7 +2651,8 @@
     "acronyms": [
       "AI",
       "SIEM"
-    ]
+    ],
+    "searchTerm": "AI assisted incident response workflow"
   },
   {
     "id": "cy1-3-1-buckets-001",
@@ -2682,6 +2733,7 @@
     },
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "security tasks AI use categories"
   }
 ]

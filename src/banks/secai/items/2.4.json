@@ -38,7 +38,8 @@
     "explanation": "Data moving over a network is protected by encryption in transit, typically TLS. Encryption at rest protects stored copies, hashing is one-way so the endpoint could not read the data, and role-based access limits who administers the endpoint without protecting the traffic.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "encryption in transit TLS"
   },
   {
     "id": "cy1-2-4-mcq-002",
@@ -80,7 +81,8 @@
     "acronyms": [
       "API",
       "TLS"
-    ]
+    ],
+    "searchTerm": "encryption at rest for vector stores"
   },
   {
     "id": "cy1-2-4-mcq-003",
@@ -121,7 +123,8 @@
     "explanation": "A confidential computing enclave protects data in use by isolating the computation and its memory from the host and its operator. Bucket encryption covers data at rest and TLS covers data in transit, but both leave plaintext in memory while the job runs. Tokenizing names hides one field, not the rest of the data.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "confidential computing enclaves"
   },
   {
     "id": "cy1-2-4-mcq-004",
@@ -160,7 +163,8 @@
       ]
     },
     "explanation": "Homomorphic encryption permits some operations on encrypted values and returns an encrypted result, at a cost in speed. Dynamic masking hides values from viewers at query time, tokenization swaps values for surrogates, and full-disk encryption protects stored data but the data is decrypted before processing.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "homomorphic encryption computation"
   },
   {
     "id": "cy1-2-4-mcq-005",
@@ -199,7 +203,8 @@
       ]
     },
     "explanation": "Differentially private training adds controlled noise and clips gradients so that no single record has much influence on the model, which limits what can be inferred about an individual. Masking the table, encrypting checkpoints and tokenizing labels protect data in other ways but do not change what the trained weights reveal.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "differential privacy model training"
   },
   {
     "id": "cy1-2-4-mcq-006",
@@ -238,7 +243,8 @@
       ]
     },
     "explanation": "More noise makes it harder to infer any one person's data, but it also blurs the signal the model learns from, so accuracy usually falls. Weaker privacy with higher accuracy reverses the trade-off, faster training is unrelated to the noise level, and claiming no effect on accuracy ignores the cost of the added noise.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "differential privacy noise tradeoff"
   },
   {
     "id": "cy1-2-4-mcq-007",
@@ -279,7 +285,8 @@
     "explanation": "TLS with certificate validation encrypts the transfer and confirms the destination is genuine. Bucket encryption protects the data only after it arrives, a checksum detects changes without hiding content, and limiting access governs who may write to the bucket rather than who can read the traffic.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "TLS certificate validation transfer"
   },
   {
     "id": "cy1-2-4-mcq-008",
@@ -321,7 +328,8 @@
     "acronyms": [
       "AI",
       "TLS"
-    ]
+    ],
+    "searchTerm": "disabling certificate verification risks"
   },
   {
     "id": "cy1-2-4-mcq-009",
@@ -360,7 +368,8 @@
       ]
     },
     "explanation": "Separating the key from the data means an attacker who copies the store still has to compromise the key service as well. Separation does not speed up decryption, rotation is still needed, and it does nothing to let tenants read each other's data; separate keys actually limit that.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "separate key management service"
   },
   {
     "id": "cy1-2-4-mcq-010",
@@ -401,7 +410,8 @@
     "explanation": "Giving each customer's index its own key confines an exposure to that customer. A single master key puts all indexes at risk, a key derived from a guessable name is weak and shared, and a longer key that is still shared opens all the indexes at once.",
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "per-tenant encryption keys"
   },
   {
     "id": "cy1-2-4-mcq-011",
@@ -440,7 +450,8 @@
       ]
     },
     "explanation": "Backups and snapshots contain the same data, so they need encryption at rest as well. Being read-only does not reduce what an attacker gains from a copy, encryption on one volume does not carry over to separately stored copies, and rare reads do not stop theft of the archive.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "encrypting backups and snapshots"
   },
   {
     "id": "cy1-2-4-mcq-012",
@@ -479,7 +490,8 @@
       ]
     },
     "explanation": "Anonymization strips or generalizes identifying details so the result cannot reasonably be tied back to a person. Masking swaps values for fictitious ones to preserve formats, tokenization keeps a mapping that can be reversed, and encryption is reversible with the key.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "anonymization versus pseudonymization"
   },
   {
     "id": "cy1-2-4-mcq-013",
@@ -518,7 +530,8 @@
       ]
     },
     "explanation": "Combining birth date, postal code and gender with other data sets can single out individuals, so removing names alone leaves a re-identification risk. The random codes are not ciphertext, encrypting birth dates would not change that they identify, and regulators treat many indirect attributes as identifying.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "quasi-identifiers re-identification risk"
   },
   {
     "id": "cy1-2-4-mcq-014",
@@ -557,7 +570,8 @@
       ]
     },
     "explanation": "Generalizing the amount to a band keeps trend analysis possible while removing the precision that could single someone out. An unsalted hash of a small set of amounts is easy to reverse, a second table is still linkable by row number, and encryption with a co-located key is easily undone.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "generalization for anonymizing data"
   },
   {
     "id": "cy1-2-4-mcq-015",
@@ -596,7 +610,8 @@
       ]
     },
     "explanation": "Because the lookup table allows re-linking, the data is pseudonymized and remains personal data under privacy regulations. Tokens that can be mapped back are not anonymous, removing names does not make data public, and tokens from a vault are surrogates rather than ciphertext.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pseudonymized data personal data status"
   },
   {
     "id": "cy1-2-4-mcq-016",
@@ -635,7 +650,8 @@
       ]
     },
     "explanation": "A classification label records the sensitivity of the data and ties it to handling rules such as encryption, access and retention. Who collected it, how large it is and which model uses it are properties of the data set, not what the label conveys.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data classification labels purpose"
   },
   {
     "id": "cy1-2-4-mcq-017",
@@ -676,7 +692,8 @@
     "explanation": "A mixed index can return any of its content, so it must be protected at the strictest label present unless the content is split into separate indexes. Using the majority label, the builder's label or the first document's label would expose the contracts under weaker handling rules.",
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "mixed sensitivity RAG index handling"
   },
   {
     "id": "cy1-2-4-mcq-018",
@@ -715,7 +732,8 @@
       ]
     },
     "explanation": "Labels become controls when tools read them and act, for example by blocking a request that carries regulated content. Emails and wiki pages depend on people remembering, and a checksum protects integrity rather than where data may go.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data labels enforcement policy"
   },
   {
     "id": "cy1-2-4-mcq-019",
@@ -754,7 +772,8 @@
       ]
     },
     "explanation": "Labels must be reviewed as data evolves, otherwise sensitive content is handled under rules meant for less sensitive data. Transit encryption, token scope and retention length are separate controls and do not explain a stale label.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "stale data classification labels"
   },
   {
     "id": "cy1-2-4-mcq-020",
@@ -793,7 +812,8 @@
       ]
     },
     "explanation": "Redaction removes or obscures the sensitive elements so they cannot be recovered from the output. Tokenization substitutes surrogates and keeps a mapping, replication copies data, and normalization restructures values for consistency.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "redaction of sensitive content"
   },
   {
     "id": "cy1-2-4-mcq-021",
@@ -832,7 +852,8 @@
       ]
     },
     "explanation": "Sensitive values should be removed from text before a model can learn or memorize them. A restricted bucket limits who opens the files but still lets the job train on the diagnoses, a longer retention period increases exposure, and noise in the learning rate does nothing for the content.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sensitive data training fine-tuning"
   },
   {
     "id": "cy1-2-4-mcq-022",
@@ -873,7 +894,8 @@
     "explanation": "A compromised or misconfigured host inside the private network can capture unencrypted traffic, so internal links need encryption in transit as well. Private addressing does not prevent capture, a database does not refuse unencrypted clients unless configured to, and volume encryption protects stored data rather than data moving between services.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "internal network encryption in transit"
   },
   {
     "id": "cy1-2-4-mcq-023",
@@ -912,7 +934,8 @@
       ]
     },
     "explanation": "Static masking produces a permanent copy whose values are fictitious but keep the same formats. Encryption protects the real data rather than replacing it, read-only access still exposes real people, and deleting old rows leaves the rest of the real records in place.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "static data masking test environments"
   },
   {
     "id": "cy1-2-4-mcq-024",
@@ -951,7 +974,8 @@
       ]
     },
     "explanation": "Dynamic masking hides values at query time based on who is asking, while the stored data is unchanged. Static masking creates a separate altered copy, anonymization removes identifiability permanently, and minimization limits what is collected in the first place.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dynamic data masking role based"
   },
   {
     "id": "cy1-2-4-mcq-025",
@@ -990,7 +1014,8 @@
       ]
     },
     "explanation": "Tokenizing each account number to a stable surrogate hides the real value yet preserves matching across records. Redaction removes the column, ranges merge different customers, and identical asterisks make every record look the same, so each of those breaks the join.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "tokenization preserving joins"
   },
   {
     "id": "cy1-2-4-mcq-026",
@@ -1029,7 +1054,8 @@
       ]
     },
     "explanation": "Data minimization limits collection to what the purpose requires, so unneeded fields are never at risk. Masking, encrypting or deleting later all still collect and hold the extra data in the meantime.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data minimization collection"
   },
   {
     "id": "cy1-2-4-mcq-027",
@@ -1068,7 +1094,8 @@
       ]
     },
     "explanation": "Minimization means removing data the use case does not need, which also shrinks the impact of any breach or memorization. Encrypting, hoarding for future use, or hashing the columns still keeps the personal data in the training set.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "minimization unused personal fields"
   },
   {
     "id": "cy1-2-4-mcq-028",
@@ -1107,7 +1134,8 @@
       ]
     },
     "explanation": "A retention limit with deletion keeps the holdings to what is still needed. Indefinite archiving, extra copies on laptops and wider logging all increase the amount of data exposed.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data retention limits deletion"
   },
   {
     "id": "cy1-2-4-mcq-029",
@@ -1146,7 +1174,8 @@
       ]
     },
     "explanation": "Anonymization removes identifiability for good, which fits a recipient that never needs to re-link. Sending the lookup vault defeats tokenization, a shared key gives the researchers the plaintext, and dynamic masking on a live system keeps real data in place.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "anonymization for research sharing"
   },
   {
     "id": "cy1-2-4-mcq-030",
@@ -1187,7 +1216,8 @@
     "explanation": "A filter that detects and redacts the numbers removes them before they leave. TLS would deliver the numbers to the summarizer securely, an output filter acts only on replies, and encryption at rest protects the stored archive, not the outbound request.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "PII filtering before third-party calls"
   },
   {
     "id": "cy1-2-4-mcq-031",
@@ -1226,7 +1256,8 @@
       ]
     },
     "explanation": "Enclave memory encryption protects data in use from other processes on the host, including privileged ones. A stolen backup is an at-rest threat, a packet capture is an in-transit threat, and a hostile instruction in a document is a prompt injection that encryption does not stop.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "confidential computing threat model"
   },
   {
     "id": "cy1-2-4-mcq-032",
@@ -1274,7 +1305,8 @@
       "AI",
       "API",
       "TLS"
-    ]
+    ],
+    "searchTerm": "encryption in transit controls"
   },
   {
     "id": "cy1-2-4-mcq-033",
@@ -1321,7 +1353,8 @@
     "acronyms": [
       "AI",
       "HTTPS"
-    ]
+    ],
+    "searchTerm": "encryption at rest controls"
   },
   {
     "id": "cy1-2-4-mcq-034",
@@ -1367,7 +1400,8 @@
     "explanation": "Homomorphic encryption and confidential computing keep data protected while it is being processed. TLS covers data in transit, while backup and bucket encryption cover data at rest.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "data in use protection"
   },
   {
     "id": "cy1-2-4-mcq-035",
@@ -1418,7 +1452,8 @@
     "explanation": "Card numbers, home addresses and pasted secrets are sensitive values that a model could memorize and later reproduce. Model name, response time and timestamp are operational metadata that carry no personal or secret content.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "redacting chat logs before training"
   },
   {
     "id": "cy1-2-4-mcq-036",
@@ -1464,7 +1499,8 @@
     "explanation": "Holding less data shrinks the impact of a breach and the number of records that must be tracked, retained or erased. Minimization does not guarantee accuracy, and the data that remains still needs encryption and labels.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "benefits of data minimization"
   },
   {
     "id": "cy1-2-4-mcq-037",
@@ -1508,7 +1544,8 @@
       ]
     },
     "explanation": "Labels map to required controls and feed access decisions that compare the label with clearance. A label is metadata, so it does not encrypt anything by itself, and neither public data nor labeled data is exempt from logging or access review.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "classification labels security controls"
   },
   {
     "id": "cy1-2-4-mcq-038",
@@ -1556,7 +1593,8 @@
       ]
     },
     "explanation": "Masking replaces or hides values while preserving formats, and dynamic masking leaves the stored data intact. Masking does not delete data, anonymization needs no enclave and does not keep a restore mapping, and masking works on text as well as other data.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "masking versus anonymization differences"
   },
   {
     "id": "cy1-2-4-config-001",
@@ -1683,7 +1721,8 @@
     },
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "data encryption key management settings"
   },
   {
     "id": "cy1-2-4-config-002",
@@ -1811,7 +1850,8 @@
     "acronyms": [
       "GPU",
       "TLS"
-    ]
+    ],
+    "searchTerm": "model training data protection settings"
   },
   {
     "id": "cy1-2-4-buckets-001",
@@ -1894,7 +1934,8 @@
       "orders": "Tagging a table with a sensitivity level is a classification label.",
       "testcopy": "Replacing real names with realistic fictitious ones in a copy is static masking."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data safety technique classification"
   },
   {
     "id": "cy1-2-4-buckets-002",
@@ -1975,7 +2016,8 @@
     },
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "claim notes data handling controls"
   },
   {
     "id": "cy1-2-4-data-001",
@@ -2136,7 +2178,8 @@
     "acronyms": [
       "AI",
       "API"
-    ]
+    ],
+    "searchTerm": "data inventory safety controls"
   },
   {
     "id": "cy1-2-4-order-001",
@@ -2194,7 +2237,8 @@
     "acronyms": [
       "RAG",
       "TLS"
-    ]
+    ],
+    "searchTerm": "sensitive data preparation sequence"
   },
   {
     "id": "cy1-2-4-match-001",
@@ -2281,6 +2325,7 @@
       "p5": "Collecting and keeping no more than needed is minimization.",
       "p6": "A classification label tells policy engines how sensitive a dataset is."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data safety techniques matching"
   }
 ]

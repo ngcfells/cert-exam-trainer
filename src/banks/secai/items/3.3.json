@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "Low-code platforms let people build mostly from visual blocks and add a little hand-written logic where needed. No-code has no scripting step, full-stack development is written entirely by engineers, and recorded macros do not take a custom parsing script.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "low code platform definition"
   },
   {
     "id": "cy1-3-3-mcq-002",
@@ -78,7 +79,8 @@
     "acronyms": [
       "AI",
       "API"
-    ]
+    ],
+    "searchTerm": "no code AI builder security risks"
   },
   {
     "id": "cy1-3-3-mcq-003",
@@ -119,7 +121,8 @@
     "explanation": "Generated scripts can contain wrong assumptions, so a human reviews them and tests them away from production. Trial runs on live accounts risk lockouts, the assistant cannot give a reliable safety guarantee, and a nightly schedule only spreads out the damage.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI generated scripts review testing"
   },
   {
     "id": "cy1-3-3-mcq-004",
@@ -158,7 +161,8 @@
       ]
     },
     "explanation": "An approval step for critical assets plus a tested undo action limits harm and still keeps automation. Dropping isolation loses the response, broader permissions increase blast radius, and more alerts only produce more mistakes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "human approval for automation"
   },
   {
     "id": "cy1-3-3-mcq-005",
@@ -199,7 +203,8 @@
     "explanation": "Summarization turns large amounts of text into a brief that busy readers can use. It does not replace retained evidence, it cannot confirm a detection on its own, and encryption is a separate control.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI summarization strengths security"
   },
   {
     "id": "cy1-3-3-mcq-006",
@@ -238,7 +243,8 @@
       ]
     },
     "explanation": "Summaries are lossy, so critical items can be missing without any sign. Inversion, poisoning and overfitting are different problems that involve training data, not a missing source report.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "summarization omission risk"
   },
   {
     "id": "cy1-3-3-mcq-007",
@@ -279,7 +285,8 @@
     "explanation": "Keeping the notes inside an approved deployment with access limits keeps control of the data. A public chatbot sends the notes to a third party, deleting headings does not change sensitivity, and a model cannot be relied on to forget a request.",
     "acronyms": [
       "LLM"
-    ]
+    ],
+    "searchTerm": "confidential data LLM deployment"
   },
   {
     "id": "cy1-3-3-mcq-008",
@@ -320,7 +327,8 @@
     "explanation": "A model-produced rating is a draft that people confirm with supporting evidence before approving. Treating it as final ignores gaps and errors, discarding it wastes a useful first pass, and sharing it as proof overstates what a draft can show.",
     "acronyms": [
       "LLM"
-    ]
+    ],
+    "searchTerm": "human review of AI risk ratings"
   },
   {
     "id": "cy1-3-3-mcq-009",
@@ -361,7 +369,8 @@
     "explanation": "Assigning severity and routing work is triage, a common incident response automation. Patching, scanning and backup checks are separate tasks.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "alert triage automation"
   },
   {
     "id": "cy1-3-3-mcq-010",
@@ -402,7 +411,8 @@
     "explanation": "Attributing edits and having a person confirm entries preserves accountability. Overwriting history, hiding who wrote what and dropping timestamps all weaken the record.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI drafted incident record accountability"
   },
   {
     "id": "cy1-3-3-mcq-011",
@@ -444,7 +454,8 @@
     "acronyms": [
       "AI",
       "SIEM"
-    ]
+    ],
+    "searchTerm": "alert deduplication benefits"
   },
   {
     "id": "cy1-3-3-mcq-012",
@@ -485,7 +496,8 @@
     "explanation": "The root cause is unchecked authority over high-impact closures, so approval gates for serious cases fix it. Timing, less data and a bigger model leave the authority unchanged.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "human approval gates automation"
   },
   {
     "id": "cy1-3-3-mcq-013",
@@ -526,7 +538,8 @@
     "explanation": "The AI contributes a risk score and a recommendation for approvers. Deployment, record storage and coding are different stages and not the role of an approval aid.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI in change management approval"
   },
   {
     "id": "cy1-3-3-mcq-014",
@@ -567,7 +580,8 @@
     "explanation": "Clear thresholds and human review for impactful changes keep automation accountable. Removing the audit trail, self-tuning thresholds and approving by seniority each remove oversight.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI change approval human review"
   },
   {
     "id": "cy1-3-3-mcq-015",
@@ -608,7 +622,8 @@
     "explanation": "The model decided on too little information, so it needs the real change and a human check for risky categories. Better titles are still a summary, a lower threshold approves more, and delays fix nothing.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI change review input context"
   },
   {
     "id": "cy1-3-3-mcq-016",
@@ -647,7 +662,8 @@
       ]
     },
     "explanation": "Reverting automatically when a measured limit is crossed is automated rollback. Static analysis and penetration testing look for flaws, and drift detection compares settings with a baseline.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "automated rollback deployment"
   },
   {
     "id": "cy1-3-3-mcq-017",
@@ -686,7 +702,8 @@
       ]
     },
     "explanation": "The revert ran but nothing verified the restored version, so a broken restore went unnoticed. More testers, a faster build server and an extra approval would not detect a restore that failed after it reported success.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rollback verification health checks"
   },
   {
     "id": "cy1-3-3-mcq-018",
@@ -725,7 +742,8 @@
       ]
     },
     "explanation": "Undoing a release reduces the damage once a flaw is live, while pre-release checks stop many flaws from shipping at all. Undo features can restore code, checks do not slow an undo, and a weekly cadence does not stop undo from working.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rollback versus pre-release testing"
   },
   {
     "id": "cy1-3-3-mcq-019",
@@ -767,7 +785,8 @@
     "acronyms": [
       "AI",
       "API"
-    ]
+    ],
+    "searchTerm": "least privilege AI agents"
   },
   {
     "id": "cy1-3-3-mcq-020",
@@ -808,7 +827,8 @@
     "explanation": "A complete record of calls lets reviewers reconstruct what happened and why. A summary alone, partial logs, and logs the agent can edit are all unreliable evidence.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI agent audit logging"
   },
   {
     "id": "cy1-3-3-mcq-021",
@@ -847,7 +867,8 @@
       ]
     },
     "explanation": "Extra abilities beyond the job break least privilege. Separation of duties, layered controls and continuous verification are valid principles but are not the one at issue here.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "least privilege principle"
   },
   {
     "id": "cy1-3-3-mcq-022",
@@ -889,7 +910,8 @@
     "acronyms": [
       "AI",
       "SOC"
-    ]
+    ],
+    "searchTerm": "human approval high-impact actions"
   },
   {
     "id": "cy1-3-3-mcq-023",
@@ -930,7 +952,8 @@
     "explanation": "Condensed text can drop or distort requirements, so a person compares each item with the source policy. Translating, asking the model to grade itself and trimming for length do nothing to confirm accuracy.",
     "acronyms": [
       "LLM"
-    ]
+    ],
+    "searchTerm": "verifying LLM summaries accuracy"
   },
   {
     "id": "cy1-3-3-mcq-024",
@@ -971,7 +994,8 @@
     "explanation": "Code scanning reads first-party logic for insecure patterns. Composition analysis examines third-party components, regression tests look for broken behavior, and model tests probe a model's responses.",
     "acronyms": [
       "CI/CD"
-    ]
+    ],
+    "searchTerm": "static code analysis CI pipeline"
   },
   {
     "id": "cy1-3-3-mcq-025",
@@ -1012,7 +1036,8 @@
     "explanation": "Composition analysis matches component versions to known vulnerabilities. Unit and regression tests verify behavior and model tests probe model responses, so none of them looks up known flaws.",
     "acronyms": [
       "CVE"
-    ]
+    ],
+    "searchTerm": "software composition analysis CVE"
   },
   {
     "id": "cy1-3-3-mcq-026",
@@ -1051,7 +1076,8 @@
       ]
     },
     "explanation": "The inventory is what analysis compares against vulnerability data. The other items describe approvals, training data and network exposure, which are different records.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "software bill of materials"
   },
   {
     "id": "cy1-3-3-mcq-027",
@@ -1090,7 +1116,8 @@
       ]
     },
     "explanation": "Unit tests exercise the smallest pieces in isolation. Regression tests rerun earlier checks, acceptance tests confirm requirements, and integration tests check pieces working together.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "unit testing versus integration testing"
   },
   {
     "id": "cy1-3-3-mcq-028",
@@ -1129,7 +1156,8 @@
       ]
     },
     "explanation": "Regression testing repeats earlier checks after a change to find newly broken behavior. Load tests measure capacity, acceptance tests confirm requirements, and fuzzing hunts for crashes with malformed input.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "regression testing prompt changes"
   },
   {
     "id": "cy1-3-3-mcq-029",
@@ -1168,7 +1196,8 @@
       ]
     },
     "explanation": "Model testing evaluates a model's behavior on defined inputs and compares it with a baseline. Composition analysis checks libraries, code scanning checks written logic, and unit tests check functions.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model testing adversarial inputs"
   },
   {
     "id": "cy1-3-3-mcq-030",
@@ -1207,7 +1236,8 @@
       ]
     },
     "explanation": "The gate compares safety behavior against a baseline, which is model testing. License checks, function checks and image signing address other risks.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model safety regression gate"
   },
   {
     "id": "cy1-3-3-mcq-031",
@@ -1246,7 +1276,8 @@
       ]
     },
     "explanation": "A time-limited, approved exception keeps the finding visible and tracked. Disabling the scanner, weakening thresholds and rerunning for a lucky pass all erode the control.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "security scan exception management"
   },
   {
     "id": "cy1-3-3-mcq-032",
@@ -1287,7 +1318,8 @@
     "explanation": "AI suggestions can be wrong or unsafe, so they go through the same review and tests as any change. Auto-merging, bypassing scans and broad write access remove those checks.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI generated code review"
   },
   {
     "id": "cy1-3-3-mcq-033",
@@ -1328,7 +1360,8 @@
     "explanation": "Scanning source for embedded secrets is part of code scanning. Regression, model and load tests do not read the source for credentials.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "secrets detection in source code"
   },
   {
     "id": "cy1-3-3-mcq-034",
@@ -1369,7 +1402,8 @@
     "explanation": "A gradual rollout exposes a bad change to few users and gives monitoring time to react. Deploying everywhere, skipping staging and silencing monitoring raise risk.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "gradual rollout canary deployment"
   },
   {
     "id": "cy1-3-3-mcq-035",
@@ -1408,7 +1442,8 @@
       ]
     },
     "explanation": "A rollback returns to an earlier state, including any flaw that state had. It does not patch, upgrade or prove anything about exploitability.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rollback restores vulnerable version"
   },
   {
     "id": "cy1-3-3-mcq-036",
@@ -1449,7 +1484,8 @@
     "explanation": "Continuous integration builds and tests each commit automatically and often. Release freezing blocks merges for a review, peer rotation is a staffing choice, and risk acceptance documents a flaw that stays unfixed instead of verifying code.",
     "acronyms": [
       "CI/CD"
-    ]
+    ],
+    "searchTerm": "continuous integration practices"
   },
   {
     "id": "cy1-3-3-mcq-037",
@@ -1493,7 +1529,8 @@
       ]
     },
     "explanation": "Low-code speeds up building and lets builders add custom logic. Testing, regulatory compliance and access control still need effort, so the other statements are wrong.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "low-code platforms security automation"
   },
   {
     "id": "cy1-3-3-mcq-038",
@@ -1541,7 +1578,8 @@
     "acronyms": [
       "AI",
       "CI/CD"
-    ]
+    ],
+    "searchTerm": "CI CD security gates AI"
   },
   {
     "id": "cy1-3-3-mcq-039",
@@ -1585,7 +1623,8 @@
       ]
     },
     "explanation": "An automatic revert needs a known-good version to return to and a measurable signal that the release is failing. Turning logging off hides evidence, deleting backups removes recovery options, and removing staging drops a safety check.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "automated rollback prerequisites"
   },
   {
     "id": "cy1-3-3-mcq-040",
@@ -1631,7 +1670,8 @@
     "explanation": "Limiting access and actions bounds the harm, and a tamper-resistant record lets reviewers see what happened. A shared administrator account, unlimited retries and wide file access each enlarge the damage a faulty agent can do.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI agent access controls"
   },
   {
     "id": "cy1-3-3-mcq-041",
@@ -1679,7 +1719,8 @@
     "acronyms": [
       "LLM",
       "SIEM"
-    ]
+    ],
+    "searchTerm": "LLM summarization risks"
   },
   {
     "id": "cy1-3-3-mcq-042",
@@ -1723,7 +1764,8 @@
       ]
     },
     "explanation": "Composition analysis inventories third-party components and reports known flaws and license issues. First-party logic is code scanning, model behavior is model testing, and unit results come from unit tests.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "software composition analysis findings"
   },
   {
     "id": "cy1-3-3-mcq-043",
@@ -1767,7 +1809,8 @@
       ]
     },
     "explanation": "A fixed prompt set rerun against the new model and compared with a baseline shows whether safety behavior held. The other checks are valid pipeline hygiene but do not measure model behavior.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model safety retesting after retraining"
   },
   {
     "id": "cy1-3-3-mcq-044",
@@ -1813,7 +1856,8 @@
     "explanation": "Human review of high-impact changes and a recorded rationale keep AI approvals accountable. Hiding scores, editing decisions and approving uncertain changes undermine them.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI-assisted change approval accountability"
   },
   {
     "id": "cy1-3-3-order-001",
@@ -1876,7 +1920,8 @@
     },
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "automated rollback monitoring workflow"
   },
   {
     "id": "cy1-3-3-order-002",
@@ -1940,7 +1985,8 @@
     "acronyms": [
       "AI",
       "CI/CD"
-    ]
+    ],
+    "searchTerm": "CI CD pipeline stage order"
   },
   {
     "id": "cy1-3-3-diagram-001",
@@ -2075,7 +2121,8 @@
     },
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI security pipeline gates"
   },
   {
     "id": "cy1-3-3-diagram-002",
@@ -2210,7 +2257,8 @@
     },
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI agent security design elements"
   },
   {
     "id": "cy1-3-3-config-001",
@@ -2337,7 +2385,8 @@
     },
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI agent guardrails configuration"
   },
   {
     "id": "cy1-3-3-terminal-001",
@@ -2449,7 +2498,8 @@
     "acronyms": [
       "AI",
       "CLI"
-    ]
+    ],
+    "searchTerm": "software dependency rollback recovery"
   },
   {
     "id": "cy1-3-3-data-001",
@@ -2662,7 +2712,8 @@
     "acronyms": [
       "AI",
       "SCA"
-    ]
+    ],
+    "searchTerm": "CI CD gate policy thresholds"
   },
   {
     "id": "cy1-3-3-match-001",
@@ -2753,6 +2804,7 @@
       "p5": "Low-code blends visual blocks with hand-written steps that may skip review.",
       "p6": "No-code output is generated logic with no script a user can read."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pipeline test types risks"
   }
 ]

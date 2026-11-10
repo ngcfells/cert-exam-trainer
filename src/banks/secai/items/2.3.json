@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "The hardware key proves that the person is who the username claims, which is authentication. Authorization comes afterward and decides which models the analyst may use, accounting records the activity, and identification is simply naming the account.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "authentication versus authorization"
   },
   {
     "id": "cy1-2-3-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "A rare, high-impact action justifies asking for a stronger proof of identity right before it runs. A valid session alone could belong to someone who hijacked it, an email afterward is detective, and a longer timeout makes hijacking easier.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "step-up authentication sensitive actions"
   },
   {
     "id": "cy1-2-3-mcq-003",
@@ -116,7 +118,8 @@
     "explanation": "Technical enforcement at the network and gateway makes the approved model the only reachable path. Policy reminders rely on goodwill, a higher quota does not stop use of other services, and a new name changes nothing about access.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "shadow AI sanctioned model enforcement"
   },
   {
     "id": "cy1-2-3-mcq-004",
@@ -155,7 +158,8 @@
       ]
     },
     "explanation": "A masked set in a separate store gives the vendor what the test needs without exposing real records. Read-only access to production, emailed live rows and a full corpus copy each hand over sensitive data the task does not require.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "synthetic masked data for vendors"
   },
   {
     "id": "cy1-2-3-mcq-005",
@@ -194,7 +198,8 @@
       ]
     },
     "explanation": "Separating duties between the person who builds a model and the person who approves its release keeps any single account from doing both. A shared account and an all-powerful owner role remove the separation, and a data review does not control who can release.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "separation of duties model release"
   },
   {
     "id": "cy1-2-3-mcq-006",
@@ -233,7 +238,8 @@
       ]
     },
     "explanation": "Logs only support accountability if the people being logged cannot alter them, so they belong in a separate, protected store. The model host, an administrator-owned folder and a local rotating file can all be edited or overwritten by the same people.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "tamper-proof audit log storage"
   },
   {
     "id": "cy1-2-3-mcq-007",
@@ -274,7 +280,8 @@
     "explanation": "A dedicated service identity can be scoped, audited and revoked on its own. Rotating a credential that many people know still leaves no individual accountability, and copying it to laptops or into the front end spreads it further.",
     "acronyms": [
       "LLM"
-    ]
+    ],
+    "searchTerm": "service accounts versus shared credentials"
   },
   {
     "id": "cy1-2-3-mcq-008",
@@ -313,7 +320,8 @@
       ]
     },
     "explanation": "Weights are valuable intellectual property, so only the automated pipeline that serves the model should read them. Renaming hides nothing from someone with access, broad group access widens the insider risk, and compression does nothing to restrict reads.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model weights theft insider threat"
   },
   {
     "id": "cy1-2-3-mcq-009",
@@ -363,7 +371,8 @@
     "explanation": "Separate identities let the platform tell teams apart, and audit logs naming the caller let investigators trace activity. A shared key and anonymous access hide who did what, a total request count has no caller detail, and a larger context window is unrelated.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "per-team identity accountability logging"
   },
   {
     "id": "cy1-2-3-mcq-010",
@@ -402,7 +411,8 @@
       ]
     },
     "explanation": "Regulated data carries external legal or contractual handling rules, so access is tightly scoped. Internal data is for staff, public data is meant for release, and deprecated describes a lifecycle state rather than a sensitivity.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "regulated data classification label"
   },
   {
     "id": "cy1-2-3-mcq-011",
@@ -441,7 +451,8 @@
       ]
     },
     "explanation": "Supplying a de-identified extract with just the fields the job needs keeps sensitive data exposure small. Whole-database read access, an administrator role and unrestricted table discovery each give the job far more data than the task requires.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "least privilege data for fine-tuning"
   },
   {
     "id": "cy1-2-3-mcq-012",
@@ -480,7 +491,8 @@
       ]
     },
     "explanation": "Limiting who can write to the store, and logging that path, blocks poisoned or altered data. Direct uploads widen the write surface, while mirroring and compression do nothing about who may change content.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "training data poisoning access control"
   },
   {
     "id": "cy1-2-3-mcq-013",
@@ -519,7 +531,8 @@
       ]
     },
     "explanation": "Roles say who the person is, while data labels and device checks add the sensitivity and context, and all are enforced outside the model. A shared role is too broad, and a prompt or the model's own judgment is not a reliable control.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "role attribute and device based access"
   },
   {
     "id": "cy1-2-3-mcq-014",
@@ -560,7 +573,8 @@
     "explanation": "Policy as code gives an audit trail, automated tests and quick rollback, which suits fast-changing AI environments. The model does not enforce policy itself or learn it in training, and letting users edit their own permissions defeats control.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "policy as code version control"
   },
   {
     "id": "cy1-2-3-mcq-015",
@@ -599,7 +613,8 @@
       ]
     },
     "explanation": "Role-based access control bundles permissions into roles that match job functions. Attribute-based control decides from attributes of the user, data and context, discretionary control lets owners share at will, and mandatory control uses system-enforced labels.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "role-based access control RBAC"
   },
   {
     "id": "cy1-2-3-mcq-016",
@@ -638,7 +653,8 @@
       ]
     },
     "explanation": "If the bot cannot retrieve the drafts, it cannot leak them. Prompt instructions and output filters are weaker because the data is still reachable, and a shorter response limit does not stop disclosure.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "retrieval access control chatbot data"
   },
   {
     "id": "cy1-2-3-mcq-017",
@@ -677,7 +693,8 @@
       ]
     },
     "explanation": "Scheduled access reviews find accounts that no longer need rights and remove them. Complex passwords and encryption do not reveal stale permissions, and retraining is unrelated to who can read the data.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "access reviews stale permissions"
   },
   {
     "id": "cy1-2-3-mcq-018",
@@ -725,7 +742,8 @@
       ]
     },
     "explanation": "The policy compares an attribute of the person (clearance) with an attribute of the resource (its sensitivity label). Time of day, device posture and storage region could appear in other policies but are not part of this one, and the tokenizer version has no bearing on access.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "attribute-based access control ABAC"
   },
   {
     "id": "cy1-2-3-mcq-019",
@@ -775,7 +793,8 @@
     "explanation": "Controlling who writes to the index protects integrity, and checking labels against the user at query time protects confidentiality. Embedding size, chunk overlap and model size affect quality, and sharing cached answers across users could expose restricted content.",
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "RAG index access control"
   },
   {
     "id": "cy1-2-3-mcq-020",
@@ -814,7 +833,8 @@
       ]
     },
     "explanation": "An agent orchestrates and decides which tools to call, while a tool is a passive component that performs one action. Option a swaps the two roles, option b confuses an agent with a dataset and a tool with a prompt, and option c confuses a tool with a checkpoint and an agent with a console.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "AI agents versus tools"
   },
   {
     "id": "cy1-2-3-mcq-021",
@@ -853,7 +873,8 @@
       ]
     },
     "explanation": "An allow list is enforced outside the model, so the agent cannot call other tools even if manipulated. A longer prompt only asks the agent to behave, a bigger window changes capacity, and a usage report is after-the-fact.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "agent tool allow list"
   },
   {
     "id": "cy1-2-3-mcq-022",
@@ -892,7 +913,8 @@
       ]
     },
     "explanation": "A short-lived rotated token limits how long a stolen one is useful. A second file and encoding only obscure the token, and a name has no security effect.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "short-lived tokens credential rotation"
   },
   {
     "id": "cy1-2-3-mcq-023",
@@ -931,7 +953,8 @@
       ]
     },
     "explanation": "Excessive agency is fixed by narrowing the permissions the agent can actually exercise, so read-only access tied to the requesting user cannot send or delete anything. Prompt wording can be overridden, model speed is irrelevant, and a yearly review is far too late to prevent harm.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "excessive agency least privilege agent"
   },
   {
     "id": "cy1-2-3-mcq-024",
@@ -970,7 +993,8 @@
       ]
     },
     "explanation": "Human-in-the-loop approval stops high-value actions before they happen. Notices and month-end reviews are detective and arrive after the loss, and a lower reply limit does not affect what the agent may do.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "human approval high-risk agent actions"
   },
   {
     "id": "cy1-2-3-mcq-025",
@@ -1009,7 +1033,8 @@
       ]
     },
     "explanation": "Access should follow who and where the caller is, with outside callers getting the narrowest set. Identical tools expose purchasing power to vendors, letting the agent judge a caller's level from text can be manipulated, and forcing buyers through the vendor portal would push internal activity onto the public route.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "context-based access for external callers"
   },
   {
     "id": "cy1-2-3-mcq-026",
@@ -1048,7 +1073,8 @@
       ]
     },
     "explanation": "Acting on behalf of the user keeps the caller's own limits in force and avoids a confused-deputy problem. Rotating a password does not narrow what the account can read, and dilution or user etiquette are not controls.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "confused deputy problem user delegation"
   },
   {
     "id": "cy1-2-3-mcq-027",
@@ -1089,7 +1115,8 @@
     "explanation": "A history of what the agent was asked and which actions it took lets investigators reconstruct events. Idle hours, loss curves and billing totals say nothing about specific actions.",
     "acronyms": [
       "GPU"
-    ]
+    ],
+    "searchTerm": "agent action audit trail"
   },
   {
     "id": "cy1-2-3-mcq-028",
@@ -1139,7 +1166,8 @@
     "explanation": "An approved-server list limits what the agent can reach, and scoped short-lived credentials limit what a compromised tool can do. Trusting any server, sharing an administrator token and disabling logging each increase exposure, and a wider context window is unrelated.",
     "acronyms": [
       "MCP"
-    ]
+    ],
+    "searchTerm": "MCP security controls"
   },
   {
     "id": "cy1-2-3-mcq-029",
@@ -1187,7 +1215,8 @@
       ]
     },
     "explanation": "Human approval gates the dangerous step, and a short-lived scoped credential limits what a compromised agent can reach and for how long. A permanent token, self-approval and hidden change history weaken control, and more memory does not affect risk.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "agent deployment safeguards approval"
   },
   {
     "id": "cy1-2-3-mcq-030",
@@ -1228,7 +1257,8 @@
     "explanation": "A gateway is the control point where callers are authenticated, authorized and rate limited. It does not retrain, compress or translate.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "AI gateway role in API"
   },
   {
     "id": "cy1-2-3-mcq-031",
@@ -1269,7 +1299,8 @@
     "explanation": "A private endpoint removes the public path entirely. A hard-to-guess name and a banner do not stop a determined caller, and a timeout has nothing to do with reachability.",
     "acronyms": [
       "VPC"
-    ]
+    ],
+    "searchTerm": "private endpoint network exposure"
   },
   {
     "id": "cy1-2-3-mcq-032",
@@ -1311,7 +1342,8 @@
     "acronyms": [
       "AI",
       "API"
-    ]
+    ],
+    "searchTerm": "least privilege API scopes vendors"
   },
   {
     "id": "cy1-2-3-mcq-033",
@@ -1352,7 +1384,8 @@
     "explanation": "Mutual TLS authenticates both ends and encrypts the channel. Server-only TLS proves only one side, a secret in a query string leaks into logs, and timed ports do not prove identity.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "mutual TLS service authentication"
   },
   {
     "id": "cy1-2-3-mcq-034",
@@ -1393,7 +1426,8 @@
     "explanation": "Controlling where the agent can connect blocks exfiltration to unapproved hosts. Inbound limits, log retention and session timeouts do not constrain outbound destinations.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "egress filtering agent exfiltration"
   },
   {
     "id": "cy1-2-3-mcq-035",
@@ -1435,7 +1469,8 @@
     "acronyms": [
       "LLM",
       "API"
-    ]
+    ],
+    "searchTerm": "input validation before model"
   },
   {
     "id": "cy1-2-3-mcq-036",
@@ -1476,7 +1511,8 @@
     "explanation": "Context-aware policies weigh signals such as risk and can demand stronger proof or end the session when risk rises. A static role rule ignores the change, a uniform quota is not identity-aware, and a bigger log buffer only records the event.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "adaptive risk-based access control"
   },
   {
     "id": "cy1-2-3-mcq-037",
@@ -1527,7 +1563,8 @@
     "explanation": "Throttling stops runaway usage, request validation rejects malformed payloads, and audit logs trace callers. Unexpiring anonymous keys, public signing keys and weight downloads each defeat those goals.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "API throttling validation audit logs"
   },
   {
     "id": "cy1-2-3-mcq-038",
@@ -1578,7 +1615,8 @@
     "acronyms": [
       "TLS",
       "CDN"
-    ]
+    ],
+    "searchTerm": "private network access inference service"
   },
   {
     "id": "cy1-2-3-config-001",
@@ -1703,7 +1741,8 @@
       "evaljob": "The evaluation job only needs to send prompts to the staging model.",
       "network": "A private endpoint reachable only from the application subnets removes the public path."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "AI model access control settings"
   },
   {
     "id": "cy1-2-3-config-002",
@@ -1810,7 +1849,8 @@
     },
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "RAG access control labels identity"
   },
   {
     "id": "cy1-2-3-terminal-001",
@@ -1899,7 +1939,8 @@
     },
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "API token scope least privilege"
   },
   {
     "id": "cy1-2-3-terminal-002",
@@ -1994,7 +2035,8 @@
       "delete": "The help text gives netpol rule delete followed by the endpoint and the rule name.",
       "verify": "A refused connection from an outside source shows the exposure is closed; a test from inside proves nothing new."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "network firewall rule ordering"
   },
   {
     "id": "cy1-2-3-data-001",
@@ -2137,7 +2179,8 @@
       "who": "ben.okoye was denied 8 of 10 requests (80%), versus ana.diaz 2 of 8 (25%) and cai.ward 0 of 2.",
       "rows": "Total rows are 60 + 20 + 300 + 20 = 400, and 300 / 400 = 75%."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "access log analysis identity"
   },
   {
     "id": "cy1-2-3-diagram-001",
@@ -2272,7 +2315,8 @@
     },
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "AI agent access control points"
   },
   {
     "id": "cy1-2-3-hotspot-001",
@@ -2406,7 +2450,8 @@
       "allow": "An agent that can edit its own allow list can grant itself more tools.",
       "subject": "Subject lines are part of the ticket data the agent already needs."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "excess agent permissions review"
   },
   {
     "id": "cy1-2-3-mcq-039",
@@ -2445,6 +2490,7 @@
       ]
     },
     "explanation": "The assistant retrieved a file the intern could not open directly, so retrieval must enforce the caller's own permissions. A prompt instruction can be bypassed, sign-in proves who the intern is but not what they may read, and logging only finds the leak after it happens.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "RAG permission-aware retrieval"
   }
 ]

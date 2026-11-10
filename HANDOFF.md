@@ -1,3 +1,8 @@
+# 2026-11-10 (end 3): #6 content DONE (all three exams). Next: #11, or the owner's pick
+
+Next session model: **Sonnet**. `gh issue list` first. All 2122 questions now have a `searchTerm` (secai CY0-001 done this
+session, `npm run check` green, 127 e2e); #6 closed. Open: #11 (hashing of content), #19 leftovers (diagram ideas only).
+
 # 2026-11-10 (end 2): #6 content pass 2 of 3 DONE (autoops). Next: secai (CY0-001), then close #6
 
 Next session model: **Sonnet**. `gh issue list` first. All 674 AT0-001 questions now have a `searchTerm`; only CY0-001 (secai)

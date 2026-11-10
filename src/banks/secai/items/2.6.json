@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "A backdoor is a hidden trigger planted through poisoned training data, so the model behaves normally until the trigger appears. Inversion rebuilds training data, membership inference tests whether a record was used, and denial of service targets availability; none of them plants a trigger.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data poisoning backdoor attack"
   },
   {
     "id": "cy1-2-6-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "A trojan hides malicious code in the model artifact, which acts in the background while the model seems normal, here by persisting on the host. Skewing works through feedback data, jailbreaking works through prompts, and membership inference works through query probing; none of them involves code that runs when the file loads.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "trojan model file malware"
   },
   {
     "id": "cy1-2-6-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "Hidden instructions inside content the model processes are indirect prompt injection. Data poisoning happens at training time, model theft needs a stream of queries to copy the model, and overreliance describes trusting outputs without review rather than an attacker action.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "indirect prompt injection hidden text"
   },
   {
     "id": "cy1-2-6-mcq-004",
@@ -153,7 +156,8 @@
       ]
     },
     "explanation": "Flipped labels in a training feed corrupt the learning itself, which is data poisoning. Input manipulation targets a deployed model at inference time, model theft copies the model, and an output integrity attack alters replies after they are produced.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "training data label flipping poisoning"
   },
   {
     "id": "cy1-2-6-mcq-005",
@@ -192,7 +196,8 @@
       ]
     },
     "explanation": "Tampering with weights or gradients that shape the model is model poisoning, as opposed to data poisoning, which corrupts the records. The other options attack prompts, downstream use of replies, or training-set membership and do not alter the shared parameters.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model poisoning federated learning"
   },
   {
     "id": "cy1-2-6-mcq-006",
@@ -231,7 +236,8 @@
       ]
     },
     "explanation": "Jailbreaking talks a model out of its safety restrictions, often by role-play. Inversion recovers training data, skewing drifts the model through feedback, and insecure plug-in design is a flaw in an extension.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jailbreaking large language models"
   },
   {
     "id": "cy1-2-6-mcq-007",
@@ -270,7 +276,8 @@
       ]
     },
     "explanation": "A filter that checks only literal wording can be bypassed by changing the form of the request, which circumvents the guardrail. Nothing here shows poisoning, a rate limit problem, or a failure to mask output values.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "encoded input filter bypass"
   },
   {
     "id": "cy1-2-6-mcq-008",
@@ -309,7 +316,8 @@
       ]
     },
     "explanation": "Small crafted changes to an input that people cannot perceive, sent to a trained model, are input manipulation. Poisoning and trojans compromise the model before use, and theft copies the model rather than fooling it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "adversarial examples input manipulation"
   },
   {
     "id": "cy1-2-6-mcq-009",
@@ -348,7 +356,8 @@
       ]
     },
     "explanation": "Poisoning is a training-time attack and input manipulation is an inference-time attack. The reverse description is wrong, labels belong to poisoning rather than input manipulation, and both attacks apply to many kinds of model.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data poisoning versus evasion attacks"
   },
   {
     "id": "cy1-2-6-mcq-010",
@@ -389,7 +398,8 @@
     "explanation": "Bias introduced through skewed or manipulated data shows up when outcomes are compared across groups before release. Context size, rate limiting, and encryption do not reveal unfair outcomes.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "bias detection in model outcomes"
   },
   {
     "id": "cy1-2-6-mcq-011",
@@ -428,7 +438,8 @@
       ]
     },
     "explanation": "Integrations are trust boundaries, so requests are authenticated and parameter values constrained to expected ranges. Temperature, context size, and caching do nothing to stop tampered parameters.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "insecure plugin design"
   },
   {
     "id": "cy1-2-6-mcq-012",
@@ -467,7 +478,8 @@
       ]
     },
     "explanation": "Reconstructing training data from how a model responds is model inversion. Poisoning corrupts data, a trojan hides code, and an output integrity attack changes replies; none of them recovers training records.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model inversion attack training data"
   },
   {
     "id": "cy1-2-6-mcq-013",
@@ -506,7 +518,8 @@
       ]
     },
     "explanation": "Deciding whether a specific record was part of the training data is membership inference. Theft copies the model, jailbreaking removes restrictions, and skewing shifts behavior through feedback.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "membership inference attack explained"
   },
   {
     "id": "cy1-2-6-mcq-014",
@@ -547,7 +560,8 @@
     "explanation": "Model theft depends on large numbers of queries, so throttling and watching usage patterns limit it. A longer system prompt, lower temperature, and rotating training data do not stop replies from being harvested.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "model extraction theft explained"
   },
   {
     "id": "cy1-2-6-mcq-015",
@@ -588,7 +602,8 @@
     "explanation": "A grid of near-identical inputs with detailed scores is how an attacker gathers data to replicate a model. The log contains no document content, feedback ratings, or rendering of replies.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "model extraction query pattern detection"
   },
   {
     "id": "cy1-2-6-mcq-016",
@@ -629,7 +644,8 @@
     "explanation": "AI supply chain components get the same validation as other software and containers: provenance, integrity checks, and scanning. A disclaimer, more training data, and elevated rights do not verify what was downloaded.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI supply chain security pretrained models"
   },
   {
     "id": "cy1-2-6-mcq-017",
@@ -668,7 +684,8 @@
       ]
     },
     "explanation": "A transfer learning attack hides behavior in the borrowed model, so evaluating that model for trigger behavior before adoption is the remedy. Extra epochs may not remove it, rate limits do not touch hidden behavior, and encryption protects the dataset rather than the borrowed model.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "transfer learning backdoor pretrained model"
   },
   {
     "id": "cy1-2-6-mcq-018",
@@ -707,7 +724,8 @@
       ]
     },
     "explanation": "Gradual change caused by manipulated feedback is model skewing, which continuous performance monitoring with drift alerts is designed to catch. Rate limits slow but do not detect coordinated drift, encryption protects confidentiality, and a template does not change what the model learns.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model skewing feedback manipulation drift"
   },
   {
     "id": "cy1-2-6-mcq-019",
@@ -746,7 +764,8 @@
       ]
     },
     "explanation": "The model produced correct output and something later changed it, which is an output integrity attack. Poisoning would alter the model itself, jailbreaking would change what the model says, and membership inference concerns training records.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "output integrity attack tampering"
   },
   {
     "id": "cy1-2-6-mcq-020",
@@ -787,7 +806,8 @@
     "explanation": "Insecure output handling is fixed by validating and encoding output before another component uses it. A shorter prompt does not guarantee clean replies, rate limits are unrelated, and TLS protects transport but not content.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "insecure output handling cross site scripting"
   },
   {
     "id": "cy1-2-6-mcq-021",
@@ -828,7 +848,8 @@
     "explanation": "Model denial of service is contained by limiting requests, output size, and run time. A larger model uses more capacity, output encoding and fixed reply length address rendering rather than load, and a template with longer logs does not cap resource use.",
     "acronyms": [
       "GPU"
-    ]
+    ],
+    "searchTerm": "model denial of service resource exhaustion"
   },
   {
     "id": "cy1-2-6-mcq-022",
@@ -867,7 +888,8 @@
       ]
     },
     "explanation": "Sensitive information disclosure is reduced by filtering or redacting replies and by differential privacy during training. Rate limits and archive encryption do not inspect replies, and extra examples do not guarantee the model withholds data.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sensitive information disclosure LLM"
   },
   {
     "id": "cy1-2-6-mcq-023",
@@ -906,7 +928,8 @@
       ]
     },
     "explanation": "Passing unvalidated model text into a back end is insecure plug-in design, fixed with strict schemas and typed inputs. Caching addresses speed, longer audit records address visibility, and pinning a release addresses versioning; none of them stops injected query text.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "insecure plugin design SQL injection"
   },
   {
     "id": "cy1-2-6-mcq-024",
@@ -945,7 +968,8 @@
       ]
     },
     "explanation": "Excessive agency is limited by giving the agent only the permissions its job needs and by adding human approval for high-impact actions. Wording in a prompt can be overridden, rate limits do not remove rights, and encryption does not restrict an authorized token.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "excessive agency AI least privilege"
   },
   {
     "id": "cy1-2-6-mcq-025",
@@ -984,7 +1008,8 @@
       ]
     },
     "explanation": "Overreliance means trusting generated output without checking it, so human verification before use is the control. Shorter replies, encryption, and throttling do not make the suggestions correct.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "overreliance on AI generated code"
   },
   {
     "id": "cy1-2-6-mcq-026",
@@ -1023,7 +1048,8 @@
       ]
     },
     "explanation": "When the model cannot be changed, an intermediary that analyzes user input for malicious patterns is the compensating control. Differential privacy needs training access, hashes verify files, and encryption protects traffic and logs rather than screening content.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "prompt injection explained"
   },
   {
     "id": "cy1-2-6-mcq-027",
@@ -1062,7 +1088,8 @@
       ]
     },
     "explanation": "A prompt template enforces consistent structure and content constraints around user input. Rate limiting, integrity checks, and disk encryption do not shape the prompt.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "prompt template design for LLMs"
   },
   {
     "id": "cy1-2-6-mcq-028",
@@ -1103,7 +1130,8 @@
     "explanation": "Data integrity controls such as checksums detect any change made after approval. Rate limits, prompt firewalls, and output filters do not compare the files with their approved state.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "training data integrity checksums"
   },
   {
     "id": "cy1-2-6-mcq-029",
@@ -1144,7 +1172,8 @@
     "explanation": "Encryption keeps stored artifacts unreadable to anyone who obtains the media. The other options govern live requests, not stored files.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "model weight theft exposure"
   },
   {
     "id": "cy1-2-6-mcq-030",
@@ -1183,7 +1212,8 @@
       ]
     },
     "explanation": "Detailed confidence values give attackers the signal that membership inference relies on, so reducing output detail helps. Raw scores add signal, context size is unrelated, and removing limits makes probing easier.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "confidence score exposure privacy risk"
   },
   {
     "id": "cy1-2-6-mcq-031",
@@ -1222,7 +1252,8 @@
       ]
     },
     "explanation": "Guardrails work best in layers, because input filters miss new phrasing while output checks inspect what the model actually produced. Output checks do not replace testing or logging and have no effect on input filter speed.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "guardrails for LLM jailbreaks"
   },
   {
     "id": "cy1-2-6-mcq-032",
@@ -1268,7 +1299,8 @@
     "explanation": "A trusted holdout exposes behavior shifts caused by bad data, and reviewed sources keep tampered records out. The rate limit, system prompt, and compression change none of what the model learns from.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "data poisoning defenses"
   },
   {
     "id": "cy1-2-6-mcq-033",
@@ -1319,7 +1351,8 @@
     "acronyms": [
       "API",
       "TLS"
-    ]
+    ],
+    "searchTerm": "model theft explained"
   },
   {
     "id": "cy1-2-6-mcq-034",
@@ -1368,7 +1401,8 @@
       ]
     },
     "explanation": "Narrow tools, human sign-off for risky actions, and a sandbox limit what a manipulated agent can do. Wider scopes increase the harm, and context size and temperature do not constrain actions.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "excessive agency in AI agents"
   },
   {
     "id": "cy1-2-6-mcq-035",
@@ -1414,7 +1448,8 @@
     "explanation": "Denial of service shows up as resource consumption out of proportion to traffic, such as huge token counts per request. Refusals, a normal registry call, and masked values are routine behavior.",
     "acronyms": [
       "GPU"
-    ]
+    ],
+    "searchTerm": "model denial of service signs"
   },
   {
     "id": "cy1-2-6-mcq-036",
@@ -1458,7 +1493,8 @@
       ]
     },
     "explanation": "Output should be treated as untrusted input to the next component, so encode it and validate its structure. Temperature, caching, and timeouts do not make output safe to render or execute.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "insecure output handling"
   },
   {
     "id": "cy1-2-6-mcq-037",
@@ -1504,7 +1540,8 @@
     "explanation": "A hash mismatch and surprising behavior from a dependency point to tampered components. A prompt injection attempt, peak latency, and lower confidence on blurry input are ordinary usage evidence.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI supply chain compromise indicators"
   },
   {
     "id": "cy1-2-6-mcq-038",
@@ -1550,7 +1587,8 @@
     "explanation": "Access controls and least privilege limit what retrieval can return no matter what the model is told. More passages, longer history, and a larger embedding model widen or ignore the exposure.",
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "RAG access control data leakage"
   },
   {
     "id": "cy1-2-6-terminal-001",
@@ -1676,7 +1714,8 @@
     },
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "model extraction attack detection API"
   },
   {
     "id": "cy1-2-6-data-001",
@@ -1903,7 +1942,8 @@
     "acronyms": [
       "AI",
       "API"
-    ]
+    ],
+    "searchTerm": "AI attack types identification"
   },
   {
     "id": "cy1-2-6-hotspot-001",
@@ -2037,7 +2077,8 @@
       "filter": "The output filter inspects replies and does not store documents.",
       "retriever": "The retrieval service hands the tampered passages to the model."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "RAG poisoning knowledge base pipeline"
   },
   {
     "id": "cy1-2-6-diagram-001",
@@ -2173,7 +2214,8 @@
     "acronyms": [
       "API",
       "LLM"
-    ]
+    ],
+    "searchTerm": "compensating controls for LLM attacks"
   },
   {
     "id": "cy1-2-6-diagram-002",
@@ -2308,7 +2350,8 @@
     },
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "AI model supply path controls"
   },
   {
     "id": "cy1-2-6-buckets-001",
@@ -2385,7 +2428,8 @@
     },
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "evidence of data poisoning"
   },
   {
     "id": "cy1-2-6-match-001",
@@ -2466,6 +2510,7 @@
       "p4": "Rate limits on query volume make the many repeated probes needed for membership inference impractical.",
       "p5": "Least-privilege scopes cut the plug-in down to read access, which is all it needs."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "compensating controls for AI attacks"
   }
 ]

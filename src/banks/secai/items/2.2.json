@@ -38,7 +38,8 @@
     "acronyms": [
       "LLM"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "LLM guardrails purpose"
   },
   {
     "id": "cy1-2-2-mcq-002",
@@ -77,7 +78,8 @@
     },
     "explanation": "A template fixes the system instructions and gives user text its own placeholder, so user words are treated as content instead of new configuration. A bigger history window, a higher temperature and an answer cache change capacity, randomness and speed, not where user text sits.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "prompt template separating user input"
   },
   {
     "id": "cy1-2-2-mcq-003",
@@ -116,7 +118,8 @@
     },
     "explanation": "A rate limit counts requests per time window and rejects or queues the excess. A token limit restricts prompt and reply size, a modality limit restricts input types, and an output filter inspects replies; none of them count requests over time.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "API gateway rate limiting"
   },
   {
     "id": "cy1-2-2-mcq-004",
@@ -157,7 +160,8 @@
     "acronyms": [
       "AI"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "token limits LLM gateway"
   },
   {
     "id": "cy1-2-2-mcq-005",
@@ -196,7 +200,8 @@
     },
     "explanation": "A quota bounds cumulative use, such as requests or data per day or month, while a rate limit looks at short windows. Blocking images is a modality limit, and identity checks belong to endpoint access control.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "quota versus rate limit"
   },
   {
     "id": "cy1-2-2-mcq-006",
@@ -235,7 +240,8 @@
     },
     "explanation": "A modality limit controls which input and output types are allowed, such as text, image, audio or files. A token limit sets length, a rate limit sets request frequency, and a size quota sets data volume; none of them restrict the type of content.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "input modality restrictions gateway"
   },
   {
     "id": "cy1-2-2-mcq-007",
@@ -276,7 +282,8 @@
     "acronyms": [
       "LLM"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "LLM endpoint access control"
   },
   {
     "id": "cy1-2-2-mcq-008",
@@ -317,7 +324,8 @@
     "acronyms": [
       "AI"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "AI gateway prompt firewall"
   },
   {
     "id": "cy1-2-2-mcq-009",
@@ -356,7 +364,8 @@
     },
     "explanation": "Guardrails are not set and forget: new attack phrasings appear and model updates shift behavior, so rules need fresh tests. Guardrails do not expire on their own, testing does not substitute for logging, and no rule demands a new model every quarter.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "guardrail testing recurring schedule"
   },
   {
     "id": "cy1-2-2-mcq-010",
@@ -395,7 +404,8 @@
     },
     "explanation": "Model evaluation includes trustworthiness and adversarial testing that shows how the model responds to hostile input. Load testing, pricing review and latency measurement describe capacity, cost and speed, not safe behavior.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "adversarial testing model evaluation"
   },
   {
     "id": "cy1-2-2-mcq-011",
@@ -434,7 +444,8 @@
     },
     "explanation": "A reviewed prompt template defines the system instructions and the places where data is inserted, so behavior and tone stay consistent across users. Token limits, rate limits and history length affect size, volume and memory, not the standing instructions.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "system prompt templates consistency"
   },
   {
     "id": "cy1-2-2-mcq-012",
@@ -475,7 +486,8 @@
     "acronyms": [
       "API"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "API rate limiting per client"
   },
   {
     "id": "cy1-2-2-mcq-013",
@@ -514,7 +526,8 @@
     },
     "explanation": "Token limits bound input size, which caps cost and shrinks the space for hidden instructions. A higher rate ceiling allows more traffic, image-only input adds a different risk, and a report describes spending after the fact.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "token limits prompt size"
   },
   {
     "id": "cy1-2-2-mcq-014",
@@ -555,7 +568,8 @@
     "acronyms": [
       "AI"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data size quotas ingestion"
   },
   {
     "id": "cy1-2-2-mcq-015",
@@ -594,7 +608,8 @@
     },
     "explanation": "A fixed count over a day is a quota on request quantity. A burst rate limit works on short windows, a modality limit restricts input types, and a context window limit is a model property, not a usage cap.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "daily request quota limits"
   },
   {
     "id": "cy1-2-2-mcq-016",
@@ -633,7 +648,8 @@
     },
     "explanation": "Blocking the file input type is a modality limit, so macro-bearing documents never reach the model while text chat continues. A reply token limit, longer log retention and a daily message quota do not stop files from being accepted.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "modality restrictions file input"
   },
   {
     "id": "cy1-2-2-mcq-017",
@@ -672,7 +688,8 @@
     },
     "explanation": "Scoped, expiring credentials limit what each caller can do and for how long, and let the team revoke one without affecting others. A higher rate limit and a larger model add capability, and a longer archive helps investigation but leaves the shared key in place.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "scoped expiring API credentials"
   },
   {
     "id": "cy1-2-2-mcq-018",
@@ -711,7 +728,8 @@
     },
     "explanation": "A gateway prompt firewall inspects and logs all traffic in one place, so no app can skip logging. Longer retention keeps logs that were never written, a higher threshold changes blocking not logging, and copied code leaves each app maintaining its own rules.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "centralized prompt logging gateway"
   },
   {
     "id": "cy1-2-2-mcq-019",
@@ -752,7 +770,8 @@
     "acronyms": [
       "PII"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "PII redaction model output"
   },
   {
     "id": "cy1-2-2-mcq-020",
@@ -793,7 +812,8 @@
     "acronyms": [
       "API"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "secrets detection in prompts"
   },
   {
     "id": "cy1-2-2-mcq-021",
@@ -832,7 +852,8 @@
     },
     "explanation": "Rewording a request, here by changing its language, probes whether guardrails still refuse unsafe output when the phrasing differs. Rate limit tests use high-volume traffic, hallucination tests use questions with known answers, and provenance concerns where data came from.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "multilingual jailbreak testing"
   },
   {
     "id": "cy1-2-2-mcq-022",
@@ -871,7 +892,8 @@
     },
     "explanation": "Output that the client renders without cleaning can trigger actions or leak data, so replies must be sanitized before display. Authentication, prompt size and modality settings do not decide whether returned content is cleaned.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "markdown image exfiltration output sanitization"
   },
   {
     "id": "cy1-2-2-mcq-023",
@@ -910,7 +932,8 @@
     },
     "explanation": "An effective rate limit visibly rejects or queues traffic over the threshold. Answering everything normally means nothing was enforced, language refusals are unrelated, and silent model switching is not throttling.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "rate limit enforcement testing"
   },
   {
     "id": "cy1-2-2-mcq-024",
@@ -949,7 +972,8 @@
     },
     "explanation": "Short-window rate limits do not bound cumulative use, so a longer-window quota is needed. A bigger burst allowance loosens limits, and modality and template changes do not cap total volume.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "cumulative usage quota window"
   },
   {
     "id": "cy1-2-2-mcq-025",
@@ -990,7 +1014,8 @@
     "acronyms": [
       "LLM"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "bypassing AI gateway risks"
   },
   {
     "id": "cy1-2-2-mcq-026",
@@ -1029,7 +1054,8 @@
     },
     "explanation": "Test failures should drive tuning, and rerunning the identical suite shows whether the change worked. A larger token limit does not improve detection, disabling logging removes evidence, and dropping the system prompt weakens the controls.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "jailbreak regression testing guardrails"
   },
   {
     "id": "cy1-2-2-mcq-027",
@@ -1068,7 +1094,8 @@
     },
     "explanation": "Instructions hidden in content the assistant reads test whether it obeys retrieved text, so the attacker never talks to the model directly. Extraction repeats queries to copy the model, rate limiter tests count request volume, and key strength tests the credentials used to reach the endpoint.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "indirect prompt injection documents"
   },
   {
     "id": "cy1-2-2-mcq-028",
@@ -1109,7 +1136,8 @@
     "acronyms": [
       "API"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "excessive agency human in the loop"
   },
   {
     "id": "cy1-2-2-mcq-029",
@@ -1148,7 +1176,8 @@
     },
     "explanation": "Blocked prompts are 200 - 14 = 186, and 186 / 200 = 93%. The 7% figure is the miss rate, 14% is the raw count of misses written as a percentage, and 86% subtracts the count from 100 instead of using 200.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "guardrail block rate calculation"
   },
   {
     "id": "cy1-2-2-mcq-030",
@@ -1189,7 +1218,8 @@
     "acronyms": [
       "API"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "vendor model security assurance"
   },
   {
     "id": "cy1-2-2-mcq-031",
@@ -1228,7 +1258,8 @@
     },
     "explanation": "A firewall should stop a known override pattern before it reaches the model and keep a record for analysis. Forwarding depends on the model alone, queuing only delays the same message, and converting it to an image changes modality without removing the attack.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "prompt injection override detection"
   },
   {
     "id": "cy1-2-2-mcq-032",
@@ -1272,7 +1303,8 @@
     },
     "explanation": "A prompt firewall validates and normalizes inputs and moderates or redacts outputs. Retraining and weight compression change the model itself, and certificate issuance is a separate public key function.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "prompt firewall capabilities"
   },
   {
     "id": "cy1-2-2-mcq-033",
@@ -1316,7 +1348,8 @@
     },
     "explanation": "Rate limits and per-request token caps bound load and spend. A larger window and a longer system prompt increase cost per call, and temperature only changes randomness.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "rate limits token caps DoS"
   },
   {
     "id": "cy1-2-2-mcq-034",
@@ -1361,7 +1394,8 @@
     },
     "explanation": "Guardrail testing uses attacker-style scenarios: override attempts, leakage probes and volume tests of throttling. Vendor training cost and interface fonts say nothing about whether controls hold.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "guardrail test plan scenarios"
   },
   {
     "id": "cy1-2-2-mcq-035",
@@ -1405,7 +1439,8 @@
     },
     "explanation": "Quotas cap cumulative volume, such as data size or request quantity over a long window. Temperature, embedding dimension and text color are not usage volumes.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "input quota dimensions"
   },
   {
     "id": "cy1-2-2-mcq-036",
@@ -1451,7 +1486,8 @@
     "acronyms": [
       "AI"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "endpoint access controls gateway"
   },
   {
     "id": "cy1-2-2-mcq-037",
@@ -1500,7 +1536,8 @@
     },
     "explanation": "Model evaluation checks fairness, factual reliability and handling of harmful requests. Port counts, key rotation and spend tracking are infrastructure and cost activities.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "model evaluation test types"
   },
   {
     "id": "cy1-2-2-mcq-038",
@@ -1544,7 +1581,8 @@
     },
     "explanation": "Fewer input types mean fewer hiding places for personal data or malicious content, and scoping sensitive actions limits what a manipulated model can do. Training cost, context size and tokenization speed are not outcomes of modality or tool restrictions.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "modality and tool restrictions benefits"
   },
   {
     "id": "cy1-2-2-config-001",
@@ -1669,7 +1707,8 @@
       "quota": "600 per day is double the 300 maximum, so real users are safe and one account cannot drain the budget.",
       "modal": "Only text is needed, so images, audio and files are closed off.",
       "access": "Scoped, expiring virtual keys identify each application and can be revoked individually."
-    }
+    },
+    "searchTerm": "LLM gateway rate limit configuration"
   },
   {
     "id": "cy1-2-2-config-002",
@@ -1774,7 +1813,8 @@
       "fw": "Blocking with a generic refusal and a log entry stops the attack and preserves evidence; forwarding or truncating still lets it reach the model.",
       "out": "Redaction meets the requirement for every reply; recording or conditionally showing the number does not.",
       "gate": "Guardrails are validated by testing them against attacks, not by time in production or by unrelated checks."
-    }
+    },
+    "searchTerm": "prompt template and guardrail configuration"
   },
   {
     "id": "cy1-2-2-diagram-001",
@@ -1943,7 +1983,8 @@
       "z-inspect": "The prompt firewall screens the input before the prompt is built or sent to the model.",
       "z-assembly": "The template builds the final prompt with user text confined to its slot.",
       "z-egress": "Output redaction checks the reply before the client receives it."
-    }
+    },
+    "searchTerm": "AI request pipeline control placement"
   },
   {
     "id": "cy1-2-2-diagram-002",
@@ -2090,7 +2131,8 @@
       "z-gw": "Modality and size checks are enforced on traffic as it enters the gateway.",
       "z-tool": "Approval before a destructive tool call limits excessive agency.",
       "z-live": "Scheduled retests catch regressions and new attack phrasing after launch."
-    }
+    },
+    "searchTerm": "guardrail lifecycle release to operation"
   },
   {
     "id": "cy1-2-2-data-001",
@@ -2250,7 +2292,8 @@
       "missed": "Sent 260 minus blocked 232 = 28 attacks got through; 232 is the blocked total and 48 matches neither total.",
       "overall": "Blocked 76 + 41 + 40 + 54 + 21 = 232; 232 / 260 = 89.2%, about 89%. 87% averages the five category rates and ignores their different sizes, and 93% matches no total.",
       "decision": "89% is below the 90% target, so hold the release and tune; releasing as is ignores the miss, and a rate limit does not stop attacks that were missed."
-    }
+    },
+    "searchTerm": "guardrail attack suite block rate"
   },
   {
     "id": "cy1-2-2-terminal-001",
@@ -2419,7 +2462,8 @@
       "action": "Failed cases show gaps in the control, so tune the firewall rules and rerun; hiding or ignoring failures defeats the test.",
       "rerun": "The usage line shows --case name with --target address, so both flags are needed to rerun one case.",
       "verify": "A fix is confirmed when the case now blocks and the complete suite shows no regressions."
-    }
+    },
+    "searchTerm": "prompt injection test suite results"
   },
   {
     "id": "cy1-2-2-hotspot-001",
@@ -2555,6 +2599,7 @@
       "eval": "An evaluation report is produced by testing, not enforced on live traffic.",
       "modal": "Allowed input types are restricted by the gateway.",
       "lineage": "Lineage records describe how data reached the model and do not filter requests."
-    }
+    },
+    "searchTerm": "AI gateway enforced controls"
   }
 ]

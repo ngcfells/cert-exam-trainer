@@ -38,7 +38,8 @@
     "explanation": "Fairness compares outcomes and error rates across groups. Reliability and safety is about dependable behavior without harm, transparency is about disclosing that and how AI is used, and accountability is about who answers for the system.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "responsible AI fairness principle"
   },
   {
     "id": "cy1-4-2-mcq-002",
@@ -79,7 +80,8 @@
     "explanation": "Probing a model with hostile and unusual inputs before launch checks that it behaves dependably and fails without causing harm, which is reliability and safety. Inclusiveness is about serving diverse users, explainability is about reasons for outputs, and privacy and data governance concerns how personal data is collected and protected, not how a model behaves under stress.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "adversarial testing reliability safety"
   },
   {
     "id": "cy1-4-2-mcq-003",
@@ -120,7 +122,8 @@
     "explanation": "Giving the factors behind a single decision is explainability. Transparency is the nearest neighbor but concerns disclosing that AI is used and how the system was built, not the reasons for one output. Inclusiveness, consistency and privacy do not produce reasons for a decision.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI explainability individual decisions"
   },
   {
     "id": "cy1-4-2-mcq-004",
@@ -161,7 +164,8 @@
     "explanation": "Hiding that a user is dealing with an AI breaches transparency, which includes clear disclosure. Consistency is about stable results, inclusiveness is about serving diverse users, and accountability is about who answers for decisions, not about disclosing that AI is in use.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI transparency disclosure"
   },
   {
     "id": "cy1-4-2-mcq-005",
@@ -200,7 +204,8 @@
       ]
     },
     "explanation": "Unprotected personal data in broadly readable logs is a privacy and security failure. Explainability, consistency and fairness are not about how data is collected, minimized and protected.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data privacy logging sensitive data"
   },
   {
     "id": "cy1-4-2-mcq-006",
@@ -239,7 +244,8 @@
       ]
     },
     "explanation": "Differential privacy limits the influence of any single record on the published outcome, usually by adding calibrated noise. Version labels, identifier stripping and accuracy proofs are different practices that do not give that statistical guarantee.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "differential privacy guarantee"
   },
   {
     "id": "cy1-4-2-mcq-007",
@@ -278,7 +284,8 @@
       ]
     },
     "explanation": "Designing the system so diverse populations can use it is inclusiveness. Fairness is a neighbor but compares outcomes between groups, which is not the issue here. Consistency, accountability and explainability do not address who can use the kiosk.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "AI inclusiveness accessibility design"
   },
   {
     "id": "cy1-4-2-mcq-008",
@@ -317,7 +324,8 @@
       ]
     },
     "explanation": "Accountability means a clear owner for reviewing and answering for the system. Privacy and security covers how personal data and systems are protected, not who owns a decision. Consistency is about stable outputs, and explainability is about reasons for outputs, so neither assigns an owner.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "AI accountability ownership"
   },
   {
     "id": "cy1-4-2-mcq-009",
@@ -356,7 +364,8 @@
       ]
     },
     "explanation": "Stable results for equivalent inputs are consistency. Reliability is a neighbor but covers dependable, safe operation overall rather than equal treatment of equivalent inputs. Accountability, inclusiveness and privacy are not about repeatable scores.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "AI output consistency"
   },
   {
     "id": "cy1-4-2-mcq-010",
@@ -397,7 +406,8 @@
     "explanation": "The cause is human behavior, so awareness training on approved uses and limits is the control that fits. Rate limits, weight encryption and more training data do not change what staff decide to paste.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "staff AI usage awareness training"
   },
   {
     "id": "cy1-4-2-mcq-011",
@@ -436,7 +446,8 @@
       ]
     },
     "explanation": "Models learn the patterns in past decisions, so historical inequities in the data reproduce as bias. Network depth, test set size and score rounding would affect quality or precision, not produce a systematic preference for certain schools.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "training data bias origins"
   },
   {
     "id": "cy1-4-2-mcq-012",
@@ -475,7 +486,8 @@
       ]
     },
     "explanation": "Bias shows up as different error or outcome rates across groups, so a per-group comparison on unseen data is the direct test. Latency, token counts and encryption measure speed, cost and confidentiality.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bias testing across groups"
   },
   {
     "id": "cy1-4-2-mcq-013",
@@ -514,7 +526,8 @@
       ]
     },
     "explanation": "Sensitive content exposed to someone who should not see it, without an attacker, is accidental data leakage. The reply is not unfair to a group, a measured accuracy decline, or an agent acting on its own.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "accidental data leakage AI"
   },
   {
     "id": "cy1-4-2-mcq-014",
@@ -553,7 +566,8 @@
       ]
     },
     "explanation": "Encrypting the data on the wire and in storage protects the sensitive content directly. Temperature, extra reviewers and compression of the archive do not stop the details from being read.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "encryption of AI data"
   },
   {
     "id": "cy1-4-2-mcq-015",
@@ -592,7 +606,8 @@
       ]
     },
     "explanation": "Public harm to trust and relationships from an output is reputational damage. The scenario does not describe copied content, unequal outcomes between groups, or a measured decline in model quality.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "AI reputational risk"
   },
   {
     "id": "cy1-4-2-mcq-016",
@@ -631,7 +646,8 @@
       ]
     },
     "explanation": "The root cause is a gap in the training data, so auditing coverage and adding real or generated examples addresses it. Temperature, approvals and key rotation leave the data imbalance in place.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "training data representation gaps"
   },
   {
     "id": "cy1-4-2-mcq-017",
@@ -670,7 +686,8 @@
       ]
     },
     "explanation": "Models can degrade silently when live data moves away from the training baseline, which is drift. Poisoning, prompt leakage and excessive agency describe attacks or design flaws, not gradual change in behavior.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model drift detection"
   },
   {
     "id": "cy1-4-2-mcq-018",
@@ -709,7 +726,8 @@
       ]
     },
     "explanation": "A pilot with real local users exposes weaknesses that clean lab data hides. More reviewers, shorter replies and encryption do not add the missing real-world coverage.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pilot testing real users AI"
   },
   {
     "id": "cy1-4-2-mcq-019",
@@ -750,7 +768,8 @@
     "explanation": "Training on material without the owner's permission creates IP-related legal exposure. Bias, leakage and drift are other risk categories that the scenario does not describe.",
     "acronyms": [
       "IP"
-    ]
+    ],
+    "searchTerm": "AI training data licensing risk"
   },
   {
     "id": "cy1-4-2-mcq-020",
@@ -789,7 +808,8 @@
       ]
     },
     "explanation": "Provenance controls such as watermarking and signing let others verify origin and integrity of generated content. Rate limits, minimization and transport encryption do not prove where an image came from.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "AI content provenance watermarking"
   },
   {
     "id": "cy1-4-2-mcq-021",
@@ -828,7 +848,8 @@
       ]
     },
     "explanation": "High-impact actions need validation before they happen, so an approval threshold limits the damage. A monthly report finds problems only afterward, and temperature or a broader access scope would raise the risk.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "approval thresholds autonomous agents"
   },
   {
     "id": "cy1-4-2-mcq-022",
@@ -867,7 +888,8 @@
       ]
     },
     "explanation": "Autonomous systems cause side effects when the objective they are given has no limits on the means, even with benign intent. Label bias, log storage and weight theft do not explain the cancellations.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "agent objective side effects"
   },
   {
     "id": "cy1-4-2-mcq-023",
@@ -906,7 +928,8 @@
       ]
     },
     "explanation": "Technology adopted outside the knowledge and control of the internal tech team is shadow information technology. Vendor lock-in is dependence on a supplier, technical debt is the cost of past shortcuts, and zero trust is an access model.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "shadow information technology"
   },
   {
     "id": "cy1-4-2-mcq-024",
@@ -947,7 +970,8 @@
     "explanation": "Unapproved use of AI tools by staff is shadow AI, a form of unsanctioned technology use. Drift is gradual model decay, poisoning is tampering with training data, and federated learning is a training approach.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "shadow AI unsanctioned tools"
   },
   {
     "id": "cy1-4-2-mcq-025",
@@ -988,7 +1012,8 @@
     "explanation": "Staff use shadow AI to get work done, so offering a sanctioned alternative with clear rules reduces the risk without stopping the work. Blocking everything halts business, waiting leaves data exposed, and clearing history hides evidence.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "shadow AI response options"
   },
   {
     "id": "cy1-4-2-mcq-026",
@@ -1030,7 +1055,8 @@
     "acronyms": [
       "GPU",
       "AI"
-    ]
+    ],
+    "searchTerm": "detecting unapproved AI websites"
   },
   {
     "id": "cy1-4-2-mcq-027",
@@ -1071,7 +1097,8 @@
     "explanation": "Interface design and procedural safeguards that prompt a human check counter over-trust. Hiding confidence, shortening text and removing feedback all make blind acceptance easier.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "automation bias over-trust"
   },
   {
     "id": "cy1-4-2-mcq-028",
@@ -1112,7 +1139,8 @@
     "explanation": "A growing share of low-confidence predictions is a sign of a model degrading as conditions change. Theft, injection and labeling bias would show up in different evidence.",
     "acronyms": [
       "IP"
-    ]
+    ],
+    "searchTerm": "model degradation low confidence"
   },
   {
     "id": "cy1-4-2-mcq-029",
@@ -1153,7 +1181,8 @@
     "explanation": "Redacting identifiers before the request leaves the company removes sensitive values where the leak would start. A longer system prompt, a bigger model and caching do nothing to remove them.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "prompt data redaction"
   },
   {
     "id": "cy1-4-2-mcq-030",
@@ -1203,7 +1232,8 @@
     "explanation": "Accountability needs a named owner and a trail showing who decided what. Compression and temperature have nothing to do with responsibility, and a shared login and hidden versions remove the ability to attribute decisions.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI accountability practices"
   },
   {
     "id": "cy1-4-2-mcq-031",
@@ -1256,7 +1286,8 @@
       "CPU",
       "GPU",
       "AI"
-    ]
+    ],
+    "searchTerm": "causes of AI bias"
   },
   {
     "id": "cy1-4-2-mcq-032",
@@ -1307,7 +1338,8 @@
     "explanation": "Redaction, retention limits and routing work to vetted tools each shrink the chance that sensitive text is exposed. Temperature, context length and a feedback form do not protect sensitive prompt content.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "preventing data leakage prompts"
   },
   {
     "id": "cy1-4-2-mcq-033",
@@ -1355,7 +1387,8 @@
       ]
     },
     "explanation": "Rate limits cap the blast radius and short-lived scoped credentials limit what a misled agent can reach. Broad permissions, missing logs, self-edited goals and irreversible changes all increase risk.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "autonomous agent safety measures"
   },
   {
     "id": "cy1-4-2-mcq-034",
@@ -1405,7 +1438,8 @@
     "explanation": "Shadow AI is AI use outside approved channels, which shows up as unapproved destinations and personal sign-ups for AI tools. Rising use of the approved gateway, an updated model card, a red-team exercise and a backup are normal governed activity.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "signs of shadow AI"
   },
   {
     "id": "cy1-4-2-mcq-035",
@@ -1455,7 +1489,8 @@
     "explanation": "A ready holding statement and a briefed spokesperson let the organization respond quickly and consistently when a bad output goes public. Batch size, hiding the model name, ending output review and typography do nothing to reduce reputational damage.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI reputational incident preparedness"
   },
   {
     "id": "cy1-4-2-buckets-001",
@@ -1536,7 +1571,8 @@
     "pbqWeight": 6,
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "responsible AI principles incidents"
   },
   {
     "id": "cy1-4-2-buckets-002",
@@ -1626,7 +1662,8 @@
     "acronyms": [
       "AI",
       "IP"
-    ]
+    ],
+    "searchTerm": "AI risk categories classification"
   },
   {
     "id": "cy1-4-2-match-001",
@@ -1716,7 +1753,8 @@
     "acronyms": [
       "AI",
       "IP"
-    ]
+    ],
+    "searchTerm": "AI risk mitigations matching"
   },
   {
     "id": "cy1-4-2-data-001",
@@ -1859,7 +1897,8 @@
     "pbqWeight": 4,
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "selection rate disparity analysis"
   },
   {
     "id": "cy1-4-2-hotspot-001",
@@ -1997,7 +2036,8 @@
       "API",
       "CRM",
       "AI"
-    ]
+    ],
+    "searchTerm": "identifying shadow AI usage"
   },
   {
     "id": "cy1-4-2-terminal-001",
@@ -2125,7 +2165,8 @@
     "pbqWeight": 4,
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "web proxy log analysis AI"
   },
   {
     "id": "cy1-4-2-config-001",
@@ -2248,7 +2289,8 @@
     "pbqWeight": 4,
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "responsible AI customer service configuration"
   },
   {
     "id": "cy1-4-2-mcq-036",
@@ -2289,6 +2331,7 @@
     "explanation": "Pasting secrets into a public service sends them to a third party that may store or train on them, so the direct risk is data leaving the company's control. Drift, bias and invented facts are AI risks too, but polishing wording does not make them the main concern here.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "confidential data public chatbot risk"
   }
 ]

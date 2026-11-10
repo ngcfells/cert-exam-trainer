@@ -38,7 +38,8 @@
     "explanation": "Query monitoring watches what users send in: injection attempts, restricted topics, and sensitive values. Latency tracking is performance monitoring, comparing replies with a labeled set is an accuracy audit, and token counts by team are cost monitoring.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "query monitoring AI systems"
   },
   {
     "id": "cy1-2-5-mcq-002",
@@ -77,7 +78,8 @@
       ]
     },
     "explanation": "Response monitoring inspects what the model sends back so that leaks, harmful text, and fabricated claims can be flagged. Request volume is rate monitoring, access rights belong to an access audit, and storage growth is a cost signal.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "response monitoring model output"
   },
   {
     "id": "cy1-2-5-mcq-003",
@@ -116,7 +118,8 @@
       ]
     },
     "explanation": "Response monitoring scans model output for personal data patterns and catches a leak at the point it would be delivered. Rate monitoring and cost alerts do not read content, and a profanity filter on the prompt side cannot see what the model returns.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "output scanning for data leaks"
   },
   {
     "id": "cy1-2-5-mcq-004",
@@ -155,7 +158,8 @@
       ]
     },
     "explanation": "Repeated rewording against the same restricted goal is the pattern of someone probing for a bypass, so an alert and a review of the account are warranted. Load testing would not vary the wording to dodge rules, a low quota would not explain the content, and caching has nothing to do with intent.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "detecting prompt probing behavior"
   },
   {
     "id": "cy1-2-5-mcq-005",
@@ -194,7 +198,8 @@
       ]
     },
     "explanation": "Naming the account, model version, and time attributes the exchange, and a hash lets investigators later verify any retained copy without storing the text. A network address alone cannot attribute activity, lineage describes the model rather than the interaction, and full transcripts keep the sensitive content the company wants to avoid.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "audit logging without storing conversations"
   },
   {
     "id": "cy1-2-5-mcq-006",
@@ -235,7 +240,8 @@
     "explanation": "Central collection with a correlating tag lets one query show the blocked prompt and the tool call together. Extra verbosity on one source and faster rotation leave the logs separate, and host logins make analysts search by hand while widening access.",
     "acronyms": [
       "SIEM"
-    ]
+    ],
+    "searchTerm": "correlating security events across logs"
   },
   {
     "id": "cy1-2-5-mcq-007",
@@ -274,7 +280,8 @@
       ]
     },
     "explanation": "Sanitizing at write time keeps the debugging value of the log while the card numbers never land in storage. A faster tier changes nothing about content, a banner relies on user behavior, and compression is trivially reversed.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sanitizing logs for sensitive data"
   },
   {
     "id": "cy1-2-5-mcq-008",
@@ -313,7 +320,8 @@
       ]
     },
     "explanation": "Sanitization removes or masks sensitive values such as personal data or secrets so they are not kept in the log. Deleting old logs is retention, aligning clocks is time synchronization, and compression is storage management.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "log sanitization definition"
   },
   {
     "id": "cy1-2-5-mcq-009",
@@ -352,7 +360,8 @@
       ]
     },
     "explanation": "Role-limited access with an access record applies least privilege and leaves an audit trail for the logs themselves. Mailing summaries and copying to laptops spread the data further, and a source repository is readable by even more people.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "log access control least privilege"
   },
   {
     "id": "cy1-2-5-mcq-010",
@@ -391,7 +400,8 @@
       ]
     },
     "explanation": "Logs shipped off the host to write-once storage with separate credentials cannot be erased by someone who controls the server. A folder permission, rotation, or a second copy on the same machine all fall to the same administrator.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "tamper-evident log storage"
   },
   {
     "id": "cy1-2-5-mcq-011",
@@ -430,7 +440,8 @@
       ]
     },
     "explanation": "An automated retention rule makes actual practice match the promise. More disk space enlarges the problem, a count report only describes it, and stronger encryption protects the data without ending its retention.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "log retention policy enforcement"
   },
   {
     "id": "cy1-2-5-mcq-012",
@@ -469,7 +480,8 @@
       ]
     },
     "explanation": "A confidence level is an estimate of how likely an answer is to be right, which can drive review decisions. Speed is latency, ratings are user feedback, and generation cost is a spend metric.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "confidence score in AI responses"
   },
   {
     "id": "cy1-2-5-mcq-013",
@@ -508,7 +520,8 @@
       ]
     },
     "explanation": "Acting on a low score, through human review or a visible warning, keeps users from relying on shaky answers. Hiding the score removes the signal, retraining on every instance is impractical, and deleting log entries destroys evidence needed for the trend.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "low confidence answer handling"
   },
   {
     "id": "cy1-2-5-mcq-014",
@@ -547,7 +560,8 @@
       ]
     },
     "explanation": "A fluent model can be confident and wrong, so the score is one signal and must be paired with grounding checks and sampling. The case does not exist, so a failed citation lookup cannot be the cause. The score is not a speed measure, and prompt length does not explain a fabricated case.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "overconfidence in model outputs"
   },
   {
     "id": "cy1-2-5-mcq-015",
@@ -586,7 +600,8 @@
       ]
     },
     "explanation": "Rate monitoring measures how many requests arrive, per client and per period, so spikes and abuse stand out. The other options describe an accuracy audit, an access audit, and a storage cost metric.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rate monitoring API requests"
   },
   {
     "id": "cy1-2-5-mcq-016",
@@ -625,7 +640,8 @@
       ]
     },
     "explanation": "A sharp departure from a normal rate on a new network suggests a leaked key or runaway job, so contain it and investigate. Raising the limit lets the abuse continue, waiting for the invoice delays containment, and deleting logs destroys the evidence.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "anomalous API key usage detection"
   },
   {
     "id": "cy1-2-5-mcq-017",
@@ -664,7 +680,8 @@
       ]
     },
     "explanation": "A slow, systematic sweep stays beneath short-window limits, so detection needs long-horizon per-client baselines and content patterns. Per-minute caps never trigger, single-request latency looks normal, and company-wide totals hide one client.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "slow low-rate attack detection"
   },
   {
     "id": "cy1-2-5-mcq-018",
@@ -705,7 +722,8 @@
     "explanation": "The added text enlarges every prompt, so tracking input tokens per prompt by feature exposes the change. Output tokens, stored embeddings, and tuning hours did not change when the prompt template grew.",
     "acronyms": [
       "GPU"
-    ]
+    ],
+    "searchTerm": "token cost monitoring prompt growth"
   },
   {
     "id": "cy1-2-5-mcq-019",
@@ -744,7 +762,8 @@
       ]
     },
     "explanation": "Storage cost follows how much data is kept and for how long, so growth by data type and lifecycle rules are the levers. Prompt size, request peaks, and latency belong to other cost or performance categories.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "storage cost monitoring data retention"
   },
   {
     "id": "cy1-2-5-mcq-020",
@@ -783,7 +802,8 @@
       ]
     },
     "explanation": "Response cost scales with generated tokens, so bounding length attacks it directly. A larger instance raises processing spend, prompt caching affects input rather than output, and a higher limit invites more usage.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "output token cost control"
   },
   {
     "id": "cy1-2-5-mcq-021",
@@ -824,7 +844,8 @@
     "explanation": "Processing spend is driven by compute time, so utilization tracking and scheduling reduce waste. System prompt length affects input cost, log masking is sanitization, and cold storage changes the storage bill.",
     "acronyms": [
       "GPU"
-    ]
+    ],
+    "searchTerm": "GPU utilization processing cost"
   },
   {
     "id": "cy1-2-5-mcq-022",
@@ -863,7 +884,8 @@
       ]
     },
     "explanation": "Automated limits react in minutes: a spend cap that suspends the job and a limit on repeated runs break a resubmission storm quickly. A weekly review comes too late, longer retention records the storm without stopping it, and a larger context window does nothing to curb repeats.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "runaway job spend limits"
   },
   {
     "id": "cy1-2-5-mcq-023",
@@ -902,7 +924,8 @@
       ]
     },
     "explanation": "A scheduled, deeper review against stated criteria with a written report is an audit, while the all-day dashboard is monitoring. Sanitization masks values in logs and rate limiting caps client volume, and neither involves sampling outputs for review.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "continuous monitoring versus audit"
   },
   {
     "id": "cy1-2-5-mcq-024",
@@ -941,7 +964,8 @@
       ]
     },
     "explanation": "A hallucination is a claim the sources do not support, so each sampled claim is checked against the retrieved material. A confidence score can be high on fabricated text, satisfaction reflects tone more than truth, and training volume says nothing about one reply.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "hallucination measurement audit"
   },
   {
     "id": "cy1-2-5-mcq-025",
@@ -980,7 +1004,8 @@
       ]
     },
     "explanation": "Accuracy is measured against known correct labels, and comparing releases on the same set isolates the change. Complaints are noisy and incomplete, reply length and latency are unrelated to correctness.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model accuracy evaluation over releases"
   },
   {
     "id": "cy1-2-5-mcq-026",
@@ -1021,7 +1046,8 @@
     "explanation": "Fairness auditing holds qualifications constant and compares results between groups. Token usage, latency, and transport encryption can all look normal while the ranking is skewed.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "fairness audit disparate outcomes"
   },
   {
     "id": "cy1-2-5-mcq-027",
@@ -1060,7 +1086,8 @@
       ]
     },
     "explanation": "Stale rights break least privilege and a shared login destroys accountability, so both should be corrected. Past need does not justify current access, widening access adds risk, and the two stale accounts are also findings.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "access audit stale accounts"
   },
   {
     "id": "cy1-2-5-mcq-028",
@@ -1099,7 +1126,8 @@
       ]
     },
     "explanation": "Dated change records show what the filter configuration was on a given day, which is the traceability an audit needs. A latency dashboard and a cost report say nothing about the filter, and a launch-time test shows only that it worked then.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "change records for audit evidence"
   },
   {
     "id": "cy1-2-5-mcq-029",
@@ -1138,7 +1166,8 @@
       ]
     },
     "explanation": "Dividing group two's approval rate of 45 by group one's of 60 gives 0.75, a disparity the audit should investigate and document. Neither 0.25 nor 15 is the quotient of these rates, and 1.33 inverts the division.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "disparate impact ratio calculation"
   },
   {
     "id": "cy1-2-5-mcq-030",
@@ -1177,7 +1206,8 @@
       ]
     },
     "explanation": "A finding is closed on verified evidence, so the failed cases are tested again and the outcome is recorded. A verbal assurance is unverified, deleting findings removes the audit trail, and waiting a year leaves the defect unconfirmed.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "closing audit findings verification"
   },
   {
     "id": "cy1-2-5-mcq-031",
@@ -1216,7 +1246,8 @@
       ]
     },
     "explanation": "An alert comparing the share of declines with its recent baseline raises the shift within minutes instead of days. More retention, a monthly report, and extra disk space all keep or list data without watching it for change.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "refusal rate anomaly alerting"
   },
   {
     "id": "cy1-2-5-mcq-032",
@@ -1266,7 +1297,8 @@
     "explanation": "Caller identity and model version attribute each request to a person or service and a specific model, which is the minimum for tracing. Full response text and home addresses add sensitive data the log does not need, and source code and keys must never be written to a log.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI request log minimum fields"
   },
   {
     "id": "cy1-2-5-mcq-033",
@@ -1317,7 +1349,8 @@
     "explanation": "Encryption, role-limited access, and a protected off-host copy keep logs confidential and tamper resistant. Open-ended retention, broad read access, and web-server storage each increase exposure.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "protecting AI prompt logs"
   },
   {
     "id": "cy1-2-5-mcq-034",
@@ -1365,7 +1398,8 @@
       ]
     },
     "explanation": "Extraction looks like methodical, machine-paced coverage of an input space by one source. Calendar questions, greetings, one long prompt, and ordinary working patterns are normal use.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model extraction query patterns"
   },
   {
     "id": "cy1-2-5-mcq-035",
@@ -1416,7 +1450,8 @@
     "acronyms": [
       "AI",
       "GPU"
-    ]
+    ],
+    "searchTerm": "AI service processing cost drivers"
   },
   {
     "id": "cy1-2-5-mcq-036",
@@ -1464,7 +1499,8 @@
       ]
     },
     "explanation": "Low confidence is a cue for oversight or a user-facing warning. Speeding delivery ignores the risk, removing logs loses evidence, per-answer retraining is impractical, and hiding the score discards the signal.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "low confidence response handling"
   },
   {
     "id": "cy1-2-5-mcq-037",
@@ -1513,7 +1549,8 @@
       ]
     },
     "explanation": "Source checks, a trend of the unsupported-claim rate, and questions the sources cannot answer (to see whether it admits uncertainty) reveal fabrication. Page speed, logins, and billing are unrelated to whether answers are true.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "hallucination audit methods"
   },
   {
     "id": "cy1-2-5-mcq-038",
@@ -1563,7 +1600,8 @@
     "explanation": "An access audit asks who can reach models, data, and logs, and whether those rights are still justified. Bias, test-set scores, spend, and citations belong to fairness, accuracy, cost, and hallucination reviews.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "access audit checks AI platform"
   },
   {
     "id": "cy1-2-5-data-001",
@@ -1713,7 +1751,8 @@
       "action": "A 20-fold jump from a small client suggests a leaked key or runaway job, so contain and investigate before raising limits."
     },
     "pbqWeight": 4,
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "gateway rate anomaly baseline"
   },
   {
     "id": "cy1-2-5-data-002",
@@ -1876,7 +1915,8 @@
     "acronyms": [
       "AI",
       "GPU"
-    ]
+    ],
+    "searchTerm": "AI token pricing calculation"
   },
   {
     "id": "cy1-2-5-terminal-001",
@@ -1995,7 +2035,8 @@
     "pbqWeight": 4,
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "prompt injection probing logs"
   },
   {
     "id": "cy1-2-5-terminal-002",
@@ -2108,7 +2149,8 @@
     "pbqWeight": 4,
     "acronyms": [
       "SIEM"
-    ]
+    ],
+    "searchTerm": "masking sensitive data in logs"
   },
   {
     "id": "cy1-2-5-hotspot-001",
@@ -2246,7 +2288,8 @@
     "acronyms": [
       "AI",
       "GPU"
-    ]
+    ],
+    "searchTerm": "prompt monitoring and log protection"
   },
   {
     "id": "cy1-2-5-order-001",
@@ -2309,7 +2352,8 @@
     "pbqWeight": 6,
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "AI quality audit process steps"
   },
   {
     "id": "cy1-2-5-buckets-001",
@@ -2388,6 +2432,7 @@
       "i6": "A shared administrator login is an access finding because it removes accountability."
     },
     "pbqWeight": 6,
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "AI audit findings categories"
   }
 ]

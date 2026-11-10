@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "Removing duplicates, normalizing formats and discarding impossible values is data cleansing. Lineage documents where data has been, balancing evens out class counts, and augmentation adds new samples.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data cleansing techniques machine learning"
   },
   {
     "id": "cy1-1-2-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "Schema, range and format checks at ingestion can stop crafted or corrupt rows before they shape the model. Cleansing does not encrypt data, cannot prove who authored a row (that is provenance and signing), and does not remove the need for continued monitoring.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data poisoning defense cleansing"
   },
   {
     "id": "cy1-1-2-mcq-003",
@@ -116,7 +118,8 @@
     "explanation": "Instructions hidden in a document can reach the model when that document is retrieved, so sanitizing content before indexing cuts that path. It does not create licensing records, change class mix, or cause embedding drift over time.",
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "prompt injection hidden text sanitization"
   },
   {
     "id": "cy1-1-2-mcq-004",
@@ -155,7 +158,8 @@
       ]
     },
     "explanation": "A hash changes when any byte changes, so a mismatch means the dataset is not the approved one, and the pipeline should halt and investigate. Hashes say nothing about personal data, class counts, or which embedding model was used.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "cryptographic hash dataset integrity"
   },
   {
     "id": "cy1-1-2-mcq-005",
@@ -194,7 +198,8 @@
       ]
     },
     "explanation": "Lineage records the route and every transformation along it. Watermarking embeds ownership markers, integrity is the property of being unaltered, and verification checks data against a baseline.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data lineage tracking"
   },
   {
     "id": "cy1-1-2-mcq-006",
@@ -233,7 +238,8 @@
       ]
     },
     "explanation": "Lineage links downstream artifacts back to their sources, so the impact of a tainted feed can be traced and cleaned up. Class counts, retrieval access logs and a model watermark do not show what was derived from what.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data lineage impact analysis"
   },
   {
     "id": "cy1-1-2-mcq-007",
@@ -272,7 +278,8 @@
       ]
     },
     "explanation": "Provenance captures origin, license and consent; lineage captures the transformation path. The reversed pairing swaps them, and neither lineage alone nor integrity records cover both origin terms and processing history.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data provenance versus lineage"
   },
   {
     "id": "cy1-1-2-mcq-008",
@@ -311,7 +318,8 @@
       ]
     },
     "explanation": "Integrity is protection against unauthorized change. Lineage tracks transformations, classification labels how sensitive data is rather than whether it was changed, and balancing adjusts class proportions.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data integrity security"
   },
   {
     "id": "cy1-1-2-mcq-009",
@@ -352,7 +360,8 @@
     "explanation": "A signature binds the data to its signer and breaks if the data changes. A posted checksum can be recomputed by anyone who alters the batch, TLS protects only the transfer and not the origin, and a row count is trivially matched.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "digital signatures data authenticity"
   },
   {
     "id": "cy1-1-2-mcq-010",
@@ -391,7 +400,8 @@
       ]
     },
     "explanation": "An append-only ledger cannot be rewritten without detection, so history stays trustworthy. A wiki page, a replaceable folder and a live count can all be edited or overwritten without leaving evidence.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "tamper evident audit trail"
   },
   {
     "id": "cy1-1-2-mcq-011",
@@ -430,7 +440,8 @@
       ]
     },
     "explanation": "Provenance is the dataset's origin story plus its usage terms. Balancing, cleansing and augmentation are processing techniques that change the data, not records of where it came from.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data provenance license consent"
   },
   {
     "id": "cy1-1-2-mcq-012",
@@ -469,7 +480,8 @@
       ]
     },
     "explanation": "Documented origin lets the team verify who produced the data and under what terms. Anonymous, unlicensed or unattributable sources give no basis for trust and are easy vehicles for poisoned content or legal exposure.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "training data source provenance risk"
   },
   {
     "id": "cy1-1-2-mcq-013",
@@ -508,7 +520,8 @@
       ]
     },
     "explanation": "A burst from brand-new accounts is a classic poisoning signal, and provenance data lets the team isolate it. Oversampling or augmenting does not remove the suspect rows, and sheer volume is exactly how poisoning succeeds.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data poisoning detection burst"
   },
   {
     "id": "cy1-1-2-mcq-014",
@@ -547,7 +560,8 @@
       ]
     },
     "explanation": "Augmentation produces new samples from existing ones. Lineage records transformations, cleansing removes bad records, and provenance tracking records origin and terms, not the processing that produced a sample.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data augmentation machine learning"
   },
   {
     "id": "cy1-1-2-mcq-015",
@@ -586,7 +600,8 @@
       ]
     },
     "explanation": "Tags let reviewers trace a fault or a bias to generated data and keep real and synthetic records distinguishable for audits. Tags do not instruct the model to skip rows, change encryption, or exempt data from integrity checks.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "synthetic data metadata tagging"
   },
   {
     "id": "cy1-1-2-mcq-016",
@@ -625,7 +640,8 @@
       ]
     },
     "explanation": "Heavy skew toward the common class teaches a model that calling everything benign is almost always right, so detections are missed. Balancing the classes addresses this. Skew does not cause memorization of personal data, break signatures, or bloat an index.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "class imbalance fraud detection"
   },
   {
     "id": "cy1-1-2-mcq-017",
@@ -664,7 +680,8 @@
       ]
     },
     "explanation": "Nested records without a fixed schema can carry credentials and personal details in fields no one anticipated, so they are scanned and redacted before use. Stack traces, version numbers and activity counts leak some internal detail, but each is far lower in impact than a live token or personal data.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sensitive data scanning training data"
   },
   {
     "id": "cy1-1-2-mcq-018",
@@ -706,7 +723,8 @@
     "acronyms": [
       "PII",
       "RAG"
-    ]
+    ],
+    "searchTerm": "personal data redaction RAG"
   },
   {
     "id": "cy1-1-2-mcq-019",
@@ -745,7 +763,8 @@
       ]
     },
     "explanation": "Watermarking places an identifiable marker that the owner can later demonstrate. Tokenization and masking replace sensitive values, and hashing creates a digest but does not mark ownership.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "digital watermarking data ownership"
   },
   {
     "id": "cy1-1-2-mcq-020",
@@ -784,7 +803,8 @@
       ]
     },
     "explanation": "A rare, planted response is a watermark that the owner can use to show model theft. It says nothing about poisoning, class balance, or retrieval-store breaches.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "model watermarking model theft"
   },
   {
     "id": "cy1-1-2-mcq-021",
@@ -823,7 +843,8 @@
       ]
     },
     "explanation": "A watermark is evidence for tracing and disputes, not a barrier. It does not encrypt, does not authenticate readers, and does not degrade the data for someone who has already copied it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "watermarking versus access control"
   },
   {
     "id": "cy1-1-2-mcq-022",
@@ -864,7 +885,8 @@
     "explanation": "Retrieval finds the most relevant stored chunks and supplies them to the model as context. It does not retrain weights, encrypt questions, or moderate output.",
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "retrieval augmented generation retrieval"
   },
   {
     "id": "cy1-1-2-mcq-023",
@@ -903,7 +925,8 @@
       ]
     },
     "explanation": "Isolation enforced where the data lives, with access filtering on each query, so similarity search cannot cross customers. Embedding size, caching and a lower threshold affect relevance or speed, and a lower threshold actually returns more content.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "vector database tenant isolation"
   },
   {
     "id": "cy1-1-2-mcq-024",
@@ -942,7 +965,8 @@
       ]
     },
     "explanation": "The store usually keeps or points to the original chunks, and the vectors themselves can leak information about the content, so the index needs the same protection as the documents. Permissions are not inherited automatically, vectors are not signed by default, and indexes can be encrypted.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "vector embeddings data leakage"
   },
   {
     "id": "cy1-1-2-mcq-025",
@@ -983,7 +1007,8 @@
     "explanation": "Controlling who can add content and checking where it comes from prevents planted chunks from entering the index. Vector size, context length and the system prompt do not stop poisoned entries from being retrieved.",
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "RAG index poisoning defense"
   },
   {
     "id": "cy1-1-2-mcq-026",
@@ -1024,7 +1049,8 @@
     "explanation": "An embedding maps content to a vector so that similar meanings sit close together for retrieval. A digest only detects changes, a provenance record gives origin and terms, and a synthetic copy is generated data.",
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "embeddings vector representation"
   },
   {
     "id": "cy1-1-2-mcq-027",
@@ -1068,7 +1094,8 @@
       ]
     },
     "explanation": "A matching hash shows the content is unchanged, and a matching schema shows the structure is the same, so together they confirm the data is consistent with what was signed off. Oversampling is balancing, synthetic variants are augmentation, and embeddings serve retrieval; none of them compare the data with a baseline.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dataset hash schema validation"
   },
   {
     "id": "cy1-1-2-mcq-028",
@@ -1112,7 +1139,8 @@
       ]
     },
     "explanation": "Validation rejects malformed or crafted rows, and removing duplicate bursts blunts attempts to over-weight a planted pattern. Watermarking and tagging are ownership and audit measures, and a retrieval threshold has no effect on training data quality.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data cleansing poisoning reduction"
   },
   {
     "id": "cy1-1-2-mcq-029",
@@ -1163,7 +1191,8 @@
     "explanation": "Encryption, per-user filtering of results and controlled, reviewed writes protect confidentiality and integrity of the store. Larger vectors, more chunk overlap and a public schema do not restrict who can read or change content.",
     "acronyms": [
       "TLS"
-    ]
+    ],
+    "searchTerm": "vector store access controls"
   },
   {
     "id": "cy1-1-2-mcq-030",
@@ -1209,7 +1238,8 @@
     "explanation": "Provenance covers origin, license and consent. Batch size, retrieval threshold and compute hours describe how a model is trained or served, not the data's source or terms.",
     "acronyms": [
       "GPU"
-    ]
+    ],
+    "searchTerm": "data provenance record contents"
   },
   {
     "id": "cy1-1-2-mcq-031",
@@ -1253,7 +1283,8 @@
       ]
     },
     "explanation": "A schema makes structured data easy to target, while free text and media must be inspected to find what they hold. Semi-structured files often contain secrets, structured tables can expose defensive patterns, and unstructured data has no columns to mask.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "structured unstructured data security"
   },
   {
     "id": "cy1-1-2-mcq-032",
@@ -1297,7 +1328,8 @@
       ]
     },
     "explanation": "Lineage maps what depends on what and shows each transformation, which supports impact analysis and audits. It is documentation, so it does not block poisoned rows, replace integrity checks, or provide encryption.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "automated data lineage benefits"
   },
   {
     "id": "cy1-1-2-diagram-001",
@@ -1433,7 +1465,8 @@
     "acronyms": [
       "PII",
       "RAG"
-    ]
+    ],
+    "searchTerm": "RAG pipeline security controls"
   },
   {
     "id": "cy1-1-2-diagram-002",
@@ -1566,7 +1599,8 @@
       "z3": "Reducing the majority class to match the rare one is balancing, not augmentation, which adds samples.",
       "z4": "Recording origin, license and consent is provenance; lineage would track the transformations instead."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dataset preparation pipeline stages"
   },
   {
     "id": "cy1-1-2-buckets-001",
@@ -1641,7 +1675,8 @@
       "audio": "Audio has no fields and must be transcribed and scanned to find sensitive content.",
       "scan": "Scanned images are unstructured; text must be extracted before personal data can be found."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "structured semi-structured unstructured data"
   },
   {
     "id": "cy1-1-2-match-001",
@@ -1722,7 +1757,8 @@
       "p4": "Augmentation adds samples by transforming existing ones; balancing would only change class proportions.",
       "p5": "Secret test prompts that trigger a planted reply are a model watermark."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "data security techniques comparison"
   },
   {
     "id": "cy1-1-2-data-001",
@@ -1860,7 +1896,8 @@
       "cut": "The next-largest class is Port scan with 1,500. 18,000 - 1,500 = 16,500 Benign records to remove.",
       "fail": "5 failed out of 100 Exfiltration records = 5%, whereas all failures (100 of 20,000) are only 0.5%."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "class imbalance intrusion detection datasets"
   },
   {
     "id": "cy1-1-2-hotspot-001",
@@ -1997,6 +2034,7 @@
     },
     "acronyms": [
       "RAG"
-    ]
+    ],
+    "searchTerm": "RAG corpus poisoning entry points"
   }
 ]
