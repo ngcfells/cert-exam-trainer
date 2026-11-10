@@ -1,3 +1,18 @@
+# 2026-11-10 (local): #630, #18 and the primer are all DONE and live
+
+Next session model: **Sonnet**. Everything below ran on Claude only (no astech, no Ollama), as the owner asked.
+
+- battletech-tools #630 closed: all 7 points built, beta deployed, commented. `beta` was merged with origin/master and
+  pushed to `origin/master` directly (`git push origin beta:master`). Local `master` in C:/repo/battletech-tools still
+  holds one UNPUSHED docs commit (2c3a1444c, the answers from Scott); rebase it onto origin/master when ready, and the
+  owner decides whether it goes public.
+- testingUtility #18 closed: cram takes the 3 weakest objectives in turn (`interleave` in `src/study/session.ts`).
+  The "choose a section for cram" part was NOT built; the issue comment offers it as a feature.
+- Primer (#5) merged, pushed, deployed (gh-pages 1e28f6c), closed. Check: 113 files 1132 tests, e2e 119 passed.
+- Next: #16 (font size on phones), #17 (install as an app / offline), both `from-app` enhancements. Then #11, #6.
+- Still open for the owner: hand-check the Aces auto-answer on beta (Rekikire replays the playtest); the VERIFY items in
+  `C:/repo/JBTToolsSupportFiles/handoff.md` (Weapon Hit 50 vs 25 percent).
+
 # 2026-11-09/10 (local): primer review fixed, BUG #18 comes first
 
 Next session model: **Sonnet**. Order of work (owner's ruling, 2026-11-10):
