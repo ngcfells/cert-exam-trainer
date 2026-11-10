@@ -1,3 +1,24 @@
+# 2026-11-10 (night, later): #6 design approved, plan is next
+
+Next session model: **Sonnet**. `gh issue list` first (on 2026-11-10 there were no bugs: only #11 and #6, plus the
+battletech-tools enhancements). The owner picked #6 (links to in-depth explanations) and approved the design:
+`docs/superpowers/specs/2026-11-10-learn-more-search-design.md` (commit bca2787, on main, not pushed).
+
+The decision in short: a labelled "Learn more" button with the 🤔 icon under each answered explanation. It opens a small
+menu of free sources (W3Schools, freeCodeCamp, Khan Academy, Professor Messer, Microsoft Learn, MDN, web search); the
+choice opens that site's search page with the question's own search phrase, in a new tab. Per question, not per
+objective. Optional `searchTerm` on each bank question, with a fallback of acronyms plus objective title. NOT shown in a
+live mock; shown in study, practice, cram and the review of a finished exam. Ship first: code, schema and fallback
+release alone; each exam's phrases (autoops = AT0-001, dataplus = DA0-002, secai = CY0-001) are separate content
+sessions after it (one domain per session, Haiku drafts, spot check).
+
+Next step: invoke superpowers:writing-plans on that design (plan covers the code and schema only), then execute it
+test-first, one Opus whole-branch review, fix every finding, merge, push (ask for the push OK), `npm run deploy`.
+The brainstorming and builder check are done; do not redo them.
+
+Tools work (mordel-user-key) still waits on four owner decisions: see the top block of
+`C:/repo/JBTToolsSupportFiles/handoff.md`. #11 (hashing) has not been brainstormed.
+
 # 2026-11-10 (night): #17 done and live. Nothing outstanding in testingUtility
 
 Next session model: **Sonnet**. #17 (install as an app) is built, pushed (main f4e68a4), deployed (gh-pages f9f8d75) and
