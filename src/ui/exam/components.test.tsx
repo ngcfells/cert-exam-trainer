@@ -55,6 +55,13 @@ describe('ItemReview for numeric', () => {
   });
 });
 
+describe('ItemReview learn more', () => {
+  it('offers the Learn more button after the explanation', () => {
+    render(<ItemReview q={mcq('M0', 'A')} response={['a']} />);
+    expect(screen.getByRole('button', { name: /learn more/i })).toBeInTheDocument();
+  });
+});
+
 describe('McqView', () => {
   it('shows code in the stem as a block and code in an option inline', () => {
     const base = mcq('A0', 'A');

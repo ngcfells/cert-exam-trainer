@@ -4,6 +4,8 @@ import { CONTENT_TARGETS, answerBalance, coverage, listPositionTokens, longestOp
 import { isPbqTemplate } from '../domain/pbq';
 import { effectivePick, stemStatesPick } from '../domain/pick';
 import type { ExamMeta, Question } from '../domain/types';
+import { searchPhrase } from '../learn/learn';
+import { isValidSearchTerm } from '../learn/phrase';
 import { itemIdPrefix } from './paths';
 import { createRegistry } from './registry';
 
@@ -46,6 +48,13 @@ export function describeShippedBank(meta: ExamMeta, items: Question[], opts: Shi
   describe(`shipped ${meta.code} bank`, () => {
     it('registers: schema, ids, objectives and source all valid', () => {
       expect(() => createRegistry().registerExam(meta, items)).not.toThrow();
+    });
+
+    it('every search term is valid and every question has a Learn more phrase', () => {
+      expect(items.filter((q) => q.searchTerm !== undefined && !isValidSearchTerm(q.searchTerm)).map((q) => q.id)).toEqual([]);
+      expect(items.filter((q) => searchPhrase(q, meta).trim() === '').map((q) => q.id)).toEqual([]);
+      const onFallback = items.filter((q) => !q.searchTerm).length;
+      console.info(`${meta.code}: ${onFallback} of ${items.length} questions still use the fallback search phrase`);
     });
 
     it('every acronym token and tag has an expansion', () => {

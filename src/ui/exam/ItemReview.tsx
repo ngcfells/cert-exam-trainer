@@ -6,6 +6,7 @@ import type { ItemResponse } from '../../exam/scoring';
 import { Table } from '../Table';
 import { RichText } from '../RichText';
 import { AnswerMark } from '../marks/AnswerMark';
+import { LearnMoreButton } from '../learn/LearnMoreButton';
 
 function optionTexts(q: Question, ids: string[]): string {
   const opts = (q.payload as McqPayload).options;
@@ -79,6 +80,7 @@ export function ItemReview({
         <PartsReview q={q} given={response && !Array.isArray(response) ? response : {}} marks={marks} />
       )}
       <p><RichText text={q.explanation} /></p>
+      <LearnMoreButton question={q} />
     </>
   );
 }
