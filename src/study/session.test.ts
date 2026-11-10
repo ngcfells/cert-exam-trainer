@@ -126,11 +126,25 @@ describe('cram', () => {
     expect(hits).toBeGreaterThanOrEqual(48);
   });
 
-  it('then draws from the weakest objectives', () => {
+  it('then draws from the weakest objectives, the weakest first', () => {
     // C.1 is weakest (0%), B.1 next (100%) and A.1 untried counts after attempted ones.
-    const s = cram([], [result({ C0: ['b'], B0: ['a'] })]);
+    const s = cram([], [result({ C0: ['b'], B0: ['a'] })], metaAc);
     const firstTen = ids(s.exam.items).slice(0, 10);
-    expect(firstTen.every((id) => id.startsWith('C'))).toBe(true);
+    const count = (d: string) => firstTen.filter((id) => id.startsWith(d)).length;
+    expect(count('C')).toBeGreaterThan(count('B'));
+    expect(count('C') + count('B') + count('A')).toBe(10);
+  });
+
+  it('spreads the draw over the weak objectives and varies between sessions (issue #18)', () => {
+    // Every objective has exactly 10 questions and C is weakest: drawing all ten from C gave the same ten each time.
+    const results = [result({ C0: ['b'], B0: ['a'] })];
+    const seen = new Set<string>();
+    for (let seed = 1; seed <= 20; seed++) {
+      const picked = ids(cram([], results, metaAc, new Map(), seed).exam.items);
+      expect(new Set(picked.map((id) => id[0])).size).toBeGreaterThanOrEqual(2);
+      picked.forEach((id) => seen.add(id));
+    }
+    expect(seen.size).toBeGreaterThan(14);
   });
 
   it('ignores a malformed srs record', () => {

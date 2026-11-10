@@ -75,9 +75,17 @@ export const CRAM_ACRONYMS = 5;
 /** How many weak objectives cram draws from. */
 const CRAM_WEAK_OBJECTIVES = 3;
 
+/** One from each list in turn (the first list leads), so no single list fills the session. */
+function interleave<T>(lists: T[][]): T[] {
+  const out: T[] = [];
+  for (let i = 0; lists.some((l) => i < l.length); i++) for (const l of lists) if (i < l.length) out.push(l[i]);
+  return out;
+}
+
 /**
  * A short MCQ-only session: due questions (most overdue first), then the
- * weakest objectives in order, then anything else, each list drawn by chance;
+ * weakest objectives (taken in turn, weakest first, so one objective never fills the session and a small one
+ * does not repeat the same questions every time), then anything else, each list drawn by chance;
  * plus due or new acronyms.
  */
 export function assembleCram({
@@ -119,7 +127,7 @@ export function assembleCram({
   const byChance = (qs: Question[]) => weightedOrder(qs, (q) => chanceOf(chances, q.id), rng);
   const ordered = [
     ...dueFirst.filter((r) => r.kind === 'question').flatMap((r) => byId.get(r.itemId) ?? []),
-    ...weakestObjectives(mastery, CRAM_WEAK_OBJECTIVES).flatMap((o) => byChance(mcqs.filter((q) => q.objectiveIds[0] === o))),
+    ...interleave(weakestObjectives(mastery, CRAM_WEAK_OBJECTIVES).map((o) => byChance(mcqs.filter((q) => q.objectiveIds[0] === o)))),
     ...byChance(mcqs),
   ];
   const chosen = [...new Set(ordered)].slice(0, CRAM_SIZE - acronyms.length);
