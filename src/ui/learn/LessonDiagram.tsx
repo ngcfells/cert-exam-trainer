@@ -173,12 +173,40 @@ function JoinVenn() {
   );
 }
 
+function DecisionChain() {
+  const steps: [string, string][] = [
+    ['Distribution', 'How is the data spread?'],
+    ['Test', 'Which hypothesis test?'],
+    ['Tails', 'One tail or two?'],
+    ['Statistic', 'Where does it fall on its curve?'],
+    ['Errors', 'Type I and Type II risk'],
+    ['Model', 'p-value and R²: simplest that works'],
+  ];
+  return (
+    <>
+      {steps.map(([name, note], i) => {
+        const y = 6 + i * 38;
+        return (
+          <g key={name}>
+            {i > 0 && <line className="d-axis" x1="24" y1={y - 8} x2="24" y2={y + 3} />}
+            <circle className="d-dot" cx="24" cy={y + 15} r="12" />
+            <text className="d-text d-strong d-t-on" x="24" y={y + 19} textAnchor="middle">{i + 1}</text>
+            <text className="d-text d-strong" x="48" y={y + 13}>{name}</text>
+            <text className="d-text" x="48" y={y + 28}>{note}</text>
+          </g>
+        );
+      })}
+    </>
+  );
+}
+
 const VIEW: Record<Diagram['kind'], { box: string; body: ReactNode }> = {
   'join-venn': { box: '0 0 480 268', body: <JoinVenn /> },
   'bell-rule': { box: '0 0 320 202', body: <BellRule /> },
   'tail-curve': { box: '0 0 480 166', body: <TailCurve /> },
   'error-matrix': { box: '0 0 420 170', body: <ErrorMatrix /> },
   'regression-fit': { box: '0 0 320 230', body: <RegressionFit /> },
+  'decision-chain': { box: '0 0 320 236', body: <DecisionChain /> },
   'sigmoid-curve': { box: '0 0 320 186', body: <SigmoidCurve /> },
 };
 

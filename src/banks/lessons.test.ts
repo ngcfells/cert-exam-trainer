@@ -24,6 +24,7 @@ describe('getLessons', () => {
       'd-linear-regression': 'regression-fit',
       'd-logistic-regression': 'sigmoid-curve',
       'f-join-types': 'join-venn',
+      'g-putting-it-together': 'decision-chain',
     });
   });
 

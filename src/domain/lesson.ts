@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const LESSON_AREAS = ['A', 'B', 'C', 'D', 'E', 'F'] as const;
+export const LESSON_AREAS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'] as const;
 
 export const AREA_TITLES: Record<(typeof LESSON_AREAS)[number], string> = {
   A: 'Business math and percentages',
@@ -9,12 +9,13 @@ export const AREA_TITLES: Record<(typeof LESSON_AREAS)[number], string> = {
   D: 'Correlation and regression',
   E: 'Data math',
   F: 'Joins and keys',
+  G: 'Putting it together',
 };
 
 const text = z.string().min(1);
 
 /** The pictures a lesson can show; each is drawn in code by src/ui/learn/LessonDiagram.tsx. */
-export const DIAGRAM_KINDS = ['join-venn', 'bell-rule', 'tail-curve', 'error-matrix', 'regression-fit', 'sigmoid-curve'] as const;
+export const DIAGRAM_KINDS = ['join-venn', 'bell-rule', 'tail-curve', 'error-matrix', 'regression-fit', 'sigmoid-curve', 'decision-chain'] as const;
 
 export const lessonSchema = z
   .object({

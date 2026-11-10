@@ -1,3 +1,11 @@
+# 2026-11-10 (very late, after clear): #19 part 2 DONE and live. Nothing outstanding on #19 but diagram ideas
+
+Next session model: **Sonnet**. `gh issue list` first. Built the "Putting it together: from the data to a model" lesson
+(new area G, `src/banks/dataplus/lessons/G-putting-it-together.json`, new diagram kind `decision-chain`): distribution, test,
+tails, test statistic and curve, errors, p-value and R-squared with overfitting. Brainstorm questions skipped (owner opted out
+via the handoff). `npm run check` green (127 e2e). The owner should read the lesson once. Next: the two #6 content passes
+(autoops, dataplus, secai: one per session), then #11.
+
 # 2026-11-10 (very late): START HERE after /clear. Next: #19 part 2 (the chaining lesson)
 
 Next session model: **Sonnet**. Order: `gh issue list` first (bugs and `from-app` beat everything; on 2026-11-10 only #6, #11

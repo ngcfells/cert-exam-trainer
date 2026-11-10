@@ -1,0 +1,82 @@
+[
+  {
+    "id": "g-putting-it-together",
+    "exam": "DA0-002",
+    "area": "G",
+    "title": "Putting it together: from the data to a model",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "diagram": {
+      "kind": "decision-chain",
+      "caption": "The order of the decisions, from the data to a model",
+      "description": "Six numbered steps in a column, each leading to the next. One: check how the data is distributed. Two: choose the hypothesis test. Three: choose one tail or two. Four: compare the test statistic with its curve. Five: weigh the Type I and Type II errors. Six: use the p-value and R-squared to pick the simplest model that works."
+    },
+    "meaning": [
+      "Statistics questions rarely ask for one technique alone. They chain: how the data is spread decides the test, the test decides the curve, and the curve decides what counts as an extreme result.",
+      "Analysts care because the exam gives a short scenario and expects you to take the next correct step, so knowing the order helps you spot which step the question is about."
+    ],
+    "rule": [
+      "Step 1, the distribution: check whether the data is roughly bell-shaped or skewed, and how big the sample is. This tells you which tests are safe to use.",
+      "Step 2, the test: a t-test compares means (a z-test when the population standard deviation is known or the sample is large), chi-squared compares counts in categories, and ANOVA (analysis of variance) compares the means of three or more groups.",
+      "Step 3, the tails: the alternative hypothesis sets them. \"Lower\" means a left tail, \"higher\" a right tail, and \"different\" both tails.",
+      "Step 4, the test statistic: it says how far the sample is from the null hypothesis, and the curve it is read against changes with the test. The t curve is a bell with heavier tails for small samples, the z curve is the standard bell, and the chi-squared and F curves are skewed and only have a right tail. Compare the statistic with the critical value, or turn it into a p-value.",
+      "Step 5, the errors: the significance level α (alpha) is the chance of a Type I error, a false positive. A stricter α lowers that risk but raises the risk of a Type II error, a false negative.",
+      "Step 6, the model: when you fit a model, a small p-value for a predictor says its link with the outcome is unlikely to be chance, and R² says how much variation the model explains. Prefer the simplest model that works: extra predictors always nudge R² up, but a model tuned too closely to one sample (overfitting) predicts new data worse."
+    ],
+    "example": {
+      "intro": "A shop wants to know if a new checkout is faster than the old 60-second average. A sample of 25 customers has a mean of 54 seconds and a sample standard deviation of 15, and the times are roughly bell-shaped. Use α = 0.05.",
+      "table": {
+        "caption": "The chain applied to the checkout test",
+        "head": [
+          "Step",
+          "Decision",
+          "Result"
+        ],
+        "rows": [
+          [
+            "1 Distribution",
+            "Roughly bell-shaped, small sample",
+            "Use a t-test"
+          ],
+          [
+            "2 Test",
+            "One sample mean against 60",
+            "One-sample t-test"
+          ],
+          [
+            "3 Tails",
+            "\"Faster\" means lower",
+            "Left-tailed"
+          ],
+          [
+            "4 Statistic",
+            "t = (54 − 60) ÷ (15 ÷ √25) = −6 ÷ 3",
+            "t = −2.0, p ≈ 0.028"
+          ],
+          [
+            "5 Errors",
+            "p = 0.028 is below α = 0.05",
+            "Reject the null; the Type I risk is 5%"
+          ]
+        ]
+      },
+      "steps": [
+        "The standard error is 15 ÷ √25 = 3, so the sample mean is 2 standard errors below 60.",
+        "With two tails the p-value would double to about 0.057, which is above 0.05. The choice of tails changed the answer, so it must come from the question, not from the result.",
+        "Step 6, the model: a model with 1 predictor has R² = 0.64, and a model with 9 predictors has R² = 0.66. The extra 8 predictors add only 0.02, so keep the simpler model."
+      ]
+    },
+    "trap": {
+      "wrong": "Choosing the model with the highest R², or choosing the tails after seeing which way the result went.",
+      "why": "R² never falls when you add predictors, so the highest R² can simply be the most overfitted model. Picking the tails after the fact inflates the Type I error. Decide the tails from the question first, and prefer the simplest model that works."
+    },
+    "checkIds": [
+      "da2-3-2-math-mcq-014",
+      "da2-3-2-math-mcq-017",
+      "da2-3-2-math-mcq-020",
+      "da2-3-2-math-mcq-023",
+      "da2-3-2-math-mcq-029"
+    ]
+  }
+]
