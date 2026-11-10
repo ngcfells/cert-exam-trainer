@@ -4,7 +4,7 @@ import type { Question } from '../../domain/types';
 import { learnUrl, searchPhrase, sourcesFor } from '../../learn/learn';
 import { usePanels } from '../panels/PanelProvider';
 import { ExternalLink, LINKS_NOTE } from '../primer/ExternalLink';
-import './learn.css';
+import './learnMore.css';
 
 /** After an answer: a menu of free sites that search for this question's topic. Hidden during a mock. */
 export function LearnMoreButton({ question }: { question: Question }) {
