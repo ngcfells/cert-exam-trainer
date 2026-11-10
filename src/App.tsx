@@ -25,6 +25,8 @@ import { PanelProvider, usePanelState } from './ui/panels/PanelProvider';
 import { SettingsPanel } from './ui/panels/SettingsPanel';
 import { ReportButton } from './ui/report/ReportButton';
 import { ReportPanel } from './ui/report/ReportPanel';
+import { CommandHelpPanel } from './ui/primer/CommandHelpPanel';
+import { PrimerScreen } from './ui/primer/PrimerScreen';
 import { OutboxBanner } from './ui/report/OutboxBanner';
 import { ProgressScreen } from './ui/study/ProgressScreen';
 
@@ -154,6 +156,8 @@ export default function App() {
         return <ProgressScreen key={key} repo={repo} examCode={screen.exam} onDrill={drill(screen.exam)} />;
       case 'acronyms':
         return <AcronymFlow key={key} repo={repo} examCode={screen.exam} seed={seedFromUrl()} />;
+      case 'primer':
+        return <PrimerScreen key={key} examCode={screen.exam} />;
       case 'learn':
         return <LearnFlow key={key} repo={repo} examCode={screen.exam} lessonId={screen.lesson} />;
       case 'questions':
@@ -196,6 +200,7 @@ export default function App() {
           {!onHome && tall && <div ref={bottomRef} className="bottom-nav">{bar('Page navigation (bottom)')}</div>}
           {storage && panels.current === 'settings' && <SettingsPanel repo={storage.repo} />}
           {storage && panels.current === 'report' && <ReportPanel repo={storage.repo} />}
+          {panels.current === 'command-help' && <CommandHelpPanel />}
         </PanelProvider>
       </main>
       <Disclaimer />

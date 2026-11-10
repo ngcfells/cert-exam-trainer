@@ -1,0 +1,212 @@
+[
+  {
+    "id": "systemctl",
+    "group": "services",
+    "title": "Start and check a service: systemctl",
+    "purpose": "Shows how to start, stop, restart and check a background program called a service, and how to read its log to find out why it failed.",
+    "aliases": [
+      "systemctl",
+      "journalctl",
+      "Get-Service",
+      "Start-Service",
+      "Stop-Service",
+      "Restart-Service"
+    ],
+    "what": [
+      "A service is a program that runs in the background, with no window and no one typing to it. A web server, a print queue and a database are all services. Many are also called daemons, which is just the Unix word for the same thing. A computer starts most of its services by itself while it starts up, and they keep running until something stops them.",
+      "On most modern Linux systems, a program called systemd looks after the services. It is the first program that starts, and it starts and watches the others. systemd describes each service in a small file called a unit. A unit has a name that ends in `.service`, such as `ledger-sync.service`. The word unit is a bit wider than service, because systemd also manages other things, such as timers (jobs that run at set times). For now, think of one service as one unit. `systemctl` (system control) is the command that talks to systemd. You tell it what to do and which unit to do it to.",
+      "systemd also collects the messages that services print, in one place called the journal. `journalctl` reads the journal. When a service will not start, the cause is almost always written there. So the usual steps are: ask `systemctl status` what state the service is in, read the journal for the reason, fix the cause, and only then start the service again.",
+      "Starting, stopping and restarting a service affect the whole computer, so they need administrator rights. In Linux you put `sudo` in front of the command (see Running as administrator). Looking at a service with `systemctl status` needs no special rights, but reading its journal often does. The `.service` ending is optional: `systemctl status ledger-sync` and `systemctl status ledger-sync.service` mean the same thing.",
+      "Windows has services too, and PowerShell has commands for them. They work on a service name. The service cmdlets (PowerShell commands) run on Windows only. Windows has no journal, so the log rows below mostly say \"No close equivalent\"."
+    ],
+    "forms": [
+      {
+        "bash": "`systemctl status ledger-sync`",
+        "powershell": "`Get-Service -Name ledger-sync`",
+        "does": "Shows the state of one service. `systemctl status` prints a longer report with the last few log lines. `Get-Service` prints one line with the status (such as Running or Stopped), the name and the display name. Looking needs no special rights."
+      },
+      {
+        "bash": "`sudo systemctl start ledger-sync`",
+        "powershell": "`Start-Service -Name ledger-sync`",
+        "does": "Starts a service that is stopped. It needs administrator rights: `sudo` in Bash, an administrator window in PowerShell (see Running as administrator). Without them you get an error such as `Interactive authentication required`, or a password prompt. The command prints nothing when the start request is accepted, even if the program fails a moment later, so check `status` afterwards. It starts the service now; it does not change what happens the next time the computer starts up."
+      },
+      {
+        "bash": "`sudo systemctl stop ledger-sync`",
+        "powershell": "`Stop-Service -Name ledger-sync`",
+        "does": "Stops a running service. It prints nothing when it works."
+      },
+      {
+        "bash": "`sudo systemctl restart ledger-sync`",
+        "powershell": "`Restart-Service -Name ledger-sync`",
+        "does": "Stops the service and starts it again. It also starts a service that was already stopped, so it works when the service is not running. Like `start`, it prints nothing, so check `status` afterwards."
+      },
+      {
+        "bash": "`sudo systemctl enable ledger-sync`",
+        "powershell": "`Set-Service -Name ledger-sync -StartupType Automatic`",
+        "does": "Makes the service start by itself every time the computer starts up. It does not start the service right now. To do both, use `sudo systemctl enable --now ledger-sync`."
+      },
+      {
+        "bash": "`journalctl -u ledger-sync -n 20`",
+        "powershell": "No close equivalent. Windows has no journal. Services that log write to the shared Event Log or to their own files, and you filter the Event Log yourself with `Get-WinEvent`.",
+        "does": "Shows the last 20 journal lines (`-n 20`) for one unit (`-u`). Without `-n`, you get the whole history. Reading the journal of a system service needs `sudo`, unless your account is in the `adm` or `systemd-journal` group. Without either, you see `-- No entries --` even when there are messages."
+      }
+    ],
+    "example": {
+      "intro": "The service `ledger-sync` on the computer `hub02` is not running. We check its state, read its log, fix the cause and start it. Long reports are cut short here. The times and numbers on your computer will differ.",
+      "lines": [
+        {
+          "line": "$ systemctl status ledger-sync",
+          "note": "Ask for the state of the service."
+        },
+        {
+          "line": "× ledger-sync.service - Ledger sync worker",
+          "note": "The first line has the unit name and its description. The mark at the start shows the state: `×` (red on a real screen) for failed, a green `●` for running. Older versions of systemd show a red `●` for failed."
+        },
+        {
+          "line": "     Loaded: loaded (/etc/systemd/system/ledger-sync.service; enabled; preset: enabled)",
+          "note": "`Loaded` says that systemd found and read the unit file, and shows where it is. `enabled` means it will start when the computer starts up."
+        },
+        {
+          "line": "     Active: failed (Result: exit-code) since Fri 2026-11-06 09:14:22 UTC; 8s ago",
+          "note": "`Active` is the line to read first. `failed` means the program started and then stopped with an error. `exit-code` means it ended and reported an error number. `8s ago` means 8 seconds ago."
+        },
+        {
+          "line": "    Process: 2210 ExecStart=/usr/local/bin/ledger-sync --config /etc/ledger-sync/sync.conf (code=exited, status=1/FAILURE)",
+          "note": "The command systemd ran, and how it ended. Status 1 means it stopped with an error. The number after `Process` is the process ID (PID), the number that identifies one running program."
+        },
+        {
+          "line": "$ sudo journalctl -u ledger-sync -n 4",
+          "note": "Status says it failed but not why. Read the last 4 journal lines for this unit. `sudo` lets you see the messages of a system service."
+        },
+        {
+          "line": "Nov 06 09:14:22 hub02 systemd[1]: Started ledger-sync.service - Ledger sync worker.",
+          "note": "A journal line is: date and time, the computer name, the program name with its PID in square brackets, then the message. Here systemd itself (PID 1, the first program) says it started the unit."
+        },
+        {
+          "line": "Nov 06 09:14:22 hub02 ledger-sync[2210]: cannot open /etc/ledger-sync/sync.conf: No such file or directory",
+          "note": "This is the cause. The program wants a settings file and it is not there. Restarting would fail the same way."
+        },
+        {
+          "line": "Nov 06 09:14:22 hub02 systemd[1]: ledger-sync.service: Main process exited, code=exited, status=1/FAILURE",
+          "note": "systemd records that the program stopped with an error."
+        },
+        {
+          "line": "Nov 06 09:14:22 hub02 systemd[1]: ledger-sync.service: Failed with result 'exit-code'.",
+          "note": "systemd marks the unit as failed. This matches the `Active` line above."
+        },
+        {
+          "line": "$ sudo cp /etc/ledger-sync/sync.conf.sample /etc/ledger-sync/sync.conf",
+          "note": "Fix the cause first: put the missing settings file in place."
+        },
+        {
+          "line": "$ sudo systemctl start ledger-sync",
+          "note": "Now start the service. `systemctl` prints nothing, but that only means the request was accepted. It does not prove the program stayed up."
+        },
+        {
+          "line": "$ systemctl status ledger-sync",
+          "note": "So check the result."
+        },
+        {
+          "line": "     Active: active (running) since Fri 2026-11-06 09:21:40 UTC; 3s ago",
+          "note": "`active (running)` is the state you want. The service is up. Only this line is shown here; the rest of the report looks like the one above."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Running `sudo systemctl enable ledger-sync` and expecting the service to be running afterwards.",
+      "why": "`enable` only sets the service to start the next time the computer starts up. It does not start it now, so a stopped service stays stopped. To start it right now, run `systemctl start`. To do both in one command, use `systemctl enable --now`. The opposite is also true: `start` runs the service now, but it will not come back after the computer restarts unless it is enabled. In PowerShell it is the same split: `Start-Service` runs it now, and `Set-Service -StartupType Automatic` is the part about startup."
+    },
+    "more": [
+      {
+        "heading": "Quick checks and lists",
+        "paragraphs": [
+          "`status` prints a lot of text. When a script only needs a yes or no, use `is-active`. It prints one word, such as `active`, `inactive` or `failed`. It also sets the exit status, a hidden result code that a script can check (0 means active). `is-enabled` does the same for the startup setting.",
+          "To find all the services that are in trouble, use `--failed`. To see every service, use `list-units --type=service`. Both lists can be long, so searching them with `grep` helps (see the topics Pipes and redirection, and grep)."
+        ],
+        "forms": [
+          {
+            "bash": "`systemctl is-active ledger-sync`",
+            "powershell": "`(Get-Service -Name ledger-sync).Status`",
+            "does": "Prints a single word. `systemctl` prints `active`, `inactive` or `failed`. PowerShell prints `Running` or `Stopped`."
+          },
+          {
+            "bash": "`systemctl --failed`",
+            "powershell": "`Get-Service | Where-Object Status -eq 'Stopped'`",
+            "does": "Lists the services that are not running. They do not match exactly. `--failed` lists only the ones that stopped with an error, while the PowerShell form lists every stopped service."
+          },
+          {
+            "bash": "`systemctl list-units --type=service`",
+            "powershell": "`Get-Service`",
+            "does": "Lists the services and their state."
+          },
+          {
+            "bash": "`systemctl list-units --type=service | grep ledger`",
+            "powershell": "`Get-Service -Name '*ledger*'`",
+            "does": "Shows only the services with `ledger` in the name. PowerShell lets you use `*` as a wildcard in the name."
+          }
+        ]
+      },
+      {
+        "heading": "Reading the journal in more ways",
+        "paragraphs": [
+          "`journalctl -f` (follow) keeps running and prints new lines as they arrive. Press Ctrl and C to stop. `-b` (boot) shows only messages since the last start of the computer. `--since` limits the messages by time, for example `--since \"1 hour ago\"`. You can combine these: `journalctl -u ledger-sync -b -n 50`. Add `sudo` in front if you see `-- No entries --`.",
+          "Windows has no match for these, because the Event Log is not split by service. In PowerShell you pick out the lines by hand, and it takes longer to learn. See Getting help in the terminal for how to read the manual for `journalctl`."
+        ],
+        "forms": [
+          {
+            "bash": "`journalctl -u ledger-sync -f`",
+            "powershell": "No close equivalent. The Event Log has no live view for a single service.",
+            "does": "Follows the log of one unit as new lines arrive. Useful while you start the service in another window."
+          },
+          {
+            "bash": "`journalctl -u ledger-sync -b`",
+            "powershell": "No close equivalent. Windows does not group log entries by boot in the same way.",
+            "does": "Shows this unit's messages since the computer last started up."
+          },
+          {
+            "bash": "`journalctl -u ledger-sync --since \"1 hour ago\"`",
+            "powershell": "No close equivalent. `Get-WinEvent` can filter by time, but it reads the shared Event Log, not one service.",
+            "does": "Shows only the lines from the last hour."
+          }
+        ]
+      },
+      {
+        "heading": "Editing a unit file, and common mistakes",
+        "paragraphs": [
+          "If you change a unit file, systemd does not notice by itself. Run `sudo systemctl daemon-reload` so it reads the files again, then restart the service. Without the reload, the service keeps the old settings and `systemctl` warns that the unit file changed on disk.",
+          "Common mistakes: forgetting `sudo` and reading the \"authentication\" error as a problem with the service; restarting again and again without reading the journal; trusting a silent `start` without checking `status`; and mixing up `enable` (startup) with `start` (now). `restart` stops then starts, while `reload` asks the running program to read its settings again without stopping, but only some services support it. If a name has a typo, `systemctl` says the unit could not be found."
+        ],
+        "forms": [
+          {
+            "bash": "`sudo systemctl daemon-reload`",
+            "powershell": "No close equivalent. Windows reads service settings from the registry (its settings database), and there is no reload step.",
+            "does": "Makes systemd read all unit files again after you edit one."
+          },
+          {
+            "bash": "`sudo systemctl disable ledger-sync`",
+            "powershell": "`Set-Service -Name ledger-sync -StartupType Disabled`",
+            "does": "Stops the service from starting when the computer starts up. Like `enable`, it does not stop the service that is running now."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "systemctl manual (systemd)",
+        "url": "https://www.freedesktop.org/software/systemd/man/latest/systemctl.html"
+      },
+      {
+        "label": "journalctl manual (systemd)",
+        "url": "https://www.freedesktop.org/software/systemd/man/latest/journalctl.html"
+      },
+      {
+        "label": "Get-Service reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-service"
+      },
+      {
+        "label": "Restart-Service reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/restart-service"
+      }
+    ]
+  }
+]

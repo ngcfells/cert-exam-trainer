@@ -7,6 +7,7 @@ import { hasAnswer, MAX_SCORE, type ScoreReport } from '../../exam/scoring';
 import { ItemReview } from './ItemReview';
 import { AnswerMark, levelOf } from '../marks/AnswerMark';
 import { ReportButton } from '../report/ReportButton';
+import { CommandHelpButton } from '../primer/CommandHelpButton';
 import { plural } from '../plural';
 
 export function ResultsScreen({
@@ -111,6 +112,7 @@ export function ResultsScreen({
               <li key={q.id}>
                 <AnswerMark level={levelOf(fraction)} unanswered={!hasAnswer(q, result.responses[q.id])} />
                 <ItemReview q={q} response={result.responses[q.id]} />
+                <CommandHelpButton question={q} />
                 {reportOn(q.id, n)}
               </li>
             ))}

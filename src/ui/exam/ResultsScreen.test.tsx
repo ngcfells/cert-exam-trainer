@@ -14,6 +14,8 @@ import { pbqFixture } from '../../domain/pbqFixtures';
 import type { PartMap } from '../../domain/pbq';
 import type { Question } from '../../domain/types';
 
+vi.mock('../../primer/topics', async () => (await import('../../primer/testTopics')).mockTopicsModule());
+
 describe('ResultsScreen', () => {
   it('reviews each PBQ part', () => {
     const q = { ...pbq('P1', 2), partExplanations: { p2: 'Prompt 2 goes with c2.' } };
@@ -72,6 +74,18 @@ describe('ResultsScreen', () => {
     missedOne({ onDrill });
     await userEvent.setup().click(screen.getByRole('button', { name: 'Drill these' }));
     expect(onDrill).toHaveBeenCalledWith(['B.1']);
+  });
+
+  it.each(['mock', 'practice'] as const)('a missed command question has Command help in %s results', (mode) => {
+    const q = { ...mcq('C0', 'A'), stem: 'Run `grep ERROR app.log`.' };
+    const exam: AssembledExam = { exam: 'T-001', seed: 1, items: [{ question: q }, { question: mcq('A0', 'A') }], mcqCount: 2, pbqWeightSum: 0 };
+    const responses = { C0: ['b'], A0: ['b'] };
+    const report = scoreExam(exam, responses, meta3);
+    const result = buildResult({ exam, responses, flagged: [], report, startedAt: new Date(0), finishedAt: new Date(1), autoSubmitted: false });
+    render(<ResultsScreen meta={meta3} exam={exam} result={result} report={report} saveError={null} mode={mode} />);
+    const items = within(screen.getByRole('heading', { name: 'Review' }).nextElementSibling as HTMLElement).getAllByRole('listitem');
+    expect(within(items[0]).getByRole('button', { name: 'Command help' })).toBeInTheDocument();
+    expect(within(items[1]).queryByRole('button', { name: 'Command help' })).not.toBeInTheDocument();
   });
 
   it('has no Drill button without onDrill', () => {

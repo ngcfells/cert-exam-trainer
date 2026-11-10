@@ -1,0 +1,1403 @@
+[
+  {
+    "id": "cat",
+    "group": "text",
+    "title": "Show a file: cat",
+    "purpose": "Shows how to print the content of a file, or join several files, so you can read it or send it to another command.",
+    "aliases": [
+      "cat",
+      "Get-Content"
+    ],
+    "what": [
+      "`cat` prints the content of one or more files on the screen. The name is short for \"concatenate\", which means to join things end to end. With one file it simply shows that file. With two or more it prints them one after the other.",
+      "`cat` is how you take a first look at a small file. For a big file the screen would fill with text. So people either send the output into another command using a pipe (the `|` symbol, which passes one command's output to the next; see Pipes and redirection), or use `head` or `tail` instead.",
+      "In PowerShell, the real command is `Get-Content`. It reads a file and hands over one line at a time. `cat` also works there, as a short name for `Get-Content`."
+    ],
+    "forms": [
+      {
+        "bash": "`cat notes.txt`",
+        "powershell": "`Get-Content notes.txt`",
+        "does": "Prints the whole file."
+      },
+      {
+        "bash": "`cat a.txt b.txt`",
+        "powershell": "`Get-Content a.txt, b.txt`",
+        "does": "Prints `a.txt`, then `b.txt`, as one block of text."
+      },
+      {
+        "bash": "`cat -n notes.txt`",
+        "powershell": "No close equivalent. `Get-Content` has no switch that numbers the lines.",
+        "does": "Prints the file with a line number in front of every line."
+      },
+      {
+        "bash": "`cat app.log | grep ERROR`",
+        "powershell": "`Get-Content app.log | Select-String ERROR`",
+        "does": "Sends the file into `grep`, which keeps only the lines with `ERROR`. The shorter `grep ERROR app.log` does the same job."
+      },
+      {
+        "bash": "`cat a.txt b.txt > all.txt`",
+        "powershell": "`Get-Content a.txt, b.txt > all.txt`",
+        "does": "Joins two files into a new file, `all.txt`."
+      }
+    ],
+    "example": {
+      "intro": "Read a small shopping list, then number its lines.",
+      "lines": [
+        {
+          "line": "$ cat notes.txt",
+          "note": "Print the file `notes.txt`."
+        },
+        {
+          "line": "milk",
+          "note": "Line 1 of the file."
+        },
+        {
+          "line": "eggs",
+          "note": "Line 2."
+        },
+        {
+          "line": "bread",
+          "note": "Line 3. The file ends here."
+        },
+        {
+          "line": "$ cat -n notes.txt",
+          "note": "`-n` numbers the lines."
+        },
+        {
+          "line": "     1\tmilk",
+          "note": "The number, a tab (a wide gap), then the line."
+        },
+        {
+          "line": "     2\teggs",
+          "note": "Line 2 with its number."
+        },
+        {
+          "line": "     3\tbread",
+          "note": "Line 3 with its number."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Typing `cat` on its own, with no file name, and waiting for something to happen.",
+      "why": "With no file name, `cat` reads what you type on the keyboard and prints it back, so the terminal (the window where you type commands) seems stuck. Press `Ctrl+C` (hold Ctrl and press C) to stop it. Then run it again with a file name."
+    },
+    "more": [
+      {
+        "heading": "cat in the middle of a pipe",
+        "paragraphs": [
+          "Many answers start with `cat file | command`. It works because `cat` prints the file and the pipe passes the text on. Most commands can also read the file name themselves, so `grep ERROR app.log` and `cat app.log | grep ERROR` give the same lines. Either form is a fine answer.",
+          "A few commands, such as `tr`, cannot take a file name at all. For those, read the file with `<`, which feeds the file in as input (`tr 'a-z' 'A-Z' < notes.txt`) or with `cat notes.txt | tr 'a-z' 'A-Z'`."
+        ]
+      },
+      {
+        "heading": "Get-Content details",
+        "paragraphs": [
+          "`Get-Content` can stop early or start from the end, so it covers the jobs of `head` and `tail` as well. `-TotalCount 5` reads only the first five lines, `-Tail 5` reads only the last five, and `-Wait` keeps the command open and prints new lines as they are added. See Show the start or end of a file: head and tail.",
+          "To print a file in PowerShell with line numbers, you would combine more commands, so exam questions rarely ask for it."
+        ],
+        "forms": [
+          {
+            "bash": "`cat notes.txt | wc -l`",
+            "powershell": "`Get-Content notes.txt | Measure-Object -Line`",
+            "does": "Counts the lines. See Count lines, words and characters: wc."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "cat man page",
+        "url": "https://man7.org/linux/man-pages/man1/cat.1.html"
+      },
+      {
+        "label": "Get-Content reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/get-content"
+      }
+    ]
+  },
+  {
+    "id": "grep",
+    "group": "text",
+    "title": "grep",
+    "purpose": "Shows how to print only the lines of a file that contain a word, count them, and handle upper and lower case.",
+    "aliases": [
+      "grep",
+      "Select-String"
+    ],
+    "what": [
+      "`grep` reads text and prints only the lines that contain the pattern you give it. A pattern is the word or piece of text to look for. The first word after `grep` is the pattern. The file name comes next.",
+      "`grep` checks letter case exactly. Letter case means capital or small letters. `ERROR` and `error` are different words to it.",
+      "A line is the piece of text `grep` works on. It prints whole lines. When you ask for a count, it counts lines, not how many times the word appears.",
+      "PowerShell, which comes with Windows, has `Select-String`. It works the same way, with two differences. It ignores letter case unless you ask it not to, and each result shows the file name and line number in front of the text."
+    ],
+    "forms": [
+      {
+        "bash": "`grep ERROR app.log`",
+        "powershell": "`Select-String -Pattern ERROR -Path app.log -CaseSensitive`",
+        "does": "Prints the lines that contain `ERROR`. Without `-CaseSensitive` PowerShell would also match `error`."
+      },
+      {
+        "bash": "`grep -i error app.log`",
+        "powershell": "`Select-String -Pattern error -Path app.log`",
+        "does": "`-i` ignores letter case, so `error`, `Error` and `ERROR` all match. `Select-String` ignores letter case by default."
+      },
+      {
+        "bash": "`grep -n ERROR app.log`",
+        "powershell": "`Select-String -Pattern ERROR -Path app.log -CaseSensitive`",
+        "does": "`-n` puts the line number and a colon in front of each line. `Select-String` always shows the line number."
+      },
+      {
+        "bash": "`grep -c ERROR app.log`",
+        "powershell": "`(Select-String -Pattern ERROR -Path app.log -CaseSensitive).Count`",
+        "does": "`-c` prints how many lines match instead of the lines themselves."
+      },
+      {
+        "bash": "`grep ERROR app.log | wc -l`",
+        "powershell": "`(Select-String -Pattern ERROR -Path app.log -CaseSensitive).Count`",
+        "does": "Gives the same count by piping (sending) the matching lines into `wc -l`, which counts lines."
+      },
+      {
+        "bash": "`grep -w ERROR app.log`",
+        "powershell": "`Select-String -Pattern '\\bERROR\\b' -Path app.log -CaseSensitive`",
+        "does": "`-w` matches only a whole word, so `ERRORS` would not match. In the PowerShell pattern, `\\b` marks the edge of a word, where a word starts or ends."
+      },
+      {
+        "bash": "`grep -v ERROR app.log`",
+        "powershell": "`Select-String -Pattern ERROR -Path app.log -CaseSensitive -NotMatch`",
+        "does": "`-v` reverses the test and prints the lines that do not contain the pattern."
+      },
+      {
+        "bash": "`cat app.log | grep ERROR`",
+        "powershell": "`Get-Content app.log | Select-String ERROR -CaseSensitive`",
+        "does": "Reads the file first and sends it into `grep`. Same lines as `grep ERROR app.log`."
+      }
+    ],
+    "example": {
+      "intro": "A small log file (a file where a program writes down what it does), then four ways to search it.",
+      "lines": [
+        {
+          "line": "$ cat app.log",
+          "note": "Show the file first so you can count the lines yourself."
+        },
+        {
+          "line": "09:01 INFO start",
+          "note": "Line 1."
+        },
+        {
+          "line": "09:02 ERROR disk full",
+          "note": "Line 2. It has `ERROR`."
+        },
+        {
+          "line": "09:03 INFO retry",
+          "note": "Line 3."
+        },
+        {
+          "line": "09:04 error cache miss",
+          "note": "Line 4. It has the word in small letters."
+        },
+        {
+          "line": "09:05 ERROR disk full",
+          "note": "Line 5. It has `ERROR`."
+        },
+        {
+          "line": "$ grep ERROR app.log",
+          "note": "Look for the word in capitals, exactly as written."
+        },
+        {
+          "line": "09:02 ERROR disk full",
+          "note": "Match from line 2."
+        },
+        {
+          "line": "09:05 ERROR disk full",
+          "note": "Match from line 5. Line 4 is missing because its letters are small."
+        },
+        {
+          "line": "$ grep -c ERROR app.log",
+          "note": "Count the matching lines."
+        },
+        {
+          "line": "2",
+          "note": "Two lines contain `ERROR`."
+        },
+        {
+          "line": "$ grep -i error app.log",
+          "note": "Ignore letter case."
+        },
+        {
+          "line": "09:02 ERROR disk full",
+          "note": "Line 2."
+        },
+        {
+          "line": "09:04 error cache miss",
+          "note": "Line 4 now matches."
+        },
+        {
+          "line": "09:05 ERROR disk full",
+          "note": "Line 5."
+        },
+        {
+          "line": "$ grep -n ERROR app.log",
+          "note": "Show line numbers."
+        },
+        {
+          "line": "2:09:02 ERROR disk full",
+          "note": "The `2:` in front is the line number. The rest is the line."
+        },
+        {
+          "line": "5:09:05 ERROR disk full",
+          "note": "The second match is on line 5."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Running `grep error app.log` and expecting to see every error line.",
+      "why": "`grep` is case-sensitive, so it treats capital and small letters as different. In the sample file that command prints only line 4 and misses the two `ERROR` lines. Match the case the question shows, or add `-i` to ignore case. PowerShell works the other way around: `Select-String` ignores case until you add `-CaseSensitive`."
+    },
+    "more": [
+      {
+        "heading": "Counting matches",
+        "paragraphs": [
+          "`grep -c ERROR app.log` and `grep ERROR app.log | wc -l` both print the number of matching lines. The first is shorter. The second shows how a pipe works (see Pipes and redirection). `grep` prints the matching lines, and `wc -l` counts them (see Count lines, words and characters: wc).",
+          "Both count lines, not words. If one line holds `ERROR` twice, it still counts once.",
+          "With a file name, `wc -l` prints the name too. A pipe sends it only the text, so it prints just the number."
+        ],
+        "forms": [
+          {
+            "bash": "`grep -ci error app.log`",
+            "powershell": "`(Select-String -Pattern error -Path app.log).Count`",
+            "does": "Uses two options (settings that change what the command does): counts lines and ignores letter case. `-ci` is the same as `-c -i`."
+          }
+        ]
+      },
+      {
+        "heading": "Patterns with symbols",
+        "paragraphs": [
+          "A pattern with an equals sign, a space or a dot is safest in single quotes: `grep 'mode=fast' server.log`. Quotes keep the shell, the program that reads your commands, from changing the text (see Quotes, spaces and wildcards). A pattern with a space must be quoted.",
+          "In a plain `grep` pattern, a dot matches any one character, so `grep 'a.b' file` also finds `axb`. `-F` treats the pattern as plain text, with no special symbols, so `grep -F 'a.b' file` finds only `a.b`. PowerShell does this with `-SimpleMatch`.",
+          "`grep -E` turns on extra pattern symbols, where `|` means \"or\": `grep -E 'ERROR|WARN' app.log` prints lines with either word. PowerShell patterns already work this way."
+        ],
+        "forms": [
+          {
+            "bash": "`grep -F 'a.b' notes.txt`",
+            "powershell": "`Select-String -Pattern 'a.b' -Path notes.txt -SimpleMatch`",
+            "does": "Looks for the exact text, with no special symbols."
+          },
+          {
+            "bash": "`grep -E 'ERROR|WARN' app.log`",
+            "powershell": "`Select-String -Pattern 'ERROR|WARN' -Path app.log -CaseSensitive`",
+            "does": "Prints the lines that contain either word."
+          },
+          {
+            "bash": "`grep ERROR *.log`",
+            "powershell": "`Select-String -Pattern ERROR -Path *.log -CaseSensitive`",
+            "does": "Searches every `.log` file. With several files, both commands put the file name in front of each match."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "grep man page",
+        "url": "https://man7.org/linux/man-pages/man1/grep.1.html"
+      },
+      {
+        "label": "Select-String reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/select-string"
+      }
+    ]
+  },
+  {
+    "id": "sort-uniq",
+    "group": "text",
+    "title": "Sort and remove repeats: sort and uniq",
+    "purpose": "Shows how to put lines in order, remove repeated lines, count repeats and find the lines that appear more than once.",
+    "aliases": [
+      "sort",
+      "uniq",
+      "Sort-Object"
+    ],
+    "what": [
+      "`sort` puts the lines of a file in order, from A to Z and from small numbers to large. `uniq` removes repeated lines. A repeated line is exactly the same as the line before it.",
+      "`uniq` only compares each line with the line right above it. Lines that are the same but not next to each other are not seen as repeats. So you nearly always run `sort` first, and send the sorted lines into `uniq` through a pipe (the `|` symbol, which passes one command's output to the next).",
+      "Useful options, which change what a command does: `sort -n` sorts as numbers, so 9 comes before 10. `sort -r` reverses the order. `sort -u` sorts and drops repeats in one step. For `uniq`, `-c` puts a count in front of each line. `-d` prints one copy of each line that is repeated. `-D` prints every copy of those lines.",
+      "PowerShell, which comes with Windows, uses `Sort-Object` to sort and `Get-Unique` to remove repeats. `Get-Unique` has the same rule as `uniq`, so it also needs lines that are already sorted."
+    ],
+    "forms": [
+      {
+        "bash": "`sort names.txt`",
+        "powershell": "`Get-Content names.txt | Sort-Object`",
+        "does": "Prints the lines in order."
+      },
+      {
+        "bash": "`sort -r names.txt`",
+        "powershell": "`Get-Content names.txt | Sort-Object -Descending`",
+        "does": "Puts the lines in reverse order."
+      },
+      {
+        "bash": "`sort -n numbers.txt`",
+        "powershell": "`Get-Content numbers.txt | Sort-Object { [int]$_ }`",
+        "does": "Sorts by number value, so `9` comes before `10`. A plain sort would put `10` first, because it compares one character at a time."
+      },
+      {
+        "bash": "`sort names.txt | uniq`",
+        "powershell": "`Get-Content names.txt | Sort-Object | Get-Unique`",
+        "does": "Sorts, then removes repeated lines."
+      },
+      {
+        "bash": "`sort -u names.txt`",
+        "powershell": "`Get-Content names.txt | Sort-Object -Unique`",
+        "does": "Does both jobs in one command. In PowerShell, `-Unique` ignores letter case."
+      },
+      {
+        "bash": "`sort names.txt | uniq -c`",
+        "powershell": "`Get-Content names.txt | Group-Object`",
+        "does": "Shows each different line with how many times it appears. `Group-Object` lists a Count column and a Name column. Unlike `uniq`, `Group-Object` ignores letter case, so `Pear` and `pear` count as one."
+      },
+      {
+        "bash": "`sort names.txt | uniq -d`",
+        "powershell": "`Get-Content names.txt | Group-Object | Where-Object Count -gt 1 | Select-Object -ExpandProperty Name`",
+        "does": "Prints one copy of each line that appears more than once."
+      },
+      {
+        "bash": "`sort names.txt | uniq -D`",
+        "powershell": "`Get-Content names.txt | Group-Object | Where-Object Count -gt 1 | ForEach-Object Group`",
+        "does": "Prints every copy of each line that appears more than once."
+      }
+    ],
+    "example": {
+      "intro": "A list of names with repeats. Once sorted, equal names sit next to each other, so the repeats are easy to spot.",
+      "lines": [
+        {
+          "line": "$ cat names.txt",
+          "note": "Show the file first."
+        },
+        {
+          "line": "pear",
+          "note": "Line 1."
+        },
+        {
+          "line": "apple",
+          "note": "Line 2."
+        },
+        {
+          "line": "pear",
+          "note": "Line 3."
+        },
+        {
+          "line": "fig",
+          "note": "Line 4."
+        },
+        {
+          "line": "apple",
+          "note": "Line 5."
+        },
+        {
+          "line": "pear",
+          "note": "Line 6. `pear` appears three times and `apple` twice."
+        },
+        {
+          "line": "$ sort names.txt | uniq",
+          "note": "Sort so equal lines sit together, then remove repeats."
+        },
+        {
+          "line": "apple",
+          "note": "One `apple`."
+        },
+        {
+          "line": "fig",
+          "note": "One `fig`."
+        },
+        {
+          "line": "pear",
+          "note": "One `pear`."
+        },
+        {
+          "line": "$ sort names.txt | uniq -c",
+          "note": "The same, with a count in front."
+        },
+        {
+          "line": "      2 apple",
+          "note": "`apple` appears 2 times."
+        },
+        {
+          "line": "      1 fig",
+          "note": "`fig` appears once."
+        },
+        {
+          "line": "      3 pear",
+          "note": "`pear` appears 3 times."
+        },
+        {
+          "line": "$ sort names.txt | uniq -d",
+          "note": "Only lines that repeat."
+        },
+        {
+          "line": "apple",
+          "note": "Repeated."
+        },
+        {
+          "line": "pear",
+          "note": "Repeated. `fig` is left out because it appears once."
+        },
+        {
+          "line": "$ uniq -d names.txt",
+          "note": "The same request without `sort`. Nothing prints, because no equal lines are next to each other."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Running `uniq -d names.txt` without sorting first, to find the repeated lines.",
+      "why": "`uniq` only sees repeats that sit next to each other. In the sample file, no two equal lines are side by side, so the command prints nothing. The last example above shows this. Run `sort names.txt | uniq -d`."
+    },
+    "more": [
+      {
+        "heading": "Three ways to find repeats",
+        "paragraphs": [
+          "`sort names.txt | uniq -d` prints one copy of each repeated line. `sort names.txt | uniq -D` prints every copy, so `apple` appears twice and `pear` three times. Both need `sort` first. Not every `uniq` has `-D`. If yours says it is an unknown option, use `uniq -c` to see how many times each line appears.",
+          "Another route is `sort names.txt | uniq -c | awk '$1 > 1'`. `uniq -c` adds the counts. Then `awk` (a text tool) keeps the lines whose first field, the count, is above 1. A field is one piece of a line, split up by spaces (see Pick columns: awk).",
+          "To check for repeats quickly, compare line counts. (`wc -l` counts lines.) `sort -u names.txt | wc -l` is smaller than `wc -l < names.txt` when repeats exist."
+        ]
+      },
+      {
+        "heading": "Sorting details",
+        "paragraphs": [
+          "A file of numbers needs `sort -n`. Without it the lines are compared as text, so `10` comes before `9`. To find repeated numbers in an unsorted file, run `sort -n scores.txt | uniq -d`.",
+          "The `sort` command can take a file name, or read from a pipe. `sort < names.txt` feeds the file in with `<`, and `cat names.txt | sort` sends it through a pipe. All three give the same result.",
+          "`Sort-Object` can also sort by a named detail of each item, such as its size. This works because `Get-ChildItem` sends items with details, not plain text: `Get-ChildItem | Sort-Object Length`."
+        ],
+        "forms": [
+          {
+            "bash": "`sort < names.txt`",
+            "powershell": "`Get-Content names.txt | Sort-Object`",
+            "does": "Reads the file through `<` instead of giving the file name."
+          },
+          {
+            "bash": "`sort -k2 data.txt`",
+            "powershell": "`Get-Content data.txt | Sort-Object { ($_ -split '\\s+')[1] }`",
+            "does": "Sorts starting at the second word of each line and comparing to the end of the line. Words are split on spaces. `sort -k2,2` sorts on the second word only."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "sort man page",
+        "url": "https://man7.org/linux/man-pages/man1/sort.1.html"
+      },
+      {
+        "label": "uniq man page",
+        "url": "https://man7.org/linux/man-pages/man1/uniq.1.html"
+      }
+    ]
+  },
+  {
+    "id": "head-tail",
+    "group": "text",
+    "title": "Show the start or end of a file: head and tail",
+    "purpose": "Shows how to print the first or last few lines of a file, and how to follow a log (a file that grows as a program writes to it).",
+    "aliases": [
+      "head",
+      "tail"
+    ],
+    "what": [
+      "`head` prints the first lines of a file and `tail` prints the last lines. By default each prints 10. Use them to check a file without printing all of it. `head` is the quick way to see the header row (the column titles at the top) of a data file. `tail` shows the newest lines of a log.",
+      "`-n` sets how many lines to print. `head -n 5 file` prints five lines. A shorter form with just a dash and the number, `head -5 file`, means the same. Writing `-n5` with no space also works.",
+      "`tail -n +6 file` is a special case. The plus sign means \"start at line 6 and print to the end\".",
+      "`tail -f file` keeps running and prints new lines as they are added to the file. This is called following a log. Press `Ctrl+C` (hold Ctrl and press C) to stop.",
+      "PowerShell, which comes with Windows, uses `Get-Content`, with `-TotalCount` for the first lines and `-Tail` for the last lines."
+    ],
+    "forms": [
+      {
+        "bash": "`head -n 3 days.txt`",
+        "powershell": "`Get-Content days.txt -TotalCount 3`",
+        "does": "Prints the first 3 lines. `-Head 3` also works in PowerShell."
+      },
+      {
+        "bash": "`head -3 days.txt`",
+        "powershell": "`Get-Content days.txt -TotalCount 3`",
+        "does": "A shorter way to write the same request in Bash, the command line used on Linux and macOS."
+      },
+      {
+        "bash": "`tail -n 2 days.txt`",
+        "powershell": "`Get-Content days.txt -Tail 2`",
+        "does": "Prints the last 2 lines."
+      },
+      {
+        "bash": "`tail -n +6 days.txt`",
+        "powershell": "`Get-Content days.txt | Select-Object -Skip 5`",
+        "does": "Prints from line 6 to the end. PowerShell skips the first 5 lines instead."
+      },
+      {
+        "bash": "`head -n -2 days.txt`",
+        "powershell": "`Get-Content days.txt | Select-Object -SkipLast 2`",
+        "does": "Prints everything except the last 2 lines. This works in the Linux version of `head`."
+      },
+      {
+        "bash": "`tail -f app.log`",
+        "powershell": "`Get-Content app.log -Tail 10 -Wait`",
+        "does": "Shows the last lines, then keeps printing new ones as they appear."
+      }
+    ],
+    "example": {
+      "intro": "A file with one day per line, then three different slices of it.",
+      "lines": [
+        {
+          "line": "$ cat days.txt",
+          "note": "Show the file."
+        },
+        {
+          "line": "mon",
+          "note": "Line 1."
+        },
+        {
+          "line": "tue",
+          "note": "Line 2."
+        },
+        {
+          "line": "wed",
+          "note": "Line 3."
+        },
+        {
+          "line": "thu",
+          "note": "Line 4."
+        },
+        {
+          "line": "fri",
+          "note": "Line 5."
+        },
+        {
+          "line": "sat",
+          "note": "Line 6."
+        },
+        {
+          "line": "sun",
+          "note": "Line 7, the last line."
+        },
+        {
+          "line": "$ head -n 3 days.txt",
+          "note": "The first three lines."
+        },
+        {
+          "line": "mon",
+          "note": "Line 1."
+        },
+        {
+          "line": "tue",
+          "note": "Line 2."
+        },
+        {
+          "line": "wed",
+          "note": "Line 3."
+        },
+        {
+          "line": "$ tail -n 2 days.txt",
+          "note": "The last two lines."
+        },
+        {
+          "line": "sat",
+          "note": "Line 6."
+        },
+        {
+          "line": "sun",
+          "note": "Line 7."
+        },
+        {
+          "line": "$ tail -n +6 days.txt",
+          "note": "Start at line 6, print to the end."
+        },
+        {
+          "line": "sat",
+          "note": "Line 6."
+        },
+        {
+          "line": "sun",
+          "note": "Line 7."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Writing `head 5 days.txt` to get five lines.",
+      "why": "Without the dash, `5` is read as a file name. The command reports that it cannot open a file called `5`, and then still prints the first 10 lines of `days.txt`, which is not what you asked for. The number needs `-n` or a dash: `head -n 5 days.txt` or `head -5 days.txt`."
+    },
+    "more": [
+      {
+        "heading": "Combining head and tail",
+        "paragraphs": [
+          "To print one line from the middle, combine the two commands. `head -n 3 days.txt | tail -n 1` keeps the first three lines, then the last one of those. So it prints `wed`, line 3. The `|` is a pipe: it sends the output of the first command into the second.",
+          "`head` and `tail` also work on the output of other commands. `ls --help | head -n 3` shows only the first three lines of the help text (see Getting help in the terminal)."
+        ],
+        "forms": [
+          {
+            "bash": "`head -n 3 days.txt | tail -n 1`",
+            "powershell": "`Get-Content days.txt -TotalCount 3 | Select-Object -Last 1`",
+            "does": "Prints line 3 only."
+          },
+          {
+            "bash": "`sed -n 1,5p visits.csv`",
+            "powershell": "`Get-Content visits.csv -TotalCount 5`",
+            "does": "Another way to show the first five lines. See Find and replace: sed."
+          }
+        ]
+      },
+      {
+        "heading": "Following a log",
+        "paragraphs": [
+          "`tail -f app.log` never ends on its own, because it waits for new lines. This is the usual way to watch a service (a program that keeps running, such as a web server) while you test it. Stop it with `Ctrl+C`.",
+          "`tail -n 20 -f app.log` first shows the last 20 lines, then follows. A capital `-F` also keeps following if the log file is replaced by a new one, as happens in log rotation, when a program starts a fresh log and renames the old one."
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "head man page",
+        "url": "https://man7.org/linux/man-pages/man1/head.1.html"
+      },
+      {
+        "label": "tail man page",
+        "url": "https://man7.org/linux/man-pages/man1/tail.1.html"
+      }
+    ]
+  },
+  {
+    "id": "wc",
+    "group": "text",
+    "title": "Count lines, words and characters: wc",
+    "purpose": "Shows how to count the lines, words and characters in a file, and how to get just the number.",
+    "aliases": [
+      "wc",
+      "Measure-Object"
+    ],
+    "what": [
+      "`wc` is short for \"word count\". It counts the lines, words and characters in text. `wc -l` counts lines, `wc -w` counts words, and `wc -m` counts characters.",
+      "Run on a file, `wc` prints the number followed by the file name. Run on text from a pipe (the `|` symbol, which sends one command's output into the next), or from a file fed in with `<`, it prints only the number. There is no file name to show.",
+      "You often put `wc -l` at the end of a pipe to count the lines a command prints, as in `grep ERROR app.log | wc -l`.",
+      "PowerShell, which comes with Windows, counts with `Measure-Object`. Its `-Line`, `-Word` and `-Character` options match `wc -l`, `wc -w` and `wc -m`."
+    ],
+    "forms": [
+      {
+        "bash": "`wc -l poem.txt`",
+        "powershell": "`Get-Content poem.txt | Measure-Object -Line`",
+        "does": "Counts lines. Bash (the command line used on Linux and macOS) prints the number and the file name. PowerShell prints a small table with a Lines column."
+      },
+      {
+        "bash": "`wc -l < poem.txt`",
+        "powershell": "`(Get-Content poem.txt | Measure-Object -Line).Lines`",
+        "does": "Prints only the number. `<` feeds the file in as input, so `wc` never sees its name."
+      },
+      {
+        "bash": "`cat poem.txt | wc -l`",
+        "powershell": "`(Get-Content poem.txt | Measure-Object -Line).Lines`",
+        "does": "Also prints only the number, because the text comes through a pipe."
+      },
+      {
+        "bash": "`wc -w poem.txt`",
+        "powershell": "`Get-Content poem.txt | Measure-Object -Word`",
+        "does": "Counts words."
+      },
+      {
+        "bash": "`wc -m poem.txt`",
+        "powershell": "`Get-Content poem.txt | Measure-Object -Character`",
+        "does": "Counts characters."
+      },
+      {
+        "bash": "`wc poem.txt`",
+        "powershell": "`Get-Content poem.txt | Measure-Object -Line -Word -Character`",
+        "does": "Gives all three counts at once: lines, words and characters."
+      }
+    ],
+    "example": {
+      "intro": "A two-line file, counted in different ways.",
+      "lines": [
+        {
+          "line": "$ cat poem.txt",
+          "note": "Show the file."
+        },
+        {
+          "line": "red sky at night",
+          "note": "Line 1, four words."
+        },
+        {
+          "line": "sailors delight",
+          "note": "Line 2, two words."
+        },
+        {
+          "line": "$ wc -l poem.txt",
+          "note": "Count lines in a named file."
+        },
+        {
+          "line": "2 poem.txt",
+          "note": "The count, then the file name."
+        },
+        {
+          "line": "$ wc -l < poem.txt",
+          "note": "Give the file as input instead of as a name."
+        },
+        {
+          "line": "2",
+          "note": "Only the number."
+        },
+        {
+          "line": "$ wc -w poem.txt",
+          "note": "Count words."
+        },
+        {
+          "line": "6 poem.txt",
+          "note": "Four plus two."
+        },
+        {
+          "line": "$ grep -c sky poem.txt",
+          "note": "A related count: lines that contain `sky`."
+        },
+        {
+          "line": "1",
+          "note": "One line matches."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Using the output of `wc -l poem.txt` where a plain number is needed.",
+      "why": "`wc -l poem.txt` prints `2 poem.txt`, with the file name after the number. If a question asks for the number only, or the number is passed to another command, use `wc -l < poem.txt`. If the question only asks you to count the lines in the file, `wc -l poem.txt` is a correct answer."
+    },
+    "more": [
+      {
+        "heading": "What wc -l really counts",
+        "paragraphs": [
+          "`wc -l` counts the line-break characters in the text. A line break is the hidden mark that ends a line. A last line with no line break at its end is therefore not counted. A file with a header row and 100 records shows 101 when every line ends with a line break. A file with no final line break shows one less than you expect.",
+          "To count the lines in a data file without its header row (the column titles at the top), subtract one from the result of `wc -l`, or use `tail -n +2 data.txt | wc -l`."
+        ],
+        "forms": [
+          {
+            "bash": "`tail -n +2 data.txt | wc -l`",
+            "powershell": "`(Get-Content data.txt | Select-Object -Skip 1).Count`",
+            "does": "Counts the lines after the header row."
+          }
+        ]
+      },
+      {
+        "heading": "Counting bytes and several files",
+        "paragraphs": [
+          "`wc -c` counts bytes. A byte is one unit of storage, so the byte count is the file size. For plain English text this equals the character count, but letters with accents take more than one byte. `wc -m` counts characters.",
+          "Given several files, `wc` prints a line for each and a final line named `total`. `Measure-Object` counts everything it receives as one group."
+        ],
+        "forms": [
+          {
+            "bash": "`wc -l *.log`",
+            "powershell": "`Get-Content *.log | Measure-Object -Line`",
+            "does": "Counts the lines of every `.log` file. PowerShell gives one combined total."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "wc man page",
+        "url": "https://man7.org/linux/man-pages/man1/wc.1.html"
+      },
+      {
+        "label": "Measure-Object reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/measure-object"
+      }
+    ]
+  },
+  {
+    "id": "sed",
+    "group": "text",
+    "title": "Find and replace: sed",
+    "purpose": "Shows how to replace or delete text in each line of a file with `sed`, and print chosen lines.",
+    "aliases": [
+      "sed"
+    ],
+    "what": [
+      "`sed` changes text as it reads it. Its most common job is a substitution, which swaps one piece of text for another. It is written `s/old/new/`. The three parts are separated by slashes. Each line is checked. The first match of `old` (a place where the text fits) is replaced by `new`.",
+      "`sed` prints the changed text on the screen. The file itself stays as it was, unless you add `-i`, which changes the file itself.",
+      "Add `g` at the end, as in `s/old/new/g`, to replace every match on the line. Without `g`, only the first match on each line changes.",
+      "Square brackets list characters to match. `[0-9]` is any one digit. A `^` just after the opening bracket reverses the meaning, so `[^0-9]` is any one character that is not a digit. Leaving `new` empty deletes the match.",
+      "Put the whole instruction in single quotes, so the shell (the program that reads your commands) does not change it (see Quotes, spaces and wildcards)."
+    ],
+    "forms": [
+      {
+        "bash": "`sed 's/-/+/' data.txt`",
+        "powershell": "`Get-Content data.txt | ForEach-Object { ([regex]'-').Replace($_, '+', 1) }`",
+        "does": "Replaces the first `-` on each line with `+`. In PowerShell, `-replace` changes every match, so changing only the first one needs a longer form."
+      },
+      {
+        "bash": "`sed 's/-/+/g' data.txt`",
+        "powershell": "`(Get-Content data.txt) -replace '-','+'`",
+        "does": "With `g`, every `-` on each line becomes `+`."
+      },
+      {
+        "bash": "`sed 's/ //g' labels.txt`",
+        "powershell": "`(Get-Content labels.txt) -replace ' ',''`",
+        "does": "Deletes every space, so the words and numbers on each line run together."
+      },
+      {
+        "bash": "`sed -n '1,5p' visits.csv`",
+        "powershell": "`Get-Content visits.csv -TotalCount 5`",
+        "does": "`-n` turns off the automatic printing of every line. `1,5p` prints lines 1 to 5. The result is the first five lines."
+      },
+      {
+        "bash": "`sed -n '/ERROR/p' app.log`",
+        "powershell": "`Select-String -Pattern ERROR -Path app.log -CaseSensitive`",
+        "does": "Prints only the lines that match the pattern between the slashes, like `grep`."
+      },
+      {
+        "bash": "`sed '/INFO/d' app.log`",
+        "powershell": "`Get-Content app.log | Where-Object { $_ -cnotmatch 'INFO' }`",
+        "does": "`d` deletes lines. This prints everything except the lines with `INFO`."
+      },
+      {
+        "bash": "`sed -i 's/old/new/g' config.txt`",
+        "powershell": "`(Get-Content config.txt) -replace 'old','new' | Set-Content config.txt`",
+        "does": "Changes the file itself. Without `-i`, the file is left alone."
+      }
+    ],
+    "example": {
+      "intro": "Remove the spaces from some labels, then see what the missing `g` does.",
+      "lines": [
+        {
+          "line": "$ cat labels.txt",
+          "note": "Two labels, each with two spaces."
+        },
+        {
+          "line": "gate 12 north",
+          "note": "Line 1."
+        },
+        {
+          "line": "door 7 south",
+          "note": "Line 2."
+        },
+        {
+          "line": "$ sed 's/ //g' labels.txt",
+          "note": "Replace every space with nothing."
+        },
+        {
+          "line": "gate12north",
+          "note": "Line 1, no spaces."
+        },
+        {
+          "line": "door7south",
+          "note": "Line 2, no spaces."
+        },
+        {
+          "line": "$ echo 'a-b-c' | sed 's/-/+/'",
+          "note": "No `g`: only the first `-` on the line changes."
+        },
+        {
+          "line": "a+b-c",
+          "note": "The second dash is still there."
+        },
+        {
+          "line": "$ echo 'a-b-c' | sed 's/-/+/g'",
+          "note": "With `g`: all of them change."
+        },
+        {
+          "line": "a+b+c",
+          "note": "Both dashes changed."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Writing `sed 's/ //' labels.txt` to remove all the spaces.",
+      "why": "Without `g`, `sed` replaces only the first match on each line. The first line of the sample would lose only its first space and come out as `gate12 north`. Add `g`, which stands for \"global\", so every match on each line is replaced."
+    },
+    "more": [
+      {
+        "heading": "Other ways to the same result",
+        "paragraphs": [
+          "`tr -d ' ' < labels.txt` also removes every space. See Swap or delete characters: tr. For one character, either command does the job.",
+          "`sed 's/[[:space:]]//g'` removes spaces and tabs. `[:space:]` is a named set of characters (a ready-made list) that means any space, tab or line break.",
+          "`-e` adds an instruction, and `-E` turns on extra pattern symbols. `sed -e 's/a/b/' file` and `sed 's/a/b/' file` do the same thing."
+        ]
+      },
+      {
+        "heading": "Choosing lines and editing in place",
+        "paragraphs": [
+          "A number, or a range such as `2,4` (a start and an end), before a command picks which lines it acts on. `sed -n '2p'` prints only line 2, and `sed -n '2,4p'` prints lines 2 to 4. `sed '1d'` deletes the first line, which is a quick way to drop a header row (the column titles at the top).",
+          "Any character can separate the parts of a substitution. This helps with file paths (the addresses of folders and files): `sed 's|/old/dir|/new/dir|' file` avoids a clash with the slashes.",
+          "`-i` rewrites the file, so you cannot undo it. Try the command without `-i` first and look at the output. On macOS, `-i` needs an extra argument (a value the command must have): `sed -i '' 's/a/b/' file`. On Linux, writing `-i.bak` keeps a copy of the original as `file.bak`."
+        ],
+        "forms": [
+          {
+            "bash": "`sed '1d' data.txt`",
+            "powershell": "`Get-Content data.txt | Select-Object -Skip 1`",
+            "does": "Prints the file without its first line."
+          },
+          {
+            "bash": "`sed -n '2,4p' data.txt`",
+            "powershell": "`Get-Content data.txt | Select-Object -Skip 1 -First 3`",
+            "does": "Prints lines 2 to 4."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "sed man page",
+        "url": "https://man7.org/linux/man-pages/man1/sed.1.html"
+      },
+      {
+        "label": "about_Comparison_Operators (the -replace operator)",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_comparison_operators"
+      }
+    ]
+  },
+  {
+    "id": "awk",
+    "group": "text",
+    "title": "Pick columns: awk",
+    "purpose": "Shows how to print chosen columns of each line with `awk`, and keep only lines that meet a test.",
+    "aliases": [
+      "awk"
+    ],
+    "what": [
+      "`awk` reads text line by line and splits each line into fields. A field is one piece of a line. Fields are separated by spaces. In `awk`, `$1` is the first field, `$2` the second, and `$NF` the last one. `$0` is the whole line.",
+      "An `awk` program is a pattern (a test that picks lines) and an action (what to do with them). The action goes in curly braces. `{print $2}` has no pattern, so it runs on every line and prints the second field. A pattern before the braces limits the lines. `/ERROR/ {print $1}` runs only on lines that contain `ERROR`.",
+      "A pattern with no braces prints each matching line: `awk '/ERROR/' app.log` works like `grep ERROR app.log`.",
+      "Put the program in single quotes. `-F` changes the field separator, which is the character that splits each line into fields. So `-F,` splits on commas, as a file of comma-separated values needs.",
+      "PowerShell, which comes with Windows, has no command that does the same. You split each line yourself with the `-split` operator (a PowerShell operator, which cuts text into pieces). Then you pick a piece by its position. PowerShell counts positions from 0."
+    ],
+    "forms": [
+      {
+        "bash": "`awk '{print $2}' orders.log`",
+        "powershell": "`Get-Content orders.log | ForEach-Object { ($_ -split '\\s+')[1] }`",
+        "does": "Prints the second field of each line. PowerShell counts from 0, so the second field is number 1."
+      },
+      {
+        "bash": "`awk '{print $1, $2}' orders.log`",
+        "powershell": "`Get-Content orders.log | ForEach-Object { ($_ -split '\\s+')[0,1] -join ' ' }`",
+        "does": "Prints the first two fields with a space between them."
+      },
+      {
+        "bash": "`awk '{print $NF}' orders.log`",
+        "powershell": "`Get-Content orders.log | ForEach-Object { ($_ -split '\\s+')[-1] }`",
+        "does": "Prints the last field of each line."
+      },
+      {
+        "bash": "`awk -F, '{print $2}' data.txt`",
+        "powershell": "`Get-Content data.txt | ForEach-Object { ($_ -split ',')[1] }`",
+        "does": "Splits each line on commas and prints the second part."
+      },
+      {
+        "bash": "`awk '$2 == \"ERROR\"' orders.log`",
+        "powershell": "`Get-Content orders.log | Where-Object { ($_ -split '\\s+')[1] -eq 'ERROR' }`",
+        "does": "Prints the lines whose second field is exactly `ERROR`."
+      },
+      {
+        "bash": "`awk '/ERROR/' orders.log`",
+        "powershell": "`Select-String -Pattern ERROR -Path orders.log -CaseSensitive`",
+        "does": "Prints lines that match a pattern, like `grep`."
+      },
+      {
+        "bash": "`awk 'END {print NR}' orders.log`",
+        "powershell": "`(Get-Content orders.log).Count`",
+        "does": "Prints the number of lines. `NR` is the count of lines read so far, and `END` runs after the last line."
+      },
+      {
+        "bash": "`awk '{ total += $1 } END { print total }' sizes.txt`",
+        "powershell": "`Get-Content sizes.txt | ForEach-Object { [double]($_ -split '\\s+')[0] } | Measure-Object -Sum`",
+        "does": "Adds up the first field of every line and prints the total at the end. `Measure-Object -Sum` adds up the numbers it receives and shows the total in its Sum column."
+      }
+    ],
+    "example": {
+      "intro": "A small log file. Then a few short `awk` programs run on it.",
+      "lines": [
+        {
+          "line": "$ cat orders.log",
+          "note": "Show the file."
+        },
+        {
+          "line": "09:14:02 INFO charge ok order=1041",
+          "note": "Line 1. Fields: time, level, word, word, order."
+        },
+        {
+          "line": "09:14:05 ERROR charge failed order=1042",
+          "note": "Line 2."
+        },
+        {
+          "line": "09:14:09 INFO charge ok order=1043",
+          "note": "Line 3."
+        },
+        {
+          "line": "$ awk '{print $2}' orders.log",
+          "note": "Print field 2 of every line."
+        },
+        {
+          "line": "INFO",
+          "note": "From line 1."
+        },
+        {
+          "line": "ERROR",
+          "note": "From line 2."
+        },
+        {
+          "line": "INFO",
+          "note": "From line 3."
+        },
+        {
+          "line": "$ awk '$2 == \"ERROR\" {print $5}' orders.log",
+          "note": "Only for lines whose field 2 is `ERROR`, print field 5."
+        },
+        {
+          "line": "order=1042",
+          "note": "Only line 2 passed the test."
+        },
+        {
+          "line": "$ awk '{print $1}' orders.log",
+          "note": "Field 1 is the time."
+        },
+        {
+          "line": "09:14:02",
+          "note": "Time from line 1."
+        },
+        {
+          "line": "09:14:05",
+          "note": "Time from line 2."
+        },
+        {
+          "line": "09:14:09",
+          "note": "Time from line 3."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Writing the program in double quotes: `awk \"{print $2}\" orders.log`.",
+      "why": "Inside double quotes, the shell swaps in a value for `$2` before `awk` starts. A variable is a named box that holds a value, and `$2` is one. Its value is empty here, so `awk` receives `{print }` and prints every whole line. Use single quotes: `awk '{print $2}' orders.log`. PowerShell does the same with double quotes, because `$2` is a variable there too."
+    },
+    "more": [
+      {
+        "heading": "Tests and separators",
+        "paragraphs": [
+          "A test can compare a field with `==` (equals), `!=` (not equal), `>` (greater than) or `<` (less than). `awk '$1 > 1'` keeps lines whose first field is a number above 1. This is how you filter the counts that `uniq -c` adds (see Sort and remove repeats: sort and uniq).",
+          "`awk` splits on any group of spaces or tabs in a row by default. `-F,` splits on a single comma and `-F:` on a colon. `-F ' '` asks for the default spaces. Put options such as `-F` before the program and the file name.",
+          "In the exam, a plain `grep` is often enough. `awk` is the better tool when the question asks for one column or a calculation."
+        ],
+        "forms": [
+          {
+            "bash": "`sort names.txt | uniq -c | awk '$1 > 1'`",
+            "powershell": "`Get-Content names.txt | Group-Object | Where-Object Count -gt 1`",
+            "does": "Keeps only the entries counted more than once."
+          },
+          {
+            "bash": "`awk -F: '{print $1}' /etc/passwd`",
+            "powershell": "No close equivalent. Windows keeps accounts in a database, not in a text file like `/etc/passwd`.",
+            "does": "Prints the first colon-separated field of the Linux account file, which holds the account names."
+          }
+        ]
+      },
+      {
+        "heading": "Data files and pipes",
+        "paragraphs": [
+          "`awk` also works on the output of another command: `ls -l | awk '{print $9}'` prints the file-name column of a long listing, which is the detailed file list that `ls -l` prints.",
+          "`awk` is a small programming language. It has variables (named boxes that hold values), `if` tests, loops (steps that repeat), and `BEGIN` and `END` blocks (code that runs once, before the first line or after the last). Questions in this primer only need the one-column and one-test versions shown here."
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "gawk man page",
+        "url": "https://man7.org/linux/man-pages/man1/gawk.1.html"
+      }
+    ]
+  },
+  {
+    "id": "tr",
+    "group": "text",
+    "title": "Swap or delete characters: tr",
+    "purpose": "Shows how to swap, delete or squeeze (shrink repeats of) single characters in text with `tr`.",
+    "aliases": [
+      "tr"
+    ],
+    "what": [
+      "`tr` changes single characters, one at a time. `tr 'a-z' 'A-Z'` swaps every small letter for a capital. `a-z` is a range (a start and an end), which means every letter from a to z.",
+      "`tr -d` deletes the characters you list. `tr -d '0-9'` deletes every digit. `tr -s` squeezes each run (a row of the same character) down to one. `tr -s ' '` turns a row of spaces into a single space.",
+      "`-c` means \"the complement\", all characters that are not in your list. `tr -cd 'a-z\\n'` therefore deletes everything except small letters and line breaks. `\\n` stands for a line break. Keep it, or the lines would be glued together.",
+      "`tr` does not take file names. It reads only the text sent to it. So feed it a file with `<`, or send it text through a pipe: `tr -cd 'a-z\\n' < labels.txt` or `cat labels.txt | tr -cd 'a-z\\n'`."
+    ],
+    "forms": [
+      {
+        "bash": "`echo 'Hello' | tr 'a-z' 'A-Z'`",
+        "powershell": "`'Hello'.ToUpper()`",
+        "does": "Changes small letters to capitals."
+      },
+      {
+        "bash": "`tr -d '0-9' < data.txt`",
+        "powershell": "`(Get-Content data.txt) -replace '[0-9]',''`",
+        "does": "Deletes every digit."
+      },
+      {
+        "bash": "`tr -cd 'a-z\\n' < labels.txt`",
+        "powershell": "`(Get-Content labels.txt) -replace '[^a-z]',''`",
+        "does": "Keeps only small letters and line breaks. PowerShell does it by replacing every character that is not a small letter with nothing."
+      },
+      {
+        "bash": "`tr -dc 'a-z\\n' < labels.txt`",
+        "powershell": "`(Get-Content labels.txt) -replace '[^a-z]',''`",
+        "does": "The same request with the options in the other order. `-dc` means the same as `-cd`."
+      },
+      {
+        "bash": "`tr -s ' ' < data.txt`",
+        "powershell": "`(Get-Content data.txt) -replace ' +',' '`",
+        "does": "Squeezes each run of spaces down to one."
+      },
+      {
+        "bash": "`tr -cd '[:lower:]\\n' < labels.txt`",
+        "powershell": "`(Get-Content labels.txt) -replace '[^a-z]',''`",
+        "does": "`[:lower:]` is a named set of characters that means any small letter. It matches the same characters as `a-z`."
+      },
+      {
+        "bash": "`tr 'abc' 'xyz' < data.txt`",
+        "powershell": "No close equivalent. PowerShell has no command that swaps each character for the one in the same position of a second list.",
+        "does": "Changes `a` to `x`, `b` to `y` and `c` to `z`."
+      }
+    ],
+    "example": {
+      "intro": "Keep only the small letters from the labels, then try swapping and squeezing.",
+      "lines": [
+        {
+          "line": "$ cat labels.txt",
+          "note": "Show the file."
+        },
+        {
+          "line": "gate 12 north",
+          "note": "Line 1."
+        },
+        {
+          "line": "door 7 south",
+          "note": "Line 2."
+        },
+        {
+          "line": "$ tr -cd 'a-z\\n' < labels.txt",
+          "note": "Delete every character that is not a small letter or a line break. `<` feeds the file in as input."
+        },
+        {
+          "line": "gatenorth",
+          "note": "Line 1, small letters only."
+        },
+        {
+          "line": "doorsouth",
+          "note": "Line 2, small letters only."
+        },
+        {
+          "line": "$ echo 'cab' | tr 'a-c' 'x-z'",
+          "note": "Swap each letter in the first list for the one in the same place in the second list."
+        },
+        {
+          "line": "zxy",
+          "note": "`c` became `z`, `a` became `x` and `b` became `y`."
+        },
+        {
+          "line": "$ echo 'a1b2c3' | tr -d '0-9'",
+          "note": "Delete the digits."
+        },
+        {
+          "line": "abc",
+          "note": "Only letters are left."
+        },
+        {
+          "line": "$ echo 'a   b    c' | tr -s ' '",
+          "note": "Squeeze each row of spaces down to one."
+        },
+        {
+          "line": "a b c",
+          "note": "Single spaces."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Writing `tr -cd 'a-z' < labels.txt` and leaving out the `\\n`.",
+      "why": "The line break is a character too. It is not a small letter, so `-cd 'a-z'` deletes it. The two labels run together as `gatenorthdoorsouth` with no line break at the end, and the next prompt (where you type the next command) lands on the same line. Add `\\n` to the list to keep the line breaks. Also remember that `tr` does not take a file name: `tr -cd 'a-z\\n' labels.txt` fails."
+    },
+    "more": [
+      {
+        "heading": "Named groups of characters",
+        "paragraphs": [
+          "Instead of ranges, `tr` accepts named groups (ready-made sets of characters): `[:digit:]` for digits, `[:upper:]` for capitals, `[:lower:]` for small letters, `[:alpha:]` for letters and `[:space:]` for spaces, tabs and line breaks. `tr '[:lower:]' '[:upper:]'` does the same job as `tr 'a-z' 'A-Z'`.",
+          "In a swap, the two lists should be the same length. If the second list is shorter, `tr` repeats its last character to fill the gap."
+        ],
+        "forms": [
+          {
+            "bash": "`echo 'Hello' | tr '[:upper:]' '[:lower:]'`",
+            "powershell": "`'Hello'.ToLower()`",
+            "does": "Changes capitals to small letters."
+          },
+          {
+            "bash": "`tr -d '\\r' < dos.txt`",
+            "powershell": "`(Get-Content dos.txt) -replace '\\r',''`",
+            "does": "Removes the extra carriage-return character (a hidden mark that Windows files carry at the end of each line). PowerShell usually removes it already when it reads a file."
+          }
+        ]
+      },
+      {
+        "heading": "tr or sed?",
+        "paragraphs": [
+          "`tr` works one character at a time, so it cannot replace a whole word. For words and patterns use `sed` (see Find and replace: sed). `sed 's/[^a-z]//g' labels.txt` and `tr -cd 'a-z\\n' < labels.txt` give the same result, and both are good choices.",
+          "`tr` is also handy at the end of a pipe: `echo 'Hello' | tr 'a-z' 'A-Z'`."
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "tr man page",
+        "url": "https://man7.org/linux/man-pages/man1/tr.1.html"
+      }
+    ]
+  },
+  {
+    "id": "echo-printf",
+    "group": "text",
+    "title": "Print text and read the exit status: echo and printf",
+    "purpose": "Shows how to print text with `echo` and `printf`, and how to read the exit status (a number that shows whether the last command worked) with `$?`.",
+    "aliases": [
+      "echo",
+      "printf",
+      "Write-Output"
+    ],
+    "what": [
+      "`echo` prints the words that follow it, then adds a line break. `echo -n` leaves out the line break. `printf` prints text from a pattern (a template with blanks to fill), so you control the layout. In the pattern, `%s` is a blank for a word, and `\\n` is a line break. `printf '%s\\n' hello` prints `hello` and a line break. Unlike `echo`, `printf` adds no line break unless you write `\\n`.",
+      "Every command ends by giving back a number, called its exit status. This number says how the command ended. `0` means success. Any other number means it failed or found nothing, and the number often says which. For `grep`, `0` means it found a match, `1` means it found none, and `2` means a real error such as a missing file.",
+      "In Bash (the command line used on Linux and macOS), `$?` is a variable, a named box that holds a value. It holds the exit status of the last command. To see it, type `echo $?` right after that command. `printf '%s\\n' \"$?\"` shows the same number. Double quotes around `$?` are fine because the shell swaps in the number (see Quotes, spaces and wildcards).",
+      "PowerShell, which comes with Windows, works differently. `$?` holds `True` if the last command worked and `False` if not. `$LASTEXITCODE` holds the number, but only programs such as `grep` set it. Built-in PowerShell commands, called cmdlets, leave it unchanged. `echo` is a short name for `Write-Output` in PowerShell."
+    ],
+    "forms": [
+      {
+        "bash": "`echo hello`",
+        "powershell": "`Write-Output hello`",
+        "does": "Prints `hello`. Typing `echo hello` also works in PowerShell."
+      },
+      {
+        "bash": "`echo -n hello`",
+        "powershell": "`Write-Host -NoNewline hello`",
+        "does": "Prints `hello` and stays on the same line."
+      },
+      {
+        "bash": "`printf '%s\\n' hello`",
+        "powershell": "`Write-Output hello`",
+        "does": "Prints `hello` and a line break."
+      },
+      {
+        "bash": "`printf '%s-%s\\n' a b`",
+        "powershell": "`\"{0}-{1}\" -f 'a','b'`",
+        "does": "Fills the two blanks, so it prints `a-b`. PowerShell's `-f` operator fills numbered blanks: `{0}` is the first value after it, `{1}` the second."
+      },
+      {
+        "bash": "`echo $?`",
+        "powershell": "`$LASTEXITCODE`",
+        "does": "Prints the exit status number of the last program. `0` is success."
+      },
+      {
+        "bash": "`printf '%s\\n' \"$?\"`",
+        "powershell": "`Write-Output $LASTEXITCODE`",
+        "does": "Prints the same exit status number."
+      },
+      {
+        "bash": "`echo $?`",
+        "powershell": "`$?`",
+        "does": "In PowerShell this prints `True` or `False`: did the last command succeed?"
+      }
+    ],
+    "example": {
+      "intro": "Check the exit status right after a command. This reuses `app.log` from the `grep` topic.",
+      "lines": [
+        {
+          "line": "$ echo hello",
+          "note": "Print a word."
+        },
+        {
+          "line": "hello",
+          "note": "The word, then a line break."
+        },
+        {
+          "line": "$ printf '%s-%s\\n' a b",
+          "note": "Fill two blanks from the words that follow."
+        },
+        {
+          "line": "a-b",
+          "note": "The result."
+        },
+        {
+          "line": "$ grep ERROR app.log",
+          "note": "A command that finds matches."
+        },
+        {
+          "line": "09:02 ERROR disk full",
+          "note": "First match."
+        },
+        {
+          "line": "09:05 ERROR disk full",
+          "note": "Second match."
+        },
+        {
+          "line": "$ echo $?",
+          "note": "Ask how the last command, `grep`, ended."
+        },
+        {
+          "line": "0",
+          "note": "Zero means success: it found a match."
+        },
+        {
+          "line": "$ grep fatal app.log",
+          "note": "A search with no match. Nothing prints."
+        },
+        {
+          "line": "$ echo $?",
+          "note": "Ask again."
+        },
+        {
+          "line": "1",
+          "note": "One means `grep` found no match. It is not an error, only the answer \"none\"."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Running another command before reading the status, as in `grep fatal app.log`, then `ls`, then `echo $?`.",
+      "why": "`$?` always describes the command that ran last. After `ls` finishes with `0`, the status of `grep` is gone, and `echo $?` shows `0`. Read it on the very next line after the command you care about. Running `echo $?` also replaces it, because `echo` is a command too, and its own status is `0`."
+    },
+    "more": [
+      {
+        "heading": "Exit status in scripts and checks",
+        "paragraphs": [
+          "A script (a saved list of commands) or a step in a pipeline (commands joined by `|`) uses the status to decide what to do next. In `command1 && command2`, the second command runs only if the first one ended with `0`. In `command1 || command2`, it runs only if the first failed.",
+          "Programs choose their own numbers, and their help often lists them. A tool might use `0` for no findings, `1` for findings and `2` for a usage error (the command was typed wrongly). Read the help for the list (see Reading help for a tool you have never seen).",
+          "In a pipe, `$?` holds the status of the last command in the pipe."
+        ],
+        "forms": [
+          {
+            "bash": "`grep ERROR app.log && echo found`",
+            "powershell": "`if (Select-String -Pattern ERROR -Path app.log -CaseSensitive -Quiet) { 'found' }`",
+            "does": "Prints `found` only when `grep` succeeds. `-Quiet` makes `Select-String` give back only True or False, and `if` runs the braces when it is True."
+          }
+        ]
+      },
+      {
+        "heading": "printf and echo details",
+        "paragraphs": [
+          "`printf` repeats its pattern if you give more words than blanks. `printf '%s\\n' a b c` prints three lines. This is a neat way to print one item per line.",
+          "`echo` can differ between shells (command lines such as Bash) when it meets backslash codes like `\\n`. `printf` behaves the same everywhere, so scripts often prefer it.",
+          "Quote the text if it holds spaces or special symbols. Use single quotes to print it exactly as typed."
+        ],
+        "forms": [
+          {
+            "bash": "`printf '%s\\n' a b c`",
+            "powershell": "`Write-Output a, b, c`",
+            "does": "Prints `a`, `b` and `c`, one per line."
+          },
+          {
+            "bash": "`echo \"Done at $(date)\"`",
+            "powershell": "`Write-Output \"Done at $(Get-Date)\"`",
+            "does": "Puts the output of another command inside the text. `$( )` runs the command and swaps in its output."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "printf man page",
+        "url": "https://man7.org/linux/man-pages/man1/printf.1.html"
+      },
+      {
+        "label": "PowerShell automatic variables",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_automatic_variables"
+      }
+    ]
+  }
+]

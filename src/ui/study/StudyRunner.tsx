@@ -15,6 +15,7 @@ import { tipAnnouncement, TipBox } from '../tips/TipBox';
 import { usePanels } from '../panels/PanelProvider';
 import { RunToolsProvider, ToolButtons, ToolPanels } from '../tools/RunTools';
 import { ReportButton } from '../report/ReportButton';
+import { CommandHelpButton } from '../primer/CommandHelpButton';
 import '../exam/exam.css';
 import './study.css';
 
@@ -148,6 +149,7 @@ export function StudyRunner({
         tools || current.kind === 'question' ? (
           <>
             {tools && <ToolButtons />}
+            {tools && current.kind === 'question' && <CommandHelpButton question={current.item.question} />}
             {current.kind === 'question' && (
               <ReportButton context={{ questionId: current.item.question.id, exam: current.item.question.exam, ...(mode ? { mode } : {}) }} />
             )}

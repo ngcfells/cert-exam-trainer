@@ -10,6 +10,10 @@ import { StrictMode } from 'react';
 import { dataPlusMeta } from '../../banks/dataplus/meta';
 import { applyTips, getTips, resetTipsForTests } from '../tips/prefs';
 import { WithPanels } from '../panels/testPanels';
+import { usePanels } from '../panels/PanelProvider';
+import { CommandHelpPanel } from '../primer/CommandHelpPanel';
+
+vi.mock('../../primer/topics', async () => (await import('../../primer/testTopics')).mockTopicsModule());
 
 const T0 = new Date('2026-01-01T00:00:00Z');
 const order = ['a', 'b', 'c', 'd'];
@@ -392,6 +396,49 @@ describe('StudyRunner tools', () => {
     act(() => vi.advanceTimersByTime(11_000));
     expect(onFinish).toHaveBeenCalledTimes(1);
     expect(screen.queryByRole('dialog', { name: 'Calculator' })).not.toBeInTheDocument();
+  });
+
+  const cmd: StudyItem = { kind: 'question', item: { question: { ...mcq('C0', 'A'), stem: 'Which run of `grep ERROR app.log` is right?' }, optionOrder: order } };
+  function setupHelp(props: Partial<Parameters<typeof StudyRunner>[0]> = {}) {
+    const onFinish = vi.fn();
+    const user = userEvent.setup({ advanceTimers: vi.advanceTimersByTime });
+    function Host() {
+      const { current } = usePanels();
+      return current === 'command-help' ? <CommandHelpPanel /> : null;
+    }
+    render(
+      <WithPanels>
+        <StudyRunner items={[cmd, ...items]} feedback="instant" startedAt={T0} onFinish={onFinish} {...props} />
+        <Host />
+      </WithPanels>,
+    );
+    return { onFinish, user };
+  }
+
+  it('shows Command help on a command question in practice', () => {
+    setupHelp({ tools: true });
+    expect(within(screen.getByRole('banner')).getByRole('button', { name: 'Command help' })).toBeInTheDocument();
+  });
+
+  it('shows no Command help on a question without command code', async () => {
+    const { user } = setupHelp({ tools: true });
+    await user.click(screen.getByRole('button', { name: 'Next' }));
+    expect(screen.queryByRole('button', { name: 'Command help' })).not.toBeInTheDocument();
+  });
+
+  it('shows no Command help in a lesson check (tools off)', () => {
+    setupHelp();
+    expect(screen.queryByRole('button', { name: 'Command help' })).not.toBeInTheDocument();
+  });
+
+  it('a timeout with Command help open closes it and finishes once', async () => {
+    const { user, onFinish } = setupHelp({ tools: true, timeLimitMs: 10_000 });
+    await user.click(screen.getByRole('button', { name: 'Command help' }));
+    expect(screen.getByRole('dialog', { name: 'Command help' })).toBeInTheDocument();
+    act(() => vi.advanceTimersByTime(11_000));
+    expect(onFinish).toHaveBeenCalledTimes(1);
+    expect(onFinish.mock.calls[0][0]).toMatchObject({ timedOut: true });
+    expect(screen.queryByRole('dialog', { name: 'Command help' })).not.toBeInTheDocument();
   });
 
   it('Finish closes an open panel', async () => {

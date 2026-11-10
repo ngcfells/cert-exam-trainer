@@ -1,0 +1,422 @@
+[
+  {
+    "id": "git",
+    "group": "dev",
+    "title": "Track changes: git",
+    "purpose": "Records the history of a folder of files as a series of saved steps, and shares those steps with other people through a copy kept on a server.",
+    "aliases": ["git"],
+    "what": [
+      "git is a tool that remembers every saved version of a project. The project folder is called a repository (repo for short). Inside it, git keeps a hidden folder named `.git` that holds the whole history. You never edit that folder by hand.",
+      "A saved step is called a commit. A commit is a snapshot of your files plus a short message that says why you made the change. Saving is a two-step habit. First you choose which changed files go into the next snapshot. That waiting area is called the staging area, and `git add` puts a file in it. Then `git commit` turns everything in the staging area into a commit. Files you did not add stay out of the commit, even if you changed them.",
+      "A branch is a named line of saved steps. The main line is usually called `main`. You make a new branch to try a change without touching `main`. HEAD (git's name for the commit you are on) points at the branch you are working on. If you switch to one commit instead of a branch, HEAD points at that commit alone. This is called a detached HEAD. You can look around and even commit, but those commits belong to no branch, and they are easy to lose. The fix is to make a branch where you stand.",
+      "A remote is another copy of the repository, usually on a server. The default remote is named `origin`. Names such as `origin/main` are your computer's memory of where `main` was on the remote the last time you checked. `git fetch` downloads new commits from the remote and updates those names. It does not touch your own branches or files. `git pull` is a fetch followed by a merge (joining the new commits onto your branch). So `git pull` does change your files. `git push` sends your commits up. An upstream is the remote branch that your local branch is linked to. Once that link is set, a plain `git push` and `git status` know where to look.",
+      "A tag is a fixed name for one commit, such as a release number like `v1.4.0`. Unlike a branch, a tag does not move. Tags are not sent by a plain `git push`. You push a tag by name."
+    ],
+    "forms": [
+      {
+        "bash": "`git status`",
+        "powershell": "Same command",
+        "does": "Shows which branch you are on, which files are in the staging area, which are changed but not staged, and which are new files that git does not know about yet. Run it before and after every other step. It changes nothing."
+      },
+      {
+        "bash": "`git add src/dates.py`",
+        "powershell": "Same command",
+        "does": "Puts the current state of one file into the staging area. Only that file goes into the next commit. `git add .` stages everything under the current folder, which is faster but easy to overdo."
+      },
+      {
+        "bash": "`git add -- src/dates.py`",
+        "powershell": "Same command",
+        "does": "Same as above. The lone `--` means \"everything after this is a file name, not an option\". It matters when a file name starts with a dash."
+      },
+      {
+        "bash": "`git commit -m \"Fix month parsing\"`",
+        "powershell": "Same command",
+        "does": "Makes a commit from the staging area with the message in quotes. `--message \"Fix month parsing\"` is the long spelling of `-m`. Single quotes also work in Bash and in PowerShell. Without `-m`, git opens a text editor for the message."
+      },
+      {
+        "bash": "`git push -u origin fix/date-parse`",
+        "powershell": "Same command",
+        "does": "Sends the branch to the remote named `origin`. The `-u` also links your branch to that remote branch, so later pushes know where to go. `-u` is short for `--set-upstream`. After that, a plain `git push` is enough. You only need `-u` the first time."
+      },
+      {
+        "bash": "`git push -u origin HEAD`",
+        "powershell": "Same command",
+        "does": "The same push, but `HEAD` stands for the branch you are on now, so you do not have to type its name."
+      },
+      {
+        "bash": "`git push origin v1.4.0`",
+        "powershell": "Same command",
+        "does": "Sends one tag to the remote. A plain `git push` never sends tags, so a tag you made stays on your computer until you push it by name."
+      },
+      {
+        "bash": "`git fetch origin`",
+        "powershell": "Same command",
+        "does": "Downloads new commits and tags from `origin` and updates the `origin/...` names. Your own branches and your files stay as they are. `git fetch` with no name uses the default remote. `git fetch --all` does it for every remote."
+      },
+      {
+        "bash": "`git remote update`",
+        "powershell": "Same command",
+        "does": "Another way to fetch. It fetches from every remote, so for this job it does the same as `git fetch --all`. Like a fetch, it leaves your branches and files alone."
+      },
+      {
+        "bash": "`git switch fix/date-parse`",
+        "powershell": "Same command",
+        "does": "Moves you to an existing branch and changes your files to match it. The older spelling is `git checkout fix/date-parse`. Changes you have not committed come along with you. If the other branch would overwrite them, git refuses to switch and says why."
+      },
+      {
+        "bash": "`git switch -c fix/leap-day`",
+        "powershell": "Same command",
+        "does": "Creates a new branch where you stand and switches to it. `--create` is the long spelling. The older command for the same thing is `git checkout -b fix/leap-day`. This is the way out of a detached HEAD: the commits you made there now belong to the new branch."
+      },
+      {
+        "bash": "`git tag -a v1.4.0 -m \"Release 1.4.0\"`",
+        "powershell": "Same command",
+        "does": "Makes an annotated tag on the commit you are on. An annotated tag stores a message, the name of the person who made it, and the date. `git tag v1.4.0` without `-a` makes a plain tag, which is only a name. Release work normally uses annotated tags."
+      },
+      {
+        "bash": "`git tag`",
+        "powershell": "Same command",
+        "does": "Lists the tags in the repository."
+      },
+      {
+        "bash": "`git log --oneline main..origin/main`",
+        "powershell": "Same command",
+        "does": "Lists the commits that are on `origin/main` but not on `main`, one per line. The two dots mean \"on the right side but not on the left\". Run `git fetch` first, or `origin/main` is out of date. An empty answer means you have everything."
+      },
+      {
+        "bash": "`git remote -v`",
+        "powershell": "Same command",
+        "does": "Lists the remotes and the addresses they point at. Each shows twice, once for fetch and once for push."
+      }
+    ],
+    "example": {
+      "intro": "In the repository `report-tool`, we change two files but commit only one, send the branch to the server, then check what the server has that we lack. The short commit numbers on your computer will differ. The hint lines git prints in brackets, such as `(use \"git add <file>...\" to update what will be committed)`, are left out.",
+      "lines": [
+        { "line": "$ git status", "note": "Ask where we are and what has changed." },
+        { "line": "On branch fix/date-parse", "note": "The branch you are on. If this said `HEAD detached at` and a short number, you would be on a bare commit with no branch." },
+        { "line": "Changes not staged for commit:", "note": "Files changed in your folder but not yet put in the staging area." },
+        { "line": "\tmodified:   notes.txt", "note": "This file is changed but we do not want it in the commit." },
+        { "line": "\tmodified:   src/dates.py", "note": "This is the fix we want to save." },
+        { "line": "$ git add src/dates.py", "note": "Stage only the fix. Nothing is printed when it works." },
+        { "line": "$ git status --short", "note": "A shorter report. Two letters in front of each name: the left one is the staging area, the right one is the folder." },
+        { "line": " M notes.txt", "note": "A space on the left, `M` on the right: changed, not staged." },
+        { "line": "M  src/dates.py", "note": "`M` on the left, a space on the right: staged, ready to commit." },
+        { "line": "$ git commit -m \"Fix month parsing\"", "note": "Save the staged file with a message." },
+        { "line": "[fix/date-parse 4e8a1b2] Fix month parsing", "note": "The branch, the short number of the new commit, and its message." },
+        { "line": " 1 file changed, 2 insertions(+), 1 deletion(-)", "note": "What the commit holds. `notes.txt` is not in it." },
+        { "line": "$ git push -u origin fix/date-parse", "note": "Send the branch and link it to the remote one. The progress lines are left out here." },
+        { "line": "branch 'fix/date-parse' set up to track 'origin/fix/date-parse'.", "note": "This line proves that the upstream is set." },
+        { "line": "$ git fetch origin", "note": "Download what other people have sent since we last looked." },
+        { "line": "From https://git.example.internal/team/report-tool", "note": "Where the commits came from." },
+        { "line": "   a1b2c3d..e4f5a6b  main       -> origin/main", "note": "`origin/main` moved forward from the first number to the second. Our own `main` did not move." },
+        { "line": "$ git log --oneline main..origin/main", "note": "Which commits are on the server's `main` that our `main` lacks?" },
+        { "line": "e4f5a6b Update holiday table", "note": "One commit we do not have yet. `git merge` or `git pull` on `main` would bring it in." }
+      ]
+    },
+    "trap": {
+      "wrong": "Running `git fetch` and expecting your files and your branch to have the new work, or running a plain `git push` and expecting your new tag to reach the server.",
+      "why": "`git fetch` only updates the `origin/...` names. Your branch and your files change only after a merge, which is what `git pull` adds on top of the fetch. A plain `git push` sends branch commits but not tags. Tags go up only when you name them, for example `git push origin v1.4.0`."
+    },
+    "more": [
+      {
+        "heading": "Undo a mistake in the staging area",
+        "paragraphs": [
+          "If you staged the wrong file, you can take it back out without losing your edits. `git restore --staged <file>` removes the file from the staging area and leaves the changes in your folder. `git status` prints this hint for you, in the section called Changes to be committed."
+        ],
+        "forms": [
+          {
+            "bash": "`git restore --staged notes.txt`",
+            "powershell": "Same command",
+            "does": "Unstages one file. The file keeps your edits."
+          }
+        ]
+      },
+      {
+        "heading": "Detached HEAD: keep your work",
+        "paragraphs": [
+          "When `git status` says `HEAD detached at` and a short number, commits you make are not on any branch. If you switch away, they are hard to find again. Before you leave, make a branch right there with `git switch -c <new-name>`. Then `git status` says `On branch <new-name>`, and you can push the branch with `-u` as usual.",
+          "`git switch --detach <commit>` is the deliberate way to look at an old commit. `git switch <branch>` brings you back."
+        ]
+      },
+      {
+        "heading": "Do you need to fetch before you look?",
+        "paragraphs": [
+          "`git status` compares your branch with `origin/...` as it was at the last fetch. It does not ask the server. So \"Your branch is up to date with 'origin/main'\" can be out of date if you have not fetched lately. Fetch first, then compare with `git log main..origin/main` or `git status`.",
+          "The same two-dot trick works the other way. `git log --oneline origin/main..main` lists the commits you have that the server lacks, which is what a push would send."
+        ]
+      },
+      {
+        "heading": "Quotes in the commit message",
+        "paragraphs": [
+          "A message with spaces must be in quotes, or the shell splits it into separate words (see Quotes, spaces and wildcards). Double quotes and single quotes both work for `-m`. In Bash, the shell may change a `!` inside double quotes, so single quotes are safer for messages that contain it."
+        ]
+      }
+    ],
+    "links": [
+      { "label": "git push (official manual)", "url": "https://git-scm.com/docs/git-push" },
+      { "label": "git switch (official manual)", "url": "https://git-scm.com/docs/git-switch" },
+      { "label": "git tag (official manual)", "url": "https://git-scm.com/docs/git-tag" },
+      { "label": "git fetch (official manual)", "url": "https://git-scm.com/docs/git-fetch" }
+    ]
+  },
+  {
+    "id": "docker",
+    "group": "dev",
+    "title": "Run a container: docker",
+    "purpose": "Runs a program inside a container, a sealed-off box with its own files and tools, so it behaves the same on every computer.",
+    "aliases": ["docker"],
+    "what": [
+      "A container is a program running in a sealed-off box. Inside the box it sees its own small set of files and tools, and it cannot see the rest of the computer unless you let it. Teams use containers so that a test or a check runs the same way on a laptop and on the shared computer that tests the code.",
+      "A container starts from an image. An image is a packed copy of the files and tools the program needs. It does not change when a container runs from it. One image can start many containers. An image has a name made of up to three parts: the registry (the server that stores images), the path, and a tag after a colon. In `registry.example.internal/team/tests:1.0`, the registry is `registry.example.internal`, the path is `team/tests`, and the tag, which usually means a version, is `1.0`. If you leave off the tag, docker uses the tag `latest`, which may not be the version you wanted.",
+      "`docker run` creates a container from an image, starts it, and runs a command inside it. If you give no command, the image's own default command runs. The container stops when its command ends. A stopped container is not deleted: it stays on disk until you remove it. The `--rm` flag tells docker to delete the container as soon as it stops.",
+      "A container cannot see your files by default. A bind mount shares one folder from your computer with the container. You write `-v host-folder:container-folder`, and the folder shows up inside the container at the second path. Anything the container writes there is saved in the real folder on your computer. `-w` sets the working directory, the folder the command starts in.",
+      "When `docker run` finishes in the foreground, its exit status is the exit status of the command inside. By custom, 0 means success and any other number means something went wrong or something was found. Read it right away, because the next command replaces it. In Bash it is `$?`. In PowerShell, `$?` is only True or False. The number is in `$LASTEXITCODE`."
+    ],
+    "forms": [
+      {
+        "bash": "`docker run --rm registry.example.internal/team/tests:1.0 pytest -q`",
+        "powershell": "Same command",
+        "does": "Starts a container from the image, runs `pytest -q` inside it, shows the output, and deletes the container when it ends. Everything after the image name is the command for the container, not an option for docker."
+      },
+      {
+        "bash": "`docker run --rm -v \"$(pwd)\":/work -w /work registry.example.internal/team/tests:1.0 pytest -q`",
+        "powershell": "`docker run --rm -v \"${PWD}:/work\" -w /work registry.example.internal/team/tests:1.0 pytest -q`",
+        "does": "The same, with your current folder lent to the container at `/work` (bind mount) and the command started there. `$(pwd)` is Bash for the current folder (pwd means print working directory). PowerShell uses `${PWD}`. On Windows, the folder on your computer is a path like `C:\\Users\\ana\\report-tool`, and the container side stays a Linux path."
+      },
+      {
+        "bash": "`docker run -it --rm python:3.12 bash`",
+        "powershell": "Same command",
+        "does": "`-i` keeps the input open and `-t` gives the container a terminal, so together `-it` lets you type commands inside it. Here the command is `bash`, so you get a shell in a fresh container. Type `exit` to leave."
+      },
+      {
+        "bash": "`docker run -d -p 8080:80 --name site nginx:1.27`",
+        "powershell": "Same command",
+        "does": "`-d` runs the container in the background (detached) and prints its long identifier. `-p 8080:80` connects port 8080 on your computer to port 80 inside the container. A port is a numbered channel that a program listens on. The first number is your computer's side. `--name site` gives the container a name you can use later."
+      },
+      {
+        "bash": "`docker ps`",
+        "powershell": "Same command",
+        "does": "Lists the running containers. It prints a table with a column for the identifier, image, command, age, status, ports and name."
+      },
+      {
+        "bash": "`docker ps -a`",
+        "powershell": "Same command",
+        "does": "Lists all containers, including stopped ones. This is where containers you started without `--rm` pile up."
+      },
+      {
+        "bash": "`docker ps --format \"{{.Names}}  {{.Status}}\"`",
+        "powershell": "Same command",
+        "does": "Prints only the fields you ask for, with no header. The curly braces are for docker, and neither shell changes them inside the quotes."
+      },
+      {
+        "bash": "`docker logs site`",
+        "powershell": "Same command",
+        "does": "Prints what the container has written so far. Use `docker logs -f site` to keep watching."
+      },
+      {
+        "bash": "`docker images`",
+        "powershell": "Same command",
+        "does": "Lists the images stored on this computer, with each one's name, tag, identifier and size. The exact columns differ a little between docker versions."
+      },
+      {
+        "bash": "`docker pull registry.example.internal/team/tests:1.0`",
+        "powershell": "Same command",
+        "does": "Downloads an image from its registry without running it. `docker run` does this by itself if the image is missing."
+      },
+      {
+        "bash": "`docker stop site`",
+        "powershell": "Same command",
+        "does": "Asks the container to stop, and kills it if it does not stop within about ten seconds. The container is still listed by `docker ps -a` unless it was started with `--rm`."
+      },
+      {
+        "bash": "`echo $?`",
+        "powershell": "`$LASTEXITCODE`",
+        "does": "Shows the exit status of the last command, which for a foreground `docker run` is the status of the command inside the container (see Print text and read the exit status: echo and printf). PowerShell's `$?` would only say True or False."
+      },
+      {
+        "bash": "`docker run --rm \\` then a new line `-v \"$(pwd)\":/work \\`",
+        "powershell": "`docker run --rm ` then a backtick at the end of the line, then the next line `-v \"${PWD}:/work\"`",
+        "does": "Long commands can be split over lines. Bash ends each line with a backslash. PowerShell ends each line with a backtick. Nothing may follow the character on that line, not even a space."
+      }
+    ],
+    "example": {
+      "intro": "We run the test tool `pytest` for the project `report-tool` inside a container, then read the exit status. The test results are made up for the example, and the failure details pytest prints between its two lines are left out. The folder path and the container identifier on your computer will differ.",
+      "lines": [
+        { "line": "$ cd ~/report-tool", "note": "Go to the project folder, so that `$(pwd)` is the project." },
+        { "line": "$ docker run --rm -v \"$(pwd)\":/work -w /work registry.example.internal/team/tests:1.0 pytest -q", "note": "Run in a throwaway container with the project lent at `/work`. The image is the part with the registry and the tag. `pytest -q` is the command inside the container." },
+        { "line": "..F                                                                      [100%]", "note": "One character per test. A dot means a test passed. The letter F means one failed." },
+        { "line": "1 failed, 2 passed in 0.31s", "note": "The summary from the tool inside the container, not from docker." },
+        { "line": "$ echo $?", "note": "Read the exit status right away, before another command replaces it." },
+        { "line": "1", "note": "The tool ran and reported a failed test, so it exited with 1. The container itself worked as it should. On Windows you would type `$LASTEXITCODE` instead." },
+        { "line": "$ docker ps -a --format \"{{.Names}}  {{.Status}}\"", "note": "Check for stopped containers left behind. Nothing prints: `--rm` already removed the test container." },
+        { "line": "$ docker run -d --name site nginx:1.27", "note": "Now start one in the background, without `--rm`, and with a name." },
+        { "line": "6022664711e8b84811decc094e881b08086300f0ee78ae5b6de3582bb9fbd5e4", "note": "With `-d`, docker prints the container's long identifier and gives the prompt back at once." },
+        { "line": "$ docker stop site", "note": "Stop it. It prints the name of the container when it works." },
+        { "line": "site", "note": "The name we gave it." },
+        { "line": "$ docker ps -a --format \"{{.Names}}  {{.Status}}\"", "note": "The stopped container is still on disk, because it did not have `--rm`." },
+        { "line": "site  Exited (0) 2 seconds ago", "note": "`Exited (0)` means it stopped and its exit status was 0. Only `site` is listed, because the test container had `--rm`." }
+      ]
+    },
+    "trap": {
+      "wrong": "Seeing exit status 1 after `docker run` and deciding the container or docker itself broke.",
+      "why": "Docker passes along the exit status of the command inside. A status of 1 from a test or check tool usually means the tool ran fine and reported a problem. Docker uses three numbers of its own: 125 means docker itself failed (for example a mistyped option), 126 means the command inside was found but could not be run, and 127 means the command inside was not found. Each comes with an error message from docker. Read the tool's output first. In PowerShell, read the number with `$LASTEXITCODE`, not `$?`."
+    },
+    "more": [
+      {
+        "heading": "Leftover containers",
+        "paragraphs": [
+          "Every `docker run` without `--rm` leaves a stopped container behind. They take up disk space and clutter `docker ps -a`. For one-off jobs such as tests and checks, always add `--rm`. To clean up by hand, `docker rm <name>` removes one stopped container."
+        ],
+        "forms": [
+          {
+            "bash": "`docker rm site`",
+            "powershell": "Same command",
+            "does": "Deletes a stopped container. Use `docker rm -f site` to stop and delete a running one."
+          }
+        ]
+      },
+      {
+        "heading": "Order matters around the image name",
+        "paragraphs": [
+          "Docker's own options (`--rm`, `-v`, `-w`, `-p`, `--name`) go before the image name. Everything after the image name is handed to the program inside the container. The docker options can be in any order among themselves. If you put `--rm` after the image, the program inside receives it as its own argument and probably complains."
+        ]
+      },
+      {
+        "heading": "Windows paths in a bind mount",
+        "paragraphs": [
+          "Docker Desktop on Windows accepts `-v \"C:\\work\\report-tool:/work\"`. Quote the path, and note that the colon after the drive letter is not the separator. The container side is always a Linux-style path with forward slashes. Using `${PWD}` in PowerShell avoids typing the path at all."
+        ]
+      }
+    ],
+    "links": [
+      { "label": "docker container run reference", "url": "https://docs.docker.com/reference/cli/docker/container/run/" },
+      { "label": "Docker: what is a container?", "url": "https://docs.docker.com/get-started/docker-concepts/the-basics/what-is-a-container/" },
+      { "label": "Docker: bind mounts", "url": "https://docs.docker.com/engine/storage/bind-mounts/" }
+    ]
+  },
+  {
+    "id": "conda",
+    "group": "dev",
+    "title": "Python environments: conda",
+    "purpose": "Keeps each project's Python and its libraries in a separate environment, so installing for one project cannot break another.",
+    "aliases": ["conda"],
+    "what": [
+      "A Python project needs a version of Python and a set of libraries. A library is code someone else wrote that you can use, such as `pandas` for tables of data. Different projects need different versions, and they would clash if all were installed in one place. An environment solves this: it is a separate folder that holds one Python and its own libraries. conda is a tool that makes and manages these environments.",
+      "A package is one installable item, such as a library. `conda install` downloads a package from a channel, a server that hosts packages. The default channel has the common ones. `conda-forge` is a large community channel with many more, and you ask for it with `-c conda-forge`.",
+      "conda always starts with one environment called `base`. Running a command to install or run something affects only the environment that is active, and the active one is shown in brackets at the front of your prompt, such as `(sales-2026)`. If you see `(base)`, you are in the base environment. Installing project libraries into `base` mixes them with everything else, which is what environments are meant to prevent. Make an environment for the project, and `conda activate` it before you install or run anything.",
+      "You can save an environment as a plain text file with `conda env export` and rebuild it anywhere with `conda env create -f`. Teams keep that file next to the code, so everyone gets the same libraries.",
+      "On Windows, `conda activate` works in PowerShell only after a one-time setup, `conda init powershell`, and then a new PowerShell window. Or open the Anaconda PowerShell Prompt, which is already set up."
+    ],
+    "forms": [
+      {
+        "bash": "`conda create -n sales-2026 python=3.12`",
+        "powershell": "Same command",
+        "does": "Makes a new environment named `sales-2026` with Python 3.12 in it. It lists what it will install and asks to continue. Add `-y` to answer yes in advance. The new environment is not active yet."
+      },
+      {
+        "bash": "`conda activate sales-2026`",
+        "powershell": "Same command",
+        "does": "Makes `sales-2026` the active environment. The prompt now starts with `(sales-2026)`. In PowerShell this works only after `conda init powershell`. Old notes show `source activate sales-2026`, the way older conda versions did it in Bash. Use `conda activate` today."
+      },
+      {
+        "bash": "`conda install scikit-learn`",
+        "powershell": "Same command",
+        "does": "Installs a package into the active environment. It lists the changes and asks to continue. Check the prompt first. `(base)` means you are in the wrong place."
+      },
+      {
+        "bash": "`conda install -y -c conda-forge matplotlib`",
+        "powershell": "Same command",
+        "does": "`-y` (long form `--yes`) answers yes to the question, which matters in scripts where nobody can type. `-c conda-forge` (long form `--channel`) looks for the package in that channel."
+      },
+      {
+        "bash": "`conda list`",
+        "powershell": "Same command",
+        "does": "Lists the packages in the active environment, with their versions and the channel each came from. `conda list scikit` shows only names that match."
+      },
+      {
+        "bash": "`conda env list`",
+        "powershell": "Same command",
+        "does": "Lists all environments and where they live. A star marks the active one."
+      },
+      {
+        "bash": "`conda deactivate`",
+        "powershell": "Same command",
+        "does": "Leaves the active environment and goes back to the one before it. From a project environment, that is `base`."
+      },
+      {
+        "bash": "`conda env export > environment.yml`",
+        "powershell": "`conda env export --file environment.yml`",
+        "does": "Writes the active environment's package list into a file named `environment.yml`. The `>` sends the output to a file instead of the screen (see Pipes and redirection). `--file` makes conda write the file itself, which is safer in PowerShell: the older Windows PowerShell 5.1 writes `>` files in a text encoding other tools may not read. Add `--from-history` to list only the packages you asked for by name, which moves more easily to other computers."
+      },
+      {
+        "bash": "`conda env create -f environment.yml`",
+        "powershell": "Same command",
+        "does": "Builds an environment from such a file. The environment gets the name written inside the file. `-n <name>` picks another name."
+      },
+      {
+        "bash": "`conda init bash`",
+        "powershell": "`conda init powershell`",
+        "does": "A one-time setup that teaches the shell the `conda activate` command. Close and reopen the window afterwards. The installer usually does this for Bash, but PowerShell often needs it by hand."
+      }
+    ],
+    "example": {
+      "intro": "A new environment for the project `sales-2026`, with a library added and a file saved for teammates. Long download lists are cut short. The paths and versions on your computer will differ.",
+      "lines": [
+        { "line": "$ conda env list", "note": "See which environments exist." },
+        { "line": "# conda environments:", "note": "The first lines are a heading." },
+        { "line": "#", "note": "A comment line." },
+        { "line": "# * -> active", "note": "A key to the marks. Recent conda versions print it; older ones do not." },
+        { "line": "# + -> frozen", "note": "A frozen environment is one locked against changes. You can ignore this for now." },
+        { "line": "base                 *  /home/ana/miniconda3", "note": "Only `base` exists. The star shows it is the active one." },
+        { "line": "$ conda create -n sales-2026 python=3.12 -y", "note": "Make the environment. `-y` skips the question. The download lines are not shown." },
+        { "line": "$ conda activate sales-2026", "note": "Switch into it." },
+        { "line": "(sales-2026) $ conda install -y scikit-learn", "note": "The `(sales-2026)` in front of the prompt confirms that the install goes to the right place. The download lines are not shown." },
+        { "line": "(sales-2026) $ conda env list", "note": "Check again." },
+        { "line": "# conda environments:", "note": "The same heading." },
+        { "line": "#", "note": "A comment line." },
+        { "line": "# * -> active", "note": "The key to the marks again." },
+        { "line": "# + -> frozen", "note": "No environment here is frozen." },
+        { "line": "base                     /home/ana/miniconda3", "note": "`base` no longer has the star." },
+        { "line": "sales-2026            *  /home/ana/miniconda3/envs/sales-2026", "note": "The star moved to the environment we activated." },
+        { "line": "(sales-2026) $ conda env export > environment.yml", "note": "Save the package list to a file. Nothing prints. Keep the file with the code." },
+        { "line": "(sales-2026) $ conda deactivate", "note": "Leave the environment." },
+        { "line": "$", "note": "The `(sales-2026)` prefix is gone. On many installs `(base)` appears in its place, because conda activates `base` by default." }
+      ]
+    },
+    "trap": {
+      "wrong": "Running `conda install pandas` straight away and finding the script still cannot import the library, or finding that other projects have changed.",
+      "why": "`conda install` puts the package in whichever environment is active, and that is `base` until you activate another. The script runs in the project environment, which never got the package. Look at the start of the prompt, run `conda activate <project-env>`, and then install."
+    },
+    "more": [
+      {
+        "heading": "Which environment am I in?",
+        "paragraphs": [
+          "Three quick checks. The prompt prefix shows the name. `conda env list` shows the star. And `conda info --envs` gives the same listing under another name. If you need to install into an environment without switching, `conda install -n sales-2026 scikit-learn` names it directly."
+        ],
+        "forms": [
+          {
+            "bash": "`conda install -n sales-2026 scikit-learn`",
+            "powershell": "Same command",
+            "does": "Installs into the named environment, whichever one is active."
+          }
+        ]
+      },
+      {
+        "heading": "Full path instead of a name",
+        "paragraphs": [
+          "An environment can also be made at a path instead of under a name, with `-p <folder>`. Then you activate it with the full path, for example `conda activate /home/ana/work/sales-2026`. This is why you may see a path where a name was expected."
+        ]
+      },
+      {
+        "heading": "Scripts and the prompt",
+        "paragraphs": [
+          "A script that installs packages must not stop to ask a question. Add `-y` (or `--yes`). Without it the script waits for a reply that never comes. conda also sets the exit status, so a script can check `$?` in Bash or `$LASTEXITCODE` in PowerShell to see whether the install worked."
+        ]
+      }
+    ],
+    "links": [
+      { "label": "conda: managing environments", "url": "https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-environments.html" },
+      { "label": "conda: getting started", "url": "https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html" }
+    ]
+  }
+]

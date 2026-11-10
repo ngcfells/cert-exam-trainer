@@ -19,6 +19,7 @@ describe('parentOf', () => {
   it('sends a tool back to its exam page', () => {
     expect(parentOf({ name: 'mock', exam: 'DA0-002' })).toEqual({ name: 'exam', exam: 'DA0-002' });
     expect(parentOf({ name: 'learn', exam: 'CY0-001', lesson: 'x' })).toEqual({ name: 'exam', exam: 'CY0-001' });
+    expect(parentOf({ name: 'primer', exam: 'DA0-002' })).toEqual({ name: 'exam', exam: 'DA0-002' });
   });
 
   it('sends the editor back to My questions for the same exam', () => {

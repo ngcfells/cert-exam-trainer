@@ -1,0 +1,415 @@
+[
+  {
+    "id": "ping",
+    "group": "network",
+    "title": "Check a host answers: ping",
+    "purpose": "Shows how to send a few small test messages to another computer. It tells you whether the computer answers, and how fast.",
+    "aliases": [
+      "ping",
+      "Test-Connection"
+    ],
+    "what": [
+      "A host is any computer or device on a network that has a name or an address. A network is a set of connected devices that can send messages to each other. `ping` sends a short test message to a host and waits for a reply. If a reply comes back, the host is switched on and the network path to it works. The test message is called an echo request. It follows a set of rules named Internet Control Message Protocol (ICMP). Each reply line also shows how many milliseconds (thousandths of a second) the round trip took. The round trip is the time for the message to go and come back.",
+      "People run `ping` as a first check. The question is: \"Can I reach that server at all?\" You give it a host name such as `web01.example.internal`, or an Internet Protocol (IP) address such as `10.0.0.5`. An IP address is the number that identifies a device on a network. At the end, `ping` prints a short summary. It shows how many messages it sent, how many came back, and what percentage was lost.",
+      "In PowerShell, the matching command is `Test-Connection`. It does the same job, but it returns a table of replies instead of plain text. Plain `ping` also works in PowerShell. Windows has its own `ping` program. Its options differ from the one on Linux and macOS (see the trap and the Learn more section)."
+    ],
+    "forms": [
+      {
+        "bash": "`ping web01.example.internal`",
+        "powershell": "`Test-Connection web01.example.internal`",
+        "does": "Pings the host. On Linux and macOS, the Bash version keeps going until you press `Ctrl+C` (hold the Ctrl key and press C). `Test-Connection` sends 4 messages and stops."
+      },
+      {
+        "bash": "`ping -c 4 web01.example.internal`",
+        "powershell": "`Test-Connection -Count 4 web01.example.internal`",
+        "does": "Sends exactly 4 messages, then stops and prints the summary. On Linux and macOS, `-c` means count."
+      },
+      {
+        "bash": "`ping -c 1 10.0.0.5`",
+        "powershell": "`Test-Connection -Count 1 10.0.0.5`",
+        "does": "Sends one message to an address instead of a name. This skips the step that turns a name into an address. So it shows whether the network path works on its own."
+      },
+      {
+        "bash": "`ping -c 1 web01.example.internal > /dev/null && echo up`",
+        "powershell": "`Test-Connection -Count 1 -Quiet web01.example.internal`",
+        "does": "Gives a yes or no answer instead of a report. In Bash, `&&` runs `echo up` only if `ping` succeeded. `/dev/null` throws the report away. With `-Quiet`, PowerShell prints `True` or `False`."
+      },
+      {
+        "bash": "`ping web01.example.internal`",
+        "powershell": "`ping -t web01.example.internal`",
+        "does": "Keeps pinging until you stop it with `Ctrl+C`. Linux does this by default. Windows `ping` needs `-t` to do the same."
+      }
+    ],
+    "example": {
+      "intro": "Ping two hosts with three messages each. The first one answers. The second one stays silent. The first line of each run, which repeats the host name, is left out.",
+      "lines": [
+        {
+          "line": "$ ping -c 3 web01.example.internal",
+          "note": "Send 3 messages to `web01.example.internal`, then stop."
+        },
+        {
+          "line": "64 bytes from web01.example.internal (10.0.0.5): icmp_seq=1 ttl=64 time=0.42 ms",
+          "note": "A reply. `icmp_seq=1` is the message number. `ttl=64` is a counter. It stops a message from wandering a network forever. `time=0.42 ms` is the round trip. That is well under a millisecond."
+        },
+        {
+          "line": "64 bytes from web01.example.internal (10.0.0.5): icmp_seq=2 ttl=64 time=0.38 ms",
+          "note": "Reply number 2."
+        },
+        {
+          "line": "64 bytes from web01.example.internal (10.0.0.5): icmp_seq=3 ttl=64 time=0.44 ms",
+          "note": "Reply number 3."
+        },
+        {
+          "line": "--- web01.example.internal ping statistics ---",
+          "note": "The summary starts here."
+        },
+        {
+          "line": "3 packets transmitted, 3 received, 0% packet loss, time 2003ms",
+          "note": "A packet is one small bundle of data. All 3 were sent, all 3 came back, and none were lost. This host can be reached."
+        },
+        {
+          "line": "rtt min/avg/max/mdev = 0.380/0.413/0.440/0.025 ms",
+          "note": "The fastest, average and slowest round trip, and how much they varied."
+        },
+        {
+          "line": "$ ping -c 3 db01.example.internal",
+          "note": "Now try a different host."
+        },
+        {
+          "line": "--- db01.example.internal ping statistics ---",
+          "note": "No reply lines came first. The summary is all there is."
+        },
+        {
+          "line": "3 packets transmitted, 0 received, 100% packet loss, time 2046ms",
+          "note": "Nothing came back. That alone does not prove the host is down. It may be ignoring `ping` on purpose (see the trap)."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Deciding that a host is down because `ping` got no reply.",
+      "why": "Many servers and firewalls (software that blocks some network traffic) are set to ignore `ping` messages. So a host can run fine. It can even accept real work on another port (a numbered door that a service listens at), while `ping` shows 100% loss. A reply proves the host is up. No reply proves very little. To test the real service, try the service itself. For example, use `curl` for a web server. Also check that you typed the right count option for your system: `-c` on Linux and macOS, `-n` on Windows."
+    },
+    "more": [
+      {
+        "heading": "Reading a failed ping",
+        "paragraphs": [
+          "There are two common kinds of failure. If `ping` says it cannot find the host name at all, the problem is turning the name into an address. It is not the network path. Try the address directly. If the address works, check the name with `dig` (see Look up a name: dig). If the address also gets no reply, either the path is broken or the host is ignoring `ping`.",
+          "On a busy day, a host may answer some messages and miss others. For example, it answers 2 of 4. That points to a poor or overloaded connection. An overloaded connection carries more traffic than it can handle. The packet loss percentage in the summary is the number to read."
+        ]
+      },
+      {
+        "heading": "Stopping, counting and Windows differences",
+        "paragraphs": [
+          "On Linux and macOS, plain `ping` never stops by itself. Press `Ctrl+C` (hold Ctrl and press C) and the summary prints. Windows `ping` and `Test-Connection` both send 4 messages by default.",
+          "Each system uses a different letter for the count option. Use `-c 4` on Linux and macOS, and `-n 4` on Windows. In `Test-Connection`, the count is `-Count 4`. The host can be given as `-TargetName` in PowerShell 7. In Windows PowerShell 5.1, the older version that comes with Windows, it is `-ComputerName`. Writing the host with no option name works in both."
+        ],
+        "forms": [
+          {
+            "bash": "`ping -c 4 -i 2 web01.example.internal`",
+            "powershell": "`Test-Connection -Count 4 -Delay 2 web01.example.internal`",
+            "does": "Waits 2 seconds between messages instead of 1."
+          }
+        ]
+      },
+      {
+        "heading": "Testing a port instead of ping",
+        "paragraphs": [
+          "A port is a numbered door on a host. Each service listens at its own port. For example, a database might use port 5432. PowerShell 7 can test a port with `Test-Connection -TcpPort`. On Linux, the `nc` tool does it with `-z`. `nc` stands for netcat, and it may need installing. The `-z` option connects and then quits at once. This checks the service itself. So it works even when the host ignores `ping`."
+        ],
+        "forms": [
+          {
+            "bash": "`nc -z db01.example.internal 5432`",
+            "powershell": "`Test-Connection -TargetName db01.example.internal -TcpPort 5432`",
+            "does": "Tries to connect to port 5432. `nc` reports success in its exit status, a hidden result code the shell can check. Some versions also print a line saying the connection worked; add `-v` to be sure you see it. `Test-Connection -TcpPort` needs PowerShell 7."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "Linux ping help page",
+        "url": "https://man7.org/linux/man-pages/man8/ping.8.html"
+      },
+      {
+        "label": "Windows ping reference",
+        "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/ping"
+      },
+      {
+        "label": "Test-Connection reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/test-connection"
+      }
+    ]
+  },
+  {
+    "id": "dig",
+    "group": "network",
+    "title": "Look up a name: dig",
+    "purpose": "Shows how to ask the naming system which address a name points to. It also shows how to see which server gave the answer.",
+    "aliases": [
+      "dig",
+      "nslookup",
+      "Resolve-DnsName"
+    ],
+    "what": [
+      "Computers find each other by number. People use names such as `shop.example.internal`. The Domain Name System (DNS) is a worldwide phone book. It turns a name into a number. A name server is a computer that holds or looks up those entries. A resolver is the helper your computer asks first. If it does not know an answer, it asks other name servers. It remembers the answers for a while. Each entry is called a record, and each record has a type. An `A` record gives an Internet Protocol (IP) address. That is the number that identifies a device on a network. An `MX` record, which stands for mail exchange, names the mail server for a domain (a family of names under one owner, such as example.com).",
+      "`dig` asks a name server a question and prints the full answer. You can use it to check what a name points to. You can compare what two servers say. You can also find out which server gave an answer. By default, it asks your system's resolver. To pick a different server, write `@` and its name or address in front.",
+      "On Windows, PowerShell uses `Resolve-DnsName` for this job. It exists only on Windows. `dig` is not installed on Windows by default. `nslookup` is an older tool that works on Linux, macOS and Windows alike. Use it when you cannot be sure what is installed."
+    ],
+    "forms": [
+      {
+        "bash": "`dig shop.example.internal`",
+        "powershell": "`Resolve-DnsName shop.example.internal`",
+        "does": "Looks up the `A` record of the name using your system's resolver and prints the answer. `Resolve-DnsName` also lists the newer, longer `AAAA` addresses unless you add `-Type A`."
+      },
+      {
+        "bash": "`dig @10.0.0.7 shop.example.internal`",
+        "powershell": "`Resolve-DnsName -Name shop.example.internal -Server 10.0.0.7`",
+        "does": "Asks one chosen server, here the one at `10.0.0.7`, instead of the default resolver."
+      },
+      {
+        "bash": "`dig +short shop.example.internal`",
+        "powershell": "`(Resolve-DnsName -Name shop.example.internal -Type A).IPAddress`",
+        "does": "Prints only the answer data. Here that is the address, with no other text. The PowerShell form keeps just the address field of each result."
+      },
+      {
+        "bash": "`dig shop.example.internal MX`",
+        "powershell": "`Resolve-DnsName -Name shop.example.internal -Type MX`",
+        "does": "Asks for a different record type. Here that is the mail servers (`MX`). Without a type, `dig` asks for `A`."
+      },
+      {
+        "bash": "`dig -x 10.2.9.30`",
+        "powershell": "`Resolve-DnsName 10.2.9.30`",
+        "does": "A reverse lookup starts from an address and finds the name. Given an address, `Resolve-DnsName` does the reverse lookup for you."
+      },
+      {
+        "bash": "`dig +short @ns2.example.internal shop.example.internal`",
+        "powershell": "`Resolve-DnsName -Name shop.example.internal -Server ns2.example.internal -Type A`",
+        "does": "Asks the server named `ns2.example.internal` directly. The Bash form prints only the address."
+      },
+      {
+        "bash": "`nslookup shop.example.internal 10.0.0.7`",
+        "powershell": "Same command",
+        "does": "The older tool. The second word is the server to ask. It prints the server it used and then the answer."
+      }
+    ],
+    "example": {
+      "intro": "Ask your default resolver, then ask another server for the same name, then do a reverse lookup. Real `dig` output has more lines. These include a header and a footer. So only the answer lines are shown here.",
+      "lines": [
+        {
+          "line": "$ dig shop.example.internal",
+          "note": "Ask the default resolver for the `A` record."
+        },
+        {
+          "line": "shop.example.internal.   43190   IN   A   10.2.8.14",
+          "note": "The answer line. From left to right, it holds: the name (the final dot is normal). Next is the time to live (TTL) in seconds. Then comes the class (`IN` means the Internet). Then the record type. Last is the data, here an address."
+        },
+        {
+          "line": "$ dig @10.0.0.7 +short shop.example.internal",
+          "note": "Ask a different server at `10.0.0.7`, and print only the data."
+        },
+        {
+          "line": "10.2.9.30",
+          "note": "A different address. The two servers disagree, which is the clue that one of them is holding an old answer."
+        },
+        {
+          "line": "$ dig -x 10.2.9.30 +short",
+          "note": "A reverse lookup of the address, data only."
+        },
+        {
+          "line": "shop.example.internal.",
+          "note": "The name that belongs to that address."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Changing a record, then running `dig name` against your default resolver and trusting that answer as the truth.",
+      "why": "A resolver remembers each answer for as long as its TTL says. In the example above, 43190 seconds is about 12 hours. Until that time runs out, the resolver keeps handing out the old address. Meanwhile, the server that owns the record already has the new one. That owner is called the authoritative server. To see the new answer, ask the authoritative server directly with `dig @ns2.example.internal name`. To see what the cached answer will do, watch the TTL number count down."
+    },
+    "more": [
+      {
+        "heading": "Reading the answer line",
+        "paragraphs": [
+          "An answer line has five parts: name, TTL, class, type and data. Read them in that order. The name is what you asked. The TTL is how many seconds a resolver may keep the answer. The class is almost always `IN`. The type matches what you asked for (`A`, `MX` and so on). The data is the actual answer.",
+          "A resolver that answers from its memory shows a TTL that is smaller each time you ask. A server that owns the record shows the same full TTL every time. That difference tells you which kind of server answered."
+        ]
+      },
+      {
+        "heading": "Options and their order",
+        "paragraphs": [
+          "The order of the parts can change. `dig +short @ns2.example.internal shop.example.internal` and `dig shop.example.internal @ns2.example.internal +short` do the same thing. The usual shape is `dig [@server] name [type] [options]`. A word starting with `@` names the server. `+short` is an option that controls the output. `-x` is a normal option, followed by an address.",
+          "For a reverse lookup the address comes right after `-x`. `dig -x 10.2.9.30 +short` and `dig +short -x 10.2.9.30` are both fine."
+        ]
+      },
+      {
+        "heading": "Windows lookup tools",
+        "paragraphs": [
+          "`Resolve-DnsName` returns structured results, and you can pick out single parts of each result. `-Type` takes the record type. `nslookup` runs on every system. It starts with a line naming the server it asked. If the answer did not come from the server that owns the record, `nslookup` marks it as non-authoritative. That is another way to tell a resolver's answer from the owner's."
+        ],
+        "forms": [
+          {
+            "bash": "`nslookup -type=MX example.internal`",
+            "powershell": "`nslookup -type=MX example.internal`",
+            "does": "Asks `nslookup` for a record type. The same command works in both shells."
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "dig manual page",
+        "url": "https://bind9.readthedocs.io/en/latest/manpages.html"
+      },
+      {
+        "label": "Resolve-DnsName reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/dnsclient/resolve-dnsname"
+      },
+      {
+        "label": "nslookup reference",
+        "url": "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup"
+      }
+    ]
+  },
+  {
+    "id": "curl",
+    "group": "network",
+    "title": "Call a web address: curl",
+    "purpose": "Shows how to send a request to a web address from the terminal and read the reply. It also shows how to create, change and delete things on a service.",
+    "aliases": [
+      "curl",
+      "Invoke-WebRequest",
+      "Invoke-RestMethod"
+    ],
+    "what": [
+      "Web pages and many services talk using Hypertext Transfer Protocol (HTTP). That is a set of rules for requests and replies. Your side sends a request. The server sends back a response. A request has a method, which says what you want to do. `GET` reads something. `POST` creates something. `PATCH` changes part of something. `DELETE` removes it. A response has a status code. That is a three-digit number saying how it went (`200` worked, `404` not found). It also has some headers, which are extra lines of information such as the type of content. Last comes the body, which is the content itself.",
+      "`curl` sends a request to a web address and prints the body of the response. A web address is called a Uniform Resource Locator (URL). With no options, it sends a `GET`. Options let you pick another method, add headers, send a body, or show the response headers. People use this to test a service that has no web page. One example is an application programming interface (API). That is a service meant to be used by other programs.",
+      "In PowerShell, the matching commands are `Invoke-WebRequest` and `Invoke-RestMethod`. `Invoke-RestMethod` is the one for services. It turns a JavaScript Object Notation (JSON) reply into named parts you can read. JSON is a common text layout for data. `Invoke-WebRequest` gives you the whole response, including status code and headers. The real `curl` program also comes with Windows 10 and later, as `curl.exe` (see Learn more)."
+    ],
+    "forms": [
+      {
+        "bash": "`curl https://api.example.internal/v1/tickets/77`",
+        "powershell": "`Invoke-RestMethod https://api.example.internal/v1/tickets/77`",
+        "does": "Sends a `GET` and prints the body. `GET` is the default, so no option is needed."
+      },
+      {
+        "bash": "`curl -i https://api.example.internal/v1/tickets/77`",
+        "powershell": "`Invoke-WebRequest https://api.example.internal/v1/tickets/77`",
+        "does": "Prints the response headers first, then the body. `-i` means include the headers. `Invoke-WebRequest` returns a result that holds the status code, headers and content."
+      },
+      {
+        "bash": "`curl -I https://api.example.internal/v1/tickets/77`",
+        "powershell": "`Invoke-WebRequest -Method Head -Uri https://api.example.internal/v1/tickets/77`",
+        "does": "Sends a `HEAD` request, which asks for the headers only. The server sends no body. Note the capital: `-I` is not `-i`."
+      },
+      {
+        "bash": "`curl -H \"Accept: application/json\" https://api.example.internal/v1/tickets/77`",
+        "powershell": "`Invoke-RestMethod -Uri https://api.example.internal/v1/tickets/77 -Headers @{ Accept = 'application/json' }`",
+        "does": "Adds a header. In Bash, `-H` takes the text `Name: value`. In PowerShell, `-Headers` takes a table of names and values."
+      },
+      {
+        "bash": "`curl -H \"Content-Type: application/json\" -d '{\"subject\":\"printer\",\"priority\":2}' https://api.example.internal/v1/tickets`",
+        "powershell": "`Invoke-RestMethod -Method Post -Uri https://api.example.internal/v1/tickets -ContentType 'application/json' -Body '{\"subject\":\"printer\",\"priority\":2}'`",
+        "does": "Creates a new item by sending a JSON body. `-d` supplies the body, and it makes `curl` send a `POST` on its own, so no `-X POST` is needed. The header tells the server the body is JSON."
+      },
+      {
+        "bash": "`curl -X PATCH -H \"Content-Type: application/json\" -d '{\"priority\":1}' https://api.example.internal/v1/tickets/77`",
+        "powershell": "`Invoke-RestMethod -Method Patch -Uri https://api.example.internal/v1/tickets/77 -ContentType 'application/json' -Body '{\"priority\":1}'`",
+        "does": "Changes only the fields in the body. `-X` (long form `--request`) picks the method, because `-d` alone would send a `POST`."
+      },
+      {
+        "bash": "`curl -X DELETE https://api.example.internal/v1/tickets/77`",
+        "powershell": "`Invoke-RestMethod -Method Delete -Uri https://api.example.internal/v1/tickets/77`",
+        "does": "Removes the item. There is no body, so only the method is set."
+      }
+    ],
+    "example": {
+      "intro": "Read a ticket that exists. Then ask for one that does not, and show the headers. Real `curl -i` output also has a blank line between the headers and the body. It usually has a few more headers too. Those are left out here. Many servers answer with `HTTP/2 404` and lower-case header names such as `content-type`. They mean the same thing.",
+      "lines": [
+        {
+          "line": "$ curl https://api.example.internal/v1/tickets/77",
+          "note": "A plain `GET` of ticket 77."
+        },
+        {
+          "line": "{\"id\":77,\"status\":\"open\"}",
+          "note": "The body: a small piece of JSON describing the ticket."
+        },
+        {
+          "line": "$ curl -i https://api.example.internal/v1/tickets/999",
+          "note": "Ask for ticket 999, and include the response headers."
+        },
+        {
+          "line": "HTTP/1.1 404 Not Found",
+          "note": "The status line. It shows the protocol version, the status code `404`, and what the code means. This ticket does not exist."
+        },
+        {
+          "line": "Content-Type: application/json",
+          "note": "A header. It says the body is JSON."
+        },
+        {
+          "line": "Content-Length: 26",
+          "note": "A header. The body is 26 characters long."
+        },
+        {
+          "line": "{\"error\":\"no such ticket\"}",
+          "note": "The body. Without `-i`, you would see only this line and have no sign of the `404`."
+        }
+      ]
+    },
+    "trap": {
+      "wrong": "Using `-I` to \"include the headers\" and expecting the body as well.",
+      "why": "`-i` (lower case) prints the headers and then the body. `-I` (capital) sends a different kind of request, `HEAD`. It asks the server for the headers only, so you get no body at all. The letters look alike, so check the case. If you want the body too, use the lower case one."
+    },
+    "more": [
+      {
+        "heading": "Sending JSON in Bash",
+        "paragraphs": [
+          "`-d` sends the text you give it as the body. On its own, `curl` labels that body as form data (the layout that web forms send). A service that expects JSON also needs the header `Content-Type: application/json`. Put the JSON inside single quotes. That stops the shell from changing the double quotes (see Quotes, spaces and wildcards).",
+          "Because `-d` makes `curl` send a `POST`, a create needs no `-X POST`. Add `-X` only for another method, such as `PATCH`, `PUT` or `DELETE`."
+        ]
+      },
+      {
+        "heading": "curl in PowerShell",
+        "paragraphs": [
+          "In Windows PowerShell 5.1, the older version that comes with Windows, `curl` is only a short name for `Invoke-WebRequest`. So `curl -i` or `curl -X DELETE` fails there. You get an error instead. Type `curl.exe` instead. That runs the real `curl` program, which comes with Windows 10 and later. PowerShell 7 removed the short name. So plain `curl` runs the real program when it is installed.",
+          "Quotes for `curl.exe` are tricky with a JSON body. PowerShell handles the double quotes before `curl.exe` sees them. For a JSON body, `Invoke-RestMethod` with `-Body` and `-ContentType` is safer. Simple requests with no body work the same as in Bash."
+        ],
+        "forms": [
+          {
+            "bash": "`curl --version`",
+            "powershell": "`curl.exe --version`",
+            "does": "Shows which `curl` you have. A good first check on an unknown machine."
+          },
+          {
+            "bash": "`curl -i https://api.example.internal/v1/tickets/77`",
+            "powershell": "`curl.exe -i https://api.example.internal/v1/tickets/77`",
+            "does": "The real `curl` in PowerShell, with the same options as in Bash."
+          }
+        ]
+      },
+      {
+        "heading": "Status codes and what to read",
+        "paragraphs": [
+          "The first digit of a status code tells you the kind of result. Codes starting with 2 mean it worked. Codes starting with 3 mean you are being sent somewhere else. Codes starting with 4 mean your request was wrong, such as `404` (not found). Codes starting with 5 mean the server failed. `curl` prints a `4xx` or `5xx` reply like any other. So add `-i` when you need the code. In PowerShell, both `Invoke-WebRequest` and `Invoke-RestMethod` stop with an error on those codes instead.",
+          "You can repeat the `-H` option, one header each time. Writing the web address last makes a long command easier to read."
+        ]
+      }
+    ],
+    "links": [
+      {
+        "label": "curl help page",
+        "url": "https://curl.se/docs/manpage.html"
+      },
+      {
+        "label": "curl: everything about HTTP requests",
+        "url": "https://curl.se/docs/httpscripting.html"
+      },
+      {
+        "label": "Invoke-RestMethod reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-restmethod"
+      },
+      {
+        "label": "Invoke-WebRequest reference",
+        "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-webrequest"
+      }
+    ]
+  }
+]

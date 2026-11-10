@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { getBundledQuestions, listExams } from '../banks';
 import { getLessons } from '../banks/lessons';
+import { examTopics } from '../primer/match';
 import type { Repo } from '../storage';
 import { useFocusHeading } from './kit';
 import { questions } from './plural';
@@ -15,6 +16,7 @@ export function ExamPage({ repo, examCode, onNavigate }: { repo: Repo; examCode:
   const headingRef = useFocusHeading();
   const [mine, setMine] = useState<number | null>(null);
   const meta = listExams().find((m) => m.code === examCode);
+  const hasPrimer = useMemo(() => examTopics(examCode).length > 0, [examCode]);
 
   useEffect(() => {
     void repo.getUserQuestions(examCode).then((qs) => setMine(qs.length));
@@ -33,6 +35,7 @@ export function ExamPage({ repo, examCode, onNavigate }: { repo: Repo; examCode:
         <button type="button" onClick={go('practice')}>{`Practice: ${e}`}</button>
         <button type="button" onClick={go('cram')}>{`Cram: ${e}`}</button>
         {getLessons(e).length > 0 && <button type="button" onClick={go('learn')}>{`Learn: ${e}`}</button>}
+        {hasPrimer && <button type="button" onClick={go('primer')}>{`Command primer: ${e}`}</button>}
         <button type="button" onClick={go('acronyms')}>{`Acronyms: ${e}`}</button>
         <button type="button" onClick={go('progress')}>{`Progress: ${e}`}</button>
         <button type="button" onClick={go('questions')}>{`My questions: ${e}`}</button>

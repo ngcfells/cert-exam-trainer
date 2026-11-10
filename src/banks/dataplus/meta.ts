@@ -100,10 +100,24 @@ export const dataPlusMeta: ExamMeta = {
     { term: 'SKU', expansion: 'Stock Keeping Unit', source: 'community' },
     { term: 'SSL', expansion: 'Secure Sockets Layer', source: 'community' },
     { term: 'TCP', expansion: 'Transmission Control Protocol', source: 'community' },
+    // Command primer (network topics).
+    { term: 'ICMP', expansion: 'Internet Control Message Protocol', source: 'community' },
+    { term: 'IP', expansion: 'Internet Protocol', source: 'community' },
     { term: 'WAN', expansion: 'Wide Area Network', source: 'community' },
+    // Command primer (files topics).
+    { term: 'SHA', expansion: 'Secure Hash Algorithm', source: 'community' },
     // Math module terms.
     { term: 'CAGR', expansion: 'Compound Annual Growth Rate', source: 'community' },
     { term: 'IQR', expansion: 'Interquartile Range', source: 'community' },
     { term: 'ANOVA', expansion: 'Analysis of Variance', source: 'community' },
+    // Command primer: terms its topics use that any topic can show (Show all topics).
+    { term: 'DNS', expansion: 'Domain Name System', source: 'community' },
+    { term: 'TTL', expansion: 'Time to Live', source: 'community' },
+    { term: 'HTTP', expansion: 'Hypertext Transfer Protocol', source: 'community' },
+    { term: 'URL', expansion: 'Uniform Resource Locator', source: 'community' },
+    { term: 'CN', expansion: 'Common Name', source: 'community' },
+    { term: 'GMT', expansion: 'Greenwich Mean Time', source: 'community' },
+    { term: 'PID', expansion: 'Process Identifier', alternates: ['Process ID'], source: 'community' },
+    { term: 'UTC', expansion: 'Coordinated Universal Time', source: 'community' },
   ],
 };

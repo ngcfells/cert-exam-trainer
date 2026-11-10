@@ -1,3 +1,102 @@
+# 2026-11-09/10 (local): primer review fixed, BUG #18 comes first
+
+Next session model: **Sonnet**. Order of work (owner's ruling, 2026-11-10):
+
+0. FIRST finish battletech-tools #630 (Aces, Rekikire's playtest): everything is in the first block of
+   `C:/repo/JBTToolsSupportFiles/handoff.md`. The owner said: finish #630, commit, push, comment, close. Then go on here.
+1. `gh issue list` in testingUtility. **#18 is a new bug (from-app): "Cram repeats the same questions over and over"**
+   (DA0-002, a pool of 10 that is the same every session; the reporter also expected cram to ask which section).
+   Bugs beat everything else here. Start with superpowers:systematic-debugging and a failing test in `src/study/session.test.ts`.
+   Lead (a hypothesis, not proven): `assembleCram` in `src/study/session.ts` (lines ~117-126) fills `ordered` with
+   due questions, then ALL MCQs of the 3 weakest objectives in order, then the rest, and slices the first
+   `CRAM_SIZE - acronyms.length` (10). With nothing due, those 10 come from the single weakest objective every time
+   (`byChance` only reorders within it), so the pool never changes. Fix idea: spread the draw across the weak
+   objectives (round-robin or weighted by weakness), keep due items first, and add a variety rule so a session does not
+   repeat the previous session's ids. The "ask which section" part is a feature request: put it on the issue as an
+   answer and ask the owner.
+2. Task 15 (primer release), branch `command-primer`. The Opus whole-branch review is DONE. Every finding is fixed,
+   minors too (list below). `npm run check` result: see the line "CHECK" at the end of this block. Left, in order:
+   commit the fixes, merge to main, push (approved in words on 2026-11-09), `npm run deploy`, close #5 with a comment.
+3. #16 (font size on phones) and #17 (install as an app / offline) are `from-app` enhancements, after #18.
+
+CHECK: on this tree, lint, typecheck, builds and unit tests passed (113 files, 1131 tests). An earlier full run had
+e2e 119 passed with only a cram test I then dropped failing. The final e2e stage of the re-run was still going when
+the session ended, so run `npm run check` once more before merging.
+
+What the review fixes were (committed on `command-primer`, not pushed):
+- Show-all acronym rule: the missing terms (DNS, TTL, HTTP, URL, JSON, CN, GMT, ID, PID, UTC, ICMP, CSV) were added to
+  the DA0-002, CY0-001 and AT0-001 lists (Data+ community count is now 35). New `src/primer/rules.test.ts` checks
+  every topic against every exam list.
+- Answer leaks: the same test fails when a typed-step accepted answer appears in a topic. Examples were reworded
+  (labels.txt with spaces and small letters in sed and tr, scores.txt, orders.log, web-cache, cleanup-tmp.sh,
+  server.log `mode=fast`). Bare vocabulary (git fetch, echo $?, conda install pandas, and so on) and wildcard answers are
+  allowed in the test, each reviewed. Removed the sentences that told learners how the app grades.
+- Minors: the choice list shows for one matched topic too (`CommandHelpPanel.tsx`), cross-reference titles are full,
+  `sort -k2` vs `-k2,2`, letter case on a Mac, job numbers differ in Bash and PowerShell, `head 5 days.txt` also prints
+  the file, `uniq -D` may be missing, a duplicate openssl sentence, the hashing rows agree between topics, and
+  "the Windows command line" now reads "which comes with Windows".
+- NOT changed, on purpose: the pandas `fillna(0)` claim is right (checked with pandas 3.0.1: the column is `object`).
+  No cram e2e: the fixture bank's cram set has no terminal question, and cram shares StudyRunner's tested path.
+  "See <topic>" stays plain text (the reviewer suggested links; that is a feature).
+
+# BACK ON THE HOME MACHINE (2026-11-09)
+
+The home machine is on again, and local `C:/repo` is the main copy. Cloud work is pulled in: battletech-tools
+`master` (rebased; one local docs commit, bf2c594c8 rebased, not pushed), `mordel-user-key` fast-forwarded to
+13e645064 (section 2 WIP, see `docs/superpowers/plans/2026-11-07-mordel-next.md`), `beta` at origin, testingUtility
+`command-primer` same as origin. ResourceLibrary pulled. The CLOUD block below is history.
+
+Open issues (2026-11-09): cert-exam-trainer has no bugs; new `from-app` requests #16 (font size setting for phones)
+and #17 (install as an app / work offline), both enhancements, plus #11, #6, #5. battletech-tools: the only bug is
+#630 (Aces playtest, plan below). JBTIICRework, TechFoundry: no issues. JBTIICRework's working tree has 37 deleted,
+11 changed and 154 new library files: that is the pending rename (#601, waits on the LFS budget). Leave it.
+
+# CLOUD (2026-11-07): the home machine is off, possibly for a week or more
+
+Work continues in Claude Code cloud sessions. Everything that was only on the home machine (unpushed branches,
+git-ignored working data, Claude memory, the mordel.net mirror) is in the private repo `NGCFells2/ResourceLibrary`,
+folder `Custom/cloud-handoff/`. Start with `Custom/cloud-handoff/CLOUD-START.md` there. Windows paths below
+(`C:/repo/...`) mean the same repo cloned in the cloud.
+
+What was in progress when the machine went off:
+
+1. battletech-tools, branch `mordel-user-key` (not pushed, not merged): mordel.net user keys are built and reviewed.
+   Next: `docs/superpowers/plans/2026-11-07-mordel-next.md` on that branch (alt names and tags, every unit kind,
+   missing catalog items, Battle Value root causes, the report for Scott). The owner chose: assume our BV is wrong
+   until the rules and errata show otherwise.
+2. testingUtility, branch `command-primer`: Task 15, release (see the block below).
+
+Both branches are in the bundles under `Custom/cloud-handoff/`. Nothing is pushed to the public repos.
+
+# 2026-11-09 (local): Task 15 started, owner approved the links
+
+The owner APPROVED the link list (66 links, 15 gnu.org ones now man7.org, commit 281a4e6). `npm run check` passed on
+`command-primer` (e2e 119 passed). Left, in order: (1) one whole-branch review on Opus as a subagent
+(superpowers:requesting-code-review, branch vs main); (2) fix ALL findings, minors too; (3) re-run `npm run check`;
+(4) merge to main, push, `npm run deploy` (cert-exam-trainer is public: ask the owner for the push OK at that point
+if it has not been given in words); (5) close #5 with a comment. Run it on Sonnet. The owner's account now shows a
+Fable limit, so use Opus or Sonnet only, not Fable.
+
+# 2026-11-09 (local): primer links checked
+
+All 66 primer links checked from the home machine: the 51 that are not on gnu.org return 200. The 15 gnu.org manual
+links time out in the TLS handshake (gnu.org has been up and down since August, per the owner); cat and printf
+answered once, and the Wayback Machine has a 200 copy of all 15 (most from Oct 2026), so the pages exist. The GNU
+download mirror the owner gave (mirror.team-cymru.com/gnu/) carries tarballs only, not the HTML manuals, so on the
+owner's call all 15 now point at the man7.org man pages (bash job control, chmod, inode for permission bits,
+sha256sum, cat, grep, sort, uniq, head, tail, wc, sed, gawk, tr, printf), each checked 200. All 66 links now answer.
+Task 15 still needs the owner to approve the link list.
+
+Next session model: Sonnet. Task 15 is `npm run check`, merge, push, deploy; only its one whole-branch review runs
+on Opus, as a subagent.
+
+# 2026-11-09 (cloud): link list sent, waiting on the owner
+
+`gh issue list`: no bugs, no `from-app` issues; open #11, #6, #5 (enhancements). The Task 15 link list (66 links: the
+5 "Practice safely" links in `src/primer/links.json` and every topic's `links`) went to the owner, who will check the
+links themselves later. The cloud network could not reach any of the sites, so nothing was checked here, the three
+gnu.org coreutils links included. Nothing changed on `command-primer`.
+
 # START HERE (2026-11-06, after /clear): all repos in one place
 
 The same block is at the top of `C:/repo/testingUtility/HANDOFF.md` and `C:/repo/JBTToolsSupportFiles/handoff.md`.
@@ -7,14 +106,55 @@ Every session: run `gh issue list` in testingUtility first. Bugs come before eve
 file issues from the app (label `from-app`), so check for those too. At the end of 2026-11-06 the open issues were
 #11, #6 and #5, all enhancements.
 
-NEXT SESSION (written 2026-11-06, end of day):
+NEXT SESSION (written 2026-11-06, late evening):
 
 1. `gh issue list`. Any bug, or any `from-app` issue, comes first.
-2. testingUtility: the command primer, issue #5 (Bash and PowerShell side by side, assume zero experience). The spec
-   is approved and committed: `docs/superpowers/specs/2026-11-06-command-primer-design.md`. There is no plan yet.
-   Write it with superpowers:writing-plans, get the owner to review it, then build it the standing way: native,
-   test-first with a ledger, one Opus whole-branch review, fix every finding (minors too), merge, push,
-   `npm run deploy`.
+2. testingUtility: the command primer, issue #5, branch `command-primer` (not merged). The plan is approved:
+   `docs/superpowers/plans/2026-11-06-command-primer.md`. Ledger: `.superpowers/sdd/2026-11-06-command-primer/progress.md`
+   (keep it). Tasks 1 to 14 are done and green. Task 14, the data group (SQL and pandas), is commit b167620, and
+   `PENDING` is now empty. Next is **Task 15, release** (last bullet below). It starts with the owner approving the
+   link list (Practice safely in `src/primer/links.json`, plus each topic's `links`). gnu.org still gave no answer
+   at 20:30 on 2026-11-06, so recheck the three coreutils links first. Run it with superpowers:executing-plans and
+   resume from the ledger.
+   - The skill's task-start/task-done scripts cannot find content tasks (the plan heading is "Tasks 8 to 14"). Read
+     the plan section "Tasks 8 to 14" and ledger by hand in the same format.
+   - Listing the bank steps for a group: a throwaway vitest file in `src/primer/` that imports the three bank item
+     files and `commandWords` and writes matching steps to the ledger folder (Task 9 wrote `t9-steps.md`). Delete it
+     after.
+   - Bank tests (`npx vitest run src/banks`) hold the primer acronym check. It also reads example `line` fields, so
+     capital words in sample output (`PANIC`, `NR`) trip it; the drafter picked other samples.
+   - Accuracy review that paid off in Task 9: run every Bash example in Git Bash and every PowerShell form in pwsh
+     (both are on this machine). It caught a PowerShell `-replace` paired with a first-match-only `sed`, a false
+     "No close equivalent." (`Measure-Object -Sum`), and a Bash `&&` line offered as the PowerShell form.
+   - Linux tools for that review (set up 2026-11-06 at the owner's request): WSL Ubuntu now runs (its Windows
+     service was Disabled; now Manual), with dnsutils and netcat added. Run a Bash file there with
+     `wsl -d Ubuntu -u root -- bash -c "tr -d '\r' < /mnt/c/<path>.sh | bash"`. dig is also on Windows (winget
+     ISC.Bind). Put a `timeout` on anything that may not stop (Task 10 hung on Linux `ping -n`).
+   - Drafters copy the bank's own scenario (Task 10: the same TTL, addresses and JSON bodies). Swap in new values.
+   - A new acronym in a topic must go in the acronym list of every exam the topic shows for (`meta.ts`); the Data+
+     meta test pins its community count (now 27).
+   - The copy checker (Haiku) tends to re-define "PowerShell" and "Bash" in every topic and can garble cross-reference
+     titles; check every "see <title>" against the real topic titles.
+   - Primer e2e: `tests/e2e/primer.spec.ts` (fixture) and `primer.responsive.spec.ts` (phone, tablet), helper in
+     `tests/e2e/primerUtil.ts`. Run: `npm run build:e2e`, then `npx playwright test tests/e2e/primer.spec.ts
+     tests/e2e/primer.responsive.spec.ts --project=fixture --project=phone --project=tablet` (7 tests).
+   - From Task 11: www.gnu.org did not answer from this machine at commit time (it gave 200 earlier that
+     session); the Task 15 link check must confirm the three coreutils links. `NET` (as in .NET) is now on
+     NOT_ACRONYMS in `src/acronyms/extract.ts` as a product name.
+   - From Task 12: WSL Ubuntu runs systemd (255), so services can be checked for real with a throwaway unit in
+     `/run/systemd/system` (gone on reboot); clean up any `enable` symlink in `/etc/systemd/system/*.wants` and any
+     test user. It caught: failed units print `×` not `●`; `systemctl start` is silent with exit 0 even when the
+     program dies at once; `journalctl` as a plain user shows `-- No entries --` for system units. `FAILURE` is now
+     on NOT_ACRONYMS; ID, PID, UTC are AutoOps+ community entries. gnu.org was down for everyone at Task 12 (owner, 2026-11-06); recheck the three coreutils links later.
+   - From Task 13: Docker Engine 29 now runs in WSL Ubuntu (apt `docker.io`, installed 2026-11-06). The
+     every-topic responsive e2e is marked `test.slow()` (axe over all open topics in two schemes passed 30 s); if it
+     times out again after Task 14, raise its budget, do not drop the check.
+     Python (miniconda, conda 25.11) is on Windows for checking pandas examples; sqlite3 may need checking for SQL.
+   - From Task 14: miniconda's Python has pandas 3.0.1 (text dtype prints `str`, not `object`) and the sqlite3
+     module (3.51). psql is not installed, so the SQL example's psql layout is hand-drawn from real sqlite rows. The
+     Task 14 e2e passed in 31 s with no timeout.
+   - Task 15: release. Empty `PENDING`, get the owner to approve the links, `npm run check`, one Opus whole-branch
+     review, fix every finding (minors too), merge, push, `npm run deploy`, close #5.
 3. Between primer tasks and while tests run: the tools work (section B in
    `C:/repo/JBTToolsSupportFiles/handoff.md`).
 
@@ -115,10 +255,17 @@ Status (2026-11-06, about 12:15):
 
 ## B. Tools work (battletech-tools, JBTIICRework, ResourceLibrary, JBTToolsSupportFiles)
 
-Done 2026-11-06: the reply to Scott was approved and sent by the user. It is saved in section 4 of
-`battletech-tools/docs/superpowers/plans/2026-11-06-mordel-api-mapping.md`. It asks about per-user API keys and
-CORS. Waiting on Scott's answer and his next sandbox update; after that update, recheck the three mismatches
-(HMR-5M bm 98087, cv 5001 leading space, `/units/bm/474/`). That doc and the pipeline doc are committed as 9b0d70f36.
+Scott answered (2026-11-06 evening), and the user sent two replies. Both are saved in sections 5 and 6 of
+`battletech-tools/docs/superpowers/plans/2026-11-06-mordel-api-mapping.md`, with the follow-ups at the end.
+- Per-user keys are agreed in principle, so option (c) leads. We asked for CORS (three origins: jeffs-bt-tools,
+  heysporky and ngcfells .github.io), a "my units" list with private units, name_parts, mul_id and role in the list,
+  and a removals feed. Waiting on his answer.
+- The three mismatches are fixed in production. Recheck them after his next production-to-sandbox copy.
+- Archive designs: build them as real designs under an archivist account with credit in the notes. We asked about
+  an original-designer field, moving designs to their creators, file import, and a push API.
+- Sizes measured from a sample at 21:15: all details about 530 MB (87 MB gzipped); the list about 25 MB (3.5 MB
+  gzipped).
+- The user is away at a conference in Utah the week of 2026-11-09 and may be fully offline.
 
 Steps, in order:
 

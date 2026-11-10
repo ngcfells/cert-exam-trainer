@@ -13,6 +13,7 @@ import { MockExamFlow } from './exam/MockExamFlow';
 import { ResultsScreen } from './exam/ResultsScreen';
 import { LearnFlow } from './learn/LearnFlow';
 import { SettingsScreen } from './SettingsScreen';
+import { PrimerScreen } from './primer/PrimerScreen';
 import { CramFlow } from './study/CramFlow';
 import { PracticeFlow } from './study/PracticeFlow';
 import { ProgressScreen } from './study/ProgressScreen';
@@ -37,6 +38,7 @@ const screens: [string, () => ReactElement, RegExp, boolean][] = [
   ['my questions', () => <MyQuestions repo={createMemoryRepo()} examCode="DA0-002" onEdit={() => {}} />, /^My questions:/, true],
   ['learn', () => <LearnFlow repo={createMemoryRepo()} examCode="DA0-002" />, ANY, false],
   ['acronyms', () => <AcronymFlow repo={createMemoryRepo()} examCode="DA0-002" seed={1} />, ANY, false],
+  ['primer', () => <PrimerScreen examCode="DA0-002" />, /^Command primer:/, true],
   ['about', () => <About />, /^About/, true],
   ['settings', () => <SettingsScreen repo={createMemoryRepo()} />, /^Settings$/, true],
   ['results', results, ANY, false],
