@@ -29,7 +29,7 @@ export function CommandHelpPanel() {
   const topic = topicById(shown);
   return (
     <Panel kind="command-help" title="Command help" onClose={() => close()}>
-      {matched.length > 1 && <Choices label="Commands in this question" topics={matched} shown={shown} onPick={setShown} />}
+      {matched.length > 0 && <Choices label="Commands in this question" topics={matched} shown={shown} onPick={setShown} />}
       {basics.length > 0 && (
         <>
           <h3>Shell basics</h3>

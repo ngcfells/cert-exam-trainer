@@ -68,12 +68,12 @@
       "A command line is one line of text. Spaces split it into parts, and each part has a job.",
       "The first part is the command: the program to run. Some programs then take a subcommand, a second word that picks one of the things the program can do. In `git push`, `git` is the command and `push` is the subcommand.",
       "Options change how the command behaves. A short option is a dash and one letter, such as `-n`. A long option is two dashes and a word, such as `--name`. Some options take a value, written as `--name value` or `--name=value`. Arguments are the things the command works on, such as a file name.",
-      "In Bash, capital and small letters are different. `ls` works and `LS` does not. `-l` and `-L` are different options."
+      "In Bash, capital and small letters are usually different. `ls` works and `LS` does not. (A Mac keeps file names without regard to case by default, so `LS` can work there.) `-l` and `-L` are different options."
     ],
     "forms": [
       { "bash": "`ls -l reports`", "powershell": "`Get-ChildItem -Path reports`", "does": "Command `ls`, short option `-l`, argument `reports`. PowerShell options are words that start with one dash." },
       { "bash": "`git push origin main`", "powershell": "Same command", "does": "Command `git`, subcommand `push`, then two arguments: the remote name and the branch name." },
-      { "bash": "`systemctl start invoice-api`", "powershell": "`Start-Service invoice-api`", "does": "Command, subcommand `start`, then the service name as the argument. PowerShell puts the action in the command name instead." },
+      { "bash": "`systemctl start web-cache`", "powershell": "`Start-Service web-cache`", "does": "Command, subcommand `start`, then the service name as the argument. PowerShell puts the action in the command name instead." },
       { "bash": "`ls -la`", "powershell": "`Get-ChildItem -Force`", "does": "Two short options joined behind one dash. This is the same as `ls -l -a`." },
       { "bash": "`ls --all`", "powershell": "`Get-ChildItem -Force`", "does": "A long option on the Linux version of `ls`. It means the same as `-a`." }
     ],
@@ -106,7 +106,7 @@
       {
         "heading": "Spaces and PowerShell differences",
         "paragraphs": [
-          "A space always ends a part. A file named `my notes.txt` therefore looks like two arguments unless you put it in quotes. The quoting topic covers this.",
+          "A space always ends a part. A file named `my notes.txt` therefore looks like two arguments unless you put it in quotes. See Quotes, spaces and wildcards.",
           "PowerShell commands are called cmdlets. Each name is an action word, a dash and a thing, such as `Get-ChildItem` (get the items in a folder). Their options are called parameters. They start with one dash and a word, and capital letters do not matter. A parameter that switches something on takes no value, as with `-Force`."
         ]
       }
@@ -296,7 +296,7 @@
       "Least privilege means giving a task only the power it needs. Use `sudo` only when a command fails because you lack permission."
     ],
     "forms": [
-      { "bash": "`sudo systemctl start invoice-api`", "powershell": "No close equivalent. Windows usually raises a whole window to administrator, and the newer `sudo` for Windows 11 is off unless someone turns it on.", "does": "Runs just this one command with administrator power." },
+      { "bash": "`sudo systemctl start web-cache`", "powershell": "No close equivalent. Windows usually raises a whole window to administrator, and the newer `sudo` for Windows 11 is off unless someone turns it on.", "does": "Runs just this one command with administrator power." },
       { "bash": "`sudo -i`", "powershell": "`Start-Process powershell -Verb RunAs`", "does": "Gives you an administrator session. The PowerShell command opens a new window that has administrator power." },
       { "bash": "`sudo -l`", "powershell": "No close equivalent. Windows has no command that lists which commands your account may raise.", "does": "Lists what your account is allowed to run with `sudo`." },
       { "bash": "`whoami`", "powershell": "Same command", "does": "Shows the account you are using right now." }
@@ -328,7 +328,7 @@
         "paragraphs": [
           "On Windows, a window opened as administrator shows a confirmation box called the User Account Control prompt. An elevated window is easy to forget about, so close it when the task is done.",
           "Recent versions of Windows 11 include an optional `sudo` command that works much like the Linux one. It is switched off by default, so most Windows machines still use an administrator window.",
-          "In this app's questions, a command such as `sudo systemctl start invoice-api` is usually also marked correct without `sudo`. The command is the same. `sudo` only supplies the permission."
+          "The command is the same with or without `sudo`. `sudo` only supplies the permission."
         ]
       }
     ],
@@ -471,8 +471,8 @@
       { "bash": "`fg %2`", "powershell": "No close equivalent. A PowerShell job cannot be brought to the foreground.", "does": "Brings job 2 to the foreground." },
       { "bash": "`bg %2`", "powershell": "No close equivalent. PowerShell jobs have no stopped state to resume.", "does": "Lets the stopped job 2 continue in the background." },
       { "bash": "`Ctrl+Z`", "powershell": "No close equivalent. A running PowerShell command cannot be suspended into a job.", "does": "Stops the foreground job and returns the prompt." },
-      { "bash": "`nohup ./prune-cache.sh &`", "powershell": "No close equivalent. `Start-Job` is tied to the PowerShell session and ends when it closes.", "does": "Keeps the command running after the terminal closes." },
-      { "bash": "`wait %2`", "powershell": "`Wait-Job -Id 2`", "does": "Waits until job 2 has finished." }
+      { "bash": "`nohup ./cleanup-tmp.sh &`", "powershell": "No close equivalent. `Start-Job` is tied to the PowerShell session and ends when it closes.", "does": "Keeps the command running after the terminal closes." },
+      { "bash": "`wait %2`", "powershell": "`Wait-Job -Id 2`", "does": "Waits until job 2 has finished. Each shell counts its own jobs, so a Bash job number and a PowerShell job id are not the same thing. Check the list first (`jobs` or `Get-Job`)." }
     ],
     "example": {
       "intro": "Two background jobs, then bring one forward, stop it and send it back.",
@@ -493,8 +493,8 @@
       ]
     },
     "trap": {
-      "wrong": "Starting `./prune-cache.sh &` and expecting it to survive closing the terminal.",
-      "why": "A background job still belongs to the shell. When the terminal closes, the system sends the job a message called hangup, and the job stops. `nohup` means \"no hangup\": `nohup ./prune-cache.sh &` tells the command to ignore that message."
+      "wrong": "Starting `./cleanup-tmp.sh &` and expecting it to survive closing the terminal.",
+      "why": "A background job still belongs to the shell. When the terminal closes, the system sends the job a message called hangup, and the job stops. `nohup` means \"no hangup\": `nohup ./cleanup-tmp.sh &` tells the command to ignore that message."
     },
     "more": [
       {
@@ -508,7 +508,7 @@
       {
         "heading": "nohup",
         "paragraphs": [
-          "Without redirection, `nohup` writes the command's output into a file called `nohup.out` and prints `nohup: ignoring input and appending output to 'nohup.out'`. Redirect the output yourself if you want it in another file, as in `nohup ./prune-cache.sh > prune.log 2>&1 &`.",
+          "Without redirection, `nohup` writes the command's output into a file called `nohup.out` and prints `nohup: ignoring input and appending output to 'nohup.out'`. Redirect the output yourself if you want it in another file, as in `nohup ./cleanup-tmp.sh > prune.log 2>&1 &`.",
           "The `&` at the end still matters. Without it, `nohup` runs the command in the foreground."
         ]
       },

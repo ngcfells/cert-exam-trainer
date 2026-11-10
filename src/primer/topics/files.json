@@ -191,12 +191,12 @@
       },
       {
         "bash": "`openssl dgst -sha256 orders.txt`",
-        "powershell": "Same command",
+        "powershell": "`Get-FileHash orders.txt` is the PowerShell way. The same `openssl` command also works there when `openssl` is on the path.",
         "does": "The `openssl` tool can hash a file too, where it is installed. On Windows, Git Bash has one; PowerShell finds it only if it is on the path. It prints `SHA2-256(orders.txt)= ` and then the hash."
       },
       {
         "bash": "`openssl sha256 orders.txt`",
-        "powershell": "Same command",
+        "powershell": "`Get-FileHash orders.txt` is the PowerShell way. The same `openssl` command also works there when `openssl` is on the path.",
         "does": "A shorter spelling of the line above. The method name takes the place of `dgst`."
       },
       {
@@ -321,7 +321,7 @@
     "what": [
       "A certificate is a file that a server (a computer that offers a service, such as a website) uses to prove who it is. It holds the name of the owner, which is called the subject. It holds the name of whoever vouched for it, called the issuer. It holds a serial number, and two dates: the time it becomes valid and the time it expires. An expired certificate makes browsers and programs refuse to connect, so checking the dates is a very common job.",
       "`openssl` is a toolbox of encryption jobs (scrambling data so only the right people can read it). It works through smaller commands called subcommands. The one for reading a certificate is `x509`. You give it the file with `-in`. You then add an option (a flag that picks what to show) for the part you want. `-dates` shows when it starts and ends. `-subject` shows the owner. `-issuer` shows the issuer. `-serial` shows the serial number. `-fingerprint` shows a hash of the whole certificate, a way to tell one certificate from another.",
-      "Add `-noout` to nearly all of these. Without it, `openssl` prints the certificate in coded form after your answer, which is a block of random-looking text between lines of dashes. On Windows, `openssl` is not part of the system. Git for Windows includes one, but by default only Git Bash can find it. Other tools, such as conda, may add one that PowerShell can find. If PowerShell says the command cannot be found, use Git Bash or the PowerShell way in Learn more. See Learn more for a PowerShell way to read a certificate."
+      "Add `-noout` to nearly all of these. Without it, `openssl` prints the certificate in coded form after your answer, which is a block of random-looking text between lines of dashes. On Windows, `openssl` is not part of the system. Git for Windows includes one, but by default only Git Bash can find it. Other tools, such as conda, may add one that PowerShell can find. If PowerShell says the command cannot be found, use Git Bash or the PowerShell way in Learn more."
     ],
     "forms": [
       {
@@ -351,7 +351,7 @@
       },
       {
         "bash": "`openssl dgst -sha256 orders.txt`",
-        "powershell": "`Get-FileHash orders.txt`",
+        "powershell": "`Get-FileHash orders.txt` (or the same `openssl` command, when it is on the path)",
         "does": "Works out the hash of any file. PowerShell has its own command for this. See Hashing a file: sha256sum, shasum and Get-FileHash."
       }
     ],

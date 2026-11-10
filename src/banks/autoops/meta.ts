@@ -117,5 +117,8 @@ export const autoOpsMeta: ExamMeta = {
     { term: 'URI', expansion: 'Uniform Resource Identifier', source: 'community' },
     { term: 'WAN', expansion: 'Wide Area Network', source: 'community' },
     { term: 'XML', expansion: 'Extensible Markup Language', source: 'community' },
+    // Command primer: terms its topics use that any topic can show (Show all topics).
+    { term: 'ICMP', expansion: 'Internet Control Message Protocol', source: 'community' },
+    { term: 'CSV', expansion: 'Comma-Separated Values', source: 'community' },
   ],
 };

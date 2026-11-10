@@ -11,7 +11,7 @@
     "what": [
       "`cat` prints the content of one or more files on the screen. The name is short for \"concatenate\", which means to join things end to end. With one file it simply shows that file. With two or more it prints them one after the other.",
       "`cat` is how you take a first look at a small file. For a big file the screen would fill with text. So people either send the output into another command using a pipe (the `|` symbol, which passes one command's output to the next; see Pipes and redirection), or use `head` or `tail` instead.",
-      "In PowerShell, the Windows command line, the real command is `Get-Content`. It reads a file and hands over one line at a time. `cat` also works there, as a short name for `Get-Content`."
+      "In PowerShell, the real command is `Get-Content`. It reads a file and hands over one line at a time. `cat` also works there, as a short name for `Get-Content`."
     ],
     "forms": [
       {
@@ -92,14 +92,14 @@
       {
         "heading": "Get-Content details",
         "paragraphs": [
-          "`Get-Content` can stop early or start from the end, so it covers the jobs of `head` and `tail` as well. `-TotalCount 5` reads only the first five lines, `-Tail 5` reads only the last five, and `-Wait` keeps the command open and prints new lines as they are added. See Show the start or end of a file.",
+          "`Get-Content` can stop early or start from the end, so it covers the jobs of `head` and `tail` as well. `-TotalCount 5` reads only the first five lines, `-Tail 5` reads only the last five, and `-Wait` keeps the command open and prints new lines as they are added. See Show the start or end of a file: head and tail.",
           "To print a file in PowerShell with line numbers, you would combine more commands, so exam questions rarely ask for it."
         ],
         "forms": [
           {
             "bash": "`cat notes.txt | wc -l`",
             "powershell": "`Get-Content notes.txt | Measure-Object -Line`",
-            "does": "Counts the lines. See Count lines, words and characters."
+            "does": "Counts the lines. See Count lines, words and characters: wc."
           }
         ]
       }
@@ -128,7 +128,7 @@
       "`grep` reads text and prints only the lines that contain the pattern you give it. A pattern is the word or piece of text to look for. The first word after `grep` is the pattern. The file name comes next.",
       "`grep` checks letter case exactly. Letter case means capital or small letters. `ERROR` and `error` are different words to it.",
       "A line is the piece of text `grep` works on. It prints whole lines. When you ask for a count, it counts lines, not how many times the word appears.",
-      "PowerShell, the Windows command line, has `Select-String`. It works the same way, with two differences. It ignores letter case unless you ask it not to, and each result shows the file name and line number in front of the text."
+      "PowerShell, which comes with Windows, has `Select-String`. It works the same way, with two differences. It ignores letter case unless you ask it not to, and each result shows the file name and line number in front of the text."
     ],
     "forms": [
       {
@@ -257,7 +257,7 @@
       {
         "heading": "Counting matches",
         "paragraphs": [
-          "`grep -c ERROR app.log` and `grep ERROR app.log | wc -l` both print the number of matching lines. The first is shorter. The second shows how a pipe works (see Pipes and redirection). `grep` prints the matching lines, and `wc -l` counts them (see Count lines, words and characters).",
+          "`grep -c ERROR app.log` and `grep ERROR app.log | wc -l` both print the number of matching lines. The first is shorter. The second shows how a pipe works (see Pipes and redirection). `grep` prints the matching lines, and `wc -l` counts them (see Count lines, words and characters: wc).",
           "Both count lines, not words. If one line holds `ERROR` twice, it still counts once.",
           "With a file name, `wc -l` prints the name too. A pipe sends it only the text, so it prints just the number."
         ],
@@ -272,7 +272,7 @@
       {
         "heading": "Patterns with symbols",
         "paragraphs": [
-          "A pattern with an equals sign, a space or a dot is safest in single quotes: `grep 'status=blocked' gateway.log`. Quotes keep the shell, the program that reads your commands, from changing the text (see Quotes, spaces and wildcards). A pattern with a space must be quoted.",
+          "A pattern with an equals sign, a space or a dot is safest in single quotes: `grep 'mode=fast' server.log`. Quotes keep the shell, the program that reads your commands, from changing the text (see Quotes, spaces and wildcards). A pattern with a space must be quoted.",
           "In a plain `grep` pattern, a dot matches any one character, so `grep 'a.b' file` also finds `axb`. `-F` treats the pattern as plain text, with no special symbols, so `grep -F 'a.b' file` finds only `a.b`. PowerShell does this with `-SimpleMatch`.",
           "`grep -E` turns on extra pattern symbols, where `|` means \"or\": `grep -E 'ERROR|WARN' app.log` prints lines with either word. PowerShell patterns already work this way."
         ],
@@ -320,7 +320,7 @@
       "`sort` puts the lines of a file in order, from A to Z and from small numbers to large. `uniq` removes repeated lines. A repeated line is exactly the same as the line before it.",
       "`uniq` only compares each line with the line right above it. Lines that are the same but not next to each other are not seen as repeats. So you nearly always run `sort` first, and send the sorted lines into `uniq` through a pipe (the `|` symbol, which passes one command's output to the next).",
       "Useful options, which change what a command does: `sort -n` sorts as numbers, so 9 comes before 10. `sort -r` reverses the order. `sort -u` sorts and drops repeats in one step. For `uniq`, `-c` puts a count in front of each line. `-d` prints one copy of each line that is repeated. `-D` prints every copy of those lines.",
-      "PowerShell, the Windows command line, uses `Sort-Object` to sort and `Get-Unique` to remove repeats. `Get-Unique` has the same rule as `uniq`, so it also needs lines that are already sorted."
+      "PowerShell, which comes with Windows, uses `Sort-Object` to sort and `Get-Unique` to remove repeats. `Get-Unique` has the same rule as `uniq`, so it also needs lines that are already sorted."
     ],
     "forms": [
       {
@@ -453,7 +453,7 @@
       {
         "heading": "Three ways to find repeats",
         "paragraphs": [
-          "`sort names.txt | uniq -d` prints one copy of each repeated line. `sort names.txt | uniq -D` prints every copy, so `apple` appears twice and `pear` three times. Both need `sort` first.",
+          "`sort names.txt | uniq -d` prints one copy of each repeated line. `sort names.txt | uniq -D` prints every copy, so `apple` appears twice and `pear` three times. Both need `sort` first. Not every `uniq` has `-D`. If yours says it is an unknown option, use `uniq -c` to see how many times each line appears.",
           "Another route is `sort names.txt | uniq -c | awk '$1 > 1'`. `uniq -c` adds the counts. Then `awk` (a text tool) keeps the lines whose first field, the count, is above 1. A field is one piece of a line, split up by spaces (see Pick columns: awk).",
           "To check for repeats quickly, compare line counts. (`wc -l` counts lines.) `sort -u names.txt | wc -l` is smaller than `wc -l < names.txt` when repeats exist."
         ]
@@ -461,7 +461,7 @@
       {
         "heading": "Sorting details",
         "paragraphs": [
-          "A file of numbers needs `sort -n`. Without it the lines are compared as text, so `10` comes before `9`. To find repeated numbers in an unsorted file, run `sort -n customer_nos.txt | uniq -d`.",
+          "A file of numbers needs `sort -n`. Without it the lines are compared as text, so `10` comes before `9`. To find repeated numbers in an unsorted file, run `sort -n scores.txt | uniq -d`.",
           "The `sort` command can take a file name, or read from a pipe. `sort < names.txt` feeds the file in with `<`, and `cat names.txt | sort` sends it through a pipe. All three give the same result.",
           "`Sort-Object` can also sort by a named detail of each item, such as its size. This works because `Get-ChildItem` sends items with details, not plain text: `Get-ChildItem | Sort-Object Length`."
         ],
@@ -474,7 +474,7 @@
           {
             "bash": "`sort -k2 data.txt`",
             "powershell": "`Get-Content data.txt | Sort-Object { ($_ -split '\\s+')[1] }`",
-            "does": "Sorts by the second column, which is the second word in each line. Words are split on spaces."
+            "does": "Sorts starting at the second word of each line and comparing to the end of the line. Words are split on spaces. `sort -k2,2` sorts on the second word only."
           }
         ]
       }
@@ -504,7 +504,7 @@
       "`-n` sets how many lines to print. `head -n 5 file` prints five lines. A shorter form with just a dash and the number, `head -5 file`, means the same. Writing `-n5` with no space also works.",
       "`tail -n +6 file` is a special case. The plus sign means \"start at line 6 and print to the end\".",
       "`tail -f file` keeps running and prints new lines as they are added to the file. This is called following a log. Press `Ctrl+C` (hold Ctrl and press C) to stop.",
-      "PowerShell, the Windows command line, uses `Get-Content`, with `-TotalCount` for the first lines and `-Tail` for the last lines."
+      "PowerShell, which comes with Windows, uses `Get-Content`, with `-TotalCount` for the first lines and `-Tail` for the last lines."
     ],
     "forms": [
       {
@@ -617,7 +617,7 @@
     },
     "trap": {
       "wrong": "Writing `head 5 days.txt` to get five lines.",
-      "why": "Without the dash, `5` is read as a file name. The command then reports that it cannot open a file called `5`. The number needs `-n` or a dash: `head -n 5 days.txt` or `head -5 days.txt`."
+      "why": "Without the dash, `5` is read as a file name. The command reports that it cannot open a file called `5`, and then still prints the first 10 lines of `days.txt`, which is not what you asked for. The number needs `-n` or a dash: `head -n 5 days.txt` or `head -5 days.txt`."
     },
     "more": [
       {
@@ -671,7 +671,7 @@
       "`wc` is short for \"word count\". It counts the lines, words and characters in text. `wc -l` counts lines, `wc -w` counts words, and `wc -m` counts characters.",
       "Run on a file, `wc` prints the number followed by the file name. Run on text from a pipe (the `|` symbol, which sends one command's output into the next), or from a file fed in with `<`, it prints only the number. There is no file name to show.",
       "You often put `wc -l` at the end of a pipe to count the lines a command prints, as in `grep ERROR app.log | wc -l`.",
-      "PowerShell, the Windows command line, counts with `Measure-Object`. Its `-Line`, `-Word` and `-Character` options match `wc -l`, `wc -w` and `wc -m`."
+      "PowerShell, which comes with Windows, counts with `Measure-Object`. Its `-Line`, `-Word` and `-Character` options match `wc -l`, `wc -w` and `wc -m`."
     ],
     "forms": [
       {
@@ -818,7 +818,7 @@
       {
         "bash": "`sed 's/-/+/' data.txt`",
         "powershell": "`Get-Content data.txt | ForEach-Object { ([regex]'-').Replace($_, '+', 1) }`",
-        "does": "Replaces the first `-` on each line with `+`. In PowerShell, the Windows command line, `-replace` changes every match, so changing only the first one needs a longer form."
+        "does": "Replaces the first `-` on each line with `+`. In PowerShell, `-replace` changes every match, so changing only the first one needs a longer form."
       },
       {
         "bash": "`sed 's/-/+/g' data.txt`",
@@ -826,9 +826,9 @@
         "does": "With `g`, every `-` on each line becomes `+`."
       },
       {
-        "bash": "`sed 's/[^0-9]//g' phones.txt`",
-        "powershell": "`(Get-Content phones.txt) -replace '[^0-9]',''`",
-        "does": "Deletes every character that is not a digit, leaving only the numbers on each line."
+        "bash": "`sed 's/ //g' labels.txt`",
+        "powershell": "`(Get-Content labels.txt) -replace ' ',''`",
+        "does": "Deletes every space, so the words and numbers on each line run together."
       },
       {
         "bash": "`sed -n '1,5p' visits.csv`",
@@ -852,31 +852,31 @@
       }
     ],
     "example": {
-      "intro": "Remove everything except digits from some phone numbers, then see what the missing `g` does.",
+      "intro": "Remove the spaces from some labels, then see what the missing `g` does.",
       "lines": [
         {
-          "line": "$ cat phones.txt",
-          "note": "Two phone numbers in different styles."
+          "line": "$ cat labels.txt",
+          "note": "Two labels, each with two spaces."
         },
         {
-          "line": "(555) 201-3344",
-          "note": "Line 1, with brackets, a space and a dash."
+          "line": "gate 12 north",
+          "note": "Line 1."
         },
         {
-          "line": "555.201.7710",
-          "note": "Line 2, with dots."
+          "line": "door 7 south",
+          "note": "Line 2."
         },
         {
-          "line": "$ sed 's/[^0-9]//g' phones.txt",
-          "note": "Replace every character that is not a digit with nothing."
+          "line": "$ sed 's/ //g' labels.txt",
+          "note": "Replace every space with nothing."
         },
         {
-          "line": "5552013344",
-          "note": "Line 1, digits only."
+          "line": "gate12north",
+          "note": "Line 1, no spaces."
         },
         {
-          "line": "5552017710",
-          "note": "Line 2, digits only."
+          "line": "door7south",
+          "note": "Line 2, no spaces."
         },
         {
           "line": "$ echo 'a-b-c' | sed 's/-/+/'",
@@ -897,15 +897,15 @@
       ]
     },
     "trap": {
-      "wrong": "Writing `sed 's/[^0-9]//' phones.txt` to remove all the non-digits.",
-      "why": "Without `g`, `sed` replaces only the first match on each line. The first line of the sample would lose only its opening bracket and come out as `555) 201-3344`. Add `g`, which stands for \"global\", so every match on each line is replaced."
+      "wrong": "Writing `sed 's/ //' labels.txt` to remove all the spaces.",
+      "why": "Without `g`, `sed` replaces only the first match on each line. The first line of the sample would lose only its first space and come out as `gate12 north`. Add `g`, which stands for \"global\", so every match on each line is replaced."
     },
     "more": [
       {
         "heading": "Other ways to the same result",
         "paragraphs": [
-          "`tr -cd '0-9\\n' < phones.txt` also removes everything but digits. See Swap or delete characters: tr. Either command is a fine answer to a question that asks for only the digits.",
-          "`sed 's/[^[:digit:]]//g'` is the same as `[^0-9]`. `[:digit:]` is a named set of characters (a ready-made list) that means any digit.",
+          "`tr -d ' ' < labels.txt` also removes every space. See Swap or delete characters: tr. For one character, either command does the job.",
+          "`sed 's/[[:space:]]//g'` removes spaces and tabs. `[:space:]` is a named set of characters (a ready-made list) that means any space, tab or line break.",
           "`-e` adds an instruction, and `-E` turns on extra pattern symbols. `sed -e 's/a/b/' file` and `sed 's/a/b/' file` do the same thing."
         ]
       },
@@ -954,22 +954,22 @@
       "An `awk` program is a pattern (a test that picks lines) and an action (what to do with them). The action goes in curly braces. `{print $2}` has no pattern, so it runs on every line and prints the second field. A pattern before the braces limits the lines. `/ERROR/ {print $1}` runs only on lines that contain `ERROR`.",
       "A pattern with no braces prints each matching line: `awk '/ERROR/' app.log` works like `grep ERROR app.log`.",
       "Put the program in single quotes. `-F` changes the field separator, which is the character that splits each line into fields. So `-F,` splits on commas, as a file of comma-separated values needs.",
-      "PowerShell, the Windows command line, has no command that does the same. You split each line yourself with the `-split` operator (a PowerShell operator, which cuts text into pieces). Then you pick a piece by its position. PowerShell counts positions from 0."
+      "PowerShell, which comes with Windows, has no command that does the same. You split each line yourself with the `-split` operator (a PowerShell operator, which cuts text into pieces). Then you pick a piece by its position. PowerShell counts positions from 0."
     ],
     "forms": [
       {
-        "bash": "`awk '{print $2}' payments.log`",
-        "powershell": "`Get-Content payments.log | ForEach-Object { ($_ -split '\\s+')[1] }`",
+        "bash": "`awk '{print $2}' orders.log`",
+        "powershell": "`Get-Content orders.log | ForEach-Object { ($_ -split '\\s+')[1] }`",
         "does": "Prints the second field of each line. PowerShell counts from 0, so the second field is number 1."
       },
       {
-        "bash": "`awk '{print $1, $2}' payments.log`",
-        "powershell": "`Get-Content payments.log | ForEach-Object { ($_ -split '\\s+')[0,1] -join ' ' }`",
+        "bash": "`awk '{print $1, $2}' orders.log`",
+        "powershell": "`Get-Content orders.log | ForEach-Object { ($_ -split '\\s+')[0,1] -join ' ' }`",
         "does": "Prints the first two fields with a space between them."
       },
       {
-        "bash": "`awk '{print $NF}' payments.log`",
-        "powershell": "`Get-Content payments.log | ForEach-Object { ($_ -split '\\s+')[-1] }`",
+        "bash": "`awk '{print $NF}' orders.log`",
+        "powershell": "`Get-Content orders.log | ForEach-Object { ($_ -split '\\s+')[-1] }`",
         "does": "Prints the last field of each line."
       },
       {
@@ -978,18 +978,18 @@
         "does": "Splits each line on commas and prints the second part."
       },
       {
-        "bash": "`awk '$2 == \"ERROR\"' payments.log`",
-        "powershell": "`Get-Content payments.log | Where-Object { ($_ -split '\\s+')[1] -eq 'ERROR' }`",
+        "bash": "`awk '$2 == \"ERROR\"' orders.log`",
+        "powershell": "`Get-Content orders.log | Where-Object { ($_ -split '\\s+')[1] -eq 'ERROR' }`",
         "does": "Prints the lines whose second field is exactly `ERROR`."
       },
       {
-        "bash": "`awk '/ERROR/' payments.log`",
-        "powershell": "`Select-String -Pattern ERROR -Path payments.log -CaseSensitive`",
+        "bash": "`awk '/ERROR/' orders.log`",
+        "powershell": "`Select-String -Pattern ERROR -Path orders.log -CaseSensitive`",
         "does": "Prints lines that match a pattern, like `grep`."
       },
       {
-        "bash": "`awk 'END {print NR}' payments.log`",
-        "powershell": "`(Get-Content payments.log).Count`",
+        "bash": "`awk 'END {print NR}' orders.log`",
+        "powershell": "`(Get-Content orders.log).Count`",
         "does": "Prints the number of lines. `NR` is the count of lines read so far, and `END` runs after the last line."
       },
       {
@@ -1002,7 +1002,7 @@
       "intro": "A small log file. Then a few short `awk` programs run on it.",
       "lines": [
         {
-          "line": "$ cat payments.log",
+          "line": "$ cat orders.log",
           "note": "Show the file."
         },
         {
@@ -1018,7 +1018,7 @@
           "note": "Line 3."
         },
         {
-          "line": "$ awk '{print $2}' payments.log",
+          "line": "$ awk '{print $2}' orders.log",
           "note": "Print field 2 of every line."
         },
         {
@@ -1034,7 +1034,7 @@
           "note": "From line 3."
         },
         {
-          "line": "$ awk '$2 == \"ERROR\" {print $5}' payments.log",
+          "line": "$ awk '$2 == \"ERROR\" {print $5}' orders.log",
           "note": "Only for lines whose field 2 is `ERROR`, print field 5."
         },
         {
@@ -1042,7 +1042,7 @@
           "note": "Only line 2 passed the test."
         },
         {
-          "line": "$ awk '{print $1}' payments.log",
+          "line": "$ awk '{print $1}' orders.log",
           "note": "Field 1 is the time."
         },
         {
@@ -1060,8 +1060,8 @@
       ]
     },
     "trap": {
-      "wrong": "Writing the program in double quotes: `awk \"{print $2}\" payments.log`.",
-      "why": "Inside double quotes, the shell swaps in a value for `$2` before `awk` starts. A variable is a named box that holds a value, and `$2` is one. Its value is empty here, so `awk` receives `{print }` and prints every whole line. Use single quotes: `awk '{print $2}' payments.log`. PowerShell does the same with double quotes, because `$2` is a variable there too."
+      "wrong": "Writing the program in double quotes: `awk \"{print $2}\" orders.log`.",
+      "why": "Inside double quotes, the shell swaps in a value for `$2` before `awk` starts. A variable is a named box that holds a value, and `$2` is one. Its value is empty here, so `awk` receives `{print }` and prints every whole line. Use single quotes: `awk '{print $2}' orders.log`. PowerShell does the same with double quotes, because `$2` is a variable there too."
     },
     "more": [
       {
@@ -1110,8 +1110,8 @@
     "what": [
       "`tr` changes single characters, one at a time. `tr 'a-z' 'A-Z'` swaps every small letter for a capital. `a-z` is a range (a start and an end), which means every letter from a to z.",
       "`tr -d` deletes the characters you list. `tr -d '0-9'` deletes every digit. `tr -s` squeezes each run (a row of the same character) down to one. `tr -s ' '` turns a row of spaces into a single space.",
-      "`-c` means \"the complement\", all characters that are not in your list. `tr -cd '0-9\\n'` therefore deletes everything except digits and line breaks. `\\n` stands for a line break. Keep it, or the lines would be glued together.",
-      "`tr` does not take file names. It reads only the text sent to it. So feed it a file with `<`, or send it text through a pipe: `tr -cd '0-9\\n' < phones.txt` or `cat phones.txt | tr -cd '0-9\\n'`."
+      "`-c` means \"the complement\", all characters that are not in your list. `tr -cd 'a-z\\n'` therefore deletes everything except small letters and line breaks. `\\n` stands for a line break. Keep it, or the lines would be glued together.",
+      "`tr` does not take file names. It reads only the text sent to it. So feed it a file with `<`, or send it text through a pipe: `tr -cd 'a-z\\n' < labels.txt` or `cat labels.txt | tr -cd 'a-z\\n'`."
     ],
     "forms": [
       {
@@ -1125,13 +1125,13 @@
         "does": "Deletes every digit."
       },
       {
-        "bash": "`tr -cd '0-9\\n' < phones.txt`",
-        "powershell": "`(Get-Content phones.txt) -replace '[^0-9]',''`",
-        "does": "Keeps only digits and line breaks. PowerShell (the Windows command line) does it by replacing every character that is not a digit with nothing."
+        "bash": "`tr -cd 'a-z\\n' < labels.txt`",
+        "powershell": "`(Get-Content labels.txt) -replace '[^a-z]',''`",
+        "does": "Keeps only small letters and line breaks. PowerShell does it by replacing every character that is not a small letter with nothing."
       },
       {
-        "bash": "`tr -dc '0-9\\n' < phones.txt`",
-        "powershell": "`(Get-Content phones.txt) -replace '[^0-9]',''`",
+        "bash": "`tr -dc 'a-z\\n' < labels.txt`",
+        "powershell": "`(Get-Content labels.txt) -replace '[^a-z]',''`",
         "does": "The same request with the options in the other order. `-dc` means the same as `-cd`."
       },
       {
@@ -1140,9 +1140,9 @@
         "does": "Squeezes each run of spaces down to one."
       },
       {
-        "bash": "`tr -cd '[:digit:]\\n' < phones.txt`",
-        "powershell": "`(Get-Content phones.txt) -replace '[^0-9]',''`",
-        "does": "`[:digit:]` is a named set of characters that means any digit. It matches the same characters as `0-9`."
+        "bash": "`tr -cd '[:lower:]\\n' < labels.txt`",
+        "powershell": "`(Get-Content labels.txt) -replace '[^a-z]',''`",
+        "does": "`[:lower:]` is a named set of characters that means any small letter. It matches the same characters as `a-z`."
       },
       {
         "bash": "`tr 'abc' 'xyz' < data.txt`",
@@ -1151,31 +1151,31 @@
       }
     ],
     "example": {
-      "intro": "Keep only digits from the phone numbers, then try swapping and squeezing.",
+      "intro": "Keep only the small letters from the labels, then try swapping and squeezing.",
       "lines": [
         {
-          "line": "$ cat phones.txt",
+          "line": "$ cat labels.txt",
           "note": "Show the file."
         },
         {
-          "line": "(555) 201-3344",
+          "line": "gate 12 north",
           "note": "Line 1."
         },
         {
-          "line": "555.201.7710",
+          "line": "door 7 south",
           "note": "Line 2."
         },
         {
-          "line": "$ tr -cd '0-9\\n' < phones.txt",
-          "note": "Delete every character that is not a digit or a line break. `<` feeds the file in as input."
+          "line": "$ tr -cd 'a-z\\n' < labels.txt",
+          "note": "Delete every character that is not a small letter or a line break. `<` feeds the file in as input."
         },
         {
-          "line": "5552013344",
-          "note": "Line 1, digits only."
+          "line": "gatenorth",
+          "note": "Line 1, small letters only."
         },
         {
-          "line": "5552017710",
-          "note": "Line 2, digits only."
+          "line": "doorsouth",
+          "note": "Line 2, small letters only."
         },
         {
           "line": "$ echo 'cab' | tr 'a-c' 'x-z'",
@@ -1204,8 +1204,8 @@
       ]
     },
     "trap": {
-      "wrong": "Writing `tr -cd '0-9' < phones.txt` and leaving out the `\\n`.",
-      "why": "The line break is a character too. It is not a digit, so `-cd '0-9'` deletes it. The two numbers run together as `55520133445552017710` with no line break at the end, and the next prompt (where you type the next command) lands on the same line. Add `\\n` to the list to keep the line breaks. Also remember that `tr` does not take a file name: `tr -cd '0-9\\n' phones.txt` fails."
+      "wrong": "Writing `tr -cd 'a-z' < labels.txt` and leaving out the `\\n`.",
+      "why": "The line break is a character too. It is not a small letter, so `-cd 'a-z'` deletes it. The two labels run together as `gatenorthdoorsouth` with no line break at the end, and the next prompt (where you type the next command) lands on the same line. Add `\\n` to the list to keep the line breaks. Also remember that `tr` does not take a file name: `tr -cd 'a-z\\n' labels.txt` fails."
     },
     "more": [
       {
@@ -1230,7 +1230,7 @@
       {
         "heading": "tr or sed?",
         "paragraphs": [
-          "`tr` works one character at a time, so it cannot replace a whole word. For words and patterns use `sed` (see Find and replace: sed). `sed 's/[^0-9]//g' phones.txt` and `tr -cd '0-9\\n' < phones.txt` give the same result, and both are good answers.",
+          "`tr` works one character at a time, so it cannot replace a whole word. For words and patterns use `sed` (see Find and replace: sed). `sed 's/[^a-z]//g' labels.txt` and `tr -cd 'a-z\\n' < labels.txt` give the same result, and both are good choices.",
           "`tr` is also handy at the end of a pipe: `echo 'Hello' | tr 'a-z' 'A-Z'`."
         ]
       }
@@ -1256,7 +1256,7 @@
       "`echo` prints the words that follow it, then adds a line break. `echo -n` leaves out the line break. `printf` prints text from a pattern (a template with blanks to fill), so you control the layout. In the pattern, `%s` is a blank for a word, and `\\n` is a line break. `printf '%s\\n' hello` prints `hello` and a line break. Unlike `echo`, `printf` adds no line break unless you write `\\n`.",
       "Every command ends by giving back a number, called its exit status. This number says how the command ended. `0` means success. Any other number means it failed or found nothing, and the number often says which. For `grep`, `0` means it found a match, `1` means it found none, and `2` means a real error such as a missing file.",
       "In Bash (the command line used on Linux and macOS), `$?` is a variable, a named box that holds a value. It holds the exit status of the last command. To see it, type `echo $?` right after that command. `printf '%s\\n' \"$?\"` shows the same number. Double quotes around `$?` are fine because the shell swaps in the number (see Quotes, spaces and wildcards).",
-      "PowerShell, the Windows command line, works differently. `$?` holds `True` if the last command worked and `False` if not. `$LASTEXITCODE` holds the number, but only programs such as `grep` set it. Built-in PowerShell commands, called cmdlets, leave it unchanged. `echo` is a short name for `Write-Output` in PowerShell."
+      "PowerShell, which comes with Windows, works differently. `$?` holds `True` if the last command worked and `False` if not. `$LASTEXITCODE` holds the number, but only programs such as `grep` set it. Built-in PowerShell commands, called cmdlets, leave it unchanged. `echo` is a short name for `Write-Output` in PowerShell."
     ],
     "forms": [
       {

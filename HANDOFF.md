@@ -1,3 +1,44 @@
+# 2026-11-09/10 (local): primer review fixed, BUG #18 comes first
+
+Next session model: **Sonnet**. Order of work (owner's ruling, 2026-11-10):
+
+0. FIRST finish battletech-tools #630 (Aces, Rekikire's playtest): everything is in the first block of
+   `C:/repo/JBTToolsSupportFiles/handoff.md`. The owner said: finish #630, commit, push, comment, close. Then go on here.
+1. `gh issue list` in testingUtility. **#18 is a new bug (from-app): "Cram repeats the same questions over and over"**
+   (DA0-002, a pool of 10 that is the same every session; the reporter also expected cram to ask which section).
+   Bugs beat everything else here. Start with superpowers:systematic-debugging and a failing test in `src/study/session.test.ts`.
+   Lead (a hypothesis, not proven): `assembleCram` in `src/study/session.ts` (lines ~117-126) fills `ordered` with
+   due questions, then ALL MCQs of the 3 weakest objectives in order, then the rest, and slices the first
+   `CRAM_SIZE - acronyms.length` (10). With nothing due, those 10 come from the single weakest objective every time
+   (`byChance` only reorders within it), so the pool never changes. Fix idea: spread the draw across the weak
+   objectives (round-robin or weighted by weakness), keep due items first, and add a variety rule so a session does not
+   repeat the previous session's ids. The "ask which section" part is a feature request: put it on the issue as an
+   answer and ask the owner.
+2. Task 15 (primer release), branch `command-primer`. The Opus whole-branch review is DONE. Every finding is fixed,
+   minors too (list below). `npm run check` result: see the line "CHECK" at the end of this block. Left, in order:
+   commit the fixes, merge to main, push (approved in words on 2026-11-09), `npm run deploy`, close #5 with a comment.
+3. #16 (font size on phones) and #17 (install as an app / offline) are `from-app` enhancements, after #18.
+
+CHECK: on this tree, lint, typecheck, builds and unit tests passed (113 files, 1131 tests). An earlier full run had
+e2e 119 passed with only a cram test I then dropped failing. The final e2e stage of the re-run was still going when
+the session ended, so run `npm run check` once more before merging.
+
+What the review fixes were (committed on `command-primer`, not pushed):
+- Show-all acronym rule: the missing terms (DNS, TTL, HTTP, URL, JSON, CN, GMT, ID, PID, UTC, ICMP, CSV) were added to
+  the DA0-002, CY0-001 and AT0-001 lists (Data+ community count is now 35). New `src/primer/rules.test.ts` checks
+  every topic against every exam list.
+- Answer leaks: the same test fails when a typed-step accepted answer appears in a topic. Examples were reworded
+  (labels.txt with spaces and small letters in sed and tr, scores.txt, orders.log, web-cache, cleanup-tmp.sh,
+  server.log `mode=fast`). Bare vocabulary (git fetch, echo $?, conda install pandas, and so on) and wildcard answers are
+  allowed in the test, each reviewed. Removed the sentences that told learners how the app grades.
+- Minors: the choice list shows for one matched topic too (`CommandHelpPanel.tsx`), cross-reference titles are full,
+  `sort -k2` vs `-k2,2`, letter case on a Mac, job numbers differ in Bash and PowerShell, `head 5 days.txt` also prints
+  the file, `uniq -D` may be missing, a duplicate openssl sentence, the hashing rows agree between topics, and
+  "the Windows command line" now reads "which comes with Windows".
+- NOT changed, on purpose: the pandas `fillna(0)` claim is right (checked with pandas 3.0.1: the column is `object`).
+  No cram e2e: the fixture bank's cram set has no terminal question, and cram shares StudyRunner's tested path.
+  "See <topic>" stays plain text (the reviewer suggested links; that is a feature).
+
 # BACK ON THE HOME MACHINE (2026-11-09)
 
 The home machine is on again, and local `C:/repo` is the main copy. Cloud work is pulled in: battletech-tools

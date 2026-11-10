@@ -108,5 +108,16 @@ export const secAiMeta: ExamMeta = {
     { term: 'CN', expansion: 'Common Name', source: 'community' },
     { term: 'GMT', expansion: 'Greenwich Mean Time', source: 'community' },
     { term: 'SHA', expansion: 'Secure Hash Algorithm', source: 'community' },
+    // Command primer: terms its topics use that any topic can show (Show all topics).
+    { term: 'ICMP', expansion: 'Internet Control Message Protocol', source: 'community' },
+    { term: 'DNS', expansion: 'Domain Name System', source: 'community' },
+    { term: 'TTL', expansion: 'Time to Live', source: 'community' },
+    { term: 'HTTP', expansion: 'Hypertext Transfer Protocol', source: 'community' },
+    { term: 'JSON', expansion: 'JavaScript Object Notation', source: 'community' },
+    { term: 'URL', expansion: 'Uniform Resource Locator', source: 'community' },
+    { term: 'ID', expansion: 'Identifier', alternates: ['Identification'], source: 'community' },
+    { term: 'PID', expansion: 'Process Identifier', alternates: ['Process ID'], source: 'community' },
+    { term: 'UTC', expansion: 'Coordinated Universal Time', source: 'community' },
+    { term: 'CSV', expansion: 'Comma-Separated Values', source: 'community' },
   ],
 };
