@@ -1,3 +1,15 @@
+# BACK ON THE HOME MACHINE (2026-11-09)
+
+The home machine is on again, and local `C:/repo` is the main copy. Cloud work is pulled in: battletech-tools
+`master` (rebased; one local docs commit, bf2c594c8 rebased, not pushed), `mordel-user-key` fast-forwarded to
+13e645064 (section 2 WIP, see `docs/superpowers/plans/2026-11-07-mordel-next.md`), `beta` at origin, testingUtility
+`command-primer` same as origin. ResourceLibrary pulled. The CLOUD block below is history.
+
+Open issues (2026-11-09): cert-exam-trainer has no bugs; new `from-app` requests #16 (font size setting for phones)
+and #17 (install as an app / work offline), both enhancements, plus #11, #6, #5. battletech-tools: the only bug is
+#630 (Aces playtest, plan below). JBTIICRework, TechFoundry: no issues. JBTIICRework's working tree has 37 deleted,
+11 changed and 154 new library files: that is the pending rename (#601, waits on the LFS budget). Leave it.
+
 # CLOUD (2026-11-07): the home machine is off, possibly for a week or more
 
 Work continues in Claude Code cloud sessions. Everything that was only on the home machine (unpushed branches,
@@ -14,6 +26,13 @@ What was in progress when the machine went off:
 2. testingUtility, branch `command-primer`: Task 15, release (see the block below).
 
 Both branches are in the bundles under `Custom/cloud-handoff/`. Nothing is pushed to the public repos.
+
+# 2026-11-09 (cloud): link list sent, waiting on the owner
+
+`gh issue list`: no bugs, no `from-app` issues; open #11, #6, #5 (enhancements). The Task 15 link list (66 links: the
+5 "Practice safely" links in `src/primer/links.json` and every topic's `links`) went to the owner, who will check the
+links themselves later. The cloud network could not reach any of the sites, so nothing was checked here, the three
+gnu.org coreutils links included. Nothing changed on `command-primer`.
 
 # START HERE (2026-11-06, after /clear): all repos in one place
 
