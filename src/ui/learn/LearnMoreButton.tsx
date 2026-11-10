@@ -1,4 +1,4 @@
-import { useId, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { metaFor } from '../../banks/metas';
 import type { Question } from '../../domain/types';
 import { learnUrl, searchPhrase, sourcesFor } from '../../learn/learn';
@@ -14,17 +14,19 @@ export function LearnMoreButton({ question }: { question: Question }) {
   const menuId = useId();
   const phrase = useMemo(() => searchPhrase(question, metaFor(question.exam)), [question]);
   const sources = useMemo(() => sourcesFor(question.exam), [question.exam]);
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      btn.current?.focus();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [open]);
   if (mockDeadline !== null) return null;
   return (
-    <div
-      className="learn-more"
-      onKeyDown={(e) => {
-        if (e.key === 'Escape' && open) {
-          setOpen(false);
-          btn.current?.focus();
-        }
-      }}
-    >
+    <div className="learn-more">
       <button ref={btn} type="button" aria-expanded={open} aria-controls={menuId} onClick={() => setOpen((o) => !o)}>
         <span aria-hidden="true">🤔 </span>Learn more
       </button>
