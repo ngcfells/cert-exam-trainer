@@ -1,7 +1,8 @@
 /** "Install as an app" support for the hosted (PWA) build. The browser fires `beforeinstallprompt` once, early, so it is
  *  caught at start-up (main.tsx) and kept until the Settings panel asks for it. */
 
-export type InstallKind = 'none' | 'prompt' | 'ios' | 'installed';
+/** `manual`: the browser has made no install offer (yet, or ever, e.g. already dismissed), so say where its menu installs. */
+export type InstallKind = 'none' | 'prompt' | 'ios' | 'installed' | 'manual';
 
 interface InstallPromptEvent extends Event {
   prompt(): Promise<void>;
@@ -19,7 +20,7 @@ export function installKind(s: Env & { hasPrompt: boolean }): InstallKind {
   if (s.standalone) return 'installed';
   if (s.hasPrompt) return 'prompt';
   if (s.ios) return 'ios';
-  return 'none';
+  return 'manual';
 }
 
 function detectEnv(): Env {

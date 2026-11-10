@@ -7,10 +7,18 @@ import { setInstallEnv, resetInstallEnv } from '../install';
 afterEach(() => resetInstallEnv());
 
 describe('InstallApp', () => {
-  it('renders nothing when the browser cannot install', () => {
-    setInstallEnv({ pwa: true, standalone: false, ios: false });
+  it('renders nothing outside the hosted build', () => {
+    setInstallEnv({ pwa: false, standalone: false, ios: false });
     const { container } = render(<InstallApp />);
     expect(container).toBeEmptyDOMElement();
+  });
+
+  it('tells the learner where the browser menu installs it when no install offer has come', () => {
+    setInstallEnv({ pwa: true, standalone: false, ios: false });
+    render(<InstallApp />);
+    expect(screen.getByRole('heading', { name: 'Install as an app' })).toBeInTheDocument();
+    expect(screen.getByText(/Install app or Add to Home screen/)).toBeInTheDocument();
+    expect(screen.queryByRole('button', { name: 'Install app' })).toBeNull();
   });
 
   it('shows the Add to Home Screen hint on iOS', () => {

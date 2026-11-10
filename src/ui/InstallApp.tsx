@@ -20,6 +20,12 @@ export function InstallApp() {
       {kind === 'ios' && (
         <p>In Safari, tap the Share button, then Add to Home Screen. It then opens like any other app and works without a connection.</p>
       )}
+      {kind === 'manual' && (
+        <p>
+          Your browser has not offered an install button. Open its menu (in Chrome, the three dots at the top right) and
+          choose Install app or Add to Home screen. It then opens like any other app and works without a connection.
+        </p>
+      )}
       {kind === 'installed' && <p>Installed. It works offline.</p>}
     </section>
   );

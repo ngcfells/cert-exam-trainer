@@ -17,7 +17,7 @@ describe('installKind', () => {
   it('is ios on iPhone and iPad Safari, which has no prompt', () => {
     expect(installKind({ ...base, ios: true })).toBe('ios');
   });
-  it('is none when the browser offers nothing', () => {
-    expect(installKind(base)).toBe('none');
+  it('is manual when the browser offers no prompt, so the menu steps are shown', () => {
+    expect(installKind(base)).toBe('manual');
   });
 });
