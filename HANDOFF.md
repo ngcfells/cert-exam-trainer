@@ -1,3 +1,16 @@
+# 2026-11-10 (very late): #6, #19 part 1 and the install fix are live; ε added
+
+Next session model: **Sonnet**. Live (gh-pages): #6 Learn more button (fallback phrases only; per-exam `searchTerm`
+content passes still to do: autoops, dataplus, secai, one per session, Haiku drafts, spot check; #6 stays open), the
+install fix (Settings > Install as an app now shows menu steps when Chrome offers no prompt; the owner reported not seeing
+it on Chrome Android, not re-tested on a phone), and #19 part 1 (diagrams in 7 Data+ lessons, `src/ui/learn/LessonDiagram.tsx`,
+`diagram` field on lessons, `tests/e2e/lessonDiagrams.bounds.spec.ts`). The owner allowed push and deploy without asking.
+#19 part 3 (the ε error term) is done: lesson formula is `y = mx + b + ε`; the DA0-002 objectives v1.1 do NOT require it
+(objective 3.2 lists only descriptive, inferential, predictive, prescriptive methods plus central tendency and dispersion),
+so it is enrichment. Left on #19: part 2, a "putting it together" lesson chaining distribution, test, tails, errors,
+p-value and R-squared, overfitting (content work), and diagrams for CY0-001 and AT0-001 lessons if any exist (lessons are
+Data+ only today). Diagram ideas not done: question-level diagrams (Question has no diagram field), box plot for IQR.
+
 # 2026-11-10 (night, last): #6 code built and merged to main, NOT pushed or deployed
 
 Next session model: **Sonnet**. The learn-more code (plan `docs/superpowers/plans/2026-11-10-learn-more-search.md`) is on

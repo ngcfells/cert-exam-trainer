@@ -85,8 +85,8 @@
       "Analysts care because the exam gives an equation such as sales = 50 + 4x and asks what the numbers mean or what it predicts."
     ],
     "formula": {
-      "text": "y = mx + b",
-      "spoken": "y equals m times x, plus b",
+      "text": "y = mx + b + ε",
+      "spoken": "y equals m times x, plus b, plus epsilon",
       "symbols": [
         {
           "symbol": "y",
@@ -103,6 +103,10 @@
         {
           "symbol": "b",
           "meaning": "the intercept: the value of y when x is 0"
+        },
+        {
+          "symbol": "ε",
+          "meaning": "\"epsilon\", the error term: the gap between the real y and the line, which holds everything x cannot explain (other factors, noise, chance). On your own data the measured gap is the residual, actual y minus predicted y. The line is fitted to make the squared residuals as small as possible"
         },
         {
           "symbol": "R²",
@@ -178,7 +182,8 @@
       "The outcome has two values: yes or no, cancel or stay, fraud or genuine.",
       "The model outputs a probability from 0 (surely no) to 1 (surely yes).",
       "A threshold, usually 0.5, turns the probability into a class: at or above it is \"yes\".",
-      "Compare: linear regression predicts a number such as sales; logistic regression predicts the chance of a category."
+      "Compare: linear regression predicts a number such as sales; logistic regression predicts the chance of a category.",
+      "Unlike linear regression, the usual logistic model has no error term to add: it predicts a probability, and the yes or no outcome is the chance part."
     ],
     "example": {
       "intro": "A churn model gives four customers a probability of cancelling. The team uses a threshold of 0.5.",

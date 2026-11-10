@@ -27,6 +27,17 @@ describe('getLessons', () => {
     });
   });
 
+  it('teaches the error term in linear regression, and says logistic regression has none', () => {
+    const lin = shippedLessons.find((l) => l.id === 'd-linear-regression')!;
+    expect(lin.formula!.text).toBe('y = mx + b + ε');
+    expect(lin.formula!.spoken).toMatch(/plus epsilon/);
+    const eps = lin.formula!.symbols.find((s) => s.symbol === 'ε')!;
+    expect(eps.meaning).toMatch(/error/i);
+    expect(eps.meaning).toMatch(/residual/i);
+    const log = shippedLessons.find((l) => l.id === 'd-logistic-regression')!;
+    expect(log.rule!.join(' ')).toMatch(/no error term/i);
+  });
+
   it('exposes the shipped lessons for the bank checks', () => {
     expect(shippedLessons.map((l) => l.id)).toContain('a-percent-change');
   });
