@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "The `local` keyword makes a variable that exists only inside the function and hides the global one. The increment changes that local copy to 6, which is discarded when the function returns, so the global `count` is still 0. It would print 1 only if the function had changed the global variable without `local`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash local variable scope"
   },
   {
     "id": "at1-1-1-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "Assigning to `total` inside `add` makes it a local name for the whole function, so the read in `total += n` happens before the local has a value and raises `UnboundLocalError`. A `global total` line would let the function change the module-level value and print `5`. The code is valid syntax, so it does not fail at parse time, and `0` would print only if the function never touched `total`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python global keyword scope"
   },
   {
     "id": "at1-1-1-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "A function can read a variable from its caller, but an assignment inside the function creates a local copy. `Step` computes 2 in its own scope and discards it, so the script-level `$count` is still 1. Writing `$script:count` in the assignment would change the outer value, `0` is never assigned, and reading a parent-scope variable does not cause an undefined-variable error.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "powershell script scope variables"
   },
   {
     "id": "at1-1-1-mcq-004",
@@ -153,7 +156,8 @@
       ]
     },
     "explanation": "A Bash assignment has no spaces around `=`. With spaces, Bash treats `server` as a command name and `=` and the value as its arguments, so the variable stays unset and `echo` prints an empty line. Lowercase names are fine, double quotes are valid for a plain value, and braces are optional here.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash variable assignment spaces"
   },
   {
     "id": "at1-1-1-mcq-005",
@@ -192,7 +196,8 @@
       ]
     },
     "explanation": "The first test is false because 3 is not 0, so Bash checks the `elif` branch. 3 is less than 5, so `retry` prints and the rest of the chain is skipped. `ok` would need a status of 0, and `fail` runs only when both tests are false. An `if`/`elif` chain runs at most one branch.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash if elif else test"
   },
   {
     "id": "at1-1-1-mcq-006",
@@ -231,7 +236,8 @@
       ]
     },
     "explanation": "The condition is read as `(retries == 3) or 5`. The first part is false, but a bare `5` is truthy, so the whole condition is always true and `limit` prints. The intended test is `retries in (3, 5)`, which would print `ok` for 7. No type error occurs, and one branch always runs.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python or operator precedence"
   },
   {
     "id": "at1-1-1-mcq-007",
@@ -270,7 +276,8 @@
       ]
     },
     "explanation": "For 1 the tests are false and the value prints. For 2, `continue` skips the rest of that pass. For 3 the value prints. For 4, `break` ends the loop before the `echo` runs, so neither 2 nor 4 is printed. `3` alone is wrong because `1` also prints.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash continue break loop"
   },
   {
     "id": "at1-1-1-mcq-008",
@@ -309,7 +316,8 @@
       ]
     },
     "explanation": "`range(start, stop, step)` begins at 1 and adds 3 each time: 1, 4, 7. The next value, 10, is not below the stop value 10, so it is excluded. Starting at 0 would give 0, 3, 6, 9, and 1, 2, 3, 4 would need a step of 1 and a stop of 5.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python range start stop step"
   },
   {
     "id": "at1-1-1-mcq-009",
@@ -348,7 +356,8 @@
       ]
     },
     "explanation": "`$1` holds `staging`. `shift` then drops it, so `$#` counts the two remaining arguments, `web01` and `web02`. A count of 3 would be the value before `shift`, a count of 1 miscounts the arguments, and `./deploy.sh` is `$0`, the script name, but the output uses `$env`, which holds `staging`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash shift positional parameters"
   },
   {
     "id": "at1-1-1-mcq-010",
@@ -387,7 +396,8 @@
       ]
     },
     "explanation": "A default value is created once, when the function is defined, so every call that omits `tags` shares the same list. The first call adds `'a'` to it and the second adds `'b'`, giving `['a', 'b']`. A fresh list on each call would give `['b']`, which is why the usual fix is `tags=None` followed by a new list inside the function. `['a']` would mean the second call's value was lost, and `['b', 'a']` gets the order wrong, because `append` adds to the end.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python mutable default argument"
   },
   {
     "id": "at1-1-1-mcq-011",
@@ -426,7 +436,8 @@
       ]
     },
     "explanation": "A Python function with no `return` statement returns `None`. The text `cleaned /tmp` appears on the earlier line because `clean` prints it, but that is output, not the return value. The local `removed` is discarded, and `path` is only a parameter.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python function return value none"
   },
   {
     "id": "at1-1-1-mcq-012",
@@ -465,7 +476,8 @@
       ]
     },
     "explanation": "A log level is a threshold: the service writes entries at that severity and at every more severe level. `DEBUG` and `INFO` rank below `WARN` and are dropped. The same rule keeps `ERROR` and `FATAL`, so `WARN` entries alone is too narrow. Setting the level to `ERROR` would leave just `ERROR` and `FATAL`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "log level severity threshold"
   },
   {
     "id": "at1-1-1-mcq-013",
@@ -506,7 +518,8 @@
     "explanation": "Structured entries let a script ask for the level or the order number by name instead of matching text with a pattern. JSON adds punctuation, so files usually grow rather than shrink. The format has nothing to do with encryption, and the files still fill a disk without rotation.",
     "acronyms": [
       "JSON"
-    ]
+    ],
+    "searchTerm": "structured logging json lines"
   },
   {
     "id": "at1-1-1-mcq-014",
@@ -545,7 +558,8 @@
       ]
     },
     "explanation": "Secrets must not reach the log at all, so the handler masks or drops the field before writing. Changing the level only moves the secret to a quieter stream, rotation and compression keep the same text, and a timestamp adds context without removing anything.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "logging sensitive data masking"
   },
   {
     "id": "at1-1-1-mcq-015",
@@ -584,7 +598,8 @@
       ]
     },
     "explanation": "The `^` anchor ties the match to the start of the line and the `$` anchor ties it to the end, so nothing else can appear around the three digits. Without both anchors, a line such as `1234` or `x123` would also match.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "grep -E anchors line match"
   },
   {
     "id": "at1-1-1-mcq-016",
@@ -623,7 +638,8 @@
       ]
     },
     "explanation": "In a regular expression the dot is a wildcard for one character. Escaping each dot, as in `10\\.0\\.0\\.5`, makes it match a literal period. Digits in a pattern match themselves, `-i` affects letter case, and `grep` does not skip text on its own.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "regex escape dot metacharacter"
   },
   {
     "id": "at1-1-1-mcq-017",
@@ -662,7 +678,8 @@
       ]
     },
     "explanation": "The pattern needs `WARN` or `ERROR` at the very start of the line, followed by a colon, in exactly that letter case. The lowercase line differs in case, the third line has other text before the level, and the last line has no colon after `WARN`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "grep -E alternation anchor"
   },
   {
     "id": "at1-1-1-mcq-018",
@@ -701,7 +718,8 @@
       ]
     },
     "explanation": "Python does not add a string and an integer, so the call raises `TypeError`. Converting first, as in `int(port) + 1`, gives `8081`. JavaScript would join the two into `80801`, and `8080 1` is what `print(port, 1)` prints; Python's `+` does neither.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python string integer concatenation"
   },
   {
     "id": "at1-1-1-mcq-019",
@@ -742,7 +760,8 @@
     "explanation": "JSON requires double-quoted keys and strings. The second snippet uses single quotes, the third has a trailing comma after the last member, and the fourth leaves the keys unquoted, so a strict parser rejects all three.",
     "acronyms": [
       "JSON"
-    ]
+    ],
+    "searchTerm": "json syntax rules"
   },
   {
     "id": "at1-1-1-mcq-020",
@@ -783,7 +802,8 @@
     "explanation": "Each leading dash starts one list item, and each item holds the keys `name` and `port`, so `servers` is a list of two mappings. It is not a mapping of two keys because the items are dash-prefixed, and the values under `name` and `port` stay inside their items rather than forming a flat list of strings. Nor is it a single string: `servers` holds a sequence of items.",
     "acronyms": [
       "YAML"
-    ]
+    ],
+    "searchTerm": "yaml list of mappings"
   },
   {
     "id": "at1-1-1-mcq-021",
@@ -824,7 +844,8 @@
     "explanation": "An unquoted value that looks like a decimal is read as a floating-point number, so `3.10` becomes `3.1`. Quoting the value, as in `\"3.10\"`, keeps it a string. The parser does not split it into two integers, and a single dot is not a syntax error.",
     "acronyms": [
       "YAML"
-    ]
+    ],
+    "searchTerm": "yaml 1.2 float versus string"
   },
   {
     "id": "at1-1-1-mcq-022",
@@ -866,7 +887,8 @@
     "acronyms": [
       "JSON",
       "YAML"
-    ]
+    ],
+    "searchTerm": "yaml comments syntax"
   },
   {
     "id": "at1-1-1-mcq-023",
@@ -905,7 +927,8 @@
       ]
     },
     "explanation": "The `-l` option prints the name of each file with a match, and `-r` searches the directory tree. `-c` prints a match count for every file, including zeros, `-L` lists the files without a match, and `-n` prints matching lines with numbers.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "grep recursive list filenames"
   },
   {
     "id": "at1-1-1-mcq-024",
@@ -944,7 +967,8 @@
       ]
     },
     "explanation": "The fourth field is the status code, and three lines have a value of at least 500: 502, 500 and 503. A result of 2 would come from using `> 500`, 5 would count every line, and an empty line would print only if no line matched, because `n` would be unset.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "awk field comparison count"
   },
   {
     "id": "at1-1-1-mcq-025",
@@ -983,7 +1007,8 @@
       ]
     },
     "explanation": "The `-F,` option sets the field separator to a comma, and the address is the second field. Without `-F`, awk splits on whitespace, so each line is a single field and `$2` is empty. `$1` is the hostname and `$3` is the status.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "awk field separator comma"
   },
   {
     "id": "at1-1-1-mcq-026",
@@ -1022,7 +1047,8 @@
       ]
     },
     "explanation": "Without the `g` flag, the `s` command replaces only the first match on each line, so only the first `debug` changes. Adding `g` would change both. The third option would mean no substitution happened, and the second option would change the wrong occurrence.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sed substitute first match global flag"
   },
   {
     "id": "at1-1-1-mcq-027",
@@ -1061,7 +1087,8 @@
       ]
     },
     "explanation": "The `-n` option turns off automatic printing, and `5,8p` prints the lines in that range. Without `-n`, every line prints and lines 5 to 8 print twice. The `d` command deletes that range instead, and `5-8` is not a valid line range.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sed print line range"
   },
   {
     "id": "at1-1-1-mcq-028",
@@ -1100,7 +1127,8 @@
       ]
     },
     "explanation": "`.replicas[]` streams each element, `select(.up)` keeps the ones where `up` is true, and `.host` extracts the name. The first alternative prints both hosts, the second keeps the elements where `up` is false and prints `b2`, and the last applies `select` to the whole array, so `.up` fails on it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jq select array filter"
   },
   {
     "id": "at1-1-1-mcq-029",
@@ -1141,7 +1169,8 @@
     "explanation": "The `-r` option prints strings raw, without JSON quoting. `-c` compacts output but still quotes strings, `-s` reads all input into one array, and `-e` only sets the exit status from the result.",
     "acronyms": [
       "JSON"
-    ]
+    ],
+    "searchTerm": "jq raw output option"
   },
   {
     "id": "at1-1-1-mcq-030",
@@ -1180,7 +1209,8 @@
       ]
     },
     "explanation": "`Where-Object` passes along only the objects for which the script block is true. `Select-Object` chooses properties or a count, `Sort-Object` orders the objects, and `ForEach-Object` would just emit true or false for each service.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "powershell where-object filter"
   },
   {
     "id": "at1-1-1-mcq-031",
@@ -1219,7 +1249,8 @@
       ]
     },
     "explanation": "`Get-Help` displays a cmdlet's description, parameters and examples, for instance with `-Examples`. `Get-Command` finds commands, `Get-Member` lists the properties of objects, and `Get-History` shows earlier input.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "powershell get-help examples"
   },
   {
     "id": "at1-1-1-mcq-032",
@@ -1258,7 +1289,8 @@
       ]
     },
     "explanation": "Build layers are cached in order, and a change to a copied file invalidates every layer after it. Copying the dependency list first lets the install layer be reused until `requirements.txt` itself changes. `ADD` behaves the same way as `COPY` for this purpose, the position of `CMD` does not affect caching, and installing in `CMD` would repeat the work each time a container starts.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dockerfile layer caching copy order"
   },
   {
     "id": "at1-1-1-mcq-033",
@@ -1297,7 +1329,8 @@
       ]
     },
     "explanation": "`RUN` executes at build time, so its changes become part of the image. `CMD` and `ENTRYPOINT` define what starts when a container runs, and `EXPOSE` only documents a port.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dockerfile run versus cmd"
   },
   {
     "id": "at1-1-1-mcq-034",
@@ -1336,7 +1369,8 @@
       ]
     },
     "explanation": "The `latest` tag moves to new releases, so the starting image changes between builds. A version tag such as `python:3.12-slim` keeps it stable. Skipping the cache does not stop a moving tag, the copy order only affects speed, and `CMD` versus `ENTRYPOINT` changes how the container starts, not what is inside it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "docker base image tag latest"
   },
   {
     "id": "at1-1-1-mcq-035",
@@ -1375,7 +1409,8 @@
       ]
     },
     "explanation": "The compatible-release operator `~=2.3.1` means at least 2.3.1 and below 2.4, so patch releases such as `2.3.7` qualify. `2.4.0` and `3.0.0` are too high, and `2.3.0` is lower than the stated minimum.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pip compatible release operator"
   },
   {
     "id": "at1-1-1-mcq-036",
@@ -1414,7 +1449,8 @@
       ]
     },
     "explanation": "`pip freeze` prints every installed package in `name==version` form, which `pip install -r` can read back. `pip show` describes named packages, `pip check` reports broken dependencies, and `pip install` with no packages prints an error instead of a list.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pip freeze requirements file"
   },
   {
     "id": "at1-1-1-mcq-037",
@@ -1458,7 +1494,8 @@
       ]
     },
     "explanation": "A boolean and a floating-point number are single primitive values. An array, an object (a set of named values) and a tuple each hold several values, so they are collections.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "primitive versus collection data types"
   },
   {
     "id": "at1-1-1-mcq-038",
@@ -1502,7 +1539,8 @@
       ]
     },
     "explanation": "Exact pins, including for the packages that the listed ones pull in, make every build install the same versions. Unpinned names, open-ended ranges and start-up upgrades let versions drift between builds.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python pip reproducible builds pinning"
   },
   {
     "id": "at1-1-1-mcq-039",
@@ -1551,7 +1589,8 @@
       ]
     },
     "explanation": "A timestamp, a severity level and the reporting component let responders order events, filter by importance and find the code involved. Passwords, card numbers and private keys are secrets that must stay out of the log.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "application log entry fields"
   },
   {
     "id": "at1-1-1-mcq-040",
@@ -1595,7 +1634,8 @@
       ]
     },
     "explanation": "The `-i` option ignores letter case and `-q` suppresses output so only the exit status reports whether a match exists. `-n` prints line numbers, `-c` prints a count and `-l` prints file names, so each of those writes output.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "grep quiet ignore case exit status"
   },
   {
     "id": "at1-1-1-mcq-041",
@@ -1644,7 +1684,8 @@
       ]
     },
     "explanation": "The parameter `app` is required and `env` has a default, so `app` can be passed alone, `env` can be passed by keyword, or both can be passed by position. `deploy()` and `deploy(env=\"prod\")` leave out `app`, and three positional values are one more than the function accepts.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python function default parameters"
   },
   {
     "id": "at1-1-1-mcq-042",
@@ -1688,7 +1729,8 @@
       ]
     },
     "explanation": "The pattern needs a leading `v`, one or more digits, a literal dot and one or more digits, with nothing after them. `v2` has no dot part, `v2.10.1` has an extra `.1` after the match, and `2.10` lacks the `v`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "grep -E regex plus quantifier"
   },
   {
     "id": "at1-1-1-mcq-043",
@@ -1732,7 +1774,8 @@
       ]
     },
     "explanation": "A virtual environment isolates a project's packages, so versions can differ between projects and the system installation stays untouched. It does not share packages across users, does not update anything automatically, and still relies on `requirements.txt` to describe what to install.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python virtual environment benefits"
   },
   {
     "id": "at1-1-1-terminal-001",
@@ -1899,7 +1942,8 @@
       "field": "`awk '{print $2}' payments.log` prints the level column: `INFO`, `ERROR`, `INFO`, `ERROR`, `WARN`, `ERROR`.",
       "next": "Repeated timeouts point to the gateway connection or its timeout setting; blind retries, deleting the log or hiding errors do not fix the cause."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "grep count awk log analysis"
   },
   {
     "id": "at1-1-1-config-001",
@@ -2004,7 +2048,8 @@
       "install": "Running `pip install -r requirements.txt` at build time installs into the image; the `-r` flag tells `pip` to read the file, and a start-time install repeats the work.",
       "start": "A default start command runs when a container starts; running it at build time would execute it once during the build instead."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dockerfile best practices pinning"
   },
   {
     "id": "at1-1-1-order-001",
@@ -2065,7 +2110,8 @@
       "4": "Counting happens inside the loop, once per matching line.",
       "5": "The total is complete only after the loop ends."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash script counter loop"
   },
   {
     "id": "at1-1-1-data-001",
@@ -2244,7 +2290,8 @@
       "slow": "Durations above 1000 are 1500, 1100, 1300 and 2400, which makes 4; 900 is below the limit.",
       "mean": "auth durations are 80, 90 and 70, so the sum is 240 and the mean is 240 / 3 = 80."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "awk group count log"
   },
   {
     "id": "at1-1-1-diagram-001",
@@ -2365,7 +2412,8 @@
       "z3": "A name created in `check()` ends when `check()` returns and is invisible outside it.",
       "z4": "`tmp_dir` exists only inside `build()`, so reading it at module level raises a `NameError`."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python variable scope lookup LEGB"
   },
   {
     "id": "at1-1-1-hotspot-001",
@@ -2498,7 +2546,8 @@
       "l5": "`fi` correctly closes the `if` block.",
       "l6": "`done` correctly closes the loop."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash script common bugs"
   },
   {
     "id": "at1-1-1-match-001",
@@ -2581,7 +2630,8 @@
     },
     "acronyms": [
       "JSON"
-    ]
+    ],
+    "searchTerm": "json data types"
   },
   {
     "id": "at1-1-1-buckets-001",
@@ -2659,6 +2709,7 @@
     "acronyms": [
       "JSON",
       "YAML"
-    ]
+    ],
+    "searchTerm": "yaml versus json comparison"
   }
 ]

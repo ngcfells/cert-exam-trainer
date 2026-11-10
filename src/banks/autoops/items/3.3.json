@@ -39,7 +39,8 @@
     "acronyms": [
       "HTTP",
       "URL"
-    ]
+    ],
+    "searchTerm": "webhook definition http callback"
   },
   {
     "id": "at1-3-3-mcq-002",
@@ -78,7 +79,8 @@
       ]
     },
     "explanation": "The receiver repeats the calculation with its own copy of the secret and compares the result with the header, which proves who sent the request and that the body was not changed. The signature does not encrypt anything, it is not a login password, and it does not name runs.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "webhook signature verification hmac"
   },
   {
     "id": "at1-3-3-mcq-003",
@@ -117,7 +119,8 @@
       ]
     },
     "explanation": "Senders wait only a short time for a reply, so the receiver should acknowledge with a success status and hand the work to a background job. The payload size limit, the redirect status and the secret length have no effect on how long the reply takes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "webhook timeout acknowledge async"
   },
   {
     "id": "at1-3-3-mcq-004",
@@ -156,7 +159,8 @@
       ]
     },
     "explanation": "Recording identifiers makes the handler idempotent, so a repeated delivery is acknowledged without starting a second deployment. A longer secret affects both sends alike, a delay still allows two deployments, and an error status makes senders retry more.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "webhook idempotency duplicate delivery"
   },
   {
     "id": "at1-3-3-mcq-005",
@@ -198,7 +202,8 @@
     "acronyms": [
       "JSON",
       "URL"
-    ]
+    ],
+    "searchTerm": "webhook raw body signature"
   },
   {
     "id": "at1-3-3-mcq-006",
@@ -237,7 +242,8 @@
       ]
     },
     "explanation": "ChatOps runs operations from commands typed in a team chat. GitOps applies changes by merging them into a repository that an agent syncs from, a canary release exposes a change to a few users first, and drift detection compares live settings with a baseline.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "chatops definition commands"
   },
   {
     "id": "at1-3-3-mcq-007",
@@ -276,7 +282,8 @@
       ]
     },
     "explanation": "A command that changes production needs access control for who may run it and an audit trail of who did. Hiding replies, renaming the command and renaming the channel do not stop an unauthorized member from running it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "chatops access control"
   },
   {
     "id": "at1-3-3-mcq-008",
@@ -317,7 +324,8 @@
     "explanation": "A push trigger fires when commits arrive on the remote repository, subject to any branch or path filters. A button press is a manual trigger, a cron time is a scheduled trigger, and a chat command is ChatOps.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "git push trigger pipelines"
   },
   {
     "id": "at1-3-3-mcq-009",
@@ -356,7 +364,8 @@
       ]
     },
     "explanation": "The `branches` filter limits push runs to `main`, so a push to `feature/login` creates no run. A filtered-out push does not start a skipped job, switch branches or wait for approval.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions branches filter"
   },
   {
     "id": "at1-3-3-mcq-010",
@@ -395,7 +404,8 @@
       ]
     },
     "explanation": "With a `paths` filter, a push starts the workflow only if at least one changed file matches. Neither changed file is under `services/billing/`, a filter does not start runs for every push, and path filters are not limited to tags.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions paths filter"
   },
   {
     "id": "at1-3-3-mcq-011",
@@ -436,7 +446,8 @@
     "explanation": "A skip marker in the message of a pushed commit tells hosted CI services not to create a pipeline for it. They do not run a partial pipeline, relabel jobs as optional or add an approval step.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci skip marker commit message"
   },
   {
     "id": "at1-3-3-mcq-012",
@@ -475,7 +486,8 @@
       ]
     },
     "explanation": "`pollSCM` makes Jenkins look at the repository on the given schedule and start a build only if something changed. It does not wait for a webhook, it does not build without changes, and a person pressing a button is a manual build.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jenkins pollscm trigger"
   },
   {
     "id": "at1-3-3-mcq-013",
@@ -516,7 +528,8 @@
     "explanation": "A manual trigger waits for a person or a person-driven call to start the run. Commits, timers and tags are push, scheduled and tag-based triggers that start runs without anyone choosing the moment.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "manual pipeline trigger definition"
   },
   {
     "id": "at1-3-3-mcq-014",
@@ -555,7 +568,8 @@
       ]
     },
     "explanation": "`workflow_dispatch` is the manual trigger, and its `inputs` let the person choose a value at start time. It does not react to pushes, it has no schedule, and the choice comes from the person rather than from a webhook payload.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions manual dispatch inputs"
   },
   {
     "id": "at1-3-3-mcq-015",
@@ -594,7 +608,8 @@
       ]
     },
     "explanation": "The `input` step pauses the run for a person, which turns the production deploy into a manual gate. It does not just print and continue, it does not start the next stage early, and it is valid inside the steps of a stage.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jenkins input step approval"
   },
   {
     "id": "at1-3-3-mcq-016",
@@ -633,7 +648,8 @@
       ]
     },
     "explanation": "GitLab evaluates `rules` in order and uses the first one that matches, so on `main` the manual setting wins. A later matching rule does not override it, one job does not run once per rule, and a rule without a condition matches but is never reached here.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "gitlab ci rules when manual"
   },
   {
     "id": "at1-3-3-mcq-017",
@@ -672,7 +688,8 @@
       ]
     },
     "explanation": "A scheduled trigger starts a run at times set with a cron expression, so it needs no commit. A push trigger needs commits, a manual trigger needs a person, and a tag filter only narrows which tags start a run.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "scheduled pipeline trigger nightly"
   },
   {
     "id": "at1-3-3-mcq-018",
@@ -711,7 +728,8 @@
       ]
     },
     "explanation": "The fields are minute, hour, day of month, month and day of week, so `30 2 * * 1-5` means 02:30 on weekdays. The day-of-month field is `*`, the minute field is a fixed 30, and the weekday range is not combined with a day of month.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "cron expression fields"
   },
   {
     "id": "at1-3-3-mcq-019",
@@ -750,7 +768,8 @@
       ]
     },
     "explanation": "The minute field `*/20` steps through 0, 20 and 40, and the hour field `8-17` limits the runs to those hours. Cron has no seconds field here, and the hour and day-of-month fields are not swapped.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "cron step values minutes"
   },
   {
     "id": "at1-3-3-mcq-020",
@@ -791,7 +810,8 @@
     "explanation": "The schedule fires at 22:00 universal time, and adding nine hours gives 07:00 the next day in Tokyo. 22:00 ignores the offset, 13:00 subtracts it instead of adding it, and 09:00 would need a start at midnight universal time.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "cron utc timezone conversion"
   },
   {
     "id": "at1-3-3-mcq-021",
@@ -830,7 +850,8 @@
       ]
     },
     "explanation": "Scheduled workflows are read from the default branch, so a schedule that exists on a feature branch does not fire until it is merged there. A runner label, the time zone and pull requests are not the reason no run occurs.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions schedule default branch"
   },
   {
     "id": "at1-3-3-mcq-022",
@@ -869,7 +890,8 @@
       ]
     },
     "explanation": "In Jenkins the `H` symbol hashes the job name into a fixed value, which spreads jobs across the hour instead of starting them all at minute 0. With the hour fixed at 2, the job runs once a day at the same minute within that hour.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jenkins cron hash H symbol"
   },
   {
     "id": "at1-3-3-mcq-023",
@@ -908,7 +930,8 @@
       ]
     },
     "explanation": "`CI_PIPELINE_SOURCE` records what created the pipeline, which here is a push rather than a schedule, so the rule does not match and the job is left out. Rules can test the source, and the job is not made manual.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "gitlab ci pipeline source rules"
   },
   {
     "id": "at1-3-3-mcq-024",
@@ -947,7 +970,8 @@
       ]
     },
     "explanation": "A commit hash identifies one exact snapshot for every build. A branch name moves as new commits arrive, a tag exists only on commits that were tagged, and the repository name is the same for every build.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commit hash artifact traceability"
   },
   {
     "id": "at1-3-3-mcq-025",
@@ -986,7 +1010,8 @@
       ]
     },
     "explanation": "`CI_COMMIT_TAG` is set only in tag pipelines, so the `-n` test succeeds only there. The variable never holds a branch name, a request number or a commit message.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "gitlab ci predefined variables tag"
   },
   {
     "id": "at1-3-3-mcq-026",
@@ -1025,7 +1050,8 @@
       ]
     },
     "explanation": "In a tag pipeline `CI_COMMIT_BRANCH` is empty, so the comparison with `main` fails and the job is left out even though the commit is on `main`. The variable does not take the tag name, and tag pipelines can use rules.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "gitlab ci rules tag pipelines"
   },
   {
     "id": "at1-3-3-mcq-027",
@@ -1064,7 +1090,8 @@
       ]
     },
     "explanation": "The `tag` condition holds only when the build is for a tag whose name matches the pattern, and a branch build for `main` is not one. The default branch does not matter, `v*` needs a leading v, and a skipped stage does not fail the build.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jenkins pipeline when tag condition"
   },
   {
     "id": "at1-3-3-mcq-028",
@@ -1103,7 +1130,8 @@
       ]
     },
     "explanation": "`CI_COMMIT_REF_NAME` holds the short name of the branch or tag being built, so for this pipeline it is `v1.9.0`. The full ref path with `refs/tags/` is not used, the branch name applies only to branch pipelines, and a truncated version is not produced.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "gitlab ci commit ref name variable"
   },
   {
     "id": "at1-3-3-mcq-029",
@@ -1142,7 +1170,8 @@
       ]
     },
     "explanation": "The expression compares the short ref name with `main`. `hotfix/pay-12` is not equal, so the second value `dev` is used, and neither `prod`, the branch name nor `main` is produced.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions expressions and or"
   },
   {
     "id": "at1-3-3-mcq-030",
@@ -1181,7 +1210,8 @@
       ]
     },
     "explanation": "`CI_COMMIT_SHORT_SHA` is the first eight characters of the commit hash, which gives `9f3c2ab4`. The seven-character form is git's usual abbreviation rather than this variable, ten characters are too many, and `latest` is a fixed name unrelated to the commit.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "gitlab ci commit short sha"
   },
   {
     "id": "at1-3-3-mcq-031",
@@ -1220,7 +1250,8 @@
       ]
     },
     "explanation": "The `stages` section holds the ordered `stage` blocks. The `agent` section says where the pipeline runs, `post` holds actions that depend on the result, and `environment` sets variables.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jenkinsfile declarative pipeline structure"
   },
   {
     "id": "at1-3-3-mcq-032",
@@ -1259,7 +1290,8 @@
       ]
     },
     "explanation": "In a `post` section each condition runs after the stages when its outcome applies, so `failure` runs when the run failed. It is not a setup step, a successful run uses `success`, and the block that runs for any result is `always`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jenkins post section failure"
   },
   {
     "id": "at1-3-3-mcq-033",
@@ -1298,7 +1330,8 @@
       ]
     },
     "explanation": "A declarative pipeline needs `steps` inside a `stage` that sits inside `stages`. The position of `agent`, the shell step name and an extra `post` block do not make the structure valid.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jenkins declarative pipeline syntax"
   },
   {
     "id": "at1-3-3-mcq-034",
@@ -1337,7 +1370,8 @@
       ]
     },
     "explanation": "Stages run in the listed order, and a stage starts when the previous one succeeds, so a failed job in `test` blocks `deploy`. Stages are not independent, GitLab does not reuse the last passing pipeline, and retrying `compile` is unrelated.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "gitlab ci stages order failure"
   },
   {
     "id": "at1-3-3-mcq-035",
@@ -1376,7 +1410,8 @@
       ]
     },
     "explanation": "A job may name only a stage that appears in `stages`, so the new phase must be added in the wanted position. Renaming the job, reordering keys within it and adding `needs` leave `verify` undefined.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "gitlab ci stages keyword"
   },
   {
     "id": "at1-3-3-mcq-036",
@@ -1415,7 +1450,8 @@
       ]
     },
     "explanation": "`runs-on` selects the runner, meaning the machine type and operating system, for a job. Branches and events are set under `on`, and a registry is chosen in the steps that push to it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions runs-on label"
   },
   {
     "id": "at1-3-3-mcq-037",
@@ -1454,7 +1490,8 @@
       ]
     },
     "explanation": "Branch filters can list patterns to exclude, so all other branches still build on push. A tag filter looks at tags, cron works on times, and a manual trigger would stop the automatic builds that the other branches need.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions branches-ignore filter"
   },
   {
     "id": "at1-3-3-mcq-038",
@@ -1505,7 +1542,8 @@
     "explanation": "The commit hash, the tag name and the branch name are all stored in the repository. The build number, the runner host name and the run duration are produced by the CI server during the run.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci pipeline variables git versus server"
   },
   {
     "id": "at1-3-3-mcq-039",
@@ -1551,7 +1589,8 @@
     "explanation": "A manual start and a schedule need no push. A branch push, a tag push and a merge all update the repository, and each acts as a push trigger, even when the tag adds no new commit.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci pipeline manual and scheduled triggers"
   },
   {
     "id": "at1-3-3-mcq-040",
@@ -1597,7 +1636,8 @@
     "explanation": "A versioned file is reviewed and traced like code, and each old commit carries the pipeline that fits it. A stored file does not prevent failures, still needs runners, and plain-text secrets in a repository are a risk.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "pipeline as code benefits"
   },
   {
     "id": "at1-3-3-mcq-041",
@@ -1646,7 +1686,8 @@
       ]
     },
     "explanation": "Jenkins reads a `Jenkinsfile`, GitLab reads `.gitlab-ci.yml` in the repository root, and GitHub Actions reads workflow files in `.github/workflows/`. GitHub Actions does not read `.gitlab-ci.yml`, GitLab does not read files in `.github/workflows/`, and GitHub Actions does not read a `Jenkinsfile`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pipeline definition file names"
   },
   {
     "id": "at1-3-3-mcq-042",
@@ -1690,7 +1731,8 @@
       ]
     },
     "explanation": "A vault keeps the value out of files and logs, and separate secrets limit the damage if one leaks. Pasting it in a file, printing it in a log or sharing one value widely all expose it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "webhook signing secret protection"
   },
   {
     "id": "at1-3-3-mcq-043",
@@ -1734,7 +1776,8 @@
       ]
     },
     "explanation": "An audit trail answers who ran what and when, so it needs the person, the command with arguments and the time. A token is a secret that must stay out of logs, and reactions and themes say nothing about the action.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "chatops audit trail logging"
   },
   {
     "id": "at1-3-3-mcq-044",
@@ -1781,7 +1824,8 @@
     "acronyms": [
       "CPU",
       "URL"
-    ]
+    ],
+    "searchTerm": "webhook delivery troubleshooting"
   },
   {
     "id": "at1-3-3-terminal-001",
@@ -2222,7 +2266,8 @@
       "push": "Naming the tag after the remote sends just that tag, which is what starts the tag pipeline.",
       "next": "The pattern is anchored at the end, so the `-rc.1` suffix, a missing v and the word in `release-2.4.0` do not match."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git annotated tag push"
   },
   {
     "id": "at1-3-3-config-001",
@@ -2367,7 +2412,8 @@
       "deploy": "A manual start puts a person in control of when production changes.",
       "concur": "Cancelling the older run keeps only the result for the newest commit."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions on push filters"
   },
   {
     "id": "at1-3-3-order-001",
@@ -2430,7 +2476,8 @@
     },
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "webhook signature verification ci"
   },
   {
     "id": "at1-3-3-data-001",
@@ -2644,7 +2691,8 @@
       "r5": "A push to `release/3.1` matches the `release/` prefix, so the build pipeline starts.",
       "r6": "The tag `demo-2` does not start with `v` and digits, and a tag is not a branch, so nothing starts."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions push tag trigger filter"
   },
   {
     "id": "at1-3-3-diagram-001",
@@ -2779,7 +2827,8 @@
     },
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci cd pipeline components architecture"
   },
   {
     "id": "at1-3-3-hotspot-001",
@@ -2912,7 +2961,8 @@
       "conc": "A concurrency group serializes runs and does not filter refs.",
       "publish": "The command uses the ref name, which is the tag name in a tag run."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions tag push trigger"
   },
   {
     "id": "at1-3-3-match-001",
@@ -2997,7 +3047,8 @@
       "p4": "The `sha` is the hash of the commit the run builds.",
       "p5": "A tag push is reported as a `push` event."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions context variables ref"
   },
   {
     "id": "at1-3-3-buckets-001",
@@ -3072,6 +3123,7 @@
       "i5": "A person starts the run and supplies the input.",
       "i6": "A calendar date is a schedule."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci pipeline trigger types"
   }
 ]

@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "`git fetch origin` downloads new commits and updates the remote-tracking branches, leaving local branches and files alone. `git pull` also integrates the commits, `git merge origin/main` changes the current branch, and `git checkout origin/main` replaces the working tree with that commit.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git fetch versus pull"
   },
   {
     "id": "at1-1-2-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "A default pull is a fetch followed by a merge of the upstream branch into the current one. Uploading is `git push`, fetching alone leaves local branches untouched, and a pull keeps history rather than replacing it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git pull default behavior"
   },
   {
     "id": "at1-1-2-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "A non-fast-forward rejection means the remote branch has commits the local branch lacks, so Priya must integrate them (fetch, then merge or rebase) before pushing. A refused login produces an authentication error instead. Uncommitted changes do not affect a push, and Git has no reserved branch names.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git non-fast-forward push rejected"
   },
   {
     "id": "at1-1-2-mcq-004",
@@ -153,7 +156,8 @@
       ]
     },
     "explanation": "`git push -u origin feature/ledger-export` pushes the branch and records the remote branch as its upstream. Without `-u` the push works but sets no link. `--follow-tags` only adds annotated tags, and `git remote add` registers a remote from a name and an address, not a branch.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git push set upstream"
   },
   {
     "id": "at1-1-2-mcq-005",
@@ -192,7 +196,8 @@
       ]
     },
     "explanation": "`git add app.py` stages that one file. `git add notes.txt` stages the other file instead, `git restore app.py` discards the edits to it, and `git stash push app.py` shelves them out of the working tree.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git add stage specific file"
   },
   {
     "id": "at1-1-2-mcq-006",
@@ -231,7 +236,8 @@
       ]
     },
     "explanation": "`git diff --staged` compares the index with the last commit, so it shows only staged changes. Plain `git diff` shows the newer unstaged edits, `git status -s` lists file states without content, and `git log -p -1` shows the last commit rather than what is staged.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git diff staged changes"
   },
   {
     "id": "at1-1-2-mcq-007",
@@ -270,7 +276,8 @@
       ]
     },
     "explanation": "`git commit --amend` opens the message for editing and replaces the last local commit with the corrected one, which is safe before pushing. `git revert` adds a new commit that undoes the change, `git reset --hard HEAD~1` throws away the commit and its edits, and `git cherry-pick HEAD` adds a duplicate commit with the typo intact.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commit amend message"
   },
   {
     "id": "at1-1-2-mcq-008",
@@ -309,7 +316,8 @@
       ]
     },
     "explanation": "Git reads settings from the system, user and repository files, and the narrowest scope wins, so the repository value is used. Git does not combine two values into co-authors, and it prompts for an address only when none is configured.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git config precedence user email"
   },
   {
     "id": "at1-1-2-mcq-009",
@@ -348,7 +356,8 @@
       ]
     },
     "explanation": "`core.hooksPath` points Git at another folder for hooks, so a tracked folder can be shared; the default `.git/hooks` folder is not versioned. The other keys are not Git settings, so they have no effect.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git core hooksPath shared hooks"
   },
   {
     "id": "at1-1-2-mcq-010",
@@ -387,7 +396,8 @@
       ]
     },
     "explanation": "A hook's result is the exit status of the script, and here that status comes from the final `echo`, which succeeds, so the lint failure is lost and the commit goes ahead. Aborting would need `exit` with the linter's status. Git does not record lint results, and a script with no `exit` line still runs.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git pre-commit hook exit status"
   },
   {
     "id": "at1-1-2-mcq-011",
@@ -426,7 +436,8 @@
       ]
     },
     "explanation": "`--no-verify` bypasses the `pre-commit` and `commit-msg` hooks. `--amend` rewrites the previous commit, `--allow-empty` permits a commit with no changes, and `--signoff` appends a `Signed-off-by` line; none of them skip hooks.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commit no-verify skip hooks"
   },
   {
     "id": "at1-1-2-mcq-012",
@@ -465,7 +476,8 @@
       ]
     },
     "explanation": "Git passes the message file to `commit-msg`, which can exit non-zero to reject the message. `pre-commit` runs before the message exists, `post-commit` runs after the commit is made, and `pre-push` runs when pushing.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commit-msg hook"
   },
   {
     "id": "at1-1-2-mcq-013",
@@ -504,7 +516,8 @@
       ]
     },
     "explanation": "`pre-push` runs on the developer's machine after `git push` starts and can stop the upload by failing. `post-merge`, `post-checkout` and `post-commit` run after other events and cannot hold back a push.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git pre-push hook tests"
   },
   {
     "id": "at1-1-2-mcq-014",
@@ -543,7 +556,8 @@
       ]
     },
     "explanation": "Local hooks can be skipped with `--no-verify` or never installed, so enforcement belongs on the server, where a `pre-receive` hook (or an equivalent push rule) can reject the push. The other locations are on each laptop or in a personal config file, which the developer controls.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git server-side pre-receive hook"
   },
   {
     "id": "at1-1-2-mcq-015",
@@ -582,7 +596,8 @@
       ]
     },
     "explanation": "A formatter edits the working-tree copy, but a commit records the index, so the hook must run `git add` on the changed files again. Git does not undo hook edits, `git diff --cached` does list staged files, and the exit status does not decide whether edits are kept.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git pre-commit formatter staged files"
   },
   {
     "id": "at1-1-2-mcq-016",
@@ -621,7 +636,8 @@
       ]
     },
     "explanation": "A linter inspects code for likely bugs and rule violations and reports them. Rewriting layout is a formatter's job, encryption is unrelated, and comparing a branch with the remote is done with `git fetch` and `git log` or `git diff`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "linter versus formatter"
   },
   {
     "id": "at1-1-2-mcq-017",
@@ -660,7 +676,8 @@
       ]
     },
     "explanation": "Take the key out of the code, load it at run time, and stage the corrected file so the scan passes. Renaming the file or encoding the key hides the secret from the scanner but leaves it in the repository, and committing with `--no-verify` keeps the key in history even if a later commit deletes it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "secret scanning pre-commit git"
   },
   {
     "id": "at1-1-2-mcq-018",
@@ -699,7 +716,8 @@
       ]
     },
     "explanation": "A pushed secret must be treated as exposed, so it is rotated. A revert adds a new commit and leaves the old one in history, deleting a local branch does not touch the remote, and garbage collection on a remote is not something the developer can rely on.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "leaked credentials git history rotation"
   },
   {
     "id": "at1-1-2-mcq-019",
@@ -738,7 +756,8 @@
       ]
     },
     "explanation": "By default Git strips comment lines that start with `#` when it saves the message. They are not stored, run as commands, or turned into tags.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commit message comment lines"
   },
   {
     "id": "at1-1-2-mcq-020",
@@ -777,7 +796,8 @@
       ]
     },
     "explanation": "Short subjects in the imperative mood that name the change are the common convention. \"Fixed some bugs\" and \"Misc updates\" are vague, and the last line trails off with no action and a closing period, which makes `git log` harder to scan.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commit message conventions"
   },
   {
     "id": "at1-1-2-mcq-021",
@@ -816,7 +836,8 @@
       ]
     },
     "explanation": "Removing a method breaks code that calls it, which is an incompatible change, so the major number goes up and minor and patch reset to zero. `3.5.0` is for compatible features, `3.4.3` for fixes, and `4.4.2` keeps the old minor and patch numbers.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "semantic versioning major bump"
   },
   {
     "id": "at1-1-2-mcq-022",
@@ -855,7 +876,8 @@
       ]
     },
     "explanation": "A new flag that keeps existing flags working is a backward-compatible feature, so the minor number goes up and the patch resets to zero. `2.0.0` is for incompatible changes, `1.8.4` for fixes only, and `1.9.3` wrongly carries over the old patch number.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "semantic versioning minor bump"
   },
   {
     "id": "at1-1-2-mcq-023",
@@ -896,7 +918,8 @@
     "explanation": "A pre-release sorts below its release, and its identifiers compare in ASCII order: `alpha`, `beta`, `rc.1`, then the release itself. The other lists put the release too early or reverse the pre-release order.",
     "acronyms": [
       "ASCII"
-    ]
+    ],
+    "searchTerm": "semantic versioning precedence pre-release"
   },
   {
     "id": "at1-1-2-mcq-024",
@@ -935,7 +958,8 @@
       ]
     },
     "explanation": "With the same major, minor and patch numbers, numeric pre-release identifiers compare as numbers, so `rc.11` outranks `rc.9` and `rc.2`. All three outrank `2.0.9` because `2.1.0` has a higher minor number. Comparing as text would wrongly rank `rc.9` highest.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "semantic versioning rc numeric identifiers"
   },
   {
     "id": "at1-1-2-mcq-025",
@@ -974,7 +998,8 @@
       ]
     },
     "explanation": "Build metadata after the plus sign is ignored when precedence is compared, so the two versions are equal. A larger build number does not make a version newer, text order is not used, and `+` introduces build metadata rather than a pre-release.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "semantic versioning build metadata precedence"
   },
   {
     "id": "at1-1-2-mcq-026",
@@ -1013,7 +1038,8 @@
       ]
     },
     "explanation": "`git tag --list` takes a pattern and prints only the matching tags. `--sort` takes a sort key, and `--merged` and `--points-at` take a commit, so a tag pattern is not a valid value for them.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git tag list pattern"
   },
   {
     "id": "at1-1-2-mcq-027",
@@ -1052,7 +1078,8 @@
       ]
     },
     "explanation": "Version sorting compares the numeric parts as numbers, so `v1.10.0` outranks `v1.9.0`, and the leading minus reverses the order so the newest comes first. A plain text sort would put `v1.9.0` first, and the other tags are older.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git tag version sort"
   },
   {
     "id": "at1-1-2-mcq-028",
@@ -1091,7 +1118,8 @@
       ]
     },
     "explanation": "By default Git sorts a tag with a suffix after the plain tag. `versionsort.suffix` names the suffixes that mark pre-releases, so `-rc` tags sort first. `tag.sort refname` is plain text order and keeps the problem, and the other two settings do not affect ordering.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git versionsort suffix config"
   },
   {
     "id": "at1-1-2-mcq-029",
@@ -1130,7 +1158,8 @@
       ]
     },
     "explanation": "A separate branch per change isolates unfinished work until review, and a merge then brings it in. Committing straight to `main` or sharing one branch mixes the changes, and a tag only marks a commit; it does not hold ongoing work.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git feature branch workflow"
   },
   {
     "id": "at1-1-2-mcq-030",
@@ -1169,7 +1198,8 @@
       ]
     },
     "explanation": "The stabilizing fix belongs on `release/3.2`, and porting it to `main` (by merging the release branch or cherry-picking the fix) carries it into 3.3 while that work continues on `main`. Abandoning the release branch, mixing 3.3 work into it, or leaving `main` without the fix each loses work or reintroduces the bug in the next version.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git release branch bug fix"
   },
   {
     "id": "at1-1-2-mcq-031",
@@ -1208,7 +1238,8 @@
       ]
     },
     "explanation": "The convention is a type, a slash, the ticket number and a short hyphenated description. The second puts the ticket before the type, the third puts the type last, and the fourth contains a space, which Git does not allow in a branch name.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git branch naming convention"
   },
   {
     "id": "at1-1-2-mcq-032",
@@ -1247,7 +1278,8 @@
       ]
     },
     "explanation": "`--ff-only` makes the pull fail unless the branch can fast-forward, so diverged history stops it. `--no-commit` still merges but pauses before the commit, `--squash` combines the changes without a merge, and `--no-edit` only skips the message editor.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git pull ff-only"
   },
   {
     "id": "at1-1-2-mcq-033",
@@ -1286,7 +1318,8 @@
       ]
     },
     "explanation": "`--force-with-lease` overwrites the remote branch only if it still matches what the developer last fetched, so a teammate's newer commits are not lost. `--force` overwrites regardless, `--no-verify` skips hooks, and `--set-upstream` links the branch without overwriting anything.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git force-with-lease"
   },
   {
     "id": "at1-1-2-mcq-034",
@@ -1325,7 +1358,8 @@
       ]
     },
     "explanation": "A normal push sends branch commits, not tags, so a tag must be named in the push or sent with `--tags`. Tags are stored in the repository rather than the working tree, signing is optional, and remotes do not limit tags to release branches by default.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git push tags"
   },
   {
     "id": "at1-1-2-mcq-035",
@@ -1364,7 +1398,8 @@
       ]
     },
     "explanation": "`git restore --staged` removes the file from the index and leaves the working copy alone. `git restore --worktree` discards the edits, `git reset --hard` discards all uncommitted work, and `git rm --force` removes the file.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git restore staged unstage"
   },
   {
     "id": "at1-1-2-mcq-036",
@@ -1403,7 +1438,8 @@
       ]
     },
     "explanation": "Ignore rules affect untracked files, so a tracked `.env` stays tracked and earlier commits still hold the credentials. Stopping tracking takes `git rm --cached .env`, and the credentials should be rotated. Git does not delete files from other clones, and `git status` still reports changes to a tracked file.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git gitignore tracked files"
   },
   {
     "id": "at1-1-2-mcq-037",
@@ -1447,7 +1483,8 @@
       ]
     },
     "explanation": "Linting the staged files and scanning them for credentials are quick checks on what is about to be committed, which is the job of `pre-commit`. Publishing to production, mirroring to a backup remote and pruning merged branches are not checks on a commit and belong in other automation.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git hooks use cases"
   },
   {
     "id": "at1-1-2-mcq-038",
@@ -1496,7 +1533,8 @@
       ]
     },
     "explanation": "A pre-release sorts below its release, build metadata after `+` is ignored in precedence, and raising the major number resets minor and patch to zero. `1.10.0` outranks `1.9.0` because the numbers compare numerically, leading zeros are not allowed, and a patch release carries only compatible bug fixes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "semantic versioning rules"
   },
   {
     "id": "at1-1-2-mcq-039",
@@ -1540,7 +1578,8 @@
       ]
     },
     "explanation": "`git push` sends commits to the remote, and `git push origin --delete old-branch` removes a branch there. `git fetch` only downloads, while `git commit` and `git add` change the local repository and index.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commands modify remote"
   },
   {
     "id": "at1-1-2-mcq-040",
@@ -1588,7 +1627,8 @@
       ]
     },
     "explanation": "`release/2.4` and `feature/oauth-login` follow Git's naming rules. A space, the `..` sequence, a name ending in `.lock` and a leading hyphen are all rejected.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git branch name rules"
   },
   {
     "id": "at1-1-2-mcq-041",
@@ -1632,7 +1672,8 @@
       ]
     },
     "explanation": "A `pre-commit` scan stops credentials before they enter history, and reading them at run time keeps them out of the code. Base64 is easily reversed, a `README` note relies on everyone remembering it and enforces nothing, and a harmless extension hides nothing from a reader.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "keep credentials out of repository"
   },
   {
     "id": "at1-1-2-mcq-042",
@@ -1681,7 +1722,8 @@
       ]
     },
     "explanation": "Focused branches, regular syncing with `main`, and deleting the branch after the merge keep feature branching short-lived. Months-long branches drift from `main`, committing straight to `main` skips review, and sharing one branch mixes unrelated work.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "short-lived feature branches"
   },
   {
     "id": "at1-1-2-mcq-043",
@@ -1725,7 +1767,8 @@
       ]
     },
     "explanation": "A stabilizing branch takes fixes and release chores such as the version bump and changelog. New features, large refactors and tool experiments belong on `main` or their own branches so they do not destabilize 2.4.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "release branch stabilization"
   },
   {
     "id": "at1-1-2-terminal-001",
@@ -1852,7 +1895,8 @@
       "fetch": "A fetch updates `origin/main` and the other remote-tracking branches but leaves local branches and files alone.",
       "view": "The range `main..origin/main` lists commits reachable from `origin/main` but not from `main`."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commit push upstream"
   },
   {
     "id": "at1-1-2-config-001",
@@ -1977,7 +2021,8 @@
       "push": "`push.autoSetupRemote` (Git 2.37 or later) creates the upstream link on the first push; `matching` and `followTags` do not.",
       "branch": "`init.defaultBranch` is the real setting; the other keys do not exist in Git."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git config settings pull push"
   },
   {
     "id": "at1-1-2-order-001",
@@ -2038,7 +2083,8 @@
       "4": "Only after both hooks pass is the commit recorded locally.",
       "5": "Pushing is a separate later command; its `pre-push` hook runs before anything uploads."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commit push hook order"
   },
   {
     "id": "at1-1-2-data-001",
@@ -2198,7 +2244,8 @@
       "build": "Build metadata after the plus sign is ignored, so the two have equal precedence.",
       "range": "Only `1.9.0` and `1.9.11` are stable and fall in that range; the `1.10.0` release candidates are pre-releases."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "semantic versioning precedence table"
   },
   {
     "id": "at1-1-2-diagram-001",
@@ -2331,7 +2378,8 @@
       "z3": "A release branch for 2.4 accepts only stabilizing fixes.",
       "z4": "A tag is a fixed pointer to the commit that shipped."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git branching release flow"
   },
   {
     "id": "at1-1-2-hotspot-001",
@@ -2464,7 +2512,8 @@
       "p5": "The secret scan passed, so it did not block.",
       "p6": "The linter failed with a non-zero status, which aborts the commit."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git pre-commit hook output"
   },
   {
     "id": "at1-1-2-match-001",
@@ -2545,7 +2594,8 @@
       "p4": "The `-p` (patch) option lets you choose chunks to stage.",
       "p5": "Amend rewrites the latest commit to include what is staged."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git commands effects"
   },
   {
     "id": "at1-1-2-buckets-001",
@@ -2622,6 +2672,7 @@
     },
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "semantic versioning change types"
   }
 ]

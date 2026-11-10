@@ -1,3 +1,9 @@
+# 2026-11-10 (end 2): #6 content pass 2 of 3 DONE (autoops). Next: secai (CY0-001), then close #6
+
+Next session model: **Sonnet**. `gh issue list` first. All 674 AT0-001 questions now have a `searchTerm`; only CY0-001 (secai)
+is still on the fallback. Same method as dataplus (extract, 4 Haiku agents, merge and validate script, spot check,
+`npm run check` green with 127 e2e). After secai: close #6 with a comment, then #11.
+
 # 2026-11-10 (end): #6 content pass 1 of 3 DONE (dataplus). Next: autoops, then secai
 
 Next session model: **Sonnet**. `gh issue list` first. All 777 DA0-002 questions now have a `searchTerm` (0 of 777 on the fallback;

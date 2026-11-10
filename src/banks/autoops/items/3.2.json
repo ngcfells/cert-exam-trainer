@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "Jobs that share no inputs can run in parallel, so the run takes about as long as the slowest one. Merging them keeps the work sequential, reordering does not change the total, and removing the docs build drops a check.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci parallel jobs runtime"
   },
   {
     "id": "at1-3-2-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "Two jobs run together for 3 minutes and the other two follow for 3 more, so 6 minutes. Three minutes would need four runners, 12 would mean running them strictly one at a time, and 9 matches no schedule.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "parallel runners queue time"
   },
   {
     "id": "at1-3-2-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "Parallel jobs that touch one mutable resource interfere, so each should get its own copy. Rerunning, longer timeouts and allowing failure hide the clash instead of removing it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "parallel jobs shared database"
   },
   {
     "id": "at1-3-2-mcq-004",
@@ -153,7 +156,8 @@
       ]
     },
     "explanation": "A matrix expands to the product of its axes, so 3 times 2 gives 6 jobs that can run in parallel. Adding the axes gives 5, using one axis gives 3, and 9 has no basis in these values.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci matrix build combinations"
   },
   {
     "id": "at1-3-2-mcq-005",
@@ -194,7 +198,8 @@
     "explanation": "A dependency makes the later job wait for the listed job and require its success. It does not request simultaneous execution, restart the earlier job, or share secrets.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci job needs dependency"
   },
   {
     "id": "at1-3-2-mcq-006",
@@ -233,7 +238,8 @@
       ]
     },
     "explanation": "A job whose required dependency failed does not start, and it is shown as skipped. It does not fall back to older output, run with a warning, or hold its place waiting for a manual retry.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci job dependency failure skipped"
   },
   {
     "id": "at1-3-2-mcq-007",
@@ -272,7 +278,8 @@
       ]
     },
     "explanation": "A dependency controls order, not files: a new job gets a fresh workspace, so output has to be published as an artifact and downloaded. Dependencies are honored across runners, no runner deletes files by extension, and artifacts exist precisely to move files between runners.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci artifacts pass files between jobs"
   },
   {
     "id": "at1-3-2-mcq-008",
@@ -311,7 +318,8 @@
       ]
     },
     "explanation": "Each job waits for another in a loop, so none could ever start; a pipeline must be a directed acyclic graph, and the definition fails validation. Tools do not ignore dependencies, pick the first listed job, or run only the last one.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci pipeline cyclic dependencies"
   },
   {
     "id": "at1-3-2-mcq-009",
@@ -350,7 +358,8 @@
       ]
     },
     "explanation": "Conditional execution evaluates a rule, such as the branch name or the files changed, to decide whether a job runs at all. Running twice, sharing a runner and delaying to a schedule are different ideas.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci conditional execution"
   },
   {
     "id": "at1-3-2-mcq-010",
@@ -389,7 +398,8 @@
       ]
     },
     "explanation": "A path filter evaluates the changed files and skips the job when none are source files. A timeout and retries do not stop the job from running, and moving it to a nightly schedule removes feedback on source changes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci path filters docs changes"
   },
   {
     "id": "at1-3-2-mcq-011",
@@ -428,7 +438,8 @@
       ]
     },
     "explanation": "The push event does fire for tags, but the ref is `refs/tags/v1.4.0`, which does not start with `refs/heads/release/`, so the job is skipped. Tag names are not matched against branch prefixes, the condition tests a specific prefix rather than `refs/`, and tag pushes do trigger the event.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "github actions if condition tags"
   },
   {
     "id": "at1-3-2-mcq-012",
@@ -467,7 +478,8 @@
       ]
     },
     "explanation": "A required manual job is a gate: the run pauses at that point until someone triggers it. (Some tools, such as GitLab, let the pipeline carry on past a manual job that is marked as optional.) It does not run automatically, vanish, or depend on a failure.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "manual approval gate pipeline"
   },
   {
     "id": "at1-3-2-mcq-013",
@@ -506,7 +518,8 @@
       ]
     },
     "explanation": "Automated rollback reacts to evidence that the running release is unhealthy, such as failed probes or a high error rate. A new pull request, a lint warning and a finished scan say nothing about the live service.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "automated rollback trigger health"
   },
   {
     "id": "at1-3-2-mcq-014",
@@ -545,7 +558,8 @@
       ]
     },
     "explanation": "Rollback is fast and predictable because it redeploys a known-good artifact that already exists. A new build from main may contain more untested changes, re-deploying the failing release is not a rollback, and the newest tag is the release that failed.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rollback redeploy known good artifact"
   },
   {
     "id": "at1-3-2-mcq-015",
@@ -584,7 +598,8 @@
       ]
     },
     "explanation": "Rolling back code does not undo a schema change, so changes must be staged to keep the old release working. Rebuilding does not restore the column, deleting artifacts removes the rollback target, and turning off health checks removes the trigger.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "database schema changes rollback"
   },
   {
     "id": "at1-3-2-mcq-016",
@@ -623,7 +638,8 @@
       ]
     },
     "explanation": "Some faults appear only after a delay, so the observation window must be long enough to catch them. A faster check inside the same 30 seconds sees the same healthy state, a full simultaneous deployment raises the impact, and user reports are slower than metrics.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "post deployment health check window"
   },
   {
     "id": "at1-3-2-mcq-017",
@@ -662,7 +678,8 @@
       ]
     },
     "explanation": "Cancelling superseded runs frees runners while still testing the newest commit. Disabling the pipeline removes checks, queueing the runs wastes the same work later, and retrying the oldest run tests an outdated commit.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci cancel superseded runs"
   },
   {
     "id": "at1-3-2-mcq-018",
@@ -701,7 +718,8 @@
       ]
     },
     "explanation": "Failure-triggered jobs run on the condition that a previous job failed, so the message appears exactly then. A success condition would stay silent on failures, running first has no result to report, and a nightly schedule is not tied to the failure.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci notify on failure only"
   },
   {
     "id": "at1-3-2-mcq-019",
@@ -740,7 +758,8 @@
       ]
     },
     "explanation": "A retried job may run twice against the same target, so it has to be idempotent. The runner choice, the speed and the logging do not affect whether a second run causes harm.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "idempotent deployment retries"
   },
   {
     "id": "at1-3-2-mcq-020",
@@ -779,7 +798,8 @@
       ]
     },
     "explanation": "Fail-fast ends the rest of the group as soon as one member fails. Allowed failure keeps everything running, retry adds more work, and a timeout cuts jobs by elapsed time rather than by a failure.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci fail fast matrix"
   },
   {
     "id": "at1-3-2-mcq-021",
@@ -818,7 +838,8 @@
       ]
     },
     "explanation": "A shell script ends with the status of its last command, and `echo` returns 0, so the earlier failure is lost. Nothing stops the script at the failing line without a stop-on-error setting, the shell does not report the first non-zero status, and printing output does not skip a job.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "shell script exit status last command"
   },
   {
     "id": "at1-3-2-mcq-022",
@@ -857,7 +878,8 @@
       ]
     },
     "explanation": "A timeout ends a hung job and returns the runner to the pool. Retries repeat the hang, more memory does not release a lock, and allowing failure does not stop the job from holding the runner.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci job timeout hung"
   },
   {
     "id": "at1-3-2-mcq-023",
@@ -896,7 +918,8 @@
       ]
     },
     "explanation": "Running the scan on each pull request returns findings while the change is still cheap to fix. Weekly, post-deployment and tag-only scans find problems after the code has merged or shipped.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sast scan pull request"
   },
   {
     "id": "at1-3-2-mcq-024",
@@ -935,7 +958,8 @@
       ]
     },
     "explanation": "A severity threshold blocks the worst new problems while keeping the remaining findings visible for later work. Failing on every severity blocks all changes, disabling the scanner stops the protection, and hiding the report removes the visibility.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "vulnerability severity threshold gate"
   },
   {
     "id": "at1-3-2-mcq-025",
@@ -974,7 +998,8 @@
       ]
     },
     "explanation": "Anyone who cloned the repository or can read its history already has the key, so it must be revoked and replaced. Deleting it from the newest commit, renaming the file or rescanning does not make the old value safe.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "leaked credentials git history revoke"
   },
   {
     "id": "at1-3-2-mcq-026",
@@ -1015,7 +1040,8 @@
     "explanation": "An SBOM lists the components inside a build, so an announcement can be matched to affected releases quickly. It does not encrypt artifacts, report test results, or change dependencies.",
     "acronyms": [
       "SBOM"
-    ]
+    ],
+    "searchTerm": "sbom benefits security"
   },
   {
     "id": "at1-3-2-mcq-027",
@@ -1054,7 +1080,8 @@
       ]
     },
     "explanation": "The image has not changed, but knowledge about its components has, so a later scan can find flaws that did not exist in the data in March. Results are a snapshot rather than a license that lapses, images are immutable by digest, and scanners do not have an age limit.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "container image rescanning schedule"
   },
   {
     "id": "at1-3-2-mcq-028",
@@ -1095,7 +1122,8 @@
     "explanation": "A container image fixes the toolchain, so results do not depend on what is installed on the runner. Containers do not remove network needs, are not inherently faster, and do not change which tests run.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci build inside container image"
   },
   {
     "id": "at1-3-2-mcq-029",
@@ -1134,7 +1162,8 @@
       ]
     },
     "explanation": "A floating tag points to different images over time, so pinning restores repeatability. Cache size, a silent repository change and image age do not explain a failure that started with no change to the code.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "docker latest tag risks"
   },
   {
     "id": "at1-3-2-mcq-030",
@@ -1173,7 +1202,8 @@
       ]
     },
     "explanation": "A throwaway container gives each job a fresh database and leaves nothing behind. A shared instance carries state between jobs, manual installs drift, and production data should not be used for tests.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ephemeral database containers testing"
   },
   {
     "id": "at1-3-2-mcq-031",
@@ -1212,7 +1242,8 @@
       ]
     },
     "explanation": "A layer is reused only if everything before it is unchanged, so the slow install must come before the frequently edited source. `FROM` must be first, a second install adds work, and `ADD` invalidates the cache the same way as `COPY`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dockerfile layer caching order"
   },
   {
     "id": "at1-3-2-mcq-032",
@@ -1253,7 +1284,8 @@
     "explanation": "A linter is a static check of the code against a rule set. Running the program is testing, timing it is benchmarking, and image scanning is a security check.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "linter ci purpose"
   },
   {
     "id": "at1-3-2-mcq-033",
@@ -1292,7 +1324,8 @@
       ]
     },
     "explanation": "A line can execute without any assertion on its output, so high coverage can sit beside weak tests. Tools do not inflate figures that way, they count source lines, and gates work alongside unit tests.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "code coverage limitations"
   },
   {
     "id": "at1-3-2-mcq-034",
@@ -1331,7 +1364,8 @@
       ]
     },
     "explanation": "Cyclomatic complexity is the number of decision points plus one, which equals the number of independent paths and a guide to how many tests the function needs. Line count, callers and run time are different measures.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "cyclomatic complexity meaning"
   },
   {
     "id": "at1-3-2-mcq-035",
@@ -1370,7 +1404,8 @@
       ]
     },
     "explanation": "A gate on new and changed code stops the problem growing and lets old code improve gradually. A whole-codebase threshold would fail every change at once, removing the report loses the signal, and checking only at release time is too late.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "quality gate new code"
   },
   {
     "id": "at1-3-2-mcq-036",
@@ -1412,7 +1447,8 @@
     "acronyms": [
       "AI",
       "CI"
-    ]
+    ],
+    "searchTerm": "ai log analysis ci"
   },
   {
     "id": "at1-3-2-mcq-037",
@@ -1453,7 +1489,8 @@
     "explanation": "Anomaly detection learns what normal output looks like and highlights departures, which a keyword rule cannot do. It still complements rules rather than replacing them, it worked from log data, and job names do not carry the pattern.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "anomaly detection build logs"
   },
   {
     "id": "at1-3-2-mcq-038",
@@ -1501,7 +1538,8 @@
       ]
     },
     "explanation": "Transient infrastructure faults often disappear on a second attempt, so a mirror timeout and a lost connection suit retries. A failing assertion, a lint finding, a compile error and a scan finding are deterministic and will fail again until the code changes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "transient ci failures retry"
   },
   {
     "id": "at1-3-2-mcq-039",
@@ -1545,7 +1583,8 @@
       ]
     },
     "explanation": "Sequencing is needed when one job needs the other's output or when its outcome gates the next. Different operating systems, shared read-only inputs and different durations do not create a dependency.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sequential jobs reasons"
   },
   {
     "id": "at1-3-2-mcq-040",
@@ -1589,7 +1628,8 @@
       ]
     },
     "explanation": "Tuning rules and documenting reviewed suppressions remove noise while keeping an audit trail. Excluding the source, lowering all severities and hiding reports would also hide genuine findings.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "false positive scanner tuning"
   },
   {
     "id": "at1-3-2-mcq-041",
@@ -1633,7 +1673,8 @@
       ]
     },
     "explanation": "Run-time injection and a build-time secret mount both keep the value out of the stored layers. A deleted token stays in the earlier layer, and `ENV` lines and a copied `.env` file are stored in the image.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "docker secrets build layers"
   },
   {
     "id": "at1-3-2-mcq-042",
@@ -1677,7 +1718,8 @@
       ]
     },
     "explanation": "Complexity and duplication in changed code are direct quality measures. Commit frequency, total size and header comments say little about the quality of a change.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "quality gates pull requests"
   },
   {
     "id": "at1-3-2-mcq-043",
@@ -1723,7 +1765,8 @@
     "explanation": "Plausible but wrong explanations need human verification, and sensitive content in logs needs redaction before leaving the organization. These tools are built to read text logs, need no change to the source code, and are most useful on failed runs.",
     "acronyms": [
       "AI"
-    ]
+    ],
+    "searchTerm": "ai log analysis limitations"
   },
   {
     "id": "at1-3-2-mcq-044",
@@ -1772,7 +1815,8 @@
       ]
     },
     "explanation": "Each of the first three pairs has a later job that needs something the earlier job creates. The lint job and documentation build, the two separate suites and the license and spell checks share nothing and can run side by side.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci job dependencies needs"
   },
   {
     "id": "at1-3-2-terminal-001",
@@ -1981,7 +2025,8 @@
     },
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "docker run rm bind mount"
   },
   {
     "id": "at1-3-2-config-001",
@@ -2106,7 +2151,8 @@
       "preview": "`deploy-preview` runs only after the tests it depends on have passed.",
       "destroy": "Cleanup must run on success and on failure, or preview environments are left behind."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci pipeline job dependencies design"
   },
   {
     "id": "at1-3-2-order-001",
@@ -2169,7 +2215,8 @@
     },
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci pipeline stage order"
   },
   {
     "id": "at1-3-2-data-001",
@@ -2317,7 +2364,8 @@
       "slack": "`unit-tests` ends at minute 10 and `image-scan` starts at 5, so it can take 5 minutes instead of 3: 2 extra minutes.",
       "skip": "`package` needs `image-scan`, so it is skipped; `lint` and `unit-tests` do not depend on it."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci pipeline critical path"
   },
   {
     "id": "at1-3-2-diagram-001",
@@ -2450,7 +2498,8 @@
       "z3": "Packaging bundles the build only after the tests pass.",
       "z4": "A registry push stores the finished bundle for deployments, so it runs last; a rollback puts an older release back instead."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci pipeline stages jobs"
   },
   {
     "id": "at1-3-2-hotspot-001",
@@ -2584,7 +2633,8 @@
       "build": "`build-api` has no needs line and starts at once.",
       "package": "`package` uses the compiled output and needs passing tests, so both waits are real."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci needs unnecessary waiting"
   },
   {
     "id": "at1-3-2-match-001",
@@ -2663,7 +2713,8 @@
     },
     "acronyms": [
       "SAST"
-    ]
+    ],
+    "searchTerm": "sast sca secret scanning types"
   },
   {
     "id": "at1-3-2-buckets-001",
@@ -2738,6 +2789,7 @@
       "i5": "A path filter decides whether the job runs for a change.",
       "i6": "Waiting for output is a dependency on another job."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci workflow controls categories"
   }
 ]

@@ -38,7 +38,8 @@
     "explanation": "WinRM is the service Windows exposes for remote PowerShell sessions and automation. Syslog moves log messages rather than running commands, a message queue only stores messages for consumers, and a remote desktop session is interactive, so it does not suit an unattended run across 40 servers.",
     "acronyms": [
       "WinRM"
-    ]
+    ],
+    "searchTerm": "winrm powershell remoting"
   },
   {
     "id": "at1-2-2-mcq-002",
@@ -79,7 +80,8 @@
     "explanation": "Signing in with keys and running commands from a control node is remote execution, and SSH needs nothing beyond the SSH server Linux hosts already run, so it is agentless. Agent-based pull needs resident software on each host, a local script runs only on the machine where it is typed, and a queue-triggered function reacts to messages instead of connecting out.",
     "acronyms": [
       "SSH"
-    ]
+    ],
+    "searchTerm": "agentless configuration management ssh"
   },
   {
     "id": "at1-2-2-mcq-003",
@@ -118,7 +120,8 @@
       ]
     },
     "explanation": "When a command follows the host, `ssh` runs it on the remote host under the named user and returns the output to the local terminal. Without a command it would open a login shell, the command is not run locally first, and copying files is the job of `scp` or `sftp`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ssh remote command execution"
   },
   {
     "id": "at1-2-2-mcq-004",
@@ -162,7 +165,8 @@
       "HTTPS",
       "SSH",
       "WinRM"
-    ]
+    ],
+    "searchTerm": "winrm https port 5986"
   },
   {
     "id": "at1-2-2-mcq-005",
@@ -203,7 +207,8 @@
     "explanation": "An agent on each laptop starts the connection itself, so outbound-only firewalls are no obstacle and the laptop applies its settings the moment it is online. Inbound SSH sessions are blocked, a nightly push misses laptops that are offline, and a folder of scripts depends on staff remembering to run it.",
     "acronyms": [
       "SSH"
-    ]
+    ],
+    "searchTerm": "agent pull model firewall outbound"
   },
   {
     "id": "at1-2-2-mcq-006",
@@ -242,7 +247,8 @@
       ]
     },
     "explanation": "Resident agents add software to every managed host that must be installed, patched and protected. Agents run unattended, they usually report the host state back, and they are commonly used for very large fleets.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "agent based management drawbacks"
   },
   {
     "id": "at1-2-2-mcq-007",
@@ -290,7 +296,8 @@
       "DNS",
       "SSH",
       "WinRM"
-    ]
+    ],
+    "searchTerm": "remote execution transports ssh winrm"
   },
   {
     "id": "at1-2-2-mcq-008",
@@ -329,7 +336,8 @@
       ]
     },
     "explanation": "`bg` resumes the suspended job in the background so the prompt is free. `fg` would bring it back to the foreground, `jobs` only lists jobs, and `wait` blocks the prompt until the job finishes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash suspend job bg command"
   },
   {
     "id": "at1-2-2-mcq-009",
@@ -368,7 +376,8 @@
       ]
     },
     "explanation": "The trailing `&` started job 1 in the background, where it keeps running. Ctrl+Z suspended job 2, which `jobs` lists as stopped. Neither job is in the foreground, and job 1 was never suspended.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash job control jobs command"
   },
   {
     "id": "at1-2-2-mcq-010",
@@ -409,7 +418,8 @@
     "explanation": "When a terminal closes, the shell sends a hangup signal to its jobs, and `nohup` makes the command ignore it. Running `fg` returns the job to the foreground where it is still tied to the session, and `bg` and `jobs` take job numbers rather than a command to start.",
     "acronyms": [
       "SSH"
-    ]
+    ],
+    "searchTerm": "nohup background job hangup"
   },
   {
     "id": "at1-2-2-mcq-011",
@@ -448,7 +458,8 @@
       ]
     },
     "explanation": "`Start-Job` launches the work as a background job. `Get-Job` lists existing jobs, `Wait-Job` blocks until a job finishes, and `Receive-Job` collects the output of a job.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "powershell start-job background"
   },
   {
     "id": "at1-2-2-mcq-012",
@@ -492,7 +503,8 @@
       ]
     },
     "explanation": "An agent proves its identity to the server with its own key or certificate, so the server never signs in to the hosts, and the agent can keep reporting whether its host matches the desired state. Agent-based management does require installed software, the server keeps every host's settings centrally, and hosts check in on their own schedule rather than all at once.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "agent based management advantages"
   },
   {
     "id": "at1-2-2-mcq-013",
@@ -531,7 +543,8 @@
       ]
     },
     "explanation": "A declarative definition describes the result and leaves the steps to the tool. Listing commands in order is imperative, numbered change scripts describe migrations, and running only on demand says nothing about how the configuration is written.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative vs imperative configuration"
   },
   {
     "id": "at1-2-2-mcq-014",
@@ -570,7 +583,8 @@
       ]
     },
     "explanation": "The append operator `>>` adds the line on every run, so an imperative step like this one is not safe to repeat. The shell does not detect duplicates, `>` rather than `>>` would replace the file, and appending to an existing file does not raise an error.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash append vs overwrite redirect"
   },
   {
     "id": "at1-2-2-mcq-015",
@@ -609,7 +623,8 @@
       ]
     },
     "explanation": "The `-p` option creates the directory only if needed and succeeds when it already exists, which makes the step idempotent. `-m` sets a mode and `--verbose` prints a message, but both still fail on an existing directory, and `-f` is not a `mkdir` option.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "idempotent mkdir -p"
   },
   {
     "id": "at1-2-2-mcq-016",
@@ -648,7 +663,8 @@
       ]
     },
     "explanation": "A declarative tool compares the real state with the stated end state and closes only the gap, which is one missing server. It does not add the full count again, it does not ignore the difference, and reapplying an unchanged definition is a normal, safe action.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative tool reconciliation drift"
   },
   {
     "id": "at1-2-2-mcq-017",
@@ -687,7 +703,8 @@
       ]
     },
     "explanation": "Ordered change scripts plus a record of what has run are the core of versioned migrations. A snapshot replacement would discard existing data, a pull agent reads a desired state rather than numbered scripts, and an ephemeral environment is about short-lived infrastructure.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "database schema migration versioned scripts"
   },
   {
     "id": "at1-2-2-mcq-018",
@@ -726,7 +743,8 @@
       ]
     },
     "explanation": "Applied migrations are treated as history, so new changes go into a new, higher-numbered migration. Editing the old file, deleting its history row or disabling validation would let production and the migration record disagree, and could rerun statements that already ran.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "database migration checksum mismatch"
   },
   {
     "id": "at1-2-2-mcq-019",
@@ -770,7 +788,8 @@
       ]
     },
     "explanation": "A declarative definition states the end state, so the tool can compare it with reality, change only the difference and be rerun safely. Steps in a fixed order, guard checks written by hand and changes that pile up from run to run are traits of imperative scripts.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative vs imperative definitions"
   },
   {
     "id": "at1-2-2-mcq-020",
@@ -815,7 +834,8 @@
       ]
     },
     "explanation": "Ephemeral environments are created from code, start from a known baseline and are removed when their purpose is done. Long-lived data patched by hand and months of shared use describe persistent environments.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ephemeral environments characteristics"
   },
   {
     "id": "at1-2-2-mcq-021",
@@ -854,7 +874,8 @@
       ]
     },
     "explanation": "An environment built for one change is meant to be ephemeral, so it should be destroyed when the change is done. Without that cleanup, unused environments keep running and keep costing money. Each new environment is still built fresh from code, so its baseline has not drifted; separate test environments do not touch production data; and leftover environments do not undo merged code.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ephemeral environment cleanup cost"
   },
   {
     "id": "at1-2-2-mcq-022",
@@ -893,7 +914,8 @@
       ]
     },
     "explanation": "Persistent environments collect hand-made changes, so they drift away from what the code would build, and fresh hosts expose the difference. Foreground versus background has no bearing on test results, declarative definitions can describe staging, and user counts do not explain a failure on freshly built hosts.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "snowflake servers configuration drift"
   },
   {
     "id": "at1-2-2-mcq-023",
@@ -932,7 +954,8 @@
       ]
     },
     "explanation": "In a push model the central controller initiates the connection and sends the change when told to. Pull has each host initiate, event-driven work starts from a message, and local work happens on one machine.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "push model configuration management"
   },
   {
     "id": "at1-2-2-mcq-024",
@@ -971,7 +994,8 @@
       ]
     },
     "explanation": "Because each host checks in on a schedule and converges, drift is repaired without an operator starting anything. Hosts check in at different moments, a pull model needs a resident service, and hosts initiate the connection so the server needs no inbound access.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pull model configuration agent"
   },
   {
     "id": "at1-2-2-mcq-025",
@@ -1013,7 +1037,8 @@
     "acronyms": [
       "SSH",
       "WinRM"
-    ]
+    ],
+    "searchTerm": "push vs pull provisioning devices firewall"
   },
   {
     "id": "at1-2-2-mcq-026",
@@ -1057,7 +1082,8 @@
       ]
     },
     "explanation": "A queue stores messages until they are handled, so consumers can restart or lag, and several workers can read from it to share the work. Waiting for a reply, tracking consumer addresses and zero delay are not what a queue provides; it decouples the two sides, so messages can wait until a consumer is ready.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "message queue benefits decoupling"
   },
   {
     "id": "at1-2-2-mcq-027",
@@ -1096,7 +1122,8 @@
       ]
     },
     "explanation": "Push changes only the hosts that are reachable when the run happens, so missed hosts wait for a later run. Hosts do not fetch the patch on their own in a pure push model, redelivery needs additional logic, and the patched hosts keep their patch.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "push model offline hosts"
   },
   {
     "id": "at1-2-2-mcq-028",
@@ -1135,7 +1162,8 @@
       ]
     },
     "explanation": "A service that announces each change so that interested services react is a notification-based event. A poll checks on a timer, a batch export runs at set times, and a manual review needs a person.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "event notification pattern storage"
   },
   {
     "id": "at1-2-2-mcq-029",
@@ -1174,7 +1202,8 @@
       ]
     },
     "explanation": "A topic copies each event to every subscriber. With competing consumers each message goes to just one of them, and an hourly check or a `cron` job is polling rather than event delivery.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pub sub topic fanout"
   },
   {
     "id": "at1-2-2-mcq-030",
@@ -1213,7 +1242,8 @@
       ]
     },
     "explanation": "A queue absorbs bursts and lets senders and workers run at different speeds. It does not return the final result to the sender, it does not shorten each order's processing, and workers are still needed to read the messages.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "message queue load leveling"
   },
   {
     "id": "at1-2-2-mcq-031",
@@ -1252,7 +1282,8 @@
       ]
     },
     "explanation": "The message is removed only by the explicit delete call, so after the visibility timeout it returns to the queue for another attempt. This is at-least-once delivery, so `process` should be safe to run twice. Receiving does not delete it, and a queue hands messages to consumers rather than notifying subscribers.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sqs visibility timeout redelivery"
   },
   {
     "id": "at1-2-2-mcq-032",
@@ -1296,7 +1327,8 @@
       ]
     },
     "explanation": "Functions are started by events such as an upload or a queued message. Saving a file in an editor, a shell job ending and an agent refreshing its cache are local happenings that do not raise a cloud event.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "event driven function triggers"
   },
   {
     "id": "at1-2-2-mcq-033",
@@ -1335,7 +1367,8 @@
       ]
     },
     "explanation": "After a set number of failed receives, a dead-letter queue takes the message out of the main flow and keeps it for study. Endless retries keep blocking progress, deleting the message loses the evidence, and a larger size limit does not isolate the bad message.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dead letter queue"
   },
   {
     "id": "at1-2-2-mcq-034",
@@ -1376,7 +1409,8 @@
     "explanation": "Event-triggered code that scales automatically and bills per invocation is function as a service (FaaS). A persistent virtual machine runs and bills all the time and must be managed, an agent is software installed on a host, and a migration is an ordered database change.",
     "acronyms": [
       "FaaS"
-    ]
+    ],
+    "searchTerm": "function as a service serverless"
   },
   {
     "id": "at1-2-2-mcq-035",
@@ -1415,7 +1449,8 @@
       ]
     },
     "explanation": "Every instance has its own memory, and an instance that stops takes its count with it, so function code should be treated as stateless and keep totals in external storage. Python allows the global update, the handler runs once per event, and the returned value is passed back to the caller.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "serverless stateless functions global variables"
   },
   {
     "id": "at1-2-2-mcq-036",
@@ -1454,7 +1489,8 @@
       ]
     },
     "explanation": "A queue keeps each message until a consumer deletes it, so a queue subscribed to the topic stores the events while the service is down, and the service catches up when it returns. More subscribers do not help the one that is down, a topic that sent each event to one subscriber would starve the others, and a topic pushes events out rather than storing them for later polling.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pub sub subscriber dead letter queue"
   },
   {
     "id": "at1-2-2-terminal-001",
@@ -1554,7 +1590,8 @@
       "bg": "After the suspend, the `bg` command resumes job 2 in the background.",
       "nohup": "The `nohup` prefix makes the script ignore the hangup signal and the trailing ampersand backgrounds it."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash fg bg jobs job numbers"
   },
   {
     "id": "at1-2-2-config-001",
@@ -1682,7 +1719,8 @@
     "acronyms": [
       "SSH",
       "WinRM"
-    ]
+    ],
+    "searchTerm": "automation approach by workload"
   },
   {
     "id": "at1-2-2-order-001",
@@ -1743,7 +1781,8 @@
       "4": "The function writes the thumbnail before it finishes.",
       "5": "Deleting the message comes last, by the stated rule, so a failed run can be retried."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "event driven thumbnail pipeline"
   },
   {
     "id": "at1-2-2-data-001",
@@ -1893,7 +1932,8 @@
       "worst": "Orion is 12 / 240 = 5 percent, sirius 10 / 100 = 10 percent, lyra 24 / 160 = 15 percent.",
       "pushhosts": "Vega has 90 hosts and draco has 120, so 90 + 120 = 210; 500 is the pull hosts and 710 is every host."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "pull agent check in missed"
   },
   {
     "id": "at1-2-2-diagram-001",
@@ -2046,7 +2086,8 @@
       "z3": "A function is started per message, does its work and ends.",
       "z4": "A control node starts a push run and connects out to the hosts."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "event driven push automation flow"
   },
   {
     "id": "at1-2-2-hotspot-001",
@@ -2180,7 +2221,8 @@
       "user": "The `useradd` command fails when the account already exists.",
       "perms": "Setting the same mode again changes nothing."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash idempotent deploy script"
   },
   {
     "id": "at1-2-2-match-001",
@@ -2265,7 +2307,8 @@
       "FaaS",
       "SSH",
       "WinRM"
-    ]
+    ],
+    "searchTerm": "automation approaches agent ssh winrm"
   },
   {
     "id": "at1-2-2-buckets-001",
@@ -2336,6 +2379,7 @@
       "i5": "A setup torn down after one report is ephemeral.",
       "i6": "A file server holding user data long term is persistent."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ephemeral vs persistent environments"
   }
 ]

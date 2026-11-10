@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "The `if` block was opened with `then` and never closed, so Bash reaches the end of the file mid-block; `fi` closes it. `done` ends a loop, `esac` ends a `case`, and a brace ends a function, and none of those blocks were opened.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash unexpected end of file if"
   },
   {
     "id": "at1-1-4-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "The call to `sum(` on the second line has no closing parenthesis, so adding `)` fixes the parse error. A colon is needed only after statements such as `def` and `if`, moving `print` would change behavior but not close the bracket, and swapping `sum` for `len` leaves the bracket open.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python syntax error unclosed parenthesis"
   },
   {
     "id": "at1-1-4-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "Python compiles the file before running it, so the unindented body of the `if` raises `IndentationError` and no line executes. The `NameError` for `status` would only appear at run time, a comparison with a string is legal, and a bad block is an error rather than a warning.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python indentation error"
   },
   {
     "id": "at1-1-4-mcq-004",
@@ -153,7 +156,8 @@
       ]
     },
     "explanation": "The array expression opened with `@(` has no closing parenthesis, which the parser reports as a missing `)`. `foreach` is a valid keyword, `Write-Host` prints variables, and PowerShell variables do not need a declared type.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "powershell parse error array"
   },
   {
     "id": "at1-1-4-mcq-005",
@@ -194,7 +198,8 @@
     "explanation": "Strict JSON does not allow a comma after the last member, so the parser expects another key and complains. Numbers are written without quotes, the keys here already use double quotes, and an object correctly uses braces.",
     "acronyms": [
       "JSON"
-    ]
+    ],
+    "searchTerm": "json trailing comma"
   },
   {
     "id": "at1-1-4-mcq-006",
@@ -233,7 +238,8 @@
       ]
     },
     "explanation": "A Bash assignment has no spaces around `=`; with spaces, the shell treats `build` as a program name and passes `=` and the string as arguments. Case does not matter, `let` is only for arithmetic, and quote style does not change how the line is parsed.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash assignment spaces command not found"
   },
   {
     "id": "at1-1-4-mcq-007",
@@ -272,7 +278,8 @@
       ]
     },
     "explanation": "A single `=` assigns, which is not allowed in an `if` condition; `==` compares. Parentheses around the string, a `while` loop and an `else` branch do not change the assignment inside the condition.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python assignment in if condition"
   },
   {
     "id": "at1-1-4-mcq-008",
@@ -311,7 +318,8 @@
       ]
     },
     "explanation": "`set -u` makes expanding an unset variable an error, so the script stops with `unbound variable`. Without that option the value would be empty; Bash never prompts for it or invents a default.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash set -u unbound variable"
   },
   {
     "id": "at1-1-4-mcq-009",
@@ -350,7 +358,8 @@
       ]
     },
     "explanation": "The `:?` form aborts with an error when the variable is unset or empty. The `:-` form substitutes an empty default, `:+` expands to nothing when the variable is unset, and `=` assigns an empty value, so each of those still ends up as `/*`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash parameter expansion default error"
   },
   {
     "id": "at1-1-4-mcq-010",
@@ -389,7 +398,8 @@
       ]
     },
     "explanation": "A variable assigned inside a function is local to that call, so the final `print` finds no such name. The function is defined before it is called, `print` accepts integers, and Python has no `var` declaration.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python local variable scope function"
   },
   {
     "id": "at1-1-4-mcq-011",
@@ -428,7 +438,8 @@
       ]
     },
     "explanation": "Strict mode makes reading an unassigned variable an error. Reading it is not an error by default, so `$ErrorActionPreference` has nothing to act on, verbose output only prints extra messages, and the execution policy controls which scripts may start.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "powershell set-strictmode undefined variable"
   },
   {
     "id": "at1-1-4-mcq-012",
@@ -469,7 +480,8 @@
     "explanation": "A CI job starts a clean, non-interactive shell that never reads a developer's profile, so the value must be supplied through the job's variables or secrets. Committing a profile exposes credentials, the shebang does not supply values, and runner size is unrelated.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci job environment variables secrets"
   },
   {
     "id": "at1-1-4-mcq-013",
@@ -508,7 +520,8 @@
       ]
     },
     "explanation": "An assignment anywhere in a function makes the name local for the whole function, so reading it before assignment fails with `UnboundLocalError`. The module-level `attempts` does exist, so it is not a `NameError`, and nothing is printed because the exception stops the script. A `global attempts` line would fix it.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python unboundlocalerror causes"
   },
   {
     "id": "at1-1-4-mcq-014",
@@ -547,7 +560,8 @@
       ]
     },
     "explanation": "`set -o errexit`, the long form of `set -e`, exits when a command returns a non-zero status. `set -x` only traces commands, `noglob` disables filename expansion, and `allexport` marks every assigned variable for export.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash set -e errexit"
   },
   {
     "id": "at1-1-4-mcq-015",
@@ -586,7 +600,8 @@
       ]
     },
     "explanation": "Looking up a dictionary key that does not exist raises `KeyError`. `IndexError` is for positions in a list, `AttributeError` for missing object attributes, and `ValueError` for a right type with a bad value.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python keyerror dictionary"
   },
   {
     "id": "at1-1-4-mcq-016",
@@ -625,7 +640,8 @@
       ]
     },
     "explanation": "The most recent call is listed last, so the exception was raised on line 8 inside `run`. Line 14 only shows how the program got there, and the header line names no file location.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python traceback reading stack"
   },
   {
     "id": "at1-1-4-mcq-017",
@@ -664,7 +680,8 @@
       ]
     },
     "explanation": "The file lacks the execute permission, and `chmod +x` adds it. Mode `000` removes every permission, `touch` only updates the timestamp, and renaming the file does not change its mode.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "chmod execute permission script"
   },
   {
     "id": "at1-1-4-mcq-018",
@@ -703,7 +720,8 @@
       ]
     },
     "explanation": "`pipefail` makes a pipeline return the status of the last command that failed. `noclobber` stops redirection from overwriting files, `noglob` disables wildcards, and `noexec` stops commands from running at all.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash pipefail pipeline exit status"
   },
   {
     "id": "at1-1-4-mcq-019",
@@ -742,7 +760,8 @@
       ]
     },
     "explanation": "A missing file is a non-terminating error by default, and `-ErrorAction Stop` promotes it to a terminating one. Silencing the error hides it, `-WhatIf` only simulates the copy, and `-Verbose` adds messages without changing flow.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "powershell erroraction stop"
   },
   {
     "id": "at1-1-4-mcq-020",
@@ -783,7 +802,8 @@
     "explanation": "The CI environment is built fresh, so every library has to be declared in the dependency file that its install step reads. Committing installed packages bloats the repository, an older interpreter does not add a library, and a second import cannot find a module that is absent.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "python module not found ci"
   },
   {
     "id": "at1-1-4-mcq-021",
@@ -822,7 +842,8 @@
       ]
     },
     "explanation": "A detached state means `HEAD` refers to a commit directly, so new commits are not tracked by any branch. Staged merge files, a branch behind its upstream and a deleted remote branch each give a different message.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git detached head state"
   },
   {
     "id": "at1-1-4-mcq-022",
@@ -861,7 +882,8 @@
       ]
     },
     "explanation": "Creating a branch at the current commit gives the two new commits a name, so they stay reachable. Switching to `main` leaves them unreferenced, a stash only shelves uncommitted changes, and `fetch --prune` updates remote-tracking refs.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git branch from detached head"
   },
   {
     "id": "at1-1-4-mcq-023",
@@ -900,7 +922,8 @@
       ]
     },
     "explanation": "Git searches upward for a `.git` directory and finds none, so the command ran outside any repository. A corrupt index, a missing remote and a mismatched owner each produce other messages.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git not a git repository error"
   },
   {
     "id": "at1-1-4-mcq-024",
@@ -939,7 +962,8 @@
       ]
     },
     "explanation": "The remote holds commits the local branch lacks, so they must be integrated first. A forced push would discard the colleague's work, and amending or resetting the last commit does not bring the new remote commits in.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git push rejected fetch first"
   },
   {
     "id": "at1-1-4-mcq-025",
@@ -978,7 +1002,8 @@
       ]
     },
     "explanation": "The target branch differs in `app.conf`, so Git protects the uncommitted edits until they are committed or stashed. `git clean` removes only untracked files, a fetch changes no local files, and deleting the index wipes the staging area while leaving the edits in the way.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git switch local changes overwritten"
   },
   {
     "id": "at1-1-4-mcq-026",
@@ -1017,7 +1042,8 @@
       ]
     },
     "explanation": "Git refuses to join two histories with no common ancestor unless told to. `--no-ff` forces a merge commit, `--squash` collapses commits, and `--ff-only` requires a fast-forward, which cannot occur here.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git refusing unrelated histories"
   },
   {
     "id": "at1-1-4-mcq-027",
@@ -1056,7 +1082,8 @@
       ]
     },
     "explanation": "The section above `=======` comes from the current branch, here `main`, and the section below it comes from the branch being merged. The common ancestor's text is not shown in the default conflict style, and Git's own marker lines are the ones with angle brackets or equals signs.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git merge conflict markers explained"
   },
   {
     "id": "at1-1-4-mcq-028",
@@ -1095,7 +1122,8 @@
       ]
     },
     "explanation": "Staging the file tells Git the conflict is resolved, and the commit then records the merge. Committing first fails while the path is unmerged, aborting discards the merge, and `rebase --continue` belongs to a rebase.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git resolve merge conflict steps"
   },
   {
     "id": "at1-1-4-mcq-029",
@@ -1134,7 +1162,8 @@
       ]
     },
     "explanation": "`git merge --abort` restores the pre-merge state while a merge is in progress. `revert HEAD` would undo the previous commit, `merge --continue` finishes the merge instead of abandoning it, and `cherry-pick --abort` stops an operation that is not running.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git merge abort"
   },
   {
     "id": "at1-1-4-mcq-030",
@@ -1173,7 +1202,8 @@
       ]
     },
     "explanation": "During a merge, `--theirs` means the branch being merged in and `--ours` means the current branch. Checking out from `HEAD` also restores the current branch's copy, and `--conflict=merge` only recreates the conflict markers rather than choosing a version.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git checkout ours theirs merge"
   },
   {
     "id": "at1-1-4-mcq-031",
@@ -1215,7 +1245,8 @@
     "acronyms": [
       "HTTPS",
       "SSH"
-    ]
+    ],
+    "searchTerm": "github personal access token expiry"
   },
   {
     "id": "at1-1-4-mcq-032",
@@ -1256,7 +1287,8 @@
     "explanation": "The server accepted the connection but none of the offered keys matched a public key on the account. A changed host key produces a different warning, a read-only repository fails after login, and passphrases do not expire.",
     "acronyms": [
       "SSH"
-    ]
+    ],
+    "searchTerm": "ssh publickey permission denied git"
   },
   {
     "id": "at1-1-4-mcq-033",
@@ -1295,7 +1327,8 @@
       ]
     },
     "explanation": "A private key must be readable and writable only by its owner, which mode `600` gives. Mode `777` is wider still, changing the public key does not affect the private key's permissions, and an execute bit is irrelevant.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ssh private key file permissions"
   },
   {
     "id": "at1-1-4-mcq-034",
@@ -1337,7 +1370,8 @@
     "acronyms": [
       "HTTPS",
       "SSH"
-    ]
+    ],
+    "searchTerm": "git push 403 https token"
   },
   {
     "id": "at1-1-4-mcq-035",
@@ -1379,7 +1413,8 @@
     "acronyms": [
       "HTTPS",
       "SSH"
-    ]
+    ],
+    "searchTerm": "ssh host key changed warning"
   },
   {
     "id": "at1-1-4-mcq-036",
@@ -1423,7 +1458,8 @@
       "SSH",
       "URL",
       "CI"
-    ]
+    ],
+    "searchTerm": "git https remote ssh key"
   },
   {
     "id": "at1-1-4-mcq-037",
@@ -1471,7 +1507,8 @@
       ]
     },
     "explanation": "A missing colon and an unclosed bracket are syntax errors, found when Python parses the file. An out-of-range index, a missing path, an absent key and a division by zero can only be detected while the code runs.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python syntax error vs runtime error"
   },
   {
     "id": "at1-1-4-mcq-038",
@@ -1520,7 +1557,8 @@
       ]
     },
     "explanation": "Dividing by zero, opening a missing file and reading an absent key all fail while the program is running. A missing `fi`, a bad indent and an unclosed quote stop the script from being parsed.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python runtime errors examples"
   },
   {
     "id": "at1-1-4-mcq-039",
@@ -1564,7 +1602,8 @@
       ]
     },
     "explanation": "The markers must be removed by editing the file, and `git add` marks the path as resolved. Pushing, deleting the other branch and compacting the repository are not steps of the resolution.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git resolve merge conflict"
   },
   {
     "id": "at1-1-4-mcq-040",
@@ -1612,7 +1651,8 @@
       "HTTPS",
       "SSH",
       "TLS"
-    ]
+    ],
+    "searchTerm": "ssh verbose debugging publickey"
   },
   {
     "id": "at1-1-4-mcq-041",
@@ -1656,7 +1696,8 @@
       ]
     },
     "explanation": "`set -u` and strict mode both flag a variable that was read before it was assigned. `set -x` traces commands, silencing errors hides them, and `set -f` disables wildcard expansion.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash set -u strict mode"
   },
   {
     "id": "at1-1-4-mcq-042",
@@ -1700,7 +1741,8 @@
       ]
     },
     "explanation": "Switching to an existing branch or creating a new one at the current commit attaches `HEAD` to a branch. Viewing the log only reads data, `restore --staged` only unstages files, and checking out a commit hash leaves `HEAD` detached.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git reattach head to branch"
   },
   {
     "id": "at1-1-4-mcq-043",
@@ -1747,7 +1789,8 @@
     "explanation": "Expired, revoked and stale cached credentials all fail the login. A merge conflict and a detached `HEAD` concern the local working copy and cannot affect a clone.",
     "acronyms": [
       "HTTPS"
-    ]
+    ],
+    "searchTerm": "git https authentication failed causes"
   },
   {
     "id": "at1-1-4-terminal-001",
@@ -1879,7 +1922,8 @@
       "push": "The `-u` (or `--set-upstream`) flag publishes the branch and records `origin/retry-fix` as its upstream.",
       "verify": "Once `HEAD` is attached to `retry-fix`, `git status` begins with `On branch retry-fix`."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git detached head commit branch"
   },
   {
     "id": "at1-1-4-config-001",
@@ -1984,7 +2028,8 @@
       "place": "A variable must be assigned before the first line that reads it, and `tar` reads it on line 6.",
       "check": "The `-n` option reads and parses the commands without executing them; `-x` traces a real run, and `-u` runs the script with unset variables treated as errors."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash unbound variable set -u"
   },
   {
     "id": "at1-1-4-order-001",
@@ -2045,7 +2090,8 @@
       "4": "Staging tells Git each conflict is resolved.",
       "5": "The commit records the merge once every path is staged."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git merge conflict workflow"
   },
   {
     "id": "at1-1-4-data-001",
@@ -2223,7 +2269,8 @@
       "r5": "A file that does not exist is discovered only when the script tries to open it.",
       "count": "Rows 2, 4 and 5 are runtime errors, which makes 3."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python syntax error runtime error"
   },
   {
     "id": "at1-1-4-diagram-001",
@@ -2368,7 +2415,8 @@
       "z3": "A detached `HEAD` moves with each new commit and points at `c5`.",
       "z4": "A branch created at `c5` gives c4 and c5 a name so they stay reachable."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "git detached head commit graph"
   },
   {
     "id": "at1-1-4-hotspot-001",
@@ -2497,7 +2545,8 @@
       "src": "This source line reads `cfg[\"db\"]`, the key the error names, so it is the statement that raised the error.",
       "err": "The final line gives the exception type and the key that was not found."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python keyerror traceback"
   },
   {
     "id": "at1-1-4-match-001",
@@ -2591,7 +2640,8 @@
     "acronyms": [
       "HTTPS",
       "SSH"
-    ]
+    ],
+    "searchTerm": "git error messages causes"
   },
   {
     "id": "at1-1-4-buckets-001",
@@ -2666,6 +2716,7 @@
       "i5": "The missing file shows up only when the script tries to open it.",
       "i6": "Git rejects a push when the remote branch has commits the local branch lacks."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "python syntax errors versus runtime errors"
   }
 ]

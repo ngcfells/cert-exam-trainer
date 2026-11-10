@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "Drift is the gap that opens when live systems are changed outside their declared configuration, for example by a manual edit. An oversized file is a readability problem, a change released to a few servers at a time is a staged rollout, and a backup of settings is a recovery copy.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "configuration drift infrastructure"
   },
   {
     "id": "at1-2-1-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "The live edit is now the intended value, so the declared configuration must change to match; otherwise the next reapply would undo a correct fix. Reapplying the old declaration discards the fix, editing the state file changes neither the proxy nor the declaration, and silencing the report only hides the gap.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "configuration drift remediation"
   },
   {
     "id": "at1-2-1-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "State maps each declared definition to the real object that was created, with its identifiers and attributes, so the tool knows what to update or delete. User passwords are application data, commit history lives in source control, and approvals belong to the change process.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform state file purpose"
   },
   {
     "id": "at1-2-1-mcq-004",
@@ -153,7 +156,8 @@
       ]
     },
     "explanation": "A lock stops a second run from touching the shared record while the first is still working, so two runs cannot overwrite each other. Tags only label resources, a preview step shows planned changes without blocking overlap, and module outputs just pass values on.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform state locking"
   },
   {
     "id": "at1-2-1-mcq-005",
@@ -192,7 +196,8 @@
       ]
     },
     "explanation": "State often contains secret attributes as a side effect of tracking resources, so the storage should be encrypted and readable only by people and jobs that need it. Committing the file widens the audience, deleting it after each apply loses the record of what exists, and renaming it is obscurity, not protection.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform state file secrets"
   },
   {
     "id": "at1-2-1-mcq-006",
@@ -231,7 +236,8 @@
       ]
     },
     "explanation": "A crashed run can leave a stale lock, but releasing it while another run is live could let two applies collide, so the engineer checks first and then releases only that lock. Deleting the state loses track of real resources, many backends never expire a lock on their own, and disabling locking removes the protection when it matters most.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform force unlock stale lock"
   },
   {
     "id": "at1-2-1-mcq-007",
@@ -270,7 +276,8 @@
       ]
     },
     "explanation": "Reapplying makes the live values equal the desired column: `web-02` goes from large back to medium, and `db-01` retention goes from 7 to 14. Option a moves both the wrong way, toward the drifted values. `web-01` and `lb-01` already match, so they are untouched, and `db-01` also drifted, so leaving it alone would keep the gap.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "configuration drift detection desired state"
   },
   {
     "id": "at1-2-1-mcq-008",
@@ -309,7 +316,8 @@
       ]
     },
     "explanation": "Browsers can build a path to a trusted root only if the server also presents the intermediate that signed its certificate. The dates are already valid, so a longer validity does not help; the key's directory has no effect on chain building; and allow lists would hide the problem on only a few clients.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "tls certificate chain intermediate ca"
   },
   {
     "id": "at1-2-1-mcq-009",
@@ -350,7 +358,8 @@
     "explanation": "Automated renewal removes the manual step that was missed, and an expiry alert catches renewals that fail. Restarting nightly only reloads a certificate that is itself expired, pinning the old certificate makes clients fail harder after a change, and a shared drive does not change the expiry date.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "certificate expiry monitoring renewal"
   },
   {
     "id": "at1-2-1-mcq-010",
@@ -391,7 +400,8 @@
     "explanation": "A copied key can impersonate the service until its certificate stops being trusted, so the CA revokes it (it appears on the revocation list) and a replacement is issued on a fresh key pair. Renewing with the same key keeps the exposed key alive, deleting the file does not stop existing copies, and tightening permissions cannot undo a copy already taken.",
     "acronyms": [
       "CA"
-    ]
+    ],
+    "searchTerm": "compromised private key certificate revocation"
   },
   {
     "id": "at1-2-1-mcq-011",
@@ -432,7 +442,8 @@
     "explanation": "The request carries the public key and the identity details, and it is signed with the matching private key to prove possession; the private key itself stays with its owner. The issuing CA's name, the finished chain and revocation status all come from the CA later.",
     "acronyms": [
       "CA"
-    ]
+    ],
+    "searchTerm": "certificate signing request csr contents"
   },
   {
     "id": "at1-2-1-mcq-012",
@@ -473,7 +484,8 @@
     "explanation": "Clients trust only the roots in their trust store, so a certificate from a private CA fails until that CA's root is installed on each client. A longer key and a second certificate do not create trust, and a revocation list only matters after trust is established.",
     "acronyms": [
       "CA"
-    ]
+    ],
+    "searchTerm": "private ca root trust store"
   },
   {
     "id": "at1-2-1-mcq-013",
@@ -512,7 +524,8 @@
       ]
     },
     "explanation": "Clients compare the host name they used with the names inside the certificate, so the reissued certificate must list `shop.example.internal` as well. A different signer, a longer validity period or a bigger key leaves the list of names unchanged.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "tls certificate subject alternative name"
   },
   {
     "id": "at1-2-1-mcq-014",
@@ -551,7 +564,8 @@
       ]
     },
     "explanation": "A private key has to stay confidential, so a secrets store or a file with tight permissions limits who can read it. A repository copy is exposed to everyone with access, the client bundle holds public certificates only, and a status page would publish the key.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "private key storage certificate server"
   },
   {
     "id": "at1-2-1-mcq-015",
@@ -592,7 +606,8 @@
     "explanation": "Rules are checked from the lowest number up and stop at the first match. The address `10.4.7.9` falls inside `10.4.0.0/16`, so rule 10 denies it before the broader permit is reached. Rule 20 never gets a say, the rules are not both applied, and no ACL holds packets for an operator.",
     "acronyms": [
       "ACL"
-    ]
+    ],
+    "searchTerm": "acl rule order first match"
   },
   {
     "id": "at1-2-1-mcq-016",
@@ -635,7 +650,8 @@
       "ACL",
       "TCP",
       "UDP"
-    ]
+    ],
+    "searchTerm": "stateless firewall ephemeral ports return traffic"
   },
   {
     "id": "at1-2-1-mcq-017",
@@ -674,7 +690,8 @@
       ]
     },
     "explanation": "A `/26` has 64 addresses, 62 of them usable once the network and broadcast addresses are set aside, which covers 50 hosts. A `/27` gives only 30 usable and a `/28` gives 14. A `/25` gives 126, which fits but is larger than the smallest fit.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "subnet sizing cidr host count"
   },
   {
     "id": "at1-2-1-mcq-018",
@@ -713,7 +730,8 @@
       ]
     },
     "explanation": "The ranges `10.1.0.0/16` and `10.2.0.0/16` share no addresses. The range `10.1.128.0/17` lies inside `10.1.0.0/16`, `10.9.0.0/16` lies inside `10.0.0.0/8`, and `192.168.0.128/25` is the top half of `192.168.0.0/24`, so each of those pairs overlaps and routing between them would be ambiguous.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "cidr overlapping address ranges"
   },
   {
     "id": "at1-2-1-mcq-019",
@@ -752,7 +770,8 @@
       ]
     },
     "explanation": "A subnet is public when its route table sends internet-bound traffic to an internet gateway; without that route it is private. Address range size, host names and one open port do not decide whether the subnet can reach the internet.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "public subnet internet gateway route"
   },
   {
     "id": "at1-2-1-mcq-020",
@@ -791,7 +810,8 @@
       ]
     },
     "explanation": "A `/26` holds 64 addresses, so `10.20.5.64/26` covers `.64` to `.127` and includes `.77`. The block `10.20.5.0/26` ends at `.63`, `10.20.5.128/26` starts at `.128`, and `10.20.6.0/24` has a different third octet.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "cidr subnet membership calculation"
   },
   {
     "id": "at1-2-1-mcq-021",
@@ -830,7 +850,8 @@
       ]
     },
     "explanation": "Routers choose the longest matching prefix, and `10.20.0.0/16` is more specific than `10.0.0.0/8` or the default route. List order and breadth of coverage do not decide, and the default route is used only when nothing more specific matches.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "longest prefix match routing"
   },
   {
     "id": "at1-2-1-mcq-022",
@@ -871,7 +892,8 @@
     "explanation": "Outbound-only access from private hosts needs a default route toward a gateway that translates their private addresses (network address translation), because they have no direct internet route. Inbound port 22 is for remote login, moving the database tier would expose it, and the lifetime of DNS records does not affect routing.",
     "acronyms": [
       "DNS"
-    ]
+    ],
+    "searchTerm": "private subnet nat gateway outbound"
   },
   {
     "id": "at1-2-1-mcq-023",
@@ -912,7 +934,8 @@
     "explanation": "Peering joins the networks, but packets still follow route tables, so each side needs an entry that sends the other side's range over the peering link. A second internet gateway or a bigger range changes nothing about this path, and a zone transfer copies DNS data, not packets.",
     "acronyms": [
       "DNS"
-    ]
+    ],
+    "searchTerm": "vpc peering route tables"
   },
   {
     "id": "at1-2-1-mcq-024",
@@ -951,7 +974,8 @@
       ]
     },
     "explanation": "The check passes while the application cannot do its job, so it should exercise the dependencies the service needs and report failure when they are down. Faster checks, more instances and a port probe all still treat a running process as healthy.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "load balancer health check design"
   },
   {
     "id": "at1-2-1-mcq-025",
@@ -990,7 +1014,8 @@
       ]
     },
     "explanation": "Three consecutive failures at 10-second intervals take at most about 30 seconds (as little as 20, depending on where the failure falls between probes). A single probe or the interval alone would remove the instance too early, and 60 seconds would need six failures.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "load balancer health check thresholds"
   },
   {
     "id": "at1-2-1-mcq-026",
@@ -1029,7 +1054,8 @@
       ]
     },
     "explanation": "The least-connections algorithm sends each new request to the instance with the fewest active ones, which evens out uneven request lengths. Source hashing pins clients to instances, alphabetical rotation is just another fixed cycle, and hourly random selection does not track load.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "load balancing least connections algorithm"
   },
   {
     "id": "at1-2-1-mcq-027",
@@ -1070,7 +1096,8 @@
     "explanation": "A `/32` names exactly one host and port 22 is `ssh`, so the rule admits only the bastion. The range `0.0.0.0/0` admits everyone, a `/16` admits 65,536 addresses, and port 3389 is remote desktop, not `ssh`.",
     "acronyms": [
       "TCP"
-    ]
+    ],
+    "searchTerm": "bastion host ssh firewall rule"
   },
   {
     "id": "at1-2-1-mcq-028",
@@ -1111,7 +1138,8 @@
     "explanation": "`AAAA` records hold IPv6 addresses. An `A` record holds an IPv4 address, `MX` names the mail server for a domain, and `CNAME` makes one name an alias of another.",
     "acronyms": [
       "DNS"
-    ]
+    ],
+    "searchTerm": "dns record types aaaa"
   },
   {
     "id": "at1-2-1-mcq-029",
@@ -1150,7 +1178,8 @@
       ]
     },
     "explanation": "A caching server may keep an answer until its time to live runs out, so with a one-day lifetime it can serve the old address for hours after the change. A firewall would not alter the answer it gives, records can be edited at any time, and a `PTR` record belongs to reverse lookups and is not needed for a forward change.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dns ttl caching resolver"
   },
   {
     "id": "at1-2-1-mcq-030",
@@ -1191,7 +1220,8 @@
     "explanation": "`dig` queries a name server directly and ignores the local `hosts` file, while `curl` uses the system resolver, which reads that file first. An old entry there pins the name to the old server on that workstation alone. A low lifetime would speed up changes, a wrong mask breaks local reachability, and a failing health check affects balancer targets rather than one machine's lookup.",
     "acronyms": [
       "DNS"
-    ]
+    ],
+    "searchTerm": "hosts file dns resolution order"
   },
   {
     "id": "at1-2-1-mcq-031",
@@ -1242,7 +1272,8 @@
     "explanation": "A client confirms that the certificate covers the host name it requested, that the chain ends at a CA in its trust store, and that today falls inside the validity dates. Response time and the issuing country play no part, and a private key is never sent to a client.",
     "acronyms": [
       "CA"
-    ]
+    ],
+    "searchTerm": "tls certificate validation steps"
   },
   {
     "id": "at1-2-1-mcq-032",
@@ -1286,7 +1317,8 @@
       ]
     },
     "explanation": "Encrypted shared storage and tight read access keep secrets in the state away from people who do not need them. A public repository and emailed copies spread them, and deleting the state after each run loses the record of which real resources exist.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "protect terraform state sensitive data"
   },
   {
     "id": "at1-2-1-mcq-033",
@@ -1334,7 +1366,8 @@
       ]
     },
     "explanation": "Drift is closed either by pushing the declared values back onto the system or by accepting the live values into the declaration. Deleting the report, renaming resources, disabling the comparison and restarting systems all leave the live settings and the declaration different.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "configuration drift resolution options"
   },
   {
     "id": "at1-2-1-mcq-034",
@@ -1380,7 +1413,8 @@
     "explanation": "Least privilege here means one source, one port, and a default deny for the rest. Opening 5432 to every address, opening every port to the app subnet, and allowing remote login from anywhere each grant more than the application needs.",
     "acronyms": [
       "TCP"
-    ]
+    ],
+    "searchTerm": "least privilege firewall rules database"
   },
   {
     "id": "at1-2-1-mcq-035",
@@ -1428,7 +1462,8 @@
       ]
     },
     "explanation": "A path that exercises dependencies reports real health, and requiring consecutive failures avoids removing instances over one blip. An open port, a cached static page and a daily probe say little about current health, and removing an instance after one slow reply makes the pool flap.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "load balancer health check reliability"
   },
   {
     "id": "at1-2-1-mcq-036",
@@ -1472,7 +1507,8 @@
       ]
     },
     "explanation": "Separate subnets allow different routes and different filtering per tier, which keeps the database off the internet path. Splitting a network does not add addresses, traffic between subnets still crosses a router, and encryption has to be configured separately.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "network segmentation web database tiers"
   },
   {
     "id": "at1-2-1-terminal-001",
@@ -1601,7 +1637,8 @@
       "s3": "A short lifetime set ahead of the move means caches expire quickly when the record changes.",
       "s4": "The `-x` option turns an address into a reverse lookup, and `+short` trims the output."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dns ttl stale record cache"
   },
   {
     "id": "at1-2-1-config-001",
@@ -1728,7 +1765,8 @@
     },
     "acronyms": [
       "HTTPS"
-    ]
+    ],
+    "searchTerm": "firewall rule ordering deny allow"
   },
   {
     "id": "at1-2-1-order-001",
@@ -1791,7 +1829,8 @@
     },
     "acronyms": [
       "CA"
-    ]
+    ],
+    "searchTerm": "certificate renewal zero downtime"
   },
   {
     "id": "at1-2-1-data-001",
@@ -1947,7 +1986,8 @@
       "risk": "Opening the app tier port to `0.0.0.0/0` exposes it beyond the web subnet.",
       "fix": "The declared source is the intended one, so reapplying it removes the exposure."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "configuration drift report"
   },
   {
     "id": "at1-2-1-diagram-001",
@@ -2104,7 +2144,8 @@
     },
     "acronyms": [
       "DNS"
-    ]
+    ],
+    "searchTerm": "public and private subnet design"
   },
   {
     "id": "at1-2-1-hotspot-001",
@@ -2240,7 +2281,8 @@
       "ACL",
       "TCP",
       "UDP"
-    ]
+    ],
+    "searchTerm": "acl rule evaluation order"
   },
   {
     "id": "at1-2-1-match-001",
@@ -2330,7 +2372,8 @@
     "acronyms": [
       "DNS",
       "IP"
-    ]
+    ],
+    "searchTerm": "dns record types purpose"
   },
   {
     "id": "at1-2-1-buckets-001",
@@ -2401,6 +2444,7 @@
       "i5": "Administrators reach the bastion from outside, so it needs the public routing.",
       "i6": "Private hosts go out through a translation gateway instead of a direct route."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "public subnet private subnet traits"
   }
 ]

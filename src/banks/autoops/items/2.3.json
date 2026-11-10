@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "A `201 Created` reply carries `Location` with the address of the new resource. `Content-Type` names the format of a body, `Authorization` carries credentials, and `Retry-After` tells a client how long to wait before trying again.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 201 created location header"
   },
   {
     "id": "at1-2-3-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "`202 Accepted` means the work was queued, and the status page is where the client checks progress. A finished export would be a `200` or `201` with the result, a duplicate would be a `409`, and the server does not schedule repeats on its own.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 202 accepted status"
   },
   {
     "id": "at1-2-3-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "`404` says nothing exists at the requested path. An expired token gives `401`, a server fault gives a `5XX` code, and an unsupported method gives `405`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 404 not found meaning"
   },
   {
     "id": "at1-2-3-mcq-004",
@@ -155,7 +158,8 @@
     "explanation": "The body is JSON but the `Content-Type` header says plain text, so the service refuses the media type. Changing the method or adding `Accept` leaves the mismatch in place, and `Retry-After` is a response header.",
     "acronyms": [
       "JSON"
-    ]
+    ],
+    "searchTerm": "http 415 unsupported media type"
   },
   {
     "id": "at1-2-3-mcq-005",
@@ -194,7 +198,8 @@
       ]
     },
     "explanation": "`PUT` is idempotent: it replaces the resource at one address with the supplied body, so repeats leave the same state. It does not create copies, toggle the result, or lock anything.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http put idempotent"
   },
   {
     "id": "at1-2-3-mcq-006",
@@ -233,7 +238,8 @@
       ]
     },
     "explanation": "`401` means credentials are missing or not valid. `403` is for a known identity that lacks permission, `404` means no such resource, and `405` says the method is not supported on that path.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 401 vs 403"
   },
   {
     "id": "at1-2-3-mcq-007",
@@ -272,7 +278,8 @@
       ]
     },
     "explanation": "`403` means the request was understood and the caller was identified, but the action is not allowed. A missing or expired token gives `401`, a missing order gives `404`, and an unreachable database gives a `5XX` code.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 403 forbidden meaning"
   },
   {
     "id": "at1-2-3-mcq-008",
@@ -313,7 +320,8 @@
     "explanation": "Codes from `500` to `599` are server errors. `2XX` is success, `3XX` tells the client to look elsewhere, and `4XX` blames the request.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "http 5xx server error classes"
   },
   {
     "id": "at1-2-3-mcq-009",
@@ -354,7 +362,8 @@
     "explanation": "A body that cannot be parsed is a malformed request, which is `400`. `413` is for a body over the size limit, `405` means the method is not supported on the path, and `503` means the service cannot take requests right now.",
     "acronyms": [
       "JSON"
-    ]
+    ],
+    "searchTerm": "http 400 bad request malformed"
   },
   {
     "id": "at1-2-3-mcq-010",
@@ -393,7 +402,8 @@
       ]
     },
     "explanation": "`409` signals that the request clashes with the current state of the resource set. `401` is about credentials, `405` would mean `POST` is not supported on the path, and `503` is a temporary service fault.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 409 conflict"
   },
   {
     "id": "at1-2-3-mcq-011",
@@ -432,7 +442,8 @@
       ]
     },
     "explanation": "`405` plus `Allow` lists the methods the path does support. A missing path is `404`, a permission problem is `403`, and a busy server returns `503`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 405 method not allowed"
   },
   {
     "id": "at1-2-3-mcq-012",
@@ -471,7 +482,8 @@
       ]
     },
     "explanation": "`Retry-After` states how long to pause before another attempt, so the job waits and retries. Hammering the endpoint or changing method does not lift a rate limit, and the order itself is not at fault. A fresh token does not lift a rate limit either.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 429 retry after"
   },
   {
     "id": "at1-2-3-mcq-013",
@@ -510,7 +522,8 @@
       ]
     },
     "explanation": "`504` comes from an intermediary that waited too long for an upstream reply. An oversized body gives `413`, a scope problem gives `403`, and a moved path gives a `3XX` code.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 504 gateway timeout"
   },
   {
     "id": "at1-2-3-mcq-014",
@@ -549,7 +562,8 @@
       ]
     },
     "explanation": "By default `curl` does not follow a `301`, so it shows the empty redirect body. `-L` follows `Location` to the new address. The method is already `GET`, `-I` asks for headers only, and `-k` concerns certificates, not redirects.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "curl include response headers"
   },
   {
     "id": "at1-2-3-mcq-015",
@@ -588,7 +602,8 @@
       ]
     },
     "explanation": "`304` tells the client its stored version still matches the server's `ETag`, so it reuses the cache. It does not mean the resource moved or was removed, and `If-Match` is for conditional writes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 304 not modified etag"
   },
   {
     "id": "at1-2-3-mcq-016",
@@ -627,7 +642,8 @@
       ]
     },
     "explanation": "The second `If-Match` no longer matches the current tag, so the condition fails and the service refuses the write with `412`. `428` applies when a client omits the condition, `304` answers conditional reads, and the credentials were never the problem.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http etag if-match optimistic concurrency"
   },
   {
     "id": "at1-2-3-mcq-017",
@@ -668,7 +684,8 @@
     "explanation": "`204` means success with no body, so there is nothing to parse after the headers. A reply that returns the deleted record or a message would use a `200` instead, and a link to a next page belongs to a list reply.",
     "acronyms": [
       "JSON"
-    ]
+    ],
+    "searchTerm": "http 204 no content"
   },
   {
     "id": "at1-2-3-mcq-018",
@@ -709,7 +726,8 @@
     "explanation": "Idempotency is about the effect on the server, not the status code: after one or many calls the session is gone. The RFC lists `DELETE` as idempotent, and nothing requires the repeat to return the same code.",
     "acronyms": [
       "RFC"
-    ]
+    ],
+    "searchTerm": "http delete idempotent status codes"
   },
   {
     "id": "at1-2-3-mcq-019",
@@ -748,7 +766,8 @@
       ]
     },
     "explanation": "Bearer tokens travel in `Authorization: Bearer <token>`. `Content-Type` and `Accept` describe formats, and `Location` is a response header that a client cannot send.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bearer token authorization header"
   },
   {
     "id": "at1-2-3-mcq-020",
@@ -787,7 +806,8 @@
       ]
     },
     "explanation": "`-u` builds a `Basic` `Authorization` header from the pair. `-d` sets a request body, `-o` names an output file, and `-X` sets the method.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "curl basic auth user password"
   },
   {
     "id": "at1-2-3-mcq-021",
@@ -826,7 +846,8 @@
       ]
     },
     "explanation": "`-I` sends a `HEAD` request, so only headers come back. `-i` prints headers followed by the body, `-s` hides the progress meter but still prints the body, and `-L` follows redirects.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "curl head request headers only"
   },
   {
     "id": "at1-2-3-mcq-022",
@@ -865,7 +886,8 @@
       ]
     },
     "explanation": "`curl` exits with success whenever it receives any reply unless `--fail` (`-f`) turns `400` and above into a failing exit code. `--include` only adds the headers to the output, `--location` follows redirects, and `--insecure` skips certificate checks.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "curl fail on http error"
   },
   {
     "id": "at1-2-3-mcq-023",
@@ -904,7 +926,8 @@
       ]
     },
     "explanation": "A capital `-O` names the output document. A lowercase `-o` writes the progress log to that file, `-P` sets a directory prefix, and `-q` just silences output while treating the name as another address.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "curl save output to file"
   },
   {
     "id": "at1-2-3-mcq-024",
@@ -943,7 +966,8 @@
       ]
     },
     "explanation": "`--header` sends an extra header with the request. In `wget`, `-H` means span hosts when recursing, `-A` sets a list of accepted file suffixes, and `--post-data` sends the text as a request body.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "wget custom header option"
   },
   {
     "id": "at1-2-3-mcq-025",
@@ -982,7 +1006,8 @@
       ]
     },
     "explanation": "Environments store named variables, so one collection can use `{{base_url}}` and pick staging or production at run time. Hard-coded hosts and duplicate collections must be edited together, and a custom header does not change where the request goes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "postman environments staging production"
   },
   {
     "id": "at1-2-3-mcq-026",
@@ -1021,7 +1046,8 @@
       ]
     },
     "explanation": "A collection bundles saved requests, optionally with folders and tests. The set of variables for a target is an environment, and Postman is a client tool that does not store server responses for replay. The list of status codes seen is the app's history log, a separate feature from collections.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "postman collection definition"
   },
   {
     "id": "at1-2-3-mcq-027",
@@ -1062,7 +1088,8 @@
     "explanation": "`308` is permanent and requires the client to repeat the same method and body. `301` and `302` allow a client to switch `POST` to `GET`, and `307` keeps the method but is temporary.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "http 301 308 permanent redirect"
   },
   {
     "id": "at1-2-3-mcq-028",
@@ -1101,7 +1128,8 @@
       ]
     },
     "explanation": "`POST` is not idempotent by default, so the client attaches a unique key and the service returns the first result for any repeat. `GET` cannot create a charge, `Retry-After` is a response header, and compression does not stop duplicates.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "idempotency key payment retries"
   },
   {
     "id": "at1-2-3-mcq-029",
@@ -1140,7 +1168,8 @@
       ]
     },
     "explanation": "`PATCH` applies a partial change to the resource. `PUT` replaces the whole resource, so omitted fields would be lost, `POST` to the collection creates a new profile, and `DELETE` removes the profile.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http patch partial update"
   },
   {
     "id": "at1-2-3-mcq-030",
@@ -1179,7 +1208,8 @@
       ]
     },
     "explanation": "`POST` to a collection creates a new member and lets the server assign its address. `PUT` needs the full address of the target, `GET` only reads, and `DELETE` removes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http post create resource"
   },
   {
     "id": "at1-2-3-mcq-031",
@@ -1224,7 +1254,8 @@
       ]
     },
     "explanation": "`GET`, `PUT` and `DELETE` are idempotent, so repeating them leaves the server in the same state. `POST` and `PATCH` are not idempotent by default, because each call can create or change something again.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http idempotent methods"
   },
   {
     "id": "at1-2-3-mcq-032",
@@ -1270,7 +1301,8 @@
     "explanation": "`Content-Type` describes the body being sent and `Accept` states the reply format the client wants. `Location`, `Retry-After` and `ETag` are headers that a server sends in replies.",
     "acronyms": [
       "JSON"
-    ]
+    ],
+    "searchTerm": "http request headers content type accept"
   },
   {
     "id": "at1-2-3-mcq-033",
@@ -1314,7 +1346,8 @@
       ]
     },
     "explanation": "`404` and `409` both fall in the `4XX` range, which blames the request. `502` and `503` are server-side errors, and `304` is a redirection-class code that means the cached copy is still valid.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http 4xx client error codes"
   },
   {
     "id": "at1-2-3-mcq-034",
@@ -1358,7 +1391,8 @@
       ]
     },
     "explanation": "The server labels each version with `ETag`, and the client sends that label back in `If-Match` so a stale write is refused. `Accept` picks a format, `Retry-After` sets a delay, and `Location` gives an address.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http conditional requests if-match"
   },
   {
     "id": "at1-2-3-mcq-035",
@@ -1402,7 +1436,8 @@
       ]
     },
     "explanation": "A collection holds the requests so a runner can send them in one pass, and test scripts check each reply's status and fail the run when it is wrong. A mock server fakes replies instead of checking real ones, the history only logs requests sent by hand, and an environment supplies variables but checks nothing.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "postman collection runner newman"
   },
   {
     "id": "at1-2-3-mcq-036",
@@ -1446,7 +1481,8 @@
       ]
     },
     "explanation": "`302` and `307` tell a client to use another address this time while keeping the original address valid. `301` and `308` are permanent, and `304`, though in the `3XX` class, points the client to its own cached copy rather than to another address.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http temporary redirect 302 307"
   },
   {
     "id": "at1-2-3-terminal-001",
@@ -2805,7 +2841,8 @@
     "acronyms": [
       "API",
       "JSON"
-    ]
+    ],
+    "searchTerm": "rest api orders curl commands"
   },
   {
     "id": "at1-2-3-config-001",
@@ -2934,7 +2971,8 @@
       "API",
       "JSON",
       "POST"
-    ]
+    ],
+    "searchTerm": "rest api orders post patch delete"
   },
   {
     "id": "at1-2-3-order-001",
@@ -2998,7 +3036,8 @@
     "acronyms": [
       "JSON",
       "POST"
-    ]
+    ],
+    "searchTerm": "rest api resource lifecycle"
   },
   {
     "id": "at1-2-3-data-001",
@@ -3214,7 +3253,8 @@
     "acronyms": [
       "API",
       "POST"
-    ]
+    ],
+    "searchTerm": "http status codes log analysis"
   },
   {
     "id": "at1-2-3-diagram-001",
@@ -3349,7 +3389,8 @@
     },
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "api gateway token validation architecture"
   },
   {
     "id": "at1-2-3-hotspot-001",
@@ -3484,7 +3525,8 @@
     },
     "acronyms": [
       "HTTP"
-    ]
+    ],
+    "searchTerm": "http response format status line"
   },
   {
     "id": "at1-2-3-match-001",
@@ -3575,7 +3617,8 @@
       "p5": "`409` means the request clashes with the current state.",
       "p6": "`503` means the service cannot handle requests at the moment."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "http status code meanings"
   },
   {
     "id": "at1-2-3-buckets-001",
@@ -3649,6 +3692,7 @@
     "acronyms": [
       "HTTP",
       "POST"
-    ]
+    ],
+    "searchTerm": "http methods idempotent safe"
   }
 ]

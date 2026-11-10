@@ -38,7 +38,8 @@
     "explanation": "The option applies to a single invocation, so the default profile is unchanged. It does not rewrite the default, and it does not carry over to later commands; an exported `AWS_PROFILE` would do that. The CLI does not create a missing profile; it reports an error.",
     "acronyms": [
       "CLI"
-    ]
+    ],
+    "searchTerm": "aws cli profile option"
   },
   {
     "id": "at1-4-3-mcq-002",
@@ -80,7 +81,8 @@
     "acronyms": [
       "AWS",
       "CLI"
-    ]
+    ],
+    "searchTerm": "aws cli configuration precedence"
   },
   {
     "id": "at1-4-3-mcq-003",
@@ -122,7 +124,8 @@
     "acronyms": [
       "AWS",
       "CLI"
-    ]
+    ],
+    "searchTerm": "aws credentials file vs config file"
   },
   {
     "id": "at1-4-3-mcq-004",
@@ -161,7 +164,8 @@
       ]
     },
     "explanation": "A secret typed as an argument lands in shell history and can be seen by other users in the process list. Reading it from standard input, a prompt or a protected variable avoids both. Providers do not reject arguments, and neither truncation nor per-tab logins is the concern.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "cli secrets in command line arguments"
   },
   {
     "id": "at1-4-3-mcq-005",
@@ -200,7 +204,8 @@
       ]
     },
     "explanation": "Every earlier commit still contains the key, and clones or caches may already have copied it, so the key counts as exposed and must be revoked and replaced. Deleting the file, ignoring it later, or tidying history without replacing the key leaves a usable secret in the wild.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "leaked secret git history remediation"
   },
   {
     "id": "at1-4-3-mcq-006",
@@ -242,7 +247,8 @@
     "acronyms": [
       "CLI",
       "SDK"
-    ]
+    ],
+    "searchTerm": "temporary security credentials"
   },
   {
     "id": "at1-4-3-mcq-007",
@@ -283,7 +289,8 @@
     "explanation": "An exported variable lives as long as that shell session, so every later command in the tab used the production profile. Unsetting it, or using `--profile` per command, prevents the surprise. The CLI does not persist the choice, directory changes do not reset variables, and `export` does not edit files.",
     "acronyms": [
       "CLI"
-    ]
+    ],
+    "searchTerm": "aws profile environment variable persistence"
   },
   {
     "id": "at1-4-3-mcq-008",
@@ -322,7 +329,8 @@
       ]
     },
     "explanation": "File permissions are what control who can read a credentials file, so limiting it to the owner closes the exposure. A new name hides nothing, Base64 is an encoding that anyone can reverse, and a world-readable folder makes things worse.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "credentials file permissions"
   },
   {
     "id": "at1-4-3-mcq-009",
@@ -364,7 +372,8 @@
     "acronyms": [
       "AWS",
       "CLI"
-    ]
+    ],
+    "searchTerm": "aws sts get caller identity"
   },
   {
     "id": "at1-4-3-mcq-010",
@@ -406,7 +415,8 @@
     "acronyms": [
       "SDK",
       "VM"
-    ]
+    ],
+    "searchTerm": "aws sdk default credential chain"
   },
   {
     "id": "at1-4-3-mcq-011",
@@ -447,7 +457,8 @@
     "explanation": "The default value passed to `get` is a literal key sitting in the source and in version history. Without it the code would fail clearly when the variable is missing. The order of the lines is fine, and environment variables are a normal place to supply a key at run time.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "hardcoded default secret python"
   },
   {
     "id": "at1-4-3-mcq-012",
@@ -488,7 +499,8 @@
     "explanation": "A timeout makes the client give up on an unresponsive endpoint so the script can fail or retry. More retries multiply the waiting, credential lifetime does not affect an unanswered call, and page size changes how much each list call returns.",
     "acronyms": [
       "SDK"
-    ]
+    ],
+    "searchTerm": "sdk client timeout setting"
   },
   {
     "id": "at1-4-3-mcq-013",
@@ -527,7 +539,8 @@
       ]
     },
     "explanation": "Backoff spreads attempts out over longer gaps and jitter keeps workers from retrying in step. A fixed delay keeps them synchronized, immediate retries increase load, and a shared counter does not change when each worker retries.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "exponential backoff jitter retries"
   },
   {
     "id": "at1-4-3-mcq-014",
@@ -568,7 +581,8 @@
     "explanation": "Pinning makes builds reproducible, and upgrades become a deliberate, tested change. Always taking the latest is what caused the break, documentation does not change behavior, and swallowing exceptions hides failures.",
     "acronyms": [
       "SDK"
-    ]
+    ],
+    "searchTerm": "dependency pinning reproducible builds"
   },
   {
     "id": "at1-4-3-mcq-015",
@@ -610,7 +624,8 @@
     "acronyms": [
       "CLI",
       "SDK"
-    ]
+    ],
+    "searchTerm": "cli vs sdk when to use"
   },
   {
     "id": "at1-4-3-mcq-016",
@@ -651,7 +666,8 @@
     "explanation": "There are 3 attempts in total (1 initial + 2 retries), each waiting up to 5 seconds: 3 x 5 = 15 seconds. Five seconds counts one attempt, ten counts two, and thirty counts six attempts.",
     "acronyms": [
       "SDK"
-    ]
+    ],
+    "searchTerm": "retry timeout total time calculation"
   },
   {
     "id": "at1-4-3-mcq-017",
@@ -693,7 +709,8 @@
     "acronyms": [
       "SDK",
       "VM"
-    ]
+    ],
+    "searchTerm": "iam role credentials expiry"
   },
   {
     "id": "at1-4-3-mcq-018",
@@ -732,7 +749,8 @@
       ]
     },
     "explanation": "A person's account is tied to their employment, so disabling it cuts off everything that used it. A machine identity such as a service account belongs to the team and the workload. Password length does not matter once the account is disabled, and a login owned by one engineer still depends on that person.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "service account vs personal account"
   },
   {
     "id": "at1-4-3-mcq-019",
@@ -771,7 +789,8 @@
       ]
     },
     "explanation": "A short-lived token limits the blast radius because it dies on its own, while a long-lived key keeps working until someone revokes it. Passwords do not govern either one, age does not make a token riskier, and nothing blocks stolen credentials automatically.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "short lived tokens security"
   },
   {
     "id": "at1-4-3-mcq-020",
@@ -810,7 +829,8 @@
       ]
     },
     "explanation": "Running two keys side by side lets the system switch over with no gap, and the old key is disabled only after the new one is proven. Deleting first causes an outage, an in-place change breaks the running system before the redeploy lands, and waiting for the old key to fail before enabling the new one leaves a gap.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "access key rotation zero downtime"
   },
   {
     "id": "at1-4-3-mcq-021",
@@ -849,7 +869,8 @@
       ]
     },
     "explanation": "Separate identities make each log entry point to one workload and one environment, and a compromise can be revoked in isolation. A description, rotation or a copy of the key leaves the actions of both deployers indistinguishable.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "audit trail shared service account"
   },
   {
     "id": "at1-4-3-mcq-022",
@@ -890,7 +911,8 @@
     "explanation": "Code from an untrusted fork can read or send out anything the run holds, so such runs must not receive deploy credentials. Log masking does not stop a script from sending a secret elsewhere, opening the store is worse, and a shorter timeout still leaves a window.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci pull requests from forks secrets"
   },
   {
     "id": "at1-4-3-mcq-023",
@@ -929,7 +951,8 @@
       ]
     },
     "explanation": "Least privilege gives each job only the access it needs, so the reader gets a read-only role and the releaser gets a write role. A comment changes nothing, deletion adds power, and a copy of the same role keeps the same permissions.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "least privilege read write roles"
   },
   {
     "id": "at1-4-3-mcq-024",
@@ -970,7 +993,8 @@
     "explanation": "Restricting a key by source address and by allowed methods makes a stolen copy far less useful. Publishing it, sharing it across environments or removing its label increase exposure or only make it harder for the owners to track.",
     "acronyms": [
       "IP"
-    ]
+    ],
+    "searchTerm": "api key restrictions ip allowlist"
   },
   {
     "id": "at1-4-3-mcq-025",
@@ -1011,7 +1035,8 @@
     "explanation": "The client credentials grant lets a service authenticate as itself, which suits unattended, machine-to-machine calls. The authorization code and implicit grants need a user and a browser, and the password grant would tie the job to a person's login.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "client credentials grant oauth"
   },
   {
     "id": "at1-4-3-mcq-026",
@@ -1052,7 +1077,8 @@
     "explanation": "A 401 after a long gap points to an expired token, so the client should get a fresh one and retry once, remembering when it expires. Resending the same token repeats the failure, a static key trades away short lifetimes, and a 401 is a failure.",
     "acronyms": [
       "HTTP"
-    ]
+    ],
+    "searchTerm": "http 401 unauthorized token expiry"
   },
   {
     "id": "at1-4-3-mcq-027",
@@ -1091,7 +1117,8 @@
       ]
     },
     "explanation": "A token should carry just the scope the job needs, here reading invoices, so a leaked token can do little. Write access, administrator scope and every registered scope all grant more than reporting requires.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "oauth scopes least privilege"
   },
   {
     "id": "at1-4-3-mcq-028",
@@ -1134,7 +1161,8 @@
       "CA",
       "HTTP",
       "URL"
-    ]
+    ],
+    "searchTerm": "tls certificate verification disabled"
   },
   {
     "id": "at1-4-3-mcq-029",
@@ -1178,7 +1206,8 @@
       "CA",
       "TLS",
       "URL"
-    ]
+    ],
+    "searchTerm": "mutual tls client certificate"
   },
   {
     "id": "at1-4-3-mcq-030",
@@ -1219,7 +1248,8 @@
     "explanation": "The provider needs the public key to verify signatures, while the private key must stay on the developer's machine. The known-hosts file records servers the client has met, and the passphrase only unlocks the local private key.",
     "acronyms": [
       "SSH"
-    ]
+    ],
+    "searchTerm": "ssh key pair public private"
   },
   {
     "id": "at1-4-3-mcq-031",
@@ -1262,7 +1292,8 @@
       "HTTP",
       "HTTPS",
       "TLS"
-    ]
+    ],
+    "searchTerm": "expired client certificate mutual tls"
   },
   {
     "id": "at1-4-3-mcq-032",
@@ -1301,7 +1332,8 @@
       ]
     },
     "explanation": "The client secret proves the client's identity and must be protected. The client id, the token endpoint address and the scope names are identifiers that a client sends or that the provider publishes.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "oauth client secret protection"
   },
   {
     "id": "at1-4-3-mcq-033",
@@ -1347,7 +1379,8 @@
     "explanation": "A `.gitignore` entry stops the file from being staged, and a secret scanner catches keys that slip through. Renaming a variable hides nothing, a committed key stays in history after deletion, and the `README` is part of the repository.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "gitignore secrets api key"
   },
   {
     "id": "at1-4-3-mcq-034",
@@ -1394,7 +1427,8 @@
     "acronyms": [
       "API",
       "HTTP"
-    ]
+    ],
+    "searchTerm": "http 403 forbidden vs 401"
   },
   {
     "id": "at1-4-3-mcq-035",
@@ -1442,7 +1476,8 @@
     "acronyms": [
       "AWS",
       "SDK"
-    ]
+    ],
+    "searchTerm": "aws sdk credential sources"
   },
   {
     "id": "at1-4-3-mcq-036",
@@ -1490,7 +1525,8 @@
     "acronyms": [
       "CA",
       "TLS"
-    ]
+    ],
+    "searchTerm": "tls certificate validation steps"
   },
   {
     "id": "at1-4-3-mcq-037",
@@ -1538,7 +1574,8 @@
       "API",
       "HTTPS",
       "URL"
-    ]
+    ],
+    "searchTerm": "api key exposure urls"
   },
   {
     "id": "at1-4-3-mcq-038",
@@ -1585,7 +1622,8 @@
     "acronyms": [
       "CI",
       "CLI"
-    ]
+    ],
+    "searchTerm": "ci logs secret leakage"
   },
   {
     "id": "at1-4-3-terminal-001",
@@ -2093,7 +2131,8 @@
     },
     "acronyms": [
       "CLI"
-    ]
+    ],
+    "searchTerm": "cloudctl profile login whoami"
   },
   {
     "id": "at1-4-3-config-001",
@@ -2220,7 +2259,8 @@
     },
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "workload identity federation ci"
   },
   {
     "id": "at1-4-3-order-001",
@@ -2283,7 +2323,8 @@
     },
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "oauth client credentials setup steps"
   },
   {
     "id": "at1-4-3-data-001",
@@ -2499,7 +2540,8 @@
       "r4": "Age 30 and idle 3 are fine, but administrator on all resources is too broad, so its permissions are narrowed.",
       "r5": "Age 15 and idle 1 are fine and the scope is narrow, but a person's account owns a key that a scheduled job uses, so it moves to a service account."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "credential rotation policy audit"
   },
   {
     "id": "at1-4-3-diagram-001",
@@ -2631,7 +2673,8 @@
     "acronyms": [
       "API",
       "CI"
-    ]
+    ],
+    "searchTerm": "workload identity token exchange flow"
   },
   {
     "id": "at1-4-3-hotspot-001",
@@ -2802,7 +2845,8 @@
     "acronyms": [
       "CI",
       "TLS"
-    ]
+    ],
+    "searchTerm": "iam trust policy overly broad"
   },
   {
     "id": "at1-4-3-match-001",
@@ -2888,7 +2932,8 @@
       "CLI",
       "SDK",
       "VM"
-    ]
+    ],
+    "searchTerm": "aws credential connection methods"
   },
   {
     "id": "at1-4-3-buckets-001",
@@ -2967,6 +3012,7 @@
       "CLI",
       "IAM",
       "SDK"
-    ]
+    ],
+    "searchTerm": "cli sdk iam configuration areas"
   }
 ]

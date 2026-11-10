@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "A module holds the definition once, and each caller passes its own inputs, so a fix is made in one spot. Comments, extra branches and larger variable files all leave five copies that still drift apart.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "infrastructure as code modules reuse"
   },
   {
     "id": "at1-1-3-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "The block calls the same module and supplies values such as the name and count, so another environment can call it with other values. It does not copy files, freeze inputs, or schedule anything.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform module input variables"
   },
   {
     "id": "at1-1-3-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "Inputs let one template serve both environments with different values. Editing a literal, relying on a comment, or keeping a second copy brings back manual edits and drift.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "iac input variables environments"
   },
   {
     "id": "at1-1-3-mcq-004",
@@ -153,7 +156,8 @@
       ]
     },
     "explanation": "An input with a default gives the first team the tested size and lets the second team override it. A fork creates two diverging copies, refusing the request blocks a legitimate need, and deleting the setting removes control for both teams.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "iac module versioning"
   },
   {
     "id": "at1-1-3-mcq-005",
@@ -192,7 +196,8 @@
       ]
     },
     "explanation": "Versioned releases let consumers move on their own schedule, and a pinned version means a rename does not break an untested apply. An in-place edit breaks everyone at once, local copies lose sharing, and a chat message is not a control.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "module versioning semver consumers"
   },
   {
     "id": "at1-1-3-mcq-006",
@@ -231,7 +236,8 @@
       ]
     },
     "explanation": "Immutable servers are never edited after launch, so a setting changes in the build definition and reaches the fleet through a new rollout. Logging in to servers or running per-server scripts edits live systems, and a monitoring dashboard only observes them.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "immutable infrastructure configuration changes"
   },
   {
     "id": "at1-1-3-mcq-007",
@@ -270,7 +276,8 @@
       ]
     },
     "explanation": "Replacing hosts from a freshly built image stops hand edits from accumulating. A runbook and more patch windows keep the in-place model, and a monitor only reports drift after it exists.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "immutable infrastructure golden image"
   },
   {
     "id": "at1-1-3-mcq-008",
@@ -309,7 +316,8 @@
       ]
     },
     "explanation": "Because the older artifact is stored, rollback is just another replacement. Undoing files by hand reintroduces in-place edits, hot-patching the live hosts risks more breakage, and rebuilding first delays recovery.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "immutable infrastructure rollback"
   },
   {
     "id": "at1-1-3-mcq-009",
@@ -348,7 +356,8 @@
       ]
     },
     "explanation": "Drift comes from changes made after deployment, and an immutable system receives none. Closer monitoring only detects drift, faster changes do not prevent it, and in-place upgrades are the source of drift.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "configuration drift immutable servers"
   },
   {
     "id": "at1-1-3-mcq-010",
@@ -387,7 +396,8 @@
       ]
     },
     "explanation": "A fixed tag or digest always points at the same bytes, so a restart reproduces the tested artifact. A moving tag changes under you, hot-patching a mounted volume edits a running container, and building on the host produces unreviewed results.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "container image tag digest immutability"
   },
   {
     "id": "at1-1-3-mcq-011",
@@ -426,7 +436,8 @@
       ]
     },
     "explanation": "Instances are expected to match their image, so a hand edit creates a one-off that disappears the next time it is replaced. The edit does not affect the other instances, image builds, or load balancer membership.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "mutable infrastructure ssh hotfix"
   },
   {
     "id": "at1-1-3-mcq-012",
@@ -465,7 +476,8 @@
       ]
     },
     "explanation": "The tool compares the desired five with the three that already exist and plans only the difference, two additions. It does not rebuild all five or replace the existing three, and it lists changes to resources rather than ordered steps: working out the steps is the tool's job.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform plan create update"
   },
   {
     "id": "at1-1-3-mcq-013",
@@ -504,7 +516,8 @@
       ]
     },
     "explanation": "An imperative script is a sequence of actions the author spells out. Declaring an end state and automatic reconciliation are declarative traits, and where the steps run does not make a script imperative.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "imperative versus declarative infrastructure"
   },
   {
     "id": "at1-1-3-mcq-014",
@@ -545,7 +558,8 @@
     "explanation": "Each line is an action to perform, and the order matters because a package cannot install before its VM exists. Naming hosts and lacking conditions do not make a file declarative, and either style can be launched from a command line, so how a file is started says nothing about whether it lists steps or states a result.",
     "acronyms": [
       "VM"
-    ]
+    ],
+    "searchTerm": "imperative versus declarative scripts"
   },
   {
     "id": "at1-1-3-mcq-015",
@@ -584,7 +598,8 @@
       ]
     },
     "explanation": "A declarative tool reads the current state, finds the difference, and changes only what differs. It does not replay creation steps, require manual cleanup, or duplicate a server that already matches the rest of the file.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative infrastructure in-place update"
   },
   {
     "id": "at1-1-3-mcq-016",
@@ -623,7 +638,8 @@
       ]
     },
     "explanation": "Declaring the end state lets the tool diff against reality and act only on the gap. Execution order is the tool's concern rather than a guarantee to the author, failed changes can still need recovery, and credentials remain sensitive.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative iac benefits"
   },
   {
     "id": "at1-1-3-mcq-017",
@@ -662,7 +678,8 @@
       ]
     },
     "explanation": "A declarative tool compares live state to the target and closes the gap, which undoes manual resizing. A fixed script replays the same steps and does not detect differences by itself, and a declarative definition does not contain repair steps because the tool derives them.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative reconciliation drift"
   },
   {
     "id": "at1-1-3-mcq-018",
@@ -701,7 +718,8 @@
       ]
     },
     "explanation": "The file is the source of truth, so the tool sees a gap of one and closes it. It does not adopt the manual change as intent, fail because of the deletion, or wait for a version bump.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative state drift manual change"
   },
   {
     "id": "at1-1-3-mcq-019",
@@ -740,7 +758,8 @@
       ]
     },
     "explanation": "Idempotency means that extra runs do not change the result after the first. Growing resources on each run is the opposite, host count is unrelated, and logging says nothing about the end state.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "idempotent operation definition"
   },
   {
     "id": "at1-1-3-mcq-020",
@@ -779,7 +798,8 @@
       ]
     },
     "explanation": "The `>>` operator appends a new line each time rather than replacing one, so the port line is duplicated, and `useradd` fails when the account exists. Shell commands do not compare against previous runs, and neither one recreates the file.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "bash append versus overwrite idempotent"
   },
   {
     "id": "at1-1-3-mcq-021",
@@ -818,7 +838,8 @@
       ]
     },
     "explanation": "`mkdir -p` succeeds quietly when the directory is already there, which is what an idempotent step needs. `-v` only prints a message, `-m` sets permissions but still errors on an existing directory, and `time` just measures the command.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "mkdir -p idempotent"
   },
   {
     "id": "at1-1-3-mcq-022",
@@ -857,7 +878,8 @@
       ]
     },
     "explanation": "Setting a value to a fixed target converges on one state no matter how often it runs. Appending, incrementing and creating uniquely named copies each change the system again on every run.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "idempotent operations examples"
   },
   {
     "id": "at1-1-3-mcq-023",
@@ -896,7 +918,8 @@
       ]
     },
     "explanation": "An idempotent tool compares the world to the definition and acts only on the difference, so a partial run is resumed. It does not rebuild what already matches, require wiping state, or duplicate resources.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "idempotent apply partial failure"
   },
   {
     "id": "at1-1-3-mcq-024",
@@ -935,7 +958,8 @@
       ]
     },
     "explanation": "A check-then-create guard lets finished steps pass and missing steps run. A pause or another account does not change the collision, and random suffixes build a fresh set of duplicates on each rerun instead of converging on one end state.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "idempotent scripts check then create"
   },
   {
     "id": "at1-1-3-mcq-025",
@@ -974,7 +998,8 @@
       ]
     },
     "explanation": "A zero-change preview means the desired and actual states agree. An empty file would normally plan to remove things, an unreachable provider produces an error rather than a clean summary, and a rollback is not reported this way.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform plan no changes"
   },
   {
     "id": "at1-1-3-mcq-026",
@@ -1013,7 +1038,8 @@
       ]
     },
     "explanation": "Replacement means the platform cannot alter that attribute on a live resource, so it is destroyed and recreated. An in-place update would be shown as a change, a lost resource would be an error or new addition, and a lock would block the run.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform replace versus in-place update"
   },
   {
     "id": "at1-1-3-mcq-027",
@@ -1055,7 +1081,8 @@
     "acronyms": [
       "CPU",
       "VM"
-    ]
+    ],
+    "searchTerm": "configuration drift definition"
   },
   {
     "id": "at1-1-3-mcq-028",
@@ -1094,7 +1121,8 @@
       ]
     },
     "explanation": "The repository is the source of truth: either converge reality back to it, or record the intended change there. Hiding the report, erasing state, and turning off the check all leave the real mismatch in place.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "drift detection remediation"
   },
   {
     "id": "at1-1-3-mcq-029",
@@ -1133,7 +1161,8 @@
       ]
     },
     "explanation": "A golden image is the vetted starting point for new systems, so they begin identical. Backups, forensic snapshots, and simply the latest upload do not carry that tested, intentional meaning.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "golden image definition"
   },
   {
     "id": "at1-1-3-mcq-030",
@@ -1172,7 +1201,8 @@
       ]
     },
     "explanation": "Building the packages into the machine image means new hosts need no download at start-up, so a mirror outage cannot delay scale-out. A longer timeout and retries still wait on the mirror, and caching after start-up needs a first successful download.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "golden image package mirror startup"
   },
   {
     "id": "at1-1-3-mcq-031",
@@ -1211,7 +1241,8 @@
       ]
     },
     "explanation": "A container image is the build artifact that new containers start from, just as a machine image is for servers. Logs, mounted volumes and a package cache do not define what a container starts as.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "container image golden image"
   },
   {
     "id": "at1-1-3-mcq-032",
@@ -1250,7 +1281,8 @@
       ]
     },
     "explanation": "Treating network settings as code brings review history and repeatable applies. It does not speed up traffic, remove cabling, or make testing unnecessary.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "infrastructure as code network firewall"
   },
   {
     "id": "at1-1-3-mcq-033",
@@ -1289,7 +1321,8 @@
       ]
     },
     "explanation": "For managed objects the file is the whole truth, so something absent from it is removed on apply. Leaving the rule behind, disabling it, or archiving it would contradict the declared end state.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative firewall rule removal"
   },
   {
     "id": "at1-1-3-mcq-034",
@@ -1328,7 +1361,8 @@
       ]
     },
     "explanation": "Separating values from structure keeps one template and many small input sets. Variable files are data rather than executed code, templates routinely contain defaults, and state size is not the reason.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "environment variable files iac"
   },
   {
     "id": "at1-1-3-mcq-035",
@@ -1367,7 +1401,8 @@
       ]
     },
     "explanation": "Supplying the secret at run time keeps it out of the repository and out of every reuse of the template. Encoding is not protection, a comment is still readable text, and a shorter password is weaker.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "iac secrets management"
   },
   {
     "id": "at1-1-3-mcq-036",
@@ -1406,7 +1441,8 @@
       ]
     },
     "explanation": "The state record ties each block in the definition to an actual resource so the next run can compute the difference. Caching, credentials and run history are handled elsewhere.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform state file purpose"
   },
   {
     "id": "at1-1-3-mcq-037",
@@ -1450,7 +1486,8 @@
       ]
     },
     "explanation": "Inputs and separate value files let one template serve each environment. Copying creates divergent versions, embedded credentials leak secrets into every reuse, and literal regions make the template fixed to one place.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "reusable iac templates"
   },
   {
     "id": "at1-1-3-mcq-038",
@@ -1494,7 +1531,8 @@
       ]
     },
     "explanation": "Immutable deployments ship new images and swap instances. Remote patching and live edits are in-place changes, and long-lived hosts are changed in place between yearly rebuilds.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "immutable deployment practices"
   },
   {
     "id": "at1-1-3-mcq-039",
@@ -1543,7 +1581,8 @@
       ]
     },
     "explanation": "A declarative definition states the goal, lets the tool compute the difference, and can show that difference before acting. Author-ordered steps, hand-written existence checks and manual actions describe imperative scripts.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative iac characteristics"
   },
   {
     "id": "at1-1-3-mcq-040",
@@ -1589,7 +1628,8 @@
     "explanation": "Both keys set a target and stop once it is met. Appending, creating numbered copies and incrementing each change the result on every run.",
     "acronyms": [
       "DNS"
-    ]
+    ],
+    "searchTerm": "idempotent operations examples"
   },
   {
     "id": "at1-1-3-mcq-041",
@@ -1633,7 +1673,8 @@
       ]
     },
     "explanation": "Drift is a mismatch between live settings and the definition, so only a comparison reveals it. Commit counts, an old passing run and a restart log do not compare the two states.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "configuration drift detection"
   },
   {
     "id": "at1-1-3-mcq-042",
@@ -1682,7 +1723,8 @@
       ]
     },
     "explanation": "A shared tested image makes hosts consistent, shortens provisioning, and turns rollback into redeploying an older image. Hot-patching and skipping tests work against the model, and baked-in secrets spread to every host.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "golden image benefits"
   },
   {
     "id": "at1-1-3-mcq-043",
@@ -1726,7 +1768,8 @@
       ]
     },
     "explanation": "One-off, order-dependent work is naturally a list of actions. Maintaining a fleet size, a rule set, or user accounts are lasting end states that declarative tools keep true.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "imperative scripts when to use"
   },
   {
     "id": "at1-1-3-terminal-001",
@@ -1844,7 +1887,8 @@
       "edit": "The preview lists one in-place change to web02 and nothing for web01.",
       "apply": "The `apply` command with `-f` and the file name, here `db.cfg`, makes the changes that file describes."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform plan apply idempotent"
   },
   {
     "id": "at1-1-3-config-001",
@@ -1949,7 +1993,8 @@
       "secret": "A secrets-store reference keeps the password out of the template and variable files.",
       "network": "A versioned module is maintained once and pinned by each calling team."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "reusable iac template variables secrets"
   },
   {
     "id": "at1-1-3-order-001",
@@ -2010,7 +2055,8 @@
       "4": "Traffic shifts once the new instances are healthy.",
       "5": "Old instances are terminated last, after traffic has moved."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "immutable deployment blue green rollout"
   },
   {
     "id": "at1-1-3-data-001",
@@ -2154,7 +2200,8 @@
       "modified": "Changed column: 0 + 0 + 2 + 0 + 0 = 2; the Run 4 replacement is an add and a destroy, not a change.",
       "net": "Total added 7 minus total destroyed 1 leaves 6 resources."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "terraform plan summary counts"
   },
   {
     "id": "at1-1-3-diagram-001",
@@ -2262,7 +2309,8 @@
       "z-dev": "The test caller supplies the smaller input values.",
       "z-prod": "The production caller supplies the larger input values."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "iac module reuse"
   },
   {
     "id": "at1-1-3-hotspot-001",
@@ -2395,7 +2443,8 @@
       "echo": "Appending a line is an action that repeats its effect on each run, so it is imperative.",
       "firewall": "An open port states the rule set that should hold."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative versus imperative lines"
   },
   {
     "id": "at1-1-3-match-001",
@@ -2482,7 +2531,8 @@
       "p5": "An ordered list of actions is imperative.",
       "p6": "A live setting that diverged from the definition is configuration drift."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "iac concepts drift idempotency"
   },
   {
     "id": "at1-1-3-buckets-001",
@@ -2553,6 +2603,7 @@
       "i5": "A service that should be running is a desired state.",
       "i6": "Looping over hosts to restart each one is an explicit procedure."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "declarative versus imperative statements"
   }
 ]

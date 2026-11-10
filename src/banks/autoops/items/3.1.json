@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "An encrypted key vault stores secrets protected at rest, checks the identity of each caller and records access. A shared drive and a committed file give no per-job control or read log, and a log archive holds history rather than credentials.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci secrets management vault"
   },
   {
     "id": "at1-3-1-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "Image layers are stacked and each keeps its own contents, so a later delete only hides the file in the final view; the earlier layer can still be extracted. The delete does not erase it, registries do not encrypt layers in a way that protects them from a puller, and recovery does not depend on a running container.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "docker image layers secrets leak"
   },
   {
     "id": "at1-3-1-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "With envelope encryption the master key only wraps the small data keys, so rotating it means re-wrapping those keys while the stored secrets stay as they are. Re-encrypting every secret is the cost the design avoids, and neither unreadable secrets nor new values from owners are needed.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "envelope encryption data keys"
   },
   {
     "id": "at1-3-1-mcq-004",
@@ -153,7 +156,8 @@
       ]
     },
     "explanation": "Revocation ends the credentials now, and revoking by identity covers every lease the runner holds. Waiting leaves the attacker a working login, renaming a path does not invalidate credentials already issued, and a restart with the same identity changes nothing about what was handed out.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "revoke leases compromised credentials"
   },
   {
     "id": "at1-3-1-mcq-005",
@@ -192,7 +196,8 @@
       ]
     },
     "explanation": "A self-contained token passes the signature and expiry checks until it ends, so early rejection needs extra state such as a revocation list. A longer verification key, a network filter and a repeated presentation do not make a stolen but valid token fail.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "jwt revocation before expiry"
   },
   {
     "id": "at1-3-1-mcq-006",
@@ -231,7 +236,8 @@
       ]
     },
     "explanation": "A lease gives a holder a secret for a limited time and ends it unless renewed. A rotation schedule replaces a secret value, a revocation list records invalid credentials, and a signing request asks for a signature.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "vault lease ttl secrets"
   },
   {
     "id": "at1-3-1-mcq-007",
@@ -270,7 +276,8 @@
       ]
     },
     "explanation": "Once a lease expires, the backing credential no longer works, so the job asks the vault for a new lease and gets a new credential. Retrying the old one cannot succeed, saving it spreads a dead secret, and a vault policy is not something a job should edit.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "vault lease expired renewal"
   },
   {
     "id": "at1-3-1-mcq-008",
@@ -309,7 +316,8 @@
       ]
     },
     "explanation": "Tokenization swaps the real value for a surrogate and keeps the mapping in a protected store. Base64 encoding is trivially reversible, compression only shrinks data, and a checksum detects changes without hiding anything.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "tokenization versus encryption data"
   },
   {
     "id": "at1-3-1-mcq-009",
@@ -348,7 +356,8 @@
       ]
     },
     "explanation": "A token is a stand-in chosen without any formula from the original, so only a lookup in the token store maps it back. Encryption would be reversible with its key, compression is reversible by design, and an hourly rewrite is not part of tokenization.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "tokenization test data protection"
   },
   {
     "id": "at1-3-1-mcq-010",
@@ -387,7 +396,8 @@
       ]
     },
     "explanation": "Zero Trust gives no automatic trust based on location or earlier sign-in, so each request is authenticated and authorized on its own merits. The three other statements each grant trust on the basis of network position, a one-time login or a loosely checked certificate.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "zero trust pipeline access"
   },
   {
     "id": "at1-3-1-mcq-011",
@@ -426,7 +436,8 @@
       ]
     },
     "explanation": "Separate, narrowly scoped identities limit what one leak reveals and make the audit trail point to a single job. Token lifetime is unrelated to how many jobs use it, logging still matters, and permission checks are part of the control rather than a cost to drop.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "least privilege per job identity"
   },
   {
     "id": "at1-3-1-mcq-012",
@@ -467,7 +478,8 @@
     "explanation": "The job proves who it is with a token that exists only for the run, so no durable password sits in pipeline settings waiting to leak. Latency, the vault's master key and workspace size are not changed by how the job authenticates.",
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci oidc short-lived identity tokens"
   },
   {
     "id": "at1-3-1-mcq-013",
@@ -506,7 +518,8 @@
       ]
     },
     "explanation": "Credentials created on request, with a lease that removes them, are dynamic secrets. Static secrets are fixed values, cached secrets are stored copies, and wrapped secrets are secrets enclosed in another layer for safe transport.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "vault dynamic secrets database"
   },
   {
     "id": "at1-3-1-mcq-014",
@@ -547,7 +560,8 @@
     "explanation": "An overlap period lets clients move to the new key at their own pace while the old key still works, and only then is the old key removed. A one-step swap, an early deletion and a maintenance window each interrupt clients that have not yet switched.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "api key rotation overlap period"
   },
   {
     "id": "at1-3-1-mcq-015",
@@ -586,7 +600,8 @@
       ]
     },
     "explanation": "The service holds a stale copy, so it should fetch the current value again when a login is rejected or when the vault signals a change. Dropping rotation weakens security, baking the password into an image makes it harder to rotate, and a master key is far too much access.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "vault secret rotation applications"
   },
   {
     "id": "at1-3-1-mcq-016",
@@ -625,7 +640,8 @@
       ]
     },
     "explanation": "An artifact registry stores built outputs with their versions so later stages pull the same bits. A branch holds source, a task runner executes named tasks, and a vault stores credentials.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "artifact registry purpose"
   },
   {
     "id": "at1-3-1-mcq-017",
@@ -664,7 +680,8 @@
       ]
     },
     "explanation": "Promoting one artifact means the bits tested in staging are the bits that run in production. Separate rebuilds can differ through tool or dependency changes, a longer staging suite does not change what production receives, and retagging the commit does not make builds identical.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "build once deploy anywhere"
   },
   {
     "id": "at1-3-1-mcq-018",
@@ -705,7 +722,8 @@
     "explanation": "A `403` means the caller was identified but is not allowed to do this, which is an authorization gap fixed by granting write access. Expired credentials would give `401`, an unreachable registry would give a connection error rather than a status, and a signature does not cause a refusal.",
     "acronyms": [
       "HTTP"
-    ]
+    ],
+    "searchTerm": "http 403 forbidden versus 401"
   },
   {
     "id": "at1-3-1-mcq-019",
@@ -744,7 +762,8 @@
       ]
     },
     "explanation": "A machine identity owned by the team survives staff changes and can be limited to what the pipeline needs, which is sound authentication practice. Sharing a personal login, opening the repository to everyone and writing a password into a file each weaken control.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "service account versus personal credentials"
   },
   {
     "id": "at1-3-1-mcq-020",
@@ -783,7 +802,8 @@
       ]
     },
     "explanation": "Removing public behavior is a breaking change, which raises the major number and resets the others. A minor bump is for compatible additions, a patch is for compatible fixes, and build metadata after a plus sign does not change precedence at all.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "semantic versioning breaking change"
   },
   {
     "id": "at1-3-1-mcq-021",
@@ -822,7 +842,8 @@
       ]
     },
     "explanation": "Immutability means a published version cannot be changed or overwritten. Elasticity is the ability to scale, idempotency is a property of repeatable operations, and redundancy is keeping extra copies.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "immutable artifact repository tags"
   },
   {
     "id": "at1-3-1-mcq-022",
@@ -861,7 +882,8 @@
       ]
     },
     "explanation": "In an immutable repository a number is used once, so fixes ship under a new number that consumers can tell apart. Reusing the number through deletion or overwrite breaks the guarantee, and suspending immutability invites exactly the confusion it prevents.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "fix published package version immutable"
   },
   {
     "id": "at1-3-1-mcq-023",
@@ -900,7 +922,8 @@
       ]
     },
     "explanation": "A tag such as `stable` can be moved to new content, so the same name gives different results over time; an exact version or digest always names the same bits. Nightly refreshes, longer names and extra labels leave the tag movable.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "docker image tag digest pinning"
   },
   {
     "id": "at1-3-1-mcq-024",
@@ -939,7 +962,8 @@
       ]
     },
     "explanation": "A repository hosted outside the organization is an external artifact repository. An internal registry is run by the company, a build cache lives on the build side, and a private branch holds source rather than packages.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "package proxy external repository"
   },
   {
     "id": "at1-3-1-mcq-025",
@@ -978,7 +1002,8 @@
       ]
     },
     "explanation": "A caching proxy keeps copies of packages already fetched, so outages do not stop builds and repeated runs receive identical content. Retry loops still depend on the index, copies made by hand on each runner drift apart and are hard to maintain, and newest versions change what the build receives.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "caching proxy package mirror"
   },
   {
     "id": "at1-3-1-mcq-026",
@@ -1017,7 +1042,8 @@
       ]
     },
     "explanation": "Pinning each internal name to the internal registry removes the public copy from consideration, which stops this dependency confusion attack. Prioritizing the public index makes it worse, a higher internal number only starts a numbers race, and deleting the package breaks the build.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "dependency confusion attack internal packages"
   },
   {
     "id": "at1-3-1-mcq-027",
@@ -1058,7 +1084,8 @@
     "explanation": "An SBOM lists the components and versions inside a release, so it can be searched for the affected library. Release notes describe features, coverage reports measure tests, and download counts show popularity rather than contents.",
     "acronyms": [
       "SBOM"
-    ]
+    ],
+    "searchTerm": "sbom vulnerability search components"
   },
   {
     "id": "at1-3-1-mcq-028",
@@ -1099,7 +1126,8 @@
     "explanation": "Generating the SBOM during the build captures the exact components that went into the artifact, and publishing it with the version keeps the two together. Scanning servers, using planning documents or working from a laptop all describe something other than the shipped artifact.",
     "acronyms": [
       "SBOM"
-    ]
+    ],
+    "searchTerm": "sbom generation build timing"
   },
   {
     "id": "at1-3-1-mcq-029",
@@ -1140,7 +1168,8 @@
     "explanation": "Most components arrive indirectly, so a useful SBOM lists transitive dependencies and versions. A list of only the declared three would miss thirty-seven libraries, author names say nothing about components, and credentials do not belong in an SBOM at all.",
     "acronyms": [
       "SBOM"
-    ]
+    ],
+    "searchTerm": "sbom transitive dependencies"
   },
   {
     "id": "at1-3-1-mcq-030",
@@ -1179,7 +1208,8 @@
       ]
     },
     "explanation": "A task runner executes named, repeatable tasks defined in a file, so people and pipelines use the same commands. A package index serves libraries, a vault stores credentials, and a load balancer spreads traffic.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "task runner tools comparison"
   },
   {
     "id": "at1-3-1-mcq-031",
@@ -1218,7 +1248,8 @@
       ]
     },
     "explanation": "In the shell `&&` runs the second command only if the first succeeds, so a failing `lint` stops `verify` before `test` and the non-zero status fails the step. The other options assume the commands run regardless, run in another order, or ignore the failure.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "npm run script chaining operators"
   },
   {
     "id": "at1-3-1-mcq-032",
@@ -1257,7 +1288,8 @@
       ]
     },
     "explanation": "Make runs a target's prerequisites first, so `compile` runs, then `verify`, then `bundle`. Reversing the order, running only the named target, or skipping `verify` all ignore the dependency chain declared in the file.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "make prerequisites targets order"
   },
   {
     "id": "at1-3-1-mcq-033",
@@ -1296,7 +1328,8 @@
       ]
     },
     "explanation": "Pipelines judge a command step by its exit status, and zero means success whatever was printed. They do not parse log text for failures, and a script that exits zero gives no partial-pass signal.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci exit status script failures"
   },
   {
     "id": "at1-3-1-mcq-034",
@@ -1335,7 +1368,8 @@
       ]
     },
     "explanation": "Creating clean environments when a run needs them and removing them afterward is on-demand provisioning. Fixed-pool planning, hand-patching shared servers and copying production data each describe a different activity.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ephemeral build environments"
   },
   {
     "id": "at1-3-1-mcq-035",
@@ -1374,7 +1408,8 @@
       ]
     },
     "explanation": "A fresh, disposable environment contains nothing from earlier runs, so passing depends only on the code. More memory, a second run on the same machine and copying files in all leave stale state in place.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "stale build state ci"
   },
   {
     "id": "at1-3-1-mcq-036",
@@ -1413,7 +1448,8 @@
       ]
     },
     "explanation": "Cleanup must run on failure as well as success, so it belongs in a step that is always executed. A step that depends on passing tests skips failed runs, a manual review lets cost build up for days, and a longer timeout does not remove anything.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci cleanup always step"
   },
   {
     "id": "at1-3-1-mcq-037",
@@ -1452,7 +1488,8 @@
       ]
     },
     "explanation": "Isolating each run with its own database removes the shared state that causes the collisions. Retries hide a real defect in the setup, matching speeds cannot synchronize overlapping writes, and longer timeouts do not stop rows being overwritten.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci test database isolation"
   },
   {
     "id": "at1-3-1-mcq-038",
@@ -1496,7 +1533,8 @@
       ]
     },
     "explanation": "A published token must be treated as exposed: revoke it so it stops working, replace it, and check logs for use. Making the repository private does not undo copies already taken, waiting leaves the token live, and renaming it does not change the secret.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "leaked api token response steps"
   },
   {
     "id": "at1-3-1-mcq-039",
@@ -1540,7 +1578,8 @@
       ]
     },
     "explanation": "A recorded digest and a verifiable signature both change if the content changes, and the signature also shows who published it. Timestamps, a size limit and a file extension can all stay the same while the contents are altered.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "artifact integrity verification signing"
   },
   {
     "id": "at1-3-1-mcq-040",
@@ -1584,7 +1623,8 @@
       ]
     },
     "explanation": "A versioned image or template, with pinned versions, gives the same environment each time. Manual installs differ between runs, a shared workspace carries over state, and the newest release of each tool changes underneath the build.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "reproducible build environments"
   },
   {
     "id": "at1-3-1-mcq-041",
@@ -1628,7 +1668,8 @@
       ]
     },
     "explanation": "npm runs a script named `pre` plus the script name before it and one named `post` plus the name after it, so `prebuild` and `postbuild` surround `build`. The install hooks run during `npm install`, not during a build, and `test` runs only when called.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "npm pre post script hooks"
   },
   {
     "id": "at1-3-1-mcq-042",
@@ -1672,7 +1713,8 @@
       ]
     },
     "explanation": "A lockfile with hashes makes each build fetch known content, and a review step keeps unvetted packages out. Floating to the newest version, skipping integrity checks and trusting the fastest mirror each widen what an attacker can slip in.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "supply chain security dependencies"
   },
   {
     "id": "at1-3-1-mcq-043",
@@ -1718,7 +1760,8 @@
     "explanation": "Card numbers and national identification numbers are regulated, high-value data that tests can handle as tokens. Run counts, timestamps and category names carry no sensitive identity or financial value.",
     "acronyms": [
       "QA"
-    ]
+    ],
+    "searchTerm": "tokenization sensitive data fields"
   },
   {
     "id": "at1-3-1-mcq-044",
@@ -1764,7 +1807,8 @@
     "explanation": "An SBOM is an inventory of the components in software, with their versions and where they come from. Build passwords, test results and approver names belong in other systems.",
     "acronyms": [
       "SBOM"
-    ]
+    ],
+    "searchTerm": "sbom contents components list"
   },
   {
     "id": "at1-3-1-terminal-001",
@@ -1847,7 +1891,8 @@
     },
     "acronyms": [
       "CLI"
-    ]
+    ],
+    "searchTerm": "secrets lease revoke cli"
   },
   {
     "id": "at1-3-1-config-001",
@@ -1972,7 +2017,8 @@
       "rotation": "A fresh credential per run means nothing long-lived needs a rotation calendar. A yearly change by hand leaves one value in use for months, and a lease limits each grant but not how long a reused value stays the same.",
       "jobend": "Revoking the lease right away shortens the window of use to the length of the job. A cached credential stays on the runner for reuse, and waiting for cleanup leaves it usable until the lease runs out."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "vault lease duration ci jobs"
   },
   {
     "id": "at1-3-1-order-001",
@@ -2035,7 +2081,8 @@
     },
     "acronyms": [
       "SBOM"
-    ]
+    ],
+    "searchTerm": "software release signing sbom"
   },
   {
     "id": "at1-3-1-data-001",
@@ -2207,7 +2254,8 @@
     },
     "acronyms": [
       "SBOM"
-    ]
+    ],
+    "searchTerm": "semantic version precedence prerelease"
   },
   {
     "id": "at1-3-1-diagram-001",
@@ -2336,7 +2384,8 @@
       "z3": "The artifact registry keeps each build as an immutable, versioned item.",
       "z4": "The encrypted key vault issues the job its short-lived credential."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "ci pipeline build flow components"
   },
   {
     "id": "at1-3-1-hotspot-001",
@@ -2470,7 +2519,8 @@
       "sp5": "The password is typed into the command as a literal.",
       "sp6": "A region name is configuration, not a credential."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "hardcoded secrets ci scripts"
   },
   {
     "id": "at1-3-1-match-001",
@@ -2563,7 +2613,8 @@
     },
     "acronyms": [
       "SBOM"
-    ]
+    ],
+    "searchTerm": "authentication versus authorization revocation"
   },
   {
     "id": "at1-3-1-buckets-001",
@@ -2640,6 +2691,7 @@
     },
     "acronyms": [
       "CI"
-    ]
+    ],
+    "searchTerm": "ci management task categories"
   }
 ]

@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "A canary release sends a small, growing share of live traffic to the new build while the metrics are watched. Blue-green moves all users in one switch, a rolling update replaces instances in batches with no user share involved, and an in-place upgrade overwrites the running copy.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "canary release deployment"
   },
   {
     "id": "at1-4-1-mcq-002",
@@ -75,7 +76,8 @@
       ]
     },
     "explanation": "Blue-green keeps a complete second environment that can be tested in private and then receives all traffic at once. A canary puts real customers on the new build from the start, a rolling update has no full spare copy, and an in-place upgrade changes the live system directly.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "blue green deployment"
   },
   {
     "id": "at1-4-1-mcq-003",
@@ -114,7 +116,8 @@
       ]
     },
     "explanation": "A rolling update swaps instances in batches while the rest keep serving, so it needs no spare environment. Blue-green needs a full second pool, a canary depends on a traffic percentage, and an in-place upgrade on one host stops the service.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rolling deployment strategy"
   },
   {
     "id": "at1-4-1-mcq-004",
@@ -153,7 +156,8 @@
       ]
     },
     "explanation": "In-place means the new version replaces the old one on the same host, which causes a short outage. A rolling update needs several instances, blue-green needs a second environment, and a canary needs a traffic split.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "in place upgrade downtime"
   },
   {
     "id": "at1-4-1-mcq-005",
@@ -192,7 +196,8 @@
       ]
     },
     "explanation": "The database is shared, so dropping the column breaks the version that is still serving users. The new code does not read the column, the pools do not have separate schemas, and a balancer does not control migrations. The safe order is to add first and remove the old column only after the old pool is retired.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "database migration expand contract"
   },
   {
     "id": "at1-4-1-mcq-006",
@@ -231,7 +236,8 @@
       ]
     },
     "explanation": "Small steps with a gate between them limit how many users a bad build can affect. The ramp does not build new copies, the database still sees two versions while it runs, and smoke tests remain useful after the last step.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "canary rollout stages gating"
   },
   {
     "id": "at1-4-1-mcq-007",
@@ -270,7 +276,8 @@
       ]
     },
     "explanation": "Load and traffic mix change by the hour, so the canary is judged against baseline instances handling the same traffic at the same time. Last week's average, a record best and a staging run all reflect different conditions.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "canary baseline comparison latency"
   },
   {
     "id": "at1-4-1-mcq-008",
@@ -309,7 +316,8 @@
       ]
     },
     "explanation": "The untouched old pool is what makes the switch back instant, so it stays until the new release has proved itself. Deleting it removes that option, upgrading it removes the old version, and splitting traffic turns the cutover into a different method.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "blue green old environment decommission"
   },
   {
     "id": "at1-4-1-mcq-009",
@@ -348,7 +356,8 @@
       ]
     },
     "explanation": "Draining stops new requests from reaching an instance and lets current ones complete before the stop. A larger batch removes more capacity at once, removing the health check lets unready instances take traffic, and replacing an instance still in rotation cuts live connections.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rolling update connection draining"
   },
   {
     "id": "at1-4-1-mcq-010",
@@ -389,7 +398,8 @@
     "explanation": "While the batches roll, old and new instances answer at the same time, so the change must work for both. Cache flushes and balancer restarts do not address mixed versions, and forcing clients to upgrade first does not help requests that arrive during the rollout.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "backward compatible api changes rolling deploy"
   },
   {
     "id": "at1-4-1-mcq-011",
@@ -428,7 +438,8 @@
       ]
     },
     "explanation": "Load testing applies realistic or peak traffic and measures response time, throughput and errors. Regression tests check old behavior, integration tests check how components work together, and smoke tests are a short post-deploy check.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "load testing peak traffic"
   },
   {
     "id": "at1-4-1-mcq-012",
@@ -467,7 +478,8 @@
       ]
     },
     "explanation": "Regression tests rerun checks for behavior that already worked, to catch side effects of a change. Load tests measure capacity, smoke tests check the basics after a deploy, and penetration tests probe security rather than known results.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "regression testing shared code changes"
   },
   {
     "id": "at1-4-1-mcq-013",
@@ -506,7 +518,8 @@
       ]
     },
     "explanation": "Integration tests run the service with its real dependencies, so wrong connection settings show up. Load tests look at capacity, and linting and static analysis read the code without running it against a database.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "integration testing real dependencies"
   },
   {
     "id": "at1-4-1-mcq-014",
@@ -545,7 +558,8 @@
       ]
     },
     "explanation": "Load results only predict production when the hardware, configuration and data size resemble it. Lowering the users hides the problem, unit tests do not measure capacity, and one page does not represent the whole service.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "load test environment realism"
   },
   {
     "id": "at1-4-1-mcq-015",
@@ -584,7 +598,8 @@
       ]
     },
     "explanation": "A 404 from the called service, together with a renamed route, points at an interface mismatch between the services, which is what integration tests exist to find. The unit tests passed, an overloaded server would answer with timeouts or 5xx codes, and missing seed data would not change the route.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "integration test api contract mismatch"
   },
   {
     "id": "at1-4-1-mcq-016",
@@ -623,7 +638,8 @@
       ]
     },
     "explanation": "A test written with the fix fails if the bug returns, and the regression suite runs it on every change. A load test measures capacity, a wiki note does not run, and a smoke test checks that the page loads rather than that the rounding is right.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "regression test bug reintroduction"
   },
   {
     "id": "at1-4-1-mcq-017",
@@ -664,7 +680,8 @@
     "explanation": "Throughput rises only from 290 to 310 requests per second while p95 latency leaps from 210 to 1900 ms and errors reach 6.5 percent, so the limit lies between 150 and 200 users. The earlier steps scale almost linearly: errors first appear at 100 users at only 0.1 percent, and latency at 100 users (140 ms) still follows the trend, so neither marks saturation. Throughput growth alone does not rule it out.",
     "acronyms": [
       "API"
-    ]
+    ],
+    "searchTerm": "load test saturation point"
   },
   {
     "id": "at1-4-1-mcq-018",
@@ -703,7 +720,8 @@
       ]
     },
     "explanation": "Isolated, throwaway environments, each with its own database, remove the interference between runs. Retrying hides the flaw, a sleep only changes the timing, and test order does not affect a shared database.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "test isolation parallel pipeline runs"
   },
   {
     "id": "at1-4-1-mcq-019",
@@ -742,7 +760,8 @@
       ]
     },
     "explanation": "An explicit pass or fail threshold turns the measurement into a gate. Manual graph review is not automatic, a request count says nothing about speed, and marking the stage passed at a timeout would let slow releases through.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "performance gate load test threshold"
   },
   {
     "id": "at1-4-1-mcq-020",
@@ -781,7 +800,8 @@
       ]
     },
     "explanation": "A smoke test is a quick check that the deployed build starts and its main paths work. Load testing measures capacity, unit tests exercise single functions before deployment, and regression testing is a broad check of earlier behavior.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "smoke test after deployment"
   },
   {
     "id": "at1-4-1-mcq-021",
@@ -822,7 +842,8 @@
     "explanation": "The idle pool exists to be tested before users arrive, so a failed smoke test means the cutover does not happen. Switching anyway exposes users, deleting the live pool destroys the working version, and a running pool that returns 503 has not passed.",
     "acronyms": [
       "HTTP"
-    ]
+    ],
+    "searchTerm": "blue green smoke test failure"
   },
   {
     "id": "at1-4-1-mcq-022",
@@ -863,7 +884,8 @@
     "explanation": "With `--fail`, curl exits with code 22 when the server returns a status of 400 or higher. Without the flag the exit code would be 0, code 6 means the host name could not be resolved, and 28 means the operation timed out.",
     "acronyms": [
       "HTTP"
-    ]
+    ],
+    "searchTerm": "curl fail flag exit code"
   },
   {
     "id": "at1-4-1-mcq-023",
@@ -902,7 +924,8 @@
       ]
     },
     "explanation": "Problems that appear under real usage over time are found by watching production after the release. The smoke test already passed and covers only a few paths, unit tests run before deployment, and an old staging load test does not see saved-card behavior.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "post deployment monitoring production checks"
   },
   {
     "id": "at1-4-1-mcq-024",
@@ -943,7 +966,8 @@
     "explanation": "A scripted transaction exercises the path on a schedule, so quiet hours cannot hide a failure. It does not replace pre-release testing, it is not a capacity measurement, and a single path cannot prove the absence of regressions.",
     "acronyms": [
       "SRE"
-    ]
+    ],
+    "searchTerm": "synthetic monitoring transactions"
   },
   {
     "id": "at1-4-1-mcq-025",
@@ -982,7 +1006,8 @@
       ]
     },
     "explanation": "A hotfix carries the smallest possible change so that the risk and the testing needed stay small. Extra changes widen the risk, waiting leaves the bug live, and passing the build does not make the tweaks necessary for the fix.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "hotfix minimal change scope"
   },
   {
     "id": "at1-4-1-mcq-026",
@@ -1021,7 +1046,8 @@
       ]
     },
     "explanation": "A hotfix is a fast path through the pipeline, not a way around it, so the change is still built, checked and recorded. Copying by hand loses that traceability, tagging afterward does not test anything, and waiting leaves the bug in production.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "hotfix process pipeline bypass"
   },
   {
     "id": "at1-4-1-mcq-027",
@@ -1060,7 +1086,8 @@
       ]
     },
     "explanation": "A backward-compatible bug fix on the line that is in production bumps the patch number, giving `2.4.1`. Versions `2.5.0` and `2.5.1` belong to the minor line still being prepared, and a hyphenated suffix marks a pre-release that sorts before `2.4.0`.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "semantic versioning patch release"
   },
   {
     "id": "at1-4-1-mcq-028",
@@ -1099,7 +1126,8 @@
       ]
     },
     "explanation": "With a known-good release and no schema change, a rollback restores service fastest, and the investigation can happen afterward. A hotfix needs a diagnosis first, extra servers do not fix errors from faulty code, and waiting prolongs the impact.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rollback versus fix forward"
   },
   {
     "id": "at1-4-1-mcq-029",
@@ -1138,7 +1166,8 @@
       ]
     },
     "explanation": "The earlier artifact was already built and tested, so redeploying it restores exactly what ran before. A fresh build can differ through changed dependencies, hand edits on servers are untracked, and the failed artifact is still the faulty one.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "automated rollback redeploy artifact"
   },
   {
     "id": "at1-4-1-mcq-030",
@@ -1177,7 +1206,8 @@
       ]
     },
     "explanation": "A check that exercises a real dependency fails when that dependency is unreachable. A longer timeout and a repeat run still pass against a process that has simply started, and a process list shows the same fact as before.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "health check dependency checks"
   },
   {
     "id": "at1-4-1-mcq-031",
@@ -1216,7 +1246,8 @@
       ]
     },
     "explanation": "A smoke test is valuable because it is quick, so it keeps only the few checks that show the release is basically alive and the deeper checks live elsewhere. A weekly run no longer follows deployments, adding regression tests makes it slower, and the load stage has a different purpose.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "smoke test suite duration"
   },
   {
     "id": "at1-4-1-mcq-032",
@@ -1255,7 +1286,8 @@
       ]
     },
     "explanation": "A marker for each deployment lets the team line up a change in the metrics with a release. Lower thresholds only create more alerts, a weekly sheet is slower, and deleting history removes the baseline needed for comparison.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "deployment markers monitoring dashboards"
   },
   {
     "id": "at1-4-1-mcq-033",
@@ -1303,7 +1335,8 @@
       ]
     },
     "explanation": "Blue-green needs duplicate capacity and two pools that stay equivalent. The switch is a single step, so there is no long mixed-version window, there is no stop-and-update outage, rollback is a switch back, and traffic weights belong to a canary release.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "blue green deployment tradeoffs"
   },
   {
     "id": "at1-4-1-mcq-034",
@@ -1351,7 +1384,8 @@
       ]
     },
     "explanation": "Integration tests check the candidate against its real dependencies and load tests need realistic hardware and data, so both run against the deployed candidate. Linting, static analysis and the commit message check read files, and unit tests exercise functions without the deployed system.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "staging environment test types"
   },
   {
     "id": "at1-4-1-mcq-035",
@@ -1399,7 +1433,8 @@
       ]
     },
     "explanation": "Failing health checks and a higher error rate on the new instances are signs the release is faulty. Old instances still serving, both versions in rotation, steady batch times and instances draining out of rotation are all normal during a rolling update.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rolling update health check halt"
   },
   {
     "id": "at1-4-1-mcq-036",
@@ -1447,7 +1482,8 @@
       ]
     },
     "explanation": "Code and dependency changes can break behavior that worked before, so the regression suite reruns it. A rota, a dashboard, a wiki page and a channel name do not change the behavior of the application.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "regression suite triggers"
   },
   {
     "id": "at1-4-1-mcq-037",
@@ -1491,7 +1527,8 @@
       ]
     },
     "explanation": "Load tests measure how the running service responds under traffic, which shows up as latency percentiles and throughput. Unit test counts, coverage and commit age describe the code base rather than its behavior under load.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "load test metrics latency percentiles"
   },
   {
     "id": "at1-4-1-mcq-038",
@@ -1540,7 +1577,8 @@
       ]
     },
     "explanation": "Blue-green, canary and rolling updates always leave part of the capacity serving while the new version arrives. Stopping everything, updating a single host in place and removing the balancer all leave users without service.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "zero downtime deployment strategies"
   },
   {
     "id": "at1-4-1-terminal-001",
@@ -1643,7 +1681,8 @@
       "promote": "A healthy canary becomes the stable version with `canary promote`.",
       "after": "Abort sends all traffic back to the unchanged stable version `v3.1.0` and leaves no canary."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "canary abort promote rollout"
   },
   {
     "id": "at1-4-1-config-001",
@@ -1764,7 +1803,8 @@
       "gate": "A successful health endpoint after warm-up shows the instance can serve; a started process, a delay or no condition do not.",
       "rollback": "A failed health gate is a direct sign of a faulty build; traffic comparisons, elapsed time and tickets are not reliable triggers."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rolling update max surge unavailable"
   },
   {
     "id": "at1-4-1-order-001",
@@ -1825,7 +1865,8 @@
       "4": "Smoke tests check the deployed build, so they follow the deployment.",
       "5": "The merge back waits until production is confirmed healthy, as the rules state."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "hotfix workflow steps git"
   },
   {
     "id": "at1-4-1-data-001",
@@ -2001,7 +2042,8 @@
       "r4": "Errors are up only 0.4 point, but p95 is up 30 percent (130 against 100), above the 25 percent limit: roll back.",
       "r5": "Errors are up 0.9 point and p95 is up 22.5 percent (245 against 200), both inside the limits, with 2,400 requests: promote."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "canary release promotion criteria"
   },
   {
     "id": "at1-4-1-diagram-001",
@@ -2169,7 +2211,8 @@
       "z-idle": "The idle pool holds the new version and is unseen by users until the switch.",
       "z-db": "Both pools read and write the shared database, which is why schema changes must suit both versions."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "blue green load balancer architecture"
   },
   {
     "id": "at1-4-1-hotspot-001",
@@ -2303,7 +2346,8 @@
       "drain": "Draining lets in-flight requests finish and protects users.",
       "warm": "A warm-up period keeps new instances out of rotation until they are ready."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rollout strategy safety settings"
   },
   {
     "id": "at1-4-1-match-001",
@@ -2370,7 +2414,8 @@
       "p3": "A rolling update has no spare copy, so the old build is rolled out again across the instances.",
       "p4": "An in-place upgrade overwrote the old build on the host, so it is reinstalled."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "rollback methods by deployment strategy"
   },
   {
     "id": "at1-4-1-buckets-001",
@@ -2453,6 +2498,7 @@
       "i5": "A slow leak that only shows over days of real use is found by monitoring production.",
       "i6": "Running out of connections at a request rate is a capacity limit from load testing."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "types of software tests"
   }
 ]

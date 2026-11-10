@@ -36,7 +36,8 @@
       ]
     },
     "explanation": "Uptime is the share of a period during which the service was available, so 99.95% for September means the portal was available for that share of the month. A latency result describes an indicator, the average time to restore describes mean time to repair, and the unspent share of the allowance is the error budget.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "uptime availability percentage meaning"
   },
   {
     "id": "at1-4-2-mcq-002",
@@ -77,7 +78,8 @@
     "explanation": "A 30-day window has 43,200 minutes, and the allowed share is 100% - 99.9% = 0.1%, so 0.1% of 43,200 is 43.2 minutes. 4.32 minutes would fit a 99.99% target, 7.2 hours would fit 99.0%, and 86.4 minutes would fit 99.8%.",
     "acronyms": [
       "SLO"
-    ]
+    ],
+    "searchTerm": "error budget downtime calculation"
   },
   {
     "id": "at1-4-2-mcq-003",
@@ -116,7 +118,8 @@
       ]
     },
     "explanation": "Allowed downtime is 100% minus the target, so 0.1% becomes 0.01%, which is one tenth as much. Halving, a one-percent reduction and a hundredfold reduction do not match that change.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "availability nines downtime table"
   },
   {
     "id": "at1-4-2-mcq-004",
@@ -155,7 +158,8 @@
       ]
     },
     "explanation": "The contract leaves announced maintenance out, so only the 20-minute outage from the failed deploy counts against availability. Counting all 50 minutes ignores the exclusion, counting the 30-minute window counts the excluded time instead of the outage, and a failed deploy is unplanned downtime even though the team started the change.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "sla maintenance exclusions uptime"
   },
   {
     "id": "at1-4-2-mcq-005",
@@ -194,7 +198,8 @@
       ]
     },
     "explanation": "Checking every 10 minutes samples the service, so an outage that starts and ends between two checks is never recorded and uptime looks better than it was. Failed checks are counted once, planned work is classified from the maintenance calendar, and a check that requests a page tests the service, not host power.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "uptime monitoring check interval"
   },
   {
     "id": "at1-4-2-mcq-006",
@@ -235,7 +240,8 @@
     "explanation": "The team defines an up minute by a correct, timely answer from the endpoint, so 15 minutes of HTTP 503 are downtime even though the host had power. Power state is not the test, nobody announced maintenance, and the rule gives no partial credit for a running process.",
     "acronyms": [
       "HTTP"
-    ]
+    ],
+    "searchTerm": "uptime definition health check"
   },
   {
     "id": "at1-4-2-mcq-007",
@@ -277,7 +283,8 @@
     "acronyms": [
       "SLA",
       "SLO"
-    ]
+    ],
+    "searchTerm": "slo missed vs sla breach"
   },
   {
     "id": "at1-4-2-mcq-008",
@@ -316,7 +323,8 @@
       ]
     },
     "explanation": "A measurement of service behavior with no target attached is a service-level indicator. An objective adds a target to an indicator, an agreement is the contract with the customer, and an error budget is the allowed amount of failure that the target leaves.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "service level indicator definition"
   },
   {
     "id": "at1-4-2-mcq-009",
@@ -357,7 +365,8 @@
     "explanation": "Remaining budget is the allowance minus what has been used: 43.2 - 28.8 = 14.4 minutes. 28.8 is the amount already used, 72 adds the two figures instead of subtracting, and 4.32 is the allowance for a 99.99% target.",
     "acronyms": [
       "SLO"
-    ]
+    ],
+    "searchTerm": "error budget remaining calculation"
   },
   {
     "id": "at1-4-2-mcq-010",
@@ -399,7 +408,8 @@
     "acronyms": [
       "API",
       "SLO"
-    ]
+    ],
+    "searchTerm": "error budget request count"
   },
   {
     "id": "at1-4-2-mcq-011",
@@ -441,7 +451,8 @@
     "acronyms": [
       "SLA",
       "SLO"
-    ]
+    ],
+    "searchTerm": "error budget policy"
   },
   {
     "id": "at1-4-2-mcq-012",
@@ -480,7 +491,8 @@
       ]
     },
     "explanation": "Burn rate compares the current pace with the sustainable pace, so spending 30 days of budget in 5 days is 30 / 5 = 6 times as fast. 5 is the number of days, 25 is the days left over, and 150 multiplies instead of dividing.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "error budget burn rate formula"
   },
   {
     "id": "at1-4-2-mcq-013",
@@ -522,7 +534,8 @@
     "acronyms": [
       "CPU",
       "SLO"
-    ]
+    ],
+    "searchTerm": "burn rate alerting slo"
   },
   {
     "id": "at1-4-2-mcq-014",
@@ -561,7 +574,8 @@
       ]
     },
     "explanation": "A service-level agreement is the contract with the customer and names the remedies. An objective is an internal target, an error budget policy is an internal rule for using the budget, and a review is a learning exercise after an incident.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "service level agreement vs objective"
   },
   {
     "id": "at1-4-2-mcq-015",
@@ -600,7 +614,8 @@
       ]
     },
     "explanation": "A stricter internal target raises a warning while the service is still inside the contractual figure, which leaves time to act. It has no effect on price, it does not replace the contract, and measurement is still needed to know where the service stands.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "internal slo stricter than sla"
   },
   {
     "id": "at1-4-2-mcq-016",
@@ -641,7 +656,8 @@
     "explanation": "The month measured 99.9%, which is below 99.95%, so the credit applies: 5% of $8,000 is $400. $4,000 is 50% of the fee, $1,600 is 20%, and $7,600 is the fee left after the credit rather than the credit.",
     "acronyms": [
       "SLA"
-    ]
+    ],
+    "searchTerm": "sla service credit calculation"
   },
   {
     "id": "at1-4-2-mcq-017",
@@ -682,7 +698,8 @@
     "explanation": "The contract excludes outages the customer causes, so the two hours do not count as provider downtime. Counting them with a credit ignores the exclusion, no clause splits the time, and the outage was not announced maintenance.",
     "acronyms": [
       "SLA"
-    ]
+    ],
+    "searchTerm": "sla exclusions customer caused outage"
   },
   {
     "id": "at1-4-2-mcq-018",
@@ -724,7 +741,8 @@
     "acronyms": [
       "SLA",
       "SLO"
-    ]
+    ],
+    "searchTerm": "slo sla comparison example"
   },
   {
     "id": "at1-4-2-mcq-019",
@@ -765,7 +783,8 @@
     "explanation": "Mean time to repair is the average time from the start of a failure until the repair is done and service is back. The average gap between failures is mean time between failures, the available share of the month is uptime, and the consumed share of the allowance is error budget burn.",
     "acronyms": [
       "MTTR"
-    ]
+    ],
+    "searchTerm": "mean time to repair definition"
   },
   {
     "id": "at1-4-2-mcq-020",
@@ -804,7 +823,8 @@
       ]
     },
     "explanation": "The mean is the total repair time divided by the number of outages: (12 + 30 + 18) / 3 = 60 / 3 = 20 minutes. 60 is the total, 30 is the longest outage, and 15 divides the total by four instead of three.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "mean time to repair calculation"
   },
   {
     "id": "at1-4-2-mcq-021",
@@ -843,7 +863,8 @@
       ]
     },
     "explanation": "A quick, documented rollback shortens the time from failure to restored service, which is what the mean time to repair measures. Tests and reviews aim to prevent failures, which raises the time between failures, and longer log retention does not speed up recovery.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "reduce mean time to repair"
   },
   {
     "id": "at1-4-2-mcq-022",
@@ -884,7 +905,8 @@
     "explanation": "MTBF is the average operating time between failures, so a higher value means failures are rarer. The time to fix a failure is mean time to repair, the longest outage is a single worst case, and the share of failed requests is an error rate.",
     "acronyms": [
       "MTBF"
-    ]
+    ],
+    "searchTerm": "mean time between failures definition"
   },
   {
     "id": "at1-4-2-mcq-023",
@@ -925,7 +947,8 @@
     "explanation": "MTBF is operating time divided by the number of failures: 720 / 3 = 240 hours. 180 divides by 4, 720 ignores the failures, and 2,160 multiplies instead of dividing.",
     "acronyms": [
       "MTBF"
-    ]
+    ],
+    "searchTerm": "mtbf calculation"
   },
   {
     "id": "at1-4-2-mcq-024",
@@ -966,7 +989,8 @@
     "explanation": "Fewer failures in the same period mean more operating time between them, so MTBF rose, and each fix still takes an hour, so the mean time to repair is unchanged. Option a is wrong because MTBF did not fall, b because MTBF did not stay the same, and a and c are both wrong about repair time, which neither fell nor rose.",
     "acronyms": [
       "MTBF"
-    ]
+    ],
+    "searchTerm": "mtbf mttr redundancy"
   },
   {
     "id": "at1-4-2-mcq-025",
@@ -1008,7 +1032,8 @@
     "acronyms": [
       "MTBF",
       "MTTR"
-    ]
+    ],
+    "searchTerm": "availability formula mtbf mttr"
   },
   {
     "id": "at1-4-2-mcq-026",
@@ -1047,7 +1072,8 @@
       ]
     },
     "explanation": "When both must be up, the availabilities multiply: 0.999 x 0.999 = 0.998001, which rounds to 99.8%. The flow cannot be as available as one part alone, 99.99% would need redundancy, and 99.0% is far lower than the product.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "composite availability serial dependencies"
   },
   {
     "id": "at1-4-2-mcq-027",
@@ -1086,7 +1112,8 @@
       ]
     },
     "explanation": "A feedback loop sends what monitoring and incident reviews learn back into the backlog, the pipeline and the monitoring itself. A one-way customer report, a one-time test and a credit clause do not change the system.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "feedback loop operations"
   },
   {
     "id": "at1-4-2-mcq-028",
@@ -1127,7 +1154,8 @@
     "explanation": "Follow-ups become work only when they are in the backlog with an owner and a priority, where they are planned and closed. Notes with no tracking get forgotten, the SLA is a customer contract, and comments in alert rules are not a work queue.",
     "acronyms": [
       "SLA"
-    ]
+    ],
+    "searchTerm": "incident review action items tracking"
   },
   {
     "id": "at1-4-2-mcq-029",
@@ -1166,7 +1194,8 @@
       ]
     },
     "explanation": "Monitoring is part of the loop, so an alert that never leads to action is tuned or retired to protect the signal. Duplicating or amplifying it adds noise, and the contract has no place for internal alert rules.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "alert fatigue actionable alerts"
   },
   {
     "id": "at1-4-2-mcq-030",
@@ -1207,7 +1236,8 @@
     "explanation": "Unspent budget is room to take planned risk, so shipping the change is what the budget is for. Freezing releases is the response to a spent budget, and changing the target mid-window to match results defeats the purpose of having one.",
     "acronyms": [
       "SLO"
-    ]
+    ],
+    "searchTerm": "error budget policy spare budget"
   },
   {
     "id": "at1-4-2-mcq-031",
@@ -1249,7 +1279,8 @@
     "acronyms": [
       "SLA",
       "SLO"
-    ]
+    ],
+    "searchTerm": "rolling window slo"
   },
   {
     "id": "at1-4-2-mcq-032",
@@ -1291,7 +1322,8 @@
     "acronyms": [
       "API",
       "CPU"
-    ]
+    ],
+    "searchTerm": "latency percentile slo"
   },
   {
     "id": "at1-4-2-mcq-033",
@@ -1335,7 +1367,8 @@
       ]
     },
     "explanation": "A crash and an expired certificate both take the service away without notice, so they are unplanned downtime. The announced upgrade and the scheduled restart are planned downtime, and a paused release leaves the service running, so it is not downtime at all.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "unplanned downtime examples"
   },
   {
     "id": "at1-4-2-mcq-034",
@@ -1383,7 +1416,8 @@
       "MTBF",
       "SLA",
       "SLO"
-    ]
+    ],
+    "searchTerm": "error budget expression forms"
   },
   {
     "id": "at1-4-2-mcq-035",
@@ -1427,7 +1461,8 @@
       ]
     },
     "explanation": "A blameless review gets honest accounts and points at causes in the system and process that the team can change. Keeping the outcome private, making actions optional and skipping the timeline would weaken what the review is for.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "blameless postmortem reasons"
   },
   {
     "id": "at1-4-2-mcq-036",
@@ -1471,7 +1506,8 @@
       ]
     },
     "explanation": "Probes inside the provider network miss routing and access problems that customers see, and ignoring partial errors leaves real harm out of the figure. Multi-region probes, strict failure rules and a published method make the figure more honest, not better looking.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "uptime measurement pitfalls"
   },
   {
     "id": "at1-4-2-mcq-037",
@@ -1518,7 +1554,8 @@
     "acronyms": [
       "MTBF",
       "SLA"
-    ]
+    ],
+    "searchTerm": "100 percent availability target"
   },
   {
     "id": "at1-4-2-mcq-038",
@@ -1562,7 +1599,8 @@
       ]
     },
     "explanation": "The mean is (8 + 10 + 12 + 270) / 4 = 75 minutes, pulled up by one long outage, while the median is (10 + 12) / 2 = 11 minutes and describes a typical repair. No outage took about 75 minutes, deleting data hides the problem, and the two measures do not have to agree.",
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "mean vs median outage durations"
   },
   {
     "id": "at1-4-2-terminal-001",
@@ -1651,7 +1689,8 @@
     },
     "acronyms": [
       "SLO"
-    ]
+    ],
+    "searchTerm": "error budget calculation tool"
   },
   {
     "id": "at1-4-2-config-001",
@@ -1767,7 +1806,8 @@
     "acronyms": [
       "API",
       "SLO"
-    ]
+    ],
+    "searchTerm": "slo definition indicator window"
   },
   {
     "id": "at1-4-2-order-001",
@@ -1828,7 +1868,8 @@
       "4": "The fix and its new automated check go out through the pipeline.",
       "5": "The item closes only after monitoring shows the fix working in production."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "incident response loop order"
   },
   {
     "id": "at1-4-2-data-001",
@@ -1962,7 +2003,8 @@
     },
     "acronyms": [
       "MTBF"
-    ]
+    ],
+    "searchTerm": "monthly availability calculation mtbf"
   },
   {
     "id": "at1-4-2-diagram-001",
@@ -2095,7 +2137,8 @@
       "z3": "The incident review looks for causes without blame once service is back.",
       "z4": "The backlog holds the ranked fixes that flow into the pipeline."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "reliability feedback loop stages"
   },
   {
     "id": "at1-4-2-hotspot-001",
@@ -2231,7 +2274,8 @@
     },
     "acronyms": [
       "SLA"
-    ]
+    ],
+    "searchTerm": "sla service credit tiers"
   },
   {
     "id": "at1-4-2-match-001",
@@ -2323,7 +2367,8 @@
       "MTTR",
       "SLA",
       "SLO"
-    ]
+    ],
+    "searchTerm": "sre terminology definitions"
   },
   {
     "id": "at1-4-2-buckets-001",
@@ -2398,6 +2443,7 @@
       "i5": "A promise the provider can be held to by the customer is the agreement.",
       "i6": "An internal target whose budget burn pages the on-call engineer is an objective."
     },
-    "acronyms": []
+    "acronyms": [],
+    "searchTerm": "slo sla sli terms"
   }
 ]

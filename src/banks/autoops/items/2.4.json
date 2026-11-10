@@ -36,7 +36,8 @@
     },
     "explanation": "Signed requests carry a timestamp, and the server rejects any outside a tolerance window, so a drifted host clock causes this exact error; fixing time synchronization on the host clears it. A dropped port would time out before the server read any request, a revoked certificate would fail the handshake, and a missing environment variable would stop the agent from starting.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "agent timestamp skew clock sync"
   },
   {
     "id": "at1-2-4-mcq-002",
@@ -77,7 +78,8 @@
     "acronyms": [
       "YAML"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "tcp timeout firewall connectivity"
   },
   {
     "id": "at1-2-4-mcq-003",
@@ -118,7 +120,8 @@
     "acronyms": [
       "CA"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "tls certificate expired renewal"
   },
   {
     "id": "at1-2-4-mcq-004",
@@ -159,7 +162,8 @@
     "acronyms": [
       "API"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "http 401 unauthorized meaning"
   },
   {
     "id": "at1-2-4-mcq-005",
@@ -198,7 +202,8 @@
     },
     "explanation": "A 504 is returned by a gateway that received no timely response from the upstream, so the next place to look is the `orders-api` service. An unusable upstream reply is a 502, an oversized body is a 413, and rejected credentials are a 401 or 407.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "http 504 gateway timeout"
   },
   {
     "id": "at1-2-4-mcq-006",
@@ -239,7 +244,8 @@
     "acronyms": [
       "API"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "http 429 rate limiting retry-after"
   },
   {
     "id": "at1-2-4-mcq-007",
@@ -280,7 +286,8 @@
     "acronyms": [
       "DNS"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "dns no such host lookup"
   },
   {
     "id": "at1-2-4-mcq-008",
@@ -319,7 +326,8 @@
     },
     "explanation": "Binding fails when a listening socket already holds the port, so the new service cannot start until the owner stops or the port changes. Firewall rules, file permissions and memory shortages produce different messages.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "bind address already in use"
   },
   {
     "id": "at1-2-4-mcq-009",
@@ -360,7 +368,8 @@
     "acronyms": [
       "TCP"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ss command listening tcp ports"
   },
   {
     "id": "at1-2-4-mcq-010",
@@ -399,7 +408,8 @@
     },
     "explanation": "The error names a path that does not exist, and the real file ends in `.yml`, so the flag must point at that file. Execute permission is irrelevant to a data file, renaming the directory breaks the path further, and memory is not the problem.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "linux no such file or directory"
   },
   {
     "id": "at1-2-4-mcq-011",
@@ -438,7 +448,8 @@
     },
     "explanation": "The application reads its connection string from an environment variable that the file never defines, so the entry must be added. A different image tag and more logging leave the variable unset, and `DATABASE_HOST` is a different name from the one the application asks for.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "docker compose environment variables"
   },
   {
     "id": "at1-2-4-mcq-012",
@@ -477,7 +488,8 @@
     },
     "explanation": "`journalctl -u` filters the journal to one unit. `enable` only links the unit to start at boot, `mask` blocks the unit from starting, and `reset-failed` clears the failed state without printing logs.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "journalctl unit logs systemd"
   },
   {
     "id": "at1-2-4-mcq-013",
@@ -516,7 +528,8 @@
     },
     "explanation": "The service wins a race at boot, starting before the database accepts connections, so an ordering dependency makes systemd start the database first. Running as root, changing the listening port and adding log detail do not change the start order.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "systemd after requires dependency"
   },
   {
     "id": "at1-2-4-mcq-014",
@@ -555,7 +568,8 @@
     },
     "explanation": "Cron starts jobs with a minimal environment, so a directory added to `PATH` in a login profile is missing; use the full path or set `PATH` in the job. The interpreter line applies however a script is started, scheduled jobs can read `/opt` like any other directory their user may read, and the tool does not need a terminal.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "cron minimal environment path"
   },
   {
     "id": "at1-2-4-mcq-015",
@@ -594,7 +608,8 @@
     },
     "explanation": "A certificate is valid only between its start and end dates, and this one is past the end date. A name mismatch concerns the host name, a missing intermediate concerns the chain the server sends, and an untrusted issuer concerns the root.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "certificate validity dates not after"
   },
   {
     "id": "at1-2-4-mcq-016",
@@ -635,7 +650,8 @@
     "acronyms": [
       "CA"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "tls subject alternative name"
   },
   {
     "id": "at1-2-4-mcq-017",
@@ -674,7 +690,8 @@
     },
     "explanation": "Many browsers fetch or cache a missing intermediate, but command-line clients do not, so the server should send the full chain. Another root does not supply the missing link, `-k` turns verification off, and a shorter lifetime has no effect on the chain.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "tls intermediate certificate chain missing"
   },
   {
     "id": "at1-2-4-mcq-018",
@@ -715,7 +732,8 @@
     "acronyms": [
       "CA"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "private ca root trust store"
   },
   {
     "id": "at1-2-4-mcq-019",
@@ -754,7 +772,8 @@
     },
     "explanation": "The `-dates` option prints the not-before and not-after times. `-subject` prints the holder's name, `-serial` prints the serial number, and `-fingerprint` prints a digest of the certificate.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "openssl x509 dates command"
   },
   {
     "id": "at1-2-4-mcq-020",
@@ -793,7 +812,8 @@
     },
     "explanation": "Alerting on days remaining and renewing automatically removes the human step that failed. Very long lifetimes weaken security and still expire one day, pinning makes each renewal break clients, and a restart reloads the same expired certificate.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "certificate expiry monitoring automation"
   },
   {
     "id": "at1-2-4-mcq-021",
@@ -835,7 +855,8 @@
       "CA",
       "VM"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "certificate not yet valid clock skew"
   },
   {
     "id": "at1-2-4-mcq-022",
@@ -876,7 +897,8 @@
     "acronyms": [
       "YAML"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "yaml tabs indentation spaces"
   },
   {
     "id": "at1-2-4-mcq-023",
@@ -917,7 +939,8 @@
     "acronyms": [
       "YAML"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "yaml indentation mapping errors"
   },
   {
     "id": "at1-2-4-mcq-024",
@@ -958,7 +981,8 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "json trailing comma syntax"
   },
   {
     "id": "at1-2-4-mcq-025",
@@ -999,7 +1023,8 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "json syntax rules valid"
   },
   {
     "id": "at1-2-4-mcq-026",
@@ -1038,7 +1063,8 @@
     },
     "explanation": "A strict parser allows each key only once per section, and `host` appears twice under `[database]`. Unquoted numbers, lowercase section names and a missing final blank line are all accepted.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ini duplicate keys section"
   },
   {
     "id": "at1-2-4-mcq-027",
@@ -1077,7 +1103,8 @@
     },
     "explanation": "In a strict `.ini` file every setting belongs to a section, and the first line sits above any header. The blank line, the quotes and the header's capitalization do not change that.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ini file key outside section"
   },
   {
     "id": "at1-2-4-mcq-028",
@@ -1118,7 +1145,8 @@
     "acronyms": [
       "YAML"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "yaml version number parsed as float"
   },
   {
     "id": "at1-2-4-mcq-029",
@@ -1159,7 +1187,8 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "jq validate json file"
   },
   {
     "id": "at1-2-4-mcq-030",
@@ -1201,7 +1230,8 @@
       "JSON",
       "YAML"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ci pipeline config lint yaml"
   },
   {
     "id": "at1-2-4-mcq-031",
@@ -1245,7 +1275,8 @@
     },
     "explanation": "Clock drift can make the server reject signed requests or certificates, and an unreachable port stops the connection. Branch protection, build log verbosity and database schemas have no bearing on agent communication.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "agent heartbeat troubleshooting steps"
   },
   {
     "id": "at1-2-4-mcq-032",
@@ -1294,7 +1325,8 @@
     },
     "explanation": "A missing variable, a wrong configuration path and a port already in use each stop a process during start-up. A debug log level, old log files and the time of the deployment do not stop the process from running.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "service fails to start after deployment"
   },
   {
     "id": "at1-2-4-mcq-033",
@@ -1338,7 +1370,8 @@
     },
     "explanation": "Clients check the validity dates and that a name in the certificate matches the host they asked for. A certificate issued hours ago is already valid, one certificate may cover several names, and a 2048-bit key is a normal size.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "tls certificate validation rules"
   },
   {
     "id": "at1-2-4-mcq-034",
@@ -1384,7 +1417,8 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "json grammar invalid syntax"
   },
   {
     "id": "at1-2-4-mcq-035",
@@ -1430,7 +1464,8 @@
     "acronyms": [
       "YAML"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "yaml parse error causes"
   },
   {
     "id": "at1-2-4-mcq-036",
@@ -1474,7 +1509,8 @@
     },
     "explanation": "A 502 and a 503 come from a gateway or service that cannot serve a valid request. A 404, a 401 and a 422 describe a missing resource, missing credentials and unusable content sent by the client.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "http 502 503 server errors"
   },
   {
     "id": "at1-2-4-terminal-001",
@@ -1642,7 +1678,8 @@
     "acronyms": [
       "API"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "linux find process using port"
   },
   {
     "id": "at1-2-4-config-001",
@@ -1759,7 +1796,8 @@
       "dash": "Without the space, the dash is part of a key name and the sequence is broken."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "yaml indentation and quoting colons"
   },
   {
     "id": "at1-2-4-order-001",
@@ -1820,7 +1858,8 @@
       "5": "A fresh check-in on the console proves the fix."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "linux service troubleshooting steps"
   },
   {
     "id": "at1-2-4-data-001",
@@ -2017,7 +2056,8 @@
       "edge": "An offset of -300 seconds is within the limit of 300, so cache01 is accepted."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "numeric version comparison rules"
   },
   {
     "id": "at1-2-4-diagram-001",
@@ -2141,7 +2181,8 @@
       "CA",
       "TLS"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "reverse proxy tls upstream certificate"
   },
   {
     "id": "at1-2-4-hotspot-001",
@@ -2274,7 +2315,8 @@
       "sp6": "A key, an equals sign and a value form a valid setting."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ini file syntax section header"
   },
   {
     "id": "at1-2-4-match-001",
@@ -2374,7 +2416,8 @@
       "JSON",
       "YAML"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "tls unknown authority error meaning"
   },
   {
     "id": "at1-2-4-buckets-001",
@@ -2457,6 +2500,7 @@
       "JSON",
       "YAML"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "classify system failure causes"
   }
 ]
