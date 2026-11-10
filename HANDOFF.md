@@ -1,3 +1,20 @@
+# 2026-11-10 (night, last): #6 code built and merged to main, NOT pushed or deployed
+
+Next session model: **Sonnet**. The learn-more code (plan `docs/superpowers/plans/2026-11-10-learn-more-search.md`) is on
+main, local only. `npm run check` is green (123 e2e), the Opus review is done and every finding is fixed. Left: the
+owner's OK to push, then `git push` and `npm run deploy`, then comment on #6 (the button works now on the fallback
+phrase) and leave #6 OPEN.
+
+Then the content passes, one exam per session (autoops, dataplus, secai): Haiku drafts a `searchTerm` per question
+(2 to 6 words, at most 50 characters, letters, digits, spaces, hyphens, periods), then a spot check. Progress meter: the
+console line "N of M questions still use the fallback" from `npx vitest run src/banks`. Today all 2122 use the fallback.
+
+Rulings: W3Schools has no search URL (404), so it searches via DuckDuckGo `site:w3schools.com`. The button name matches
+the primer's own "Learn more" (kept per spec; ours reads "Learn more about <phrase>"). No cram e2e (cram shares
+StudyRunner's path, covered by practice). Not done: QuestionEditor does not show or keep `searchTerm`, so the author
+tool drops it on edit (owner's call). Lesson learned: the Write tool overwrote `src/ui/learn/learn.css` once (restored);
+look at `git diff --stat` before each commit.
+
 # 2026-11-10 (night, later): #6 design approved, plan is next
 
 Next session model: **Sonnet**. `gh issue list` first (on 2026-11-10 there were no bugs: only #11 and #6, plus the
