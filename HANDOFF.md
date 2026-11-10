@@ -27,6 +27,14 @@ What was in progress when the machine went off:
 
 Both branches are in the bundles under `Custom/cloud-handoff/`. Nothing is pushed to the public repos.
 
+# 2026-11-09 (local): primer links checked
+
+All 66 primer links checked from the home machine: the 51 that are not on gnu.org return 200. The 15 gnu.org manual
+links time out in the TLS handshake (gnu.org has been up and down since August, per the owner); cat and printf
+answered once, and the Wayback Machine has a 200 copy of all 15 (most from Oct 2026), so the pages exist. Kept as
+they are. The GNU download mirror the owner gave (mirror.team-cymru.com/gnu/) carries tarballs only, not the HTML
+manuals. Task 15 still needs the owner to approve the link list.
+
 # 2026-11-09 (cloud): link list sent, waiting on the owner
 
 `gh issue list`: no bugs, no `from-app` issues; open #11, #6, #5 (enhancements). The Task 15 link list (66 links: the
