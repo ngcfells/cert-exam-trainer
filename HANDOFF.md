@@ -27,6 +27,15 @@ What was in progress when the machine went off:
 
 Both branches are in the bundles under `Custom/cloud-handoff/`. Nothing is pushed to the public repos.
 
+# 2026-11-09 (local): Task 15 started, owner approved the links
+
+The owner APPROVED the link list (66 links, 15 gnu.org ones now man7.org, commit 281a4e6). `npm run check` passed on
+`command-primer` (e2e 119 passed). Left, in order: (1) one whole-branch review on Opus as a subagent
+(superpowers:requesting-code-review, branch vs main); (2) fix ALL findings, minors too; (3) re-run `npm run check`;
+(4) merge to main, push, `npm run deploy` (cert-exam-trainer is public: ask the owner for the push OK at that point
+if it has not been given in words); (5) close #5 with a comment. Run it on Sonnet. The owner's account now shows a
+Fable limit, so use Opus or Sonnet only, not Fable.
+
 # 2026-11-09 (local): primer links checked
 
 All 66 primer links checked from the home machine: the 51 that are not on gnu.org return 200. The 15 gnu.org manual
