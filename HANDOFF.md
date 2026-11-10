@@ -1,6 +1,16 @@
-# 2026-11-10 (very late): #6, #19 part 1 and the install fix are live; ε added
+# 2026-11-10 (very late): START HERE after /clear. Next: #19 part 2 (the chaining lesson)
 
-Next session model: **Sonnet**. Live (gh-pages): #6 Learn more button (fallback phrases only; per-exam `searchTerm`
+Next session model: **Sonnet**. Order: `gh issue list` first (bugs and `from-app` beat everything; on 2026-11-10 only #6, #11
+and #19 were open, no bugs). The owner chose **#19 part 2 next**: a "putting it together" Data+ lesson that chains the
+techniques in the order the learner gave: how the data is distributed, which hypothesis test, one-tail or two-tail, how the
+test statistic changes with the curve, Type I and Type II errors, then p-value and R-squared to pick a model, with
+overfitting in mind (simplest model that works). Start with superpowers:brainstorming (the owner may skip the questions),
+reuse the lesson schema and `LessonDiagram` (maybe a new diagram kind), one lesson area, Haiku or Sonnet drafts, spot check.
+The install fix is CONFIRMED working on the owner's phone (2026-11-10). The two #6 content passes follow after part 2.
+
+State at this point: everything is pushed and deployed (main ce467f2, gh-pages e7a795c); working tree clean.
+
+Details of what shipped: Live (gh-pages): #6 Learn more button (fallback phrases only; per-exam `searchTerm`
 content passes still to do: autoops, dataplus, secai, one per session, Haiku drafts, spot check; #6 stays open), the
 install fix (Settings > Install as an app now shows menu steps when Chrome offers no prompt; the owner reported not seeing
 it on Chrome Android, not re-tested on a phone), and #19 part 1 (diagrams in 7 Data+ lessons, `src/ui/learn/LessonDiagram.tsx`,
