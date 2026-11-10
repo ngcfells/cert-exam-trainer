@@ -10,7 +10,13 @@ import './learnMore.css';
 export function LearnMoreButton({ question }: { question: Question }) {
   const { mockDeadline } = usePanels();
   const [open, setOpen] = useState(false);
+  const [forId, setForId] = useState(question.id);
+  if (forId !== question.id) {
+    setForId(question.id);
+    setOpen(false);
+  }
   const btn = useRef<HTMLButtonElement>(null);
+  const box = useRef<HTMLDivElement>(null);
   const menuId = useId();
   const phrase = useMemo(() => searchPhrase(question, metaFor(question.exam)), [question]);
   const sources = useMemo(() => sourcesFor(question.exam), [question.exam]);
@@ -19,16 +25,16 @@ export function LearnMoreButton({ question }: { question: Question }) {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return;
       setOpen(false);
-      btn.current?.focus();
+      if (box.current?.contains(document.activeElement)) btn.current?.focus();
     };
     document.addEventListener('keydown', onKey);
     return () => document.removeEventListener('keydown', onKey);
   }, [open]);
   if (mockDeadline !== null) return null;
   return (
-    <div className="learn-more">
+    <div className="learn-more" ref={box}>
       <button ref={btn} type="button" aria-expanded={open} aria-controls={menuId} onClick={() => setOpen((o) => !o)}>
-        <span aria-hidden="true">🤔 </span>Learn more
+        <span aria-hidden="true">🤔 </span>Learn more{' '}<span className="visually-hidden">about {phrase}</span>
       </button>
       {open && (
         <div id={menuId}>

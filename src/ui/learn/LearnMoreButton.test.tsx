@@ -65,6 +65,28 @@ describe('LearnMoreButton', () => {
     expect(btn).toHaveFocus();
   });
 
+  it('names the topic so several buttons on one screen differ', () => {
+    view(q());
+    expect(screen.getByRole('button', { name: 'Learn more about DNS TTL' })).toBeInTheDocument();
+  });
+
+  it('closes when the question changes', async () => {
+    const { rerender } = view(q());
+    await userEvent.click(screen.getByRole('button', { name: /learn more/i }));
+    expect(screen.getAllByRole('link').length).toBeGreaterThan(0);
+    rerender(<WithPanels><LearnMoreButton question={q({ id: 'L2' })} /></WithPanels>);
+    expect(screen.queryByRole('link')).toBeNull();
+  });
+
+  it('does not pull focus back on Escape when focus is elsewhere', async () => {
+    render(<WithPanels><LearnMoreButton question={q()} /><button type="button">Other</button></WithPanels>);
+    await userEvent.click(screen.getByRole('button', { name: /learn more/i }));
+    screen.getByRole('button', { name: 'Other' }).focus();
+    await userEvent.keyboard('{Escape}');
+    expect(screen.queryByRole('link')).toBeNull();
+    expect(screen.getByRole('button', { name: 'Other' })).toHaveFocus();
+  });
+
   it('offers only the web search for an exam with no sources of its own', async () => {
     view(q({ exam: 'USER-1' }));
     await userEvent.click(screen.getByRole('button', { name: /learn more/i }));

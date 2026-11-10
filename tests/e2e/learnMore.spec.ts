@@ -31,6 +31,10 @@ test('practice: Learn more appears only after checking, opens search links, pass
   const web = page.getByRole('link', { name: /Web search/ });
   await expect(web).toHaveAttribute('target', '_blank');
   await expect(web).toHaveAttribute('href', /^https:\/\/duckduckgo\.com\/\?q=[^&]+$/);
+  // The fixture bank has no search terms, so the phrase is the objective topic: encoded, never raw punctuation.
+  await expect(web).not.toHaveAttribute('href', /Given%20a%20scenario|%2C/);
+  await expectNoSeriousAxe(page);
+  await page.emulateMedia({ colorScheme: 'dark' });
   await expectNoSeriousAxe(page);
 });
 

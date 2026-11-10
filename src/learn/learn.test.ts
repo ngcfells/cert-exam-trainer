@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import type { ExamMeta, Question } from '../domain/types';
-import { learnUrl, searchPhrase, sourcesFor } from './learn';
+import { learnUrl, searchPhrase, searchTopic, sourcesFor } from './learn';
 import { LEARN_SOURCES } from './sources';
 
 const meta = {
@@ -35,6 +35,23 @@ describe('searchPhrase', () => {
   });
   it('ignores an invalid search term', () => {
     expect(searchPhrase(q({ searchTerm: 'x&y z' }), meta)).toBe('Caching');
+  });
+});
+
+describe('searchTopic', () => {
+  it.each([
+    ['Given a scenario, use configuration management techniques to deploy a solution.', 'configuration management techniques'],
+    ['Identify artificial intelligence (AI) concepts.', 'artificial intelligence concepts'],
+    ['Compare and contrast various AI types and techniques used in cybersecurity.', 'various AI types and techniques'],
+    ['Given a scenario, troubleshoot issues using report validation techniques.', 'troubleshoot issues using report validation techniques'],
+    ['Given a set of requirements, determine the best chart type for a report.', 'the best chart type'],
+    ['Data Concepts and Environments','Data Concepts and Environments'],
+  ])('cleans %s', (title, expected) => {
+    expect(searchTopic(title)).toBe(expected);
+  });
+  it('is used by the fallback phrase', () => {
+    const m = { ...meta, objectives: [{ id: '1.1', domainId: '1', title: 'Identify artificial intelligence (AI) concepts.' }] } as unknown as ExamMeta;
+    expect(searchPhrase(q({ acronyms: ['AI'] }), m)).toBe('AI artificial intelligence concepts');
   });
 });
 
