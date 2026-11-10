@@ -22,5 +22,21 @@ test('manifest is linked and served', async ({ page }) => {
   const href = await page.locator('link[rel="manifest"]').getAttribute('href');
   const res = await page.request.get(new URL(href!, PWA_URL).href);
   expect(res.ok()).toBe(true);
-  expect((await res.json()).start_url).toBe('./');
+  const manifest = await res.json();
+  expect(manifest.start_url).toBe('./');
+  const sizes = manifest.icons.map((i: { sizes: string; type: string }) => `${i.sizes} ${i.type}`);
+  expect(sizes).toContain('192x192 image/png');
+  expect(sizes).toContain('512x512 image/png');
+});
+
+test('settings offers the install hint on an iPhone', async ({ browser }) => {
+  const context = await browser.newContext({
+    userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1',
+  });
+  const page = await context.newPage();
+  await page.goto(PWA_URL);
+  await page.getByRole('button', { name: /settings/i }).first().click();
+  await expect(page.getByRole('heading', { name: 'Install as an app' })).toBeVisible();
+  await expect(page.getByText(/Add to Home Screen/)).toBeVisible();
+  await context.close();
 });

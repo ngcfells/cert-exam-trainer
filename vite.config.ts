@@ -13,7 +13,7 @@ const version = (JSON.parse(readFileSync('package.json', 'utf8')) as { version: 
 const pwa = VitePWA({
   registerType: 'autoUpdate',
   injectRegister: false,
-  includeAssets: ['icon.svg'],
+  includeAssets: ['icon.svg', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png'],
   manifest: {
     name: 'Cert Exam Trainer',
     short_name: 'Exam Trainer',
@@ -23,10 +23,15 @@ const pwa = VitePWA({
     display: 'standalone',
     theme_color: '#1f2d3d',
     background_color: '#ffffff',
-    icons: [{ src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' }],
+    icons: [
+      { src: 'icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: 'icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: 'icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' },
+      { src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
+    ],
   },
   workbox: {
-    globPatterns: ['**/*.{js,css,html,svg,webmanifest}'],
+    globPatterns: ['**/*.{js,css,html,svg,png,webmanifest}'],
     navigateFallback: 'index.html',
     cleanupOutdatedCaches: true,
     maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,

@@ -3,6 +3,7 @@ import type { Repo } from '../storage';
 import { BackupControls } from './BackupControls';
 import { applyDisplay, loadDisplay } from './display';
 import { DisplaySettings } from './DisplaySettings';
+import { InstallApp } from './InstallApp';
 import { MarkSettings } from './marks/MarkSettings';
 import { applyMarks, loadMarks } from './marks/prefs';
 import { applyTips, loadTips } from './tips/prefs';
@@ -24,7 +25,8 @@ export function SettingsForm({ repo, backup }: { repo: Repo; backup: boolean }) 
       <DisplaySettings key={imports} repo={repo} />
       <MarkSettings key={`marks-${imports}`} repo={repo} />
       <TipSettings key={`tips-${imports}`} repo={repo} />
-      {backup && <BackupControls repo={repo} onImported={() => void onImported()} />}
+      <InstallApp />
+      {backup &&<BackupControls repo={repo} onImported={() => void onImported()} />}
     </>
   );
 }
