@@ -82,34 +82,52 @@ define(['./workbox-f0c192c2'], (function (workbox) { 'use strict';
    */
   workbox.precacheAndRoute([{
     "url": "manifest.webmanifest",
-    "revision": "d61a15048807b406e86048ee91e07452"
+    "revision": "51b1d85e1ff669337a34c9ee4b79e6ad"
   }, {
     "url": "index.html",
-    "revision": "1efa23768d8edb06866350bba2734546"
+    "revision": "104569366be68521684ce37830e97569"
   }, {
     "url": "icon.svg",
     "revision": "c2a972f16d061c5cf725cf483f960396"
   }, {
+    "url": "icon-maskable-512.png",
+    "revision": "8b047e9a4e5cfbc8617718ea13759e45"
+  }, {
+    "url": "icon-512.png",
+    "revision": "f33f838143edf4e7addb2a098764f271"
+  }, {
+    "url": "icon-192.png",
+    "revision": "d50a80608f34e87ef56f4d50a0411ca1"
+  }, {
     "url": "assets/workbox-window.prod.es5-BBnX5xw4.js",
     "revision": null
   }, {
-    "url": "assets/ReviewScreen-M3dgHdwP.js",
+    "url": "assets/ReviewScreen-SNGG6-v5.js",
     "revision": null
   }, {
-    "url": "assets/pwa-BFi3XGlB.js",
+    "url": "assets/pwa-B_2U8VG7.js",
     "revision": null
   }, {
-    "url": "assets/index-TLiTdeT1.js",
+    "url": "assets/index-De4d3gv_.js",
     "revision": null
   }, {
     "url": "assets/index-DDmgHDqw.css",
     "revision": null
   }, {
+    "url": "icon-192.png",
+    "revision": "d50a80608f34e87ef56f4d50a0411ca1"
+  }, {
+    "url": "icon-512.png",
+    "revision": "f33f838143edf4e7addb2a098764f271"
+  }, {
+    "url": "icon-maskable-512.png",
+    "revision": "8b047e9a4e5cfbc8617718ea13759e45"
+  }, {
     "url": "icon.svg",
     "revision": "c2a972f16d061c5cf725cf483f960396"
   }, {
     "url": "manifest.webmanifest",
-    "revision": "d61a15048807b406e86048ee91e07452"
+    "revision": "51b1d85e1ff669337a34c9ee4b79e6ad"
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html")));
