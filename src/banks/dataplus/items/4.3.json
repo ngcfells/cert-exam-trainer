@@ -36,7 +36,8 @@
     },
     "explanation": "Fewer visuals means fewer queries run on load, so the page opens faster. More slicers add more queries, 3D styling adds rendering work, and emailing copies avoids the problem instead of fixing the dashboard.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "dashboard load time visuals"
   },
   {
     "id": "da2-4-3-mcq-002",
@@ -75,7 +76,8 @@
     },
     "explanation": "Caching or importing an extract serves the same daily data without hitting the source repeatedly. Querying on every click makes load worse, a duplicate report doubles the demand, and disabling filters does not reduce source queries.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "live connection caching"
   },
   {
     "id": "da2-4-3-mcq-003",
@@ -114,7 +116,8 @@
     },
     "explanation": "Incremental refresh reloads only new or changed partitions, which cuts the time sharply. Running full refreshes more often makes it slower, a longer timeout only hides the delay, and extra columns add data to move.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "incremental data refresh"
   },
   {
     "id": "da2-4-3-mcq-004",
@@ -153,7 +156,8 @@
     },
     "explanation": "Spacing the schedules lets each run finish before the next starts, so the lock does not occur. Deleting history does not change timing, more visuals add load, and renaming a dataset has no effect on locking.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "refresh schedule conflicts"
   },
   {
     "id": "da2-4-3-mcq-005",
@@ -192,7 +196,8 @@
     },
     "explanation": "Dropping columns before load shrinks memory use and load time. Hidden columns are still loaded, text values usually take more space than numbers, and a duplicate adds storage without helping the report.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "dropping unused columns"
   },
   {
     "id": "da2-4-3-mcq-006",
@@ -231,7 +236,8 @@
     },
     "explanation": "Summarizing to the level users need reduces row count and speeds queries. Adding columns grows the data, a larger page size changes layout only, and a text file is usually slower to read than a structured table.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "aggregating transaction data"
   },
   {
     "id": "da2-4-3-mcq-007",
@@ -270,7 +276,8 @@
     },
     "explanation": "If interactions are disabled, the slicer does not pass its selection to the table. Row count, title length and font size do not affect whether a filter applies.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "slicer interactions with visuals"
   },
   {
     "id": "da2-4-3-mcq-008",
@@ -309,7 +316,8 @@
     },
     "explanation": "Filters on dates need a true date type, so converting the column lets the range comparison work. Refresh rate, sort order and visibility do not change how the filter reads the values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "date data type conversion"
   },
   {
     "id": "da2-4-3-mcq-009",
@@ -348,7 +356,8 @@
     },
     "explanation": "Trimming makes the values match exactly, so every Active row passes the filter. Rounding changes the count without fixing it, renaming the column does not touch the values, and filtering on name answers a different question.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "trimming whitespace in values"
   },
   {
     "id": "da2-4-3-mcq-010",
@@ -387,7 +396,8 @@
     },
     "explanation": "A failed scheduled refresh leaves the last successful data in place, which looks current but is old. Chart colors, slicer size and page count do not stop new data from loading.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "stale data from failed refresh"
   },
   {
     "id": "da2-4-3-mcq-011",
@@ -426,7 +436,8 @@
     },
     "explanation": "Running the refresh once the source has updated means the report picks up the latest data before people open it. Hiding the timestamp conceals the issue, rebuilding the cache hourly still misses the 6 a.m. source update because it does not wait for that load, and the date slicer is unrelated.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "refresh timing after source update"
   },
   {
     "id": "da2-4-3-mcq-012",
@@ -465,7 +476,8 @@
     },
     "explanation": "Reading a file with the wrong encoding corrupts non-standard characters. A legend, dashboard width and slicer mode affect display or filtering, not how file text is decoded.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "file encoding character corruption"
   },
   {
     "id": "da2-4-3-mcq-013",
@@ -504,7 +516,8 @@
     },
     "explanation": "Comparing counts shows the file is incomplete before it reaches users. Chart type, titles and sorting do not detect missing rows.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "row count validation"
   },
   {
     "id": "da2-4-3-mcq-014",
@@ -543,7 +556,8 @@
     },
     "explanation": "Checking the report's figures against the system of record shows where they diverge. Formatting, themes and font size change appearance without testing accuracy.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "source system reconciliation"
   },
   {
     "id": "da2-4-3-mcq-015",
@@ -582,7 +596,8 @@
     },
     "explanation": "Filtering to a smaller subset isolates where results go wrong. Branding, labels and wider publishing do not help locate a fault.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "isolating data subsets debugging"
   },
   {
     "id": "da2-4-3-mcq-016",
@@ -621,7 +636,8 @@
     },
     "explanation": "A peer review has another person inspect the work for errors before it ships. Source validation compares to the origin data, an alert fires on a condition, and filtering narrows the rows.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "peer review of report logic"
   },
   {
     "id": "da2-4-3-mcq-017",
@@ -660,7 +676,8 @@
     },
     "explanation": "Reviewing the calculation's logic and inputs finds errors in the formula itself. Source validation checks the origin data, branding review covers appearance, and alert tuning adjusts notification thresholds.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "calculation logic review"
   },
   {
     "id": "da2-4-3-mcq-018",
@@ -699,7 +716,8 @@
     },
     "explanation": "Following structure changes lets the analyst update field mappings before the report breaks. Fonts, legends and refresh rate do not protect against renamed columns.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "tracking source schema changes"
   },
   {
     "id": "da2-4-3-mcq-019",
@@ -738,7 +756,8 @@
     },
     "explanation": "An alert notifies the team when the refresh fails, so they can react before users see stale data. Charts and footers show information only if someone looks at them.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "refresh failure alerts"
   },
   {
     "id": "da2-4-3-mcq-020",
@@ -777,7 +796,8 @@
     },
     "explanation": "Reading the code reveals the costly row scan and lets the team rewrite it. Logo, palette and title reviews cannot reveal performance problems in a formula.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "code review for performance"
   },
   {
     "id": "da2-4-3-mcq-021",
@@ -816,7 +836,8 @@
     },
     "explanation": "Reviewing the join and using one that keeps unmatched rows restores the missing customers. Deleting the table loses data, and a gauge or shorter title does not affect the count.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "left outer join"
   },
   {
     "id": "da2-4-3-mcq-022",
@@ -855,7 +876,8 @@
     },
     "explanation": "Date boundaries shift when the filter evaluates in different time zones. Colors, legend position and theme do not change which dates are included.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "time zone date filtering"
   },
   {
     "id": "da2-4-3-mcq-023",
@@ -894,7 +916,8 @@
     },
     "explanation": "A summary view with drill-through loads a small result first and fetches detail only when needed. Extra columns, titles and larger charts do not reduce the work.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "summary view drill-through"
   },
   {
     "id": "da2-4-3-mcq-024",
@@ -933,7 +956,8 @@
     },
     "explanation": "Checking the source reveals the extra feed, and removing duplicates restores correct totals. More frequent refreshes would reload the same duplicates, and a theme or hidden totals do not fix them.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "removing duplicate rows"
   },
   {
     "id": "da2-4-3-mcq-025",
@@ -972,7 +996,8 @@
     },
     "explanation": "Converting to a numeric type, after removing formatting characters, lets aggregations include every value. Sorting, hiding rows and labels leave the text values unusable in sums.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "converting text to numeric"
   },
   {
     "id": "da2-4-3-mcq-026",
@@ -1011,7 +1036,8 @@
     },
     "explanation": "A threshold alert triggers automatically when the row count drops past the defined limit. Themes, printouts and titles do not notify anyone in time.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data threshold alerts"
   },
   {
     "id": "da2-4-3-mcq-027",
@@ -1050,7 +1076,8 @@
     },
     "explanation": "Filling gaps with a labeled value keeps those rows selectable instead of lost. Deleting the slicer, changing orientation and sorting do not address missing values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "missing values in slicers"
   },
   {
     "id": "da2-4-3-mcq-028",
@@ -1089,7 +1116,8 @@
     },
     "explanation": "An independent person tracing the logic with known inputs combines calculation review with peer review. The other options are theme, layout and caching choices, and none of them tests a formula.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "calculation peer review"
   },
   {
     "id": "da2-4-3-mcq-029",
@@ -1133,7 +1161,8 @@
     },
     "explanation": "Aggregating and dropping unused columns both shrink the data the report must load. More detailed visuals add queries, 3D effects add rendering work, and a larger font does nothing for load time.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "reducing report load time"
   },
   {
     "id": "da2-4-3-mcq-030",
@@ -1177,7 +1206,8 @@
     },
     "explanation": "Incremental refresh loads only changed data, and partitioning limits each run to recent partitions, so runs are shorter and less likely to fail. Extra columns add work, reloading all history is the slow approach, and renaming fields has no effect on duration.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "incremental refresh partitioning"
   },
   {
     "id": "da2-4-3-mcq-031",
@@ -1221,7 +1251,8 @@
     },
     "explanation": "Stale data comes from a failed refresh or from a source that has not changed. A logo, a legend and a theme are cosmetic and cannot make numbers old.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "troubleshooting stale report data"
   },
   {
     "id": "da2-4-3-mcq-032",
@@ -1265,7 +1296,8 @@
     },
     "explanation": "Hidden spaces and mismatched data types stop values from matching the filter. A short title, a light background and a legend position have no effect on which rows pass.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "filter returns fewer rows"
   },
   {
     "id": "da2-4-3-mcq-033",
@@ -1314,7 +1346,8 @@
     },
     "explanation": "Code, calculation and peer reviews each inspect the logic or work for errors. Recoloring, resizing and swapping a logo change appearance and do not validate anything.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "report validation review techniques"
   },
   {
     "id": "da2-4-3-mcq-034",
@@ -1358,7 +1391,8 @@
     },
     "explanation": "Comparing to the original export confirms the corruption, and re-importing with the right encoding repairs it. A trendline, layout change or larger dashboard leaves the stored values unchanged.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "corrupt text file import"
   },
   {
     "id": "da2-4-3-mcq-035",
@@ -1402,7 +1436,8 @@
     },
     "explanation": "Tracking structure changes warns the team in advance, and error alerts reveal breaks quickly. Hiding errors masks the problem, fonts are irrelevant, and removing the model destroys the report.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "source schema change management"
   },
   {
     "id": "da2-4-3-mcq-036",
@@ -1446,7 +1481,8 @@
     },
     "explanation": "An alert tells the team about a failure fast, so the stale data can be corrected before users notice. Alerts do not change colors, rename columns or choose chart types.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "monitoring alerts for refresh"
   },
   {
     "id": "da2-4-3-mcq-037",
@@ -1495,7 +1531,8 @@
     },
     "explanation": "Fewer visuals, cached results and pre-aggregated tables all cut the work done at load. More slicers and detail rows add queries, and bigger images add download size.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "speeding up dashboard load"
   },
   {
     "id": "da2-4-3-terminal-001",
@@ -1596,7 +1633,8 @@
       "fix": "Incremental refresh reduces the rows read each night."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "refresh timeout troubleshooting"
   },
   {
     "id": "da2-4-3-data-001",
@@ -1713,7 +1751,8 @@
       "gap": "45 - 12 = 33."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "calculating mean and median"
   },
   {
     "id": "da2-4-3-order-001",
@@ -1768,7 +1807,8 @@
       "s5": "Retesting proves the fix."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "report troubleshooting steps"
   },
   {
     "id": "da2-4-3-config-001",
@@ -1853,7 +1893,8 @@
       "calc": "A peer can spot a wrong column in a formula."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "report validation techniques"
   },
   {
     "id": "da2-4-3-hotspot-001",
@@ -1987,7 +2028,8 @@
       "logo": "A static image costs almost nothing."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "report performance bottlenecks"
   },
   {
     "id": "da2-4-3-diagram-001",
@@ -2116,7 +2158,8 @@
       "z4": "A slicer is checked by testing what it removes."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "validation across reporting pipeline"
   },
   {
     "id": "da2-4-3-buckets-001",
@@ -2187,6 +2230,7 @@
       "i6": "A filter that drops rows gives wrong results."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "performance vs data accuracy"
   }
 ]

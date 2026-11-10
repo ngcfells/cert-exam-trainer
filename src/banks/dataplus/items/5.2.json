@@ -36,7 +36,8 @@
     },
     "explanation": "A retention policy sets keep and disposal periods for data. Dashboard editing, database engine choice and refresh frequency are unrelated to how long data is held.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data retention policy"
   },
   {
     "id": "da2-5-2-mcq-002",
@@ -77,7 +78,8 @@
     "acronyms": [
       "GDPR"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "GDPR personal data scope"
   },
   {
     "id": "da2-5-2-mcq-003",
@@ -118,7 +120,8 @@
     "acronyms": [
       "GDPR"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "GDPR right to erasure"
   },
   {
     "id": "da2-5-2-mcq-004",
@@ -163,7 +166,8 @@
     },
     "explanation": "Containment, timely notification and preserving evidence are core incident steps. Deleting logs destroys evidence and waiting delays duties.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data breach response steps"
   },
   {
     "id": "da2-5-2-mcq-005",
@@ -202,7 +206,8 @@
     },
     "explanation": "Jurisdictional rules on data residency dictate where data is physically stored. Retention length, passwords and bandwidth do not satisfy a location requirement.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data residency requirements"
   },
   {
     "id": "da2-5-2-mcq-006",
@@ -241,7 +246,8 @@
     },
     "explanation": "Replication copies must also satisfy jurisdictional rules, so targets must be limited to allowed regions. Choosing by cost or disabling logs ignores the rule, and skipping replication gives up resilience unnecessarily.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "replication and data residency"
   },
   {
     "id": "da2-5-2-mcq-007",
@@ -280,7 +286,8 @@
     },
     "explanation": "The Payment Card Industry Data Security Standard sets requirements for handling cardholder data. The other laws cover health privacy, personal data in Europe and financial reporting.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "PCI DSS standard"
   },
   {
     "id": "da2-5-2-mcq-008",
@@ -324,7 +331,8 @@
     },
     "explanation": "Classification sets how data is handled and which safeguards are used. It does not speed queries, replace audits or pick chart types.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data classification purposes"
   },
   {
     "id": "da2-5-2-mcq-009",
@@ -363,7 +371,8 @@
     },
     "explanation": "The standard forbids retaining the card security code after authorization, even if encrypted. Keeping it for a year, copying it to a spreadsheet or sharing it all break that rule.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "PCI DSS card data rules"
   },
   {
     "id": "da2-5-2-mcq-010",
@@ -402,7 +411,8 @@
     },
     "explanation": "An audit trail logs actions on data by user and time, which supports accountability. Color schemes, backup sizes and growth forecasts are not access records.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "audit trail logging"
   },
   {
     "id": "da2-5-2-mcq-011",
@@ -441,7 +451,8 @@
     },
     "explanation": "Classification assigns sensitivity labels that drive handling rules. Replication copies data, profiling measures quality, and masking hides values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data classification levels"
   },
   {
     "id": "da2-5-2-mcq-012",
@@ -488,7 +499,8 @@
     "acronyms": [
       "GDPR"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "GDPR individual rights"
   },
   {
     "id": "da2-5-2-mcq-013",
@@ -527,7 +539,8 @@
     },
     "explanation": "A possible breach should go to the incident process promptly so the impact and notification duties can be judged. Hiding it, waiting for an audit or renaming and resending the file lets the risk grow.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "suspected data breach reporting"
   },
   {
     "id": "da2-5-2-mcq-014",
@@ -566,7 +579,8 @@
     },
     "explanation": "Data ethics covers how data is collected and used with fairness, transparency and respect for people. Server location, speed and file formats are technical matters.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data ethics principles"
   },
   {
     "id": "da2-5-2-mcq-015",
@@ -605,7 +619,8 @@
     },
     "explanation": "Variables that stand in for protected traits can produce unfair outcomes, so the model should be reviewed for that bias. Hiding the field in a report, longer retention or documenting alone leave the unfairness in place.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "algorithmic bias proxy variables"
   },
   {
     "id": "da2-5-2-mcq-016",
@@ -649,7 +664,8 @@
     },
     "explanation": "The standard applies to those who accept, store, process or transmit cardholder data. A public website, a firm that stores only employee payroll files and a lending library are outside its scope.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "PCI DSS scope"
   },
   {
     "id": "da2-5-2-mcq-017",
@@ -688,7 +704,8 @@
     },
     "explanation": "Rarely used records that must be retained suit cheap archival storage that is still protected. Premium tiers waste money, and laptops or open shared drives expose the data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data archival storage"
   },
   {
     "id": "da2-5-2-mcq-018",
@@ -727,7 +744,8 @@
     },
     "explanation": "Once the period has ended and no hold applies, policy calls for secure disposal. Keeping it extends risk, replicating it adds copies, and making it public exposes personal data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "secure data disposal"
   },
   {
     "id": "da2-5-2-mcq-019",
@@ -766,7 +784,8 @@
     },
     "explanation": "Access records show who changed data and when. A dictionary, mockups or a snapshot show structure, design or content but not the people behind the changes.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "access records audit evidence"
   },
   {
     "id": "da2-5-2-mcq-020",
@@ -810,7 +829,8 @@
     },
     "explanation": "Storage location and the residence of data subjects determine which laws apply. Tool brand, file format and color scheme do not.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "jurisdictional requirements assessment"
   },
   {
     "id": "da2-5-2-buckets-001",
@@ -879,7 +899,8 @@
       "report": "Posted on the website, so public."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data classification levels"
   },
   {
     "id": "da2-5-2-buckets-002",
@@ -958,7 +979,8 @@
       "i6": "Examining logs to prove compliance is an audit."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data governance compliance concepts"
   },
   {
     "id": "da2-5-2-match-001",
@@ -1027,7 +1049,8 @@
     "acronyms": [
       "GDPR"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data governance concepts"
   },
   {
     "id": "da2-5-2-hotspot-001",
@@ -1161,6 +1184,7 @@
       "payroll": "Sales staff have no need for payroll data."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "access log audit review"
   }
 ]

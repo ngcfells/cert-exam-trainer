@@ -36,7 +36,8 @@
     },
     "explanation": "A data dictionary defines fields, types, allowed values and meaning. A data flow diagram shows movement between systems, a lineage graph traces origin and transformations, and a hierarchy chart shows parent-child levels.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data dictionary"
   },
   {
     "id": "da2-5-1-mcq-002",
@@ -75,7 +76,8 @@
     },
     "explanation": "A data flow diagram depicts sources, processes and stores along with the paths between them. A dictionary describes fields, a snapshot schedule governs copies, and a refresh log records load times.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data flow diagram"
   },
   {
     "id": "da2-5-1-mcq-003",
@@ -114,7 +116,8 @@
     },
     "explanation": "Lineage traces data from its origin through each transformation to its destination. Row counts, permissions and backup formats are separate properties and do not show where the data came from.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data lineage"
   },
   {
     "id": "da2-5-1-mcq-004",
@@ -158,7 +161,8 @@
     },
     "explanation": "A dictionary records each field's type and meaning. Hosting hardware, report viewers and refresh times are operational details kept elsewhere.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data dictionary contents"
   },
   {
     "id": "da2-5-1-mcq-005",
@@ -199,7 +203,8 @@
     "acronyms": [
       "KPI"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "tracing data lineage"
   },
   {
     "id": "da2-5-1-mcq-006",
@@ -238,7 +243,8 @@
     },
     "explanation": "Integration brings data from different sources together so it can be used as one set. Deduplication, encryption and archiving are different data management tasks.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data integration"
   },
   {
     "id": "da2-5-1-mcq-007",
@@ -277,7 +283,8 @@
     },
     "explanation": "A single designated source of truth gives everyone the same figure. Averaging, separate definitions and merged spreadsheets leave the disagreement in place or hide it.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "single source of truth"
   },
   {
     "id": "da2-5-1-mcq-008",
@@ -321,7 +328,8 @@
     },
     "explanation": "Lineage supports impact analysis and error tracing. It does not speed up disks, deduplicate records or encrypt data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "benefits of data lineage"
   },
   {
     "id": "da2-5-1-mcq-009",
@@ -360,7 +368,8 @@
     },
     "explanation": "A snapshot preserves the data as it was at a moment in time, so past states can be compared. Faster refreshes and overwrites discard history, and a legend only changes chart labels.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data snapshots"
   },
   {
     "id": "da2-5-1-mcq-010",
@@ -399,7 +408,8 @@
     },
     "explanation": "The refresh interval controls how often data is reloaded, so it must be at most the freshness the business needs. Snapshots, hierarchies and labels do not control how current the data is.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data refresh interval"
   },
   {
     "id": "da2-5-1-mcq-011",
@@ -438,7 +448,8 @@
     },
     "explanation": "Metadata describes the characteristics of data, for example who created it and when. Transactions are the data itself, charts present it, and backups copy it.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "metadata definition"
   },
   {
     "id": "da2-5-1-mcq-012",
@@ -483,7 +494,8 @@
     },
     "explanation": "Flow diagrams show sources, processes and stores plus the flows between them. Palettes, layout templates and access roles are not part of the notation.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data flow diagram elements"
   },
   {
     "id": "da2-5-1-mcq-013",
@@ -522,7 +534,8 @@
     },
     "explanation": "A hierarchy structure arranges levels so users can expand or collapse them. A flat list has no levels, a snapshot is a copy in time, and an explainability report describes how outputs were produced.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data hierarchies drill-down"
   },
   {
     "id": "da2-5-1-mcq-014",
@@ -561,7 +574,8 @@
     },
     "explanation": "An explainability report documents the inputs, logic and reasoning behind a result. A dictionary defines fields, a flow diagram shows movement, and a schedule only lists load times.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "explainability report"
   },
   {
     "id": "da2-5-1-mcq-015",
@@ -600,7 +614,8 @@
     },
     "explanation": "A change date is a metadata attribute, so a catalog search on metadata finds it directly. Row contents, color schemes and lineage do not record modification dates of whole datasets.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "metadata catalog search"
   },
   {
     "id": "da2-5-1-mcq-016",
@@ -644,7 +659,8 @@
     },
     "explanation": "A named system of record and master data management keep one agreed version. Departmental copies, independent definitions and mixed extracts create conflicting versions.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "single source of truth practices"
   },
   {
     "id": "da2-5-1-mcq-017",
@@ -685,7 +701,8 @@
     "acronyms": [
       "ID"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "master data management"
   },
   {
     "id": "da2-5-1-mcq-018",
@@ -724,7 +741,8 @@
     },
     "explanation": "A snapshot holds the prior state, so the table can be restored. Rebuilding documentation or changing the refresh timing does not bring back lost data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data snapshots for recovery"
   },
   {
     "id": "da2-5-1-mcq-019",
@@ -763,7 +781,8 @@
     },
     "explanation": "Saving dated copies of a table is versioning by snapshot. Source of truth names an authority, lineage traces origin, and hierarchy structure organizes levels.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data versioning by snapshot"
   },
   {
     "id": "da2-5-1-mcq-020",
@@ -807,7 +826,8 @@
     },
     "explanation": "Frequent source changes and a need for current data call for frequent refreshes. Archives and monthly sources gain nothing from short intervals.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data refresh frequency"
   },
   {
     "id": "da2-5-1-match-001",
@@ -874,7 +894,8 @@
       "p4": "Roll-ups of regions into territories are a hierarchy structure."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "documentation artifacts purposes"
   },
   {
     "id": "da2-5-1-match-002",
@@ -941,7 +962,8 @@
       "p4": "Data about the data is metadata."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data management concepts"
   },
   {
     "id": "da2-5-1-diagram-001",
@@ -1061,7 +1083,8 @@
     "acronyms": [
       "ETL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data flow diagram stages"
   },
   {
     "id": "da2-5-1-order-001",
@@ -1116,6 +1139,7 @@
       "s5": "Duplicates are removed last, once nothing depends on them."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "establishing single source of truth"
   }
 ]

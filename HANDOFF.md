@@ -1,3 +1,10 @@
+# 2026-11-10 (end): #6 content pass 1 of 3 DONE (dataplus). Next: autoops, then secai
+
+Next session model: **Sonnet**. `gh issue list` first. All 777 DA0-002 questions now have a `searchTerm` (0 of 777 on the fallback;
+CY0-001 and AT0-001 still 100% fallback). Method that worked: extract id/stem/explanation per items file, 4 Haiku agents (about 190
+questions each) write `{id: term}` JSON, a script merges and validates, spot check, `npm run check`. One term had an underscore
+(fixed by hand). Do AT0-001 (autoops) next session, then CY0-001 (secai); keep #6 OPEN until all three are in, then close it.
+
 # 2026-11-10 (very late, after clear): #19 part 2 DONE and live. Nothing outstanding on #19 but diagram ideas
 
 Next session model: **Sonnet**. `gh issue list` first. Built the "Putting it together: from the data to a model" lesson

@@ -36,7 +36,8 @@
     },
     "explanation": "A primary key uniquely identifies each row and cannot be null. A foreign key references another table.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "primary key vs foreign key"
   },
   {
     "id": "da2-pbq-match-001",
@@ -96,7 +97,8 @@
       "JSON",
       "API"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "structured semi-structured unstructured data"
   },
   {
     "id": "da2-pbq-diagram-001",
@@ -194,7 +196,8 @@
     },
     "explanation": "A star schema puts one fact table at the center, joined to the dimension tables around it.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "star schema fact and dimension tables"
   },
   {
     "id": "da2-pbq-buckets-001",
@@ -252,7 +255,8 @@
     },
     "explanation": "Postal codes are labels, not amounts, so they are categorical even though they use digits. An ordered scale such as low/medium/high is ordinal, which is still qualitative.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "categorical vs ordinal data"
   },
   {
     "id": "da2-1-1-mcq-001",
@@ -291,7 +295,8 @@
     },
     "explanation": "A relational database organizes data into related tables joined by keys. Document, graph and key-value stores are non-relational models that do not rely on fixed tables and joins.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "relational database definition"
   },
   {
     "id": "da2-1-1-mcq-002",
@@ -330,7 +335,8 @@
     },
     "explanation": "Document databases are non-relational and accept records with different fields, so the schema can change freely. A relational database and a star schema both need a defined schema, and fixed-width files cannot hold variable fields.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "document database schema flexibility"
   },
   {
     "id": "da2-1-1-mcq-003",
@@ -369,7 +375,8 @@
     },
     "explanation": "An .xlsx file is an Excel workbook, which supports multiple sheets, formulas and formatting. A .csv or .txt file holds plain text only, and .dat is a generic data file with no standard structure.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "xlsx file extension"
   },
   {
     "id": "da2-1-1-mcq-004",
@@ -410,7 +417,8 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "dat file extension inspection"
   },
   {
     "id": "da2-1-1-mcq-005",
@@ -449,7 +457,8 @@
     },
     "explanation": "A .jpg file uses lossy compression, which shrinks photographs by discarding some detail. The .png and .gif formats use lossless compression, and a .tiff file is usually stored uncompressed or with lossless compression.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "lossy vs lossless compression"
   },
   {
     "id": "da2-1-1-mcq-006",
@@ -488,7 +497,8 @@
     },
     "explanation": "A fact table records measures for each business event plus foreign keys to dimensions. Dimension tables hold descriptive attributes, a bridge table resolves many-to-many links, and a staging table holds raw loads temporarily before transformation.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "fact table in data warehouse"
   },
   {
     "id": "da2-1-1-mcq-007",
@@ -527,7 +537,8 @@
     },
     "explanation": "A dimension table holds descriptive attributes used to filter and group facts. A fact table holds the measures, a bridge table links many-to-many relationships, and an aggregate table stores pre-summarized measures.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "dimension table in star schema"
   },
   {
     "id": "da2-1-1-mcq-008",
@@ -566,7 +577,8 @@
     },
     "explanation": "Adding a new row with effective dates (a Type 2 slowly changing dimension) preserves history, so each sale links to the region that was current at the time. Overwriting (Type 1) loses history, deleting and reloading rewrites history, and copying attributes into the fact table breaks the dimensional design.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "slowly changing dimension type 2"
   },
   {
     "id": "da2-1-1-mcq-009",
@@ -605,7 +617,8 @@
     },
     "explanation": "A bridge table sits between the fact and the dimension to model a many-to-many relationship. Widening the fact table repeats measures, a degenerate dimension is an attribute stored in the fact, and a slowly changing dimension tracks attribute history.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "bridge table many-to-many relationship"
   },
   {
     "id": "da2-1-1-mcq-010",
@@ -644,7 +657,8 @@
     },
     "explanation": "A schema is the blueprint of a database: its tables, columns, data types and relationships. It is not the storage location, the data itself or the reports built on top.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "what is a database schema"
   },
   {
     "id": "da2-1-1-mcq-011",
@@ -685,7 +699,8 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "semi-structured data JSON"
   },
   {
     "id": "da2-1-1-mcq-012",
@@ -727,7 +742,8 @@
       "XML",
       "CSV"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "unstructured data examples"
   },
   {
     "id": "da2-1-1-mcq-013",
@@ -766,7 +782,8 @@
     },
     "explanation": "The char type stores fixed-length strings, which suits values that are always two characters. The varchar(255) and nvarchar(max) types are variable length and oversized here, and float is numeric.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "char vs varchar data type"
   },
   {
     "id": "da2-1-1-mcq-014",
@@ -805,7 +822,8 @@
     },
     "explanation": "The nvarchar type stores variable-length Unicode text, so it handles many scripts and varied lengths. The char type is fixed length, varchar in many systems uses a single-byte code page that cannot hold every script, and integer stores numbers.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "nvarchar unicode text type"
   },
   {
     "id": "da2-1-1-mcq-015",
@@ -844,7 +862,8 @@
     },
     "explanation": "Null means the value is unknown or missing. Zero would claim the income is nothing, an empty string is a known blank text value rather than a missing number, and the average is an imputation rather than a record of missing data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "null values in databases"
   },
   {
     "id": "da2-1-1-mcq-016",
@@ -883,7 +902,8 @@
     },
     "explanation": "Spatial (geographic) types store coordinates and shapes and support distance queries. Boolean holds true or false, datetime holds dates and times, and plain strings cannot be used in distance calculations directly.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "spatial data types coordinates"
   },
   {
     "id": "da2-1-1-mcq-017",
@@ -922,7 +942,8 @@
     },
     "explanation": "Decimal stores exact fixed-precision values, so cents add up without rounding error. Float is approximate and can introduce small errors, integer drops the cents, and Boolean is not numeric.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "decimal vs float precision"
   },
   {
     "id": "da2-1-1-mcq-018",
@@ -970,7 +991,8 @@
       "CLOB",
       "GUID"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "BLOB and CLOB large objects"
   },
   {
     "id": "da2-1-1-mcq-019",
@@ -1017,7 +1039,8 @@
       "GUID",
       "UUID"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "GUID UUID identifier type"
   },
   {
     "id": "da2-1-1-mcq-020",
@@ -1068,7 +1091,8 @@
     "acronyms": [
       "BLOB"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "timestamp boolean integer data types"
   },
   {
     "id": "da2-1-1-mcq-021",
@@ -1114,7 +1138,8 @@
     "acronyms": [
       "OLTP"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "non-relational database types"
   },
   {
     "id": "da2-1-1-mcq-022",
@@ -1158,7 +1183,8 @@
     },
     "explanation": "The .csv and .txt extensions mark plain text files. A .jpg or .png file is a binary image, and .xlsx is a compressed workbook package rather than plain text.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "plain text file extensions csv txt"
   },
   {
     "id": "da2-1-1-buckets-001",
@@ -1229,7 +1255,8 @@
     "acronyms": [
       "XML"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "structured semi-structured unstructured data"
   },
   {
     "id": "da2-1-1-match-001",
@@ -1302,7 +1329,8 @@
     "acronyms": [
       "BLOB"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "database column data types"
   },
   {
     "id": "da2-1-1-diagram-001",
@@ -1416,7 +1444,8 @@
       "z-borrower": "Borrower attributes live in a dimension table."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "star schema bridge table"
   },
   {
     "id": "da2-1-1-hotspot-001",
@@ -1552,7 +1581,8 @@
     "acronyms": [
       "UUID"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "string data types char varchar"
   },
   {
     "id": "da2-1-1-num-001",
@@ -1571,7 +1601,8 @@
       "value": 3,
       "tolerance": 0.5
     },
-    "explanation": "There are 7 distinct values in 10 rows, so 10 − 7 = 3 rows repeat an earlier value: one extra 103 and two extra 105s. A primary key must be unique, so this column cannot be the key as it stands."
+    "explanation": "There are 7 distinct values in 10 rows, so 10 − 7 = 3 rows repeat an earlier value: one extra 103 and two extra 105s. A primary key must be unique, so this column cannot be the key as it stands.",
+    "searchTerm": "primary key uniqueness duplicates"
   },
   {
     "id": "da2-1-1-num-002",
@@ -1590,7 +1621,8 @@
       "value": 2,
       "tolerance": 0.5
     },
-    "explanation": "C4 and C7 do not exist in Customers, so those 2 orders are orphans. The null row is a missing value, not an orphan: it has no key to look up. The repeated C1 and C2 values are fine, because a foreign key may repeat."
+    "explanation": "C4 and C7 do not exist in Customers, so those 2 orders are orphans. The null row is a missing value, not an orphan: it has no key to look up. The repeated C1 and C2 values are fine, because a foreign key may repeat.",
+    "searchTerm": "orphan records foreign key"
   },
   {
     "id": "da2-1-1-math-mcq-001",
@@ -1629,7 +1661,8 @@
         "c"
       ]
     },
-    "explanation": "Join on the identifier: it is unique and does not change. Names repeat (two people called Ana Ruiz), get spelled differently and change on marriage. Addresses are shared by households and change when people move. Adding the city makes a name clash less likely but not impossible."
+    "explanation": "Join on the identifier: it is unique and does not change. Names repeat (two people called Ana Ruiz), get spelled differently and change on marriage. Addresses are shared by households and change when people move. Adding the city makes a name clash less likely but not impossible.",
+    "searchTerm": "join keys unique identifiers"
   },
   {
     "id": "da2-1-1-math-mcq-002",
@@ -1668,7 +1701,8 @@
         "a"
       ]
     },
-    "explanation": "A foreign key points to the primary key of another table, so many rows can share one value (many orders for one customer). Being unique and never blank describes a primary key, as does identifying the table's own rows. Keys can be text as well as numbers."
+    "explanation": "A foreign key points to the primary key of another table, so many rows can share one value (many orders for one customer). Being unique and never blank describes a primary key, as does identifying the table's own rows. Keys can be text as well as numbers.",
+    "searchTerm": "primary key vs foreign key"
   },
   {
     "id": "da2-1-1-buckets-002",
@@ -1743,7 +1777,8 @@
       "date": "Many rentals share a date; it is an attribute.",
       "driver": "Names repeat and change, so they are not keys.",
       "rate": "A price is a measure, not an identifier."
-    }
+    },
+    "searchTerm": "primary and foreign key roles"
   },
   {
     "id": "da2-1-1-match-002",
@@ -1824,7 +1859,8 @@
       "p2": "Order lines store the SKU of the product sold.",
       "p3": "Timesheets store the employee_id of the person who worked.",
       "p4": "Daily sales store the store_id; a store name could be renamed or shared."
-    }
+    },
+    "searchTerm": "join tables on primary key"
   },
   {
     "id": "da2-1-1-hotspot-002",
@@ -1957,6 +1993,7 @@
       "phone": "Unique when given, but optional, so it can be null.",
       "dob": "Many patients share a birth date.",
       "health": "Unique and required: also a valid key."
-    }
+    },
+    "searchTerm": "candidate key uniqueness not null"
   }
 ]

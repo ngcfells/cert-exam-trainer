@@ -38,7 +38,8 @@
     "acronyms": [
       "RegEx"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "regular expressions text patterns"
   },
   {
     "id": "da2-2-3-mcq-002",
@@ -79,7 +80,8 @@
     "acronyms": [
       "RegEx"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "regular expression validation"
   },
   {
     "id": "da2-2-3-mcq-003",
@@ -120,7 +122,8 @@
     "acronyms": [
       "RegEx"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "regex capture groups"
   },
   {
     "id": "da2-2-3-mcq-004",
@@ -161,7 +164,8 @@
     "acronyms": [
       "RegEx"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "regex whitespace replacement"
   },
   {
     "id": "da2-2-3-mcq-005",
@@ -200,7 +204,8 @@
     },
     "explanation": "Postal codes are identifiers, not quantities, so they should be stored as text to keep leading zeros. Scaling and binning treat the codes as numbers, and merging adds columns without changing the data type.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "leading zeros data type"
   },
   {
     "id": "da2-2-3-mcq-006",
@@ -241,7 +246,8 @@
     "acronyms": [
       "CSV"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "converting text to numbers"
   },
   {
     "id": "da2-2-3-mcq-007",
@@ -280,7 +286,8 @@
     },
     "explanation": "Binning (also called bucketing or discretization) places continuous values into labeled ranges. Scaling rescales numbers without grouping them, parsing breaks strings into parts, and merging combines data sets.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "binning continuous values"
   },
   {
     "id": "da2-2-3-mcq-008",
@@ -319,7 +326,8 @@
     },
     "explanation": "Equal-width bins divide the range evenly: (100,000 - 0) / 4 = 25,000. 20,000 would give five bins, 33,333 three bins, and 50,000 two bins.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "equal-width binning"
   },
   {
     "id": "da2-2-3-mcq-009",
@@ -358,7 +366,8 @@
     },
     "explanation": "Equal-frequency (quantile) binning sets bin edges at quantiles so each bin holds a similar count. With skewed data, equal-width bins would leave most orders in the first bin, and min-max scaling and z-score standardization rescale values without grouping them.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "equal-frequency binning quantile"
   },
   {
     "id": "da2-2-3-mcq-010",
@@ -397,7 +406,8 @@
     },
     "explanation": "Data augmentation enriches existing records with additional attributes, often from external sources. Deletion removes data, exploding splits list values into rows, and parsing splits strings into components.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data augmentation enrichment"
   },
   {
     "id": "da2-2-3-mcq-011",
@@ -436,7 +446,8 @@
     },
     "explanation": "Creating modified copies of existing examples to enlarge a training set is data augmentation. Imputation fills missing values, standardization makes values consistent or rescales them, and binning groups values into ranges.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data augmentation techniques"
   },
   {
     "id": "da2-2-3-mcq-012",
@@ -475,7 +486,8 @@
     },
     "explanation": "Exploding splits a multi-valued cell into separate rows, one per value, while repeating the other columns. Appending stacks data sets, scaling rescales numbers, and imputation fills missing values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "exploding multi-valued cells"
   },
   {
     "id": "da2-2-3-mcq-013",
@@ -517,7 +529,8 @@
       "JSON",
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "exploding array fields"
   },
   {
     "id": "da2-2-3-mcq-014",
@@ -556,7 +569,8 @@
     },
     "explanation": "Min-max scaling maps the minimum to 0 and the maximum to 1. Z-score standardization centers values on 0 with no fixed bounds, binning groups values into ranges, and exploding splits lists into rows.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "min-max scaling"
   },
   {
     "id": "da2-2-3-mcq-015",
@@ -595,7 +609,8 @@
     },
     "explanation": "Min-max scaling uses (x - min) / (max - min) = (70 - 20) / (120 - 20) = 0.50. 0.58 divides 70 by the maximum only, 0.70 divides by 100 without subtracting the minimum, and 0.36 adds the minimum to the denominator instead of subtracting it: 50 / 140.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "min-max scaling formula"
   },
   {
     "id": "da2-2-3-mcq-016",
@@ -634,7 +649,8 @@
     },
     "explanation": "Distance calculations are driven by the feature with the largest numeric range, so unscaled income would outweigh age. Scaling does not remove outliers, change data types or reduce the row count.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "feature scaling for clustering"
   },
   {
     "id": "da2-2-3-mcq-017",
@@ -673,7 +689,8 @@
     },
     "explanation": "The z-score is (65 - 50) / 10 = 1.5. 0.65 divides the raw score by 100, 15 is the raw difference before dividing by the standard deviation, and 1.3 divides 65 by 50.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "z-score standardization"
   },
   {
     "id": "da2-2-3-mcq-018",
@@ -712,7 +729,8 @@
     },
     "explanation": "Standardization maps every variant to one agreed form, such as Accounting, so grouping and counting are correct. Binning, exploding and augmentation do not resolve inconsistent spellings.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "standardizing categorical values"
   },
   {
     "id": "da2-2-3-mcq-019",
@@ -751,7 +769,8 @@
     },
     "explanation": "The year-first form 2025-03-04 puts year, then month, then day, so text sorting matches date order and day/month confusion disappears. 03/04/2025 and 04/03/2025 are ambiguous between regions and sort by month or day first, and March 4, 2025 sorts alphabetically by month name.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "date format standardization ISO"
   },
   {
     "id": "da2-2-3-mcq-020",
@@ -790,7 +809,8 @@
     },
     "explanation": "Imputation fills gaps with estimated values so records can be kept. Deletion removes the incomplete records, parsing splits strings, and appending stacks data sets.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "imputation of missing values"
   },
   {
     "id": "da2-2-3-mcq-021",
@@ -829,7 +849,8 @@
     },
     "explanation": "The median is resistant to skew and extreme values, so it represents a typical household better. The mean is pulled up by high earners, the maximum is extreme, and zero would invent a false value.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "median imputation skewed data"
   },
   {
     "id": "da2-2-3-mcq-022",
@@ -868,7 +889,8 @@
     },
     "explanation": "For categorical data the mode, the most frequent category, is the usual simple imputation. A mean, a median and interpolation need numeric or ordered values, so none fits unordered categories.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "mode imputation categorical data"
   },
   {
     "id": "da2-2-3-mcq-023",
@@ -907,7 +929,8 @@
     },
     "explanation": "Because readings change smoothly over time, interpolating between the readings on either side of a gap gives the closest estimate. A yearly mean or the mode ignores the local trend, and deleting whole days discards good data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "interpolation missing values"
   },
   {
     "id": "da2-2-3-mcq-024",
@@ -946,7 +969,8 @@
     },
     "explanation": "Parsing breaks a string into its meaningful parts, here by splitting on a delimiter. Binning groups numbers, appending stacks rows, and augmentation adds new data from elsewhere.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "parsing string fields"
   },
   {
     "id": "da2-2-3-mcq-025",
@@ -985,7 +1009,8 @@
     },
     "explanation": "Parsing the string into a datetime value lets the analyst extract the hour reliably. The first two characters are \"20\" from the year, the string cannot be converted to an integer as-is, and quarter bins do not give the hour.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "parsing timestamp strings"
   },
   {
     "id": "da2-2-3-mcq-026",
@@ -1024,7 +1049,8 @@
     },
     "explanation": "Merging (joining) combines columns from two tables by matching a key. Appending stacks rows from data sets with the same columns, exploding splits lists into rows, and binning groups values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "merging tables on a key"
   },
   {
     "id": "da2-2-3-mcq-027",
@@ -1063,7 +1089,8 @@
     },
     "explanation": "A left join keeps every row from the left table, Customers, and fills order columns with nulls where no match exists. An inner join drops customers without orders, a right join keeps all orders instead, and a cross join pairs every customer with every order.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "left outer join"
   },
   {
     "id": "da2-2-3-mcq-028",
@@ -1102,7 +1129,8 @@
     },
     "explanation": "Appending (a union) adds the rows of data sets that share a structure. Merging joins columns on a key, parsing splits strings, and exploding turns list values into rows.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "appending data sets union"
   },
   {
     "id": "da2-2-3-mcq-029",
@@ -1141,7 +1169,8 @@
     },
     "explanation": "Appending matches columns by name, so mismatched names would create two half-empty columns; aligning the schema first prevents this. Merging joins rather than stacks, exploding splits list values and does not align names, and imputing after the fact hides a structural problem.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "aligning column names before appending"
   },
   {
     "id": "da2-2-3-mcq-030",
@@ -1182,7 +1211,8 @@
     "acronyms": [
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL UNION ALL"
   },
   {
     "id": "da2-2-3-mcq-031",
@@ -1221,7 +1251,8 @@
     },
     "explanation": "A derived variable, or calculated field, is computed from existing columns. A primary key identifies rows, a parsed field comes from splitting a string, and an imputed value replaces a missing one.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "derived variables calculated fields"
   },
   {
     "id": "da2-2-3-mcq-032",
@@ -1267,7 +1298,8 @@
     "acronyms": [
       "UAT"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "when to delete rows"
   },
   {
     "id": "da2-2-3-mcq-033",
@@ -1311,7 +1343,8 @@
     },
     "explanation": "A mostly empty, unused column and an exact duplicate add nothing but noise. Outliers, categorical values and inconsistent case are handled by investigation, encoding or standardization rather than deletion.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "when to delete columns"
   },
   {
     "id": "da2-2-3-mcq-034",
@@ -1357,7 +1390,8 @@
     "acronyms": [
       "RegEx"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "regular expression character classes"
   },
   {
     "id": "da2-2-3-mcq-035",
@@ -1401,7 +1435,8 @@
     },
     "explanation": "Blanks are either filled with estimates (imputation) or removed by deleting the affected records. Exploding splits lists into rows, appending stacks data sets, and scaling rescales existing numbers.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "handling blank values"
   },
   {
     "id": "da2-2-3-mcq-036",
@@ -1445,7 +1480,8 @@
     },
     "explanation": "Age and LineTotal are computed from other fields, which makes them derived variables. CustomerID, EmailAddress and ProductName are stored as received.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "derived variables"
   },
   {
     "id": "da2-2-3-mcq-037",
@@ -1489,7 +1525,8 @@
     },
     "explanation": "Duplicate keys or a join on a non-unique column such as Category match each order to several rows, so revenue is counted more than once. A left join keeps unmatched orders once rather than duplicating them, missing products cause nulls rather than inflation, and a correct type conversion does not change totals.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "join fan-out duplicate keys"
   },
   {
     "id": "da2-2-3-mcq-038",
@@ -1533,7 +1570,8 @@
     },
     "explanation": "Casting text to a date and text to an integer change the data type. Splitting the text is parsing, dividing by the maximum is scaling, and stacking tables is appending.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data type conversion casting"
   },
   {
     "id": "da2-2-3-mcq-039",
@@ -1582,7 +1620,8 @@
     },
     "explanation": "Trimming, consistent case and a lookup of known variants together turn every form into one value such as one standard country code. Binning groups numbers, exploding splits lists, and imputing the mode would overwrite valid values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "standardizing text values"
   },
   {
     "id": "da2-2-3-mcq-040",
@@ -1626,7 +1665,8 @@
     },
     "explanation": "Subtracting the mean and dividing by the standard deviation gives mean 0 and standard deviation 1, and values below the mean become negative. Bounding to 0-1 is min-max scaling, outliers remain as large z-scores, and the shape of the distribution is unchanged.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "z-score standardization properties"
   },
   {
     "id": "da2-2-3-config-001",
@@ -1751,7 +1791,8 @@
       "name": "Parsing splits one string into structured parts at the comma."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "transformation techniques binning"
   },
   {
     "id": "da2-2-3-terminal-001",
@@ -1856,7 +1897,8 @@
     "acronyms": [
       "RegEx"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "regex removing non-digit characters"
   },
   {
     "id": "da2-2-3-terminal-002",
@@ -1962,7 +2004,8 @@
       "impute": "The median is not pulled up by the few very large orders."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "pandas to datetime conversion"
   },
   {
     "id": "da2-2-3-data-001",
@@ -2103,7 +2146,8 @@
       "centered": "Mean = (40 + 70 + 100 + 85 + 55 + 70) ÷ 6 = 70; 55 − 70 = −15."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "min-max scaling and z-score"
   },
   {
     "id": "da2-2-3-order-001",
@@ -2164,7 +2208,8 @@
       "s6": "Bins are applied to the revenue column, so they come last."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data cleansing steps order"
   },
   {
     "id": "da2-2-3-buckets-001",
@@ -2247,7 +2292,8 @@
       "ship": "An estimated date fills the gap, so this is imputation too."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data cleansing techniques"
   },
   {
     "id": "da2-2-3-num-001",
@@ -2268,7 +2314,8 @@
       "value": 3.5,
       "tolerance": 0.05
     },
-    "explanation": "A rate stored as a decimal becomes a percent when you multiply by 100: 0.035 × 100 = 3.5%."
+    "explanation": "A rate stored as a decimal becomes a percent when you multiply by 100: 0.035 × 100 = 3.5%.",
+    "searchTerm": "converting decimal to percent"
   },
   {
     "id": "da2-2-3-num-002",
@@ -2287,7 +2334,8 @@
       "value": 3700,
       "tolerance": 0.5
     },
-    "explanation": "One million is 1,000 thousands, so 3.7 million = 3.7 × 1,000 = 3,700 thousand."
+    "explanation": "One million is 1,000 thousands, so 3.7 million = 3.7 × 1,000 = 3,700 thousand.",
+    "searchTerm": "unit conversion millions to thousands"
   },
   {
     "id": "da2-2-3-num-003",
@@ -2308,7 +2356,8 @@
       "value": 66.67,
       "tolerance": 0.005
     },
-    "explanation": "200 ÷ 3 = 66.666…, which rounds to 66.67. Round once, at the end: three rounded shares add to 200.01, so the report should note the rounding."
+    "explanation": "200 ÷ 3 = 66.666…, which rounds to 66.67. Round once, at the end: three rounded shares add to 200.01, so the report should note the rounding.",
+    "searchTerm": "rounding division results"
   },
   {
     "id": "da2-2-3-num-004",
@@ -2327,7 +2376,8 @@
       "value": 0.25,
       "tolerance": 0.01
     },
-    "explanation": "Scaled value = (x − min) ÷ (max − min) = (40 − 20) ÷ (100 − 20) = 20 ÷ 80 = 0.25."
+    "explanation": "Scaled value = (x − min) ÷ (max − min) = (40 − 20) ÷ (100 − 20) = 20 ÷ 80 = 0.25.",
+    "searchTerm": "min-max scaling formula"
   },
   {
     "id": "da2-2-3-num-005",
@@ -2346,7 +2396,8 @@
       "value": -1.6,
       "tolerance": 0.05
     },
-    "explanation": "z = (x − mean) ÷ standard deviation = (32 − 40) ÷ 5 = −8 ÷ 5 = −1.6. The score is 1.6 standard deviations below the mean, so z is negative."
+    "explanation": "z = (x − mean) ÷ standard deviation = (32 − 40) ÷ 5 = −8 ÷ 5 = −1.6. The score is 1.6 standard deviations below the mean, so z is negative.",
+    "searchTerm": "z-score formula"
   },
   {
     "id": "da2-2-3-num-006",
@@ -2365,7 +2416,8 @@
       "value": 35,
       "tolerance": 0.5
     },
-    "explanation": "Work backwards: x = mean + z × standard deviation = 50 + (−1.5 × 10) = 50 − 15 = 35 minutes."
+    "explanation": "Work backwards: x = mean + z × standard deviation = 50 + (−1.5 × 10) = 50 − 15 = 35 minutes.",
+    "searchTerm": "z-score back to raw value"
   },
   {
     "id": "da2-2-3-num-007",
@@ -2384,7 +2436,8 @@
       "value": 15,
       "tolerance": 0.5
     },
-    "explanation": "Bin width = (max − min) ÷ number of bins = (95 − 20) ÷ 5 = 75 ÷ 5 = 15."
+    "explanation": "Bin width = (max − min) ÷ number of bins = (95 − 20) ÷ 5 = 75 ÷ 5 = 15.",
+    "searchTerm": "equal-width bin width"
   },
   {
     "id": "da2-2-3-num-008",
@@ -2403,7 +2456,8 @@
       "value": 3,
       "tolerance": 0.5
     },
-    "explanation": "Bin 1 is 0–under 20, bin 2 is 20–under 40, bin 3 is 40–under 60. 52 falls in bin 3. As arithmetic: 52 ÷ 20 = 2.6, drop the decimals to get 2, then add 1."
+    "explanation": "Bin 1 is 0–under 20, bin 2 is 20–under 40, bin 3 is 40–under 60. 52 falls in bin 3. As arithmetic: 52 ÷ 20 = 2.6, drop the decimals to get 2, then add 1.",
+    "searchTerm": "assigning values to bins"
   },
   {
     "id": "da2-2-3-num-009",
@@ -2422,7 +2476,8 @@
       "value": 13,
       "tolerance": 0.5
     },
-    "explanation": "February 2026 has 28 days, so 20 February to 28 February is 8 days, and 28 February to 5 March is 5 more: 8 + 5 = 13 days."
+    "explanation": "February 2026 has 28 days, so 20 February to 28 February is 8 days, and 28 February to 5 March is 5 more: 8 + 5 = 13 days.",
+    "searchTerm": "date difference in days"
   },
   {
     "id": "da2-2-3-num-010",
@@ -2441,7 +2496,8 @@
       "value": 8.5,
       "tolerance": 0.05
     },
-    "explanation": "From 07:45 to 15:45 is 8 hours, and 15:45 to 16:15 is 30 minutes = 0.5 hours. 8 + 0.5 = 8.5 hours. Convert minutes to hours by dividing by 60, not by 100."
+    "explanation": "From 07:45 to 15:45 is 8 hours, and 15:45 to 16:15 is 30 minutes = 0.5 hours. 8 + 0.5 = 8.5 hours. Convert minutes to hours by dividing by 60, not by 100.",
+    "searchTerm": "time difference in hours"
   },
   {
     "id": "da2-2-3-num-011",
@@ -2462,7 +2518,8 @@
       "value": 6,
       "tolerance": 0.05
     },
-    "explanation": "Return rate = returns ÷ orders = 27 ÷ 450 = 0.06, and 0.06 × 100 = 6.0%."
+    "explanation": "Return rate = returns ÷ orders = 27 ÷ 450 = 0.06, and 0.06 × 100 = 6.0%.",
+    "searchTerm": "percentage rate calculation"
   },
   {
     "id": "da2-2-3-num-012",
@@ -2483,7 +2540,8 @@
       "value": 300,
       "tolerance": 0.5
     },
-    "explanation": "Day 1: 90. Day 2: 90 + 140 = 230. Day 3: 230 + 70 = 300. The running total stops at the current row, so day 4 is not included."
+    "explanation": "Day 1: 90. Day 2: 90 + 140 = 230. Day 3: 230 + 70 = 300. The running total stops at the current row, so day 4 is not included.",
+    "searchTerm": "running total calculation"
   },
   {
     "id": "da2-2-3-math-mcq-001",
@@ -2522,7 +2580,8 @@
         "b"
       ]
     },
-    "explanation": "Rounding each value first lets small errors add up across thousands of rows. Keep full precision in the calculation and round only the final figure for display. Floating-point error is far too small to explain a noticeable gap."
+    "explanation": "Rounding each value first lets small errors add up across thousands of rows. Keep full precision in the calculation and round only the final figure for display. Floating-point error is far too small to explain a noticeable gap.",
+    "searchTerm": "rounding errors in aggregation"
   },
   {
     "id": "da2-2-3-math-mcq-002",
@@ -2561,7 +2620,8 @@
         "b"
       ]
     },
-    "explanation": "Min-max scaling, (x − min) ÷ (max − min), maps the minimum to 0 and the maximum to 1. A z-score is centred on 0 and can be negative or above 1; a log transformation has no fixed bounds; binning turns numbers into ranges."
+    "explanation": "Min-max scaling, (x − min) ÷ (max − min), maps the minimum to 0 and the maximum to 1. A z-score is centred on 0 and can be negative or above 1; a log transformation has no fixed bounds; binning turns numbers into ranges.",
+    "searchTerm": "min-max normalization bounds"
   },
   {
     "id": "da2-2-3-math-mcq-003",
@@ -2600,7 +2660,8 @@
         "a"
       ]
     },
-    "explanation": "Width = (100 − 0) ÷ 5 = 20, so each of the 5 bins covers 20 points from 0 up to 100. Bins of different widths, such as 0–45 then 45–60, are what equal-count (equal-frequency) binning produces. Four 25-point bins are the wrong number of bins."
+    "explanation": "Width = (100 − 0) ÷ 5 = 20, so each of the 5 bins covers 20 points from 0 up to 100. Bins of different widths, such as 0–45 then 45–60, are what equal-count (equal-frequency) binning produces. Four 25-point bins are the wrong number of bins.",
+    "searchTerm": "equal-width bin ranges"
   },
   {
     "id": "da2-2-3-math-mcq-004",
@@ -2639,7 +2700,8 @@
         "c"
       ]
     },
-    "explanation": "A running (cumulative) total adds each row to everything before it. A moving average takes the mean of a fixed window of recent rows, a ratio divides one value by another, and a duration subtracts two dates or times."
+    "explanation": "A running (cumulative) total adds each row to everything before it. A moving average takes the mean of a fixed window of recent rows, a ratio divides one value by another, and a duration subtracts two dates or times.",
+    "searchTerm": "running cumulative total"
   },
   {
     "id": "da2-2-3-num-013",
@@ -2658,7 +2720,8 @@
       "value": 3,
       "tolerance": 0.5
     },
-    "explanation": "An inner join keeps only matched pairs. The employee in 10 matches one department and both employees in 20 match one department each: 1 + 2 = 3. Departments 30 and 40 do not exist, and no employee is in 50."
+    "explanation": "An inner join keeps only matched pairs. The employee in 10 matches one department and both employees in 20 match one department each: 1 + 2 = 3. Departments 30 and 40 do not exist, and no employee is in 50.",
+    "searchTerm": "inner join row count"
   },
   {
     "id": "da2-2-3-num-014",
@@ -2677,7 +2740,8 @@
       "value": 5,
       "tolerance": 0.5
     },
-    "explanation": "A left join keeps every row of the left table at least once. The 3 matched rows stay, and the employees in 30 and 40 are kept with blank (null) department columns: 3 + 2 = 5."
+    "explanation": "A left join keeps every row of the left table at least once. The 3 matched rows stay, and the employees in 30 and 40 are kept with blank (null) department columns: 3 + 2 = 5.",
+    "searchTerm": "left join row count"
   },
   {
     "id": "da2-2-3-num-015",
@@ -2696,7 +2760,8 @@
       "value": 4,
       "tolerance": 0.5
     },
-    "explanation": "A right join keeps every row of the right table at least once. The 3 matched rows stay, and department 50, which has no employees, is added with null employee columns: 3 + 1 = 4."
+    "explanation": "A right join keeps every row of the right table at least once. The 3 matched rows stay, and department 50, which has no employees, is added with null employee columns: 3 + 1 = 4.",
+    "searchTerm": "right outer join"
   },
   {
     "id": "da2-2-3-num-016",
@@ -2715,7 +2780,8 @@
       "value": 6,
       "tolerance": 0.5
     },
-    "explanation": "A full outer join returns matched rows once, plus unmatched rows from each side: 3 matched + 2 unmatched employees (30, 40) + 1 unmatched department (50) = 6."
+    "explanation": "A full outer join returns matched rows once, plus unmatched rows from each side: 3 matched + 2 unmatched employees (30, 40) + 1 unmatched department (50) = 6.",
+    "searchTerm": "full outer join"
   },
   {
     "id": "da2-2-3-num-017",
@@ -2734,7 +2800,8 @@
       "value": 24,
       "tolerance": 0.5
     },
-    "explanation": "A cross join pairs every row of one table with every row of the other: 4 × 6 = 24."
+    "explanation": "A cross join pairs every row of one table with every row of the other: 4 × 6 = 24.",
+    "searchTerm": "cross join row count"
   },
   {
     "id": "da2-2-3-num-018",
@@ -2753,7 +2820,8 @@
       "value": 1800,
       "tolerance": 0.5
     },
-    "explanation": "Without a condition the join becomes a cross join: 120 × 15 = 1,800 rows, instead of 120 (one store per order). A result far larger than either table is the warning sign."
+    "explanation": "Without a condition the join becomes a cross join: 120 × 15 = 1,800 rows, instead of 120 (one store per order). A result far larger than either table is the warning sign.",
+    "searchTerm": "accidental cross join"
   },
   {
     "id": "da2-2-3-num-019",
@@ -2772,7 +2840,8 @@
       "value": 5,
       "tolerance": 0.5
     },
-    "explanation": "P1 and P3 match once each, and P2 matches 3 price rows, so it appears 3 times: 1 + 3 + 1 = 5. The 2 extra rows are duplicates caused by the key that is not unique in Prices."
+    "explanation": "P1 and P3 match once each, and P2 matches 3 price rows, so it appears 3 times: 1 + 3 + 1 = 5. The 2 extra rows are duplicates caused by the key that is not unique in Prices.",
+    "searchTerm": "join duplicate keys row count"
   },
   {
     "id": "da2-2-3-num-020",
@@ -2793,7 +2862,8 @@
       "value": 520,
       "tolerance": 0.5
     },
-    "explanation": "Each order amount repeats once per payment row: 80 × 2 + 120 × 3 = 160 + 360 = $520. The true order total is 80 + 120 = $200. Sum the order amounts before the join, or count each order once."
+    "explanation": "Each order amount repeats once per payment row: 80 × 2 + 120 × 3 = 160 + 360 = $520. The true order total is 80 + 120 = $200. Sum the order amounts before the join, or count each order once.",
+    "searchTerm": "double counting after join"
   },
   {
     "id": "da2-2-3-num-021",
@@ -2812,7 +2882,8 @@
       "value": 4,
       "tolerance": 0.5
     },
-    "explanation": "Customers K3, K5, K7 and K8 have no orders. A left join keeps them with null order columns (9 rows); an inner join drops them (5 rows). K9 matches no customer, so both joins leave it out."
+    "explanation": "Customers K3, K5, K7 and K8 have no orders. A left join keeps them with null order columns (9 rows); an inner join drops them (5 rows). K9 matches no customer, so both joins leave it out.",
+    "searchTerm": "left versus inner join"
   },
   {
     "id": "da2-2-3-num-022",
@@ -2831,7 +2902,8 @@
       "value": 70,
       "tolerance": 0.5
     },
-    "explanation": "A union that removes duplicates keeps one copy of each shared row: 40 + 35 − 5 = 70. A union all would keep every row: 75."
+    "explanation": "A union that removes duplicates keeps one copy of each shared row: 40 + 35 − 5 = 70. A union all would keep every row: 75.",
+    "searchTerm": "union versus union all"
   },
   {
     "id": "da2-2-3-num-023",
@@ -2850,7 +2922,8 @@
       "value": 36,
       "tolerance": 0.5
     },
-    "explanation": "Unpivoting turns each of the 3 month columns into its own row for every store: 12 × 3 = 36 rows, with columns store, month and sales."
+    "explanation": "Unpivoting turns each of the 3 month columns into its own row for every store: 12 × 3 = 36 rows, with columns store, month and sales.",
+    "searchTerm": "unpivot wide to long"
   },
   {
     "id": "da2-2-3-math-mcq-005",
@@ -2889,7 +2962,8 @@
         "d"
       ]
     },
-    "explanation": "A left join keeps every row of the left table (Customers) and fills order columns with nulls where there is no match. An inner join drops customers with no orders, a right join keeps every order instead, and a cross join pairs every customer with every order."
+    "explanation": "A left join keeps every row of the left table (Customers) and fills order columns with nulls where there is no match. An inner join drops customers with no orders, a right join keeps every order instead, and a cross join pairs every customer with every order.",
+    "searchTerm": "left outer join"
   },
   {
     "id": "da2-2-3-math-mcq-006",
@@ -2928,7 +3002,8 @@
         "b"
       ]
     },
-    "explanation": "With no condition, the database makes a cross join: 50 × 20 = 1,000 combinations. Matched rows only is an inner join, unmatched rows from both sides is a full outer join, and duplicate keys would not multiply every row."
+    "explanation": "With no condition, the database makes a cross join: 50 × 20 = 1,000 combinations. Matched rows only is an inner join, unmatched rows from both sides is a full outer join, and duplicate keys would not multiply every row.",
+    "searchTerm": "cross join row count"
   },
   {
     "id": "da2-2-3-math-mcq-007",
@@ -2967,7 +3042,8 @@
         "a"
       ]
     },
-    "explanation": "A left join keeps each order at least once and repeats it once per matching shipment, so split shipments add rows. A left join never drops left rows, a type mismatch would cause missing matches rather than extra rows, and a smaller Shipments table cannot add rows on its own."
+    "explanation": "A left join keeps each order at least once and repeats it once per matching shipment, so split shipments add rows. A left join never drops left rows, a type mismatch would cause missing matches rather than extra rows, and a smaller Shipments table cannot add rows on its own.",
+    "searchTerm": "left join row multiplication"
   },
   {
     "id": "da2-2-3-math-mcq-008",
@@ -3006,7 +3082,8 @@
         "c"
       ]
     },
-    "explanation": "A union stacks rows, so the tables need the same columns in the same order. Joins work side by side: they add columns by matching keys (inner, left, right, full outer) or by pairing every row (cross join)."
+    "explanation": "A union stacks rows, so the tables need the same columns in the same order. Joins work side by side: they add columns by matching keys (inner, left, right, full outer) or by pairing every row (cross join).",
+    "searchTerm": "union versus join"
   },
   {
     "id": "da2-2-3-math-mcq-009",
@@ -3045,7 +3122,8 @@
         "d"
       ]
     },
-    "explanation": "Pivoting turns the values of one column (month) into column headings, giving one row per store. Unpivoting does the reverse, a union stacks rows, and a cross join pairs every row with every row."
+    "explanation": "Pivoting turns the values of one column (month) into column headings, giving one row per store. Unpivoting does the reverse, a union stacks rows, and a cross join pairs every row with every row.",
+    "searchTerm": "pivot rows to columns"
   },
   {
     "id": "da2-2-3-config-002",
@@ -3170,7 +3248,8 @@
       "orders": "Orders is the right table, so a right join keeps every order, even orphans.",
       "recon": "A full outer join shows unmatched rows from both sides, which is what a reconciliation needs.",
       "mail": "Every combination of customer and mailing is a cross join."
-    }
+    },
+    "searchTerm": "inner left right full outer join"
   },
   {
     "id": "da2-2-3-config-003",
@@ -3295,7 +3374,8 @@
       "carrier": "Carrier name is a new column, matched by carrier_id: a join.",
       "wide": "Month values become column headings: pivot.",
       "long": "Four quarter columns become rows: unpivot."
-    }
+    },
+    "searchTerm": "union pivot unpivot operations"
   },
   {
     "id": "da2-2-3-data-002",
@@ -3448,7 +3528,8 @@
       "left": "3 matches + V4 and V5 with null doctor columns = 5.",
       "right": "3 matches + Dr Sato with null visit columns = 4.",
       "full": "3 matches + 2 unmatched visits + 1 unmatched doctor = 6."
-    }
+    },
+    "searchTerm": "left join unmatched rows"
   },
   {
     "id": "da2-2-3-data-003",
@@ -3591,7 +3672,8 @@
       "true": "200 + 150 + 90 = $440.",
       "multi": "5001 has 2 shipments and 5003 has 3; 5002 has 1.",
       "fix": "Summing in Orders first counts each order once. An inner join still repeats matched orders, and dropping shipment_id leaves the repeated rows."
-    }
+    },
+    "searchTerm": "double counting after join"
   },
   {
     "id": "da2-2-3-match-001",
@@ -3672,7 +3754,8 @@
       "p3": "Right rows with no match are kept with nulls.",
       "p4": "Unmatched rows from both sides are kept.",
       "p5": "Rows = rows in one table × rows in the other."
-    }
+    },
+    "searchTerm": "join types comparison"
   },
   {
     "id": "da2-2-3-order-002",
@@ -3727,7 +3810,8 @@
       "s3": "Duplicate keys would repeat rows in the result.",
       "s4": "The join runs once the keys are clean.",
       "s5": "Reconciling counts and totals catches lost or repeated rows."
-    }
+    },
+    "searchTerm": "safe join checklist keys"
   },
   {
     "id": "da2-2-3-terminal-003",
@@ -3881,7 +3965,8 @@
       "on": "member_id is the primary key of members and a foreign key in loans.",
       "min": "Every member appears at least once; extra loans only add rows.",
       "blank": "An outer join fills unmatched columns with null, not 0; 0 would claim a real balance."
-    }
+    },
+    "searchTerm": "left join foreign key"
   },
   {
     "id": "da2-2-3-diagram-001",
@@ -4004,6 +4089,7 @@
       "z-left": "Product describes the items sold: a dimension.",
       "z-fk": "Many sales share a product_id, so in Sales it is a foreign key.",
       "z-pk": "product_id is unique in Product: its primary key."
-    }
+    },
+    "searchTerm": "primary key vs foreign key"
   }
 ]

@@ -42,7 +42,8 @@
     "acronyms": [
       "ETL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ETL extract transform load"
   },
   {
     "id": "da2-pbq-terminal-001",
@@ -118,7 +119,8 @@
     "acronyms": [
       "CSV"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "bad rows quarantine data load"
   },
   {
     "id": "da2-pbq-config-001",
@@ -200,7 +202,8 @@
     "acronyms": [
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "left outer join"
   },
   {
     "id": "da2-2-1-mcq-001",
@@ -241,7 +244,8 @@
     "acronyms": [
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL UNION vs UNION ALL"
   },
   {
     "id": "da2-2-1-mcq-002",
@@ -280,7 +284,8 @@
     },
     "explanation": "UNION ALL appends every row from each SELECT, including exact duplicates, and skips the cost of a duplicate check. UNION would silently drop the identical sales, INTERSECT keeps only rows common to both inputs, and FULL OUTER JOIN matches rows side by side instead of appending them.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL UNION ALL duplicates"
   },
   {
     "id": "da2-2-1-mcq-003",
@@ -319,7 +324,8 @@
     },
     "explanation": "A LEFT JOIN keeps every row from customers and fills order columns with NULL where there is no match, so COUNT(orders.order_id) returns zero for those customers. An INNER JOIN, filtered or not, drops customers without orders, and a CROSS JOIN pairs every customer with every order.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "left outer join"
   },
   {
     "id": "da2-2-1-mcq-004",
@@ -358,7 +364,8 @@
     },
     "explanation": "HAVING filters groups after aggregation, so it can test SUM(amount). WHERE runs before grouping and cannot reference an aggregate; WHERE amount > 10000 filters individual sales instead of totals, and ORDER BY only sorts the groups.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL HAVING clause"
   },
   {
     "id": "da2-2-1-mcq-005",
@@ -399,7 +406,8 @@
     "acronyms": [
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL GROUP BY aggregates"
   },
   {
     "id": "da2-2-1-mcq-006",
@@ -438,7 +446,8 @@
     },
     "explanation": "The nested query computes the overall average once and the outer WHERE compares each price against it. An aggregate cannot appear directly in WHERE, a subquery that returns every price cannot be compared with one value, grouping by price makes each group's average equal its own price, and the average of orders is the wrong table.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "subquery comparing to average"
   },
   {
     "id": "da2-2-1-mcq-007",
@@ -477,7 +486,8 @@
     },
     "explanation": "If the subquery list contains a NULL, every NOT IN comparison evaluates to unknown, so no rows qualify; filtering NULLs out of the subquery fixes it. A missing primary key does not change the comparison, UNION stacks rows rather than comparing them, and NOT IN accepts multi-row lists.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "NOT IN with NULL values"
   },
   {
     "id": "da2-2-1-mcq-008",
@@ -516,7 +526,8 @@
     },
     "explanation": "Concatenation joins strings end to end, so first_name || ' ' || last_name builds the full name. Casting changes data type, a substring extracts part of one string, and trimming only removes whitespace.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "string concatenation SQL"
   },
   {
     "id": "da2-2-1-mcq-009",
@@ -555,7 +566,8 @@
     },
     "explanation": "A WHERE clause filters rows at the source, returning only the Northeast records. Grouping without an aggregate still returns all regions, sorting changes order but not row count, and a UNION adds rows rather than removing them.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL WHERE filter rows"
   },
   {
     "id": "da2-2-1-mcq-010",
@@ -594,7 +606,8 @@
     },
     "explanation": "In a one-to-many join each order row is duplicated for each of its lines, so summing the order-level total counts it several times; aggregate lines first or sum at the order level. A CROSS JOIN would inflate it even more, ignoring NULLs cannot raise a total, and an index affects speed, not results.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "join fan-out double counting"
   },
   {
     "id": "da2-2-1-mcq-011",
@@ -633,7 +646,8 @@
     },
     "explanation": "An index lets the database locate matching customer_id values without scanning every row. Sorting adds work, converting the type does not avoid a scan, and wrapping the table in a subquery leaves the same full scan.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "database indexes query performance"
   },
   {
     "id": "da2-2-1-mcq-012",
@@ -674,7 +688,8 @@
     "acronyms": [
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "parameterized queries SQL injection"
   },
   {
     "id": "da2-2-1-mcq-013",
@@ -715,7 +730,8 @@
     "acronyms": [
       "CSV"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "exploring large datasets efficiently"
   },
   {
     "id": "da2-2-1-mcq-014",
@@ -754,7 +770,8 @@
     },
     "explanation": "A temporary table holds the intermediate result for the session so later queries read it directly, and it is dropped automatically afterward. Repeating the subquery recomputes it each time, a permanent production table leaves clutter and needs permissions, and DISTINCT does not cache anything.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "temporary tables SQL"
   },
   {
     "id": "da2-2-1-mcq-015",
@@ -793,7 +810,8 @@
     },
     "explanation": "Every index must be updated on each insert, update or delete, so heavy write workloads slow down and storage grows. Indexes do not block joins, they usually speed up filtering on the indexed columns, and they do not replace a primary key.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "index write performance trade-off"
   },
   {
     "id": "da2-2-1-mcq-016",
@@ -832,7 +850,8 @@
     },
     "explanation": "Comparing the bare column against a date range lets the optimizer seek on the index. Converting the column to text or still applying the year function hides it from the index, and a not-null check adds a condition without removing the function.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "sargable date filter index"
   },
   {
     "id": "da2-2-1-mcq-017",
@@ -874,7 +893,8 @@
       "ELT",
       "ETL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ETL transform stage"
   },
   {
     "id": "da2-2-1-mcq-018",
@@ -917,7 +937,8 @@
       "ETL",
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ELT vs ETL"
   },
   {
     "id": "da2-2-1-mcq-019",
@@ -960,7 +981,8 @@
       "ETL",
       "PII"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ETL data masking PII"
   },
   {
     "id": "da2-2-1-mcq-020",
@@ -999,7 +1021,8 @@
     },
     "explanation": "An incremental (delta) load uses last_modified to extract only new or changed rows, so a few thousand rows move instead of 300 million. Running the full copy more often, dropping indexes or compressing the file still moves the entire table.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "incremental delta load timestamps"
   },
   {
     "id": "da2-2-1-mcq-021",
@@ -1041,7 +1064,8 @@
       "API",
       "ETL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ETL extract stage"
   },
   {
     "id": "da2-2-1-mcq-022",
@@ -1080,7 +1104,8 @@
     },
     "explanation": "A mapping (cross-reference) table gives a reliable key for joining records that describe the same customer across systems. Names are not unique and vary in spelling, a union stacks records without linking them, and row order carries no meaning.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "cross-reference key mapping table"
   },
   {
     "id": "da2-2-1-mcq-023",
@@ -1122,7 +1147,8 @@
       "API",
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "API pagination next page"
   },
   {
     "id": "da2-2-1-mcq-024",
@@ -1164,7 +1190,8 @@
       "CSV",
       "ETL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data virtualization federated queries"
   },
   {
     "id": "da2-2-1-mcq-025",
@@ -1203,7 +1230,8 @@
     },
     "explanation": "Simple random sampling gives every member the same probability of selection. Proportional draws from subgroups describe stratified sampling, fixed intervals describe systematic sampling, and choosing the easiest members describes convenience sampling.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "simple random sampling"
   },
   {
     "id": "da2-2-1-mcq-026",
@@ -1242,7 +1270,8 @@
     },
     "explanation": "Stratified sampling divides the population into strata such as regions and samples each in proportion, guaranteeing representation. A simple random draw may under-represent small regions by chance, and convenience and snowball sampling are nonprobability methods.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "stratified random sampling"
   },
   {
     "id": "da2-2-1-mcq-027",
@@ -1281,7 +1310,8 @@
     },
     "explanation": "Selecting every kth item after a random start is systematic sampling. Cluster sampling selects whole groups, quota sampling fills target counts without random selection, and stratified sampling draws from defined subgroups.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "systematic sampling every kth"
   },
   {
     "id": "da2-2-1-mcq-028",
@@ -1320,7 +1350,8 @@
     },
     "explanation": "Surveying whoever is easy to reach is convenience sampling, which over-represents one branch and one type of customer, so results cannot be generalized. Sample size, missing answers and question format are not the core flaw here.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "convenience sampling bias"
   },
   {
     "id": "da2-2-1-mcq-029",
@@ -1359,7 +1390,8 @@
     },
     "explanation": "The words \"love\" and \"improved\" push respondents toward a favorable answer, so it should be reworded neutrally. It asks about one topic, so it is not double-barreled, and it neither requests a number nor uses an unanalyzable format.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "leading survey questions bias"
   },
   {
     "id": "da2-2-1-mcq-030",
@@ -1398,7 +1430,8 @@
     },
     "explanation": "Closed-ended items with a fixed scale produce consistent values that are easy to tally and average. Comment boxes, free text and interviews yield qualitative data that must be coded before it can be aggregated.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "closed-ended survey questions"
   },
   {
     "id": "da2-2-1-mcq-031",
@@ -1437,7 +1470,8 @@
     },
     "explanation": "Cluster sampling randomly selects whole groups and includes everyone in them. Stratified sampling draws from every subgroup, systematic sampling uses a fixed interval, and quota sampling is nonrandom.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "cluster sampling"
   },
   {
     "id": "da2-2-1-mcq-032",
@@ -1481,7 +1515,8 @@
     },
     "explanation": "UNION needs the same column count and compatible types in each position. The inputs can come from different tables, only one ORDER BY is allowed at the end, and no shared key is required.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "UNION column requirements"
   },
   {
     "id": "da2-2-1-mcq-033",
@@ -1525,7 +1560,8 @@
     },
     "explanation": "AVG(order_total) gives the average order value and COUNT(DISTINCT customer_id) counts each customer once. Summing identifiers is meaningless, MAX gives the largest order, and COUNT(*) counts orders rather than customers.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "COUNT DISTINCT and AVG aggregates"
   },
   {
     "id": "da2-2-1-mcq-034",
@@ -1577,7 +1613,8 @@
       "API",
       "ETL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ETL transform tasks"
   },
   {
     "id": "da2-2-1-mcq-035",
@@ -1621,7 +1658,8 @@
     },
     "explanation": "Reminders and a shorter survey raise response rates across the whole sample, narrowing the gap between responders and nonresponders. Reusing past responders, silently dropping partial surveys and restricting channels all make the respondents less representative.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "nonresponse bias survey"
   },
   {
     "id": "da2-2-1-mcq-036",
@@ -1665,7 +1703,8 @@
     },
     "explanation": "Convenience and quota sampling choose members without random selection, so selection probabilities are unknown. Simple random, stratified and cluster sampling all rely on random selection.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "nonprobability sampling methods"
   },
   {
     "id": "da2-2-1-mcq-037",
@@ -1709,7 +1748,8 @@
     },
     "explanation": "A session-scoped temporary table disappears when the session closes and otherwise behaves like a normal table in queries and joins. It is private to the session, is not written back to any source and has no small fixed row limit.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "session temporary tables"
   },
   {
     "id": "da2-2-1-mcq-038",
@@ -1757,7 +1797,8 @@
       "HTML",
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "API vs web scraping advantages"
   },
   {
     "id": "da2-2-1-mcq-039",
@@ -1801,7 +1842,8 @@
     },
     "explanation": "Both keys restrict region to the two values and the date to 2025, using IN or parentheses to group the OR. Without parentheses AND binds first, so all East orders from any year slip through; joining with OR returns any 2025 order or any East or West order, and a region cannot equal two values at once.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL WHERE AND OR parentheses"
   },
   {
     "id": "da2-2-1-mcq-040",
@@ -1845,7 +1887,8 @@
     },
     "explanation": "A correlated subquery depends on a column of the outer query, so it is logically evaluated per outer row. An uncorrelated subquery is the one that can run once, correlated subqueries usually appear in WHERE or SELECT, and they may use aggregates.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "correlated subquery"
   },
   {
     "id": "da2-2-1-config-001",
@@ -1954,7 +1997,8 @@
       "speed": "An index on order_date lets the database seek matching rows instead of scanning the table."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "UNION UNION ALL HAVING"
   },
   {
     "id": "da2-2-1-diagram-001",
@@ -2102,7 +2146,8 @@
       "API",
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ELT pipeline stages"
   },
   {
     "id": "da2-2-1-order-001",
@@ -2163,7 +2208,8 @@
       "s6": "Comparing respondents with the population reveals nonresponse bias."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "stratified random sampling steps"
   },
   {
     "id": "da2-2-1-order-002",
@@ -2226,7 +2272,8 @@
     "acronyms": [
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL query evaluation order"
   },
   {
     "id": "da2-2-1-terminal-001",
@@ -2364,7 +2411,8 @@
       "API",
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "API rate limits 429"
   },
   {
     "id": "da2-2-1-data-001",
@@ -2502,6 +2550,7 @@
       "low": "East returned 60 of 120 (50%), against 80% for North and South and 90% for West."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "proportional stratified sampling response rate"
   }
 ]

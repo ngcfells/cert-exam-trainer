@@ -36,7 +36,8 @@
     },
     "explanation": "Empty cells where a value is expected are missing values. Redundancy means the same information is stored more than once, outliers are extreme but present values, and duplicates are repeated records, none of which describes blank cells.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "missing values in data"
   },
   {
     "id": "da2-2-2-mcq-002",
@@ -75,7 +76,8 @@
     },
     "explanation": "Two identical rows for one product are duplicates and can double-count results. Nothing is blank, no value is extreme, and no value breaks a format rule.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "duplicate records detection"
   },
   {
     "id": "da2-2-2-mcq-003",
@@ -114,7 +116,8 @@
     },
     "explanation": "Storing the same fact in two columns, one derivable from the other, is redundancy. No rows are repeated, nothing is missing, and no values are extreme.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data redundancy"
   },
   {
     "id": "da2-2-2-mcq-004",
@@ -153,7 +156,8 @@
     },
     "explanation": "A value far outside the range of the rest of the data is an outlier and should be investigated before it is kept or removed. It is not repeated, not empty, and not a copy of another field.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "outliers in data"
   },
   {
     "id": "da2-2-2-mcq-005",
@@ -192,7 +196,8 @@
     },
     "explanation": "COUNT(*) counts every row, while COUNT(column) skips nulls, so 5,000 minus 4,610 means 390 rows have a null phone. The query does not test for duplicates, formats or extreme values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL COUNT ignores nulls"
   },
   {
     "id": "da2-2-2-mcq-006",
@@ -233,7 +238,8 @@
     "acronyms": [
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL finding duplicate rows"
   },
   {
     "id": "da2-2-2-mcq-007",
@@ -272,7 +278,8 @@
     },
     "explanation": "The interquartile range is 40 − 20 = 20, and 1.5 × 20 = 30, so the upper fence is 40 + 30 = 70. The values 50 and 60 are inside the fence, and 80 adds 2 × the interquartile range instead of 1.5 ×.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "interquartile range outlier fence"
   },
   {
     "id": "da2-2-2-mcq-008",
@@ -311,7 +318,8 @@
     },
     "explanation": "Completeness is populated values divided by total records: 900 / 1,200 = 75%. 25% is the missing share (300 / 1,200), 33% divides missing by populated (300 / 900), and 67% is 1 minus that wrong figure.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data completeness percentage"
   },
   {
     "id": "da2-2-2-mcq-009",
@@ -350,7 +358,8 @@
     },
     "explanation": "A range check confirms values fall within allowed limits, such as 0 to 120 for age, so −4 and 212 fail it. Duplicate, completeness and redundancy checks look for repeated, blank or doubly stored data instead.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "range check data validation"
   },
   {
     "id": "da2-2-2-mcq-010",
@@ -391,7 +400,8 @@
     "acronyms": [
       "ID"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "fuzzy matching near duplicates"
   },
   {
     "id": "da2-2-2-mcq-011",
@@ -430,7 +440,8 @@
     },
     "explanation": "Several spellings for the same country are an inconsistent representation of one category, which splits counts in grouping. The cells are not blank, not numeric extremes, and the rows are not necessarily repeated.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "inconsistent categorical values"
   },
   {
     "id": "da2-2-2-mcq-012",
@@ -469,7 +480,8 @@
     },
     "explanation": "Missing whole periods means the data set does not contain all the records it should, which is a completeness problem. No data is repeated or stored twice, and absent rows are not extreme values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "missing time periods data"
   },
   {
     "id": "da2-2-2-mcq-013",
@@ -510,7 +522,8 @@
     "acronyms": [
       "RegEx"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "regular expressions data validation"
   },
   {
     "id": "da2-2-2-mcq-014",
@@ -549,7 +562,8 @@
     },
     "explanation": "A box plot shows the median, quartiles and points beyond the whiskers, so outliers stand out by group. Pie charts and treemaps show composition, and a stacked area chart shows totals over time; none shows the spread of individual values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "box plot outliers"
   },
   {
     "id": "da2-2-2-mcq-015",
@@ -588,7 +602,8 @@
     },
     "explanation": "A stored value that can be derived from other columns can disagree with them after an update, which creates an inconsistency. The redundancy does not double-count rows, delete prices or change the distribution of quantity.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "derived columns inconsistency risk"
   },
   {
     "id": "da2-2-2-mcq-016",
@@ -627,7 +642,8 @@
     },
     "explanation": "A default date far outside the real range usually means a system filled in a placeholder where the date was missing, so these are hidden missing values. Real orders could not date from 1900, the rows are not repeated, and rounding would not move a date by a century.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "placeholder default dates"
   },
   {
     "id": "da2-2-2-mcq-017",
@@ -666,7 +682,8 @@
     },
     "explanation": "Counting nulls and blanks per column shows where data is missing at a glance. A correlation matrix shows relationships, one histogram covers one column, and the first rows are only a small sample.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "null counts per column"
   },
   {
     "id": "da2-2-2-mcq-018",
@@ -705,7 +722,8 @@
     },
     "explanation": "An outlier may be a data-entry error or a genuine, important event, so it should be checked against the source before any action. Deleting or replacing it first could discard real data, and keeping it unchecked ignores how much one large value can distort totals and means.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "handling outliers in data"
   },
   {
     "id": "da2-2-2-mcq-019",
@@ -744,7 +762,8 @@
     },
     "explanation": "Matching on a shared key shows which customers appear in both sources and would be duplicated after loading. Row counts and averages do not identify specific shared records, and null checks find missing values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "record matching across sources"
   },
   {
     "id": "da2-2-2-mcq-020",
@@ -785,7 +804,8 @@
     "acronyms": [
       "ID"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "referential integrity foreign key"
   },
   {
     "id": "da2-2-2-mcq-021",
@@ -824,7 +844,8 @@
     },
     "explanation": "The sum is 649, so the mean is 649 / 8 = 81.125, while the median is the average of 48 and 50, which is 49. The outlier pulls the mean far above the median; option b ignores the outlier's pull on the mean, option c swaps the two measures, and option d gives the median as the mean and miscalculates the median.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "mean and median skew"
   },
   {
     "id": "da2-2-2-mcq-022",
@@ -863,7 +884,8 @@
     },
     "explanation": "A join produces extra rows when the key is duplicated on the lookup side, so each matching order repeats. Null keys would drop or keep rows without adding any, amounts do not affect row counts, and a type mismatch would usually return fewer matches.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "join duplicate keys row explosion"
   },
   {
     "id": "da2-2-2-mcq-023",
@@ -902,7 +924,8 @@
     },
     "explanation": "Readings of 68 to 95 °F equal about 20 to 35 °C, which matches the other regions, so that region likely records in Fahrenheit. Duplicates or gaps would not shift the range, and random noise would not shift a whole region's values consistently.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "unit of measure inconsistency"
   },
   {
     "id": "da2-2-2-mcq-024",
@@ -941,7 +964,8 @@
     },
     "explanation": "'N/A' is a non-null placeholder, so a null count treats those rows as filled and overstates completeness. The issue is not about extreme values, a second field holding the same data, or repeated rows.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "placeholder values completeness"
   },
   {
     "id": "da2-2-2-mcq-025",
@@ -980,7 +1004,8 @@
     },
     "explanation": "A store open all month would not earn exactly zero, so the 0 most likely represents a missing value stored as zero, which also drags down the average. Treating it as valid, flagging 130 instead, or calling the series consistent all ignore the gap.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "zero as missing value"
   },
   {
     "id": "da2-2-2-mcq-026",
@@ -1019,7 +1044,8 @@
     },
     "explanation": "The z-score of 130 is (130 − 80) / 15 ≈ 3.33, which is above 3. By comparison, 120 gives about 2.67, 110 gives 2.0, and 40 gives about −2.67, so none of those is more than 3 standard deviations away.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "z-score outlier detection"
   },
   {
     "id": "da2-2-2-mcq-027",
@@ -1058,7 +1084,8 @@
     },
     "explanation": "total_spend repeats information derivable from orders, and the two disagree by 150, so the redundant value has fallen out of sync. Nothing points to a second record for the customer, the customer key exists, and a 150 gap is far too large for rounding.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "redundant data out of sync"
   },
   {
     "id": "da2-2-2-mcq-028",
@@ -1097,7 +1124,8 @@
     },
     "explanation": "An item cannot ship before it is ordered, so a cross-field check comparing the two dates finds impossible rows. Weekend orders, current-year shipments and non-null dates are all valid.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "cross-field date validation"
   },
   {
     "id": "da2-2-2-mcq-029",
@@ -1136,7 +1164,8 @@
     },
     "explanation": "Completeness measures whether every expected record and value is present. Consistency is agreement across sources, uniqueness is the absence of duplicates, and timeliness is how current the data is.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data completeness definition"
   },
   {
     "id": "da2-2-2-mcq-030",
@@ -1175,7 +1204,8 @@
     },
     "explanation": "Checking values against rules for type and range is data validation. Imputation fills missing values, augmentation adds new data, and binning groups values into ranges.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data validation rules"
   },
   {
     "id": "da2-2-2-mcq-031",
@@ -1214,7 +1244,8 @@
     },
     "explanation": "Profiling summarizes each column so missing values, duplicates and outliers surface early. Masking hides sensitive values, imputation fills gaps, and normalization restructures tables or rescales values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data profiling"
   },
   {
     "id": "da2-2-2-mcq-032",
@@ -1258,7 +1289,8 @@
     },
     "explanation": "A null and a blank in a required field are both missing values. A repeated row is duplication, an extreme price is an outlier, and mixed codes and names for one state are an inconsistency.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "types of missing data"
   },
   {
     "id": "da2-2-2-mcq-033",
@@ -1302,7 +1334,8 @@
     },
     "explanation": "If COUNT(order_id) is larger than COUNT(DISTINCT order_id), some values repeat, and building a unique index fails when duplicate keys exist. IS NULL and COUNT(order_id) versus COUNT(*) find missing values rather than repeats, and an average says nothing about repeated keys.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "checking for duplicate keys"
   },
   {
     "id": "da2-2-2-mcq-034",
@@ -1351,7 +1384,8 @@
     },
     "explanation": "Counting nulls finds missing values, counting rows per key finds duplicates, and profiling minimums and maximums finds out-of-range values or outliers, all without altering the table. Replacing nulls, binning and scaling change the data, which is cleansing and transformation rather than exploration.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "exploratory data analysis checks"
   },
   {
     "id": "da2-2-2-mcq-035",
@@ -1395,7 +1429,8 @@
     },
     "explanation": "full_name can be built from first and last name, and age can be derived from birth date, so both store the same information twice. A blank is missing data, a large amount is an outlier, and a repeated product code is duplication.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "redundancy in table design"
   },
   {
     "id": "da2-2-2-mcq-036",
@@ -1439,7 +1474,8 @@
     },
     "explanation": "The interquartile range fence and the z-score threshold both measure distance from the bulk of the data. Distinct counts, null checks and sorting text do not judge how extreme a number is.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "outlier detection methods"
   },
   {
     "id": "da2-2-2-mcq-037",
@@ -1488,7 +1524,8 @@
     },
     "explanation": "Type, uniqueness and reference-list checks each test the data against a rule. Creating a derived column, merging files and changing case are transformations, not validation.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data validation checks"
   },
   {
     "id": "da2-2-2-mcq-038",
@@ -1532,7 +1569,8 @@
     },
     "explanation": "Row-count reconciliation confirms no records were lost, and required-field checks confirm no values are missing, which are the two sides of completeness. Spread, extreme percentiles and repeated columns deal with distribution, outliers and redundancy.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data completeness checks"
   },
   {
     "id": "da2-2-2-mcq-039",
@@ -1576,7 +1614,8 @@
     },
     "explanation": "The distinct non-null values are 101, 102, 103 and 104, and 102 appears twice. SELECT DISTINCT returns 5 rows because the null counts as its own group, removing the duplicate leaves 5 rows, and the null makes the column about 83% complete.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL DISTINCT with NULL"
   },
   {
     "id": "da2-2-2-mcq-040",
@@ -1620,7 +1659,8 @@
     },
     "explanation": "A factor of about 1,000 suggests a grams-versus-kilograms mix-up, but the analyst should also confirm whether the items are truly heavy before treating the values as errors. Duplication, missing values and redundancy with price would not produce values 1,000 times larger.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "unit scale errors data"
   },
   {
     "id": "da2-2-2-data-001",
@@ -1758,7 +1798,8 @@
       "fail": "phone (70%) and birth_date (1,700 ÷ 2,000 = 85%) are below 90%."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data completeness and uniqueness"
   },
   {
     "id": "da2-2-2-data-002",
@@ -1915,7 +1956,8 @@
       "invalid": "A delivery cannot arrive 2 days before the order, so −2 fails validation."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "interquartile range fences"
   },
   {
     "id": "da2-2-2-hotspot-001",
@@ -2049,7 +2091,8 @@
       "birth": "1988-11-02 is a valid past date."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data validation rules"
   },
   {
     "id": "da2-2-2-hotspot-002",
@@ -2183,7 +2226,8 @@
       "region": "Four expected regions with consistent spelling show no problem."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data rule violations"
   },
   {
     "id": "da2-2-2-terminal-001",
@@ -2291,7 +2335,8 @@
     "acronyms": [
       "CSV"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "finding duplicate lines uniq"
   },
   {
     "id": "da2-2-2-terminal-002",
@@ -2397,7 +2442,8 @@
       "usable": "288 nulls + 96 blank strings = 384 rows with no usable email."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "null versus empty string"
   },
   {
     "id": "da2-2-2-num-001",
@@ -2418,7 +2464,8 @@
       "value": 18,
       "tolerance": 0.5
     },
-    "explanation": "Use totals, not the two averages. East total = 200 × 12 = $2,400; West total = 50 × 42 = $2,100. Overall = 4,500 ÷ 250 orders = $18. The simple average of $12 and $42 ($27) is wrong because the regions have different order counts."
+    "explanation": "Use totals, not the two averages. East total = 200 × 12 = $2,400; West total = 50 × 42 = $2,100. Overall = 4,500 ÷ 250 orders = $18. The simple average of $12 and $42 ($27) is wrong because the regions have different order counts.",
+    "searchTerm": "weighted average calculation"
   },
   {
     "id": "da2-2-2-num-002",
@@ -2437,7 +2484,8 @@
       "value": 1.5,
       "tolerance": 0.05
     },
-    "explanation": "True average: (4 × 2 + 16 × 7) ÷ 20 = (8 + 112) ÷ 20 = 6.0 hours. Average of averages: (2 + 7) ÷ 2 = 4.5 hours. Gap: 6.0 − 4.5 = 1.5 hours."
+    "explanation": "True average: (4 × 2 + 16 × 7) ÷ 20 = (8 + 112) ÷ 20 = 6.0 hours. Average of averages: (2 + 7) ÷ 2 = 4.5 hours. Gap: 6.0 − 4.5 = 1.5 hours.",
+    "searchTerm": "weighted average versus simple average"
   },
   {
     "id": "da2-2-2-num-003",
@@ -2458,7 +2506,8 @@
       "value": 1100,
       "tolerance": 0.5
     },
-    "explanation": "The join repeats each order once per matching shipment: order A appears 4 times (4 × 150 = 600) and order B twice (2 × 250 = 500). The sum is 1,100, but the true order total is only $400. This is double counting."
+    "explanation": "The join repeats each order once per matching shipment: order A appears 4 times (4 × 150 = 600) and order B twice (2 × 250 = 500). The sum is 1,100, but the true order total is only $400. This is double counting.",
+    "searchTerm": "double counting after join"
   },
   {
     "id": "da2-2-2-math-mcq-001",
@@ -2497,7 +2546,8 @@
         "c"
       ]
     },
-    "explanation": "An average of averages gives a small store the same weight as a large one. Add up the sales value and the number of sales across all stores, then divide. It matches the simple average only when every store has the same count."
+    "explanation": "An average of averages gives a small store the same weight as a large one. Add up the sales value and the number of sales across all stores, then divide. It matches the simple average only when every store has the same count.",
+    "searchTerm": "weighted average calculation"
   },
   {
     "id": "da2-2-2-math-mcq-002",
@@ -2536,6 +2586,7 @@
         "b"
       ]
     },
-    "explanation": "A one-to-many join repeats each customer's row once per order, so the credit limit is counted many times. Aggregate at the customer level before the join (or de-duplicate on customer ID before summing). A full outer join still repeats the rows."
+    "explanation": "A one-to-many join repeats each customer's row once per order, so the credit limit is counted many times. Aggregate at the customer level before the join (or de-duplicate on customer ID before summing). A full outer join still repeats the rows.",
+    "searchTerm": "one-to-many join fan-out"
   }
 ]

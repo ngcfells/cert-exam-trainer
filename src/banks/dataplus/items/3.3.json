@@ -36,7 +36,8 @@
     },
     "explanation": "A login failure means the connection was reached but the credentials were rejected, so the stored username or password should be checked. A corrupted file, a syntax error or a missing join produce different errors and would not appear as a login failure.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "login failed credentials troubleshooting"
   },
   {
     "id": "da2-3-3-mcq-002",
@@ -75,7 +76,8 @@
     },
     "explanation": "The connection string still points at the old host, so the server name must be changed for the refresh to connect. Refresh frequency, filters and data types do not affect whether the tool can reach the moved server.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data connection string update"
   },
   {
     "id": "da2-3-3-mcq-003",
@@ -116,7 +118,8 @@
     "acronyms": [
       "VPN"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "VPN remote database access"
   },
   {
     "id": "da2-3-3-mcq-004",
@@ -155,7 +158,8 @@
     },
     "explanation": "\"Connection refused\" on a specific port while the host is otherwise up points to a blocked or closed port, such as a new firewall rule. A query typo or duplicates would surface only after connecting, and chart choice has no bearing on connectivity.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "connection refused port troubleshooting"
   },
   {
     "id": "da2-3-3-mcq-005",
@@ -194,7 +198,8 @@
     },
     "explanation": "Turning on logging records each step, connection attempt and error message, which shows where the refresh failed. Slicers, sample size and sorting change what is displayed or analyzed, not what is recorded about the process.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "enable logging for troubleshooting"
   },
   {
     "id": "da2-3-3-mcq-006",
@@ -235,7 +240,8 @@
     "acronyms": [
       "ETL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "logging level troubleshooting"
   },
   {
     "id": "da2-3-3-mcq-007",
@@ -274,7 +280,8 @@
     },
     "explanation": "A vague user report must first be clarified so the issue can be reproduced, including which values, filters and dates were involved. Rebuilding or restyling acts without understanding the problem, and raw tables shift the troubleshooting to the user.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "reproduce user reported issue"
   },
   {
     "id": "da2-3-3-mcq-008",
@@ -313,7 +320,8 @@
     },
     "explanation": "If the same report works for one user and not another, the difference is the user context, such as row-level security or an applied filter. Corruption, syntax errors and an offline server would affect the analyst too.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "row-level security troubleshooting"
   },
   {
     "id": "da2-3-3-mcq-009",
@@ -352,7 +360,8 @@
     },
     "explanation": "Stale figures usually mean the refresh did not run or failed, so the last successful refresh time is the first thing to check. Axis labels, legends and fonts are presentation details that do not change which data is loaded.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "last successful refresh time"
   },
   {
     "id": "da2-3-3-mcq-010",
@@ -391,7 +400,8 @@
     },
     "explanation": "Reproducing the problem confirms it exists and shows the conditions under which it happens, which guides the fix. The goal is not to dispute the user, avoid tickets or skip testing, all of which weaken troubleshooting.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "reproduce the issue"
   },
   {
     "id": "da2-3-3-mcq-011",
@@ -430,7 +440,8 @@
     },
     "explanation": "The literal 'West has no closing single quote, so the parser cannot find the end of the string. Column lists do not use parentheses, table names have no plural rule, and WHERE follows FROM.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL syntax error unclosed quote"
   },
   {
     "id": "da2-3-3-mcq-012",
@@ -469,7 +480,8 @@
     },
     "explanation": "When a non-aggregated column appears with an aggregate, it must be listed in GROUP BY. Swapping the aggregate, adding ORDER BY or reordering columns leaves region ungrouped, so the error remains.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL GROUP BY non-aggregated column"
   },
   {
     "id": "da2-3-3-mcq-013",
@@ -508,7 +520,8 @@
     },
     "explanation": "Aggregates cannot be used in WHERE because rows are filtered before grouping; HAVING filters the grouped results. Changing the counted column, moving WHERE or adding DISTINCT does not allow an aggregate in a row filter.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "WHERE versus HAVING aggregates"
   },
   {
     "id": "da2-3-3-mcq-014",
@@ -547,7 +560,8 @@
     },
     "explanation": "Listing two tables without a condition matching their keys produces a Cartesian product, multiplying the row count. Text values or a different operator would change which rows are kept, not multiply them, and a missing index affects speed only.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "Cartesian product in joins"
   },
   {
     "id": "da2-3-3-mcq-015",
@@ -588,7 +602,8 @@
     "acronyms": [
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL IS NULL comparison"
   },
   {
     "id": "da2-3-3-mcq-016",
@@ -627,7 +642,8 @@
     },
     "explanation": "A WHERE filter on the right-hand table removes rows where it is NULL, turning the left join into an inner join; filtering in the ON clause keeps every order. An inner join has the same problem, a cross join multiplies rows, and DISTINCT does not restore missing rows.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "left join filter placement"
   },
   {
     "id": "da2-3-3-mcq-017",
@@ -666,7 +682,8 @@
     },
     "explanation": "The error names a column the database cannot find, so the query refers to it by the wrong name. Locks and memory problems produce different errors, and NULL values do not prevent a column from being referenced.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "invalid column name error"
   },
   {
     "id": "da2-3-3-mcq-018",
@@ -705,7 +722,8 @@
     },
     "explanation": "Both tables have an id column, so the unqualified id in WHERE is ambiguous; prefixing it with o. tells the database which one to use. Renaming the alias or changing the join type leaves the ambiguity, and removing the filter changes the result.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "ambiguous column name SQL"
   },
   {
     "id": "da2-3-3-mcq-019",
@@ -746,7 +764,8 @@
     "acronyms": [
       "CSV"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "character encoding mismatch"
   },
   {
     "id": "da2-3-3-mcq-020",
@@ -785,7 +804,8 @@
     },
     "explanation": "Records cut off mid-row while the source is complete indicate the file was truncated during transfer. GROUP BY, chart type and permissions do not cut records in half during a load.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "truncated file load"
   },
   {
     "id": "da2-3-3-mcq-021",
@@ -824,7 +844,8 @@
     },
     "explanation": "A checksum computed on the copy will differ from the source's value if even one byte changed, which confirms corruption. Scanning a few rows can miss damage elsewhere, and the name or date says nothing about the contents.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "checksum file integrity verification"
   },
   {
     "id": "da2-3-3-mcq-022",
@@ -865,7 +886,8 @@
     "acronyms": [
       "RAM"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "restore from backup corruption"
   },
   {
     "id": "da2-3-3-mcq-023",
@@ -904,7 +926,8 @@
     },
     "explanation": "Comparing counts and totals with authoritative records shows whether the report pulls the right source or duplicates rows. Changing visuals, branding or sort order leaves the underlying numbers unchanged.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "reconcile report totals"
   },
   {
     "id": "da2-3-3-mcq-024",
@@ -943,7 +966,8 @@
     },
     "explanation": "A similarly named table may be a test copy or an outdated extract, so the analyst should confirm the report uses the approved production source. Themes, browsers and titles do not explain a difference in values.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "validate data source table"
   },
   {
     "id": "da2-3-3-mcq-025",
@@ -982,7 +1006,8 @@
     },
     "explanation": "Validating a source means confirming the data matches what the source holds, for example by comparing row counts and totals. Colors, names and tooltips are design choices that do not check the data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "validating a data source"
   },
   {
     "id": "da2-3-3-mcq-026",
@@ -1023,7 +1048,8 @@
     "acronyms": [
       "BI"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "vendor error code search"
   },
   {
     "id": "da2-3-3-mcq-027",
@@ -1062,7 +1088,8 @@
     },
     "explanation": "Community advice may not match the local setup, so it should be tested in a separate staging copy before rollout. Applying it directly risks outages, sharing first spreads an unverified fix, and deleting logs removes evidence.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "test fixes in staging"
   },
   {
     "id": "da2-3-3-mcq-028",
@@ -1101,7 +1128,8 @@
     },
     "explanation": "Vendor release notes describe changes, known issues and workarounds for each version. A statistics textbook, style guide or data dictionary covers concepts, branding or field definitions, not product bugs.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "vendor release notes known issues"
   },
   {
     "id": "da2-3-3-mcq-029",
@@ -1142,7 +1170,8 @@
     "acronyms": [
       "JSON"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "query timeout troubleshooting"
   },
   {
     "id": "da2-3-3-mcq-030",
@@ -1181,7 +1210,8 @@
     },
     "explanation": "Same data volume and a sudden slowdown after objects were dropped suggests the query lost a supporting index and now scans the table. A syntax error would stop the query, and filters or encoding do not explain a sudden slowdown.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "missing index query slowdown"
   },
   {
     "id": "da2-3-3-mcq-031",
@@ -1220,7 +1250,8 @@
     },
     "explanation": "In many databases, dividing one integer by another truncates the result, so averages below 1 become 0; casting to a decimal fixes it. COUNT(*) counts all rows, SUM includes negatives, and a missing GROUP BY column would cause an error, not zeros.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "integer division truncation SQL"
   },
   {
     "id": "da2-3-3-mcq-032",
@@ -1259,7 +1290,8 @@
     },
     "explanation": "A day-month swap misplaces or rejects dates where the day is above 12, leaving gaps and zero totals. Too many visuals or missing permissions would not create date-specific zeros, and a connectivity loss would fail the whole refresh.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "day-month date swap"
   },
   {
     "id": "da2-3-3-mcq-033",
@@ -1298,7 +1330,8 @@
     },
     "explanation": "A permission error on a single table means the account lacks rights to that object, so access must be granted. Restarts and reinstalls do not change permissions, and a subquery still reads the same restricted table.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "table permission denied"
   },
   {
     "id": "da2-3-3-mcq-034",
@@ -1339,7 +1372,8 @@
     "acronyms": [
       "CSV"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "on-premises data gateway offline"
   },
   {
     "id": "da2-3-3-mcq-035",
@@ -1383,7 +1417,8 @@
     },
     "explanation": "Connection failures most often come from the server being unreachable or from expired or changed credentials, so those are checked first. Chart types, calculated columns and page names have no effect on whether the refresh can connect.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "scheduled refresh connection failure"
   },
   {
     "id": "da2-3-3-mcq-036",
@@ -1427,7 +1462,8 @@
     },
     "explanation": "An exact error message and the steps that led to it let the analyst reproduce and diagnose the issue. Color preferences, job history and report counts do not describe the problem.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "information to collect from users"
   },
   {
     "id": "da2-3-3-mcq-037",
@@ -1473,7 +1509,8 @@
     "acronyms": [
       "SQL"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL syntax versus logic errors"
   },
   {
     "id": "da2-3-3-mcq-038",
@@ -1517,7 +1554,8 @@
     },
     "explanation": "A one-to-many relationship, or a join that matches on only part of a composite key, produces multiple matches per customer. Sorting, aliases and date filters do not create extra rows.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "duplicate rows after join"
   },
   {
     "id": "da2-3-3-mcq-039",
@@ -1561,7 +1599,8 @@
     },
     "explanation": "A file that cannot be parsed or whose checksum differs from the source has damaged bytes. Misspellings, outliers and empty optional fields are data quality issues in a file that is otherwise intact.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "corrupted file versus bad data"
   },
   {
     "id": "da2-3-3-mcq-040",
@@ -1605,7 +1644,8 @@
     },
     "explanation": "Checking the connection details and reconciling totals with a trusted copy both confirm the data source. Fonts, logos and themes are cosmetic and say nothing about the source.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "validate report data source"
   },
   {
     "id": "da2-3-3-mcq-041",
@@ -1654,7 +1694,8 @@
     },
     "explanation": "Timestamps, error messages and row counts show when the pipeline failed, why, and how much data moved. Wallpaper, colors and floor plans are unrelated to pipeline behavior.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "pipeline logging details"
   },
   {
     "id": "da2-3-3-mcq-042",
@@ -1700,7 +1741,8 @@
     "acronyms": [
       "PII"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "posting to vendor community forum"
   },
   {
     "id": "da2-3-3-mcq-043",
@@ -1744,7 +1786,8 @@
     },
     "explanation": "Comparing source and file counts shows whether rows were lost in extraction, and the load log shows rows rejected during loading. Chart types, slicers and user activity do not explain missing rows in the load.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "isolate missing rows in load"
   },
   {
     "id": "da2-3-3-terminal-001",
@@ -1833,7 +1876,8 @@
       "next": "A reachable host with a closed port from one source is a classic firewall symptom, which the network team must fix."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "connection timeout log analysis"
   },
   {
     "id": "da2-3-3-terminal-002",
@@ -1965,7 +2009,8 @@
     "acronyms": [
       "CSV"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "checksum corrupted file"
   },
   {
     "id": "da2-3-3-terminal-003",
@@ -2094,7 +2139,8 @@
     "acronyms": [
       "API"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "API version retired troubleshooting"
   },
   {
     "id": "da2-3-3-order-001",
@@ -2149,7 +2195,8 @@
       "s5": "Confirming with the user and documenting closes the issue and helps next time."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "troubleshooting steps order"
   },
   {
     "id": "da2-3-3-order-002",
@@ -2198,7 +2245,8 @@
       "s4": "Searching the vendor community works best with the exact error text from the log."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "troubleshooting steps order"
   },
   {
     "id": "da2-3-3-config-001",
@@ -2303,7 +2351,8 @@
       "method": "Comparing one store's total with a manual calculation validates the logic, not just the syntax."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "SQL HAVING aggregate filter"
   },
   {
     "id": "da2-3-3-hotspot-001",
@@ -2434,6 +2483,7 @@
       "checksum": "A checksum mismatch proves the archive changed after it was created."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "corrupted data versus connectivity"
   }
 ]

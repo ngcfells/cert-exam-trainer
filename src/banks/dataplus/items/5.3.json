@@ -125,7 +125,8 @@
     "acronyms": [
       "PII"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "personally identifiable information PII"
   },
   {
     "id": "da2-seed-003",
@@ -160,7 +161,8 @@
     },
     "explanation": "Under the principle of least privilege, each user gets only the access their role needs.",
     "acronyms": [],
-    "status": "draft"
+    "status": "draft",
+    "searchTerm": "least privilege principle"
   },
   {
     "id": "da2-5-3-mcq-001",
@@ -199,7 +201,8 @@
     },
     "explanation": "Role-based access control ties permissions to roles such as analyst or auditor. File sharing by individual choice is ad hoc, single sign-on only handles authentication, and masking hides values rather than assigning access.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "role-based access control"
   },
   {
     "id": "da2-5-3-mcq-002",
@@ -238,7 +241,8 @@
     },
     "explanation": "Encryption in transit protects data while it moves between systems. Encryption at rest protects stored data, masking changes displayed values, and role-based access controls who may open data, not what an eavesdropper sees.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "encryption in transit"
   },
   {
     "id": "da2-5-3-mcq-003",
@@ -277,7 +281,8 @@
     },
     "explanation": "Full-disk encryption is encryption at rest, so stored files stay unreadable without the key. Encryption in transit only covers data moving over a network, role-based access does not stop someone reading a stolen disk, and masked views only affect what reports show.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "encryption at rest"
   },
   {
     "id": "da2-5-3-mcq-004",
@@ -318,7 +323,8 @@
     "acronyms": [
       "PII"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "personally identifiable information"
   },
   {
     "id": "da2-5-3-mcq-005",
@@ -359,7 +365,8 @@
     "acronyms": [
       "PHI"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "protected health information PHI"
   },
   {
     "id": "da2-5-3-mcq-006",
@@ -400,7 +407,8 @@
     "acronyms": [
       "NIST"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "NIST security frameworks"
   },
   {
     "id": "da2-5-3-mcq-007",
@@ -439,7 +447,8 @@
     },
     "explanation": "True anonymization cannot be reversed, so no one can link records back to people. A reversible lookup table and a stored key both allow recovery of the original values, and roles control access but leave identifiers in the data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data anonymization"
   },
   {
     "id": "da2-5-3-mcq-008",
@@ -478,7 +487,8 @@
     },
     "explanation": "Masking substitutes sensitive values with realistic stand-ins for non-production use. Profiling only summarizes columns, source control tracks code changes, and encryption in transit protects network traffic.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data masking"
   },
   {
     "id": "da2-5-3-mcq-009",
@@ -517,7 +527,8 @@
     },
     "explanation": "Data should be used only for the purpose people were told about when it was collected. Retention is about how long data is kept, encryption at rest protects storage, and lineage records where data came from.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "purpose limitation principle"
   },
   {
     "id": "da2-5-3-mcq-010",
@@ -556,7 +567,8 @@
     },
     "explanation": "A sharing agreement sets what the vendor may do with the data and how it must protect it. Storage quotas, bandwidth and style guides do nothing to govern use of the data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "third-party data sharing agreements"
   },
   {
     "id": "da2-5-3-mcq-011",
@@ -595,7 +607,8 @@
     },
     "explanation": "Limiting a role to what the job needs keeps exposure small and is easy to audit. Shared logins break accountability, broad access defeats the purpose of review, and emailed copies escape any access control.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "least privilege access"
   },
   {
     "id": "da2-5-3-mcq-012",
@@ -634,7 +647,8 @@
     },
     "explanation": "Encrypted drives cover data at rest only, so traffic on the network can still be read. The scenario says the drives are already encrypted, and nothing in it mentions masking or roles.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "encryption at rest vs transit"
   },
   {
     "id": "da2-5-3-mcq-013",
@@ -673,7 +687,8 @@
     },
     "explanation": "Combining quasi-identifiers such as birth date and postal code can single out a person even without a name. Encryption and role-based access work on any dataset, and removing a few fields does not shrink it enough to prevent analysis.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "quasi-identifiers re-identification"
   },
   {
     "id": "da2-5-3-mcq-014",
@@ -712,7 +727,8 @@
     },
     "explanation": "One-way masking leaves nothing to recover, which is what the requirement asks for. Sharing a key lets testers decrypt, an unchanged copy still holds real values, and roles on production still expose the real data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "one-way data masking"
   },
   {
     "id": "da2-5-3-mcq-015",
@@ -753,7 +769,8 @@
     "acronyms": [
       "PII"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "quasi-identifiers re-identification"
   },
   {
     "id": "da2-5-3-mcq-016",
@@ -799,7 +816,8 @@
     "acronyms": [
       "PII"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "personally identifiable information"
   },
   {
     "id": "da2-5-3-mcq-017",
@@ -845,7 +863,8 @@
     "acronyms": [
       "VPN"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "encryption at rest controls"
   },
   {
     "id": "da2-5-3-mcq-018",
@@ -892,7 +911,8 @@
     "acronyms": [
       "PHI"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "protected health information PHI"
   },
   {
     "id": "da2-5-3-mcq-019",
@@ -936,7 +956,8 @@
     },
     "explanation": "Minimizing fields and documenting permitted uses limit exposure and set expectations. Oversharing, personal accounts and links that never expire all increase the risk of misuse.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "responsible data sharing practices"
   },
   {
     "id": "da2-5-3-mcq-020",
@@ -980,7 +1001,8 @@
     },
     "explanation": "Roles let administrators change access by moving a person between roles, and reviews can check a handful of roles instead of many individuals. Role-based access does not encrypt traffic, replace anonymization or profile data.",
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "role-based access benefits"
   },
   {
     "id": "da2-5-3-config-001",
@@ -1085,7 +1107,8 @@
       "research": "Anonymization removes identifiers so records cannot be linked back."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data protection techniques"
   },
   {
     "id": "da2-5-3-config-002",
@@ -1190,7 +1213,8 @@
       "former": "Access ends when employment ends."
     },
     "acronyms": [],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "role-based access configuration"
   },
   {
     "id": "da2-5-3-buckets-001",
@@ -1268,7 +1292,8 @@
       "PII",
       "PHI"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "PII vs PHI classification"
   },
   {
     "id": "da2-5-3-match-001",
@@ -1337,6 +1362,7 @@
     "acronyms": [
       "NIST"
     ],
-    "status": "approved"
+    "status": "approved",
+    "searchTerm": "data protection techniques outcomes"
   }
 ]
