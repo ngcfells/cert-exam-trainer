@@ -14,7 +14,7 @@ export function SettingsForm({ repo, backup }: { repo: Repo; backup: boolean }) 
   const [imports, setImports] = useState(0);
   async function onImported() {
     const d = await loadDisplay(repo);
-    applyDisplay(d.theme, d.reducedMotion);
+    applyDisplay(d.theme, d.reducedMotion, d.textSize);
     applyMarks(await loadMarks(repo));
     applyTips(await loadTips(repo), repo);
     setImports((n) => n + 1);

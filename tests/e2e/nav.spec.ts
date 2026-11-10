@@ -146,8 +146,8 @@ test('the source choice is kept per exam', async ({ page }) => {
 });
 
 test('Settings passes axe, has no bottom bar on a desktop window, and Back returns home', async ({ page }) => {
-  // 1200 tall: with the answer mark choices (issue #10), Settings no longer fits an 800 px window.
-  await page.setViewportSize({ width: 1280, height: 1200 });
+  // 1400 tall: with the answer mark choices (issue #10) and text size (issue #16), Settings no longer fits a short window.
+  await page.setViewportSize({ width: 1280, height: 1400 });
   await page.goto(singleUrl);
   await page.getByRole('button', { name: 'Settings' }).click();
   await expect(page.getByRole('heading', { name: 'Settings' })).toBeFocused();

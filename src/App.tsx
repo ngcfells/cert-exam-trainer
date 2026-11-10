@@ -58,7 +58,7 @@ export default function App() {
       // Apply the saved theme before the first screen paints; a read failure keeps the defaults.
       try {
         const d = await loadDisplay(s.repo);
-        applyDisplay(d.theme, d.reducedMotion);
+        applyDisplay(d.theme, d.reducedMotion, d.textSize);
         applyMarks(await loadMarks(s.repo));
       } catch {
         /* defaults stay */

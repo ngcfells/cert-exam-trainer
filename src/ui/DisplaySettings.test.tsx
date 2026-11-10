@@ -3,13 +3,14 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { createMemoryRepo } from '../storage/memoryRepo';
 import { DisplaySettings } from './DisplaySettings';
-import { loadDisplay, MOTION_SETTING, THEME_SETTING } from './display';
+import { loadDisplay, MOTION_SETTING, TEXT_SIZE_SETTING, THEME_SETTING } from './display';
 
 const root = document.documentElement;
 
 afterEach(() => {
   delete root.dataset.theme;
   delete root.dataset.motion;
+  delete root.dataset.textSize;
 });
 
 describe('DisplaySettings', () => {
@@ -34,10 +35,22 @@ describe('DisplaySettings', () => {
     expect(await repo.getSetting(MOTION_SETTING)).toBe(true);
   });
 
+  it('text size radios set data-text-size and store the choice', async () => {
+    const repo = createMemoryRepo();
+    render(<DisplaySettings repo={repo} />);
+    await screen.findByRole('group', { name: 'Text size' });
+    await userEvent.click(screen.getByRole('radio', { name: 'Extra large' }));
+    expect(root.dataset.textSize).toBe('larger');
+    expect(await repo.getSetting(TEXT_SIZE_SETTING)).toBe('larger');
+    await userEvent.click(screen.getByRole('radio', { name: 'Normal' }));
+    expect(root.dataset.textSize).toBeUndefined();
+    expect((await loadDisplay(repo)).textSize).toBe('normal');
+  });
+
   it('loadDisplay falls back on unknown stored values', async () => {
     const repo = createMemoryRepo();
     await repo.setSetting(THEME_SETTING, 'purple');
     await repo.setSetting(MOTION_SETTING, 'yes');
-    expect(await loadDisplay(repo)).toEqual({ theme: 'system', reducedMotion: false });
+    expect(await loadDisplay(repo)).toEqual({ theme: 'system', reducedMotion: false, textSize: 'normal' });
   });
 });
