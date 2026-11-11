@@ -123,4 +123,13 @@ describe('manifestSchema', () => {
     expect(manifestSchema.safeParse({ ...m, current: undefined }).success).toBe(false);
     expect(manifestSchema.safeParse({ ...m, current: { ...m.current, id: 'not-a-hash' } }).success).toBe(false);
   });
+
+  it('rejects a file that disagrees with itself', () => {
+    const m = manifestOf(local());
+    const exam = m.current.exams['X0-001'];
+    const wrongId = { ...m, current: { ...m.current, id: 'a'.repeat(64) } };
+    const wrongExam = { ...m, current: { ...m.current, exams: { 'X0-001': { ...exam, questions: { ...exam.questions, q1: 'b'.repeat(64) } } } } };
+    expect(manifestSchema.safeParse(wrongId).success).toBe(false);
+    expect(manifestSchema.safeParse(wrongExam).success).toBe(false);
+  });
 });

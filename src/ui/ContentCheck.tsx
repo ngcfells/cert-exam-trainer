@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { checkContent, updateApp, type CheckResult } from '../integrity/check';
 import type { ExamDiff } from '../integrity/manifest';
 import { ONLINE_APP_URL } from './legal';
@@ -28,9 +28,25 @@ export function describeDiff(d: ExamDiff): string {
  * Settings section, hosted app only: compares the stock content with the official SHA-512/256 hashes (issue #11)
  * and offers the newer version when the content is out of date.
  */
-export function ContentCheck({ check = checkContent, update = updateApp }: { check?: typeof checkContent; update?: typeof updateApp }) {
+export function ContentCheck({
+  check = checkContent,
+  update = updateApp,
+  stallMs = 60_000,
+}: {
+  check?: typeof checkContent;
+  update?: typeof updateApp;
+  /** How long to wait for the newer version to take over before saying the update did not finish. */
+  stallMs?: number;
+}) {
   const [result, setResult] = useState<CheckResult | 'checking' | null>(null);
-  const [updating, setUpdating] = useState<'working' | 'none' | null>(null);
+  const [updating, setUpdating] = useState<'working' | 'none' | 'stalled' | null>(null);
+
+  // The page reloads when the newer version takes over. If that never happens (the download failed), say so.
+  useEffect(() => {
+    if (updating !== 'working') return;
+    const timer = setTimeout(() => setUpdating('stalled'), stallMs);
+    return () => clearTimeout(timer);
+  }, [updating, stallMs]);
 
   async function run() {
     setUpdating(null);
@@ -61,7 +77,9 @@ export function ContentCheck({ check = checkContent, update = updateApp }: { che
         {result !== 'checking' && result?.kind === 'outdated' && (
           <>
             <p>This content is official but out of date.</p>
+            {updating === 'working' && <p>Updating… The page reloads when the new version is ready.</p>}
             {updating === 'none' && <p>No newer version is available yet. Try again in a few minutes.</p>}
+            {updating === 'stalled' && <p>The update did not finish. Check your connection and try again.</p>}
           </>
         )}
         {result !== 'checking' && result?.kind === 'mismatch' && (

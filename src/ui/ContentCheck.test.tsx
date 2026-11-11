@@ -55,7 +55,22 @@ describe('ContentCheck', () => {
     await checked({ kind: 'outdated', current: release }, vi.fn<() => Promise<'reloading' | 'none'>>(async () => 'reloading'));
     await userEvent.click(screen.getByRole('button', { name: 'Update now' }));
     expect(screen.getByRole('button', { name: 'Update now' })).toBeDisabled();
+    expect(screen.getByRole('status')).toHaveTextContent('Updating… The page reloads when the new version is ready.');
     expect(screen.queryByText(/No newer version/)).not.toBeInTheDocument();
+  });
+
+  it('out of date: says so and frees the button when the newer version never takes over', async () => {
+    render(
+      <ContentCheck
+        check={async () => ({ kind: 'outdated', current: release })}
+        update={async () => 'reloading'}
+        stallMs={20}
+      />,
+    );
+    await userEvent.click(screen.getByRole('button', { name: 'Check content' }));
+    await userEvent.click(screen.getByRole('button', { name: 'Update now' }));
+    expect(await screen.findByText('The update did not finish. Check your connection and try again.')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Update now' })).toBeEnabled();
   });
 
   it('does not match: gives the counts and the official address', async () => {

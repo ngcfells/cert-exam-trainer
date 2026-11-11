@@ -3,7 +3,7 @@ import { execFileSync } from 'node:child_process';
 import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { listExams } from '../src/banks';
 import { autoOpsItems } from '../src/banks/autoops/items';
 import { dataPlusItems } from '../src/banks/dataplus/items';
@@ -12,10 +12,10 @@ import { EXAM_METAS } from '../src/banks/metas';
 import { secAiItems } from '../src/banks/secai/items';
 import { parseExamMeta, parseQuestion } from '../src/domain/schema';
 import type { Question } from '../src/domain/types';
-import { hashExam, type ExamHashes } from '../src/integrity/hashes';
+import { hashExam, sealExam, type ExamHashes } from '../src/integrity/hashes';
 import { localHashes } from '../src/integrity/local';
 import { HASHES_BRANCH, HASHES_FILE, nextManifest, type ExamDiff, type Manifest } from '../src/integrity/manifest';
-import { describeChanges, publishHashes, readPublished, shippedHashes, waitForPublished } from './hashes-lib';
+import { describeChanges, publishHashes, readPublished, releaseHashes, shippedHashes, waitForPublished, type ReleaseOptions } from './hashes-lib';
 
 const ITEMS: Record<string, Question[]> = { 'DA0-002': dataPlusItems, 'CY0-001': secAiItems, 'AT0-001': autoOpsItems };
 
@@ -94,7 +94,7 @@ describe('waitForPublished', () => {
 describe('publishHashes and readPublished', { timeout: 60_000 }, () => {
   const git = (cwd: string, ...args: string[]) => execFileSync('git', args, { cwd, encoding: 'utf8' }).trim();
   const h = (c: string) => c.repeat(64);
-  const exam = (c: string): Record<string, ExamHashes> => ({ 'X0-001': { hash: h(c), meta: h('1'), questions: { q1: h(c) }, lessons: {} } });
+  const exam = (c: string): Record<string, ExamHashes> => ({ 'X0-001': sealExam({ meta: h('1'), questions: { q1: h(c) }, lessons: {} }) });
   const INFO = { date: '2026-11-10', commit: 'abc1234', appVersion: '0.1.0' };
 
   let root: string;
@@ -149,5 +149,74 @@ describe('publishHashes and readPublished', { timeout: 60_000 }, () => {
     const first = nextManifest(null, exam('a'), INFO)!;
     publish(first);
     expect(publish(first)).toEqual({ commit: null, pushed: false });
+  });
+
+  it('refuses to guess when the remote cannot be reached, so a release never restarts the history', () => {
+    publish(nextManifest(null, exam('a'), INFO)!);
+    git(repo, 'remote', 'set-url', 'origin', path.join(root, 'gone.git'));
+    expect(() => readPublished(repo, 'origin')).toThrow('Could not read the published hashes from origin');
+  });
+
+  describe('releaseHashes', () => {
+    const release = (c: string, over: Partial<ReleaseOptions> = {}) => {
+      const lines: string[] = [];
+      const result = releaseHashes({
+        cwd: repo, remote: 'origin', local: exam(c), ...INFO, dryRun: false,
+        confirm: async () => true, wait: async () => true, log: (l) => lines.push(l), ...over,
+      });
+      return { result, lines };
+    };
+    const remoteHas = () => git(remote, 'branch', '--list', HASHES_BRANCH) !== '';
+
+    it('publishes the first release after a yes, listing what is new', async () => {
+      const { result, lines } = release('a');
+      await expect(result).resolves.toBe('published');
+      expect(lines[0]).toBe('First release of the content hashes:');
+      expect(lines).toContain('  added questions: q1');
+      expect(readPublished(repo, 'origin')?.current.exams).toEqual(exam('a'));
+    });
+
+    it('leaves the published file alone when the content is unchanged, without asking', async () => {
+      await release('a').result;
+      const confirm = vi.fn(async () => true);
+      const { result, lines } = release('a', { confirm });
+      await expect(result).resolves.toBe('unchanged');
+      expect(confirm).not.toHaveBeenCalled();
+      expect(lines).toEqual(['The content is unchanged; the published hashes stay as they are.']);
+      expect(git(remote, 'rev-list', '--count', HASHES_BRANCH)).toBe('1');
+    });
+
+    it('keeps the history across releases', async () => {
+      await release('a').result;
+      const { result, lines } = release('b');
+      await expect(result).resolves.toBe('published');
+      expect(lines[0]).toBe('The content changed since the last release:');
+      expect(lines).toContain('  changed questions: q1');
+      expect(readPublished(repo, 'origin')?.history).toHaveLength(1);
+    });
+
+    it('publishes nothing when the answer is no', async () => {
+      await expect(release('a', { confirm: async () => false }).result).rejects.toThrow('the hashes were not confirmed');
+      expect(remoteHas()).toBe(false);
+    });
+
+    it('publishes nothing on a dry run, and does not ask', async () => {
+      const confirm = vi.fn(async () => true);
+      await expect(release('a', { dryRun: true, confirm }).result).resolves.toBe('dry-run');
+      expect(confirm).not.toHaveBeenCalled();
+      expect(remoteHas()).toBe(false);
+    });
+
+    it('publishes only from main', async () => {
+      git(repo, 'checkout', '-q', '-b', 'feature');
+      await expect(release('a').result).rejects.toThrow('Refusing to publish content hashes from branch feature');
+      expect(remoteHas()).toBe(false);
+    });
+
+    it('stops the deploy when the public address never serves the new list, and a second run goes on', async () => {
+      await expect(release('a', { wait: async () => false }).result).rejects.toThrow('the site was NOT pushed');
+      expect(remoteHas()).toBe(true);
+      await expect(release('a').result).resolves.toBe('unchanged');
+    });
   });
 });

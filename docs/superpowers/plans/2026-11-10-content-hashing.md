@@ -110,6 +110,6 @@
 - [ ] `npm run check` green.
 - [ ] One whole-branch review on the most capable model; fix every finding, minors too; `npm run check` again.
 - [ ] Merge to `main`, push, `npm run deploy -- --yes` (first release: creates `Security`).
-- [ ] Create the ruleset on `Security` (no update, deletion or force-push; admin bypass). Confirm the owner can still push with `npm run deploy -- --dry-run` and a ruleset read-back. If the bypass is refused, remove the ruleset and report.
+- [ ] Create the ruleset on `Security` (no update, deletion or force-push; admin bypass). Confirm the owner can still push from the ruleset read-back (`current_user_can_bypass` is `always`). If the bypass is refused, remove the ruleset, soften the "only the owner may change this branch" lines in both READMEs, and report.
 - [ ] Check the live app: Settings, "Check content" says verified.
 - [ ] Comment on #11 and close it; update `HANDOFF.md`.

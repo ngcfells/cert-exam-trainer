@@ -40,7 +40,7 @@ Code: `src/integrity/` (the hash, the published file's shape, the verdict), `scr
 
 `npm run deploy` builds the offline-capable PWA into `dist/` and pushes it to the `gh-pages` branch. No GitHub Actions are used. It refuses to run with uncommitted changes or from a branch other than `main` (`--force` overrides the branch check). `npm run deploy -- --dry-run` does everything except the push.
 
-When the shipped content changed since the last release, deploy first lists the changed, added and removed questions and lessons and asks for a yes (`--yes` answers when nobody can type). It then pushes the new hashes to `Security`, waits until their public address serves them (up to 7 minutes), and only then pushes the site, so a freshly updated app never meets a list that does not know it yet.
+When the shipped content changed since the last release, deploy first lists the changed, added and removed questions and lessons and asks for a yes (`--yes` answers when nobody can type). It then pushes the new hashes to `Security`, waits until their public address serves them (up to 7 minutes), and only then pushes the site, so a freshly updated app never meets a list that does not know it yet. If the address still serves the old list after that, deploy stops before the site push; run it again a few minutes later and it goes straight to the site. Hashes are only ever published from `main`, even with `--force`.
 
 One-time setup: in the repo's Settings → Pages, set Source to "Deploy from a branch", branch `gh-pages`, folder `/ (root)`. The site is then at <https://ngcfells.github.io/cert-exam-trainer/>.
 

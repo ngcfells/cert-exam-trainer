@@ -108,11 +108,11 @@ build has no check button and no reference to the hashes address, so it still ma
   worker for the new version and reloads when it takes over. If none is there yet: "No newer version is
   available yet. Try again in a few minutes."
 - Does not match: "This content does not match any official release." then the counts, then "Do not rely on
-  this copy. Use the official app at <address>."
+  this copy. Use the official app at (the official address)."
 - Could not check: "Could not reach the official list. Check your connection and try again."
 
 The footer, on every page, in any copy not served from the official address (one-file copy, another site,
-localhost): "This is not the official copy of Cert Exam Trainer. The official app is at <address>." (Builder's
+localhost): "This is not the official copy of Cert Exam Trainer. The official app is at (the official address)." (Builder's
 call: the footer, because it is already on every page.)
 
 About gains a short "Checking the content" section with the limit above, and the "sends nothing over the
@@ -126,9 +126,18 @@ from GitHub).
   anyone changed the questions" check).
 - `npm run deploy` now: builds; computes the hashes; fetches the published file; if the content changed, lists
   the changed, added and removed ids per exam and asks for confirmation (`--yes` answers for a non-interactive
-  run); pushes the new file to `Security`; waits until the raw address serves it (up to 7 minutes, then goes on
-  with a warning); then pushes `gh-pages` as before. Hashes go first so a freshly updated app never meets a list
-  that does not know it yet. `--dry-run` pushes nothing.
+  run); pushes the new file to `Security`; waits until the raw address serves it (up to 7 minutes); then pushes
+  `gh-pages` as before. Hashes go first so a freshly updated app never meets a list that does not know it yet.
+  `--dry-run` pushes nothing.
+  - Changed after the branch review (builder's call): when the wait times out, deploy stops before the site
+    push instead of going on with a warning, because telling learners of the honest app "do not rely on this
+    copy" is worse than a late deploy. A second run finds the hashes already published and goes straight to
+    the site.
+  - Also from the review: hashes are published only from `main`, even with `--force`; a remote that cannot be
+    reached is an error, never "no branch yet"; the app treats a published file that disagrees with itself
+    (an exam hash or the release id not matching its parts) as "could not check"; and "Update now" says
+    "Updating… The page reloads when the new version is ready." and, if nothing takes over within a minute,
+    "The update did not finish. Check your connection and try again."
 - The `Security` branch is created by the first deploy. It is then locked with a repository ruleset: no
   updates, deletion or force-push except by the repository admin. The repository is on a personal account with
   one collaborator (the owner), so "owner only" is what GitHub offers there; named collaborators would need an

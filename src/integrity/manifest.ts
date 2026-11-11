@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { hashRelease, type ExamHashes } from './hashes';
+import { hashRelease, sealExam, type ExamHashes } from './hashes';
 
 /** The branch that holds the official hashes, the file on it, and where the app reads it. */
 export const HASHES_BRANCH = 'Security';
@@ -10,14 +10,18 @@ const hash = z.string().regex(/^[0-9a-f]{64}$/);
 const hashes = z.record(hash);
 const releaseInfo = { id: hash, date: z.string().min(1), commit: z.string().min(1), appVersion: z.string().min(1) };
 
-export const manifestSchema = z.object({
-  format: z.literal(1),
-  algorithm: z.literal('SHA-512/256'),
-  /** The newest release, with a hash for every item. */
-  current: z.object({ ...releaseInfo, exams: z.record(z.object({ hash, meta: hash, questions: hashes, lessons: hashes })) }),
-  /** Earlier releases, newest first, with exam hashes only. */
-  history: z.array(z.object({ ...releaseInfo, exams: hashes })),
-});
+export const manifestSchema = z
+  .object({
+    format: z.literal(1),
+    algorithm: z.literal('SHA-512/256'),
+    /** The newest release, with a hash for every item. */
+    current: z.object({ ...releaseInfo, exams: z.record(z.object({ hash, meta: hash, questions: hashes, lessons: hashes })) }),
+    /** Earlier releases, newest first, with exam hashes only. */
+    history: z.array(z.object({ ...releaseInfo, exams: hashes })),
+  })
+  // A file that disagrees with itself (hand-edited or damaged) is unreadable, not a reason to accuse the app's content.
+  .refine((m) => Object.values(m.current.exams).every((e) => sealExam(e).hash === e.hash), 'an exam hash does not match its items')
+  .refine((m) => hashRelease(m.current.exams) === m.current.id, 'the release id does not match its exams');
 
 export type Manifest = z.infer<typeof manifestSchema>;
 export type Release = Manifest['current'];

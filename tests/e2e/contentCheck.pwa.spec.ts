@@ -1,6 +1,6 @@
 import { test, expect, type Page } from '@playwright/test';
 import { shippedHashes } from '../../scripts/hashes-lib';
-import type { ExamHashes } from '../../src/integrity/hashes';
+import { sealExam, type ExamHashes } from '../../src/integrity/hashes';
 import { HASHES_URL, nextManifest } from '../../src/integrity/manifest';
 import { expectNoSeriousAxe, PWA_URL } from './util';
 
@@ -33,7 +33,7 @@ test('the hashes the browser works out match the ones made from the bank files',
 test('an earlier release is out of date, and Update now says when nothing newer is there', async ({ page }) => {
   const old = nextManifest(null, shippedHashes(process.cwd()), INFO)!;
   const h = 'b'.repeat(64);
-  const newer: Record<string, ExamHashes> = { 'ZZ0-000': { hash: h, meta: h, questions: {}, lessons: {} } };
+  const newer: Record<string, ExamHashes> = { 'ZZ0-000': sealExam({ meta: h, questions: {}, lessons: {} }) };
   await page.route(LIST, (route) => route.fulfill({ json: nextManifest(old, newer, INFO)! }));
   await openSettings(page);
   await check(page);
@@ -44,7 +44,7 @@ test('an earlier release is out of date, and Update now says when nothing newer 
 
 test('content that matches no release is called out, with the official address', async ({ page }) => {
   const h = 'c'.repeat(64);
-  const other: Record<string, ExamHashes> = { 'DA0-002': { hash: h, meta: h, questions: { 'da2-1-1-mcq-001': h }, lessons: {} } };
+  const other: Record<string, ExamHashes> = { 'DA0-002': sealExam({ meta: h, questions: { 'da2-1-1-mcq-001': h }, lessons: {} }) };
   await page.route(LIST, (route) => route.fulfill({ json: nextManifest(null, other, INFO)! }));
   await openSettings(page);
   await check(page);

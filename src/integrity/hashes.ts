@@ -37,9 +37,13 @@ export interface ExamHashes {
 const byId = (items: { id: string }[]): Record<string, string> =>
   Object.fromEntries(items.map((i) => [i.id, hashText(canonical(i))]));
 
+/** Adds the exam hash to its parts. The published file is checked against this, so a file that disagrees with itself is refused. */
+export function sealExam({ meta, questions, lessons }: Omit<ExamHashes, 'hash'>): ExamHashes {
+  return { hash: hashText(canonical({ meta, questions, lessons })), meta, questions, lessons };
+}
+
 export function hashExam(c: ExamContent): ExamHashes {
-  const parts = { meta: hashText(canonical(c.meta)), questions: byId(c.questions), lessons: byId(c.lessons) };
-  return { hash: hashText(canonical(parts)), ...parts };
+  return sealExam({ meta: hashText(canonical(c.meta)), questions: byId(c.questions), lessons: byId(c.lessons) });
 }
 
 /** The release id: one hash over every exam's hash. */

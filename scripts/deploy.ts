@@ -6,15 +6,14 @@
  *   npm run deploy               build, publish hashes if the content changed, commit to gh-pages, push to origin
  *   npm run deploy -- --yes      accept the list of changed content without being asked (needed when no one can type)
  *   npm run deploy -- --dry-run  build and commit in temporary worktrees, but push nothing
- *   npm run deploy -- --force    allow deploying from a branch other than main (uncommitted changes are always refused)
+ *   npm run deploy -- --force    allow deploying the site from a branch other than main (uncommitted changes are
+ *                                always refused, and content hashes are only ever published from main)
  */
 import { execSync } from 'node:child_process';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { createInterface } from 'node:readline/promises';
-import { hashRelease } from '../src/integrity/hashes';
-import { HASHES_BRANCH, diffExams, nextManifest } from '../src/integrity/manifest';
 import { deploy, preflight } from './deploy-lib';
-import { describeChanges, publishHashes, readPublished, shippedHashes, waitForPublished } from './hashes-lib';
+import { releaseHashes, shippedHashes } from './hashes-lib';
 
 const FLAGS = ['--dry-run', '--force', '--yes'];
 const args = process.argv.slice(2).filter((a) => a !== '--');
@@ -28,7 +27,7 @@ const force = args.includes('--force');
 const yes = args.includes('--yes');
 const cwd = process.cwd();
 
-async function confirmed(): Promise<boolean> {
+async function confirm(): Promise<boolean> {
   if (yes) return true;
   if (!process.stdin.isTTY) throw new Error('The content changed. Read the list above, then run again with --yes to publish its hashes');
   const rl = createInterface({ input: process.stdin, output: process.stdout });
@@ -37,36 +36,32 @@ async function confirmed(): Promise<boolean> {
   return /^y(es)?$/i.test(answer.trim());
 }
 
-/** Publishes the content hashes when the content changed. The hashes go out before the site, so a freshly updated app never meets a list that does not know it. */
-async function releaseHashes(commit: string): Promise<void> {
-  const local = shippedHashes(cwd);
-  const published = readPublished(cwd, 'origin');
-  const appVersion = (JSON.parse(readFileSync('package.json', 'utf8')) as { version: string }).version;
-  const manifest = nextManifest(published, local, { date: new Date().toISOString().slice(0, 10), commit, appVersion });
-  if (!manifest) {
-    console.log('deploy: the content is unchanged; the published hashes stay as they are.');
-    return;
-  }
-  console.log(published ? 'deploy: the content changed since the last release:' : 'deploy: first release of the content hashes:');
-  for (const line of describeChanges(diffExams(local, published?.current.exams ?? {}))) console.log(line);
-  if (dryRun) {
-    const r = publishHashes({ cwd, remote: 'origin', manifest, commit, dryRun });
-    console.log(`deploy: dry run made hashes commit ${r.commit}; nothing was pushed.`);
-    return;
-  }
-  if (!(await confirmed())) throw new Error('Stopped: the hashes were not confirmed, so nothing was published');
-  publishHashes({ cwd, remote: 'origin', manifest, commit, dryRun });
-  console.log(`deploy: pushed release ${hashRelease(local).slice(0, 12)} to ${HASHES_BRANCH}. Waiting until its public address serves it…`);
-  if (!(await waitForPublished(manifest.current.id))) {
-    console.warn('deploy: the public address still serves the old hashes. Going on; "Check content" may be wrong for a few minutes.');
-  }
-}
-
 try {
-  const commit = preflight({ cwd, force });
+  preflight({ cwd, force });
   execSync('npm run build', { stdio: 'inherit' });
-  await releaseHashes(commit);
-  const r = await deploy({ cwd, remote: 'origin', branch: 'gh-pages', distDir: 'dist', dryRun, force });
+  // Everything that can refuse the site push is checked again before the hashes go out.
+  const commit = preflight({ cwd, force });
+  if (!existsSync('dist/index.html')) throw new Error('Nothing to deploy: dist/index.html not found');
+
+  const hashes = await releaseHashes({
+    cwd,
+    remote: 'origin',
+    local: shippedHashes(cwd),
+    commit,
+    date: new Date().toISOString().slice(0, 10),
+    appVersion: (JSON.parse(readFileSync('package.json', 'utf8')) as { version: string }).version,
+    dryRun,
+    confirm,
+    log: (line) => console.log(`deploy: ${line}`),
+  });
+
+  let r;
+  try {
+    r = await deploy({ cwd, remote: 'origin', branch: 'gh-pages', distDir: 'dist', dryRun, force });
+  } catch (e) {
+    const note = hashes === 'published' ? ' The new hashes ARE published, so the app says "out of date" until the site is pushed: run deploy again.' : '';
+    throw new Error(`${(e as Error).message}.${note}`);
+  }
   if (!r.commit) console.log('deploy: nothing changed since the last deploy.');
   else if (!r.pushed) console.log(`deploy: dry run made commit ${r.commit}; nothing was pushed.`);
   else console.log(`deploy: pushed ${r.commit} to gh-pages. Pages will update in a minute or two.`);

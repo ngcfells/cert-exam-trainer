@@ -1,12 +1,12 @@
 // @vitest-environment node
 import { describe, expect, it, vi } from 'vitest';
 import { checkContent, updateApp } from './check';
-import type { ExamHashes } from './hashes';
+import { sealExam, type ExamHashes } from './hashes';
 import { HASHES_URL, nextManifest, type Manifest } from './manifest';
 import { isOfficial } from './official';
 
 const h = (c: string) => c.repeat(64);
-const exams = (c: string): Record<string, ExamHashes> => ({ 'X0-001': { hash: h(c), meta: h('1'), questions: { q1: h(c) }, lessons: {} } });
+const exams = (c: string): Record<string, ExamHashes> => ({ 'X0-001': sealExam({ meta: h('1'), questions: { q1: h(c) }, lessons: {} }) });
 const INFO = { date: '2026-11-10', commit: 'abc1234', appVersion: '0.1.0' };
 const v1 = nextManifest(null, exams('a'), INFO)!;
 const v2 = nextManifest(v1, exams('b'), INFO)!;
