@@ -36,7 +36,7 @@
     },
     "explanation": "Work done ahead of time so the team can detect and respond is preparation. Containment limits an active incident, eradication removes its cause, and post-incident activity reviews what happened after the fact.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -75,7 +75,7 @@
     },
     "explanation": "Containment stops an incident from growing. Removing the cause is eradication, returning to normal service is recovery, and recording what to change is the post-incident review.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -114,7 +114,7 @@
     },
     "explanation": "Taking away the attacker's foothold and fixing the weakness that allowed entry is eradication. Containment only limits spread, recovery restores service, and detection and analysis confirms and scopes the incident.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -153,7 +153,7 @@
     },
     "explanation": "Returning systems to a trusted state and watching them is recovery. Preparation happens before an incident, containment limits spread, and detection and analysis comes first when the activity is confirmed and scoped.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -192,7 +192,7 @@
     },
     "explanation": "The review turns the incident into improvements to the plan, tools and training, and it works best without blame. Evidence collection happens during the response, and declaring an incident happens in detection and analysis.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -231,7 +231,7 @@
     },
     "explanation": "The incident response plan defines who does what and how the team communicates. A business impact analysis ranks business functions, a scan report lists weaknesses, and an inventory lists assets.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -270,7 +270,7 @@
     },
     "explanation": "A playbook gives responders concrete steps for a specific kind of incident. The other options describe a metrics report, an asset inventory and a retainer agreement, which support response but are not procedures.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -281,7 +281,7 @@
     "id": "cs4-3-2-mcq-008",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "Which combination of facts would most justify rating an incident as high severity?",
+    "stem": "Which fact would most justify rating an incident as high severity?",
     "payload": {
       "options": [
         {
@@ -311,7 +311,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -322,7 +322,7 @@
     "id": "cs4-3-2-mcq-009",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A ransomware outbreak encrypts a server of customer records, and the team estimates two weeks of work to restore it. Which impact category does that estimate describe?",
+    "stem": "A ransomware outbreak encrypts a server holding customer records, and the team estimates two weeks of work to restore it. Which impact category does that estimate describe?",
     "payload": {
       "options": [
         {
@@ -348,11 +348,11 @@
         "a"
       ]
     },
-    "explanation": "The time and resources needed to restore service is the recoverability effort. Functional impact is the effect on business operations, and information impact is the effect on the data itself. Detection latency measures how long the team took to notice, not an impact.",
+    "explanation": "The time and resources needed to restore service are the recoverability effort. Functional impact is the effect on business operations, and information impact is the effect on the data itself. Detection latency measures how long the team took to notice, not an impact.",
     "acronyms": [
       "SOC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -391,7 +391,7 @@
     },
     "explanation": "A warning that an attack may come is a precursor, so the team should prepare. An indicator shows an incident is happening or has happened, nothing here is confirmed, and the report is not a false alarm.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -430,7 +430,7 @@
     },
     "explanation": "The order of volatility puts memory and live connections first, because they vanish at power-off. Disk contents persist, and logs on a central server and files in version control are stored elsewhere.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -469,7 +469,7 @@
     },
     "explanation": "A documented chain of custody shows the evidence was not altered, which preserves its value in legal or disciplinary action. It has no effect on restore time, vendor testing or recovery estimates.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -480,7 +480,7 @@
     "id": "cs4-3-2-mcq-013",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A revenue-generating web server is compromised, and the business cannot afford to power it off. The team moves it to a restricted segment with limited access. Which containment strategy is this?",
+    "stem": "A revenue-generating web server is compromised, and the business cannot afford to power it off. The team moves it to a separate network segment. Which containment strategy is this?",
     "payload": {
       "options": [
         {
@@ -508,7 +508,7 @@
     },
     "explanation": "Placing the host in a restricted segment limits what it can reach while keeping it useful, which is segmentation. Full isolation would cut it off completely, and eradication and recovery are later phases.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -547,7 +547,7 @@
     },
     "explanation": "Long-term containment keeps systems running in a safer arrangement while the real fix is built. Unplugging, blocking an address and disabling an account are quick actions that stop spread immediately, which is short-term containment.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -563,11 +563,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Blocking the attacker's command server address at the perimeter firewall"
+          "text": "Blocking the attacker's command server address at the perimeter firewall and the web proxy"
         },
         {
           "id": "b",
-          "text": "Disconnecting the infected host from the production network at the switch port"
+          "text": "Disconnecting the infected host from the production network at the switch port and alerting its owner"
         },
         {
           "id": "c",
@@ -575,7 +575,7 @@
         },
         {
           "id": "d",
-          "text": "Capturing a memory image of the host so analysts can examine it later"
+          "text": "Capturing a memory image of the host so analysts can examine the running state later"
         }
       ]
     },
@@ -586,7 +586,7 @@
     },
     "explanation": "Eradication removes the attacker's foothold and fixes the weakness. Blocking an address and disconnecting a host limit spread, which is containment, and a memory image is evidence collection.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -625,7 +625,7 @@
     },
     "explanation": "Recovery includes checking the restored system and watching it for signs the attacker has returned. Skipping validation, re-enabling every account and reusing old rules unchanged could hide or restore the original weakness.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -636,7 +636,7 @@
     "id": "cs4-3-2-mcq-017",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "Why is restoring from a backup taken after the attacker first gained access risky?",
+    "stem": "Why is restoring from a backup taken after the intrusion began risky?",
     "payload": {
       "options": [
         {
@@ -645,15 +645,15 @@
         },
         {
           "id": "b",
-          "text": "The backup is likely too old to contain any current user files"
+          "text": "The backup is likely too old to contain any current user files or settings"
         },
         {
           "id": "c",
-          "text": "The restore would exceed the recovery time objective by design"
+          "text": "The restore would exceed the recovery time objective by design, delaying service"
         },
         {
           "id": "d",
-          "text": "The backup software cannot read data written during an incident"
+          "text": "The backup software cannot read data that was written while an incident was under way"
         }
       ]
     },
@@ -664,7 +664,7 @@
     },
     "explanation": "A backup made after the intrusion can carry the attacker's backdoors, so the team should pick a point before the compromise or clean the restored system. Age, restore speed and software compatibility are not the concern.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -701,9 +701,9 @@
         "b"
       ]
     },
-    "explanation": "Holding the review soon after closure captures accurate memories and logs. Waiting a year loses detail, limiting it to breaches skips useful lessons from other incidents, and holding it during containment distracts the team from the active response.",
+    "explanation": "Holding the review soon after closure captures accurate recollections and logs. Waiting a year loses detail, limiting it to breaches skips useful lessons from other incidents, and holding it during containment distracts the team from the active response.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -714,16 +714,16 @@
     "id": "cs4-3-2-mcq-019",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A root cause analysis shows an intrusion began through an unpatched VPN appliance exposed to the internet. Which follow-up action best addresses the finding?",
+    "stem": "A root cause analysis shows an intrusion began through a VPN appliance that was missing a security update and reachable from outside. Which follow-up action best addresses the finding?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Add the attacker's address to a block list and close the incident"
+          "text": "Add the attacker's address to a block list and close the incident without further changes"
         },
         {
           "id": "b",
-          "text": "Replace the analysts who did not notice the alert sooner"
+          "text": "Replace the analysts who did not notice the first alert quickly enough"
         },
         {
           "id": "c",
@@ -731,7 +731,7 @@
         },
         {
           "id": "d",
-          "text": "Encrypt the backups with a stronger algorithm"
+          "text": "Encrypt the backups with a stronger algorithm and rotate the keys"
         }
       ]
     },
@@ -744,7 +744,7 @@
     "acronyms": [
       "VPN"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -786,7 +786,7 @@
       "SIEM",
       "UTC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -806,15 +806,15 @@
         },
         {
           "id": "b",
-          "text": "The post-incident report has been delivered to the executive team"
+          "text": "The post-incident report has been written and delivered to the executive team"
         },
         {
           "id": "c",
-          "text": "All affected users have completed refresher security training"
+          "text": "All affected users have completed refresher security awareness training"
         },
         {
           "id": "d",
-          "text": "The playbook has been updated with the steps used this time"
+          "text": "The playbook has been updated with the steps that were used this time"
         }
       ]
     },
@@ -825,7 +825,7 @@
     },
     "explanation": "Restoring into an environment where the attacker can still get in invites reinfection, so eradication comes first. The report, training and playbook updates belong to the post-incident phase.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -845,7 +845,7 @@
         },
         {
           "id": "b",
-          "text": "Prioritize the exfiltration because it involves ongoing data loss and regulatory exposure"
+          "text": "Prioritize the database because ongoing data theft carries regulatory exposure"
         },
         {
           "id": "c",
@@ -864,7 +864,7 @@
     },
     "explanation": "Response is prioritized by risk and impact, and active loss of regulated data outweighs an encrypted lost device. Order of arrival, ease of resolution and an even split ignore the difference in impact.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -875,24 +875,24 @@
     "id": "cs4-3-2-mcq-023",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A review finds that responders could not tell which servers were critical, which slowed containment decisions. Which preparation improvement best addresses this?",
+    "stem": "A review finds that responders could not tell which servers were critical. This slowed containment decisions. Which preparation improvement best addresses this?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Add more detection rules to the SIEM for common attack patterns"
+          "text": "Add more detection rules to the SIEM for common attack patterns seen in the industry"
         },
         {
           "id": "b",
-          "text": "Purchase additional storage to hold a longer backup history"
+          "text": "Purchase additional storage so the team can hold a longer history of system backups"
         },
         {
           "id": "c",
-          "text": "Maintain an asset inventory with criticality ratings and data classifications"
+          "text": "Maintain an asset inventory with business importance ratings and data classifications"
         },
         {
           "id": "d",
-          "text": "Extend the retention period for firewall logs to one year"
+          "text": "Extend the retention period for firewall logs from three months to one full year"
         }
       ]
     },
@@ -905,7 +905,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -944,7 +944,7 @@
     },
     "explanation": "Collecting volatile data and an image first preserves evidence, and isolation then stops further harm. Powering off destroys memory, leaving the host connected lets the attacker continue, and reimaging destroys the evidence.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -983,7 +983,7 @@
     },
     "explanation": "Notifications carry legal duties, so legal and compliance staff decide them under the plan the organization approved. An individual analyst, a vendor or an on-call responder should not make that call alone.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1022,7 +1022,7 @@
     },
     "explanation": "If the attacker can read the normal channels, the team needs a separate channel that was set up in advance. Shorter email, company-wide chat and ad hoc personal accounts all leak response details or lack control.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1046,7 +1046,7 @@
         },
         {
           "id": "c",
-          "text": "Eradication missed a persistence mechanism, or the root cause was never closed"
+          "text": "A missed persistence mechanism or an unclosed root cause"
         },
         {
           "id": "d",
@@ -1063,7 +1063,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1104,7 +1104,7 @@
     "acronyms": [
       "VPN"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1120,19 +1120,19 @@
       "options": [
         {
           "id": "a",
-          "text": "A CSIRT"
+          "text": "A cybersecurity incident response team (CSIRT)"
         },
         {
           "id": "b",
-          "text": "The change advisory board"
+          "text": "The change advisory board that approves releases"
         },
         {
           "id": "c",
-          "text": "The internal audit committee"
+          "text": "The internal audit committee for control reviews"
         },
         {
           "id": "d",
-          "text": "The software development team"
+          "text": "The software development team for the product"
         }
       ]
     },
@@ -1145,7 +1145,7 @@
     "acronyms": [
       "CSIRT"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1189,7 +1189,7 @@
     },
     "explanation": "Escalation paths and monitoring tools are set up before an incident so the team can detect and respond. Removing malware is eradication, customer notification happens during response, and restoring backups is recovery.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1209,19 +1209,19 @@
         },
         {
           "id": "b",
-          "text": "Reimaging the affected workstations"
+          "text": "Reimaging the affected workstations from the standard build"
         },
         {
           "id": "c",
-          "text": "Resetting the passwords of compromised accounts"
+          "text": "Resetting the passwords of every compromised account"
         },
         {
           "id": "d",
-          "text": "Assigning a severity rating based on business impact"
+          "text": "Assigning a severity rating to the incident based on its business impact"
         },
         {
           "id": "e",
-          "text": "Holding a review meeting to update the playbooks"
+          "text": "Holding a review meeting to update the response playbooks"
         },
         {
           "id": "f",
@@ -1239,7 +1239,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1255,7 +1255,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Patching the vulnerability on every server"
+          "text": "Patching the vulnerability on every affected server"
         },
         {
           "id": "b",
@@ -1263,7 +1263,7 @@
         },
         {
           "id": "c",
-          "text": "Rewriting the ransomware playbook"
+          "text": "Rewriting the ransomware playbook after the review"
         },
         {
           "id": "d",
@@ -1271,7 +1271,7 @@
         },
         {
           "id": "e",
-          "text": "Restoring data from last night's backup"
+          "text": "Restoring data from last night's backup to the server"
         }
       ]
     },
@@ -1285,7 +1285,7 @@
     "acronyms": [
       "EDR"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1329,7 +1329,7 @@
     },
     "explanation": "Patching the exploited flaw and deleting the attacker's accounts and tasks remove the foothold. A memory image is evidence collection, restoring files is recovery, and the report is post-incident.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1378,7 +1378,7 @@
     },
     "explanation": "Restoring from clean backups, testing the result and watching for reinfection return systems to a trusted state. Isolation is containment, the report is post-incident, and the forensic image is evidence collected earlier in the response.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1422,7 +1422,7 @@
     },
     "explanation": "The report and the playbook updates come out of the review. A new segment and an emergency rule are containment measures, and a memory image is evidence taken during the response.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1466,7 +1466,7 @@
     },
     "explanation": "A recorded hash proves the image has not changed, and working from a copy protects the original. Analyzing the original, keeping it on a compromised server and renaming files all risk altering or losing evidence.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1515,7 +1515,7 @@
     },
     "explanation": "A plan names the people and escalation paths, defines how incidents are rated and declared, and sets communication procedures. Attack tool code, password hints and price quotes have no place in it.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1543,7 +1543,7 @@
         },
         {
           "id": "d",
-          "text": "The attacker can reach systems that control safety functions"
+          "text": "The attacker can reach systems that control safety systems"
         },
         {
           "id": "e",
@@ -1559,7 +1559,7 @@
     },
     "explanation": "Ongoing data loss and a threat to safety systems justify acting now. Curiosity about the attacker, a wish to avoid downtime and a host with no real data all argue for waiting.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1603,7 +1603,7 @@
     },
     "explanation": "Legal counsel advises on notification duties, and executives approve major decisions. An advertising agency and competitors have no need to know, and a press release before the facts are known can cause harm.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1647,7 +1647,7 @@
     },
     "explanation": "Tabletop and simulated attack exercises test whether people, plans and tools work together. Password rotation, license renewal and hardware refresh are maintenance tasks that do not test response readiness.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1659,7 +1659,7 @@
     "type": "pbq-order",
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "Order these activities from one ransomware incident from first to last. Rules: the team rehearses before any incident; the alert is triaged before anything is isolated; isolation comes before the attacker's access is removed; systems are restored after that removal; and the review closes the work.",
+    "stem": "Order these steps from one ransomware incident, first to last. Rules: the team rehearses before any incident; the alert is triaged before anything is isolated; isolation comes before the attacker's access is removed; systems are restored after that removal; and the review closes the work.",
     "payload": {
       "steps": [
         {
@@ -1710,7 +1710,7 @@
     "acronyms": [
       "EDR"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1767,7 +1767,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1779,7 +1779,7 @@
     "type": "pbq-terminal",
     "difficulty": 2,
     "pbqWeight": 3,
-    "stem": "An alert shows repeated failed logins on app-07. Review the authentication log, then complete each step.",
+    "stem": "An alert shows repeated failed logins on `app-07`. Review the authentication log, then complete each step.",
     "payload": {
       "output": [
         "$ tail -n 8 auth.log",
@@ -1867,14 +1867,14 @@
         ]
       }
     },
-    "explanation": "grep filters the log to the source address. Confirming and scoping the activity is detection and analysis, and the next move is to preserve volatile data and then contain the host and the compromised account.",
+    "explanation": "`grep` filters the log to the source address. Confirming and scoping the activity is detection and analysis, and the next move is to preserve volatile data and then contain the host and the compromised account.",
     "partExplanations": {
-      "find": "grep 203.0.113.45 auth.log prints the failed and accepted logins and the commands that followed.",
-      "phase": "Confirming that the activity is real and scoping it is detection and analysis, not cleanup or restoration.",
+      "find": "`grep 203.0.113.45 auth.log` prints the failed and accepted logins and the commands that followed.",
+      "phase": "Confirming that the activity is real and scoping it is detection and analysis. Preparation happens before any incident, so it does not fit a log review during an active event, and eradication and recovery are cleanup and restoration.",
       "action": "Evidence is captured first, then isolation and disabling the account stop the attacker; reimaging at once destroys evidence and waiting or emailing does nothing about the access."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -1886,7 +1886,7 @@
     "type": "pbq-config",
     "difficulty": 3,
     "pbqWeight": 4,
-    "stem": "A file server that holds customer PII shows mass file encryption, and the billing team cannot work. No evidence of data leaving the network has been found. Complete the incident record using this policy. Critical: enterprise-wide outage or confirmed exfiltration of regulated data. High: one business unit's critical system is down, or regulated data is at risk without confirmed exfiltration. Medium: limited effect on non-critical systems. Low: no business effect.",
+    "stem": "A file server that holds customer PII shows mass file encryption, and the billing team cannot work. No evidence of data leaving the network has been found. Complete the incident record using this policy.\n\nSeverity: Critical is an enterprise-wide outage or confirmed exfiltration of regulated data. High is one business unit's critical system down, or regulated data at risk without confirmed exfiltration. Medium is limited effect on non-critical systems. Low is no business effect.\n\nNotification: Critical goes to the executive team as well as the High group. High goes to the incident commander, legal counsel and the affected business owner. Medium goes to the SOC shift lead. Low is logged only.",
     "payload": {
       "fields": [
         {
@@ -1913,7 +1913,7 @@
         },
         {
           "id": "phase",
-          "label": "Phase the team enters next, now that the incident is confirmed and rated",
+          "label": "Next phase for the team",
           "options": [
             {
               "id": "contain",
@@ -1939,7 +1939,7 @@
           "options": [
             {
               "id": "shift",
-              "text": "The SOC shift lead only"
+              "text": "The SOC shift lead alone, through a ticket in the queue"
             },
             {
               "id": "ic",
@@ -1947,7 +1947,7 @@
             },
             {
               "id": "all",
-              "text": "Every employee through a company-wide email"
+              "text": "Every employee, through a company-wide email announcement"
             }
           ]
         },
@@ -1981,8 +1981,8 @@
     },
     "explanation": "One business unit is down and regulated data is at risk without confirmed exfiltration, which matches High. Containment follows analysis, the right people are told, and isolating the server limits spread while keeping memory for evidence.",
     "partExplanations": {
-      "severity": "High fits one unit down and regulated data at risk; Critical would need an enterprise-wide outage or confirmed exfiltration.",
-      "phase": "After detection and analysis the team limits spread, which is containment.",
+      "severity": "High fits one unit down and regulated data at risk; Critical would need an enterprise-wide outage or confirmed exfiltration, while Medium and Low describe limited or no business effect, which is not the case for a down billing system.",
+      "phase": "After detection and analysis the team limits spread, which is containment. Eradication, recovery and post-incident activity all come later, once the spread has stopped.",
       "notify": "A High incident with personal data needs the incident commander, legal counsel and the affected business owner, not only the shift lead or the whole company.",
       "approach": "Isolation stops the encryption from spreading and powered-on memory stays available; wiping destroys evidence and watching allows more damage."
     },
@@ -1990,7 +1990,7 @@
       "PII",
       "SOC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -2002,7 +2002,7 @@
     "type": "pbq-diagram",
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "Each box names a phase of the incident response life cycle. Label the main output of each phase.",
+    "stem": "Each box names a phase of the incident response life cycle. Label the main output of each phase. Some labels are not used.",
     "payload": {
       "width": 600,
       "height": 260,
@@ -2157,7 +2157,7 @@
         "z6": "l6"
       }
     },
-    "explanation": "Each phase has a distinct result: ready tools and plans, a confirmed and rated incident, limited spread, a removed foothold, trusted systems back in service, and a report that feeds the next round of preparation.",
+    "explanation": "Each phase has a distinct result: ready tools and plans, a confirmed and rated incident, limited spread, a removed foothold, trusted systems back in service, and a report that feeds the next round of preparation. The unused label is not an output of any phase, because attribution by law enforcement is not part of the response life cycle.",
     "partExplanations": {
       "z1": "Preparation produces tested playbooks and deployed monitoring.",
       "z2": "Detection and analysis ends with a confirmed incident and a severity rating.",
@@ -2167,7 +2167,7 @@
       "z6": "Post-incident activity produces the report and playbook updates."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -2179,7 +2179,7 @@
     "type": "pbq-hotspot",
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "This timeline lists actions taken on app-07 during one incident. Select every entry that is a containment action.",
+    "stem": "This list shows actions taken on `app-07` during one incident. Select every entry that is a containment action.",
     "payload": {
       "width": 480,
       "height": 220,
@@ -2303,7 +2303,7 @@
     "acronyms": [
       "VLAN"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "exam": "CS0-004",
@@ -2320,7 +2320,7 @@
       "prompts": [
         {
           "id": "p1",
-          "text": "Defines which incidents rate as critical, high, medium or low"
+          "text": "Sets out how incidents are rated critical, high, medium or low"
         },
         {
           "id": "p2",
@@ -2375,7 +2375,7 @@
         "p5": "c3"
       }
     },
-    "explanation": "Each document serves one job: classification criteria rate incidents, a playbook gives steps, a custody form tracks evidence handling, a communication plan names contacts, and the final report records findings.",
+    "explanation": "Each document serves one job: classification criteria rate incidents, a playbook gives steps, a custody form tracks evidence handling, a communication plan names contacts, and the final report records findings. An asset inventory lists systems and owners and is not a response document, so it matches none of the descriptions.",
     "partExplanations": {
       "p1": "Severity criteria set the critical, high, medium and low ratings.",
       "p2": "A playbook is the procedure for one incident type.",
@@ -2384,6 +2384,6 @@
       "p5": "The final report records the story, the cause and the improvements."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   }
 ]

@@ -1,4 +1,16 @@
-# 2026-11-11 (evening): CySA+ domain 2 DONE (468 items approved, committed). Next: domain 3. START HERE
+# 2026-11-11 (night): CySA+ domain 3 DONE (3.1 to 3.3: 120 MCQ + 21 PBQ approved). Next: domain 4. START HERE
+
+Next session model: **Sonnet**. `gh issue list` first (only #19, enhancement). Branch `chunk13-cysa`, not pushed, do NOT deploy until the bank meets its targets.
+Bank now 531 items = 450 MCQ + 81 PBQ; every PBQ template is at 10+ (diagram 10, config 10, match 11, buckets 10, hotspot 10, data 10, terminal 10, order 10).
+Left: domain 4 (4.1 lesson-7.5/8.x style reporting, 4.2 incident reporting; slices `lesson-7.5`, `lesson-8.1` to `8.4` in `_WorkingData/CySAPlus/prep/ref`, pick by topic), 40 MCQ (29 single + 11 multi) + 7 PBQ per objective,
+mix freely (data and match for metrics and reporting, order for escalation, buckets); then close-out (`describeBankTargets` in `bank.test.ts`, full `npm run check`, e2e `--workers=3` if slow).
+Method unchanged (3 Sonnet drafters, 3 Sonnet blind + 3 Haiku copy reviewers, 3 Sonnet fixers, blind round 2, approve). Briefs and tools were in the session scratchpad `d3/`
+(`drafter-cs.md`, `reviewer-blind.md`, `reviewer-copy.md`, `fixer.md`, `mkblind.cjs`, `cmp.cjs`); rebuild from the list below if gone. Domain 3 notes: the openssl primer topic
+now shows for the bank, so `CN` and `GMT` were added to `meta.ts` (community); terminal `partExplanations` are keyed by STEP ID (only order PBQs use position); blind
+reviewers cannot see terminal `accept` lists (their "accept" flags are stale, check the file); blind reviewers sometimes write ids without zero padding (`mcq-30`): normalise before `cmp.cjs`.
+`BOUNDS_EXAM=CS0-004 npm run check-bounds` and `npx vitest run src/banks/cysa` passed with 531 items.
+
+# 2026-11-11 (evening): CySA+ domain 2 DONE (468 items approved, committed) (history)
 
 Next session model: **Sonnet**. `gh issue list` first. Branch `chunk13-cysa`, not pushed, do NOT deploy until the bank meets its targets.
 Domain 2 = 2.1 to 2.4, 39 items each (27 single + 6 multi + 6 PBQ) = 132 MCQ + 24 PBQ; bank now 390 items (330 MCQ + 60 PBQ).

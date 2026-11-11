@@ -6,7 +6,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which statement best describes the main purpose of containment during incident response?",
@@ -45,7 +45,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A responder must collect evidence from a running compromised host. Which source is the most volatile and should be collected first?",
@@ -84,7 +84,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does a chain of custody record document for a piece of digital evidence?",
@@ -123,7 +123,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "An analyst computes a cryptographic hash of a forensic image immediately after acquiring it. What is the main purpose of that hash?",
@@ -143,7 +143,7 @@
         },
         {
           "id": "d",
-          "text": "To prove later that the image has not changed since it was collected"
+          "text": "To prove later that the image has not changed in any way since the moment it was collected"
         }
       ]
     },
@@ -152,7 +152,7 @@
         "d"
       ]
     },
-    "explanation": "Recomputing the hash at later access and getting the same value shows the image is unchanged. A hash does not compress or encrypt data, and it says nothing about the installed operating system.",
+    "explanation": "Recomputing the hash later, before use or transfer, returns the same value if the image is unchanged. A hash does not compress or encrypt data, and it says nothing about the installed operating system.",
     "acronyms": []
   },
   {
@@ -162,7 +162,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which activity belongs to the eradication phase of incident response?",
@@ -174,15 +174,15 @@
         },
         {
           "id": "b",
-          "text": "Isolating a host from the network so it cannot reach other systems"
+          "text": "Isolating a host from the network so that it can no longer reach any of the other systems"
         },
         {
           "id": "c",
-          "text": "Writing the lessons-learned report for the leadership team"
+          "text": "Writing the lessons-learned report for the leadership team after the incident has closed"
         },
         {
           "id": "d",
-          "text": "Calling the affected customers to announce that the incident began"
+          "text": "Calling the affected customers to announce that the incident began and what it involved"
         }
       ]
     },
@@ -201,10 +201,10 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "A responder confirms that a database of customer records was copied out of the network. What is the most appropriate next communication step?",
+    "stem": "A responder confirms that an outside address downloaded the payroll files of current employees from a file server. What is the most appropriate next communication step?",
     "payload": {
       "options": [
         {
@@ -240,7 +240,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Logs from servers in three time zones record events in local time. What should the analyst do before building an incident timeline?",
@@ -281,7 +281,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Alert A shows adware pop-ups on one reception kiosk. Alert B shows a database server holding payment records beaconing to an unknown external host. How should the analyst triage them?",
@@ -320,7 +320,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An EDR console shows that ws-0412.example.internal is running a credential theft tool. The analyst wants to stop lateral movement while keeping memory intact for analysis. Which action is best?",
@@ -361,15 +361,15 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "Several servers show signs of compromise. The team moves them to a restricted network segment that only the forensic tools can reach. Which containment technique is this?",
+    "stem": "Several servers show signs of compromise. The team moves them to a separate, tightly controlled zone that only the forensic tools can reach. Which containment technique is this?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Sinkholing"
+          "text": "Sinkholing of lookups for malicious domains"
         },
         {
           "id": "b",
@@ -377,11 +377,11 @@
         },
         {
           "id": "c",
-          "text": "Credential rotation"
+          "text": "Credential rotation for the affected service accounts"
         },
         {
           "id": "d",
-          "text": "Application allow listing"
+          "text": "Application allow listing on the affected servers"
         }
       ]
     },
@@ -402,7 +402,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Many workstations are querying a known malicious domain. Which technique redirects those lookups to a controlled address so the infected hosts can be located?",
@@ -445,7 +445,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A service account is seen signing in from an unusual host. The team wants to stop its use but keep its configuration for the investigation. What should they do?",
@@ -484,7 +484,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Why does an examiner attach a write blocker when imaging a suspect drive?",
@@ -523,7 +523,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which reason best supports capturing memory from a compromised host before powering it down?",
@@ -531,19 +531,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Memory images are smaller than disk images and are easier to hash"
+          "text": "Memory images are much smaller than disk images, which makes them far easier to hash and to store"
         },
         {
           "id": "b",
-          "text": "Running processes, network connections and keys exist only in memory and are lost at power-off"
+          "text": "Running processes, live connections and keys sit only in volatile storage and vanish as soon as the power is switched off"
         },
         {
           "id": "c",
-          "text": "Powering down a host always triggers the malware to erase itself"
+          "text": "Powering down a host makes most malware erase itself together with every trace of its own activity"
         },
         {
           "id": "d",
-          "text": "Memory capture is required before a host can be reimaged"
+          "text": "Memory capture is a required first step before any compromised host can be reimaged or rebuilt"
         }
       ]
     },
@@ -552,7 +552,7 @@
         "b"
       ]
     },
-    "explanation": "Volatile artifacts such as processes, connections and in-memory keys vanish when power is lost. Size is not the reason, malware does not always erase itself on shutdown, and no rule makes memory capture a prerequisite for reimaging.",
+    "explanation": "Volatile artifacts such as processes, connections and in-memory keys vanish when power is lost. Size is not the reason, malware does not reliably erase itself on shutdown, and no rule makes memory capture a prerequisite for reimaging.",
     "acronyms": []
   },
   {
@@ -562,7 +562,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "After malware is removed from a server, which step best helps confirm the attacker has not kept access?",
@@ -570,11 +570,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Restart the server and see whether the alert reappears"
+          "text": "Restart the server a few times and see whether the original alert reappears in the console"
         },
         {
           "id": "b",
-          "text": "Delete the logs so that old alerts stop appearing"
+          "text": "Delete the logs on the server so that old alerts stop appearing in the monitoring console"
         },
         {
           "id": "c",
@@ -582,7 +582,7 @@
         },
         {
           "id": "d",
-          "text": "Add the server to a weekly report of healthy hosts"
+          "text": "Add the server to a weekly report of healthy hosts that is sent to the management team"
         }
       ]
     },
@@ -601,7 +601,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Analysis shows a server has a kernel-level rootkit. Which eradication approach is most reliable?",
@@ -640,7 +640,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which factor most often decides whether regulators must be notified about a security incident?",
@@ -681,7 +681,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "After recovery from an incident, a team raises logging detail and adds detection rules for the observed behavior. What is the main goal?",
@@ -720,7 +720,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which finding is the strongest sign that an incident is wider than the first host that alerted?",
@@ -759,7 +759,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A SIEM flags impossible travel for a user. The help desk confirms the user was on the company VPN whose exit point is in another country. How should the analyst classify the alert?",
@@ -767,7 +767,7 @@
       "options": [
         {
           "id": "a",
-          "text": "True positive, and begin containment of the user account"
+          "text": "True positive, and begin containment of the user account and its active sessions right away"
         },
         {
           "id": "b",
@@ -775,11 +775,11 @@
         },
         {
           "id": "c",
-          "text": "Benign, and leave the rule unchanged for next time"
+          "text": "Benign, and leave the rule unchanged so that it keeps firing on this pattern next time"
         },
         {
           "id": "d",
-          "text": "False positive, with a note recorded and the rule tuned for VPN exit points"
+          "text": "False positive, with a note recorded and the rule tuned for that known egress address"
         }
       ]
     },
@@ -801,7 +801,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Legal counsel tells the response team that litigation is likely. What must the team do with the relevant logs and forensic images?",
@@ -809,7 +809,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Preserve them under a legal hold and suspend routine deletion"
+          "text": "Preserve them under a legal hold and suspend routine deletion until counsel releases them"
         },
         {
           "id": "b",
@@ -840,7 +840,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "The email system may itself be compromised during a major incident. What does a well-prepared communication plan provide for this case?",
@@ -879,7 +879,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A production order server is compromised. Full isolation would stop all sales, and management wants the business to keep running. Which strategy best balances the need?",
@@ -887,11 +887,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Leave the server untouched until the attack ends by itself"
+          "text": "Leave the server untouched and keep watching it, expecting the attack to end by itself before any serious harm is done to orders or customers"
         },
         {
           "id": "b",
-          "text": "Apply full isolation immediately without telling management"
+          "text": "Apply full isolation immediately without telling management, accepting that all sales will stop until the investigation is finished"
         },
         {
           "id": "c",
@@ -899,7 +899,7 @@
         },
         {
           "id": "d",
-          "text": "Replace the server with a fresh one and delete the old one at once"
+          "text": "Replace the server with a fresh one straight away and delete the old one at once, so that work can begin on a clean system"
         }
       ]
     },
@@ -918,7 +918,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A responder has a running server with four evidence sources. Which order of collection follows the order of volatility?",
@@ -926,19 +926,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Backup media, disk image, network connection state, memory"
+          "text": "Backup media, disk image, memory contents, CPU cache and registers"
         },
         {
           "id": "b",
-          "text": "Disk image, memory, backup media, network connection state"
+          "text": "Disk image, CPU cache and registers, backup media, memory contents"
         },
         {
           "id": "c",
-          "text": "Network connection state, backup media, memory, disk image"
+          "text": "Memory contents, CPU cache and registers, backup media, disk image"
         },
         {
           "id": "d",
-          "text": "Memory, network connection state, disk image, backup media"
+          "text": "CPU cache and registers, memory contents, disk image, backup media"
         }
       ]
     },
@@ -947,8 +947,10 @@
         "d"
       ]
     },
-    "explanation": "Order of volatility starts with the data that disappears fastest, which is memory, then connection state, then disk, and finally backup media. The other orders collect longer-lived data before something that could vanish.",
-    "acronyms": []
+    "explanation": "Order of volatility starts with the data that disappears fastest: CPU cache and registers, then memory contents, then the disk image, and finally backup media. Option a is the exact reverse, b collects the disk before the faster-changing sources, and c puts memory ahead of the cache and registers and takes backup media before the disk.",
+    "acronyms": [
+      "CPU"
+    ]
   },
   {
     "id": "cs4-3-3-mcq-025",
@@ -957,7 +959,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "The hash of an evidence image at transfer does not match the hash logged at acquisition. What does this imply for the case?",
@@ -969,15 +971,15 @@
         },
         {
           "id": "b",
-          "text": "The first hash was probably wrong, so the new value replaces it in the record"
+          "text": "The first hash was probably wrong, so the new value replaces it in the case record and the work continues"
         },
         {
           "id": "c",
-          "text": "The mismatch is expected because copying always changes the hash"
+          "text": "The mismatch is expected, because moving an image between systems changes its hash even when nothing in it has been altered"
         },
         {
           "id": "d",
-          "text": "The image is fine as long as the file size is identical"
+          "text": "The image is fine as long as the file size is identical to the size that was recorded at acquisition"
         }
       ]
     },
@@ -986,7 +988,7 @@
         "a"
       ]
     },
-    "explanation": "A changed hash means the content may differ, so the discrepancy must be recorded and the copy treated as unreliable until resolved. A faithful copy produces the same hash, and matching file size does not prove identical content.",
+    "explanation": "A changed hash means the content may differ, so the discrepancy must be recorded and the copy treated as unreliable until resolved. Replacing the recorded hash would erase the proof of the original state. A faithful copy produces the same hash, and matching file size does not prove identical content.",
     "acronyms": []
   },
   {
@@ -996,7 +998,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A rebuilt file server is ready to return to production after ransomware. Which action best verifies that eradication succeeded?",
@@ -1008,7 +1010,7 @@
         },
         {
           "id": "b",
-          "text": "Scan the rebuilt server, compare it against its baseline, and place it under close monitoring"
+          "text": "Scan the rebuilt server, compare it against its baseline, and place it under close monitoring for several weeks"
         },
         {
           "id": "c",
@@ -1035,7 +1037,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Review the log excerpt.\n\n```\n2026-03-02T08:14:09Z vpn01 login ok user=mlopez src=203.0.113.50\n2026-03-02T08:21:44Z fs02 session user=mlopez src=10.20.4.31\n2026-03-02T09:02:17Z fs02 file reads=4120 user=mlopez\n2026-03-02T09:05:31Z proxy01 upload dst=upload.example.net bytes=612000000 src=10.20.4.31\n```\n\nIf the account is believed stolen and the transfer is still running, which action should come first?",
@@ -1043,7 +1045,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Reboot fs02 so that the open session and the transfer are cleared"
+          "text": "Reboot `fs02` so that the open session and the transfer are cleared"
         },
         {
           "id": "b",
@@ -1064,7 +1066,7 @@
         "c"
       ]
     },
-    "explanation": "Cutting off the destination and the stolen account stops further loss while keeping evidence on fs02. Rebooting loses volatile data, emailing the possible attacker's target wastes time, and waiting lets more data leave.",
+    "explanation": "Cutting off the destination and the stolen account stops further loss while keeping evidence on `fs02`. Rebooting `fs02` loses volatile data, emailing the account owner and waiting gives the attacker time while the account stays active, and waiting for the upload on `proxy01` to finish lets more data leave.",
     "acronyms": [
       "VPN"
     ]
@@ -1076,7 +1078,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An incident involves a vendor's remote access account on the network. Which escalation action is most appropriate under typical service contracts?",
@@ -1084,15 +1086,15 @@
       "options": [
         {
           "id": "a",
-          "text": "Post the vendor's name in the company chat so staff avoid it"
+          "text": "Post the vendor's name in the company chat so that staff know to avoid contact with that vendor entirely"
         },
         {
           "id": "b",
-          "text": "Terminate the contract by email and stop all communication"
+          "text": "Terminate the contract by email today and stop all communication with the vendor until legal replies"
         },
         {
           "id": "c",
-          "text": "Wait for the vendor to discover and report the problem"
+          "text": "Wait for the vendor to discover the problem on its own and report it to the company later this week"
         },
         {
           "id": "d",
@@ -1115,7 +1117,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "During an active intrusion, a junior analyst proposes removing the one known malware file immediately. Why might the lead delay eradication?",
@@ -1123,19 +1125,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Removing only the known foothold may alert the attacker and leave other footholds in place"
+          "text": "A partial cleanup may tip off the attacker while other persistence remains elsewhere on the network"
         },
         {
           "id": "b",
-          "text": "Malware files cannot be removed while the host is running"
+          "text": "Malware files cannot be deleted while the host is running, so removal must wait for a planned shutdown"
         },
         {
           "id": "c",
-          "text": "Eradication must always wait until the lessons-learned meeting"
+          "text": "Eradication has to wait until the lessons-learned meeting has been held with the whole response team and management"
         },
         {
           "id": "d",
-          "text": "The malware file is needed to restore the host from backup"
+          "text": "The malware file is still needed to restore the host from backup after the intrusion has ended"
         }
       ]
     },
@@ -1154,7 +1156,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO actions are containment techniques?",
@@ -1198,7 +1200,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO details belong on a chain of custody form for a seized laptop?",
@@ -1242,7 +1244,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO evidence sources are volatile?",
@@ -1286,7 +1288,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE activities are part of eradication?",
@@ -1335,7 +1337,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO factors should raise the priority of an incident during triage?",
@@ -1379,7 +1381,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO findings help determine the scope of an incident?",
@@ -1425,7 +1427,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO are internal escalation targets for a serious breach?",
@@ -1469,7 +1471,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE items should be recorded in incident documentation during the response?",
@@ -1520,7 +1522,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO are valid reasons to delay eradication during an active incident?",
@@ -1532,11 +1534,11 @@
         },
         {
           "id": "b",
-          "text": "The backups are several days old"
+          "text": "The backup copies are encrypted with a key that only the backup administrator holds"
         },
         {
           "id": "c",
-          "text": "Users have asked for the service to be restored quickly"
+          "text": "Users and managers have asked for the service to be restored as quickly as possible today, before the end of the week"
         },
         {
           "id": "d",
@@ -1544,7 +1546,7 @@
         },
         {
           "id": "e",
-          "text": "The patch for the exploited weakness is not yet tested"
+          "text": "The next routine status meeting with the management team is two days away from the day of the incident"
         }
       ]
     },
@@ -1554,7 +1556,7 @@
         "d"
       ]
     },
-    "explanation": "Unknown scope and a law enforcement request are sound reasons to hold off, with approval. Old backups, user pressure and an untested patch affect recovery planning rather than justify leaving the attacker in place.",
+    "explanation": "Unknown scope and a law enforcement request are sound reasons to hold off. Backup encryption, user pressure and a distant status meeting affect recovery planning rather than justify leaving the attacker in place.",
     "acronyms": []
   },
   {
@@ -1564,7 +1566,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which THREE steps help verify a restored system before it returns to production?",
@@ -1572,7 +1574,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Scanning for persistence and comparing to the baseline"
+          "text": "Searching its logs for any activity from known attacker addresses"
         },
         {
           "id": "b",
@@ -1603,7 +1605,7 @@
         "f"
       ]
     },
-    "explanation": "Persistence checks, patch confirmation and a trusted backup source all reduce the chance of reinfection. Deleting logs, disabling the agent and reusing old credentials weaken detection and security.",
+    "explanation": "Log review for attacker activity, patch confirmation and a trusted backup source all reduce the chance of reinfection. Deleting logs, disabling the agent and reusing old credentials weaken detection and security.",
     "acronyms": []
   },
   {
@@ -1613,7 +1615,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO practices are correct when handling a forensic disk image?",
@@ -1657,18 +1659,17 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "pbqWeight": 3,
     "stem": "Host web03.example.internal is suspected of beaconing to an attacker. Review the connection list, then complete each step.",
     "payload": {
       "output": [
-        "$ ss -tnp",
-        "state  recv-q send-q local address:port  peer address:port   process",
-        "estab  0      0      10.30.5.12:49822    203.0.113.77:8443   users:((\"updsvc\",pid=3918,fd=7))",
-        "estab  0      0      10.30.5.12:22       10.30.1.8:51544     users:((\"sshd\",pid=1021,fd=4))",
-        "listen 0      128    0.0.0.0:443         0.0.0.0:*           users:((\"nginx\",pid=877,fd=6))"
+        "$ ss -tnp state established",
+        "Recv-Q Send-Q Local Address:Port  Peer Address:Port   Process",
+        "0      0      10.30.5.12:49822    203.0.113.77:8443   users:((\"updsvc\",pid=3918,fd=7))",
+        "0      0      10.30.5.12:22       10.30.1.8:51544     users:((\"sshd\",pid=1021,fd=4))"
       ],
       "steps": [
         {
@@ -1730,10 +1731,24 @@
           "sudo ls -la /proc/3918/exe",
           "ls -al /proc/3918/exe",
           "sudo ls -al /proc/3918/exe",
+          "ls -lh /proc/3918/exe",
+          "sudo ls -lh /proc/3918/exe",
+          "ls -ld /proc/3918/exe",
+          "sudo ls -ld /proc/3918/exe",
+          "ls -lL /proc/3918/exe",
+          "sudo ls -lL /proc/3918/exe",
           "readlink /proc/3918/exe",
           "sudo readlink /proc/3918/exe",
           "readlink -f /proc/3918/exe",
-          "sudo readlink -f /proc/3918/exe"
+          "sudo readlink -f /proc/3918/exe",
+          "readlink -e /proc/3918/exe",
+          "sudo readlink -e /proc/3918/exe",
+          "realpath /proc/3918/exe",
+          "sudo realpath /proc/3918/exe",
+          "lsof -p 3918",
+          "sudo lsof -p 3918",
+          "lsof -p3918",
+          "sudo lsof -p3918"
         ],
         "contain": [
           "isolate"
@@ -1743,11 +1758,11 @@
         ]
       }
     },
-    "explanation": "The /proc entry for a process ID links to its executable, which shows where updsvc really runs from. Isolating the host stops the beaconing while keeping memory available, and memory and process state are the most volatile evidence to capture before any reboot. Powering off, deleting the file or stopping sshd would either lose evidence or miss the attacker connection.",
+    "explanation": "The `/proc` entry for a process ID links to its executable, which shows where `updsvc` really runs from. Isolating the host stops the beaconing while keeping memory available, and memory and process state are the most volatile evidence to capture before any reboot. Powering off, deleting the file or stopping `sshd` would either lose evidence or miss the attacker connection.",
     "partExplanations": {
-      "0": "The exe link under /proc/3918 shows the program path for that process ID.",
-      "1": "Isolation cuts the attacker link while the host stays on, so memory and processes are preserved.",
-      "2": "Memory and running process state are the most volatile and are lost at reboot."
+      "path": "The exe link under `/proc/3918` shows the program path for that process ID.",
+      "contain": "Isolation cuts the attacker link while the host stays on, so memory and processes are preserved.",
+      "next": "Memory and running process state are the most volatile and are lost at reboot."
     },
     "acronyms": [
       "ID"
@@ -1760,7 +1775,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "pbqWeight": 3,
@@ -1804,11 +1819,11 @@
         },
         {
           "id": "escalate",
-          "label": "Choose the best escalation step for the staged customer archive",
+          "label": "Choose the best next communication step for the archive of customer records",
           "options": [
             {
               "id": "legal",
-              "text": "Escalate to legal counsel and senior leadership under the communication plan"
+              "text": "Brief legal counsel and senior leadership following the communication plan"
             },
             {
               "id": "close",
@@ -1830,19 +1845,141 @@
       "accept": {
         "find": [
           "grep Accepted /var/log/auth.log",
-          "sudo grep Accepted /var/log/auth.log",
-          "grep \"Accepted\" /var/log/auth.log",
-          "sudo grep \"Accepted\" /var/log/auth.log",
-          "grep 'Accepted' /var/log/auth.log",
-          "sudo grep 'Accepted' /var/log/auth.log",
-          "grep -n Accepted /var/log/auth.log",
-          "sudo grep -n Accepted /var/log/auth.log",
           "cat /var/log/auth.log | grep Accepted",
-          "sudo cat /var/log/auth.log | grep Accepted",
+          "tail -n 7 /var/log/auth.log | grep Accepted",
+          "grep \"Accepted\" /var/log/auth.log",
           "cat /var/log/auth.log | grep \"Accepted\"",
-          "sudo cat /var/log/auth.log | grep \"Accepted\"",
+          "tail -n 7 /var/log/auth.log | grep \"Accepted\"",
+          "grep 'Accepted' /var/log/auth.log",
           "cat /var/log/auth.log | grep 'Accepted'",
-          "sudo cat /var/log/auth.log | grep 'Accepted'"
+          "tail -n 7 /var/log/auth.log | grep 'Accepted'",
+          "grep -i Accepted /var/log/auth.log",
+          "cat /var/log/auth.log | grep -i Accepted",
+          "tail -n 7 /var/log/auth.log | grep -i Accepted",
+          "grep -i \"Accepted\" /var/log/auth.log",
+          "cat /var/log/auth.log | grep -i \"Accepted\"",
+          "tail -n 7 /var/log/auth.log | grep -i \"Accepted\"",
+          "grep -i 'Accepted' /var/log/auth.log",
+          "cat /var/log/auth.log | grep -i 'Accepted'",
+          "tail -n 7 /var/log/auth.log | grep -i 'Accepted'",
+          "grep -n Accepted /var/log/auth.log",
+          "cat /var/log/auth.log | grep -n Accepted",
+          "tail -n 7 /var/log/auth.log | grep -n Accepted",
+          "grep -n \"Accepted\" /var/log/auth.log",
+          "cat /var/log/auth.log | grep -n \"Accepted\"",
+          "tail -n 7 /var/log/auth.log | grep -n \"Accepted\"",
+          "grep -n 'Accepted' /var/log/auth.log",
+          "cat /var/log/auth.log | grep -n 'Accepted'",
+          "tail -n 7 /var/log/auth.log | grep -n 'Accepted'",
+          "grep -in Accepted /var/log/auth.log",
+          "cat /var/log/auth.log | grep -in Accepted",
+          "tail -n 7 /var/log/auth.log | grep -in Accepted",
+          "grep -in \"Accepted\" /var/log/auth.log",
+          "cat /var/log/auth.log | grep -in \"Accepted\"",
+          "tail -n 7 /var/log/auth.log | grep -in \"Accepted\"",
+          "grep -in 'Accepted' /var/log/auth.log",
+          "cat /var/log/auth.log | grep -in 'Accepted'",
+          "tail -n 7 /var/log/auth.log | grep -in 'Accepted'",
+          "grep -ni Accepted /var/log/auth.log",
+          "cat /var/log/auth.log | grep -ni Accepted",
+          "tail -n 7 /var/log/auth.log | grep -ni Accepted",
+          "grep -ni \"Accepted\" /var/log/auth.log",
+          "cat /var/log/auth.log | grep -ni \"Accepted\"",
+          "tail -n 7 /var/log/auth.log | grep -ni \"Accepted\"",
+          "grep -ni 'Accepted' /var/log/auth.log",
+          "cat /var/log/auth.log | grep -ni 'Accepted'",
+          "tail -n 7 /var/log/auth.log | grep -ni 'Accepted'",
+          "grep -F Accepted /var/log/auth.log",
+          "cat /var/log/auth.log | grep -F Accepted",
+          "tail -n 7 /var/log/auth.log | grep -F Accepted",
+          "grep -F \"Accepted\" /var/log/auth.log",
+          "cat /var/log/auth.log | grep -F \"Accepted\"",
+          "tail -n 7 /var/log/auth.log | grep -F \"Accepted\"",
+          "grep -F 'Accepted' /var/log/auth.log",
+          "cat /var/log/auth.log | grep -F 'Accepted'",
+          "tail -n 7 /var/log/auth.log | grep -F 'Accepted'",
+          "grep -e Accepted /var/log/auth.log",
+          "cat /var/log/auth.log | grep -e Accepted",
+          "tail -n 7 /var/log/auth.log | grep -e Accepted",
+          "grep -e \"Accepted\" /var/log/auth.log",
+          "cat /var/log/auth.log | grep -e \"Accepted\"",
+          "tail -n 7 /var/log/auth.log | grep -e \"Accepted\"",
+          "grep -e 'Accepted' /var/log/auth.log",
+          "cat /var/log/auth.log | grep -e 'Accepted'",
+          "tail -n 7 /var/log/auth.log | grep -e 'Accepted'",
+          "sudo grep Accepted /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep Accepted",
+          "sudo tail -n 7 /var/log/auth.log | grep Accepted",
+          "sudo grep \"Accepted\" /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep \"Accepted\"",
+          "sudo tail -n 7 /var/log/auth.log | grep \"Accepted\"",
+          "sudo grep 'Accepted' /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep 'Accepted'",
+          "sudo tail -n 7 /var/log/auth.log | grep 'Accepted'",
+          "sudo grep -i Accepted /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -i Accepted",
+          "sudo tail -n 7 /var/log/auth.log | grep -i Accepted",
+          "sudo grep -i \"Accepted\" /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -i \"Accepted\"",
+          "sudo tail -n 7 /var/log/auth.log | grep -i \"Accepted\"",
+          "sudo grep -i 'Accepted' /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -i 'Accepted'",
+          "sudo tail -n 7 /var/log/auth.log | grep -i 'Accepted'",
+          "sudo grep -n Accepted /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -n Accepted",
+          "sudo tail -n 7 /var/log/auth.log | grep -n Accepted",
+          "sudo grep -n \"Accepted\" /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -n \"Accepted\"",
+          "sudo tail -n 7 /var/log/auth.log | grep -n \"Accepted\"",
+          "sudo grep -n 'Accepted' /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -n 'Accepted'",
+          "sudo tail -n 7 /var/log/auth.log | grep -n 'Accepted'",
+          "sudo grep -in Accepted /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -in Accepted",
+          "sudo tail -n 7 /var/log/auth.log | grep -in Accepted",
+          "sudo grep -in \"Accepted\" /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -in \"Accepted\"",
+          "sudo tail -n 7 /var/log/auth.log | grep -in \"Accepted\"",
+          "sudo grep -in 'Accepted' /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -in 'Accepted'",
+          "sudo tail -n 7 /var/log/auth.log | grep -in 'Accepted'",
+          "sudo grep -ni Accepted /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -ni Accepted",
+          "sudo tail -n 7 /var/log/auth.log | grep -ni Accepted",
+          "sudo grep -ni \"Accepted\" /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -ni \"Accepted\"",
+          "sudo tail -n 7 /var/log/auth.log | grep -ni \"Accepted\"",
+          "sudo grep -ni 'Accepted' /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -ni 'Accepted'",
+          "sudo tail -n 7 /var/log/auth.log | grep -ni 'Accepted'",
+          "sudo grep -F Accepted /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -F Accepted",
+          "sudo tail -n 7 /var/log/auth.log | grep -F Accepted",
+          "sudo grep -F \"Accepted\" /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -F \"Accepted\"",
+          "sudo tail -n 7 /var/log/auth.log | grep -F \"Accepted\"",
+          "sudo grep -F 'Accepted' /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -F 'Accepted'",
+          "sudo tail -n 7 /var/log/auth.log | grep -F 'Accepted'",
+          "sudo grep -e Accepted /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -e Accepted",
+          "sudo tail -n 7 /var/log/auth.log | grep -e Accepted",
+          "sudo grep -e \"Accepted\" /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -e \"Accepted\"",
+          "sudo tail -n 7 /var/log/auth.log | grep -e \"Accepted\"",
+          "sudo grep -e 'Accepted' /var/log/auth.log",
+          "sudo cat /var/log/auth.log | grep -e 'Accepted'",
+          "sudo tail -n 7 /var/log/auth.log | grep -e 'Accepted'",
+          "awk '/Accepted/' /var/log/auth.log",
+          "awk '/Accepted/ {print}' /var/log/auth.log",
+          "awk '/Accepted/ {print $0}' /var/log/auth.log",
+          "grep Accepted < /var/log/auth.log",
+          "grep -- Accepted /var/log/auth.log",
+          "sudo awk '/Accepted/' /var/log/auth.log",
+          "sudo awk '/Accepted/ {print}' /var/log/auth.log",
+          "sudo awk '/Accepted/ {print $0}' /var/log/auth.log",
+          "sudo grep Accepted < /var/log/auth.log",
+          "sudo grep -- Accepted /var/log/auth.log"
         ],
         "account": [
           "disable"
@@ -1852,11 +1989,11 @@
         ]
       }
     },
-    "explanation": "Filtering for Accepted shows the successful login that followed repeated failures. Disabling the account stops the attacker while keeping the account for investigation, and an archive of customer records staged for removal is escalated to legal and leadership. Deleting the account or archive destroys evidence, a reboot leaves the credential usable, and a successful login does not make the activity benign.",
+    "explanation": "Filtering for Accepted shows the successful login that followed repeated failures. Disabling the account stops the attacker while keeping the account for investigation, and an archive of customer records staged for transfer out is escalated to legal and leadership. Emailing customers before legal review skips the notification rules and approvals. Deleting the account or archive destroys evidence, a reboot leaves the credential usable, and a successful login does not make the activity benign.",
     "partExplanations": {
-      "0": "grep prints only the lines that contain Accepted, which isolates the successful sign-in.",
-      "1": "Disabling and ending sessions blocks the attacker and preserves the account for the investigation.",
-      "2": "Staged customer data raises legal obligations, so legal and leadership are told first."
+      "find": "`grep` prints only the lines that contain Accepted, which isolates the successful sign-in.",
+      "account": "Disabling and ending sessions blocks the attacker and preserves the account for the investigation.",
+      "escalate": "Staged customer data raises legal obligations, so legal and leadership are told first."
     },
     "acronyms": []
   },
@@ -1867,7 +2004,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 3,
     "pbqWeight": 3,
@@ -1879,30 +2016,30 @@
         "sda    500G disk",
         "|-sda1  512M part /boot",
         "`-sda2  499G part /",
-        "sdb    256G disk   (suspect drive, read-only via hardware write blocker)",
+        "sdb    256G disk   (suspect drive, connected via hardware write blocker)",
         "$ ls /evidence",
         "case-0412-notes.txt"
       ],
       "steps": [
         {
           "id": "why",
-          "label": "Choose why the suspect drive is connected through a write blocker",
+          "label": "Choose the risk that a write blocker removes during acquisition",
           "options": [
             {
               "id": "protect",
-              "text": "It prevents any change to the original media during acquisition"
+              "text": "The original drive being altered by the copying host"
             },
             {
               "id": "speed",
-              "text": "It makes the copy finish faster by skipping empty space"
+              "text": "The copy taking longer than the case timeline allows"
             },
             {
               "id": "encrypt",
-              "text": "It encrypts the image as it is written"
+              "text": "Another analyst opening the image without permission"
             },
             {
               "id": "wipe",
-              "text": "It removes deleted files from the drive"
+              "text": "Deleted files remaining visible in the image"
             }
           ]
         },
@@ -1923,57 +2060,107 @@
         ],
         "image": [
           "dd if=/dev/sdb of=/evidence/ws0412.img",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img",
+          "dd of=/evidence/ws0412.img if=/dev/sdb",
           "dd if=/dev/sdb of=/evidence/ws0412.img bs=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb bs=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb bs=* conv=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=* status=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb bs=* conv=* status=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb bs=* status=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=* conv=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb bs=* status=* conv=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb conv=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=* bs=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb conv=* bs=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=* bs=* status=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb conv=* bs=* status=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=* status=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb conv=* status=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=* status=* bs=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb conv=* status=* bs=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb status=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=* bs=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb status=* bs=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=* bs=* conv=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb status=* bs=* conv=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=* conv=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb status=* conv=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=* conv=* bs=*",
+          "dd of=/evidence/ws0412.img if=/dev/sdb status=* conv=* bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb",
           "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=*",
-          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync",
-          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=noerror,sync",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=noerror,sync",
-          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync bs=*",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync bs=*",
-          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress",
-          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=progress",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=progress",
-          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress bs=*",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress bs=*",
-          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync status=progress",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync status=progress",
-          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress conv=noerror,sync",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress conv=noerror,sync",
-          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=noerror,sync status=progress",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=noerror,sync status=progress",
-          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=progress conv=noerror,sync",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=progress conv=noerror,sync",
-          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync bs=* status=progress",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync bs=* status=progress",
-          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync status=progress bs=*",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync status=progress bs=*",
-          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress bs=* conv=noerror,sync",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress bs=* conv=noerror,sync",
-          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress conv=noerror,sync bs=*",
-          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress conv=noerror,sync bs=*"
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb bs=* conv=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=* status=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb bs=* conv=* status=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb bs=* status=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=* conv=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb bs=* status=* conv=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb conv=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=* bs=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb conv=* bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=* bs=* status=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb conv=* bs=* status=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=* status=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb conv=* status=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=* status=* bs=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb conv=* status=* bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb status=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=* bs=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb status=* bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=* bs=* conv=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb status=* bs=* conv=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=* conv=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb status=* conv=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=* conv=* bs=*",
+          "sudo dd of=/evidence/ws0412.img if=/dev/sdb status=* conv=* bs=*"
         ],
         "hash": [
           "sha256sum /evidence/ws0412.img",
-          "sudo sha256sum /evidence/ws0412.img",
+          "sha256sum -b /evidence/ws0412.img",
           "sha256sum ./evidence/ws0412.img",
-          "sudo sha256sum ./evidence/ws0412.img",
           "shasum -a 256 /evidence/ws0412.img",
-          "sudo shasum -a 256 /evidence/ws0412.img",
           "openssl dgst -sha256 /evidence/ws0412.img",
-          "sudo openssl dgst -sha256 /evidence/ws0412.img",
           "openssl sha256 /evidence/ws0412.img",
-          "sudo openssl sha256 /evidence/ws0412.img"
+          "sha256sum /evidence/ws0412.img > *",
+          "sha256sum /evidence/ws0412.img >> *",
+          "sha256sum /evidence/ws0412.img | tee *",
+          "sha256sum /evidence/ws0412.img | tee -a *",
+          "sha256sum -b /evidence/ws0412.img > *",
+          "sha256sum -b /evidence/ws0412.img >> *",
+          "sha256sum -b /evidence/ws0412.img | tee *",
+          "sha256sum -b /evidence/ws0412.img | tee -a *",
+          "sudo sha256sum /evidence/ws0412.img",
+          "sudo sha256sum -b /evidence/ws0412.img",
+          "sudo sha256sum ./evidence/ws0412.img",
+          "sudo shasum -a 256 /evidence/ws0412.img",
+          "sudo openssl dgst -sha256 /evidence/ws0412.img",
+          "sudo openssl sha256 /evidence/ws0412.img",
+          "sudo sha256sum /evidence/ws0412.img > *",
+          "sudo sha256sum /evidence/ws0412.img >> *",
+          "sudo sha256sum /evidence/ws0412.img | tee *",
+          "sudo sha256sum /evidence/ws0412.img | tee -a *",
+          "sudo sha256sum -b /evidence/ws0412.img > *",
+          "sudo sha256sum -b /evidence/ws0412.img >> *",
+          "sudo sha256sum -b /evidence/ws0412.img | tee *",
+          "sudo sha256sum -b /evidence/ws0412.img | tee -a *"
         ]
       }
     },
-    "explanation": "A write blocker lets the examiner read the original without altering it. dd copies the whole device bit for bit to an image file, and a SHA-256 hash recorded at acquisition lets anyone later show the image is unchanged. Speed, encryption and wiping deleted files are not what a write blocker does.",
+    "explanation": "A write blocker lets the examiner read the original without altering it. `dd` copies the whole device bit for bit to an image file, and a SHA-256 hash from `sha256sum` recorded at acquisition lets anyone later show the image is unchanged. Speed, encryption and wiping deleted files are not what a write blocker does.",
     "partExplanations": {
-      "0": "The blocker allows reads only, so the original evidence stays unaltered.",
-      "1": "dd with if set to the source device and of set to the image file makes a bit-for-bit copy.",
-      "2": "The hash taken at acquisition is the baseline for later integrity checks."
+      "why": "The blocker allows reads only, so the original evidence stays unaltered.",
+      "image": "`dd` with `if` set to the source device and `of` set to the image file makes a bit-for-bit copy.",
+      "hash": "The hash taken at acquisition is the baseline for later integrity checks."
     },
     "acronyms": [
       "SHA"
@@ -1986,7 +2173,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -2060,7 +2247,7 @@
               "text": "Keep the shares mapped so the files stay available"
             },
             {
-              "id": "readonly",
+              "id": "trust",
               "text": "Leave access as is and trust the file server backups"
             }
           ]
@@ -2075,10 +2262,10 @@
         "shares": "revoke"
       }
     },
-    "explanation": "Isolation with only the EDR and responder paths open stops spread while analysts keep control. Locking the account removes the active user context, staying powered on preserves memory, and revoking share access protects other systems while their files are checked for changes.",
+    "explanation": "Isolation with only the EDR and responder paths open stops spread while analysts keep control. Locking the account removes the active user session, staying powered on preserves memory, and revoking share access protects other systems while their files are checked for changes.",
     "partExplanations": {
       "mode": "Isolation with a narrow allow list stops spread but keeps the response tools working.",
-      "sessions": "Ending sessions and locking the account removes the active credential from the host.",
+      "sessions": "Ending sessions and locking the account removes the active user session from the host.",
       "power": "Memory holds volatile evidence that a shutdown would destroy.",
       "shares": "Ransomware can encrypt files on any share the host can reach, so access is cut and the shares are checked."
     },
@@ -2094,7 +2281,7 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -2111,11 +2298,11 @@
             },
             {
               "id": "default",
-              "text": "Keep for the standard 30-day log cycle"
+              "text": "Keep for the standard 30-day log cycle and then let the normal rotation delete them"
             },
             {
               "id": "purge",
-              "text": "Purge after the incident report is written"
+              "text": "Purge after the incident report is written and the lessons-learned review is held"
             }
           ]
         },
@@ -2129,11 +2316,11 @@
             },
             {
               "id": "share",
-              "text": "A shared analyst folder on the file server"
+              "text": "A shared analyst folder on the main file server that the whole team can open"
             },
             {
               "id": "mail",
-              "text": "Email attachments sent to the case team"
+              "text": "Email attachments sent to every member of the case team and to the lawyers"
             }
           ]
         },
@@ -2147,11 +2334,11 @@
             },
             {
               "id": "end",
-              "text": "Once, when the case is closed"
+              "text": "Once, when the case is closed and the final report has been signed off"
             },
             {
               "id": "none",
-              "text": "Only if the image is shared outside the company"
+              "text": "Only if the image is shared with someone outside the company or sent to a vendor"
             }
           ]
         },
@@ -2165,11 +2352,11 @@
             },
             {
               "id": "team",
-              "text": "Any member of the security team without a record"
+              "text": "Any member of the security team, with no record of who took the evidence"
             },
             {
               "id": "all",
-              "text": "Any employee who asks for it"
+              "text": "Any employee who asks for it, as long as their manager agrees to the request"
             }
           ]
         }
@@ -2199,11 +2386,11 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
     "pbqWeight": 4,
-    "stem": "A workstation is infected and talking to an attacker server. Place the best containment technique for each need named below the network path.",
+    "stem": "A workstation is infected and calling out to an attacker. Place the best containment technique for each need named below the network path.",
     "payload": {
       "width": 600,
       "height": 220,
@@ -2222,7 +2409,7 @@
           "y": 20,
           "w": 130,
           "h": 50,
-          "text": "Access switch"
+          "text": "Internal DNS resolver"
         },
         {
           "id": "n3",
@@ -2238,7 +2425,7 @@
           "y": 20,
           "w": 130,
           "h": 50,
-          "text": "Attacker server"
+          "text": "Identity provider"
         }
       ],
       "edges": [
@@ -2249,10 +2436,6 @@
         {
           "from": "n2",
           "to": "n3"
-        },
-        {
-          "from": "n3",
-          "to": "n4"
         }
       ],
       "zones": [
@@ -2292,7 +2475,7 @@
         },
         {
           "id": "l3",
-          "text": "Egress block rule for the address"
+          "text": "Egress block rule for the attacker address"
         },
         {
           "id": "l4",
@@ -2335,13 +2518,13 @@
     "objectiveIds": [
       "3.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 3,
     "pbqWeight": 3,
     "stem": "Sources log in different time zones. Use the table to normalize times to UTC and answer each question.",
     "payload": {
-      "caption": "Events for the mlopez account on 2 March (times as logged)",
+      "caption": "Events for the dnguyen account on 9 March (times as logged)",
       "columns": [
         "Source",
         "Event",
@@ -2350,25 +2533,25 @@
       ],
       "rows": [
         [
-          "vpn01",
+          "vpn02",
           "VPN login",
           "13:02",
           "+0"
         ],
         [
-          "fs02",
+          "fs05",
           "Bulk file read starts",
           "08:20",
           "-5"
         ],
         [
-          "proxy01",
+          "proxy02",
           "Large upload starts",
           "14:41",
           "+1"
         ],
         [
-          "edr01",
+          "edr02",
           "Alert raised",
           "13:55",
           "+0"
@@ -2438,7 +2621,7 @@
         "alert": "14"
       }
     },
-    "explanation": "Convert each time to UTC by subtracting the offset. fs02 is UTC-5, so 08:20 becomes 13:20 UTC. proxy01 is UTC+1, so 14:41 becomes 13:41 UTC.",
+    "explanation": "Convert each time to UTC by subtracting the offset. `fs05` is UTC-5, so 08:20 becomes 13:20 UTC. `proxy02` is UTC+1, so 14:41 becomes 13:41 UTC.",
     "partExplanations": {
       "read": "08:20 at an offset of -5 is 08:20 + 5 hours = 13:20 UTC.",
       "gap": "Upload 14:41 at +1 is 13:41 UTC; 13:41 minus the 13:02 login is 39 minutes.",
