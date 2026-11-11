@@ -95,15 +95,15 @@
       "options": [
         {
           "id": "a",
-          "text": "Compress the archive with a stronger algorithm"
+          "text": "Compress the archive with a stronger algorithm each quarter"
         },
         {
           "id": "b",
-          "text": "Rename each file with its collection date"
+          "text": "Rename each file with its collection date and server name"
         },
         {
           "id": "c",
-          "text": "Mirror the archive to a second disk on the same server"
+          "text": "Mirror the archive to a second disk on the same server nightly"
         },
         {
           "id": "d",
@@ -175,15 +175,15 @@
       "options": [
         {
           "id": "a",
-          "text": "Delete anything older than 90 days"
+          "text": "Delete anything older than 90 days and keep monthly summaries"
         },
         {
           "id": "b",
-          "text": "Keep only the failed attempts for 12 months"
+          "text": "Keep only the failed attempts for 12 months in fast storage"
         },
         {
           "id": "c",
-          "text": "Store only a daily event count"
+          "text": "Store only a daily event count per source for 12 months"
         },
         {
           "id": "d",
@@ -331,11 +331,11 @@
       "options": [
         {
           "id": "a",
-          "text": "The master process runs as the superuser"
+          "text": "The master process runs as the superuser to bind its listening ports"
         },
         {
           "id": "b",
-          "text": "The worker processes run under an unprivileged account"
+          "text": "The worker processes run under an unprivileged account named www-data"
         },
         {
           "id": "c",
@@ -343,7 +343,7 @@
         },
         {
           "id": "d",
-          "text": "The web server is a child of the init process"
+          "text": "The web server is a child of the init process, not of a user shell"
         }
       ]
     },
@@ -365,7 +365,7 @@
       "1.1"
     ],
     "difficulty": 1,
-    "stem": "A team rebuilds an application as small stateless services that scale independently and are deployed through automated pipelines. Which term describes this design?",
+    "stem": "A team rebuilds an application as small stateless services that scale independently and are deployed through automated pipelines. Which term describes this approach?",
     "payload": {
       "options": [
         {
@@ -409,7 +409,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A guest escaping isolation to reach the hypervisor"
+          "text": "A guest escaping its isolation to reach the hypervisor"
         },
         {
           "id": "b",
@@ -657,7 +657,7 @@
         },
         {
           "id": "b",
-          "text": "SASE"
+          "text": "Secure access service edge"
         },
         {
           "id": "c",
@@ -790,7 +790,7 @@
         },
         {
           "id": "c",
-          "text": "Authorization"
+          "text": "Authorization of the user"
         },
         {
           "id": "d",
@@ -862,11 +862,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Encode the value with Base64 before committing it"
+          "text": "Encode the value with Base64 before committing it to the repository"
         },
         {
           "id": "b",
-          "text": "Set the repository to private and keep the current password"
+          "text": "Set the repository to private and keep the current password in place"
         },
         {
           "id": "c",
@@ -874,7 +874,7 @@
         },
         {
           "id": "d",
-          "text": "Add a code comment asking developers to keep it confidential"
+          "text": "Add a code comment asking developers to keep the value confidential"
         }
       ]
     },
@@ -896,7 +896,7 @@
       "1.1"
     ],
     "difficulty": 2,
-    "stem": "Customer files travel from a branch office to a cloud store and then stay there. Which pair of protections covers both states?",
+    "stem": "Customer files travel from a branch office to a cloud store and then stay there. Which pair of protections covers the data both in transit and at rest?",
     "payload": {
       "options": [
         {
@@ -1017,7 +1017,7 @@
       "1.1"
     ],
     "difficulty": 2,
-    "stem": "A utility's control center gathers readings from remote substations over long distances and sends commands back to field controllers. Which system is this?",
+    "stem": "A utility's control center gathers readings from remote substations over long distances and sends commands back to field controllers. Which platform is this?",
     "payload": {
       "options": [
         {
@@ -1297,7 +1297,7 @@
         },
         {
           "id": "b",
-          "text": "Segment the SCADA network from corporate IT behind a controlled boundary"
+          "text": "Separate the plant floor from corporate IT behind a filtered boundary"
         },
         {
           "id": "c",
@@ -1531,7 +1531,7 @@
           "options": [
             {
               "id": "tls",
-              "text": "TLS-protected TCP to the collector"
+              "text": "TLS over TCP to the collector"
             },
             {
               "id": "udp",
@@ -1585,7 +1585,7 @@
           "options": [
             {
               "id": "tiered",
-              "text": "30 days searchable, then archive to a 12-month total"
+              "text": "Searchable 30 days, archived to 12 months"
             },
             {
               "id": "del30",

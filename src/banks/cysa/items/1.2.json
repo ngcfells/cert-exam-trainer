@@ -185,7 +185,7 @@
         },
         {
           "id": "c",
-          "text": "A possible remote control channel on a nonstandard port"
+          "text": "A remote control channel on a nonstandard port"
         },
         {
           "id": "d",
@@ -221,7 +221,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Hidden cryptocurrency mining"
+          "text": "A hidden cryptocurrency miner"
         },
         {
           "id": "b",
@@ -275,7 +275,7 @@
         },
         {
           "id": "d",
-          "text": "It can give a remote party hands-on control of the host"
+          "text": "It can give an outside party hands-on control of the host"
         }
       ]
     },
@@ -309,7 +309,7 @@
         },
         {
           "id": "b",
-          "text": "A malicious document launching a hidden script"
+          "text": "A malicious document launching a concealed script"
         },
         {
           "id": "c",
@@ -351,15 +351,15 @@
         },
         {
           "id": "b",
-          "text": "Standard users are exempt from application allowlists"
+          "text": "Standard users are exempt from application allowlists on this workstation"
         },
         {
           "id": "c",
-          "text": "The alert fired after the downloaded file had been deleted"
+          "text": "The alert fired after the downloaded file had already been deleted"
         },
         {
           "id": "d",
-          "text": "Allowlists only inspect files saved on network shares"
+          "text": "Allowlists only inspect files saved on network shares or removable drives"
         }
       ]
     },
@@ -430,15 +430,15 @@
       "options": [
         {
           "id": "a",
-          "text": "A vendor patch job; no action is needed"
+          "text": "A vendor patch job scheduled for the maintenance window; no action is needed"
         },
         {
           "id": "b",
-          "text": "A log rotation entry; add it to the monitor baseline"
+          "text": "A log rotation entry created by the system; add it to the monitor baseline"
         },
         {
           "id": "c",
-          "text": "A failed deployment; roll back the site content"
+          "text": "A failed deployment of the site content; roll back the site and restore the last release"
         },
         {
           "id": "d",
@@ -554,7 +554,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A storage saving the team approved last quarter"
+          "text": "An approved reduction in audit logging last quarter"
         },
         {
           "id": "b",
@@ -575,7 +575,7 @@
         "c"
       ]
     },
-    "explanation": "Turning off auditing right after suspicious access is an attempt to hide later activity. An approved saving would have a ticket and a different actor, an update would not be triggered by a service account, and a connector fault would not change the policy on the server.",
+    "explanation": "Turning off auditing right after suspicious access is an attempt to hide later activity. An approved reduction would have a ticket and a different actor, an update would not be triggered by a service account, and a connector fault would not change the policy on the server.",
     "acronyms": [
       "SIEM"
     ],
@@ -720,7 +720,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Resource compromise using a stolen or leaked access key"
+          "text": "Resource compromise using stolen or leaked credentials"
         },
         {
           "id": "b",
@@ -741,7 +741,7 @@
         "a"
       ]
     },
-    "explanation": "Large new compute in an unused region from a developer key at night points to a stolen key being used to run attacker workloads. Autoscaling and drills would be planned and in approved regions, and a billing alert is a report, not an action that creates instances.",
+    "explanation": "Large new compute in an unused region from a developer key at night points to a stolen key being used to run attacker workloads. Autoscaling and drills would be planned and in approved regions, and a billing report only reports usage and creates no instances.",
     "acronyms": [],
     "searchTerm": "cloud resource compromise access key"
   },
@@ -764,7 +764,7 @@
         },
         {
           "id": "b",
-          "text": "Restore the private policy and preserve the access logs"
+          "text": "Restore the original policy and preserve the access logs"
         },
         {
           "id": "c",
@@ -848,7 +848,7 @@
         },
         {
           "id": "c",
-          "text": "Mail gateways cannot scan or expand any shortened link at all"
+          "text": "Mail gateways rarely scan or expand links that are shortened"
         },
         {
           "id": "d",
@@ -926,7 +926,7 @@
         },
         {
           "id": "b",
-          "text": "Its credentials are probably stolen and in use by someone else"
+          "text": "Stolen credentials are being used by someone else"
         },
         {
           "id": "c",
@@ -966,15 +966,15 @@
         },
         {
           "id": "b",
-          "text": "Close the alert because VPN exit points often explain it"
+          "text": "Close the alert because VPN exit points often explain the pattern"
         },
         {
           "id": "c",
-          "text": "Disable the account and wipe the head-office workstation"
+          "text": "Disable the account and wipe the head-office workstation right away"
         },
         {
           "id": "d",
-          "text": "Block the whole country at the perimeter at once"
+          "text": "Block the whole country at the perimeter for all staff at once"
         }
       ]
     },
@@ -1085,7 +1085,7 @@
       "options": [
         {
           "id": "a",
-          "text": "The first; it appears in the System32 folder"
+          "text": "The first; it is a system process name that appears in the System32 folder"
         },
         {
           "id": "b",
@@ -1093,11 +1093,11 @@
         },
         {
           "id": "c",
-          "text": "Both; two similar names indicate a duplicate install"
+          "text": "Both; two similar process names on one host indicate a duplicate install of the service"
         },
         {
           "id": "d",
-          "text": "Neither; the second is an older build of the first"
+          "text": "Neither; the second is just an older build of the first from a prior update"
         }
       ]
     },
@@ -1135,19 +1135,19 @@
         },
         {
           "id": "c",
-          "text": "A file server answering many clients for the same shared folder"
+          "text": "A file server answering many clients that request the same shared folder all day"
         },
         {
           "id": "d",
-          "text": "A domain controller replicating directory data with its partner"
+          "text": "A domain controller replicating directory data with its partner on a schedule"
         },
         {
           "id": "e",
-          "text": "A patch server pushing updates to all managed endpoints"
+          "text": "A patch server pushing approved updates to all managed endpoints overnight"
         },
         {
           "id": "f",
-          "text": "A monitoring system polling its list of known servers every minute"
+          "text": "A monitoring system polling its list of known servers every minute all day"
         }
       ]
     },
@@ -1178,7 +1178,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A web server process starting a command shell"
+          "text": "A web server process starting a command shell on the host"
         },
         {
           "id": "b",
@@ -1190,7 +1190,7 @@
         },
         {
           "id": "d",
-          "text": "A browser started by the user from the desktop"
+          "text": "A browser started by the user from the desktop shortcut after logging in"
         },
         {
           "id": "e",
@@ -1198,7 +1198,7 @@
         },
         {
           "id": "f",
-          "text": "A backup service starting at its scheduled hour"
+          "text": "A backup service starting at its scheduled hour under its normal account"
         }
       ]
     },
@@ -1232,7 +1232,7 @@
         },
         {
           "id": "b",
-          "text": "Nightly inbound software update downloads"
+          "text": "Nightly inbound software update downloads from the vendor update servers"
         },
         {
           "id": "c",
@@ -1279,7 +1279,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A password expiry notice sent on the usual schedule"
+          "text": "A password expiry notice sent to the user on the usual schedule"
         },
         {
           "id": "b",
@@ -1287,7 +1287,7 @@
         },
         {
           "id": "c",
-          "text": "A user's yearly access recertification marked complete"
+          "text": "A user's yearly access recertification marked complete by their manager"
         },
         {
           "id": "d",
@@ -1295,11 +1295,11 @@
         },
         {
           "id": "e",
-          "text": "A sign-in from the user's usual office address during working hours"
+          "text": "A sign-in from the user's usual office address during working hours on a managed laptop"
         },
         {
           "id": "f",
-          "text": "A help desk ticket about a locked screen"
+          "text": "A help desk ticket about a locked screen on the user's laptop"
         }
       ]
     },
@@ -1375,7 +1375,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A planned autoscaling event that matches the capacity forecast"
+          "text": "A planned autoscaling event that matches the capacity forecast approved for the launch"
         },
         {
           "id": "b",
@@ -1383,7 +1383,7 @@
         },
         {
           "id": "c",
-          "text": "A scheduled snapshot of production volumes"
+          "text": "A scheduled snapshot of production volumes taken by the backup service"
         },
         {
           "id": "d",
@@ -1391,7 +1391,7 @@
         },
         {
           "id": "e",
-          "text": "A developer signing in from the usual office with MFA"
+          "text": "A developer signing in from the usual office with MFA on a managed laptop"
         },
         {
           "id": "f",
@@ -1804,7 +1804,27 @@
           "grep -F 'Failed password' /var/log/auth.log",
           "grep -a 'Failed password' /var/log/auth.log",
           "cat /var/log/auth.log | grep 'Failed password'",
-          "grep 'Failed password' < /var/log/auth.log"
+          "grep 'Failed password' < /var/log/auth.log",
+          "grep -E \"Failed password\" /var/log/auth.log",
+          "grep -E 'Failed password' /var/log/auth.log",
+          "grep -e \"Failed password\" /var/log/auth.log",
+          "grep -e 'Failed password' /var/log/auth.log",
+          "grep Failed\\ password /var/log/auth.log",
+          "grep -in \"Failed password\" /var/log/auth.log",
+          "grep -in 'Failed password' /var/log/auth.log",
+          "grep -ni \"Failed password\" /var/log/auth.log",
+          "grep -ni 'Failed password' /var/log/auth.log",
+          "cat /var/log/auth.log | grep -i \"Failed password\"",
+          "cat /var/log/auth.log | grep -i 'Failed password'",
+          "cat /var/log/auth.log | grep -F \"Failed password\"",
+          "cat /var/log/auth.log | grep -F 'Failed password'",
+          "grep --text \"Failed password\" /var/log/auth.log",
+          "grep --ignore-case \"Failed password\" /var/log/auth.log",
+          "grep --line-number \"Failed password\" /var/log/auth.log",
+          "grep --fixed-strings \"Failed password\" /var/log/auth.log",
+          "grep -F -- \"Failed password\" /var/log/auth.log",
+          "grep -- \"Failed password\" /var/log/auth.log",
+          "grep \"Failed password\" -- /var/log/auth.log"
         ],
         "read": [
           "guess"
@@ -2065,7 +2085,7 @@
     "explanation": "The alert is raised and validated first, the account is contained, the mailbox is reviewed to learn what the attacker changed, those changes are removed with a credential reset, and only then is access restored with finance alerted.",
     "partExplanations": {
       "0": "The alert starts the work.",
-      "1": "Validation comes before any blocking, so a travelling user is not locked out needlessly.",
+      "1": "Validation comes before any blocking, so a traveling user is not locked out needlessly.",
       "2": "Containing the account stops further attacker activity before the mailbox is searched.",
       "3": "Reviewing the mailbox shows the scope of attacker changes before they are removed.",
       "4": "Cleanup and credential reset follow the review so nothing is missed.",

@@ -108,7 +108,7 @@
         },
         {
           "id": "d",
-          "text": "A heat map with cells shaded by frequency or coverage"
+          "text": "A heat map with cells colored by frequency or coverage"
         }
       ]
     },
@@ -132,7 +132,7 @@
     "status": "draft",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "Threat hunters compare three indicators: a file hash, a domain name, and the adversary's habit of harvesting passwords from memory and then pivoting between hosts. Which is hardest for the adversary to change?",
+    "stem": "Threat hunters compare four indicators: a file hash, a domain name, an IP address, and the adversary's habit of harvesting passwords from memory and then pivoting between hosts. Which is hardest for the adversary to change?",
     "payload": {
       "options": [
         {
@@ -141,7 +141,7 @@
         },
         {
           "id": "b",
-          "text": "The TTP-level behavior at the top of the pyramid"
+          "text": "The TTP-level behavior of the intrusion"
         },
         {
           "id": "c",
@@ -239,7 +239,7 @@
         "d"
       ]
     },
-    "explanation": "The rule watches behavior, so changing the hash of a payload no longer helps the adversary. Speed is not the point, a behavioral rule can still produce false positives, and it often needs more process data, not less.",
+    "explanation": "The rule watches behavior, so changing the hash of a payload no longer helps the adversary. Speed is not the point; a behavioral rule can still produce false positives, and it often needs more process data, not less.",
     "acronyms": [
       "SOC",
       "SIEM"
@@ -379,7 +379,7 @@
     "status": "draft",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "A feed lists botnet IP addresses, but its entries were last refreshed eight months ago, though each was correct when published. Which confidence factor is weakest?",
+    "stem": "A feed lists botnet IP addresses that were correct when published, but its entries were last refreshed eight months ago. Which confidence factor is weakest?",
     "payload": {
       "options": [
         {
@@ -446,7 +446,7 @@
         "c"
       ]
     },
-    "explanation": "Relevance asks whether the threat applies to the organization. The report is well-sourced and current, so accuracy and timeliness are fine, but a threat to factory robots does not apply to a hospital.",
+    "explanation": "Relevance asks whether the threat applies to the organization. The report is well-sourced and current, so accuracy and timeliness are fine, but a threat to factory robots does not apply to a hospital. A reputable source does not make a report relevant, so high confidence is wrong.",
     "acronyms": [
       "SOC"
     ]
@@ -832,19 +832,19 @@
       "options": [
         {
           "id": "a",
-          "text": "The addresses, because atomic values are harder to evade"
+          "text": "The addresses, because atomic values are harder for attackers to evade"
         },
         {
           "id": "b",
-          "text": "The addresses, because rules cannot produce false positives"
+          "text": "The addresses, because blocking rules cannot produce false positives"
         },
         {
           "id": "c",
-          "text": "Neither, because indicators expire the moment they are found"
+          "text": "Neither, because indicators expire the moment analysts find them"
         },
         {
           "id": "d",
-          "text": "The behavioral detection, because behavior survives infrastructure changes"
+          "text": "The behavioral detection, because the habit survives address changes"
         }
       ]
     },
@@ -997,19 +997,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Vulnerability scanning, probing hosts for known flaws"
+          "text": "Vulnerability scanning, probing hosts for known software flaws"
         },
         {
           "id": "b",
-          "text": "Patch management, scheduling updates by severity"
+          "text": "Patch management, scheduling updates by severity and owner"
         },
         {
           "id": "c",
-          "text": "Log aggregation, centralizing events from many sources"
+          "text": "Log aggregation, centralizing events from many sources into one store"
         },
         {
           "id": "d",
-          "text": "Threat mapping, tying adversary behavior to what it could reach"
+          "text": "Threat modeling, relating likely adversaries to reachable assets"
         }
       ]
     },
@@ -1018,7 +1018,7 @@
         "d"
       ]
     },
-    "explanation": "Threat mapping relates likely threats to assets and the paths to them. Scanning finds flaws on hosts, patch management schedules fixes, and log aggregation collects events.",
+    "explanation": "Threat modeling relates likely adversaries to assets and the paths to them. Scanning finds flaws on hosts, patch management schedules fixes, and log aggregation collects events.",
     "acronyms": []
   },
   {
@@ -1077,7 +1077,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Early detection of an intruder testing stolen credentials"
+          "text": "Early detection of an intruder's login attempts"
         },
         {
           "id": "b",
@@ -1350,7 +1350,7 @@
         },
         {
           "id": "b",
-          "text": "Agreeing on handling rules for how shared data may be used"
+          "text": "Agreeing on handling rules for shared data"
         },
         {
           "id": "c",
@@ -1358,7 +1358,7 @@
         },
         {
           "id": "d",
-          "text": "Sending indicators with context and a confidence rating"
+          "text": "Sending indicators with context and confidence"
         },
         {
           "id": "e",
@@ -1407,13 +1407,13 @@
         },
         {
           "id": "p5",
-          "text": "Relating likely threats to the assets and routes an attacker could use"
+          "text": "Relating likely adversaries to the assets and paths they could reach"
         }
       ],
       "choices": [
         {
           "id": "c1",
-          "text": "Threat mapping"
+          "text": "Threat modeling"
         },
         {
           "id": "c2",
@@ -1442,13 +1442,13 @@
         "p5": "c1"
       }
     },
-    "explanation": "Each concept has a distinct job: the pyramid ranks indicators, a heat map shades coverage or frequency, attribution names an actor with stated confidence, deception uses decoys, and threat mapping ties threats to assets and routes.",
+    "explanation": "Each concept has a distinct job: the pyramid ranks indicators, a heat map shades coverage or frequency, attribution names an actor with stated confidence, deception uses decoys, and threat modeling ties threats to assets and routes.",
     "partExplanations": {
       "p1": "The pyramid of pain ranks hashes up to adversary behavior by how costly each is for the adversary to change.",
       "p2": "A heat map shades cells by frequency or detection coverage.",
       "p3": "Attribution points to an actor and should carry a confidence level.",
       "p4": "Cyber deception relies on decoys such as honeypots that alert on any contact.",
-      "p5": "Threat mapping connects likely threats to the assets and paths they could reach."
+      "p5": "Threat modeling connects likely adversaries to the assets and paths they could reach."
     },
     "acronyms": []
   },
@@ -1882,7 +1882,7 @@
     "type": "pbq-hotspot",
     "difficulty": 2,
     "pbqWeight": 3,
-    "stem": "Dana Ruiz handed in her notice last week. Select every activity in her account summary that is a possible insider threat indicator.",
+    "stem": "Dana Ruiz handed in her notice last week. Select THREE activities in her account summary that are possible insider threat indicators.",
     "payload": {
       "width": 480,
       "height": 220,

@@ -60,7 +60,7 @@
         },
         {
           "id": "b",
-          "text": "A scenario-based response playbook"
+          "text": "A scenario-based playbook"
         },
         {
           "id": "c",
@@ -218,19 +218,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Remove the step so each analyst acts on instinct"
+          "text": "Remove the step and let analysts act on instinct per case"
         },
         {
           "id": "b",
-          "text": "Add decision criteria such as asset criticality, with an approval point"
+          "text": "Add criteria such as asset criticality and an approval point"
         },
         {
           "id": "c",
-          "text": "Add a note that analysts should use their best judgment"
+          "text": "Add a note reminding analysts to use their best judgment"
         },
         {
           "id": "d",
-          "text": "Move the step to the end of the playbook"
+          "text": "Move the step to the end of the playbook after containment"
         }
       ]
     },
@@ -340,7 +340,7 @@
       "options": [
         {
           "id": "a",
-          "text": "An automated step that queries the reputation service and updates the case"
+          "text": "An automated lookup step that updates the case"
         },
         {
           "id": "b",
@@ -508,7 +508,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Block the deployment and send the findings back to the template owner to correct"
+          "text": "Block the release and return it to the owner for correction"
         },
         {
           "id": "b",
@@ -633,7 +633,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Disable the rule entirely"
+          "text": "Disable the rule entirely for every source"
         },
         {
           "id": "b",
@@ -641,11 +641,11 @@
         },
         {
           "id": "c",
-          "text": "Delete the scanner's logs"
+          "text": "Delete the scanner's logs from the SIEM"
         },
         {
           "id": "d",
-          "text": "Exclude the approved scanner and keep the rule active"
+          "text": "Exclude that source and keep the rule active"
         }
       ]
     },
@@ -655,7 +655,9 @@
       ]
     },
     "explanation": "A narrow exception removes the known noise while leaving detection in place for everything else. Disabling the rule creates a blind spot, raising severity adds to the fatigue, and deleting logs destroys evidence.",
-    "acronyms": [],
+    "acronyms": [
+      "SIEM"
+    ],
     "searchTerm": "alert tuning exception"
   },
   {
@@ -843,15 +845,15 @@
         },
         {
           "id": "b",
-          "text": "Share one physical network cable"
+          "text": "Share one physical network cable between their hosts"
         },
         {
           "id": "c",
-          "text": "Merge their databases into a single file"
+          "text": "Merge their databases into a single shared file"
         },
         {
           "id": "d",
-          "text": "Display identical dashboard colors"
+          "text": "Display identical dashboard colors in both consoles"
         }
       ]
     },
@@ -1049,7 +1051,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A replacement operating system for the tool"
+          "text": "A replacement operating system installed beneath the tool"
         },
         {
           "id": "b",
@@ -1057,11 +1059,11 @@
         },
         {
           "id": "c",
-          "text": "A paper checklist for analysts"
+          "text": "A paper checklist that analysts print for each shift"
         },
         {
           "id": "d",
-          "text": "A hardware appliance that stores backups"
+          "text": "A hardware appliance that stores nightly backups"
         }
       ]
     },
@@ -1423,7 +1425,7 @@
         },
         {
           "id": "s6",
-          "text": "Review the results and tune the workflow"
+          "text": "Review live production results and tune the workflow"
         },
         {
           "id": "s1",
@@ -1651,7 +1653,7 @@
           "options": [
             {
               "id": "o1",
-              "text": "Analyst runs it by hand each hour"
+              "text": "Analyst runs it by hand at the top of each hour"
             },
             {
               "id": "o2",
@@ -1659,7 +1661,7 @@
             },
             {
               "id": "o3",
-              "text": "A weekly scheduled sweep"
+              "text": "A weekly scheduled sweep of the report mailbox"
             }
           ]
         },
@@ -1669,15 +1671,15 @@
           "options": [
             {
               "id": "o1",
-              "text": "Skip enrichment to save time"
+              "text": "Skip enrichment to save analyst time on each case"
             },
             {
               "id": "o2",
-              "text": "Email the link to all staff for opinions"
+              "text": "Email the link to all staff and ask for opinions"
             },
             {
               "id": "o3",
-              "text": "Query a reputation service through its API and attach the result"
+              "text": "Look up the link in a reputation service via API"
             }
           ]
         },
@@ -1687,15 +1689,15 @@
           "options": [
             {
               "id": "o1",
-              "text": "Block the link, quarantine matching messages and notify the analyst"
+              "text": "Block the link and quarantine matching messages"
             },
             {
               "id": "o2",
-              "text": "Shut down the mail server"
+              "text": "Shut down the mail server until the next morning"
             },
             {
               "id": "o3",
-              "text": "Close the case with no action"
+              "text": "Close the case with no action and keep the message"
             }
           ]
         },
@@ -1705,7 +1707,7 @@
           "options": [
             {
               "id": "o1",
-              "text": "Reset every user in the company at once"
+              "text": "Reset every user in the company at the same time"
             },
             {
               "id": "o2",
@@ -1713,7 +1715,7 @@
             },
             {
               "id": "o3",
-              "text": "Leave all passwords as they are"
+              "text": "Leave all passwords as they are until the next cycle"
             }
           ]
         },
@@ -1723,15 +1725,15 @@
           "options": [
             {
               "id": "o1",
-              "text": "Log each action with its input and result in the case"
+              "text": "Log each action and its result in the case"
             },
             {
               "id": "o2",
-              "text": "Log failures only"
+              "text": "Log failures only and discard successful steps"
             },
             {
               "id": "o3",
-              "text": "Turn logging off during the trial"
+              "text": "Turn logging off during the trial to save storage"
             }
           ]
         }
@@ -1751,9 +1753,9 @@
     "partExplanations": {
       "trigger": "A webhook pushes the event the moment a user reports it.",
       "enrich": "An API lookup adds a verdict without manual copying.",
-      "contain": "Blocking the link and quarantining matches is proportionate and keeps a person informed.",
+      "contain": "Blocking the link and quarantining matches is proportionate and limits impact.",
       "reset": "An approval point keeps a disruptive action under human control.",
-      "log": "Recording each action, input and result supports review and tuning."
+      "log": "Recording each action and its result supports review and tuning."
     },
     "acronyms": [
       "API",

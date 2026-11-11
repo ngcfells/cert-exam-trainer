@@ -48,7 +48,7 @@
     "status": "draft",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "An analyst has a saved capture open in Wireshark and wants to read the full text exchanged in one conversation between two hosts. Which feature does this?",
+    "stem": "An analyst has a saved capture open in Wireshark and wants to read the full text exchanged in one conversation between two hosts. Which Wireshark feature does this?",
     "payload": {
       "options": [
         {
@@ -215,12 +215,12 @@
     "status": "draft",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A Snort sensor raises the rule below for `ws-0412.example.internal`. What does a match mean?\n\n```\nalert tcp $HOME_NET any -> $EXTERNAL_NET 4444 (msg:\"Outbound shell port\"; flow:established,to_server; sid:1000042; rev:2;)\n```",
+    "stem": "A Snort sensor raises an alert from the rule below for `ws-0412.example.internal`. What does a match mean?\n\n```\nalert tcp $HOME_NET any -> $EXTERNAL_NET 4444 (msg:\"Outbound shell port\"; flow:established,to_server; sid:1000042; rev:2;)\n```",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "An internal host has an open session to an outside server on port 4444"
+          "text": "An internal host has an open session outward on port 4444"
         },
         {
           "id": "b",
@@ -241,7 +241,7 @@
         "a"
       ]
     },
-    "explanation": "The header reads internal source to external destination on port 4444, and `flow:established,to_server` means the session is already up and heading outward. A scan or an inbound listener would reverse the direction, and `rev:2` is only the rule revision number.",
+    "explanation": "The header reads internal source to external destination on port 4444, and `flow:established,to_server` means the session is already up and heading outward. A scan or an inbound listener would reverse the direction. `rev:2` is only the rule revision number and does not show whether the rule is loaded.",
     "acronyms": []
   },
   {
@@ -347,11 +347,11 @@
         },
         {
           "id": "c",
-          "text": "Guessing that ended in a success from an outside address; confirm with the user"
+          "text": "Guessing that worked from an outside address; confirm with the user"
         },
         {
           "id": "d",
-          "text": "A lockout test by the service desk using one retry"
+          "text": "A lockout test by the service desk, ending in one retry"
         }
       ]
     },
@@ -392,7 +392,7 @@
         },
         {
           "id": "d",
-          "text": "The semicolon between commands"
+          "text": "The spacing between the switches and arguments"
         },
         {
           "id": "e",
@@ -411,7 +411,7 @@
         "c"
       ]
     },
-    "explanation": "A hidden window, an encoded payload and downloading then running remote text are all common concealment or staging traits. A semicolon, the executable name and a quoted string are ordinary syntax that appear in legitimate scripts.",
+    "explanation": "A hidden window, an encoded payload and downloading then running remote text are all common concealment or staging traits. Spacing between arguments, the executable name and a quoted string are ordinary syntax that appear in legitimate scripts.",
     "acronyms": []
   },
   {
@@ -429,7 +429,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A community platform where members share and consume indicator collections"
+          "text": "A community platform for sharing indicator collections"
         },
         {
           "id": "b",
@@ -437,7 +437,7 @@
         },
         {
           "id": "c",
-          "text": "A packet analyzer for saved captures"
+          "text": "A packet analyzer for reading saved captures"
         },
         {
           "id": "d",
@@ -478,7 +478,7 @@
         },
         {
           "id": "c",
-          "text": "Disable the user's mailbox forwarding rule today"
+          "text": "Disable the mailbox forwarding rule on the user's account"
         },
         {
           "id": "d",
@@ -764,7 +764,7 @@
         },
         {
           "id": "b",
-          "text": "A file that starts with `4D 5A 90 00` and contains `invoice_` but not `cmd.exe /c`"
+          "text": "A file that starts with `4D 5A 90 00` and contains `invoice_`"
         },
         {
           "id": "c",
@@ -781,7 +781,7 @@
         "b"
       ]
     },
-    "explanation": "The condition requires the header bytes at offset zero and at least one of the two strings, so the first option qualifies. Without the header the other conditions cannot be met, and a file with no string fails the second half.",
+    "explanation": "The condition requires the header bytes at offset zero and at least one of the two strings, so the second option qualifies. Without the header the other conditions cannot be met, and a file with no string fails the second half.",
     "acronyms": [
       "YARA"
     ]
@@ -881,7 +881,7 @@
       "options": [
         {
           "id": "a",
-          "text": "E-mail gateway logs showing delivery of the message"
+          "text": "Email gateway logs showing the message delivery"
         },
         {
           "id": "b",
@@ -889,15 +889,15 @@
         },
         {
           "id": "c",
-          "text": "The printer firmware version list"
+          "text": "The printer firmware version list kept by facilities"
         },
         {
           "id": "d",
-          "text": "The nightly backup job schedule"
+          "text": "The nightly backup job schedule for file servers"
         },
         {
           "id": "e",
-          "text": "The badge reader list for the lobby"
+          "text": "The badge reader list for the lobby entrance doors"
         }
       ]
     },
@@ -1131,15 +1131,15 @@
       "options": [
         {
           "id": "a",
-          "text": "JSON stores data as key-value pairs that tools can query by field name"
+          "text": "JSON stores key-value pairs that tools can query by field"
         },
         {
           "id": "b",
-          "text": "YAML shows structure through indentation and is common in rule files"
+          "text": "YAML uses indentation for structure and suits rule files"
         },
         {
           "id": "c",
-          "text": "XML cannot hold nested elements"
+          "text": "XML cannot hold elements nested within other elements"
         },
         {
           "id": "d",
@@ -1184,15 +1184,15 @@
         },
         {
           "id": "b",
-          "text": "A hosted sandbox for detonating files"
+          "text": "A hosted sandbox for detonating suspicious files"
         },
         {
           "id": "c",
-          "text": "An open-source framework for building behavior-analytics detections on log data"
+          "text": "An open-source behavior analytics framework for log data"
         },
         {
           "id": "d",
-          "text": "A registry of domain ownership records"
+          "text": "A registry of domain ownership and contact records"
         }
       ]
     },
@@ -1343,7 +1343,7 @@
       "options": [
         {
           "id": "a",
-          "text": "The SPF result is fail"
+          "text": "The SPF check returned fail"
         },
         {
           "id": "b",
@@ -1440,7 +1440,7 @@
             },
             {
               "id": "block",
-              "text": "Block 203.0.113.50 at the edge and review application logs for more of its requests"
+              "text": "Block 203.0.113.50 at the edge, then review its requests"
             },
             {
               "id": "email",
@@ -1454,20 +1454,146 @@
       "accept": {
         "find": [
           "grep 203.0.113.50 access.log",
-          "grep \"203.0.113.50\" access.log",
-          "grep '203.0.113.50' access.log",
-          "grep -F 203.0.113.50 access.log",
-          "grep -n 203.0.113.50 access.log",
-          "grep -F \"203.0.113.50\" access.log",
-          "grep -F '203.0.113.50' access.log",
           "grep 203.0.113.50 ./access.log",
+          "grep \"203.0.113.50\" access.log",
           "grep \"203.0.113.50\" ./access.log",
+          "grep '203.0.113.50' access.log",
           "grep '203.0.113.50' ./access.log",
-          "cat access.log | grep 203.0.113.50",
-          "cat access.log | grep \"203.0.113.50\"",
-          "cat access.log | grep '203.0.113.50'",
+          "grep 203\\.0\\.113\\.50 access.log",
+          "grep 203\\.0\\.113\\.50 ./access.log",
+          "grep \"203\\.0\\.113\\.50\" access.log",
+          "grep \"203\\.0\\.113\\.50\" ./access.log",
+          "grep '203\\.0\\.113\\.50' access.log",
+          "grep '203\\.0\\.113\\.50' ./access.log",
+          "grep -F 203.0.113.50 access.log",
+          "grep -F 203.0.113.50 ./access.log",
+          "grep -F \"203.0.113.50\" access.log",
+          "grep -F \"203.0.113.50\" ./access.log",
+          "grep -F '203.0.113.50' access.log",
+          "grep -F '203.0.113.50' ./access.log",
+          "grep -n 203.0.113.50 access.log",
+          "grep -n 203.0.113.50 ./access.log",
+          "grep -n \"203.0.113.50\" access.log",
+          "grep -n \"203.0.113.50\" ./access.log",
+          "grep -n '203.0.113.50' access.log",
+          "grep -n '203.0.113.50' ./access.log",
+          "grep -n 203\\.0\\.113\\.50 access.log",
+          "grep -n 203\\.0\\.113\\.50 ./access.log",
+          "grep -n \"203\\.0\\.113\\.50\" access.log",
+          "grep -n \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -n '203\\.0\\.113\\.50' access.log",
+          "grep -n '203\\.0\\.113\\.50' ./access.log",
+          "grep -H 203.0.113.50 access.log",
+          "grep -H 203.0.113.50 ./access.log",
+          "grep -H \"203.0.113.50\" access.log",
+          "grep -H \"203.0.113.50\" ./access.log",
+          "grep -H '203.0.113.50' access.log",
+          "grep -H '203.0.113.50' ./access.log",
+          "grep -H 203\\.0\\.113\\.50 access.log",
+          "grep -H 203\\.0\\.113\\.50 ./access.log",
+          "grep -H \"203\\.0\\.113\\.50\" access.log",
+          "grep -H \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -H '203\\.0\\.113\\.50' access.log",
+          "grep -H '203\\.0\\.113\\.50' ./access.log",
+          "grep -i 203.0.113.50 access.log",
+          "grep -i 203.0.113.50 ./access.log",
+          "grep -i \"203.0.113.50\" access.log",
+          "grep -i \"203.0.113.50\" ./access.log",
+          "grep -i '203.0.113.50' access.log",
+          "grep -i '203.0.113.50' ./access.log",
+          "grep -i 203\\.0\\.113\\.50 access.log",
+          "grep -i 203\\.0\\.113\\.50 ./access.log",
+          "grep -i \"203\\.0\\.113\\.50\" access.log",
+          "grep -i \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -i '203\\.0\\.113\\.50' access.log",
+          "grep -i '203\\.0\\.113\\.50' ./access.log",
+          "grep -- 203.0.113.50 access.log",
+          "grep -- 203.0.113.50 ./access.log",
+          "grep -- \"203.0.113.50\" access.log",
+          "grep -- \"203.0.113.50\" ./access.log",
+          "grep -- '203.0.113.50' access.log",
+          "grep -- '203.0.113.50' ./access.log",
+          "grep -- 203\\.0\\.113\\.50 access.log",
+          "grep -- 203\\.0\\.113\\.50 ./access.log",
+          "grep -- \"203\\.0\\.113\\.50\" access.log",
+          "grep -- \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -- '203\\.0\\.113\\.50' access.log",
+          "grep -- '203\\.0\\.113\\.50' ./access.log",
           "grep -e 203.0.113.50 access.log",
-          "grep -H 203.0.113.50 access.log"
+          "grep -e 203.0.113.50 ./access.log",
+          "grep -e \"203.0.113.50\" access.log",
+          "grep -e \"203.0.113.50\" ./access.log",
+          "grep -e '203.0.113.50' access.log",
+          "grep -e '203.0.113.50' ./access.log",
+          "grep -e 203\\.0\\.113\\.50 access.log",
+          "grep -e 203\\.0\\.113\\.50 ./access.log",
+          "grep -e \"203\\.0\\.113\\.50\" access.log",
+          "grep -e \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -e '203\\.0\\.113\\.50' access.log",
+          "grep -e '203\\.0\\.113\\.50' ./access.log",
+          "egrep 203.0.113.50 access.log",
+          "egrep 203.0.113.50 ./access.log",
+          "egrep \"203.0.113.50\" access.log",
+          "egrep \"203.0.113.50\" ./access.log",
+          "egrep '203.0.113.50' access.log",
+          "egrep '203.0.113.50' ./access.log",
+          "egrep 203\\.0\\.113\\.50 access.log",
+          "egrep 203\\.0\\.113\\.50 ./access.log",
+          "egrep \"203\\.0\\.113\\.50\" access.log",
+          "egrep \"203\\.0\\.113\\.50\" ./access.log",
+          "egrep '203\\.0\\.113\\.50' access.log",
+          "egrep '203\\.0\\.113\\.50' ./access.log",
+          "fgrep 203.0.113.50 access.log",
+          "fgrep 203.0.113.50 ./access.log",
+          "fgrep \"203.0.113.50\" access.log",
+          "fgrep \"203.0.113.50\" ./access.log",
+          "fgrep '203.0.113.50' access.log",
+          "fgrep '203.0.113.50' ./access.log",
+          "grep -nF 203.0.113.50 access.log",
+          "grep -nF 203.0.113.50 ./access.log",
+          "grep -nF \"203.0.113.50\" access.log",
+          "grep -nF \"203.0.113.50\" ./access.log",
+          "grep -nF '203.0.113.50' access.log",
+          "grep -nF '203.0.113.50' ./access.log",
+          "grep -Fn 203.0.113.50 access.log",
+          "grep -Fn 203.0.113.50 ./access.log",
+          "grep -Fn \"203.0.113.50\" access.log",
+          "grep -Fn \"203.0.113.50\" ./access.log",
+          "grep -Fn '203.0.113.50' access.log",
+          "grep -Fn '203.0.113.50' ./access.log",
+          "cat access.log | grep 203.0.113.50",
+          "grep 203.0.113.50 < access.log",
+          "grep < access.log 203.0.113.50",
+          "cat access.log | grep \"203.0.113.50\"",
+          "grep \"203.0.113.50\" < access.log",
+          "grep < access.log \"203.0.113.50\"",
+          "cat access.log | grep '203.0.113.50'",
+          "grep '203.0.113.50' < access.log",
+          "grep < access.log '203.0.113.50'",
+          "cat access.log | grep 203\\.0\\.113\\.50",
+          "grep 203\\.0\\.113\\.50 < access.log",
+          "grep < access.log 203\\.0\\.113\\.50",
+          "cat access.log | grep \"203\\.0\\.113\\.50\"",
+          "grep \"203\\.0\\.113\\.50\" < access.log",
+          "grep < access.log \"203\\.0\\.113\\.50\"",
+          "cat access.log | grep '203\\.0\\.113\\.50'",
+          "grep '203\\.0\\.113\\.50' < access.log",
+          "grep < access.log '203\\.0\\.113\\.50'",
+          "cat access.log | grep -F 203.0.113.50",
+          "grep -F 203.0.113.50 < access.log",
+          "cat access.log | grep -F \"203.0.113.50\"",
+          "grep -F \"203.0.113.50\" < access.log",
+          "cat access.log | grep -F '203.0.113.50'",
+          "grep -F '203.0.113.50' < access.log",
+          "awk '/203.0.113.50/' access.log",
+          "awk '/203\\.0\\.113\\.50/' access.log",
+          "awk '/203.0.113.50/ {print}' access.log",
+          "awk '/203\\.0\\.113\\.50/ {print}' access.log",
+          "awk '/203.0.113.50/' ./access.log",
+          "awk '/203\\.0\\.113\\.50/' ./access.log",
+          "awk '/203.0.113.50/ {print}' ./access.log",
+          "awk '/203\\.0\\.113\\.50/ {print}' ./access.log",
+          "cat access.log | awk '/203.0.113.50/'"
         ],
         "read": [
           "sqli"
@@ -1644,7 +1770,7 @@
     "type": "pbq-hotspot",
     "difficulty": 2,
     "pbqWeight": 6,
-    "stem": "An EDR process list from `ws-0412.example.internal` shows six events. Select every event that is a likely indicator of malicious activity.",
+    "stem": "An EDR process list from `ws-0412.example.internal` shows six events. Select the THREE events that are likely indicators of malicious activity.",
     "payload": {
       "width": 480,
       "height": 220,
@@ -1995,7 +2121,7 @@
     "type": "pbq-order",
     "difficulty": 2,
     "pbqWeight": 5,
-    "stem": "Triage a suspicious attachment from the least risky step to the most risky. Steps that only need the hash come before steps that read the file, static steps come before dynamic ones, and a detection rule is written only after behavior is known. Hunting for other copies uses that rule. Put the steps in order.",
+    "stem": "Put the triage steps for a suspicious attachment in the order an analyst should perform them.",
     "payload": {
       "steps": [
         {

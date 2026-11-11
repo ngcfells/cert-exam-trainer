@@ -35,7 +35,7 @@
         "c"
       ]
     },
-    "explanation": "Generating confident but fabricated content is a hallucination. Model poisoning corrupts training data, exfiltration is data theft, and prompt chaining just links prompts in sequence.",
+    "explanation": "Generating confident but fabricated content is a hallucination. Model poisoning corrupts training data, exfiltration is data theft, and output filtering screens what a model returns rather than creating fabricated content.",
     "acronyms": [
       "AI"
     ]
@@ -109,7 +109,7 @@
         },
         {
           "id": "d",
-          "text": "Search the raw logs for the connection and treat the claim as unverified"
+          "text": "Search the raw records for the activity and treat the claim as unverified"
         }
       ]
     },
@@ -159,7 +159,7 @@
         "b"
       ]
     },
-    "explanation": "Submitting PII to an external service is a data exposure risk because the provider may store or reuse it. The other options describe side effects that are not the main risk.",
+    "explanation": "Submitting PII to an external service is a data exposure risk because the provider may store or reuse it. Refused later requests, account lockouts and formatting errors are side effects, not the main risk.",
     "acronyms": [
       "AI",
       "PII"
@@ -267,15 +267,15 @@
         },
         {
           "id": "b",
-          "text": "Retraining more often on whatever data arrives"
+          "text": "Retraining more often on whatever data arrives from any public feed"
         },
         {
           "id": "c",
-          "text": "Encrypting the model file at rest"
+          "text": "Encrypting the model file at rest on the training server"
         },
         {
           "id": "d",
-          "text": "Limiting how many users can query the model"
+          "text": "Limiting how many users can query the model from the outside"
         }
       ]
     },
@@ -323,7 +323,7 @@
         "c"
       ]
     },
-    "explanation": "Text crafted to override a model's instructions is a malicious prompt, specifically prompt injection. Cross-site scripting targets browsers, stuffing replays credentials, and poisoning alters training data.",
+    "explanation": "Text crafted to override a model's instructions is a malicious prompt, specifically prompt injection. Cross-site scripting targets browsers, credential stuffing replays stolen credentials, and a token replay attack reuses a captured session token.",
     "acronyms": [
       "AI"
     ]
@@ -682,15 +682,15 @@
         },
         {
           "id": "b",
-          "text": "Replacing the log retention policy"
+          "text": "Replacing the written log retention policy for the whole company"
         },
         {
           "id": "c",
-          "text": "Physically securing the log server"
+          "text": "Physically securing the log server room with badge access"
         },
         {
           "id": "d",
-          "text": "Signing evidence for legal custody"
+          "text": "Signing evidence forms to preserve the legal chain of custody"
         }
       ]
     },
@@ -740,7 +740,7 @@
         "d"
       ]
     },
-    "explanation": "Four rapid failures across account names from one address and then a success suggest password guessing that worked. The summary mislabeled it, so the analyst should not accept it unchecked.",
+    "explanation": "Four rapid failures across account names from one address and then a success suggest password guessing that worked. The summary mislabeled it. Calling it routine ignores that, the failures do not show a trusted scanner, and the root attempt is part of the same pattern, so the analyst should not accept it unchecked.",
     "acronyms": [
       "AI"
     ]
@@ -843,7 +843,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A fast first-draft timeline that the analyst then validates"
+          "text": "A fast first draft of events that the analyst then validates"
         },
         {
           "id": "b",
@@ -884,15 +884,15 @@
       "options": [
         {
           "id": "a",
-          "text": "The assistant was poisoned during retraining"
+          "text": "The assistant was poisoned during its most recent retraining run"
         },
         {
           "id": "b",
-          "text": "The assistant invented the hostname it named"
+          "text": "The assistant invented the hostname it named from nothing in the logs"
         },
         {
           "id": "c",
-          "text": "Logs cannot identify the first infected host"
+          "text": "Logs cannot identify the first infected host in an investigation"
         },
         {
           "id": "d",
@@ -968,11 +968,11 @@
       "options": [
         {
           "id": "a",
-          "text": "It removes the need for endpoint log collection"
+          "text": "It removes the need for endpoint log collection across the network"
         },
         {
           "id": "b",
-          "text": "It gives every alert the same severity"
+          "text": "It gives every alert the same severity regardless of the source"
         },
         {
           "id": "c",
@@ -980,7 +980,7 @@
         },
         {
           "id": "d",
-          "text": "It produces identical results on every run"
+          "text": "It produces identical results on every run of the same input"
         }
       ]
     },
@@ -1010,7 +1010,7 @@
       "options": [
         {
           "id": "a",
-          "text": "SOAR"
+          "text": "SOAR platform"
         },
         {
           "id": "b",
@@ -1097,19 +1097,19 @@
       "options": [
         {
           "id": "a",
-          "text": "More verbose output for each playbook step"
+          "text": "More verbose output written for each playbook step in the log"
         },
         {
           "id": "b",
-          "text": "A faster model so the steps complete sooner"
+          "text": "A faster model so the playbook steps complete in less time"
         },
         {
           "id": "c",
-          "text": "Removal of the email quarantine step"
+          "text": "Removal of the email quarantine step from the playbook entirely"
         },
         {
           "id": "d",
-          "text": "A human approval gate before high-impact actions such as disabling an executive account"
+          "text": "A human approval gate before high-impact actions such as disabling an account"
         }
       ]
     },
@@ -1534,7 +1534,7 @@
         },
         {
           "id": "c4",
-          "text": "Malicious prompt"
+          "text": "Prompt injection"
         }
       ]
     },
@@ -1546,12 +1546,12 @@
         "p4": "c4"
       }
     },
-    "explanation": "Fabricated facts are hallucinations, sending sensitive data out is exposure, corrupting training input is poisoning, and instructions hidden in content are malicious prompts.",
+    "explanation": "Fabricated facts are hallucinations, sending sensitive data out is exposure, corrupting training input is poisoning, and instructions hidden in content are prompt injection.",
     "partExplanations": {
       "p1": "A nonexistent patch is a fabricated claim, so it is a hallucination.",
       "p2": "Sending customer data to a public service is data exposure.",
       "p3": "Seeding training feedback to change detection is model poisoning.",
-      "p4": "Instructions planted in a page are a malicious prompt."
+      "p4": "Instructions planted in a page are prompt injection."
     },
     "acronyms": [
       "AI"
@@ -1568,7 +1568,7 @@
     "status": "draft",
     "type": "pbq-order",
     "difficulty": 2,
-    "stem": "Put the steps of AI-assisted alert triage in the order they run. The ticket entry records the action that was taken, and analysts redact data before anything is sent to a tool.",
+    "stem": "Put the steps of AI-assisted alert triage in the order they run.",
     "payload": {
       "steps": [
         {
@@ -1657,11 +1657,11 @@
             },
             {
               "id": "public",
-              "text": "A public shared chatbot"
+              "text": "A public shared chatbot service online"
             },
             {
               "id": "personal",
-              "text": "An analyst personal account"
+              "text": "An analyst personal account on a chatbot site"
             }
           ]
         },
