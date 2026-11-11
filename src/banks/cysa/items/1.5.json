@@ -1,0 +1,2077 @@
+[
+  {
+    "id": "cs4-1-5-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A SOC lead asks the team to document the exact commands and console clicks for isolating a workstation, so any analyst on shift can follow them. Which document is being created?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A runbook"
+        },
+        {
+          "id": "b",
+          "text": "A risk register"
+        },
+        {
+          "id": "c",
+          "text": "A lessons-learned report"
+        },
+        {
+          "id": "d",
+          "text": "A business impact analysis"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A runbook gives exact, repeatable steps for one routine task. A risk register tracks risks, a lessons-learned report reviews a finished incident, and a business impact analysis estimates the cost of downtime.",
+    "acronyms": [
+      "SOC"
+    ],
+    "searchTerm": "runbook definition"
+  },
+  {
+    "id": "cs4-1-5-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which document defines, for one incident type such as phishing, who acts, which decisions are made and which response stages are followed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A hardware asset inventory for each site"
+        },
+        {
+          "id": "b",
+          "text": "A scenario-based response playbook"
+        },
+        {
+          "id": "c",
+          "text": "A rack and cable diagram"
+        },
+        {
+          "id": "d",
+          "text": "A signed vendor support contract"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A playbook describes the roles, decisions and stages for a type of incident. An asset inventory lists devices, a cable diagram shows physical layout, and a support contract sets vendor obligations; none of them guides a response.",
+    "acronyms": [],
+    "searchTerm": "playbook definition"
+  },
+  {
+    "id": "cs4-1-5-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Analysts on three shifts keep repeating each other's work and missing hand-offs during a long incident. Which improvement best addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Longer shifts for the most senior analyst"
+        },
+        {
+          "id": "b",
+          "text": "A separate chat room for each analyst"
+        },
+        {
+          "id": "c",
+          "text": "A shared case queue with named owners and shift notes"
+        },
+        {
+          "id": "d",
+          "text": "Removing the ticket system to cut down on administrative overhead"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "One queue with clear ownership and written notes keeps context across shifts. Longer shifts cause fatigue, private chat rooms hide information from the next shift, and dropping the tickets removes the only shared record.",
+    "acronyms": [],
+    "searchTerm": "SOC shift handoff"
+  },
+  {
+    "id": "cs4-1-5-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A SOC and a network operations team both react to the same outage alerts and sometimes issue contradictory instructions. What most improves coordination?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Muting the alerts that both teams receive"
+        },
+        {
+          "id": "b",
+          "text": "Letting whichever team responds first own the incident, regardless of skill"
+        },
+        {
+          "id": "c",
+          "text": "Having each team keep its own private tracker"
+        },
+        {
+          "id": "d",
+          "text": "A documented escalation path with named contacts and roles"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Defined contacts and decision rights settle who acts and when. Muting alerts hides real events, first-come ownership ignores who has the skills, and separate trackers deepen the gap between the teams.",
+    "acronyms": [
+      "SOC"
+    ],
+    "searchTerm": "SOC team coordination escalation"
+  },
+  {
+    "id": "cs4-1-5-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A playbook for suspected account compromise says only to lock the account, and new analysts carry this out in different ways. What should be added?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A linked runbook with the exact steps and checks"
+        },
+        {
+          "id": "b",
+          "text": "A longer introduction explaining why accounts matter"
+        },
+        {
+          "id": "c",
+          "text": "A glossary of attacker tactics"
+        },
+        {
+          "id": "d",
+          "text": "A note telling analysts to ask a manager each time"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The playbook holds the decisions, while a runbook gives the precise steps so every analyst does the task the same way. Background text, a glossary or constant manager approval does not make the action consistent.",
+    "acronyms": [],
+    "searchTerm": "playbook runbook linking"
+  },
+  {
+    "id": "cs4-1-5-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A playbook step reads: 'Analyst decides whether to disable the user.' Auditors find two analysts chose differently on nearly identical cases. Which revision best standardizes the decision?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the step so each analyst acts on instinct"
+        },
+        {
+          "id": "b",
+          "text": "Add decision criteria such as asset criticality, with an approval point"
+        },
+        {
+          "id": "c",
+          "text": "Add a note that analysts should use their best judgment"
+        },
+        {
+          "id": "d",
+          "text": "Move the step to the end of the playbook"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Written criteria and an approval point make the outcome repeatable and reviewable. Removing the step or urging judgment keeps the inconsistency, and moving the step changes only its position.",
+    "acronyms": [],
+    "searchTerm": "playbook decision criteria"
+  },
+  {
+    "id": "cs4-1-5-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which capability best describes SOAR?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Storing and indexing raw logs for long-term retention and audit"
+        },
+        {
+          "id": "b",
+          "text": "Scanning hosts for missing patches"
+        },
+        {
+          "id": "c",
+          "text": "Linking tools and automating response through workflows"
+        },
+        {
+          "id": "d",
+          "text": "Encrypting data at rest on endpoints"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "SOAR links security tools and automates response tasks in workflows. Log retention is a storage function, patch scanning belongs to vulnerability management, and encrypting data is a protection control.",
+    "acronyms": [
+      "SOAR"
+    ],
+    "searchTerm": "SOAR definition"
+  },
+  {
+    "id": "cs4-1-5-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A workflow receives a phishing report, extracts the link, checks its reputation and, if malicious, blocks it at the proxy. What term describes joining these separate tools into one sequence?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data normalization"
+        },
+        {
+          "id": "b",
+          "text": "Network segmentation"
+        },
+        {
+          "id": "c",
+          "text": "Code obfuscation"
+        },
+        {
+          "id": "d",
+          "text": "Orchestration"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Orchestration coordinates several tools into a single workflow. Normalization standardizes data formats, segmentation divides a network, and obfuscation hides content.",
+    "acronyms": [],
+    "searchTerm": "orchestration meaning"
+  },
+  {
+    "id": "cs4-1-5-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst spends an hour each day copying file hashes from alerts into a reputation site. Which SOAR use best reclaims that time?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An automated step that queries the reputation service and updates the case"
+        },
+        {
+          "id": "b",
+          "text": "A dashboard widget that counts the hashes each week"
+        },
+        {
+          "id": "c",
+          "text": "A playbook note asking analysts to paste faster"
+        },
+        {
+          "id": "d",
+          "text": "A scheduled report emailed to the manager"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Automating the lookup removes the repetitive copying and enriches the case in the same step. A counter widget, a request to work faster or a weekly report leaves the manual work in place.",
+    "acronyms": [
+      "SOAR"
+    ],
+    "searchTerm": "SOAR automated enrichment"
+  },
+  {
+    "id": "cs4-1-5-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A workflow quarantines any host that triggers an EDR alert. After a vendor update, 40 healthy servers were quarantined at once. Which design change best reduces this risk and keeps the automation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove every automated action from the workflow"
+        },
+        {
+          "id": "b",
+          "text": "Add an approval gate for critical assets and an hourly action cap"
+        },
+        {
+          "id": "c",
+          "text": "Quarantine hosts only after a full review at the next monthly meeting"
+        },
+        {
+          "id": "d",
+          "text": "Widen the alert condition to catch more hosts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An approval gate and a rate cap limit the damage from a faulty trigger while keeping speed for routine cases. Removing automation or waiting a month gives up the benefit, and a wider condition would quarantine even more hosts.",
+    "acronyms": [
+      "EDR"
+    ],
+    "searchTerm": "SOAR guardrails approval"
+  },
+  {
+    "id": "cs4-1-5-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does infrastructure as code let a team do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Replace all of the firewall rules with a single allow-any rule"
+        },
+        {
+          "id": "b",
+          "text": "Write detection signatures in a spreadsheet"
+        },
+        {
+          "id": "c",
+          "text": "Define and deploy systems from versioned, repeatable files"
+        },
+        {
+          "id": "d",
+          "text": "Store passwords inside each server image"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "IaC describes systems in files that can be versioned, reviewed and redeployed the same way each time. Allow-any rules, spreadsheet signatures and passwords baked into images are poor practice and are not what IaC means.",
+    "acronyms": [
+      "IaC"
+    ],
+    "searchTerm": "infrastructure as code definition"
+  },
+  {
+    "id": "cs4-1-5-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A security team keeps network rules as IaC files instead of changing them by hand in a console. What benefit does this give?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rules take effect without any testing"
+        },
+        {
+          "id": "b",
+          "text": "Each engineer can edit the firewalls directly without any record of it"
+        },
+        {
+          "id": "c",
+          "text": "Differences between environments grow over time"
+        },
+        {
+          "id": "d",
+          "text": "Changes are reviewed, versioned and can be audited or rolled back"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Files in a repository bring review, history and rollback. Skipping tests, losing the record of edits and drifting environments are the problems that manual console changes tend to cause.",
+    "acronyms": [
+      "IaC"
+    ],
+    "searchTerm": "IaC benefits security"
+  },
+  {
+    "id": "cs4-1-5-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A pipeline scans this IaC definition before deployment and reports the findings.\n\n```\nresource: storage_bucket\n  name: hr-exports\n  public_access: true\n  encryption: false\n```\n\nWhat is the best analyst response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Block the deployment and send the findings back to the template owner to correct"
+        },
+        {
+          "id": "b",
+          "text": "Approve it and edit the live resource later"
+        },
+        {
+          "id": "c",
+          "text": "Deploy it and add a SIEM rule watching that storage"
+        },
+        {
+          "id": "d",
+          "text": "Encrypt the template file in the repository"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Stopping the release before it is live and returning it to the owner fixes the cause at the source. Approving first leaves data exposed, a SIEM rule only detects the exposure afterward, and encrypting the template file does not change the resource it describes.",
+    "acronyms": [
+      "IaC",
+      "SIEM"
+    ],
+    "searchTerm": "IaC scan misconfiguration"
+  },
+  {
+    "id": "cs4-1-5-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Adding geolocation, reputation and asset-owner details to a raw alert is an example of what?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data masking and redaction"
+        },
+        {
+          "id": "b",
+          "text": "Data enrichment"
+        },
+        {
+          "id": "c",
+          "text": "Routine log rotation"
+        },
+        {
+          "id": "d",
+          "text": "Alert suppression rules"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Enrichment adds context so an analyst can judge an alert faster. Masking hides values, log rotation manages file size, and suppression hides alerts.",
+    "acronyms": [],
+    "searchTerm": "alert data enrichment"
+  },
+  {
+    "id": "cs4-1-5-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An alert lists only the address 198.51.100.23 and a username. Which enrichment would most help the analyst judge it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The number of alerts closed last week"
+        },
+        {
+          "id": "b",
+          "text": "The rack location of the log collector in the datacenter"
+        },
+        {
+          "id": "c",
+          "text": "Reputation data and past sightings for that value"
+        },
+        {
+          "id": "d",
+          "text": "The license expiry date of the SIEM"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Reputation and history show whether the value has been seen in attacks. Closure counts, collector placement and license dates say nothing about this alert.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "searchTerm": "enrichment reputation lookup"
+  },
+  {
+    "id": "cs4-1-5-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A detection rule fires 300 times a day, and 98 percent are confirmed benign activity from an approved vulnerability scanner. What is the best tuning action?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Disable the rule entirely"
+        },
+        {
+          "id": "b",
+          "text": "Raise its severity so that analysts review it before anything else"
+        },
+        {
+          "id": "c",
+          "text": "Delete the scanner's logs"
+        },
+        {
+          "id": "d",
+          "text": "Exclude the approved scanner and keep the rule active"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A narrow exception removes the known noise while leaving detection in place for everything else. Disabling the rule creates a blind spot, raising severity adds to the fatigue, and deleting logs destroys evidence.",
+    "acronyms": [],
+    "searchTerm": "alert tuning exception"
+  },
+  {
+    "id": "cs4-1-5-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "After tuning a rule to cut false positives, a purple-team test shows it no longer detects a known attack. What does this show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The tuning was too broad and created false negatives"
+        },
+        {
+          "id": "b",
+          "text": "The rule now has a perfect detection rate"
+        },
+        {
+          "id": "c",
+          "text": "The attack method is no longer relevant"
+        },
+        {
+          "id": "d",
+          "text": "The SIEM has run out of storage space for the new alerts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Overly wide exclusions can hide real activity, which is a false negative. A missed known attack is not a perfect rate, it does not retire the method, and storage is unrelated to a rule's logic.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "searchTerm": "false negative tuning"
+  },
+  {
+    "id": "cs4-1-5-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is the main goal of alert tuning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Increasing the number of alerts generated each day"
+        },
+        {
+          "id": "b",
+          "text": "Cutting noise to surface real threats"
+        },
+        {
+          "id": "c",
+          "text": "Removing the need for any analyst on shift"
+        },
+        {
+          "id": "d",
+          "text": "Archiving old logs sooner than policy requires"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Tuning trims low-value alerts so analysts can focus on genuine ones. More alerts add to the burden, tuning does not replace people, and archiving is a retention task.",
+    "acronyms": [],
+    "searchTerm": "alert tuning goal"
+  },
+  {
+    "id": "cs4-1-5-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which dashboard element would best show a SOC manager whether response is getting faster over time?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A pie chart of the server vendors in use"
+        },
+        {
+          "id": "b",
+          "text": "A list of the open firewall ports by host"
+        },
+        {
+          "id": "c",
+          "text": "A trend line of mean time to respond"
+        },
+        {
+          "id": "d",
+          "text": "A count of installed applications per host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A trend over time of response speed answers the question directly. Vendor mix, open ports and software counts describe the environment rather than response performance.",
+    "acronyms": [
+      "SOC"
+    ],
+    "searchTerm": "SOC dashboard metrics"
+  },
+  {
+    "id": "cs4-1-5-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A dashboard for executives is crowded with raw log tables and technical fields. Which change best fits the audience?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add more columns so that no detail is hidden from the viewer"
+        },
+        {
+          "id": "b",
+          "text": "Replace the charts with packet captures"
+        },
+        {
+          "id": "c",
+          "text": "Refresh the data more often"
+        },
+        {
+          "id": "d",
+          "text": "Show a few summarized KPIs with trends and plain labels"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Leaders need a short set of clear measures and trends. Extra columns and packet captures add detail they cannot use, and faster refresh does not change readability.",
+    "acronyms": [
+      "KPI"
+    ],
+    "searchTerm": "executive dashboard design"
+  },
+  {
+    "id": "cs4-1-5-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does an API let two security tools do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Exchange data and trigger actions through defined requests"
+        },
+        {
+          "id": "b",
+          "text": "Share one physical network cable"
+        },
+        {
+          "id": "c",
+          "text": "Merge their databases into a single file"
+        },
+        {
+          "id": "d",
+          "text": "Display identical dashboard colors"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An API is a defined interface through which one program requests data or actions from another. Cabling, database merging and color schemes are unrelated.",
+    "acronyms": [
+      "API"
+    ],
+    "searchTerm": "API definition security tools"
+  },
+  {
+    "id": "cs4-1-5-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A script calls a case-management API and receives an authentication error. What should be checked first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The number of steps in the playbook"
+        },
+        {
+          "id": "b",
+          "text": "Whether the access token has expired or is missing"
+        },
+        {
+          "id": "c",
+          "text": "How much free disk space remains on the SIEM archive server"
+        },
+        {
+          "id": "d",
+          "text": "The color theme of the dashboard"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Authentication errors usually point to a missing, expired or wrong credential. Playbook length, archive space and display theme do not affect whether a call is authenticated.",
+    "acronyms": [
+      "API",
+      "SIEM"
+    ],
+    "searchTerm": "API authentication error"
+  },
+  {
+    "id": "cs4-1-5-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A playbook loop pushing 500 alerts to a case system gets this response.\n\n```\nHTTP/1.1 429 Too Many Requests\nRetry-After: 60\nContent-Type: application/json\n```\n\nWhat is the best fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Rotate the token on every request"
+        },
+        {
+          "id": "b",
+          "text": "Change the case title and priority in each request sent"
+        },
+        {
+          "id": "c",
+          "text": "Throttle the calls and retry after the stated delay"
+        },
+        {
+          "id": "d",
+          "text": "Open an additional firewall port"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A 429 status means the sender is exceeding a rate limit, and the header says how long to wait. Rotating tokens, renaming cases or opening ports does not change the request rate.",
+    "acronyms": [],
+    "searchTerm": "API rate limit 429"
+  },
+  {
+    "id": "cs4-1-5-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A SIEM should open a SOAR case the moment a high-severity rule fires, with nobody polling for it. Which integration fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A nightly exported report"
+        },
+        {
+          "id": "b",
+          "text": "A weekly vulnerability scan"
+        },
+        {
+          "id": "c",
+          "text": "A shared mailbox read by analysts"
+        },
+        {
+          "id": "d",
+          "text": "A webhook"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A webhook pushes an event to a listener as soon as it happens. A nightly report, weekly scan and shared mailbox all introduce delay or manual checking.",
+    "acronyms": [
+      "SIEM",
+      "SOAR"
+    ],
+    "searchTerm": "webhook SIEM SOAR"
+  },
+  {
+    "id": "cs4-1-5-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "How does a webhook differ from an API that is polled on a schedule?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It pushes an event to a listener as soon as the event occurs"
+        },
+        {
+          "id": "b",
+          "text": "It requires the receiver to keep asking the sender repeatedly for updates"
+        },
+        {
+          "id": "c",
+          "text": "It stores events locally until an analyst exports them"
+        },
+        {
+          "id": "d",
+          "text": "It encrypts every packet on the network"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A webhook is event-driven: the sender calls the receiver when something happens. Polling means the receiver keeps asking, local storage is not part of the idea, and encryption is a separate property.",
+    "acronyms": [
+      "API"
+    ],
+    "searchTerm": "webhook versus polling"
+  },
+  {
+    "id": "cs4-1-5-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is a plug-in for a security tool?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A replacement operating system for the tool"
+        },
+        {
+          "id": "b",
+          "text": "An add-on module that extends the tool with a new capability"
+        },
+        {
+          "id": "c",
+          "text": "A paper checklist for analysts"
+        },
+        {
+          "id": "d",
+          "text": "A hardware appliance that stores backups"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A plug-in adds features to an existing product without replacing it. An operating system, a paper checklist and a backup appliance are different things.",
+    "acronyms": [],
+    "searchTerm": "plug-in definition"
+  },
+  {
+    "id": "cs4-1-5-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A SOC wants to install a vendor plug-in so its EDR console can pull in a threat feed. What should the team review before installing it widely?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The color scheme it applies to the console"
+        },
+        {
+          "id": "b",
+          "text": "Whether the vendor offers a printed manual and training videos"
+        },
+        {
+          "id": "c",
+          "text": "The permissions it requests and where it comes from"
+        },
+        {
+          "id": "d",
+          "text": "How its logo appears in reports"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A plug-in runs inside the tool, so its permissions and source determine the risk it adds. Appearance, manuals and logos do not affect security.",
+    "acronyms": [
+      "EDR",
+      "SOC"
+    ],
+    "searchTerm": "plug-in security review"
+  },
+  {
+    "id": "cs4-1-5-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO benefits do runbooks give a SOC?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Consistent execution of a task across analysts"
+        },
+        {
+          "id": "b",
+          "text": "Removal of the need to log actions"
+        },
+        {
+          "id": "c",
+          "text": "Faster onboarding of new analysts"
+        },
+        {
+          "id": "d",
+          "text": "Automatic patching of every host"
+        },
+        {
+          "id": "e",
+          "text": "Prevention of all future incidents"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Runbooks make a task repeatable and help new staff work independently. They do not remove logging duties, patch hosts or stop incidents from occurring.",
+    "acronyms": [
+      "SOC"
+    ],
+    "searchTerm": "runbook benefits"
+  },
+  {
+    "id": "cs4-1-5-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO tasks are good candidates for full automation in a SOAR workflow?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Enriching an alert with reputation data"
+        },
+        {
+          "id": "b",
+          "text": "Approving a regulatory breach notice"
+        },
+        {
+          "id": "c",
+          "text": "Creating and assigning a ticket from an alert"
+        },
+        {
+          "id": "d",
+          "text": "Deciding to shut down a revenue-critical system"
+        },
+        {
+          "id": "e",
+          "text": "Briefing the board on residual risk"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Lookups and ticket creation are high-volume, low-risk and rule-based. Notices, shutdown decisions and board briefings carry business impact and need human judgment.",
+    "acronyms": [
+      "SOAR"
+    ],
+    "searchTerm": "SOAR automation candidates"
+  },
+  {
+    "id": "cs4-1-5-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE steps help tune a noisy detection rule without losing coverage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Measure the rule's true positive rate"
+        },
+        {
+          "id": "b",
+          "text": "Disable logging on the monitored hosts"
+        },
+        {
+          "id": "c",
+          "text": "Exclude documented benign sources"
+        },
+        {
+          "id": "d",
+          "text": "Raise the severity so it appears first"
+        },
+        {
+          "id": "e",
+          "text": "Test the change against known malicious samples"
+        },
+        {
+          "id": "f",
+          "text": "Delete past alerts to reduce the count"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Measuring, excluding known benign activity and retesting against malicious samples reduce noise while checking that detection still works. Disabling logs, raising severity and deleting alerts hide problems or add to them.",
+    "acronyms": [],
+    "searchTerm": "tuning detection rules steps"
+  },
+  {
+    "id": "cs4-1-5-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are advantages of defining infrastructure as code?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Builds can be repeated the same way each time"
+        },
+        {
+          "id": "b",
+          "text": "Access control is no longer needed"
+        },
+        {
+          "id": "c",
+          "text": "Changes get peer review and a version history"
+        },
+        {
+          "id": "d",
+          "text": "Misconfiguration cannot occur"
+        },
+        {
+          "id": "e",
+          "text": "Testing before release can be skipped"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Files give repeatable builds plus review and history. Code does not replace access control, it can still hold mistakes, and testing remains necessary.",
+    "acronyms": [],
+    "searchTerm": "IaC advantages"
+  },
+  {
+    "id": "cs4-1-5-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO practices apply to a webhook that receives alerts from a SIEM?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Poll the SIEM every second to confirm each alert"
+        },
+        {
+          "id": "b",
+          "text": "Verify the sender with a shared secret or signature"
+        },
+        {
+          "id": "c",
+          "text": "Accept requests from any source address"
+        },
+        {
+          "id": "d",
+          "text": "Receive the requests over an encrypted channel"
+        },
+        {
+          "id": "e",
+          "text": "Place the shared secret in the alert body"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A receiver should authenticate the sender and protect the channel. Polling defeats the push model, accepting any source invites forged events, and a secret in the body exposes it.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "searchTerm": "webhook security practices"
+  },
+  {
+    "id": "cs4-1-5-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO metrics belong on a SOC efficiency dashboard?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mean time to detect"
+        },
+        {
+          "id": "b",
+          "text": "Datacenter power usage"
+        },
+        {
+          "id": "c",
+          "text": "False positive rate of alerts"
+        },
+        {
+          "id": "d",
+          "text": "Count of employee laptops by model"
+        },
+        {
+          "id": "e",
+          "text": "Number of printers per floor"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Detection time and false positive rate describe how well the SOC performs. Power use, laptop models and printers do not measure analyst efficiency.",
+    "acronyms": [
+      "SOC"
+    ],
+    "searchTerm": "SOC efficiency metrics"
+  },
+  {
+    "id": "cs4-1-5-order-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "stem": "A SOC is moving its manual phishing triage into an automated SOAR workflow. Put the steps in the order they happen. Team rules: the manual procedure is written down before candidates for automation are chosen, and nothing is enabled in production before it has been tested.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Run the workflow in a test environment against sample user reports"
+        },
+        {
+          "id": "s2",
+          "text": "List the repeated manual tasks in it that are safe to automate"
+        },
+        {
+          "id": "s6",
+          "text": "Review the results and tune the workflow"
+        },
+        {
+          "id": "s1",
+          "text": "Write down the manual phishing triage procedure as a runbook"
+        },
+        {
+          "id": "s5",
+          "text": "Enable it in production with an approval gate on blocking actions"
+        },
+        {
+          "id": "s3",
+          "text": "Build the workflow and connect it to the mail gateway and reputation service through their APIs"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The existing procedure is documented first, tasks suited to automation are picked from it, the workflow is built, tested, released with a safeguard and then reviewed using real results.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "0": "A written procedure shows what analysts do today.",
+      "1": "Automation candidates come from the documented procedure.",
+      "2": "The workflow is built once the candidates are known.",
+      "3": "Testing comes before any production use, by team rule.",
+      "4": "Production release follows testing, with an approval gate on blocking.",
+      "5": "Tuning uses what the live results show."
+    },
+    "acronyms": [
+      "API",
+      "SOAR",
+      "SOC"
+    ],
+    "searchTerm": "SOAR playbook build order"
+  },
+  {
+    "id": "cs4-1-5-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "stem": "A SOC lead reviews four detection rules before tuning them. Every alert from the approved scanner is known benign and can be excluded. Use the table to answer each question.",
+    "payload": {
+      "caption": "Weekly alert results by detection rule",
+      "columns": [
+        "Rule",
+        "Alerts per week",
+        "True positives",
+        "Benign alerts from approved scanner"
+      ],
+      "rows": [
+        [
+          "R-101",
+          "400",
+          "12",
+          "380"
+        ],
+        [
+          "R-102",
+          "150",
+          "120",
+          "0"
+        ],
+        [
+          "R-103",
+          "250",
+          "5",
+          "10"
+        ],
+        [
+          "R-104",
+          "90",
+          "9",
+          "0"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "f1",
+          "label": "True positive rate of R-102",
+          "options": [
+            {
+              "id": "o1",
+              "text": "60%"
+            },
+            {
+              "id": "o2",
+              "text": "80%"
+            },
+            {
+              "id": "o3",
+              "text": "120%"
+            }
+          ]
+        },
+        {
+          "id": "f2",
+          "label": "Alerts per week left for R-101 after excluding the scanner",
+          "options": [
+            {
+              "id": "o1",
+              "text": "20"
+            },
+            {
+              "id": "o2",
+              "text": "380"
+            },
+            {
+              "id": "o3",
+              "text": "12"
+            }
+          ]
+        },
+        {
+          "id": "f3",
+          "label": "True positive rate of R-101 after the exclusion",
+          "options": [
+            {
+              "id": "o1",
+              "text": "3%"
+            },
+            {
+              "id": "o2",
+              "text": "95%"
+            },
+            {
+              "id": "o3",
+              "text": "60%"
+            }
+          ]
+        },
+        {
+          "id": "f4",
+          "label": "Rule with the lowest true positive rate before tuning",
+          "options": [
+            {
+              "id": "o1",
+              "text": "R-101"
+            },
+            {
+              "id": "o2",
+              "text": "R-103"
+            },
+            {
+              "id": "o3",
+              "text": "R-104"
+            }
+          ]
+        },
+        {
+          "id": "f5",
+          "label": "Total alerts per week removed across all rules by the exclusion",
+          "options": [
+            {
+              "id": "o1",
+              "text": "390"
+            },
+            {
+              "id": "o2",
+              "text": "380"
+            },
+            {
+              "id": "o3",
+              "text": "400"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "f1": "o2",
+        "f2": "o1",
+        "f3": "o3",
+        "f4": "o2",
+        "f5": "o1"
+      }
+    },
+    "explanation": "R-102 is 120 of 150, or 80 percent. Excluding 380 scanner alerts leaves 20 for R-101, and 12 of 20 is 60 percent. Before tuning, R-103 has 5 of 250, or 2 percent, below R-101 at 3 percent and R-104 at 10 percent. The exclusion removes 380 + 0 + 10 + 0 = 390 alerts.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "f1": "120 / 150 = 0.80, so 80%.",
+      "f2": "400 - 380 = 20 alerts remain.",
+      "f3": "12 / 20 = 0.60, so 60%.",
+      "f4": "R-101 is 12/400 = 3%, R-103 is 5/250 = 2%, R-104 is 9/90 = 10%, so R-103 is lowest.",
+      "f5": "380 + 0 + 10 + 0 = 390."
+    },
+    "acronyms": [
+      "SOC"
+    ],
+    "searchTerm": "alert tuning true positive rate"
+  },
+  {
+    "id": "cs4-1-5-config-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "stem": "Configure a SOAR workflow that handles user-reported phishing messages. It should react at once, add context, contain malicious links and stay accountable.",
+    "payload": {
+      "fields": [
+        {
+          "id": "trigger",
+          "label": "How the workflow starts",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Analyst runs it by hand each hour"
+            },
+            {
+              "id": "o2",
+              "text": "A webhook call when a user reports a message"
+            },
+            {
+              "id": "o3",
+              "text": "A weekly scheduled sweep"
+            }
+          ]
+        },
+        {
+          "id": "enrich",
+          "label": "Enrichment of the reported link",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Skip enrichment to save time"
+            },
+            {
+              "id": "o2",
+              "text": "Email the link to all staff for opinions"
+            },
+            {
+              "id": "o3",
+              "text": "Query a reputation service through its API and attach the result"
+            }
+          ]
+        },
+        {
+          "id": "contain",
+          "label": "Action when the verdict is malicious",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Block the link, quarantine matching messages and notify the analyst"
+            },
+            {
+              "id": "o2",
+              "text": "Shut down the mail server"
+            },
+            {
+              "id": "o3",
+              "text": "Close the case with no action"
+            }
+          ]
+        },
+        {
+          "id": "reset",
+          "label": "Password reset for a user who clicked the link",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Reset every user in the company at once"
+            },
+            {
+              "id": "o2",
+              "text": "Offer the reset to an analyst for approval first"
+            },
+            {
+              "id": "o3",
+              "text": "Leave all passwords as they are"
+            }
+          ]
+        },
+        {
+          "id": "log",
+          "label": "Record keeping",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Log each action with its input and result in the case"
+            },
+            {
+              "id": "o2",
+              "text": "Log failures only"
+            },
+            {
+              "id": "o3",
+              "text": "Turn logging off during the trial"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "trigger": "o2",
+        "enrich": "o3",
+        "contain": "o1",
+        "reset": "o2",
+        "log": "o1"
+      }
+    },
+    "explanation": "A webhook reacts instantly, an API lookup adds context, targeted containment limits impact, an approval point guards a disruptive action and full logging keeps the automation accountable. The other choices are slow, disruptive, blind or unaccountable.",
+    "pbqWeight": 5,
+    "partExplanations": {
+      "trigger": "A webhook pushes the event the moment a user reports it.",
+      "enrich": "An API lookup adds a verdict without manual copying.",
+      "contain": "Blocking the link and quarantining matches is proportionate and keeps a person informed.",
+      "reset": "An approval point keeps a disruptive action under human control.",
+      "log": "Recording each action, input and result supports review and tuning."
+    },
+    "acronyms": [
+      "API",
+      "SOAR"
+    ],
+    "searchTerm": "SOAR workflow configuration"
+  },
+  {
+    "id": "cs4-1-5-match-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each term to the description that fits it best.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Runbook"
+        },
+        {
+          "id": "p2",
+          "text": "SOAR platform"
+        },
+        {
+          "id": "p3",
+          "text": "Infrastructure as code"
+        },
+        {
+          "id": "p4",
+          "text": "Webhook"
+        },
+        {
+          "id": "p5",
+          "text": "API"
+        },
+        {
+          "id": "p6",
+          "text": "Plug-in"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Exact step-by-step instructions for one routine task"
+        },
+        {
+          "id": "c2",
+          "text": "Links tools and runs response workflows automatically"
+        },
+        {
+          "id": "c3",
+          "text": "Versioned files that declare the systems to deploy and how they are set up"
+        },
+        {
+          "id": "c4",
+          "text": "A message sent to a listener the moment an event occurs"
+        },
+        {
+          "id": "c5",
+          "text": "A defined interface that lets one tool request data or actions from another"
+        },
+        {
+          "id": "c6",
+          "text": "An add-on module that extends what an existing tool can do"
+        },
+        {
+          "id": "c7",
+          "text": "A dashboard that charts response times"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5",
+        "p6": "c6"
+      }
+    },
+    "explanation": "Each term has a distinct role: runbooks give task steps, SOAR automates cross-tool workflows, IaC declares systems in files, webhooks push events, APIs answer requests, and plug-ins add features. A dashboard is a display, not one of these.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "p1": "A runbook lists the exact steps for one task.",
+      "p2": "A SOAR platform chains tools into automated workflows.",
+      "p3": "IaC describes systems in versioned files.",
+      "p4": "A webhook pushes an event to a listener as it happens.",
+      "p5": "An API is the interface a tool exposes for requests.",
+      "p6": "A plug-in adds capability to an existing tool."
+    },
+    "acronyms": [
+      "API",
+      "IaC",
+      "SOAR"
+    ],
+    "searchTerm": "automation terms match"
+  },
+  {
+    "id": "cs4-1-5-buckets-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 1,
+    "stem": "Sort each improvement into the type of work it represents.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "enrich",
+          "text": "Data enrichment"
+        },
+        {
+          "id": "tune",
+          "text": "Rule or alert tuning"
+        },
+        {
+          "id": "dash",
+          "text": "Dashboard creation"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Adding asset owner and criticality to each alert"
+        },
+        {
+          "id": "i2",
+          "text": "Adding an exception for an approved scanner to a noisy rule"
+        },
+        {
+          "id": "i3",
+          "text": "Building a chart of weekly alerts by severity for the SOC lead"
+        },
+        {
+          "id": "i4",
+          "text": "Attaching the source's geolocation and reputation to each case"
+        },
+        {
+          "id": "i5",
+          "text": "Raising a rule's threshold from 3 to 10 failed logins"
+        },
+        {
+          "id": "i6",
+          "text": "Adding a panel that shows open cases by analyst"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "enrich",
+        "i2": "tune",
+        "i3": "dash",
+        "i4": "enrich",
+        "i5": "tune",
+        "i6": "dash"
+      }
+    },
+    "explanation": "Enrichment adds context to alerts, tuning changes a rule's conditions to cut noise, and a dashboard presents data visually.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "i1": "Owner and criticality are context added to an alert.",
+      "i2": "An exception narrows what the rule fires on.",
+      "i3": "A chart for the lead is a dashboard element.",
+      "i4": "Geolocation and reputation are context added to a case.",
+      "i5": "A higher threshold changes the rule condition to reduce noise.",
+      "i6": "A case panel is a dashboard element."
+    },
+    "acronyms": [
+      "SOC"
+    ],
+    "searchTerm": "enrichment tuning dashboard"
+  },
+  {
+    "id": "cs4-1-5-diagram-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "The diagram shows how alerts reach a case system. Place the best integration element for each need named below the flow.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "SIEM"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "SOAR"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Reputation service"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Case system"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n2",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Sends each alert the instant it fires"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Requests a verdict when the workflow asks"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Adds a new feed inside an existing console"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Declares the SOAR servers in versioned files"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Webhook"
+        },
+        {
+          "id": "l2",
+          "text": "API call"
+        },
+        {
+          "id": "l3",
+          "text": "Plug-in"
+        },
+        {
+          "id": "l4",
+          "text": "IaC template"
+        },
+        {
+          "id": "l5",
+          "text": "Dashboard widget"
+        },
+        {
+          "id": "l6",
+          "text": "Log rotation"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "A webhook pushes events, an API call fetches data on request, a plug-in extends a tool, and an IaC template defines infrastructure. A dashboard widget and log rotation do not fit any of these needs.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "z1": "A webhook pushes the alert the moment the rule fires.",
+      "z2": "An API call lets the workflow request a verdict.",
+      "z3": "A plug-in adds a feed inside an existing console.",
+      "z4": "An IaC template declares infrastructure in versioned files."
+    },
+    "acronyms": [
+      "API",
+      "IaC",
+      "SIEM",
+      "SOAR"
+    ],
+    "searchTerm": "SOAR integration diagram"
+  }
+]

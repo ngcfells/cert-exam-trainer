@@ -1,0 +1,2008 @@
+[
+  {
+    "id": "cs4-1-4-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An analyst briefing describes a well-funded group that breaks into a defense contractor, stays hidden for many months, and steadily takes design files. Which term best describes this actor?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A script kiddie running public tools"
+        },
+        {
+          "id": "b",
+          "text": "An opportunistic ransomware affiliate"
+        },
+        {
+          "id": "c",
+          "text": "An advanced persistent threat"
+        },
+        {
+          "id": "d",
+          "text": "A hacktivist seeking quick publicity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A well-funded group with a specific goal that keeps quiet access for months is an APT. A script kiddie relies on public tools, a ransomware affiliate wants fast payment, and a hacktivist wants attention rather than stealth.",
+    "acronyms": [
+      "APT"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A DLP alert shows a finance employee copying thousands of customer records to a personal cloud folder two days before resigning. No malware is found on the workstation. Which actor type fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An insider using legitimate access"
+        },
+        {
+          "id": "b",
+          "text": "An external group that phished a login"
+        },
+        {
+          "id": "c",
+          "text": "A hacktivist defacing a public site"
+        },
+        {
+          "id": "d",
+          "text": "A nation-state operator with a zero-day exploit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The employee already holds the access and has a motive tied to leaving, which marks an insider threat. Nothing points to an outside group, a defacement, or an advanced exploit.",
+    "acronyms": [
+      "DLP"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A security executive wants a one-page view that shades each adversary technique by how often it is seen against the sector or how well the SOC detects it. Which visual is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A Gantt chart of the patch windows for each server"
+        },
+        {
+          "id": "b",
+          "text": "A packet capture sorted by bytes per conversation"
+        },
+        {
+          "id": "c",
+          "text": "A data flow diagram of each trust boundary"
+        },
+        {
+          "id": "d",
+          "text": "A heat map with cells shaded by frequency or coverage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A heat map colors a grid of techniques by how common or how well covered they are. A Gantt chart plans time, a sorted capture ranks traffic, and a data flow diagram shows where data crosses boundaries.",
+    "acronyms": [
+      "SOC"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Threat hunters compare three indicators: a file hash, a domain name, and the adversary's habit of harvesting passwords from memory and then pivoting between hosts. Which is hardest for the adversary to change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The file hash of the dropped remote access tool"
+        },
+        {
+          "id": "b",
+          "text": "The TTP-level behavior at the top of the pyramid"
+        },
+        {
+          "id": "c",
+          "text": "The domain name of the command and control server"
+        },
+        {
+          "id": "d",
+          "text": "The IP address of the staging host in the cloud"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Behavior sits at the top of the pyramid of pain because changing how an adversary operates is costly. Hashes, domains and IP addresses are cheap for the adversary to swap.",
+    "acronyms": [
+      "TTP",
+      "IP"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which indicator is lowest on the pyramid of pain, making it the easiest for an adversary to change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A file hash value"
+        },
+        {
+          "id": "b",
+          "text": "A domain name the actor registered"
+        },
+        {
+          "id": "c",
+          "text": "A tool the actor developed themselves"
+        },
+        {
+          "id": "d",
+          "text": "The actor's phishing procedure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Recompiling or repacking a binary changes its hash at almost no cost. Domains cost a little more, custom tools take effort to rebuild, and procedures are the hardest to change.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-4-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A SOC replaces a block list of 400 file hashes with a rule that fires when an office application launches a script interpreter. What is the main benefit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Hash lookups run faster against the SIEM index"
+        },
+        {
+          "id": "b",
+          "text": "False positives disappear from the alert queue"
+        },
+        {
+          "id": "c",
+          "text": "Fewer log sources must be forwarded to the SIEM"
+        },
+        {
+          "id": "d",
+          "text": "Rebuilding a binary no longer evades detection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The rule watches behavior, so changing the hash of a payload no longer helps the adversary. Speed is not the point, a behavioral rule can still produce false positives, and it often needs more process data, not less.",
+    "acronyms": [
+      "SOC",
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An analyst tags an alert with the adversary's goal of stealing stored passwords, for example \"Credential Access\". In the MITRE ATT&CK structure, what does that tag represent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A technique, one specific method of reaching a goal"
+        },
+        {
+          "id": "b",
+          "text": "A procedure, one group's observed implementation"
+        },
+        {
+          "id": "c",
+          "text": "A tactic, the adversary's short-term objective"
+        },
+        {
+          "id": "d",
+          "text": "A mitigation, a control that reduces the behavior"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Tactics are the adversary goals, the columns of the matrix. Techniques are the methods under a tactic, procedures are specific observed uses, and mitigations are defender controls.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-4-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A red team lead and a SOC lead want a shared vocabulary for mapping detection gaps to adversary behavior. Which resource fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The CVSS metric definitions and severity score bands"
+        },
+        {
+          "id": "b",
+          "text": "The MITRE ATT&CK knowledge base of tactics and techniques"
+        },
+        {
+          "id": "c",
+          "text": "The OWASP list of common web application risk categories"
+        },
+        {
+          "id": "d",
+          "text": "The NVD feed of published vulnerability records"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "MITRE ATT&CK catalogs adversary tactics and techniques in a common language. CVSS scores vulnerabilities, OWASP lists web application risks, and NVD holds vulnerability records.",
+    "acronyms": [
+      "SOC",
+      "CVSS",
+      "OWASP",
+      "NVD"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After a breach, an executive asks which country is behind it. The evidence is a reused tool, a time-zone pattern and some shared infrastructure. What is the best-supported answer?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A confidence-rated judgment, since overlaps prove little alone"
+        },
+        {
+          "id": "b",
+          "text": "Name the country, since the tool matches prior reports"
+        },
+        {
+          "id": "c",
+          "text": "Declare attribution impossible and stop collecting indicators"
+        },
+        {
+          "id": "d",
+          "text": "Publish the name once one IP address matches"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Tool reuse, time zones and shared hosting can all be copied or borrowed, so attribution is stated with a confidence level. Naming a country on one match overreaches, and giving up discards useful evidence. A single IP address match is weaker still.",
+    "acronyms": [
+      "IP"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A feed lists botnet IP addresses, but its entries were last refreshed eight months ago, though each was correct when published. Which confidence factor is weakest?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Relevance to the sector"
+        },
+        {
+          "id": "b",
+          "text": "Accuracy of each entry"
+        },
+        {
+          "id": "c",
+          "text": "Licensing cost of the feed"
+        },
+        {
+          "id": "d",
+          "text": "Timeliness of the data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Old data may no longer describe current infrastructure, so timeliness is the weak point. The entries were correct when published, so accuracy is not the problem, relevance is not mentioned, and cost is not a confidence factor.",
+    "acronyms": [
+      "IP"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A SOC at a regional hospital receives a well-sourced, current report on attacks that target only industrial robots at car factories. How should the analyst rate it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Low accuracy, since the source looks unverified and unnamed"
+        },
+        {
+          "id": "b",
+          "text": "Low timeliness, since the report is already several months old"
+        },
+        {
+          "id": "c",
+          "text": "Low relevance, since the targets differ from its own assets"
+        },
+        {
+          "id": "d",
+          "text": "High confidence, since a reputable source wrote it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Relevance asks whether the threat applies to the organization. The report is well-sourced and current, so accuracy and timeliness are fine, but a threat to factory robots does not apply to a hospital.",
+    "acronyms": [
+      "SOC"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A team blocks an IP address copied from an unvetted public paste. It turns out to belong to a shared hosting provider, and customer sites go down. Which confidence factor was most likely overlooked?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Timeliness, since the paste was posted today"
+        },
+        {
+          "id": "b",
+          "text": "Accuracy, since the indicator was never validated"
+        },
+        {
+          "id": "c",
+          "text": "Relevance, since the address was outside the country"
+        },
+        {
+          "id": "d",
+          "text": "Attribution, since the actor was named wrongly"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Accuracy is about whether the data is true and checked, and nobody confirmed who owned the address. A fresh paste is not a timeliness failure, location does not decide relevance, and the actor name is not the cause of the outage.",
+    "acronyms": [
+      "IP"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is the main weakness of OSINT as a source of threat data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Costs are high compared with commercial feeds"
+        },
+        {
+          "id": "b",
+          "text": "Access is restricted to approved sharing members"
+        },
+        {
+          "id": "c",
+          "text": "Only logs from the company's own sensors can be searched"
+        },
+        {
+          "id": "d",
+          "text": "Quality varies, so entries need validation before use"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Public sources are free and broad, but anyone can publish, so accuracy must be checked. High cost, restricted membership and internal-only logs describe other source types.",
+    "acronyms": [
+      "OSINT"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A bank pays for a vendor research portal with analysis of live campaigns that the vendor gathered from private sources and does not publish openly. Which collection type is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Closed-source intelligence for approved subscribers"
+        },
+        {
+          "id": "b",
+          "text": "OSINT, published openly and available to anyone"
+        },
+        {
+          "id": "c",
+          "text": "Internal telemetry, produced by the bank's own sensors"
+        },
+        {
+          "id": "d",
+          "text": "An anonymous tip line with unverified claims"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Intelligence from private collection that only subscribers can read is closed-source. OSINT is public, internal telemetry comes from your own sensors, and a tip line is not a vendor research service.",
+    "acronyms": [
+      "OSINT"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A regional utility joins a peer group that exchanges anonymized indicators and incident lessons under agreed handling rules. What is the primary benefit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Certain attribution of each incident reported to it"
+        },
+        {
+          "id": "b",
+          "text": "Removal of the need for internal detection tools"
+        },
+        {
+          "id": "c",
+          "text": "Early warning from peers who saw an attack first"
+        },
+        {
+          "id": "d",
+          "text": "Public disclosure of the utility's own weaknesses"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Peers see attacks first and pass on indicators and lessons, giving early warning. Sharing does not guarantee attribution, replace your own detection, or publish your weaknesses, since handling rules limit who sees what.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-4-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "During an incident, responders copy hashes, domains and registry keys from compromised hosts into a case record. Which stage of the IoC life cycle is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Analysis, vetting and scoring indicators before use"
+        },
+        {
+          "id": "b",
+          "text": "Collection, gathering raw indicators from the scene"
+        },
+        {
+          "id": "c",
+          "text": "Application, loading indicators into blocking controls"
+        },
+        {
+          "id": "d",
+          "text": "Retirement, aging out stale indicators from lists"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Copying indicators out of the affected systems is collection. Analysis would judge and enrich them, application would load them into tools, and retirement would remove old ones.",
+    "acronyms": [
+      "IoC"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Before loading 900 indicators from a new feed into the SIEM, an analyst removes entries that match the company's own cloud ranges and adds first-seen dates. Which IoC stage is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Collection, copying indicators off the infected hosts"
+        },
+        {
+          "id": "b",
+          "text": "Application, loading indicators into blocking tools"
+        },
+        {
+          "id": "c",
+          "text": "Dissemination, sending indicators on to outside peers"
+        },
+        {
+          "id": "d",
+          "text": "Analysis, vetting and enriching indicators before use"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Filtering out benign matches and adding context is analysis. The indicators already exist, so it is not collection, and nothing has been loaded into controls or sent to peers yet.",
+    "acronyms": [
+      "SIEM",
+      "IoC"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A blocklist entry for a malicious domain was loaded six months ago. The domain has since been reassigned, and the list now blocks a partner portal. Which usage practice was missing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reviewing and aging out stale indicators regularly"
+        },
+        {
+          "id": "b",
+          "text": "Collecting more indicators from the same feed each week"
+        },
+        {
+          "id": "c",
+          "text": "Naming the actor behind each blocked indicator"
+        },
+        {
+          "id": "d",
+          "text": "Encrypting the blocklist at rest and in transit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Applying indicators includes reviewing them and retiring ones that no longer apply. More collection, naming the actor and encryption would not have stopped a stale entry from blocking a partner.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-4-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which of these is an atomic indicator?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A macro that spawns a shell, then beacons out"
+        },
+        {
+          "id": "b",
+          "text": "Logons from two countries within one hour"
+        },
+        {
+          "id": "c",
+          "text": "A single IP address seen in firewall logs"
+        },
+        {
+          "id": "d",
+          "text": "Nightly uploads staged to a new host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An atomic indicator is one value that cannot be broken down further, such as an IP address. The other options describe sequences or patterns of activity, which are behavioral.",
+    "acronyms": [
+      "IP"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A detection rule fires when a document reader starts a command shell and that shell opens an outbound connection within a minute. What type of IoC is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Atomic, a single value that cannot be divided further"
+        },
+        {
+          "id": "b",
+          "text": "Behavioral, a chain of actions rather than a single value"
+        },
+        {
+          "id": "c",
+          "text": "Computed, a value derived from file contents such as a hash"
+        },
+        {
+          "id": "d",
+          "text": "Static, a fixed string matched on disk or in memory"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A chain of related actions is a behavioral indicator. Atomic indicators are single values, computed ones are derived such as hashes, and static strings are not sequences.",
+    "acronyms": [
+      "IoC"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An analyst must choose between blocking 50 known attacker IP addresses and writing a rule for the attacker's habit of staging data in an archive before upload. The attacker rotates infrastructure weekly. Which is the better long-term choice?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The addresses, because atomic values are harder to evade"
+        },
+        {
+          "id": "b",
+          "text": "The addresses, because rules cannot produce false positives"
+        },
+        {
+          "id": "c",
+          "text": "Neither, because indicators expire the moment they are found"
+        },
+        {
+          "id": "d",
+          "text": "The behavioral detection, because behavior survives infrastructure changes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Addresses go stale as the attacker rotates, while the staging habit persists across infrastructure. Atomic values are the easiest to evade, behavioral rules can still raise false positives, and indicators do not expire instantly.",
+    "acronyms": [
+      "IP"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A design review finds that an attacker could submit forged session tokens that claim to belong to another customer. Which STRIDE category applies?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Spoofing, pretending to be a different identity"
+        },
+        {
+          "id": "b",
+          "text": "Tampering, altering data in storage or transit"
+        },
+        {
+          "id": "c",
+          "text": "Repudiation, denying an action without proof"
+        },
+        {
+          "id": "d",
+          "text": "Information disclosure, exposing data to readers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Forged tokens let the attacker act as someone else, which is spoofing. Tampering alters data, repudiation denies actions, and information disclosure leaks data.",
+    "acronyms": [
+      "STRIDE"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An unauthenticated API endpoint accepts unlimited large uploads that could exhaust a service's memory. Which STRIDE category fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Elevation of privilege, gaining unearned rights to systems"
+        },
+        {
+          "id": "b",
+          "text": "Information disclosure, exposing data to readers"
+        },
+        {
+          "id": "c",
+          "text": "Denial of service, making the service unavailable"
+        },
+        {
+          "id": "d",
+          "text": "Spoofing, pretending to be another valid identity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Exhausting memory so legitimate users cannot be served is denial of service. Nothing in the scenario gains rights, leaks data, or impersonates anyone.",
+    "acronyms": [
+      "STRIDE",
+      "API"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A refund tool lets agents edit amounts, and its audit log records nothing about who made an edit. A manager later denies approving a large refund. Which STRIDE category does the missing audit record primarily enable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Spoofing, since agents could pose as their managers"
+        },
+        {
+          "id": "b",
+          "text": "Repudiation, since actions cannot be tied to a person"
+        },
+        {
+          "id": "c",
+          "text": "Tampering, since refund amounts can be edited by agents"
+        },
+        {
+          "id": "d",
+          "text": "Information disclosure, since refunds are visible"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Without a record, a person can deny an action and nobody can prove otherwise, which is repudiation. Editing amounts is tampering but not what the missing record enables, and the scenario describes no impersonation or leak.",
+    "acronyms": [
+      "STRIDE"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team charts each component of an order-entry application and the routes an attacker could take from the internet to the database. What is this activity?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Vulnerability scanning, probing hosts for known flaws"
+        },
+        {
+          "id": "b",
+          "text": "Patch management, scheduling updates by severity"
+        },
+        {
+          "id": "c",
+          "text": "Log aggregation, centralizing events from many sources"
+        },
+        {
+          "id": "d",
+          "text": "Threat mapping, tying adversary behavior to what it could reach"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Threat mapping relates likely threats to assets and the paths to them. Scanning finds flaws on hosts, patch management schedules fixes, and log aggregation collects events.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-4-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A security team deploys a decoy server that no legitimate user should touch and alerts on any connection to it. What is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A bastion host"
+        },
+        {
+          "id": "b",
+          "text": "A DNS sinkhole"
+        },
+        {
+          "id": "c",
+          "text": "A honeypot"
+        },
+        {
+          "id": "d",
+          "text": "A network tap"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A decoy system that exists to attract and detect intruders is a honeypot. A bastion host is a hardened gateway, a DNS sinkhole redirects lookups, and a tap copies traffic.",
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The SOC creates a directory account named `svc-backup-old` that has no real access. Any logon attempt with it raises a high-severity alert. What does this accomplish?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Early detection of an intruder testing stolen credentials"
+        },
+        {
+          "id": "b",
+          "text": "Prevention of lateral movement across the domain"
+        },
+        {
+          "id": "c",
+          "text": "A smaller directory storage footprint"
+        },
+        {
+          "id": "d",
+          "text": "Encryption of passwords stored on endpoints"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A decoy credential nobody should use turns any attempt into a reliable alert. It detects rather than prevents movement, and it has no effect on storage size or password encryption.",
+    "acronyms": [
+      "SOC"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "An insider with legitimate access edits stored invoice amounts, and the system keeps no record of who did it. Which TWO STRIDE categories apply?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tampering, altering stored data"
+        },
+        {
+          "id": "b",
+          "text": "Spoofing, impersonating another user"
+        },
+        {
+          "id": "c",
+          "text": "Repudiation, denying an action without proof"
+        },
+        {
+          "id": "d",
+          "text": "Denial of service, blocking availability"
+        },
+        {
+          "id": "e",
+          "text": "Information disclosure, exposing data to readers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Editing stored amounts is tampering, and the missing record lets the editor deny it, which is repudiation. The insider uses real access, so there is no spoofing, and nothing is blocked or leaked.",
+    "acronyms": [
+      "STRIDE"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE questions help an analyst judge confidence in a new threat report?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "How many pages does the report run?"
+        },
+        {
+          "id": "b",
+          "text": "How recently was the information collected?"
+        },
+        {
+          "id": "c",
+          "text": "Was each claim verified or only repeated from elsewhere?"
+        },
+        {
+          "id": "d",
+          "text": "Does the vendor's logo look professional?"
+        },
+        {
+          "id": "e",
+          "text": "Does it describe adversaries that target our sector and technology?"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Recency covers timeliness, verification covers accuracy, and sector fit covers relevance. Page count and visual polish say nothing about how far to trust the content.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-4-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO outcomes does cyber deception give defenders?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Prevention of exploitation of unpatched services"
+        },
+        {
+          "id": "b",
+          "text": "Alerts when an attacker touches a decoy"
+        },
+        {
+          "id": "c",
+          "text": "Replacement of the need for monitoring"
+        },
+        {
+          "id": "d",
+          "text": "Proof of which country the intruder comes from"
+        },
+        {
+          "id": "e",
+          "text": "Chances to observe an adversary's tools and habits"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Decoys raise alerts on contact and let defenders watch how an adversary works. They do not patch services, replace monitoring, or prove an intruder's nationality.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-4-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO are typical OSINT sources?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A vendor's subscriber-only campaign reports"
+        },
+        {
+          "id": "b",
+          "text": "Telemetry from the company's own EDR agents"
+        },
+        {
+          "id": "c",
+          "text": "Domain registration records"
+        },
+        {
+          "id": "d",
+          "text": "A closed sharing group's mailing list"
+        },
+        {
+          "id": "e",
+          "text": "Public code repositories and paste sites"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Registration records and public repositories or paste sites are open to anyone. Subscriber reports and closed groups are closed-source, and EDR telemetry is internal.",
+    "acronyms": [
+      "OSINT",
+      "EDR"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO UEBA findings could point to an insider threat?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A user pulling far more data than their baseline"
+        },
+        {
+          "id": "b",
+          "text": "A scheduled password change on its normal cycle"
+        },
+        {
+          "id": "c",
+          "text": "A logon during the user's usual shift hours"
+        },
+        {
+          "id": "d",
+          "text": "Repeated access to systems outside the user's job role"
+        },
+        {
+          "id": "e",
+          "text": "A routine patch install on a managed laptop"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Unusual data volume and out-of-role access deviate from the user's baseline. A scheduled password change, normal-hours logons and routine patching are expected behavior.",
+    "acronyms": [
+      "UEBA"
+    ]
+  },
+  {
+    "id": "cs4-1-4-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO practices make threat intelligence sharing work well?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sharing unredacted incident records"
+        },
+        {
+          "id": "b",
+          "text": "Agreeing on handling rules for how shared data may be used"
+        },
+        {
+          "id": "c",
+          "text": "Waiting for attribution before sharing anything"
+        },
+        {
+          "id": "d",
+          "text": "Sending indicators with context and a confidence rating"
+        },
+        {
+          "id": "e",
+          "text": "Posting every indicator on a public site"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Handling rules build trust, and context with confidence makes indicators usable. Unredacted records leak details, waiting for attribution delays warning, and public posting ignores handling limits.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-4-match-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each description to the threat intelligence or hunting concept it defines.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A ranking of indicator types by how much disruption blocking them causes an adversary"
+        },
+        {
+          "id": "p2",
+          "text": "A color-coded grid showing how often, or how well, techniques are seen or covered"
+        },
+        {
+          "id": "p3",
+          "text": "Linking an intrusion to the actor behind it, stated with a confidence level"
+        },
+        {
+          "id": "p4",
+          "text": "Placing decoys that alert defenders when an intruder touches them"
+        },
+        {
+          "id": "p5",
+          "text": "Relating likely threats to the assets and routes an attacker could use"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Threat mapping"
+        },
+        {
+          "id": "c2",
+          "text": "Heat map"
+        },
+        {
+          "id": "c3",
+          "text": "Cyber deception"
+        },
+        {
+          "id": "c4",
+          "text": "Pyramid of pain"
+        },
+        {
+          "id": "c5",
+          "text": "Attribution"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c4",
+        "p2": "c2",
+        "p3": "c5",
+        "p4": "c3",
+        "p5": "c1"
+      }
+    },
+    "explanation": "Each concept has a distinct job: the pyramid ranks indicators, a heat map shades coverage or frequency, attribution names an actor with stated confidence, deception uses decoys, and threat mapping ties threats to assets and routes.",
+    "partExplanations": {
+      "p1": "The pyramid of pain ranks hashes up to adversary behavior by how costly each is for the adversary to change.",
+      "p2": "A heat map shades cells by frequency or detection coverage.",
+      "p3": "Attribution points to an actor and should carry a confidence level.",
+      "p4": "Cyber deception relies on decoys such as honeypots that alert on any contact.",
+      "p5": "Threat mapping connects likely threats to the assets and paths they could reach."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-4-buckets-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each indicator into the IoC type it represents.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "atomic",
+          "text": "Atomic indicator"
+        },
+        {
+          "id": "behavioral",
+          "text": "Behavioral indicator"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "A sender address on a phishing email"
+        },
+        {
+          "id": "i2",
+          "text": "A command and control IP address"
+        },
+        {
+          "id": "i3",
+          "text": "A script host launched by a spreadsheet, then a new outbound connection"
+        },
+        {
+          "id": "i4",
+          "text": "A domain name that serves a malicious download"
+        },
+        {
+          "id": "i5",
+          "text": "A new admin account, then bulk archive creation, then off-hours upload"
+        },
+        {
+          "id": "i6",
+          "text": "Regular outbound beaconing to a rare host at fixed intervals"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "atomic",
+        "i2": "atomic",
+        "i3": "behavioral",
+        "i4": "atomic",
+        "i5": "behavioral",
+        "i6": "behavioral"
+      }
+    },
+    "explanation": "Atomic indicators are single values that cannot be broken down, such as an address or a domain. Behavioral indicators describe a pattern or sequence of activity.",
+    "partExplanations": {
+      "i1": "One email address is a single value, so it is atomic.",
+      "i2": "One IP address is a single value, so it is atomic.",
+      "i3": "A launch followed by a connection is a chain of actions, so it is behavioral.",
+      "i4": "One domain name is a single value, so it is atomic.",
+      "i5": "Three linked actions form a pattern, so it is behavioral.",
+      "i6": "Regular beaconing is a pattern over time, so it is behavioral."
+    },
+    "acronyms": [
+      "IoC",
+      "IP"
+    ]
+  },
+  {
+    "id": "cs4-1-4-order-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "Put the life cycle of an indicator batch from a ransomware incident into order. Team policy: enrichment fields drive the filtering, the filtered list is what a second analyst signs off, and nothing is loaded into controls until it is signed off.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s5",
+          "text": "Indicators are loaded into the SIEM rules and DNS filter"
+        },
+        {
+          "id": "s2",
+          "text": "Analysts enrich each indicator with first-seen date and reputation"
+        },
+        {
+          "id": "s6",
+          "text": "Hits are reviewed and stale indicators are retired"
+        },
+        {
+          "id": "s4",
+          "text": "A second analyst signs off on the filtered list"
+        },
+        {
+          "id": "s1",
+          "text": "Responders copy hashes, domains and addresses from the infected hosts"
+        },
+        {
+          "id": "s3",
+          "text": "Analysts drop entries that match the company's own services"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "Collection comes first, then analysis (enrichment, then filtering of benign matches), then a sign-off, application in the controls, and finally review and retirement of stale indicators.",
+    "partExplanations": {
+      "0": "Collection comes first because nothing can be analyzed until indicators are copied from the hosts.",
+      "1": "Enrichment adds the fields that the filtering step relies on.",
+      "2": "Filtering uses the enrichment data to remove benign matches such as the company's own services.",
+      "3": "The sign-off reviews the filtered list, so it follows filtering.",
+      "4": "Nothing is loaded into controls until the list is signed off.",
+      "5": "Hits are reviewed after use and stale indicators are retired."
+    },
+    "acronyms": [
+      "SIEM",
+      "DNS"
+    ]
+  },
+  {
+    "id": "cs4-1-4-diagram-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "Place the best deception element for each need named below the network path.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Internet"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Public web tier"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Internal servers"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Workstations"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Fake server exposed to outside scanners"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Bait document that alerts when opened"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Fake privileged login that alerts on any use"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Sends lookups of known bad domains to a safe host"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "DNS sinkhole"
+        },
+        {
+          "id": "l2",
+          "text": "Honeypot server"
+        },
+        {
+          "id": "l3",
+          "text": "Backup schedule"
+        },
+        {
+          "id": "l4",
+          "text": "Honey token account"
+        },
+        {
+          "id": "l5",
+          "text": "Honey file"
+        },
+        {
+          "id": "l6",
+          "text": "Load balancer"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l2",
+        "z2": "l5",
+        "z3": "l4",
+        "z4": "l1"
+      }
+    },
+    "explanation": "A decoy server attracts scanners, a bait file and a fake account alert on any touch, and a DNS sinkhole redirects lookups of bad domains. A backup schedule and a load balancer are not deception.",
+    "partExplanations": {
+      "z1": "A honeypot server looks real to outside scanners and logs the contact.",
+      "z2": "A honey file raises an alert when anyone opens it.",
+      "z3": "A decoy privileged account alerts on any logon attempt.",
+      "z4": "A DNS sinkhole answers bad-domain lookups with a controlled address."
+    },
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "cs4-1-4-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A SOC loaded four sources of indicators into its SIEM for a month. Use the table to answer each question, where precision means confirmed malicious divided by matched.",
+    "payload": {
+      "caption": "Indicator sources after one month",
+      "columns": [
+        "Source",
+        "Indicators loaded",
+        "Matched in logs",
+        "Confirmed malicious"
+      ],
+      "rows": [
+        [
+          "Vendor portal",
+          "400",
+          "40",
+          "36"
+        ],
+        [
+          "Public paste list",
+          "1200",
+          "150",
+          "30"
+        ],
+        [
+          "Sharing group",
+          "250",
+          "20",
+          "15"
+        ],
+        [
+          "Internal findings",
+          "100",
+          "10",
+          "10"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "low",
+          "label": "Source with the lowest precision",
+          "options": [
+            {
+              "id": "vendor",
+              "text": "Vendor portal"
+            },
+            {
+              "id": "paste",
+              "text": "Public paste list"
+            },
+            {
+              "id": "share",
+              "text": "Sharing group"
+            }
+          ]
+        },
+        {
+          "id": "prec",
+          "label": "Precision of the sharing group",
+          "options": [
+            {
+              "id": "75",
+              "text": "75%"
+            },
+            {
+              "id": "15",
+              "text": "15%"
+            },
+            {
+              "id": "90",
+              "text": "90%"
+            }
+          ]
+        },
+        {
+          "id": "total",
+          "label": "Total confirmed malicious matches",
+          "options": [
+            {
+              "id": "85",
+              "text": "85"
+            },
+            {
+              "id": "101",
+              "text": "101"
+            },
+            {
+              "id": "91",
+              "text": "91"
+            }
+          ]
+        },
+        {
+          "id": "pasteshare",
+          "label": "Share of all matches that came from the public paste list",
+          "options": [
+            {
+              "id": "12",
+              "text": "12%"
+            },
+            {
+              "id": "20",
+              "text": "20%"
+            },
+            {
+              "id": "68",
+              "text": "68%"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "low": "paste",
+        "prec": "75",
+        "total": "91",
+        "pasteshare": "68"
+      }
+    },
+    "explanation": "Precision is confirmed divided by matched: vendor 36/40 = 90%, paste 30/150 = 20%, sharing 15/20 = 75%, internal 10/10 = 100%. Confirmed total is 36 + 30 + 15 + 10 = 91. Matches total 220, and 150/220 is about 68%.",
+    "partExplanations": {
+      "low": "Paste list precision is 30/150 = 20%, lower than 90%, 75% and 100% for the others.",
+      "prec": "Sharing group precision is 15/20 = 75%.",
+      "total": "Confirmed matches add up to 36 + 30 + 15 + 10 = 91.",
+      "pasteshare": "Total matches are 40 + 150 + 20 + 10 = 220, and 150/220 is about 68%."
+    },
+    "acronyms": [
+      "SIEM",
+      "SOC"
+    ]
+  },
+  {
+    "id": "cs4-1-4-hotspot-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Dana Ruiz handed in her notice last week. Select every activity in her account summary that is a possible insider threat indicator.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Bulk export of 40,000 customer rows"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Logon during normal shift hours"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Archive copied to personal cloud folder"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Completed annual security training"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Opened payroll system outside job role"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Scheduled password change"
+        }
+      ],
+      "spots": [
+        {
+          "id": "name1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Bulk export of 40,000 customer rows"
+        },
+        {
+          "id": "login",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Logon during normal shift hours"
+        },
+        {
+          "id": "cloud",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Archive copied to personal cloud folder"
+        },
+        {
+          "id": "train",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Completed annual security training"
+        },
+        {
+          "id": "payroll",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Opened payroll system outside job role"
+        },
+        {
+          "id": "pwd",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Scheduled password change"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "name1",
+        "cloud",
+        "payroll"
+      ]
+    },
+    "explanation": "A bulk export, copying an archive to a personal cloud folder and access outside the job role all deviate from normal work and fit data theft before leaving. Normal-hours logons, completed training and a scheduled password change are expected.",
+    "partExplanations": {
+      "name1": "A bulk export far above normal use is a possible data theft indicator.",
+      "login": "Logons in normal shift hours are expected behavior.",
+      "cloud": "Copying an archive to a personal cloud folder is a classic exfiltration path.",
+      "train": "Completing assigned training is routine.",
+      "payroll": "Access to a system outside her role is a deviation from her baseline.",
+      "pwd": "A scheduled password change is routine."
+    },
+    "acronyms": []
+  }
+]
