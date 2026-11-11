@@ -18,6 +18,7 @@
     "typecheck": "tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run build:check && npm run build:single && cross-env CHECK=1 npm run test && npm run build:e2e && npm run test:e2e",
     "deploy": "vite-node scripts/deploy.ts --",
+    "hashes": "vite-node scripts/hashes.ts --",
     "md-to-pack": "vite-node scripts/md-to-pack.ts --",
     "draft:ollama": "vite-node scripts/draft-ollama.ts --",
     "check-drafts": "vite-node scripts/check-drafts.ts --",
