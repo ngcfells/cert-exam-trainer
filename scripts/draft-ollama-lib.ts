@@ -19,6 +19,12 @@ const EXAMPLES: Record<string, { stem: string; options: string[]; explanation: s
     explanation:
       'Crafted input that overrides the system instructions is prompt injection. Model inversion rebuilds training data from outputs, poisoning tampers with training data, and membership inference tests whether a record was in the training set.',
   },
+  'CS0-004': {
+    stem: 'A workstation contacts the same outside address every 60 seconds, sending a few bytes each time. Which activity does this pattern suggest?',
+    options: ['Beaconing to a command-and-control server', 'A port scan of the internal network', 'A scheduled full backup', 'A denial-of-service attack'],
+    explanation:
+      'Small outbound connections at a fixed interval are the mark of beaconing. A port scan touches many ports or hosts, a backup moves large amounts of data, and a denial-of-service attack floods a target.',
+  },
   'AT0-001': {
     stem: 'A developer needs to keep unfinished work aside, switch branches to fix a bug, then bring the work back. Which Git command saves the uncommitted changes?',
     options: ['git stash', 'git revert', 'git tag', 'git fetch'],

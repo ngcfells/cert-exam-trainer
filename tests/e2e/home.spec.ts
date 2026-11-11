@@ -9,6 +9,7 @@ test('home shows one card per exam with its counts and passes axe', async ({ pag
   await expect(card(page, 'DA0-002')).toContainText('CompTIA Data+ (DA0-002)');
   await expect(card(page, 'CY0-001')).toContainText('CompTIA SecAI+ (CY0-001)');
   await expect(card(page, 'AT0-001')).toContainText('CompTIA AutoOps+ (AT0-001)');
+  await expect(card(page, 'CS0-004')).toContainText('CompTIA CySA+ (CS0-004)');
   await expect(card(page, 'DA0-002').getByText('Stock: 11 questions', { exact: true })).toBeVisible();
   await expect(card(page, 'DA0-002').getByText('Custom: 0 questions', { exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Settings' })).toBeVisible();
@@ -30,6 +31,11 @@ test('each exam page shows only the tools that exam has', async ({ page }) => {
   await expect(page.getByRole('button', { name: 'Practice: AT0-001' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Acronyms: AT0-001' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Learn: AT0-001' })).toHaveCount(0);
+  await allExams(page);
+  await openExam(page, 'CS0-004');
+  await expect(page.getByRole('button', { name: 'Practice: CS0-004' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Acronyms: CS0-004' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Learn: CS0-004' })).toHaveCount(0);
 });
 
 test('importing a backup on Settings updates the Custom count on Home', async ({ page }) => {

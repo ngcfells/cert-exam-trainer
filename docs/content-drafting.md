@@ -17,6 +17,7 @@ This brief is given word for word to every drafter and reviewer of bundled quest
   | DA0-002 (Data+) | `dataplus` | `da2` |
   | CY0-001 (SecAI+) | `secai` | `cy1` |
   | AT0-001 (AutoOps+) | `autoops` | `at1` |
+  | CS0-004 (CySA+) | `cysa` | `cs4` |
 
 - Ids: `<prefix>-<objective with the dot as a dash>-<type>-<nnn>`, where `<type>` is `mcq` for both MCQ kinds, `num` for numeric items, or the PBQ short name (`match`, `order`, `config`, `diagram`, `terminal`, `data`, `hotspot`, `buckets`). Examples: `da2-2-3-mcq-007`, `da2-4-1-hotspot-002`, `cy1-2-6-mcq-014`, `cy1-2-2-config-003`. Numbers are three digits and never reused. `itemIdPrefix` builds the prefix, and `npm run check-drafts -- --exam <code> <files>` checks it.
 - Every item has `exam`, `source: "ours"`, `objectiveIds` (first one is the objective the file is for), `difficulty` 1–3, `stem`, `payload`, `answer`, `explanation`, `acronyms` and `status`. New drafts are `status: "draft"`.

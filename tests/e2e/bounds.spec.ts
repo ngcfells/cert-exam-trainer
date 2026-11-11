@@ -8,7 +8,7 @@ import { textOutOfBounds } from './bounds';
 // bounds at phone and desktop width. Runs against the shipped bank (dist-single).
 const bankUrl = pathToFileURL(path.resolve('dist-single/index.html')).href;
 // BOUNDS_EXAM=<code> checks one exam (the content ship flow runs it for the exam being approved).
-const EXAMS = process.env.BOUNDS_EXAM ? [process.env.BOUNDS_EXAM] : ['DA0-002', 'CY0-001', 'AT0-001'];
+const EXAMS = process.env.BOUNDS_EXAM ? [process.env.BOUNDS_EXAM] : ['DA0-002', 'CY0-001', 'AT0-001', 'CS0-004'];
 const WIDTHS = [360, 1280];
 
 async function startFullPractice(page: Page, code: string): Promise<number> {

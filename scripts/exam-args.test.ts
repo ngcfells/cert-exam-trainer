@@ -19,6 +19,7 @@ describe('examFromArgs', () => {
     expect(examFromArgs(parseArgs(['--exam', 'CY0-001'])).meta.code).toBe('CY0-001');
     expect(examFromArgs(parseArgs(['--exam', 'DA0-002'])).items.length).toBeGreaterThan(0);
     expect(examFromArgs(parseArgs(['--exam', 'AT0-001'])).meta.name).toBe('CompTIA AutoOps+');
+    expect(examFromArgs(parseArgs(['--exam', 'CS0-004'])).meta.name).toBe('CompTIA CySA+');
   });
 
   it('requires a known --exam', () => {

@@ -9,10 +9,13 @@ import { HASHES_BRANCH, HASHES_FILE, HASHES_URL, diffExams, manifestSchema, next
 import { defaultRun, publishTree, type Run } from './deploy-lib';
 
 const jsonFiles = (dir: string): unknown[][] =>
-  readdirSync(dir)
-    .filter((f) => f.endsWith('.json'))
-    .sort()
-    .map((f) => JSON.parse(readFileSync(path.join(dir, f), 'utf8')) as unknown[]);
+  // An exam whose bank has no files yet has no items.
+  existsSync(dir)
+    ? readdirSync(dir)
+        .filter((f) => f.endsWith('.json'))
+        .sort()
+        .map((f) => JSON.parse(readFileSync(path.join(dir, f), 'utf8')) as unknown[])
+    : [];
 
 /** The content each exam ships, read from the bank files on disk and parsed as the app parses it on load. */
 export function readShippedContent(root: string): Record<string, ExamContent> {
