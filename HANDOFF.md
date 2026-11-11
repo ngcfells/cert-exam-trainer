@@ -1,4 +1,33 @@
-# 2026-11-11 (morning): CySA+ registered on `chunk13-cysa`, drafting NOT started. START HERE
+# 2026-11-11 (afternoon): CySA+ domain 1 DONE (234 items approved, committed). Next: domain 2. START HERE
+
+Next session model: **Sonnet** (orchestrating Sonnet drafters, Sonnet blind reviewers, Haiku copy reviewers). `gh issue list` first
+(2026-11-11: only #19, no bugs). One domain per session, then handoff and /clear.
+
+- **Branch `chunk13-cysa`, not pushed, not merged, do NOT deploy** until the bank meets its targets (500 MCQ, 80 PBQ, 10 per
+  PBQ template). Domain 1 = objectives 1.1 to 1.6 (six, not five), 39 items each (27 single + 6 multi + 6 PBQ) = 198 MCQ + 36 PBQ.
+  Tally: terminal 2, data 6, hotspot 5, buckets 5, match 6, config 4, order 5, diagram 3. Domains 2 to 4 must add terminal
+  and diagram (and keep every template at 10+): domain 2 (2.1 to 2.4) lean on terminal (scanner output, `nmap`, `curl`) and config.
+- **Quotas per objective** (500/80): 1.x 29 MCQ + 5 PBQ; 2.x 33 + 6; 3.x and 4.x 40 + 7. Draft about 6 PBQs and 33 to 40 MCQs per objective.
+- **Method that worked (about 1 hour, 6 + 6 + 6 + 6 subagents):** briefs and tools are in the session scratchpad (`d1/`:
+  `drafter-cs.md`, `reviewer-blind.md`, `reviewer-copy.md`, `fixer.md`, `mkblind.cjs`, `cmp.cjs`, `keys.cjs`). Rebuild them in a
+  new scratchpad from this list. Steps: (1) 1 Sonnet drafter per objective writing `src/banks/cysa/items/<obj>.json` as
+  drafts, `check-drafts` with `--ref` = the 44 deck slices (copy `_WorkingData/CySAPlus/prep/ref/*.txt` to the scratchpad; agents
+  never read `_WorkingData`); (2) commit as drafts; (3) blind Sonnet reviewer (file with `answer`, `explanation`,
+  `partExplanations` stripped) + Haiku copy reviewer per objective; (4) compare blind answers with keys (`answer.correct` is
+  an array); (5) 1 Sonnet fixer per objective applies both flag files, never changes a key, lengthens distractors instead
+  of shortening keys; (6) blind round 2; (7) sed `"status": "draft"` to `approved`; (8) `npx vitest run src/banks/cysa`
+  (bank.test.ts runs `describeShippedBank`), `BOUNDS_EXAM=CS0-004 npm run check-bounds`, `check-drafts` over all files.
+- **Gotchas found:** Haiku copy reviewers wrongly asked to rekey order-PBQ `partExplanations` to step ids: they are keyed by
+  POSITION ("0", "1", ...) on purpose (`src/domain/pbq.ts` key fn). The "key longest" floor counts STRICT longest only (ties
+  do not count): 1.3 fell to 7%, fixed by lengthening three keys by a word. A fixer that shortens an order stem can drop the
+  rule that fixes the order: restore it. The primer topics add `PID` and `UTC` to the shown acronyms: now in `meta.ts`.
+  Domain 4 has only 4.1 and 4.2 (two objectives, 16%): CySA+ has 15 objectives in all.
+- **Left in domain 1:** `cs4-1-2-terminal-001` prints `listen` in `ss` output (real tools print `LISTEN`; the acronym check
+  rejects it): cosmetic. `bank.test.ts` has `describeShippedBank` only; add `describeBankTargets` in the close-out task.
+- Full `npm run check` was last run before the drafts (unit 1273 pass; e2e 130 of 134, the 4 failures were the empty-bank
+  bounds tests, since fixed). Run it again at close-out; e2e with `--workers=3` if the default times out under load.
+
+# 2026-11-11 (morning): CySA+ registered on `chunk13-cysa`, drafting NOT started (history)
 
 Next session model: **Sonnet** (orchestrating Sonnet drafters and Haiku copy reviewers). `gh issue list` first (on 2026-11-11
 only #19 was open: diagram ideas, no bugs).

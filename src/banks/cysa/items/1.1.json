@@ -38,7 +38,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-002",
@@ -79,7 +79,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-003",
@@ -118,7 +118,7 @@
     },
     "explanation": "Copies held away from the original administrators, with signed hashes that expose any later change, give evidence of integrity. Compression and file names do not detect edits, and a mirror on the same server is still under the same administrator's control.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-004",
@@ -159,7 +159,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-005",
@@ -198,7 +198,7 @@
     },
     "explanation": "Tiered retention keeps recent data fast to search and holds older data on cheaper storage for the full period. Deleting at 90 days breaks the policy, and keeping only failures or a daily count discards the detail an investigation would need.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-006",
@@ -237,7 +237,7 @@
     },
     "explanation": "Agentless collection lets a listener receive messages the device already sends, so nothing has to run on it. An agent cannot be installed on this appliance, and weekly manual exports or screen scraping are slow, fragile and incomplete.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-007",
@@ -276,7 +276,7 @@
     },
     "explanation": "Hardening reduces the attack surface, and every service that is not needed is removed or disabled. An extra administrator account enlarges the surface, more verbose logs only describe activity, and a larger virtual machine leaves the same listeners in place.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-008",
@@ -315,7 +315,7 @@
     },
     "explanation": "`/etc/passwd` has one line for each local account, so a new entry stands out. `/etc/hosts` maps names to addresses, `/etc/fstab` lists file systems to mount, and `/var/log/wtmp` records past logins rather than the accounts that exist.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-009",
@@ -354,7 +354,7 @@
     },
     "explanation": "A web server worker that spawns a shell, runs system-information commands and fetches a file from an outside address is a classic sign of command execution through the web application. A master process that starts as the superuser, workers that drop to an unprivileged account and a parent of init are all normal for this server.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-010",
@@ -393,7 +393,7 @@
     },
     "explanation": "Cloud-native design builds applications from small, independently scalable services that are delivered and managed through automation. Lift-and-shift moves an unchanged workload, monolithic hosting keeps one large unit, and colocation only rents rack space.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-011",
@@ -434,7 +434,7 @@
     "acronyms": [
       "VM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-012",
@@ -473,7 +473,7 @@
     },
     "explanation": "Containers share the kernel of the operating system beneath them, so a kernel flaw is a concern for all of them. Guest operating systems and per-container hypervisors belong to virtualization, and the writable layer is private to each container.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-013",
@@ -514,7 +514,7 @@
     "acronyms": [
       "API"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-014",
@@ -555,7 +555,7 @@
     "acronyms": [
       "MDM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-015",
@@ -596,7 +596,7 @@
     "acronyms": [
       "EDR"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-016",
@@ -637,7 +637,7 @@
     "acronyms": [
       "ZTNA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-017",
@@ -683,7 +683,7 @@
       "VLAN",
       "ZTNA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-018",
@@ -724,7 +724,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-019",
@@ -766,7 +766,7 @@
       "MFA",
       "PAM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-020",
@@ -805,7 +805,7 @@
     },
     "explanation": "Authorization decides what an already verified user may access, so the refusal came from it. Authentication verified the password and code, accounting records activity, and identification only claims who the user is.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-021",
@@ -846,7 +846,7 @@
     "acronyms": [
       "MFA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-022",
@@ -885,7 +885,7 @@
     },
     "explanation": "An exposed secret must be treated as compromised, so it is rotated and then supplied at runtime from a secrets manager instead of from code. Base64 is reversible encoding, a private repository still leaves the password in history, and a comment gives no protection.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-023",
@@ -926,7 +926,7 @@
     "acronyms": [
       "TLS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-024",
@@ -967,7 +967,7 @@
     "acronyms": [
       "PII"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-025",
@@ -1006,7 +1006,7 @@
     },
     "explanation": "Operational technology monitors and controls physical processes and equipment. Information technology handles data and business systems, and cloud-native and mobile technologies describe delivery models and devices rather than process control.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-026",
@@ -1050,7 +1050,7 @@
       "SCADA",
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-027",
@@ -1094,7 +1094,7 @@
       "PLC",
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-028",
@@ -1140,7 +1140,7 @@
     "acronyms": [
       "SOC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-029",
@@ -1189,7 +1189,7 @@
     },
     "explanation": "Hardening removes default credentials and unused accounts, shuts off unneeded services and ports, and brings the system to a secure baseline with current patches. Extra software, broad administrator rights and guest access all widen the attack surface.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-030",
@@ -1233,7 +1233,7 @@
     },
     "explanation": "Running as a non-root user limits what a compromised process can do, and scanned images from a trusted registry limit what code gets in. Exposing the runtime socket hands over control of the host, floating tags make deployments unpredictable, and a shared writable volume lets one container tamper with another.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-031",
@@ -1277,7 +1277,7 @@
     },
     "explanation": "A secrets manager keeps values out of code and images, and rotation limits how long a leaked value stays useful. Baking keys into images, emailing tokens and sharing one key everywhere all increase the number of places a secret can leak.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-032",
@@ -1325,7 +1325,7 @@
       "IT",
       "SCADA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-mcq-033",
@@ -1372,7 +1372,7 @@
       "CASB",
       "SASE"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-diagram-001",
@@ -1510,7 +1510,7 @@
       "SIEM",
       "VPN"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-config-001",
@@ -1641,7 +1641,7 @@
       "TLS",
       "UDP"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-match-001",
@@ -1718,7 +1718,7 @@
       "p5": "If deletions are never recorded, the audit configuration does not cover them."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-buckets-001",
@@ -1792,7 +1792,7 @@
       "IT",
       "OT"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-hotspot-001",
@@ -1926,7 +1926,7 @@
       "x11": "Graphical forwarding is unneeded on a jump host and breaks the baseline."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-1-1-data-001",
@@ -2065,6 +2065,6 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   }
 ]

