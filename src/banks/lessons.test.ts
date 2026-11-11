@@ -17,6 +17,7 @@ describe('getLessons', () => {
   it('gives the lessons that a picture clarifies their diagram', () => {
     const kinds = Object.fromEntries(shippedLessons.filter((l) => l.diagram).map((l) => [l.id, l.diagram!.kind]));
     expect(kinds).toEqual({
+      'b-outliers-iqr': 'box-plot',
       'b-distribution-shape': 'bell-rule',
       'c-hypotheses': 'tail-curve',
       'c-type-errors': 'error-matrix',

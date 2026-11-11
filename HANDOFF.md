@@ -1,3 +1,9 @@
+# 2026-11-10 (end 4): #19 box plot for IQR DONE, committed on main, NOT pushed or deployed
+
+Next session model: **Sonnet**. New diagram kind `box-plot` on "Outliers, IQR and z-scores" (the lesson's own numbers:
+Q1 12, median 16, Q3 20, fences 0 and 32, outlier 40). `npm run check` green (127 e2e). Left: push, `npm run deploy`,
+comment on #19. Still open on #19: question-level diagrams (Question has no diagram field). Then #11.
+
 # 2026-11-10 (end 3): #6 content DONE (all three exams). Next: #11, or the owner's pick
 
 Next session model: **Sonnet**. `gh issue list` first. All 2122 questions now have a `searchTerm` (secai CY0-001 done this

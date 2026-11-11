@@ -8,6 +8,7 @@ import { textOutOfBounds } from './bounds';
 // schemes at phone and desktop width. Runs against the shipped bank (dist-single).
 const bankUrl = pathToFileURL(path.resolve('dist-single/index.html')).href;
 const LESSONS = [
+  'Outliers, IQR and z-scores',
   'Distribution shape and the 68-95-99.7 rule',
   'Null and alternative hypotheses',
   'Type I and Type II errors',

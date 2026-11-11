@@ -98,6 +98,11 @@
     "area": "B",
     "title": "Outliers, IQR and z-scores",
     "objectiveIds": ["3.2"],
+    "diagram": {
+      "kind": "box-plot",
+      "caption": "A box plot with its IQR fences and one outlier",
+      "description": "A box plot on a number line from 0 to 40. The box runs from Q1 = 12 to Q3 = 20, with the median at 16 inside it, so the box is the IQR of 8 wide. Dashed fences sit at 0 and 32, which is 1.5 × IQR beyond each quartile. The whiskers reach 5 and 30, the furthest values inside the fences, and a single point at 40 lies beyond the upper fence: an outlier."
+    },
     "meaning": [
       "An outlier is a value far from the rest. The interquartile range (IQR) rule and the z-score are two standard ways to decide what counts as \"far\".",
       "Analysts check for outliers because they can be data-entry errors to fix, or real but rare events worth a closer look, and because they pull the mean away from typical values."

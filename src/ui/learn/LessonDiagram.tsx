@@ -200,7 +200,39 @@ function DecisionChain() {
   );
 }
 
+/** The lesson's own example: Q1 12, median 16, Q3 20, fences 0 and 32, whiskers to 5 and 30, one outlier at 40. */
+function BoxPlot() {
+  const px = (v: number) => 20 + v * 8;
+  const [q1, med, q3, lo, hi, fenceLo, fenceHi, out] = [12, 16, 20, 5, 30, 0, 32, 40];
+  return (
+    <>
+      {[fenceLo, fenceHi].map((f) => <line key={f} className="d-resid" x1={px(f)} y1="22" x2={px(f)} y2="120" />)}
+      <text className="d-text" x={px(fenceLo) - 6} y="16">lower fence</text>
+      <text className="d-text" x={px(fenceHi)} y="16" textAnchor="middle">upper fence</text>
+      <text className="d-text d-strong" x={px(q1) - 4} y="36" textAnchor="end">Q1</text>
+      <text className="d-text d-strong" x={px(med)} y="36" textAnchor="middle">median</text>
+      <text className="d-text d-strong" x={px(q3) + 4} y="36" textAnchor="start">Q3</text>
+      <line className="d-line" x1={px(lo)} y1="60" x2={px(q1)} y2="60" />
+      <line className="d-line" x1={px(q3)} y1="60" x2={px(hi)} y2="60" />
+      <line className="d-line" x1={px(lo)} y1="52" x2={px(lo)} y2="68" />
+      <line className="d-line" x1={px(hi)} y1="52" x2={px(hi)} y2="68" />
+      <rect className="d-box" x={px(q1)} y="44" width={px(q3) - px(q1)} height="32" />
+      <line className="d-line" x1={px(med)} y1="44" x2={px(med)} y2="76" />
+      <circle className="d-dot" cx={px(out)} cy="60" r="5" />
+      <text className="d-text d-strong" x={px(out)} y="44" textAnchor="middle">outlier</text>
+      <line className="d-line" x1={px(q1)} y1="88" x2={px(q3)} y2="88" />
+      <line className="d-line" x1={px(q1)} y1="83" x2={px(q1)} y2="93" />
+      <line className="d-line" x1={px(q3)} y1="83" x2={px(q3)} y2="93" />
+      <text className="d-text" x={px(med)} y="106" textAnchor="middle">IQR = 8</text>
+      <line className="d-axis" x1="14" y1="120" x2="356" y2="120" />
+      {[0, 10, 20, 30, 40].map((v) => <text key={v} className="d-text" x={px(v)} y="136" textAnchor="middle">{v}</text>)}
+      <text className="d-text" x="14" y="160">Whiskers stop at the last value inside a fence.</text>
+    </>
+  );
+}
+
 const VIEW: Record<Diagram['kind'], { box: string; body: ReactNode }> = {
+  'box-plot': { box: '0 0 370 168', body: <BoxPlot /> },
   'join-venn': { box: '0 0 480 268', body: <JoinVenn /> },
   'bell-rule': { box: '0 0 320 202', body: <BellRule /> },
   'tail-curve': { box: '0 0 480 166', body: <TailCurve /> },
