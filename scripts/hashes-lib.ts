@@ -126,6 +126,12 @@ export interface ReleaseOptions {
   /** Resolves true once the public address serves the release. Defaults to `waitForPublished`. */
   wait?: (id: string) => Promise<boolean>;
   run?: Run;
+  /** The git steps, replaceable in tests: `readPublished`, `publishHashes` and the checked-out branch's name. */
+  git?: {
+    read: () => Manifest | null;
+    publish: (manifest: Manifest, dryRun: boolean) => { commit: string | null; pushed: boolean };
+    branch: () => string;
+  };
 }
 
 /**
@@ -135,7 +141,13 @@ export interface ReleaseOptions {
  */
 export async function releaseHashes(opts: ReleaseOptions): Promise<'unchanged' | 'published' | 'dry-run'> {
   const run = opts.run ?? defaultRun;
-  const published = readPublished(opts.cwd, opts.remote, run);
+  const git = opts.git ?? {
+    read: () => readPublished(opts.cwd, opts.remote, run),
+    publish: (manifest: Manifest, dryRun: boolean) =>
+      publishHashes({ cwd: opts.cwd, remote: opts.remote, manifest, commit: opts.commit, dryRun, run }),
+    branch: () => run('git', ['rev-parse', '--abbrev-ref', 'HEAD'], opts.cwd).trim(),
+  };
+  const published = git.read();
   const manifest = nextManifest(published, opts.local, { date: opts.date, commit: opts.commit, appVersion: opts.appVersion });
   if (!manifest) {
     opts.log('The content is unchanged; the published hashes stay as they are.');
@@ -145,16 +157,16 @@ export async function releaseHashes(opts: ReleaseOptions): Promise<'unchanged' |
   for (const line of describeChanges(diffExams(opts.local, published?.current.exams ?? {}))) opts.log(line);
 
   // Official hashes come from main only, even when --force lets the site go out from another branch.
-  const branch = run('git', ['rev-parse', '--abbrev-ref', 'HEAD'], opts.cwd).trim();
+  const branch = git.branch();
   if (branch !== 'main') throw new Error(`Refusing to publish content hashes from branch ${branch}: the official content is what is on main`);
 
   if (opts.dryRun) {
-    const r = publishHashes({ cwd: opts.cwd, remote: opts.remote, manifest, commit: opts.commit, dryRun: true, run });
+    const r = git.publish(manifest, true);
     opts.log(`Dry run made hashes commit ${r.commit}; nothing was pushed.`);
     return 'dry-run';
   }
   if (!(await opts.confirm())) throw new Error('Stopped: the hashes were not confirmed, so nothing was published');
-  publishHashes({ cwd: opts.cwd, remote: opts.remote, manifest, commit: opts.commit, dryRun: false, run });
+  git.publish(manifest, false);
   opts.log(`Pushed release ${manifest.current.id.slice(0, 12)} to ${HASHES_BRANCH}. Waiting until its public address serves it…`);
   if (!(await (opts.wait ?? waitForPublished)(manifest.current.id))) {
     throw new Error(

@@ -157,66 +157,118 @@ describe('publishHashes and readPublished', { timeout: 60_000 }, () => {
     expect(() => readPublished(repo, 'origin')).toThrow('Could not read the published hashes from origin');
   });
 
-  describe('releaseHashes', () => {
-    const release = (c: string, over: Partial<ReleaseOptions> = {}) => {
-      const lines: string[] = [];
-      const result = releaseHashes({
+  it('releaseHashes, with real git: two releases keep the history', async () => {
+    const release = (c: string) =>
+      releaseHashes({
         cwd: repo, remote: 'origin', local: exam(c), ...INFO, dryRun: false,
-        confirm: async () => true, wait: async () => true, log: (l) => lines.push(l), ...over,
+        confirm: async () => true, wait: async () => true, log: () => undefined,
       });
-      return { result, lines };
-    };
-    const remoteHas = () => git(remote, 'branch', '--list', HASHES_BRANCH) !== '';
-
-    it('publishes the first release after a yes, listing what is new', async () => {
-      const { result, lines } = release('a');
-      await expect(result).resolves.toBe('published');
-      expect(lines[0]).toBe('First release of the content hashes:');
-      expect(lines).toContain('  added questions: q1');
-      expect(readPublished(repo, 'origin')?.current.exams).toEqual(exam('a'));
-    });
-
-    it('leaves the published file alone when the content is unchanged, without asking', async () => {
-      await release('a').result;
-      const confirm = vi.fn(async () => true);
-      const { result, lines } = release('a', { confirm });
-      await expect(result).resolves.toBe('unchanged');
-      expect(confirm).not.toHaveBeenCalled();
-      expect(lines).toEqual(['The content is unchanged; the published hashes stay as they are.']);
-      expect(git(remote, 'rev-list', '--count', HASHES_BRANCH)).toBe('1');
-    });
-
-    it('keeps the history across releases', async () => {
-      await release('a').result;
-      const { result, lines } = release('b');
-      await expect(result).resolves.toBe('published');
-      expect(lines[0]).toBe('The content changed since the last release:');
-      expect(lines).toContain('  changed questions: q1');
-      expect(readPublished(repo, 'origin')?.history).toHaveLength(1);
-    });
-
-    it('publishes nothing when the answer is no', async () => {
-      await expect(release('a', { confirm: async () => false }).result).rejects.toThrow('the hashes were not confirmed');
-      expect(remoteHas()).toBe(false);
-    });
-
-    it('publishes nothing on a dry run, and does not ask', async () => {
-      const confirm = vi.fn(async () => true);
-      await expect(release('a', { dryRun: true, confirm }).result).resolves.toBe('dry-run');
-      expect(confirm).not.toHaveBeenCalled();
-      expect(remoteHas()).toBe(false);
-    });
-
-    it('publishes only from main', async () => {
-      git(repo, 'checkout', '-q', '-b', 'feature');
-      await expect(release('a').result).rejects.toThrow('Refusing to publish content hashes from branch feature');
-      expect(remoteHas()).toBe(false);
-    });
-
-    it('stops the deploy when the public address never serves the new list, and a second run goes on', async () => {
-      await expect(release('a', { wait: async () => false }).result).rejects.toThrow('the site was NOT pushed');
-      expect(remoteHas()).toBe(true);
-      await expect(release('a').result).resolves.toBe('unchanged');
-    });
+    await expect(release('a')).resolves.toBe('published');
+    await expect(release('b')).resolves.toBe('published');
+    await expect(release('b')).resolves.toBe('unchanged');
+    const published = readPublished(repo, 'origin');
+    expect(published?.current.exams).toEqual(exam('b'));
+    expect(published?.history).toHaveLength(1);
+    expect(git(remote, 'rev-list', '--count', HASHES_BRANCH)).toBe('2');
   });
 });
+
+// The order and the refusals, with the git steps replaced by a list in memory (the real ones are tested above).
+describe('releaseHashes', () => {
+  const h = (c: string) => c.repeat(64);
+  const exam = (c: string): Record<string, ExamHashes> => ({ 'X0-001': sealExam({ meta: h('1'), questions: { q1: h(c) }, lessons: {} }) });
+  const INFO = { date: '2026-11-10', commit: 'abc1234', appVersion: '0.1.0' };
+
+  function setup(start: Manifest | null = null, branch = 'main') {
+    const state = { published: start, pushes: 0, events: [] as string[] };
+    const lines: string[] = [];
+    const release = (c: string, over: Partial<ReleaseOptions> = {}) =>
+      releaseHashes({
+        cwd: '.', remote: 'origin', local: exam(c), ...INFO, dryRun: false,
+        confirm: async () => (state.events.push('confirm'), true),
+        wait: async () => (state.events.push('wait'), true),
+        log: (l) => lines.push(l),
+        git: {
+          read: () => state.published,
+          branch: () => branch,
+          publish: (manifest, dryRun) => {
+            state.events.push(dryRun ? 'dry-publish' : 'publish');
+            if (!dryRun) {
+              state.published = manifest;
+              state.pushes++;
+            }
+            return { commit: 'c0ffee1', pushed: !dryRun };
+          },
+        },
+        ...over,
+      });
+    return { state, lines, release };
+  }
+
+  it('publishes the first release after a yes, then waits, listing what is new', async () => {
+    const { state, lines, release } = setup();
+    await expect(release('a')).resolves.toBe('published');
+    expect(state.events).toEqual(['confirm', 'publish', 'wait']);
+    expect(lines[0]).toBe('First release of the content hashes:');
+    expect(lines).toContain('  added questions: q1');
+    expect(state.published?.current.exams).toEqual(exam('a'));
+  });
+
+  it('leaves the published file alone when the content is unchanged, without asking', async () => {
+    const { state, lines, release } = setup(nextManifest(null, exam('a'), INFO));
+    await expect(release('a')).resolves.toBe('unchanged');
+    expect(state.events).toEqual([]);
+    expect(lines).toEqual(['The content is unchanged; the published hashes stay as they are.']);
+  });
+
+  it('lists what changed and moves the old release into the history', async () => {
+    const first = nextManifest(null, exam('a'), INFO)!;
+    const { state, lines, release } = setup(first);
+    await expect(release('b')).resolves.toBe('published');
+    expect(lines[0]).toBe('The content changed since the last release:');
+    expect(lines).toContain('  changed questions: q1');
+    expect(state.published?.history.map((r) => r.id)).toEqual([first.current.id]);
+  });
+
+  it('publishes nothing when the answer is no', async () => {
+    const { state, release } = setup();
+    await expect(release('a', { confirm: async () => false })).rejects.toThrow('the hashes were not confirmed');
+    expect(state.pushes).toBe(0);
+  });
+
+  it('pushes nothing on a dry run, and does not ask', async () => {
+    const { state, release } = setup();
+    await expect(release('a', { dryRun: true })).resolves.toBe('dry-run');
+    expect(state.events).toEqual(['dry-publish']);
+    expect(state.pushes).toBe(0);
+  });
+
+  it('publishes only from main', async () => {
+    const { state, release } = setup(null, 'feature');
+    await expect(release('a')).rejects.toThrow('Refusing to publish content hashes from branch feature');
+    expect(state.events).toEqual([]);
+  });
+
+  it('stops the deploy when the public address never serves the new list, and a second run goes on', async () => {
+    const { state, release } = setup();
+    await expect(release('a', { wait: async () => false })).rejects.toThrow('the site was NOT pushed');
+    expect(state.pushes).toBe(1);
+    await expect(release('a')).resolves.toBe('unchanged');
+    expect(state.pushes).toBe(1);
+  });
+
+  it('stops when the published file cannot be read', async () => {
+    const { state, release } = setup();
+    const git = {
+      read: (): Manifest | null => {
+        throw new Error('Could not read the published hashes from origin');
+      },
+      branch: () => 'main',
+      publish: vi.fn(),
+    };
+    await expect(release('a', { git })).rejects.toThrow('Could not read the published hashes');
+    expect(git.publish).not.toHaveBeenCalled();
+    expect(state.pushes).toBe(0);
+  });
+});
+
