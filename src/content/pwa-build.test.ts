@@ -23,6 +23,13 @@ describe.skipIf(!built)('PWA build output (run npm run build && npm run build:si
     expect(html).not.toContain('registerSW');
     expect(existsSync('dist-single/sw.js')).toBe(false);
   });
+
+  it('only the hosted build knows the address of the content hashes (issue #11)', () => {
+    // The one-file copy makes no network requests, so it has no content check.
+    expect(readFileSync('dist-single/index.html', 'utf8')).not.toContain('raw.githubusercontent.com');
+    const scripts = readdirSync('dist/assets').filter((f) => f.endsWith('.js')).map((f) => readFileSync(`dist/assets/${f}`, 'utf8'));
+    expect(scripts.some((s) => s.includes('raw.githubusercontent.com'))).toBe(true);
+  });
 });
 
 it('build output check is not silently skipped in CI-like runs', () => {

@@ -25,8 +25,19 @@ export function About({ protocol = location.protocol }: { protocol?: string }) {
       </ul>
 
       <h3>Your data</h3>
-      <p>Your progress and questions stay in this browser. The app sends nothing over the network unless you send a report.</p>
+      <p>Your progress and questions stay in this browser. The app sends nothing over the network unless you send a report or check the content.</p>
       <p>Questions you add or import are yours; do not add copyrighted exam content.</p>
+
+      <h3>Checking the content</h3>
+      <p>
+        The official app is at <a href={ONLINE_APP_URL}>{ONLINE_APP_URL}</a>. There, Settings has a Check content button. It compares the
+        stock questions, lessons and exam details with the official list of SHA-512/256 hashes and says whether they match the current
+        release. It sends none of your data; it fetches one public file from GitHub.
+      </p>
+      <p>
+        A copy from anywhere else, such as a file someone gave you, may have been changed, and a changed copy can also change what its
+        own check says. If you did not open the app from the official address, do not rely on it.
+      </p>
 
       <h3>Problems and ideas</h3>
       <p>{REPORT_PRIVACY}</p>

@@ -14,7 +14,7 @@ describe('About', () => {
     expect(screen.getByText(/MIT with the Commons Clause/)).toBeInTheDocument();
     expect(screen.getByText(/CC BY-NC 4\.0/)).toBeInTheDocument();
     expect(screen.getByText(`Version ${__APP_VERSION__}`)).toBeInTheDocument();
-    expect(screen.getByText('Your progress and questions stay in this browser. The app sends nothing over the network unless you send a report.')).toBeInTheDocument();
+    expect(screen.getByText('Your progress and questions stay in this browser. The app sends nothing over the network unless you send a report or check the content.')).toBeInTheDocument();
     expect(screen.getByText('Questions you add or import are yours; do not add copyrighted exam content.')).toBeInTheDocument();
   });
 

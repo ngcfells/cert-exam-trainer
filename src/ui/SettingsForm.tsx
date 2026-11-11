@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Repo } from '../storage';
 import { BackupControls } from './BackupControls';
+import { ContentCheck } from './ContentCheck';
 import { applyDisplay, loadDisplay } from './display';
 import { DisplaySettings } from './DisplaySettings';
 import { InstallApp } from './InstallApp';
@@ -26,6 +27,8 @@ export function SettingsForm({ repo, backup }: { repo: Repo; backup: boolean }) 
       <MarkSettings key={`marks-${imports}`} repo={repo} />
       <TipSettings key={`tips-${imports}`} repo={repo} />
       <InstallApp />
+      {/* Hosted app only: the one-file copy makes no network requests and is never official. */}
+      {__PWA__ && <ContentCheck />}
       {backup &&<BackupControls repo={repo} onImported={() => void onImported()} />}
     </>
   );
