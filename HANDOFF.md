@@ -1,4 +1,18 @@
-# 2026-11-11 (afternoon): CySA+ domain 1 DONE (234 items approved, committed). Next: domain 2. START HERE
+# 2026-11-11 (evening): CySA+ domain 2 DONE (468 items approved, committed). Next: domain 3. START HERE
+
+Next session model: **Sonnet**. `gh issue list` first. Branch `chunk13-cysa`, not pushed, do NOT deploy until the bank meets its targets.
+Domain 2 = 2.1 to 2.4, 39 items each (27 single + 6 multi + 6 PBQ) = 132 MCQ + 24 PBQ; bank now 390 items (330 MCQ + 60 PBQ).
+Left: domain 3 (3.1 to 3.3) and domain 4 (4.1, 4.2), 40 MCQ + 7 PBQ per objective; then close-out (`describeBankTargets`, full `npm run check`).
+PBQ tally now: terminal 6, data 9, hotspot 8, buckets 8, match 9, config 7, order 7, diagram 6. Domains 3 and 4 (35 PBQs) must lift
+every template to 10+: favour terminal (4 more), diagram (4), config (3), order (3), hotspot (2), buckets (2); containment and response
+fit terminal, order and diagram.
+Same method as below. Briefs, `mkblind.cjs`, `cmp.cjs`, `keys.cjs` are in the session scratchpad `d2/` (the d1 ones still exist in an older
+scratchpad); rebuild from the list below if gone. Domain 2 notes: widened terminal `accept` lists are expected to change `answer` in
+`keys.cjs` (check only additions); blind reviewers' "Preventative/Responsive" nits are the objective's own words, keep; a stem that lets
+two tools fit (Trivy and Prowler both scan IaC) needs a clearly wrong distractor; order stems need a rule for every adjacent pair
+(2.4 order failed round 2 until a rule was added). `BOUNDS_EXAM=CS0-004 npm run check-bounds` passed with 390 items.
+
+# 2026-11-11 (afternoon): CySA+ domain 1 DONE (234 items approved, committed) (history)
 
 Next session model: **Sonnet** (orchestrating Sonnet drafters, Sonnet blind reviewers, Haiku copy reviewers). `gh issue list` first
 (2026-11-11: only #19, no bugs). One domain per session, then handoff and /clear.

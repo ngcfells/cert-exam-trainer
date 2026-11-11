@@ -36,7 +36,7 @@
     },
     "explanation": "An asset inventory tells the team which hosts exist, who owns them and how important they are, so scope and schedules can be set. Closed tickets, patch notes and training calendars are useful elsewhere but do not define scan targets.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-002",
@@ -52,11 +52,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Drop the extra results because scanners report noise"
+          "text": "Drop the extra results because scanners often report noise from stale entries"
         },
         {
           "id": "b",
-          "text": "Lower the scanner's sensitivity so fewer hosts appear"
+          "text": "Lower the scanner's sensitivity so that fewer hosts appear in the results"
         },
         {
           "id": "c",
@@ -64,7 +64,7 @@
         },
         {
           "id": "d",
-          "text": "Exclude the unknown addresses from future scans"
+          "text": "Exclude the unknown addresses from all future scans of that range"
         }
       ]
     },
@@ -75,7 +75,7 @@
     },
     "explanation": "Hosts that scan but are not in the inventory are unmanaged or shadow assets, so they must be identified, owned and recorded. Dismissing them, hiding them with lower sensitivity or excluding them leaves unknown systems unassessed.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-003",
@@ -114,7 +114,7 @@
     },
     "explanation": "Scheduling the scan in an off-peak window keeps probe load away from users. More concurrent checks add load, scanning from outside changes the view without reducing load, and skipping authentication gives a less complete result.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-004",
@@ -130,19 +130,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Regulatory timing for audit reports"
+          "text": "Regulatory timing for submitting audit reports"
         },
         {
           "id": "b",
-          "text": "Operational impact on running business jobs"
+          "text": "Operational impact on live business processes"
         },
         {
           "id": "c",
-          "text": "Sensitivity classification of the stored data"
+          "text": "Sensitivity classification of the stored data records"
         },
         {
           "id": "d",
-          "text": "Segmentation between network zones"
+          "text": "Segmentation between separate network zones"
         }
       ]
     },
@@ -153,7 +153,7 @@
     },
     "explanation": "Checking for conflicts with backups and batch jobs is an operations consideration, because scans compete for resources and can disturb critical processes. The other options concern reporting duties, data classification and network boundaries.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-005",
@@ -192,7 +192,7 @@
     },
     "explanation": "Throttling the scan for fragile systems addresses the performance impact while keeping them in scope. A faster rate or more targets increases load, and rerunning immediately repeats the failure.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-006",
@@ -208,7 +208,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Leave the systems out of the scope"
+          "text": "Leave the systems out of scope until they are retired"
         },
         {
           "id": "b",
@@ -231,7 +231,7 @@
     },
     "explanation": "Higher sensitivity calls for careful settings and coordination, not for removing the systems from assessment. Intrusive profiles risk outages, and an outside view does not replace an assessment of the systems themselves.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-007",
@@ -272,7 +272,7 @@
     "acronyms": [
       "VLAN"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-008",
@@ -311,7 +311,7 @@
     },
     "explanation": "Regulatory and contractual requirements set the minimum scope and frequency that the plan must meet. Vendor defaults, owner preferences and feed size may shape the plan but do not set compliance obligations.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-009",
@@ -350,7 +350,7 @@
     },
     "explanation": "An external scan has the same vantage point as an internet attacker and shows only what the perimeter exposes. Internal, credentialed and agent-based checks view the server from inside or from the host itself.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-010",
@@ -361,24 +361,24 @@
       "2.1"
     ],
     "difficulty": 3,
-    "stem": "An internal scanner reports a missing patch on a file server, but the latest external scan lists nothing for that server. What most likely explains the difference?",
+    "stem": "An internal scanner reports a missing patch on a file server that is in scope for both scan types, but the latest external scan lists nothing for that server. What most likely explains the difference?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "The firewall hides the service from the internet, so an inside view is needed"
+          "text": "The server sits behind a firewall that blocks outside probes, so an inside view is needed"
         },
         {
           "id": "b",
-          "text": "External scans are limited to checking web application code"
+          "text": "External scans are limited to checking web application code on public sites"
         },
         {
           "id": "c",
-          "text": "Internal scanners receive newer checks than external ones"
+          "text": "Internal scanners receive newer vulnerability checks than external scanners do"
         },
         {
           "id": "d",
-          "text": "The server was added to the inventory after the external scan"
+          "text": "The external scan ran before the server was added to the inventory"
         }
       ]
     },
@@ -387,9 +387,9 @@
         "a"
       ]
     },
-    "explanation": "A server that is not reachable from outside will not appear in an external scan, even if it has weaknesses an insider or a pivoting attacker could use. External scans are not limited to web code, check content is not tied to scanner location, and the inventory date is unrelated to what a probe can reach.",
+    "explanation": "A server that is not reachable from outside will not appear in an external scan, even if it has weaknesses an insider or a pivoting attacker could use. External scans are not limited to web code, check content is not tied to scanner location, and the inventory date does not change what a probe can reach, and it is unrelated to what a probe can reach.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-011",
@@ -428,7 +428,7 @@
     },
     "explanation": "An agent runs on the device and reports whenever it has connectivity, so roaming laptops are assessed wherever they are. Scanners and sensors inside the office only see devices that connect there, and an external scan of the gateway does not assess laptops.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-012",
@@ -465,9 +465,9 @@
         "d"
       ]
     },
-    "explanation": "Agents add a deployment and upkeep burden on each host. They do see local settings, they report outward so they do not need inbound scanner access, and they work whenever the host can reach the console, which is why they suit roaming devices.",
+    "explanation": "Agents add a deployment and upkeep burden on each host. They do see local settings, they report outward so they do not need inbound scanner access, and they work whenever the host can reach the management server, which is why they suit roaming devices.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-013",
@@ -483,7 +483,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Agentless scanning over the network"
+          "text": "Agentless scanning from a central scanner"
         },
         {
           "id": "b",
@@ -506,7 +506,7 @@
     },
     "explanation": "Agentless scanning works from the network and needs nothing installed on the target. Each of the other options depends on putting an agent on the appliance, which the team cannot do.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-014",
@@ -522,19 +522,19 @@
       "options": [
         {
           "id": "a",
-          "text": "The first scan used an outdated plugin set"
+          "text": "The first scan used an outdated plugin set from an old feed"
         },
         {
           "id": "b",
-          "text": "Credentialed scans open more ports on the host"
+          "text": "Credentialed scans open additional ports on the host being scanned"
         },
         {
           "id": "c",
-          "text": "Authenticated access lets the scanner inspect installed software and local settings"
+          "text": "Authenticated access lets the scanner read installed software and configuration"
         },
         {
           "id": "d",
-          "text": "The second scan was run from outside the firewall"
+          "text": "The second scan was run from outside the firewall perimeter"
         }
       ]
     },
@@ -545,7 +545,7 @@
     },
     "explanation": "With valid credentials the scanner reads patch levels, packages and configuration that an unauthenticated probe cannot see. Plugin age would not explain such a gap, credentials do not open ports, and an outside vantage point would show less, not more.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-015",
@@ -584,7 +584,7 @@
     },
     "explanation": "A purpose-made account with only the rights that scanning needs limits harm if it is stolen, and monitoring its use detects abuse. Shared or personal administrator logins are over-privileged, and a passwordless guest login is weak and cannot read the required data.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-016",
@@ -623,7 +623,7 @@
     },
     "explanation": "A scan without credentials sees what the network exposes: open ports, service banners and externally testable flaws. Registry values, local libraries and account settings need authenticated access to be read.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-017",
@@ -664,7 +664,7 @@
     "acronyms": [
       "PLC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-018",
@@ -684,15 +684,15 @@
         },
         {
           "id": "b",
-          "text": "It sends crafted packets to a range of ports"
+          "text": "It sends crafted packets to a range of ports on each target host"
         },
         {
           "id": "c",
-          "text": "It signs in to hosts to read patch levels"
+          "text": "It signs in to hosts with a service account to read patch levels"
         },
         {
           "id": "d",
-          "text": "It installs software that reports local settings"
+          "text": "It installs software on each host that reports local settings back"
         }
       ]
     },
@@ -703,7 +703,7 @@
     },
     "explanation": "Passive scanning observes traffic that is already on the network. Sending packets describes active scanning, signing in describes credentialed scanning and installed reporting software describes an agent.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-019",
@@ -742,7 +742,7 @@
     },
     "explanation": "A discovery or mapping scan builds the picture of what is on the network. Compliance, patch and web application scans all assess weaknesses or settings on hosts that are already known.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-020",
@@ -781,7 +781,7 @@
     },
     "explanation": "The `-sn` option performs host discovery without a port scan, so the output only shows which addresses answered. Silent addresses may be filtered or powered off, so nothing about them is proven, and no vulnerability or service information was gathered.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-021",
@@ -792,7 +792,7 @@
       "2.1"
     ],
     "difficulty": 2,
-    "stem": "A scanner labels a host \"Linux (96 percent confidence)\" without signing in. Which technique produced this label?",
+    "stem": "A scanner labels a host `Linux (96 percent confidence)` without signing in. Which technique produced this label?",
     "payload": {
       "options": [
         {
@@ -820,7 +820,7 @@
     },
     "explanation": "Device fingerprinting infers the operating system from how the host answers probes and from the banners it presents. Package databases need local access, file hashes need a baseline comparison, and zone transfers list names, not operating systems.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-022",
@@ -831,7 +831,7 @@
       "2.1"
     ],
     "difficulty": 3,
-    "stem": "A fingerprint says \"network printer\" for a host that the inventory lists as a database server. What is the best next step?",
+    "stem": "A fingerprint says `network printer` for a host that the inventory lists as a database server. What is the best next step?",
     "payload": {
       "options": [
         {
@@ -859,7 +859,7 @@
     },
     "explanation": "Fingerprints are estimates and can be wrong, but a mismatch is a reason to confirm the facts and fix whichever record is wrong. Deleting the entry, lowering severity or blocking the host act on an unverified guess.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-023",
@@ -900,7 +900,7 @@
     "acronyms": [
       "PCI DSS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-024",
@@ -941,7 +941,7 @@
     "acronyms": [
       "PCI DSS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-025",
@@ -985,7 +985,7 @@
       "ISO",
       "NVD"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-026",
@@ -1005,15 +1005,15 @@
         },
         {
           "id": "b",
-          "text": "A known exploited vulnerability is present"
+          "text": "A known exploited vulnerability is present and a patch is waiting"
         },
         {
           "id": "c",
-          "text": "Malware was detected on the host"
+          "text": "Malware was detected running on the host during the scan"
         },
         {
           "id": "d",
-          "text": "The scan credential was rejected"
+          "text": "The scan credential was rejected when the scanner signed in"
         }
       ]
     },
@@ -1026,7 +1026,7 @@
     "acronyms": [
       "CIS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-027",
@@ -1046,7 +1046,7 @@
         },
         {
           "id": "b",
-          "text": "Guidance for building a management system for security"
+          "text": "Guidance for establishing, running and improving a formal set of controls"
         },
         {
           "id": "c",
@@ -1067,7 +1067,7 @@
     "acronyms": [
       "ISO"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-028",
@@ -1111,7 +1111,7 @@
     },
     "explanation": "Authenticated access lets the scanner read patch levels and local settings. Internet-visible services, host existence and banners can all be seen without credentials, so they are not advantages of credentialed scanning.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-029",
@@ -1155,7 +1155,7 @@
     },
     "explanation": "Agents report outward, so they cover roaming devices and hosts that scanners cannot reach through a firewall. They require installation, cannot find devices that lack them, and do not provide an outside-in view.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-030",
@@ -1171,15 +1171,15 @@
       "options": [
         {
           "id": "a",
-          "text": "Scan within an agreed maintenance window"
+          "text": "Scan within an agreed maintenance window set by the owners"
         },
         {
           "id": "b",
-          "text": "Limit concurrent checks and the packet rate"
+          "text": "Limit concurrent checks and the packet rate per host"
         },
         {
           "id": "c",
-          "text": "Test the scan profile on a non-production copy first"
+          "text": "Test the scan profile on a staging copy first"
         },
         {
           "id": "d",
@@ -1204,7 +1204,7 @@
     },
     "explanation": "Timing, throttling and testing the profile on a copy all lower operational risk. Intrusive checks, silence toward owners and parallel scanners raise the chance of outages and surprise.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-031",
@@ -1220,7 +1220,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Place a scanner or scan appliance inside the segment"
+          "text": "Place a scanner or scan appliance inside the segment itself"
         },
         {
           "id": "b",
@@ -1228,15 +1228,15 @@
         },
         {
           "id": "c",
-          "text": "Merge the segment into the flat corporate network"
+          "text": "Merge the segment into the flat corporate network to remove the filtering"
         },
         {
           "id": "d",
-          "text": "Switch off the firewall during each scan"
+          "text": "Switch off the firewall for the duration of each scan"
         },
         {
           "id": "e",
-          "text": "Mark the restricted hosts as out of scope"
+          "text": "Mark the restricted hosts as out of scope for the scan program"
         }
       ]
     },
@@ -1250,7 +1250,7 @@
     "acronyms": [
       "VLAN"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-032",
@@ -1274,15 +1274,15 @@
         },
         {
           "id": "c",
-          "text": "Missing patches on installed software"
+          "text": "Missing security patches on the installed software packages"
         },
         {
           "id": "d",
-          "text": "Password hashes of local users"
+          "text": "Password hashes of the local user accounts on the host"
         },
         {
           "id": "e",
-          "text": "Flaws in custom application source code"
+          "text": "Flaws in the custom application source code under development"
         }
       ]
     },
@@ -1294,7 +1294,7 @@
     },
     "explanation": "Fingerprinting reads response behavior and banners to estimate the operating system and device type. Patch levels, password hashes and source code flaws require authenticated access or code analysis.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-mcq-033",
@@ -1349,7 +1349,7 @@
       "ISO",
       "PCI DSS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-terminal-001",
@@ -1379,7 +1379,7 @@
       "steps": [
         {
           "id": "sweep",
-          "label": "Type the command that finds live hosts in 192.0.2.0/24 without scanning ports"
+          "label": "Type the command that finds live hosts in `192.0.2.0/24` without scanning ports"
         },
         {
           "id": "state",
@@ -1405,11 +1405,11 @@
         },
         {
           "id": "ver",
-          "label": "Type the command that scans TCP ports 22 and 443 on 192.0.2.14 and detects service versions"
+          "label": "Type the command that scans TCP ports 22 and 443 on `192.0.2.14` and detects service versions"
         },
         {
           "id": "os",
-          "label": "Type the command that scans TCP ports 22 and 443 on 192.0.2.14 and attempts OS detection, with no version detection"
+          "label": "Type the command that scans TCP ports 22 and 443 on `192.0.2.14` and attempts OS detection, with no version detection"
         }
       ]
     },
@@ -1418,70 +1418,890 @@
         "sweep": [
           "nmap -sn 192.0.2.0/24",
           "nmap 192.0.2.0/24 -sn",
+          "nmap -sP 192.0.2.0/24",
+          "nmap 192.0.2.0/24 -sP",
           "sudo nmap -sn 192.0.2.0/24",
-          "sudo nmap 192.0.2.0/24 -sn"
+          "sudo nmap 192.0.2.0/24 -sn",
+          "sudo nmap -sP 192.0.2.0/24",
+          "sudo nmap 192.0.2.0/24 -sP"
         ],
         "state": [
           "o3389"
         ],
         "ver": [
-          "nmap -p 22,443 -sV 192.0.2.14",
-          "nmap -p 22,443 192.0.2.14 -sV",
-          "nmap -p22,443 -sV 192.0.2.14",
-          "nmap -p22,443 192.0.2.14 -sV",
           "nmap -sV -p 22,443 192.0.2.14",
-          "nmap -sV -p22,443 192.0.2.14",
-          "nmap -sV 192.0.2.14 -p 22,443",
-          "nmap -sV 192.0.2.14 -p22,443",
-          "nmap 192.0.2.14 -p 22,443 -sV",
-          "nmap 192.0.2.14 -p22,443 -sV",
-          "nmap 192.0.2.14 -sV -p 22,443",
-          "nmap 192.0.2.14 -sV -p22,443",
-          "sudo nmap -p 22,443 -sV 192.0.2.14",
-          "sudo nmap -p 22,443 192.0.2.14 -sV",
-          "sudo nmap -p22,443 -sV 192.0.2.14",
-          "sudo nmap -p22,443 192.0.2.14 -sV",
           "sudo nmap -sV -p 22,443 192.0.2.14",
-          "sudo nmap -sV -p22,443 192.0.2.14",
+          "nmap -sV 192.0.2.14 -p 22,443",
           "sudo nmap -sV 192.0.2.14 -p 22,443",
-          "sudo nmap -sV 192.0.2.14 -p22,443",
-          "sudo nmap 192.0.2.14 -p 22,443 -sV",
-          "sudo nmap 192.0.2.14 -p22,443 -sV",
+          "nmap -p 22,443 -sV 192.0.2.14",
+          "sudo nmap -p 22,443 -sV 192.0.2.14",
+          "nmap -p 22,443 192.0.2.14 -sV",
+          "sudo nmap -p 22,443 192.0.2.14 -sV",
+          "nmap 192.0.2.14 -sV -p 22,443",
           "sudo nmap 192.0.2.14 -sV -p 22,443",
-          "sudo nmap 192.0.2.14 -sV -p22,443"
+          "nmap 192.0.2.14 -p 22,443 -sV",
+          "sudo nmap 192.0.2.14 -p 22,443 -sV",
+          "nmap -sV -Pn -p 22,443 192.0.2.14",
+          "sudo nmap -sV -Pn -p 22,443 192.0.2.14",
+          "nmap -sV -Pn 192.0.2.14 -p 22,443",
+          "sudo nmap -sV -Pn 192.0.2.14 -p 22,443",
+          "nmap -sV -p 22,443 -Pn 192.0.2.14",
+          "sudo nmap -sV -p 22,443 -Pn 192.0.2.14",
+          "nmap -sV -p 22,443 192.0.2.14 -Pn",
+          "sudo nmap -sV -p 22,443 192.0.2.14 -Pn",
+          "nmap -sV 192.0.2.14 -Pn -p 22,443",
+          "sudo nmap -sV 192.0.2.14 -Pn -p 22,443",
+          "nmap -sV 192.0.2.14 -p 22,443 -Pn",
+          "sudo nmap -sV 192.0.2.14 -p 22,443 -Pn",
+          "nmap -Pn -sV -p 22,443 192.0.2.14",
+          "sudo nmap -Pn -sV -p 22,443 192.0.2.14",
+          "nmap -Pn -sV 192.0.2.14 -p 22,443",
+          "sudo nmap -Pn -sV 192.0.2.14 -p 22,443",
+          "nmap -Pn -p 22,443 -sV 192.0.2.14",
+          "sudo nmap -Pn -p 22,443 -sV 192.0.2.14",
+          "nmap -Pn -p 22,443 192.0.2.14 -sV",
+          "sudo nmap -Pn -p 22,443 192.0.2.14 -sV",
+          "nmap -Pn 192.0.2.14 -sV -p 22,443",
+          "sudo nmap -Pn 192.0.2.14 -sV -p 22,443",
+          "nmap -Pn 192.0.2.14 -p 22,443 -sV",
+          "sudo nmap -Pn 192.0.2.14 -p 22,443 -sV",
+          "nmap -p 22,443 -sV -Pn 192.0.2.14",
+          "sudo nmap -p 22,443 -sV -Pn 192.0.2.14",
+          "nmap -p 22,443 -sV 192.0.2.14 -Pn",
+          "sudo nmap -p 22,443 -sV 192.0.2.14 -Pn",
+          "nmap -p 22,443 -Pn -sV 192.0.2.14",
+          "sudo nmap -p 22,443 -Pn -sV 192.0.2.14",
+          "nmap -p 22,443 -Pn 192.0.2.14 -sV",
+          "sudo nmap -p 22,443 -Pn 192.0.2.14 -sV",
+          "nmap -p 22,443 192.0.2.14 -sV -Pn",
+          "sudo nmap -p 22,443 192.0.2.14 -sV -Pn",
+          "nmap -p 22,443 192.0.2.14 -Pn -sV",
+          "sudo nmap -p 22,443 192.0.2.14 -Pn -sV",
+          "nmap 192.0.2.14 -sV -Pn -p 22,443",
+          "sudo nmap 192.0.2.14 -sV -Pn -p 22,443",
+          "nmap 192.0.2.14 -sV -p 22,443 -Pn",
+          "sudo nmap 192.0.2.14 -sV -p 22,443 -Pn",
+          "nmap 192.0.2.14 -Pn -sV -p 22,443",
+          "sudo nmap 192.0.2.14 -Pn -sV -p 22,443",
+          "nmap 192.0.2.14 -Pn -p 22,443 -sV",
+          "sudo nmap 192.0.2.14 -Pn -p 22,443 -sV",
+          "nmap 192.0.2.14 -p 22,443 -sV -Pn",
+          "sudo nmap 192.0.2.14 -p 22,443 -sV -Pn",
+          "nmap 192.0.2.14 -p 22,443 -Pn -sV",
+          "sudo nmap 192.0.2.14 -p 22,443 -Pn -sV",
+          "nmap -sV -sT -p 22,443 192.0.2.14",
+          "sudo nmap -sV -sT -p 22,443 192.0.2.14",
+          "nmap -sV -sT 192.0.2.14 -p 22,443",
+          "sudo nmap -sV -sT 192.0.2.14 -p 22,443",
+          "nmap -sV -p 22,443 -sT 192.0.2.14",
+          "sudo nmap -sV -p 22,443 -sT 192.0.2.14",
+          "nmap -sV -p 22,443 192.0.2.14 -sT",
+          "sudo nmap -sV -p 22,443 192.0.2.14 -sT",
+          "nmap -sV 192.0.2.14 -sT -p 22,443",
+          "sudo nmap -sV 192.0.2.14 -sT -p 22,443",
+          "nmap -sV 192.0.2.14 -p 22,443 -sT",
+          "sudo nmap -sV 192.0.2.14 -p 22,443 -sT",
+          "nmap -sT -sV -p 22,443 192.0.2.14",
+          "sudo nmap -sT -sV -p 22,443 192.0.2.14",
+          "nmap -sT -sV 192.0.2.14 -p 22,443",
+          "sudo nmap -sT -sV 192.0.2.14 -p 22,443",
+          "nmap -sT -p 22,443 -sV 192.0.2.14",
+          "sudo nmap -sT -p 22,443 -sV 192.0.2.14",
+          "nmap -sT -p 22,443 192.0.2.14 -sV",
+          "sudo nmap -sT -p 22,443 192.0.2.14 -sV",
+          "nmap -sT 192.0.2.14 -sV -p 22,443",
+          "sudo nmap -sT 192.0.2.14 -sV -p 22,443",
+          "nmap -sT 192.0.2.14 -p 22,443 -sV",
+          "sudo nmap -sT 192.0.2.14 -p 22,443 -sV",
+          "nmap -p 22,443 -sV -sT 192.0.2.14",
+          "sudo nmap -p 22,443 -sV -sT 192.0.2.14",
+          "nmap -p 22,443 -sV 192.0.2.14 -sT",
+          "sudo nmap -p 22,443 -sV 192.0.2.14 -sT",
+          "nmap -p 22,443 -sT -sV 192.0.2.14",
+          "sudo nmap -p 22,443 -sT -sV 192.0.2.14",
+          "nmap -p 22,443 -sT 192.0.2.14 -sV",
+          "sudo nmap -p 22,443 -sT 192.0.2.14 -sV",
+          "nmap -p 22,443 192.0.2.14 -sV -sT",
+          "sudo nmap -p 22,443 192.0.2.14 -sV -sT",
+          "nmap -p 22,443 192.0.2.14 -sT -sV",
+          "sudo nmap -p 22,443 192.0.2.14 -sT -sV",
+          "nmap 192.0.2.14 -sV -sT -p 22,443",
+          "sudo nmap 192.0.2.14 -sV -sT -p 22,443",
+          "nmap 192.0.2.14 -sV -p 22,443 -sT",
+          "sudo nmap 192.0.2.14 -sV -p 22,443 -sT",
+          "nmap 192.0.2.14 -sT -sV -p 22,443",
+          "sudo nmap 192.0.2.14 -sT -sV -p 22,443",
+          "nmap 192.0.2.14 -sT -p 22,443 -sV",
+          "sudo nmap 192.0.2.14 -sT -p 22,443 -sV",
+          "nmap 192.0.2.14 -p 22,443 -sV -sT",
+          "sudo nmap 192.0.2.14 -p 22,443 -sV -sT",
+          "nmap 192.0.2.14 -p 22,443 -sT -sV",
+          "sudo nmap 192.0.2.14 -p 22,443 -sT -sV",
+          "nmap -sV -p22,443 192.0.2.14",
+          "sudo nmap -sV -p22,443 192.0.2.14",
+          "nmap -sV 192.0.2.14 -p22,443",
+          "sudo nmap -sV 192.0.2.14 -p22,443",
+          "nmap -p22,443 -sV 192.0.2.14",
+          "sudo nmap -p22,443 -sV 192.0.2.14",
+          "nmap -p22,443 192.0.2.14 -sV",
+          "sudo nmap -p22,443 192.0.2.14 -sV",
+          "nmap 192.0.2.14 -sV -p22,443",
+          "sudo nmap 192.0.2.14 -sV -p22,443",
+          "nmap 192.0.2.14 -p22,443 -sV",
+          "sudo nmap 192.0.2.14 -p22,443 -sV",
+          "nmap -sV -Pn -p22,443 192.0.2.14",
+          "sudo nmap -sV -Pn -p22,443 192.0.2.14",
+          "nmap -sV -Pn 192.0.2.14 -p22,443",
+          "sudo nmap -sV -Pn 192.0.2.14 -p22,443",
+          "nmap -sV -p22,443 -Pn 192.0.2.14",
+          "sudo nmap -sV -p22,443 -Pn 192.0.2.14",
+          "nmap -sV -p22,443 192.0.2.14 -Pn",
+          "sudo nmap -sV -p22,443 192.0.2.14 -Pn",
+          "nmap -sV 192.0.2.14 -Pn -p22,443",
+          "sudo nmap -sV 192.0.2.14 -Pn -p22,443",
+          "nmap -sV 192.0.2.14 -p22,443 -Pn",
+          "sudo nmap -sV 192.0.2.14 -p22,443 -Pn",
+          "nmap -Pn -sV -p22,443 192.0.2.14",
+          "sudo nmap -Pn -sV -p22,443 192.0.2.14",
+          "nmap -Pn -sV 192.0.2.14 -p22,443",
+          "sudo nmap -Pn -sV 192.0.2.14 -p22,443",
+          "nmap -Pn -p22,443 -sV 192.0.2.14",
+          "sudo nmap -Pn -p22,443 -sV 192.0.2.14",
+          "nmap -Pn -p22,443 192.0.2.14 -sV",
+          "sudo nmap -Pn -p22,443 192.0.2.14 -sV",
+          "nmap -Pn 192.0.2.14 -sV -p22,443",
+          "sudo nmap -Pn 192.0.2.14 -sV -p22,443",
+          "nmap -Pn 192.0.2.14 -p22,443 -sV",
+          "sudo nmap -Pn 192.0.2.14 -p22,443 -sV",
+          "nmap -p22,443 -sV -Pn 192.0.2.14",
+          "sudo nmap -p22,443 -sV -Pn 192.0.2.14",
+          "nmap -p22,443 -sV 192.0.2.14 -Pn",
+          "sudo nmap -p22,443 -sV 192.0.2.14 -Pn",
+          "nmap -p22,443 -Pn -sV 192.0.2.14",
+          "sudo nmap -p22,443 -Pn -sV 192.0.2.14",
+          "nmap -p22,443 -Pn 192.0.2.14 -sV",
+          "sudo nmap -p22,443 -Pn 192.0.2.14 -sV",
+          "nmap -p22,443 192.0.2.14 -sV -Pn",
+          "sudo nmap -p22,443 192.0.2.14 -sV -Pn",
+          "nmap -p22,443 192.0.2.14 -Pn -sV",
+          "sudo nmap -p22,443 192.0.2.14 -Pn -sV",
+          "nmap 192.0.2.14 -sV -Pn -p22,443",
+          "sudo nmap 192.0.2.14 -sV -Pn -p22,443",
+          "nmap 192.0.2.14 -sV -p22,443 -Pn",
+          "sudo nmap 192.0.2.14 -sV -p22,443 -Pn",
+          "nmap 192.0.2.14 -Pn -sV -p22,443",
+          "sudo nmap 192.0.2.14 -Pn -sV -p22,443",
+          "nmap 192.0.2.14 -Pn -p22,443 -sV",
+          "sudo nmap 192.0.2.14 -Pn -p22,443 -sV",
+          "nmap 192.0.2.14 -p22,443 -sV -Pn",
+          "sudo nmap 192.0.2.14 -p22,443 -sV -Pn",
+          "nmap 192.0.2.14 -p22,443 -Pn -sV",
+          "sudo nmap 192.0.2.14 -p22,443 -Pn -sV",
+          "nmap -sV -sT -p22,443 192.0.2.14",
+          "sudo nmap -sV -sT -p22,443 192.0.2.14",
+          "nmap -sV -sT 192.0.2.14 -p22,443",
+          "sudo nmap -sV -sT 192.0.2.14 -p22,443",
+          "nmap -sV -p22,443 -sT 192.0.2.14",
+          "sudo nmap -sV -p22,443 -sT 192.0.2.14",
+          "nmap -sV -p22,443 192.0.2.14 -sT",
+          "sudo nmap -sV -p22,443 192.0.2.14 -sT",
+          "nmap -sV 192.0.2.14 -sT -p22,443",
+          "sudo nmap -sV 192.0.2.14 -sT -p22,443",
+          "nmap -sV 192.0.2.14 -p22,443 -sT",
+          "sudo nmap -sV 192.0.2.14 -p22,443 -sT",
+          "nmap -sT -sV -p22,443 192.0.2.14",
+          "sudo nmap -sT -sV -p22,443 192.0.2.14",
+          "nmap -sT -sV 192.0.2.14 -p22,443",
+          "sudo nmap -sT -sV 192.0.2.14 -p22,443",
+          "nmap -sT -p22,443 -sV 192.0.2.14",
+          "sudo nmap -sT -p22,443 -sV 192.0.2.14",
+          "nmap -sT -p22,443 192.0.2.14 -sV",
+          "sudo nmap -sT -p22,443 192.0.2.14 -sV",
+          "nmap -sT 192.0.2.14 -sV -p22,443",
+          "sudo nmap -sT 192.0.2.14 -sV -p22,443",
+          "nmap -sT 192.0.2.14 -p22,443 -sV",
+          "sudo nmap -sT 192.0.2.14 -p22,443 -sV",
+          "nmap -p22,443 -sV -sT 192.0.2.14",
+          "sudo nmap -p22,443 -sV -sT 192.0.2.14",
+          "nmap -p22,443 -sV 192.0.2.14 -sT",
+          "sudo nmap -p22,443 -sV 192.0.2.14 -sT",
+          "nmap -p22,443 -sT -sV 192.0.2.14",
+          "sudo nmap -p22,443 -sT -sV 192.0.2.14",
+          "nmap -p22,443 -sT 192.0.2.14 -sV",
+          "sudo nmap -p22,443 -sT 192.0.2.14 -sV",
+          "nmap -p22,443 192.0.2.14 -sV -sT",
+          "sudo nmap -p22,443 192.0.2.14 -sV -sT",
+          "nmap -p22,443 192.0.2.14 -sT -sV",
+          "sudo nmap -p22,443 192.0.2.14 -sT -sV",
+          "nmap 192.0.2.14 -sV -sT -p22,443",
+          "sudo nmap 192.0.2.14 -sV -sT -p22,443",
+          "nmap 192.0.2.14 -sV -p22,443 -sT",
+          "sudo nmap 192.0.2.14 -sV -p22,443 -sT",
+          "nmap 192.0.2.14 -sT -sV -p22,443",
+          "sudo nmap 192.0.2.14 -sT -sV -p22,443",
+          "nmap 192.0.2.14 -sT -p22,443 -sV",
+          "sudo nmap 192.0.2.14 -sT -p22,443 -sV",
+          "nmap 192.0.2.14 -p22,443 -sV -sT",
+          "sudo nmap 192.0.2.14 -p22,443 -sV -sT",
+          "nmap 192.0.2.14 -p22,443 -sT -sV",
+          "sudo nmap 192.0.2.14 -p22,443 -sT -sV",
+          "nmap -sV -p 443,22 192.0.2.14",
+          "sudo nmap -sV -p 443,22 192.0.2.14",
+          "nmap -sV 192.0.2.14 -p 443,22",
+          "sudo nmap -sV 192.0.2.14 -p 443,22",
+          "nmap -p 443,22 -sV 192.0.2.14",
+          "sudo nmap -p 443,22 -sV 192.0.2.14",
+          "nmap -p 443,22 192.0.2.14 -sV",
+          "sudo nmap -p 443,22 192.0.2.14 -sV",
+          "nmap 192.0.2.14 -sV -p 443,22",
+          "sudo nmap 192.0.2.14 -sV -p 443,22",
+          "nmap 192.0.2.14 -p 443,22 -sV",
+          "sudo nmap 192.0.2.14 -p 443,22 -sV",
+          "nmap -sV -Pn -p 443,22 192.0.2.14",
+          "sudo nmap -sV -Pn -p 443,22 192.0.2.14",
+          "nmap -sV -Pn 192.0.2.14 -p 443,22",
+          "sudo nmap -sV -Pn 192.0.2.14 -p 443,22",
+          "nmap -sV -p 443,22 -Pn 192.0.2.14",
+          "sudo nmap -sV -p 443,22 -Pn 192.0.2.14",
+          "nmap -sV -p 443,22 192.0.2.14 -Pn",
+          "sudo nmap -sV -p 443,22 192.0.2.14 -Pn",
+          "nmap -sV 192.0.2.14 -Pn -p 443,22",
+          "sudo nmap -sV 192.0.2.14 -Pn -p 443,22",
+          "nmap -sV 192.0.2.14 -p 443,22 -Pn",
+          "sudo nmap -sV 192.0.2.14 -p 443,22 -Pn",
+          "nmap -Pn -sV -p 443,22 192.0.2.14",
+          "sudo nmap -Pn -sV -p 443,22 192.0.2.14",
+          "nmap -Pn -sV 192.0.2.14 -p 443,22",
+          "sudo nmap -Pn -sV 192.0.2.14 -p 443,22",
+          "nmap -Pn -p 443,22 -sV 192.0.2.14",
+          "sudo nmap -Pn -p 443,22 -sV 192.0.2.14",
+          "nmap -Pn -p 443,22 192.0.2.14 -sV",
+          "sudo nmap -Pn -p 443,22 192.0.2.14 -sV",
+          "nmap -Pn 192.0.2.14 -sV -p 443,22",
+          "sudo nmap -Pn 192.0.2.14 -sV -p 443,22",
+          "nmap -Pn 192.0.2.14 -p 443,22 -sV",
+          "sudo nmap -Pn 192.0.2.14 -p 443,22 -sV",
+          "nmap -p 443,22 -sV -Pn 192.0.2.14",
+          "sudo nmap -p 443,22 -sV -Pn 192.0.2.14",
+          "nmap -p 443,22 -sV 192.0.2.14 -Pn",
+          "sudo nmap -p 443,22 -sV 192.0.2.14 -Pn",
+          "nmap -p 443,22 -Pn -sV 192.0.2.14",
+          "sudo nmap -p 443,22 -Pn -sV 192.0.2.14",
+          "nmap -p 443,22 -Pn 192.0.2.14 -sV",
+          "sudo nmap -p 443,22 -Pn 192.0.2.14 -sV",
+          "nmap -p 443,22 192.0.2.14 -sV -Pn",
+          "sudo nmap -p 443,22 192.0.2.14 -sV -Pn",
+          "nmap -p 443,22 192.0.2.14 -Pn -sV",
+          "sudo nmap -p 443,22 192.0.2.14 -Pn -sV",
+          "nmap 192.0.2.14 -sV -Pn -p 443,22",
+          "sudo nmap 192.0.2.14 -sV -Pn -p 443,22",
+          "nmap 192.0.2.14 -sV -p 443,22 -Pn",
+          "sudo nmap 192.0.2.14 -sV -p 443,22 -Pn",
+          "nmap 192.0.2.14 -Pn -sV -p 443,22",
+          "sudo nmap 192.0.2.14 -Pn -sV -p 443,22",
+          "nmap 192.0.2.14 -Pn -p 443,22 -sV",
+          "sudo nmap 192.0.2.14 -Pn -p 443,22 -sV",
+          "nmap 192.0.2.14 -p 443,22 -sV -Pn",
+          "sudo nmap 192.0.2.14 -p 443,22 -sV -Pn",
+          "nmap 192.0.2.14 -p 443,22 -Pn -sV",
+          "sudo nmap 192.0.2.14 -p 443,22 -Pn -sV",
+          "nmap -sV -sT -p 443,22 192.0.2.14",
+          "sudo nmap -sV -sT -p 443,22 192.0.2.14",
+          "nmap -sV -sT 192.0.2.14 -p 443,22",
+          "sudo nmap -sV -sT 192.0.2.14 -p 443,22",
+          "nmap -sV -p 443,22 -sT 192.0.2.14",
+          "sudo nmap -sV -p 443,22 -sT 192.0.2.14",
+          "nmap -sV -p 443,22 192.0.2.14 -sT",
+          "sudo nmap -sV -p 443,22 192.0.2.14 -sT",
+          "nmap -sV 192.0.2.14 -sT -p 443,22",
+          "sudo nmap -sV 192.0.2.14 -sT -p 443,22",
+          "nmap -sV 192.0.2.14 -p 443,22 -sT",
+          "sudo nmap -sV 192.0.2.14 -p 443,22 -sT",
+          "nmap -sT -sV -p 443,22 192.0.2.14",
+          "sudo nmap -sT -sV -p 443,22 192.0.2.14",
+          "nmap -sT -sV 192.0.2.14 -p 443,22",
+          "sudo nmap -sT -sV 192.0.2.14 -p 443,22",
+          "nmap -sT -p 443,22 -sV 192.0.2.14",
+          "sudo nmap -sT -p 443,22 -sV 192.0.2.14",
+          "nmap -sT -p 443,22 192.0.2.14 -sV",
+          "sudo nmap -sT -p 443,22 192.0.2.14 -sV",
+          "nmap -sT 192.0.2.14 -sV -p 443,22",
+          "sudo nmap -sT 192.0.2.14 -sV -p 443,22",
+          "nmap -sT 192.0.2.14 -p 443,22 -sV",
+          "sudo nmap -sT 192.0.2.14 -p 443,22 -sV",
+          "nmap -p 443,22 -sV -sT 192.0.2.14",
+          "sudo nmap -p 443,22 -sV -sT 192.0.2.14",
+          "nmap -p 443,22 -sV 192.0.2.14 -sT",
+          "sudo nmap -p 443,22 -sV 192.0.2.14 -sT",
+          "nmap -p 443,22 -sT -sV 192.0.2.14",
+          "sudo nmap -p 443,22 -sT -sV 192.0.2.14",
+          "nmap -p 443,22 -sT 192.0.2.14 -sV",
+          "sudo nmap -p 443,22 -sT 192.0.2.14 -sV",
+          "nmap -p 443,22 192.0.2.14 -sV -sT",
+          "sudo nmap -p 443,22 192.0.2.14 -sV -sT",
+          "nmap -p 443,22 192.0.2.14 -sT -sV",
+          "sudo nmap -p 443,22 192.0.2.14 -sT -sV",
+          "nmap 192.0.2.14 -sV -sT -p 443,22",
+          "sudo nmap 192.0.2.14 -sV -sT -p 443,22",
+          "nmap 192.0.2.14 -sV -p 443,22 -sT",
+          "sudo nmap 192.0.2.14 -sV -p 443,22 -sT",
+          "nmap 192.0.2.14 -sT -sV -p 443,22",
+          "sudo nmap 192.0.2.14 -sT -sV -p 443,22",
+          "nmap 192.0.2.14 -sT -p 443,22 -sV",
+          "sudo nmap 192.0.2.14 -sT -p 443,22 -sV",
+          "nmap 192.0.2.14 -p 443,22 -sV -sT",
+          "sudo nmap 192.0.2.14 -p 443,22 -sV -sT",
+          "nmap 192.0.2.14 -p 443,22 -sT -sV",
+          "sudo nmap 192.0.2.14 -p 443,22 -sT -sV",
+          "nmap -sV -p443,22 192.0.2.14",
+          "sudo nmap -sV -p443,22 192.0.2.14",
+          "nmap -sV 192.0.2.14 -p443,22",
+          "sudo nmap -sV 192.0.2.14 -p443,22",
+          "nmap -p443,22 -sV 192.0.2.14",
+          "sudo nmap -p443,22 -sV 192.0.2.14",
+          "nmap -p443,22 192.0.2.14 -sV",
+          "sudo nmap -p443,22 192.0.2.14 -sV",
+          "nmap 192.0.2.14 -sV -p443,22",
+          "sudo nmap 192.0.2.14 -sV -p443,22",
+          "nmap 192.0.2.14 -p443,22 -sV",
+          "sudo nmap 192.0.2.14 -p443,22 -sV",
+          "nmap -sV -Pn -p443,22 192.0.2.14",
+          "sudo nmap -sV -Pn -p443,22 192.0.2.14",
+          "nmap -sV -Pn 192.0.2.14 -p443,22",
+          "sudo nmap -sV -Pn 192.0.2.14 -p443,22",
+          "nmap -sV -p443,22 -Pn 192.0.2.14",
+          "sudo nmap -sV -p443,22 -Pn 192.0.2.14",
+          "nmap -sV -p443,22 192.0.2.14 -Pn",
+          "sudo nmap -sV -p443,22 192.0.2.14 -Pn",
+          "nmap -sV 192.0.2.14 -Pn -p443,22",
+          "sudo nmap -sV 192.0.2.14 -Pn -p443,22",
+          "nmap -sV 192.0.2.14 -p443,22 -Pn",
+          "sudo nmap -sV 192.0.2.14 -p443,22 -Pn",
+          "nmap -Pn -sV -p443,22 192.0.2.14",
+          "sudo nmap -Pn -sV -p443,22 192.0.2.14",
+          "nmap -Pn -sV 192.0.2.14 -p443,22",
+          "sudo nmap -Pn -sV 192.0.2.14 -p443,22",
+          "nmap -Pn -p443,22 -sV 192.0.2.14",
+          "sudo nmap -Pn -p443,22 -sV 192.0.2.14",
+          "nmap -Pn -p443,22 192.0.2.14 -sV",
+          "sudo nmap -Pn -p443,22 192.0.2.14 -sV",
+          "nmap -Pn 192.0.2.14 -sV -p443,22",
+          "sudo nmap -Pn 192.0.2.14 -sV -p443,22",
+          "nmap -Pn 192.0.2.14 -p443,22 -sV",
+          "sudo nmap -Pn 192.0.2.14 -p443,22 -sV",
+          "nmap -p443,22 -sV -Pn 192.0.2.14",
+          "sudo nmap -p443,22 -sV -Pn 192.0.2.14",
+          "nmap -p443,22 -sV 192.0.2.14 -Pn",
+          "sudo nmap -p443,22 -sV 192.0.2.14 -Pn",
+          "nmap -p443,22 -Pn -sV 192.0.2.14",
+          "sudo nmap -p443,22 -Pn -sV 192.0.2.14",
+          "nmap -p443,22 -Pn 192.0.2.14 -sV",
+          "sudo nmap -p443,22 -Pn 192.0.2.14 -sV",
+          "nmap -p443,22 192.0.2.14 -sV -Pn",
+          "sudo nmap -p443,22 192.0.2.14 -sV -Pn",
+          "nmap -p443,22 192.0.2.14 -Pn -sV",
+          "sudo nmap -p443,22 192.0.2.14 -Pn -sV",
+          "nmap 192.0.2.14 -sV -Pn -p443,22",
+          "sudo nmap 192.0.2.14 -sV -Pn -p443,22",
+          "nmap 192.0.2.14 -sV -p443,22 -Pn",
+          "sudo nmap 192.0.2.14 -sV -p443,22 -Pn",
+          "nmap 192.0.2.14 -Pn -sV -p443,22",
+          "sudo nmap 192.0.2.14 -Pn -sV -p443,22",
+          "nmap 192.0.2.14 -Pn -p443,22 -sV",
+          "sudo nmap 192.0.2.14 -Pn -p443,22 -sV",
+          "nmap 192.0.2.14 -p443,22 -sV -Pn",
+          "sudo nmap 192.0.2.14 -p443,22 -sV -Pn",
+          "nmap 192.0.2.14 -p443,22 -Pn -sV",
+          "sudo nmap 192.0.2.14 -p443,22 -Pn -sV",
+          "nmap -sV -sT -p443,22 192.0.2.14",
+          "sudo nmap -sV -sT -p443,22 192.0.2.14",
+          "nmap -sV -sT 192.0.2.14 -p443,22",
+          "sudo nmap -sV -sT 192.0.2.14 -p443,22",
+          "nmap -sV -p443,22 -sT 192.0.2.14",
+          "sudo nmap -sV -p443,22 -sT 192.0.2.14",
+          "nmap -sV -p443,22 192.0.2.14 -sT",
+          "sudo nmap -sV -p443,22 192.0.2.14 -sT",
+          "nmap -sV 192.0.2.14 -sT -p443,22",
+          "sudo nmap -sV 192.0.2.14 -sT -p443,22",
+          "nmap -sV 192.0.2.14 -p443,22 -sT",
+          "sudo nmap -sV 192.0.2.14 -p443,22 -sT",
+          "nmap -sT -sV -p443,22 192.0.2.14",
+          "sudo nmap -sT -sV -p443,22 192.0.2.14",
+          "nmap -sT -sV 192.0.2.14 -p443,22",
+          "sudo nmap -sT -sV 192.0.2.14 -p443,22",
+          "nmap -sT -p443,22 -sV 192.0.2.14",
+          "sudo nmap -sT -p443,22 -sV 192.0.2.14",
+          "nmap -sT -p443,22 192.0.2.14 -sV",
+          "sudo nmap -sT -p443,22 192.0.2.14 -sV",
+          "nmap -sT 192.0.2.14 -sV -p443,22",
+          "sudo nmap -sT 192.0.2.14 -sV -p443,22",
+          "nmap -sT 192.0.2.14 -p443,22 -sV",
+          "sudo nmap -sT 192.0.2.14 -p443,22 -sV",
+          "nmap -p443,22 -sV -sT 192.0.2.14",
+          "sudo nmap -p443,22 -sV -sT 192.0.2.14",
+          "nmap -p443,22 -sV 192.0.2.14 -sT",
+          "sudo nmap -p443,22 -sV 192.0.2.14 -sT",
+          "nmap -p443,22 -sT -sV 192.0.2.14",
+          "sudo nmap -p443,22 -sT -sV 192.0.2.14",
+          "nmap -p443,22 -sT 192.0.2.14 -sV",
+          "sudo nmap -p443,22 -sT 192.0.2.14 -sV",
+          "nmap -p443,22 192.0.2.14 -sV -sT",
+          "sudo nmap -p443,22 192.0.2.14 -sV -sT",
+          "nmap -p443,22 192.0.2.14 -sT -sV",
+          "sudo nmap -p443,22 192.0.2.14 -sT -sV",
+          "nmap 192.0.2.14 -sV -sT -p443,22",
+          "sudo nmap 192.0.2.14 -sV -sT -p443,22",
+          "nmap 192.0.2.14 -sV -p443,22 -sT",
+          "sudo nmap 192.0.2.14 -sV -p443,22 -sT",
+          "nmap 192.0.2.14 -sT -sV -p443,22",
+          "sudo nmap 192.0.2.14 -sT -sV -p443,22",
+          "nmap 192.0.2.14 -sT -p443,22 -sV",
+          "sudo nmap 192.0.2.14 -sT -p443,22 -sV",
+          "nmap 192.0.2.14 -p443,22 -sV -sT",
+          "sudo nmap 192.0.2.14 -p443,22 -sV -sT",
+          "nmap 192.0.2.14 -p443,22 -sT -sV",
+          "sudo nmap 192.0.2.14 -p443,22 -sT -sV"
         ],
         "os": [
           "nmap -O -p 22,443 192.0.2.14",
-          "nmap -O -p22,443 192.0.2.14",
-          "nmap -O 192.0.2.14 -p 22,443",
-          "nmap -O 192.0.2.14 -p22,443",
-          "nmap -p 22,443 -O 192.0.2.14",
-          "nmap -p 22,443 192.0.2.14 -O",
-          "nmap -p22,443 -O 192.0.2.14",
-          "nmap -p22,443 192.0.2.14 -O",
-          "nmap 192.0.2.14 -O -p 22,443",
-          "nmap 192.0.2.14 -O -p22,443",
-          "nmap 192.0.2.14 -p 22,443 -O",
-          "nmap 192.0.2.14 -p22,443 -O",
           "sudo nmap -O -p 22,443 192.0.2.14",
-          "sudo nmap -O -p22,443 192.0.2.14",
+          "nmap -O 192.0.2.14 -p 22,443",
           "sudo nmap -O 192.0.2.14 -p 22,443",
-          "sudo nmap -O 192.0.2.14 -p22,443",
+          "nmap -p 22,443 -O 192.0.2.14",
           "sudo nmap -p 22,443 -O 192.0.2.14",
+          "nmap -p 22,443 192.0.2.14 -O",
           "sudo nmap -p 22,443 192.0.2.14 -O",
-          "sudo nmap -p22,443 -O 192.0.2.14",
-          "sudo nmap -p22,443 192.0.2.14 -O",
+          "nmap 192.0.2.14 -O -p 22,443",
           "sudo nmap 192.0.2.14 -O -p 22,443",
-          "sudo nmap 192.0.2.14 -O -p22,443",
+          "nmap 192.0.2.14 -p 22,443 -O",
           "sudo nmap 192.0.2.14 -p 22,443 -O",
-          "sudo nmap 192.0.2.14 -p22,443 -O"
+          "nmap -O -Pn -p 22,443 192.0.2.14",
+          "sudo nmap -O -Pn -p 22,443 192.0.2.14",
+          "nmap -O -Pn 192.0.2.14 -p 22,443",
+          "sudo nmap -O -Pn 192.0.2.14 -p 22,443",
+          "nmap -O -p 22,443 -Pn 192.0.2.14",
+          "sudo nmap -O -p 22,443 -Pn 192.0.2.14",
+          "nmap -O -p 22,443 192.0.2.14 -Pn",
+          "sudo nmap -O -p 22,443 192.0.2.14 -Pn",
+          "nmap -O 192.0.2.14 -Pn -p 22,443",
+          "sudo nmap -O 192.0.2.14 -Pn -p 22,443",
+          "nmap -O 192.0.2.14 -p 22,443 -Pn",
+          "sudo nmap -O 192.0.2.14 -p 22,443 -Pn",
+          "nmap -Pn -O -p 22,443 192.0.2.14",
+          "sudo nmap -Pn -O -p 22,443 192.0.2.14",
+          "nmap -Pn -O 192.0.2.14 -p 22,443",
+          "sudo nmap -Pn -O 192.0.2.14 -p 22,443",
+          "nmap -Pn -p 22,443 -O 192.0.2.14",
+          "sudo nmap -Pn -p 22,443 -O 192.0.2.14",
+          "nmap -Pn -p 22,443 192.0.2.14 -O",
+          "sudo nmap -Pn -p 22,443 192.0.2.14 -O",
+          "nmap -Pn 192.0.2.14 -O -p 22,443",
+          "sudo nmap -Pn 192.0.2.14 -O -p 22,443",
+          "nmap -Pn 192.0.2.14 -p 22,443 -O",
+          "sudo nmap -Pn 192.0.2.14 -p 22,443 -O",
+          "nmap -p 22,443 -O -Pn 192.0.2.14",
+          "sudo nmap -p 22,443 -O -Pn 192.0.2.14",
+          "nmap -p 22,443 -O 192.0.2.14 -Pn",
+          "sudo nmap -p 22,443 -O 192.0.2.14 -Pn",
+          "nmap -p 22,443 -Pn -O 192.0.2.14",
+          "sudo nmap -p 22,443 -Pn -O 192.0.2.14",
+          "nmap -p 22,443 -Pn 192.0.2.14 -O",
+          "sudo nmap -p 22,443 -Pn 192.0.2.14 -O",
+          "nmap -p 22,443 192.0.2.14 -O -Pn",
+          "sudo nmap -p 22,443 192.0.2.14 -O -Pn",
+          "nmap -p 22,443 192.0.2.14 -Pn -O",
+          "sudo nmap -p 22,443 192.0.2.14 -Pn -O",
+          "nmap 192.0.2.14 -O -Pn -p 22,443",
+          "sudo nmap 192.0.2.14 -O -Pn -p 22,443",
+          "nmap 192.0.2.14 -O -p 22,443 -Pn",
+          "sudo nmap 192.0.2.14 -O -p 22,443 -Pn",
+          "nmap 192.0.2.14 -Pn -O -p 22,443",
+          "sudo nmap 192.0.2.14 -Pn -O -p 22,443",
+          "nmap 192.0.2.14 -Pn -p 22,443 -O",
+          "sudo nmap 192.0.2.14 -Pn -p 22,443 -O",
+          "nmap 192.0.2.14 -p 22,443 -O -Pn",
+          "sudo nmap 192.0.2.14 -p 22,443 -O -Pn",
+          "nmap 192.0.2.14 -p 22,443 -Pn -O",
+          "sudo nmap 192.0.2.14 -p 22,443 -Pn -O",
+          "nmap -O -sS -p 22,443 192.0.2.14",
+          "sudo nmap -O -sS -p 22,443 192.0.2.14",
+          "nmap -O -sS 192.0.2.14 -p 22,443",
+          "sudo nmap -O -sS 192.0.2.14 -p 22,443",
+          "nmap -O -p 22,443 -sS 192.0.2.14",
+          "sudo nmap -O -p 22,443 -sS 192.0.2.14",
+          "nmap -O -p 22,443 192.0.2.14 -sS",
+          "sudo nmap -O -p 22,443 192.0.2.14 -sS",
+          "nmap -O 192.0.2.14 -sS -p 22,443",
+          "sudo nmap -O 192.0.2.14 -sS -p 22,443",
+          "nmap -O 192.0.2.14 -p 22,443 -sS",
+          "sudo nmap -O 192.0.2.14 -p 22,443 -sS",
+          "nmap -sS -O -p 22,443 192.0.2.14",
+          "sudo nmap -sS -O -p 22,443 192.0.2.14",
+          "nmap -sS -O 192.0.2.14 -p 22,443",
+          "sudo nmap -sS -O 192.0.2.14 -p 22,443",
+          "nmap -sS -p 22,443 -O 192.0.2.14",
+          "sudo nmap -sS -p 22,443 -O 192.0.2.14",
+          "nmap -sS -p 22,443 192.0.2.14 -O",
+          "sudo nmap -sS -p 22,443 192.0.2.14 -O",
+          "nmap -sS 192.0.2.14 -O -p 22,443",
+          "sudo nmap -sS 192.0.2.14 -O -p 22,443",
+          "nmap -sS 192.0.2.14 -p 22,443 -O",
+          "sudo nmap -sS 192.0.2.14 -p 22,443 -O",
+          "nmap -p 22,443 -O -sS 192.0.2.14",
+          "sudo nmap -p 22,443 -O -sS 192.0.2.14",
+          "nmap -p 22,443 -O 192.0.2.14 -sS",
+          "sudo nmap -p 22,443 -O 192.0.2.14 -sS",
+          "nmap -p 22,443 -sS -O 192.0.2.14",
+          "sudo nmap -p 22,443 -sS -O 192.0.2.14",
+          "nmap -p 22,443 -sS 192.0.2.14 -O",
+          "sudo nmap -p 22,443 -sS 192.0.2.14 -O",
+          "nmap -p 22,443 192.0.2.14 -O -sS",
+          "sudo nmap -p 22,443 192.0.2.14 -O -sS",
+          "nmap -p 22,443 192.0.2.14 -sS -O",
+          "sudo nmap -p 22,443 192.0.2.14 -sS -O",
+          "nmap 192.0.2.14 -O -sS -p 22,443",
+          "sudo nmap 192.0.2.14 -O -sS -p 22,443",
+          "nmap 192.0.2.14 -O -p 22,443 -sS",
+          "sudo nmap 192.0.2.14 -O -p 22,443 -sS",
+          "nmap 192.0.2.14 -sS -O -p 22,443",
+          "sudo nmap 192.0.2.14 -sS -O -p 22,443",
+          "nmap 192.0.2.14 -sS -p 22,443 -O",
+          "sudo nmap 192.0.2.14 -sS -p 22,443 -O",
+          "nmap 192.0.2.14 -p 22,443 -O -sS",
+          "sudo nmap 192.0.2.14 -p 22,443 -O -sS",
+          "nmap 192.0.2.14 -p 22,443 -sS -O",
+          "sudo nmap 192.0.2.14 -p 22,443 -sS -O",
+          "nmap -O -p22,443 192.0.2.14",
+          "sudo nmap -O -p22,443 192.0.2.14",
+          "nmap -O 192.0.2.14 -p22,443",
+          "sudo nmap -O 192.0.2.14 -p22,443",
+          "nmap -p22,443 -O 192.0.2.14",
+          "sudo nmap -p22,443 -O 192.0.2.14",
+          "nmap -p22,443 192.0.2.14 -O",
+          "sudo nmap -p22,443 192.0.2.14 -O",
+          "nmap 192.0.2.14 -O -p22,443",
+          "sudo nmap 192.0.2.14 -O -p22,443",
+          "nmap 192.0.2.14 -p22,443 -O",
+          "sudo nmap 192.0.2.14 -p22,443 -O",
+          "nmap -O -Pn -p22,443 192.0.2.14",
+          "sudo nmap -O -Pn -p22,443 192.0.2.14",
+          "nmap -O -Pn 192.0.2.14 -p22,443",
+          "sudo nmap -O -Pn 192.0.2.14 -p22,443",
+          "nmap -O -p22,443 -Pn 192.0.2.14",
+          "sudo nmap -O -p22,443 -Pn 192.0.2.14",
+          "nmap -O -p22,443 192.0.2.14 -Pn",
+          "sudo nmap -O -p22,443 192.0.2.14 -Pn",
+          "nmap -O 192.0.2.14 -Pn -p22,443",
+          "sudo nmap -O 192.0.2.14 -Pn -p22,443",
+          "nmap -O 192.0.2.14 -p22,443 -Pn",
+          "sudo nmap -O 192.0.2.14 -p22,443 -Pn",
+          "nmap -Pn -O -p22,443 192.0.2.14",
+          "sudo nmap -Pn -O -p22,443 192.0.2.14",
+          "nmap -Pn -O 192.0.2.14 -p22,443",
+          "sudo nmap -Pn -O 192.0.2.14 -p22,443",
+          "nmap -Pn -p22,443 -O 192.0.2.14",
+          "sudo nmap -Pn -p22,443 -O 192.0.2.14",
+          "nmap -Pn -p22,443 192.0.2.14 -O",
+          "sudo nmap -Pn -p22,443 192.0.2.14 -O",
+          "nmap -Pn 192.0.2.14 -O -p22,443",
+          "sudo nmap -Pn 192.0.2.14 -O -p22,443",
+          "nmap -Pn 192.0.2.14 -p22,443 -O",
+          "sudo nmap -Pn 192.0.2.14 -p22,443 -O",
+          "nmap -p22,443 -O -Pn 192.0.2.14",
+          "sudo nmap -p22,443 -O -Pn 192.0.2.14",
+          "nmap -p22,443 -O 192.0.2.14 -Pn",
+          "sudo nmap -p22,443 -O 192.0.2.14 -Pn",
+          "nmap -p22,443 -Pn -O 192.0.2.14",
+          "sudo nmap -p22,443 -Pn -O 192.0.2.14",
+          "nmap -p22,443 -Pn 192.0.2.14 -O",
+          "sudo nmap -p22,443 -Pn 192.0.2.14 -O",
+          "nmap -p22,443 192.0.2.14 -O -Pn",
+          "sudo nmap -p22,443 192.0.2.14 -O -Pn",
+          "nmap -p22,443 192.0.2.14 -Pn -O",
+          "sudo nmap -p22,443 192.0.2.14 -Pn -O",
+          "nmap 192.0.2.14 -O -Pn -p22,443",
+          "sudo nmap 192.0.2.14 -O -Pn -p22,443",
+          "nmap 192.0.2.14 -O -p22,443 -Pn",
+          "sudo nmap 192.0.2.14 -O -p22,443 -Pn",
+          "nmap 192.0.2.14 -Pn -O -p22,443",
+          "sudo nmap 192.0.2.14 -Pn -O -p22,443",
+          "nmap 192.0.2.14 -Pn -p22,443 -O",
+          "sudo nmap 192.0.2.14 -Pn -p22,443 -O",
+          "nmap 192.0.2.14 -p22,443 -O -Pn",
+          "sudo nmap 192.0.2.14 -p22,443 -O -Pn",
+          "nmap 192.0.2.14 -p22,443 -Pn -O",
+          "sudo nmap 192.0.2.14 -p22,443 -Pn -O",
+          "nmap -O -sS -p22,443 192.0.2.14",
+          "sudo nmap -O -sS -p22,443 192.0.2.14",
+          "nmap -O -sS 192.0.2.14 -p22,443",
+          "sudo nmap -O -sS 192.0.2.14 -p22,443",
+          "nmap -O -p22,443 -sS 192.0.2.14",
+          "sudo nmap -O -p22,443 -sS 192.0.2.14",
+          "nmap -O -p22,443 192.0.2.14 -sS",
+          "sudo nmap -O -p22,443 192.0.2.14 -sS",
+          "nmap -O 192.0.2.14 -sS -p22,443",
+          "sudo nmap -O 192.0.2.14 -sS -p22,443",
+          "nmap -O 192.0.2.14 -p22,443 -sS",
+          "sudo nmap -O 192.0.2.14 -p22,443 -sS",
+          "nmap -sS -O -p22,443 192.0.2.14",
+          "sudo nmap -sS -O -p22,443 192.0.2.14",
+          "nmap -sS -O 192.0.2.14 -p22,443",
+          "sudo nmap -sS -O 192.0.2.14 -p22,443",
+          "nmap -sS -p22,443 -O 192.0.2.14",
+          "sudo nmap -sS -p22,443 -O 192.0.2.14",
+          "nmap -sS -p22,443 192.0.2.14 -O",
+          "sudo nmap -sS -p22,443 192.0.2.14 -O",
+          "nmap -sS 192.0.2.14 -O -p22,443",
+          "sudo nmap -sS 192.0.2.14 -O -p22,443",
+          "nmap -sS 192.0.2.14 -p22,443 -O",
+          "sudo nmap -sS 192.0.2.14 -p22,443 -O",
+          "nmap -p22,443 -O -sS 192.0.2.14",
+          "sudo nmap -p22,443 -O -sS 192.0.2.14",
+          "nmap -p22,443 -O 192.0.2.14 -sS",
+          "sudo nmap -p22,443 -O 192.0.2.14 -sS",
+          "nmap -p22,443 -sS -O 192.0.2.14",
+          "sudo nmap -p22,443 -sS -O 192.0.2.14",
+          "nmap -p22,443 -sS 192.0.2.14 -O",
+          "sudo nmap -p22,443 -sS 192.0.2.14 -O",
+          "nmap -p22,443 192.0.2.14 -O -sS",
+          "sudo nmap -p22,443 192.0.2.14 -O -sS",
+          "nmap -p22,443 192.0.2.14 -sS -O",
+          "sudo nmap -p22,443 192.0.2.14 -sS -O",
+          "nmap 192.0.2.14 -O -sS -p22,443",
+          "sudo nmap 192.0.2.14 -O -sS -p22,443",
+          "nmap 192.0.2.14 -O -p22,443 -sS",
+          "sudo nmap 192.0.2.14 -O -p22,443 -sS",
+          "nmap 192.0.2.14 -sS -O -p22,443",
+          "sudo nmap 192.0.2.14 -sS -O -p22,443",
+          "nmap 192.0.2.14 -sS -p22,443 -O",
+          "sudo nmap 192.0.2.14 -sS -p22,443 -O",
+          "nmap 192.0.2.14 -p22,443 -O -sS",
+          "sudo nmap 192.0.2.14 -p22,443 -O -sS",
+          "nmap 192.0.2.14 -p22,443 -sS -O",
+          "sudo nmap 192.0.2.14 -p22,443 -sS -O",
+          "nmap -O -p 443,22 192.0.2.14",
+          "sudo nmap -O -p 443,22 192.0.2.14",
+          "nmap -O 192.0.2.14 -p 443,22",
+          "sudo nmap -O 192.0.2.14 -p 443,22",
+          "nmap -p 443,22 -O 192.0.2.14",
+          "sudo nmap -p 443,22 -O 192.0.2.14",
+          "nmap -p 443,22 192.0.2.14 -O",
+          "sudo nmap -p 443,22 192.0.2.14 -O",
+          "nmap 192.0.2.14 -O -p 443,22",
+          "sudo nmap 192.0.2.14 -O -p 443,22",
+          "nmap 192.0.2.14 -p 443,22 -O",
+          "sudo nmap 192.0.2.14 -p 443,22 -O",
+          "nmap -O -Pn -p 443,22 192.0.2.14",
+          "sudo nmap -O -Pn -p 443,22 192.0.2.14",
+          "nmap -O -Pn 192.0.2.14 -p 443,22",
+          "sudo nmap -O -Pn 192.0.2.14 -p 443,22",
+          "nmap -O -p 443,22 -Pn 192.0.2.14",
+          "sudo nmap -O -p 443,22 -Pn 192.0.2.14",
+          "nmap -O -p 443,22 192.0.2.14 -Pn",
+          "sudo nmap -O -p 443,22 192.0.2.14 -Pn",
+          "nmap -O 192.0.2.14 -Pn -p 443,22",
+          "sudo nmap -O 192.0.2.14 -Pn -p 443,22",
+          "nmap -O 192.0.2.14 -p 443,22 -Pn",
+          "sudo nmap -O 192.0.2.14 -p 443,22 -Pn",
+          "nmap -Pn -O -p 443,22 192.0.2.14",
+          "sudo nmap -Pn -O -p 443,22 192.0.2.14",
+          "nmap -Pn -O 192.0.2.14 -p 443,22",
+          "sudo nmap -Pn -O 192.0.2.14 -p 443,22",
+          "nmap -Pn -p 443,22 -O 192.0.2.14",
+          "sudo nmap -Pn -p 443,22 -O 192.0.2.14",
+          "nmap -Pn -p 443,22 192.0.2.14 -O",
+          "sudo nmap -Pn -p 443,22 192.0.2.14 -O",
+          "nmap -Pn 192.0.2.14 -O -p 443,22",
+          "sudo nmap -Pn 192.0.2.14 -O -p 443,22",
+          "nmap -Pn 192.0.2.14 -p 443,22 -O",
+          "sudo nmap -Pn 192.0.2.14 -p 443,22 -O",
+          "nmap -p 443,22 -O -Pn 192.0.2.14",
+          "sudo nmap -p 443,22 -O -Pn 192.0.2.14",
+          "nmap -p 443,22 -O 192.0.2.14 -Pn",
+          "sudo nmap -p 443,22 -O 192.0.2.14 -Pn",
+          "nmap -p 443,22 -Pn -O 192.0.2.14",
+          "sudo nmap -p 443,22 -Pn -O 192.0.2.14",
+          "nmap -p 443,22 -Pn 192.0.2.14 -O",
+          "sudo nmap -p 443,22 -Pn 192.0.2.14 -O",
+          "nmap -p 443,22 192.0.2.14 -O -Pn",
+          "sudo nmap -p 443,22 192.0.2.14 -O -Pn",
+          "nmap -p 443,22 192.0.2.14 -Pn -O",
+          "sudo nmap -p 443,22 192.0.2.14 -Pn -O",
+          "nmap 192.0.2.14 -O -Pn -p 443,22",
+          "sudo nmap 192.0.2.14 -O -Pn -p 443,22",
+          "nmap 192.0.2.14 -O -p 443,22 -Pn",
+          "sudo nmap 192.0.2.14 -O -p 443,22 -Pn",
+          "nmap 192.0.2.14 -Pn -O -p 443,22",
+          "sudo nmap 192.0.2.14 -Pn -O -p 443,22",
+          "nmap 192.0.2.14 -Pn -p 443,22 -O",
+          "sudo nmap 192.0.2.14 -Pn -p 443,22 -O",
+          "nmap 192.0.2.14 -p 443,22 -O -Pn",
+          "sudo nmap 192.0.2.14 -p 443,22 -O -Pn",
+          "nmap 192.0.2.14 -p 443,22 -Pn -O",
+          "sudo nmap 192.0.2.14 -p 443,22 -Pn -O",
+          "nmap -O -sS -p 443,22 192.0.2.14",
+          "sudo nmap -O -sS -p 443,22 192.0.2.14",
+          "nmap -O -sS 192.0.2.14 -p 443,22",
+          "sudo nmap -O -sS 192.0.2.14 -p 443,22",
+          "nmap -O -p 443,22 -sS 192.0.2.14",
+          "sudo nmap -O -p 443,22 -sS 192.0.2.14",
+          "nmap -O -p 443,22 192.0.2.14 -sS",
+          "sudo nmap -O -p 443,22 192.0.2.14 -sS",
+          "nmap -O 192.0.2.14 -sS -p 443,22",
+          "sudo nmap -O 192.0.2.14 -sS -p 443,22",
+          "nmap -O 192.0.2.14 -p 443,22 -sS",
+          "sudo nmap -O 192.0.2.14 -p 443,22 -sS",
+          "nmap -sS -O -p 443,22 192.0.2.14",
+          "sudo nmap -sS -O -p 443,22 192.0.2.14",
+          "nmap -sS -O 192.0.2.14 -p 443,22",
+          "sudo nmap -sS -O 192.0.2.14 -p 443,22",
+          "nmap -sS -p 443,22 -O 192.0.2.14",
+          "sudo nmap -sS -p 443,22 -O 192.0.2.14",
+          "nmap -sS -p 443,22 192.0.2.14 -O",
+          "sudo nmap -sS -p 443,22 192.0.2.14 -O",
+          "nmap -sS 192.0.2.14 -O -p 443,22",
+          "sudo nmap -sS 192.0.2.14 -O -p 443,22",
+          "nmap -sS 192.0.2.14 -p 443,22 -O",
+          "sudo nmap -sS 192.0.2.14 -p 443,22 -O",
+          "nmap -p 443,22 -O -sS 192.0.2.14",
+          "sudo nmap -p 443,22 -O -sS 192.0.2.14",
+          "nmap -p 443,22 -O 192.0.2.14 -sS",
+          "sudo nmap -p 443,22 -O 192.0.2.14 -sS",
+          "nmap -p 443,22 -sS -O 192.0.2.14",
+          "sudo nmap -p 443,22 -sS -O 192.0.2.14",
+          "nmap -p 443,22 -sS 192.0.2.14 -O",
+          "sudo nmap -p 443,22 -sS 192.0.2.14 -O",
+          "nmap -p 443,22 192.0.2.14 -O -sS",
+          "sudo nmap -p 443,22 192.0.2.14 -O -sS",
+          "nmap -p 443,22 192.0.2.14 -sS -O",
+          "sudo nmap -p 443,22 192.0.2.14 -sS -O",
+          "nmap 192.0.2.14 -O -sS -p 443,22",
+          "sudo nmap 192.0.2.14 -O -sS -p 443,22",
+          "nmap 192.0.2.14 -O -p 443,22 -sS",
+          "sudo nmap 192.0.2.14 -O -p 443,22 -sS",
+          "nmap 192.0.2.14 -sS -O -p 443,22",
+          "sudo nmap 192.0.2.14 -sS -O -p 443,22",
+          "nmap 192.0.2.14 -sS -p 443,22 -O",
+          "sudo nmap 192.0.2.14 -sS -p 443,22 -O",
+          "nmap 192.0.2.14 -p 443,22 -O -sS",
+          "sudo nmap 192.0.2.14 -p 443,22 -O -sS",
+          "nmap 192.0.2.14 -p 443,22 -sS -O",
+          "sudo nmap 192.0.2.14 -p 443,22 -sS -O",
+          "nmap -O -p443,22 192.0.2.14",
+          "sudo nmap -O -p443,22 192.0.2.14",
+          "nmap -O 192.0.2.14 -p443,22",
+          "sudo nmap -O 192.0.2.14 -p443,22",
+          "nmap -p443,22 -O 192.0.2.14",
+          "sudo nmap -p443,22 -O 192.0.2.14",
+          "nmap -p443,22 192.0.2.14 -O",
+          "sudo nmap -p443,22 192.0.2.14 -O",
+          "nmap 192.0.2.14 -O -p443,22",
+          "sudo nmap 192.0.2.14 -O -p443,22",
+          "nmap 192.0.2.14 -p443,22 -O",
+          "sudo nmap 192.0.2.14 -p443,22 -O",
+          "nmap -O -Pn -p443,22 192.0.2.14",
+          "sudo nmap -O -Pn -p443,22 192.0.2.14",
+          "nmap -O -Pn 192.0.2.14 -p443,22",
+          "sudo nmap -O -Pn 192.0.2.14 -p443,22",
+          "nmap -O -p443,22 -Pn 192.0.2.14",
+          "sudo nmap -O -p443,22 -Pn 192.0.2.14",
+          "nmap -O -p443,22 192.0.2.14 -Pn",
+          "sudo nmap -O -p443,22 192.0.2.14 -Pn",
+          "nmap -O 192.0.2.14 -Pn -p443,22",
+          "sudo nmap -O 192.0.2.14 -Pn -p443,22",
+          "nmap -O 192.0.2.14 -p443,22 -Pn",
+          "sudo nmap -O 192.0.2.14 -p443,22 -Pn",
+          "nmap -Pn -O -p443,22 192.0.2.14",
+          "sudo nmap -Pn -O -p443,22 192.0.2.14",
+          "nmap -Pn -O 192.0.2.14 -p443,22",
+          "sudo nmap -Pn -O 192.0.2.14 -p443,22",
+          "nmap -Pn -p443,22 -O 192.0.2.14",
+          "sudo nmap -Pn -p443,22 -O 192.0.2.14",
+          "nmap -Pn -p443,22 192.0.2.14 -O",
+          "sudo nmap -Pn -p443,22 192.0.2.14 -O",
+          "nmap -Pn 192.0.2.14 -O -p443,22",
+          "sudo nmap -Pn 192.0.2.14 -O -p443,22",
+          "nmap -Pn 192.0.2.14 -p443,22 -O",
+          "sudo nmap -Pn 192.0.2.14 -p443,22 -O",
+          "nmap -p443,22 -O -Pn 192.0.2.14",
+          "sudo nmap -p443,22 -O -Pn 192.0.2.14",
+          "nmap -p443,22 -O 192.0.2.14 -Pn",
+          "sudo nmap -p443,22 -O 192.0.2.14 -Pn",
+          "nmap -p443,22 -Pn -O 192.0.2.14",
+          "sudo nmap -p443,22 -Pn -O 192.0.2.14",
+          "nmap -p443,22 -Pn 192.0.2.14 -O",
+          "sudo nmap -p443,22 -Pn 192.0.2.14 -O",
+          "nmap -p443,22 192.0.2.14 -O -Pn",
+          "sudo nmap -p443,22 192.0.2.14 -O -Pn",
+          "nmap -p443,22 192.0.2.14 -Pn -O",
+          "sudo nmap -p443,22 192.0.2.14 -Pn -O",
+          "nmap 192.0.2.14 -O -Pn -p443,22",
+          "sudo nmap 192.0.2.14 -O -Pn -p443,22",
+          "nmap 192.0.2.14 -O -p443,22 -Pn",
+          "sudo nmap 192.0.2.14 -O -p443,22 -Pn",
+          "nmap 192.0.2.14 -Pn -O -p443,22",
+          "sudo nmap 192.0.2.14 -Pn -O -p443,22",
+          "nmap 192.0.2.14 -Pn -p443,22 -O",
+          "sudo nmap 192.0.2.14 -Pn -p443,22 -O",
+          "nmap 192.0.2.14 -p443,22 -O -Pn",
+          "sudo nmap 192.0.2.14 -p443,22 -O -Pn",
+          "nmap 192.0.2.14 -p443,22 -Pn -O",
+          "sudo nmap 192.0.2.14 -p443,22 -Pn -O",
+          "nmap -O -sS -p443,22 192.0.2.14",
+          "sudo nmap -O -sS -p443,22 192.0.2.14",
+          "nmap -O -sS 192.0.2.14 -p443,22",
+          "sudo nmap -O -sS 192.0.2.14 -p443,22",
+          "nmap -O -p443,22 -sS 192.0.2.14",
+          "sudo nmap -O -p443,22 -sS 192.0.2.14",
+          "nmap -O -p443,22 192.0.2.14 -sS",
+          "sudo nmap -O -p443,22 192.0.2.14 -sS",
+          "nmap -O 192.0.2.14 -sS -p443,22",
+          "sudo nmap -O 192.0.2.14 -sS -p443,22",
+          "nmap -O 192.0.2.14 -p443,22 -sS",
+          "sudo nmap -O 192.0.2.14 -p443,22 -sS",
+          "nmap -sS -O -p443,22 192.0.2.14",
+          "sudo nmap -sS -O -p443,22 192.0.2.14",
+          "nmap -sS -O 192.0.2.14 -p443,22",
+          "sudo nmap -sS -O 192.0.2.14 -p443,22",
+          "nmap -sS -p443,22 -O 192.0.2.14",
+          "sudo nmap -sS -p443,22 -O 192.0.2.14",
+          "nmap -sS -p443,22 192.0.2.14 -O",
+          "sudo nmap -sS -p443,22 192.0.2.14 -O",
+          "nmap -sS 192.0.2.14 -O -p443,22",
+          "sudo nmap -sS 192.0.2.14 -O -p443,22",
+          "nmap -sS 192.0.2.14 -p443,22 -O",
+          "sudo nmap -sS 192.0.2.14 -p443,22 -O",
+          "nmap -p443,22 -O -sS 192.0.2.14",
+          "sudo nmap -p443,22 -O -sS 192.0.2.14",
+          "nmap -p443,22 -O 192.0.2.14 -sS",
+          "sudo nmap -p443,22 -O 192.0.2.14 -sS",
+          "nmap -p443,22 -sS -O 192.0.2.14",
+          "sudo nmap -p443,22 -sS -O 192.0.2.14",
+          "nmap -p443,22 -sS 192.0.2.14 -O",
+          "sudo nmap -p443,22 -sS 192.0.2.14 -O",
+          "nmap -p443,22 192.0.2.14 -O -sS",
+          "sudo nmap -p443,22 192.0.2.14 -O -sS",
+          "nmap -p443,22 192.0.2.14 -sS -O",
+          "sudo nmap -p443,22 192.0.2.14 -sS -O",
+          "nmap 192.0.2.14 -O -sS -p443,22",
+          "sudo nmap 192.0.2.14 -O -sS -p443,22",
+          "nmap 192.0.2.14 -O -p443,22 -sS",
+          "sudo nmap 192.0.2.14 -O -p443,22 -sS",
+          "nmap 192.0.2.14 -sS -O -p443,22",
+          "sudo nmap 192.0.2.14 -sS -O -p443,22",
+          "nmap 192.0.2.14 -sS -p443,22 -O",
+          "sudo nmap 192.0.2.14 -sS -p443,22 -O",
+          "nmap 192.0.2.14 -p443,22 -O -sS",
+          "sudo nmap 192.0.2.14 -p443,22 -O -sS",
+          "nmap 192.0.2.14 -p443,22 -sS -O",
+          "sudo nmap 192.0.2.14 -p443,22 -sS -O"
         ]
       }
     },
     "explanation": "A ping scan with `-sn` only discovers hosts, `-sV` adds service and version probing, `-O` adds operating system fingerprinting, and a filtered port is one where no reply came back.",
     "partExplanations": {
       "sweep": "The `-sn` option does host discovery and skips the port scan.",
-      "state": "Filtered means probes got no reply, which is typical of a firewall dropping them; closed means the host answered that nothing listens.",
+      "state": "Filtered means probes got no reply, which is typical of a firewall dropping them; closed means the host replied that no service is listening.",
       "ver": "`-sV` probes open ports for version information and `-p 22,443` limits the ports.",
       "os": "`-O` requests operating system detection, and no `-sV` is added because the task excludes it."
     },
@@ -1490,7 +2310,7 @@
       "SSH",
       "TCP"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-config-001",
@@ -1618,7 +2438,7 @@
       "CIS",
       "VLAN"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-diagram-001",
@@ -1719,7 +2539,7 @@
           "id": "z-srv",
           "x": 402,
           "y": 140,
-          "name": "Inside the server VLAN, with a read-only account"
+          "name": "Inside the server VLAN, to assess the servers directly"
         },
         {
           "id": "z-lap",
@@ -1751,7 +2571,7 @@
         },
         {
           "id": "pass",
-          "text": "Passive sensor at the edge router"
+          "text": "Passive sensor on the office wireless network"
         }
       ]
     },
@@ -1763,17 +2583,17 @@
         "z-lap": "agent"
       }
     },
-    "explanation": "Each vantage point answers a different question: an outside scanner shows the public view, a scoped allow rule lets scans cross the segment boundary, an inside scanner with a read-only account assesses the servers, and agents cover devices that are rarely on the network.",
+    "explanation": "Each vantage point answers a different question: an outside scanner shows the public view, a scoped allow rule lets scans cross the segment boundary, an inside credentialed scanner assesses the servers, and agents cover devices that are rarely on the network.",
     "partExplanations": {
       "z-out": "An external scanner has the same view as an internet attacker.",
       "z-fw": "A narrow allow rule for the scanner address lets probes cross without opening the segment to others.",
-      "z-srv": "A scanner inside the VLAN with a read-only account can run a credentialed assessment.",
+      "z-srv": "A credentialed scanner inside the VLAN, using a read-only account, can assess the servers directly.",
       "z-lap": "Agents on laptops report whenever the device has connectivity."
     },
     "acronyms": [
       "VLAN"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-buckets-001",
@@ -1844,7 +2664,7 @@
       "i6": "Listening does not send anything to the devices."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-match-001",
@@ -1927,7 +2747,7 @@
     "acronyms": [
       "CIS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-1-hotspot-001",
@@ -2064,6 +2884,6 @@
       "CIS",
       "PLC"
     ],
-    "status": "draft"
+    "status": "approved"
   }
 ]

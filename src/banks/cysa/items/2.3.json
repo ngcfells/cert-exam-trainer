@@ -6,7 +6,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A vulnerability manager sees an EPSS value of 0.92 beside a finding. What does that figure estimate?",
@@ -18,15 +18,15 @@
         },
         {
           "id": "b",
-          "text": "The amount of damage the flaw would cause on this particular asset"
+          "text": "The amount of damage the flaw would cause on this particular asset if abused"
         },
         {
           "id": "c",
-          "text": "The effort a vendor needs to produce a patch for the flaw"
+          "text": "The effort a vendor needs to produce and test a patch for the flaw this quarter"
         },
         {
           "id": "d",
-          "text": "The share of hosts in the network that carry the flaw"
+          "text": "The share of hosts in the network that carry the flaw at the time of the scan"
         }
       ]
     },
@@ -47,7 +47,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which CVSS metric group describes the intrinsic qualities of a flaw that stay the same over time and across organizations?",
@@ -88,7 +88,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Under the qualitative bands shared by CVSS v3.1 and v4.0, in which band does a base score of 7.4 fall?",
@@ -129,7 +129,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "A scanner finding matches an entry in a known exploited vulnerabilities catalog. What does the entry tell the analyst?",
@@ -168,7 +168,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Two servers carry the same flaw with the same base score. One is a development sandbox and the other processes customer payments. How should the analyst rank them?",
@@ -176,7 +176,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Sandbox first, since developers can patch it without approval"
+          "text": "Sandbox first, since developers can patch it without waiting for change approval"
         },
         {
           "id": "b",
@@ -184,11 +184,11 @@
         },
         {
           "id": "c",
-          "text": "Tie them, since the base score is identical"
+          "text": "Tie them, since the base score is identical and the flaw is the same"
         },
         {
           "id": "d",
-          "text": "Sandbox first, since low-value hosts are quicker to rescan"
+          "text": "Sandbox first, since low-value hosts are quicker to rescan after each fix"
         }
       ]
     },
@@ -207,7 +207,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A critical finding affects a perimeter appliance, and the vendor has not released a fix. What is the best action while waiting?",
@@ -246,7 +246,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A scanner flags a host for a library flaw because the banner shows an old version number. The analyst reads the package changelog and finds the vendor backported the fix into that build. How should the finding be classified?",
@@ -254,15 +254,15 @@
       "options": [
         {
           "id": "a",
-          "text": "True positive, since the banner shows a vulnerable version"
+          "text": "True positive, since the banner shows a vulnerable version number"
         },
         {
           "id": "b",
-          "text": "False negative, since the scanner missed the patched package"
+          "text": "False negative, since the scanner missed the patched package on the host"
         },
         {
           "id": "c",
-          "text": "True negative, since the scanner correctly reported the flaw"
+          "text": "True negative, since the scanner correctly reported the flaw on the host"
         },
         {
           "id": "d",
@@ -285,7 +285,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A tester logs in to an admin console with factory-default credentials on a host that the weekly credentialed scan reported as clean. What does this show about the scan?",
@@ -324,7 +324,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An internet-facing web server and an internal-only reporting server hold equally sensitive data and share a finding with the same score. Which gets the higher context-based priority?",
@@ -363,23 +363,23 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A critical finding sits on a controller in an air-gapped lab network with no external connectivity and two authorized engineers. How does the isolation affect its priority?",
+    "stem": "A critical finding sits on a controller in an air-gapped lab network with no external connectivity and two authorized engineers. How does the isolation affect its context-adjusted priority?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "It removes the finding from the register since nobody can reach it"
+          "text": "It removes the finding from the register since nobody outside the lab can reach it"
         },
         {
           "id": "b",
-          "text": "It raises the score since isolated hosts are harder to patch"
+          "text": "It raises the score since isolated hosts are harder to patch and monitor"
         },
         {
           "id": "c",
-          "text": "It has no effect since the base score is fixed"
+          "text": "It has no effect on priority since the base score is a fixed value"
         },
         {
           "id": "d",
@@ -402,10 +402,10 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
-    "stem": "A cloud workload with an exposed management port appeared outside every inventory. Which practice would have found it earlier?",
+    "stem": "A cloud workload with an exposed management port was missing from every inventory. Which practice would have found it earlier?",
     "payload": {
       "options": [
         {
@@ -441,7 +441,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A scan of a customer web form finds that user input is placed directly into a database query string. Which fix addresses the root cause?",
@@ -449,19 +449,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Use a long database account password"
+          "text": "Use a long, random password for the database service account"
         },
         {
           "id": "b",
-          "text": "Use parameterized queries so input is handled as data, not query text"
+          "text": "Use parameterized statements that keep submitted values separate from the command text"
         },
         {
           "id": "c",
-          "text": "Rename the form field so scanners cannot see it"
+          "text": "Rename the form field so that scanners cannot see it in the page"
         },
         {
           "id": "d",
-          "text": "Block one keyword in the browser script"
+          "text": "Block one suspicious keyword in the browser script on the form"
         }
       ]
     },
@@ -470,7 +470,7 @@
         "b"
       ]
     },
-    "explanation": "Parameterized queries stop input from being interpreted as part of the statement, which removes the injection flaw. A stronger account password does nothing about injection, hiding the field name only affects scanners, and client-side keyword blocking is easily bypassed.",
+    "explanation": "Parameterized statements stop submitted values from being interpreted as part of the command, which removes the injection flaw. A stronger account password does nothing about injection, hiding the field name only affects scanners, and client-side keyword blocking is easily bypassed.",
     "acronyms": []
   },
   {
@@ -480,7 +480,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A static analysis run flags an API key written in plain text in a source file. What is the best remediation?",
@@ -488,11 +488,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Add a comment marking the key as a test value"
+          "text": "Add a comment in the source marking the key as a test value only"
         },
         {
           "id": "b",
-          "text": "Encode the key in base64 inside the source file"
+          "text": "Encode the key in base64 inside the source file before each commit"
         },
         {
           "id": "c",
@@ -500,7 +500,7 @@
         },
         {
           "id": "d",
-          "text": "Make the repository private and leave the key in the file"
+          "text": "Make the repository private and leave the key in the file as it is"
         }
       ]
     },
@@ -521,7 +521,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Before rolling a vendor patch out to 200 production servers, which step belongs first?",
@@ -560,7 +560,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A hardening baseline requires SMB signing, yet a scan shows several servers with it switched off after a vendor installer ran. Which process detects this kind of change?",
@@ -568,7 +568,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Drift detection against the approved baseline"
+          "text": "Drift detection that compares live settings with approved ones"
         },
         {
           "id": "b",
@@ -601,7 +601,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A legacy application cannot be patched until the vendor ships a supported release. Which element keeps its exception from becoming permanent?",
@@ -640,7 +640,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A plant controller runs firmware that cannot be updated. Which is a compensating control for its open finding?",
@@ -681,7 +681,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "After a patch is deployed, how should the team confirm the vulnerability is actually fixed?",
@@ -720,7 +720,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A rescan still reports a finding after the patch install succeeded. The package query shows the fixed version, but the service has run since before the update. What should the analyst do?",
@@ -759,7 +759,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An analyst must pick the first of two findings to remediate.\n\n```\nFinding  CVSS  EPSS  KEV  Exposure\nA        9.8   0.02  no   isolated\nB        7.5   0.89  yes  internet\n```\n\nWhich should go first?",
@@ -798,7 +798,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "How do EPSS and CVSS differ in the question they answer?",
@@ -840,7 +840,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team lowers a base score because a firewall blocks the vulnerable service and the asset has a low confidentiality requirement. Which CVSS metric group holds these adjustments?",
@@ -881,15 +881,15 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
-    "stem": "A finding vector shows network attack vector, low attack complexity, no privileges required and no user interaction. What does this say about exploitability?",
+    "stem": "A finding's vector sets attack vector to network, attack complexity to low, privileges required to none and user interaction to none. What does this say about exploitability?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "It is easy to exploit, since a remote attacker needs no account or victim action"
+          "text": "It is easy to exploit remotely, since no account or victim action is needed"
         },
         {
           "id": "b",
@@ -897,11 +897,11 @@
         },
         {
           "id": "c",
-          "text": "It depends on a user opening an attachment first"
+          "text": "It is only exploitable after a user opens a malicious attachment first"
         },
         {
           "id": "d",
-          "text": "It requires valid administrator credentials"
+          "text": "It requires valid administrator credentials on the target host first"
         }
       ]
     },
@@ -920,7 +920,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A flaw lets an attacker read customer records but not change them or disrupt the service. Which impact profile fits?",
@@ -928,19 +928,19 @@
       "options": [
         {
           "id": "a",
-          "text": "Availability and integrity together"
+          "text": "Availability and integrity together, with confidentiality unaffected"
         },
         {
           "id": "b",
-          "text": "Confidentiality only"
+          "text": "Confidentiality only, with integrity and availability unaffected"
         },
         {
           "id": "c",
-          "text": "Integrity with some availability"
+          "text": "Integrity with some availability impact, and no confidentiality impact"
         },
         {
           "id": "d",
-          "text": "All three at the same level"
+          "text": "All three at the same level, each rated high"
         }
       ]
     },
@@ -959,7 +959,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A threat feed reports that a ransomware group is scanning for a flaw in the VPN gateways the company runs. The flaw scores 6.5 on CVSS. How should the analyst treat it?",
@@ -1001,7 +1001,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which practice helps developers fix flaws earlier in the software development life cycle?",
@@ -1040,7 +1040,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Attack surface management turns up a forgotten test web application on a public cloud address, running an outdated framework. What is the best first step?",
@@ -1079,7 +1079,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO of these are CVSS metric groups?",
@@ -1125,7 +1125,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO statements about EPSS are accurate?",
@@ -1171,7 +1171,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO practices reduce injection flaws in a web application?",
@@ -1179,7 +1179,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Validate input against an allow list"
+          "text": "Validate input against an allow-list"
         },
         {
           "id": "b",
@@ -1215,7 +1215,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "A scanner reports a vulnerable service on a server. Which THREE actions help confirm whether the finding is a true positive?",
@@ -1260,7 +1260,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which THREE inputs help decide the order for patching a set of internet-facing servers?",
@@ -1307,7 +1307,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "Which TWO practices make patching and configuration management safer?",
@@ -1351,7 +1351,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 2,
     "pbqWeight": 5,
@@ -1492,11 +1492,11 @@
           "options": [
             {
               "id": "sev",
-              "text": "A severity of 6.4 out of 10"
+              "text": "A severity of 6.4 out of 10 on the base scale"
             },
             {
               "id": "share",
-              "text": "64 percent of the services on the host are affected"
+              "text": "64 percent of the services on the host are affected by the flaw"
             },
             {
               "id": "prob",
@@ -1536,7 +1536,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-order",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -1597,7 +1597,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "pbqWeight": 4,
@@ -1612,7 +1612,7 @@
         "acme-httpd-2.4.9-3.el9.x86_64   Tue 09:15:40",
         "$ systemctl status acme-httpd",
         "acme-httpd.service - Acme web daemon",
-        "   Active: active (running) since Mon 08:02:11; 1 day 1h ago",
+        "   Active: active (running) since Mon 08:02:11; 1 day 2h ago",
         " Main PID: 2210 (acme-httpd)",
         "$ systemctl --help | grep restart",
         "  restart unit...   Start or restart one or more units"
@@ -1646,11 +1646,11 @@
             },
             {
               "id": "old",
-              "text": "The process started before the update, so it may still run the old code"
+              "text": "The process started before the update, so it runs the old code"
             },
             {
               "id": "down",
-              "text": "The service is stopped and needs no further action"
+              "text": "The service is stopped, so it needs no further action or restart"
             }
           ]
         },
@@ -1688,9 +1688,13 @@
         ],
         "restart": [
           "systemctl restart acme-httpd",
-          "systemctl restart acme-httpd.service",
           "sudo systemctl restart acme-httpd",
-          "sudo systemctl restart acme-httpd.service"
+          "systemctl restart acme-httpd.service",
+          "sudo systemctl restart acme-httpd.service",
+          "systemctl try-restart acme-httpd",
+          "sudo systemctl try-restart acme-httpd",
+          "systemctl try-restart acme-httpd.service",
+          "sudo systemctl try-restart acme-httpd.service"
         ],
         "next": [
           "rescan"
@@ -1699,9 +1703,9 @@
     },
     "explanation": "The package is at the fixed build, but the daemon started a day before the update, so it still runs the old code until restarted. After the restart, a rescan is the evidence that closes the ticket.",
     "partExplanations": {
-      "ver": "rpm -q shows 2.4.9-3.el9, the same build the advisory names as fixed.",
+      "ver": "`rpm -q` shows `2.4.9-3.el9`, the same build the advisory names as fixed.",
       "proc": "The service has run since Monday 08:02, and the package changed Tuesday 09:15, so the running code predates the update.",
-      "restart": "systemctl restart followed by the unit name reloads the daemon with the patched files.",
+      "restart": "`systemctl restart` followed by the unit name reloads the daemon with the patched files.",
       "next": "A rescan proves the host no longer shows the flaw; closing on package state alone is only a claim."
     },
     "acronyms": [
@@ -1715,7 +1719,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 2,
     "pbqWeight": 5,
@@ -1746,11 +1750,11 @@
           "options": [
             {
               "id": "rename",
-              "text": "Rename the host in the asset register"
+              "text": "Rename the host in the asset register to match the new owner"
             },
             {
               "id": "freq",
-              "text": "Run the scanner more often with no other change"
+              "text": "Run the scanner every day with no other change to the host"
             },
             {
               "id": "allow",
@@ -1782,11 +1786,11 @@
           "options": [
             {
               "id": "scan",
-              "text": "The scanner administrator"
+              "text": "The scanner administrator who ran the weekly scan of the host"
             },
             {
               "id": "req",
-              "text": "The analyst who requested the exception"
+              "text": "The analyst who requested the exception and wrote the ticket"
             },
             {
               "id": "owner",
@@ -1800,7 +1804,7 @@
           "options": [
             {
               "id": "annual",
-              "text": "An annual interview with the system administrator"
+              "text": "An annual interview with the system administrator about the control"
             },
             {
               "id": "rule",
@@ -1808,7 +1812,7 @@
             },
             {
               "id": "ticket",
-              "text": "A ticket comment saying the control was added"
+              "text": "A ticket comment from the administrator saying the control was added"
             }
           ]
         }
@@ -1842,7 +1846,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-buckets",
     "difficulty": 2,
     "pbqWeight": 6,
@@ -1917,7 +1921,7 @@
     "objectiveIds": [
       "2.3"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 3,
     "pbqWeight": 6,

@@ -36,7 +36,7 @@
     },
     "explanation": "Training and signed agreements are policy-and-people measures, which makes them administrative controls. Technical controls are enforced by systems, physical controls protect places and equipment, and compensating controls are stand-ins used when a required control cannot be applied.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-002",
@@ -75,7 +75,7 @@
     },
     "explanation": "A mantrap controls who can enter a space, so it is physical. An access review is administrative, disk encryption is technical, and a blocking rule on a port is a technical network control.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-003",
@@ -114,7 +114,7 @@
     },
     "explanation": "Stopping the connection before it can happen is a preventative function. Detective controls only identify activity, responsive controls act during an incident, and corrective controls repair damage afterward.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-004",
@@ -155,7 +155,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-005",
@@ -166,7 +166,7 @@
       "2.4"
     ],
     "difficulty": 3,
-    "stem": "An EDR platform automatically quarantines a workstation that starts beaconing to a known malicious host, stopping the spread while the incident is still under way. Which control function is this?",
+    "stem": "An EDR platform automatically quarantines a workstation that starts beaconing to a known malicious host. The aim is to halt the attack that is happening right now, not to undo damage or to keep it from starting. Which control function is this?",
     "payload": {
       "options": [
         {
@@ -196,7 +196,7 @@
     "acronyms": [
       "EDR"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-006",
@@ -207,7 +207,7 @@
       "2.4"
     ],
     "difficulty": 2,
-    "stem": "After an incident is contained, the team restores an encrypted file share from last night's backup to return it to normal operation. Which control function does the restoration serve?",
+    "stem": "After an incident has been fully contained and the attack has ended, the team restores an encrypted file share from last night's backup. The aim is to return the data to its prior state, not to halt an active attack. Which control function does the restoration serve?",
     "payload": {
       "options": [
         {
@@ -235,7 +235,7 @@
     },
     "explanation": "Restoring systems and data to their normal state after damage is a corrective function. Preventative and detective functions come before or during detection of an event, and responsive actions such as isolation happen while the incident is active.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-007",
@@ -274,7 +274,7 @@
     },
     "explanation": "Inherent risk is the exposure that exists before controls are considered. Residual risk is what remains after controls, risk appetite is the level leadership will tolerate, and accepted risk is a decision about a specific remaining exposure.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-008",
@@ -313,7 +313,7 @@
     },
     "explanation": "Risk appetite is the amount and type of risk leadership is willing to take. Residual and inherent risk describe the exposure of a particular scenario, and transfer is one way of treating a risk.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-009",
@@ -352,7 +352,7 @@
     },
     "explanation": "Residual risk is the exposure left after controls: likelihood 2 times impact 5 gives 10. A score of 5 halves both factors, 15 is not a product of these ratings, and 20 ignores the controls.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-010",
@@ -363,7 +363,7 @@
       "2.4"
     ],
     "difficulty": 3,
-    "stem": "A risk's residual rating is high, but the board has set a low appetite for it. What should the risk owner do next?",
+    "stem": "A risk's residual score is high, but the board has set a low appetite for it. What should the risk owner do next?",
     "payload": {
       "options": [
         {
@@ -391,7 +391,7 @@
     },
     "explanation": "When residual risk exceeds what leadership tolerates, the owner must treat it further or choose another strategy such as avoidance or transfer. Accepting it breaks the stated limit, editing the inherent score hides the problem, and closing the entry leaves the exposure in place.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-011",
@@ -430,7 +430,7 @@
     },
     "explanation": "Dropping the activity that creates the risk is avoidance. Accepting keeps the exposure, transferring shifts its cost to another party, and mitigating keeps the activity while reducing the risk.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-012",
@@ -469,7 +469,7 @@
     },
     "explanation": "Reducing likelihood and impact while the host stays in service is mitigation. Accepting would leave the exposure as it is, avoidance would retire the host, and transfer would shift the cost to another party.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-013",
@@ -508,7 +508,7 @@
     },
     "explanation": "Knowingly living with a low risk, with a documented and signed decision, is acceptance. Avoidance would remove the printer, transfer would pass the loss to a third party, and mitigation would spend effort reducing the flaw.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-014",
@@ -547,7 +547,7 @@
     },
     "explanation": "Transfer moves financial impact to another party, yet the data owner still answers to customers and regulators. The owner is not released from accountability, the inherent risk does not vanish, and the activity still takes place, so it is not avoidance.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-015",
@@ -586,7 +586,7 @@
     },
     "explanation": "A policy states what management requires and why. Procedures give the steps, baselines give specific settings, and guidelines are recommendations that are not mandatory.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-016",
@@ -630,7 +630,7 @@
       "SLA",
       "SLO"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-017",
@@ -672,7 +672,7 @@
       "SLA",
       "SLO"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-018",
@@ -688,7 +688,7 @@
       "options": [
         {
           "id": "a",
-          "text": "The analyst who found the flaw"
+          "text": "The analyst who first reported the flaw in the scan results"
         },
         {
           "id": "b",
@@ -696,11 +696,11 @@
         },
         {
           "id": "c",
-          "text": "The scanner administrator"
+          "text": "The scanner administrator who maintains the scan schedules"
         },
         {
           "id": "d",
-          "text": "The help desk lead"
+          "text": "The help desk lead who handles tickets for that application"
         }
       ]
     },
@@ -711,7 +711,7 @@
     },
     "explanation": "Governance gives approval of policy exceptions to people accountable for the risk, such as a risk committee or the risk owner. The analyst, the scanner administrator and the help desk lead lack that authority.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-019",
@@ -754,7 +754,7 @@
       "SAST",
       "SCA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-020",
@@ -797,7 +797,7 @@
       "SAST",
       "SCA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-021",
@@ -813,15 +813,15 @@
       "options": [
         {
           "id": "a",
-          "text": "It needs a copy of the repository to start"
+          "text": "It needs a full copy of the source repository before it can start"
         },
         {
           "id": "b",
-          "text": "It cannot test an application that is running"
+          "text": "It cannot test an application while that application is running"
         },
         {
           "id": "c",
-          "text": "It finds hard-coded secrets inside source files"
+          "text": "It finds hard-coded secrets sitting inside the application source files"
         },
         {
           "id": "d",
@@ -840,7 +840,7 @@
       "SAST",
       "URL"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-022",
@@ -884,7 +884,7 @@
       "SAMM",
       "STRIDE"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-023",
@@ -925,7 +925,7 @@
     "acronyms": [
       "SBOM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-024",
@@ -968,7 +968,7 @@
       "SAST",
       "SCA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-025",
@@ -1007,7 +1007,7 @@
     },
     "explanation": "An attacker who tampers with software a customer trusts from a supplier has compromised the supply chain. The other options involve a malicious employee, reused passwords, and a settings error, none of which fit a poisoned update.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-026",
@@ -1048,7 +1048,7 @@
     "acronyms": [
       "SBOM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-027",
@@ -1064,11 +1064,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Read the security claims on its marketing site"
+          "text": "Read the security claims and case studies on its marketing site"
         },
         {
           "id": "b",
-          "text": "Scan its network without telling it first"
+          "text": "Scan its network without telling it first to find open ports"
         },
         {
           "id": "c",
@@ -1076,7 +1076,7 @@
         },
         {
           "id": "d",
-          "text": "Compare its price with competing offers"
+          "text": "Compare its price and contract length with competing offers"
         }
       ]
     },
@@ -1087,7 +1087,7 @@
     },
     "explanation": "Independent audit evidence and a completed questionnaire show how the vendor actually manages risk. Marketing claims are unverified, an unannounced scan is unauthorized, and price says nothing about security.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-028",
@@ -1131,7 +1131,7 @@
     },
     "explanation": "Hiring checks and a separation-of-duties policy are managed through rules and people, so they are administrative. A firewall rule and disk encryption are technical, and badge readers are physical.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-029",
@@ -1180,7 +1180,7 @@
     },
     "explanation": "Bollards, locked cabinets and cable locks protect places and devices in the physical world. A session timeout and a password rule are technical, and an approval board is administrative.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-030",
@@ -1224,7 +1224,7 @@
     },
     "explanation": "Alerting on changed files and reviewing badge records both identify events after they occur. Segmentation, change approval and a locked door aim to stop events, which makes them preventative.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-031",
@@ -1240,19 +1240,19 @@
       "options": [
         {
           "id": "a",
-          "text": "The residual rating is inside appetite and the owner signs the decision"
+          "text": "The residual score is inside appetite and the owner signs the decision"
         },
         {
           "id": "b",
-          "text": "The residual rating exceeds appetite, but treatment would be inconvenient"
+          "text": "The residual score exceeds appetite, but treatment would be inconvenient"
         },
         {
           "id": "c",
-          "text": "A scanner labels the finding informational and nobody has checked"
+          "text": "A scanner labels the finding informational and nobody has checked that label"
         },
         {
           "id": "d",
-          "text": "The vendor says a fix might appear someday"
+          "text": "The vendor says a fix might appear someday, with no date or commitment"
         },
         {
           "id": "e",
@@ -1268,7 +1268,7 @@
     },
     "explanation": "Acceptance is sound when the exposure is within limits or the treatment is not worth its cost, and the decision is owned and recorded. Convenience, an unchecked label, and a vague promise are not grounds to leave an out-of-limit risk in place.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-032",
@@ -1284,15 +1284,15 @@
       "options": [
         {
           "id": "a",
-          "text": "Detecting injection flaws in a running website"
+          "text": "Detecting injection flaws in a running website by sending crafted requests"
         },
         {
           "id": "b",
-          "text": "Proving that the product's own code is free of defects"
+          "text": "Proving that the product's own source code is free of any defects or flaws"
         },
         {
           "id": "c",
-          "text": "Replacing the need to apply updates to listed components"
+          "text": "Replacing the need to apply vendor updates to each of the listed components"
         },
         {
           "id": "d",
@@ -1314,7 +1314,7 @@
     "acronyms": [
       "SBOM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-mcq-033",
@@ -1360,7 +1360,7 @@
     "acronyms": [
       "SAST"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-match-001",
@@ -1381,7 +1381,7 @@
         },
         {
           "id": "p2",
-          "text": "A bank retires a file-sharing service that no team needs anymore"
+          "text": "A bank shuts down a risky file-sharing service instead of securing it"
         },
         {
           "id": "p3",
@@ -1429,7 +1429,7 @@
     "acronyms": [
       "MFA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-buckets-001",
@@ -1508,7 +1508,7 @@
       "SIEM",
       "VPN"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-diagram-001",
@@ -1633,7 +1633,7 @@
       "SAST",
       "SCA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-order-001",
@@ -1644,7 +1644,7 @@
       "2.4"
     ],
     "difficulty": 3,
-    "stem": "Put the steps of onboarding a new third-party vendor in order. Rules: the depth of review follows from the data the vendor will touch, so that is decided first; evidence is collected before anything is rated; contract terms are written to close the gaps the rating found; and approval waits for a signed contract.",
+    "stem": "Put the steps of onboarding a new third-party vendor in order. Rules: the review depth depends on how sensitive the information the vendor can reach is; a rating must rest on material already collected; the contract terms are written around the gaps the rating found; the signed agreement must exist before approval.",
     "pbqWeight": 5,
     "payload": {
       "steps": [
@@ -1688,7 +1688,7 @@
       "4": "Approval comes last because it waits for the signed contract, and reassessment keeps the rating current."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-data-001",
@@ -1830,7 +1830,7 @@
       "f-sum": "R1 10 + R2 15 + R3 3 + R4 12 = 40; 73 is the inherent total."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-2-4-terminal-001",
@@ -1876,7 +1876,7 @@
           "options": [
             {
               "id": "o1",
-              "text": "Not affected: 2.14.1 is newer than 2.1"
+              "text": "Not affected: 2.14.1 is newer than 2.1.0, so close the advisory"
             },
             {
               "id": "o2",
@@ -1884,11 +1884,11 @@
             },
             {
               "id": "o3",
-              "text": "Affected only if the app calls it from the internet"
+              "text": "Affected only if the app exposes it to the internet, so keep watching"
             },
             {
               "id": "o4",
-              "text": "Unknown until a DAST scan of staging runs"
+              "text": "Unknown until a DAST scan of staging runs and reports back on it"
             }
           ]
         }
@@ -1924,7 +1924,27 @@
           "cat sbom.json | grep libfastlog",
           "cat sbom.json | grep \"libfastlog\"",
           "cat sbom.json | grep 'libfastlog'",
-          "cat ./sbom.json | grep libfastlog"
+          "cat ./sbom.json | grep libfastlog",
+          "grep -w libfastlog sbom.json",
+          "grep -nw libfastlog sbom.json",
+          "grep -w libfastlog ./sbom.json",
+          "grep -nw libfastlog ./sbom.json",
+          "grep -w \"libfastlog\" sbom.json",
+          "grep -nw \"libfastlog\" sbom.json",
+          "grep -w \"libfastlog\" ./sbom.json",
+          "grep -nw \"libfastlog\" ./sbom.json",
+          "grep -w 'libfastlog' sbom.json",
+          "grep -nw 'libfastlog' sbom.json",
+          "grep -w 'libfastlog' ./sbom.json",
+          "grep -nw 'libfastlog' ./sbom.json",
+          "cat sbom.json | grep -i libfastlog",
+          "grep libfastlog < sbom.json",
+          "cat ./sbom.json | grep \"libfastlog\"",
+          "cat sbom.json | grep -i \"libfastlog\"",
+          "grep \"libfastlog\" < sbom.json",
+          "cat ./sbom.json | grep 'libfastlog'",
+          "cat sbom.json | grep -i 'libfastlog'",
+          "grep 'libfastlog' < sbom.json"
         ],
         "count": [
           "grep -c eol sbom.json",
@@ -1996,7 +2016,21 @@
           "cat sbom.json | grep -c eol",
           "cat sbom.json | grep -c \"eol\"",
           "cat sbom.json | grep -c 'eol'",
-          "cat sbom.json | grep eol | wc -l"
+          "cat sbom.json | grep eol | wc -l",
+          "cat ./sbom.json | grep -c eol",
+          "grep -c eol < sbom.json",
+          "grep -c -w eol sbom.json",
+          "grep -cw eol sbom.json",
+          "cat ./sbom.json | grep -c \"eol\"",
+          "grep -c \"eol\" < sbom.json",
+          "grep -c -w \"eol\" sbom.json",
+          "grep -cw \"eol\" sbom.json",
+          "cat sbom.json | grep \"eol\" | wc -l",
+          "cat ./sbom.json | grep -c 'eol'",
+          "grep -c 'eol' < sbom.json",
+          "grep -c -w 'eol' sbom.json",
+          "grep -cw 'eol' sbom.json",
+          "cat sbom.json | grep 'eol' | wc -l"
         ],
         "names": [
           "jq -r '.components[].name' sbom.json",
@@ -2070,18 +2104,21 @@
           "cat sbom.json | jq -r '.components[]|.name'",
           "cat ./sbom.json | jq -r '.components[]|.name'",
           "cat sbom.json | jq -r \".components[]|.name\"",
-          "cat ./sbom.json | jq -r \".components[]|.name\""
+          "cat ./sbom.json | jq -r \".components[]|.name\"",
+          "cat sbom.json | jq --raw-output '.components[].name'",
+          "jq -r '.components[] .name' sbom.json",
+          "jq -r '.components | .[] | .name' sbom.json"
         ],
         "act": [
           "o2"
         ]
       }
     },
-    "explanation": "grep finds lines, grep -c counts them, and jq -r prints raw strings from JSON. Version 2.14.1 is lower than 2.15.0 (compare the parts as numbers: 14 is less than 15), so the component is in the affected range and needs an upgrade.",
+    "explanation": "`grep` finds lines, `grep -c` counts them, and `jq -r` prints raw strings from JSON. Version 2.14.1 is lower than 2.15.0 (compare the parts as numbers: 14 is less than 15), so the component is in the affected range and needs an upgrade.",
     "partExplanations": {
-      "find": "grep libfastlog sbom.json prints the one component line that mentions it.",
-      "count": "grep -c eol sbom.json prints 2, the number of end-of-life components.",
-      "names": "jq -r '.components[].name' sbom.json prints each name without quotes.",
+      "find": "`grep libfastlog sbom.json` prints the one component line that mentions it.",
+      "count": "`grep -c eol sbom.json` prints 2, the number of end-of-life components.",
+      "names": "`jq -r '.components[].name' sbom.json` prints each name without quotes.",
       "act": "Compare versions part by part: 2.14.1 is lower than 2.15.0, so the component is affected, and the SBOM already gives the evidence."
     },
     "acronyms": [
@@ -2089,6 +2126,6 @@
       "JSON",
       "SBOM"
     ],
-    "status": "draft"
+    "status": "approved"
   }
 ]

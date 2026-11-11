@@ -6,7 +6,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What is Angry IP Scanner mainly used for?",
@@ -47,7 +47,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What sets Masscan apart from most port scanners?",
@@ -88,7 +88,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "An analyst runs `masscan 192.0.2.0/24 -p22,443 --rate 1000` and receives this output.\n\n```\nDiscovered open port 443/tcp on 192.0.2.14\nDiscovered open port 22/tcp on 192.0.2.14\nDiscovered open port 443/tcp on 192.0.2.31\n```\n\nWhat can the analyst conclude?",
@@ -129,7 +129,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A scan of `db-05` returns the table below.\n\n```\nPort      State     Service\n22/tcp    open      ssh\n80/tcp    filtered  http\n443/tcp   closed    https\n```\n\nWhat does the state shown for port 80 mean?",
@@ -168,7 +168,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "Which Nmap option asks open ports to reveal what software and release is listening on them?",
@@ -207,7 +207,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A default Nmap scan of `crm-02`, a server known to be running, ends with `Host seems down`. The firewall drops ping probes. What is the best next step?",
@@ -246,7 +246,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What is the Metasploit Framework (MSF) mainly used for in an assessment?",
@@ -287,7 +287,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A tester wants a Metasploit module that gathers information from a target without delivering a payload or needing an open session. Which module type fits?",
@@ -326,7 +326,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does Maltego chiefly produce for an investigator?",
@@ -365,7 +365,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "How does Recon-ng organize its OSINT collection?",
@@ -406,7 +406,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A tester wants to pause a browser request, change a parameter and forward it to the server. Which Burp Suite capability provides this?",
@@ -445,7 +445,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A ZAP scan reports the alert below.\n\n```\nRisk: Medium   Confidence: Low\nAlert: Cross Site Scripting (Reflected)\nURL: https://shop.example.internal/search?q=test\nEvidence: test\n```\n\nHow should the analyst handle it?",
@@ -486,7 +486,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "What does Nikto mainly check?",
@@ -498,15 +498,15 @@
         },
         {
           "id": "b",
-          "text": "Container images, for packages with known flaws"
+          "text": "Container images, for installed packages that carry known flaws"
         },
         {
           "id": "c",
-          "text": "Terraform files, for insecure defaults before deployment"
+          "text": "Terraform files, for insecure defaults before any deployment"
         },
         {
           "id": "d",
-          "text": "Address ranges, for responsive hosts and open ports"
+          "text": "Address ranges, for responsive hosts and open ports quickly"
         }
       ]
     },
@@ -525,7 +525,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A web scan of `198.51.100.40` produces this Nikto output.\n\n```\n+ Target: 198.51.100.40:80\n+ Server: Apache/2.2.15 (CentOS)\n+ /icons/README: Apache default file found.\n+ /admin/: Directory indexing found.\n+ Allowed HTTP Methods: GET, HEAD, POST, OPTIONS, TRACE\n```\n\nWhich line points to software that may be out of date?",
@@ -564,7 +564,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Nessus report lists an Info-severity plugin whose output shows the version of a service installed on a host. How should the analyst treat it?",
@@ -603,7 +603,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "A Nessus scan of `srv-07` finds few issues. A rerun with an administrator login finds many missing patches. Why does the second report show more?",
@@ -642,7 +642,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "How does Nuclei decide what to test on a target?",
@@ -684,7 +684,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Nuclei prints these lines for one host.\n\n```\n[tech-detect:nginx] [http] [info] https://app.example.internal\n[exposed-env-file] [http] [high] https://app.example.internal/.env\n[missing-security-headers] [http] [low] https://app.example.internal\n```\n\nWhich match should the analyst verify and escalate first?",
@@ -723,7 +723,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "An OpenVAS result carries a quality of detection value of 30 percent. What should the analyst infer?",
@@ -764,7 +764,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "How does ScoutSuite collect the data it presents for a cloud account?",
@@ -805,7 +805,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A team reviews this Prowler summary.\n\n```\nStatus  Severity  Check                      Resource\nPASS    critical  root_account_mfa_enabled   acct-prod\nFAIL    high      bucket_public_read         bkt-invoices-01\nFAIL    medium    audit_logging_disabled     region-east\nPASS    low       password_min_length        acct-prod\n```\n\nWhich result should be remediated first?",
@@ -844,7 +844,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 1,
     "stem": "Which target can Trivy scan for known vulnerabilities?",
@@ -885,7 +885,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
     "stem": "Trivy reports the table below for an image.\n\n```\nTarget: registry.example.internal/billing:4.2 (alpine 3.18)\nPackage   Severity  Installed  Fixed Version\nlibxml2   HIGH      2.11.4     2.11.6\nzlib      MEDIUM    1.2.13     (none)\nbusybox   LOW       1.36.0     1.36.1\n```\n\nWhich finding cannot be remediated by upgrading the package today?",
@@ -914,7 +914,7 @@
         "c"
       ]
     },
-    "explanation": "Only `zlib` has an empty Fixed Version column, so it needs a mitigation or a risk decision. `libxml2` is older than its fixed version, and `busybox` has a fix listed regardless of its severity.",
+    "explanation": "Only `zlib` has an empty Fixed Version column, so it needs a mitigation or a risk decision. `libxml2` is older than its fixed version, `busybox` has a fix listed regardless of its severity, and neither needs a new image before it can be upgraded.",
     "acronyms": []
   },
   {
@@ -924,7 +924,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "At which point in delivery does Checkov add the most value?",
@@ -932,15 +932,15 @@
       "options": [
         {
           "id": "a",
-          "text": "After deployment, sweeping live hosts for open ports"
+          "text": "After deployment, sweeping live hosts for open ports and services"
         },
         {
           "id": "b",
-          "text": "During an incident, capturing packets from a switch"
+          "text": "During an incident, capturing packets from a busy switch port"
         },
         {
           "id": "c",
-          "text": "At runtime, intercepting requests to a web application"
+          "text": "At runtime, intercepting requests sent to a live web application"
         },
         {
           "id": "d",
@@ -963,10 +963,10 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 3,
-    "stem": "A Checkov run passes the team's Terraform files, yet a storage bucket built from them is publicly readable. What is the most likely explanation?",
+    "stem": "A Checkov run reports no failures on the team's Terraform files, yet a storage bucket built from them is publicly readable. What is the most likely explanation?",
     "payload": {
       "options": [
         {
@@ -975,15 +975,15 @@
         },
         {
           "id": "b",
-          "text": "Checkov reads deployed resources, not Terraform files"
+          "text": "Checkov reads only deployed resources, so it never opens Terraform files"
         },
         {
           "id": "c",
-          "text": "A passing result means the checks were skipped by default"
+          "text": "A clean result means every check was skipped by default settings"
         },
         {
           "id": "d",
-          "text": "Public buckets are outside what any scanner can see"
+          "text": "Public buckets are outside what any scanner is able to detect at all"
         }
       ]
     },
@@ -1002,7 +1002,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A SOC lead runs an Atomic Red Team test on a workstation and sees no alert in the monitoring tools. What does this most directly show?",
@@ -1043,7 +1043,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-single",
     "difficulty": 2,
     "stem": "A Caldera operation runs twelve abilities; nine complete and three are stopped by endpoint controls. What does the result describe?",
@@ -1051,11 +1051,11 @@
       "options": [
         {
           "id": "a",
-          "text": "Which hosts have unpatched software installed"
+          "text": "Which hosts have unpatched software installed on them"
         },
         {
           "id": "b",
-          "text": "Which cloud settings fail a security benchmark"
+          "text": "Which cloud settings fail a published security benchmark"
         },
         {
           "id": "c",
@@ -1063,7 +1063,7 @@
         },
         {
           "id": "d",
-          "text": "Which web pages accept unsafe user input"
+          "text": "Which web pages accept unsafe input from their users"
         }
       ]
     },
@@ -1082,7 +1082,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
     "stem": "A scanner flags `app-09` for a missing patch, but the owner says it was applied last week. Which TWO steps best validate the finding?",
@@ -1130,7 +1130,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which TWO tools are used mainly for open-source intelligence on a target organization?",
@@ -1178,7 +1178,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 1,
     "stem": "Which TWO tools emulate attacker behavior to test whether defenses detect or stop it?",
@@ -1229,15 +1229,15 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 3,
-    "stem": "Which TWO tools can analyze infrastructure code files for misconfigurations without any live deployment?",
+    "stem": "Which TWO tools can analyze infrastructure code files for misconfigurations without any live deployment, even though one of them is better known for scanning container images?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Prowler"
+          "text": "Burp Suite"
         },
         {
           "id": "b",
@@ -1267,7 +1267,7 @@
         "e"
       ]
     },
-    "explanation": "Checkov and Trivy can both read infrastructure code files and flag insecure settings. Prowler and ScoutSuite audit live cloud accounts, Masscan scans ports, and Nikto tests running web servers.",
+    "explanation": "Checkov is built for infrastructure code, and Trivy, although best known for container images, also has a configuration mode that reads infrastructure code files and flags insecure settings. Burp Suite intercepts live web traffic, ScoutSuite audits live cloud accounts, Masscan scans ports, and Nikto tests running web servers.",
     "acronyms": []
   },
   {
@@ -1277,7 +1277,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "Which THREE activities can a web application intercepting proxy such as ZAP support?",
@@ -1328,7 +1328,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "mcq-multi",
     "difficulty": 2,
     "stem": "A Prowler run on a cloud account is under review. Which TWO items on the report best help the team prioritize remediation?",
@@ -1344,7 +1344,7 @@
         },
         {
           "id": "c",
-          "text": "Whether the affected resource is exposed to the internet"
+          "text": "Whether the analyst confirms the affected resource is exposed to the internet"
         },
         {
           "id": "d",
@@ -1372,7 +1372,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-terminal",
     "difficulty": 2,
     "stem": "A scan of `app-07.example.internal` is saved in `scan.txt`. Review the output, then complete each step.",
@@ -1421,19 +1421,19 @@
           "options": [
             {
               "id": "report",
-              "text": "Report it as an exposed database"
+              "text": "Report it as an exposed database that needs review"
             },
             {
               "id": "secure",
-              "text": "Mark it secure and close the ticket"
+              "text": "Mark it secure, close the ticket and skip the retest"
             },
             {
               "id": "fp",
-              "text": "Add it to the false positive list"
+              "text": "Add it to the false positive list for future scans"
             },
             {
               "id": "rescan",
-              "text": "Record it as unknown and rescan from inside the filtered network"
+              "text": "Record it as unknown and rescan from inside the filter"
             }
           ]
         },
@@ -1508,13 +1508,13 @@
         ]
       }
     },
-    "explanation": "The grep command prints the open-port lines. A filtered state means probes got no answer, so the true state is unknown and the next move is to retest from a vantage point the filter allows. Version detection is requested with the `-sV` option.",
+    "explanation": "The `grep` command prints the open-port lines. A filtered state means probes got no answer, so the true state is unknown and the next move is to retest from a vantage point the filter allows. Version detection is requested with the `-sV` option.",
     "pbqWeight": 4,
     "partExplanations": {
-      "find": "grep open scan.txt prints only the lines that contain open; the filtered and closed lines do not.",
+      "find": "`grep open scan.txt` prints only the lines that contain open; the filtered and closed lines do not.",
       "state": "Filtered means no usable reply came back, so a firewall or filter may be dropping the probes.",
       "next": "An unknown state is recorded as such and retested from inside the filter, not reported or dismissed.",
-      "ver": "nmap -sV probes open ports to identify the service name and version."
+      "ver": "`nmap -sV` probes open ports to identify the service name and version."
     },
     "acronyms": []
   },
@@ -1525,7 +1525,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-hotspot",
     "difficulty": 3,
     "stem": "A scan of `web-12.example.internal` produced the six lines shown. Select every line that the output itself supports as a real exposure, and leave the false positives and informational lines unselected.",
@@ -1640,7 +1640,7 @@
         "s6"
       ]
     },
-    "explanation": "Three lines carry proof inside the line: a login that succeeded, a handshake that completed and a listing that returned files. The backported banner, the timed-out check and the ping reply do not show an exposure.",
+    "explanation": "Three lines prove an exposure on their own: a login that succeeded, a handshake that completed and a listing that returned files. The Apache 2.2 banner with the vendor fix applied, the timed-out check and the ping reply do not show an exposure.",
     "pbqWeight": 6,
     "partExplanations": {
       "s1": "A version banner with a vendor fix already applied is a classic false positive.",
@@ -1662,7 +1662,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-data",
     "difficulty": 2,
     "stem": "Use the findings table from last night's scan to answer each question.",
@@ -1805,7 +1805,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-config",
     "difficulty": 3,
     "stem": "A Checkov run on `main.tf` fails the four checks below. Admins connect only from `10.8.0.0/24`. Configure the resources so every check passes.\n\n```\nFAILED  storage bucket reports: public read access enabled\nFAILED  storage bucket reports: encryption at rest not configured\nFAILED  storage bucket reports: access logging not enabled\nFAILED  security group admin-sg: SSH open to 0.0.0.0/0\n```",
@@ -1839,11 +1839,11 @@
             },
             {
               "id": "uploader",
-              "text": "Encryption left to each uploader"
+              "text": "Encryption left to each uploader's own choice"
             },
             {
               "id": "none",
-              "text": "No encryption, to speed up reads"
+              "text": "No encryption at all, to speed up reads"
             }
           ]
         },
@@ -1879,7 +1879,7 @@
             },
             {
               "id": "admin",
-              "text": "SSH limited to the admin range 10.8.0.0/24"
+              "text": "SSH limited to the 10.8.0.0/24 range"
             }
           ]
         }
@@ -1912,7 +1912,7 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-match",
     "difficulty": 2,
     "stem": "Match each tool to the purpose it is documented for.",
@@ -2005,10 +2005,10 @@
     "objectiveIds": [
       "2.2"
     ],
-    "status": "draft",
+    "status": "approved",
     "type": "pbq-diagram",
     "difficulty": 2,
-    "stem": "Place the best tool for each need beside the target layer it covers. One label is a decoy.",
+    "stem": "Place the best tool for each job in the zone that describes it, beside the target it works on. One label is a decoy.",
     "payload": {
       "width": 600,
       "height": 300,
