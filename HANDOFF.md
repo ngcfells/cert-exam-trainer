@@ -1,3 +1,27 @@
+# 2026-11-11 (morning): CySA+ registered on `chunk13-cysa`, drafting NOT started. START HERE
+
+Next session model: **Sonnet** (orchestrating Sonnet drafters and Haiku copy reviewers). `gh issue list` first (on 2026-11-11
+only #19 was open: diagram ideas, no bugs).
+
+The session of 2026-11-10 stopped at 20:37 on the 5-hour usage limit, mid-task, before any handoff. State rebuilt from
+git and the session transcript:
+
+- **Committed on `chunk13-cysa` (31de109, not pushed, not merged):** CS0-004 registered everywhere an exam is listed:
+  `src/banks/cysa/` (meta with 4 domains, 15 objectives, 81 official acronyms; fixture; empty `items/`), paths, metas,
+  index, tips (5 to 10), learn sources, hashes (an exam with no items folder), ollama sample, e2e home and bounds,
+  `docs/sources/CS0-004.md`.
+- **Uncommitted, tests green (tsc clean; `vitest run src/banks/cysa src/acronyms` 61 pass):** 54 community acronyms
+  in `src/banks/cysa/meta.ts`; `MITRE`, `ATT`, `CK`, `WHOIS` added to `NOT_ACRONYMS` in `src/acronyms/extract.ts`.
+  Not yet run: full `npm run check` (the e2e acronym spec was being read when the session stopped). Run it, then commit.
+- **Prep files (git-ignored):** `_WorkingData/CySAPlus/notes/` (text of the eight decks) and
+  `_WorkingData/CySAPlus/prep/` (`objectives.txt`, `obj/<id>.txt` for the 15 objectives, `ref/` 44 deck-lesson
+  slices for reference only, and the scripts `split.py` and `acronyms.py` that made them).
+- **Not done:** no SDD ledger for chunk 13 yet (make `.superpowers/sdd/2026-11-11-chunk13-cysa/progress.md`), no
+  quota table, no drafts. Next: per-objective MCQ and PBQ targets from `src/content/quota.ts`, then draft domain 1
+  (objectives 1.1 to 1.5, 34%) by the chunk 12 method, one domain per session.
+- With an empty bank the CySA+ card would show on the live site, so **do not merge or deploy this branch** until the
+  bank meets its targets (or the owner says otherwise).
+
 # 2026-11-10 (end 5): #11 content hashing DONE and live. Next: CySA+ (CS0-004), the fourth exam
 
 Next session model: **Sonnet** (orchestrating Sonnet drafters and Haiku copy reviewers). `gh issue list` first.
