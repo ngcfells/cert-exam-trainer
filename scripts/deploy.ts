@@ -48,7 +48,8 @@ try {
     remote: 'origin',
     local: shippedHashes(cwd),
     commit,
-    date: new Date().toISOString().slice(0, 10),
+    // The owner's local date, as YYYY-MM-DD.
+    date: new Date().toLocaleDateString('en-CA'),
     appVersion: (JSON.parse(readFileSync('package.json', 'utf8')) as { version: string }).version,
     dryRun,
     confirm,

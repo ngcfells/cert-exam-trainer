@@ -1,3 +1,27 @@
+# 2026-11-10 (end 5): #11 content hashing DONE and live. Next: CySA+ (CS0-004), the fourth exam
+
+Next session model: **Sonnet** (orchestrating Sonnet drafters and Haiku copy reviewers). `gh issue list` first.
+
+- **#11 is closed.** Design `docs/superpowers/specs/2026-11-10-content-hashing-design.md`, plan beside it in `plans/`.
+  Code in `src/integrity/` and `scripts/hashes-lib.ts`. The `Security` branch holds `content-hashes.json`; a ruleset
+  (id 27004350) lets only the repository admin update or delete it. The live app's Settings > Check content said
+  "Verified" on 2026-11-10. `npm run hashes -- --check` tells whether main's content is the published release.
+- **Deploy changed:** when the content changed, `npm run deploy` lists the changed ids and needs a yes; an agent runs
+  `npm run deploy -- --yes` after reading the list. Hashes go to `Security` first; if their public address is still
+  stale after 7 minutes the deploy stops before the site push, and a second run goes straight to the site.
+- The box plot (#19, end 4 below) went out with this deploy.
+- **Owner's order (2026-11-10): build every exam we have materials for, with subagents.** Only CySA+ has an
+  objectives PDF (`_WorkingData/CySAPlus/`, marked DRAFT v1.1; CompTIA's page confirms CS0-004 launched 2026-06-23,
+  85 questions, 165 minutes, pass 750, domain 1 at 34%). Method: `docs/superpowers/plans/2026-11-01-chunk12-autoops.md`.
+  AI Fundamentals has a course outline and decks but no exam blueprint: ask the owner how to structure it. The other
+  folders are empty. A survey of every other CompTIA exam is in `docs/sources/comptia-exam-facts.md`; each needs its
+  objectives PDF from the owner before it can be built.
+- **Audit findings not yet acted on (2026-11-10):** this file is 170 KB, so trim it to the current block and archive
+  the rest; add a repo `CLAUDE.md`; unit tests run every file in jsdom (about 145 s, and under load a slow test can
+  time out: tests that spawn git were cut down for that reason), so run non-UI tests in the node environment; all
+  three banks load and validate at startup in one 3.5 MB script, so load each exam on demand before more exams land;
+  `git gc` (no packs) and delete the merged branches.
+
 # 2026-11-10 (end 4): #19 box plot for IQR DONE, committed on main, NOT pushed or deployed
 
 Next session model: **Sonnet**. New diagram kind `box-plot` on "Outliers, IQR and z-scores" (the lesson's own numbers:
