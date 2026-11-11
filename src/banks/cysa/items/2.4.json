@@ -1,0 +1,2094 @@
+[
+  {
+    "id": "cs4-2-4-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "A clinic requires every new employee to complete security awareness training and sign an acceptable use agreement. Which control type does this represent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Technical"
+        },
+        {
+          "id": "b",
+          "text": "Physical"
+        },
+        {
+          "id": "c",
+          "text": "Administrative"
+        },
+        {
+          "id": "d",
+          "text": "Compensating or alternative"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Training and signed agreements are policy-and-people measures, which makes them administrative controls. Technical controls are enforced by systems, physical controls protect places and equipment, and compensating controls are stand-ins used when a required control cannot be applied.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which of the following is an example of a physical control?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A mantrap at the data center entrance"
+        },
+        {
+          "id": "b",
+          "text": "A quarterly review of user access rights"
+        },
+        {
+          "id": "c",
+          "text": "Full-disk encryption on each laptop"
+        },
+        {
+          "id": "d",
+          "text": "A rule that blocks outbound connections on a risky port"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A mantrap controls who can enter a space, so it is physical. An access review is administrative, disk encryption is technical, and a blocking rule on a port is a technical network control.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "A firewall change denies inbound remote desktop connections from the internet, so attackers cannot reach the service at all. Which control function is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Detective"
+        },
+        {
+          "id": "b",
+          "text": "Preventative"
+        },
+        {
+          "id": "c",
+          "text": "Corrective"
+        },
+        {
+          "id": "d",
+          "text": "Responsive"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Stopping the connection before it can happen is a preventative function. Detective controls only identify activity, responsive controls act during an incident, and corrective controls repair damage afterward.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A SIEM rule raises an alert when a service account signs in from two countries within one hour. Which control function does the rule serve?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Preventative"
+        },
+        {
+          "id": "b",
+          "text": "Corrective"
+        },
+        {
+          "id": "c",
+          "text": "Responsive"
+        },
+        {
+          "id": "d",
+          "text": "Detective"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The rule identifies suspicious activity and notifies the team, which is a detective function. It blocks nothing, so it is not preventative, and it neither contains an active incident nor repairs damage.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "An EDR platform automatically quarantines a workstation that starts beaconing to a known malicious host, stopping the spread while the incident is still under way. Which control function is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Preventative"
+        },
+        {
+          "id": "b",
+          "text": "Responsive"
+        },
+        {
+          "id": "c",
+          "text": "Detective"
+        },
+        {
+          "id": "d",
+          "text": "Corrective"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Acting on an incident in progress to contain it is a responsive function. Preventative controls would have stopped the beaconing from starting, detective controls would only alert, and corrective controls repair or restore after containment.",
+    "acronyms": [
+      "EDR"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "After an incident is contained, the team restores an encrypted file share from last night's backup to return it to normal operation. Which control function does the restoration serve?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Preventative"
+        },
+        {
+          "id": "b",
+          "text": "Detective"
+        },
+        {
+          "id": "c",
+          "text": "Responsive"
+        },
+        {
+          "id": "d",
+          "text": "Corrective"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Restoring systems and data to their normal state after damage is a corrective function. Preventative and detective functions come before or during detection of an event, and responsive actions such as isolation happen while the incident is active.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "A security team rates the chance and impact of a fraud scenario before applying any safeguards. What is this rating called?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Residual risk"
+        },
+        {
+          "id": "b",
+          "text": "Risk appetite"
+        },
+        {
+          "id": "c",
+          "text": "Inherent risk"
+        },
+        {
+          "id": "d",
+          "text": "Accepted risk"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Inherent risk is the exposure that exists before controls are considered. Residual risk is what remains after controls, risk appetite is the level leadership will tolerate, and accepted risk is a decision about a specific remaining exposure.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Executives state that the company will tolerate no more than a moderate chance of a customer-facing outage in a year. Which concept does the statement define?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Risk appetite"
+        },
+        {
+          "id": "b",
+          "text": "Residual risk"
+        },
+        {
+          "id": "c",
+          "text": "Inherent risk"
+        },
+        {
+          "id": "d",
+          "text": "Risk transfer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Risk appetite is the amount and type of risk leadership is willing to take. Residual and inherent risk describe the exposure of a particular scenario, and transfer is one way of treating a risk.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A scenario has an inherent score of 20, rated as likelihood 4 times impact 5. New controls cut likelihood to 2 and leave impact unchanged. What is the residual score?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "5"
+        },
+        {
+          "id": "b",
+          "text": "10"
+        },
+        {
+          "id": "c",
+          "text": "15"
+        },
+        {
+          "id": "d",
+          "text": "20"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Residual risk is the exposure left after controls: likelihood 2 times impact 5 gives 10. A score of 5 halves both factors, 15 is not a product of these ratings, and 20 ignores the controls.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "A risk's residual rating is high, but the board has set a low appetite for it. What should the risk owner do next?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept it, since controls already exist and were tested"
+        },
+        {
+          "id": "b",
+          "text": "Lower the inherent score on paper to match appetite"
+        },
+        {
+          "id": "c",
+          "text": "Close the entry and revisit it at the next review"
+        },
+        {
+          "id": "d",
+          "text": "Add controls or change strategy to reduce the exposure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "When residual risk exceeds what leadership tolerates, the owner must treat it further or choose another strategy such as avoidance or transfer. Accepting it breaks the stated limit, editing the inherent score hides the problem, and closing the entry leaves the exposure in place.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A company cancels a plan to store customers' biometric templates because the legal exposure is too high. Which risk strategy is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Avoid"
+        },
+        {
+          "id": "b",
+          "text": "Accept"
+        },
+        {
+          "id": "c",
+          "text": "Transfer"
+        },
+        {
+          "id": "d",
+          "text": "Mitigate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Dropping the activity that creates the risk is avoidance. Accepting keeps the exposure, transferring shifts its cost to another party, and mitigating keeps the activity while reducing the risk.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A legacy host must stay online, so it is moved to an isolated segment and given extra monitoring, which lowers both its likelihood and its impact if compromised. Which risk strategy is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept"
+        },
+        {
+          "id": "b",
+          "text": "Avoid"
+        },
+        {
+          "id": "c",
+          "text": "Mitigate"
+        },
+        {
+          "id": "d",
+          "text": "Transfer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Reducing likelihood and impact while the host stays in service is mitigation. Accepting would leave the exposure as it is, avoidance would retire the host, and transfer would shift the cost to another party.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A lab printer on an isolated segment has a low-impact flaw that costs more to fix than the device is worth. The owner records the decision with a review date and a signature. Which strategy is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Avoid"
+        },
+        {
+          "id": "b",
+          "text": "Accept"
+        },
+        {
+          "id": "c",
+          "text": "Transfer"
+        },
+        {
+          "id": "d",
+          "text": "Mitigate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Knowingly living with a low risk, with a documented and signed decision, is acceptance. Avoidance would remove the printer, transfer would pass the loss to a third party, and mitigation would spend effort reducing the flaw.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "A company moves its hosting to an outside host whose contract makes that host pay for outage and breach costs. Which statement about this arrangement is accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The owner is relieved of legal accountability for the stored data"
+        },
+        {
+          "id": "b",
+          "text": "The inherent risk of the stored data drops to zero once the contract is signed"
+        },
+        {
+          "id": "c",
+          "text": "The arrangement counts as avoiding the risk, since the data left the building"
+        },
+        {
+          "id": "d",
+          "text": "The cost shifts to the provider, but accountability for the data stays with the owner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Transfer moves financial impact to another party, yet the data owner still answers to customers and regulators. The owner is not released from accountability, the inherent risk does not vanish, and the activity still takes place, so it is not avoidance.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which document records management's high-level intent, such as requiring encryption on laptops, without listing configuration steps?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Operating procedure"
+        },
+        {
+          "id": "b",
+          "text": "Technical baseline"
+        },
+        {
+          "id": "c",
+          "text": "Security policy"
+        },
+        {
+          "id": "d",
+          "text": "Optional guideline"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A policy states what management requires and why. Procedures give the steps, baselines give specific settings, and guidelines are recommendations that are not mandatory.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A vulnerability team sets itself a target to fix critical findings on internet-facing hosts within seven days, with no customer contract behind it. What is this target?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An SLO"
+        },
+        {
+          "id": "b",
+          "text": "An SLA"
+        },
+        {
+          "id": "c",
+          "text": "A KPI"
+        },
+        {
+          "id": "d",
+          "text": "An RTO"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A service-level objective is an internal target for service performance. A service-level agreement is a contractual commitment, a KPI is a measure of performance, and a recovery time objective concerns restoring service after an outage.",
+    "acronyms": [
+      "KPI",
+      "RTO",
+      "SLA",
+      "SLO"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "A managed provider's contract requires high findings to be fixed within 14 days, or a service credit applies. Internally, the provider aims for 10 days. How do these two figures classify?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Both are SLAs because both concern remediation time"
+        },
+        {
+          "id": "b",
+          "text": "The 14-day term is an SLO; the 10-day aim is an SLA"
+        },
+        {
+          "id": "c",
+          "text": "Both are SLOs because neither involves a technical control"
+        },
+        {
+          "id": "d",
+          "text": "The 14-day term is an SLA; the 10-day aim is an SLO"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The contractual term with a penalty is the SLA, and the stricter internal aim is the SLO. Treating both as one kind ignores the contract, and swapping them reverses which figure carries a consequence.",
+    "acronyms": [
+      "SLA",
+      "SLO"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A legacy database cannot be patched without breaking a billing application. Who should formally approve a documented exception to the patching policy?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The analyst who found the flaw"
+        },
+        {
+          "id": "b",
+          "text": "The risk committee or the owner with authority over that risk"
+        },
+        {
+          "id": "c",
+          "text": "The scanner administrator"
+        },
+        {
+          "id": "d",
+          "text": "The help desk lead"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Governance gives approval of policy exceptions to people accountable for the risk, such as a risk committee or the risk owner. The analyst, the scanner administrator and the help desk lead lack that authority.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which testing method analyzes application source code for flaws without running the program?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "DAST"
+        },
+        {
+          "id": "b",
+          "text": "SCA"
+        },
+        {
+          "id": "c",
+          "text": "SAST"
+        },
+        {
+          "id": "d",
+          "text": "Fuzzing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Static application security testing reads the code itself. DAST and fuzzing exercise the running application, and SCA examines third-party components rather than the team's own code.",
+    "acronyms": [
+      "DAST",
+      "SAST",
+      "SCA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A team sends crafted requests to a running staging website and watches the responses for signs of injection flaws, with no access to the source. Which testing method is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "DAST"
+        },
+        {
+          "id": "b",
+          "text": "SAST"
+        },
+        {
+          "id": "c",
+          "text": "SCA"
+        },
+        {
+          "id": "d",
+          "text": "Code review"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Dynamic testing probes a running application from the outside. SAST and manual code review need the source, and SCA inventories libraries rather than probing behavior.",
+    "acronyms": [
+      "DAST",
+      "SAST",
+      "SCA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "Which statement describes a limitation of DAST compared with SAST?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It needs a copy of the repository to start"
+        },
+        {
+          "id": "b",
+          "text": "It cannot test an application that is running"
+        },
+        {
+          "id": "c",
+          "text": "It finds hard-coded secrets inside source files"
+        },
+        {
+          "id": "d",
+          "text": "It reports a flaw by URL or parameter, not the exact source line"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Because DAST sees only behavior, findings point to a request location rather than a line of code. It works without the repository, it requires a running application, and hard-coded secrets in source are a typical SAST result.",
+    "acronyms": [
+      "DAST",
+      "SAST",
+      "URL"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A software vendor wants to measure how mature its secure development practices are across governance, design, implementation, verification and operations, then plan improvements. Which model supports this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "STRIDE"
+        },
+        {
+          "id": "b",
+          "text": "SAMM"
+        },
+        {
+          "id": "c",
+          "text": "CVSS"
+        },
+        {
+          "id": "d",
+          "text": "EPSS"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The Software Assurance Maturity Model scores practices by business function and guides a roadmap. STRIDE is a threat categorization method, CVSS rates vulnerability severity, and EPSS estimates exploitation likelihood.",
+    "acronyms": [
+      "CVSS",
+      "EPSS",
+      "SAMM",
+      "STRIDE"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "Which artifact lists the components and versions that make up a software product?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "SBOM"
+        },
+        {
+          "id": "b",
+          "text": "Risk register"
+        },
+        {
+          "id": "c",
+          "text": "Statement of work"
+        },
+        {
+          "id": "d",
+          "text": "Network diagram"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A software bill of materials is an inventory of a product's components. A risk register tracks risks, a statement of work defines contracted tasks, and a network diagram shows connectivity.",
+    "acronyms": [
+      "SBOM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A build stage compares the open-source libraries in a project against known-flaw databases and license terms. Which technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "SAST"
+        },
+        {
+          "id": "b",
+          "text": "DAST"
+        },
+        {
+          "id": "c",
+          "text": "SCA"
+        },
+        {
+          "id": "d",
+          "text": "Penetration testing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Software composition analysis inventories third-party components and checks them for known flaws and license issues. SAST reads the team's own code, DAST probes a running application, and penetration testing is a manual adversarial exercise.",
+    "acronyms": [
+      "DAST",
+      "SAST",
+      "SCA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A trusted vendor's signed build tool update installs a backdoor on customer systems. Which category of risk does this illustrate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Insider misuse of privileges"
+        },
+        {
+          "id": "b",
+          "text": "Software supply chain compromise"
+        },
+        {
+          "id": "c",
+          "text": "Credential stuffing"
+        },
+        {
+          "id": "d",
+          "text": "Misconfigured cloud storage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An attacker who tampers with software a customer trusts from a supplier has compromised the supply chain. The other options involve a malicious employee, reused passwords, and a settings error, none of which fit a poisoned update.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "A widely used logging library has just been reported as vulnerable. Which resource lets the team find each affected application fastest?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The network diagram of the data center"
+        },
+        {
+          "id": "b",
+          "text": "The latest firewall rule export"
+        },
+        {
+          "id": "c",
+          "text": "A business impact analysis"
+        },
+        {
+          "id": "d",
+          "text": "A current SBOM for each product"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Component inventories map a library to the products that contain it. A network diagram and a firewall export show connectivity, and a business impact analysis ranks business functions rather than software contents.",
+    "acronyms": [
+      "SBOM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "Before onboarding a payroll processor, which activity gives the best insight into its security risk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Read the security claims on its marketing site"
+        },
+        {
+          "id": "b",
+          "text": "Scan its network without telling it first"
+        },
+        {
+          "id": "c",
+          "text": "Review its independent audit report and questionnaire answers"
+        },
+        {
+          "id": "d",
+          "text": "Compare its price with competing offers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Independent audit evidence and a completed questionnaire show how the vendor actually manages risk. Marketing claims are unverified, an unannounced scan is unauthorized, and price says nothing about security.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO of the following are administrative controls?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A host-based firewall rule"
+        },
+        {
+          "id": "b",
+          "text": "Background checks before hiring"
+        },
+        {
+          "id": "c",
+          "text": "Badge readers on the server room door"
+        },
+        {
+          "id": "d",
+          "text": "A separation-of-duties policy"
+        },
+        {
+          "id": "e",
+          "text": "Full-disk encryption on laptops"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Hiring checks and a separation-of-duties policy are managed through rules and people, so they are administrative. A firewall rule and disk encryption are technical, and badge readers are physical.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which THREE of the following are physical controls?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Bollards in front of the loading dock"
+        },
+        {
+          "id": "b",
+          "text": "An automatic session timeout"
+        },
+        {
+          "id": "c",
+          "text": "Locking cabinets for network equipment"
+        },
+        {
+          "id": "d",
+          "text": "A password length requirement"
+        },
+        {
+          "id": "e",
+          "text": "A change approval board"
+        },
+        {
+          "id": "f",
+          "text": "Cable locks on shared laptops"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "f"
+      ]
+    },
+    "explanation": "Bollards, locked cabinets and cable locks protect places and devices in the physical world. A session timeout and a password rule are technical, and an approval board is administrative.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO of the following are detective controls?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Network segmentation between the office and the lab"
+        },
+        {
+          "id": "b",
+          "text": "Mandatory change approval before deployments"
+        },
+        {
+          "id": "c",
+          "text": "File integrity monitoring that alerts on changed system files"
+        },
+        {
+          "id": "d",
+          "text": "A locked door on the wiring closet"
+        },
+        {
+          "id": "e",
+          "text": "A weekly review of after-hours badge records"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Alerting on changed files and reviewing badge records both identify events after they occur. Segmentation, change approval and a locked door aim to stop events, which makes them preventative.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO situations justify a decision to accept a risk?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The residual rating is inside appetite and the owner signs the decision"
+        },
+        {
+          "id": "b",
+          "text": "The residual rating exceeds appetite, but treatment would be inconvenient"
+        },
+        {
+          "id": "c",
+          "text": "A scanner labels the finding informational and nobody has checked"
+        },
+        {
+          "id": "d",
+          "text": "The vendor says a fix might appear someday"
+        },
+        {
+          "id": "e",
+          "text": "The control costs more than the expected loss and the exposure is documented"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "Acceptance is sound when the exposure is within limits or the treatment is not worth its cost, and the decision is owned and recorded. Convenience, an unchecked label, and a vague promise are not grounds to leave an out-of-limit risk in place.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO benefits does an SBOM provide?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Detecting injection flaws in a running website"
+        },
+        {
+          "id": "b",
+          "text": "Proving that the product's own code is free of defects"
+        },
+        {
+          "id": "c",
+          "text": "Replacing the need to apply updates to listed components"
+        },
+        {
+          "id": "d",
+          "text": "Quickly locating products that contain a newly reported vulnerable component"
+        },
+        {
+          "id": "e",
+          "text": "Giving customers visibility into the components and versions inside a product"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "An inventory of components speeds impact analysis and gives customers transparency. It does not test a running site, does not certify the vendor's own code, and does not remove the work of updating components.",
+    "acronyms": [
+      "SBOM"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO findings are typical of SAST?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A missing security header on a live response"
+        },
+        {
+          "id": "b",
+          "text": "A hard-coded credential in a source file"
+        },
+        {
+          "id": "c",
+          "text": "String concatenation used to build a database query"
+        },
+        {
+          "id": "d",
+          "text": "A weak cipher accepted by a running service"
+        },
+        {
+          "id": "e",
+          "text": "A session cookie that stays valid after logout"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Static analysis reads code, so it spots embedded secrets and unsafe query construction. Headers, accepted ciphers and session behavior appear only when the application runs, which is the domain of dynamic testing.",
+    "acronyms": [
+      "SAST"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-match-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "Match each situation to the risk management strategy it represents.",
+    "pbqWeight": 4,
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A retailer signs a policy that pays breach response costs"
+        },
+        {
+          "id": "p2",
+          "text": "A bank retires a file-sharing service that no team needs anymore"
+        },
+        {
+          "id": "p3",
+          "text": "An admin portal that must stay online gets MFA and extra logging"
+        },
+        {
+          "id": "p4",
+          "text": "An owner signs off a low-impact flaw on an isolated test rig and sets a review date"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Accept"
+        },
+        {
+          "id": "c2",
+          "text": "Transfer"
+        },
+        {
+          "id": "c3",
+          "text": "Avoid"
+        },
+        {
+          "id": "c4",
+          "text": "Mitigate"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c2",
+        "p2": "c3",
+        "p3": "c4",
+        "p4": "c1"
+      }
+    },
+    "explanation": "Transfer shifts the loss to another party, avoidance removes the risky activity, mitigation lowers likelihood or impact while the activity continues, and acceptance keeps a small exposure on purpose.",
+    "partExplanations": {
+      "p1": "Insurance moves the financial impact of a breach to the insurer, which is transfer.",
+      "p2": "Retiring the service removes the activity that created the exposure, which is avoidance.",
+      "p3": "The portal stays in use and controls reduce the risk, which is mitigation.",
+      "p4": "A signed, documented decision to live with a small exposure is acceptance."
+    },
+    "acronyms": [
+      "MFA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-buckets-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 1,
+    "stem": "Sort each control into the function it serves: stopping an event, identifying it, or repairing damage after it.",
+    "pbqWeight": 6,
+    "payload": {
+      "buckets": [
+        {
+          "id": "prev",
+          "text": "Preventative"
+        },
+        {
+          "id": "det",
+          "text": "Detective"
+        },
+        {
+          "id": "corr",
+          "text": "Corrective"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "A firewall rule that denies inbound telnet"
+        },
+        {
+          "id": "i2",
+          "text": "An impossible-travel alert in the SIEM"
+        },
+        {
+          "id": "i3",
+          "text": "Restoring a corrupted database from backup"
+        },
+        {
+          "id": "i4",
+          "text": "Required MFA on the VPN"
+        },
+        {
+          "id": "i5",
+          "text": "A weekly review of door-access logs"
+        },
+        {
+          "id": "i6",
+          "text": "Re-imaging a laptop after malware removal"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "prev",
+        "i2": "det",
+        "i3": "corr",
+        "i4": "prev",
+        "i5": "det",
+        "i6": "corr"
+      }
+    },
+    "explanation": "Preventative controls block events before they occur, detective controls identify events, and corrective controls repair or restore after damage.",
+    "partExplanations": {
+      "i1": "Denying the traffic stops the connection before it happens, so it is preventative.",
+      "i2": "An alert identifies suspicious sign-ins without stopping them, so it is detective.",
+      "i3": "Restoring data repairs damage already done, so it is corrective.",
+      "i4": "Requiring a second factor blocks stolen passwords from working, so it is preventative.",
+      "i5": "Reviewing logs after the fact finds events, so it is detective.",
+      "i6": "Re-imaging returns the laptop to a clean state after damage, so it is corrective."
+    },
+    "acronyms": [
+      "MFA",
+      "SIEM",
+      "VPN"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-diagram-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A delivery pipeline moves code from commit through build and staging to production. Place the security check that fits each stage.",
+    "pbqWeight": 3,
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n-com",
+          "x": 10,
+          "y": 30,
+          "w": 130,
+          "h": 60,
+          "text": "Code committed"
+        },
+        {
+          "id": "n-bld",
+          "x": 160,
+          "y": 30,
+          "w": 130,
+          "h": 60,
+          "text": "Build and package"
+        },
+        {
+          "id": "n-stg",
+          "x": 310,
+          "y": 30,
+          "w": 130,
+          "h": 60,
+          "text": "Deploy to staging"
+        },
+        {
+          "id": "n-prd",
+          "x": 460,
+          "y": 30,
+          "w": 130,
+          "h": 60,
+          "text": "Release to production"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n-com",
+          "to": "n-bld"
+        },
+        {
+          "from": "n-bld",
+          "to": "n-stg"
+        },
+        {
+          "from": "n-stg",
+          "to": "n-prd"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-com",
+          "x": 10,
+          "y": 120,
+          "name": "Scan of the committed source code"
+        },
+        {
+          "id": "z-bld",
+          "x": 160,
+          "y": 120,
+          "name": "Scan of third-party libraries pulled in"
+        },
+        {
+          "id": "z-stg",
+          "x": 310,
+          "y": 120,
+          "name": "Scan of the running staging app"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l-sast",
+          "text": "SAST"
+        },
+        {
+          "id": "l-sca",
+          "text": "SCA"
+        },
+        {
+          "id": "l-dast",
+          "text": "DAST"
+        },
+        {
+          "id": "l-tab",
+          "text": "Tabletop exercise"
+        },
+        {
+          "id": "l-bia",
+          "text": "Business impact analysis"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-com": "l-sast",
+        "z-bld": "l-sca",
+        "z-stg": "l-dast"
+      }
+    },
+    "explanation": "Static testing reads source at commit, composition analysis checks dependencies when the build resolves them, and dynamic testing needs the application running in staging. A tabletop exercise and a business impact analysis are not pipeline scans.",
+    "partExplanations": {
+      "z-com": "SAST analyzes source code without running it, so it fits the commit stage.",
+      "z-bld": "SCA checks the open-source components that the build pulls in.",
+      "z-stg": "DAST sends requests to a running application, which exists once it is deployed to staging."
+    },
+    "acronyms": [
+      "DAST",
+      "SAST",
+      "SCA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-order-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "Put the steps of onboarding a new third-party vendor in order. Rules: the depth of review follows from the data the vendor will touch, so that is decided first; evidence is collected before anything is rated; contract terms are written to close the gaps the rating found; and approval waits for a signed contract.",
+    "pbqWeight": 5,
+    "payload": {
+      "steps": [
+        {
+          "id": "s3",
+          "text": "Review the evidence and rate the vendor's risk"
+        },
+        {
+          "id": "s5",
+          "text": "Approve onboarding and schedule periodic reassessment"
+        },
+        {
+          "id": "s1",
+          "text": "Classify the vendor by data access and business criticality"
+        },
+        {
+          "id": "s4",
+          "text": "Add contract terms for breach notice and audit rights, then sign"
+        },
+        {
+          "id": "s2",
+          "text": "Send a security questionnaire and request audit reports"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "explanation": "Classify to set review depth, collect evidence, rate the risk, write the contract around the gaps, then approve and reassess on a schedule.",
+    "partExplanations": {
+      "0": "Classification comes first because it sets how deep the review goes.",
+      "1": "Evidence is requested next, since a rating needs something to judge.",
+      "2": "The rating follows the evidence and shows which gaps matter.",
+      "3": "Contract terms are written to close the gaps the rating found, then signed.",
+      "4": "Approval comes last because it waits for the signed contract, and reassessment keeps the rating current."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 3,
+    "stem": "Use the risk register to answer each question. Residual score is the inherent score reduced by the control effect. A risk exceeds appetite when its residual score is greater than its appetite threshold.",
+    "pbqWeight": 4,
+    "payload": {
+      "caption": "Risk register (scores out of 25)",
+      "columns": [
+        "Risk",
+        "Inherent score",
+        "Control effect",
+        "Appetite threshold"
+      ],
+      "rows": [
+        [
+          "R1 Phishing credential theft",
+          "20",
+          "Cuts score by 50%",
+          "12"
+        ],
+        [
+          "R2 Unpatched web server",
+          "25",
+          "Cuts score by 40%",
+          "12"
+        ],
+        [
+          "R3 Lost laptop",
+          "12",
+          "Cuts score by 75%",
+          "8"
+        ],
+        [
+          "R4 Vendor outage",
+          "16",
+          "Cuts score by 25%",
+          "12"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "f-r2",
+          "label": "Residual score for R2",
+          "options": [
+            {
+              "id": "10",
+              "text": "10"
+            },
+            {
+              "id": "15",
+              "text": "15"
+            },
+            {
+              "id": "20",
+              "text": "20"
+            }
+          ]
+        },
+        {
+          "id": "f-r4",
+          "label": "Residual score for R4",
+          "options": [
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "12",
+              "text": "12"
+            },
+            {
+              "id": "16",
+              "text": "16"
+            }
+          ]
+        },
+        {
+          "id": "f-over",
+          "label": "Risk that exceeds appetite after controls",
+          "options": [
+            {
+              "id": "r1",
+              "text": "R1"
+            },
+            {
+              "id": "r2",
+              "text": "R2"
+            },
+            {
+              "id": "r3",
+              "text": "R3"
+            },
+            {
+              "id": "r4",
+              "text": "R4"
+            }
+          ]
+        },
+        {
+          "id": "f-sum",
+          "label": "Total residual score of all four risks",
+          "options": [
+            {
+              "id": "37",
+              "text": "37"
+            },
+            {
+              "id": "40",
+              "text": "40"
+            },
+            {
+              "id": "73",
+              "text": "73"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "f-r2": "15",
+        "f-r4": "12",
+        "f-over": "r2",
+        "f-sum": "40"
+      }
+    },
+    "explanation": "Residual scores are R1 10, R2 15, R3 3 and R4 12. Only R2 is above its appetite threshold.",
+    "partExplanations": {
+      "f-r2": "R2: 25 x (1 - 0.40) = 15.",
+      "f-r4": "R4: 16 x (1 - 0.25) = 12, which equals the threshold and is not greater than it.",
+      "f-over": "R1 10 vs 12, R2 15 vs 12 (exceeds), R3 3 vs 8, R4 12 vs 12 (equal, within appetite).",
+      "f-sum": "R1 10 + R2 15 + R3 3 + R4 12 = 40; 73 is the inherent total."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-4-terminal-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.4"
+    ],
+    "difficulty": 2,
+    "stem": "A team keeps a software bill of materials for its internal app. Read sbom.json and the advisory, then complete each step.",
+    "pbqWeight": 4,
+    "payload": {
+      "output": [
+        "$ cat sbom.json",
+        "{ \"bomFormat\": \"CycloneDX\", \"specVersion\": \"1.5\", \"components\": [",
+        "  { \"name\": \"libfastlog\", \"version\": \"2.14.1\", \"support\": \"active\" },",
+        "  { \"name\": \"webkit-ui\", \"version\": \"5.2.0\", \"support\": \"active\" },",
+        "  { \"name\": \"pdfmint\", \"version\": \"1.9.3\", \"support\": \"eol\" },",
+        "  { \"name\": \"tinyxmlx\", \"version\": \"0.8.7\", \"support\": \"active\" },",
+        "  { \"name\": \"netpoolr\", \"version\": \"3.1.0\", \"support\": \"eol\" }",
+        "] }",
+        "",
+        "Advisory: libfastlog versions before 2.15.0 are vulnerable.",
+        "Hint: jq -r prints strings without quotes. grep -c prints a count of matching lines."
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that shows only the line for libfastlog in sbom.json"
+        },
+        {
+          "id": "count",
+          "label": "Type a command that counts the lines in sbom.json that contain eol"
+        },
+        {
+          "id": "names",
+          "label": "Type a jq command that prints each component name as raw text, with no quotes, from sbom.json"
+        },
+        {
+          "id": "act",
+          "label": "Choose the best conclusion about libfastlog",
+          "options": [
+            {
+              "id": "o1",
+              "text": "Not affected: 2.14.1 is newer than 2.1"
+            },
+            {
+              "id": "o2",
+              "text": "Affected: 2.14.1 is below 2.15.0, so raise an upgrade ticket"
+            },
+            {
+              "id": "o3",
+              "text": "Affected only if the app calls it from the internet"
+            },
+            {
+              "id": "o4",
+              "text": "Unknown until a DAST scan of staging runs"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep libfastlog sbom.json",
+          "grep -n libfastlog sbom.json",
+          "grep -i libfastlog sbom.json",
+          "grep -F libfastlog sbom.json",
+          "grep \"libfastlog\" sbom.json",
+          "grep -n \"libfastlog\" sbom.json",
+          "grep -i \"libfastlog\" sbom.json",
+          "grep -F \"libfastlog\" sbom.json",
+          "grep 'libfastlog' sbom.json",
+          "grep -n 'libfastlog' sbom.json",
+          "grep -i 'libfastlog' sbom.json",
+          "grep -F 'libfastlog' sbom.json",
+          "grep libfastlog ./sbom.json",
+          "grep -n libfastlog ./sbom.json",
+          "grep -i libfastlog ./sbom.json",
+          "grep -F libfastlog ./sbom.json",
+          "grep \"libfastlog\" ./sbom.json",
+          "grep -n \"libfastlog\" ./sbom.json",
+          "grep -i \"libfastlog\" ./sbom.json",
+          "grep -F \"libfastlog\" ./sbom.json",
+          "grep 'libfastlog' ./sbom.json",
+          "grep -n 'libfastlog' ./sbom.json",
+          "grep -i 'libfastlog' ./sbom.json",
+          "grep -F 'libfastlog' ./sbom.json",
+          "cat sbom.json | grep libfastlog",
+          "cat sbom.json | grep \"libfastlog\"",
+          "cat sbom.json | grep 'libfastlog'",
+          "cat ./sbom.json | grep libfastlog"
+        ],
+        "count": [
+          "grep -c eol sbom.json",
+          "grep --count eol sbom.json",
+          "grep -ci eol sbom.json",
+          "grep -ic eol sbom.json",
+          "grep -c -i eol sbom.json",
+          "grep -i -c eol sbom.json",
+          "grep -Fc eol sbom.json",
+          "grep -cF eol sbom.json",
+          "grep eol sbom.json -c",
+          "grep eol sbom.json | wc -l",
+          "grep -i eol sbom.json | wc -l",
+          "grep -c \"eol\" sbom.json",
+          "grep --count \"eol\" sbom.json",
+          "grep -ci \"eol\" sbom.json",
+          "grep -ic \"eol\" sbom.json",
+          "grep -c -i \"eol\" sbom.json",
+          "grep -i -c \"eol\" sbom.json",
+          "grep -Fc \"eol\" sbom.json",
+          "grep -cF \"eol\" sbom.json",
+          "grep \"eol\" sbom.json -c",
+          "grep \"eol\" sbom.json | wc -l",
+          "grep -i \"eol\" sbom.json | wc -l",
+          "grep -c 'eol' sbom.json",
+          "grep --count 'eol' sbom.json",
+          "grep -ci 'eol' sbom.json",
+          "grep -ic 'eol' sbom.json",
+          "grep -c -i 'eol' sbom.json",
+          "grep -i -c 'eol' sbom.json",
+          "grep -Fc 'eol' sbom.json",
+          "grep -cF 'eol' sbom.json",
+          "grep 'eol' sbom.json -c",
+          "grep 'eol' sbom.json | wc -l",
+          "grep -i 'eol' sbom.json | wc -l",
+          "grep -c eol ./sbom.json",
+          "grep --count eol ./sbom.json",
+          "grep -ci eol ./sbom.json",
+          "grep -ic eol ./sbom.json",
+          "grep -c -i eol ./sbom.json",
+          "grep -i -c eol ./sbom.json",
+          "grep -Fc eol ./sbom.json",
+          "grep -cF eol ./sbom.json",
+          "grep eol ./sbom.json -c",
+          "grep eol ./sbom.json | wc -l",
+          "grep -i eol ./sbom.json | wc -l",
+          "grep -c \"eol\" ./sbom.json",
+          "grep --count \"eol\" ./sbom.json",
+          "grep -ci \"eol\" ./sbom.json",
+          "grep -ic \"eol\" ./sbom.json",
+          "grep -c -i \"eol\" ./sbom.json",
+          "grep -i -c \"eol\" ./sbom.json",
+          "grep -Fc \"eol\" ./sbom.json",
+          "grep -cF \"eol\" ./sbom.json",
+          "grep \"eol\" ./sbom.json -c",
+          "grep \"eol\" ./sbom.json | wc -l",
+          "grep -i \"eol\" ./sbom.json | wc -l",
+          "grep -c 'eol' ./sbom.json",
+          "grep --count 'eol' ./sbom.json",
+          "grep -ci 'eol' ./sbom.json",
+          "grep -ic 'eol' ./sbom.json",
+          "grep -c -i 'eol' ./sbom.json",
+          "grep -i -c 'eol' ./sbom.json",
+          "grep -Fc 'eol' ./sbom.json",
+          "grep -cF 'eol' ./sbom.json",
+          "grep 'eol' ./sbom.json -c",
+          "grep 'eol' ./sbom.json | wc -l",
+          "grep -i 'eol' ./sbom.json | wc -l",
+          "cat sbom.json | grep -c eol",
+          "cat sbom.json | grep -c \"eol\"",
+          "cat sbom.json | grep -c 'eol'",
+          "cat sbom.json | grep eol | wc -l"
+        ],
+        "names": [
+          "jq -r '.components[].name' sbom.json",
+          "jq '.components[].name' -r sbom.json",
+          "jq -r \".components[].name\" sbom.json",
+          "jq \".components[].name\" -r sbom.json",
+          "jq -r '.components[] | .name' sbom.json",
+          "jq '.components[] | .name' -r sbom.json",
+          "jq -r \".components[] | .name\" sbom.json",
+          "jq \".components[] | .name\" -r sbom.json",
+          "jq -r '.components[]|.name' sbom.json",
+          "jq '.components[]|.name' -r sbom.json",
+          "jq -r \".components[]|.name\" sbom.json",
+          "jq \".components[]|.name\" -r sbom.json",
+          "jq --raw-output '.components[].name' sbom.json",
+          "jq '.components[].name' --raw-output sbom.json",
+          "jq --raw-output \".components[].name\" sbom.json",
+          "jq \".components[].name\" --raw-output sbom.json",
+          "jq --raw-output '.components[] | .name' sbom.json",
+          "jq '.components[] | .name' --raw-output sbom.json",
+          "jq --raw-output \".components[] | .name\" sbom.json",
+          "jq \".components[] | .name\" --raw-output sbom.json",
+          "jq --raw-output '.components[]|.name' sbom.json",
+          "jq '.components[]|.name' --raw-output sbom.json",
+          "jq --raw-output \".components[]|.name\" sbom.json",
+          "jq \".components[]|.name\" --raw-output sbom.json",
+          "jq -r '.components[].name' < sbom.json",
+          "jq -r \".components[].name\" < sbom.json",
+          "jq -r '.components[] | .name' < sbom.json",
+          "jq -r \".components[] | .name\" < sbom.json",
+          "jq -r '.components[]|.name' < sbom.json",
+          "jq -r \".components[]|.name\" < sbom.json",
+          "jq -r '.components[].name' ./sbom.json",
+          "jq '.components[].name' -r ./sbom.json",
+          "jq -r \".components[].name\" ./sbom.json",
+          "jq \".components[].name\" -r ./sbom.json",
+          "jq -r '.components[] | .name' ./sbom.json",
+          "jq '.components[] | .name' -r ./sbom.json",
+          "jq -r \".components[] | .name\" ./sbom.json",
+          "jq \".components[] | .name\" -r ./sbom.json",
+          "jq -r '.components[]|.name' ./sbom.json",
+          "jq '.components[]|.name' -r ./sbom.json",
+          "jq -r \".components[]|.name\" ./sbom.json",
+          "jq \".components[]|.name\" -r ./sbom.json",
+          "jq --raw-output '.components[].name' ./sbom.json",
+          "jq '.components[].name' --raw-output ./sbom.json",
+          "jq --raw-output \".components[].name\" ./sbom.json",
+          "jq \".components[].name\" --raw-output ./sbom.json",
+          "jq --raw-output '.components[] | .name' ./sbom.json",
+          "jq '.components[] | .name' --raw-output ./sbom.json",
+          "jq --raw-output \".components[] | .name\" ./sbom.json",
+          "jq \".components[] | .name\" --raw-output ./sbom.json",
+          "jq --raw-output '.components[]|.name' ./sbom.json",
+          "jq '.components[]|.name' --raw-output ./sbom.json",
+          "jq --raw-output \".components[]|.name\" ./sbom.json",
+          "jq \".components[]|.name\" --raw-output ./sbom.json",
+          "jq -r '.components[].name' < ./sbom.json",
+          "jq -r \".components[].name\" < ./sbom.json",
+          "jq -r '.components[] | .name' < ./sbom.json",
+          "jq -r \".components[] | .name\" < ./sbom.json",
+          "jq -r '.components[]|.name' < ./sbom.json",
+          "jq -r \".components[]|.name\" < ./sbom.json",
+          "cat sbom.json | jq -r '.components[].name'",
+          "cat ./sbom.json | jq -r '.components[].name'",
+          "cat sbom.json | jq -r \".components[].name\"",
+          "cat ./sbom.json | jq -r \".components[].name\"",
+          "cat sbom.json | jq -r '.components[] | .name'",
+          "cat ./sbom.json | jq -r '.components[] | .name'",
+          "cat sbom.json | jq -r \".components[] | .name\"",
+          "cat ./sbom.json | jq -r \".components[] | .name\"",
+          "cat sbom.json | jq -r '.components[]|.name'",
+          "cat ./sbom.json | jq -r '.components[]|.name'",
+          "cat sbom.json | jq -r \".components[]|.name\"",
+          "cat ./sbom.json | jq -r \".components[]|.name\""
+        ],
+        "act": [
+          "o2"
+        ]
+      }
+    },
+    "explanation": "grep finds lines, grep -c counts them, and jq -r prints raw strings from JSON. Version 2.14.1 is lower than 2.15.0 (compare the parts as numbers: 14 is less than 15), so the component is in the affected range and needs an upgrade.",
+    "partExplanations": {
+      "find": "grep libfastlog sbom.json prints the one component line that mentions it.",
+      "count": "grep -c eol sbom.json prints 2, the number of end-of-life components.",
+      "names": "jq -r '.components[].name' sbom.json prints each name without quotes.",
+      "act": "Compare versions part by part: 2.14.1 is lower than 2.15.0, so the component is affected, and the SBOM already gives the evidence."
+    },
+    "acronyms": [
+      "DAST",
+      "JSON",
+      "SBOM"
+    ],
+    "status": "draft"
+  }
+]

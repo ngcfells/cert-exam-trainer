@@ -1,0 +1,2069 @@
+[
+  {
+    "id": "cs4-2-1-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "A security team is about to run its first vulnerability scan of a newly acquired subsidiary. What should it build first so that it knows what to scan?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An asset inventory with hosts, owners and roles"
+        },
+        {
+          "id": "b",
+          "text": "A summary of last year's closed help desk tickets"
+        },
+        {
+          "id": "c",
+          "text": "A catalog of vendor patch release notes"
+        },
+        {
+          "id": "d",
+          "text": "A calendar of staff security training dates"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "An asset inventory tells the team which hosts exist, who owns them and how important they are, so scope and schedules can be set. Closed tickets, patch notes and training calendars are useful elsewhere but do not define scan targets.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A scan of the `10.40.8.0/24` range returns results for 412 hosts, while the asset inventory lists 350 hosts in that range. What is the best action?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Drop the extra results because scanners report noise"
+        },
+        {
+          "id": "b",
+          "text": "Lower the scanner's sensitivity so fewer hosts appear"
+        },
+        {
+          "id": "c",
+          "text": "Find the owners of the extra hosts and add them to the inventory"
+        },
+        {
+          "id": "d",
+          "text": "Exclude the unknown addresses from future scans"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Hosts that scan but are not in the inventory are unmanaged or shadow assets, so they must be identified, owned and recorded. Dismissing them, hiding them with lower sensitivity or excluding them leaves unknown systems unassessed.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A scan job for an order-processing database is configured to start at the busiest time of the retail day. Which planning change best limits the effect on users?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raise the number of concurrent checks per host"
+        },
+        {
+          "id": "b",
+          "text": "Run the scan from outside the network instead"
+        },
+        {
+          "id": "c",
+          "text": "Skip authentication to shorten the run time"
+        },
+        {
+          "id": "d",
+          "text": "Move it to an agreed off-peak window"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Scheduling the scan in an off-peak window keeps probe load away from users. More concurrent checks add load, scanning from outside changes the view without reducing load, and skipping authentication gives a less complete result.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Before approving a nightly scan, an analyst finds that it would overlap with the backup job and a monthly payroll run. Which planning consideration is the analyst applying?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Regulatory timing for audit reports"
+        },
+        {
+          "id": "b",
+          "text": "Operational impact on running business jobs"
+        },
+        {
+          "id": "c",
+          "text": "Sensitivity classification of the stored data"
+        },
+        {
+          "id": "d",
+          "text": "Segmentation between network zones"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Checking for conflicts with backups and batch jobs is an operations consideration, because scans compete for resources and can disturb critical processes. The other options concern reporting duties, data classification and network boundaries.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A scan with default settings causes a legacy appliance to hang. The appliance must stay in scope. Which adjustment is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Throttle concurrent checks and packet rate there"
+        },
+        {
+          "id": "b",
+          "text": "Increase the scan rate so the run finishes sooner"
+        },
+        {
+          "id": "c",
+          "text": "Repeat the scan right after each hang"
+        },
+        {
+          "id": "d",
+          "text": "Add more targets to the same job"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Throttling the scan for fragile systems addresses the performance impact while keeping them in scope. A faster rate or more targets increases load, and rerunning immediately repeats the failure.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A hospital rates its imaging systems as highly sensitive and fragile. How should this rating influence scan planning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Leave the systems out of the scope"
+        },
+        {
+          "id": "b",
+          "text": "Scan them with the most intrusive profile available"
+        },
+        {
+          "id": "c",
+          "text": "Use gentle settings and set timing with owners"
+        },
+        {
+          "id": "d",
+          "text": "Scan them from the internet side of the firewall"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Higher sensitivity calls for careful settings and coordination, not for removing the systems from assessment. Intrusive profiles risk outages, and an outside view does not replace an assessment of the systems themselves.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A scan from the user VLAN returns no open ports for a server in the server VLAN, although the server is known to run a web service. A firewall sits between the two segments. Which approach gives accurate results?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mark the host as hardened and close the finding"
+        },
+        {
+          "id": "b",
+          "text": "Deploy a scanner inside the server VLAN"
+        },
+        {
+          "id": "c",
+          "text": "Lengthen the scan timeout for the job"
+        },
+        {
+          "id": "d",
+          "text": "Repeat the scan from the guest wireless network"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The firewall blocks the probes, so the empty result reflects the path and not the host. A scanner placed in the same segment, or an approved rule for the scanner, gives a true view. Closing the finding, waiting longer or scanning from a guest network would not remove the block.",
+    "acronyms": [
+      "VLAN"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Card network rules set a minimum scan frequency and scope for a processor's card systems. Which input defines these requirements?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The default schedule shipped by the scanner vendor"
+        },
+        {
+          "id": "b",
+          "text": "The personal preference of the system owner"
+        },
+        {
+          "id": "c",
+          "text": "The number of checks in the plugin feed"
+        },
+        {
+          "id": "d",
+          "text": "The governing regulation or contract"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Regulatory and contractual requirements set the minimum scope and frequency that the plan must meet. Vendor defaults, owner preferences and feed size may shape the plan but do not set compliance obligations.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which scan best shows what an attacker on the internet can see of the company's public web servers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An internal scan run from the data center"
+        },
+        {
+          "id": "b",
+          "text": "A credentialed scan run from an admin workstation"
+        },
+        {
+          "id": "c",
+          "text": "An external scan run from outside the perimeter"
+        },
+        {
+          "id": "d",
+          "text": "An agent check installed on the web server"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An external scan has the same vantage point as an internet attacker and shows only what the perimeter exposes. Internal, credentialed and agent-based checks view the server from inside or from the host itself.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "An internal scanner reports a missing patch on a file server, but the latest external scan lists nothing for that server. What most likely explains the difference?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The firewall hides the service from the internet, so an inside view is needed"
+        },
+        {
+          "id": "b",
+          "text": "External scans are limited to checking web application code"
+        },
+        {
+          "id": "c",
+          "text": "Internal scanners receive newer checks than external ones"
+        },
+        {
+          "id": "d",
+          "text": "The server was added to the inventory after the external scan"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A server that is not reachable from outside will not appear in an external scan, even if it has weaknesses an insider or a pivoting attacker could use. External scans are not limited to web code, check content is not tied to scanner location, and the inventory date is unrelated to what a probe can reach.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Staff laptops seldom connect to the office network, so scheduled network scans keep missing them. Which method covers these devices?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A weekly scanner in the data center"
+        },
+        {
+          "id": "b",
+          "text": "An agent installed on each laptop"
+        },
+        {
+          "id": "c",
+          "text": "A passive sensor on the head office switch"
+        },
+        {
+          "id": "d",
+          "text": "A quarterly external scan of the gateway"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An agent runs on the device and reports whenever it has connectivity, so roaming laptops are assessed wherever they are. Scanners and sensors inside the office only see devices that connect there, and an external scan of the gateway does not assess laptops.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A team compares agent-based and agentless scanning for a server fleet. Which is a real trade-off of the agent-based approach?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It cannot see local configuration settings"
+        },
+        {
+          "id": "b",
+          "text": "It needs inbound ports opened across segments"
+        },
+        {
+          "id": "c",
+          "text": "It depends on the host being reachable at scan time"
+        },
+        {
+          "id": "d",
+          "text": "Software must be installed and updated on hosts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Agents add a deployment and upkeep burden on each host. They do see local settings, they report outward so they do not need inbound scanner access, and they work whenever the host can reach the console, which is why they suit roaming devices.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A team cannot install software on a locked-down appliance but can reach it over the network. Which scanning method fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Agentless scanning over the network"
+        },
+        {
+          "id": "b",
+          "text": "Agent-based scanning with a local service"
+        },
+        {
+          "id": "c",
+          "text": "Agent enrollment through a startup script"
+        },
+        {
+          "id": "d",
+          "text": "Local file hashing by an installed agent"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Agentless scanning works from the network and needs nothing installed on the target. Each of the other options depends on putting an agent on the appliance, which the team cannot do.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A non-credentialed scan of a server returns 12 findings. A later credentialed scan returns 87, including missing operating system patches and weak local settings. What explains the difference?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The first scan used an outdated plugin set"
+        },
+        {
+          "id": "b",
+          "text": "Credentialed scans open more ports on the host"
+        },
+        {
+          "id": "c",
+          "text": "Authenticated access lets the scanner inspect installed software and local settings"
+        },
+        {
+          "id": "d",
+          "text": "The second scan was run from outside the firewall"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "With valid credentials the scanner reads patch levels, packages and configuration that an unauthenticated probe cannot see. Plugin age would not explain such a gap, credentials do not open ports, and an outside vantage point would show less, not more.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "An analyst sets up authenticated scanning of Windows servers. Which choice best follows least privilege?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A shared domain administrator login used by the team"
+        },
+        {
+          "id": "b",
+          "text": "A dedicated read-only service account"
+        },
+        {
+          "id": "c",
+          "text": "The scan owner's personal administrator login"
+        },
+        {
+          "id": "d",
+          "text": "A local guest login with no password"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A purpose-made account with only the rights that scanning needs limits harm if it is stolen, and monitoring its use detects abuse. Shared or personal administrator logins are over-privileged, and a passwordless guest login is weak and cannot read the required data.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An unauthenticated scan is run against a new server. Which result is it most likely to return?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Missing registry hardening values"
+        },
+        {
+          "id": "b",
+          "text": "Outdated local libraries not linked to a service"
+        },
+        {
+          "id": "c",
+          "text": "Local accounts without password expiry"
+        },
+        {
+          "id": "d",
+          "text": "Open ports and banners visible to any user"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A scan without credentials sees what the network exposes: open ports, service banners and externally testable flaws. Registry values, local libraries and account settings need authenticated access to be read.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A plant network contains fragile PLC controllers that crash when probed. Which method can still discover these devices without sending traffic to them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An aggressive sweep with service probes"
+        },
+        {
+          "id": "b",
+          "text": "A credentialed scan using an administrator login"
+        },
+        {
+          "id": "c",
+          "text": "Passive monitoring of mirrored traffic"
+        },
+        {
+          "id": "d",
+          "text": "Agent installation on each controller"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Passive monitoring listens to a copy of existing traffic, so it adds no load to the controllers. Probing sweeps and credentialed scans send traffic that can crash them, and controllers generally cannot host an agent.",
+    "acronyms": [
+      "PLC"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which statement describes passive scanning?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It listens to network traffic to identify hosts and services without probing"
+        },
+        {
+          "id": "b",
+          "text": "It sends crafted packets to a range of ports"
+        },
+        {
+          "id": "c",
+          "text": "It signs in to hosts to read patch levels"
+        },
+        {
+          "id": "d",
+          "text": "It installs software that reports local settings"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Passive scanning observes traffic that is already on the network. Sending packets describes active scanning, signing in describes credentialed scanning and installed reporting software describes an agent.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which scan type finds live hosts and open ports so the team can chart the layout of a network, without testing for vulnerabilities?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A compliance audit of settings"
+        },
+        {
+          "id": "b",
+          "text": "A discovery (mapping) scan"
+        },
+        {
+          "id": "c",
+          "text": "A credentialed patch scan"
+        },
+        {
+          "id": "d",
+          "text": "A web application scan"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A discovery or mapping scan builds the picture of what is on the network. Compliance, patch and web application scans all assess weaknesses or settings on hosts that are already known.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "An analyst runs `nmap -sn 192.0.2.0/24` and gets this output.\n\n```\nNmap scan report for 192.0.2.10\nHost is up (0.0021s latency).\nNmap scan report for 192.0.2.14\nHost is up (0.0034s latency).\nNmap done: 256 IP addresses (2 hosts up)\n```\n\nWhat does this result show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Two hosts have exploitable vulnerabilities"
+        },
+        {
+          "id": "b",
+          "text": "The other addresses are decommissioned and should be removed"
+        },
+        {
+          "id": "c",
+          "text": "Two hosts run only secure services"
+        },
+        {
+          "id": "d",
+          "text": "Two hosts answered, with no port or service data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The `-sn` option performs host discovery without a port scan, so the output only shows which addresses answered. Silent addresses may be filtered or powered off, so nothing about them is proven, and no vulnerability or service information was gathered.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A scanner labels a host \"Linux (96 percent confidence)\" without signing in. Which technique produced this label?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Fingerprinting from stack behavior and banners"
+        },
+        {
+          "id": "b",
+          "text": "Reading the package database through an agent"
+        },
+        {
+          "id": "c",
+          "text": "Comparing file hashes against a baseline"
+        },
+        {
+          "id": "d",
+          "text": "Requesting a zone transfer from the name server"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Device fingerprinting infers the operating system from how the host answers probes and from the banners it presents. Package databases need local access, file hashes need a baseline comparison, and zone transfers list names, not operating systems.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "A fingerprint says \"network printer\" for a host that the inventory lists as a database server. What is the best next step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Accept the fingerprint and delete the inventory entry"
+        },
+        {
+          "id": "b",
+          "text": "Lower the finding severity to informational"
+        },
+        {
+          "id": "c",
+          "text": "Verify with the owner, then correct the record"
+        },
+        {
+          "id": "d",
+          "text": "Block the host at the firewall right away"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Fingerprints are estimates and can be wrong, but a mismatch is a reason to confirm the facts and fix whichever record is wrong. Deleting the entry, lowering severity or blocking the host act on an unverified guess.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A merchant must meet the PCI DSS requirement for external vulnerability scans. Who is expected to perform them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The card network's help desk"
+        },
+        {
+          "id": "b",
+          "text": "An approved scanning vendor"
+        },
+        {
+          "id": "c",
+          "text": "The merchant's own staff"
+        },
+        {
+          "id": "d",
+          "text": "A cloud provider's support team"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "PCI DSS expects external scans of the in-scope environment to be done by a vendor approved by the standards council. The merchant's staff, a card network help desk or cloud support do not meet that requirement.",
+    "acronyms": [
+      "PCI DSS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A retailer scans systems in its cardholder data environment. Which frequency does PCI DSS set for internal and external scans?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Monthly, and again after each vendor patch release"
+        },
+        {
+          "id": "b",
+          "text": "Annually, and again after each audit finding"
+        },
+        {
+          "id": "c",
+          "text": "Weekly, and again after each new hire"
+        },
+        {
+          "id": "d",
+          "text": "At least quarterly, and after significant changes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "PCI DSS calls for vulnerability scans at least quarterly and again after significant changes to the environment. Monthly, annual and weekly cycles with those triggers do not match the standard.",
+    "acronyms": [
+      "PCI DSS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which resource gives consensus-based secure configuration guidance for a specific operating system and is often used as a scan baseline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A CVSS severity guide"
+        },
+        {
+          "id": "b",
+          "text": "An NVD vulnerability feed"
+        },
+        {
+          "id": "c",
+          "text": "CIS benchmarks"
+        },
+        {
+          "id": "d",
+          "text": "An ISO audit certificate"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "CIS benchmarks are community-developed hardening guides for specific technologies, and scanners can audit hosts against them. CVSS rates severity, the NVD lists vulnerabilities and an audit certificate proves certification, not host settings.",
+    "acronyms": [
+      "CIS",
+      "CVSS",
+      "ISO",
+      "NVD"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A compliance scan against a CIS benchmark reports a failed check: minimum password length is below the benchmark value. How should the result be read?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A setting deviates from the hardening baseline and is not a missing patch"
+        },
+        {
+          "id": "b",
+          "text": "A known exploited vulnerability is present"
+        },
+        {
+          "id": "c",
+          "text": "Malware was detected on the host"
+        },
+        {
+          "id": "d",
+          "text": "The scan credential was rejected"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Benchmark audits compare configuration with recommended values, so a failure means a setting needs to change. It is not a vulnerability with a patch, not a malware detection, and a rejected credential would report an authentication error instead.",
+    "acronyms": [
+      "CIS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A company pursuing certification wants its scan program to support its information security management system. What does the ISO 27000 series provide?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A formula for scoring the severity of each vulnerability found"
+        },
+        {
+          "id": "b",
+          "text": "Guidance for building a management system for security"
+        },
+        {
+          "id": "c",
+          "text": "A list of required scan intervals for card data environments"
+        },
+        {
+          "id": "d",
+          "text": "A catalog of insecure coding patterns for developers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The ISO 27000 series covers building, running and improving an information security management system, with controls that scanning evidence can support. Severity scoring, card data scan intervals and coding pattern catalogs come from other sources.",
+    "acronyms": [
+      "ISO"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO findings are credentialed scans better able to report than non-credentialed scans?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Missing operating system patches"
+        },
+        {
+          "id": "b",
+          "text": "Weak local configuration settings"
+        },
+        {
+          "id": "c",
+          "text": "Services visible to an internet attacker"
+        },
+        {
+          "id": "d",
+          "text": "The existence of hosts on a subnet"
+        },
+        {
+          "id": "e",
+          "text": "Banner text on a listening port"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Authenticated access lets the scanner read patch levels and local settings. Internet-visible services, host existence and banners can all be seen without credentials, so they are not advantages of credentialed scanning.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are good reasons to choose agent-based scanning for part of a fleet?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Devices that rarely join the office network"
+        },
+        {
+          "id": "b",
+          "text": "Hosts behind firewalls that block inbound scanner traffic"
+        },
+        {
+          "id": "c",
+          "text": "No software to deploy on the endpoints"
+        },
+        {
+          "id": "d",
+          "text": "Discovery of unknown devices without agents"
+        },
+        {
+          "id": "e",
+          "text": "An external view of internet-facing services"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Agents report outward, so they cover roaming devices and hosts that scanners cannot reach through a firewall. They require installation, cannot find devices that lack them, and do not provide an outside-in view.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which THREE actions reduce the chance that a scan disrupts a fragile production system?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Scan within an agreed maintenance window"
+        },
+        {
+          "id": "b",
+          "text": "Limit concurrent checks and the packet rate"
+        },
+        {
+          "id": "c",
+          "text": "Test the scan profile on a non-production copy first"
+        },
+        {
+          "id": "d",
+          "text": "Enable every intrusive check by default"
+        },
+        {
+          "id": "e",
+          "text": "Skip telling the system owners in advance"
+        },
+        {
+          "id": "f",
+          "text": "Run extra scanners in parallel to finish sooner"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Timing, throttling and testing the profile on a copy all lower operational risk. Intrusive checks, silence toward owners and parallel scanners raise the chance of outages and surprise.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "A scanner in the corporate VLAN cannot reach hosts in a restricted segment. Which TWO approaches fix the visibility problem within security policy?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Place a scanner or scan appliance inside the segment"
+        },
+        {
+          "id": "b",
+          "text": "Request a firewall rule that permits traffic from the scanner address"
+        },
+        {
+          "id": "c",
+          "text": "Merge the segment into the flat corporate network"
+        },
+        {
+          "id": "d",
+          "text": "Switch off the firewall during each scan"
+        },
+        {
+          "id": "e",
+          "text": "Mark the restricted hosts as out of scope"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "A scanner inside the segment, or a narrowly scoped rule for the scanner address, keeps the segmentation intact while allowing assessment. Removing the boundary, disabling the firewall or dropping the hosts from scope weakens security or skips assessment.",
+    "acronyms": [
+      "VLAN"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO items does device fingerprinting typically infer about a target?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The operating system family and version estimate"
+        },
+        {
+          "id": "b",
+          "text": "The kind of device, such as a printer or router"
+        },
+        {
+          "id": "c",
+          "text": "Missing patches on installed software"
+        },
+        {
+          "id": "d",
+          "text": "Password hashes of local users"
+        },
+        {
+          "id": "e",
+          "text": "Flaws in custom application source code"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Fingerprinting reads response behavior and banners to estimate the operating system and device type. Patch levels, password hashes and source code flaws require authenticated access or code analysis.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which THREE can serve as a security baseline that scan results are compared against?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "CIS benchmarks for the operating system"
+        },
+        {
+          "id": "b",
+          "text": "PCI DSS requirements for card systems"
+        },
+        {
+          "id": "c",
+          "text": "Controls from the ISO 27000 series"
+        },
+        {
+          "id": "d",
+          "text": "A CVSS base score for one flaw"
+        },
+        {
+          "id": "e",
+          "text": "An EPSS probability value"
+        },
+        {
+          "id": "f",
+          "text": "A vendor's single patch bulletin"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Hardening benchmarks and compliance standards define expected configuration or controls to measure against. A CVSS score, an EPSS probability and a lone patch bulletin describe one vulnerability, not a baseline.",
+    "acronyms": [
+      "CIS",
+      "CVSS",
+      "EPSS",
+      "ISO",
+      "PCI DSS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-terminal-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-terminal",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "An analyst plans scans of the `192.0.2.0/24` range. Read the option summary and the earlier result, then complete each step.",
+    "payload": {
+      "output": [
+        "$ nmap --help   (excerpt)",
+        "Usage: nmap [options] <target>",
+        "  -sn         Ping scan: find live hosts, skip the port scan",
+        "  -sV         Probe open ports for service and version",
+        "  -O          Enable OS detection (fingerprinting)",
+        "  -p <ports>  Ports to scan, for example -p 22,443",
+        "$ nmap -sV -p 22,443,3389 192.0.2.30",
+        "Port      State     Service   Version",
+        "22/tcp    open      ssh       OpenSSH 8.9",
+        "443/tcp   closed    https",
+        "3389/tcp  filtered  ms-wbt-server"
+      ],
+      "steps": [
+        {
+          "id": "sweep",
+          "label": "Type the command that finds live hosts in 192.0.2.0/24 without scanning ports"
+        },
+        {
+          "id": "state",
+          "label": "In the earlier result for 192.0.2.30, which port state means probes got no reply, as when a firewall drops them?",
+          "options": [
+            {
+              "id": "o22",
+              "text": "22/tcp is open"
+            },
+            {
+              "id": "o443",
+              "text": "443/tcp is closed"
+            },
+            {
+              "id": "o3389",
+              "text": "3389/tcp is filtered"
+            },
+            {
+              "id": "none",
+              "text": "No port in this output"
+            }
+          ]
+        },
+        {
+          "id": "ver",
+          "label": "Type the command that scans TCP ports 22 and 443 on 192.0.2.14 and detects service versions"
+        },
+        {
+          "id": "os",
+          "label": "Type the command that scans TCP ports 22 and 443 on 192.0.2.14 and attempts OS detection, with no version detection"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "sweep": [
+          "nmap -sn 192.0.2.0/24",
+          "nmap 192.0.2.0/24 -sn",
+          "sudo nmap -sn 192.0.2.0/24",
+          "sudo nmap 192.0.2.0/24 -sn"
+        ],
+        "state": [
+          "o3389"
+        ],
+        "ver": [
+          "nmap -p 22,443 -sV 192.0.2.14",
+          "nmap -p 22,443 192.0.2.14 -sV",
+          "nmap -p22,443 -sV 192.0.2.14",
+          "nmap -p22,443 192.0.2.14 -sV",
+          "nmap -sV -p 22,443 192.0.2.14",
+          "nmap -sV -p22,443 192.0.2.14",
+          "nmap -sV 192.0.2.14 -p 22,443",
+          "nmap -sV 192.0.2.14 -p22,443",
+          "nmap 192.0.2.14 -p 22,443 -sV",
+          "nmap 192.0.2.14 -p22,443 -sV",
+          "nmap 192.0.2.14 -sV -p 22,443",
+          "nmap 192.0.2.14 -sV -p22,443",
+          "sudo nmap -p 22,443 -sV 192.0.2.14",
+          "sudo nmap -p 22,443 192.0.2.14 -sV",
+          "sudo nmap -p22,443 -sV 192.0.2.14",
+          "sudo nmap -p22,443 192.0.2.14 -sV",
+          "sudo nmap -sV -p 22,443 192.0.2.14",
+          "sudo nmap -sV -p22,443 192.0.2.14",
+          "sudo nmap -sV 192.0.2.14 -p 22,443",
+          "sudo nmap -sV 192.0.2.14 -p22,443",
+          "sudo nmap 192.0.2.14 -p 22,443 -sV",
+          "sudo nmap 192.0.2.14 -p22,443 -sV",
+          "sudo nmap 192.0.2.14 -sV -p 22,443",
+          "sudo nmap 192.0.2.14 -sV -p22,443"
+        ],
+        "os": [
+          "nmap -O -p 22,443 192.0.2.14",
+          "nmap -O -p22,443 192.0.2.14",
+          "nmap -O 192.0.2.14 -p 22,443",
+          "nmap -O 192.0.2.14 -p22,443",
+          "nmap -p 22,443 -O 192.0.2.14",
+          "nmap -p 22,443 192.0.2.14 -O",
+          "nmap -p22,443 -O 192.0.2.14",
+          "nmap -p22,443 192.0.2.14 -O",
+          "nmap 192.0.2.14 -O -p 22,443",
+          "nmap 192.0.2.14 -O -p22,443",
+          "nmap 192.0.2.14 -p 22,443 -O",
+          "nmap 192.0.2.14 -p22,443 -O",
+          "sudo nmap -O -p 22,443 192.0.2.14",
+          "sudo nmap -O -p22,443 192.0.2.14",
+          "sudo nmap -O 192.0.2.14 -p 22,443",
+          "sudo nmap -O 192.0.2.14 -p22,443",
+          "sudo nmap -p 22,443 -O 192.0.2.14",
+          "sudo nmap -p 22,443 192.0.2.14 -O",
+          "sudo nmap -p22,443 -O 192.0.2.14",
+          "sudo nmap -p22,443 192.0.2.14 -O",
+          "sudo nmap 192.0.2.14 -O -p 22,443",
+          "sudo nmap 192.0.2.14 -O -p22,443",
+          "sudo nmap 192.0.2.14 -p 22,443 -O",
+          "sudo nmap 192.0.2.14 -p22,443 -O"
+        ]
+      }
+    },
+    "explanation": "A ping scan with `-sn` only discovers hosts, `-sV` adds service and version probing, `-O` adds operating system fingerprinting, and a filtered port is one where no reply came back.",
+    "partExplanations": {
+      "sweep": "The `-sn` option does host discovery and skips the port scan.",
+      "state": "Filtered means probes got no reply, which is typical of a firewall dropping them; closed means the host answered that nothing listens.",
+      "ver": "`-sV` probes open ports for version information and `-p 22,443` limits the ports.",
+      "os": "`-O` requests operating system detection, and no `-sV` is added because the task excludes it."
+    },
+    "acronyms": [
+      "OS",
+      "SSH",
+      "TCP"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-config-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Finance servers run Windows in a restricted payment VLAN. They are fragile during weekday business hours. The team needs a patch and hardening assessment. Configure the scan job.",
+    "payload": {
+      "fields": [
+        {
+          "id": "auth",
+          "label": "Authentication",
+          "options": [
+            {
+              "id": "none",
+              "text": "No credentials (unauthenticated)"
+            },
+            {
+              "id": "ro",
+              "text": "Dedicated read-only service account"
+            },
+            {
+              "id": "admin",
+              "text": "Shared domain administrator login"
+            }
+          ]
+        },
+        {
+          "id": "place",
+          "label": "Scanner placement",
+          "options": [
+            {
+              "id": "guest",
+              "text": "Guest wireless network"
+            },
+            {
+              "id": "inet",
+              "text": "Internet side of the perimeter"
+            },
+            {
+              "id": "vlan",
+              "text": "Inside the payment VLAN"
+            }
+          ]
+        },
+        {
+          "id": "sched",
+          "label": "Schedule",
+          "options": [
+            {
+              "id": "maint",
+              "text": "Weekly maintenance window"
+            },
+            {
+              "id": "peak",
+              "text": "Weekdays at 10:00"
+            },
+            {
+              "id": "cont",
+              "text": "Continuous during business hours"
+            }
+          ]
+        },
+        {
+          "id": "rate",
+          "label": "Scan intensity",
+          "options": [
+            {
+              "id": "throttle",
+              "text": "Throttled checks with a low packet rate"
+            },
+            {
+              "id": "max",
+              "text": "Maximum concurrency, all checks"
+            },
+            {
+              "id": "dev",
+              "text": "Default profile copied from the test lab"
+            }
+          ]
+        },
+        {
+          "id": "policy",
+          "label": "Assessment policy",
+          "options": [
+            {
+              "id": "disc",
+              "text": "Discovery-only ping sweep"
+            },
+            {
+              "id": "web",
+              "text": "Web application crawl"
+            },
+            {
+              "id": "cis",
+              "text": "Patch audit plus CIS benchmark checks"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "auth": "ro",
+        "place": "vlan",
+        "sched": "maint",
+        "rate": "throttle",
+        "policy": "cis"
+      }
+    },
+    "explanation": "A least-privilege authenticated scan from inside the segment, in a maintenance window with throttled checks and a patch plus benchmark policy, meets the goal without disturbing the fragile servers.",
+    "partExplanations": {
+      "auth": "Patch levels and local settings need credentials, and a read-only service account follows least privilege.",
+      "place": "A scanner inside the VLAN avoids the segmentation controls that block outside probes.",
+      "sched": "A maintenance window keeps scan load away from users during business hours.",
+      "rate": "Throttling protects fragile servers from overload.",
+      "policy": "A patch audit with benchmark checks answers the patch and hardening goal; discovery and web crawls do not."
+    },
+    "acronyms": [
+      "CIS",
+      "VLAN"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-diagram-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Place each scanning component or control at the position in this network where it gives the view described.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 40,
+          "w": 90,
+          "h": 50,
+          "text": "Internet"
+        },
+        {
+          "id": "n2",
+          "x": 108,
+          "y": 40,
+          "w": 90,
+          "h": 50,
+          "text": "Edge firewall"
+        },
+        {
+          "id": "n3",
+          "x": 206,
+          "y": 40,
+          "w": 90,
+          "h": 50,
+          "text": "Web servers"
+        },
+        {
+          "id": "n4",
+          "x": 304,
+          "y": 40,
+          "w": 90,
+          "h": 50,
+          "text": "Internal firewall"
+        },
+        {
+          "id": "n5",
+          "x": 402,
+          "y": 40,
+          "w": 90,
+          "h": 50,
+          "text": "Server VLAN"
+        },
+        {
+          "id": "n6",
+          "x": 500,
+          "y": 40,
+          "w": 90,
+          "h": 50,
+          "text": "Remote laptops"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        },
+        {
+          "from": "n4",
+          "to": "n5"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z-out",
+          "x": 10,
+          "y": 140,
+          "name": "Outside the edge firewall, to see what the public sees"
+        },
+        {
+          "id": "z-fw",
+          "x": 304,
+          "y": 170,
+          "name": "Internal firewall policy, so scans can reach the servers"
+        },
+        {
+          "id": "z-srv",
+          "x": 402,
+          "y": 140,
+          "name": "Inside the server VLAN, with a read-only account"
+        },
+        {
+          "id": "z-lap",
+          "x": 500,
+          "y": 170,
+          "name": "On the laptops that rarely join the office network"
+        }
+      ],
+      "labels": [
+        {
+          "id": "ext",
+          "text": "External scanner on the internet"
+        },
+        {
+          "id": "int",
+          "text": "Internal credentialed scanner"
+        },
+        {
+          "id": "agent",
+          "text": "Agent reporting to the console"
+        },
+        {
+          "id": "rule",
+          "text": "Allow rule for the scanner address"
+        },
+        {
+          "id": "guest",
+          "text": "Scanner on the guest wireless network"
+        },
+        {
+          "id": "pass",
+          "text": "Passive sensor at the edge router"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z-out": "ext",
+        "z-fw": "rule",
+        "z-srv": "int",
+        "z-lap": "agent"
+      }
+    },
+    "explanation": "Each vantage point answers a different question: an outside scanner shows the public view, a scoped allow rule lets scans cross the segment boundary, an inside scanner with a read-only account assesses the servers, and agents cover devices that are rarely on the network.",
+    "partExplanations": {
+      "z-out": "An external scanner has the same view as an internet attacker.",
+      "z-fw": "A narrow allow rule for the scanner address lets probes cross without opening the segment to others.",
+      "z-srv": "A scanner inside the VLAN with a read-only account can run a credentialed assessment.",
+      "z-lap": "Agents on laptops report whenever the device has connectivity."
+    },
+    "acronyms": [
+      "VLAN"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-buckets-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each characteristic into the discovery method it describes.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "act",
+          "text": "Active scanning"
+        },
+        {
+          "id": "pas",
+          "text": "Passive monitoring"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Sends crafted packets to the ports of each target"
+        },
+        {
+          "id": "i2",
+          "text": "Identifies hosts by watching mirrored traffic"
+        },
+        {
+          "id": "i3",
+          "text": "Can crash a fragile legacy controller if too aggressive"
+        },
+        {
+          "id": "i4",
+          "text": "Misses a host that sends nothing during the capture"
+        },
+        {
+          "id": "i5",
+          "text": "Needs a scheduled window to limit business impact"
+        },
+        {
+          "id": "i6",
+          "text": "Adds no load to the monitored devices"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "act",
+        "i2": "pas",
+        "i3": "act",
+        "i4": "pas",
+        "i5": "act",
+        "i6": "pas"
+      }
+    },
+    "explanation": "Active scanning sends probes, so it can find quiet hosts but adds load and needs planning. Passive monitoring only listens, so it adds no load but sees only hosts that generate traffic.",
+    "partExplanations": {
+      "i1": "Probing with crafted packets is the definition of active scanning.",
+      "i2": "Watching mirrored traffic is passive.",
+      "i3": "Probe traffic is what can overload a fragile device.",
+      "i4": "A passive sensor can only see hosts that talk during the capture.",
+      "i5": "Active scans create load, so a window limits the effect on the business.",
+      "i6": "Listening does not send anything to the devices."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-match-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each scanning term to its meaning.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Mapping (discovery) scan"
+        },
+        {
+          "id": "p2",
+          "text": "Device fingerprinting"
+        },
+        {
+          "id": "p3",
+          "text": "Agentless scan"
+        },
+        {
+          "id": "p4",
+          "text": "Credentialed scan"
+        },
+        {
+          "id": "p5",
+          "text": "Security baseline scan"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Compares settings with a hardening standard"
+        },
+        {
+          "id": "c2",
+          "text": "Finds live hosts and open ports to chart the network"
+        },
+        {
+          "id": "c3",
+          "text": "Reaches targets over the network with nothing installed on them"
+        },
+        {
+          "id": "c4",
+          "text": "Estimates the operating system and device type from responses"
+        },
+        {
+          "id": "c5",
+          "text": "Signs in to read patch levels and local settings"
+        },
+        {
+          "id": "c6",
+          "text": "Listens to traffic without sending probes"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c2",
+        "p2": "c4",
+        "p3": "c3",
+        "p4": "c5",
+        "p5": "c1"
+      }
+    },
+    "explanation": "Mapping charts hosts and ports, fingerprinting estimates the system type, agentless scans need no installed software, credentialed scans log in for local detail, and baseline scans compare against a standard. Listening without probes is passive monitoring and matches none of the terms.",
+    "partExplanations": {
+      "p1": "Mapping builds a picture of live hosts and open ports.",
+      "p2": "Fingerprinting infers the operating system and device type from how the target responds.",
+      "p3": "Agentless scans run from the network and install nothing on the target.",
+      "p4": "Credentials let the scanner read patch levels and local settings.",
+      "p5": "A baseline scan checks configuration against a standard such as a CIS benchmark."
+    },
+    "acronyms": [
+      "CIS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-2-1-hotspot-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "2.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "A scan plan for file servers and a legacy PLC range is meant to find missing patches and weak settings without disrupting operations. Select every line of the plan that fails this goal.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Credentials: none supplied"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Window: Sunday 02:00 maintenance"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Speed: full rate on legacy PLC range"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Policy: CIS benchmark for file servers"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Run: weekdays at 10:00 peak hours"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Report: sent to the system owners"
+        }
+      ],
+      "spots": [
+        {
+          "id": "credentials",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Credentials: none supplied"
+        },
+        {
+          "id": "window",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Window: Sunday 02:00 maintenance"
+        },
+        {
+          "id": "speed",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Speed: full rate on legacy PLC range"
+        },
+        {
+          "id": "policy",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Policy: CIS benchmark for file servers"
+        },
+        {
+          "id": "peak",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Run: weekdays at 10:00 peak hours"
+        },
+        {
+          "id": "report",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Report: sent to the system owners"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "credentials",
+        "speed",
+        "peak"
+      ]
+    },
+    "explanation": "Patch levels need credentials, and full-rate scanning of fragile controllers or running at peak hours risks disruption. The maintenance window, benchmark policy and owner report fit the goal.",
+    "partExplanations": {
+      "credentials": "Without credentials the scan cannot read patch levels or local settings.",
+      "window": "A maintenance window is a sound choice and not a gap.",
+      "speed": "Full-rate probing can crash fragile controllers, so the speed must be throttled.",
+      "policy": "A benchmark policy checks the weak settings the goal names.",
+      "peak": "Scanning during peak hours risks disrupting users and operations.",
+      "report": "Reporting to system owners supports remediation and is not a gap."
+    },
+    "acronyms": [
+      "CIS",
+      "PLC"
+    ],
+    "status": "draft"
+  }
+]

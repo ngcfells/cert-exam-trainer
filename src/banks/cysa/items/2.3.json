@@ -1,0 +1,2057 @@
+[
+  {
+    "id": "cs4-2-3-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A vulnerability manager sees an EPSS value of 0.92 beside a finding. What does that figure estimate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The probability that the flaw is exploited in the wild within the next 30 days"
+        },
+        {
+          "id": "b",
+          "text": "The amount of damage the flaw would cause on this particular asset"
+        },
+        {
+          "id": "c",
+          "text": "The effort a vendor needs to produce a patch for the flaw"
+        },
+        {
+          "id": "d",
+          "text": "The share of hosts in the network that carry the flaw"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "EPSS is a probability of exploitation activity over the next 30 days, so 0.92 means a very likely target. Damage to an asset comes from impact and asset value, patch effort is a vendor matter, and the share of affected hosts is a scan statistic.",
+    "acronyms": [
+      "EPSS"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which CVSS metric group describes the intrinsic qualities of a flaw that stay the same over time and across organizations?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Temporal"
+        },
+        {
+          "id": "b",
+          "text": "Base"
+        },
+        {
+          "id": "c",
+          "text": "Environmental"
+        },
+        {
+          "id": "d",
+          "text": "Supplemental"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The base group captures properties of the flaw itself, such as how it is reached and what it can damage. Temporal metrics change as exploits and fixes appear, environmental metrics tailor the score to one organization, and supplemental metrics add extra context without changing the score.",
+    "acronyms": [
+      "CVSS"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Under the qualitative bands shared by CVSS v3.1 and v4.0, in which band does a base score of 7.4 fall?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Medium"
+        },
+        {
+          "id": "b",
+          "text": "Informational"
+        },
+        {
+          "id": "c",
+          "text": "High"
+        },
+        {
+          "id": "d",
+          "text": "Critical"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Scores from 7.0 to 8.9 are high. Medium covers 4.0 to 6.9 and critical starts at 9.0. Informational is not a CVSS band.",
+    "acronyms": [
+      "CVSS"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A scanner finding matches an entry in a known exploited vulnerabilities catalog. What does the entry tell the analyst?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The vendor has not yet confirmed that the flaw exists"
+        },
+        {
+          "id": "b",
+          "text": "No patch has been released for the flaw"
+        },
+        {
+          "id": "c",
+          "text": "The flaw scores 10.0 on the base metrics"
+        },
+        {
+          "id": "d",
+          "text": "Attackers have already used it in real intrusions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A listing in a known exploited catalog is evidence of active exploitation, which usually moves a finding to the front of the queue. It says nothing about vendor acknowledgment, patch availability or the numeric score.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Two servers carry the same flaw with the same base score. One is a development sandbox and the other processes customer payments. How should the analyst rank them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sandbox first, since developers can patch it without approval"
+        },
+        {
+          "id": "b",
+          "text": "Payment server first, since compromising it would cost the business more"
+        },
+        {
+          "id": "c",
+          "text": "Tie them, since the base score is identical"
+        },
+        {
+          "id": "d",
+          "text": "Sandbox first, since low-value hosts are quicker to rescan"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Asset value and business impact break ties between equal scores, so the payment server goes first. Ease of patching or rescanning affects scheduling but not risk, and an identical base score does not make the risk identical.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A critical finding affects a perimeter appliance, and the vendor has not released a fix. What is the best action while waiting?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Apply a compensating control and track for a vendor fix"
+        },
+        {
+          "id": "b",
+          "text": "Close the finding as a false positive until a patch ships"
+        },
+        {
+          "id": "c",
+          "text": "Accept the risk permanently and stop scanning the appliance"
+        },
+        {
+          "id": "d",
+          "text": "Leave the exposure unchanged and wait for the release"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A temporary control reduces exposure while the finding stays open and tracked. Closing it as a false positive is inaccurate, permanent acceptance of a critical flaw on a perimeter device is not justified, and waiting with no action leaves the exposure.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A scanner flags a host for a library flaw because the banner shows an old version number. The analyst reads the package changelog and finds the vendor backported the fix into that build. How should the finding be classified?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "True positive, since the banner shows a vulnerable version"
+        },
+        {
+          "id": "b",
+          "text": "False negative, since the scanner missed the patched package"
+        },
+        {
+          "id": "c",
+          "text": "True negative, since the scanner correctly reported the flaw"
+        },
+        {
+          "id": "d",
+          "text": "False positive, since the flaw is reported but is not present"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The scanner alerted on a flaw that the host does not have, which is a false positive. A true positive would need the flaw to be present, a false negative is a missed real flaw, and a true negative is a correct absence of an alert.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A tester logs in to an admin console with factory-default credentials on a host that the weekly credentialed scan reported as clean. What does this show about the scan?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It produced a false positive, so a clean host was flagged in error"
+        },
+        {
+          "id": "b",
+          "text": "It produced a true negative, so the result was correct"
+        },
+        {
+          "id": "c",
+          "text": "It produced a false negative, so a real flaw went unreported"
+        },
+        {
+          "id": "d",
+          "text": "It produced a true positive, so the finding was confirmed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A real weakness that the scan did not report is a false negative. The scan did not flag the host, so it is not a false positive or a true positive, and a true negative would require the host to be free of the weakness.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An internet-facing web server and an internal-only reporting server hold equally sensitive data and share a finding with the same score. Which gets the higher context-based priority?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The web server, since outsiders can reach it"
+        },
+        {
+          "id": "b",
+          "text": "The reporting server, because staff can already reach it"
+        },
+        {
+          "id": "c",
+          "text": "Neither, since scores ignore network exposure"
+        },
+        {
+          "id": "d",
+          "text": "Neither, since internal hosts are protected by the firewall"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "External exposure raises the likelihood of exploitation when impact is equal. Staff access does not make an internal host more exposed than a public one, environmental metrics exist to reflect exposure, and a firewall does not remove the risk from an internal host.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A critical finding sits on a controller in an air-gapped lab network with no external connectivity and two authorized engineers. How does the isolation affect its priority?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It removes the finding from the register since nobody can reach it"
+        },
+        {
+          "id": "b",
+          "text": "It raises the score since isolated hosts are harder to patch"
+        },
+        {
+          "id": "c",
+          "text": "It has no effect since the base score is fixed"
+        },
+        {
+          "id": "d",
+          "text": "It reduces reachability, so the finding can rank below exposed ones yet stays tracked"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Isolation lowers the likelihood of exploitation, so the finding can rank below comparable exposed hosts, but it remains on the register because insiders or removable media can still reach it. The base score does not change, yet context legitimately shifts the priority, and difficulty patching is not what isolation measures.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A cloud workload with an exposed management port appeared outside every inventory. Which practice would have found it earlier?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Annual review of the password policy"
+        },
+        {
+          "id": "b",
+          "text": "Quarterly tabletop incident exercises"
+        },
+        {
+          "id": "c",
+          "text": "Continuous external asset discovery"
+        },
+        {
+          "id": "d",
+          "text": "Code signing of internal builds"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Attack surface management continuously discovers assets and services that are visible from outside, including ones nobody registered. Password reviews, tabletop exercises and code signing are valid controls but none of them finds unknown assets.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A scan of a customer web form finds that user input is placed directly into a database query string. Which fix addresses the root cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Use a long database account password"
+        },
+        {
+          "id": "b",
+          "text": "Use parameterized queries so input is handled as data, not query text"
+        },
+        {
+          "id": "c",
+          "text": "Rename the form field so scanners cannot see it"
+        },
+        {
+          "id": "d",
+          "text": "Block one keyword in the browser script"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Parameterized queries stop input from being interpreted as part of the statement, which removes the injection flaw. A stronger account password does nothing about injection, hiding the field name only affects scanners, and client-side keyword blocking is easily bypassed.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A static analysis run flags an API key written in plain text in a source file. What is the best remediation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add a comment marking the key as a test value"
+        },
+        {
+          "id": "b",
+          "text": "Encode the key in base64 inside the source file"
+        },
+        {
+          "id": "c",
+          "text": "Move it to a vault, rotate it and load it at run time"
+        },
+        {
+          "id": "d",
+          "text": "Make the repository private and leave the key in the file"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The key must leave the code, and rotation is needed because it has already been exposed. Encoding is reversible, a private repository still exposes the key to everyone with access, and a comment changes nothing.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Before rolling a vendor patch out to 200 production servers, which step belongs first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Deploy to every server at once to shorten the exposure"
+        },
+        {
+          "id": "b",
+          "text": "Disable the endpoint agent to avoid conflicts"
+        },
+        {
+          "id": "c",
+          "text": "Wait for the next scan to see whether the finding persists"
+        },
+        {
+          "id": "d",
+          "text": "Test on a representative group and keep a rollback point"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Testing on a small representative group with a way back catches breakage before it spreads. Deploying everywhere at once risks a wide outage, disabling protection adds exposure, and waiting for a scan delays the fix.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A hardening baseline requires SMB signing, yet a scan shows several servers with it switched off after a vendor installer ran. Which process detects this kind of change?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Drift detection against the approved baseline"
+        },
+        {
+          "id": "b",
+          "text": "A penetration test of the exposed services"
+        },
+        {
+          "id": "c",
+          "text": "Threat hunting for beaconing traffic on the network"
+        },
+        {
+          "id": "d",
+          "text": "A review of the log retention schedule for servers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Comparing live settings with the approved baseline reveals drift after installers or manual edits. Penetration tests, hunts and retention reviews serve other purposes and do not continuously compare settings.",
+    "acronyms": [
+      "SMB"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A legacy application cannot be patched until the vendor ships a supported release. Which element keeps its exception from becoming permanent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A statement that the scanner result is unreliable"
+        },
+        {
+          "id": "b",
+          "text": "An expiry date requiring renewal"
+        },
+        {
+          "id": "c",
+          "text": "The scan report with the finding removed"
+        },
+        {
+          "id": "d",
+          "text": "Approval from the patching team alone"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A defined end date forces the owner to justify the exception again or fix the flaw. Calling the scanner unreliable and deleting the finding hide the risk, and a single team approving it does not create any expiry.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A plant controller runs firmware that cannot be updated. Which is a compensating control for its open finding?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mark the finding as a false positive and close it in the register"
+        },
+        {
+          "id": "b",
+          "text": "Schedule the controller for the next quarterly patch cycle"
+        },
+        {
+          "id": "c",
+          "text": "Restrict it to its own VLAN with an allow-list firewall rule"
+        },
+        {
+          "id": "d",
+          "text": "Raise the base score so the finding stands out in reports"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Limiting who can reach the controller reduces the risk without changing the firmware. Reclassifying the finding, scheduling a patch that does not exist and editing the score do not reduce exposure.",
+    "acronyms": [
+      "VLAN"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "After a patch is deployed, how should the team confirm the vulnerability is actually fixed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Check that the patch ticket status reads closed"
+        },
+        {
+          "id": "b",
+          "text": "Read the success message from the deployment tool"
+        },
+        {
+          "id": "c",
+          "text": "Ask the system owner to confirm by email"
+        },
+        {
+          "id": "d",
+          "text": "Rescan the host and check the finding is gone"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A rescan tests the host itself and shows whether the finding is gone. Ticket status, deployment messages and an email are claims about the work, not evidence about the host.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A rescan still reports a finding after the patch install succeeded. The package query shows the fixed version, but the service has run since before the update. What should the analyst do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Restart the service and rescan, since old code is still loaded"
+        },
+        {
+          "id": "b",
+          "text": "Mark the finding as a false positive since the package is fixed"
+        },
+        {
+          "id": "c",
+          "text": "Raise the priority to critical since the patch failed"
+        },
+        {
+          "id": "d",
+          "text": "Remove the patch and apply a different one"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A running process keeps the old code in memory until it restarts, so the scanner still sees the vulnerable behavior. Calling it a false positive hides a live flaw, the patch did not fail, and swapping patches does not address the loaded code.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An analyst must pick the first of two findings to remediate.\n\n```\nFinding  CVSS  EPSS  KEV  Exposure\nA        9.8   0.02  no   isolated\nB        7.5   0.89  yes  internet\n```\n\nWhich should go first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Finding A, since its base score is the highest"
+        },
+        {
+          "id": "b",
+          "text": "Finding B, since it is exploited and internet-facing"
+        },
+        {
+          "id": "c",
+          "text": "Finding A, since isolated hosts are patched faster"
+        },
+        {
+          "id": "d",
+          "text": "Neither, since the scores are too far apart to compare"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Finding B is known to be exploited, has a high exploitation probability and faces the internet, which outweighs a higher base score on an isolated host. Speed of patching does not set risk, and findings can always be ranked using the combined evidence.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "How do EPSS and CVSS differ in the question they answer?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "CVSS measures how likely a flaw is to be exploited, and EPSS measures how severe it is"
+        },
+        {
+          "id": "b",
+          "text": "Both predict exploitation but use different time windows"
+        },
+        {
+          "id": "c",
+          "text": "EPSS estimates likelihood of exploitation, and CVSS rates technical severity"
+        },
+        {
+          "id": "d",
+          "text": "EPSS rates the business value of assets, and CVSS rates threats"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "EPSS gives a probability that a flaw will be exploited, while CVSS describes technical severity. The first option swaps them, CVSS does not predict exploitation, and neither one rates asset value.",
+    "acronyms": [
+      "CVSS",
+      "EPSS"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team lowers a base score because a firewall blocks the vulnerable service and the asset has a low confidentiality requirement. Which CVSS metric group holds these adjustments?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Base metrics, which describe the flaw itself"
+        },
+        {
+          "id": "b",
+          "text": "Temporal metrics, which track exploit maturity"
+        },
+        {
+          "id": "c",
+          "text": "Supplemental metrics, which add context without changing the score"
+        },
+        {
+          "id": "d",
+          "text": "Environmental metrics, which tailor the score to the organization"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Environmental metrics let an organization modify a score for its own controls and asset requirements. Base metrics stay fixed to the flaw, temporal metrics follow exploit code and fix status, and supplemental metrics do not change the score.",
+    "acronyms": [
+      "CVSS"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A finding vector shows network attack vector, low attack complexity, no privileges required and no user interaction. What does this say about exploitability?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is easy to exploit, since a remote attacker needs no account or victim action"
+        },
+        {
+          "id": "b",
+          "text": "It is hard to exploit, since the attacker must be on the local network"
+        },
+        {
+          "id": "c",
+          "text": "It depends on a user opening an attachment first"
+        },
+        {
+          "id": "d",
+          "text": "It requires valid administrator credentials"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A network vector with low complexity and no privileges or interaction describes the most exploitable combination. The other options each contradict one of those metric values.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A flaw lets an attacker read customer records but not change them or disrupt the service. Which impact profile fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Availability and integrity together"
+        },
+        {
+          "id": "b",
+          "text": "Confidentiality only"
+        },
+        {
+          "id": "c",
+          "text": "Integrity with some availability"
+        },
+        {
+          "id": "d",
+          "text": "All three at the same level"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Reading data without altering it or affecting uptime is a confidentiality impact. Integrity concerns changing data, availability concerns disruption, and a flaw limited to reading does not score high on all three.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A threat feed reports that a ransomware group is scanning for a flaw in the VPN gateways the company runs. The flaw scores 6.5 on CVSS. How should the analyst treat it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Leave it queued, since 6.5 is a medium score"
+        },
+        {
+          "id": "b",
+          "text": "Wait for the next monthly scan to confirm the gateways are exposed"
+        },
+        {
+          "id": "c",
+          "text": "Raise it above its score-based rank, since exploitation is active"
+        },
+        {
+          "id": "d",
+          "text": "Close it until the vendor assigns a higher score"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Evidence of active exploitation against technology the company runs outweighs a moderate base score. A medium score alone is not a reason to wait, a monthly scan delays action, and closing the item leaves the gateways exposed.",
+    "acronyms": [
+      "CVSS",
+      "VPN"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which practice helps developers fix flaws earlier in the software development life cycle?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Scan production only after each release"
+        },
+        {
+          "id": "b",
+          "text": "Wait for the annual penetration test to report issues"
+        },
+        {
+          "id": "c",
+          "text": "Let builds merge while scans are still pending"
+        },
+        {
+          "id": "d",
+          "text": "Run static analysis in the pipeline"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Static analysis in the pipeline reports flaws while the code is fresh and cheap to change. Scanning production, waiting for a yearly test and merging before scans finish all find flaws later.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Attack surface management turns up a forgotten test web application on a public cloud address, running an outdated framework. What is the best first step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Find its owner, then remove it if unused"
+        },
+        {
+          "id": "b",
+          "text": "Patch it immediately without checking who uses it"
+        },
+        {
+          "id": "c",
+          "text": "Add it to the next quarterly scan scope"
+        },
+        {
+          "id": "d",
+          "text": "Lower its priority because it is a test system"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Identifying the owner and decommissioning an unneeded asset removes the exposure completely. Patching blind can break a live use, waiting a quarter leaves it open, and a test label does not make a public host safe.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO of these are CVSS metric groups?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Base"
+        },
+        {
+          "id": "b",
+          "text": "Reputation"
+        },
+        {
+          "id": "c",
+          "text": "Environmental"
+        },
+        {
+          "id": "d",
+          "text": "Residual"
+        },
+        {
+          "id": "e",
+          "text": "Perimeter"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Base and environmental are metric groups, one describing the flaw and the other tailoring the score to an organization. Reputation, residual and perimeter are not CVSS groups.",
+    "acronyms": [
+      "CVSS"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO statements about EPSS are accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It outputs a probability between 0 and 1"
+        },
+        {
+          "id": "b",
+          "text": "It confirms that a flaw is present on a given host"
+        },
+        {
+          "id": "c",
+          "text": "It is refreshed as new threat data arrives"
+        },
+        {
+          "id": "d",
+          "text": "It measures damage to one organization's assets"
+        },
+        {
+          "id": "e",
+          "text": "It replaces severity bands with a letter grade"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "EPSS gives a probability and is updated as new data arrives. It does not confirm a flaw on a host, it does not model a specific organization's asset damage, and it does not assign letter grades.",
+    "acronyms": [
+      "EPSS"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO practices reduce injection flaws in a web application?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Validate input against an allow list"
+        },
+        {
+          "id": "b",
+          "text": "Show full database error messages to users"
+        },
+        {
+          "id": "c",
+          "text": "Use parameterized queries for database calls"
+        },
+        {
+          "id": "d",
+          "text": "Switch off server logging"
+        },
+        {
+          "id": "e",
+          "text": "Store session tokens in page text"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Allow-list validation and parameterized queries keep input from altering statements. Verbose errors help attackers, disabling logging removes detection, and exposing session tokens creates a different weakness.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "A scanner reports a vulnerable service on a server. Which THREE actions help confirm whether the finding is a true positive?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run a credentialed scan against the host"
+        },
+        {
+          "id": "b",
+          "text": "Compare the installed build with the vendor advisory, including backports"
+        },
+        {
+          "id": "c",
+          "text": "Close it when the owner says the host is unimportant"
+        },
+        {
+          "id": "d",
+          "text": "Perform an authorized, safe check of the vulnerable condition"
+        },
+        {
+          "id": "e",
+          "text": "Treat it as true because the scanner rated it high"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "A credentialed scan, a comparison with the advisory and a safe authorized check all test the host. A claim of low importance changes priority, not whether the flaw exists, and a high rating does not prove presence.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE inputs help decide the order for patching a set of internet-facing servers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Whether the flaw is in a known exploited catalog"
+        },
+        {
+          "id": "b",
+          "text": "The scanner brand that reported it"
+        },
+        {
+          "id": "c",
+          "text": "The exploitation probability from EPSS"
+        },
+        {
+          "id": "d",
+          "text": "The sensitivity of the data the server holds"
+        },
+        {
+          "id": "e",
+          "text": "The page count of the vendor advisory"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "Known exploitation, likelihood of exploitation and data sensitivity each change risk. The tool that found the flaw and the length of an advisory say nothing about it.",
+    "acronyms": [
+      "EPSS"
+    ]
+  },
+  {
+    "id": "cs4-2-3-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO practices make patching and configuration management safer?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Roll out in rings, starting with a pilot group"
+        },
+        {
+          "id": "b",
+          "text": "Skip testing for patches rated critical"
+        },
+        {
+          "id": "c",
+          "text": "Patch every host on the same night with no pilot"
+        },
+        {
+          "id": "d",
+          "text": "Keep a rollback path for each change"
+        },
+        {
+          "id": "e",
+          "text": "Let each administrator keep private undocumented settings"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Staged rollouts and rollback paths limit the harm of a bad update. Skipping tests, patching everything with no pilot and undocumented settings all raise the chance of an outage or drift.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Use the scan table to answer each question. Findings are open on the hosts shown.",
+    "payload": {
+      "caption": "Open findings: CVSS base score, EPSS probability and exploitation status",
+      "columns": [
+        "Finding",
+        "Host",
+        "CVSS base",
+        "EPSS",
+        "KEV",
+        "Exposure"
+      ],
+      "rows": [
+        [
+          "F-201",
+          "print-srv05",
+          "9.1",
+          "0.02",
+          "No",
+          "Isolated"
+        ],
+        [
+          "F-202",
+          "web-shop01",
+          "7.5",
+          "0.91",
+          "Yes",
+          "Internet"
+        ],
+        [
+          "F-203",
+          "hr-db02",
+          "8.8",
+          "0.15",
+          "No",
+          "Internal"
+        ],
+        [
+          "F-204",
+          "vpn-gw01",
+          "6.5",
+          "0.64",
+          "Yes",
+          "Internet"
+        ],
+        [
+          "F-205",
+          "file-srv03",
+          "5.3",
+          "0.04",
+          "No",
+          "Internal"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 1,
+        "valueColumn": 3
+      },
+      "fields": [
+        {
+          "id": "top",
+          "label": "Finding with the highest base score",
+          "options": [
+            {
+              "id": "f201",
+              "text": "F-201"
+            },
+            {
+              "id": "f202",
+              "text": "F-202"
+            },
+            {
+              "id": "f203",
+              "text": "F-203"
+            }
+          ]
+        },
+        {
+          "id": "band",
+          "label": "Severity band of F-203",
+          "options": [
+            {
+              "id": "medium",
+              "text": "Medium"
+            },
+            {
+              "id": "high",
+              "text": "High"
+            },
+            {
+              "id": "critical",
+              "text": "Critical"
+            }
+          ]
+        },
+        {
+          "id": "epss2",
+          "label": "Finding with the second highest EPSS",
+          "options": [
+            {
+              "id": "f202",
+              "text": "F-202"
+            },
+            {
+              "id": "f203",
+              "text": "F-203"
+            },
+            {
+              "id": "f204",
+              "text": "F-204"
+            }
+          ]
+        },
+        {
+          "id": "count",
+          "label": "Findings with a base score in the high or critical band",
+          "options": [
+            {
+              "id": "3",
+              "text": "3"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            },
+            {
+              "id": "4",
+              "text": "4"
+            }
+          ]
+        },
+        {
+          "id": "meaning",
+          "label": "What the EPSS value 0.64 for F-204 means",
+          "options": [
+            {
+              "id": "sev",
+              "text": "A severity of 6.4 out of 10"
+            },
+            {
+              "id": "share",
+              "text": "64 percent of the services on the host are affected"
+            },
+            {
+              "id": "prob",
+              "text": "A 64 percent chance of exploitation in the next 30 days"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "top": "f201",
+        "band": "high",
+        "epss2": "f204",
+        "count": "3",
+        "meaning": "prob"
+      }
+    },
+    "explanation": "F-201 has the top base score, but ranking by exploitation probability puts F-202 first and F-204 second. A score of 8.8 is in the high band, and EPSS is a 30-day exploitation probability, not a severity.",
+    "partExplanations": {
+      "top": "Base scores are 9.1, 7.5, 8.8, 6.5 and 5.3, so F-201 is highest.",
+      "band": "8.8 falls between 7.0 and 8.9, which is the high band.",
+      "epss2": "EPSS values sorted: 0.91 (F-202), 0.64 (F-204), 0.15, 0.04, 0.02, so F-204 is second.",
+      "count": "9.1, 8.8 and 7.5 are at or above 7.0; 6.5 and 5.3 are not, so the count is 3.",
+      "meaning": "EPSS is a probability of exploitation in the next 30 days, so 0.64 is 64 percent."
+    },
+    "acronyms": [
+      "CVSS",
+      "EPSS",
+      "KEV"
+    ]
+  },
+  {
+    "id": "cs4-2-3-order-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "A scanner reports a missing vendor patch on an internal application server. Put the remediation steps in the order they happen. Team rules: a finding is confirmed before it is ranked; the rank sets the due date, so a ranked finding is assigned next; the assigned owner runs the staging test; production deployment needs a passing test; the ticket closes only on a clean rescan.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "Test the patch on a staging copy of the server"
+        },
+        {
+          "id": "s1",
+          "text": "Confirm the finding is a true positive on the host"
+        },
+        {
+          "id": "s6",
+          "text": "Rescan the host and close the ticket with the clean result"
+        },
+        {
+          "id": "s2",
+          "text": "Rank the finding using score, exploitation data and asset value"
+        },
+        {
+          "id": "s5",
+          "text": "Deploy the patch to production in the change window"
+        },
+        {
+          "id": "s3",
+          "text": "Assign an owner and a due date based on the rank"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The team validates, ranks, assigns, tests, deploys and verifies. Each step depends on the one before it, from confirming the finding to proving the fix with a rescan.",
+    "partExplanations": {
+      "0": "Confirming first keeps effort off false positives.",
+      "1": "Ranking needs a confirmed finding and sets the due date.",
+      "2": "The due date comes from the rank, so assignment follows ranking.",
+      "3": "The assigned owner runs the staging test before anything reaches production.",
+      "4": "Production deployment follows a passing test.",
+      "5": "Closure needs a clean rescan as evidence."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-terminal-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Ticket 4417 says web-app01 was patched for a flaw in the acme-httpd package. Review the output, then complete each step to verify the remediation.",
+    "payload": {
+      "output": [
+        "$ cat finding-4417.txt",
+        "Fixed in : acme-httpd-2.4.9-3.el9",
+        "$ rpm -q acme-httpd",
+        "acme-httpd-2.4.9-3.el9.x86_64",
+        "$ rpm -q --last acme-httpd",
+        "acme-httpd-2.4.9-3.el9.x86_64   Tue 09:15:40",
+        "$ systemctl status acme-httpd",
+        "acme-httpd.service - Acme web daemon",
+        "   Active: active (running) since Mon 08:02:11; 1 day 1h ago",
+        " Main PID: 2210 (acme-httpd)",
+        "$ systemctl --help | grep restart",
+        "  restart unit...   Start or restart one or more units"
+      ],
+      "steps": [
+        {
+          "id": "ver",
+          "label": "What does the installed package version show?",
+          "options": [
+            {
+              "id": "fixed",
+              "text": "The installed build matches the fixed build"
+            },
+            {
+              "id": "older",
+              "text": "The installed build is older than the fixed build"
+            },
+            {
+              "id": "unknown",
+              "text": "The version cannot be compared with the advisory"
+            }
+          ]
+        },
+        {
+          "id": "proc",
+          "label": "What does the service status show?",
+          "options": [
+            {
+              "id": "new",
+              "text": "The process started after the update, so it runs the fixed code"
+            },
+            {
+              "id": "old",
+              "text": "The process started before the update, so it may still run the old code"
+            },
+            {
+              "id": "down",
+              "text": "The service is stopped and needs no further action"
+            }
+          ]
+        },
+        {
+          "id": "restart",
+          "label": "Type the command that restarts the acme-httpd unit"
+        },
+        {
+          "id": "next",
+          "label": "Choose the next action",
+          "options": [
+            {
+              "id": "close",
+              "text": "Close the ticket because the package is updated"
+            },
+            {
+              "id": "lower",
+              "text": "Lower the base score of the finding"
+            },
+            {
+              "id": "rescan",
+              "text": "Rescan the host and attach the clean result to the ticket"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "ver": [
+          "fixed"
+        ],
+        "proc": [
+          "old"
+        ],
+        "restart": [
+          "systemctl restart acme-httpd",
+          "systemctl restart acme-httpd.service",
+          "sudo systemctl restart acme-httpd",
+          "sudo systemctl restart acme-httpd.service"
+        ],
+        "next": [
+          "rescan"
+        ]
+      }
+    },
+    "explanation": "The package is at the fixed build, but the daemon started a day before the update, so it still runs the old code until restarted. After the restart, a rescan is the evidence that closes the ticket.",
+    "partExplanations": {
+      "ver": "rpm -q shows 2.4.9-3.el9, the same build the advisory names as fixed.",
+      "proc": "The service has run since Monday 08:02, and the package changed Tuesday 09:15, so the running code predates the update.",
+      "restart": "systemctl restart followed by the unit name reloads the daemon with the patched files.",
+      "next": "A rescan proves the host no longer shows the flaw; closing on package state alone is only a claim."
+    },
+    "acronyms": [
+      "PID"
+    ]
+  },
+  {
+    "id": "cs4-2-3-config-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "The finance application host fin-app07 has a critical finding that cannot be patched until the vendor ships a release next quarter. The host is reachable only from the finance VLAN. Complete the exception record.",
+    "payload": {
+      "fields": [
+        {
+          "id": "type",
+          "label": "Record type",
+          "options": [
+            {
+              "id": "timed",
+              "text": "Time-limited exception with compensating controls"
+            },
+            {
+              "id": "accept",
+              "text": "Permanent risk acceptance with no review"
+            },
+            {
+              "id": "fp",
+              "text": "False positive closure"
+            }
+          ]
+        },
+        {
+          "id": "control",
+          "label": "Compensating control",
+          "options": [
+            {
+              "id": "rename",
+              "text": "Rename the host in the asset register"
+            },
+            {
+              "id": "freq",
+              "text": "Run the scanner more often with no other change"
+            },
+            {
+              "id": "allow",
+              "text": "Allow-list the two jump hosts that manage the application"
+            }
+          ]
+        },
+        {
+          "id": "review",
+          "label": "Review point",
+          "options": [
+            {
+              "id": "none",
+              "text": "No end date, reviewed at the next audit"
+            },
+            {
+              "id": "ninety",
+              "text": "90 days, with renewal needing new approval"
+            },
+            {
+              "id": "adhoc",
+              "text": "Whenever the system administrator remembers"
+            }
+          ]
+        },
+        {
+          "id": "approver",
+          "label": "Approver",
+          "options": [
+            {
+              "id": "scan",
+              "text": "The scanner administrator"
+            },
+            {
+              "id": "req",
+              "text": "The analyst who requested the exception"
+            },
+            {
+              "id": "owner",
+              "text": "The business owner of the application, with security sign-off"
+            }
+          ]
+        },
+        {
+          "id": "evidence",
+          "label": "Validation of the control",
+          "options": [
+            {
+              "id": "annual",
+              "text": "An annual interview with the system administrator"
+            },
+            {
+              "id": "rule",
+              "text": "A scheduled rescan plus a test showing other subnets are blocked"
+            },
+            {
+              "id": "ticket",
+              "text": "A ticket comment saying the control was added"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "type": "timed",
+        "control": "allow",
+        "review": "ninety",
+        "approver": "owner",
+        "evidence": "rule"
+      }
+    },
+    "explanation": "A bounded exception pairs a real control with an end date and an accountable approver, and the control is tested rather than assumed. Permanent acceptance, renaming the host or scanning more often do not reduce exposure.",
+    "partExplanations": {
+      "type": "The patch is delayed, not wrong, so the record is a time-limited exception rather than a closure or permanent acceptance.",
+      "control": "Limiting access to two management hosts is what reduces the exposure.",
+      "review": "A 90-day end date matches the vendor timeline and forces re-approval.",
+      "approver": "The business owner accepts the residual risk with security sign-off.",
+      "evidence": "A rescan and a blocked-subnet test show the control works."
+    },
+    "acronyms": [
+      "VLAN"
+    ]
+  },
+  {
+    "id": "cs4-2-3-buckets-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each asset by the network context that best describes its exposure when ranking vulnerabilities.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "ext",
+          "text": "External"
+        },
+        {
+          "id": "int",
+          "text": "Internal"
+        },
+        {
+          "id": "iso",
+          "text": "Isolated"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "A customer portal reachable from the public internet"
+        },
+        {
+          "id": "i2",
+          "text": "A payroll file server reachable only from the office network"
+        },
+        {
+          "id": "i3",
+          "text": "A plant controller on a segment with no route to any other network"
+        },
+        {
+          "id": "i4",
+          "text": "A mail gateway that accepts connections from any outside address"
+        },
+        {
+          "id": "i5",
+          "text": "A forensic workstation that is never connected to any network"
+        },
+        {
+          "id": "i6",
+          "text": "A build server reachable only from the corporate subnet"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "ext",
+        "i2": "int",
+        "i3": "iso",
+        "i4": "ext",
+        "i5": "iso",
+        "i6": "int"
+      }
+    },
+    "explanation": "External assets accept connections from the internet, internal assets are reachable only from inside the organization, and isolated assets have no network path at all.",
+    "partExplanations": {
+      "i1": "A public portal is exposed to any outside attacker.",
+      "i2": "Reachable only from the office network, so it is internal.",
+      "i3": "No route to any other network makes it isolated.",
+      "i4": "Accepting outside connections makes it external.",
+      "i5": "A never-connected workstation is isolated.",
+      "i6": "Reachable only from the corporate subnet, so it is internal."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-3-hotspot-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.3"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "Policy: remediate findings that are in the known exploited catalog first, then rank by EPSS, with the base score breaking ties. Select the finding to fix first.",
+    "payload": {
+      "width": 600,
+      "height": 290,
+      "nodes": [
+        {
+          "id": "hdr",
+          "x": 10,
+          "y": 8,
+          "w": 580,
+          "h": 30,
+          "text": "Open findings (host, scores, status)"
+        },
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 50,
+          "w": 280,
+          "h": 60,
+          "text": "plc-hmi07: CVSS 9.8, EPSS 0.01, KEV no, isolated"
+        },
+        {
+          "id": "n2",
+          "x": 310,
+          "y": 50,
+          "w": 280,
+          "h": 60,
+          "text": "crm-app02: CVSS 8.1, EPSS 0.77, KEV yes, internal"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 130,
+          "w": 280,
+          "h": 60,
+          "text": "api-edge03: CVSS 7.2, EPSS 0.93, KEV no, internet"
+        },
+        {
+          "id": "n4",
+          "x": 310,
+          "y": 130,
+          "w": 280,
+          "h": 60,
+          "text": "dev-wiki01: CVSS 9.0, EPSS 0.12, KEV no, internal"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 210,
+          "w": 280,
+          "h": 60,
+          "text": "pay-gw01: CVSS 6.8, EPSS 0.58, KEV yes, internet"
+        },
+        {
+          "id": "n6",
+          "x": 310,
+          "y": 210,
+          "w": 280,
+          "h": 60,
+          "text": "kiosk-04: CVSS 5.0, EPSS 0.03, KEV no, internal"
+        }
+      ],
+      "spots": [
+        {
+          "id": "s1",
+          "x": 10,
+          "y": 50,
+          "w": 280,
+          "h": 60,
+          "name": "plc-hmi07"
+        },
+        {
+          "id": "s2",
+          "x": 310,
+          "y": 50,
+          "w": 280,
+          "h": 60,
+          "name": "crm-app02"
+        },
+        {
+          "id": "s3",
+          "x": 10,
+          "y": 130,
+          "w": 280,
+          "h": 60,
+          "name": "api-edge03"
+        },
+        {
+          "id": "s4",
+          "x": 310,
+          "y": 130,
+          "w": 280,
+          "h": 60,
+          "name": "dev-wiki01"
+        },
+        {
+          "id": "s5",
+          "x": 10,
+          "y": 210,
+          "w": 280,
+          "h": 60,
+          "name": "pay-gw01"
+        },
+        {
+          "id": "s6",
+          "x": 310,
+          "y": 210,
+          "w": 280,
+          "h": 60,
+          "name": "kiosk-04"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "s2"
+      ]
+    },
+    "explanation": "crm-app02 and pay-gw01 are the known exploited findings, and crm-app02 has the higher EPSS. api-edge03 has the highest EPSS but is not in the catalog, and the high base scores on plc-hmi07 and dev-wiki01 do not outrank exploitation evidence.",
+    "partExplanations": {
+      "s1": "Highest base score, but it is isolated, not exploited and has a very low EPSS.",
+      "s2": "Known exploited with EPSS 0.77, the higher of the two exploited findings, so it goes first.",
+      "s3": "Highest EPSS, but the policy ranks catalog entries first.",
+      "s4": "A high base score with a low EPSS and no exploitation evidence.",
+      "s5": "Known exploited, but its EPSS of 0.58 is lower than crm-app02.",
+      "s6": "Low score, low EPSS, no exploitation."
+    },
+    "acronyms": [
+      "CVSS",
+      "EPSS",
+      "KEV"
+    ]
+  }
+]

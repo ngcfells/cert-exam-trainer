@@ -1,0 +1,2160 @@
+[
+  {
+    "id": "cs4-2-2-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is Angry IP Scanner mainly used for?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sweeping address ranges to find live hosts and open ports"
+        },
+        {
+          "id": "b",
+          "text": "Charting links between domains, emails and people"
+        },
+        {
+          "id": "c",
+          "text": "Replaying edited requests against a running web application"
+        },
+        {
+          "id": "d",
+          "text": "Checking container images for known package flaws"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Angry IP Scanner is a lightweight graphical sweeper that reports which addresses respond and which ports are open. Charting relationships is link analysis, request editing belongs to an intercepting proxy, and image checks belong to a container scanner.",
+    "acronyms": [
+      "IP"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What sets Masscan apart from most port scanners?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Decoding captured traffic to recover stored passwords"
+        },
+        {
+          "id": "b",
+          "text": "Asynchronous probing at a set rate over huge ranges"
+        },
+        {
+          "id": "c",
+          "text": "Reading cloud configuration through provider APIs"
+        },
+        {
+          "id": "d",
+          "text": "Intercepting browser requests for manual editing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Masscan sends probes asynchronously at a rate the analyst sets, so it can cover huge address spaces quickly. It does not decode traffic, call cloud APIs or proxy browser requests.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst runs `masscan 192.0.2.0/24 -p22,443 --rate 1000` and receives this output.\n\n```\nDiscovered open port 443/tcp on 192.0.2.14\nDiscovered open port 22/tcp on 192.0.2.14\nDiscovered open port 443/tcp on 192.0.2.31\n```\n\nWhat can the analyst conclude?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Both hosts run a vulnerable SSH release"
+        },
+        {
+          "id": "b",
+          "text": "The other addresses in the range are confirmed to be offline hosts"
+        },
+        {
+          "id": "c",
+          "text": "Two hosts accepted connections, but no software versions are reported"
+        },
+        {
+          "id": "d",
+          "text": "Port 22 on 192.0.2.31 is blocked by a firewall"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The output lists open ports on two hosts and says nothing about the software behind them. A vulnerable release cannot be inferred from an open port, silent addresses were only probed on two ports so they are not proven offline, and an unlisted port is not shown to be blocked.",
+    "acronyms": [
+      "SSH"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A scan of `db-05` returns the table below.\n\n```\nPort      State     Service\n22/tcp    open      ssh\n80/tcp    filtered  http\n443/tcp   closed    https\n```\n\nWhat does the state shown for port 80 mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A service listens and the host accepted the connection"
+        },
+        {
+          "id": "b",
+          "text": "Nothing listens, and the host answered with a reset"
+        },
+        {
+          "id": "c",
+          "text": "The service is running but needs valid credentials before it connects"
+        },
+        {
+          "id": "d",
+          "text": "Probes drew no usable reply, so a firewall may be dropping them"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Nmap reports filtered when it cannot tell whether the port is open because probes are dropped or blocked. An accepted connection would be open, a reset reply would be closed, and credentials are not part of a port state.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which Nmap option asks open ports to reveal what software and release is listening on them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`-sV`, which probes open ports for service versions"
+        },
+        {
+          "id": "b",
+          "text": "`-sn`, which pings the range and skips port scanning"
+        },
+        {
+          "id": "c",
+          "text": "`-O`, which guesses the operating system from replies"
+        },
+        {
+          "id": "d",
+          "text": "`-Pn`, which skips host discovery and treats hosts as up"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The `-sV` option interrogates open ports to learn the service and its version. `-sn` is a ping sweep, `-O` fingerprints the operating system, and `-Pn` only changes host discovery.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A default Nmap scan of `crm-02`, a server known to be running, ends with `Host seems down`. The firewall drops ping probes. What is the best next step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the host from the asset list because it did not answer"
+        },
+        {
+          "id": "b",
+          "text": "Rerun with `-Pn` so Nmap skips host discovery and scans the ports anyway"
+        },
+        {
+          "id": "c",
+          "text": "Rerun with `-sn` so only host discovery is performed"
+        },
+        {
+          "id": "d",
+          "text": "Report the host as patched, since a silent host has no flaws"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Nmap skips hosts that fail discovery, so `-Pn` forces the port scan when pings are filtered. A host that is known to run should not be dropped from inventory, `-sn` repeats the failed discovery, and silence is not evidence of patching.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is the Metasploit Framework (MSF) mainly used for in an assessment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Mapping relationships between people, domains and email accounts"
+        },
+        {
+          "id": "b",
+          "text": "Scoring cloud accounts against a security benchmark"
+        },
+        {
+          "id": "c",
+          "text": "Running modules that test whether a flaw can be exploited"
+        },
+        {
+          "id": "d",
+          "text": "Proxying and editing browser traffic for review"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "MSF packages exploit, auxiliary and post-exploitation modules so a tester can show that a flaw is exploitable. Relationship mapping, benchmark scoring and traffic proxying are done by other tool classes.",
+    "acronyms": [
+      "MSF"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A tester wants a Metasploit module that gathers information from a target without delivering a payload or needing an open session. Which module type fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Exploit modules, which deliver a payload to a flaw"
+        },
+        {
+          "id": "b",
+          "text": "Encoder modules, which reshape the bytes of a payload"
+        },
+        {
+          "id": "c",
+          "text": "Post modules, which run on an existing session"
+        },
+        {
+          "id": "d",
+          "text": "Auxiliary modules, such as scanners and fuzzers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Auxiliary modules perform scanning and probing tasks with no payload and no session. Exploit modules deliver a payload, encoders only reshape one, and post modules need a session already in place.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does Maltego chiefly produce for an investigator?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A link graph connecting entities such as domains, emails and people"
+        },
+        {
+          "id": "b",
+          "text": "A ranked list of unpatched hosts with their severity scores and owners"
+        },
+        {
+          "id": "c",
+          "text": "A signed report of cloud settings that fail a benchmark"
+        },
+        {
+          "id": "d",
+          "text": "A decoded view of web traffic caught between two endpoints"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Maltego pulls public data into a graph of related entities, which supports link analysis. Ranked patch lists come from vulnerability scanners, benchmark reports from cloud assessment tools, and traffic views from a proxy or packet capture.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "How does Recon-ng organize its OSINT collection?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Through templates that match web responses to known weaknesses"
+        },
+        {
+          "id": "b",
+          "text": "Through modules whose findings land in a workspace database"
+        },
+        {
+          "id": "c",
+          "text": "Through agents that run adversary actions on test hosts"
+        },
+        {
+          "id": "d",
+          "text": "Through a proxy sitting between a browser and a server"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Recon-ng is a command-line framework where each module gathers one kind of public data and stores results in a workspace database. Template matching, adversary agents and proxies describe other tools.",
+    "acronyms": [
+      "OSINT"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A tester wants to pause a browser request, change a parameter and forward it to the server. Which Burp Suite capability provides this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Link analysis, which graphs relationships among public entities"
+        },
+        {
+          "id": "b",
+          "text": "Port sweeping, which lists responsive hosts in a range"
+        },
+        {
+          "id": "c",
+          "text": "The intercepting proxy, which holds traffic until released"
+        },
+        {
+          "id": "d",
+          "text": "Adversary emulation, which runs scripted attack steps on endpoints"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Burp Suite sits between the browser and the server, holds each message and lets the tester edit it before release. The other options describe graph tools, port scanners and adversary emulation platforms.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A ZAP scan reports the alert below.\n\n```\nRisk: Medium   Confidence: Low\nAlert: Cross Site Scripting (Reflected)\nURL: https://shop.example.internal/search?q=test\nEvidence: test\n```\n\nHow should the analyst handle it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Report it as proven, since the rating is Medium"
+        },
+        {
+          "id": "b",
+          "text": "Discard it, since a weak signal rules out any real exploitation"
+        },
+        {
+          "id": "c",
+          "text": "Raise it to High, since the page faces customers"
+        },
+        {
+          "id": "d",
+          "text": "Confirm it by hand first, since the tool is unsure it is real"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "ZAP rates both the risk and its confidence; a low-confidence alert may be a false positive and should be verified before reporting. Treating it as proven, discarding it or raising it without evidence all skip that validation.",
+    "acronyms": [
+      "ZAP"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does Nikto mainly check?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Web servers, for dangerous files, outdated software and weak settings"
+        },
+        {
+          "id": "b",
+          "text": "Container images, for packages with known flaws"
+        },
+        {
+          "id": "c",
+          "text": "Terraform files, for insecure defaults before deployment"
+        },
+        {
+          "id": "d",
+          "text": "Address ranges, for responsive hosts and open ports"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Nikto tests web servers for risky default files, old server software and misconfigurations. Image, infrastructure code and address range checks belong to other scanners.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A web scan of `198.51.100.40` produces this Nikto output.\n\n```\n+ Target: 198.51.100.40:80\n+ Server: Apache/2.2.15 (CentOS)\n+ /icons/README: Apache default file found.\n+ /admin/: Directory indexing found.\n+ Allowed HTTP Methods: GET, HEAD, POST, OPTIONS, TRACE\n```\n\nWhich line points to software that may be out of date?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The default file reported under `/icons/`"
+        },
+        {
+          "id": "b",
+          "text": "The banner naming an old release"
+        },
+        {
+          "id": "c",
+          "text": "The directory indexing reported for `/admin/`"
+        },
+        {
+          "id": "d",
+          "text": "The list of allowed methods ending in `TRACE`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The server banner names an old release series, which suggests unpatched software. The default file and directory indexing are information exposure, and the method list is a hardening matter.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Nessus report lists an Info-severity plugin whose output shows the version of a service installed on a host. How should the analyst treat it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "As a critical exposure that needs patching before the next change window"
+        },
+        {
+          "id": "b",
+          "text": "As proof that the scan failed to authenticate"
+        },
+        {
+          "id": "c",
+          "text": "As asset detail that helps match versions, not an exposure to patch"
+        },
+        {
+          "id": "d",
+          "text": "As a false positive that should be deleted from the report"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Info plugins report facts about the host, such as installed versions, and feed asset inventory and later version matching. They are not exposures, they do not signal failed logins, and deleting them throws away useful context.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A Nessus scan of `srv-07` finds few issues. A rerun with an administrator login finds many missing patches. Why does the second report show more?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Administrator logins make the scanner send faster probes"
+        },
+        {
+          "id": "b",
+          "text": "Privileged accounts switch off the host firewall during scanning"
+        },
+        {
+          "id": "c",
+          "text": "Missing-patch plugins are hidden from anonymous scans by licensing"
+        },
+        {
+          "id": "d",
+          "text": "Authenticated checks read installed software and patch levels on the host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "With credentials the scanner inspects the host from the inside, so it can see package and patch data that network probes cannot. Speed, firewall state and licensing do not explain the extra findings.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "How does Nuclei decide what to test on a target?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It runs YAML templates that describe a request and a match rule"
+        },
+        {
+          "id": "b",
+          "text": "It replays recorded user sessions against the application under test and logs replies"
+        },
+        {
+          "id": "c",
+          "text": "It queries a cloud provider's APIs for resource settings"
+        },
+        {
+          "id": "d",
+          "text": "It builds a graph of related public entities"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Nuclei is driven by YAML templates, each describing a request to send and the response that counts as a match. Session replay, cloud API queries and entity graphs belong to other tools.",
+    "acronyms": [
+      "API",
+      "YAML"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Nuclei prints these lines for one host.\n\n```\n[tech-detect:nginx] [http] [info] https://app.example.internal\n[exposed-env-file] [http] [high] https://app.example.internal/.env\n[missing-security-headers] [http] [low] https://app.example.internal\n```\n\nWhich match should the analyst verify and escalate first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The technology detection, since it names the web server"
+        },
+        {
+          "id": "b",
+          "text": "The exposed environment file, since it can leak stored secrets"
+        },
+        {
+          "id": "c",
+          "text": "The missing headers match, since it covers the whole site at once"
+        },
+        {
+          "id": "d",
+          "text": "All three equally, since template output carries no severity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Each Nuclei line carries the template severity, and an exposed environment file can reveal credentials, so it is verified first. A technology fingerprint is informational, missing headers are minor, and the output does include severity labels.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An OpenVAS result carries a quality of detection value of 30 percent. What should the analyst infer?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Thirty percent of the host's ports were covered by the scan"
+        },
+        {
+          "id": "b",
+          "text": "The flaw has a thirty percent chance of being exploited within the month"
+        },
+        {
+          "id": "c",
+          "text": "The method that found it is weak, so the result needs confirmation"
+        },
+        {
+          "id": "d",
+          "text": "The severity was lowered to account for compensating controls"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "OpenVAS attaches a quality of detection value that states how reliable the detection method is; a low value calls for manual confirmation. It is not port coverage, an exploit probability or a severity adjustment.",
+    "acronyms": [
+      "OpenVAS"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "How does ScoutSuite collect the data it presents for a cloud account?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It sends crafted packets to each public address in the account"
+        },
+        {
+          "id": "b",
+          "text": "It installs agents inside every virtual machine it audits"
+        },
+        {
+          "id": "c",
+          "text": "It unpacks container layers to list the libraries inside"
+        },
+        {
+          "id": "d",
+          "text": "It calls the provider's APIs to pull configuration settings"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "ScoutSuite reads configuration through the cloud provider's APIs and renders the results for review. It does not probe addresses, deploy agents or inspect container layers.",
+    "acronyms": [
+      "API"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team reviews this Prowler summary.\n\n```\nStatus  Severity  Check                      Resource\nPASS    critical  root_account_mfa_enabled   acct-prod\nFAIL    high      bucket_public_read         bkt-invoices-01\nFAIL    medium    audit_logging_disabled     region-east\nPASS    low       password_min_length        acct-prod\n```\n\nWhich result should be remediated first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The failed high check on invoices"
+        },
+        {
+          "id": "b",
+          "text": "The passed critical check on the root account"
+        },
+        {
+          "id": "c",
+          "text": "The failed medium check on audit logging"
+        },
+        {
+          "id": "d",
+          "text": "The passed low check on the password policy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A failed check is a gap, and the highest-severity failure is the public bucket. Passed checks need no remediation whatever their severity, and the medium failure ranks below the high one.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which target can Trivy scan for known vulnerabilities?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A running web form and its input fields"
+        },
+        {
+          "id": "b",
+          "text": "A container image and its packages"
+        },
+        {
+          "id": "c",
+          "text": "A public domain and its registered contacts"
+        },
+        {
+          "id": "d",
+          "text": "A wireless network and its signal coverage"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Trivy inspects container images, file systems and similar artifacts for vulnerable packages. Web forms, domain contacts and wireless coverage call for a web scanner, OSINT tools and a survey tool.",
+    "acronyms": [
+      "OSINT"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Trivy reports the table below for an image.\n\n```\nTarget: registry.example.internal/billing:4.2 (alpine 3.18)\nPackage   Severity  Installed  Fixed Version\nlibxml2   HIGH      2.11.4     2.11.6\nzlib      MEDIUM    1.2.13     (none)\nbusybox   LOW       1.36.0     1.36.1\n```\n\nWhich finding cannot be remediated by upgrading the package today?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`libxml2`, since its installed version is already current"
+        },
+        {
+          "id": "b",
+          "text": "`busybox`, since low findings have no upgrade path"
+        },
+        {
+          "id": "c",
+          "text": "`zlib`, because no patched release is listed"
+        },
+        {
+          "id": "d",
+          "text": "None of them, since an upgrade needs a new image first"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Only `zlib` has an empty Fixed Version column, so it needs a mitigation or a risk decision. `libxml2` is older than its fixed version, and `busybox` has a fix listed regardless of its severity.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "At which point in delivery does Checkov add the most value?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "After deployment, sweeping live hosts for open ports"
+        },
+        {
+          "id": "b",
+          "text": "During an incident, capturing packets from a switch"
+        },
+        {
+          "id": "c",
+          "text": "At runtime, intercepting requests to a web application"
+        },
+        {
+          "id": "d",
+          "text": "Before deployment, scanning infrastructure code files for insecure settings"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Checkov is a static analyzer for infrastructure code such as Terraform, so it catches insecure settings before anything is built. Port sweeps, packet capture and proxying all act on running systems.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A Checkov run passes the team's Terraform files, yet a storage bucket built from them is publicly readable. What is the most likely explanation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Someone changed the live bucket in the console after deployment, outside the code"
+        },
+        {
+          "id": "b",
+          "text": "Checkov reads deployed resources, not Terraform files"
+        },
+        {
+          "id": "c",
+          "text": "A passing result means the checks were skipped by default"
+        },
+        {
+          "id": "d",
+          "text": "Public buckets are outside what any scanner can see"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Checkov analyzes the code, so a manual change made to the running bucket afterwards is drift it cannot observe. It does read Terraform files, a pass means the checks ran, and cloud posture tools can see public buckets.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A SOC lead runs an Atomic Red Team test on a workstation and sees no alert in the monitoring tools. What does this most directly show?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A confirmed vulnerability in the workstation image"
+        },
+        {
+          "id": "b",
+          "text": "A possible detection gap for that behavior"
+        },
+        {
+          "id": "c",
+          "text": "A false positive in the vulnerability scanner"
+        },
+        {
+          "id": "d",
+          "text": "A misconfigured cloud account policy"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Atomic Red Team runs a small test that imitates an attacker technique, so silence suggests the detection did not fire. The test does not confirm a vulnerability, involve the scanner or touch cloud policy.",
+    "acronyms": [
+      "SOC"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A Caldera operation runs twelve abilities; nine complete and three are stopped by endpoint controls. What does the result describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Which hosts have unpatched software installed"
+        },
+        {
+          "id": "b",
+          "text": "Which cloud settings fail a security benchmark"
+        },
+        {
+          "id": "c",
+          "text": "Where defenses blocked the emulated attack and where they did not"
+        },
+        {
+          "id": "d",
+          "text": "Which web pages accept unsafe user input"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Caldera chains adversary abilities through agents, and the outcome shows which steps defenses stopped. Patch state, benchmark failures and unsafe input are found by scanners, not by adversary emulation.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "A scanner flags `app-09` for a missing patch, but the owner says it was applied last week. Which TWO steps best validate the finding?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Check the installed package version on the host"
+        },
+        {
+          "id": "b",
+          "text": "Delete the finding from the report"
+        },
+        {
+          "id": "c",
+          "text": "Retest with a second method or tool"
+        },
+        {
+          "id": "d",
+          "text": "Lower the finding's score until it drops off"
+        },
+        {
+          "id": "e",
+          "text": "Mark it as accepted risk without review"
+        },
+        {
+          "id": "f",
+          "text": "Rerun the same plugin and trust the result"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Reading the version from the host and retesting by another method give independent evidence. Deleting, rescoring or accepting the finding skips validation, and a rerun of the same plugin repeats the same possible error.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO tools are used mainly for open-source intelligence on a target organization?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Masscan"
+        },
+        {
+          "id": "b",
+          "text": "Maltego"
+        },
+        {
+          "id": "c",
+          "text": "Nikto"
+        },
+        {
+          "id": "d",
+          "text": "Trivy"
+        },
+        {
+          "id": "e",
+          "text": "Recon-ng"
+        },
+        {
+          "id": "f",
+          "text": "Checkov"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Maltego and Recon-ng both collect and relate public data about a target. Masscan scans ports, Nikto tests web servers, and Trivy and Checkov scan images and infrastructure code.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO tools emulate attacker behavior to test whether defenses detect or stop it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Nuclei"
+        },
+        {
+          "id": "b",
+          "text": "Prowler"
+        },
+        {
+          "id": "c",
+          "text": "Atomic Red Team"
+        },
+        {
+          "id": "d",
+          "text": "Angry IP Scanner"
+        },
+        {
+          "id": "e",
+          "text": "ZAP"
+        },
+        {
+          "id": "f",
+          "text": "Caldera"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "f"
+      ]
+    },
+    "explanation": "Atomic Red Team and Caldera are breach attack simulation tools that run attacker techniques against defenses. Nuclei and ZAP look for flaws, Prowler audits cloud configuration, and Angry IP Scanner finds live hosts.",
+    "acronyms": [
+      "IP",
+      "ZAP"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO tools can analyze infrastructure code files for misconfigurations without any live deployment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Prowler"
+        },
+        {
+          "id": "b",
+          "text": "Trivy"
+        },
+        {
+          "id": "c",
+          "text": "ScoutSuite"
+        },
+        {
+          "id": "d",
+          "text": "Masscan"
+        },
+        {
+          "id": "e",
+          "text": "Checkov"
+        },
+        {
+          "id": "f",
+          "text": "Nikto"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Checkov and Trivy can both read infrastructure code files and flag insecure settings. Prowler and ScoutSuite audit live cloud accounts, Masscan scans ports, and Nikto tests running web servers.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE activities can a web application intercepting proxy such as ZAP support?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Decoding packets from a switch span port"
+        },
+        {
+          "id": "b",
+          "text": "Holding and editing a request before it reaches the server"
+        },
+        {
+          "id": "c",
+          "text": "Scoring cloud identity policies against a benchmark"
+        },
+        {
+          "id": "d",
+          "text": "Crawling a site to discover its pages"
+        },
+        {
+          "id": "e",
+          "text": "Sending test requests to probe for injection flaws"
+        },
+        {
+          "id": "f",
+          "text": "Sweeping subnets for responsive hosts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "A web proxy can intercept and edit traffic, crawl the application and run active tests with injected input. Packet decoding, cloud policy scoring and subnet sweeping are separate tool jobs.",
+    "acronyms": [
+      "ZAP"
+    ]
+  },
+  {
+    "id": "cs4-2-2-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "A Prowler run on a cloud account is under review. Which TWO items on the report best help the team prioritize remediation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The severity assigned to each failed check"
+        },
+        {
+          "id": "b",
+          "text": "The order in which the checks were executed"
+        },
+        {
+          "id": "c",
+          "text": "Whether the affected resource is exposed to the internet"
+        },
+        {
+          "id": "d",
+          "text": "The total count of checks that passed"
+        },
+        {
+          "id": "e",
+          "text": "The color theme of the exported report"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Severity and exposure show which failures carry the most risk. Execution order, the count of passed checks and report styling say nothing about urgency.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-terminal-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "stem": "A scan of `app-07.example.internal` is saved in `scan.txt`. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ cat scan.txt",
+        "Nmap scan report for app-07.example.internal (10.30.5.17)",
+        "Host is up (0.0031s latency).",
+        "Port      State     Service",
+        "22/tcp    open      ssh",
+        "80/tcp    open      http",
+        "445/tcp   open      microsoft-ds",
+        "3306/tcp  filtered  mysql",
+        "8080/tcp  closed    http-proxy"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that prints every line in scan.txt that contains the word open"
+        },
+        {
+          "id": "state",
+          "label": "What does the state of port 3306 mean?",
+          "options": [
+            {
+              "id": "closed",
+              "text": "The host replied with a reset, so nothing listens"
+            },
+            {
+              "id": "filtered",
+              "text": "Probes drew no reply, so a filter may be blocking them"
+            },
+            {
+              "id": "open",
+              "text": "A service is listening and accepting connections"
+            },
+            {
+              "id": "skipped",
+              "text": "The port was left out of the scan"
+            }
+          ]
+        },
+        {
+          "id": "next",
+          "label": "Choose the best next action for port 3306",
+          "options": [
+            {
+              "id": "report",
+              "text": "Report it as an exposed database"
+            },
+            {
+              "id": "secure",
+              "text": "Mark it secure and close the ticket"
+            },
+            {
+              "id": "fp",
+              "text": "Add it to the false positive list"
+            },
+            {
+              "id": "rescan",
+              "text": "Record it as unknown and rescan from inside the filtered network"
+            }
+          ]
+        },
+        {
+          "id": "ver",
+          "label": "Type the Nmap command that runs service version detection against app-07.example.internal"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep open scan.txt",
+          "grep -i open scan.txt",
+          "grep -w open scan.txt",
+          "grep -n open scan.txt",
+          "grep -iw open scan.txt",
+          "grep \"open\" scan.txt",
+          "grep -i \"open\" scan.txt",
+          "grep -w \"open\" scan.txt",
+          "grep -n \"open\" scan.txt",
+          "grep -iw \"open\" scan.txt",
+          "grep 'open' scan.txt",
+          "grep -i 'open' scan.txt",
+          "grep -w 'open' scan.txt",
+          "grep -n 'open' scan.txt",
+          "grep -iw 'open' scan.txt",
+          "grep open ./scan.txt",
+          "grep -i open ./scan.txt",
+          "grep -w open ./scan.txt",
+          "grep -n open ./scan.txt",
+          "grep -iw open ./scan.txt",
+          "grep \"open\" ./scan.txt",
+          "grep -i \"open\" ./scan.txt",
+          "grep -w \"open\" ./scan.txt",
+          "grep -n \"open\" ./scan.txt",
+          "grep -iw \"open\" ./scan.txt",
+          "grep 'open' ./scan.txt",
+          "grep -i 'open' ./scan.txt",
+          "grep -w 'open' ./scan.txt",
+          "grep -n 'open' ./scan.txt",
+          "grep -iw 'open' ./scan.txt",
+          "cat scan.txt | grep open",
+          "cat ./scan.txt | grep open",
+          "cat scan.txt | grep -i open",
+          "cat scan.txt | grep \"open\"",
+          "cat ./scan.txt | grep \"open\"",
+          "cat scan.txt | grep -i \"open\"",
+          "cat scan.txt | grep 'open'",
+          "cat ./scan.txt | grep 'open'",
+          "cat scan.txt | grep -i 'open'"
+        ],
+        "state": [
+          "filtered"
+        ],
+        "next": [
+          "rescan"
+        ],
+        "ver": [
+          "nmap -sV app-07.example.internal",
+          "nmap app-07.example.internal -sV",
+          "nmap -sV -Pn app-07.example.internal",
+          "nmap -sV 10.30.5.17",
+          "nmap 10.30.5.17 -sV",
+          "nmap -sV -Pn 10.30.5.17",
+          "sudo nmap -sV app-07.example.internal",
+          "sudo nmap app-07.example.internal -sV",
+          "sudo nmap -sV -Pn app-07.example.internal",
+          "sudo nmap -sV 10.30.5.17",
+          "sudo nmap 10.30.5.17 -sV",
+          "sudo nmap -sV -Pn 10.30.5.17"
+        ]
+      }
+    },
+    "explanation": "The grep command prints the open-port lines. A filtered state means probes got no answer, so the true state is unknown and the next move is to retest from a vantage point the filter allows. Version detection is requested with the `-sV` option.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "find": "grep open scan.txt prints only the lines that contain open; the filtered and closed lines do not.",
+      "state": "Filtered means no usable reply came back, so a firewall or filter may be dropping the probes.",
+      "next": "An unknown state is recorded as such and retested from inside the filter, not reported or dismissed.",
+      "ver": "nmap -sV probes open ports to identify the service name and version."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-hotspot-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-hotspot",
+    "difficulty": 3,
+    "stem": "A scan of `web-12.example.internal` produced the six lines shown. Select every line that the output itself supports as a real exposure, and leave the false positives and informational lines unselected.",
+    "payload": {
+      "width": 600,
+      "height": 230,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 60,
+          "text": "High: banner says Apache 2.2; package log shows vendor fix applied"
+        },
+        {
+          "id": "n2",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 60,
+          "text": "Critical: default admin login accepted at /manager"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 85,
+          "w": 280,
+          "h": 60,
+          "text": "Medium: weak TLS version handshake completed on 8443"
+        },
+        {
+          "id": "n4",
+          "x": 310,
+          "y": 85,
+          "w": 280,
+          "h": 60,
+          "text": "High: patch missing, but the check timed out with no reply"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 160,
+          "w": 280,
+          "h": 60,
+          "text": "Info: host answers ICMP echo requests"
+        },
+        {
+          "id": "n6",
+          "x": 310,
+          "y": 160,
+          "w": 280,
+          "h": 60,
+          "text": "Medium: directory listing on /backup returned 12 files"
+        }
+      ],
+      "spots": [
+        {
+          "id": "s1",
+          "x": 10,
+          "y": 10,
+          "w": 280,
+          "h": 60,
+          "name": "High: banner says Apache 2.2; package log shows vendor fix applied"
+        },
+        {
+          "id": "s2",
+          "x": 310,
+          "y": 10,
+          "w": 280,
+          "h": 60,
+          "name": "Critical: default admin login accepted at /manager"
+        },
+        {
+          "id": "s3",
+          "x": 10,
+          "y": 85,
+          "w": 280,
+          "h": 60,
+          "name": "Medium: weak TLS version handshake completed on 8443"
+        },
+        {
+          "id": "s4",
+          "x": 310,
+          "y": 85,
+          "w": 280,
+          "h": 60,
+          "name": "High: patch missing, but the check timed out with no reply"
+        },
+        {
+          "id": "s5",
+          "x": 10,
+          "y": 160,
+          "w": 280,
+          "h": 60,
+          "name": "Info: host answers ICMP echo requests"
+        },
+        {
+          "id": "s6",
+          "x": 310,
+          "y": 160,
+          "w": 280,
+          "h": 60,
+          "name": "Medium: directory listing on /backup returned 12 files"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "s2",
+        "s3",
+        "s6"
+      ]
+    },
+    "explanation": "Three lines carry proof inside the line: a login that succeeded, a handshake that completed and a listing that returned files. The backported banner, the timed-out check and the ping reply do not show an exposure.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "s1": "A version banner with a vendor fix already applied is a classic false positive.",
+      "s2": "A login that succeeded with default credentials proves the exposure.",
+      "s3": "A completed handshake proves the weak protocol version is accepted.",
+      "s4": "A check that timed out has no evidence behind it, so the missing patch is unverified.",
+      "s5": "An answered echo request is an observation, not an exposure.",
+      "s6": "Files returned from the listing prove the directory is exposed."
+    },
+    "acronyms": [
+      "ICMP",
+      "TLS"
+    ]
+  },
+  {
+    "id": "cs4-2-2-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "stem": "Use the findings table from last night's scan to answer each question.",
+    "payload": {
+      "caption": "Scan findings by host and severity (counts)",
+      "columns": [
+        "Host",
+        "Critical",
+        "High",
+        "Medium",
+        "Low"
+      ],
+      "rows": [
+        [
+          "web-01",
+          "2",
+          "6",
+          "10",
+          "12"
+        ],
+        [
+          "db-02",
+          "1",
+          "3",
+          "6",
+          "10"
+        ],
+        [
+          "app-03",
+          "0",
+          "4",
+          "12",
+          "14"
+        ],
+        [
+          "file-04",
+          "3",
+          "2",
+          "5",
+          "10"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "crit",
+          "label": "Total critical findings across the four hosts",
+          "options": [
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "6",
+              "text": "6"
+            },
+            {
+              "id": "8",
+              "text": "8"
+            }
+          ]
+        },
+        {
+          "id": "worst",
+          "label": "Host with the most critical plus high findings",
+          "options": [
+            {
+              "id": "web",
+              "text": "web-01"
+            },
+            {
+              "id": "db",
+              "text": "db-02"
+            },
+            {
+              "id": "file",
+              "text": "file-04"
+            }
+          ]
+        },
+        {
+          "id": "low",
+          "label": "Share of all findings that are rated low",
+          "options": [
+            {
+              "id": "33",
+              "text": "33%"
+            },
+            {
+              "id": "54",
+              "text": "54%"
+            },
+            {
+              "id": "46",
+              "text": "46%"
+            }
+          ]
+        },
+        {
+          "id": "share",
+          "label": "Host where critical findings are the largest share of its own total",
+          "options": [
+            {
+              "id": "web",
+              "text": "web-01"
+            },
+            {
+              "id": "file",
+              "text": "file-04"
+            },
+            {
+              "id": "db",
+              "text": "db-02"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "crit": "6",
+        "worst": "web",
+        "low": "46",
+        "share": "file"
+      }
+    },
+    "explanation": "The table totals 100 findings. Critical sums to 6, web-01 has the most critical plus high, low findings are 46 percent, and file-04 has the largest critical share of its own findings.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "crit": "Critical column: 2 + 1 + 0 + 3 = 6.",
+      "worst": "Critical plus high: web-01 8, db-02 4, app-03 4, file-04 5, so web-01.",
+      "low": "Low column: 12 + 10 + 14 + 10 = 46 of 100 findings, which is 46 percent.",
+      "share": "Critical share of each host total: web-01 2/30 about 7 percent, db-02 1/20 5 percent, file-04 3/20 15 percent."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cs4-2-2-config-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 3,
+    "stem": "A Checkov run on `main.tf` fails the four checks below. Admins connect only from `10.8.0.0/24`. Configure the resources so every check passes.\n\n```\nFAILED  storage bucket reports: public read access enabled\nFAILED  storage bucket reports: encryption at rest not configured\nFAILED  storage bucket reports: access logging not enabled\nFAILED  security group admin-sg: SSH open to 0.0.0.0/0\n```",
+    "payload": {
+      "fields": [
+        {
+          "id": "pub",
+          "label": "Bucket public access setting",
+          "options": [
+            {
+              "id": "policy",
+              "text": "Public read through the bucket policy"
+            },
+            {
+              "id": "off",
+              "text": "Block public access: off"
+            },
+            {
+              "id": "on",
+              "text": "Block public access: on"
+            }
+          ]
+        },
+        {
+          "id": "enc",
+          "label": "Bucket encryption",
+          "options": [
+            {
+              "id": "managed",
+              "text": "Server-side encryption with a managed key"
+            },
+            {
+              "id": "uploader",
+              "text": "Encryption left to each uploader"
+            },
+            {
+              "id": "none",
+              "text": "No encryption, to speed up reads"
+            }
+          ]
+        },
+        {
+          "id": "log",
+          "label": "Bucket access logging",
+          "options": [
+            {
+              "id": "off",
+              "text": "Access logging off to save space"
+            },
+            {
+              "id": "sep",
+              "text": "Access logs sent to a separate log bucket"
+            },
+            {
+              "id": "browser",
+              "text": "Access logs kept in each user browser"
+            }
+          ]
+        },
+        {
+          "id": "ssh",
+          "label": "Security group rule for SSH",
+          "options": [
+            {
+              "id": "world",
+              "text": "SSH open to the internet for convenience"
+            },
+            {
+              "id": "partner",
+              "text": "SSH open to the partner range 198.51.100.0/24"
+            },
+            {
+              "id": "admin",
+              "text": "SSH limited to the admin range 10.8.0.0/24"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "pub": "on",
+        "enc": "managed",
+        "log": "sep",
+        "ssh": "admin"
+      }
+    },
+    "explanation": "Blocking public access, encrypting at rest, logging to a separate bucket and limiting SSH to the admin range fix the four failures in the code, so the next scan passes before anything is deployed.",
+    "pbqWeight": 4,
+    "partExplanations": {
+      "pub": "Turning block public access on removes the public read exposure.",
+      "enc": "Server-side encryption with a managed key satisfies the encryption at rest check.",
+      "log": "A separate log bucket keeps the access trail apart from the data it records.",
+      "ssh": "The stated admin range is the only source that needs SSH, so the rule is narrowed to it."
+    },
+    "acronyms": [
+      "SSH"
+    ]
+  },
+  {
+    "id": "cs4-2-2-match-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "stem": "Match each tool to the purpose it is documented for.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Maltego"
+        },
+        {
+          "id": "p2",
+          "text": "Nuclei"
+        },
+        {
+          "id": "p3",
+          "text": "Trivy"
+        },
+        {
+          "id": "p4",
+          "text": "Caldera"
+        },
+        {
+          "id": "p5",
+          "text": "Burp Suite"
+        },
+        {
+          "id": "p6",
+          "text": "Masscan"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Fast asynchronous probing of very large address ranges"
+        },
+        {
+          "id": "c2",
+          "text": "Link graph of public entities such as domains and emails"
+        },
+        {
+          "id": "c3",
+          "text": "Scoring a cloud account against a security benchmark"
+        },
+        {
+          "id": "c4",
+          "text": "Intercepting and editing web traffic during testing"
+        },
+        {
+          "id": "c5",
+          "text": "Checking container image packages for known flaws"
+        },
+        {
+          "id": "c6",
+          "text": "Running YAML templates that match known weaknesses"
+        },
+        {
+          "id": "c7",
+          "text": "Chaining adversary abilities through agents on test hosts"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c2",
+        "p2": "c6",
+        "p3": "c5",
+        "p4": "c7",
+        "p5": "c4",
+        "p6": "c1"
+      }
+    },
+    "explanation": "Each tool has a distinct documented purpose: link analysis, template-driven checks, image scanning, adversary emulation, an intercepting proxy and fast port probing. The remaining choice describes a cloud posture tool.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "p1": "Maltego turns public data into a graph of related entities.",
+      "p2": "Nuclei runs YAML templates that each describe a request and a match.",
+      "p3": "Trivy scans container images and their packages for known flaws.",
+      "p4": "Caldera runs chained adversary abilities through agents.",
+      "p5": "Burp Suite is an intercepting proxy for web testing.",
+      "p6": "Masscan probes very large ranges asynchronously at a chosen rate."
+    },
+    "acronyms": [
+      "YAML"
+    ]
+  },
+  {
+    "id": "cs4-2-2-diagram-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "2.2"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "stem": "Place the best tool for each need beside the target layer it covers. One label is a decoy.",
+    "payload": {
+      "width": 600,
+      "height": 300,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 180,
+          "h": 60,
+          "text": "Subnet 10.9.0.0/24"
+        },
+        {
+          "id": "n2",
+          "x": 210,
+          "y": 10,
+          "w": 180,
+          "h": 60,
+          "text": "Customer web portal (running)"
+        },
+        {
+          "id": "n3",
+          "x": 410,
+          "y": 10,
+          "w": 180,
+          "h": 60,
+          "text": "Container image billing:4.2"
+        },
+        {
+          "id": "n4",
+          "x": 10,
+          "y": 150,
+          "w": 180,
+          "h": 60,
+          "text": "Cloud account settings"
+        },
+        {
+          "id": "n5",
+          "x": 210,
+          "y": 150,
+          "w": 180,
+          "h": 60,
+          "text": "Company public footprint"
+        },
+        {
+          "id": "n6",
+          "x": 410,
+          "y": 150,
+          "w": 180,
+          "h": 60,
+          "text": "SOC detection coverage"
+        }
+      ],
+      "edges": [],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 80,
+          "name": "Find live hosts and open ports fast"
+        },
+        {
+          "id": "z2",
+          "x": 210,
+          "y": 80,
+          "name": "Probe the running portal for web flaws"
+        },
+        {
+          "id": "z3",
+          "x": 410,
+          "y": 80,
+          "name": "Check image packages for known flaws"
+        },
+        {
+          "id": "z4",
+          "x": 10,
+          "y": 220,
+          "name": "Audit account configuration"
+        },
+        {
+          "id": "z5",
+          "x": 210,
+          "y": 220,
+          "name": "Map domains, staff and emails from public sources"
+        },
+        {
+          "id": "z6",
+          "x": 410,
+          "y": 220,
+          "name": "Emulate attacker steps to test detections"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Trivy"
+        },
+        {
+          "id": "l2",
+          "text": "Caldera"
+        },
+        {
+          "id": "l3",
+          "text": "Masscan"
+        },
+        {
+          "id": "l4",
+          "text": "Checkov"
+        },
+        {
+          "id": "l5",
+          "text": "Prowler"
+        },
+        {
+          "id": "l6",
+          "text": "Maltego"
+        },
+        {
+          "id": "l7",
+          "text": "ZAP"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l3",
+        "z2": "l7",
+        "z3": "l1",
+        "z4": "l5",
+        "z5": "l6",
+        "z6": "l2"
+      }
+    },
+    "explanation": "Masscan covers fast host and port discovery, ZAP tests the running portal, Trivy checks image packages, Prowler audits the cloud account, Maltego maps the public footprint and Caldera emulates attackers to test detection. Checkov reads infrastructure code, which is not on the diagram.",
+    "pbqWeight": 6,
+    "partExplanations": {
+      "z1": "Masscan sweeps large ranges quickly for live hosts and open ports.",
+      "z2": "ZAP is a web proxy and scanner for a running application.",
+      "z3": "Trivy inspects the packages inside a container image.",
+      "z4": "Prowler audits a live cloud account against best practice checks.",
+      "z5": "Maltego builds a link graph from public data.",
+      "z6": "Caldera runs adversary abilities to test whether defenses detect them."
+    },
+    "acronyms": [
+      "SOC",
+      "ZAP"
+    ]
+  }
+]
