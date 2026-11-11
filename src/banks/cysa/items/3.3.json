@@ -1,0 +1,2452 @@
+[
+  {
+    "id": "cs4-3-3-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which statement best describes the main purpose of containment during incident response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Limit how far the threat can spread and how much damage it can do"
+        },
+        {
+          "id": "b",
+          "text": "Remove all of the attacker tools and persistence from every affected system"
+        },
+        {
+          "id": "c",
+          "text": "Return the affected services to normal operation for everyday users"
+        },
+        {
+          "id": "d",
+          "text": "Identify the person responsible so that legal action can begin"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Containment stops the spread and limits impact while the investigation continues. Removing attacker tools is eradication, returning services to users is recovery, and attribution is not a goal of containment.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A responder must collect evidence from a running compromised host. Which source is the most volatile and should be collected first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A disk image taken from the mounted system drive of the compromised host"
+        },
+        {
+          "id": "b",
+          "text": "The contents of memory and the list of running processes"
+        },
+        {
+          "id": "c",
+          "text": "Archived backup media stored in an offsite vault"
+        },
+        {
+          "id": "d",
+          "text": "Printed copies of last month's firewall reports"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Memory and process state disappear at power-off or reboot, so they come first in the order of volatility. Disk contents persist longer, and backup media and printed reports are the least volatile.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "What does a chain of custody record document for a piece of digital evidence?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The market value of the device holding the evidence"
+        },
+        {
+          "id": "b",
+          "text": "The vendor, version and license details of the forensic software that was used"
+        },
+        {
+          "id": "c",
+          "text": "Who handled the evidence, when, and why, from collection to storage"
+        },
+        {
+          "id": "d",
+          "text": "The list of vulnerabilities found on the device at collection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A chain of custody tracks every person who held or moved the evidence, with dates and reasons, so it stays defensible. Device value, tool details and vulnerability findings may appear in other records but do not show custody.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An analyst computes a cryptographic hash of a forensic image immediately after acquiring it. What is the main purpose of that hash?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To compress the image so that it takes less storage space"
+        },
+        {
+          "id": "b",
+          "text": "To encrypt the image so that only the case team can open it"
+        },
+        {
+          "id": "c",
+          "text": "To identify which operating system was installed on the source drive"
+        },
+        {
+          "id": "d",
+          "text": "To prove later that the image has not changed since it was collected"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Recomputing the hash at later access and getting the same value shows the image is unchanged. A hash does not compress or encrypt data, and it says nothing about the installed operating system.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which activity belongs to the eradication phase of incident response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Removing a persistence mechanism that the attacker installed on affected hosts"
+        },
+        {
+          "id": "b",
+          "text": "Isolating a host from the network so it cannot reach other systems"
+        },
+        {
+          "id": "c",
+          "text": "Writing the lessons-learned report for the leadership team"
+        },
+        {
+          "id": "d",
+          "text": "Calling the affected customers to announce that the incident began"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Eradication removes the attacker's foothold, including persistence and malicious files. Isolation is containment, the lessons-learned report is post-incident activity, and customer announcements are escalation and communication.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A responder confirms that a database of customer records was copied out of the network. What is the most appropriate next communication step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Wait to report anything to leadership or counsel until the full investigation is closed"
+        },
+        {
+          "id": "b",
+          "text": "Escalate to senior leadership and legal counsel using the communication plan"
+        },
+        {
+          "id": "c",
+          "text": "Post the details on public social media to warn other organizations"
+        },
+        {
+          "id": "d",
+          "text": "Delete the copied records from the server to prevent more exposure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A confirmed data exposure is escalated internally right away, following the plan, so legal obligations can be assessed. Waiting delays notification deadlines, public posting skips legal review, and deleting records destroys evidence.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Logs from servers in three time zones record events in local time. What should the analyst do before building an incident timeline?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sort the events by the order in which each log file was received"
+        },
+        {
+          "id": "b",
+          "text": "Keep each source in its own time zone and compare by eye"
+        },
+        {
+          "id": "c",
+          "text": "Convert every timestamp to one reference time such as UTC"
+        },
+        {
+          "id": "d",
+          "text": "Remove the events that were logged outside business hours"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A timeline only works when every event uses the same clock reference, and UTC is the usual choice. Sorting by file arrival or comparing mixed zones by eye produces wrong order, and dropping off-hours events removes likely attacker activity.",
+    "acronyms": [
+      "UTC"
+    ]
+  },
+  {
+    "id": "cs4-3-3-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Alert A shows adware pop-ups on one reception kiosk. Alert B shows a database server holding payment records beaconing to an unknown external host. How should the analyst triage them?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Handle A first because it was raised earlier in the shift and is already in the queue"
+        },
+        {
+          "id": "b",
+          "text": "Handle both at once by assigning the same priority to each and splitting the team evenly"
+        },
+        {
+          "id": "c",
+          "text": "Close A and B as low risk until more alerts arrive"
+        },
+        {
+          "id": "d",
+          "text": "Handle B first because of the data sensitivity and likely business impact"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Triage orders work by impact and asset value, and payment data on a possibly compromised server outranks adware on a kiosk. Arrival order, equal priority and waiting for more alerts all ignore the risk difference.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An EDR console shows that ws-0412.example.internal is running a credential theft tool. The analyst wants to stop lateral movement while keeping memory intact for analysis. Which action is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Use the EDR network isolation feature and leave the host powered on"
+        },
+        {
+          "id": "b",
+          "text": "Power the workstation off at the wall socket right away to end the activity"
+        },
+        {
+          "id": "c",
+          "text": "Reimage the workstation and restore the user files from backup"
+        },
+        {
+          "id": "d",
+          "text": "Disable only the user's mailbox and let the host keep running"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "EDR isolation cuts the host off from the network but keeps it running, so memory and processes remain available. Powering off loses volatile data, reimaging destroys evidence before analysis, and a mailbox change does not stop the host.",
+    "acronyms": [
+      "EDR"
+    ]
+  },
+  {
+    "id": "cs4-3-3-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Several servers show signs of compromise. The team moves them to a restricted network segment that only the forensic tools can reach. Which containment technique is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sinkholing"
+        },
+        {
+          "id": "b",
+          "text": "Segmentation into a quarantine network"
+        },
+        {
+          "id": "c",
+          "text": "Credential rotation"
+        },
+        {
+          "id": "d",
+          "text": "Application allow listing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Moving hosts into a restricted segment is segmentation, often called quarantine. Sinkholing redirects DNS lookups, credential rotation replaces secrets, and allow listing controls which programs may run.",
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "cs4-3-3-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Many workstations are querying a known malicious domain. Which technique redirects those lookups to a controlled address so the infected hosts can be located?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Blocking the domain by IP address at the perimeter only"
+        },
+        {
+          "id": "b",
+          "text": "Adding the domain to the browser favorites policy"
+        },
+        {
+          "id": "c",
+          "text": "Creating a DNS sinkhole for the domain"
+        },
+        {
+          "id": "d",
+          "text": "Disabling DHCP on the affected subnet"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A DNS sinkhole answers the lookup with a harmless address and reveals which hosts asked for it. An IP block at the perimeter shows nothing about internal clients, and the browser policy and DHCP change do not redirect lookups.",
+    "acronyms": [
+      "DHCP",
+      "DNS",
+      "IP"
+    ]
+  },
+  {
+    "id": "cs4-3-3-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A service account is seen signing in from an unusual host. The team wants to stop its use but keep its configuration for the investigation. What should they do?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the account and its history, then recreate it under a new name"
+        },
+        {
+          "id": "b",
+          "text": "Change the password and leave existing sessions running"
+        },
+        {
+          "id": "c",
+          "text": "Move the account into the domain administrators group"
+        },
+        {
+          "id": "d",
+          "text": "Disable the account and revoke its active sessions and tokens"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Disabling keeps the object and its history for investigation, and revoking sessions and tokens ends access already granted. Deleting loses evidence, a password change alone leaves live sessions, and adding administrator rights increases risk.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Why does an examiner attach a write blocker when imaging a suspect drive?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To prevent any change to the original media during acquisition"
+        },
+        {
+          "id": "b",
+          "text": "To speed up the copy by skipping unused disk sectors on the original drive"
+        },
+        {
+          "id": "c",
+          "text": "To encrypt the image so that the suspect cannot read it"
+        },
+        {
+          "id": "d",
+          "text": "To remove deleted files before the image is hashed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A write blocker allows reads only, so the original stays unaltered and the evidence remains defensible. It does not speed up copying, encrypt the image or remove deleted data.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which reason best supports capturing memory from a compromised host before powering it down?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Memory images are smaller than disk images and are easier to hash"
+        },
+        {
+          "id": "b",
+          "text": "Running processes, network connections and keys exist only in memory and are lost at power-off"
+        },
+        {
+          "id": "c",
+          "text": "Powering down a host always triggers the malware to erase itself"
+        },
+        {
+          "id": "d",
+          "text": "Memory capture is required before a host can be reimaged"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Volatile artifacts such as processes, connections and in-memory keys vanish when power is lost. Size is not the reason, malware does not always erase itself on shutdown, and no rule makes memory capture a prerequisite for reimaging.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After malware is removed from a server, which step best helps confirm the attacker has not kept access?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Restart the server and see whether the alert reappears"
+        },
+        {
+          "id": "b",
+          "text": "Delete the logs so that old alerts stop appearing"
+        },
+        {
+          "id": "c",
+          "text": "Reset the credentials exposed on the host and hunt for persistence on related systems"
+        },
+        {
+          "id": "d",
+          "text": "Add the server to a weekly report of healthy hosts"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Exposed credentials let an attacker return, and related systems may hold other footholds, so both need checking. A restart proves little, deleting logs destroys evidence, and a status report does not test for access.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Analysis shows a server has a kernel-level rootkit. Which eradication approach is most reliable?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Run a single antivirus scan from inside the running system and then return the server to service"
+        },
+        {
+          "id": "b",
+          "text": "Delete the files that the scan flags and keep the operating system"
+        },
+        {
+          "id": "c",
+          "text": "Disable the host firewall so the rootkit cannot hide its traffic"
+        },
+        {
+          "id": "d",
+          "text": "Rebuild the server from a known-good image and restore data only after scanning it"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A rootkit can hide from tools running on the infected system, so rebuilding from a trusted image is the reliable fix. Scanning from inside the system and deleting flagged files can miss components, and disabling the firewall only adds exposure.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which factor most often decides whether regulators must be notified about a security incident?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Legal or contractual notification thresholds tied to the kind of data exposed"
+        },
+        {
+          "id": "b",
+          "text": "The number of alerts the SIEM raised during the incident, regardless of what they mean"
+        },
+        {
+          "id": "c",
+          "text": "The time of day at which the incident was first detected"
+        },
+        {
+          "id": "d",
+          "text": "Whether the attacker used a publicly known tool"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Notification duties come from laws and contracts that depend on the data type and the extent of exposure. Alert volume, detection time and the attacker's tooling do not set those obligations.",
+    "acronyms": [
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cs4-3-3-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After recovery from an incident, a team raises logging detail and adds detection rules for the observed behavior. What is the main goal?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To reduce the storage cost of keeping detailed logs for long periods"
+        },
+        {
+          "id": "b",
+          "text": "To spot a repeat attempt or a missed foothold quickly"
+        },
+        {
+          "id": "c",
+          "text": "To replace the need for a lessons-learned review"
+        },
+        {
+          "id": "d",
+          "text": "To remove the need for vulnerability scanning"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Continuous monitoring after recovery is aimed at catching reoccurrence or footholds that eradication missed. More logging raises storage use, and it neither replaces the review nor substitutes for scanning.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which finding is the strongest sign that an incident is wider than the first host that alerted?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The first host's alert was marked high severity by the detection rule that fired"
+        },
+        {
+          "id": "b",
+          "text": "The first host belongs to a user in the finance team"
+        },
+        {
+          "id": "c",
+          "text": "The same outbound destination appears in proxy logs for several other hosts"
+        },
+        {
+          "id": "d",
+          "text": "The first host has not been patched in several months"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Other hosts contacting the same destination points to the same threat on more systems, which widens scope. Severity, the owner's department and patch age describe the first host only.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A SIEM flags impossible travel for a user. The help desk confirms the user was on the company VPN whose exit point is in another country. How should the analyst classify the alert?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "True positive, and begin containment of the user account"
+        },
+        {
+          "id": "b",
+          "text": "Informational, and delete the alert from the queue without any further note"
+        },
+        {
+          "id": "c",
+          "text": "Benign, and leave the rule unchanged for next time"
+        },
+        {
+          "id": "d",
+          "text": "False positive, with a note recorded and the rule tuned for VPN exit points"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The activity is explained and harmless, so it is a false positive, and documenting it plus tuning the rule prevents repeat noise. Treating it as a true positive wastes effort, and deleting or ignoring it leaves no record or improvement.",
+    "acronyms": [
+      "SIEM",
+      "VPN"
+    ]
+  },
+  {
+    "id": "cs4-3-3-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Legal counsel tells the response team that litigation is likely. What must the team do with the relevant logs and forensic images?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Preserve them under a legal hold and suspend routine deletion"
+        },
+        {
+          "id": "b",
+          "text": "Delete them once the incident is contained to limit liability"
+        },
+        {
+          "id": "c",
+          "text": "Share them with the affected vendor for safekeeping"
+        },
+        {
+          "id": "d",
+          "text": "Keep them only until the lessons-learned meeting has taken place"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A legal hold requires keeping potentially relevant data until counsel releases it. Deleting it, handing it to a third party or keeping it for a short period risks spoliation and broken custody.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The email system may itself be compromised during a major incident. What does a well-prepared communication plan provide for this case?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A single shared mailbox that every responder checks for new instructions"
+        },
+        {
+          "id": "b",
+          "text": "Pre-approved out-of-band channels and contact lists for responders"
+        },
+        {
+          "id": "c",
+          "text": "A rule that updates are sent only after the incident closes"
+        },
+        {
+          "id": "d",
+          "text": "A public status page that lists all technical details"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The plan names alternative channels and contacts so responders can coordinate when normal tools cannot be trusted. A shared mailbox is the compromised channel, delayed updates fail stakeholders, and public technical details help the attacker.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A production order server is compromised. Full isolation would stop all sales, and management wants the business to keep running. Which strategy best balances the need?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Leave the server untouched until the attack ends by itself"
+        },
+        {
+          "id": "b",
+          "text": "Apply full isolation immediately without telling management"
+        },
+        {
+          "id": "c",
+          "text": "Apply targeted containment, blocking attacker destinations and limiting lateral paths while monitoring, with stakeholder approval"
+        },
+        {
+          "id": "d",
+          "text": "Replace the server with a fresh one and delete the old one at once"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Targeted containment reduces attacker reach while keeping the service, and stakeholder approval records the accepted risk. Doing nothing lets harm continue, acting silently ignores the business impact, and deleting the old server destroys evidence.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A responder has a running server with four evidence sources. Which order of collection follows the order of volatility?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Backup media, disk image, network connection state, memory"
+        },
+        {
+          "id": "b",
+          "text": "Disk image, memory, backup media, network connection state"
+        },
+        {
+          "id": "c",
+          "text": "Network connection state, backup media, memory, disk image"
+        },
+        {
+          "id": "d",
+          "text": "Memory, network connection state, disk image, backup media"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Order of volatility starts with the data that disappears fastest, which is memory, then connection state, then disk, and finally backup media. The other orders collect longer-lived data before something that could vanish.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "The hash of an evidence image at transfer does not match the hash logged at acquisition. What does this imply for the case?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Integrity cannot be shown, so the mismatch is documented and the copy is not trusted until explained"
+        },
+        {
+          "id": "b",
+          "text": "The first hash was probably wrong, so the new value replaces it in the record"
+        },
+        {
+          "id": "c",
+          "text": "The mismatch is expected because copying always changes the hash"
+        },
+        {
+          "id": "d",
+          "text": "The image is fine as long as the file size is identical"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A changed hash means the content may differ, so the discrepancy must be recorded and the copy treated as unreliable until resolved. A faithful copy produces the same hash, and matching file size does not prove identical content.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A rebuilt file server is ready to return to production after ransomware. Which action best verifies that eradication succeeded?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Check that the rebuilt server responds to a ping from the management network and stays reachable"
+        },
+        {
+          "id": "b",
+          "text": "Scan the rebuilt server, compare it against its baseline, and place it under close monitoring"
+        },
+        {
+          "id": "c",
+          "text": "Confirm the backup job ran before the incident began"
+        },
+        {
+          "id": "d",
+          "text": "Ask the owner whether files appear to open normally"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Comparing against a baseline and monitoring closely tests for leftover changes and catches reinfection early. A ping shows only that the host is on, a backup job proves nothing about the rebuilt state, and user impressions miss hidden persistence.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Review the log excerpt.\n\n```\n2026-03-02T08:14:09Z vpn01 login ok user=mlopez src=203.0.113.50\n2026-03-02T08:21:44Z fs02 session user=mlopez src=10.20.4.31\n2026-03-02T09:02:17Z fs02 file reads=4120 user=mlopez\n2026-03-02T09:05:31Z proxy01 upload dst=upload.example.net bytes=612000000 src=10.20.4.31\n```\n\nIf the account is believed stolen and the transfer is still running, which action should come first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reboot fs02 so that the open session and the transfer are cleared"
+        },
+        {
+          "id": "b",
+          "text": "Email the user to ask whether the upload was intended and wait for the reply"
+        },
+        {
+          "id": "c",
+          "text": "Block the upload destination and disable the account and its VPN session"
+        },
+        {
+          "id": "d",
+          "text": "Wait for the upload to finish so that the total size is known"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Cutting off the destination and the stolen account stops further loss while keeping evidence on fs02. Rebooting loses volatile data, emailing the possible attacker's target wastes time, and waiting lets more data leave.",
+    "acronyms": [
+      "VPN"
+    ]
+  },
+  {
+    "id": "cs4-3-3-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An incident involves a vendor's remote access account on the network. Which escalation action is most appropriate under typical service contracts?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Post the vendor's name in the company chat so staff avoid it"
+        },
+        {
+          "id": "b",
+          "text": "Terminate the contract by email and stop all communication"
+        },
+        {
+          "id": "c",
+          "text": "Wait for the vendor to discover and report the problem"
+        },
+        {
+          "id": "d",
+          "text": "Notify the vendor through its security contact and coordinate revoking the account's credentials"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Contracts normally name a security contact, and joint action revokes access and gathers vendor logs. Naming the vendor in chat, ending the contract by email or waiting leaves the access path open or damages cooperation.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "During an active intrusion, a junior analyst proposes removing the one known malware file immediately. Why might the lead delay eradication?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Removing only the known foothold may alert the attacker and leave other footholds in place"
+        },
+        {
+          "id": "b",
+          "text": "Malware files cannot be removed while the host is running"
+        },
+        {
+          "id": "c",
+          "text": "Eradication must always wait until the lessons-learned meeting"
+        },
+        {
+          "id": "d",
+          "text": "The malware file is needed to restore the host from backup"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Until scope is understood, a partial cleanup can tip off the attacker and miss other persistence. Files can be removed on a running host, eradication does not wait for the review meeting, and malware is not needed for restoration.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO actions are containment techniques?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Isolating the affected host from the network"
+        },
+        {
+          "id": "b",
+          "text": "Reimaging the host from a trusted image"
+        },
+        {
+          "id": "c",
+          "text": "Disabling the compromised user account"
+        },
+        {
+          "id": "d",
+          "text": "Writing the lessons-learned report"
+        },
+        {
+          "id": "e",
+          "text": "Recomputing the hash of the memory image"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Isolating the host and disabling the account both limit the attacker's reach right away. Reimaging is eradication, the report is post-incident work, and recomputing a hash is evidence validation.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO details belong on a chain of custody form for a seized laptop?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The analyst's opinion on the attacker's motive"
+        },
+        {
+          "id": "b",
+          "text": "A unique evidence identifier and description of the laptop"
+        },
+        {
+          "id": "c",
+          "text": "The estimated cost of the incident to the business"
+        },
+        {
+          "id": "d",
+          "text": "Each person who took possession, with the date and time"
+        },
+        {
+          "id": "e",
+          "text": "The firewall rules that were changed during the incident"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "The form identifies the item and records every handoff with date and time. Motive, cost and firewall changes belong in other incident documents.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO evidence sources are volatile?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The contents of memory"
+        },
+        {
+          "id": "b",
+          "text": "Files on an offline archive disk"
+        },
+        {
+          "id": "c",
+          "text": "Active network connections on the host"
+        },
+        {
+          "id": "d",
+          "text": "Backup tapes in a locked cabinet"
+        },
+        {
+          "id": "e",
+          "text": "Printed access logs filed in a binder"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Memory and live connection state disappear when the host loses power or restarts. Archive disks, backup tapes and printed logs persist without power.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE activities are part of eradication?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Removing malware and its persistence mechanisms"
+        },
+        {
+          "id": "b",
+          "text": "Capturing a memory image of the host"
+        },
+        {
+          "id": "c",
+          "text": "Patching the vulnerability that was exploited"
+        },
+        {
+          "id": "d",
+          "text": "Notifying regulators about the exposure"
+        },
+        {
+          "id": "e",
+          "text": "Resetting the credentials exposed on the host"
+        },
+        {
+          "id": "f",
+          "text": "Returning the service to users"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Removing malware, closing the exploited weakness and resetting exposed credentials all take away the attacker's access. Memory capture is evidence acquisition, notification is escalation, and returning service is recovery.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-034",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO factors should raise the priority of an incident during triage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The alert arrived outside business hours"
+        },
+        {
+          "id": "b",
+          "text": "The affected asset supports a business-critical service"
+        },
+        {
+          "id": "c",
+          "text": "The ticket was opened by a senior manager"
+        },
+        {
+          "id": "d",
+          "text": "The data on the affected system is highly sensitive"
+        },
+        {
+          "id": "e",
+          "text": "The alert was created by the newest detection rule"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Business criticality and data sensitivity measure impact, which drives priority. Arrival time, requester seniority and rule age say little about harm.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-035",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO findings help determine the scope of an incident?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The age of the ticket in the queue"
+        },
+        {
+          "id": "b",
+          "text": "An EDR search showing the same malicious file hash on other hosts"
+        },
+        {
+          "id": "c",
+          "text": "The color of the severity label in the dashboard"
+        },
+        {
+          "id": "d",
+          "text": "Authentication logs showing the compromised account used on other systems"
+        },
+        {
+          "id": "e",
+          "text": "The name of the analyst who closed the previous ticket"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Matching indicators on other hosts and use of the stolen account elsewhere show how far the attacker reached. Ticket age, label color and prior ticket handlers describe the queue, not the intrusion.",
+    "acronyms": [
+      "EDR"
+    ]
+  },
+  {
+    "id": "cs4-3-3-mcq-036",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO are internal escalation targets for a serious breach?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Law enforcement agencies"
+        },
+        {
+          "id": "b",
+          "text": "Legal counsel"
+        },
+        {
+          "id": "c",
+          "text": "Regulators"
+        },
+        {
+          "id": "d",
+          "text": "Senior leadership"
+        },
+        {
+          "id": "e",
+          "text": "Affected customers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Legal counsel and senior leadership are inside the organization and are notified first to guide decisions. Law enforcement, regulators and customers are external parties, usually contacted after internal review.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-037",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE items should be recorded in incident documentation during the response?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A timeline of actions taken, using UTC"
+        },
+        {
+          "id": "b",
+          "text": "Guesses about which person is behind the attack"
+        },
+        {
+          "id": "c",
+          "text": "The commands run and the output they produced"
+        },
+        {
+          "id": "d",
+          "text": "Decisions made and who approved them"
+        },
+        {
+          "id": "e",
+          "text": "Opinions about how well colleagues performed"
+        },
+        {
+          "id": "f",
+          "text": "The full history of unrelated tickets"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "A UTC timeline, commands with output and approved decisions give a reliable, reviewable record. Speculation, personal opinions and unrelated tickets add noise and can weaken the record.",
+    "acronyms": [
+      "UTC"
+    ]
+  },
+  {
+    "id": "cs4-3-3-mcq-038",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO are valid reasons to delay eradication during an active incident?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The scope is not yet known and early removal could tip off the attacker"
+        },
+        {
+          "id": "b",
+          "text": "The backups are several days old"
+        },
+        {
+          "id": "c",
+          "text": "Users have asked for the service to be restored quickly"
+        },
+        {
+          "id": "d",
+          "text": "Law enforcement has asked the organization to preserve the situation for a short time"
+        },
+        {
+          "id": "e",
+          "text": "The patch for the exploited weakness is not yet tested"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Unknown scope and a law enforcement request are sound reasons to hold off, with approval. Old backups, user pressure and an untested patch affect recovery planning rather than justify leaving the attacker in place.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-039",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE steps help verify a restored system before it returns to production?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Scanning for persistence and comparing to the baseline"
+        },
+        {
+          "id": "b",
+          "text": "Deleting its logs to save disk space"
+        },
+        {
+          "id": "c",
+          "text": "Confirming that the exploited weakness is patched"
+        },
+        {
+          "id": "d",
+          "text": "Disabling the endpoint agent to speed up boot"
+        },
+        {
+          "id": "e",
+          "text": "Reusing the old administrator credentials for convenience"
+        },
+        {
+          "id": "f",
+          "text": "Checking that restored data came from a known-good backup"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "f"
+      ]
+    },
+    "explanation": "Persistence checks, patch confirmation and a trusted backup source all reduce the chance of reinfection. Deleting logs, disabling the agent and reusing old credentials weaken detection and security.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-mcq-040",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO practices are correct when handling a forensic disk image?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Analyze the original drive directly to avoid copy errors"
+        },
+        {
+          "id": "b",
+          "text": "Hash the original and the copy and record both values"
+        },
+        {
+          "id": "c",
+          "text": "Store the only copy on a shared analyst desktop"
+        },
+        {
+          "id": "d",
+          "text": "Work from a copy and keep the original sealed in access-controlled storage"
+        },
+        {
+          "id": "e",
+          "text": "Rename files inside the image to make them easier to read"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Hashing both and working from a copy with the original secured preserve integrity and custody. Working on the original, using a shared desktop and renaming files all risk altering or losing the evidence.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-terminal-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Host web03.example.internal is suspected of beaconing to an attacker. Review the connection list, then complete each step.",
+    "payload": {
+      "output": [
+        "$ ss -tnp",
+        "state  recv-q send-q local address:port  peer address:port   process",
+        "estab  0      0      10.30.5.12:49822    203.0.113.77:8443   users:((\"updsvc\",pid=3918,fd=7))",
+        "estab  0      0      10.30.5.12:22       10.30.1.8:51544     users:((\"sshd\",pid=1021,fd=4))",
+        "listen 0      128    0.0.0.0:443         0.0.0.0:*           users:((\"nginx\",pid=877,fd=6))"
+      ],
+      "steps": [
+        {
+          "id": "path",
+          "label": "Type a command that shows the executable that process ID 3918 is running from"
+        },
+        {
+          "id": "contain",
+          "label": "Choose the best containment action",
+          "options": [
+            {
+              "id": "isolate",
+              "text": "Isolate web03 from the network but leave it powered on"
+            },
+            {
+              "id": "poweroff",
+              "text": "Power web03 off immediately to stop the connection"
+            },
+            {
+              "id": "delete",
+              "text": "Delete the updsvc file and restart the service"
+            },
+            {
+              "id": "kill",
+              "text": "Stop the sshd service so that no one can sign in"
+            }
+          ]
+        },
+        {
+          "id": "next",
+          "label": "Choose what to collect before anyone reboots or changes the host",
+          "options": [
+            {
+              "id": "mem",
+              "text": "A memory image and the list of running processes"
+            },
+            {
+              "id": "rotate",
+              "text": "A fresh copy of last week's backup"
+            },
+            {
+              "id": "ticket",
+              "text": "The help desk ticket history for the host"
+            },
+            {
+              "id": "inventory",
+              "text": "The hardware inventory record for the host"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "path": [
+          "ls -l /proc/3918/exe",
+          "sudo ls -l /proc/3918/exe",
+          "ls -la /proc/3918/exe",
+          "sudo ls -la /proc/3918/exe",
+          "ls -al /proc/3918/exe",
+          "sudo ls -al /proc/3918/exe",
+          "readlink /proc/3918/exe",
+          "sudo readlink /proc/3918/exe",
+          "readlink -f /proc/3918/exe",
+          "sudo readlink -f /proc/3918/exe"
+        ],
+        "contain": [
+          "isolate"
+        ],
+        "next": [
+          "mem"
+        ]
+      }
+    },
+    "explanation": "The /proc entry for a process ID links to its executable, which shows where updsvc really runs from. Isolating the host stops the beaconing while keeping memory available, and memory and process state are the most volatile evidence to capture before any reboot. Powering off, deleting the file or stopping sshd would either lose evidence or miss the attacker connection.",
+    "partExplanations": {
+      "0": "The exe link under /proc/3918 shows the program path for that process ID.",
+      "1": "Isolation cuts the attacker link while the host stays on, so memory and processes are preserved.",
+      "2": "Memory and running process state are the most volatile and are lost at reboot."
+    },
+    "acronyms": [
+      "ID"
+    ]
+  },
+  {
+    "id": "cs4-3-3-terminal-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "A server shows signs of a stolen account. Review the authentication log excerpt, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 7 /var/log/auth.log",
+        "Mar  2 08:14:02 app07 sshd[2210]: Failed password for deploy from 198.51.100.23 port 40122 ssh2",
+        "Mar  2 08:14:05 app07 sshd[2212]: Failed password for deploy from 198.51.100.23 port 40130 ssh2",
+        "Mar  2 08:14:09 app07 sshd[2214]: Failed password for deploy from 198.51.100.23 port 40144 ssh2",
+        "Mar  2 08:14:15 app07 sshd[2216]: Accepted password for deploy from 198.51.100.23 port 40152 ssh2",
+        "Mar  2 08:19:40 app07 sudo: deploy : cmd=/usr/bin/tar czf /tmp/export.tgz /srv/customers",
+        "Mar  2 08:21:02 app07 sshd[2230]: Connection closed by 198.51.100.23 port 40152"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that shows only the lines in /var/log/auth.log that contain the word Accepted"
+        },
+        {
+          "id": "account",
+          "label": "Choose the best action for the deploy account",
+          "options": [
+            {
+              "id": "disable",
+              "text": "Disable the account and end its active sessions, keeping its settings"
+            },
+            {
+              "id": "delete",
+              "text": "Delete the account and its home directory"
+            },
+            {
+              "id": "reboot",
+              "text": "Reboot app07 so that the account signs out"
+            },
+            {
+              "id": "ignore",
+              "text": "Leave the account enabled and watch for a second login"
+            }
+          ]
+        },
+        {
+          "id": "escalate",
+          "label": "Choose the best escalation step for the staged customer archive",
+          "options": [
+            {
+              "id": "legal",
+              "text": "Escalate to legal counsel and senior leadership under the communication plan"
+            },
+            {
+              "id": "close",
+              "text": "Close the ticket as a false positive because the login succeeded"
+            },
+            {
+              "id": "email",
+              "text": "Email affected customers directly before legal review"
+            },
+            {
+              "id": "rm",
+              "text": "Delete /tmp/export.tgz at once to remove the exposure"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep Accepted /var/log/auth.log",
+          "sudo grep Accepted /var/log/auth.log",
+          "grep \"Accepted\" /var/log/auth.log",
+          "sudo grep \"Accepted\" /var/log/auth.log",
+          "grep 'Accepted' /var/log/auth.log",
+          "sudo grep 'Accepted' /var/log/auth.log",
+          "grep -n Accepted /var/log/auth.log",
+          "sudo grep -n Accepted /var/log/auth.log",
+          "cat /var/log/auth.log | grep Accepted",
+          "sudo cat /var/log/auth.log | grep Accepted",
+          "cat /var/log/auth.log | grep \"Accepted\"",
+          "sudo cat /var/log/auth.log | grep \"Accepted\"",
+          "cat /var/log/auth.log | grep 'Accepted'",
+          "sudo cat /var/log/auth.log | grep 'Accepted'"
+        ],
+        "account": [
+          "disable"
+        ],
+        "escalate": [
+          "legal"
+        ]
+      }
+    },
+    "explanation": "Filtering for Accepted shows the successful login that followed repeated failures. Disabling the account stops the attacker while keeping the account for investigation, and an archive of customer records staged for removal is escalated to legal and leadership. Deleting the account or archive destroys evidence, a reboot leaves the credential usable, and a successful login does not make the activity benign.",
+    "partExplanations": {
+      "0": "grep prints only the lines that contain Accepted, which isolates the successful sign-in.",
+      "1": "Disabling and ending sessions blocks the attacker and preserves the account for the investigation.",
+      "2": "Staged customer data raises legal obligations, so legal and leadership are told first."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-terminal-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-terminal",
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "You are imaging the drive from ws-0412.example.internal on a forensic workstation. Review the device list, then complete each step.",
+    "payload": {
+      "output": [
+        "$ lsblk",
+        "name   size type mountpoint",
+        "sda    500G disk",
+        "|-sda1  512M part /boot",
+        "`-sda2  499G part /",
+        "sdb    256G disk   (suspect drive, read-only via hardware write blocker)",
+        "$ ls /evidence",
+        "case-0412-notes.txt"
+      ],
+      "steps": [
+        {
+          "id": "why",
+          "label": "Choose why the suspect drive is connected through a write blocker",
+          "options": [
+            {
+              "id": "protect",
+              "text": "It prevents any change to the original media during acquisition"
+            },
+            {
+              "id": "speed",
+              "text": "It makes the copy finish faster by skipping empty space"
+            },
+            {
+              "id": "encrypt",
+              "text": "It encrypts the image as it is written"
+            },
+            {
+              "id": "wipe",
+              "text": "It removes deleted files from the drive"
+            }
+          ]
+        },
+        {
+          "id": "image",
+          "label": "Type a command that uses dd to copy /dev/sdb to the image file /evidence/ws0412.img"
+        },
+        {
+          "id": "hash",
+          "label": "Type a command that records the SHA-256 hash of /evidence/ws0412.img"
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "why": [
+          "protect"
+        ],
+        "image": [
+          "dd if=/dev/sdb of=/evidence/ws0412.img",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img",
+          "dd if=/dev/sdb of=/evidence/ws0412.img bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync",
+          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=noerror,sync",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=noerror,sync",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync bs=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress",
+          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=progress",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=progress",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress bs=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync status=progress",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync status=progress",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress conv=noerror,sync",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress conv=noerror,sync",
+          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=noerror,sync status=progress",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* conv=noerror,sync status=progress",
+          "dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=progress conv=noerror,sync",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img bs=* status=progress conv=noerror,sync",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync bs=* status=progress",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync bs=* status=progress",
+          "dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync status=progress bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img conv=noerror,sync status=progress bs=*",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress bs=* conv=noerror,sync",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress bs=* conv=noerror,sync",
+          "dd if=/dev/sdb of=/evidence/ws0412.img status=progress conv=noerror,sync bs=*",
+          "sudo dd if=/dev/sdb of=/evidence/ws0412.img status=progress conv=noerror,sync bs=*"
+        ],
+        "hash": [
+          "sha256sum /evidence/ws0412.img",
+          "sudo sha256sum /evidence/ws0412.img",
+          "sha256sum ./evidence/ws0412.img",
+          "sudo sha256sum ./evidence/ws0412.img",
+          "shasum -a 256 /evidence/ws0412.img",
+          "sudo shasum -a 256 /evidence/ws0412.img",
+          "openssl dgst -sha256 /evidence/ws0412.img",
+          "sudo openssl dgst -sha256 /evidence/ws0412.img",
+          "openssl sha256 /evidence/ws0412.img",
+          "sudo openssl sha256 /evidence/ws0412.img"
+        ]
+      }
+    },
+    "explanation": "A write blocker lets the examiner read the original without altering it. dd copies the whole device bit for bit to an image file, and a SHA-256 hash recorded at acquisition lets anyone later show the image is unchanged. Speed, encryption and wiping deleted files are not what a write blocker does.",
+    "partExplanations": {
+      "0": "The blocker allows reads only, so the original evidence stays unaltered.",
+      "1": "dd with if set to the source device and of set to the image file makes a bit-for-bit copy.",
+      "2": "The hash taken at acquisition is the baseline for later integrity checks."
+    },
+    "acronyms": [
+      "SHA"
+    ]
+  },
+  {
+    "id": "cs4-3-3-config-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Ransomware activity is confirmed on ws-0412.example.internal. Configure the EDR containment policy for this host.",
+    "payload": {
+      "fields": [
+        {
+          "id": "mode",
+          "label": "Network containment mode",
+          "options": [
+            {
+              "id": "isolate",
+              "text": "Isolate the host, keeping the EDR and responder connections only"
+            },
+            {
+              "id": "monitor",
+              "text": "Monitor only, with no network restriction"
+            },
+            {
+              "id": "dns",
+              "text": "Block DNS lookups but allow all other traffic"
+            }
+          ]
+        },
+        {
+          "id": "sessions",
+          "label": "User sessions on the host",
+          "options": [
+            {
+              "id": "lock",
+              "text": "End active sessions and lock the signed-in account"
+            },
+            {
+              "id": "keep",
+              "text": "Leave sessions open so the user can save work"
+            },
+            {
+              "id": "logoff",
+              "text": "Sign the user out and allow an immediate new sign-in"
+            }
+          ]
+        },
+        {
+          "id": "power",
+          "label": "Host power state",
+          "options": [
+            {
+              "id": "on",
+              "text": "Keep the host powered on so memory can be captured"
+            },
+            {
+              "id": "off",
+              "text": "Shut the host down to stop the encryption"
+            },
+            {
+              "id": "sleep",
+              "text": "Put the host to sleep until the morning"
+            }
+          ]
+        },
+        {
+          "id": "shares",
+          "label": "Mapped network shares used by the host",
+          "options": [
+            {
+              "id": "revoke",
+              "text": "Revoke the host's access to the shares and check them for changes"
+            },
+            {
+              "id": "allow",
+              "text": "Keep the shares mapped so the files stay available"
+            },
+            {
+              "id": "readonly",
+              "text": "Leave access as is and trust the file server backups"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "mode": "isolate",
+        "sessions": "lock",
+        "power": "on",
+        "shares": "revoke"
+      }
+    },
+    "explanation": "Isolation with only the EDR and responder paths open stops spread while analysts keep control. Locking the account removes the active user context, staying powered on preserves memory, and revoking share access protects other systems while their files are checked for changes.",
+    "partExplanations": {
+      "mode": "Isolation with a narrow allow list stops spread but keeps the response tools working.",
+      "sessions": "Ending sessions and locking the account removes the active credential from the host.",
+      "power": "Memory holds volatile evidence that a shutdown would destroy.",
+      "shares": "Ransomware can encrypt files on any share the host can reach, so access is cut and the shares are checked."
+    },
+    "acronyms": [
+      "DNS",
+      "EDR"
+    ]
+  },
+  {
+    "id": "cs4-3-3-config-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-config",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Legal counsel expects a dispute over the web03 incident. Configure how the case evidence is retained and handled.",
+    "payload": {
+      "fields": [
+        {
+          "id": "retention",
+          "label": "Retention of incident logs and images",
+          "options": [
+            {
+              "id": "hold",
+              "text": "Hold until the case is closed and counsel releases them"
+            },
+            {
+              "id": "default",
+              "text": "Keep for the standard 30-day log cycle"
+            },
+            {
+              "id": "purge",
+              "text": "Purge after the incident report is written"
+            }
+          ]
+        },
+        {
+          "id": "storage",
+          "label": "Where the images are stored",
+          "options": [
+            {
+              "id": "vault",
+              "text": "A restricted evidence store with access logging"
+            },
+            {
+              "id": "share",
+              "text": "A shared analyst folder on the file server"
+            },
+            {
+              "id": "mail",
+              "text": "Email attachments sent to the case team"
+            }
+          ]
+        },
+        {
+          "id": "integrity",
+          "label": "When hashes are recorded",
+          "options": [
+            {
+              "id": "each",
+              "text": "At acquisition and at every transfer or access"
+            },
+            {
+              "id": "end",
+              "text": "Once, when the case is closed"
+            },
+            {
+              "id": "none",
+              "text": "Only if the image is shared outside the company"
+            }
+          ]
+        },
+        {
+          "id": "access",
+          "label": "Who may handle the evidence",
+          "options": [
+            {
+              "id": "named",
+              "text": "Named responders, each entry recorded in the custody log"
+            },
+            {
+              "id": "team",
+              "text": "Any member of the security team without a record"
+            },
+            {
+              "id": "all",
+              "text": "Any employee who asks for it"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "retention": "hold",
+        "storage": "vault",
+        "integrity": "each",
+        "access": "named"
+      }
+    },
+    "explanation": "A legal hold overrides routine deletion, a restricted store with logging protects the images, hashes at each handoff prove they are unchanged, and a custody log of named handlers keeps the evidence defensible.",
+    "partExplanations": {
+      "retention": "A legal hold keeps the data until counsel releases it, so routine cycles are suspended.",
+      "storage": "A restricted, logged store limits access and records who touched the images.",
+      "integrity": "A hash at acquisition and at each transfer shows no change between handoffs.",
+      "access": "Named handlers with log entries keep the chain of custody unbroken."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-3-diagram-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A workstation is infected and talking to an attacker server. Place the best containment technique for each need named below the network path.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Infected workstation"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Access switch"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Perimeter firewall"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Attacker server"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Keep the workstation off the rest of the internal network"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Reveal which hosts look up the attacker domain"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Stop traffic to the attacker address from any host"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "End use of the stolen user credentials"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Quarantine VLAN on the access switch port"
+        },
+        {
+          "id": "l2",
+          "text": "DNS sinkhole for the domain"
+        },
+        {
+          "id": "l3",
+          "text": "Egress block rule for the address"
+        },
+        {
+          "id": "l4",
+          "text": "Disable the account and revoke sessions"
+        },
+        {
+          "id": "l5",
+          "text": "Reimage the workstation"
+        },
+        {
+          "id": "l6",
+          "text": "Restore files from backup"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "Each need maps to a containment technique: a quarantine VLAN limits lateral reach, a sinkhole shows which clients query the domain, an egress block cuts the address for every host, and disabling the account ends the stolen credentials. Reimaging is eradication and restoring from backup is recovery, so neither fits a containment need.",
+    "partExplanations": {
+      "z1": "A quarantine VLAN keeps the host from reaching internal systems.",
+      "z2": "A sinkhole answers the lookup with a controlled address and exposes the clients that ask.",
+      "z3": "An egress rule at the perimeter blocks that address for every internal host.",
+      "z4": "Disabling the account and revoking sessions removes the stolen access."
+    },
+    "acronyms": [
+      "DNS",
+      "VLAN"
+    ]
+  },
+  {
+    "id": "cs4-3-3-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.3"
+    ],
+    "status": "draft",
+    "type": "pbq-data",
+    "difficulty": 3,
+    "pbqWeight": 3,
+    "stem": "Sources log in different time zones. Use the table to normalize times to UTC and answer each question.",
+    "payload": {
+      "caption": "Events for the mlopez account on 2 March (times as logged)",
+      "columns": [
+        "Source",
+        "Event",
+        "Logged time",
+        "Offset from UTC"
+      ],
+      "rows": [
+        [
+          "vpn01",
+          "VPN login",
+          "13:02",
+          "+0"
+        ],
+        [
+          "fs02",
+          "Bulk file read starts",
+          "08:20",
+          "-5"
+        ],
+        [
+          "proxy01",
+          "Large upload starts",
+          "14:41",
+          "+1"
+        ],
+        [
+          "edr01",
+          "Alert raised",
+          "13:55",
+          "+0"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "read",
+          "label": "UTC time the bulk file read starts",
+          "options": [
+            {
+              "id": "0820",
+              "text": "08:20"
+            },
+            {
+              "id": "1320",
+              "text": "13:20"
+            },
+            {
+              "id": "0320",
+              "text": "03:20"
+            }
+          ]
+        },
+        {
+          "id": "gap",
+          "label": "Minutes from the VPN login to the start of the upload",
+          "options": [
+            {
+              "id": "39",
+              "text": "39"
+            },
+            {
+              "id": "99",
+              "text": "99"
+            },
+            {
+              "id": "159",
+              "text": "159"
+            }
+          ]
+        },
+        {
+          "id": "alert",
+          "label": "Minutes from the start of the upload to the alert",
+          "options": [
+            {
+              "id": "14",
+              "text": "14"
+            },
+            {
+              "id": "74",
+              "text": "74"
+            },
+            {
+              "id": "46",
+              "text": "46"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "read": "1320",
+        "gap": "39",
+        "alert": "14"
+      }
+    },
+    "explanation": "Convert each time to UTC by subtracting the offset. fs02 is UTC-5, so 08:20 becomes 13:20 UTC. proxy01 is UTC+1, so 14:41 becomes 13:41 UTC.",
+    "partExplanations": {
+      "read": "08:20 at an offset of -5 is 08:20 + 5 hours = 13:20 UTC.",
+      "gap": "Upload 14:41 at +1 is 13:41 UTC; 13:41 minus the 13:02 login is 39 minutes.",
+      "alert": "Upload at 13:41 UTC and alert at 13:55 UTC are 14 minutes apart."
+    },
+    "acronyms": [
+      "UTC",
+      "VPN"
+    ]
+  }
+]

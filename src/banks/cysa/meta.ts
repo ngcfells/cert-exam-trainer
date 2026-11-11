@@ -120,6 +120,7 @@ export const cysaMeta: ExamMeta = {
     // community: common terms our questions use that the official list leaves out (standard expansions, 2026-11-10).
     { term: 'ARP', expansion: 'Address Resolution Protocol', source: 'community' },
     { term: 'CISA', expansion: 'Cybersecurity and Infrastructure Security Agency', source: 'community' },
+    { term: 'CN', expansion: 'Common Name', source: 'community' },
     { term: 'CPU', expansion: 'Central Processing Unit', source: 'community' },
     { term: 'CSRF', expansion: 'Cross-Site Request Forgery', source: 'community' },
     { term: 'CVE', expansion: 'Common Vulnerabilities and Exposures', source: 'community' },
@@ -128,6 +129,7 @@ export const cysaMeta: ExamMeta = {
     { term: 'EVTX', expansion: 'Windows XML Event Log', source: 'community' },
     { term: 'FTP', expansion: 'File Transfer Protocol', source: 'community' },
     { term: 'GDPR', expansion: 'General Data Protection Regulation', source: 'community' },
+    { term: 'GMT', expansion: 'Greenwich Mean Time', source: 'community' },
     { term: 'HIPAA', expansion: 'Health Insurance Portability and Accountability Act', source: 'community' },
     { term: 'HMI', expansion: 'Human-Machine Interface', source: 'community' },
     { term: 'HTTP', expansion: 'Hypertext Transfer Protocol', source: 'community' },
