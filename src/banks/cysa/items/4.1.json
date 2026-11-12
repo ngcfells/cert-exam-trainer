@@ -1,0 +1,2388 @@
+[
+  {
+    "id": "cs4-4-1-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "The order database needs a four-hour outage to patch, and the business owner refuses a window during peak season. Which response is best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Agree an off-peak window and add a compensating control meanwhile"
+        },
+        {
+          "id": "b",
+          "text": "Patch during peak season because security outranks operations"
+        },
+        {
+          "id": "c",
+          "text": "Close the finding as a false positive so it leaves the report"
+        },
+        {
+          "id": "d",
+          "text": "Leave it unfixed and remove it from future reports"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The analyst should work with the owner on a safe window and reduce risk in the meantime. Forcing the outage ignores business impact, and hiding or mislabeling the finding removes accountability.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO are benefits of tracking remediation status in a ticketing system?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Visibility of overdue items so they can be followed up"
+        },
+        {
+          "id": "b",
+          "text": "Automatic removal of every vulnerability once a ticket exists"
+        },
+        {
+          "id": "c",
+          "text": "An auditable history of who fixed what and when"
+        },
+        {
+          "id": "d",
+          "text": "No further need to rescan after a fix is reported"
+        },
+        {
+          "id": "e",
+          "text": "A guarantee that patches never cause downtime"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "A tracker keeps evidence and shows what is late. Creating a ticket fixes nothing, validation is still required, and patch downtime cannot be guaranteed away.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO are inhibitors to remediation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Frequent scanner signature updates from the vendor"
+        },
+        {
+          "id": "b",
+          "text": "A critical business process that cannot tolerate downtime"
+        },
+        {
+          "id": "c",
+          "text": "Credentialed scanning being enabled on servers"
+        },
+        {
+          "id": "d",
+          "text": "A dashboard that uses a dark color theme"
+        },
+        {
+          "id": "e",
+          "text": "A contract that limits changes to a vendor-managed appliance"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "Contractual limits on changes and business processes that cannot stop both delay fixes. Signature updates, credentialed scans and dashboard themes do not prevent anyone from remediating.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "A scorecard lists ten hosts with the same critical flaw. Two are internet-facing payroll servers and eight are isolated test systems. How should the action plan order the work?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Treat all ten hosts identically, because the severity score is the same for each"
+        },
+        {
+          "id": "b",
+          "text": "Fix the two internet-facing payroll servers first, then the test systems"
+        },
+        {
+          "id": "c",
+          "text": "Start with the test systems because they are easiest to patch"
+        },
+        {
+          "id": "d",
+          "text": "Defer all ten findings until the next scheduled quarterly review meeting"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Exposure and business value raise priority when severity is equal. Ignoring context, choosing by convenience, or deferring critical findings all increase risk.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO compensating controls reduce exposure of a server that cannot be patched?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Extending password reuse windows for the server accounts"
+        },
+        {
+          "id": "b",
+          "text": "Removing the server from vulnerability scan scope"
+        },
+        {
+          "id": "c",
+          "text": "Network segmentation that limits who can reach the server"
+        },
+        {
+          "id": "d",
+          "text": "Disabling audit logging on the server to save disk space"
+        },
+        {
+          "id": "e",
+          "text": "An intrusion prevention rule that blocks known exploit traffic"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Segmentation and a virtual-patching rule reduce the chance of exploitation without changing the host. Longer password reuse, hiding the server from scans and turning off logs raise or conceal risk.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "After a fix is applied, what should happen before the finding is closed in the tracker?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The original scan report is deleted from the archive"
+        },
+        {
+          "id": "b",
+          "text": "A rescan confirms the vulnerability no longer exists"
+        },
+        {
+          "id": "c",
+          "text": "The asset is given a lower criticality rating by its owner"
+        },
+        {
+          "id": "d",
+          "text": "The ticket waits one full year before it can be closed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Validation proves the fix worked and gives auditors evidence. Deleting reports destroys the record, lowering criticality changes risk without fixing it, and a one-year wait has no basis.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "A fix is unavailable and the cost of mitigation exceeds the risk. What should accompany the decision to leave the finding open?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A verbal comment from the analyst that the risk seems low"
+        },
+        {
+          "id": "b",
+          "text": "Hiding the finding in the dashboard so that it no longer displays to anyone"
+        },
+        {
+          "id": "c",
+          "text": "A documented, time-limited risk acceptance signed by the business owner, with a review date"
+        },
+        {
+          "id": "d",
+          "text": "A note labelling the finding a false positive in the tracker"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Accepting risk needs a written, approved and periodically reviewed decision by the person who owns the risk. Hiding the finding or relabeling it as a false positive misrepresents the situation.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "An auditor at a payment processor asks for evidence that scans run regularly and that findings are fixed. Which report best supports this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A threat intelligence summary of the adversary groups active in the sector"
+        },
+        {
+          "id": "b",
+          "text": "An executive briefing about reputational damage after past incidents at other firms"
+        },
+        {
+          "id": "c",
+          "text": "A compliance report with scan dates, scope, findings and remediation status mapped to PCI DSS requirements"
+        },
+        {
+          "id": "d",
+          "text": "A log of firewall rule changes made during the past week"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Auditors need dated, scoped evidence tied to the standard. Threat summaries, reputational briefings and firewall change logs do not show scan cadence or closure.",
+    "acronyms": [
+      "PCI DSS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "A partner organization manages a shared gateway under a signed memorandum of understanding, and any change to it needs the partner agreement. Which inhibitor to remediation applies?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Legacy system"
+        },
+        {
+          "id": "b",
+          "text": "Degrading functionality"
+        },
+        {
+          "id": "c",
+          "text": "Business process interruption"
+        },
+        {
+          "id": "d",
+          "text": "Memorandum of understanding"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A written agreement that gives another party a say over changes is an MOU inhibitor. Nothing here is out of support, nothing breaks when patched, and no downtime is described.",
+    "acronyms": [
+      "MOU"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "A vendor stopped issuing patches for the operating system on a plant-floor workstation, so the flaw cannot be fixed. Which inhibitor to remediation is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Legacy system"
+        },
+        {
+          "id": "b",
+          "text": "Memorandum of understanding"
+        },
+        {
+          "id": "c",
+          "text": "Organizational governance"
+        },
+        {
+          "id": "d",
+          "text": "Business process interruption"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Software or hardware past end of support, with no vendor fixes, is a legacy system problem. An MOU is an agreement between parties, governance is an approval or policy hurdle, and business process interruption is about downtime.",
+    "acronyms": [
+      "MOU"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which THREE are typical stakeholders in a vulnerability remediation plan?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Unrelated external competitors"
+        },
+        {
+          "id": "b",
+          "text": "Anonymous participants in public forums"
+        },
+        {
+          "id": "c",
+          "text": "Business unit leaders accountable for the risk"
+        },
+        {
+          "id": "d",
+          "text": "Staff of the scanner vendor marketing department"
+        },
+        {
+          "id": "e",
+          "text": "Security analysts and engineers"
+        },
+        {
+          "id": "f",
+          "text": "System owners"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e",
+        "f"
+      ]
+    },
+    "explanation": "Owners fix, analysts and engineers guide and verify, and business leaders own the risk. Competitors, forum users and vendor marketing have no role in the plan.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "A hosting contract guarantees 99.99 percent uptime, and applying a patch to the database cluster would need a reboot that breaks that guarantee. Which inhibitor to remediation does this describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Service-level agreement"
+        },
+        {
+          "id": "b",
+          "text": "Legacy system"
+        },
+        {
+          "id": "c",
+          "text": "Proprietary system"
+        },
+        {
+          "id": "d",
+          "text": "Organizational governance"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A contractual uptime commitment that a fix would violate is an SLA constraint. The system is still supported and customer-managed, so it is not legacy or proprietary, and no approval policy is mentioned.",
+    "acronyms": [
+      "SLA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "A dashboard shows a 95 percent on-time remediation rate, yet auditors found several critical systems long overdue. What is the most likely flaw in the metric?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It was computed against the number of scan templates instead of the number of hosts"
+        },
+        {
+          "id": "b",
+          "text": "It treats a scan that finds nothing as an overdue finding"
+        },
+        {
+          "id": "c",
+          "text": "It blends every severity, so many low findings hide the overdue critical ones"
+        },
+        {
+          "id": "d",
+          "text": "It uses a different scoring version than the one the auditors use"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A blended rate lets large volumes of easy, low-severity fixes mask late critical items, so the KPI should be reported per severity. The other explanations do not account for a high overall rate alongside overdue critical systems.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "A system owner declines a fix because policy requires data-owner approval for any downtime, and that approval has not been given. Which inhibitor to remediation is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Legacy system"
+        },
+        {
+          "id": "b",
+          "text": "Proprietary system"
+        },
+        {
+          "id": "c",
+          "text": "Organizational governance"
+        },
+        {
+          "id": "d",
+          "text": "Business process interruption"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A policy or approval process that blocks action is an organizational governance inhibitor. The system is supported and customer-managed, and the blocker is an approval rule rather than the downtime itself.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO belong in an executive summary of vulnerability posture?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Complete plugin output for each assessed host"
+        },
+        {
+          "id": "b",
+          "text": "The top exposures, their business impact and the decisions needed"
+        },
+        {
+          "id": "c",
+          "text": "The risk trend over time compared with the targets"
+        },
+        {
+          "id": "d",
+          "text": "Every raw packet captured during the scans"
+        },
+        {
+          "id": "e",
+          "text": "The command lines used to patch each host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Leaders need direction against targets and the exposures that call for decisions. Plugin output, packet data and command lines are detail for engineers.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "A library fix requires updating an application that another team owns, and a release freeze begins on Friday. What should the remediation plan record?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The dependency, the owning team and the dates, plus a compensating control until the release"
+        },
+        {
+          "id": "b",
+          "text": "Only the library version number, with the other team left out of the plan entirely"
+        },
+        {
+          "id": "c",
+          "text": "Nothing, because a release freeze waives all open findings"
+        },
+        {
+          "id": "d",
+          "text": "A request to delete the application from the asset inventory"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Dependencies and their owners and dates make the plan actionable, and interim mitigation covers the gap. Ignoring the other team, assuming a waiver or deleting the asset leaves the risk unmanaged.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which visual is best for showing executives how the number of open findings changes over several weeks?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A table of registry settings from each scanned server"
+        },
+        {
+          "id": "b",
+          "text": "A tree view of the raw scanner output files in XML"
+        },
+        {
+          "id": "c",
+          "text": "A diagram of the packets exchanged during one scan"
+        },
+        {
+          "id": "d",
+          "text": "A line chart of open findings by severity over time"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A trend line lets leaders see direction and progress at a glance. Registry tables, raw XML and packet diagrams are technical detail that does not show change over time to a non-technical audience.",
+    "acronyms": [
+      "XML"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO items belong in a vulnerability remediation action plan?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A named owner and target date for each fix"
+        },
+        {
+          "id": "b",
+          "text": "The source code of the scanner plugins that found each flaw"
+        },
+        {
+          "id": "c",
+          "text": "The names and attribution of suspected attacker groups"
+        },
+        {
+          "id": "d",
+          "text": "Compensating controls for findings that cannot yet be patched"
+        },
+        {
+          "id": "e",
+          "text": "The scanner license invoices and renewal dates"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "An actionable plan assigns ownership and deadlines and covers interim safeguards for unpatchable items. Plugin source code, attribution and license paperwork do not help anyone fix a finding.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Why does each finding in a remediation tracker list a named owner?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It tells the scanner which credentials to use for authenticated checks"
+        },
+        {
+          "id": "b",
+          "text": "It sets the base score of the finding from the owner role"
+        },
+        {
+          "id": "c",
+          "text": "It creates accountability for completing the fix by the agreed date"
+        },
+        {
+          "id": "d",
+          "text": "It chooses which signature set the scanner loads next"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A named owner means someone is answerable for the fix and its due date. Scan credentials, scoring and signature selection are configured elsewhere.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "A report shows open critical findings falling each month while newly discovered critical findings stay flat and scan coverage is unchanged. What does this most likely indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The scanner signatures are outdated and are missing recent flaws"
+        },
+        {
+          "id": "b",
+          "text": "Attackers have stopped targeting the environment this quarter"
+        },
+        {
+          "id": "c",
+          "text": "Remediation is outpacing discovery, so the backlog is shrinking"
+        },
+        {
+          "id": "d",
+          "text": "Asset owners are closing tickets without applying any fix"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "With steady discovery and coverage, a falling open count means fixes are being completed faster than new findings arrive. The other readings are not supported by the data given.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "Why does a risk scorecard factor in asset criticality as well as the severity score of a finding?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Criticality changes the base metrics that the scanner records for each flaw it detects"
+        },
+        {
+          "id": "b",
+          "text": "The same flaw poses more risk on a revenue-critical server than on a lab machine"
+        },
+        {
+          "id": "c",
+          "text": "Severity scores cannot be calculated for flaws found on production servers"
+        },
+        {
+          "id": "d",
+          "text": "Lab machines are never scanned, so their severity is always unknown"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Business context decides how much damage exploitation could do, so the scorecard weights it. Asset criticality does not alter the base score, production servers are scored normally, and lab machines can be scanned.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO are valid reasons to escalate a stalled remediation to senior management?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A low-severity finding on a test server was opened this week"
+        },
+        {
+          "id": "b",
+          "text": "A scan finished faster than it did last month"
+        },
+        {
+          "id": "c",
+          "text": "A critical finding is past its policy deadline with no mitigation in place"
+        },
+        {
+          "id": "d",
+          "text": "An analyst prefers a different report template for the team"
+        },
+        {
+          "id": "e",
+          "text": "A system owner refuses to fix a flaw and no risk acceptance has been signed"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "Escalation is warranted when serious risk is unmanaged or an owner blocks action without an approved exception. A new low finding, a fast scan and a template preference are routine matters.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "A legacy programmable logic controller cannot be patched. Which action best reduces the risk until the device is replaced?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Remove it from scan scope so the finding stops appearing"
+        },
+        {
+          "id": "b",
+          "text": "Lower its CVSS score in the scanner to match the lack of an available patch"
+        },
+        {
+          "id": "c",
+          "text": "Turn off logging on the device to cut down on noise"
+        },
+        {
+          "id": "d",
+          "text": "Isolate it on its own network segment with tightly limited access"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Segmentation limits who can reach the flaw, which is a compensating control. Removing it from scope hides the risk, editing the score misstates it, and disabling logs reduces visibility.",
+    "acronyms": [
+      "CVSS"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Several findings come from staff who build servers by hand and reuse weak administrator passwords. Which element of the action plan best addresses the root cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A longer scan interval for those servers during the next quarter"
+        },
+        {
+          "id": "b",
+          "text": "A lower reporting threshold for those findings in the dashboard"
+        },
+        {
+          "id": "c",
+          "text": "A new signature set loaded on the scanner each week"
+        },
+        {
+          "id": "d",
+          "text": "Awareness and training for the staff who build the servers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The cause is human practice, so training on secure builds fixes it at the source. Changing scan timing, thresholds or signatures only affects detection or reporting.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "A newly disclosed flaw has no patch yet and is being exploited. What should the report to executives emphasize?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A detailed step-by-step account of how the exploit technique works in practice"
+        },
+        {
+          "id": "b",
+          "text": "Which assets are exposed, the interim mitigations in place and the expected fix date"
+        },
+        {
+          "id": "c",
+          "text": "A statement that no exposure exists until the vendor ships a patch"
+        },
+        {
+          "id": "d",
+          "text": "A list of every vulnerability the team closed during the last year, by month"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Leaders need exposure, protection now and timing. Exploit mechanics are too technical, claiming no exposure is false, and last year closures do not inform the current decision.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "A security appliance is sold as a sealed unit. The customer cannot change its operating system, and the vendor ships fixes on its own schedule. Which inhibitor to remediation applies?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Proprietary system"
+        },
+        {
+          "id": "b",
+          "text": "Degrading functionality"
+        },
+        {
+          "id": "c",
+          "text": "Legacy system"
+        },
+        {
+          "id": "d",
+          "text": "Service-level agreement"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A vendor-controlled platform that the customer cannot modify is a proprietary system. Degrading functionality concerns a fix that breaks features, legacy means out of support, and an SLA sets service commitments.",
+    "acronyms": [
+      "SLA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "What is the main purpose of vulnerability management reporting?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To replace the detection logic that is built into the scanner itself"
+        },
+        {
+          "id": "b",
+          "text": "To guarantee that no known vulnerability can ever be exploited"
+        },
+        {
+          "id": "c",
+          "text": "To store every packet that the scanner sent during each scan window"
+        },
+        {
+          "id": "d",
+          "text": "To turn scan findings into information that supports risk decisions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Reports translate raw findings into risk, priorities and actions that people can decide on. They do not replace scanner logic, cannot guarantee that nothing is exploitable, and are not a store of packet data.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which TWO should a technical remediation report for system engineers include?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Board-level discussion of insurance coverage"
+        },
+        {
+          "id": "b",
+          "text": "A draft press release about the exposure"
+        },
+        {
+          "id": "c",
+          "text": "Charts comparing the company to its competitors"
+        },
+        {
+          "id": "d",
+          "text": "Specific fix steps or patch references"
+        },
+        {
+          "id": "e",
+          "text": "The affected hosts and software versions"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "Engineers need to know what is affected and how to fix it. Insurance discussion, press drafts and competitor charts serve other audiences.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "A compliance report from the vulnerability management program is mainly meant to show which of the following?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "How many new exploits were published against the vendor products this quarter alone"
+        },
+        {
+          "id": "b",
+          "text": "Which adversary groups are currently targeting the organization sector"
+        },
+        {
+          "id": "c",
+          "text": "How quickly the help desk closes ordinary user tickets during a month"
+        },
+        {
+          "id": "d",
+          "text": "Whether systems and processes meet the requirements of a regulation or standard"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A compliance report demonstrates accountability against a regulation or standard, such as scan frequency and remediation status. Exploit counts and adversary activity belong to threat intelligence, and help desk speed is an IT service metric.",
+    "acronyms": [
+      "IT"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "Why would a report highlight the most common vulnerabilities across the environment?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "To reveal patterns, like one outdated component, that one fix could remove everywhere"
+        },
+        {
+          "id": "b",
+          "text": "To rank individual staff members by how many configuration mistakes they made on builds"
+        },
+        {
+          "id": "c",
+          "text": "To prove that scanning was switched off on the busiest production servers"
+        },
+        {
+          "id": "d",
+          "text": "To avoid the need for a risk score on each individual asset"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Recurring findings point to a shared root cause, such as an old library in a standard image, so one change fixes many hosts. The report is not a staff ranking, evidence of disabled scans, or a substitute for per-asset risk.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "In testing, a security patch breaks a plug-in that the finance application depends on. Which inhibitor to remediation does this describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Organizational governance"
+        },
+        {
+          "id": "b",
+          "text": "Degrading functionality"
+        },
+        {
+          "id": "c",
+          "text": "Memorandum of understanding"
+        },
+        {
+          "id": "d",
+          "text": "Proprietary system"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "When a fix would reduce or break needed functionality, degrading functionality is the inhibitor. Governance is an approval hurdle, an MOU is an agreement with another party, and nothing says the platform is vendor-locked.",
+    "acronyms": [
+      "MOU"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "The same finding keeps reappearing in reports after being closed on several servers. What does this most suggest?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The scanner has permanently stopped working on those particular servers"
+        },
+        {
+          "id": "b",
+          "text": "The finding was a false positive from the start"
+        },
+        {
+          "id": "c",
+          "text": "The root cause, such as a flawed build image, was never corrected"
+        },
+        {
+          "id": "d",
+          "text": "The servers have been removed from the asset inventory"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A recurring finding points to a source that keeps reintroducing it, such as an outdated golden image. A stopped scanner or a removed asset would not produce repeated reports, and a false positive would not be closed as fixed.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which content best fits a monthly vulnerability report written for an executive audience?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Raw plugin output for every host that the scanner assessed during the month, with all fields"
+        },
+        {
+          "id": "b",
+          "text": "Overall risk trend, the business impact of the top exposures and the decisions or resources needed"
+        },
+        {
+          "id": "c",
+          "text": "Per-host patch command lines and configuration file differences"
+        },
+        {
+          "id": "d",
+          "text": "The full list of scanner signature identifiers loaded for the scan"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Executives need risk, impact and the decisions required, in plain language. Raw output, command lines and signature lists suit engineers and would bury the message.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-034",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "A flaw affects software in a hospital infusion pump. Who must be involved in the remediation plan beyond the security team?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The device vendor, clinical engineering and the clinicians who use the pumps"
+        },
+        {
+          "id": "b",
+          "text": "Only the marketing team and the public relations office for the whole hospital group"
+        },
+        {
+          "id": "c",
+          "text": "Only the scanner vendor sales representative and a reseller"
+        },
+        {
+          "id": "d",
+          "text": "Only the accounts payable team in the finance department"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Fixing a medical device needs the manufacturer, the engineers who maintain it and the users affected by any downtime. The other groups have no role in the fix.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-035",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which part of a remediation action plan records approved baselines and tracks changes so that fixes can be verified later?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Configuration management"
+        },
+        {
+          "id": "b",
+          "text": "Risk acceptance documents"
+        },
+        {
+          "id": "c",
+          "text": "Awareness training sessions"
+        },
+        {
+          "id": "d",
+          "text": "Compensating control design"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Configuration management keeps authoritative baselines and a change record that proves what was changed and when. Risk acceptance, training and compensating controls serve other purposes in the plan.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-036",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "A report shows the percentage of critical findings closed within the window that policy sets. What is this kind of measure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An indicator of compromise for the affected hosts on the network"
+        },
+        {
+          "id": "b",
+          "text": "A compensating control applied to systems that remain unpatched"
+        },
+        {
+          "id": "c",
+          "text": "A false positive rate for the scanner signatures"
+        },
+        {
+          "id": "d",
+          "text": "A key performance indicator for remediation timeliness"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The percentage closed on time is a KPI that shows how well the remediation process meets its targets. An indicator of compromise describes attacker evidence, a compensating control is a safeguard, and a false positive rate measures scanner accuracy.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-037",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 1,
+    "stem": "Which THREE are common vulnerability management KPIs?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Count of phishing emails blocked by the mail gateway"
+        },
+        {
+          "id": "b",
+          "text": "Average password length across the directory"
+        },
+        {
+          "id": "c",
+          "text": "Mean time to remediate"
+        },
+        {
+          "id": "d",
+          "text": "Number of badge readers installed in the building"
+        },
+        {
+          "id": "e",
+          "text": "Number of open critical findings"
+        },
+        {
+          "id": "f",
+          "text": "Percentage of findings closed within the policy window"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "e",
+        "f"
+      ]
+    },
+    "explanation": "Time to fix, open critical counts and on-time closure all describe the remediation process. The other measures belong to email security, identity hygiene and physical security.",
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-038",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-single",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "stem": "Which measure best shows whether remediation is getting faster over time?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The total number of scans that were launched in each calendar month"
+        },
+        {
+          "id": "b",
+          "text": "Mean time to remediate, tracked by severity over several months"
+        },
+        {
+          "id": "c",
+          "text": "The count of plugins enabled in the scan policy"
+        },
+        {
+          "id": "d",
+          "text": "The number of times managers opened the dashboard"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Mean time to remediate directly measures speed from discovery to fix, and tracking it by severity shows the trend. Scan counts, plugin counts and dashboard views measure activity, not remediation speed.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-039",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO are limitations of relying on the base severity score alone in a report?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It cannot be calculated for any flaw found in a web application"
+        },
+        {
+          "id": "b",
+          "text": "It changes every time the scanner service restarts"
+        },
+        {
+          "id": "c",
+          "text": "It applies only to flaws on operating systems"
+        },
+        {
+          "id": "d",
+          "text": "It does not reflect how valuable the affected asset is to the business"
+        },
+        {
+          "id": "e",
+          "text": "It does not show whether exploitation is happening in the wild"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "e"
+      ]
+    },
+    "explanation": "A base score is fixed and generic, so asset value and live exploitation must come from other inputs. It can be calculated for web flaws, does not vary with restarts, and covers many software types.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-mcq-040",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "mcq-multi",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "stem": "Which TWO actions help when a security patch fails testing because it degrades application functionality?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Deploy the patch to production anyway and repair problems afterward"
+        },
+        {
+          "id": "b",
+          "text": "Apply a compensating control while the fix is validated"
+        },
+        {
+          "id": "c",
+          "text": "Work with the vendor on a compatible fix after testing in staging"
+        },
+        {
+          "id": "d",
+          "text": "Mark the finding resolved because a patch exists"
+        },
+        {
+          "id": "e",
+          "text": "Disable the staging environment so the failure stops appearing"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Resolve the incompatibility properly and cover the gap meanwhile. Forcing the patch risks outages, a patch that is not applied is not a resolution, and removing staging only hides test failures.",
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-data",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "The table shows one month of remediation activity for the example.internal environment. Use it to answer each question.",
+    "payload": {
+      "caption": "Findings by severity for the month",
+      "columns": [
+        "Severity",
+        "Open at start",
+        "Newly found",
+        "Closed",
+        "Closed within SLA"
+      ],
+      "rows": [
+        [
+          "Critical",
+          "20",
+          "12",
+          "25",
+          "20"
+        ],
+        [
+          "High",
+          "45",
+          "30",
+          "40",
+          "30"
+        ],
+        [
+          "Medium",
+          "80",
+          "50",
+          "60",
+          "54"
+        ],
+        [
+          "Low",
+          "120",
+          "40",
+          "50",
+          "50"
+        ]
+      ],
+      "fields": [
+        {
+          "id": "crit",
+          "label": "Critical findings still open at month end",
+          "options": [
+            {
+              "id": "7",
+              "text": "7"
+            },
+            {
+              "id": "17",
+              "text": "17"
+            },
+            {
+              "id": "32",
+              "text": "32"
+            }
+          ]
+        },
+        {
+          "id": "high",
+          "label": "Share of closed High findings that met the SLA",
+          "options": [
+            {
+              "id": "67",
+              "text": "67%"
+            },
+            {
+              "id": "75",
+              "text": "75%"
+            },
+            {
+              "id": "85",
+              "text": "85%"
+            }
+          ]
+        },
+        {
+          "id": "worst",
+          "label": "Severity with the lowest on-time closure rate",
+          "options": [
+            {
+              "id": "critical",
+              "text": "Critical"
+            },
+            {
+              "id": "high",
+              "text": "High"
+            },
+            {
+              "id": "medium",
+              "text": "Medium"
+            }
+          ]
+        },
+        {
+          "id": "total",
+          "label": "Findings of all severities still open at month end",
+          "options": [
+            {
+              "id": "172",
+              "text": "172"
+            },
+            {
+              "id": "222",
+              "text": "222"
+            },
+            {
+              "id": "262",
+              "text": "262"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "crit": "7",
+        "high": "75",
+        "worst": "high",
+        "total": "222"
+      }
+    },
+    "explanation": "Open at end equals open at start plus new minus closed. Critical is 20 + 12 - 25 = 7. High on-time is 30 of 40, or 75 percent, which is lower than Critical (20 of 25, 80 percent), Medium (54 of 60, 90 percent) and Low (100 percent).",
+    "partExplanations": {
+      "crit": "20 + 12 - 25 = 7 critical findings remain open.",
+      "high": "30 closed within the SLA out of 40 closed is 30 / 40 = 75 percent.",
+      "worst": "On-time rates are Critical 80, High 75, Medium 90 and Low 100 percent, so High is lowest.",
+      "total": "Critical 7, High 35, Medium 70 and Low 110 add up to 222 open findings."
+    },
+    "acronyms": [
+      "SLA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-match-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-match",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each audience to the vulnerability report content that serves it best.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "Executive leadership"
+        },
+        {
+          "id": "p2",
+          "text": "System administrators"
+        },
+        {
+          "id": "p3",
+          "text": "External compliance auditors"
+        },
+        {
+          "id": "p4",
+          "text": "Application owners"
+        },
+        {
+          "id": "p5",
+          "text": "Vulnerability management lead"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Risk trend against targets and the decisions needed"
+        },
+        {
+          "id": "c2",
+          "text": "Per-host fix steps and software versions"
+        },
+        {
+          "id": "c3",
+          "text": "Dated scan evidence and closure records for a standard"
+        },
+        {
+          "id": "c4",
+          "text": "Affected components and dependencies to plan a release"
+        },
+        {
+          "id": "c5",
+          "text": "Mean time to remediate and on-time closure by severity"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5"
+      }
+    },
+    "explanation": "Each audience needs a different level of detail: executives want risk and decisions, engineers want actions, auditors want evidence, application owners want impact and dependencies, and the program lead tracks process KPIs.",
+    "partExplanations": {
+      "p1": "Leaders act on risk trend and required decisions, not technical detail.",
+      "p2": "Administrators apply fixes, so they need hosts, versions and steps.",
+      "p3": "Auditors need dated proof that scans ran and findings were closed.",
+      "p4": "Application owners schedule changes around what is affected and what it depends on.",
+      "p5": "The program lead watches remediation speed and timeliness measures."
+    },
+    "acronyms": [
+      "KPI"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-buckets-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-buckets",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each item into the category it belongs to in a vulnerability management report or action plan.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "inh",
+          "text": "Inhibitor to remediation"
+        },
+        {
+          "id": "comp",
+          "text": "Compensating control"
+        },
+        {
+          "id": "kpi",
+          "text": "Report metric"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Vendor-managed appliance the customer cannot modify"
+        },
+        {
+          "id": "i2",
+          "text": "Peak-season freeze on all downtime"
+        },
+        {
+          "id": "i3",
+          "text": "Intrusion prevention rule blocking exploit traffic"
+        },
+        {
+          "id": "i4",
+          "text": "Segmentation around an unpatchable server"
+        },
+        {
+          "id": "i5",
+          "text": "Mean time to remediate"
+        },
+        {
+          "id": "i6",
+          "text": "Percentage of critical findings closed within the SLA"
+        },
+        {
+          "id": "i7",
+          "text": "Operating system past end of vendor support"
+        },
+        {
+          "id": "i8",
+          "text": "Count of open findings by severity"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "inh",
+        "i2": "inh",
+        "i3": "comp",
+        "i4": "comp",
+        "i5": "kpi",
+        "i6": "kpi",
+        "i7": "inh",
+        "i8": "kpi"
+      }
+    },
+    "explanation": "Inhibitors are the obstacles that delay a fix, compensating controls lower risk while a fix is delayed, and metrics measure progress.",
+    "partExplanations": {
+      "i1": "A sealed vendor platform is a proprietary-system obstacle.",
+      "i2": "A downtime freeze is a business process interruption obstacle.",
+      "i3": "A blocking rule reduces exposure without patching, so it compensates.",
+      "i4": "Limiting who can reach the server compensates for the missing patch.",
+      "i5": "It measures how long fixes take, so it is a metric.",
+      "i6": "It measures timeliness against policy, so it is a metric.",
+      "i7": "No vendor fixes exist for an unsupported system, a legacy obstacle.",
+      "i8": "Counts by severity track the size of the backlog, so they are a metric."
+    },
+    "acronyms": [
+      "SLA"
+    ],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-hotspot-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-hotspot",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "Review this entry from a remediation action plan. Select every element that leaves the plan not actionable.",
+    "payload": {
+      "width": 480,
+      "height": 210,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 50,
+          "text": "Owner: not assigned"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 50,
+          "text": "Due date: 15 days after discovery"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 80,
+          "w": 220,
+          "h": 50,
+          "text": "Affected hosts: all servers"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 80,
+          "w": 220,
+          "h": 50,
+          "text": "Fix: apply vendor update 4.2.1 to web tier"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 150,
+          "w": 220,
+          "h": 50,
+          "text": "Validation: none planned"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 150,
+          "w": 220,
+          "h": 50,
+          "text": "Severity: High, internet-facing"
+        }
+      ],
+      "spots": [
+        {
+          "id": "owner",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 50,
+          "name": "Owner: not assigned"
+        },
+        {
+          "id": "due",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 50,
+          "name": "Due date: 15 days after discovery"
+        },
+        {
+          "id": "hosts",
+          "x": 10,
+          "y": 80,
+          "w": 220,
+          "h": 50,
+          "name": "Affected hosts: all servers"
+        },
+        {
+          "id": "fix",
+          "x": 250,
+          "y": 80,
+          "w": 220,
+          "h": 50,
+          "name": "Fix: apply vendor update 4.2.1 to web tier"
+        },
+        {
+          "id": "valid",
+          "x": 10,
+          "y": 150,
+          "w": 220,
+          "h": 50,
+          "name": "Validation: none planned"
+        },
+        {
+          "id": "sev",
+          "x": 250,
+          "y": 150,
+          "w": 220,
+          "h": 50,
+          "name": "Severity: High, internet-facing"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "owner",
+        "hosts",
+        "valid"
+      ]
+    },
+    "explanation": "An actionable plan names an owner, identifies exactly which hosts are affected, and includes a way to verify the fix. The due date, the specific fix and the severity are already clear.",
+    "partExplanations": {
+      "owner": "Without an owner nobody is accountable for the fix.",
+      "hosts": "All servers is too vague to schedule or verify work.",
+      "valid": "No validation means the fix is never confirmed."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-config-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-config",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A legacy human-machine interface at a plant cannot be patched. Configure its entry in the action plan.",
+    "payload": {
+      "fields": [
+        {
+          "id": "approach",
+          "label": "Remediation approach",
+          "options": [
+            {
+              "id": "patch",
+              "text": "Apply the newest vendor patch to the live system now"
+            },
+            {
+              "id": "comp",
+              "text": "Apply compensating controls and document the risk acceptance"
+            },
+            {
+              "id": "scope",
+              "text": "Remove the system from scan scope"
+            }
+          ]
+        },
+        {
+          "id": "inhibitor",
+          "label": "Inhibitor to record",
+          "options": [
+            {
+              "id": "legacy",
+              "text": "Legacy system"
+            },
+            {
+              "id": "gov",
+              "text": "Organizational governance"
+            },
+            {
+              "id": "degrade",
+              "text": "Degrading functionality"
+            }
+          ]
+        },
+        {
+          "id": "review",
+          "label": "Handling of the exception",
+          "options": [
+            {
+              "id": "timed",
+              "text": "Time-limited, with a scheduled review date"
+            },
+            {
+              "id": "perm",
+              "text": "Permanent, with no further review"
+            },
+            {
+              "id": "auto",
+              "text": "Cleared automatically after the next scan"
+            }
+          ]
+        },
+        {
+          "id": "signoff",
+          "label": "Who signs off on the residual risk",
+          "options": [
+            {
+              "id": "owner",
+              "text": "The owner of the business process"
+            },
+            {
+              "id": "scanadmin",
+              "text": "The scanner administrator"
+            },
+            {
+              "id": "helpdesk",
+              "text": "The help desk lead"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "approach": "comp",
+        "inhibitor": "legacy",
+        "review": "timed",
+        "signoff": "owner"
+      }
+    },
+    "explanation": "The device has no available fix, so the plan lowers risk with compensating controls and a documented acceptance. The obstacle is a legacy system, the exception must be time-limited and reviewed, and the process owner accepts the risk.",
+    "partExplanations": {
+      "approach": "With no patch possible, compensating controls plus documented acceptance manage the risk; hiding it from scans does not.",
+      "inhibitor": "A system without vendor fixes is a legacy-system obstacle.",
+      "review": "Exceptions need an expiry and review so the risk is revisited.",
+      "signoff": "The person who owns the business process owns the residual risk."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-diagram-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-diagram",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Complete the reporting flow. Place the best output for each need named below the components.",
+    "payload": {
+      "width": 600,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Scanners and agents"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Findings repository"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Reporting module"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 50,
+          "text": "Ticketing system"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 120,
+          "name": "Give engineers a per-host list of fixes to apply"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 120,
+          "name": "Show leaders how open findings trend against targets"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 120,
+          "name": "Give auditors proof of scan frequency and closure"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 120,
+          "name": "Confirm that a completed fix removed the flaw"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Ticket queue with owner and due date"
+        },
+        {
+          "id": "l2",
+          "text": "Dashboard with trend lines by severity"
+        },
+        {
+          "id": "l3",
+          "text": "Compliance report with dated scan evidence"
+        },
+        {
+          "id": "l4",
+          "text": "Follow-up rescan of the affected host"
+        },
+        {
+          "id": "l5",
+          "text": "Raw packet capture from the scan window"
+        },
+        {
+          "id": "l6",
+          "text": "Attribution brief on an adversary group"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "Each output serves a need: a ticket queue assigns fixes, a trend dashboard informs leaders, a dated compliance report satisfies auditors, and a rescan validates the fix. Packet captures and attribution briefs are not vulnerability reporting outputs.",
+    "partExplanations": {
+      "z1": "A ticket queue gives engineers owned, dated work items.",
+      "z2": "Trend lines by severity show progress against targets for leaders.",
+      "z3": "A dated compliance report is the evidence auditors ask for.",
+      "z4": "Only a rescan confirms the vulnerability is gone."
+    },
+    "acronyms": [],
+    "status": "draft"
+  },
+  {
+    "id": "cs4-4-1-order-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "type": "pbq-order",
+    "objectiveIds": [
+      "4.1"
+    ],
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Put the steps of tracking a finding through remediation in order, starting when a scan result arrives. Each step needs the result of the step before it.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s3",
+          "text": "Test and apply the fix or a compensating control"
+        },
+        {
+          "id": "s5",
+          "text": "Report the outcome and close the ticket"
+        },
+        {
+          "id": "s1",
+          "text": "Prioritize the finding using severity and asset criticality"
+        },
+        {
+          "id": "s4",
+          "text": "Rescan to validate that the flaw is gone"
+        },
+        {
+          "id": "s2",
+          "text": "Assign an owner and agree a deadline in the action plan"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5"
+      ]
+    },
+    "explanation": "Priority sets the deadline, the owner then performs the fix, validation checks the fix, and only then is the result reported and the ticket closed.",
+    "partExplanations": {
+      "0": "Priority decides how urgent the work is and who must be involved.",
+      "1": "The deadline comes from the priority, and an owner is needed before work starts.",
+      "2": "The owner applies the fix once the plan exists.",
+      "3": "Validation can only happen after a fix has been applied.",
+      "4": "Closure and reporting rest on validated results."
+    },
+    "acronyms": [],
+    "status": "draft"
+  }
+]
