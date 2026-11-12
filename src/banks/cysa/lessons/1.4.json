@@ -1,0 +1,271 @@
+[
+  {
+    "id": "cs1-4-threat-actors-attribution",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Threat actor types and the limits of attribution",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "meaning": [
+      "A threat actor is whoever is behind an attack. Actors differ in skill, funding, patience and goal, and those differences change what the evidence looks like and what the defender should do first.",
+      "An analyst cares because the actor type guides the hunt: a patient group leaves quiet, long-lived footholds, while a hurried criminal leaves noisy, fast activity. It also guards against over-claiming, because naming the culprit from thin evidence can send the response in the wrong direction."
+    ],
+    "rule": [
+      "An advanced persistent threat (APT) is a well-resourced group with a specific objective that works to keep access for a long time. Look for slow, quiet activity over a long period, custom tooling and careful cleanup rather than loud, fast damage.",
+      "Criminal groups are usually after money and favor speed and volume: ransomware, fraud and data theft that can be sold. Hacktivists want attention for a cause, so defacement, leaks and disruption are typical. Unskilled attackers rely on public tools and scripts.",
+      "An insider already holds legitimate access, so there is often no malware and no break-in to find. The signs are in behavior: unusual volumes, odd hours, copies to personal storage, and timing near a resignation or dispute.",
+      "Attribution means naming who is responsible, and it is the weakest kind of conclusion. Reused tools, working hours, language and shared infrastructure are clues that can be copied, borrowed or planted, so they support a confidence level and not a certainty.",
+      "For a defender, what the actor did usually matters more than who the actor was. A well-supported description of behavior can drive detection and containment even when the name stays uncertain."
+    ],
+    "example": {
+      "intro": "A regional bakery chain finds its point-of-sale servers encrypted on a Saturday night. The ransom note was written in a language none of the staff speak, and the analyst is asked by the owner whether a foreign government did this.",
+      "table": {
+        "caption": "Evidence collected from the bakery incident",
+        "head": [
+          "Observation",
+          "Host",
+          "Note"
+        ],
+        "rows": [
+          [
+            "Encryption began at 23:10 local time",
+            "pos-0107.example.internal",
+            "All stores hit within 40 minutes"
+          ],
+          [
+            "Ransom note in a foreign language",
+            "pos-0107.example.internal",
+            "Payment demanded in a digital currency"
+          ],
+          [
+            "Remote desktop logon from 203.0.113.50",
+            "jump-02.example.internal",
+            "Credentials found in an old breach list"
+          ],
+          [
+            "No data staged for upload",
+            "fw-edge.example.internal",
+            "No large outbound transfers seen"
+          ]
+        ]
+      },
+      "steps": [
+        "Fast, wide encryption with a payment demand points to a financially motivated actor, not a patient one: nothing was staged or kept quiet.",
+        "The foreign-language note is easy to write for anyone, so it is a weak clue about who stands behind the attack.",
+        "The reused credentials explain how access was gained, and that gives the analyst something to fix and hunt for.",
+        "The best-supported statement is that a financially motivated criminal group did this, with the actual identity unknown. The analyst does not name a government."
+      ]
+    },
+    "trap": {
+      "wrong": "A foreign-language note and a remote logon prove which group or nation is responsible.",
+      "why": "Language, location and tool choice can all be borrowed or faked, so they are clues and not proof. Judge by motive and behavior (money, speed, no persistence) and say how confident the attribution is."
+    },
+    "checkIds": [
+      "cs4-1-4-mcq-001",
+      "cs4-1-4-mcq-002",
+      "cs4-1-4-mcq-009"
+    ]
+  },
+  {
+    "id": "cs1-4-intel-sources-confidence",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Judging threat intelligence sources and confidence",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "meaning": [
+      "Threat intelligence is information about adversaries and their methods, collected so a team can decide what to watch for and block. It arrives from open sources, paid vendors and sharing groups, and the quality varies widely.",
+      "An analyst cares because acting on weak intelligence has a cost. A bad entry can block a legitimate service, and a good report about a different industry can waste a week. Rating each item before acting is part of the job."
+    ],
+    "rule": [
+      "Open-source intelligence (OSINT) comes from public material such as news, forums, public paste sites and public reports. It is free and broad, but it is unvetted: it may be wrong, stale or planted, so it needs checking.",
+      "Closed or commercial sources are gathered from private collection and sold or shared under terms. They are often richer and more timely, but cost money and may reflect the vendor's own customer base.",
+      "Information sharing groups let peers in the same sector exchange indicators and lessons under agreed handling rules. Their strength is relevance: the peers face the same adversaries.",
+      "Three questions set confidence. Is the source reliable, does it show its evidence, and has the indicator been validated (confirmed as malicious)? Is the item timely, meaning still current? Is it relevant to our industry, technology and exposure? A weak answer to any one lowers the rating.",
+      "Check the context before blocking. An address or domain that belongs to a shared hosting provider can serve many innocent sites, so a block can cause an outage."
+    ],
+    "example": {
+      "intro": "A feed vendor sends an urgent alert that three addresses are tied to a new campaign. The vendor gives no evidence, and the report says the campaign targets energy utilities. The analyst works for a regional bank and must decide before the change window (the scheduled time for making network changes) closes whether to add the addresses to the perimeter block list.",
+      "table": {
+        "caption": "Review of the three addresses from the vendor alert",
+        "head": [
+          "Address",
+          "First seen",
+          "Last confirmed",
+          "Hosts"
+        ],
+        "rows": [
+          [
+            "198.51.100.20",
+            "Last week",
+            "Yesterday",
+            "Dedicated server, one site"
+          ],
+          [
+            "198.51.100.77",
+            "Last year",
+            "Last year",
+            "Shared host, many sites"
+          ],
+          [
+            "203.0.113.9",
+            "Last week",
+            "Yesterday",
+            "Dedicated server, no sites"
+          ]
+        ]
+      },
+      "steps": [
+        "Reliability and relevance come first. The vendor shows no evidence and has not validated the indicators, and the campaign targets energy utilities while this organization is a bank, so the alert earns only a low confidence rating.",
+        "The first and third addresses are recent and each points to one dedicated server, so they are timely and low risk to block.",
+        "The second address was last confirmed long ago and sits on a shared host, so it is stale and a block could knock out many unrelated sites.",
+        "The analyst asks the vendor for evidence, blocks the first and third as a limited, reversible step, sends the second back for fresh confirmation, and records the source and date with each decision."
+      ]
+    },
+    "trap": {
+      "wrong": "If a report comes from a well-known source and the details are right, it is safe to act on immediately.",
+      "why": "Accuracy when written does not guarantee it is still true or that it applies to this organization. Always weigh reliability, timeliness and relevance together, and check what else shares the address or domain before blocking."
+    },
+    "checkIds": [
+      "cs4-1-4-mcq-010",
+      "cs4-1-4-mcq-011",
+      "cs4-1-4-mcq-012",
+      "cs4-1-4-mcq-013",
+      "cs4-1-4-mcq-029"
+    ]
+  },
+  {
+    "id": "cs1-4-indicators-pyramid-of-pain",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Indicators of compromise and the pyramid of pain",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "meaning": [
+      "An indicator of compromise (IoC) is a piece of evidence that suggests a system was attacked or breached, such as a file hash (a fingerprint of the file's contents), an address, a domain or a pattern of activity. Indicators feed blocking rules, alerts and hunts.",
+      "An analyst cares because indicators differ in how long they stay useful. Some are trivial for an attacker to change, so a rule built on them dies quickly. Others describe how the attacker works, and are costly to change."
+    ],
+    "rule": [
+      "The pyramid of pain ranks indicators by how much it hurts the adversary when defenders detect and deny them. From easiest to change to hardest: file hashes, IP addresses, domain names, network and host artifacts, tools, and finally tactics, techniques and procedures (TTPs).",
+      "A hash changes if a single byte of the file changes, so blocking hashes is quick but fragile. An address can be replaced by renting another server. A domain takes slightly more effort to replace.",
+      "Atomic indicators are single values like a hash, an address or a domain. Behavioral indicators describe a sequence of actions, such as a document reader launching a command-line shell (a program that runs commands) that then makes an outbound connection (a connection out to another system).",
+      "Behavioral detections last longer because the attacker must change how they work, not only what infrastructure they use. They can also need more tuning, since normal activity sometimes looks similar.",
+      "A healthy program uses both: atomic indicators for fast, cheap blocking of known items, and behavioral rules for durable coverage."
+    ],
+    "example": {
+      "intro": "A hunter reviews why a block list of file hashes missed a second wave of the same intrusion. The hashes in the list were from the first wave on ws-0412.example.internal.",
+      "table": {
+        "caption": "Same intrusion, two waves (hashes shortened)",
+        "head": [
+          "Item",
+          "Wave one",
+          "Wave two"
+        ],
+        "rows": [
+          [
+            "Dropped file hash",
+            "3f9a...c21e",
+            "b07d...4e9a"
+          ],
+          [
+            "Staging server",
+            "192.0.2.14",
+            "192.0.2.88"
+          ],
+          [
+            "Method",
+            "Archive data, then upload",
+            "Archive data, then upload"
+          ]
+        ]
+      },
+      "steps": [
+        "The hash and the server changed between waves, so the list of hashes and addresses missed the second wave.",
+        "The method was the same both times: collect files into an archive and upload it.",
+        "A rule for that behavior would have fired on both waves, because the method is harder for the actor to change than a file or a server.",
+        "The hunter keeps the hashes for quick blocking and adds a behavioral detection for the archive-then-upload sequence."
+      ]
+    },
+    "trap": {
+      "wrong": "A longer block list of hashes and addresses is the strongest way to stop a determined adversary.",
+      "why": "Those values sit at the bottom of the pyramid and are cheap to replace. Blocking them costs the attacker little, so pair them with detections of tools and behaviors that are costly to change."
+    },
+    "checkIds": [
+      "cs4-1-4-mcq-004",
+      "cs4-1-4-mcq-005",
+      "cs4-1-4-mcq-006",
+      "cs4-1-4-mcq-019",
+      "cs4-1-4-mcq-020"
+    ]
+  },
+  {
+    "id": "cs1-4-deception-behavior-hunting",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Threat hunting, deception and behavior analytics",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "meaning": [
+      "Threat hunting is the active search for attackers who have got past automated alerts. A hunter starts from a hypothesis, such as an attacker could be moving between servers with a stolen account, and looks in the data for evidence that proves or disproves it.",
+      "Two tools help: deception, which plants things no legitimate user should touch, and behavior analytics, which learns what normal looks like so the odd stands out. An analyst cares because both produce signals that are specific and often low in noise."
+    ],
+    "rule": [
+      "A hunt is driven by a hypothesis and not by an alert. It is useful even when it finds nothing, because it tests a detection gap and the result can become a new rule. Choose the focus from what matters most, such as business-critical assets, risky configurations or isolated networks, then turn any finding into a detection.",
+      "Cyber deception uses decoys such as a honeypot (a fake system), a honeyfile (a fake document) or a honey account (a fake login). No real business process touches them, so any contact is suspicious by definition.",
+      "Deception gives early warning and a chance to watch attacker behavior. Legitimate use is very low, so false positives (alerts on normal activity) are few, but scanners and admin tools can still trip decoys, so exclude known ones. Decoys must look believable and be kept apart from real systems.",
+      "User and entity behavior analytics (UEBA) builds a baseline of normal activity for each account or device, then flags departures: a large download at 03:00, a first-ever logon to a sensitive server, or a sudden change in where an account signs in from.",
+      "A flagged departure is a lead, not a verdict. The analyst checks context, such as a role change or an approved project, before treating it as hostile."
+    ],
+    "example": {
+      "intro": "A security team has placed a decoy account named svc-archive-old in the directory. It is never used by a person or a scheduled job. One morning a security information and event management (SIEM) system, the tool that collects and searches logs, raises an alert on it.",
+      "table": {
+        "caption": "Alert extract for the decoy account",
+        "head": [
+          "Time",
+          "Event",
+          "Source host",
+          "Account"
+        ],
+        "rows": [
+          [
+            "02:14",
+            "Failed logon",
+            "ws-0733.example.internal",
+            "svc-archive-old"
+          ],
+          [
+            "02:14",
+            "Directory lookup",
+            "ws-0733.example.internal",
+            "svc-archive-old"
+          ],
+          [
+            "02:15",
+            "Failed remote logon",
+            "ws-0733.example.internal",
+            "svc-archive-old"
+          ]
+        ]
+      },
+      "steps": [
+        "No process or person has any reason to use this account, so each attempt is suspicious on its own.",
+        "All attempts come from one workstation, which becomes the first host to investigate.",
+        "The analyst investigates ws-0733 (checks its EDR alerts and logon history) and isolates it if the evidence confirms an intruder, then hunts for other accounts it touched, using the decoy hit as the starting hypothesis."
+      ]
+    },
+    "trap": {
+      "wrong": "A UEBA flag or decoy hit means the user is a confirmed malicious insider or attacker.",
+      "why": "A decoy hit proves something touched a thing it had no reason to touch, and a baseline departure only shows unusual behavior. Both point the investigation somewhere. Confirm with context and other evidence before concluding intent."
+    },
+    "checkIds": [
+      "cs4-1-4-mcq-026",
+      "cs4-1-4-mcq-027",
+      "cs4-1-4-mcq-030",
+      "cs4-1-4-mcq-032"
+    ]
+  }
+]

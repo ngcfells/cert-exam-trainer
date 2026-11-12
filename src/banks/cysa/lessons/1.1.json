@@ -1,0 +1,259 @@
+[
+  {
+    "id": "cs1-1-logging-trustworthy-records",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Logs you can trust: format, time and integrity",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "meaning": [
+      "A log is only useful in an investigation if you can search it, line it up with other sources and defend it afterward. Collecting a lot of events is not enough. The records must be parsed into consistent fields, stamped with a reliable time, kept long enough and protected from tampering.",
+      "An analyst cares because every later step depends on this: correlating a firewall entry with an application entry, proving what an account did, or showing a court that the evidence was not altered."
+    ],
+    "rule": [
+      "Parsing and normalization: sources write events in different formats, so the log collector (the server that receives events) parses each line and maps it to common named fields such as source address, user and action. Without this, a search for one address misses the sources that call that field something else.",
+      "Time: events from different hosts can only be ordered if their clocks agree. Hosts should sync to a trusted time source, and the collector should record one standard time, usually Coordinated Universal Time (UTC), with the zone stated. A wrong clock or an unstated zone makes a sequence of events look false.",
+      "Integrity: send logs off the host to a central store quickly, and make that store hard to alter, for example write-once storage or hashing of archived files, with administrators of the monitored systems unable to edit it. An attacker with admin rights will try to clear local logs, so a remote copy and a record that shows no edits are what hold up as evidence.",
+      "Ingestion: an agent on the host, a forwarder, or a push of event messages to a remote address from devices that cannot run software are all valid ways in. Pick the one the source can actually support.",
+      "Retention: keep records as long as law, policy and the usual look-back of investigations require, not as long as a vendor default. Recent data can sit on fast storage and older data on cheaper storage, as long as it can still be retrieved."
+    ],
+    "example": {
+      "intro": "An analyst at a retailer follows one login across two systems. The web server logs in local time and the gateway logs in UTC, and the analyst's first search finds no matching event for the gateway allow.",
+      "table": {
+        "caption": "Two entries for one user session",
+        "head": [
+          "Source",
+          "Time as logged",
+          "Zone",
+          "Event"
+        ],
+        "rows": [
+          [
+            "`gw01`",
+            "14:02:10",
+            "UTC",
+            "allow `192.0.2.44` to `ws-0412.example.internal`"
+          ],
+          [
+            "`web03`",
+            "09:02:12",
+            "UTC-5 (local)",
+            "session open user=jdoe"
+          ]
+        ]
+      },
+      "steps": [
+        "The two times differ by five hours, which is the zone offset, not a delay between events.",
+        "Convert `web03` to UTC: 09:02:12 local becomes 14:02:12 UTC, two seconds after the gateway allow.",
+        "The events now line up as one session: allow, then session open.",
+        "The fix is to have the collector store every event in one standard time with the zone recorded, so the next search works without hand conversion."
+      ]
+    },
+    "trap": {
+      "wrong": "If the timestamps of two related events are hours apart, the events cannot belong to the same activity.",
+      "why": "Check the zone before the gap. A difference equal to a whole number of hours usually means a zone mismatch, and a gap of minutes with no whole-hour pattern points to clock drift. Normalize to one time standard first, then judge whether the events are related."
+    },
+    "checkIds": [
+      "cs4-1-1-mcq-001",
+      "cs4-1-1-mcq-003",
+      "cs4-1-1-mcq-005",
+      "cs4-1-1-mcq-006",
+      "cs4-1-1-mcq-028"
+    ]
+  },
+  {
+    "id": "cs1-1-hardening-and-shared-platforms",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Hardening hosts and sharing platforms",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "meaning": [
+      "Hardening means reducing what an attacker could use on a system: fewer running services, fewer accounts, stronger settings. A baseline is the approved configuration, and drift is any difference between a host and that baseline.",
+      "Analysts care because many findings are simply a gap from the baseline, and because shared platforms such as virtual machines and containers change where a single flaw can spread."
+    ],
+    "rule": [
+      "Reduce the attack surface: disable or remove services, ports and software that the system does not need, change default credentials, and turn off direct remote administrator logins. Each unused open port (a port a service waits on) is something to find, patch and defend. In an application split into microservices, each small service and its interface is also attack surface, so authenticate, log and limit access to each one.",
+      "Compare to a baseline: a scan or an endpoint tool that checks settings against an approved baseline reports drift, such as a disabled firewall or an unexpected local account. On Linux, the local account list is in `/etc/passwd`, which is one of the first places to look.",
+      "Virtual machines share physical hardware through a hypervisor (the software that runs the virtual machines). A flaw in the hypervisor, or a host that is badly isolated, can reach every machine on it, so the hypervisor needs the same patching and access control as any critical system.",
+      "Containers share one host operating system kernel (the core of the operating system). A kernel flaw or a container run with too many privileges can affect every container on that host, so run them without root rights, use trusted and scanned images, and limit what each may access."
+    ],
+    "example": {
+      "intro": "A scan of a new Linux web server is compared with the team's baseline. The analyst reads the differences.",
+      "table": {
+        "caption": "Baseline compared with scan result for `web-07`",
+        "head": [
+          "Setting",
+          "Baseline",
+          "Found"
+        ],
+        "rows": [
+          [
+            "Password login over `ssh`",
+            "Disabled",
+            "Enabled"
+          ],
+          [
+            "Local account `deploytest`",
+            "Absent",
+            "Present, has a login shell"
+          ],
+          [
+            "Listening ports",
+            "443 only",
+            "443 and 8080"
+          ],
+          [
+            "Host firewall",
+            "On",
+            "On"
+          ]
+        ]
+      },
+      "steps": [
+        "Three of the four settings differ from the baseline, so the host has drifted.",
+        "Password `ssh` login allows guessing attacks, the `deploytest` account is an unneeded login, and port 8080 is an extra listener.",
+        "Fix each by returning it to the baseline: turn password login off, remove the account, close or disable whatever uses port 8080.",
+        "The firewall matches the baseline and needs no change. Re-run the comparison afterward to confirm that no drift remains."
+      ]
+    },
+    "trap": {
+      "wrong": "Containers are isolated like virtual machines, so one compromised container cannot affect the others.",
+      "why": "A virtual machine has its own operating system, while containers share the host kernel. Isolation between them is weaker, so a kernel flaw or an over-privileged container can affect neighbors. Ask what the workloads share to judge how far a flaw spreads."
+    },
+    "checkIds": [
+      "cs4-1-1-mcq-007",
+      "cs4-1-1-mcq-011",
+      "cs4-1-1-mcq-012",
+      "cs4-1-1-mcq-029",
+      "cs4-1-1-mcq-030"
+    ]
+  },
+  {
+    "id": "cs1-1-identity-and-zero-trust",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Identity and zero trust access",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "meaning": [
+      "Zero trust means no connection is trusted just because of where it comes from. Each request is judged on who is asking, the state of the device and the context, and access is granted to a specific application, not to a whole network.",
+      "Analysts care because identity is now the main control point. Access logs show who proved what and what was allowed, and weak points such as shared admin accounts make activity impossible to attribute."
+    ],
+    "rule": [
+      "Authentication proves who you are, and authorization decides what you may do. A user can pass the first and still be refused by the second, and the refusal in the log is the authorization step working.",
+      "Multi-factor authentication needs checks from two or more different categories: something you know, something you have, something you are. A password plus a second password is not multi-factor.",
+      "Zero trust network access (ZTNA) evaluates identity, device health and context on every request and connects the user to one application. A traditional virtual private network (VPN) often places the user on the network, which gives wider reach after a single login.",
+      "Secure access service edge is a cloud-delivered bundle that combines network and security functions such as ZTNA, a secure web gateway and a cloud access security broker, managed as one service for distributed sites and users.",
+      "Privileged access management controls powerful accounts: it stores credentials in a vault so people do not share or know them, issues them for a limited time, and records each session. This gives accountability that a shared password cannot."
+    ],
+    "example": {
+      "intro": "A contractor needs to reach one invoicing application. The security team compares what one example design of each kind would let the contractor reach.",
+      "table": {
+        "caption": "Access granted to the contractor under two example designs",
+        "head": [
+          "Design",
+          "Reach after login",
+          "Device check",
+          "Per-request decision"
+        ],
+        "rows": [
+          [
+            "Full-tunnel VPN",
+            "Whole `10.20.0.0/16` subnet",
+            "None in this design",
+            "No"
+          ],
+          [
+            "ZTNA",
+            "`inv.example.internal` only",
+            "Required",
+            "Yes"
+          ]
+        ]
+      },
+      "steps": [
+        "The VPN gives access to the subnet after one successful login, so a stolen contractor password exposes many systems.",
+        "ZTNA limits the reach to the one application the contractor needs.",
+        "It also checks the device state and judges each request, so an unmanaged device or odd context can be refused.",
+        "For this need, ZTNA fits better. Its logs also show which application each person used, which helps an investigation."
+      ]
+    },
+    "trap": {
+      "wrong": "A user who passed a login with a password and a one-time code is allowed to open anything in the system.",
+      "why": "Logging in answers who you are. Whether you may open a specific resource is a separate authorization decision. A refusal after a good login is expected when the account lacks permission, so check the permission, not the login."
+    },
+    "checkIds": [
+      "cs4-1-1-mcq-016",
+      "cs4-1-1-mcq-017",
+      "cs4-1-1-mcq-019",
+      "cs4-1-1-mcq-020",
+      "cs4-1-1-mcq-021"
+    ]
+  },
+  {
+    "id": "cs1-1-ics-scada-environments",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Industrial control systems and SCADA",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "meaning": [
+      "An industrial control system is the hardware and software that monitors and controls physical processes, such as pumps, valves and power equipment. This operational technology (OT) has different priorities from office IT: safety and continuous operation come first.",
+      "Analysts care because an action that is routine on an office network, such as an active scan, can stop a fragile controller, and because an intrusion here can have physical effects."
+    ],
+    "rule": [
+      "A programmable logic controller (PLC) is a field device that reads sensors and drives equipment according to its stored logic. It is the part that acts on the physical process.",
+      "Supervisory control and data acquisition (SCADA) is a platform for gathering readings from many remote sites over long distances and sending commands back. A human machine interface (HMI) is the screen where operators view and control the process.",
+      "Segment the control network from corporate IT with a filtered boundary, so that an intrusion in the office does not reach the plant floor.",
+      "Monitor passively. Listening to control traffic can reveal unexpected commands or new devices without touching controllers, whereas active scans can disrupt old and fragile equipment.",
+      "Remote access, including vendors, should use individual accounts and controlled paths so that every change to the process can be attributed."
+    ],
+    "example": {
+      "intro": "A water utility analyst reviews a passive monitoring alert from the control network.",
+      "table": {
+        "caption": "Control traffic alert",
+        "head": [
+          "Time (UTC)",
+          "Source",
+          "Destination",
+          "Observation"
+        ],
+        "rows": [
+          [
+            "02:14",
+            "`ws-0412.example.internal` (corporate)",
+            "`10.50.1.12` (PLC)",
+            "Write command to the pump's target setting (setpoint)"
+          ],
+          [
+            "02:15",
+            "`10.50.1.5` (HMI)",
+            "`10.50.1.12` (PLC)",
+            "Normal read of readings"
+          ]
+        ]
+      },
+      "steps": [
+        "The HMI reads from the PLC as expected.",
+        "The write command comes from a corporate workstation, which should not reach the plant floor at all.",
+        "This points to a gap in segmentation or in the filtered boundary, and the command may be unauthorized.",
+        "Contact operations before acting, since changing a live process can cause harm. Investigate the workstation and review the boundary rules, without scanning the controller."
+      ]
+    },
+    "trap": {
+      "wrong": "The way to find weaknesses in a control network is to run the same full active scan used on office servers.",
+      "why": "Controllers are often old and sensitive, and an active scan can crash them and halt a process. Prefer passive monitoring and coordinated, careful assessment, and judge any action by its effect on safe operation."
+    },
+    "checkIds": [
+      "cs4-1-1-mcq-025",
+      "cs4-1-1-mcq-026",
+      "cs4-1-1-mcq-027",
+      "cs4-1-1-mcq-032"
+    ]
+  }
+]

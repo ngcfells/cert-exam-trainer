@@ -1,0 +1,246 @@
+[
+  {
+    "id": "cs1-6-ai-output-needs-verification",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Treat AI output as a lead, not evidence",
+    "objectiveIds": [
+      "1.6"
+    ],
+    "meaning": [
+      "An AI assistant writes fluent text by predicting likely words, and even with retrieval or tools it can state things the source does not say. Sometimes it states something that sounds right but is not in your data: a host name, an address, a patch version or a log line that never existed. This is called a hallucination.",
+      "An analyst cares because an invented detail that lands in a ticket or a report can send a response team after the wrong host, or close a real incident. The output is a starting point to check, never a finding on its own."
+    ],
+    "rule": [
+      "A confident tone says nothing about accuracy. Hallucinated text reads exactly like correct text, so you cannot judge it by how it sounds.",
+      "Every specific claim that will drive a decision, such as a host, an address, a user, a time or a version, must be matched to a source you can open: a log line, a scan result, an advisory or a ticket.",
+      "An assistant only sees what it was given. A summary built from two log sets cannot reveal events that are in a third set, so a conclusion like \"first infected host\" may be wrong even when every sentence is accurate.",
+      "A summary can also flatten meaning. Many failed logins followed by a success may be summarized as normal activity, so read the raw lines behind any summary that sounds routine.",
+      "The control is a human review step: the analyst checks key facts against evidence before acting, and the accountable decision stays with the analyst."
+    ],
+    "example": {
+      "intro": "An AI assistant summarizes a proxy log for the analyst and says that ws-0731 uploaded a large volume of data to an outside address. The analyst plans to isolate that host.",
+      "table": {
+        "caption": "Proxy log lines supplied to the assistant",
+        "head": [
+          "Time (UTC)",
+          "Source",
+          "Destination",
+          "Bytes out"
+        ],
+        "rows": [
+          [
+            "09:14:02",
+            "ws-0731.example.internal",
+            "198.51.100.20",
+            "1,204"
+          ],
+          [
+            "09:14:40",
+            "ws-0731.example.internal",
+            "198.51.100.20",
+            "1,188"
+          ],
+          [
+            "09:15:11",
+            "ws-0802.example.internal",
+            "203.0.113.77",
+            "48,910,332"
+          ]
+        ]
+      },
+      "steps": [
+        "The summary says ws-0731 sent the large upload, so the analyst searches the log for that transfer.",
+        "The only large transfer comes from ws-0802 to 203.0.113.77, not from ws-0731.",
+        "The summary attributes the transfer to the wrong host, so the claim fails verification.",
+        "The analyst corrects the ticket, isolates the host the evidence supports, and notes which claims were verified."
+      ]
+    },
+    "trap": {
+      "wrong": "If the summary is well written and consistent, it is safe to act on without opening the logs.",
+      "why": "Fluent, consistent wording is how a hallucination hides. The test is whether each key fact can be matched to a source line. If it cannot be found in the evidence, treat it as unverified, however confident it sounds."
+    },
+    "checkIds": [
+      "cs4-1-6-mcq-001",
+      "cs4-1-6-mcq-002",
+      "cs4-1-6-mcq-003",
+      "cs4-1-6-mcq-018",
+      "cs4-1-6-mcq-022"
+    ]
+  },
+  {
+    "id": "cs1-6-data-exposure-and-governance",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Keep sensitive data and policy in view",
+    "objectiveIds": [
+      "1.6"
+    ],
+    "meaning": [
+      "Anything an analyst types or pastes into an AI service leaves the organization's control unless the service runs under the organization's own terms. Incident data often holds personally identifiable information (PII), health records, credentials and internal addresses.",
+      "Governance is how an organization decides which AI tools are allowed, what data may go into them and who answers for the result. An analyst follows that policy, and can tell when a data handling rule such as a privacy law or a health data rule applies."
+    ],
+    "rule": [
+      "A public AI service may keep, log or reuse what it receives. Pasting a customer export or a session token into one is a data leak, even if the intent was only to save time.",
+      "An acceptable use policy names approved tools and says what data classes may be entered. It is the document that answers whether a given paste is allowed.",
+      "A good control is to keep the data inside an approved boundary, such as an approved service under contract or a model hosted internally. A data loss prevention (DLP) control can also inspect and block prompts before they leave. Masking or removing PII before submission reduces exposure too.",
+      "Regulation follows the data. Patient notes bring in health data rules, and customer records sent to another region can bring in cross-border transfer rules. Confirm the legal basis before rollout, not after.",
+      "A sound policy also covers logging of AI use, human review of output and a named owner for each tool."
+    ],
+    "example": {
+      "intro": "A tier one analyst is behind on tickets. A colleague suggests pasting a firewall export into a free chatbot to get a summary. The export includes usernames and a few customer email addresses.",
+      "steps": [
+        "The analyst checks the AI acceptable use policy and finds the chatbot is not on the approved list.",
+        "The export contains PII, which the policy says may not leave the approved boundary.",
+        "The analyst asks for the approved internal summarization tool, or masks usernames and customer email addresses before any outside use.",
+        "The analyst records the request so the team can fix the speed problem through a approved route."
+      ]
+    },
+    "trap": {
+      "wrong": "Because the chatbot answers privately in my own window, nothing I paste leaves the company's control.",
+      "why": "A private-looking window says nothing about where the data goes. A public service is a third party that may retain what you send. Check the policy and the service terms, and keep sensitive data only in approved tools."
+    },
+    "checkIds": [
+      "cs4-1-6-mcq-004",
+      "cs4-1-6-mcq-005",
+      "cs4-1-6-mcq-012",
+      "cs4-1-6-mcq-013",
+      "cs4-1-6-mcq-014"
+    ]
+  },
+  {
+    "id": "cs1-6-poisoning-and-prompt-injection",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Poisoned training data and prompt injection",
+    "objectiveIds": [
+      "1.6"
+    ],
+    "meaning": [
+      "AI tools can be attacked in two places. Data poisoning corrupts what a model learns from, so it later behaves wrongly. Prompt injection hides instructions inside content the model reads, so it follows the attacker instead of its operator.",
+      "An analyst cares because security tools that learn from analyst labels or read untrusted text, such as email and web pages, are themselves targets. A quiet change in behavior can be an attack and not just a bug."
+    ],
+    "rule": [
+      "Poisoning happens before or during training. An attacker, or an insider, adds bad samples or wrong labels so that the model learns to miss a pattern, for example by labeling real beacon alerts (repeated check-ins from malware to its controller) as benign.",
+      "A sign of poisoning is a drop in detection for a specific pattern after retraining, with no change in the environment. Compare detection before and after, and check the recent labels and samples.",
+      "Controls for poisoning protect the pipeline: validate and review training data, limit who can add or relabel samples, keep versions of datasets and models, and test a new model against a known-good set before it goes live.",
+      "Prompt injection happens at run time. Text in an email, ticket or web page says things like \"ignore your instructions,\" and a model that treats all text as instructions may obey.",
+      "Controls for injection assume the model can be fooled: give it least privilege (only the access a task needs), require human approval for sensitive actions, treat all outside content as untrusted data, and log every action it takes through its tools."
+    ],
+    "example": {
+      "intro": "An AI assistant has access to a ticketing tool and a web fetch tool. It was asked to summarize an alert. Its activity log shows an unrelated action.",
+      "table": {
+        "caption": "Assistant activity for one request",
+        "head": [
+          "Step",
+          "Action",
+          "Detail"
+        ],
+        "rows": [
+          [
+            "1",
+            "prompt",
+            "Summarize alert 5120"
+          ],
+          [
+            "2",
+            "fetch_url",
+            "198.51.100.40/note.txt"
+          ],
+          [
+            "3",
+            "ticket_update",
+            "set status=closed, reason=false positive"
+          ]
+        ]
+      },
+      "steps": [
+        "The request asked only for a summary, yet step 3 closes the ticket.",
+        "The fetched page is outside content, so the analyst retrieves what note.txt contained.",
+        "It holds text telling the assistant to close the alert as a false positive, so this is prompt injection: the model took text from data as a command.",
+        "The analyst reopens the ticket, removes the update permission from the summarizing assistant and requires approval for any status change."
+      ]
+    },
+    "trap": {
+      "wrong": "Training data poisoning and prompt injection are the same attack, so one control covers both.",
+      "why": "Poisoning corrupts the learning data and shows up as changed model behavior after retraining, so you defend the data pipeline. Injection arrives as text at run time, so you defend with privilege limits and approval for actions. Ask whether the attacker input arrived during training or during use."
+    },
+    "checkIds": [
+      "cs4-1-6-mcq-006",
+      "cs4-1-6-mcq-007",
+      "cs4-1-6-mcq-008",
+      "cs4-1-6-mcq-009",
+      "cs4-1-6-mcq-032"
+    ]
+  },
+  {
+    "id": "cs1-6-ai-use-cases-and-automation",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Where AI helps and where a human decides",
+    "objectiveIds": [
+      "1.6"
+    ],
+    "meaning": [
+      "AI suits work that is heavy on text and volume: summarizing alerts and logs, building a timeline from several sources, linking weak signals into one story, comparing two scripts and drafting reports. It saves analyst time on the first pass.",
+      "The risk grows when AI also acts. In a SOAR playbook, a model verdict (its yes or no judgment about an item) can trigger a real change such as quarantine or isolation. An analyst needs to know where a person must stay in the loop."
+    ],
+    "rule": [
+      "Correlation (linking related events into one picture) is a strong fit. A fixed SIEM rule matches one pattern, while an AI-assisted view can link a failed login, a new device registration and an unusual download that no single rule would connect.",
+      "Timelines and summaries save time, but they only cover the data supplied. The analyst still checks the sources and fills any gap.",
+      "Code and document comparison, report drafting and alert enrichment are common uses. A similarity score highlights where to look, and the analyst judges what the difference means.",
+      "Security orchestration, automation and response (SOAR) runs playbooks that enrich alerts and open tickets automatically. Adding an AI verdict to a playbook is acceptable when low-impact steps run on their own and high-impact steps wait for human approval. Impact depends on the asset: a low-impact laptop may be isolated automatically, while servers and critical hosts need approval.",
+      "Automated actions need guardrails: a confidence threshold (the minimum score needed before acting), a way to roll back, and a log of the verdict and the action so the decision can be audited."
+    ],
+    "example": {
+      "intro": "A phishing playbook scores each reported email. The team wants high scores to delete the message from every mailbox without a person involved.",
+      "table": {
+        "caption": "Playbook design options",
+        "head": [
+          "Score",
+          "Action",
+          "Impact if wrong"
+        ],
+        "rows": [
+          [
+            "Any",
+            "Add sender and links to the ticket",
+            "Low"
+          ],
+          [
+            "High",
+            "Move message to quarantine",
+            "Moderate, can be restored"
+          ],
+          [
+            "High",
+            "Delete from all mailboxes",
+            "High, may remove real mail"
+          ],
+          [
+            "High",
+            "Disable the sender's or user's account",
+            "High, locks out a real user"
+          ]
+        ]
+      },
+      "steps": [
+        "Adding details to the ticket is low impact, so it can run on its own.",
+        "Quarantine can be undone, so it can run automatically at a high score if the action is logged.",
+        "Permanent deletion or disabling an account is costly if the verdict is wrong, so those steps should wait for an analyst to approve.",
+        "The analyst keeps the playbook fast for safe steps and puts a person at the irreversible step."
+      ]
+    },
+    "trap": {
+      "wrong": "A very high model confidence score means the verdict is correct, so full automation of every action is safe.",
+      "why": "A score is the model's own estimate, and models can be fooled or wrong. Match autonomy to the cost of an error: let automation handle reversible, low-impact steps and keep a human approval for destructive ones."
+    },
+    "checkIds": [
+      "cs4-1-6-mcq-021",
+      "cs4-1-6-mcq-024",
+      "cs4-1-6-mcq-025",
+      "cs4-1-6-mcq-026",
+      "cs4-1-6-mcq-027"
+    ]
+  }
+]

@@ -1,0 +1,275 @@
+[
+  {
+    "id": "cs1-5-playbooks-and-runbooks",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Playbooks and runbooks make response repeatable",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "meaning": [
+      "A security operations center (SOC) team handles the same kinds of events again and again, and different analysts on different shifts will handle them differently unless the work is written down. Documented process is the first and cheapest efficiency gain: it removes guessing, shortens onboarding and makes results comparable from one case to the next.",
+      "Two documents do most of this work. A playbook covers one type of incident and says who acts, what decisions come up and which response stages apply. A runbook covers one routine task and gives the exact steps to carry it out. An analyst needs to know which one to reach for, and when a gap in one calls for the other."
+    ],
+    "rule": [
+      "A playbook is scenario-based. It describes roles, decision points and the stages of response for one incident type, such as suspected account compromise or data exfiltration (stealing data out of the organization). It answers the question of what we do and who decides.",
+      "A runbook is task-based. It lists the exact commands, console actions and checks for one job, such as isolating a host or collecting a log set. It answers the question of how we do this one step, the same way every time.",
+      "A playbook decision step needs written criteria, such as asset criticality and an approval point. A step that only says the analyst decides produces different outcomes on near-identical cases, and an auditor cannot review it.",
+      "Where a playbook step is a task that must be done identically, link it to a runbook. The playbook holds the logic and the runbook holds the keystrokes.",
+      "Process also covers people. A shared case queue with named owners and shift notes, and a documented escalation path with named contacts, stop duplicated work and missed hand-offs between shifts and between teams."
+    ],
+    "example": {
+      "intro": "The SOC receives a proxy (a server that relays web traffic) alert showing a workstation sending large uploads to an unfamiliar site. Two analysts handle similar alerts in the same week, and the case notes show very different results.",
+      "table": {
+        "caption": "Case notes for two similar exfiltration alerts",
+        "head": [
+          "Case",
+          "Analyst",
+          "Contained host",
+          "Pulled proxy logs",
+          "Escalated to data owner"
+        ],
+        "rows": [
+          [
+            "C-2201",
+            "Analyst A",
+            "Yes, within 20 minutes",
+            "Last 24 hours",
+            "Yes"
+          ],
+          [
+            "C-2207",
+            "Analyst B",
+            "No, waited for more evidence",
+            "Last 1 hour",
+            "No"
+          ]
+        ]
+      },
+      "steps": [
+        "The two cases show the same alert type but different containment, log scope and escalation. The difference comes from the analysts, not from the evidence.",
+        "Containment and escalation are decisions, so they belong in a playbook for data exfiltration, with criteria such as the data sensitivity and the volume sent.",
+        "Pulling the right amount of proxy log is a repeatable task, so it belongs in a runbook that the playbook links to, with the exact query and time range.",
+        "With both in place, either analyst follows the same path, and the case notes become comparable."
+      ]
+    },
+    "trap": {
+      "wrong": "A playbook and a runbook are two names for the same procedure document, so either one can be used wherever steps are needed.",
+      "why": "They differ in scope. If the document is organized around an incident type with decisions and roles, it is a playbook. If it is organized around one task with exact commands and checks, it is a runbook. When a playbook step leaves analysts doing a task in different ways, the fix is a linked runbook, not a longer playbook."
+    },
+    "checkIds": [
+      "cs4-1-5-mcq-001",
+      "cs4-1-5-mcq-002",
+      "cs4-1-5-mcq-005",
+      "cs4-1-5-mcq-006",
+      "cs4-1-5-mcq-028"
+    ]
+  },
+  {
+    "id": "cs1-5-soar-and-iac-automation",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Automating work with security orchestration (SOAR) and infrastructure as code (IaC)",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "meaning": [
+      "Once a task is documented and stable, a machine can do it faster and more consistently than a person. In security operations, two forms of automation matter most. Security orchestration, automation and response (SOAR) links security tools and runs response tasks as workflows. Infrastructure as code (IaC) defines systems and their settings in files that are deployed the same way each time.",
+      "An analyst cares because automation removes repetitive work and shortens response time, but a faulty automated action can do damage at machine speed. Knowing what to automate fully, what to gate behind a human and how to limit how far one faulty action can spread is part of the job."
+    ],
+    "rule": [
+      "SOAR connects separate tools into one workflow. Joining them into a single sequence is called orchestration, and the individual steps run without an analyst typing each one.",
+      "Good candidates for full automation are high-volume, low-risk, rule-based tasks, such as enriching an alert with reputation data or creating and assigning a ticket. Decisions with business impact, such as shutting down a revenue-critical system or approving a breach notice, stay with people.",
+      "Automated actions that change systems need guardrails. An approval gate for critical assets and a cap on actions per hour keep a faulty trigger from affecting many hosts at once while routine cases still move fast.",
+      "Infrastructure as code keeps system and network settings in versioned files. Changes are reviewed, tested, recorded and can be rolled back, and environments do not drift apart the way hand-edited consoles do.",
+      "A scan of an IaC file before deployment catches a misconfiguration at its source. If the file declares open access or no encryption, the right response is to stop the release and return it to the owner, not to deploy it and watch it afterward."
+    ],
+    "example": {
+      "intro": "A SOC builds a workflow that disables a user account whenever the identity system reports a sign-in from two distant countries within minutes. During testing, the team reviews what the workflow would have done over the previous week.",
+      "table": {
+        "caption": "Replay of the account-disable workflow over one week",
+        "head": [
+          "Account type",
+          "Triggers",
+          "Confirmed compromise",
+          "Would have disabled"
+        ],
+        "rows": [
+          [
+            "Standard employee",
+            "14",
+            "3",
+            "14"
+          ],
+          [
+            "Shared service account",
+            "2",
+            "0",
+            "2"
+          ],
+          [
+            "Payroll system account",
+            "1",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "steps": [
+        "Most triggers on standard employee accounts were false alarms, but disabling a single user is a small, recoverable action.",
+        "The service account and payroll account would have been disabled with no confirmed compromise, and disabling them could stop business processes.",
+        "The sound design keeps the workflow automated for standard accounts, adds an approval gate for service and critical accounts, and caps disables per hour.",
+        "Every action and its result is written to the case so the team can review and tune the workflow."
+      ]
+    },
+    "trap": {
+      "wrong": "Because automation saves time, the safest improvement is to automate every response action, or to remove automation entirely after the first mistake.",
+      "why": "Neither extreme fits. Automate the repetitive, low-risk work fully, and put an approval point or rate limit around actions that can disrupt the business. A mistake is a reason to add guardrails and testing, not to give up the benefit."
+    },
+    "checkIds": [
+      "cs4-1-5-mcq-007",
+      "cs4-1-5-mcq-009",
+      "cs4-1-5-mcq-010",
+      "cs4-1-5-mcq-012",
+      "cs4-1-5-mcq-029"
+    ]
+  },
+  {
+    "id": "cs1-5-apis-webhooks-plug-ins",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "How tools talk: APIs, webhooks and plug-ins",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "meaning": [
+      "Automation only works if tools can exchange data and trigger each other. An application programming interface (API) is a defined interface through which one program asks another for data or for an action. A webhook is the reverse flow, where a tool pushes an event to a listener at the moment it occurs. A plug-in is an add-on module that extends a tool from the inside.",
+      "An analyst meets these when an integration stops working or when a new one is planned. Reading a status code and choosing between asking repeatedly and being notified are everyday skills, and so is judging the risk of code that runs inside a security tool."
+    ],
+    "rule": [
+      "An API request names what is wanted, and the reply carries data or a status code. A 401 or 403 status points first to an authentication or authorization problem: a missing, expired or wrong credential such as an access token (a short-lived key that proves the caller's identity).",
+      "A 429 status means the sender is calling too fast (a rate limit). The reply often carries a Retry-After value saying how long to wait, so the fix is to throttle the calls and retry after that delay, not to change the credential or the request content.",
+      "Polling means the receiver keeps asking the sender for news on a schedule, which adds delay and wasted requests. A webhook is event-driven, so the sender calls the receiver the moment something happens, which suits high-severity alerts.",
+      "A webhook receiver should confirm who is sending, preferably with a signature rather than a secret sent in plain view, and should receive requests over an encrypted channel (TLS). It should not accept requests from any source.",
+      "A plug-in runs inside the tool, so its permissions and its source decide the risk it adds. Review both before installing it widely."
+    ],
+    "example": {
+      "intro": "A SIEM feeds high-severity alerts to a case system. A scheduled job copies them across every 15 minutes, so urgent cases appear late.",
+      "table": {
+        "caption": "Time from alert to case under the scheduled check",
+        "head": [
+          "Alert",
+          "Rule fired",
+          "Case created",
+          "Delay"
+        ],
+        "rows": [
+          [
+            "A-3301",
+            "09:01",
+            "09:15",
+            "14 minutes"
+          ],
+          [
+            "A-3302",
+            "09:16",
+            "09:30",
+            "14 minutes"
+          ],
+          [
+            "A-3303",
+            "09:29",
+            "09:30",
+            "1 minute"
+          ]
+        ]
+      },
+      "steps": [
+        "The delay depends on when the alert falls relative to the 15-minute check, so some urgent alerts wait almost the full interval.",
+        "Shortening the interval would add requests but would still leave a gap, because the receiver is still the one asking.",
+        "A webhook from the SIEM to the case system pushes each high-severity alert as it fires, so the case exists within moments.",
+        "The webhook endpoint should verify the sender and use an encrypted channel, because anyone who can reach it could otherwise inject fake alerts."
+      ]
+    },
+    "trap": {
+      "wrong": "An API and a webhook are the same thing, so an integration that is slow can be fixed by calling the API more often.",
+      "why": "An API call is made by the receiver when it asks. A webhook is sent by the source when an event happens. Asking more often reduces delay a little but never removes it, and it can trigger rate limits. If the need is to react instantly to an event, use a webhook."
+    },
+    "checkIds": [
+      "cs4-1-5-mcq-021",
+      "cs4-1-5-mcq-022",
+      "cs4-1-5-mcq-023",
+      "cs4-1-5-mcq-027",
+      "cs4-1-5-mcq-032"
+    ]
+  },
+  {
+    "id": "cs1-5-enrichment-tuning-measures",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Enrichment, tuning and measuring the SOC",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "meaning": [
+      "Analysts have limited time, and a stream of thin, noisy alerts wastes it. Three improvements raise the value of each alert. Enrichment adds context so an alert can be judged quickly. Tuning removes noise so real threats stand out. Dashboards show whether the changes are working.",
+      "The risk in all three is making things worse without noticing. A rule that is tuned too far stops seeing real attacks, and a dashboard full of the wrong numbers hides the real picture. Every change should be checked against a measure."
+    ],
+    "rule": [
+      "Data enrichment attaches context to a raw alert, such as reputation, geolocation, asset owner and past sightings. It is judged by whether it helps decide this alert, not by how much data it adds.",
+      "The goal of alert tuning is to cut noise so real threats surface. A narrow exclusion for a documented benign source removes noise and keeps the rule active for everything else.",
+      "Tuning too broadly causes false negatives (real attacks the rule misses). Disabling a rule, or excluding too much, creates a blind spot, so test every change against known malicious samples, such as in a purple-team exercise (attackers and defenders testing detections together), and measure the true positive rate before and after.",
+      "Raising severity, deleting past alerts or switching off logging do not tune a rule. They hide or destroy information and add to the fatigue.",
+      "A dashboard should fit its audience. An analyst view can show queues and rule performance. An executive view shows a few summarized key performance indicators (KPIs), such as mean time to detect, mean time to respond and false positive rate, with trends over time and plain labels."
+    ],
+    "example": {
+      "intro": "A rule for repeated failed sign-ins fires many times a day. A review of one week shows where the alerts come from.",
+      "table": {
+        "caption": "Failed sign-in rule, one week of alerts by source",
+        "head": [
+          "Source",
+          "Alerts",
+          "Confirmed malicious",
+          "Note"
+        ],
+        "rows": [
+          [
+            "svc-bkp.example.internal",
+            "620",
+            "0",
+            "Old password stored in a job"
+          ],
+          [
+            "198.51.100.23",
+            "35",
+            "9",
+            "Seen in prior attacks"
+          ],
+          [
+            "Various user workstations",
+            "145",
+            "4",
+            "Typing mistakes and a few attacks"
+          ]
+        ]
+      },
+      "steps": [
+        "Most alerts come from one backup account with a known cause, and none of them are malicious, so fixing the stored password removes that noise at its source.",
+        "The rest still include real attacks, so the rule must stay active for those sources. Disabling it would create false negatives.",
+        "Adding reputation and past sightings to each alert would show the analyst that the repeated address has history, so it is a higher-priority lead worth a closer look.",
+        "After the change, the team retests with a known password-guessing sample and tracks alert volume and false positive rate on a dashboard to confirm detection held."
+      ]
+    },
+    "trap": {
+      "wrong": "A rule that fires hundreds of times a day with almost no real findings should be turned off or its severity raised, so that it no longer bothers analysts.",
+      "why": "Disabling hides real attacks and raising severity pushes more noise to the top. Find the noisy benign source, exclude it narrowly, and keep the rule for the rest. Then confirm with a test against known malicious activity that nothing real is missed."
+    },
+    "checkIds": [
+      "cs4-1-5-mcq-014",
+      "cs4-1-5-mcq-016",
+      "cs4-1-5-mcq-017",
+      "cs4-1-5-mcq-019",
+      "cs4-1-5-mcq-033"
+    ]
+  }
+]

