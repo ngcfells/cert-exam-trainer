@@ -676,4 +676,46 @@ export const TIPS: readonly Tip[] = [
     exam: 'AT0-001',
     text: 'You have {minutes} minutes for up to {maxQuestions} questions, and you need a scaled score of at least {passingScore} to pass. Coding is the biggest domain, so make reading code a routine, not a struggle.',
   },
+  {
+    id: 'cs-read-the-logs',
+    group: 'study',
+    exam: 'CS0-004',
+    text: 'Practise reading raw output: firewall and web server logs, packet captures and scan reports. Ask of each line who talked to whom, when, and what was odd about it.',
+  },
+  {
+    id: 'cs-normal-first',
+    group: 'study',
+    exam: 'CS0-004',
+    text: 'You can only spot odd activity if you know what normal looks like. For each indicator you study, say what the usual pattern is and what would make it suspicious.',
+  },
+  {
+    id: 'cs-score-plus-context',
+    group: 'study',
+    exam: 'CS0-004',
+    text: 'A severity score is a starting point, not the answer. When ranking weaknesses to fix, also weigh whether attackers are using the flaw now and how much the affected system matters.',
+  },
+  {
+    id: 'cs-response-order',
+    group: 'study',
+    exam: 'CS0-004',
+    text: 'Learn the incident response steps in order: prepare, detect and analyze, contain, remove the cause, recover, then review. Many questions ask what to do FIRST or NEXT.',
+  },
+  {
+    id: 'cs-tool-for-the-job',
+    group: 'study',
+    exam: 'CS0-004',
+    text: 'For each tool on the objectives, learn the one job it does best: capturing packets, scanning for weaknesses, collecting logs or running suspect files safely. Questions ask which tool fits a task.',
+  },
+  {
+    id: 'cs-audience-first',
+    group: 'study',
+    exam: 'CS0-004',
+    text: 'For reporting questions, name the audience first. Managers need risk, cost and deadlines in plain words; engineers need the affected systems and the exact fix.',
+  },
+  {
+    id: 'cs-pace-long-exam',
+    group: 'test-room',
+    exam: 'CS0-004',
+    text: 'You have {minutes} minutes for up to {maxQuestions} questions, and you need a scaled score of at least {passingScore} to pass. It is a long sitting, so keep a steady pace and do not let one log-heavy question eat your time.',
+  },
 ];

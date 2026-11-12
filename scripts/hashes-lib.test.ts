@@ -6,6 +6,7 @@ import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { listExams } from '../src/banks';
 import { autoOpsItems } from '../src/banks/autoops/items';
+import { cysaItems } from '../src/banks/cysa/items';
 import { dataPlusItems } from '../src/banks/dataplus/items';
 import { shippedLessons } from '../src/banks/lessons';
 import { EXAM_METAS } from '../src/banks/metas';
@@ -17,7 +18,7 @@ import { localHashes } from '../src/integrity/local';
 import { HASHES_BRANCH, HASHES_FILE, nextManifest, type ExamDiff, type Manifest } from '../src/integrity/manifest';
 import { describeChanges, publishHashes, readPublished, releaseHashes, shippedHashes, waitForPublished, type ReleaseOptions } from './hashes-lib';
 
-const ITEMS: Record<string, Question[]> = { 'DA0-002': dataPlusItems, 'CY0-001': secAiItems, 'AT0-001': autoOpsItems };
+const ITEMS: Record<string, Question[]> = { 'DA0-002': dataPlusItems, 'CY0-001': secAiItems, 'AT0-001': autoOpsItems, 'CS0-004': cysaItems };
 
 describe('shippedHashes', { timeout: 60_000 }, () => {
   const fromDisk = shippedHashes(process.cwd());

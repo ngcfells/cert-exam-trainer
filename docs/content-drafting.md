@@ -17,6 +17,7 @@ This brief is given word for word to every drafter and reviewer of bundled quest
   | DA0-002 (Data+) | `dataplus` | `da2` |
   | CY0-001 (SecAI+) | `secai` | `cy1` |
   | AT0-001 (AutoOps+) | `autoops` | `at1` |
+  | CS0-004 (CySA+) | `cysa` | `cs4` |
 
 - Ids: `<prefix>-<objective with the dot as a dash>-<type>-<nnn>`, where `<type>` is `mcq` for both MCQ kinds, `num` for numeric items, or the PBQ short name (`match`, `order`, `config`, `diagram`, `terminal`, `data`, `hotspot`, `buckets`). Examples: `da2-2-3-mcq-007`, `da2-4-1-hotspot-002`, `cy1-2-6-mcq-014`, `cy1-2-2-config-003`. Numbers are three digits and never reused. `itemIdPrefix` builds the prefix, and `npm run check-drafts -- --exam <code> <files>` checks it.
 - Every item has `exam`, `source: "ours"`, `objectiveIds` (first one is the objective the file is for), `difficulty` 1–3, `stem`, `payload`, `answer`, `explanation`, `acronyms` and `status`. New drafts are `status: "draft"`.
@@ -124,3 +125,28 @@ Each template needs at least 10 approved items across the exam (the quotas allow
 | hotspot | 1.4 a failing log or file, 2.4 a config file |
 | match | concept to definition, status code to meaning |
 | buckets | concept sorting (declarative vs imperative, local vs remote) |
+
+## CS0-004 rules (CySA+)
+
+- **Analyst point of view.** Items put the learner in a SOC or vulnerability-management seat: read a log line, a scan result, an alert or a ticket, then choose the next action or the best interpretation.
+- **Tool and vendor neutrality.** Never key one product (Splunk, Sentinel, Nessus, Wireshark, CrowdStrike) as "the" answer unless the stem names it and the question is about its documented behavior. Name the tool class (SIEM, EDR, XDR, SOAR, DLP, scanner, packet capture).
+- **Frameworks by stable structure.** MITRE ATT&CK tactics and the Cyber Kill Chain stages, the Diamond Model four vertices, NIST incident response phases, CVSS metric groups and severity bands, OWASP risk names. Never key on technique ids (`T1059`), CVE numbers, publication years or list positions.
+- **Defender side only.** No working exploit code, no real malware samples or payloads. Log and packet snippets use invented hosts (`ws-0412.example.internal`), documentation address ranges (`192.0.2.0/24`, `198.51.100.0/24`, `203.0.113.0/24`, `10.x`) and invented users.
+- **Code and output are code.** Commands, file names, fields and log lines go in backticks; multi-line logs or queries go in fenced blocks of about 12 lines at most. PBQ part texts stay plain.
+- **Acronyms.** Use the list in `src/banks/cysa/meta.ts`. Tag compound terms whole.
+- **Exam facts** (a passing score, a question count) are never question content.
+
+### CS0-004 PBQ plan
+
+Each template needs at least 10 approved items across the exam (quota 89 PBQs). Natural fits:
+
+| Template | Suits |
+| --- | --- |
+| terminal | 1.3 `nslookup`, `dig`, `tcpdump`, `grep` on logs; 3.3 containment commands |
+| data | 1.2 log and traffic counts, 2.2 and 2.3 CVSS and scan tables, 4.1 metrics |
+| hotspot | 1.2 spot the indicator in a log, 2.2 the false positive in scan output |
+| diagram | 1.1 network and zero trust layouts, 3.3 containment placement |
+| config | 1.1 logging and hardening settings, 2.1 scan configuration |
+| order | 3.2 response phases, 3.3 containment and recovery steps |
+| match | tool to purpose, framework stage to activity, control to type |
+| buckets | indicator types, control categories, scan types |

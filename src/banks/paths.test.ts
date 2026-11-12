@@ -6,6 +6,7 @@ describe('bank paths', () => {
     expect(BANKS['DA0-002']).toEqual({ dir: 'dataplus', idPrefix: 'da2' });
     expect(BANKS['CY0-001']).toEqual({ dir: 'secai', idPrefix: 'cy1' });
     expect(BANKS['AT0-001']).toEqual({ dir: 'autoops', idPrefix: 'at1' });
+    expect(BANKS['CS0-004']).toEqual({ dir: 'cysa', idPrefix: 'cs4' });
   });
 
   it('builds item id prefixes from exam, objective and type', () => {

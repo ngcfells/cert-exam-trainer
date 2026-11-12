@@ -23,6 +23,8 @@ export const NOT_ACRONYMS: ReadonlySet<string> = new Set([
   'NET',
   // Exit status word in real systemd output, as in "status=1/FAILURE".
   'FAILURE',
+  // Names, not acronyms: the MITRE Corporation, its ATT&CK knowledge base (read as ATT and CK), the WHOIS lookup and the LISTEN socket state in ss output.
+  'MITRE', 'ATT', 'CK', 'WHOIS', 'LISTEN',
   'TWO', 'THREE', 'FOUR', 'NO', 'YES',
 ]);
 

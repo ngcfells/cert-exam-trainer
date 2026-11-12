@@ -1,0 +1,2355 @@
+[
+  {
+    "id": "cs4-3-1-mcq-001",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "An analyst reads a report that an adversary spent weeks collecting employee names, email formats and exposed software versions from public sources before any contact with the company. Which Cyber Kill Chain stage does this describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Weaponization"
+        },
+        {
+          "id": "b",
+          "text": "Command and control"
+        },
+        {
+          "id": "c",
+          "text": "Reconnaissance"
+        },
+        {
+          "id": "d",
+          "text": "Exploitation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Researching a target from public sources, before any contact, is Reconnaissance. Weaponization builds the malicious payload, Exploitation is the moment the payload runs against a weakness, and Command and control is the later channel back to the attacker.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-002",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "At which Cyber Kill Chain stage does an attacker attach an exploit to a payload, such as inside a document, before sending it?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Weaponization"
+        },
+        {
+          "id": "b",
+          "text": "Exploitation"
+        },
+        {
+          "id": "c",
+          "text": "Installation"
+        },
+        {
+          "id": "d",
+          "text": "Command and control"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Building the deliverable malicious package is Weaponization. Exploitation is what happens later on the victim system, Installation places a persistent foothold, and Command and control is the remote channel back to the attacker.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-003",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A mail gateway log shows a message with a macro-enabled attachment reaching a finance mailbox from a lookalike sender domain. Which Cyber Kill Chain stage does the arrival of this message represent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Exploitation"
+        },
+        {
+          "id": "b",
+          "text": "Reconnaissance"
+        },
+        {
+          "id": "c",
+          "text": "Actions on objectives"
+        },
+        {
+          "id": "d",
+          "text": "Delivery"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Transmitting the weaponized file to the target is Delivery. Nothing has run yet, so it is not Exploitation; Reconnaissance is the earlier research, and Actions on objectives is the attacker finally pursuing the goal.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-004",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A user opens a document and a vulnerable component in the viewer runs attacker code on the workstation. Which Cyber Kill Chain stage has just been reached?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Delivery"
+        },
+        {
+          "id": "b",
+          "text": "Exploitation"
+        },
+        {
+          "id": "c",
+          "text": "Installation"
+        },
+        {
+          "id": "d",
+          "text": "Weaponization"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Triggering a weakness so attacker code runs is Exploitation. Delivery was the arrival of the file, Weaponization was how it was built, and Installation comes afterward when a foothold is made lasting.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-005",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "After code execution, a script copies a backdoor into a user profile folder and registers it to start at every logon. Which Cyber Kill Chain stage does this describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Exploitation"
+        },
+        {
+          "id": "b",
+          "text": "Installation"
+        },
+        {
+          "id": "c",
+          "text": "Command and control"
+        },
+        {
+          "id": "d",
+          "text": "Actions on objectives"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Placing a backdoor that survives logoff and reboot is Installation. Exploitation was the code execution before it, Command and control begins once the implant calls out, and Actions on objectives is the final goal.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-006",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A proxy log shows a workstation contacting an external host every 60 seconds with tiny, uniform requests, long after a suspicious document was opened. At which Cyber Kill Chain stage is the intruder operating?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Installation"
+        },
+        {
+          "id": "b",
+          "text": "Actions on objectives"
+        },
+        {
+          "id": "c",
+          "text": "Delivery"
+        },
+        {
+          "id": "d",
+          "text": "Command and control"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Regular, uniform beaconing is a remote channel to the attacker, which is Command and control. Installation is the act of placing the implant, Actions on objectives is data theft or damage, and Delivery is how the file first arrived.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-007",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Several days after the first compromise, an attacker stages customer records in an archive on a file server and uploads it to an external storage service. Which Cyber Kill Chain stage is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Actions on objectives"
+        },
+        {
+          "id": "b",
+          "text": "Command and control"
+        },
+        {
+          "id": "c",
+          "text": "Installation"
+        },
+        {
+          "id": "d",
+          "text": "Exploitation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Stealing the data the attacker came for is Actions on objectives. Command and control is the channel used to direct the intrusion, Installation is the persistent foothold, and Exploitation is the initial code execution.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-008",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A company removes version banners from its public servers and trims staff details from its website to limit what outsiders can learn. Mapped to the Cyber Kill Chain, which stage does this control make harder?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Weaponization"
+        },
+        {
+          "id": "b",
+          "text": "Command and control"
+        },
+        {
+          "id": "c",
+          "text": "Reconnaissance"
+        },
+        {
+          "id": "d",
+          "text": "Installation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Exposing less public information makes Reconnaissance less productive. Weaponization is the attacker building a payload on their own systems, Command and control is the later channel back to the attacker, and Installation places a foothold after code has run.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-009",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "A security architect says each Cyber Kill Chain stage is a chance to break the attack. What is the main benefit of interrupting an intrusion at an early stage?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Every later stage is then logged automatically and kept for use as evidence"
+        },
+        {
+          "id": "b",
+          "text": "The attacker is identified by name and handed over to law enforcement"
+        },
+        {
+          "id": "c",
+          "text": "The remaining stages can be removed from the model for that incident"
+        },
+        {
+          "id": "d",
+          "text": "Later stages are prevented from happening, which limits the damage and the cleanup work"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Stopping the chain early means the attacker never reaches installation, control or objectives. The other statements are not guaranteed outcomes: early disruption does not log later stages, name the actor, or change the model.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-010",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An analyst finds that an attacker holding a valid VPN login moved between servers without sending any malware. Why is the Cyber Kill Chain a weak fit for describing this activity on its own?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It has no stage at all for gaining access, so it only covers how an attacker builds and then sends tools to a target"
+        },
+        {
+          "id": "b",
+          "text": "Its stages center on an externally delivered attack, so it says little about activity after a foothold exists"
+        },
+        {
+          "id": "c",
+          "text": "It applies only to ransomware and destructive incidents, and only those that begin with a delivered email message"
+        },
+        {
+          "id": "d",
+          "text": "It requires every one of its stages to be observed and documented in full before any analysis of the incident can begin"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "The Cyber Kill Chain is a compact sequence built around delivering and running a payload, so post-foothold movement with valid credentials is poorly described. It does cover gaining access, it is not limited to ransomware, and analysis never requires every stage to be seen.",
+    "acronyms": [
+      "VPN"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-011",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "During an investigation, an analyst records a lookalike domain and the rented server that hosted the malicious page. Under the Diamond Model, which vertex do these belong to?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Capability"
+        },
+        {
+          "id": "b",
+          "text": "Adversary"
+        },
+        {
+          "id": "c",
+          "text": "Infrastructure"
+        },
+        {
+          "id": "d",
+          "text": "Victim"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Domains, servers and other resources used to reach the target are the Infrastructure vertex. Capability holds the tools and techniques, Adversary the actor, and Victim the targeted people or assets.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-012",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An analyst identifies a credential-stealing tool and the phishing templates used against a company. Under the Diamond Model, which vertex holds these items?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Capability"
+        },
+        {
+          "id": "b",
+          "text": "Infrastructure"
+        },
+        {
+          "id": "c",
+          "text": "Adversary"
+        },
+        {
+          "id": "d",
+          "text": "Victim"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Tools, malware and methods are the Capability vertex. The domains that deliver them are Infrastructure, the actor behind them is the Adversary, and the company is the Victim.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-013",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In a Diamond Model event record, which vertex describes the targeted organization and the assets that were affected?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Victim"
+        },
+        {
+          "id": "b",
+          "text": "Adversary"
+        },
+        {
+          "id": "c",
+          "text": "Capability"
+        },
+        {
+          "id": "d",
+          "text": "Infrastructure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "The Victim vertex covers the people, organization and assets targeted. Adversary is the actor, Capability the tools and methods, and Infrastructure the resources used to deliver the attack.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-014",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "An analyst takes a command-and-control address from one incident and searches the logs for other internal hosts that have contacted it. Which move does this represent in the Diamond Model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Moving from the victim vertex to name the sponsor that funds the adversary"
+        },
+        {
+          "id": "b",
+          "text": "Reordering the events into the sequence of kill chain stages for a report"
+        },
+        {
+          "id": "c",
+          "text": "Replacing the capability vertex with a newer tool name from a vendor feed"
+        },
+        {
+          "id": "d",
+          "text": "Pivoting from the infrastructure vertex to find additional victims"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Using one vertex, here infrastructure, to discover linked data about another, here more victims, is a pivot. Naming a sponsor, ordering stages and swapping tool names are not what this search does.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-015",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A threat intelligence lead wants to link incidents at several organizations to one actor by comparing the tools and servers they share. Which framework best supports this analysis?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Cyber Kill Chain"
+        },
+        {
+          "id": "b",
+          "text": "STRIDE"
+        },
+        {
+          "id": "c",
+          "text": "Diamond Model"
+        },
+        {
+          "id": "d",
+          "text": "OSSTMM"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "The Diamond Model relates adversary, capability, infrastructure and victim, so shared tools and servers reveal campaigns. The Cyber Kill Chain orders stages, STRIDE categorizes design threats, and OSSTMM is a security testing methodology.",
+    "acronyms": [
+      "OSSTMM",
+      "STRIDE"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-016",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In MITRE ATT&CK, what does a tactic represent?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A specific tool or program that an adversary runs on a compromised host"
+        },
+        {
+          "id": "b",
+          "text": "The technical goal an adversary is trying to reach at a point in an intrusion"
+        },
+        {
+          "id": "c",
+          "text": "A named group of actors that share similar tooling and infrastructure"
+        },
+        {
+          "id": "d",
+          "text": "A severity rating assigned to a weakness found in a software package"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A tactic is the why: the objective, such as persistence or exfiltration. Tools and groups are tracked separately, and severity ratings belong to systems such as CVSS.",
+    "acronyms": [
+      "CVSS"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-017",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "In MITRE ATT&CK, what does a technique describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Why an adversary chose a particular victim"
+        },
+        {
+          "id": "b",
+          "text": "Which named group is responsible for an attack"
+        },
+        {
+          "id": "c",
+          "text": "How quickly an alert must be triaged"
+        },
+        {
+          "id": "d",
+          "text": "How an adversary accomplishes a tactical goal"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "A technique is the how behind a tactic. The reason for choosing a victim, the identity of a group and triage timing are not what techniques describe.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-018",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which MITRE ATT&CK element is a more specific variation of a technique, such as one particular way of abusing a credential store?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Sub-technique"
+        },
+        {
+          "id": "b",
+          "text": "Tactic"
+        },
+        {
+          "id": "c",
+          "text": "Procedure"
+        },
+        {
+          "id": "d",
+          "text": "Mitigation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "A sub-technique narrows a technique to a particular method. A tactic is the broader goal, a procedure is a real-world implementation by an actor, and a mitigation is a defensive measure.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-019",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A report describes the exact commands and tooling one group used to carry out a technique during a specific incident. Which MITRE ATT&CK element is this?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Tactic"
+        },
+        {
+          "id": "b",
+          "text": "Procedure"
+        },
+        {
+          "id": "c",
+          "text": "Sub-technique"
+        },
+        {
+          "id": "d",
+          "text": "Mitigation"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "A procedure is how a particular actor implemented a technique in practice. A tactic is a goal, a sub-technique is a general variation, and a mitigation is a defense.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-020",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An EDR alert shows a process reading memory from the process that stores sign-in secrets, then writing the output to a file. Which MITRE ATT&CK tactic does this activity support?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Privilege escalation"
+        },
+        {
+          "id": "b",
+          "text": "Discovery"
+        },
+        {
+          "id": "c",
+          "text": "Credential access"
+        },
+        {
+          "id": "d",
+          "text": "Initial access"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Harvesting secrets from memory serves Credential access. Privilege escalation raises the rights of an account or process, Discovery gathers information about the environment, and Initial access is the first entry.",
+    "acronyms": [
+      "EDR"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-021",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Logs show one account signing in over remote desktop to four servers in sequence within ten minutes, each from the previous one. Which MITRE ATT&CK tactic fits this pattern?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Initial access"
+        },
+        {
+          "id": "b",
+          "text": "Collection"
+        },
+        {
+          "id": "c",
+          "text": "Lateral movement"
+        },
+        {
+          "id": "d",
+          "text": "Command and control"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "Hopping between internal systems with a valid account is Lateral movement. Initial access is the first entry, Collection is gathering data of interest, and Command and control is the remote channel to the attacker, not internal hopping.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-022",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "An intruder stops the endpoint agent service and clears event logs before running further tools. Which MITRE ATT&CK tactic does this describe?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Privilege escalation"
+        },
+        {
+          "id": "b",
+          "text": "Defense evasion"
+        },
+        {
+          "id": "c",
+          "text": "Execution"
+        },
+        {
+          "id": "d",
+          "text": "Persistence"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Disabling security tooling and erasing logs avoids detection, which is Defense evasion. Privilege escalation raises rights and is not the goal here, Execution runs code, and Persistence keeps access across restarts.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-023",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A new scheduled task and a registry run entry on a server both launch the same unknown binary at startup, so it survives a reboot. Which MITRE ATT&CK tactic do they serve?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Persistence"
+        },
+        {
+          "id": "b",
+          "text": "Initial access"
+        },
+        {
+          "id": "c",
+          "text": "Discovery"
+        },
+        {
+          "id": "d",
+          "text": "Collection"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Auto-start entries keep access alive across restarts, which is Persistence. Initial access is the first foothold, Discovery maps the environment, and Collection gathers data.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-024",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "A detection engineer lists every current SIEM rule, tags each with the ATT&CK techniques it covers, and highlights tactics that have no rules. What is the main goal of this exercise?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Calculating a CVSS base score for each detection rule in the library"
+        },
+        {
+          "id": "b",
+          "text": "Ranking assets by business impact and the estimated cost to recover"
+        },
+        {
+          "id": "c",
+          "text": "Proving that every alert maps to exactly one Cyber Kill Chain stage"
+        },
+        {
+          "id": "d",
+          "text": "Finding gaps in detection coverage across adversary behaviors"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "Mapping rules to techniques shows which behaviors are not monitored. CVSS scores vulnerabilities, asset ranking is a business-impact task, and ATT&CK tagging is not meant to force a Cyber Kill Chain mapping.",
+    "acronyms": [
+      "CVSS",
+      "SIEM"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-025",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "Files across a file server are encrypted and a ransom note appears on each share. Which MITRE ATT&CK tactic best describes the encryption itself?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Exfiltration"
+        },
+        {
+          "id": "b",
+          "text": "Impact"
+        },
+        {
+          "id": "c",
+          "text": "Collection"
+        },
+        {
+          "id": "d",
+          "text": "Defense evasion"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "Encrypting data to disrupt availability is Impact. Exfiltration moves data out, Collection gathers it, and Defense evasion avoids detection.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-026",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A threat model for a payment service finds that, without audit logs, a user could deny having submitted a refund request. Which STRIDE category does this threat fall under?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Repudiation"
+        },
+        {
+          "id": "b",
+          "text": "Spoofing"
+        },
+        {
+          "id": "c",
+          "text": "Tampering"
+        },
+        {
+          "id": "d",
+          "text": "Information disclosure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a"
+      ]
+    },
+    "explanation": "Being able to deny an action because there is no proof is Repudiation. Spoofing is impersonation, Tampering is unauthorized change, and Information disclosure exposes data to the wrong party.",
+    "acronyms": [
+      "STRIDE"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-027",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 1,
+    "stem": "Which description best fits OSSTMM?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A ranked list of the most critical web application risk categories for developers and testers"
+        },
+        {
+          "id": "b",
+          "text": "A seven-stage model describing an intrusion from early research through the final goal"
+        },
+        {
+          "id": "c",
+          "text": "A peer-reviewed methodology for testing operational security with measurable results"
+        },
+        {
+          "id": "d",
+          "text": "A relationship model linking an adversary to the tools, servers and victims involved"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c"
+      ]
+    },
+    "explanation": "OSSTMM is a security testing methodology that emphasizes measurable operational security. The ranked web risk list is an OWASP publication, the seven-stage model is the Cyber Kill Chain, and the relationship model is the Diamond Model.",
+    "acronyms": [
+      "OSSTMM",
+      "OWASP"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-028",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 3,
+    "stem": "Which statement describes the Unified Kill Chain?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It replaces the four Diamond Model vertices with ordered phases that are recorded separately for each victim of a single attack"
+        },
+        {
+          "id": "b",
+          "text": "It lists web application risk categories ranked by how often they appear, written mainly for software developers and testers"
+        },
+        {
+          "id": "c",
+          "text": "It scores vulnerabilities by exploitability, impact and scope metric groups and maps each score to a named severity band"
+        },
+        {
+          "id": "d",
+          "text": "It merges kill chain and ATT&CK ideas into phases grouped as initial foothold, network propagation and actions on objectives"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d"
+      ]
+    },
+    "explanation": "The Unified Kill Chain merges kill chain and ATT&CK ideas into more phases, arranged in three groups. It does not replace Diamond vertices, rank web risks, or score vulnerabilities, which is what CVSS does.",
+    "acronyms": [
+      "CVSS"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-029",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-single",
+    "difficulty": 2,
+    "stem": "A SOC lead wants one shared vocabulary so analysts, hunters and red team staff can describe observed adversary behaviors and compare detection coverage. Which framework fits best?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "OSSTMM"
+        },
+        {
+          "id": "b",
+          "text": "MITRE ATT&CK"
+        },
+        {
+          "id": "c",
+          "text": "STRIDE"
+        },
+        {
+          "id": "d",
+          "text": "Cyber Kill Chain"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b"
+      ]
+    },
+    "explanation": "ATT&CK is a behavior catalog that teams share for detection and hunting. OSSTMM is a testing methodology, STRIDE categorizes design threats, and the Cyber Kill Chain orders stages rather than cataloging behaviors.",
+    "acronyms": [
+      "OSSTMM",
+      "SOC",
+      "STRIDE"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-030",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO of the following are stages of the Cyber Kill Chain?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Persistence"
+        },
+        {
+          "id": "b",
+          "text": "Weaponization"
+        },
+        {
+          "id": "c",
+          "text": "Discovery"
+        },
+        {
+          "id": "d",
+          "text": "Installation"
+        },
+        {
+          "id": "e",
+          "text": "Exfiltration"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "Weaponization and Installation are both Cyber Kill Chain stages. Persistence, discovery and exfiltration are tactics catalogued in MITRE ATT&CK rather than stages of the chain.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-031",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 1,
+    "stem": "Which TWO of the following are vertices of the Diamond Model?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Capability"
+        },
+        {
+          "id": "b",
+          "text": "Delivery"
+        },
+        {
+          "id": "c",
+          "text": "Tactic"
+        },
+        {
+          "id": "d",
+          "text": "Technique"
+        },
+        {
+          "id": "e",
+          "text": "Infrastructure"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "e"
+      ]
+    },
+    "explanation": "Adversary, capability, infrastructure and victim are the four vertices. Delivery is a kill chain stage, while tactic and technique are MITRE ATT&CK terms.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-032",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO statements about MITRE ATT&CK are accurate?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "It is a scoring system that ranks whole incidents from one to ten by severity"
+        },
+        {
+          "id": "b",
+          "text": "It names an adversary from a single log entry"
+        },
+        {
+          "id": "c",
+          "text": "It is organized around observed adversary behavior instead of specific tools"
+        },
+        {
+          "id": "d",
+          "text": "Its tactics are not a strict sequence that every intrusion must follow"
+        },
+        {
+          "id": "e",
+          "text": "It rates each technique with a CVSS base score"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "c",
+        "d"
+      ]
+    },
+    "explanation": "ATT&CK catalogs behavior in a tool-agnostic way, and intrusions may skip, repeat or reorder tactics. It is not an incident scoring system, it does not attribute an actor from one entry, and it does not use CVSS scoring.",
+    "acronyms": [
+      "CVSS"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-033",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO STRIDE categories correspond to losing confidentiality and losing availability, respectively?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Spoofing"
+        },
+        {
+          "id": "b",
+          "text": "Information disclosure"
+        },
+        {
+          "id": "c",
+          "text": "Tampering"
+        },
+        {
+          "id": "d",
+          "text": "Repudiation"
+        },
+        {
+          "id": "e",
+          "text": "Denial of service"
+        },
+        {
+          "id": "f",
+          "text": "Elevation of privilege"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "e",
+        "b"
+      ]
+    },
+    "explanation": "Information disclosure exposes data and so breaks confidentiality; denial of service blocks access and so breaks availability. Spoofing, tampering, repudiation and elevation of privilege threaten authentication, integrity, non-repudiation and authorization.",
+    "acronyms": [
+      "STRIDE"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-034",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO statements correctly compare the Cyber Kill Chain with MITRE ATT&CK?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "ATT&CK tactics must be completed in order, while kill chain stages may be skipped"
+        },
+        {
+          "id": "b",
+          "text": "The Cyber Kill Chain is a short ordered sequence, while ATT&CK is a larger catalog of behaviors"
+        },
+        {
+          "id": "c",
+          "text": "Only the Cyber Kill Chain describes activity after the first foothold"
+        },
+        {
+          "id": "d",
+          "text": "ATT&CK suits detection coverage analysis, while the Cyber Kill Chain suits placing controls along an attack path"
+        },
+        {
+          "id": "e",
+          "text": "Both frameworks rate individual vulnerabilities by exploitability"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "d"
+      ]
+    },
+    "explanation": "The chain is compact and ordered while ATT&CK is a broad behavior matrix, and each is used for a different defensive purpose. ATT&CK does not require order, ATT&CK covers post-foothold activity extensively, and neither rates vulnerabilities.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-035",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "An analyst applies the Diamond Model to a phishing intrusion. Which THREE items best fill the capability, infrastructure and victim vertices?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A credential-harvesting page template"
+        },
+        {
+          "id": "b",
+          "text": "The presumed motive of financial gain"
+        },
+        {
+          "id": "c",
+          "text": "A bulk-registered lookalike domain"
+        },
+        {
+          "id": "d",
+          "text": "A gateway rule written after the incident to block similar mail"
+        },
+        {
+          "id": "e",
+          "text": "The accounts-payable team that received the emails"
+        },
+        {
+          "id": "f",
+          "text": "A recommendation to patch the document viewer"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "c",
+        "e"
+      ]
+    },
+    "explanation": "The template is a capability, the lookalike domain is infrastructure, and the accounts-payable team is the victim. A presumed motive relates to the adversary, and a new gateway rule and a patch recommendation are defender actions that belong to no vertex.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-036",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO controls most directly interrupt the Delivery stage of a phishing intrusion in the Cyber Kill Chain?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Attachment detonation at the mail gateway"
+        },
+        {
+          "id": "b",
+          "text": "Network segmentation between server tiers"
+        },
+        {
+          "id": "c",
+          "text": "Offline backups of critical data"
+        },
+        {
+          "id": "d",
+          "text": "URL filtering and rewriting at the web proxy"
+        },
+        {
+          "id": "e",
+          "text": "Egress filtering of outbound DNS traffic"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "a",
+        "d"
+      ]
+    },
+    "explanation": "Attachment and link inspection stop the malicious content from reaching users. Segmentation limits later movement, backups aid recovery, and egress filtering targets the command and control stage.",
+    "acronyms": [
+      "DNS",
+      "URL"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-037",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "An intruder has already exploited a workstation. Which TWO of these stages come after Exploitation in the Cyber Kill Chain?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Reconnaissance"
+        },
+        {
+          "id": "b",
+          "text": "Installation"
+        },
+        {
+          "id": "c",
+          "text": "Command and control"
+        },
+        {
+          "id": "d",
+          "text": "Delivery"
+        },
+        {
+          "id": "e",
+          "text": "Weaponization"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "c"
+      ]
+    },
+    "explanation": "Once code runs, the intruder installs a foothold and then establishes a control channel. Reconnaissance, Weaponization and Delivery all occur before Exploitation.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-038",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 2,
+    "stem": "Which TWO of the following are activities that fit the MITRE ATT&CK Initial access tactic?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "A phishing attachment opened by a user"
+        },
+        {
+          "id": "b",
+          "text": "Dumping stored credentials from memory"
+        },
+        {
+          "id": "c",
+          "text": "Encrypting files for ransom"
+        },
+        {
+          "id": "d",
+          "text": "Exploitation of a public-facing web application"
+        },
+        {
+          "id": "e",
+          "text": "Copying data to an external storage host"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "a"
+      ]
+    },
+    "explanation": "Phishing and exploiting an internet-facing application are ways of getting into a network. Credential dumping is Credential access, encryption is Impact, and copying data out is Exfiltration.",
+    "acronyms": []
+  },
+  {
+    "id": "cs4-3-1-mcq-039",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO statements about OSSTMM and the OWASP Testing Guide are correct?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "OSSTMM is a ranked list of web application risk categories"
+        },
+        {
+          "id": "b",
+          "text": "OSSTMM emphasizes testing operational security with measurable results"
+        },
+        {
+          "id": "c",
+          "text": "The OWASP Testing Guide models intrusions as four linked vertices"
+        },
+        {
+          "id": "d",
+          "text": "Both are scoring systems that rate each vulnerability from 0 to 10"
+        },
+        {
+          "id": "e",
+          "text": "The OWASP Testing Guide targets web applications and their supporting components"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "b",
+        "e"
+      ]
+    },
+    "explanation": "OSSTMM is a measurable security testing methodology and the OWASP Testing Guide covers testing web applications. The ranked risk list is the OWASP Top 10, the four-vertex model is the Diamond Model, and CVSS is the scoring system.",
+    "acronyms": [
+      "CVSS",
+      "OSSTMM",
+      "OWASP"
+    ]
+  },
+  {
+    "id": "cs4-3-1-mcq-040",
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "type": "mcq-multi",
+    "difficulty": 3,
+    "stem": "Which TWO ATT&CK-based activities support a threat hunt?",
+    "payload": {
+      "options": [
+        {
+          "id": "a",
+          "text": "Choosing a technique relevant to the organization and writing a hypothesis to search for it"
+        },
+        {
+          "id": "b",
+          "text": "Scoring the technique with CVSS base metrics before searching"
+        },
+        {
+          "id": "c",
+          "text": "Waiting for a signature alert before starting to search"
+        },
+        {
+          "id": "d",
+          "text": "Mapping findings back to techniques to record which behaviors were seen"
+        },
+        {
+          "id": "e",
+          "text": "Sorting techniques by when each was published"
+        }
+      ]
+    },
+    "answer": {
+      "correct": [
+        "d",
+        "a"
+      ]
+    },
+    "explanation": "Hunts are hypothesis-driven and use ATT&CK as a shared language for both the starting idea and the results. CVSS scores vulnerabilities, a hunt starts before an alert exists, and publication order has no value for hunting.",
+    "acronyms": [
+      "CVSS"
+    ]
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "id": "cs4-3-1-order-001",
+    "type": "pbq-order",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "An intrusion on a public web portal is reconstructed from the evidence. Order the six events by the Cyber Kill Chain stage each one shows. Rules: each event shows a different stage, and the stages run in the model's standard order from Weaponization through Actions on objectives.",
+    "payload": {
+      "steps": [
+        {
+          "id": "s4",
+          "text": "A hidden page is saved in the web folder so the access can be reused"
+        },
+        {
+          "id": "s2",
+          "text": "The crafted upload is submitted through the portal's profile photo form"
+        },
+        {
+          "id": "s6",
+          "text": "The customer table is read from the database and copied to an outside host"
+        },
+        {
+          "id": "s1",
+          "text": "The attacker pairs a crafted upload with a small remote-control script"
+        },
+        {
+          "id": "s5",
+          "text": "The server starts fetching instructions from an attacker host every few minutes"
+        },
+        {
+          "id": "s3",
+          "text": "A flaw in the portal's image parser runs the script on the server"
+        }
+      ]
+    },
+    "answer": {
+      "order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6"
+      ]
+    },
+    "explanation": "The attacker weaponizes the upload, delivers it through the form, exploits a parser flaw, installs a hidden page for reuse, establishes a control channel and finally acts on the objective.",
+    "partExplanations": {
+      "0": "Pairing the crafted upload with its script is Weaponization and happens first.",
+      "1": "Submitting the upload through the photo form is Delivery.",
+      "2": "The parser flaw running the script is Exploitation.",
+      "3": "The hidden page is Installation, a foothold that lasts.",
+      "4": "Fetching instructions on a timer is Command and control.",
+      "5": "Copying the customer table out is Actions on objectives."
+    },
+    "acronyms": []
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "id": "cs4-3-1-diagram-001",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "Each box below holds one piece of evidence from an intrusion. Place the Diamond Model vertex that each piece of evidence belongs to under its box.",
+    "payload": {
+      "width": 600,
+      "height": 230,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 70,
+          "text": "Named actor tied to earlier intrusions"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 70,
+          "text": "Custom remote-access tool found on the host"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 70,
+          "text": "Hijacked web server relaying commands"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 70,
+          "text": "Finance servers and the staff who use them"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 130,
+          "name": "Vertex for box 1"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 130,
+          "name": "Vertex for box 2"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 130,
+          "name": "Vertex for box 3"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 130,
+          "name": "Vertex for box 4"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Adversary"
+        },
+        {
+          "id": "l2",
+          "text": "Capability"
+        },
+        {
+          "id": "l3",
+          "text": "Infrastructure"
+        },
+        {
+          "id": "l4",
+          "text": "Victim"
+        },
+        {
+          "id": "l5",
+          "text": "Exploitation"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "The Diamond Model has four vertices: the actor, the tools and methods, the resources used to reach the target, and the target itself. Exploitation is a Cyber Kill Chain stage, not a vertex.",
+    "partExplanations": {
+      "z1": "A tracked actor is the Adversary vertex.",
+      "z2": "A remote-access tool is something the actor uses, which is Capability.",
+      "z3": "A hijacked server relaying commands is a resource used to reach the target, which is Infrastructure.",
+      "z4": "The finance servers and their users are the target, which is the Victim vertex."
+    },
+    "acronyms": []
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "id": "cs4-3-1-diagram-002",
+    "type": "pbq-diagram",
+    "difficulty": 2,
+    "pbqWeight": 4,
+    "stem": "A team lays out four controls along an attack path. Place the Cyber Kill Chain stage that each control interrupts under its box.",
+    "payload": {
+      "width": 600,
+      "height": 230,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 20,
+          "w": 130,
+          "h": 70,
+          "text": "Mail gateway attachment detonation"
+        },
+        {
+          "id": "n2",
+          "x": 160,
+          "y": 20,
+          "w": 130,
+          "h": 70,
+          "text": "Exploit protection on endpoints"
+        },
+        {
+          "id": "n3",
+          "x": 310,
+          "y": 20,
+          "w": 130,
+          "h": 70,
+          "text": "EDR block on new auto-start entries"
+        },
+        {
+          "id": "n4",
+          "x": 460,
+          "y": 20,
+          "w": 130,
+          "h": 70,
+          "text": "DNS and egress filtering"
+        }
+      ],
+      "edges": [
+        {
+          "from": "n1",
+          "to": "n2"
+        },
+        {
+          "from": "n2",
+          "to": "n3"
+        },
+        {
+          "from": "n3",
+          "to": "n4"
+        }
+      ],
+      "zones": [
+        {
+          "id": "z1",
+          "x": 10,
+          "y": 130,
+          "name": "Stage for box 1"
+        },
+        {
+          "id": "z2",
+          "x": 160,
+          "y": 130,
+          "name": "Stage for box 2"
+        },
+        {
+          "id": "z3",
+          "x": 310,
+          "y": 130,
+          "name": "Stage for box 3"
+        },
+        {
+          "id": "z4",
+          "x": 460,
+          "y": 130,
+          "name": "Stage for box 4"
+        }
+      ],
+      "labels": [
+        {
+          "id": "l1",
+          "text": "Delivery"
+        },
+        {
+          "id": "l2",
+          "text": "Exploitation"
+        },
+        {
+          "id": "l3",
+          "text": "Installation"
+        },
+        {
+          "id": "l4",
+          "text": "Command and control"
+        },
+        {
+          "id": "l5",
+          "text": "Weaponization"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "z1": "l1",
+        "z2": "l2",
+        "z3": "l3",
+        "z4": "l4"
+      }
+    },
+    "explanation": "Each control acts where its activity appears: the mail path, the vulnerable code path, new persistence entries and outbound traffic. Weaponization happens on attacker systems, so no defender control sits there.",
+    "partExplanations": {
+      "z1": "Detonating attachments stops the malicious file from reaching users, which interrupts Delivery.",
+      "z2": "Exploit protection blocks a flaw from running attacker code, which interrupts Exploitation.",
+      "z3": "Blocking new auto-start entries stops a foothold being placed, which is Installation.",
+      "z4": "Filtering DNS and outbound traffic cuts the channel to the attacker, which is Command and control."
+    },
+    "acronyms": [
+      "DNS",
+      "EDR"
+    ]
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "id": "cs4-3-1-match-001",
+    "type": "pbq-match",
+    "difficulty": 2,
+    "pbqWeight": 5,
+    "stem": "Match each observed activity to the MITRE ATT&CK tactic it serves.",
+    "payload": {
+      "prompts": [
+        {
+          "id": "p1",
+          "text": "A script copies saved browser passwords into a temporary file"
+        },
+        {
+          "id": "p2",
+          "text": "An admin account opens sessions on three other servers in a row"
+        },
+        {
+          "id": "p3",
+          "text": "Malware adds itself to the list of programs that start at boot"
+        },
+        {
+          "id": "p4",
+          "text": "An attacker stops the endpoint agent before running tools"
+        },
+        {
+          "id": "p5",
+          "text": "Customer records are compressed and sent to an external storage host"
+        }
+      ],
+      "choices": [
+        {
+          "id": "c1",
+          "text": "Credential access"
+        },
+        {
+          "id": "c2",
+          "text": "Lateral movement"
+        },
+        {
+          "id": "c3",
+          "text": "Persistence"
+        },
+        {
+          "id": "c4",
+          "text": "Defense evasion"
+        },
+        {
+          "id": "c5",
+          "text": "Exfiltration"
+        },
+        {
+          "id": "c6",
+          "text": "Impact"
+        }
+      ]
+    },
+    "answer": {
+      "pairs": {
+        "p1": "c1",
+        "p2": "c2",
+        "p3": "c3",
+        "p4": "c4",
+        "p5": "c5"
+      }
+    },
+    "explanation": "Each activity matches a tactic by its goal: obtaining secrets, moving between hosts, surviving restarts, avoiding detection and sending data out. Impact is not used because nothing is destroyed or disrupted.",
+    "partExplanations": {
+      "p1": "Collecting saved passwords is Credential access.",
+      "p2": "Hopping between servers with a valid account is Lateral movement.",
+      "p3": "Starting at boot keeps the foothold alive, which is Persistence.",
+      "p4": "Stopping the agent avoids detection, which is Defense evasion.",
+      "p5": "Sending data to an external host is Exfiltration."
+    },
+    "acronyms": []
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "id": "cs4-3-1-buckets-001",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "Sort each statement into the framework it describes.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "kc",
+          "text": "Cyber Kill Chain"
+        },
+        {
+          "id": "dm",
+          "text": "Diamond Model"
+        },
+        {
+          "id": "at",
+          "text": "MITRE ATT&CK"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "Seven ordered stages that run from research to the final goal"
+        },
+        {
+          "id": "i2",
+          "text": "Links related events through adversary, capability, infrastructure and victim"
+        },
+        {
+          "id": "i3",
+          "text": "Groups techniques under tactics such as persistence and lateral movement"
+        },
+        {
+          "id": "i4",
+          "text": "Helps place controls along an ordered attack path so it is broken early"
+        },
+        {
+          "id": "i5",
+          "text": "Gives red and blue teams a shared catalog of observed behaviors"
+        },
+        {
+          "id": "i6",
+          "text": "Lets an analyst pivot from one vertex to find related incidents"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "kc",
+        "i2": "dm",
+        "i3": "at",
+        "i4": "kc",
+        "i5": "at",
+        "i6": "dm"
+      }
+    },
+    "explanation": "The Cyber Kill Chain is a staged sequence used to break attacks early, the Diamond Model relates four vertices for pivoting, and ATT&CK is a behavior catalog organized by tactics and techniques.",
+    "partExplanations": {
+      "i1": "A fixed sequence of seven stages is the Cyber Kill Chain.",
+      "i2": "Relating four vertices of an event is the Diamond Model.",
+      "i3": "Tactics containing techniques is the structure of ATT&CK.",
+      "i4": "Mapping controls to stages to interrupt an attack early is a Cyber Kill Chain use.",
+      "i5": "A shared behavior catalog for both teams is ATT&CK.",
+      "i6": "Pivoting between vertices is a Diamond Model activity."
+    },
+    "acronyms": []
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "id": "cs4-3-1-buckets-002",
+    "type": "pbq-buckets",
+    "difficulty": 2,
+    "pbqWeight": 6,
+    "stem": "A design review lists threats against an order service. Sort each threat into its STRIDE category.",
+    "payload": {
+      "buckets": [
+        {
+          "id": "sp",
+          "text": "Spoofing"
+        },
+        {
+          "id": "ta",
+          "text": "Tampering"
+        },
+        {
+          "id": "id",
+          "text": "Information disclosure"
+        },
+        {
+          "id": "dos",
+          "text": "Denial of service"
+        }
+      ],
+      "items": [
+        {
+          "id": "i1",
+          "text": "A forged session token is accepted as a real customer"
+        },
+        {
+          "id": "i2",
+          "text": "An order price is changed in a message between services"
+        },
+        {
+          "id": "i3",
+          "text": "A detailed error page reveals the database schema"
+        },
+        {
+          "id": "i4",
+          "text": "A flood of requests exhausts the worker threads"
+        },
+        {
+          "id": "i5",
+          "text": "A configuration file is edited on disk without detection"
+        },
+        {
+          "id": "i6",
+          "text": "An unencrypted backup can be read by any local user"
+        }
+      ]
+    },
+    "answer": {
+      "placements": {
+        "i1": "sp",
+        "i2": "ta",
+        "i3": "id",
+        "i4": "dos",
+        "i5": "ta",
+        "i6": "id"
+      }
+    },
+    "explanation": "STRIDE categories follow the violated property: authentication, integrity, confidentiality and availability. Only four STRIDE categories are used here.",
+    "partExplanations": {
+      "i1": "Passing as another user with a forged token is Spoofing.",
+      "i2": "Changing data in transit violates integrity, which is Tampering.",
+      "i3": "Leaking schema details in an error page is Information disclosure.",
+      "i4": "Exhausting workers makes the service unavailable, which is Denial of service.",
+      "i5": "Unauthorized edits to a file are Tampering.",
+      "i6": "A readable backup exposes data, which is Information disclosure."
+    },
+    "acronyms": [
+      "STRIDE"
+    ]
+  },
+  {
+    "exam": "CS0-004",
+    "source": "ours",
+    "objectiveIds": [
+      "3.1"
+    ],
+    "status": "approved",
+    "id": "cs4-3-1-hotspot-001",
+    "type": "pbq-hotspot",
+    "difficulty": 2,
+    "pbqWeight": 3,
+    "stem": "An analyst reviews a timeline of events from one workstation. Select every entry that shows the Installation stage of the Cyber Kill Chain.",
+    "payload": {
+      "width": 480,
+      "height": 220,
+      "nodes": [
+        {
+          "id": "n1",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Mail with .docm attachment arrives"
+        },
+        {
+          "id": "n2",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "text": "Scheduled task Updater created"
+        },
+        {
+          "id": "n3",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Beacon to 203.0.113.50 every 60s"
+        },
+        {
+          "id": "n4",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "text": "Run key added in user registry hive"
+        },
+        {
+          "id": "n5",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "Large archive built on file share"
+        },
+        {
+          "id": "n6",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "text": "New service svcupd set to auto-start"
+        }
+      ],
+      "spots": [
+        {
+          "id": "mail",
+          "x": 10,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Mail with .docm attachment arrives"
+        },
+        {
+          "id": "task",
+          "x": 250,
+          "y": 10,
+          "w": 220,
+          "h": 40,
+          "name": "Scheduled task Updater created"
+        },
+        {
+          "id": "beacon",
+          "x": 10,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Beacon to 203.0.113.50 every 60s"
+        },
+        {
+          "id": "runkey",
+          "x": 250,
+          "y": 90,
+          "w": 220,
+          "h": 40,
+          "name": "Run key added in user registry hive"
+        },
+        {
+          "id": "archive",
+          "x": 10,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "Large archive built on file share"
+        },
+        {
+          "id": "service",
+          "x": 250,
+          "y": 170,
+          "w": 220,
+          "h": 40,
+          "name": "New service svcupd set to auto-start"
+        }
+      ]
+    },
+    "answer": {
+      "selected": [
+        "task",
+        "runkey",
+        "service"
+      ]
+    },
+    "explanation": "Installation places a lasting foothold: a scheduled task, a run key and an auto-start service each make the implant survive a restart. The email is Delivery, the timed beacon is Command and control, and the archive is Actions on objectives.",
+    "partExplanations": {
+      "mail": "An arriving attachment is Delivery, not Installation.",
+      "task": "A scheduled task makes the implant start again, which is Installation.",
+      "beacon": "Timed calls to an external host are Command and control.",
+      "runkey": "A run key launches the implant at logon, which is Installation.",
+      "archive": "Building an archive of data is Actions on objectives.",
+      "service": "An auto-start service keeps the implant running, which is Installation."
+    },
+    "acronyms": []
+  }
+]

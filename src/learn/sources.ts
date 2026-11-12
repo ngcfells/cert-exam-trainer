@@ -17,7 +17,7 @@ export const LEARN_SOURCES: LearnSource[] = [
   { id: 'freecodecamp', label: 'freeCodeCamp', exams: CODING, url: (p) => `https://www.freecodecamp.org/news/search/?query=${enc(p)}` },
   { id: 'khan', label: 'Khan Academy', exams: CODING, url: (p) => `https://www.khanacademy.org/search?page_search_query=${enc(p)}` },
   { id: 'mdn', label: 'MDN Web Docs', exams: CODING, url: (p) => `https://developer.mozilla.org/en-US/search?q=${enc(p)}` },
-  { id: 'messer', label: 'Professor Messer', exams: ['CY0-001'], url: (p) => `https://www.professormesser.com/?s=${enc(p)}` },
-  { id: 'mslearn', label: 'Microsoft Learn', exams: ['AT0-001', 'CY0-001'], url: (p) => `https://learn.microsoft.com/en-us/search/?terms=${enc(p)}` },
+  { id: 'messer', label: 'Professor Messer', exams: ['CY0-001', 'CS0-004'], url: (p) => `https://www.professormesser.com/?s=${enc(p)}` },
+  { id: 'mslearn', label: 'Microsoft Learn', exams: ['AT0-001', 'CY0-001', 'CS0-004'], url: (p) => `https://learn.microsoft.com/en-us/search/?terms=${enc(p)}` },
   { id: 'web', label: 'Web search', exams: 'all', url: (p) => `https://duckduckgo.com/?q=${enc(p)}` },
 ];
