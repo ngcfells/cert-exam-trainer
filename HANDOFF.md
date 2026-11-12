@@ -1,4 +1,11 @@
-# NEXT BATCH (written 2026-11-11, after CySA+ deploy): pick one, START HERE
+# NEXT: CySA+ lessons, domain 2 (written 2026-11-11, after domain 1 lessons deployed). START HERE
+
+Next session model: **Sonnet**. `gh issue list` first (only #19 open; its parts 1 to 3 are already live, only per-question diagrams remain and questions have no diagram field).
+Done: lessons are now per exam (`area` is the domain id; `areaTitle(meta, area)` in `src/domain/lesson.ts`; loader globs `src/banks/*/lessons/*.json`). CySA+ domain 1 = 24 lessons (4 per objective 1.1 to 1.6) in `src/banks/cysa/lessons/1.1.json` to `1.6.json`, reviewed (Sonnet subject + Haiku copy, fixers applied), full `npm run check` green, deployed (release cd0884483932). Method: `docs/content-drafting.md` section "Lessons"; tests in `src/banks/cysa/bank.test.ts`.
+Left: domains 2 (2.1 to 2.4), 3 (3.1 to 3.3), 4 (4.1, 4.2): one domain per session, then handoff and /clear. Briefs (drafter, reviewer, fixer, merge scripts) were in the session scratchpad `l1/`; rebuild from the method doc. Lessons learned: ids are `cs<domain>-<objective digit>-<slug>` (e.g. `cs1-3-indicator-lookups`; tell drafters exactly, the first brief was ambiguous); have each drafter write one file per objective straight into `src/banks/cysa/lessons/<obj>.json` so fixers can run in parallel without clobbering; reviewers catch examples whose conclusion the evidence does not support and lessons that contradict a linked check (swap the lesson, never the question); copy reviewers mostly flag undefined jargon. Full check takes over 10 minutes: run it in the background.
+Other candidates: next CompTIA exam bank (check `src/banks/` and `docs/archive/HANDOFF-2026-11-10-and-earlier.md`); #19 question diagrams (design first).
+
+# (history) 2026-11-11: pick-one list written after CySA+ deploy
 
 Next session model: **Sonnet** (Opus only if the owner wants the #19 design settled first; Haiku only for drafting content under Sonnet review).
 State: main is clean and deployed (CySA+ CS0-004, 625 questions; hash check shows `CS0-004: 625 questions, 0 lessons`). Branch `chunk13-cysa` is merged, done. Push and deploy are allowed again (no branch exception).
