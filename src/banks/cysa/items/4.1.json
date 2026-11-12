@@ -17,15 +17,15 @@
         },
         {
           "id": "b",
-          "text": "Patch during peak season because security outranks operations"
+          "text": "Patch during peak season because security outranks business"
         },
         {
           "id": "c",
-          "text": "Close the finding as a false positive so it leaves the report"
+          "text": "Close the finding as a false positive so it leaves every report"
         },
         {
           "id": "d",
-          "text": "Leave it unfixed and remove it from future reports"
+          "text": "Leave it unfixed and quietly remove it from future reports"
         }
       ]
     },
@@ -36,7 +36,7 @@
     },
     "explanation": "The analyst should work with the owner on a safe window and reduce risk in the meantime. Forcing the outage ignores business impact, and hiding or mislabeling the finding removes accountability.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-002",
@@ -56,7 +56,7 @@
         },
         {
           "id": "b",
-          "text": "Automatic removal of every vulnerability once a ticket exists"
+          "text": "Automatic closure of a finding once its ticket is opened"
         },
         {
           "id": "c",
@@ -68,7 +68,7 @@
         },
         {
           "id": "e",
-          "text": "A guarantee that patches never cause downtime"
+          "text": "Assurance that patches will not disrupt service"
         }
       ]
     },
@@ -80,7 +80,7 @@
     },
     "explanation": "A tracker keeps evidence and shows what is late. Creating a ticket fixes nothing, validation is still required, and patch downtime cannot be guaranteed away.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-003",
@@ -122,9 +122,9 @@
         "e"
       ]
     },
-    "explanation": "Contractual limits on changes and business processes that cannot stop both delay fixes. Signature updates, credentialed scans and dashboard themes do not prevent anyone from remediating.",
+    "explanation": "A contract that limits changes and a business process that cannot tolerate downtime both delay fixes. Signature updates, credentialed scans and dashboard themes do not prevent anyone from remediating.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-004",
@@ -163,7 +163,7 @@
     },
     "explanation": "Exposure and business value raise priority when severity is equal. Ignoring context, choosing by convenience, or deferring critical findings all increase risk.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-005",
@@ -207,7 +207,7 @@
     },
     "explanation": "Segmentation and a virtual-patching rule reduce the chance of exploitation without changing the host. Longer password reuse, hiding the server from scans and turning off logs raise or conceal risk.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-006",
@@ -246,7 +246,7 @@
     },
     "explanation": "Validation proves the fix worked and gives auditors evidence. Deleting reports destroys the record, lowering criticality changes risk without fixing it, and a one-year wait has no basis.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-007",
@@ -262,11 +262,11 @@
       "options": [
         {
           "id": "a",
-          "text": "A verbal comment from the analyst that the risk seems low"
+          "text": "A verbal comment from the analyst during a meeting that the risk seems low enough to ignore for now"
         },
         {
           "id": "b",
-          "text": "Hiding the finding in the dashboard so that it no longer displays to anyone"
+          "text": "Hiding the finding in the dashboard so that it no longer displays to anyone who reads the report"
         },
         {
           "id": "c",
@@ -274,7 +274,7 @@
         },
         {
           "id": "d",
-          "text": "A note labelling the finding a false positive in the tracker"
+          "text": "A note labeling the finding a false positive in the tracker so that it is closed without further review"
         }
       ]
     },
@@ -283,9 +283,9 @@
         "c"
       ]
     },
-    "explanation": "Accepting risk needs a written, approved and periodically reviewed decision by the person who owns the risk. Hiding the finding or relabeling it as a false positive misrepresents the situation.",
+    "explanation": "Accepting risk needs a written, approved and periodically reviewed decision by the person who owns the risk. A verbal comment is not an approved decision, and hiding the finding or relabeling it as a false positive misrepresents the situation.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-008",
@@ -301,11 +301,11 @@
       "options": [
         {
           "id": "a",
-          "text": "A threat intelligence summary of the adversary groups active in the sector"
+          "text": "A threat intelligence summary of the adversary groups active in the payment sector this year"
         },
         {
           "id": "b",
-          "text": "An executive briefing about reputational damage after past incidents at other firms"
+          "text": "An executive briefing about reputational damage suffered after past incidents at other payment firms"
         },
         {
           "id": "c",
@@ -313,7 +313,7 @@
         },
         {
           "id": "d",
-          "text": "A log of firewall rule changes made during the past week"
+          "text": "A log of the firewall rule changes that the network team made during the past week, with approver names"
         }
       ]
     },
@@ -326,7 +326,7 @@
     "acronyms": [
       "PCI DSS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-009",
@@ -337,7 +337,7 @@
       "4.1"
     ],
     "difficulty": 2,
-    "stem": "A partner organization manages a shared gateway under a signed memorandum of understanding, and any change to it needs the partner agreement. Which inhibitor to remediation applies?",
+    "stem": "A partner organization co-manages a shared gateway, and a signed agreement requires sign-off from the partner for any change. Which inhibitor to remediation applies?",
     "payload": {
       "options": [
         {
@@ -367,7 +367,7 @@
     "acronyms": [
       "MOU"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-010",
@@ -408,7 +408,7 @@
     "acronyms": [
       "MOU"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-011",
@@ -457,7 +457,7 @@
     },
     "explanation": "Owners fix, analysts and engineers guide and verify, and business leaders own the risk. Competitors, forum users and vendor marketing have no role in the plan.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-012",
@@ -468,7 +468,7 @@
       "4.1"
     ],
     "difficulty": 1,
-    "stem": "A hosting contract guarantees 99.99 percent uptime, and applying a patch to the database cluster would need a reboot that breaks that guarantee. Which inhibitor to remediation does this describe?",
+    "stem": "A hosting contract commits to 99.99 percent uptime, and applying a patch to the database cluster would need a reboot that breaks that commitment. The cluster is still vendor-supported and managed by the company. Which inhibitor to remediation does this describe?",
     "payload": {
       "options": [
         {
@@ -498,7 +498,7 @@
     "acronyms": [
       "SLA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-013",
@@ -535,11 +535,11 @@
         "c"
       ]
     },
-    "explanation": "A blended rate lets large volumes of easy, low-severity fixes mask late critical items, so the KPI should be reported per severity. The other explanations do not account for a high overall rate alongside overdue critical systems.",
+    "explanation": "A blended rate lets large volumes of easy, low-severity fixes mask late critical items, so the KPI should be reported per severity. A wrong denominator would distort the rate but not hide only the critical items, a scan with no findings creates nothing overdue, and a different scoring version does not explain a healthy overall rate beside overdue critical systems.",
     "acronyms": [
       "KPI"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-014",
@@ -550,7 +550,7 @@
       "4.1"
     ],
     "difficulty": 2,
-    "stem": "A system owner declines a fix because policy requires data-owner approval for any downtime, and that approval has not been given. Which inhibitor to remediation is this?",
+    "stem": "A system owner declines a fix because policy requires data-owner approval for any downtime, and that approval has not been given. The system is still supported and managed by the company. Which inhibitor to remediation is this?",
     "payload": {
       "options": [
         {
@@ -578,7 +578,7 @@
     },
     "explanation": "A policy or approval process that blocks action is an organizational governance inhibitor. The system is supported and customer-managed, and the blocker is an approval rule rather than the downtime itself.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-015",
@@ -594,7 +594,7 @@
       "options": [
         {
           "id": "a",
-          "text": "Complete plugin output for each assessed host"
+          "text": "Complete plugin output for each assessed host, including every scan field"
         },
         {
           "id": "b",
@@ -602,15 +602,15 @@
         },
         {
           "id": "c",
-          "text": "The risk trend over time compared with the targets"
+          "text": "The risk trend over time compared with the agreed targets"
         },
         {
           "id": "d",
-          "text": "Every raw packet captured during the scans"
+          "text": "Every raw packet captured during the scans, kept for later review"
         },
         {
           "id": "e",
-          "text": "The command lines used to patch each host"
+          "text": "The exact command lines used to patch each host in turn"
         }
       ]
     },
@@ -622,7 +622,7 @@
     },
     "explanation": "Leaders need direction against targets and the exposures that call for decisions. Plugin output, packet data and command lines are detail for engineers.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-016",
@@ -642,15 +642,15 @@
         },
         {
           "id": "b",
-          "text": "Only the library version number, with the other team left out of the plan entirely"
+          "text": "Only the library version and the severity, with the other team left out of the plan"
         },
         {
           "id": "c",
-          "text": "Nothing, because a release freeze waives all open findings"
+          "text": "Nothing at all, because a release freeze automatically waives every open finding"
         },
         {
           "id": "d",
-          "text": "A request to delete the application from the asset inventory"
+          "text": "A request to delete the application from the asset inventory so it is not scanned"
         }
       ]
     },
@@ -661,7 +661,7 @@
     },
     "explanation": "Dependencies and their owners and dates make the plan actionable, and interim mitigation covers the gap. Ignoring the other team, assuming a waiver or deleting the asset leaves the risk unmanaged.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-017",
@@ -702,7 +702,7 @@
     "acronyms": [
       "XML"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-018",
@@ -746,7 +746,7 @@
     },
     "explanation": "An actionable plan assigns ownership and deadlines and covers interim safeguards for unpatchable items. Plugin source code, attribution and license paperwork do not help anyone fix a finding.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-019",
@@ -785,7 +785,7 @@
     },
     "explanation": "A named owner means someone is answerable for the fix and its due date. Scan credentials, scoring and signature selection are configured elsewhere.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-020",
@@ -796,7 +796,7 @@
       "4.1"
     ],
     "difficulty": 2,
-    "stem": "A report shows open critical findings falling each month while newly discovered critical findings stay flat and scan coverage is unchanged. What does this most likely indicate?",
+    "stem": "A report shows open critical findings falling each month while newly discovered critical findings stay flat, scan coverage is unchanged and scanner signatures are current. What does this most likely indicate?",
     "payload": {
       "options": [
         {
@@ -822,9 +822,9 @@
         "c"
       ]
     },
-    "explanation": "With steady discovery and coverage, a falling open count means fixes are being completed faster than new findings arrive. The other readings are not supported by the data given.",
+    "explanation": "With steady discovery, coverage and signatures, a falling open count means fixes are being completed faster than new findings arrive. Outdated signatures would not shrink the count, attacker activity is outside the data, and tickets closed without real fixes would reappear in validation rescans.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-021",
@@ -852,7 +852,7 @@
         },
         {
           "id": "d",
-          "text": "Lab machines are never scanned, so their severity is always unknown"
+          "text": "Lab machines are rarely scanned, so their severity is often unknown"
         }
       ]
     },
@@ -861,9 +861,9 @@
         "b"
       ]
     },
-    "explanation": "Business context decides how much damage exploitation could do, so the scorecard weights it. Asset criticality does not alter the base score, production servers are scored normally, and lab machines can be scanned.",
+    "explanation": "Business context decides how much damage exploitation could do, so the scorecard weights it. Asset criticality does not alter the base score, production servers are scored normally, and lab machines can be scanned like any other asset.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-022",
@@ -907,7 +907,7 @@
     },
     "explanation": "Escalation is warranted when serious risk is unmanaged or an owner blocks action without an approved exception. A new low finding, a fast scan and a template preference are routine matters.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-023",
@@ -948,7 +948,7 @@
     "acronyms": [
       "CVSS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-024",
@@ -959,7 +959,7 @@
       "4.1"
     ],
     "difficulty": 2,
-    "stem": "Several findings come from staff who build servers by hand and reuse weak administrator passwords. Which element of the action plan best addresses the root cause?",
+    "stem": "Several findings trace to a skills gap: staff who build servers by hand lack secure-build skills and reuse weak administrator passwords. Which element of the action plan best addresses the root cause?",
     "payload": {
       "options": [
         {
@@ -987,7 +987,7 @@
     },
     "explanation": "The cause is human practice, so training on secure builds fixes it at the source. Changing scan timing, thresholds or signatures only affects detection or reporting.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-025",
@@ -1003,7 +1003,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A detailed step-by-step account of how the exploit technique works in practice"
+          "text": "A detailed account of how the exploit technique works, step by step"
         },
         {
           "id": "b",
@@ -1011,7 +1011,7 @@
         },
         {
           "id": "c",
-          "text": "A statement that no exposure exists until the vendor ships a patch"
+          "text": "A statement that no exposure exists until a vendor patch ships"
         },
         {
           "id": "d",
@@ -1026,7 +1026,7 @@
     },
     "explanation": "Leaders need exposure, protection now and timing. Exploit mechanics are too technical, claiming no exposure is false, and last year closures do not inform the current decision.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-026",
@@ -1067,7 +1067,7 @@
     "acronyms": [
       "SLA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-027",
@@ -1106,7 +1106,7 @@
     },
     "explanation": "Reports translate raw findings into risk, priorities and actions that people can decide on. They do not replace scanner logic, cannot guarantee that nothing is exploitable, and are not a store of packet data.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-028",
@@ -1150,7 +1150,7 @@
     },
     "explanation": "Engineers need to know what is affected and how to fix it. Insurance discussion, press drafts and competitor charts serve other audiences.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-029",
@@ -1191,7 +1191,7 @@
     "acronyms": [
       "IT"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-030",
@@ -1230,7 +1230,7 @@
     },
     "explanation": "Recurring findings point to a shared root cause, such as an old library in a standard image, so one change fixes many hosts. The report is not a staff ranking, evidence of disabled scans, or a substitute for per-asset risk.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-031",
@@ -1271,7 +1271,7 @@
     "acronyms": [
       "MOU"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-032",
@@ -1310,7 +1310,7 @@
     },
     "explanation": "A recurring finding points to a source that keeps reintroducing it, such as an outdated golden image. A stopped scanner or a removed asset would not produce repeated reports, and a false positive would not be closed as fixed.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-033",
@@ -1321,24 +1321,24 @@
       "4.1"
     ],
     "difficulty": 2,
-    "stem": "Which content best fits a monthly vulnerability report written for an executive audience?",
+    "stem": "A vulnerability manager wants a report that shows which teams repeatedly miss remediation deadlines. Which grouping serves this purpose best?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "Raw plugin output for every host that the scanner assessed during the month, with all fields"
+          "text": "Scan jobs completed, grouped by scanner and by time of day"
         },
         {
           "id": "b",
-          "text": "Overall risk trend, the business impact of the top exposures and the decisions or resources needed"
+          "text": "Late-closed findings, grouped by owning team and severity"
         },
         {
           "id": "c",
-          "text": "Per-host patch command lines and configuration file differences"
+          "text": "Plugin families triggered, grouped by operating system"
         },
         {
           "id": "d",
-          "text": "The full list of scanner signature identifiers loaded for the scan"
+          "text": "Advisories published, grouped by vendor and release month"
         }
       ]
     },
@@ -1347,9 +1347,9 @@
         "b"
       ]
     },
-    "explanation": "Executives need risk, impact and the decisions required, in plain language. Raw output, command lines and signature lists suit engineers and would bury the message.",
+    "explanation": "Grouping late closures by owning team and severity shows where deadlines slip and how serious the misses are. Scan jobs, plugin families and advisory dates describe scanning or vendor activity, not who is late.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-034",
@@ -1388,7 +1388,7 @@
     },
     "explanation": "Fixing a medical device needs the manufacturer, the engineers who maintain it and the users affected by any downtime. The other groups have no role in the fix.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-035",
@@ -1427,7 +1427,7 @@
     },
     "explanation": "Configuration management keeps authoritative baselines and a change record that proves what was changed and when. Risk acceptance, training and compensating controls serve other purposes in the plan.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-036",
@@ -1468,7 +1468,7 @@
     "acronyms": [
       "KPI"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-037",
@@ -1519,7 +1519,7 @@
     "acronyms": [
       "KPI"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-038",
@@ -1530,24 +1530,24 @@
       "4.1"
     ],
     "difficulty": 2,
-    "stem": "Which measure best shows whether remediation is getting faster over time?",
+    "stem": "Mean time to remediate Critical findings rose from 12 to 25 days over three months, with the same scan scope throughout. What does this most likely show?",
     "payload": {
       "options": [
         {
           "id": "a",
-          "text": "The total number of scans that were launched in each calendar month"
+          "text": "Critical findings are now being discovered by more scanners"
         },
         {
           "id": "b",
-          "text": "Mean time to remediate, tracked by severity over several months"
+          "text": "Remediation of critical findings is slowing down"
         },
         {
           "id": "c",
-          "text": "The count of plugins enabled in the scan policy"
+          "text": "Scan coverage of critical assets has been reduced"
         },
         {
           "id": "d",
-          "text": "The number of times managers opened the dashboard"
+          "text": "The scoring version changed for critical findings"
         }
       ]
     },
@@ -1556,9 +1556,9 @@
         "b"
       ]
     },
-    "explanation": "Mean time to remediate directly measures speed from discovery to fix, and tracking it by severity shows the trend. Scan counts, plugin counts and dashboard views measure activity, not remediation speed.",
+    "explanation": "A longer mean time to remediate with an unchanged scan scope means fixes take longer from discovery to completion. The scope is unchanged, so more scanners and reduced coverage are ruled out, and a scoring change would alter severity labels, not how long fixes take.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-039",
@@ -1574,7 +1574,7 @@
       "options": [
         {
           "id": "a",
-          "text": "It cannot be calculated for any flaw found in a web application"
+          "text": "It can only be calculated after the vendor has released a patch"
         },
         {
           "id": "b",
@@ -1582,7 +1582,7 @@
         },
         {
           "id": "c",
-          "text": "It applies only to flaws on operating systems"
+          "text": "It applies mainly to operating system flaws"
         },
         {
           "id": "d",
@@ -1600,9 +1600,9 @@
         "e"
       ]
     },
-    "explanation": "A base score is fixed and generic, so asset value and live exploitation must come from other inputs. It can be calculated for web flaws, does not vary with restarts, and covers many software types.",
+    "explanation": "A base score is fixed and generic, so asset value and live exploitation must come from other inputs. It can be calculated before any patch exists, does not vary with restarts, and covers many software types.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-mcq-040",
@@ -1646,7 +1646,7 @@
     },
     "explanation": "Resolve the incompatibility properly and cover the gap meanwhile. Forcing the patch risks outages, a patch that is not applied is not a resolution, and removing staging only hides test failures.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-data-001",
@@ -1781,17 +1781,17 @@
         "total": "222"
       }
     },
-    "explanation": "Open at end equals open at start plus new minus closed. Critical is 20 + 12 - 25 = 7. High on-time is 30 of 40, or 75 percent, which is lower than Critical (20 of 25, 80 percent), Medium (54 of 60, 90 percent) and Low (100 percent).",
+    "explanation": "Open at end equals open at start plus new minus closed. Critical is 20 + 12 - 25 = 7. High on-time is 30 of 40, or 75%, which is lower than Critical (20 of 25, 80%), Medium (54 of 60, 90%) and Low (100%).",
     "partExplanations": {
       "crit": "20 + 12 - 25 = 7 critical findings remain open.",
-      "high": "30 closed within the SLA out of 40 closed is 30 / 40 = 75 percent.",
-      "worst": "On-time rates are Critical 80, High 75, Medium 90 and Low 100 percent, so High is lowest.",
+      "high": "30 closed within the SLA out of 40 closed is 30 / 40 = 75%.",
+      "worst": "On-time rates are Critical 80%, High 75%, Medium 90% and Low 100%, so High is lowest.",
       "total": "Critical 7, High 35, Medium 70 and Low 110 add up to 222 open findings."
     },
     "acronyms": [
       "SLA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-match-001",
@@ -1870,7 +1870,7 @@
     "acronyms": [
       "KPI"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-buckets-001",
@@ -1905,7 +1905,7 @@
         },
         {
           "id": "i2",
-          "text": "Peak-season freeze on all downtime"
+          "text": "Peak-season operations that cannot tolerate downtime"
         },
         {
           "id": "i3",
@@ -1948,7 +1948,7 @@
     "explanation": "Inhibitors are the obstacles that delay a fix, compensating controls lower risk while a fix is delayed, and metrics measure progress.",
     "partExplanations": {
       "i1": "A sealed vendor platform is a proprietary-system obstacle.",
-      "i2": "A downtime freeze is a business process interruption obstacle.",
+      "i2": "Operations that cannot stop for a fix are a business process interruption obstacle.",
       "i3": "A blocking rule reduces exposure without patching, so it compensates.",
       "i4": "Limiting who can reach the server compensates for the missing patch.",
       "i5": "It measures how long fixes take, so it is a metric.",
@@ -1959,7 +1959,7 @@
     "acronyms": [
       "SLA"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-hotspot-001",
@@ -1971,7 +1971,7 @@
     ],
     "difficulty": 2,
     "pbqWeight": 3,
-    "stem": "Review this entry from a remediation action plan. Select every element that leaves the plan not actionable.",
+    "stem": "Review this entry from a remediation action plan. Select every element that is missing or too vague for the team to carry out and verify the plan.",
     "payload": {
       "width": 480,
       "height": 210,
@@ -2014,7 +2014,7 @@
           "y": 150,
           "w": 220,
           "h": 50,
-          "text": "Validation: none planned"
+          "text": "Validation: none planned to verify the fix"
         },
         {
           "id": "n6",
@@ -2064,7 +2064,7 @@
           "y": 150,
           "w": 220,
           "h": 50,
-          "name": "Validation: none planned"
+          "name": "Validation: none planned to verify the fix"
         },
         {
           "id": "sev",
@@ -2083,14 +2083,14 @@
         "valid"
       ]
     },
-    "explanation": "An actionable plan names an owner, identifies exactly which hosts are affected, and includes a way to verify the fix. The due date, the specific fix and the severity are already clear.",
+    "explanation": "An actionable plan names an owner, identifies exactly which hosts are affected, and says how the fix will be verified. The due date, the specific fix and the severity are already clear.",
     "partExplanations": {
       "owner": "Without an owner nobody is accountable for the fix.",
       "hosts": "All servers is too vague to schedule or verify work.",
-      "valid": "No validation means the fix is never confirmed."
+      "valid": "With no planned check, the fix is never confirmed."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-config-001",
@@ -2102,7 +2102,7 @@
     ],
     "difficulty": 3,
     "pbqWeight": 4,
-    "stem": "A legacy human-machine interface at a plant cannot be patched. Configure its entry in the action plan.",
+    "stem": "A human-machine interface at a plant runs an old operating system, and the vendor ended support years ago, so it cannot be patched. Configure its entry in the action plan.",
     "payload": {
       "fields": [
         {
@@ -2111,7 +2111,7 @@
           "options": [
             {
               "id": "patch",
-              "text": "Apply the newest vendor patch to the live system now"
+              "text": "Apply the newest vendor patch to the live production system right now"
             },
             {
               "id": "comp",
@@ -2119,7 +2119,7 @@
             },
             {
               "id": "scope",
-              "text": "Remove the system from scan scope"
+              "text": "Remove the system from scan scope so it no longer appears in reports"
             }
           ]
         },
@@ -2195,7 +2195,7 @@
       "signoff": "The person who owns the business process owns the residual risk."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-diagram-001",
@@ -2264,7 +2264,7 @@
           "id": "z1",
           "x": 10,
           "y": 120,
-          "name": "Give engineers a per-host list of fixes to apply"
+          "name": "Hand engineers per-host fixes with owners and dates"
         },
         {
           "id": "z2",
@@ -2328,7 +2328,7 @@
       "z4": "Only a rescan confirms the vulnerability is gone."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-1-order-001",
@@ -2340,7 +2340,7 @@
     ],
     "difficulty": 2,
     "pbqWeight": 5,
-    "stem": "Put the steps of tracking a finding through remediation in order, starting when a scan result arrives. Each step needs the result of the step before it.",
+    "stem": "Put the steps of tracking a finding through remediation in order, starting when a scan result arrives. Each step needs the result of the step before it, and the deadline depends on the priority.",
     "payload": {
       "steps": [
         {
@@ -2383,6 +2383,6 @@
       "4": "Closure and reporting rest on validated results."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   }
 ]

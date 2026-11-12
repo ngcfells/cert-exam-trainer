@@ -36,7 +36,7 @@
     },
     "explanation": "The executive summary translates the incident into business impact and status for leadership. A technical appendix holds detail for responders, an evidence inventory lists collected items, and a chain-of-custody form records who handled evidence.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-002",
@@ -75,7 +75,7 @@
     },
     "explanation": "Declaration is the point where analysis is confirmed as an incident and the response team and plan are activated. It does not clear alerts, it does not by itself trigger customer notices, and lessons learned come after the incident is closed.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-003",
@@ -114,7 +114,7 @@
     },
     "explanation": "Widespread encryption of business systems is a critical incident, and critical incidents go to executives and supporting teams. Low and medium severities stay with lower tiers, and an informational rating would underplay confirmed damage.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-004",
@@ -153,7 +153,7 @@
     },
     "explanation": "A non-punitive review focused on process and decisions lets people speak openly about what went wrong. Naming individuals discourages candor, excluding responders removes the people who know what happened, and waiting a year loses detail.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-005",
@@ -192,7 +192,7 @@
     },
     "explanation": "The Five Whys method repeats the question iteratively to move from the symptom to the base cause. A fishbone sorts causes into categories, a fault tree maps branching failures, and timeline analysis orders causes and effects chronologically.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-006",
@@ -231,7 +231,7 @@
     },
     "explanation": "The fishbone, or Ishikawa, diagram places the incident at the head and groups possible causes along category branches. Five Whys is a single chain of questions, a fault tree is a branching failure map, and kill chain mapping describes attacker stages, not causes.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-007",
@@ -270,7 +270,7 @@
     },
     "explanation": "When primary systems may be compromised, an out-of-band channel keeps response traffic away from the attacker. Encrypting mail the attacker can read in a mailbox does not help, ticket comments live on a system that may be affected, and omitting names does not hide content.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-008",
@@ -309,7 +309,7 @@
     },
     "explanation": "External audiences get limited information: what happened to their data and the actions they can take. Hostnames, detection logic and staff names are internal details that help attackers or create legal and privacy exposure.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-009",
@@ -348,7 +348,7 @@
     },
     "explanation": "Legal and compliance staff know which regulations and contracts apply and who must be told, and by when. The help desk, facilities and marketing do not set notification obligations.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-010",
@@ -389,7 +389,7 @@
     "acronyms": [
       "SOC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-011",
@@ -400,7 +400,7 @@
       "4.2"
     ],
     "difficulty": 2,
-    "stem": "A quarterly report shows that the average time to remove the underlying cause of incidents and verify the fix is rising. Which metric is increasing?",
+    "stem": "Average time to fix the root cause of incidents is rising each quarter. Which metric is rising?",
     "payload": {
       "options": [
         {
@@ -428,7 +428,7 @@
     },
     "explanation": "Mean time to remediate tracks how long it takes to eliminate the root cause and restore systems after containment. Detection time measures discovery, alert volume counts alerts, and time to close ends only after the record is documented.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-012",
@@ -439,7 +439,7 @@
       "4.2"
     ],
     "difficulty": 1,
-    "stem": "A SOC lead wants one number for end-to-end handling, from alert creation until the ticket is fully closed and documented. Which metric fits?",
+    "stem": "A SOC lead wants one number for end-to-end handling, from alert creation until the ticket is complete and documented. Which metric fits?",
     "payload": {
       "options": [
         {
@@ -469,7 +469,7 @@
     "acronyms": [
       "SOC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-013",
@@ -489,15 +489,15 @@
         },
         {
           "id": "b",
-          "text": "Better coverage proven by more incidents"
+          "text": "Better coverage, proven by a rise in confirmed incidents"
         },
         {
           "id": "c",
-          "text": "Attackers have stopped targeting the company"
+          "text": "Attackers have lost interest in targeting the company's systems"
         },
         {
           "id": "d",
-          "text": "Analysts are closing cases more quickly"
+          "text": "Analysts are closing their cases more quickly than before"
         }
       ]
     },
@@ -508,7 +508,7 @@
     },
     "explanation": "Rising alerts with no rise in confirmed incidents points to noise, which causes fatigue and calls for tuning. More incidents would be needed to show better coverage, and nothing in the data suggests fewer attackers or faster analysts.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-014",
@@ -545,11 +545,9 @@
         "c"
       ]
     },
-    "explanation": "A missed real event is a false negative, the result that worries SOC managers most because no alert is raised. A true positive is a correct alert, a false positive is an alert on benign activity, and a true negative is silence when nothing is wrong.",
-    "acronyms": [
-      "SOC"
-    ],
-    "status": "draft"
+    "explanation": "A missed real event is a false negative, because no alert is raised. A true positive is a correct alert, a false positive is an alert on benign activity, and a true negative is silence when nothing is wrong.",
+    "acronyms": [],
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-015",
@@ -565,11 +563,11 @@
       "options": [
         {
           "id": "a",
-          "text": "How noisy the mail gateway alerts are"
+          "text": "How noisy the mail gateway alerts have become"
         },
         {
           "id": "b",
-          "text": "How effective awareness training is"
+          "text": "How well users changed their behavior"
         },
         {
           "id": "c",
@@ -590,7 +588,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-016",
@@ -606,15 +604,15 @@
       "options": [
         {
           "id": "a",
-          "text": "High storage cost for log data"
+          "text": "High storage cost for retaining log data over time"
         },
         {
           "id": "b",
-          "text": "Too few detection tools in use"
+          "text": "Too few detection tools in use across the company"
         },
         {
           "id": "c",
-          "text": "Slow ingestion of logs into the SIEM"
+          "text": "Slow ingestion of logs into the SIEM at peak hours"
         },
         {
           "id": "d",
@@ -632,7 +630,7 @@
       "KPI",
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-017",
@@ -643,7 +641,7 @@
       "4.2"
     ],
     "difficulty": 2,
-    "stem": "At the end of a shift, an analyst writes up open cases, pending actions and current severities for the incoming team. Which document is this?",
+    "stem": "At the end of a work period, an analyst writes up open cases, pending actions and current severities for the incoming team. Which document is this?",
     "payload": {
       "options": [
         {
@@ -671,7 +669,7 @@
     },
     "explanation": "A turnover report hands over the operational picture so work continues without gaps. An after-action report reviews a closed incident, an executive summary briefs leadership, and a bulletin shares adversary information.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-018",
@@ -710,7 +708,7 @@
     },
     "explanation": "Internal threat intelligence reports turn what was observed during incidents into tactics, techniques and indicators for defenders. Turnover reports hand over cases, executive summaries brief leadership, and attestations confirm compliance.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-019",
@@ -749,7 +747,7 @@
     },
     "explanation": "Follow-up actions list the residual risk work and who will do it by when. The timeline orders what happened, the scope statement says what was affected, and the inventory lists collected evidence.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-020",
@@ -765,7 +763,7 @@
       "options": [
         {
           "id": "a",
-          "text": "A scheduled task named updater was created on ws-0412.example.internal by the intruder."
+          "text": "A scheduled task named `updater` was created on `ws-0412.example.internal` by the intruder."
         },
         {
           "id": "b",
@@ -790,7 +788,7 @@
     "acronyms": [
       "TCP"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-021",
@@ -829,7 +827,7 @@
     },
     "explanation": "Notification duties come from regulations and contracts that attach to the type of data. An initial severity label, workload and personal preference do not create or remove them.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-022",
@@ -870,7 +868,7 @@
     "acronyms": [
       "CSIRT"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-023",
@@ -909,7 +907,7 @@
     },
     "explanation": "Needing expertise or physical access beyond the current tier is a reason to escalate, with the request documented. Closing, shipping without records or waiting for an audit leaves the incident unmanaged or damages evidence.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-024",
@@ -951,7 +949,7 @@
       "UTC",
       "NTP"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-025",
@@ -990,7 +988,7 @@
     },
     "explanation": "Holding the meeting soon after closure captures accurate memories and keeps momentum for improvements. Before containment, the team is busy responding, a yearly meeting loses detail, and limiting it to critical incidents wastes learning from smaller ones.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-026",
@@ -1029,7 +1027,7 @@
     },
     "explanation": "Trends against goals show direction and effectiveness. A single outlier, an individual ranking or a tool count does not demonstrate program improvement.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-027",
@@ -1040,7 +1038,7 @@
       "4.2"
     ],
     "difficulty": 1,
-    "stem": "Which group primarily handles media inquiries during a public incident?",
+    "stem": "Which group primarily handles media inquiries during an incident?",
     "payload": {
       "options": [
         {
@@ -1068,7 +1066,7 @@
     },
     "explanation": "Public relations controls external messaging so inquiries get consistent, approved answers. Analysts, examiners and engineers focus on technical work.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-028",
@@ -1079,7 +1077,7 @@
       "4.2"
     ],
     "difficulty": 3,
-    "stem": "A server was breached through an exposed management port. The analyst records \"the firewall rule allowed the port\" as the cause, then asks why the rule existed and finds no change review process. Which is the root cause?",
+    "stem": "A server was breached through an exposed management port. The analyst records \"the firewall rule allowed the port\" as the cause, then asks why the rule was allowed to exist and finds that nobody reviewed it. Which is the root cause?",
     "payload": {
       "options": [
         {
@@ -1107,7 +1105,7 @@
     },
     "explanation": "The open port is the immediate cause, but the root cause is the process gap that let an unreviewed rule exist. The scan was only the trigger, and hardware age is unrelated.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-029",
@@ -1148,7 +1146,7 @@
     "acronyms": [
       "KPI"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-030",
@@ -1192,7 +1190,7 @@
     },
     "explanation": "Executives need impact and status with next steps. Packet captures, registry keys and file hashes are technical evidence that belongs in the detailed sections.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-031",
@@ -1243,7 +1241,7 @@
     "acronyms": [
       "SIEM"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-032",
@@ -1287,7 +1285,7 @@
     },
     "explanation": "Legal and compliance decide the obligations, and public relations manage the message to customers and media. Procurement, facilities and license auditors have no part in incident communications.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-033",
@@ -1307,7 +1305,7 @@
         },
         {
           "id": "b",
-          "text": "Trend lines hide the data behind them from the reviewers who read them"
+          "text": "KPI figures cannot be compared from one month to the next"
         },
         {
           "id": "c",
@@ -1329,12 +1327,12 @@
         "c"
       ]
     },
-    "explanation": "Automated tracking noise and weak collection tools both reduce trust in the numbers. Trends do not hide data, viewing is not restricted to managers, and printing frequency is not a KPI problem.",
+    "explanation": "Automated tracking noise and weak collection tools both reduce trust in the numbers. KPIs are built to be compared over time, viewing is not restricted to managers, and printing frequency is not a KPI problem.",
     "acronyms": [
       "KPI",
       "SOC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-034",
@@ -1378,7 +1376,7 @@
     },
     "explanation": "Encryption and an out-of-band fallback protect sensitive updates. Broad chat rooms, public posts and plain text mail expose details to people who should not have them.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-035",
@@ -1427,7 +1425,7 @@
     },
     "explanation": "Dependencies, resource gaps and weak patching all slow removal of the root cause. Fast detection, low alert volume and good awareness do not lengthen remediation.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-036",
@@ -1476,7 +1474,7 @@
     },
     "explanation": "People, process and technology are common branches for grouping causes. Ticket, payload and quarter are not cause categories.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-037",
@@ -1518,11 +1516,11 @@
         "b"
       ]
     },
-    "explanation": "Missing expertise or access are valid reasons to escalate. The time an alert arrives, who opened the ticket or the age of the OS do not by themselves require escalation.",
+    "explanation": "Missing expertise or access is a valid reason to escalate. The time an alert arrives, who opened the ticket or the age of the OS do not by themselves require escalation.",
     "acronyms": [
       "OS"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-038",
@@ -1564,9 +1562,9 @@
         "e"
       ]
     },
-    "explanation": "Turnover reports carry the operational picture forward. Pay, personal notes and raw dumps are not shift handover content.",
+    "explanation": "Turnover reports carry the operational picture forward. Pay, personal notes and raw dumps are not shift turnover content.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-039",
@@ -1612,7 +1610,7 @@
     "acronyms": [
       "IoC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-mcq-040",
@@ -1656,7 +1654,7 @@
     },
     "explanation": "Customers and regulators sit outside the organization and receive limited, required information. Analysts, internal legal staff and employees are internal stakeholders.",
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-order-001",
@@ -1668,7 +1666,7 @@
     ],
     "difficulty": 2,
     "pbqWeight": 5,
-    "stem": "Put the steps of building an after-action report into the order they are done. Each step needs the output of the step before it.",
+    "stem": "Put the steps of building an after-action report into the order they are done. Each step needs the output of the step before it, and the findings must be written up before owners are assigned to the actions.",
     "payload": {
       "steps": [
         {
@@ -1711,7 +1709,7 @@
       "4": "Tracking and reporting trends can only follow once the actions have owners."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-order-002",
@@ -1723,7 +1721,7 @@
     ],
     "difficulty": 2,
     "pbqWeight": 4,
-    "stem": "Put these responders in the order they are first required as incident severity rises, from the lowest severity to the highest.",
+    "stem": "Put these responders in the order they are first needed as incident severity rises. In this organization each severity level (low, medium, high, critical) has its own responder, as shown.",
     "payload": {
       "steps": [
         {
@@ -1760,7 +1758,7 @@
       "3": "Critical severity is escalated to executives and key support teams."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-data-001",
@@ -1905,7 +1903,7 @@
     "acronyms": [
       "SOC"
     ],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-match-001",
@@ -1917,7 +1915,7 @@
     ],
     "difficulty": 2,
     "pbqWeight": 5,
-    "stem": "Match each incident record to what it is used for.",
+    "stem": "Match each incident document or notice to what it is used for.",
     "payload": {
       "prompts": [
         {
@@ -1938,7 +1936,7 @@
         },
         {
           "id": "p5",
-          "text": "Records who handled each item of evidence, and when"
+          "text": "Tells affected customers what data was involved and what to do"
         }
       ],
       "choices": [
@@ -1960,7 +1958,7 @@
         },
         {
           "id": "c5",
-          "text": "Chain-of-custody form"
+          "text": "Customer breach notice"
         },
         {
           "id": "c6",
@@ -1977,16 +1975,16 @@
         "p5": "c5"
       }
     },
-    "explanation": "Each record has its own audience and purpose: leaders get the summary, the team gets the after-action review, the next shift gets the turnover report, detection engineers get threat intelligence, and evidence handling is tracked on a custody form.",
+    "explanation": "Each record has its own audience and purpose: leaders get the summary, the team gets the after-action review, the next shift gets the turnover report, detection engineers get threat intelligence, and affected customers get a breach notice with limited facts and next steps.",
     "partExplanations": {
       "p1": "The executive summary translates findings into business impact for leadership.",
       "p2": "An after-action report evaluates the response and lists action items.",
       "p3": "A turnover report carries the operational picture across shifts.",
       "p4": "Internal threat intelligence turns incident observations into detection improvements.",
-      "p5": "The chain-of-custody form tracks every handler of evidence."
+      "p5": "A customer breach notice gives affected customers limited facts about their data and the steps to take."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-buckets-001",
@@ -2057,7 +2055,7 @@
       "click": "The click rate is a share of employees who clicked."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-diagram-001",
@@ -2202,7 +2200,7 @@
       "z4": "Regulators receive the required notice by the legal deadline."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   },
   {
     "id": "cs4-4-2-terminal-001",
@@ -2241,19 +2239,19 @@
           "options": [
             {
               "id": "brief",
-              "text": "Brief executives and key support teams over a secure channel, and note it in the ticket"
+              "text": "Brief executives and key support teams securely, and note it in the ticket"
             },
             {
               "id": "wait",
-              "text": "Wait for the Tier 3 analyst to close it, then include it in the monthly report"
+              "text": "Wait for the Tier 3 analyst to close it, then include it in the monthly summary report"
             },
             {
               "id": "downgrade",
-              "text": "Lower the severity to high so the on-call queue stays short"
+              "text": "Lower the severity to high so the on-call queue stays short this week"
             },
             {
               "id": "press",
-              "text": "Publish a press statement before the facts are confirmed"
+              "text": "Publish a press statement to the media before the facts are confirmed"
             }
           ]
         }
@@ -2276,7 +2274,18 @@
           "cat ir_tickets.log | grep critical",
           "cat ir_tickets.log | grep sev=critical",
           "cat ir_tickets.log | grep \"critical\"",
-          "cat ir_tickets.log | grep -i critical"
+          "cat ir_tickets.log | grep -i critical",
+          "grep -i sev=critical ir_tickets.log",
+          "grep -i \"critical\" ir_tickets.log",
+          "grep -i 'critical' ir_tickets.log",
+          "grep -in critical ir_tickets.log",
+          "grep -ni critical ir_tickets.log",
+          "grep -n sev=critical ir_tickets.log",
+          "grep -w sev=critical ir_tickets.log",
+          "cat ir_tickets.log | grep 'critical'",
+          "cat ir_tickets.log | grep 'sev=critical'",
+          "cat ir_tickets.log | grep \"sev=critical\"",
+          "cat ir_tickets.log | grep -n critical"
         ],
         "count": [
           "grep -c status=open ir_tickets.log",
@@ -2291,20 +2300,32 @@
           "grep -c open ir_tickets.log",
           "grep open ir_tickets.log | wc -l",
           "grep -ic status=open ir_tickets.log",
-          "grep -ci status=open ir_tickets.log"
+          "grep -ci status=open ir_tickets.log",
+          "grep -c \"open\" ir_tickets.log",
+          "grep -c 'open' ir_tickets.log",
+          "grep -c open ./ir_tickets.log",
+          "grep \"open\" ir_tickets.log | wc -l",
+          "grep 'open' ir_tickets.log | wc -l",
+          "grep status=open ./ir_tickets.log | wc -l",
+          "cat ir_tickets.log | grep open | wc -l",
+          "cat ir_tickets.log | grep -c open",
+          "cat ir_tickets.log | grep \"status=open\" | wc -l",
+          "cat ir_tickets.log | grep 'status=open' | wc -l",
+          "cat ir_tickets.log | grep -c \"status=open\"",
+          "cat ir_tickets.log | grep -c 'status=open'"
         ],
         "act": [
           "brief"
         ]
       }
     },
-    "explanation": "grep filters the export to matching lines, and `-c` or `wc -l` counts them. A critical ticket with no leadership notice needs executives and support teams engaged through a secure channel, with the step recorded; waiting, downgrading or going public early are all wrong.",
+    "explanation": "`grep` filters the export to matching lines, and `-c` or `wc -l` counts them. A critical ticket with no leadership notice needs executives and support teams engaged through a secure channel, with the step recorded; waiting, downgrading or going public early are all wrong.",
     "partExplanations": {
-      "crit": "grep critical ir_tickets.log prints CASE-2032 and CASE-2036.",
-      "count": "grep -c status=open ir_tickets.log reports 4: CASE-2032, CASE-2033, CASE-2035 and CASE-2037.",
+      "crit": "`grep critical ir_tickets.log` prints CASE-2032 and CASE-2036.",
+      "count": "`grep -c status=open ir_tickets.log` reports 4: CASE-2032, CASE-2033, CASE-2035 and CASE-2037.",
       "act": "Critical incidents are escalated to executives and key support teams, using a secure channel and a record in the ticket."
     },
     "acronyms": [],
-    "status": "draft"
+    "status": "approved"
   }
 ]
