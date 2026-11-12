@@ -1,4 +1,12 @@
-# 2026-11-11 (night): CySA+ domain 3 DONE (3.1 to 3.3: 120 MCQ + 21 PBQ approved). Next: domain 4. START HERE
+# 2026-11-11 (late night): CySA+ domain 4 DONE, bank COMPLETE (625 items: 530 MCQ + 95 PBQ). START HERE
+
+Next session model: **Sonnet**. `gh issue list` first (only #19, enhancement). Branch `chunk13-cysa`.
+All four domains approved; `describeBankTargets` added to `src/banks/cysa/bank.test.ts` and passes; full `npm run check` exit 0 (2026-11-11);
+`BOUNDS_EXAM=CS0-004 npm run check-bounds` green. Bank now meets its targets (500 MCQ, 80 PBQ, 10 per template).
+Left for the owner / next session: decide to merge `chunk13-cysa` to main, then push and deploy (`npm run deploy -- --yes` after reading the changed-id list).
+Do NOT push or deploy from the branch itself until the owner says merge. Optional: 553 of 625 items use the fallback search phrase (Learn more); `npm run hashes -- --check` before deploy.
+
+# (history) 2026-11-11 (night): CySA+ domain 3 DONE (3.1 to 3.3: 120 MCQ + 21 PBQ approved). Next: domain 4.
 
 Next session model: **Sonnet**. `gh issue list` first (only #19, enhancement). Branch `chunk13-cysa`, not pushed, do NOT deploy until the bank meets its targets.
 Bank now 531 items = 450 MCQ + 81 PBQ; every PBQ template is at 10+ (diagram 10, config 10, match 11, buckets 10, hotspot 10, data 10, terminal 10, order 10).
