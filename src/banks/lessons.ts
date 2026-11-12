@@ -12,8 +12,8 @@ function parseLessons(raw: unknown[]): Lesson[] {
   });
 }
 
-// The shipped lessons: one JSON file per area, each a lesson array, in file order.
-const files = import.meta.glob<unknown[]>('./dataplus/lessons/*.json', { eager: true, import: 'default' });
+// The shipped lessons: one JSON file per area or domain in each bank's lessons folder, each a lesson array, in file order.
+const files = import.meta.glob<unknown[]>('./*/lessons/*.json', { eager: true, import: 'default' });
 
 export const shippedLessons: Lesson[] = parseLessons(Object.keys(files).sort().flatMap((f) => files[f]));
 

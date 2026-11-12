@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { lessonSchema, lessonText } from './lesson';
+import { areaTitle, lessonSchema, lessonText } from './lesson';
 
 const sampleLesson = {
   id: 'a-sample',
@@ -18,6 +18,14 @@ const issues = (x: unknown) => lessonSchema.safeParse(x).error?.issues.map((i) =
 
 describe('lessonSchema', () => {
   it('accepts the sample', () => expect(issues(sampleLesson)).toEqual([]));
+
+  it('accepts a domain id as the area, and titles it from the exam', () => {
+    expect(issues({ ...sampleLesson, area: '1' })).toEqual([]);
+    const meta = { domains: [{ id: '1', title: 'Security Operations' }] };
+    expect(areaTitle(meta, '1')).toBe('Security Operations');
+    expect(areaTitle(meta, 'A')).toBe('Business math and percentages');
+  });
+
 
   it.each([
     ['both formula and rule', { ...sampleLesson, rule: ['A rule.'] }, /formula: give exactly one/],

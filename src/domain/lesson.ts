@@ -1,8 +1,7 @@
 import { z } from 'zod';
 
-export const LESSON_AREAS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'] as const;
-
-export const AREA_TITLES: Record<(typeof LESSON_AREAS)[number], string> = {
+/** Data+ lesson areas. Other exams group lessons by domain id (area "1", "2", ...), titled from the exam's own domains. */
+export const AREA_TITLES: Record<string, string> = {
   A: 'Business math and percentages',
   B: 'Descriptive statistics',
   C: 'Inferential statistics',
@@ -14,6 +13,11 @@ export const AREA_TITLES: Record<(typeof LESSON_AREAS)[number], string> = {
 
 const text = z.string().min(1);
 
+/** The heading for a lesson area: a Data+ area title, else the exam domain with that id. */
+export function areaTitle(meta: { domains: { id: string; title: string }[] }, area: string): string {
+  return AREA_TITLES[area] ?? meta.domains.find((d) => d.id === area)?.title ?? area;
+}
+
 /** The pictures a lesson can show; each is drawn in code by src/ui/learn/LessonDiagram.tsx. */
 export const DIAGRAM_KINDS = ['join-venn', 'bell-rule', 'tail-curve', 'error-matrix', 'regression-fit', 'sigmoid-curve', 'decision-chain', 'box-plot'] as const;
 
@@ -21,7 +25,7 @@ export const lessonSchema = z
   .object({
     id: z.string().regex(/^[a-z0-9-]+$/, 'use lowercase letters, digits and hyphens'),
     exam: text,
-    area: z.enum(LESSON_AREAS),
+    area: text,
     title: text,
     objectiveIds: z.array(text).min(1),
     meaning: z.array(text).min(1).max(2),

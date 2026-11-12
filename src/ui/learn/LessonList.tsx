@@ -1,4 +1,4 @@
-import { AREA_TITLES, LESSON_AREAS, type Lesson } from '../../domain/lesson';
+import { areaTitle, type Lesson } from '../../domain/lesson';
 import type { ExamMeta } from '../../domain/types';
 import { lessonState, type LessonState, type LessonStatus } from '../../study/lessonStatus';
 import { useFocusHeading } from '../kit';
@@ -7,7 +7,7 @@ const STATE_LABELS: Record<LessonState, string> = { 'not-started': 'Not started'
 
 export function LessonList({ meta, lessons, status, onOpen }: { meta: ExamMeta; lessons: Lesson[]; status: LessonStatus; onOpen: (id: string) => void }) {
   const headingRef = useFocusHeading();
-  const areas = LESSON_AREAS.filter((a) => lessons.some((l) => l.area === a));
+  const areas = [...new Set(lessons.map((l) => l.area))].sort((x, y) => x.localeCompare(y, undefined, { numeric: true }));
   return (
     <section className="learn" aria-labelledby="learn-h">
       <h2 id="learn-h" ref={headingRef} tabIndex={-1}>{`Learn: ${meta.name} (${meta.code})`}</h2>
@@ -15,7 +15,7 @@ export function LessonList({ meta, lessons, status, onOpen }: { meta: ExamMeta; 
       {areas.length === 0 && <p>No lessons for this exam yet.</p>}
       {areas.map((a) => (
         <section key={a} aria-labelledby={`learn-area-${a}`}>
-          <h3 id={`learn-area-${a}`}>{`${a}. ${AREA_TITLES[a]}`}</h3>
+          <h3 id={`learn-area-${a}`}>{`${a}. ${areaTitle(meta, a)}`}</h3>
           <ul className="lesson-list">
             {lessons
               .filter((l) => l.area === a)
