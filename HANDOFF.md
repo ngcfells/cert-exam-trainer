@@ -1,4 +1,15 @@
-# 2026-11-11 (late night): CySA+ domain 4 DONE, bank COMPLETE (625 items: 530 MCQ + 95 PBQ). START HERE
+# NEXT BATCH (written 2026-11-11, after CySA+ deploy): pick one, START HERE
+
+Next session model: **Sonnet** (Opus only if the owner wants the #19 design settled first; Haiku only for drafting content under Sonnet review).
+State: main is clean and deployed (CySA+ CS0-004, 625 questions; hash check shows `CS0-004: 625 questions, 0 lessons`). Branch `chunk13-cysa` is merged, done. Push and deploy are allowed again (no branch exception).
+Run `gh issue list` first (bugs and `from-app` issues beat everything). Only #19 was open (enhancement, Data+ lesson diagrams, 3 parts, not started).
+Candidates, in suggested order (owner decides; none is started):
+1. **#19 part 1: diagram component for lessons** (code-drawn, light/dark aware, screen-reader description; first diagrams: SQL join Venns, one/two-tail curve, Type 1/2 errors). Sonnet, TDD, e2e bounds. Part 3 (error term) only after checking DA0-002 objectives (VERIFY).
+2. **CySA+ lessons**: the bank has 0 lessons. Method: `docs/content-drafting.md`; one domain per session, then handoff and /clear; reference decks (`_WorkingData/`) never copied, never read by subagents.
+3. Any remaining CompTIA exams not yet in (check `src/banks/` and `docs/archive/HANDOFF-2026-11-10-and-earlier.md` for the planned list).
+Optional cleanup: 553 of 625 CySA items use the fallback "Learn more" search phrase.
+
+# (history) 2026-11-11 (late night): CySA+ domain 4 DONE, bank COMPLETE (625 items: 530 MCQ + 95 PBQ). START HERE
 
 Next session model: **Sonnet**. `gh issue list` first (only #19, enhancement). Work on main.
 All four domains approved; `describeBankTargets` added to `src/banks/cysa/bank.test.ts` and passes; full `npm run check` exit 0 (2026-11-11);
