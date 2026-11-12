@@ -4,11 +4,13 @@ import type { NumericAnswer } from '../../domain/types';
 import { lessonText } from '../../domain/lesson';
 import { primerText } from '../../domain/primer';
 import { shownTopics } from '../../primer/match';
-import { shippedLessons } from '../lessons';
+import { shippedLessons as allLessons } from '../lessons';
 import { describeBankTargets, describeShippedBank } from '../shippedChecks';
 import { NUMERIC_CHECKS } from './numericChecks';
 import { dataPlusItems } from './items';
 import { dataPlusMeta } from './meta';
+
+const shippedLessons = allLessons.filter((l) => l.exam === 'DA0-002');
 
 // Checks on the shipped bank. Unit tests otherwise run against the fixture bank (VITE_BANK=fixture).
 const items = dataPlusItems;
