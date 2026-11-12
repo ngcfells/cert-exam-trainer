@@ -150,3 +150,14 @@ Each template needs at least 10 approved items across the exam (quota 89 PBQs). 
 | order | 3.2 response phases, 3.3 containment and recovery steps |
 | match | tool to purpose, framework stage to activity, control to type |
 | buckets | indicator types, control categories, scan types |
+
+## Lessons (CS0-004 and later exams)
+
+Lessons live in `src/banks/<dir>/lessons/<domain id>.json` (a `Lesson[]`; schema in `src/domain/lesson.ts`). Data+ groups by area letter; every other exam sets `area` to the domain id (`"1"`), shown under the domain title from `meta.ts`.
+
+- **One idea per lesson**, small enough to read in about three minutes. About 3 lessons per objective. Cover what the objective asks a learner to explain or do, in the analyst's own terms.
+- Ids: `cs<domain>-<objective with dots as dashes>-<slug>`, for example `cs1-3-dns-lookup-tools`. The first `objectiveIds` entry is the objective the lesson is for; `area` is that objective's domain id.
+- Shape (all fields required except `diagram`, `formula` and the example `table`): `meaning` (1 or 2 paragraphs: what it is and why an analyst cares), `rule` (not `formula`: one paragraph per key point, the facts to hold), `example` (`intro` with a short scenario, optional `table` for a log, scan or alert extract, `steps` the reasoning from evidence to conclusion), `trap` (`wrong` is the tempting misreading, `why` says what is right and how to tell), `checkIds` (3 to 5 approved MCQs of the same objective that test the lesson's idea; never a PBQ, and not a question that restates the lesson's own example).
+- Source rules are those of questions above: original wording, no `_WorkingData/`, no vendor product as "the" answer, defender side only, invented hosts and documentation address ranges, `meta.ts` acronyms only. `check-drafts` does not cover lessons; `npx vitest run src/banks/cysa` does, through `lessonText`.
+- Plain text: no markdown, and backticks only around commands, fields and file names. Keep every unbroken token under about 25 characters.
+- Review: a Sonnet subject reviewer (facts, one defensible reading, objective fit) and a Haiku copy reviewer (clarity, undefined jargon, a trap that is really tempting, acronyms). Fix every flag, then run `npm run check` (its e2e covers the Learn screens).
